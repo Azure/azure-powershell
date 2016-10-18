@@ -51,16 +51,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         [JsonProperty(PropertyName = "endpoint")]
         public string Endpoint { get; set; }
 
-        /// <summary>
-        /// The internal authorization rules.
-        /// </summary>
-        [JsonProperty(PropertyName = "internalAuthorizationPolicies")]
-        public IList<PSSharedAccessAuthorizationRule> InternalAuthorizationPolicies { get; set; }
-
-        /// <summary>
-        /// The authorization rules.
-        /// </summary>
-        [JsonProperty(PropertyName = "authorizationPolicies")]
-        public IList<PSSharedAccessAuthorizationRule> AuthorizationPolicies { get; set; }
     }
 }
