@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Insights.Legacy.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -23,18 +22,19 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSMetricNoDetails : Metric
     {
         /// <summary>
+        /// Gets or sets the DimensionName of the metric
+        /// </summary>
+        public new string DimensionName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DimensionValue of the metric
+        /// </summary>
+        public new string DimensionValue { get; set; }
+
+        /// <summary>
         /// Gets or sets the Name of the metric
         /// </summary>
         public new string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Data of the metric
-        /// </summary>
-        protected internal new IList<MetricValue> Data
-        {
-            get { return base.Data; }
-            set { base.Data = value; }
-        }
 
         /// <summary>
         /// Initializes a new instance of the PSMetric class.
@@ -43,11 +43,19 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSMetricNoDetails(Metric metric)
         {
             // Keep the original value (localized string, Dictionary, List) in the base
+            base.DimensionName = metric.DimensionName;
+            base.DimensionValue = metric.DimensionValue;
             base.Name = metric.Name;
-            base.Data = metric.Data;
 
-            this.Data = metric.Data;
+            this.DimensionName = metric.DimensionName == null ? null : metric.DimensionName.Value;
+            this.DimensionValue = metric.DimensionValue == null ? null : metric.DimensionValue.Value;
+            this.EndTime = metric.EndTime;
+            this.MetricValues = metric.MetricValues;
             this.Name = metric.Name == null ? null : metric.Name.Value;
+            this.Properties = metric.Properties;
+            this.ResourceId = metric.ResourceId;
+            this.StartTime = metric.StartTime;
+            this.TimeGrain = metric.TimeGrain;
             this.Unit = metric.Unit;
         }
     }

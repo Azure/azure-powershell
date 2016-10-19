@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Insights.Legacy.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -22,12 +22,24 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSMetricValue : MetricValue
     {
         /// <summary>
+        /// Gets or sets the Properties of the metric value
+        /// </summary>
+        public new PSDictionaryElement Properties { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the PSMetricValue class.
         /// </summary>
         /// <param name="metricValue">The input MetricValue object</param>
         public PSMetricValue(MetricValue metricValue)
-            : base(average: metricValue.Average, count: metricValue.Count, maximum: metricValue.Maximum, minimum: metricValue.Minimum, total: metricValue.Total, timestamp: metricValue.Timestamp)
         {
+            this.Average = metricValue.Average;
+            this.Count = metricValue.Count;
+            this.Last = metricValue.Last;
+            this.Maximum = metricValue.Maximum;
+            this.Minimum = metricValue.Minimum;
+            this.Properties = new PSDictionaryElement(metricValue.Properties);
+            this.Timestamp = metricValue.Timestamp;
+            this.Total = metricValue.Total;
         }
     }
 }
