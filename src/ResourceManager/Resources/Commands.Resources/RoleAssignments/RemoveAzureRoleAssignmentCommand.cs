@@ -172,7 +172,11 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.Context.Subscription.Id.ToString()
                 },
-                ExcludeAssignmentsForDeletedPrincipals = false
+                ExcludeAssignmentsForDeletedPrincipals = false,
+                // we should never expand principal groups in the Delete scenario
+                ExpandPrincipalGroups = false,
+                // never include classic administrators in the Delete scenario
+                IncludeClassicAdministrators = false
             };
 
             ConfirmAction(

@@ -21,10 +21,20 @@ The Save-AzureRmProfile cmdlet saves the current authentication information for 
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Saving the current session's profile
+```
+PS C:\> Add-AzureRmAccount
+PS C:\> Save-AzureRmProfile -Path C:\test.json
 ```
 
+This example saves the current session's Azure profile to the JSON file provided.
+
+### Example 2: Saving a given profile
 ```
+PS C:\> Save-AzureRmProfile -Profile (Add-AzureRmAccount) -Path C:\test.json
+```
+
+This example saves the Azure profile that is passed through to the cmdlet to the JSON file provided.
 
 ## PARAMETERS
 
@@ -110,6 +120,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSAzureProfile
 
 ## NOTES
 
