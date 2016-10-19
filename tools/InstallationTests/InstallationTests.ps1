@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,22 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-.".\\Common.ps1"
-.".\\Assert.ps1"
-
 $commands = 
 
 function Test-SetAzureStorageBlobContent
 {
   Assert-ThrowsContains {
-    Set-AzureStorageBlobContent -File foo -Container foo -Blob foo -BlobType Block 
-  } "AZURE_STORAGE_CONNECTION_STRING" > $null
-}
-
-function Test-GetModuleVersion
-{
-  param([string] $version)
-  Assert-AreEqual $(Get-Module Azure).Version $version > $null
+    Set-AzureStorageBlobContent -File "foo.txt" -Container foo -Blob foo -BlobType Block 
+  } "Could not get the storage context.  Please pass in a storage context or set the current storage context." > $null
 }
 
 function Test-UpdateStorageAccount
@@ -41,6 +32,7 @@ function Test-UpdateStorageAccount
   Set-AzureSubscription -SubscriptionName $subscription -CurrentStorageAccountName $accounts[1].StorageAccountName
   $storageAccountName = $(Get-AzureStorageContainer)[0].Context.StorageAccountName
   Assert-AreEqual $storageAccountName $accounts[1].StorageAccountName
+  #Remove-AzureSubscription $(Get-AzureSubscription -Current).SubscriptionName -Force
 }
 
 [CmdletBinding]
