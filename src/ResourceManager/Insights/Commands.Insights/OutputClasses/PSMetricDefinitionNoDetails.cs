@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Insights.Legacy.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -25,28 +25,44 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the Name of the metric
         /// </summary>
-        public new string Name { get; private set; }
+        public new string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the metric definition Id
+        /// Gets or sets the list of Dimension objects
         /// </summary>
-        protected internal new string Id { get; private set; }
+        protected internal new IList<Dimension> Dimensions
+        {
+            get { return base.Dimensions; }
+            set { base.Dimensions = value; }
+        }
 
         /// <summary>
         /// Gets or sets the list of MetricAvailability objects
         /// </summary>
-        protected internal new IList<MetricAvailability> MetricAvailabilities { get; private set; }
+        protected internal new IList<MetricAvailability> MetricAvailabilities
+        {
+            get { return base.MetricAvailabilities; }
+            set { base.MetricAvailabilities = value; }
+        }
 
         /// <summary>
         /// Initializes an new instance of the PSMetricDefinitionNoDetails class
         /// </summary>
         /// <param name="metricDefinition">The MetricDefinition</param>
         public PSMetricDefinitionNoDetails(MetricDefinition metricDefinition)
-            : base(name: metricDefinition.Name, primaryAggregationType: metricDefinition.PrimaryAggregationType, resourceId: metricDefinition.ResourceId, unit: metricDefinition.Unit, metricAvailabilities: metricDefinition.MetricAvailabilities, id: metricDefinition.Id)
         {
-            this.Name = metricDefinition.Name != null ? metricDefinition.Name.Value : null;
-            this.Id = metricDefinition.Id;
+            // Keep the original value (localized string, Dictionary, List) in the base
+            base.Name = metricDefinition.Name;
+
+            // Because of the above protected internals these two properties won't show in the output, but they will be there for the base class
+            this.Dimensions = metricDefinition.Dimensions;
             this.MetricAvailabilities = metricDefinition.MetricAvailabilities;
+
+            this.Name = metricDefinition.Name != null ? metricDefinition.Name.Value : null;
+            this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
+            this.Properties = metricDefinition.Properties;
+            this.ResourceId = metricDefinition.ResourceId;
+            this.Unit = metricDefinition.Unit;
         }
     }
 }
