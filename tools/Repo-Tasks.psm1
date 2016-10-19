@@ -169,8 +169,11 @@ This will enable to execute Start-RepoBuild <scope>
 
     Write-Host "Below are available scopes you can specify for building specific projects"
     Write-Host ""    
-    Get-ChildItem -path "$env:repoRoot\src\ResourceManager" -dir | Format-Wide -Column 5 | Format-Table -Property Name    
-    Get-ChildItem -path "$env:repoRoot\src\ServiceManagement" -dir | Format-Wide -Column 5 | Format-Table -Property Name
+    Get-ChildItem -path "$env:repoRoot\src\ResourceManagement" -dir | Format-Wide -Column 5 | Format-Table -Property Name
+    Write-Host "e.g of a scope would be 'ResourceManagement\Compute'" -ForegroundColor Yellow
+    
+    Get-ChildItem -path "$env:repoRoot\src\" -dir -Exclude "ResourceManagement" | Format-Wide -Column 5 | Format-Table -Property Name
+    Write-Host "e.g of a scope would be 'Authentication'" -ForegroundColor Yellow
 }
 
 [CmdletBinding]
@@ -211,6 +214,43 @@ Runs all the check in tests
     msbuild.exe "$env:repoRoot\build.proj" /t:Test
 }
 
+[cmdletBinding]
+Function Install-VSProjectTemplates
+{
+<#
+.SYNOPSIS
+
+Install-VSProjectTemplates will install getting started project templates for
+1) Autorest-.NET SDKProject
+2) .NET SDK Test projectct
+
+After executing the cmdlet, restart VS (if already open), create new project
+Search for the project template as we install the following three project templates
+AutoRest-AzureDotNetSDK
+AzureDotNetSDK-TestProject
+AzurePowerShell-TestProject
+#>
+    if($env:VisualStudioVersion -eq "14.0")
+    {
+        if((Test-Path "$env:repoRoot\tools\ProjectTemplates\") -eq $true)
+        {
+            Write-Host "Installing VS templates for 'AutoRest as well as Test Project'"
+            Copy-Item "$env:repoRoot\tools\ProjectTemplates\*.zip" "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\"
+            Write-Host "Installed VS Test Project Templates for Powershell test projects"
+            Write-Host ""
+            Write-Host "Restart VS (if already open), search for 'AzurePowerShell-TestProject'" -ForegroundColor Yellow
+        }
+        else
+        {
+            Write-Host "Missing templates to install, make sure you have project templates available in the repo under $env:repoRoot\tools\ProjectTemplates\"
+        }
+    }
+    else
+    {
+        Write-Host "Unsupported VS Version detected. Visual Studio 2015 is the only supported version for current set of project templates"
+    }
+}
+
 <#
 We allow users to include any helper powershell scripts they would like to include in the current session
 Currently we support two ways to include helper powershell scripts
@@ -243,3 +283,4 @@ export-modulemember -Function Set-TestEnvironment
 export-modulemember -Function Get-BuildScopes
 export-modulemember -Function Start-Build
 export-modulemember -Function Invoke-CheckinTests
+export-modulemember -Function Install-VSProjectTemplates
