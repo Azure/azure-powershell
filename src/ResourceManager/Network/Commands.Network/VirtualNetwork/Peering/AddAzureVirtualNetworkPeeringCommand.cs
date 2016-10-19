@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
             vnetPeering.AllowGatewayTransit = this.AlloowGatewayTransit;
             vnetPeering.AllowForwardedTraffic = this.AllowForwardedTraffic;
+            vnetPeering.UseRemoteGateways = this.UseRemoteGateways;
 
             // Map to the sdk object
             var vnetPeeringModel = Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
