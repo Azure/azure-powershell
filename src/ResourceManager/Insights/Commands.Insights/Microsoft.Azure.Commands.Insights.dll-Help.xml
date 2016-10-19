@@ -272,15 +272,15 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Remove-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -614,23 +614,23 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmMetricAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmMetricAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmWebtestAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAlertRuleEmail</maml:linkText>
+			<maml:linkText>New-AzureRmAlertRuleEmail</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAlertRuleWebhook</maml:linkText>
+			<maml:linkText>New-AzureRmAlertRuleWebhook</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -811,11 +811,11 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmLogProfile</maml:linkText>
+			<maml:linkText>Get-AzureRmLogProfile</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmLogProfile</maml:linkText>
+			<maml:linkText>Remove-AzureRmLogProfile</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -1172,35 +1172,35 @@ If the rule exists, then it just disables it.</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertRule</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAlertRule</maml:linkText>
+			<maml:linkText>Remove-AzureRmAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmLogAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmWebtestAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAlertRuleEmail</maml:linkText>
+			<maml:linkText>New-AzureRmAlertRuleEmail</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAlertRuleWebhook</maml:linkText>
+			<maml:linkText>New-AzureRmAlertRuleWebhook</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -1496,19 +1496,19 @@ If the rule exists, then it just disables it.</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmLogAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmMetricAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmMetricAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAlertRuleWebhook</maml:linkText>
+			<maml:linkText>New-AzureRmAlertRuleWebhook</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -1729,27 +1729,23 @@ If the rule exists, then it just disables it.</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAlertRule</maml:linkText>
+			<maml:linkText>Remove-AzureRmAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertRule</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmMetricAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmMetricAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmLogAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmWebtestAlertRule</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
+			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -1987,27 +1983,23 @@ The output contains only basic information about the alert rule.</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAlertRule</maml:linkText>
+			<maml:linkText>Remove-AzureRmAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmMetricAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmMetricAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmLogAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmWebtestAlertRule</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
+			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -2228,15 +2220,15 @@ The output contains only basic information about the alert rule.</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Add-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Remove-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -2400,15 +2392,15 @@ The output contains only basic information about the alert rule.</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Add-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Remove-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -2513,6 +2505,10 @@ The output contains only basic information about the alert rule.</maml:para>
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmDiagnosticSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -3445,15 +3441,11 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
+			<maml:linkText>Add-AzureRmLogProfile</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogProfile</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmLogProfile</maml:linkText>
+			<maml:linkText>Remove-AzureRmLogProfile</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -3641,14 +3633,34 @@ The value must be later than StartTime.</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Select-AzureRmSubscription -SubscriptionId df602c9c-7aa0-407d-a6fb-eb20c8bd1192
- 
-Get-AzureRmMetric -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andy0802australia/providers/Microsoft.Logic/workflows/andy0802logicaus -Time 00:05:00</dev:code>
+			<dev:code>Get-AzureRmMetric -res /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3 -time 00:01:00</dev:code>
 			<dev:remarks>
 				<maml:para>Retrieves the metric values for the given logic app resource. The result is displayed summarized.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>DimensionName  :
+DimensionValue :
+Name           : AverageResponseTime
+EndTime        : 3/20/2015 6:40:46 PM
+MetricValues   : {Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue,
+                 Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue...}
+Properties     : {}
+ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
+StartTime      : 3/20/2015 5:40:00 PM
+TimeGrain      : 00:01:00
+Unit           : Seconds
+
+DimensionName  :
+DimensionValue :
+Name           : AverageMemoryWorkingSet
+EndTime        : 3/20/2015 6:40:46 PM
+MetricValues   : {Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue,
+                 Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue...}
+Properties     : {}
+ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
+StartTime      : 3/20/2015 5:40:00 PM
+TimeGrain      : 00:01:00
+Unit           : Bytes</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -3705,7 +3717,7 @@ Get-AzureRmMetric -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd119
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmMetricDefinition</maml:linkText>
+			<maml:linkText>Get-AzureRmMetricDefinition</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -3897,7 +3909,7 @@ Name                   :
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmMetric</maml:linkText>
+			<maml:linkText>Get-AzureRmMetric</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -4078,14 +4090,6 @@ Name                   :
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>GetAzureRmMetric</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -4248,19 +4252,19 @@ Name                   :
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmLogAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmMetricAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmMetricAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmWebtestAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAlertRuleWebhook</maml:linkText>
+			<maml:linkText>New-AzureRmAlertRuleWebhook</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -4405,19 +4409,19 @@ Name                   :
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmLogAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmMetricAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmMetricAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmWebtestAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAlertRuleEmail</maml:linkText>
+			<maml:linkText>New-AzureRmAlertRuleEmail</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -4600,7 +4604,7 @@ Name                   :
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAutoscaleWebhook</maml:linkText>
+			<maml:linkText>New-AzureRmAutoscaleWebhook</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -5082,23 +5086,23 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAutoscaleRule</maml:linkText>
+			<maml:linkText>New-AzureRmAutoscaleRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Add-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Remove-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -5435,23 +5439,23 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>NewAzureRmAutoscaleProfile</maml:linkText>
+			<maml:linkText>New-AzureRmAutoscaleProfile</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Add-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>RemoveAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Remove-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -5555,6 +5559,26 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 	<command:examples>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmAutoscaleRule</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmAutoscaleNotification</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmAutoscaleProfile</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmAutoscaleSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmAutoscaleSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -5677,27 +5701,23 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertRule</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAlertHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAlertHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmMetricAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmMetricAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogAlertRule</maml:linkText>
+			<maml:linkText>Add-AzureRmLogAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmWebtestAlertRule</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
+			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -5802,15 +5822,15 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Add-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleSetting</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleSetting</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmAutoscaleHistory</maml:linkText>
+			<maml:linkText>Get-AzureRmAutoscaleHistory</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -5896,11 +5916,11 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>AddAzureRmLogProfile</maml:linkText>
+			<maml:linkText>Add-AzureRmLogProfile</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>GetAzureRmLogProfile</maml:linkText>
+			<maml:linkText>Get-AzureRmLogProfile</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -6217,6 +6237,10 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmDiagnosticSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 </helpItems>
