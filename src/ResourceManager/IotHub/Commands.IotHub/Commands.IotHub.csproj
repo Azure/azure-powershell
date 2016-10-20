@@ -34,12 +34,32 @@
       <HintPath>..\packages\Microsoft.Azure.Management.IotHub.1.0.0\lib\net45\Microsoft.Azure.Management.IotHub.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.7-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.1\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.4.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -78,6 +98,7 @@
     <Compile Include="IotHub\NewAzureRmIotHub.cs" />
     <Compile Include="IotHub\NewAzureRmIotHubExportDevices.cs" />
     <Compile Include="IotHub\NewAzureRmIotHubImportDevices.cs" />
+    <Compile Include="IotHub\RemoveAzureRmIotHub.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubEventHubConsumerGroup.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubKey.cs" />
     <Compile Include="IotHub\SetAzureRmIotHub.cs" />
@@ -114,6 +135,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="NuGet.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +152,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
+      <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
@@ -147,8 +175,9 @@
     <None Include="ResourceManagerStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="MSSharedLibKey.snk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
