@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetMetrics()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetMetrics");
+            TestsControllerLegacy.NewInstance.RunPsTest("Test-GetMetrics");
         }
 
-        [Fact(Skip = "Disable this release since there are conflicts between DLL versions")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetMetricDefinitions()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetMetricDefinitions");
+            TestsControllerLegacy.NewInstance.RunPsTest("Test-GetMetricDefinitions");
         }
     }
 }
