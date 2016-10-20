@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (wadstorage == null)
                     {
-                        this._Helper.WriteError("A Standard Storage Account is required.");
+                        this._Helper.WriteError("A standard storage account is required. Please use parameter WADStorageAccountName to specify a standard storage account you want to use for this VM.");
                         return;
                     }
 
