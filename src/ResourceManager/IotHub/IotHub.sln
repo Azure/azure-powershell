@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Reso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.IotHub.Test", "Commands.IotHub.Test\Commands.IotHub.Test.csproj", "{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{8058D403-06E3-4BED-8924-D166CE303961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +84,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7} = {4BE4416A-2983-45DA-B332-7E8424FBE8DD}
 		{3436A126-EDC9-4060-8952-9A1BE34CDD95} = {4BE4416A-2983-45DA-B332-7E8424FBE8DD}
+		{4D4F91FD-616E-4F39-A10F-6CC28DC1068A} = {4BE4416A-2983-45DA-B332-7E8424FBE8DD}
 	EndGlobalSection
 EndGlobal
