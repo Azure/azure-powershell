@@ -24,7 +24,7 @@ function Test-GetMetrics
     try 
     {
         # Test
-        $actual = Get-AzureRmMetric -ResourceId $rscname -starttime 2015-03-23T22:00:00Z -endtime 2015-03-23T22:30:00Z -Aggrega Count -MetricNames CPU, Requests
+        $actual = Get-AzureRmMetric -ResourceId $rscname -timeGrain 00:01:00 -starttime 2015-03-23T22:00:00 -endtime 2015-03-23T22:30:00
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Count 15

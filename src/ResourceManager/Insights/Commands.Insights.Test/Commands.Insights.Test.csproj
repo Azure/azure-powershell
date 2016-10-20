@@ -150,6 +150,7 @@
     <Compile Include="ScenarioTests\EventsTests.cs" />
     <Compile Include="ScenarioTests\MetricsTests.cs" />
     <Compile Include="ScenarioTests\TestsController.cs" />
+    <Compile Include="ScenarioTests\TestsControllerLegacy.cs" />
     <Compile Include="ScenarioTests\UsageMetricsTests.cs" />
     <Compile Include="UsageMetrics\GetAzureRmUsageTests.cs" />
     <Compile Include="Utilities.cs" />
