@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             string location, 
             string skuName = null,
             Hashtable customTags = null,
-            string administrators = null)
+            string administrators = null,
+            AnalysisServicesServer existingServer = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -67,17 +68,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ? TagsConversionHelper.CreateTagDictionary(customTags, true)
                 : null;
 
-            AnalysisServicesServer server = null;
-            try
-            {
-                server = GetServer(resourceGroupName, serverName);
-            }
-            catch
-            {
-                // intentionally empty since if there is any exception attempting to 
-                // get the server we know it doesn't exist and we will attempt to create it fresh.
-            }
-
             var adminList = new List<string>();
 
             if (!string.IsNullOrEmpty(administrators))
@@ -85,16 +75,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 adminList.AddRange(administrators.Split(','));
             }
 
-            if (server != null)
+            AnalysisServicesServer newOrUpdatedServer = null;
+            if (existingServer != null)
             {
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
                 {
-                    Sku = server.Sku,
+                    Sku = existingServer.Sku,
                     Tags = tags ?? new Dictionary<string, string>(),
                     AsAdministrators = new ServerAdministrators(adminList)
                 };
 
-                server = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
+                newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
             }
             else
             {
@@ -103,7 +94,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     adminList.Add(_currentUser);
                 }
 
-                server = _client.Servers.Create(
+                newOrUpdatedServer = _client.Servers.Create(
                     resourceGroupName, 
                     serverName, 
                     new AnalysisServicesServer()
@@ -115,7 +106,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     });
             }
 
-            return server;
+            return newOrUpdatedServer;
         }
 
         public void DeleteServer(string resourceGroupName, string serverName)
