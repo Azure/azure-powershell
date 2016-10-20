@@ -16,35 +16,20 @@ function Test-AnalysisServicesServer
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		# Test to make sure the server doesn't exist
-		#Assert-False {Test-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
-		# Test it without specifying a resource group
-		#Assert-False {Test-AzureRmAnalysisServicesServer -Name $serverName}
-
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
     
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
-
-		# In loop to check if server exists
-		for ($i = 0; $i -le 60; $i++)
-		{
-			[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
-			if ($serverGet[0].ProvisioningState -like "Succeeded")
-			{
-				Assert-AreEqual $serverName $serverGet[0].Name
-				Assert-AreEqual $location $serverGet[0].Location
-				Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGet[0].Type
-				Assert-True {$serverGet[0].Id -like "*$resourceGroupName*"}
-				break
-			}
-
-			Write-Host "server not yet provisioned. current state: $($serverGet[0].ProvisioningState)"
-			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-			Assert-False {$i -eq 60} " Analysis Services server is not in succeeded state even after 30 min."
-		}
+	
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+		Assert-True {$serverGetItem.ProvisioningState -like "Active"}
+		Assert-AreEqual $serverName $serverGetItem.Name
+		Assert-AreEqual $location $serverGetItem.Location
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
+		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
 
 		# Test to make sure the server does exist
 		Assert-True {Test-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
@@ -106,15 +91,19 @@ function Test-AnalysisServicesServer
 		Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
 		# Suspend Analysis Servicesserver
-		Assert-Throws {Suspend-AzureRmAnalysisServicesServer} "Suspend Server must throw"
-		Assert-True {Suspend-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName} "Suspend Server failed."
+		Suspend-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+		Assert-True {$serverGetItem.ProvisioningState -like "Paused"}
 
-		# Suspend Analysis Servicesserver
-		Assert-Throws {Resume-AzureRmAnalysisServicesServer} "Resume Server must throw"
-		Assert-True {Resume-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName} "Resume Server failed."
+		# Resume Analysis Servicesserver
+		Resume-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+		Assert-True {$serverGetItem.ProvisioningState -like "Active"}
 		
 		# Delete Analysis Servicesserver
-		Assert-True {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -PassThru} "Remove Server failed."
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -PassThru
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
@@ -152,26 +141,7 @@ function Test-NegativeAnalysisServicesServer
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
-
-		# In loop to check if server exists
-		for ($i = 0; $i -le 60; $i++)
-		{
-        
-			[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
-			if ($serverGet[0].ProvisioningState -like "Succeeded")
-			{
-				Assert-AreEqual $serverName $serverGet[0].Name
-				Assert-AreEqual $location $serverGet[0].Location
-				Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGet[0].Type
-				Assert-True {$serverGet[0].Id -like "*$resourceGroupName*"}
-				break
-			}
-
-			Write-Host "server not yet provisioned. current state: $($serverGet[0].ProvisioningState)"
-			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-			Assert-False {$i -eq 60} " Analysis Services server not in succeeded state even after 30 min."
-		}
-
+       
 		# attempt to recreate the already created server
 		Assert-Throws {New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location}
 
