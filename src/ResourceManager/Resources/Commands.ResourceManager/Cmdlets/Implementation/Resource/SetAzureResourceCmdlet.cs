@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>() ?? resource.Sku,
                         Tags = TagsHelper.GetTagsDictionary(this.Tag) ?? resource.Tags,
                         Location = resource.Location,
-                        Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody(),
+                        Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody()
                     }.ToJToken();
                 }
                 else
@@ -171,74 +171,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private Resource<JToken> GetPatchResourceBody()
         {
-            Resource<JToken> resourceBody = null;
+            if (this.Properties == null && this.Plan == null && this.Kind == null && this.Sku == null && this.Tag == null)
+            {
+                return null;
+            }
+
+            Resource<JToken> resourceBody = new Resource<JToken>();
 
             if (this.Properties != null)
             {
-                resourceBody = new Resource<JToken>()
-                {
-                    Properties = this.Properties.ToResourcePropertiesBody()
-                };
+                resourceBody.Properties = this.Properties.ToResourcePropertiesBody();
             }
 
             if (this.Plan != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>();
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>()
-                    };
-                }
+                resourceBody.Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>();
             }
 
             if (this.Kind != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Kind = this.Kind;
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Kind = this.Kind
-                    };
-                }
+                resourceBody.Kind = this.Kind;
             }
 
             if (this.Sku != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>();
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>()
-                    };
-                }
+                resourceBody.Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>();
             }
 
             if (this.Tag != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Tags = TagsHelper.GetTagsDictionary(this.Tag)
-                    };
-                }
+                resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
             }
 
             return resourceBody;

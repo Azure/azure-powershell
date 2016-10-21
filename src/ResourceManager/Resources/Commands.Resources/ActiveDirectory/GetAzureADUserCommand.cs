@@ -60,11 +60,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 Mail = Mail
             };
 
-            do
+            ExecutionBlock(() =>
             {
-                WriteObject(ActiveDirectoryClient.FilterUsers(options), true);
+                do
+                {
+                    WriteObject(ActiveDirectoryClient.FilterUsers(options), true);
 
-            } while (!string.IsNullOrEmpty(options.NextLink));
+                } while (!string.IsNullOrEmpty(options.NextLink));
+            });
         }
     }
 }

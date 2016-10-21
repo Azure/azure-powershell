@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
     public class PSDataSourceKinds {
         public const string AzureAuditLog = "AzureAuditLog";
+        public const string AzureActivityLog = "AzureActivityLog";
         public const string IISLogs = "IISLogs";
         public const string WindowsEvent = "WindowsEvent";
         public const string WindowsPerformanceCounter = "WindowsPerformanceCounter";
@@ -80,6 +81,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             switch(this.Kind){
                 case PSDataSourceKinds.AzureAuditLog:
                     this.Properties = JsonConvert.DeserializeObject<PSAzureAuditLogDataSourceProperties>(dataSource.Properties);
+                    break;
+                case PSDataSourceKinds.AzureActivityLog:
+                    this.Properties = JsonConvert.DeserializeObject<PSAzureActivityLogDataSourceProperties>(dataSource.Properties);
                     break;
                 case PSDataSourceKinds.WindowsEvent:
                     this.Properties = JsonConvert.DeserializeObject<PSWindowsEventDataSourceProperties>(dataSource.Properties);

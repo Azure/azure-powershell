@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseImport")]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseImport", SupportsShouldProcess = true)]
     public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
     {
         /// <summary>

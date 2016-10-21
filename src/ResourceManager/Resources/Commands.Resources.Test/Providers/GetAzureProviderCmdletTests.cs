@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Body = pagableResult
             };
             this.providerOperationsMock
-                .Setup(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()))
+                .Setup(f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(result));
 
             var locationList = new List<Location>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             };
             var pagableLocations = new Page<Location>();
             pagableLocations.SetItemValue<Location>(locationList);
-            var locationsResult = new AzureOperationResponse<IPage<Location>>()
+            var locationsResult = new AzureOperationResponse<IEnumerable<Location>>()
             {
                 Body = pagableLocations
             };
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.cmdlet.ProviderNamespace = UnregisteredProviderNamespace;
 
             this.providerOperationsMock
-              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()))
               .Returns((Task.FromResult(new AzureOperationResponse<Provider>()
               {
                   Body = unregisteredProvider
@@ -295,8 +295,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyGetCallPatternAndReset()
         {
-            this.providerOperationsMock.Verify(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
-            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()), Times.Once());
             this.providerOperationsMock.Verify(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
             this.ResetCalls();
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyListCallPatternAndReset()
         {
-            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()), Times.Once());
             this.providerOperationsMock.Verify(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
 

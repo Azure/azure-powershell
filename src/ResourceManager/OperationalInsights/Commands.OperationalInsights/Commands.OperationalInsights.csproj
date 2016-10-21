@@ -57,8 +57,8 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.15.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.16.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -77,7 +77,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.7-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
@@ -129,6 +129,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="DataSources\AzureOperationalInsightsDataSourceBaseCmdlet.cs" />
     <Compile Include="DataSources\NewAzureOperationalInsightsDataSourceBaseCmdlet.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsAzureActivityLogDataSourceCommand.cs" />
     <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsCustomLogDataSourceCommand.cs" />
     <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsLinuxCustomLogCollectionCommand.cs" />
     <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsIISLogCollectionCommand.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsLinuxSyslogCollectionCommand.cs" />
     <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsWindowsEventDataSourceCommand.cs" />
     <Compile Include="Models\CreatePSDataSourceParameters.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSAzureActivityLogDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogCollectionDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSIISLogsDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogDataSourceProperties.cs" />
@@ -199,7 +201,6 @@
     <Compile Include="Search\SetAzureOperationalInsightsSavedSearch.cs" />
     <Compile Include="Search\RemoveAzureOperationalInsightsSavedSearchCommand.cs" />
     <Compile Include="DataSources\GetAzureOperationalInsightsDataSourceCommand.cs" />
-    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsAzureAuditDataSourceCommand.cs" />
     <Compile Include="DataSources\RemoveAzureOperationalInsightsDataSourceCommand.cs" />
     <Compile Include="DataSources\SetAzureOperationalInsightsDataSourceCommand.cs" />
     <Compile Include="StorageInsights\GetAzureOperationalInsightsStorageInsightCommand.cs" />
@@ -234,6 +235,9 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="MSSharedLibKey.snk" />
+    <Content Include="OperationalInsightsStartup.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable tags = null, string storageId = null)
+        public static BatchAccount CreateAccountResource(string accountName, string resourceGroupName, Hashtable tags = null, string storageId = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
@@ -55,16 +55,16 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
-            AccountResource resource = new AccountResource(
+            BatchAccount resource = new BatchAccount(
                 coreQuota: DefaultQuotaCount,
                 poolQuota: DefaultQuotaCount,
                 activeJobAndJobScheduleQuota: DefaultQuotaCount,
+                accountEndpoint: endpoint,
                 id: id,
                 type: "type")
             {
                 Location = "location",
-                AccountEndpoint = endpoint,
-                ProvisioningState = AccountProvisioningState.Succeeded,
+                ProvisioningState = ProvisioningState.Succeeded,
                 AutoStorage = new AutoStorageProperties() { StorageAccountId = storageId }
             };
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         public static BatchAccountContext CreateBatchContextWithKeys()
         {
-            AccountResource resource = CreateAccountResource("account", "resourceGroup");
+            BatchAccount resource = CreateAccountResource("account", "resourceGroup");
             BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource);
             string dummyKey = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
             SetProperty(context, "PrimaryAccountKey", dummyKey);
@@ -584,6 +584,19 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a CloudJobGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> CreateCloudJobGetResponse(ProxyModels.CloudJob job)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = job
+            };
+            return response;
+        }
+
+        /// <summary>
         /// Builds a CloudJobListResponse object
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> CreateCloudJobListResponse(IEnumerable<string> jobIds)
@@ -618,6 +631,16 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             response.Body = task;
 
+            return response;
+        }
+        /// <summary>
+        /// Builds a CloudTaskGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> CreateCloudTaskGetResponse(ProxyModels.CloudTask task)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Body = task;
             return response;
         }
 
@@ -798,25 +821,22 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Fabricates a CloudJob that's in the bound state
         /// </summary>
-        public static CloudJob CreateFakeBoundJob(BatchAccountContext context)
+        public static CloudJob CreateFakeBoundJob(BatchAccountContext context, ProxyModels.CloudJob cloudJob)
         {
-            string jobId = "testJob";
-
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
                 JobGetBatchRequest request = (JobGetBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>();
-                    response.Body = new ProxyModels.CloudJob(id: jobId, poolInfo: new ProxyModels.PoolInformation());
+                    var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> { Body = cloudJob };
 
                     Task<AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>> task = Task.FromResult(response);
                     return task;
                 };
             });
 
-            return context.BatchOMClient.JobOperations.GetJob(jobId, additionalBehaviors: new BatchClientBehavior[] { interceptor });
+            return context.BatchOMClient.JobOperations.GetJob(cloudJob.Id, additionalBehaviors: new BatchClientBehavior[] { interceptor });
         }
 
         /// <summary>

@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = new Microsoft.Azure.Batch.JobSpecification();
         }
         
+        public PSJobSpecification(PSPoolInformation poolInformation)
+        {
+            this.omObject = new Microsoft.Azure.Batch.JobSpecification(poolInformation.omObject);
+        }
+        
         internal PSJobSpecification(Microsoft.Azure.Batch.JobSpecification omObject)
         {
             if ((omObject == null))

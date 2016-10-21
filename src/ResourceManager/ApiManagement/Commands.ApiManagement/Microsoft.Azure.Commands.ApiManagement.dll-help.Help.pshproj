@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<ModuleObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" fVersion="1.1" type="Manifest" mclass="External" useSupports="false">
-  <Version>0.0.1</Version>
+<ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Manifest" mclass="External" useSupports="false">
   <Name>Microsoft.Azure.Commands.ApiManagement.dll-help</Name>
+  <Version>0.0.1</Version>
   <Description />
   <ModulePath>D:\github\azure-powershell\src\ResourceManager\ApiManagement\Commands.ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll-help.psd1</ModulePath>
   <HasManifest>false</HasManifest>
@@ -22,17 +22,17 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ApiManagement Location Sku Capacity VirtualNetwork Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ApiManagement Location Sku Capacity VirtualNetwork Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Add-AzureRmApiManagementRegion -ApiManagement &lt;PsApiManagement&gt; -Location &lt;String&gt; {North Central US | South Central US | Central US | West Europe | North Europe | West US | East US | East US 2 | Japan East | Japan West | Brazil South | Southeast Asia | East Asia | Australia East | Australia Southeast}  [-Sku &lt;Nullable`1[PsApiManagementSku]&gt;] [-Capacity &lt;Nullable`1[Int32]&gt;] [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Add-AzureRmApiManagementRegion -ApiManagement &lt;PsApiManagement&gt; -Location &lt;String&gt; [-Sku &lt;Nullable`1[PsApiManagementSku]&gt;] [-Capacity &lt;Nullable`1[Int32]&gt;] [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagement" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>ApiManagement</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullAttribute</string>
           </Attributes>
           <Aliases />
           <Description>PsApiManagement instance to add additional deployment region to.</Description>
@@ -41,9 +41,8 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Location</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Location of the new deployment region.</Description>
@@ -75,7 +74,32 @@
           <Aliases />
           <Description>Virtual network configuration. Default value is $null.</Description>
           <DefaultValue>$null</DefaultValue>
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -111,10 +135,10 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name StorageContext TargetContainerName TargetBlobName PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name StorageContext TargetContainerName TargetBlobName PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Backup-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -StorageContext &lt;AzureStorageContext&gt; -TargetContainerName &lt;String&gt; [-TargetBlobName &lt;String&gt;] [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Backup-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -StorageContext &lt;AzureStorageContext&gt; -TargetContainerName &lt;String&gt; [-TargetBlobName &lt;String&gt;] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -174,7 +198,32 @@ Update-AzureRmApiManagementDeployments</Cmd>
           <Aliases />
           <Description>Sends backed up PsApiManagement to pipeline if operation succeeds.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -202,16 +251,16 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="All In Subscription" Params="Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Specific API Management Service" Params="ResourceGroupName Name Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="All In Resource Group" Params="ResourceGroupName Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="All In Subscription" Params="Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="All In Resource Group" Params="ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Specific API Management Service" Params="ResourceGroupName Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureRmApiManagement [-Profile &lt;AzureProfile&gt;]</string>
-        <string>Get-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-Profile &lt;AzureProfile&gt;]</string>
-        <string>Get-AzureRmApiManagement -ResourceGroupName &lt;String&gt; [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Get-AzureRmApiManagement [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmApiManagement -ResourceGroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
-      <Parameters>        
+      <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ResourceGroupName</Name>
           <Attributes>
@@ -229,6 +278,31 @@ Update-AzureRmApiManagementDeployments</Cmd>
           </Attributes>
           <Aliases />
           <Description>Name of API Management service.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -264,10 +338,10 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureRmApiManagementSsoToken -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Get-AzureRmApiManagementSsoToken -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -289,7 +363,32 @@ Update-AzureRmApiManagementDeployments</Cmd>
           <Aliases />
           <Description>Name of API Management.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -317,17 +416,17 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name HostnameType PfxPath PfxPassword PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name HostnameType PfxPath PfxPassword PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -HostnameType &lt;PsApiManagementHostnameType&gt; -PfxPath &lt;String&gt; -PfxPassword &lt;String&gt; [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -HostnameType &lt;PsApiManagementHostnameType&gt; -PfxPath &lt;String&gt; -PfxPassword &lt;String&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ResourceGroupName</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Name of resource group under which API Management exists.</Description>
@@ -356,8 +455,8 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>PfxPath</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Path to a .pfx certificate file.</Description>
@@ -366,8 +465,8 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>PfxPassword</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Password for the .pfx certificate file.</Description>
@@ -381,7 +480,32 @@ Update-AzureRmApiManagementDeployments</Cmd>
           <Aliases />
           <Description>Sends imported PsApiManagementHostnameCertificate to pipeline if operation succeeds.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -409,17 +533,17 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Location Organization AdminEmail Sku Capacity Tags Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Location Organization AdminEmail Sku Capacity VpnType VirtualNetwork Tags AdditionalRegions Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -Location &lt;String&gt; {North Central US | South Central US | Central US | West Europe | North Europe | West US | East US | East US 2 | Japan East | Japan West | Brazil South | Southeast Asia | East Asia | Australia East | Australia Southeast}  -Organization &lt;String&gt; -AdminEmail &lt;String&gt; [-Sku &lt;Nullable`1[PsApiManagementSku]&gt;] [-Capacity &lt;Nullable`1[Int32]&gt;] [-Tags &lt;Dictionary`2[String]&gt;] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>New-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -Location &lt;String&gt; -Organization &lt;String&gt; -AdminEmail &lt;String&gt; [-Sku &lt;Nullable`1[PsApiManagementSku]&gt;] [-Capacity &lt;Nullable`1[Int32]&gt;] [-VpnType &lt;PsApiManagementVpnType&gt;] [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-Tags &lt;Dictionary`2[String]&gt;] [-AdditionalRegions &lt;PsApiManagementRegion[]&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ResourceGroupName</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Name of resource group under which you want to create API Management.</Description>
@@ -428,8 +552,8 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Name</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Name of API Management.</Description>
@@ -440,7 +564,6 @@ Update-AzureRmApiManagementDeployments</Cmd>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Location where want to create API Management.</Description>
@@ -459,8 +582,8 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>AdminEmail</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>The originating e-mail address for all e-mail notifications sent from the API Management system.</Description>
@@ -492,19 +615,98 @@ Update-AzureRmApiManagementDeployments</Cmd>
           <Aliases />
           <Description>Tags dictionary.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="PsApiManagementVpnType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>VpnType</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Virtual Network Type of the ApiManagement Deployment. Valid Values are 
+- "None" (Default Value. ApiManagement is not part of any Virtual Network")
+- "External" (ApiManagement Deployment is setup inside a Virtual Network having an Internet Facing Endpoint)
+- "Internal" (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PsApiManagementVirtualNetwork" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>VirtualNetwork</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Virtual Network Configuration of master Azure API Management deployment region.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PsApiManagementRegion[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>AdditionalRegions</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Additional deployment regions of Azure API Management.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
           <Name>Example 1</Name>
-          <Cmd>PS C:\&gt; New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location “Central US” –Organization Contoso –AdminEmail admin@contoso.com</Cmd>
+          <Cmd>New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location "Central US" –Organization Contoso –AdminEmail admin@contoso.com</Cmd>
           <Description>Create new ‘Developer’ tier API Management service</Description>
           <Output />
         </Example>
         <Example>
           <Name>Example 2</Name>
-          <Cmd>PS C:\&gt; New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location “Central US” –Organization Contoso –AdminEmail admin@contoso.com –Sku Standard –Capacity 3</Cmd>
+          <Cmd>New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location "Central US" –Organization Contoso –AdminEmail admin@contoso.com –Sku Standard –Capacity 3</Cmd>
           <Description>Create new ‘Standard’ tier API Management service with 3 units</Description>
+          <Output />
+        </Example>
+        <Example>
+          <Name>Example 3</Name>
+          <Cmd>$apimRegion = New-AzureRmApiManagementRegion -Location "Central US" 
+
+$additionalRegions = @($apimRegion)
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -Sku "Premium"</Cmd>
+          <Description>Creates a 'Premium' Tier ApiManagement service with Master Region in 'West US' and Additional Region in 'Central US'.</Description>
+          <Output />
+        </Example>
+        <Example>
+          <Name>Example 4</Name>
+          <Cmd>$apimRegionVirtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location "Central US" –SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet"
+
+$apimRegion = New-AzureRmApiManagementRegion -Location "Central US" -VirtualNetwork $apimRegionVirtualNetwork 
+
+$additionalRegions = @($apimRegion)
+
+$virtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location "West US" –SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-b1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -VirtualNetwork $virtualNetwork -VpnType "External" -Sku "Premium"</Cmd>
+          <Description>Creates a Developer Tier ApiManagement service in an Azure Virtual Network Subnet having an External Facing Gateway Endpoint with Master Region in West US and Additional Region in Central US.</Description>
           <Output />
         </Example>
       </Examples>
@@ -526,10 +728,10 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="CertificateThumbprint Hostname Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="CertificateThumbprint Hostname Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint &lt;String&gt; -Hostname &lt;String&gt; [-Profile &lt;AzureProfile&gt;]</string>
+        <string>New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint &lt;String&gt; -Hostname &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -545,13 +747,38 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Hostname</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Custom hostaname.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -569,7 +796,7 @@ Update-AzureRmApiManagementDeployments</Cmd>
       <Name>New-AzureRmApiManagementVirtualNetwork</Name>
       <GeneralHelp>
         <Synopsis>Creates an instance of PsApiManagementVirtualNetwork.</Synopsis>
-        <Description>Helper command to create an instance of PsApiManagementVirtualNetwork. This command is to be used with Set-AzureRmApiManagementVirtualNetworks command.</Description>
+        <Description>Helper command to create an instance of PsApiManagementVirtualNetwork. This command is to be used with Update-AzureRmApiManagementDeployment command.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -579,10 +806,10 @@ Update-AzureRmApiManagementDeployments</Cmd>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Location SubnetName VnetId Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Location SubnetResourceId Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureRmApiManagementVirtualNetwork -Location &lt;String&gt; {North Central US | South Central US | Central US | West Europe | North Europe | West US | East US | East US 2 | Japan East | Japan West | Brazil South | Southeast Asia | East Asia | Australia East | Australia Southeast}  -SubnetName &lt;String&gt; -VnetId &lt;Guid&gt; [-Profile &lt;AzureProfile&gt;]</string>
+        <string>New-AzureRmApiManagementVirtualNetwork -Location &lt;String&gt; -SubnetResourceId &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -590,40 +817,62 @@ Update-AzureRmApiManagementDeployments</Cmd>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Location of the virtual network.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>SubnetName</Name>
+          <Name>SubnetResourceId</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>Name of the sub network.</Description>
+          <Description>The full resource ID of a subnet in a virtual network to deploy the ApiManagement Service in. Example format:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Guid" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>VnetId</Name>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
-          <Aliases />
-          <Description>Identifier of the virtual network.</Description>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
           <Name>Example 1</Name>
-          <Cmd>$virtualNetworks = @()
-$virtualNetworks += New-AzureRmApiManagementVirtualNetwork –Location “East US” –SubtenName ContosoNet -VnetId “089D3F4D-B986-4DFD-9259-9112BA7A1F03”
-Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Name ContosoApi -VirtualNetworks $virtualNetworks</Cmd>
-          <Description>Script to create a virtual network and call run Set-AzureRmApiManagementVirtualNetworks command.</Description>
+          <Cmd>$virtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location "East US" –SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-West-US/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+
+Update-AzureRmApiManagementDeployment –ResourceGroupName ContosoGroup –Name ContosoApi -VirtualNetwork $virtualNetwork</Cmd>
+          <Description>Script to create a virtual network and call run Update-AzureRmApiManagementDeployment command for ResourceManager VNET</Description>
+          <Output />
+        </Example>
+        <Example>
+          <Name>Example 2</Name>
+          <Cmd>$virtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location "East US" –SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-West-US/providers/Microsoft.ClassicNetwork/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+
+Update-AzureRmApiManagementDeployment –ResourceGroupName ContosoGroup –Name ContosoApi -VirtualNetwork $virtualNetwork</Cmd>
+          <Description>Script to create a virtual network and call run Update-AzureRmApiManagementDeployment command for Classic VNET</Description>
           <Output />
         </Example>
       </Examples>
@@ -645,10 +894,10 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name PassThru Force Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
       <Syntax>
-        <string>Remove-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-PassThru] [-Force] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Remove-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -688,7 +937,56 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
           <Aliases />
           <Description>Do not confirm on the removal of the API Management service.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -716,17 +1014,17 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ApiManagement Location Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ApiManagement Location Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Remove-AzureRmApiManagementRegion -ApiManagement &lt;PsApiManagement&gt; -Location &lt;String&gt; {North Central US | South Central US | Central US | West Europe | North Europe | West US | East US | East US 2 | Japan East | Japan West | Brazil South | Southeast Asia | East Asia | Australia East | Australia Southeast}  [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Remove-AzureRmApiManagementRegion -ApiManagement &lt;PsApiManagement&gt; -Location &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagement" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>ApiManagement</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullAttribute</string>
           </Attributes>
           <Aliases />
           <Description>PsApiManagement instance to remove additional deployment region from.</Description>
@@ -736,11 +1034,35 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
           <Name>Location</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Location of the removing region.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -777,17 +1099,17 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name StorageContext SourceContainerName SourceBlobName PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name StorageContext SourceContainerName SourceBlobName PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Restore-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-StorageContext] &lt;AzureStorageContext&gt; -SourceContainerName &lt;String&gt; -SourceBlobName &lt;String&gt; [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Restore-AzureRmApiManagement -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-StorageContext] &lt;AzureStorageContext&gt; -SourceContainerName &lt;String&gt; -SourceBlobName &lt;String&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ResourceGroupName</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description>Name of resource group under which API Management exists.</Description>
@@ -841,7 +1163,32 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
           <Aliases />
           <Description>Sends restored PsApiManagement to pipeline if operation succeeds.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
@@ -869,12 +1216,12 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Specific API Management service" Params="ResourceGroupName Name PortalHostnameConfiguration ProxyHostnameConfiguration PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Set from provided PsApiManagement instance" Params="ApiManagement PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Specific API Management service" Params="ResourceGroupName Name PortalHostnameConfiguration ProxyHostnameConfiguration PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Set from provided PsApiManagement instance" Params="ApiManagement PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmApiManagementHostnames -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-PortalHostnameConfiguration &lt;PsApiManagementHostnameConfiguration&gt;] [-ProxyHostnameConfiguration &lt;PsApiManagementHostnameConfiguration&gt;] [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
-        <string>Set-AzureRmApiManagementHostnames -ApiManagement &lt;PsApiManagement&gt; [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Set-AzureRmApiManagementHostnames -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-PortalHostnameConfiguration &lt;PsApiManagementHostnameConfiguration&gt;] [-ProxyHostnameConfiguration &lt;PsApiManagementHostnameConfiguration&gt;] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmApiManagementHostnames -ApiManagement &lt;PsApiManagement&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -921,7 +1268,7 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
           <Aliases />
           <Description>Sends updated PsApiManagement to pipeline if operation succeeds.</Description>
           <DefaultValue />
-        </ParameterDescription>        
+        </ParameterDescription>
         <ParameterDescription type="PsApiManagement" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>ApiManagement</Name>
           <Attributes>
@@ -930,6 +1277,31 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
           </Attributes>
           <Aliases />
           <Description>PsApiManagement instance to get PortalHostnameConfiguration and ProxyHostnameConfiguration from.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -956,77 +1328,6 @@ Set-AzureApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostn
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Set" noun="AzureRmApiManagementVirtualNetworks">
-      <Name>Set-AzureRmApiManagementVirtualNetworks</Name>
-      <GeneralHelp>
-        <Synopsis>Sets VPN configuration for an API Management Service.</Synopsis>
-        <Description>Set-AzureRmApiManagementVirtualNetworks cmdlet sets Virtual Network configuration for an API Management.</Description>
-        <Notes />
-        <InputType />
-        <InputUrl />
-        <InputTypeDescription />
-        <ReturnType />
-        <ReturnUrl />
-        <ReturnTypeDescription />
-      </GeneralHelp>
-      <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name VirtualNetworks PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-      </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmApiManagementVirtualNetworks -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; [-VirtualNetworks &lt;PsApiManagementVirtualNetwork[]&gt;] [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
-      </Syntax>
-      <Parameters>
-        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
-          <Name>ResourceGroupName</Name>
-          <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Name of resource group under which API Management exists.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
-          <Name>Name</Name>
-          <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Name of API Management.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="PsApiManagementVirtualNetwork[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>VirtualNetworks</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Virtual networks configuration. Default value is $null. Passing $null will remove virtual network configuration.</Description>
-          <DefaultValue>$null</DefaultValue>
-        </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>PassThru</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Sends updated PsApiManagement to pipeline if operation succeeds.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-      </Parameters>
-      <Examples>
-        <Example>
-          <Name>Example 1</Name>
-          <Cmd>PS C:\&gt; Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Name ContosoApi -VirtualNetworks $virtualNetworks</Cmd>
-          <Description>Set virtual networks for an API Management service</Description>
-          <Output />
-        </Example>
-      </Examples>
-      <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
-      <Publish>false</Publish>
-    </CmdletObject>
     <CmdletObject verb="Update" noun="AzureRmApiManagementDeployment">
       <Name>Update-AzureRmApiManagementDeployment</Name>
       <GeneralHelp>
@@ -1041,12 +1342,12 @@ Set-AzureApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostn
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Specific API Management service" Params="ResourceGroupName Name Location Sku Capacity VirtualNetwork AdditionalRegions PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Update from PsApiManagement instance" Params="ApiManagement PassThru Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Specific API Management service" Params="ResourceGroupName Name Location Sku Capacity VirtualNetwork VpnType AdditionalRegions PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Update from PsApiManagement instance" Params="ApiManagement PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Update-AzureRmApiManagementDeployment -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -Location &lt;String&gt; {North Central US | South Central US | Central US | West Europe | North Europe | West US | East US | East US 2 | Japan East | Japan West | Brazil South | Southeast Asia | East Asia | Australia East | Australia Southeast}  -Sku &lt;PsApiManagementSku&gt; -Capacity &lt;Int32&gt; [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-AdditionalRegions &lt;IList`1[PsApiManagementRegion]&gt;] [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
-        <string>Update-AzureRmApiManagementDeployment -ApiManagement &lt;PsApiManagement&gt; [-PassThru] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Update-AzureRmApiManagementDeployment -ResourceGroupName &lt;String&gt; -Name &lt;String&gt; -Location &lt;String&gt; -Sku &lt;PsApiManagementSku&gt; -Capacity &lt;Int32&gt; [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-VpnType &lt;PsApiManagementVpnType&gt;] [-AdditionalRegions &lt;IList`1[PsApiManagementRegion]&gt;] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Update-AzureRmApiManagementDeployment -ApiManagement &lt;PsApiManagement&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1070,7 +1371,6 @@ Set-AzureApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostn
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Location</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
@@ -1125,11 +1425,48 @@ Set-AzureApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostn
         <ParameterDescription type="PsApiManagement" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>ApiManagement</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullAttribute</string>
           </Attributes>
           <Aliases />
           <Description>PsApiManagement instance to get deployment configuration from. Use the parameter the instance already has all the required changes (scale up/down, add/remove/update regions).</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PsApiManagementVpnType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>VpnType</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Virtual Network Type of the ApiManagement Deployment. Valid Values are 
+- "None" (Default Value. ApiManagement is not part of any Virtual Network")
+- "External" (ApiManagement Deployment has an External Facing VIP)
+- "Internal" (ApiManagement Deployment has an Intranet Facing VIP)</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
@@ -1170,10 +1507,10 @@ Update-AzureRmApiManagementDeployment –ApiManagement $apiManagement
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ApiManagement Location Sku Capacity VirtualNetwork Profile Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ApiManagement Location Sku Capacity VirtualNetwork Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Update-AzureRmApiManagementRegion -ApiManagement &lt;PsApiManagement&gt; -Location &lt;String&gt; {North Central US | South Central US | Central US | West Europe | North Europe | West US | East US | East US 2 | Japan East | Japan West | Brazil South | Southeast Asia | East Asia | Australia East | Australia Southeast}  -Sku &lt;PsApiManagementSku&gt; -Capacity &lt;Int32&gt; [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-Profile &lt;AzureProfile&gt;]</string>
+        <string>Update-AzureRmApiManagementRegion -ApiManagement &lt;PsApiManagement&gt; -Location &lt;String&gt; -Sku &lt;PsApiManagementSku&gt; -Capacity &lt;Int32&gt; [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagement" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1190,7 +1527,6 @@ Update-AzureRmApiManagementDeployment –ApiManagement $apiManagement
           <Name>Location</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
@@ -1223,9 +1559,138 @@ Update-AzureRmApiManagementDeployment –ApiManagement $apiManagement
           <Aliases />
           <Description>Virtual network configuration for the deployemnt region. Default value is $null. Passing $null will remove virtual network configuration for the region.</Description>
           <DefaultValue>$null</DefaultValue>
-        </ParameterDescription>        
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="New" noun="AzureRmApiManagementRegion">
+      <Name>New-AzureRmApiManagementRegion</Name>
+      <GeneralHelp>
+        <Synopsis>Creates an instance of PsApiManagementRegion.</Synopsis>
+        <Description>Helper command to create an instance of PsApiManagementRegion. This command is to be used with New-AzureRmApiManagement command.</Description>
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Location Capacity VirtualNetwork Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>New-AzureRmApiManagementRegion -Location &lt;String&gt; [-Capacity &lt;Nullable`1[Int32]&gt;] [-VirtualNetwork &lt;PsApiManagementVirtualNetwork&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>Location</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Location of the additional deployment region.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>Capacity</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Sku capacity of the Azure API Management service additional region. Default value is 1.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PsApiManagementVirtualNetwork" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>VirtualNetwork</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Virtual Network Configuration of Azure API Management deployment region. Default value is $null.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples>
+        <Example>
+          <Name>Example 1</Name>
+          <Cmd>$apimRegion = New-AzureRmApiManagementRegion -Location "Central US" 
+
+$additionalRegions = @($apimRegion)
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -Sku "Premium"</Cmd>
+          <Description />
+          <Output />
+        </Example>
+        <Example>
+          <Name>Example 2</Name>
+          <Cmd>$apimRegionVirtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location "Central US" –SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet"
+
+$apimRegion = New-AzureRmApiManagementRegion -Location "Central US" -VirtualNetwork $apimRegionVirtualNetwork 
+
+$additionalRegions = @($apimRegion)
+
+$virtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location "West US" –SubnetResourceId "/subscriptions/a8ff56dc-3bc2-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -VirtualNetwork $virtualNetwork -VpnType "External" -Sku "Premium"</Cmd>
+          <Description>Creates an ApiManagement service of External VpnType in West US Region, with an Additional Region in Central US.</Description>
+          <Output />
+        </Example>
+      </Examples>
       <RelatedLinks />
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>

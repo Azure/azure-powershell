@@ -76,14 +76,14 @@ function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 {
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
 
+	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $params.rgname  -Location $location  -Type Standard_GRS 
+	
 	$serverName = $params.serverName
 	$serverLogin = "audittestusername"
 	$serverPassword = "t357ingP@s5w0rd!Audit"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
 	New-AzureRmSqlDatabase -DatabaseName $params.databaseName  -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
-	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $params.rgname  -Location $location  -Type Standard_GRS 
-
 
 #	$res = New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile sql_audit_test_env_setup_classic_storage.json -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount
 }
@@ -247,7 +247,7 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East", $server)
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
 {
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
