@@ -30,12 +30,12 @@ To disable data collection for the current user, run the Disable-AzureRmDataColl
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Enabling data collection for the current user
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Enable-AzureRmDataCollection
 ```
 
-{{ Add example description here }}
+This example shows how to enable data collection for the current user.
 
 ## PARAMETERS
 
@@ -75,6 +75,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### None
 
 ## NOTES
 
