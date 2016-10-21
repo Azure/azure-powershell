@@ -140,6 +140,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     result.ScriptActions.Add(action.Key, action.Value.Select(a => new AzureHDInsightScriptAction(a)).ToList());
                 }
+                foreach (var component in parameters.ComponentVersion.Where(component => !result.ComponentVersion.ContainsKey(component.Key)))
+                {
+                    result.ComponentVersion.Add(component.Key, component.Value);
+                }
                 return result;
             }
             set
@@ -179,6 +183,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 foreach (var action in value.ScriptActions.Where(action => !parameters.ScriptActions.ContainsKey(action.Key)))
                 {
                     parameters.ScriptActions.Add(action.Key, action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
+                }
+                foreach (var component in value.ComponentVersion.Where(component => !parameters.ComponentVersion.ContainsKey(component.Key)))
+                {
+                    parameters.ComponentVersion.Add(component.Key, component.Value);
                 }
             }
         }
@@ -238,6 +246,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return parameters.ClusterType; }
             set { parameters.ClusterType = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the version for a service in the cluster.")]
+        public Dictionary<string, string> ComponentVersion
+        {
+            get { return parameters.ComponentVersion; }
+            set { parameters.ComponentVersion = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
@@ -310,6 +325,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Dictionary<string, string>>();
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
+            ComponentVersion = new Dictionary<string, string>();
         }
 
         public override void ExecuteCmdlet()
@@ -351,6 +367,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 parameters.ScriptActions.Add(action.Key,
                     action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
+            }
+            foreach (var component in ComponentVersion.Where(component => !parameters.ComponentVersion.ContainsKey(component.Key)))
+            {
+                parameters.ComponentVersion.Add(component.Key, component.Value);
             }
             if (OozieMetastore != null)
             {
