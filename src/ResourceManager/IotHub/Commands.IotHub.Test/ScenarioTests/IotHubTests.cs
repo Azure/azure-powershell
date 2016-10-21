@@ -29,17 +29,9 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAndGetAzureRmIotHub()
+        public void TestAzureIotHubLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTest("Test-GetAzureRmIotHub");
+            IotHubController.NewInstance.RunPsTest("Test-AzureRmIotHubLifecycle");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureRmIotHub()
-        {
-            IotHubController.NewInstance.RunPsTest("Test-RemoveIotHub");
-        }
-
     }
 }
