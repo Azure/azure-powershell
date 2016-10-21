@@ -13,23 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Management.MachineLearning.WebServices;
+using Microsoft.Azure.Management.MachineLearning.CommitmentPlans;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 {
-    public class WebServicesTestController : BaseTestController<AzureMLWebServicesManagementClient>
+    public class CommitmentPlansTestController : BaseTestController<AzureMLCommitmentPlansManagementClient>
     {
-        public static WebServicesTestController NewInstance
+        public static CommitmentPlansTestController NewInstance
         {
             get
             {
-                return new WebServicesTestController();
+                return new CommitmentPlansTestController();
             }
         }
 
-        protected override AzureMLWebServicesManagementClient ConstructServiceClient(MockContext context)
+        protected override AzureMLCommitmentPlansManagementClient ConstructServiceClient(MockContext context)
         {
-            return context.GetServiceClient<AzureMLWebServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<AzureMLCommitmentPlansManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
