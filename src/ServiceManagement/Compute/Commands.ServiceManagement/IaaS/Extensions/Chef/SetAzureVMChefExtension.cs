@@ -20,6 +20,8 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Management.Compute;
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -173,7 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
             bool IsJsonAttributesEmpty = string.IsNullOrEmpty(this.JsonAttributes);
             bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
-            string BootstrapVersion = this.BootstrapVersion;
+            string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -185,14 +187,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
             if (!IsClientRbEmpty)
             {
-                ClientConfig = Regex.Replace(File.ReadAllText(this.ClientRb),
-                    "\"|'", "\\\"").TrimEnd('\r', '\n').Replace("\r\n", "\\r\\n");
+                ClientConfig = File.ReadAllText(this.ClientRb).TrimEnd('\r', '\n');
                 // Append ChefServerUrl and ValidationClientName to end of ClientRb
                 if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
                 {
                     string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
+chef_server_url  '{0}'
+validation_client_name 	'{1}'
 ";
                     ClientConfig += string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
                 }
@@ -200,7 +201,7 @@ validation_client_name 	\""{1}\""
                 else if (!IsChefServerUrlEmpty)
                 {
                     string UserConfig = @"
-chef_server_url  \""{0}\""
+chef_server_url  '{0}'
 ";
                     ClientConfig += string.Format(UserConfig, this.ChefServerUrl);
                 }
@@ -208,7 +209,7 @@ chef_server_url  \""{0}\""
                 else if (!IsValidationClientNameEmpty)
                 {
                     string UserConfig = @"
-validation_client_name 	\""{0}\""
+validation_client_name 	'{0}'
 ";
                     ClientConfig += string.Format(UserConfig, this.ValidationClientName);
                 }
@@ -217,181 +218,37 @@ validation_client_name 	\""{0}\""
             else if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
             {
                 string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
+chef_server_url  '{0}'
+validation_client_name 	'{1}'
 ";
                 ClientConfig = string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
             }
 
-            if (IsRunListEmpty)
+            var hashTable = new Hashtable();
+            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+            hashTable.Add(ClientRbTemplate, ClientConfig);
+
+            if (!IsRunListEmpty)
             {
-                if (IsBootstrapOptionsEmpty)
-                {
-                    if (IsJsonAttributesEmpty)
-                    {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                    else {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                }
-                else
-                {
-                    if (IsJsonAttributesEmpty)
-                    {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                    else
-                    {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                }
+                hashTable.Add(RunListTemplate, this.RunList);
             }
-            else
+
+            if (!IsBootstrapOptionsEmpty)
             {
-                if (IsBootstrapOptionsEmpty)
-                {
-                    if (IsJsonAttributesEmpty)
-                    {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                    else
-                    {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                }
-                else
-                {
-                    if (IsJsonAttributesEmpty)
-                    {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                    else
-                    {
-                        if (IsChefServiceIntervalEmpty)
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                        else
-                        {
-                            this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4},{5}}}",
-                            string.Format(ClientRbTemplate, ClientConfig),
-                            string.Format(RunListTemplate, this.RunList),
-                            string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                            string.Format(JsonAttributesTemplate, this.JsonAttributes),
-                            string.Format(ChefServiceIntervalTemplate, this.ChefServiceInterval),
-                            string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                        }
-                    }
-                }
+                hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
             }
+
+            if (!IsJsonAttributesEmpty)
+            {
+                hashTable.Add(JsonAttributesTemplate, JsonAttributes);
+            }
+
+            if (!IsChefServiceIntervalEmpty)
+            {
+                hashTable.Add(ChefServiceIntervalTemplate, this.ChefServiceInterval);
+            }
+
+            this.PublicConfiguration = JsonConvert.SerializeObject(hashTable);
         }
 
         protected override void ValidateParameters()
