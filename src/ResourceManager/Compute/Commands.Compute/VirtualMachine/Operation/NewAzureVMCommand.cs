@@ -282,21 +282,25 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            StorageAccountListResponse storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-            if (storageAccountList == null || storageAccountList.Count() == 0)
-            {
-                storageAccountList = (StorageAccountListResponse) client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
-                if (storageAccountList == null || storageAccountList.Count() == 0)
-                {
-                    return null;
-                }
-            }
-
             try
             {
-                return storageAccountList.StorageAccounts.First(
-                e => e.AccountType.HasValue
-                    && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
+                var standardStorage = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName)
+                    .FirstOrDefault(
+                        e => e.AccountType.HasValue
+                            && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
+
+                if (standardStorage == null)
+                {
+                     return client.StorageAccounts.List()
+                        .Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()))
+                        .FirstOrDefault(
+                            e => e.AccountType.HasValue
+                                && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
+                }
+                else
+                {
+                    return standardStorage;
+                }
             }
             catch (InvalidOperationException e)
             {
