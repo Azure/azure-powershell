@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Commands.Network
             var psEffectiveNsgs = Mapper.Map<List<PSEffectiveNetworkSecurityGroup>>(getEffectiveNsgs.Value);
 
             WriteObject(psEffectiveNsgs, true);
+
+            if (psEffectiveNsgs.Count == 0)
+            {
+                WriteWarning(Microsoft.Azure.Commands.Network.Properties.Resources.EmptyEffectiveNetworkSecurityGroupOnNic);
+            }
         }
     }
 }
