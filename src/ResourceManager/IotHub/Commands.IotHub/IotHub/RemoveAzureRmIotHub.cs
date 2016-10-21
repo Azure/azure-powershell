@@ -45,7 +45,18 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            this.IotHubClient.IotHubResource.Delete(this.ResourceGroupName, this.Name);
+            try
+            {
+                this.IotHubClient.IotHubResource.Delete(this.ResourceGroupName, this.Name);
+            }
+            catch (Exception e)
+            {
+                if (!e.Message.Contains("NotFound"))
+                {
+                    throw e;
+                }
+            }
+
             this.WriteObject("Iot Hub Deleted");
         }
     }
