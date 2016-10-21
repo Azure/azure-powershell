@@ -1360,8 +1360,42 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 AuthenticationType = "Basic",
                 TempAgent = false
             };
+            
+            var azureSessionUserAgent = GetUserAgentForAzureSession();
+            if (!string.IsNullOrEmpty(azureSessionUserAgent))
+            {
+                remoteBaseOptions.UserAgent = azureSessionUserAgent;
+            }
 
             return remoteBaseOptions;
+        }
+        
+        /// <summary>
+        /// Gets user agent for azure session
+        /// </summary>
+        /// <returns>useragent string </returns>
+        private string GetUserAgentForAzureSession()
+        {
+            var userAgent = string.Empty;
+            if (AzureSession.ClientFactory.UserAgents != null)
+            {
+                foreach (var agent in AzureSession.ClientFactory.UserAgents)
+                {
+                    if (agent != null && agent.Product != null && !string.IsNullOrEmpty(agent.Product.Name))
+                    {
+                        if (!string.IsNullOrEmpty(agent.Product.Version))
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, "/", agent.Product.Version, " ");
+                        }
+                        else
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, " ");
+                        }
+                    }
+                }
+            }
+
+            return userAgent.TrimEnd();
         }
 
         /// <summary>
