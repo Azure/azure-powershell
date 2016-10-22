@@ -12,13 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Analysis.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAnalysisServicesServer", SupportsShouldProcess=true), 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAnalysisServicesServer"), 
         OutputType(typeof(bool))]
     [Alias("Remove-AzureAs")]
     public class RemoveAnalysisServicesServer : AnalysisServicesCmdletBase
@@ -41,12 +44,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         public override void ExecuteCmdlet()
         {
+            AnalysisServicesServer server = null;
+            if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out server))
+            {
+                throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+            }
+
             if (!Force.IsPresent)
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.RemovingAnalsysisServicesServer, Name),
-                    string.Format(Resources.RemoveAnalsysisServicesServer, Name),
+                    string.Format(Resources.RemoveAnalysisServicesServer, Name),
+                    string.Format(Resources.RemovingAnalysisServicesServer, Name),
                     Name,
                     () => AnalysisServicesClient.DeleteServer(ResourceGroupName, Name));
             }
@@ -57,7 +66,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
             if (PassThru)
             {
-                WriteObject(true);
+                WriteObject(server);
             }
         }
     }

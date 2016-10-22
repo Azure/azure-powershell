@@ -25,7 +25,7 @@ function Test-AnalysisServicesServer
 	
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
-		Assert-True {$serverGetItem.ProvisioningState -like "Active"}
+		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
 		Assert-AreEqual $serverName $serverGetItem.Name
 		Assert-AreEqual $location $serverGetItem.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
@@ -100,7 +100,7 @@ function Test-AnalysisServicesServer
 		Resume-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
-		Assert-True {$serverGetItem.ProvisioningState -like "Active"}
+		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
 		
 		# Delete Analysis Servicesserver
 		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -PassThru

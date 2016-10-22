@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     {
                         AsAdministrators = new ServerAdministrators(adminList),
                         Location = location,
-                        Sku = new ResourceSku(skuName, "Standard"),
+                        Sku = GetResourceSkuFromName(skuName),
                         Tags = tags ?? new Dictionary<string, string>()
                     });
             }
@@ -116,19 +116,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 resourceGroupName = GetResourceGroupByServer(serverName);
             }
 
-            if (!TestServer(resourceGroupName, serverName))
-            {
-                throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, serverName));
-            }
-
             _client.Servers.Delete(resourceGroupName, serverName);
         }
 
-        public bool TestServer(string resourceGroupName, string serverName)
+        public bool TestServer(string resourceGroupName, string serverName, out AnalysisServicesServer server)
         {
             try
             {
-                GetServer(resourceGroupName, serverName);
+                server = GetServer(resourceGroupName, serverName);
                 return true;
             }
             catch (CloudException ex)
@@ -136,6 +131,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 if ((ex.Response != null && ex.Response.StatusCode == HttpStatusCode.NotFound) || ex.Message.Contains(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, serverName,
                     _subscriptionId)))
                 {
+                    server = null;
                     return false;
                 }
 
@@ -182,6 +178,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             {
                 throw new CloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, serverName, _subscriptionId));
             }
+        }
+
+        private ResourceSku GetResourceSkuFromName(string skuName)
+        {
+            return new ResourceSku(skuName, skuName.StartsWith("D") ? SkuTier.Development : SkuTier.Standard);
         }
 
         public void SuspendServer(string resourceGroupName, string serverName)

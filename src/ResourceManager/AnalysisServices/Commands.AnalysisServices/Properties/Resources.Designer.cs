@@ -97,20 +97,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing Analsysis Services server: &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Are you sure you want to remove Analysis Services server: &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemoveAnalsysisServicesServer {
+        internal static string RemoveAnalysisServicesServer {
             get {
-                return ResourceManager.GetString("RemoveAnalsysisServicesServer", resourceCulture);
+                return ResourceManager.GetString("RemoveAnalysisServicesServer", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Analysis Services server: &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Removing Analysis Services server: &apos;{0}&apos;.
         /// </summary>
-        internal static string RemovingAnalsysisServicesServer {
+        internal static string RemovingAnalysisServicesServer {
             get {
-                return ResourceManager.GetString("RemovingAnalsysisServicesServer", resourceCulture);
+                return ResourceManager.GetString("RemovingAnalysisServicesServer", resourceCulture);
             }
         }
         
