@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 "Name of the Sku used to create the server"
             )]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("S1", "S2", "S4")]
+        [ValidateSet("S1", "S2", "S4", "D1")]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,

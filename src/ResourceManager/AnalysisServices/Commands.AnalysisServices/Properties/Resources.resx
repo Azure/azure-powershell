@@ -129,11 +129,11 @@
   <data name="LongRunningOperationFailed" xml:space="preserve">
     <value>AnalysisServices server operation failed with the following error code: {0} and message: {1}</value>
   </data>
-  <data name="RemoveAnalsysisServicesServer" xml:space="preserve">
-    <value>Removing Analsysis Services server: '{0}' ...</value>
-  </data>
-  <data name="RemovingAnalsysisServicesServer" xml:space="preserve">
+  <data name="RemoveAnalysisServicesServer" xml:space="preserve">
     <value>Are you sure you want to remove Analysis Services server: '{0}'?</value>
+  </data>
+  <data name="RemovingAnalysisServicesServer" xml:space="preserve">
+    <value>Removing Analysis Services server: '{0}'</value>
   </data>
   <data name="ScriptFilePathDoesNotExist" xml:space="preserve">
     <value>The script file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>

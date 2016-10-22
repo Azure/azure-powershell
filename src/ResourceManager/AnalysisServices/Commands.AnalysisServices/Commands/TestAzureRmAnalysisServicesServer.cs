@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Management.Analysis;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
@@ -34,7 +35,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(AnalysisServicesClient.TestServer(ResourceGroupName, Name));
+            AnalysisServicesServer server = null;
+            WriteObject(AnalysisServicesClient.TestServer(ResourceGroupName, Name, out server));
         }
     }
 }

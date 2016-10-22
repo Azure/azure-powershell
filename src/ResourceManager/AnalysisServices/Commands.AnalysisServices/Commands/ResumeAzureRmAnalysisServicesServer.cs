@@ -29,9 +29,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         internal const string ResourceGroupParameterSetName = "All In Resource Group";
         internal const string ServerParameterSetName = "Specific Server";
 
-        [Parameter(ParameterSetName = ResourceGroupParameterSetName, Position = 0,
-            ValueFromPipelineByPropertyName = true, Mandatory = true,
-            HelpMessage = "Name of resource group under which to retrieve the server.")]
         [Parameter(ParameterSetName = ServerParameterSetName, Position = 1, ValueFromPipelineByPropertyName = true,
             Mandatory = false, HelpMessage = "Name of resource group under which to retrieve the server.")]
         [ValidateNotNullOrEmpty]
