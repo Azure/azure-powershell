@@ -9,66 +9,36 @@
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
-		<command:verb>Get</command:verb>
-		<command:noun>AzureRmAnalysisServicesServer</command:noun>
+		<command:verb></command:verb>
+		<command:noun></command:noun>
 		<dev:version />
 	</command:details>
 	<maml:description>
 		<maml:para>The Get-AzureRmAnalysisServicesServer cmdlet gets the details of an Analysis Services server.</maml:para>
 	</maml:description>
 	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmAnalysisServicesServer</maml:name>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Azure resource group to which the server belongs</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Analysis Services server</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -82,7 +52,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -94,7 +65,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -121,129 +93,84 @@
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
-		<command:verb>New</command:verb>
-		<command:noun>AzureRmAnalysisServicesServer</command:noun>
+		<command:verb></command:verb>
+		<command:noun></command:noun>
 		<dev:version />
 	</command:details>
 	<maml:description>
 		<maml:para>The New-AzureRmAnalysisServicesServer cmdlet creates a new Analysis Services server</maml:para>
 	</maml:description>
 	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Sku</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>Tags</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>Administrators</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Azure resource group to which the server belongs</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Analysis Services server</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
 			<maml:name>Location</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Azure region where the Analysis Services server is hosted</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="3">
 			<maml:name>Sku</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The name of the Sku for the server. The supported values are &#39;S1&#39;, &#39;S2&#39;, &#39;S4&#39; for the Standard tier and &#39;D1&#39; for Development.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Key-value pairs in the form of a hash table set as tags on the server.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable</maml:name>
+				<maml:name>hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
 			<maml:name>Administrators</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>A string representing a comma separated list of users or groups to be set as administrators on the server. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -257,7 +184,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -269,7 +197,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -296,81 +225,36 @@
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
-		<command:verb>Remove</command:verb>
-		<command:noun>AzureRmAnalysisServicesServer</command:noun>
+		<command:verb></command:verb>
+		<command:noun></command:noun>
 		<dev:version />
 	</command:details>
 	<maml:description>
 		<maml:para>The Remove-AzureRmAnalysisServicesServer cmdlet  deletes an instance of Analysis Services server</maml:para>
 	</maml:description>
 	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Remove-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
-				<maml:name>PassThru</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>WhatIf</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Analysis Services server</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Azure resource group to which the server belongs</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -378,11 +262,11 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>A Switch parameter that will skip confirming the operation.</maml:para>
 			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
 			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
+				<maml:name>switchparameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -390,35 +274,11 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
 			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
 			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>WhatIf</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
+				<maml:name>switchparameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -432,7 +292,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -444,7 +305,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -471,110 +333,72 @@
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
-		<command:verb>Set</command:verb>
-		<command:noun>AzureRmAnalysisServicesServer</command:noun>
+		<command:verb></command:verb>
+		<command:noun></command:noun>
 		<dev:version />
 	</command:details>
 	<maml:description>
 		<maml:para>The Set-AzureRmAnalysisServicesServer cmdlet modifies an instance of Analysis Services server</maml:para>
 	</maml:description>
 	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Set-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Sku</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Tags</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>Administrators</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Analysis Services server</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Azure resource group to which the server belongs</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
 			<maml:name>Sku</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The name of the Sku for the server. The supported values are &#39;S1&#39;, &#39;S2&#39;, &#39;S4&#39; for the Standard tier and &#39;D1&#39; for Development. Currently this is not supported and is ignored.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="3">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Key-value pairs in the form of a hash table set as tags on the server.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable</maml:name>
+				<maml:name>hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
 			<maml:name>Administrators</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>A string representing a comma separated list of users or groups to be set as administrators on the server. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -588,7 +412,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -600,7 +425,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -627,53 +453,36 @@
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
-		<command:verb>Test</command:verb>
-		<command:noun>AzureRmAnalysisServicesServer</command:noun>
+		<command:verb></command:verb>
+		<command:noun></command:noun>
 		<dev:version />
 	</command:details>
 	<maml:description>
 		<maml:para>The Test-AzureRmAnalysisServicesServer cmdlet tests the existence of an instance of Analysis Services server</maml:para>
 	</maml:description>
 	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Test-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Analysis Services server</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Azure resource group to which the server belongs</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -687,7 +496,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -699,7 +509,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
