@@ -36,6 +36,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "maxDeliveryCount")]
         public int? MaxDeliveryCount { get; set; }
-
     }
 }
