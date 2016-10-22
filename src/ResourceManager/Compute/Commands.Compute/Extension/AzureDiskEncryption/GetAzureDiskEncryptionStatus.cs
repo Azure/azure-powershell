@@ -108,6 +108,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private bool IsExtensionInstalled(OSType currentOSType)
         {
+            if (OSType.Windows.Equals(currentOSType))
+            {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
+            }
+            else if (OSType.Linux.Equals(currentOSType))
+            {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+            }
             
             AzureOperationResponse<VirtualMachineExtension> extensionResult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
             if (extensionResult == null)
