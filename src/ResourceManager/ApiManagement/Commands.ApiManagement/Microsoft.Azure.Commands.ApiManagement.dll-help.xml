@@ -1145,12 +1145,36 @@ Update-AzureRmApiManagementDeployments</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VpnType</maml:name>
+				<maml:description>
+					<maml:para>Virtual Network Type of the ApiManagement Deployment. Valid Values are 
+- &quot;None&quot; (Default Value. ApiManagement is not part of any Virtual Network&quot;)
+- &quot;External&quot; (ApiManagement Deployment is setup inside a Virtual Network having an Internet Facing Endpoint)
+- &quot;Internal&quot; (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementVpnType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>VirtualNetwork</maml:name>
+				<maml:description>
+					<maml:para>Virtual Network Configuration of master Azure API Management deployment region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tags</maml:name>
 				<maml:description>
 					<maml:para>Tags dictionary.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AdditionalRegions</maml:name>
+				<maml:description>
+					<maml:para>Additional deployment regions of Azure API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PsApiManagementRegion[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -1266,6 +1290,45 @@ Update-AzureRmApiManagementDeployments</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>VpnType</maml:name>
+			<maml:description>
+				<maml:para>Virtual Network Type of the ApiManagement Deployment. Valid Values are 
+- &quot;None&quot; (Default Value. ApiManagement is not part of any Virtual Network&quot;)
+- &quot;External&quot; (ApiManagement Deployment is setup inside a Virtual Network having an Internet Facing Endpoint)
+- &quot;Internal&quot; (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementVpnType</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementVpnType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>VirtualNetwork</maml:name>
+			<maml:description>
+				<maml:para>Virtual Network Configuration of master Azure API Management deployment region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementVirtualNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AdditionalRegions</maml:name>
+			<maml:description>
+				<maml:para>Additional deployment regions of Azure API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">PsApiManagementRegion[]</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementRegion[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
 				<maml:para />
@@ -1328,7 +1391,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location “Central US” –Organization Contoso –AdminEmail admin@contoso.com</dev:code>
+			<dev:code>New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location &quot;Central US&quot; –Organization Contoso –AdminEmail admin@contoso.com</dev:code>
 			<dev:remarks>
 				<maml:para>Create new ‘Developer’ tier API Management service</maml:para>
 				<maml:para />
@@ -1348,9 +1411,61 @@ Update-AzureRmApiManagementDeployments</dev:code>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location “Central US” –Organization Contoso –AdminEmail admin@contoso.com –Sku Standard –Capacity 3</dev:code>
+			<dev:code>New-AzureRmApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location &quot;Central US&quot; –Organization Contoso –AdminEmail admin@contoso.com –Sku Standard –Capacity 3</dev:code>
 			<dev:remarks>
 				<maml:para>Create new ‘Standard’ tier API Management service with 3 units</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 3  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$apimRegion = New-AzureRmApiManagementRegion -Location &quot;Central US&quot; 
+
+$additionalRegions = @($apimRegion)
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location &quot;West US&quot; -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -Sku &quot;Premium&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>Creates a &#39;Premium&#39; Tier ApiManagement service with Master Region in &#39;West US&#39; and Additional Region in &#39;Central US&#39;.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 4  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$apimRegionVirtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location &quot;Central US&quot; –SubnetResourceId &quot;/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet&quot;
+
+$apimRegion = New-AzureRmApiManagementRegion -Location &quot;Central US&quot; -VirtualNetwork $apimRegionVirtualNetwork 
+
+$additionalRegions = @($apimRegion)
+
+$virtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location &quot;West US&quot; –SubnetResourceId &quot;/subscriptions/a8ff56dc-3bc7-4174-b1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet&quot;
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location &quot;West US&quot; -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -VirtualNetwork $virtualNetwork -VpnType &quot;External&quot; -Sku &quot;Premium&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>Creates a Developer Tier ApiManagement service in an Azure Virtual Network Subnet having an External Facing Gateway Endpoint with Master Region in West US and Additional Region in Central US.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -1554,7 +1669,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>SubnetResourceId</maml:name>
 				<maml:description>
-					<maml:para>Virtual Network Subnet Resource Id</maml:para>
+					<maml:para>The full resource ID of a subnet in a virtual network to deploy the ApiManagement Service in. Example format:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1590,7 +1705,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubnetResourceId</maml:name>
 			<maml:description>
-				<maml:para>Virtual Network Subnet Resource Id</maml:para>
+				<maml:para>The full resource ID of a subnet in a virtual network to deploy the ApiManagement Service in. Example format:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3166,6 +3281,214 @@ Update-AzureRmApiManagementDeployment –ApiManagement $apiManagement
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureRmApiManagementRegion</command:name>
+		<maml:description>
+			<maml:para>Creates an instance of PsApiManagementRegion.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmApiManagementRegion</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Helper command to create an instance of PsApiManagementRegion. This command is to be used with New-AzureRmApiManagement command.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmApiManagementRegion</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Location of the additional deployment region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Capacity</maml:name>
+				<maml:description>
+					<maml:para>Sku capacity of the Azure API Management service additional region. Default value is 1.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>VirtualNetwork</maml:name>
+				<maml:description>
+					<maml:para>Virtual Network Configuration of Azure API Management deployment region. Default value is $null.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Location</maml:name>
+			<maml:description>
+				<maml:para>Location of the additional deployment region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Capacity</maml:name>
+			<maml:description>
+				<maml:para>Sku capacity of the Azure API Management service additional region. Default value is 1.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>VirtualNetwork</maml:name>
+			<maml:description>
+				<maml:para>Virtual Network Configuration of Azure API Management deployment region. Default value is $null.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementVirtualNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$apimRegion = New-AzureRmApiManagementRegion -Location &quot;Central US&quot; 
+
+$additionalRegions = @($apimRegion)
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location &quot;West US&quot; -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -Sku &quot;Premium&quot;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$apimRegionVirtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location &quot;Central US&quot; –SubnetResourceId &quot;/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet&quot;
+
+$apimRegion = New-AzureRmApiManagementRegion -Location &quot;Central US&quot; -VirtualNetwork $apimRegionVirtualNetwork 
+
+$additionalRegions = @($apimRegion)
+
+$virtualNetwork = New-AzureRmApiManagementVirtualNetwork –Location &quot;West US&quot; –SubnetResourceId &quot;/subscriptions/a8ff56dc-3bc2-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet&quot;
+
+New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location &quot;West US&quot; -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -VirtualNetwork $virtualNetwork -VpnType &quot;External&quot; -Sku &quot;Premium&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>Creates an ApiManagement service of External VpnType in West US Region, with an Additional Region in Central US.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>

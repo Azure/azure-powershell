@@ -106,6 +106,57 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return vmExtensionParameters;
         }
 
+        private bool IsExtensionInstalled(OSType currentOSType)
+        {
+            if (OSType.Windows.Equals(currentOSType))
+            {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
+            }
+            else if (OSType.Linux.Equals(currentOSType))
+            {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+            }
+            
+            AzureOperationResponse<VirtualMachineExtension> extensionResult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
+            if (extensionResult == null)
+            {
+                return false;
+            }
+
+            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(
+                this.ResourceGroupName, this.VMName);
+
+            if ((returnedExtension == null) ||
+                (string.IsNullOrWhiteSpace(returnedExtension.Publisher)) ||
+                (string.IsNullOrWhiteSpace(returnedExtension.ExtensionType)))
+            {
+                return false;
+            }
+            bool publisherMatch = false;
+            if (OSType.Linux.Equals(currentOSType))
+            {
+                if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                    returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    publisherMatch = true;
+                }
+            }
+            else if (OSType.Windows.Equals(currentOSType))
+            {
+                if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                    returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    publisherMatch = true;
+                }
+            }
+            if (publisherMatch)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private string GetExtensionStatusMessage(OSType currentOSType, bool returnSubstatusMessage=false)
         {
             AzureOperationResponse<VirtualMachineExtension> extensionResult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
@@ -364,15 +415,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         WriteObject(encryptionStatus);
                         break;
                     case OSType.Linux:
-                        VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
-                            this.ResourceGroupName, VMName).Body;
-                        VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse, osType);
+                        if (!IsExtensionInstalled(osType))
+                        {
+                            VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
+                                this.ResourceGroupName, VMName).Body;
+                            VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse, osType);
 
-                        this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name,
-                            parameters).GetAwaiter().GetResult();
+                            this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                                this.ResourceGroupName,
+                                this.VMName,
+                                this.Name,
+                                parameters).GetAwaiter().GetResult();
+                        }
 
                         Dictionary<string, string> encryptionStatusParsed = null;
                         try

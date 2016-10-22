@@ -20,10 +20,59 @@ The Remove-AzureRmEnvironment cmdlet removes endpoints and metadata information 
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Creating and removing a test environment
+```
+PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint TestADEndpoint `
+        -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
+        -ResourceManagerEndpoint TestRMEndpoint `
+        -GalleryEndpoint TestGalleryEndpoint `
+        -GraphEndpoint TestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : TestADEndpoint
+GraphUrl                                          : TestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :
+
+PS C:\> Remove-AzureRmEnvironment -Name TestEnvironment
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : TestADEndpoint
+GraphUrl                                          : TestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :
 ```
 
-```
+This example shows how to create an environment using Add-AzureRmEnvironment, and then how to delete the environment using Remove-AzureRmEnvironment.
 
 ## PARAMETERS
 
@@ -78,6 +127,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSAzureEnvironment
 
 ## NOTES
 

@@ -655,11 +655,11 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting the quotas of the subscription in the Batch Service for region: {0}..
+        ///   Looks up a localized string similar to Getting the Batch service quotas for the subscription at region: {0}..
         /// </summary>
-        internal static string GettingSubscriptionQuotas {
+        internal static string GettingLocationQuotas {
             get {
-                return ResourceManager.GetString("GettingSubscriptionQuotas", resourceCulture);
+                return ResourceManager.GetString("GettingLocationQuotas", resourceCulture);
             }
         }
         

@@ -76,7 +76,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'  
   
 # Aliases to export from this module  
-AliasesToExport = @('Reactivate-AzureBatchTask')
+AliasesToExport = @('Reactivate-AzureBatchTask', 'Get-AzureRmBatchSubscriptionQuotas')
   
 # List of all modules packaged with this module  
 ModuleList = @()  

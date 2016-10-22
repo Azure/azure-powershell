@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// </summary>
         /// <param name="resource">Resource info returned by RP</param>
         /// <returns>Void</returns>
-        internal void ConvertAccountResourceToAccountContext(AccountResource resource)
+        internal void ConvertAccountResourceToAccountContext(BatchAccount resource)
         {
             var accountEndpoint = resource.AccountEndpoint;
             if (Uri.CheckHostName(accountEndpoint) != UriHostNameType.Dns)
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// </summary>
         /// <param name="resource">Resource info returned by RP</param>
         /// <returns>new instance of BatchAccountContext</returns>
-        internal static BatchAccountContext ConvertAccountResourceToNewAccountContext(AccountResource resource)
+        internal static BatchAccountContext ConvertAccountResourceToNewAccountContext(BatchAccount resource)
         {
             var baContext = new BatchAccountContext();
             baContext.ConvertAccountResourceToAccountContext(resource);
