@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightMetastore = "AzureRmHDInsightMetastore";
             public const string AzureHDInsightScriptAction = "AzureRmHDInsightScriptAction";
             public const string AzureHDInsightScriptActionHistory = "AzureRmHDInsightScriptActionHistory";
+            public const string AzureHDInsightSecurityProfile = "AzureRmHDInsightSecurityProfile";
             public const string AzureHDInsightPersistedScriptAction = "AzureRmHDInsightPersistedScriptAction";
             public const string AzureHDInsightStorage = "AzureRmHDInsightStorage";
             public const string AzureHDInsightProperties = "AzureRmHDInsightProperties";

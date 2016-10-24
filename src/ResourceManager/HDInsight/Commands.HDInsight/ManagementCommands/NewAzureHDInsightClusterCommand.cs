@@ -123,7 +123,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     AADTenantId = AadTenantId,
                     CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
-                    CertificatePassword = CertificatePassword
+                    CertificatePassword = CertificatePassword,
+                    SecurityProfile = SecurityProfile
                 };
                 foreach (
                     var storageAccount in
@@ -164,6 +165,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 AadTenantId = value.AADTenantId;
                 ObjectId = value.ObjectId;
                 CertificatePassword = value.CertificatePassword;
+                SecurityProfile = value.SecurityProfile;
 
                 foreach (
                     var storageAccount in
@@ -301,6 +303,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets Security Profile which is used for creating secure cluster.")]
+        public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
+
         #endregion
 
 
@@ -375,6 +380,27 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.Principal = servicePrincipal;
             }
 
+            if (SecurityProfile != null)
+            {
+                parameters.SecurityProfile = new SecurityProfile()
+                {
+                    DirectoryType = DirectoryType.ActiveDirectory,
+                    Domain = SecurityProfile.Domain,
+                    DomainUsername =
+                        SecurityProfile.DomainUserCredential != null
+                            ? SecurityProfile.DomainUserCredential.UserName
+                            : null,
+                    DomainUserPassword =
+                        SecurityProfile.DomainUserCredential != null &&
+                        SecurityProfile.DomainUserCredential.Password != null
+                            ? SecurityProfile.DomainUserCredential.Password.ConvertToString()
+                            : null,
+                    OrganizationalUnitDN = SecurityProfile.OrganizationalUnitDN,
+                    LdapsUrls = SecurityProfile.LdapsUrls,
+                    ClusterUsersGroupDNs = SecurityProfile.ClusterUsersGroupDNs
+                };
+            }
+            
             var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
 
             if (cluster != null)
