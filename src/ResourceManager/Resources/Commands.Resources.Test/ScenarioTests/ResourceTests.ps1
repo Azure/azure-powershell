@@ -449,7 +449,7 @@ function Test-ManageResourceWithZones
 
 <#
 .SYNOPSIS
-Tests finding a resource.
+Tests removing a resource.
 #>
 function Test-RemoveAResource
 {
@@ -474,7 +474,7 @@ function Test-RemoveAResource
 
 <#
 .SYNOPSIS
-Tests finding a resource.
+Tests removing a set of resources.
 #>
 function Test-RemoveASetOfResources
 {
