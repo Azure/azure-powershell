@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewADServicePrincipalWithoutApp");
         }
-
+        
         [Fact(Skip = "Not working in playback.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteAppPasswordCredentials()

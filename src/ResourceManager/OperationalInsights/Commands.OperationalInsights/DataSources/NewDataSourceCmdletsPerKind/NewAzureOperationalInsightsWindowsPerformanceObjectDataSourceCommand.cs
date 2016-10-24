@@ -25,14 +25,39 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsWindowsPerformanceCounterDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
+        [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = "The workspace that will contain the data source.")]
+        [ValidateNotNull]
+        public override PSWorkspace Workspace { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 2, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the workspace that will contain the data source.")]
+        [ValidateNotNullOrEmpty]
+        public override string WorkspaceName { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The data source name.")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The name of object name of Linux Performance Counter.")]
+        HelpMessage = "The name of object name of Windows Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string ObjectName { get; set; }
 
+        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The array of countername for Linux Performance Counter.")]
+        [ValidateNotNullOrEmpty]
+        public string CounterName { get; set; }
+
         private string _InstanceName = "*";
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The name of instance name of Linux Performance Counter.")]
+        HelpMessage = "The name of instance name of Windows Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string InstanceName
         {
@@ -40,20 +65,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             set { _InstanceName = value; }
         }
 
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The array of countername for Linux Performance Counter.")]
-        [ValidateNotNullOrEmpty]
-        public string CounterName { get; set; }
-
         private int _IntervalSeconds = 15;
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The interval to collect performance counter.")]
         [ValidateNotNullOrEmpty]
+
         public int IntervalSeconds
         {
             get { return _IntervalSeconds; }
             set { _IntervalSeconds = value; }
         }
+
+        [Parameter(Mandatory = false, HelpMessage = "Use legacy collector or the default collector.")]
+        public SwitchParameter UseLegacyCollector { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public override SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -62,8 +89,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ObjectName = this.ObjectName,
                 InstanceName = this.InstanceName,
                 IntervalSeconds = this.IntervalSeconds,
-                CounterName = this.CounterName
+                CounterName = this.CounterName,
+                CollectorType = CollectorType.Default
             };
+
+            if (UseLegacyCollector.IsPresent)
+            {
+                dsProperties.CollectorType = CollectorType.Legacy;
+            }
 
             CreatePSDataSourceWithProperties(dsProperties);
         }
