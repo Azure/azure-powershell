@@ -79,15 +79,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private async Task<ResponseWithContinuation<JObject[]>> GetResources()
         {
+            var response = new ResponseWithContinuation<JObject[]> { Value = new JObject[0] };
+
             try
             {
                 if (!string.IsNullOrWhiteSpace(this.LockName))
                 {
                     var resource = await this.GetResource().ConfigureAwait(continueOnCapturedContext: false);
-                    return new ResponseWithContinuation<JObject[]> { Value = resource.AsArray() };
-                }
 
-                return await this.ListResourcesTypeCollection().ConfigureAwait(continueOnCapturedContext: false);
+                    response.Value = resource.AsArray();
+                }
+                else
+                {
+                    response = await this.ListResourcesTypeCollection().ConfigureAwait(continueOnCapturedContext: false);
+                }
             }
             catch (Exception ex)
             {
@@ -103,8 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.errors.Add(new ErrorRecord(ex, "ErrorGettingResourceLock", ErrorCategory.CloseError, null));
             }
 
-            return new ResponseWithContinuation<JObject[]> { Value = new JObject[0]
-};
+            return response;
         }
 
         /// <summary>
