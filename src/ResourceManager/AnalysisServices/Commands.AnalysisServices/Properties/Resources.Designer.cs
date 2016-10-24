@@ -115,6 +115,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to resume Analysis Services server: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string ResumeAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("ResumeAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resuming Analysis Services server: &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResumingAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("ResumingAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
         /// </summary>
         internal static string ScriptFilePathDoesNotExist {
@@ -129,6 +147,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         internal static string ServerDoesNotExist {
             get {
                 return ResourceManager.GetString("ServerDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to suspend Analysis Services server: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string SuspendAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("SuspendAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspending Analysis Services server: &apos;{0}&apos;.
+        /// </summary>
+        internal static string SuspendingAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("SuspendingAnalysisServicesServer", resourceCulture);
             }
         }
         

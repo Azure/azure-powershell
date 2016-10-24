@@ -135,11 +135,23 @@
   <data name="RemovingAnalysisServicesServer" xml:space="preserve">
     <value>Removing Analysis Services server: '{0}'</value>
   </data>
+  <data name="ResumeAnalysisServicesServer" xml:space="preserve">
+    <value>Are you sure you want to resume Analysis Services server: '{0}'?</value>
+  </data>
+  <data name="ResumingAnalysisServicesServer" xml:space="preserve">
+    <value>Resuming Analysis Services server: '{0}'</value>
+  </data>
   <data name="ScriptFilePathDoesNotExist" xml:space="preserve">
     <value>The script file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
   </data>
   <data name="ServerDoesNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified server '{0}' does not exist.</value>
+  </data>
+  <data name="SuspendAnalysisServicesServer" xml:space="preserve">
+    <value>Are you sure you want to suspend Analysis Services server: '{0}'?</value>
+  </data>
+  <data name="SuspendingAnalysisServicesServer" xml:space="preserve">
+    <value>Suspending Analysis Services server: '{0}'</value>
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
