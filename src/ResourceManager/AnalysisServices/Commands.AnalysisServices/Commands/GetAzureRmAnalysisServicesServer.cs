@@ -20,15 +20,11 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServer", DefaultParameterSetName = BaseParameterSetName),
+    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServer"),
      OutputType(typeof(List<AnalysisServicesServer>))]
     [Alias("Get-AzureAs")]
     public class GetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string ServerParameterSetName = "Specific Server";
-
         [Parameter(Position = 0,
             ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = "Name of resource group under which the user want to retrieve the server.")]
