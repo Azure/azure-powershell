@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         [Parameter(
             ParameterSetName = GetIotHubConnectionStringParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "KeyName")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }

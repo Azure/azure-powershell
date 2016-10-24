@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmIotHub")]
+    [Cmdlet(VerbsCommon.New, "AzureRmIotHub", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
     public class NewAzureRmIotHub : IotHubBaseCmdlet
     {

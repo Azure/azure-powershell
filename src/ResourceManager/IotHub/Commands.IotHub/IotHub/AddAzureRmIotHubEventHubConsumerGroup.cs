@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmIotHubEventHubConsumerGroup"), OutputType(typeof(IEnumerable<string>))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmIotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(IEnumerable<string>))]
     public class AddAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
     {
         [Parameter(
