@@ -15,12 +15,13 @@
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
+using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer"), OutputType(typeof(AnalysisServicesServer))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AnalysisServicesServer))]
     [Alias("Set-AzureAs")]
     public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -52,18 +53,28 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNull]
         public string Administrators { get; set; }
 
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var currentServer = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
-            var location = currentServer.Location;
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.ResumeAnalysisServicesServer, Name),
+                string.Format(Resources.ResumingAnalysisServicesServer, Name),
+                Name,
+                () =>
+                {
+                    var currentServer = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
+                    var location = currentServer.Location;
 
-            if (Tags == null && currentServer.Tags != null)
-            {
-                Tags = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
-            }
+                    if (Tags == null && currentServer.Tags != null)
+                    {
+                        Tags = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
+                    }
 
-            WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators));
+                    WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators));
+                });
         }
     }
 }

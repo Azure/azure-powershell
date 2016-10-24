@@ -69,8 +69,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -82,8 +81,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -246,8 +244,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -259,8 +256,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -314,7 +310,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>A Switch parameter that will skip confirming the operation.</maml:para>
+					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -355,7 +351,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para>A Switch parameter that will skip confirming the operation.</maml:para>
+				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -385,8 +381,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -398,8 +393,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -436,6 +430,13 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Resume-AzureRmAnalysisServicesServer</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Resume-AzureRmAnalysisServicesServer</maml:name>
@@ -452,6 +453,13 @@
 					<maml:para>Name of the Analysis Services server</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -476,6 +484,18 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -573,6 +593,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -636,6 +663,18 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -645,8 +684,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -658,8 +696,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -696,6 +733,13 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Suspend-AzureRmAnalysisServicesServer</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Suspend-AzureRmAnalysisServicesServer</maml:name>
@@ -712,6 +756,13 @@
 					<maml:para>Name of the Analysis Services server</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -736,6 +787,18 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -848,8 +911,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -861,8 +923,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>

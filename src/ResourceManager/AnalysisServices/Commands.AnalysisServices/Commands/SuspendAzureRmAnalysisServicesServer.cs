@@ -16,11 +16,14 @@ using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Management.Analysis;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsLifecycle.Suspend, "AzureRmAnalysisServicesServer", DefaultParameterSetName = BaseParameterSetName),
+    [Cmdlet(VerbsLifecycle.Suspend, "AzureRmAnalysisServicesServer",
+        DefaultParameterSetName = BaseParameterSetName,
+        SupportsShouldProcess = true),
      OutputType(typeof(List<AnalysisServicesServer>))]
     [Alias("Suspend-AzureAs")]
     public class SuspendAzureAnalysisServicesServer : AnalysisServicesCmdletBase
@@ -39,12 +42,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single server
-                AnalysisServicesClient.SuspendServer(ResourceGroupName, Name);
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.SuspendAnalysisServicesServer, Name),
+                    string.Format(Resources.SuspendingAnalysisServicesServer, Name),
+                    Name,
+                    () => AnalysisServicesClient.SuspendServer(ResourceGroupName, Name));
             }
             else
             {
