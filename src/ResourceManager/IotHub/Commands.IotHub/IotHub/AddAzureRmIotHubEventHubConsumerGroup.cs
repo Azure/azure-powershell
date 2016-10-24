@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -36,23 +36,19 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "EventHubEndpointName. Possible values events, operationsMonitoringEvents")]
+            HelpMessage = "Name of the Event Hub Endpoint. Possible values are 'events', 'operationsMonitoringEvents'")]
         [ValidateNotNullOrEmpty]
         public string EventHubEndpointName { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "EventHubConsumerGroupName.")]
+            HelpMessage = "Name of the EventHub ConsumerGroup")]
         [ValidateNotNullOrEmpty]
         public string EventHubConsumerGroupName { get; set; }
 
