@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubEventHubConsumerGroup"), OutputType(typeof(IEnumerable<string>))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(IEnumerable<string>))]
     public class RemoveAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
     {
         [Parameter(

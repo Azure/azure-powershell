@@ -133,6 +133,11 @@
     <Compile Include="Models\PSSharedAccessSignatureAuthorizationRule.cs" />
     <Compile Include="Models\PSStorageEndpointProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -155,7 +160,13 @@
       <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Azure.Commands.Management.IotHub.Properties</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.IotHub.dll-Help.xml">
       <SubType>Designer</SubType>
