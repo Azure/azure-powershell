@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Analysis Services Server.
+        /// </summary>
+        internal static string CreateNewAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("CreateNewAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;default &quot;.
         /// </summary>
         internal static string DefaultAclWord {
@@ -106,7 +115,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing Analysis Services server: &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Remove Analysis Services Server.
         /// </summary>
         internal static string RemovingAnalysisServicesServer {
             get {
@@ -124,7 +133,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resuming Analysis Services server: &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Resume Analysis Services Server.
         /// </summary>
         internal static string ResumingAnalysisServicesServer {
             get {
@@ -160,7 +169,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suspending Analysis Services server: &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Suspend Analysis Services Server.
         /// </summary>
         internal static string SuspendingAnalysisServicesServer {
             get {
@@ -174,6 +183,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         internal static string TaskCancelledMessage {
             get {
                 return ResourceManager.GetString("TaskCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update Analysis Services server: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string UpdateAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("UpdateAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Analysis Services Server.
+        /// </summary>
+        internal static string UpdatingAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("UpdatingAnalysisServicesServer", resourceCulture);
             }
         }
     }

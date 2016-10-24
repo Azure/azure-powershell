@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             if (!string.IsNullOrEmpty(administrators))
             {
                 adminList.AddRange(administrators.Split(','));
+                if (adminList.Count == 0)
+                {
+                    adminList.Add(_currentUser);
+                }
             }
 
             AnalysisServicesServer newOrUpdatedServer = null;
@@ -89,11 +93,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
             else
             {
-                if (adminList.Count == 0)
-                {
-                    adminList.Add(_currentUser);
-                }
-
                 newOrUpdatedServer = _client.Servers.Create(
                     resourceGroupName, 
                     serverName, 

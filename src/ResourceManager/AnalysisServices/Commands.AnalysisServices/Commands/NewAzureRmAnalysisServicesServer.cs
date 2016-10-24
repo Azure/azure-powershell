@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesServer"), OutputType(typeof(AnalysisServicesServer))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AnalysisServicesServer))]
     [Alias("New-AzureAs")]
     public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -64,33 +64,36 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(Name, Resources.CreateNewAnalysisServicesServer))
             {
-                if (AnalysisServicesClient.GetServer(ResourceGroupName, Name) != null)
+                try
                 {
-                    throw new CloudException(string.Format(Resources.AnalysisServerExists, Name));
+                    if (AnalysisServicesClient.GetServer(ResourceGroupName, Name) != null)
+                    {
+                        throw new CloudException(string.Format(Resources.AnalysisServerExists, Name));
+                    }
                 }
-            }
-            catch (CloudException ex)
-            {
-                if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) && ex.Body.Code == "ResourceNotFound" ||
-                    ex.Message.Contains("ResourceNotFound"))
+                catch (CloudException ex)
                 {
-                    // server does not exists so go ahead and create one
+                    if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) && ex.Body.Code == "ResourceNotFound" ||
+                        ex.Message.Contains("ResourceNotFound"))
+                    {
+                        // server does not exists so go ahead and create one
+                    }
+                    else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
+                             ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                    {
+                        // resource group not found, let create throw error don't throw from here
+                    }
+                    else
+                    {
+                        // all other exceptions should be thrown
+                        throw;
+                    }
                 }
-                else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
-                         ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
-                {
-                    // resource group not found, let create throw error don't throw from here
-                }
-                else
-                {
-                    // all other exceptions should be thrown
-                    throw;
-                }
-            }
 
-            WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tags, Administrators));
+                WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tags, Administrators));
+            }
         }
     }
 }

@@ -120,6 +120,9 @@
   <data name="AnalysisServerExists" xml:space="preserve">
     <value>Analysis Services server with name '{0}' already exists.</value>
   </data>
+  <data name="CreateNewAnalysisServicesServer" xml:space="preserve">
+    <value>Create Analysis Services Server</value>
+  </data>
   <data name="DefaultAclWord" xml:space="preserve">
     <value>"default "</value>
   </data>
@@ -133,13 +136,13 @@
     <value>Are you sure you want to remove Analysis Services server: '{0}'?</value>
   </data>
   <data name="RemovingAnalysisServicesServer" xml:space="preserve">
-    <value>Removing Analysis Services server: '{0}'</value>
+    <value>Remove Analysis Services Server</value>
   </data>
   <data name="ResumeAnalysisServicesServer" xml:space="preserve">
     <value>Are you sure you want to resume Analysis Services server: '{0}'?</value>
   </data>
   <data name="ResumingAnalysisServicesServer" xml:space="preserve">
-    <value>Resuming Analysis Services server: '{0}'</value>
+    <value>Resume Analysis Services Server</value>
   </data>
   <data name="ScriptFilePathDoesNotExist" xml:space="preserve">
     <value>The script file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
@@ -151,9 +154,15 @@
     <value>Are you sure you want to suspend Analysis Services server: '{0}'?</value>
   </data>
   <data name="SuspendingAnalysisServicesServer" xml:space="preserve">
-    <value>Suspending Analysis Services server: '{0}'</value>
+    <value>Suspend Analysis Services Server</value>
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
+  </data>
+  <data name="UpdateAnalysisServicesServer" xml:space="preserve">
+    <value>Are you sure you want to update Analysis Services server: '{0}'?</value>
+  </data>
+  <data name="UpdatingAnalysisServicesServer" xml:space="preserve">
+    <value>Update Analysis Services Server</value>
   </data>
 </root>
