@@ -77,7 +77,10 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string administratorEmail,
             PsApiManagementSku sku = PsApiManagementSku.Developer,
             int capacity = 1,
-            IDictionary<string, string> tags = null)
+            PsApiManagementVpnType vpnType = PsApiManagementVpnType.None,
+            IDictionary<string, string> tags = null,
+            PsApiManagementVirtualNetwork virtualNetwork = null,
+            PsApiManagementRegion[] additionalRegions = null)
         {
             var parameters = new ApiServiceCreateOrUpdateParameters
             {
@@ -86,7 +89,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 {
                     PublisherEmail = administratorEmail,
                     PublisherName = organization,
-                    VpnType = VirtualNetworkType.None
+                    VpnType = MapVirtualNetworkType(vpnType)
                 },
                 SkuProperties = new ApiServiceSkuProperties
                 {
@@ -95,6 +98,36 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 },
                 Tags = tags
             };
+
+            if (virtualNetwork != null)
+            {
+                parameters.Properties.VirtualNetworkConfiguration = new VirtualNetworkConfiguration
+                {
+                    Location = virtualNetwork.Location,
+                    SubnetResourceId = virtualNetwork.SubnetResourceId
+                };
+            }
+            
+            if (additionalRegions != null && additionalRegions.Any())
+            {
+                parameters.Properties.AdditionalRegions =
+                    additionalRegions
+                        .Select(region =>
+                            new AdditionalRegion
+                            {
+                                Location = region.Location,
+                                SkuType = MapSku(region.Sku),
+                                SkuUnitCount = region.Capacity,
+                                VirtualNetworkConfiguration = region.VirtualNetwork == null
+                                    ? null
+                                    : new VirtualNetworkConfiguration
+                                    {
+                                        Location = region.VirtualNetwork.Location,
+                                        SubnetResourceId = region.VirtualNetwork.SubnetResourceId
+                                    }
+                            })
+                        .ToList();
+            }
 
             var longrunningResponse = Client.ResourceProvider.BeginCreatingOrUpdating(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);

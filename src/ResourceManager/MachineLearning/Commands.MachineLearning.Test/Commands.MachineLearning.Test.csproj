@@ -59,7 +59,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.3-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
+    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.5-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
       <Name>Microsoft.Azure.Management.MachineLearning</Name>
       <Private>True</Private>
     </Reference>
@@ -142,6 +142,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScenarioTests\BaseTestController.cs" />
+    <Compile Include="ScenarioTests\CommitmentPlansTestController.cs" />
+    <Compile Include="ScenarioTests\CommitmentPlanTests.cs" />
     <Compile Include="ScenarioTests\WebServicesTestController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\WebServiceTests.cs" />
@@ -149,7 +152,7 @@
   <ItemGroup>
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1">
       <Link>ScenarioTests\AzureRM.Storage.ps1</Link>
-    </None>  
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -157,9 +160,14 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\CommitmentPlanTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\WebServiceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestListCommitmentPlans.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestUpdateCommitmentPlan.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\TestCreateGetRemoveWebService.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -170,6 +178,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\TestUpdateWebService.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestCreateGetRemoveCommitmentPlan.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestData\GraphWebServiceDefinition_Dogfood.json">
@@ -200,7 +211,7 @@
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
-	<ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
       <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
       <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
