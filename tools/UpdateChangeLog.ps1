@@ -88,63 +88,19 @@ be placed in the release notes instead.
 #>
 function UpdateModule([string]$PathToModule, [string[]]$ChangeLogContent)
 {
-    # Get the content of the service psd1 file
-    $content = Get-Content $PathToModule -Encoding UTF8
+    $releaseNotes = @()
 
-    # The size of the new file will be everything in the array we got from
-    # UpdateServiceChangeLog, except we exclude the last line (which is assumed to be blank)
-    $size = $content.Length + $ChangeLogContent.Length - 1
-
-    # Create a new object with enough space for the old content plus the new changes made this release
-    $newContent = New-Object string[] $size
-
-    $buffer = 0
-
-    for ($idx = 0; $idx -lt $content.Length; $idx++)
+    if ($ChangeLogContent.Length -le 1)
     {
-        # Once we reach the release notes section, we need to update the information
-        if ($content[$idx] -like "*ReleaseNotes =*")
-        {
-            $end = $content[$idx].IndexOf("'")
-            $newContent[$idx] = $content[$idx].Substring(0, $end)
-
-            # If there were no changes made this release, set the notes as the common code string
-            if ($ChangeLogContent.Length -le 1)
-            {
-                $newContent[$idx] += "'Updated for common code changes'"
-            }
-            # If there were changes made this release, add the changes
-            else
-            {
-                $newContent[$idx] += "'$($ChangeLogContent[0])"
-                for ($tempBuffer = 1; $tempBuffer -lt $ChangeLogContent.Length - 1; $tempBuffer++)
-                {
-                    $newContent[$idx + $tempBuffer] = $ChangeLogContent[$tempBuffer]
-
-                    # If we are on the last line, add the apostrophe to end the string
-                    if (($tempBuffer + 1) -eq ($ChangeLogContent.Length -1))
-                    {
-                        $newContent[$idx + $tempBuffer] += "'"
-                    }
-                }
-
-                # Update the buffer
-                $buffer = $ChangeLogContent.Length - 2
-            }
-            
-        }
-        # For all other lines in the psd1 file, add them to the new content array
-        else
-        {
-            $newContent[$idx + $buffer] = $content[$idx]
-        }
+        $releaseNotes += "Updated for common code changes"
+    }
+    else
+    {
+        $releaseNotes += $ChangeLogContent
     }
 
-    # Update the service psd1 file to include all of the changes we made
-    $result = $newContent -join "`r`n"
-    $tempFile = Get-Item $PathToModule
 
-    [System.IO.File]::WriteAllText($tempFile.FullName, $result, [Text.Encoding]::UTF8)
+    Update-ModuleManifest -Path $PathToModule -ReleaseNotes $releaseNotes
 }
 
 <#
@@ -189,89 +145,7 @@ This function will use the psd1 file to grab the module version.
 #>
 function GetModuleVersion([string]$PathToModule)
 {
-    # Get the content of the psd1 file
-    $content = Get-Content $PathToModule -Encoding UTF8
-
-    # For each line of the file, check if we have found the module version
-    for ($idx = 0; $idx -lt $content.Length; $idx++)
-    {
-        # If we have found the module version, grab the value and return it
-        if ($content[$idx] -like "ModuleVersion*")
-        {
-            $start = $content[$idx].IndexOf("'") + 1
-
-            $end = $content[$idx].LastIndexOf("'")
-
-            $length = $end - $start
-
-            return $content[$idx].Substring($start, $length)
-        }
-    }
-
-    # Throw if we are unable to find the module version
-    throw "Could not find module version for file $PathToModule"
-}
-
-<#
-This function will clear the release notes for a psd1 file.
-#>
-function ClearReleaseNotes([string]$PathToModule)
-{
-    # Get the contents of the psd1 file
-    $content = Get-Content $PathToModule -Encoding UTF8
-
-    # This will keep track of the size of the current release notes
-    $length = 0
-    # This will let us know if we are currently iterating over the release notes
-    $found = $False
-
-    # For each line of the file, look for the release notes and find the size
-    for ($idx = 0; $idx -lt $content.Length; $idx++)
-    {
-        # If we have found the release notes section, switch the variable on
-        if ($content[$idx] -like "*ReleaseNotes =*")
-        {
-            $found = $True
-        }
-        # If we have found the end of the release notes section, switch the variable off
-        elseif ($content[$idx] -like "*End of PSData*")
-        {
-            $found = $false
-        }
-        # If we are currently iterating over release notes, increment the size
-        elseif ($found)
-        {
-            $length++
-        }
-    }
-
-    # Determine the size of the file without the release notes
-    $size = $content.Length - $length + 1
-
-    # Create a new object that will hold the contents of the new psd1 file
-    $newContent = New-Object string[] $size
-
-    $buffer = 0
-
-    # For each line in the psd1 file, copy it over to the new psd1 file, but
-    # make sure to skip the release notes
-    for ($idx = 0; $idx -lt $newContent.Length; $idx++)
-    {
-        $newContent[$idx] = $content[$idx + $buffer]
-
-        # If we have found the release notes, set the buffer so we do not copy
-        # them over to the new psd1 file
-        if ($content[$idx] -like "*ReleaseNotes =*")
-        {
-            $buffer =  $length - 1
-        }
-    }
-
-    # Update the psd1 file to include all of the changes we made
-    $result = $newContent -join "`r`n"
-    $tempFile = Get-Item $PathToModule
-
-    [System.IO.File]::WriteAllText($tempFile.FullName, $result, [Text.Encoding]::UTF8)
+    return (Test-ModuleManifest -Path $PathToModule).Version.ToString()
 }
 
 <#
@@ -294,8 +168,17 @@ function UpdateARMLogs([string]$PathToServices)
     {
         # Get the service folder
         $Service = Get-Item -Path "$($log.FullName)\.."
+
+        $serviceName = $Service.Name
+
+        if ($serviceName -eq "AzureBackup") { $serviceName = "Backup" }
+        if ($serviceName -eq "AzureBatch") { $serviceName = "Batch" }
+
+
+
+
         # Get the psd1 file
-        $Module = Get-Item -Path "$($Service.FullName)\*.psd1"
+        $Module = Get-Item -Path "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"
 
         # Get the path to the change log
         $PathToChangeLog = "$($log.FullName)"
@@ -332,9 +215,6 @@ function UpdateLog([string]$PathToChangeLog, [string]$PathToModule, [string]$Ser
     # Get the module version for ServiceManagement
     $ModuleVersion = GetModuleVersion -PathToModule $module.FullName
 
-    # Clear the release notes for ServiceManagement
-    ClearReleaseNotes -PathToModule $module.FullName
-
     # Update the change log and get the contents of the change log for the current release
     $changeLogContent = UpdateServiceChangeLog -PathToChangeLog $log.FullName -ModuleVersion $ModuleVersion
 
@@ -366,18 +246,20 @@ if (!$PathToRepo)
     $PathToRepo = "$PSScriptRoot\.." 
 }
 
+Import-Module PowerShellGet
+
 # Update all of the ResourceManager change logs
 $ResourceManagerResult = UpdateARMLogs -PathToServices $PathToRepo\src\ResourceManager
 
 # Update the ServiceManagement change log
 $PathToChangeLog = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\ChangeLog.md"
-$PathToModule = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\Azure.psd1"
+$PathToModule = "$PathToRepo\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
 
 $ServiceManagementResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "ServiceManagement"
 
 # Update the Storage change log
 $PathToChangeLog = "$PathToRepo\src\Storage\ChangeLog.md"
-$PathToModule = "$PathToRepo\src\Storage\Azure.Storage.psd1"
+$PathToModule = "$PathToRepo\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1"
 
 $StorageResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "Azure.Storage"
 

@@ -107,7 +107,7 @@ For more information on cleaning up the commits in a pull request, such as how t
 
 #### Updating the change log
 
-Any large changes that are made to a service must be reflected in the respecitve change log. This change log will allow customers to easily track what has been changed between releases of a service.
+Any public API changes that are made to a service must be reflected in the respecitve change log. This change log will allow customers to easily track what has been changed between releases of a service.
 
 For ResourceManager services, the change log is located at `src\ResourceManager\SERVICE\ChangeLog.md`.
 
