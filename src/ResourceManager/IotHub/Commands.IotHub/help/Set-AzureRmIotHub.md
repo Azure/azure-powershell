@@ -13,34 +13,34 @@ schema: 2.0.0
 
 ### UpdateSku
 ```
-Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -SkuName <PSIotHubSku> -Units <Int64>
- [<CommonParameters>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -SkuName <PSIotHubSku> [-Units <Int64>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateEventHubEndpointProperties
 ```
-Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -EventHubRetentionTimeInDays <Int64>
- [<CommonParameters>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -EventHubRetentionTimeInDays <Int64> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateFileUploadProperties
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-FileUploadStorageConnectionString <String>]
  [-FileUploadContainerName <String>] [-FileUploadSasUriTtl <TimeSpan>] [-FileUploadNotificationTtl <TimeSpan>]
- [-FileUploadNotificationMaxDeliveryCount <Int32>] -EnableFileUploadNotifications <Boolean>
- [<CommonParameters>]
+ [-FileUploadNotificationMaxDeliveryCount <Int32>] -EnableFileUploadNotifications <Boolean> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateCloudToDeviceProperties
 ```
-Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-CloudToDevice <PSCloudToDeviceProperties>]
- [<CommonParameters>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -CloudToDevice <PSCloudToDeviceProperties>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateOperationsMonitoringProperties
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String>
- -OperationsMonitoringProperties <PSOperationsMonitoringProperties> [<CommonParameters>]
+ -OperationsMonitoringProperties <PSOperationsMonitoringProperties> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,10 +65,10 @@ Type: PSCloudToDeviceProperties
 Parameter Sets: UpdateCloudToDeviceProperties
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -203,7 +203,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -246,7 +246,37 @@ Type: Int64
 Parameter Sets: UpdateSku
 Aliases: 
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
