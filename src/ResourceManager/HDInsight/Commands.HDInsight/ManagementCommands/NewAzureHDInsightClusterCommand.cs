@@ -123,7 +123,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     AADTenantId = AadTenantId,
                     CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
-                    CertificatePassword = CertificatePassword
+                    CertificatePassword = CertificatePassword,
+                    SecurityProfile = SecurityProfile
                 };
                 foreach (
                     var storageAccount in
@@ -168,6 +169,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 AadTenantId = value.AADTenantId;
                 ObjectId = value.ObjectId;
                 CertificatePassword = value.CertificatePassword;
+                SecurityProfile = value.SecurityProfile;
 
                 foreach (
                     var storageAccount in
@@ -404,8 +406,15 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     DirectoryType = DirectoryType.ActiveDirectory,
                     Domain = SecurityProfile.Domain,
-                    DomainUsername = SecurityProfile.DomainUsername,
-                    DomainUserPassword = SecurityProfile.DomainUserPassword.ConvertToString(),
+                    DomainUsername =
+                        SecurityProfile.DomainUserCredential != null
+                            ? SecurityProfile.DomainUserCredential.UserName
+                            : null,
+                    DomainUserPassword =
+                        SecurityProfile.DomainUserCredential != null &&
+                        SecurityProfile.DomainUserCredential.Password != null
+                            ? SecurityProfile.DomainUserCredential.Password.ConvertToString()
+                            : null,
                     OrganizationalUnitDN = SecurityProfile.OrganizationalUnitDN,
                     LdapsUrls = SecurityProfile.LdapsUrls,
                     ClusterUsersGroupDNs = SecurityProfile.ClusterUsersGroupDNs

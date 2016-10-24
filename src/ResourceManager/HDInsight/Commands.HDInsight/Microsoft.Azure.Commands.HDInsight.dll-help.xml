@@ -1528,6 +1528,184 @@
 				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Domain</maml:name>
+				<maml:description>
+					<maml:para>Domain name to join</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>DomainUserCredential</maml:name>
+				<maml:description>
+					<maml:para>Credentials of a domain user for joining the cluster to Active Directory Domain</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>OrganizationalUnitDN</maml:name>
+				<maml:description>
+					<maml:para>OrganizationalUnit Distinguished Name in the Active Directory</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="4">
+				<maml:name>LdapsUrls</maml:name>
+				<maml:description>
+					<maml:para>Array of LDAPS urls</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
+				<maml:name>ClusterUsersGroupDNs</maml:name>
+				<maml:description>
+					<maml:para>Array of Group DN which are allowed to use the HDInsight cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+			<maml:name>Config</maml:name>
+			<maml:description>
+				<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureHDInsightConfig</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Domain</maml:name>
+			<maml:description>
+				<maml:para>Domain name to join</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>DomainUserCredential</maml:name>
+			<maml:description>
+				<maml:para>Credentials of a domain user for joining the cluster to Active Directory Domain</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>OrganizationalUnitDN</maml:name>
+			<maml:description>
+				<maml:para>OrganizationalUnit Distinguished Name in the Active Directory</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="4">
+			<maml:name>LdapsUrls</maml:name>
+			<maml:description>
+				<maml:para>Array of LDAPS urls</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
+			<maml:name>ClusterUsersGroupDNs</maml:name>
+			<maml:description>
+				<maml:para>Array of Group DN which are allowed to use the HDInsight cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Add-AzureRmHDInsightStorage</command:name>
+		<maml:description>
+			<maml:para>Adds an Azure Storage key to a cluster configuration object.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Add</command:verb>
+		<command:noun>AzureRmHDInsightStorage</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Add-AzureRmHDInsightStorage cmdlet adds an Azure Storage account entry to the Azure HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Add-AzureRmHDInsightStorage</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+				<maml:name>Config</maml:name>
+				<maml:description>
+					<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the storage account name for the storage account to be added to the cluster.</maml:para>
@@ -3082,7 +3260,88 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
 				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Grant HTTP access to an Azure HDInsight cluster  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt; # Cluster info
+        $clusterName = &quot;your-hadoop-001&quot;
+        $clusterCreds = Get-Credential
+
+        Grant-AzureRmHDInsightHttpServicesAccess 
+            -ClusterName $clusterName `
+            -HttpCredential $newClusterCreds</dev:code>
+			<dev:remarks>
+				<maml:para>This command grants HTTP access to the cluster named &#39;your-hadoop-001&#39;.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
@@ -3301,6 +3560,8 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
+<<<<<<< HEAD
+=======
 				<maml:para />
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
@@ -3385,8 +3646,26 @@
             -RdpAccessExpiry $newRdpExpiry</dev:code>
 			<dev:remarks>
 				<maml:para>This command grants RDP access to the cluster named &#39;your-hadoop-001&#39;.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
 				<maml:para />
+<<<<<<< HEAD
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+=======
 				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
@@ -3427,6 +3706,388 @@
 			<maml:name>Invoke-AzureRmHDInsightHiveJob</maml:name>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Arguments</maml:name>
+				<maml:description>
+					<maml:para>Specifies an array of arguments for the job. The arguments are passed as command-line arguments to each task.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Files</maml:name>
+				<maml:description>
+					<maml:para>Specifies a collection of files that are required for a Hive job.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>StatusFolder</maml:name>
+				<maml:description>
+					<maml:para>Specifies the location of the folder that contains standard outputs and error outputs for a job.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Defines</maml:name>
+				<maml:description>
+					<maml:para>Specifies Hadoop configuration values to set when a job runs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>File</maml:name>
+				<maml:description>
+					<maml:para>Specifies the path to a file in Azure Storage that contains the query to run. You can use this parameter instead of the Query parameter.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>JobName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of a Hive job. If you do not specify this parameter, this cmdlet uses the default value: &quot;Hive: &lt;first 100 characters of Query&gt;&quot;.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Query</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Hive query.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RunAsFileJob</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this cmdlet creates a file in the default Azure storage account in which to store a query. This cmdlet submits the job that references this file as a script to run.</maml:para>
+					<maml:para>You can use this functionality to handle special characters such as percent sign (%) that would fail on a job submission through Templeton, because Templeton interprets a query with a percent sign as a URL parameter.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DefaultContainer</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the default container in the default Azure storage account that an HDInsight cluster uses.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DefaultStorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the default storage account that the HDInsight cluster uses.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DefaultStorageAccountKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the account key for the default storage account that the HDInsight cluster uses.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Arguments</maml:name>
+			<maml:description>
+				<maml:para>Specifies an array of arguments for the job. The arguments are passed as command-line arguments to each task.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Files</maml:name>
+			<maml:description>
+				<maml:para>Specifies a collection of files that are required for a Hive job.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>StatusFolder</maml:name>
+			<maml:description>
+				<maml:para>Specifies the location of the folder that contains standard outputs and error outputs for a job.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+=======
+			<maml:name>Defines</maml:name>
+			<maml:description>
+				<maml:para>Specifies Hadoop configuration values to set when a job runs.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>File</maml:name>
+			<maml:description>
+				<maml:para>Specifies the path to a file in Azure Storage that contains the query to run. You can use this parameter instead of the Query parameter.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>JobName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of a Hive job. If you do not specify this parameter, this cmdlet uses the default value: &quot;Hive: &lt;first 100 characters of Query&gt;&quot;.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Query</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Hive query.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RunAsFileJob</maml:name>
+			<maml:description>
+				<maml:para>Indicates that this cmdlet creates a file in the default Azure storage account in which to store a query. This cmdlet submits the job that references this file as a script to run.</maml:para>
+				<maml:para>You can use this functionality to handle special characters such as percent sign (%) that would fail on a job submission through Templeton, because Templeton interprets a query with a percent sign as a URL parameter.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DefaultContainer</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the default container in the default Azure storage account that an HDInsight cluster uses.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DefaultStorageAccountName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the default storage account that the HDInsight cluster uses.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DefaultStorageAccountKey</maml:name>
+			<maml:description>
+				<maml:para>Specifies the account key for the default storage account that the HDInsight cluster uses.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Grant RDP access to an Azure HDInsight cluster  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt; # Cluster info
+        $clusterName = &quot;your-hadoop-001&quot;
+        $clusterCreds = Get-Credential
+
+        Grant-AzureRmHDInsightRdpServicesAccess 
+            -ClusterName $clusterName `
+            -RdpCredential $newRdpCreds `
+            -RdpAccessExpiry $newRdpExpiry</dev:code>
+			<dev:remarks>
+				<maml:para>This command grants RDP access to the cluster named &#39;your-hadoop-001&#39;.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Revoke-AzureRmHDInsightRdpServicesAccess</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+<<<<<<< HEAD
+		<command:name>Invoke-AzureRmHDInsightHiveJob</command:name>
+		<maml:description>
+			<maml:para>Submits a Hive query to an HDInsight cluster and retrieves query results in one operation.</maml:para>
+=======
+		<command:name>New-AzureRmHDInsightCluster</command:name>
+		<maml:description>
+			<maml:para>Creates an Azure HDInsight cluster in the specified resource group for the current subscription.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+<<<<<<< HEAD
+		<command:verb>Invoke</command:verb>
+		<command:noun>AzureRmHDInsightHiveJob</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Invoke-AzureRmHDInsightHiveJob cmdlet submits a Hive query to an Azure HDInsight cluster and retrieves query results in one operation. Use the Use-AzureRmHDInsightCluster cmdlet before calling Invoke-AzureRmHDInsightHiveJob to specify which cluster will be used for the query.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Invoke-AzureRmHDInsightHiveJob</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Arguments</maml:name>
+=======
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmHDInsightCluster</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The New-AzureHDInsightCluster creates an Azure HDInsight cluster by using the specified parameters or by using a configuration object that is created by using the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmHDInsightCluster</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Specifies the location for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>ResourceGroupName</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:description>
 					<maml:para>Specifies an array of arguments for the job. The arguments are passed as command-line arguments to each task.</maml:para>
 				</maml:description>
@@ -3996,6 +4657,7 @@
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
 					<maml:para />
@@ -4231,6 +4893,9 @@
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AadTenantId</maml:name>
+=======
+				<maml:name>SecurityProfile</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:description>
 					<maml:para>Specifies the security related properties used to create a secure cluster. You can alternatively use the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
 				</maml:description>
@@ -6517,6 +7182,10 @@
         | Start-AzureRmHDInsightJob 
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds</dev:code>
+<<<<<<< HEAD
+			<dev:remarks>
+				<maml:para>This command creates a Pig job definition.</maml:para>
+=======
 			<dev:remarks>
 				<maml:para>This command creates a Pig job definition.</maml:para>
 				<maml:para />
@@ -7612,8 +8281,881 @@
        -ClusterName &quot;your-hadoop_001&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:para />
 				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+<<<<<<< HEAD
+		<maml:navigationLink>
+			<maml:linkText>Start-AzureRmHDInsightJob</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+=======
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+<<<<<<< HEAD
+		<command:name>New-AzureRmHDInsightSqoopJobDefinition</command:name>
+		<maml:description>
+			<maml:para>Creates a Sqoop job object.</maml:para>
+=======
+		<command:name>Revoke-AzureRmHDInsightRdpServicesAccess</command:name>
+		<maml:description>
+			<maml:para>Disables Remote Desktop Protocol (RDP) access to a Windows cluster.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+<<<<<<< HEAD
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmHDInsightSqoopJobDefinition</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The New-AzureRmHDInsightSqoopJobDefinition cmdlet defines a Sqoop job object for use with an Azure HDInsight cluster.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmHDInsightSqoopJobDefinition</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Files</maml:name>
+				<maml:description>
+					<maml:para>Specifies a collection of files that are associated with a Hive job.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>StatusFolder</maml:name>
+				<maml:description>
+					<maml:para>Specifies the location of the folder that contains standard outputs and error outputs for a job.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>File</maml:name>
+				<maml:description>
+					<maml:para>Specifies the path to a file that contains a query to run. You can use this parameter instead of the Query parameter.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Command</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Sqoop command.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>LibDir</maml:name>
+				<maml:description>
+					<maml:para>Specifies the library directory for the Sqoop job.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Files</maml:name>
+			<maml:description>
+				<maml:para>Specifies a collection of files that are associated with a Hive job.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>StatusFolder</maml:name>
+			<maml:description>
+				<maml:para>Specifies the location of the folder that contains standard outputs and error outputs for a job.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>File</maml:name>
+			<maml:description>
+				<maml:para>Specifies the path to a file that contains a query to run. You can use this parameter instead of the Query parameter.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Command</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Sqoop command.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>LibDir</maml:name>
+			<maml:description>
+				<maml:para>Specifies the library directory for the Sqoop job.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a Sqoop job definition  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt;# Cluster info
+        $clusterName = &quot;your-hadoop-001&quot;
+        $clusterCreds = Get-Credential
+
+        New-AzureRmHDInsightSqoopJobDefinition -StatusFolder $statusFolder `
+            -Command $sqoopCommand `
+        | Start-AzureRmHDInsightJob -ClusterName $clusterName `
+            -ClusterCredential $clusterCreds</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates a Sqoop job definition.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Start-AzureRmHDInsightJob</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureRmHDInsightStreamingMapReduceJobDefinition</command:name>
+		<maml:description>
+			<maml:para>Creates a Streaming MapReduce job object.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmHDInsightStreamingMapReduceJobDefinition</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The New-AzureRmHDInsightStreamingMapReduceJobDefinition cmdlet defines a Streaming MapReduce job object for use with an Azure HDInsight cluster.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmHDInsightStreamingMapReduceJobDefinition</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Arguments</maml:name>
+				<maml:description>
+					<maml:para>Specifies an array of arguments for the job. The arguments are passed as command-line arguments to each task.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>File</maml:name>
+				<maml:description>
+					<maml:para>Specifies the path to a file that contains a query to run. You can use this parameter instead of the Query parameter.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Files</maml:name>
+				<maml:description>
+					<maml:para>Specifies a collection of files that are associated with a Hive job.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>StatusFolder</maml:name>
+				<maml:description>
+					<maml:para>Specifies the location of the folder that contains standard outputs and error outputs for a job.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CommandEnvironment</maml:name>
+				<maml:description>
+					<maml:para>Specifies an array of command-line environment variables to set when a job runs on worker nodes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Defines</maml:name>
+				<maml:description>
+					<maml:para>Specifies Hadoop configuration values to set for when the job runs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InputPath</maml:name>
+				<maml:description>
+					<maml:para>Specifies the path to the input files.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Mapper</maml:name>
+				<maml:description>
+					<maml:para>Specifies a Mapper file name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OutputPath</maml:name>
+				<maml:description>
+					<maml:para>Specifies the path for the job output.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Reducer</maml:name>
+				<maml:description>
+					<maml:para>Specifies a Reducer file name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+=======
+		<command:verb>Revoke</command:verb>
+		<command:noun>AzureRmHDInsightRdpServicesAccess</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Revoke-AzureRmHDInsightRdpServicesAccess cmdlet disables Remote Desktop Protocol (RDP) access to a Windows-based Azure HDInsight cluster.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Revoke-AzureRmHDInsightRdpServicesAccess</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+<<<<<<< HEAD
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Arguments</maml:name>
+			<maml:description>
+				<maml:para>Specifies an array of arguments for the job. The arguments are passed as command-line arguments to each task.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>File</maml:name>
+			<maml:description>
+				<maml:para>Specifies the path to a file that contains a query to run. You can use this parameter instead of the Query parameter.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Files</maml:name>
+			<maml:description>
+				<maml:para>Specifies a collection of files that are associated with a Hive job.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>StatusFolder</maml:name>
+			<maml:description>
+				<maml:para>Specifies the location of the folder that contains standard outputs and error outputs for a job.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>CommandEnvironment</maml:name>
+			<maml:description>
+				<maml:para>Specifies an array of command-line environment variables to set when a job runs on worker nodes.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Defines</maml:name>
+			<maml:description>
+				<maml:para>Specifies Hadoop configuration values to set for when the job runs.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InputPath</maml:name>
+			<maml:description>
+				<maml:para>Specifies the path to the input files.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Mapper</maml:name>
+			<maml:description>
+				<maml:para>Specifies a Mapper file name.</maml:para>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<maml:name>ClusterName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the cluster.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
+			<maml:name>OutputPath</maml:name>
+			<maml:description>
+				<maml:para>Specifies the path for the job output.</maml:para>
+=======
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
+			<maml:name>Reducer</maml:name>
+			<maml:description>
+				<maml:para>Specifies a Reducer file name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+=======
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+<<<<<<< HEAD
+			<maml:title>--------------------------  Example 1: Create a Streaming MapReduce job definition  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt; # Cluster info
+        $clusterName = &quot;your-hadoop-001&quot;
+        $clusterCreds = Get-Credential
+
+        # Streaming MapReduce job details
+        $statusFolder = &quot;tempStatusFolder/&quot;
+        $query = &quot;SHOW TABLES&quot;
+
+        New-AzureRmHDInsightStreamingMapReduceJobDefinition -StatusFolder $statusFolder `
+            -Query $query `
+        | Start-AzureRmHDInsightJob 
+            -ClusterName $clusterName `
+            -ClusterCredential $clusterCreds</dev:code>
+=======
+			<maml:title>--------------------------  Example 1: Disable RDP access to a specified cluster  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt;Revoke-AzureRmHDInsightRdpServicesAccess -ClusterName &quot;your-hadoop-001&quot;</dev:code>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<dev:remarks>
+				<maml:para>This command creates a Streaming MapReduce job definition.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+<<<<<<< HEAD
+		<maml:navigationLink>
+			<maml:linkText>Start-AzureRmHDInsightJob</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+=======
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+<<<<<<< HEAD
+		<command:name>Remove-AzureRmHDInsightCluster</command:name>
+		<maml:description>
+			<maml:para>Removes the specified HDInsight cluster from the current subscription.</maml:para>
+=======
+		<command:name>Set-AzureRmHDInsightClusterSize</command:name>
+		<maml:description>
+			<maml:para>Sets the number of Worker nodes in a specified cluster.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+<<<<<<< HEAD
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureRmHDInsightCluster</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Remove-AzureRmHDInsightCluster cmdlet removes the specified HDInsight service cluster from a subscription. This operation also deletes any data stored in the Hadoop Distributed File System (HDFS) on the cluster. Data stored in the associated Azure Storage account is not deleted. Data stored in external metastores is not deleted.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureRmHDInsightCluster</maml:name>
+=======
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmHDInsightClusterSize</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Set-AzureRmHDInsightClusterSize cmdlet sets the number of Worker nodes in a specified Azure HDInsight cluster.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmHDInsightClusterSize</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+<<<<<<< HEAD
+=======
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>TargetInstanceCount</maml:name>
+				<maml:description>
+					<maml:para>Specifies the desired number of Worker nodes in the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<maml:name>ClusterName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+<<<<<<< HEAD
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>TargetInstanceCount</maml:name>
+			<maml:description>
+				<maml:para>Specifies the desired number of Worker nodes in the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+=======
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Delete an Azure HDInsight cluster.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt;Remove-AzureRmHDInsightCluster -ClusterName &quot;your-hadoop-001&quot;</dev:code>
+			<dev:remarks>
+				<maml:para />
+=======
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+<<<<<<< HEAD
 				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
@@ -7631,27 +9173,34 @@
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
-		<command:name>Revoke-AzureRmHDInsightRdpServicesAccess</command:name>
+		<command:name>Remove-AzureRmHDInsightPersistedScriptAction</command:name>
 		<maml:description>
-			<maml:para>Disables Remote Desktop Protocol (RDP) access to a Windows cluster.</maml:para>
+			<maml:para>Removes an persisted script action from an HDInsight cluster.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
-		<command:verb>Revoke</command:verb>
-		<command:noun>AzureRmHDInsightRdpServicesAccess</command:noun>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureRmHDInsightPersistedScriptAction</command:noun>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Revoke-AzureRmHDInsightRdpServicesAccess cmdlet disables Remote Desktop Protocol (RDP) access to a Windows-based Azure HDInsight cluster.</maml:para>
+		<maml:para>The Remove-AzureRmHDInsightPersistedScriptAction cmdlet removes a persisted script action from the specified Azure HDInsight cluster&#39;s list of persisted script actions. The removed script will no longer be executed when the cluster is scaled up.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
-			<maml:name>Revoke-AzureRmHDInsightRdpServicesAccess</maml:name>
+			<maml:name>Remove-AzureRmHDInsightPersistedScriptAction</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ClusterName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the persisted script action to be removed.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -7691,10 +9240,270 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the persisted script action to be removed.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Specifies the name of the resource group.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+=======
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+=======
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+<<<<<<< HEAD
+			<maml:title>--------------------------  Example 1: Removes a script action from the list of persisted script actions on a cluster.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Remove-AzureRmHDInsightPersistedScriptAction `
+            -ClusterName &quot;your-hadoop-001&quot; `
+            -Name &quot;scriptaction&quot;</dev:code>
+=======
+			<maml:title>--------------------------  Example 1: Set the size of a specified cluster  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt;Set-AzureRmHDInsightClusterSize -ClusterName &quot;your-hadoop-001&quot; -TargetInstanceCount 6</dev:code>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+<<<<<<< HEAD
+		<command:name>Revoke-AzureRmHDInsightHttpServicesAccess</command:name>
+		<maml:description>
+			<maml:para>Disables HTTP access to the cluster.</maml:para>
+=======
+		<command:name>Set-AzureRmHDInsightDefaultStorage</command:name>
+		<maml:description>
+			<maml:para>Sets the default storage account setting in a cluster configuration object.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+<<<<<<< HEAD
+		<command:verb>Revoke</command:verb>
+		<command:noun>AzureRmHDInsightHttpServicesAccess</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Revoke-AzureRmHDInsightHttpServicesAccess cmdlet disables HTTP access to an Azure HDInsight cluster for ODBC, Ambari, Oozie and webHCatalog web services.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Revoke-AzureRmHDInsightHttpServicesAccess</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+=======
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmHDInsightDefaultStorage</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Set-AzureRmHDInsightDefaultStorage cmdlet sets the default storage account setting in the Azure HDInsight cluster configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmHDInsightDefaultStorage</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+				<maml:name>Config</maml:name>
+				<maml:description>
+					<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>StorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the default storage account that the HDInsight cluster will use.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>StorageAccountKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the account key for the default Azure storage account that the HDInsight cluster will use.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+<<<<<<< HEAD
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<maml:name>ClusterName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the cluster.</maml:para>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+			<maml:name>Config</maml:name>
+			<maml:description>
+				<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureHDInsightConfig</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>StorageAccountName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the default storage account that the HDInsight cluster will use.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+<<<<<<< HEAD
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>StorageAccountKey</maml:name>
+			<maml:description>
+				<maml:para>Specifies the account key for the default Azure storage account that the HDInsight cluster will use.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -7776,11 +9585,50 @@
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1: Disable RDP access to a specified cluster  --------------------------</maml:title>
+<<<<<<< HEAD
+			<maml:title>--------------------------  Example 1: Disable HTTP access to a cluster  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&amp;gt;Revoke-AzureRmHDInsightRdpServicesAccess -ClusterName &quot;your-hadoop-001&quot;</dev:code>
+			<dev:code>PS C:\&amp;gt;Revoke-AzureRmHDInsightHttpServicesAccess `
+       -ClusterName &quot;your-hadoop_001&quot;</dev:code>
+=======
+			<maml:title>--------------------------  Example 1: Set the default storage account for the in the cluster configuration object  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt; # Primary storage account info
+        $storageAccountResourceGroupName = &quot;Group&quot;
+        $storageAccountName = &quot;yourstorageacct001&quot;
+        $storageAccountKey = Get-AzureStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = &quot;container002&quot;
+
+        # Cluster configuration info
+        $location = &quot;East US 2&quot;
+        $clusterResourceGroupName = &quot;Group&quot;
+        $clusterName = &quot;your-hadoop-002&quot;
+        $clusterCreds = Get-Credential
+
+        # If the cluster&apos;s resource group doesn&apos;t exist yet, run:
+        #   New-AzureRMResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzureRmHDInsightClusterConfig `
+            | Set-AzureRmHDInsightDefaultStorage `
+                -StorageAccountName &quot;$secondStorageAccountName.blob.core.contoso.net&quot; `
+                -StorageAccountKey $key2 `
+                -StorageContainer $storageContainer `
+            | New-AzureRmHDInsightCluster `
+                -ClusterType Hadoop `
+                -OSType Windows `
+                -ClusterSizeInNodes 4 `
+                -ResourceGroupName $clusterResourceGroupName `
+                -ClusterName $clusterName `
+                -HttpCredential $clusterCreds `
+                -Location $location</dev:code>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -7802,13 +9650,248 @@
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
-		<command:name>Set-AzureRmHDInsightClusterSize</command:name>
+<<<<<<< HEAD
+		<command:name>Revoke-AzureRmHDInsightRdpServicesAccess</command:name>
 		<maml:description>
-			<maml:para>Sets the number of Worker nodes in a specified cluster.</maml:para>
+			<maml:para>Disables Remote Desktop Protocol (RDP) access to a Windows cluster.</maml:para>
+=======
+		<command:name>Set-AzureRmHDInsightPersistedScriptAction</command:name>
+		<maml:description>
+			<maml:para>Sets a previously executed script action to be a persisted script action.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
+<<<<<<< HEAD
+		<command:verb>Revoke</command:verb>
+		<command:noun>AzureRmHDInsightRdpServicesAccess</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Revoke-AzureRmHDInsightRdpServicesAccess cmdlet disables Remote Desktop Protocol (RDP) access to a Windows-based Azure HDInsight cluster.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Revoke-AzureRmHDInsightRdpServicesAccess</maml:name>
+=======
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmHDInsightPersistedScriptAction</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Sets a previously executed script action to be a persisted script action. The specified script action must have previously succeeded. The script action will run each time the Azure HDInsight cluster is scaled up.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmHDInsightPersistedScriptAction</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+<<<<<<< HEAD
+=======
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>ScriptExecutionId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the execution id of the script action to promote to persisted. This script action must have succeeded in order to be promoted. You can find the script action execution ID using Get-AzureRmHDInsightScriptActionHistory.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+			</command:parameter>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<maml:name>ClusterName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+<<<<<<< HEAD
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>ScriptExecutionId</maml:name>
+			<maml:description>
+				<maml:para>Specifies the execution id of the script action to promote to persisted. This script action must have succeeded in order to be promoted. You can find the script action execution ID using Get-AzureRmHDInsightScriptActionHistory.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+			<dev:type>
+				<maml:name>Int64</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+<<<<<<< HEAD
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+=======
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+<<<<<<< HEAD
+			<maml:title>--------------------------  Example 1: Disable RDP access to a specified cluster  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt;Revoke-AzureRmHDInsightRdpServicesAccess -ClusterName &quot;your-hadoop-001&quot;</dev:code>
+=======
+			<maml:title>--------------------------  Example 1: Set a previously successful script action to be persisted, or run on cluster scale up.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureRmHDInsightPersistedScriptAction `
+            -ClusterName &quot;your-hadoop-001&quot; `
+            -ScriptExecutionId &quot;&lt;id&gt;&quot;</dev:code>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+<<<<<<< HEAD
+		<command:name>Set-AzureRmHDInsightClusterSize</command:name>
+		<maml:description>
+			<maml:para>Sets the number of Worker nodes in a specified cluster.</maml:para>
+=======
+		<command:name>Start-AzureRmHDInsightJob</command:name>
+		<maml:description>
+			<maml:para>Starts a defined Azure HDInsight job on a specified cluster.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+<<<<<<< HEAD
 		<command:verb>Set</command:verb>
 		<command:noun>AzureRmHDInsightClusterSize</command:noun>
 		<dev:version />
@@ -7819,6 +9902,18 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Set-AzureRmHDInsightClusterSize</maml:name>
+=======
+		<command:verb>Start</command:verb>
+		<command:noun>AzureRmHDInsightJob</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Start-AzureRMHDInsightJob cmdlet starts a defined Azure HDInsight job on a specified cluster. This can be a MapReduce job, a Streaming MapReduce job, a Hive job, or a Pig job.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Start-AzureRmHDInsightJob</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ClusterName</maml:name>
 				<maml:description>
@@ -7826,12 +9921,28 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+<<<<<<< HEAD
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>TargetInstanceCount</maml:name>
 				<maml:description>
 					<maml:para>Specifies the desired number of Worker nodes in the cluster.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+=======
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>JobDefinition</maml:name>
+				<maml:description>
+					<maml:para>Specifies the job to start on the Azure HDInsight cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightJobDefinition</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>HttpCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ResourceGroupName</maml:name>
@@ -7859,6 +9970,7 @@
 	<command:parameters>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ClusterName</maml:name>
+<<<<<<< HEAD
 			<maml:description>
 				<maml:para>Specifies the name of the cluster.</maml:para>
 			</maml:description>
@@ -7925,10 +10037,105 @@
 			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
 			<dev:type>
 				<maml:name>azureprofile</maml:name>
+=======
+			<maml:description>
+				<maml:para>Specifies the name of the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>JobDefinition</maml:name>
+			<maml:description>
+				<maml:para>Specifies the job to start on the Azure HDInsight cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureHDInsightJobDefinition</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureHDInsightJobDefinition</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>HttpCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+<<<<<<< HEAD
+=======
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>ClusterCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
+			<dev:type>
+				<maml:name>pscredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -7966,11 +10173,31 @@
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
+<<<<<<< HEAD
 			<maml:title>--------------------------  Example 1: Set the size of a specified cluster  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&amp;gt;Set-AzureRmHDInsightClusterSize -ClusterName &quot;your-hadoop-001&quot; -TargetInstanceCount 6</dev:code>
+=======
+			<maml:title>--------------------------  Example 1: Start a job on the specified cluster  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&amp;gt; # Cluster info
+        $clusterName = &quot;your-hadoop-001&quot;
+        $clusterCreds = Get-Credential
+
+        # Hive job details
+        $statusFolder = &quot;tempStatusFolder/&quot;
+        $query = &quot;SHOW TABLES&quot;
+
+        New-AzureRMHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+            -Query $query `
+        | Start-AzureRMHDInsightJob 
+            -ClusterName $clusterName `
+            -ClusterCredential $clusterCreds</dev:code>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -7992,13 +10219,20 @@
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+<<<<<<< HEAD
 		<command:name>Set-AzureRmHDInsightDefaultStorage</command:name>
 		<maml:description>
 			<maml:para>Sets the default storage account setting in a cluster configuration object.</maml:para>
+=======
+		<command:name>Stop-AzureRmHDInsightJob</command:name>
+		<maml:description>
+			<maml:para>Stops a specified running job on a cluster.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
+<<<<<<< HEAD
 		<command:verb>Set</command:verb>
 		<command:noun>AzureRmHDInsightDefaultStorage</command:noun>
 		<dev:version />
@@ -8020,13 +10254,49 @@
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of the default storage account that the HDInsight cluster will use.</maml:para>
+=======
+		<command:verb>Stop</command:verb>
+		<command:noun>AzureRmHDInsightJob</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Stop-AzureRmHDInsightJob cmdlet stops a specified running job on an Azure HDInsight cluster.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Stop-AzureRmHDInsightJob</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>JobId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the job ID of the job.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+<<<<<<< HEAD
 				<maml:name>StorageAccountKey</maml:name>
 				<maml:description>
 					<maml:para>Specifies the account key for the default Azure storage account that the HDInsight cluster will use.</maml:para>
+=======
+				<maml:name>HttpCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8047,6 +10317,7 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
+<<<<<<< HEAD
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 			<maml:name>Config</maml:name>
 			<maml:description>
@@ -8055,14 +10326,31 @@
 			<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureHDInsightConfig</maml:name>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<maml:name>ClusterName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>StorageAccountName</maml:name>
 			<maml:description>
 				<maml:para>Specifies the name of the default storage account that the HDInsight cluster will use.</maml:para>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>JobId</maml:name>
+			<maml:description>
+				<maml:para>Specifies the job ID of the job.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8072,9 +10360,27 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+<<<<<<< HEAD
 			<maml:name>StorageAccountKey</maml:name>
 			<maml:description>
 				<maml:para>Specifies the account key for the default Azure storage account that the HDInsight cluster will use.</maml:para>
+=======
+			<maml:name>HttpCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8107,6 +10413,21 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>ClusterCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
+			<dev:type>
+				<maml:name>pscredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -8155,6 +10476,7 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+<<<<<<< HEAD
 		<command:example>
 			<maml:title>--------------------------  Example 1: Set the default storage account for the in the cluster configuration object  --------------------------</maml:title>
 			<maml:introduction>
@@ -8588,12 +10910,17 @@
 	<command:examples>
 		<command:example>
 			<maml:title>--------------------------  Example 1: Start a job on the specified cluster  --------------------------</maml:title>
+=======
+		<command:example>
+			<maml:title>--------------------------  Example 1: Stop a job on the specified cluster  --------------------------</maml:title>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&amp;gt; # Cluster info
         $clusterName = &quot;your-hadoop-001&quot;
         $clusterCreds = Get-Credential
+<<<<<<< HEAD
 
         # Hive job details
         $statusFolder = &quot;tempStatusFolder/&quot;
@@ -8604,6 +10931,12 @@
         | Start-AzureRMHDInsightJob 
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds</dev:code>
+=======
+        Stop-AzureRmHDInsightJob 
+            -ClusterName $clusterName `
+            -ClusterCredential $clusterCreds `
+            -JobId $jobId</dev:code>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -8625,13 +10958,20 @@
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+<<<<<<< HEAD
 		<command:name>Stop-AzureRmHDInsightJob</command:name>
 		<maml:description>
 			<maml:para>Stops a specified running job on a cluster.</maml:para>
+=======
+		<command:name>Submit-AzureRmHDInsightScriptAction</command:name>
+		<maml:description>
+			<maml:para>Submits a new script action to an Azure HDInsight cluster.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
+<<<<<<< HEAD
 		<command:verb>Stop</command:verb>
 		<command:noun>AzureRmHDInsightJob</command:noun>
 		<dev:version />
@@ -8642,6 +10982,18 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Stop-AzureRmHDInsightJob</maml:name>
+=======
+		<command:verb>Submit</command:verb>
+		<command:noun>AzureRmHDInsightScriptAction</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Submit-AzureRmHDInsightScriptAction cmdlet submits a new script action to an Azure HDInsight cluster. Use PersistOnSuccess to have the script action run each time the cluster is scaled up, as long as the script action initially succeeds.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Submit-AzureRmHDInsightScriptAction</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ClusterName</maml:name>
 				<maml:description>
@@ -8649,6 +11001,7 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+<<<<<<< HEAD
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
 				<maml:name>JobId</maml:name>
 				<maml:description>
@@ -8662,6 +11015,49 @@
 					<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+=======
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the script action.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Uri</maml:name>
+				<maml:description>
+					<maml:para>Specifies the public URI for the script action (a PowerShell or Bash script).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>NodeTypes</maml:name>
+				<maml:description>
+					<maml:para>Specifies the node types on which to run the script action.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">RuntimeScriptActionClusterNodeType[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Parameters</maml:name>
+				<maml:description>
+					<maml:para>Specifies the parameters for the script action.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>ApplicationName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the application name for the script action. When application name is specified, persist on success should be set to &#39;False&#39;, nodes must contain only &#39;edgenode&#39; and script action count should equal 1.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+				<maml:name>PersistOnSuccess</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the script action should run each time the cluster is scaled up. This switch parameter is ignored if the script action initially fails.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ResourceGroupName</maml:name>
@@ -8699,10 +11095,17 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
 			<maml:name>JobId</maml:name>
 			<maml:description>
 				<maml:para>Specifies the job ID of the job.</maml:para>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the script action.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8711,6 +11114,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>HttpCredential</maml:name>
 			<maml:description>
@@ -8719,10 +11123,21 @@
 			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			<dev:type>
 				<maml:name>PSCredential</maml:name>
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Uri</maml:name>
+			<maml:description>
+				<maml:para>Specifies the public URI for the script action (a PowerShell or Bash script).</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			<dev:type>
+				<maml:name>Uri</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -8731,10 +11146,21 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+=======
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>NodeTypes</maml:name>
+			<maml:description>
+				<maml:para>Specifies the node types on which to run the script action.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">RuntimeScriptActionClusterNodeType[]</command:parameterValue>
+			<dev:type>
+				<maml:name>RuntimeScriptActionClusterNodeType[]</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -8743,10 +11169,21 @@
 			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
 				<maml:name>actionpreference</maml:name>
+=======
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Parameters</maml:name>
+			<maml:description>
+				<maml:para>Specifies the parameters for the script action.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationVariable</maml:name>
 			<maml:description>
@@ -8755,10 +11192,21 @@
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
 				<maml:name>string</maml:name>
+=======
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>ApplicationName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the application name for the script action. When application name is specified, persist on success should be set to &#39;False&#39;, nodes must contain only &#39;edgenode&#39; and script action count should equal 1.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>ClusterCredential</maml:name>
 			<maml:description>
@@ -8767,11 +11215,22 @@
 			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
 			<dev:type>
 				<maml:name>pscredential</maml:name>
+=======
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+			<maml:name>PersistOnSuccess</maml:name>
+			<maml:description>
+				<maml:para>Indicates that the script action should run each time the cluster is scaled up. This switch parameter is ignored if the script action initially fails.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<<<<<<< HEAD
 			<maml:name>Profile</maml:name>
 			<maml:description>
 				<maml:para />
@@ -8779,10 +11238,20 @@
 			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
 			<dev:type>
 				<maml:name>azureprofile</maml:name>
+=======
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -8833,8 +11302,25 @@
             -JobId $jobId</dev:code>
 			<dev:remarks>
 				<maml:para />
+=======
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
 				<maml:para />
+<<<<<<< HEAD
 				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
@@ -9054,6 +11540,8 @@
 			<maml:name>InformationVariable</maml:name>
 			<maml:description>
 				<maml:para />
+=======
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
@@ -9189,6 +11677,7 @@
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of the resource group.</maml:para>
+<<<<<<< HEAD
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -9428,6 +11917,14 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
+=======
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
@@ -9454,6 +11951,79 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>HttpCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>ClusterCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
+			<dev:type>
+				<maml:name>pscredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
 			<maml:name>JobId</maml:name>
 			<maml:description>
@@ -9571,6 +12141,17 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
+=======
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:para>
 </maml:para>
 			</maml:description>
@@ -9640,6 +12221,7 @@
 			<maml:linkText>Get-AzureRmHDInsightJob</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
+<<<<<<< HEAD
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -9648,10 +12230,21 @@
 		<command:name>Add-AzureRmHDInsightComponentVersion</command:name>
 		<maml:description>
 			<maml:para>Adds a version for a service running in a cluster to a cluster configuration object.</maml:para>
+=======
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Wait-AzureRmHDInsightJob</command:name>
+		<maml:description>
+			<maml:para>Waits for the completion or failure of a specified job.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
+<<<<<<< HEAD
 		<command:verb>Add</command:verb>
 		<command:noun>AzureRmHDInsightComponentVersion</command:noun>
 		<dev:version />
@@ -9673,10 +12266,34 @@
 				<maml:name>ComponentName</maml:name>
 				<maml:description>
 					<maml:para />
+=======
+		<command:verb>Wait</command:verb>
+		<command:noun>AzureRmHDInsightJob</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Wait-AzureRmHDInsightJob cmdlet awaits the completion or failure of an Azure HDInsight job.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Wait-AzureRmHDInsightJob</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>JobId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the job ID of the job.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+<<<<<<< HEAD
 				<maml:name>ComponentVersion</maml:name>
 				<maml:description>
 					<maml:para />
@@ -9694,14 +12311,75 @@
 			<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureHDInsightConfig</maml:name>
+=======
+				<maml:name>HttpCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>TimeoutInSeconds</maml:name>
+				<maml:description>
+					<maml:para>The total time to wait for job completion, in seconds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WaitIntervalInSeconds</maml:name>
+				<maml:description>
+					<maml:para>The time to wait between job status checks, in seconds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<maml:name>ClusterName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>ComponentName</maml:name>
 			<maml:description>
 				<maml:para />
+=======
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>JobId</maml:name>
+			<maml:description>
+				<maml:para>Specifies the job ID of the job.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9711,9 +12389,27 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+<<<<<<< HEAD
 			<maml:name>ComponentVersion</maml:name>
 			<maml:description>
 				<maml:para />
+=======
+			<maml:name>HttpCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group.</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9722,6 +12418,81 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+<<<<<<< HEAD
+=======
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>TimeoutInSeconds</maml:name>
+			<maml:description>
+				<maml:para>The total time to wait for job completion, in seconds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WaitIntervalInSeconds</maml:name>
+			<maml:description>
+				<maml:para>The time to wait between job status checks, in seconds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>ClusterCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
+			<dev:type>
+				<maml:name>pscredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
+			<dev:type>
+				<maml:name>azureprofile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -9731,19 +12502,33 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
+<<<<<<< HEAD
 <maml:para />
+=======
+				<maml:para>
+</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
+<<<<<<< HEAD
 				<maml:name>Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig</maml:name>
+=======
+				<maml:name></maml:name>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
+<<<<<<< HEAD
 <maml:para />
+=======
+				<maml:para>
+</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -9752,7 +12537,11 @@
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
+<<<<<<< HEAD
 			<maml:para />
+=======
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -9798,7 +12587,11 @@
                 -SshCredential $sshCredentials `
                 -Version "3.5"</dev:code>
 			<dev:remarks>
+<<<<<<< HEAD
 				<maml:para>This command adds the version of Spark to the HDInsight cluster named &#39;your-spark-001&#39;.</maml:para>
+=======
+				<maml:para />
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -9813,6 +12606,16 @@
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+<<<<<<< HEAD
 	</maml:relatedLinks>
     </command:command>
 </helpItems>
+=======
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmHDInsightJob</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+</helpItems>
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation

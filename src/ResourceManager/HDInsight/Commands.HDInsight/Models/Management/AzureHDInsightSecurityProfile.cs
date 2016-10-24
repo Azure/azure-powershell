@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Management.Automation;
+>>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 using System.Security;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 
@@ -25,36 +29,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     public class AzureHDInsightSecurityProfile
     {
         /// <summary>
-        /// Gets or sets the type of the directory.
-        /// </summary>
-        /// <value>
-        /// The type of the directory.
-        /// </value>
-        public AzureHDInsightSecurityProfileActiveDirectoryType DirectoryType { get; set; }
-
-        /// <summary>
         /// Gets or sets the domain.
         /// </summary>
         /// <value>
         /// The domain.
         /// </value>
         public string Domain { get; set; }
-
+        
         /// <summary>
-        /// Gets or sets the domain username.
+        /// Gets or sets the domain user credential.
         /// </summary>
         /// <value>
-        /// The domain username.
+        /// The domain user credential.
         /// </value>
-        public string DomainUsername { get; set; }
-
-        /// <summary>
-        /// Gets or sets the domain user password.
-        /// </summary>
-        /// <value>
-        /// The domain user password.
-        /// </value>
-        public SecureString DomainUserPassword { get; set; }
+        public PSCredential DomainUserCredential { get;set;}
 
         /// <summary>
         /// Gets or sets the organizational unit DN.
@@ -70,7 +58,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <value>
         /// The ldaps urls.
         /// </value>
-        public IList<string> LdapsUrls { get; set; }
+        public string[] LdapsUrls { get; set; }
 
         /// <summary>
         /// Gets or sets the cluster users group DNs.
@@ -78,6 +66,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <value>
         /// The cluster users group DNs.
         /// </value>
-        public IList<string> ClusterUsersGroupDNs { get; set; }
+        public string[] ClusterUsersGroupDNs { get; set; }
     }
 }
