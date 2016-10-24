@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNull]
         public string Administrators { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()

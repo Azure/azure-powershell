@@ -22,27 +22,22 @@ using Microsoft.Azure.Management.Analysis.Models;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet(VerbsLifecycle.Resume, "AzureRmAnalysisServicesServer", 
-        DefaultParameterSetName = BaseParameterSetName,
         SupportsShouldProcess = true),
      OutputType(typeof(List<AnalysisServicesServer>))]
     [Alias("Resume-AzureAs")]
     public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string ServerParameterSetName = "Specific Server";
-
-        [Parameter(ParameterSetName = ServerParameterSetName, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,
             Mandatory = false, HelpMessage = "Name of resource group under which to retrieve the server.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = ServerParameterSetName, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "Name of a specific server.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
