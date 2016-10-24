@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightComponentVersion),
+        Constants.CommandNames.AzureHDInsightComponentVersion,
+        SupportsShouldProcess = true),
     OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightComponentVersionCommand : HDInsightCmdletBase
     {
