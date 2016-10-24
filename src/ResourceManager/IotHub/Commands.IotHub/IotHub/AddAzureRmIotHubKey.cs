@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -39,39 +39,31 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Key")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "PrimaryKey")]
         [ValidateNotNullOrEmpty]
         public string PrimaryKey { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "SecondaryKey")]
         [ValidateNotNullOrEmpty]
         public string SecondaryKey { get; set; }
 
         [Parameter(
-            Position = 5,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights")]
+            HelpMessage = "Access Rights")]
         [ValidateNotNullOrEmpty]
         public PSAccessRights Rights { get; set; }
 

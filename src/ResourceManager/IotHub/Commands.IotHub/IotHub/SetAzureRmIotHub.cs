@@ -38,31 +38,31 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ParameterSetName = UpdateSkuParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [Parameter(
             Position = 0,
             ParameterSetName = UpdateEventHubEndpointPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [Parameter(
             Position = 0,
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [Parameter(
             Position = 0,
             ParameterSetName = UpdateCloudToDevicePropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [Parameter(
             Position = 0,
             ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -71,52 +71,52 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ParameterSetName = UpdateSkuParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [Parameter(
             Position = 1,
             ParameterSetName = UpdateEventHubEndpointPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [Parameter(
             Position = 1,
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [Parameter(
             Position = 1,
             ParameterSetName = UpdateCloudToDevicePropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [Parameter(
             Position = 1,
             ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateSkuParameterSet,
             Mandatory = true,
-            HelpMessage = "SkuName")]
+            HelpMessage = "Name of the Sku")]
         [ValidateNotNullOrEmpty]
         public PSIotHubSku SkuName { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateSkuParameterSet,
-            Mandatory = true,
-            HelpMessage = "Units")]
+            Mandatory = false,
+            HelpMessage = "Number of Units")]
         [ValidateNotNullOrEmpty]
         public long Units { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateEventHubEndpointPropertiesParameterSet,
             Mandatory = true,
-            HelpMessage = "EventHubRetentionTimeInDays")]
+            HelpMessage = "RetentionTimeInDays for Eventhub")]
         [ValidateNotNullOrEmpty]
         public long EventHubRetentionTimeInDays { get; set; }
 
@@ -164,16 +164,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         [Parameter(
             ParameterSetName = UpdateCloudToDevicePropertiesParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "CloudToDevice")]
+            Mandatory = true,
+            HelpMessage = "Properties for CloudToDevice Messages")]
         [ValidateNotNullOrEmpty]
         public PSCloudToDeviceProperties CloudToDevice { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "OperationsMonitoringProperties")]
         [ValidateNotNullOrEmpty]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
