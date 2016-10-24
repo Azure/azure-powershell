@@ -34,13 +34,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ParameterSetName = GetIotHubKeyParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [Parameter(
             Position = 0,
             ParameterSetName = ListIotHubKeysParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -49,22 +49,20 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ParameterSetName = GetIotHubKeyParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [Parameter(
             Position = 1,
             ParameterSetName = ListIotHubKeysParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             ParameterSetName = GetIotHubKeyParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            Mandatory = false,
+            HelpMessage = "Name of the Key")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 

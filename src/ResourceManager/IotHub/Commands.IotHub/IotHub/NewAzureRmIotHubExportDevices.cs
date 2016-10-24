@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -36,19 +36,17 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
-            HelpMessage = "ExportBlobContainerUri")]
+            HelpMessage = "The BlobContainerUri to export to")]
         [ValidateNotNullOrEmpty]
         public string ExportBlobContainerUri { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
             HelpMessage = "ExcludeKeys")]
         [ValidateNotNullOrEmpty]

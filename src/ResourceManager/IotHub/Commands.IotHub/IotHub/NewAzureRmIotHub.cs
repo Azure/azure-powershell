@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name")]
+            HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -36,37 +36,30 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name")]
+            HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "SkuName")]
+            HelpMessage = "Name of the Sku")]
         [ValidateNotNullOrEmpty]
         public PSIotHubSku SkuName { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Units")]
+            HelpMessage = "Number of Units")]
         [ValidateNotNullOrEmpty]
         public long Units { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Properties")]
         [ValidateNotNullOrEmpty]
         public PSIotHubInputProperties Properties { get; set; }
