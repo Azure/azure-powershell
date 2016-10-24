@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.ResumeAnalysisServicesServer, Name),
-                string.Format(Resources.ResumingAnalysisServicesServer, Name),
+                string.Format(Resources.UpdateAnalysisServicesServer, Name),
+                string.Format(Resources.UpdatingAnalysisServicesServer, Name),
                 Name,
                 () =>
                 {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                         Tags = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
                     }
 
-                    WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators));
+                    WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators, currentServer));
                 });
         }
     }
