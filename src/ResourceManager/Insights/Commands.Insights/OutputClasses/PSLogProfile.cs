@@ -21,59 +21,25 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the ServiceDiagnosticSettings
     /// </summary>
-    public class PSLogProfile
+    public class PSLogProfile : LogProfileResource
     {
-        /// <summary>
-        /// Gets or sets the id of the log profile.
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the log profile.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource id of the storage account.
-        /// </summary>
-        public string StorageAccountId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource id of the service bus rule
-        /// </summary>
-        public string ServiceBusRuleId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the locations
-        /// </summary>
-        public IList<string> Locations { get; set; }
-
-        /// <summary>
-        /// Gets or sets the categories
-        /// </summary>
-        public IList<string> Categories { get; set; }
-
         /// <summary>
         /// Gets or sets the retention policy for this log
         /// </summary>
-        public RetentionPolicy RetentionPolicy { get; set; }
+        public new PSRetentionPolicy RetentionPolicy { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PSLogProfile"/> class.
         /// </summary>
-        public PSLogProfile(string id, string name, LogProfile logProfile)
+        /// <param name="logProfile">The input logProfile</param>
+        public PSLogProfile(LogProfileResource logProfile) : base(id: logProfile.Id, location: logProfile.Location)
         {
-            this.Id = id;
+            base.RetentionPolicy = logProfile.RetentionPolicy;
 
-            this.Name = name;
-
-            this.Categories = logProfile.Categories.Select(x => x).ToList();
-            this.Locations = logProfile.Locations.Select(x => x).ToList();
-            this.RetentionPolicy = new RetentionPolicy()
-            {
-                Days = logProfile.RetentionPolicy.Days,
-                Enabled = logProfile.RetentionPolicy.Enabled
-            };
+            this.Name = logProfile.Name;
+            this.Categories = logProfile.Categories;
+            this.Locations = logProfile.Locations;
+            this.RetentionPolicy = new PSRetentionPolicy(logProfile.RetentionPolicy);
             this.ServiceBusRuleId = logProfile.ServiceBusRuleId;
             this.StorageAccountId = logProfile.StorageAccountId;
         }
