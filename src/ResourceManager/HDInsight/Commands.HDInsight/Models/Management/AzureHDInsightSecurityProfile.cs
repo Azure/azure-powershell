@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     public class AzureHDInsightSecurityProfile
     {
         /// <summary>
-        /// Gets or sets the domain.
+        /// Gets or sets Active Directory domain for the cluster.
         /// </summary>
         /// <value>
         /// The domain.
@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string Domain { get; set; }
         
         /// <summary>
-        /// Gets or sets the domain user credential.
+        /// Gets or sets the domain user account credential with sufficient permissions for 
+        /// creating the cluster. Username should be in user@domain format.
         /// </summary>
         /// <value>
         /// The domain user credential.
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public PSCredential DomainUserCredential { get;set;}
 
         /// <summary>
-        /// Gets or sets the organizational unit DN.
+        /// Gets or sets distinguished name of the organizational unit in 
+        /// the Active directory where user and computer accounts will be created.
         /// </summary>
         /// <value>
         /// The organizational unit dn.
@@ -50,7 +52,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string OrganizationalUnitDN { get; set; }
 
         /// <summary>
-        /// Gets or sets the ldaps urls.
+        /// Gets or sets the Urls of one or multiple LDAPS 
+        /// servers for the Active Directory.
         /// </summary>
         /// <value>
         /// The ldaps urls.
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string[] LdapsUrls { get; set; }
 
         /// <summary>
-        /// Gets or sets the cluster users group DNs.
+        /// Gets or sets the distinguished names of the Active Directory groups that will be available in Ambari and Ranger.
         /// </summary>
         /// <value>
         /// The cluster users group DNs.
