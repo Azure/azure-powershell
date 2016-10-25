@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Xml.Linq;
 using Microsoft.Build.Evaluation;
@@ -1361,7 +1362,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 TempAgent = false
             };
             
-            var azureSessionUserAgent = GetUserAgentForAzureSession();
+            var azureSessionUserAgent = GetDeploymentBaseOptionsUserAgent();
             if (!string.IsNullOrEmpty(azureSessionUserAgent))
             {
                 remoteBaseOptions.UserAgent = azureSessionUserAgent;
@@ -1369,17 +1370,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 
             return remoteBaseOptions;
         }
-        
+
         /// <summary>
-        /// Gets user agent for azure session
+        /// Gets remote deployment base options useragent using AzureSession/WebSiteManagementClient.
         /// </summary>
-        /// <returns>useragent string </returns>
-        private string GetUserAgentForAzureSession()
+        /// <returns>useragent string.</returns>
+        private string GetDeploymentBaseOptionsUserAgent()
         {
             var userAgent = string.Empty;
-            if (AzureSession.ClientFactory.UserAgents != null)
+            var managementClient = this.WebsiteManagementClient as WebSiteManagementClient;
+            var userAgents = AzureSession.ClientFactory.UserAgents.Any()
+                    ? AzureSession.ClientFactory.UserAgents as IEnumerable<ProductInfoHeaderValue>
+                    : (managementClient != null) ? managementClient.UserAgent : null;
+
+            if (userAgents != null)
             {
-                foreach (var agent in AzureSession.ClientFactory.UserAgents)
+                foreach (var agent in userAgents)
                 {
                     if (agent != null && agent.Product != null && !string.IsNullOrEmpty(agent.Product.Name))
                     {
