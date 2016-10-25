@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Profile
         private const string AccessTokenParameterSetWithSubscriptionName = "AccessTokenWithSubscriptionName";
 
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
+        [Obsolete("This parameter is only for backwards compatibility; users should use EnvironmentName instead.")]
         [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
@@ -152,6 +153,7 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
+#pragma warning disable 0618
             if (Environment == null && EnvironmentName == null)
             {
                 Environment = AzureEnvironment.PublicEnvironments[Common.Authentication.Models.EnvironmentName.AzureCloud];
@@ -168,6 +170,7 @@ namespace Microsoft.Azure.Commands.Profile
                         string.Format(Resources.UnknownEnvironment, EnvironmentName));
                 }
             }
+#pragma warning restore 0618
         }
 
         public override void ExecuteCmdlet()
@@ -229,7 +232,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
-
+#pragma warning disable 0618
             if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, Environment.Name), "log in"))
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
@@ -242,6 +245,7 @@ namespace Microsoft.Azure.Commands.Profile
                 WriteObject((PSAzureProfile) profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
                     SubscriptionName, password));
             }
+#pragma warning restore 0618
         }
 
         /// <summary>

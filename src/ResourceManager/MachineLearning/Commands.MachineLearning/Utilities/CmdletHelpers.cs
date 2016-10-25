@@ -21,31 +21,31 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
     internal static class CmdletHelpers
     {
-        private static readonly Regex MlWebServiceResourceIdRegex = 
+        private static readonly Regex MlResourceIdRegex = 
             new Regex(
                     @"^\/subscriptions\/(?<subscriptionId>[^\/]+)\/resourceGroups\/"+
                     @"(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.MachineLearning\/"+
-                    @"webservices\/(?<webServiceName>[^\/]+)$", 
+                    @"(?<resourceTypeName>[^\/]+)\/(?<resourceName>[^\/]+)$", 
                     RegexOptions.IgnoreCase);
 
-        internal static bool TryParseMlWebServiceMetadataFromResourceId(
+        internal static bool TryParseMlResourceMetadataFromResourceId(
                                 string resourceId, 
                                 out string subscriptionId, 
                                 out string resourceGroupName, 
-                                out string webServiceName)
+                                out string resourceName)
         {
-            var match = CmdletHelpers.MlWebServiceResourceIdRegex.Match(resourceId);
+            var match = CmdletHelpers.MlResourceIdRegex.Match(resourceId);
             if (match.Success)
             {
                 subscriptionId = match.Groups["subscriptionId"].Value;
                 resourceGroupName = match.Groups["resourceGroupName"].Value;
-                webServiceName = match.Groups["webServiceName"].Value;
+                resourceName = match.Groups["resourceName"].Value;
                 return true;
             }
 
             subscriptionId = null;
             resourceGroupName = null;
-            webServiceName = null;
+            resourceName = null;
             return false;
         }
 
