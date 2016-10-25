@@ -13,23 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Net;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Hyak.Common;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure;
+using SystemNet = System.Net;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
-{   
+{
     /// <summary>
     /// Class hosting helper methods for policy related cmdlets.
     /// </summary>
@@ -79,12 +71,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             catch (AggregateException exception)
             {
                 // if http response is NotFound - then ignore and return NULL response
-                if (exception.InnerException != null && exception.InnerException is Microsoft.Rest.Azure.CloudException)
+                if (exception.InnerException != null && exception.InnerException is CloudException)
                 {
-                    var cloudEx = exception.InnerException as Microsoft.Rest.Azure.CloudException;
+                    var cloudEx = exception.InnerException as CloudException;
                     if (cloudEx.Response != null)
                     {
-                        if (cloudEx.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                        if (cloudEx.Response.StatusCode != SystemNet.HttpStatusCode.NotFound)
                         {
                             Logger.Instance.WriteDebug("CloudException Response statusCode: " +
                                                         cloudEx.Response.StatusCode);

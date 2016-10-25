@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
@@ -19,13 +22,10 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Rest.Azure;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Net;
+using AzureRestNS = Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
+using SystemNet = System.Net;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -59,12 +59,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 
+        /// <summary>
+        /// Adds delegating handlers to the client pipeline:
+        /// 1. RpNamespaceHandler - modified the RP namespace "Microsoft.RecoveryServices" based 
+        ///    on the value provided in the ServiceClientAdapter dll config file.
+        /// 2. ClientRequestIdHandler - constructs a client request id for a given session.
+        /// </summary>
         protected override void SetupHttpClientPipeline()
         {
             base.SetupHttpClientPipeline();
-            AzureSession.ClientFactory.AddHandler(new RpNamespaceHandler(ServiceClientAdapter.ResourceProviderNamespace));
+            AzureSession.ClientFactory.AddHandler(
+                new RpNamespaceHandler(ServiceClientAdapter.ResourceProviderNamespace));
             AzureSession.ClientFactory.AddHandler(new ClientRequestIdHandler());
-            //AzureSession.ClientFactory.AddHandler(new CultureHandler());
         }
 
         /// <summary>
@@ -80,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }
             catch (Exception exception)
             {
-                WriteDebug(String.Format(Resources.ExceptionInExecution, exception.GetType()));
+                WriteDebug(string.Format(Resources.ExceptionInExecution, exception.GetType()));
                 HandleException(exception);
             }
         }
@@ -103,30 +109,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             else
             {
                 Exception targetEx = exception;
-                string targetErrorId = String.Empty;
+                string targetErrorId = string.Empty;
                 ErrorCategory targetErrorCategory = ErrorCategory.NotSpecified;
 
-                if (exception is CloudException)
+                if (exception is AzureRestNS.CloudException)
                 {
-                    var cloudEx = exception as CloudException;
-                    if (cloudEx.Response != null && cloudEx.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    var cloudEx = exception as AzureRestNS.CloudException;
+                    if (cloudEx.Response != null && cloudEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
                     {
-                        WriteDebug(String.Format(Resources.CloudExceptionCodeNotFound, cloudEx.Response.StatusCode));
+                        WriteDebug(string.Format(Resources.CloudExceptionCodeNotFound, cloudEx.Response.StatusCode));
 
                         targetEx = new Exception(Resources.ResourceNotFoundMessage);
                         targetErrorCategory = ErrorCategory.InvalidArgument;
                     }
                     else if (cloudEx.Body != null)
                     {
-                        WriteDebug(String.Format(Resources.CloudException, cloudEx.Body.Code, cloudEx.Body.Message));
+                        WriteDebug(string.Format(Resources.CloudException, cloudEx.Body.Code, cloudEx.Body.Message));
 
                         targetErrorId = cloudEx.Body.Code;
                         targetErrorCategory = ErrorCategory.InvalidOperation;
                     }
                 }
-                else if (exception is WebException)
+                else if (exception is SystemNet.WebException)
                 {
-                    var webEx = exception as WebException;
+                    var webEx = exception as SystemNet.WebException;
                     WriteDebug(string.Format(Resources.WebException, webEx.Response, webEx.Status));
 
                     targetErrorCategory = ErrorCategory.ConnectionError;
@@ -177,9 +183,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Based on the response from the service, handles the job created in the service appropriately.
         /// </summary>
-        /// <param name="jobResponse">Response from service</param>
+        /// <param name="response">Response from service</param>
         /// <param name="operationName">Name of the operation</param>
-        protected void HandleCreatedJob(Microsoft.Rest.Azure.AzureOperationResponse response, string operationName)
+        protected void HandleCreatedJob(AzureRestNS.AzureOperationResponse response, string operationName)
         {
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
                             response.Response.Headers.GetAzureAsyncOperationHeader());

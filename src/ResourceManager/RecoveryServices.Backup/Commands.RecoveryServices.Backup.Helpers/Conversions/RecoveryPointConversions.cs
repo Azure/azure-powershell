@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using System.Globalization;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -56,15 +55,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     DateTime recPointTime = DateTime.MinValue;
                     if (recPoint.RecoveryPointTime.HasValue)
                     {
-                        recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                        recPointTime = (DateTime)recPoint.RecoveryPointTime;
                     }
                     else
                     {
                         throw new ArgumentNullException("RecoveryPointTime is null");
                     }
 
-                    bool isInstantILRSessionActive = 
-                        recPoint.IsInstantILRSessionActive.HasValue ? (bool)recPoint.IsInstantILRSessionActive : false;
+                    bool isInstantILRSessionActive =
+                        recPoint.IsInstantILRSessionActive.HasValue ?
+                            (bool)recPoint.IsInstantILRSessionActive : false;
 
                     AzureVmRecoveryPoint rpBase = new AzureVmRecoveryPoint()
                     {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     DateTime recPointTime = DateTime.MinValue;
                     if (recPoint.RecoveryPointTime.HasValue)
                     {
-                        recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                        recPointTime = (DateTime)recPoint.RecoveryPointTime;
                     }
                     else
                     {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 DateTime recPointTime = DateTime.MinValue;
                 if (recPoint.RecoveryPointTime.HasValue)
                 {
-                    recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                    recPointTime = (DateTime)recPoint.RecoveryPointTime;
                 }
                 else
                 {
@@ -161,7 +161,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
 
                 bool isInstantILRSessionActive = 
-                                        recPoint.IsInstantILRSessionActive.HasValue ? (bool)recPoint.IsInstantILRSessionActive : false;
+                    recPoint.IsInstantILRSessionActive.HasValue ? 
+                        (bool)recPoint.IsInstantILRSessionActive : false;
                 AzureVmRecoveryPoint vmResult = new AzureVmRecoveryPoint()
                 {
                     RecoveryPointId = rpResponse.Name,
@@ -206,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 DateTime recPointTime = DateTime.MinValue;
                 if (recPoint.RecoveryPointTime.HasValue)
                 {
-                    recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                    recPointTime = (DateTime)recPoint.RecoveryPointTime;
                 }
                 else
                 {

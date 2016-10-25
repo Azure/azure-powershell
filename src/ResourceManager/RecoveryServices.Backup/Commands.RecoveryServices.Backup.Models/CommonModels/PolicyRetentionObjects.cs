@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -424,7 +422,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                  DurationCountInYears, RetentionScheduleFormatType.ToString(), base.ToString(),
                                  RetentionScheduleDaily == null ? "NULL" : RetentionScheduleDaily.ToString(),
                                  RetentionScheduleWeekly == null ? "NULL" : RetentionScheduleWeekly.ToString(),
-                                 TraceUtils.GetString<Month>(MonthsOfYear), base.ToString());
+                                 TraceUtils.GetString(MonthsOfYear), base.ToString());
         }
     }
 
@@ -509,7 +507,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             return string.Format("DaysOfTheWeek:{0}, WeeksOfTheMonth:{1}",
                                   TraceUtils.GetString(DaysOfTheWeek),
-                                  TraceUtils.GetString<WeekOfMonth>(WeeksOfTheMonth));
+                                  TraceUtils.GetString(WeeksOfTheMonth));
         }
     }
 
@@ -530,8 +528,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public Day()
         {
-            this.Date = 1;
-            this.IsLast = false;
+            Date = 1;
+            IsLast = false;
         }
         public void Validate()
         {

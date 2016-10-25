@@ -14,16 +14,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using RestAzureNS = Microsoft.Rest.Azure;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -32,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     /// </summary>
     public class MabPsBackupProvider : IPsBackupProvider
     {
-        Dictionary<System.Enum, object> ProviderData { get; set; }
+        Dictionary<Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
 
         /// <summary>
@@ -40,28 +38,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
-        public void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter)
+        public void Initialize(
+            Dictionary<Enum, object> providerData, ServiceClientAdapter serviceClientAdapter)
         {
-            this.ProviderData = providerData;
-            this.ServiceClientAdapter = serviceClientAdapter;
+            ProviderData = providerData;
+            ServiceClientAdapter = serviceClientAdapter;
         }       
 
-        public Microsoft.Rest.Azure.AzureOperationResponse EnableProtection()
+        public RestAzureNS.AzureOperationResponse EnableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public Microsoft.Rest.Azure.AzureOperationResponse DisableProtection()
+        public RestAzureNS.AzureOperationResponse DisableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public Microsoft.Rest.Azure.AzureOperationResponse TriggerBackup()
+        public RestAzureNS.AzureOperationResponse TriggerBackup()
         {
             throw new NotImplementedException();
         }
 
-        public Microsoft.Rest.Azure.AzureOperationResponse TriggerRestore()
+        public RestAzureNS.AzureOperationResponse TriggerRestore()
         {
             throw new NotImplementedException();
         }
@@ -71,12 +70,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
+        public RecoveryPointBase GetRecoveryPointDetails()
         {
             throw new NotImplementedException();
         }
 
-        public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
+        public List<RecoveryPointBase> ListRecoveryPoints()
         {
             throw new NotImplementedException();
         }
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy()
+        public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy()
         {
             throw new NotImplementedException();
         }
@@ -95,12 +94,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Lists containers registered to the recovery services vault according to the provider data
         /// </summary>
         /// <returns>List of protection containers</returns>
-        public List<Models.ContainerBase> ListProtectionContainers()
+        public List<ContainerBase> ListProtectionContainers()
         {
-            string name = (string)this.ProviderData[ContainerParams.Name];
+            string name = (string)ProviderData[ContainerParams.Name];
 
-            ODataQuery<BMSContainerQueryObject> queryParams = new ODataQuery<BMSContainerQueryObject>(
-                q => q.FriendlyName == name && q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
+            ODataQuery<BMSContainerQueryObject> queryParams = 
+                new ODataQuery<BMSContainerQueryObject>(
+                    q => q.FriendlyName == name && 
+                         q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
 
             var listResponse = ServiceClientAdapter.ListContainers(queryParams);
 
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public List<Models.ItemBase> ListProtectedItems()
+        public List<ItemBase> ListProtectedItems()
         {
             throw new NotImplementedException();
         }

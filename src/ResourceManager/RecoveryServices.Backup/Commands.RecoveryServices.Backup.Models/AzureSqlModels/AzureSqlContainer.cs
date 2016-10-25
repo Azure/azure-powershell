@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -36,7 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// and converts it in to the PS container model
         /// </summary>
         /// <param name="protectionContainer">Service client object representing the container</param>
-        public AzureSqlContainer(ServiceClientModel.ProtectionContainerResource protectionContainer)
+        public AzureSqlContainer(
+            ServiceClientModel.ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
             ServiceClientModel.AzureSqlContainer sqlProtectionContainer = 

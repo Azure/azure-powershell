@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -230,11 +228,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.AzureVM;
             }
-            else if (containerType == "Windows")
+            else if (containerType == ServiceClientModel.MabServerType.Windows.ToString())
             {
                 return ContainerType.Windows;
             }
-            else if (containerType == "AzureSqlContainer")
+            else if (containerType == 
+                ServiceClientModel.MabServerType.AzureSqlContainer.ToString())
             {
                 return ContainerType.AzureSQL;
             }

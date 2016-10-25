@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -89,12 +85,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 BackupManagementType backupManagementType;
                 if (BackupManagementType != null)
                 {
-                    Enum.TryParse<BackupManagementType>(BackupManagementType, out backupManagementType);
+                    Enum.TryParse(BackupManagementType, out backupManagementType);
                     backupManagementTypeNullable = backupManagementType;
                 }
 
                 PsBackupProviderManager providerManager = 
-                    new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+                    new PsBackupProviderManager(new Dictionary<Enum, object>()
                 {  
                     {ContainerParams.ContainerType, ContainerType},
                     {ContainerParams.BackupManagementType, backupManagementTypeNullable},

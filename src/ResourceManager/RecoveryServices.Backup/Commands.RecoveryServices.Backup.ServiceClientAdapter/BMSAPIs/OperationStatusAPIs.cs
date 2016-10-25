@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
     public partial class ServiceClientAdapter
     {
         /// <summary>
-        /// Gets result of a generic operation on the protected item using the operation tracking URL
+        /// Gets result of a generic operation on the protected item using the operation ID
         /// </summary>
-        /// <param name="operationResultLink">Operation tracking URL</param>
+        /// <param name="operationId">ID of the operation in progress</param>
         /// <returns>Operation status response returned by the service</returns>
-        public AzureOperationResponse<ServiceClientModel.OperationStatus> GetProtectedItemOperationStatus(
-                string operationId)
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus> 
+            GetProtectedItemOperationStatus(string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -34,8 +34,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 resourceName, resourceGroupName, operationId).Result;
         }
 
-        public AzureOperationResponse<ServiceClientModel.OperationStatus> GetProtectionPolicyOperationStatus(
-            string policyName, string operationId)
+        /// <summary>
+        /// Gets result of a generic operation on the protection policy using the operation ID
+        /// </summary>
+        /// <param name="policyName">Name of the policy associated with the operation</param>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus> 
+            GetProtectionPolicyOperationStatus(string policyName, string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -44,18 +50,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 resourceName, resourceGroupName, policyName, operationId).Result;
         }
 
-        public Microsoft.Rest.Azure.AzureOperationResponse GetRefreshContainerOperationResult(
+        /// <summary>
+        /// Gets result of the refresh operation on the protection container using the operation ID
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse GetRefreshContainerOperationResult(
                 string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectionContainerRefreshOperationResults.GetWithHttpMessagesAsync(
-                resourceName, resourceGroupName, AzureFabricName, operationId).Result;
+            return BmsAdapter.Client.ProtectionContainerRefreshOperationResults
+                .GetWithHttpMessagesAsync(
+                    resourceName, resourceGroupName, AzureFabricName, operationId).Result;
         }
 
-
-        public Microsoft.Rest.Azure.AzureOperationResponse GetCancelJobOperationResult(
+        /// <summary>
+        /// Gets result of the cancel operation on the job using the operation ID
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse GetCancelJobOperationResult(
                 string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
