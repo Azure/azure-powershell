@@ -12,6 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System.Globalization;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 
@@ -404,7 +405,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string wsdlServiceName,
             string wsdlEndpointName)
         {
-            string contentType = GetHeaderValue(specificationFormat, wsdlServiceName, wsdlEndpointName, true);
+            string contentType = GetHeaderForApiExportImport(true, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
             using (var fileStream = File.OpenRead(specificationPath))
             {
@@ -421,7 +422,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string wsdlServiceName,
             string wsdlEndpointName)
         {
-            string contentType = GetHeaderValue(specificationFormat, wsdlServiceName, wsdlEndpointName, true);
+            string contentType = GetHeaderForApiExportImport(false, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
             var jobj = JObject.FromObject(
                 new
@@ -441,13 +442,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             PsApiManagementApiFormat specificationFormat,
             string saveAs)
         {
-            string acceptType = GetHeaderValue(specificationFormat, string.Empty, string.Empty, false);
+            string acceptType = GetHeaderForApiExportImport(true, specificationFormat, string.Empty, string.Empty, false);
 
             var response = Client.Apis.Export(context.ResourceGroupName, context.ServiceName, apiId, acceptType);
             return response.Content;
         }
 
-        private string GetHeaderValue(
+        private string GetHeaderForApiExportImport(
+            bool fromFile,
             PsApiManagementApiFormat specificationApiFormat, 
             string wsdlServiceName,
             string wsdlEndpointName,
@@ -457,25 +459,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             switch (specificationApiFormat)
             {
                 case PsApiManagementApiFormat.Wadl:
-                    headerValue = "application/vnd.sun.wadl+xml";
+                    headerValue = fromFile ? "application/vnd.sun.wadl+xml" : "application/vnd.sun.wadl.link+json";
                     break;
                 case PsApiManagementApiFormat.Swagger:
-                    headerValue = "application/vnd.swagger.doc+json";
+                    headerValue = fromFile ? "application/vnd.swagger.doc+json" : "application/vnd.swagger.link+json"; 
                     break;
                 case PsApiManagementApiFormat.Wsdl:
-                    headerValue = "application/wsdl+xml";
+                    headerValue = fromFile ? "application/wsdl+xml" : "application/vnd.ms.wsdl.link+xml"; 
                     if (validateWsdlParams && string.IsNullOrEmpty(wsdlServiceName))
                     {
-                        throw new ArgumentException(string.Format("WsdlServiceName cannot be Empty for Format : {0}", specificationApiFormat));
+                        throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "WsdlServiceName cannot be Empty for Format : {0}", specificationApiFormat));
                     }
 
                     if (validateWsdlParams && string.IsNullOrEmpty(wsdlEndpointName))
                     {
-                        throw new ArgumentException(string.Format("WsdlEndpointName cannot be Empty for Format : {0}", specificationApiFormat));
+                        throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "WsdlEndpointName cannot be Empty for Format : {0}", specificationApiFormat));
                     }
                     break;
                 default:
-                    throw new ArgumentException(string.Format("Format '{0}' is not supported.", specificationApiFormat));
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Format '{0}' is not supported.", specificationApiFormat));
             }
 
             return headerValue;

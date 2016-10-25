@@ -12,41 +12,44 @@ Locale: en-US
 
 ## AzureRM.Profile Cmdlets
 ### [Add-AzureRmAccount](Add-AzureRmAccount.md)
-{{Manually Enter Add-AzureRmAccount Description Here}}
+Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
 
 ### [Add-AzureRmEnvironment](Add-AzureRmEnvironment.md)
-{{Manually Enter Add-AzureRmEnvironment Description Here}}
+Adds endpoints and metadata for an instance of Azure Resource Manager.
 
 ### [Disable-AzureRmDataCollection](Disable-AzureRmDataCollection.md)
-{{Manually Enter Disable-AzureRmDataCollection Description Here}}
+Opts out of collecting data to improve the AzurePowerShell cmdlets. 
+Data is not collected unless you explicitly opt in.
 
 ### [Enable-AzureRmDataCollection](Enable-AzureRmDataCollection.md)
-{{Manually Enter Enable-AzureRmDataCollection Description Here}}
+Enables Azure PowerShell to collect data to improve the user experience with AzurePowerShell cmdlets.
+Executing this cmdlet opts in to data collection for the current user on the current machine.
+No data is collected unless you explicitly opt in.
 
 ### [Get-AzureRmContext](Get-AzureRmContext.md)
-{{Manually Enter Get-AzureRmContext Description Here}}
+Gets the metadata used to authenticate Azure Resource Manager requests.
 
 ### [Get-AzureRmEnvironment](Get-AzureRmEnvironment.md)
-{{Manually Enter Get-AzureRmEnvironment Description Here}}
+Get endpoints and metadata for an instance of Azure services.
 
 ### [Get-AzureRmSubscription](Get-AzureRmSubscription.md)
-{{Manually Enter Get-AzureRmSubscription Description Here}}
+Get subscriptions that the current account can access.
 
 ### [Get-AzureRmTenant](Get-AzureRmTenant.md)
-{{Manually Enter Get-AzureRmTenant Description Here}}
+Gets tenants that are authorized for the current user.
 
 ### [Remove-AzureRmEnvironment](Remove-AzureRmEnvironment.md)
-{{Manually Enter Remove-AzureRmEnvironment Description Here}}
+Removes endpoints and metadata for connecting to a given Azure instance.
 
 ### [Save-AzureRmProfile](Save-AzureRmProfile.md)
-{{Manually Enter Save-AzureRmProfile Description Here}}
+Saves the current authentication information for use in other PowerShell sessions.
 
 ### [Select-AzureRmProfile](Select-AzureRmProfile.md)
-{{Manually Enter Select-AzureRmProfile Description Here}}
+Loads Azure authentication information from a file.
 
 ### [Set-AzureRmContext](Set-AzureRmContext.md)
-{{Manually Enter Set-AzureRmContext Description Here}}
+Sets the tenant, subscription, and environment for cmdlets to use in the current session.
 
 ### [Set-AzureRmEnvironment](Set-AzureRmEnvironment.md)
-{{Manually Enter Set-AzureRmEnvironment Description Here}}
+Sets properties for an Azure environment.
 

@@ -32,16 +32,14 @@ The context includes tenant, subscription, and environment information.
 
 ## EXAMPLES
 
-### Example1: Set the subscription context
+### Example 1: Set the subscription context
 ```
 PS C:\>Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
-Account: PFuller@contoso.com
 
-Environment: AzureCloud
-
-Subscription: xxxx-xxxx-xxxx-xxxx
-
-Tenant: yyyy-yyyy-yyyy-yyyy
+Account      : PFuller@contoso.com
+Environment  : AzureCloud
+Subscription : xxxx-xxxx-xxxx-xxxx
+Tenant       : yyyy-yyyy-yyyy-yyyy
 ```
 
 This command sets the context to use the specified subscription.
@@ -49,7 +47,7 @@ This command sets the context to use the specified subscription.
 ## PARAMETERS
 
 ### -Context
-Context
+Specifies the context for the current session.
 
 ```yaml
 Type: PSAzureContext
@@ -64,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Specifies the subscription ID.
+Specifies the subscription ID for the context that this cmdlet sets for the current session.
 
 ```yaml
 Type: String
@@ -79,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionName
-Subscription Name
+Specifies the subscription name for the context that this cmdlet sets for the current session.
 
 ```yaml
 Type: String
@@ -94,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
-Specifies the ID of the tenant.
+Specifies the ID of the tenant for for the context that this cmdlet sets for the current session.
 
 ```yaml
 Type: String
@@ -144,6 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSAzureContext
 
 ## NOTES
 
