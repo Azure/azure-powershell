@@ -35,6 +35,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     /// </summary>
     public abstract class AzurePSCmdlet : PSCmdlet, IDisposable
     {
+        private const string PSVERSION = "PSVersion";
+
         public ConcurrentQueue<string> DebugMessages { get; private set; }
 
         private RecordingTracingInterceptor _httpTracingInterceptor;
@@ -55,6 +57,28 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected virtual bool IsErrorMetricEnabled
         {
             get { return true; }
+        }
+
+        /// <summary>
+        /// Indicates installed PowerShell version
+        /// </summary>
+        private string _psVersion;
+
+        /// <summary>
+        /// Get PsVersion returned from PowerShell.Runspace instance
+        /// </summary>
+        protected string PSVersion
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_psVersion))
+                {   
+                    System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create();
+                    _psVersion = ps.Runspace.Version.ToString();
+                }
+
+                return _psVersion;
+            }
         }
 
         /// <summary>
@@ -243,9 +267,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
-                ModuleName, string.Format("v{0}", ModuleVersion));
-            AzureSession.ClientFactory.UserAgents.Add(userAgentValue);
+            //We do not want to add a prefix 'v' to version, because when data will be read out of the telemetry, it will again have to be parsed to extract the actualy version
+            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, ModuleVersion));
+            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, PSVersion));
+
             AzureSession.ClientFactory.AddHandler(
                 new CmdletInfoHandler(this.CommandRuntime.ToString(),
                     this.ParameterSetName, this._clientRequestId));
