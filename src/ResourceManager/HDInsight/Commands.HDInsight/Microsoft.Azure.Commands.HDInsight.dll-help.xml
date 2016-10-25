@@ -1343,7 +1343,7 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Add-AzureRmHDInsightSecurityProfile</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 				<maml:name>Config</maml:name>
 				<maml:description>
 					<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
@@ -1388,7 +1388,7 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 			<maml:name>Config</maml:name>
 			<maml:description>
 				<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
