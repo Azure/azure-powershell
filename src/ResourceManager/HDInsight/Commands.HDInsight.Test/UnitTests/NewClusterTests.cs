@@ -146,6 +146,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.SshCredential = _sshCred;
             cmdlet.OSType = OSType.Linux;
+            cmdlet.SecurityProfile = new AzureHDInsightSecurityProfile()
+            {
+                Domain = "domain.com",
+                DomainUserCredential = new PSCredential("username", "pass".ConvertToSecureString()),
+                OrganizationalUnitDN = "OUDN",
+                LdapsUrls = new[]
+                {
+                    "ldapsurl"
+                },
+                ClusterUsersGroupDNs = new[]
+                {
+                    "userGroupDn"
+                }
+            };
 
             var cluster = new Cluster
             {
@@ -164,7 +178,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Linux
+                    OperatingSystemType = OSType.Linux,
+                    SecurityProfile = new SecurityProfile()
+                    {
+                        Domain = "domain.com",
+                        DomainUsername = "username",
+                        DomainUserPassword = "pass",
+                        OrganizationalUnitDN = "OUDN",
+                        LdapsUrls = new[]
+                        {
+                            "ldapsurl"
+                        },
+                        ClusterUsersGroupDNs = new[]
+                        {
+                            "userGroupDn"
+                        }
+                    }
                 }
             };
             var coreConfigs = new Dictionary<string, string>
@@ -218,8 +247,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux)),
-                    Times.Once);
+                    clusterout.OperatingSystemType == OSType.Linux &&
+                    clusterout.SecurityProfile.Domain.Equals(cmdlet.SecurityProfile.Domain) &&
+                    clusterout.SecurityProfile.DomainUserCredential.UserName.Equals(
+                        cmdlet.SecurityProfile.DomainUserCredential.UserName) &&
+                    clusterout.SecurityProfile.OrganizationalUnitDN.Equals(cmdlet.SecurityProfile.OrganizationalUnitDN) &&
+                    clusterout.SecurityProfile.LdapsUrls.ArrayToString("")
+                        .Equals(cmdlet.SecurityProfile.LdapsUrls.ArrayToString("")) &&
+                    clusterout.SecurityProfile.ClusterUsersGroupDNs.ArrayToString("")
+                        .Equals(cmdlet.SecurityProfile.ClusterUsersGroupDNs.ArrayToString("")))),
+                Times.Once);
         }
     }
 }

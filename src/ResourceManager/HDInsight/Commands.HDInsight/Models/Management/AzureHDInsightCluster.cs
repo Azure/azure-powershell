@@ -16,6 +16,9 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
+using System.Security;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -37,6 +40,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
             Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+            var clusterSecurityProfile = cluster.Properties.SecurityProfile;
+            SecurityProfile = clusterSecurityProfile != null ? new AzureHDInsightSecurityProfile()
+            {
+                Domain = clusterSecurityProfile.Domain,
+                //We should not be returning the actual password to the user
+                DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
+                OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
+                LdapsUrls = clusterSecurityProfile.LdapsUrls != null ? clusterSecurityProfile.LdapsUrls.ToArray() : null,
+                ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs !=null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
+            } : null;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration)
@@ -129,5 +142,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Additional storage accounts for this cluster
         /// </summary>
         public List<string> AdditionalStorageAccounts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the security profile.
+        /// </summary>
+        /// <value>
+        /// The security profile.
+        /// </value>
+        public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
     }
 }
