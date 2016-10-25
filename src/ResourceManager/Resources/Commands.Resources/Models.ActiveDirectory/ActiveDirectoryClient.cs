@@ -258,20 +258,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public List<PSADGroup> FilterGroups(ADObjectFilterOptions options)
         {
             List<PSADGroup> groups = new List<PSADGroup>();
-            ADGroup group = null;
 
             if (!string.IsNullOrEmpty(options.Id))
             {
                 try
                 {
-                    group = GraphClient.Groups.Get(options.Id);
+                    // use GetObjectsByObjectId to handle Redirects in the CSP scenario
+                    PSADGroup group = this.GetObjectsByObjectId(new List<string> { options.Id }).FirstOrDefault() as PSADGroup;
+                    if (group != null)
+                    {
+                        groups.Add(group);
+                    }
                 }
                 catch {  /* The group does not exist, ignore the exception */ }
-
-                if (group != null)
-                {
-                    groups.Add(group.ToPSADGroup());
-                }
             }
             else
             {

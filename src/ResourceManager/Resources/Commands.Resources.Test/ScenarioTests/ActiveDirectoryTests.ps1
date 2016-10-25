@@ -657,6 +657,8 @@ function Test-CreateDeleteSpPasswordCredentials
     # Assert
     Assert-NotNull $servicePrincipal
 
+	Try
+	{
 	# Get service principal by ObjectId
 	$sp1 =  Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
 	Assert-NotNull $sp1.Id
@@ -690,8 +692,11 @@ function Test-CreateDeleteSpPasswordCredentials
 	Remove-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -All -Force
 	$cred3 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
 	Assert-Null $cred3
-
-	# Remove App 
-	$app =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
-	Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
+    }
+	Finally
+	{
+	  # Remove App 
+	  $app =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
+	  Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
+	}
 }

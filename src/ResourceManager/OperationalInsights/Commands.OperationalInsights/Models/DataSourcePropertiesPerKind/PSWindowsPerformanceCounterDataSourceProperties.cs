@@ -40,6 +40,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         [JsonProperty(PropertyName = "counterName")]
         public string CounterName { get; set; }
+
+        /// <summary>
+        /// Whether to collect syslog from Linux computers.
+        /// </summary>
+        [JsonProperty(PropertyName = "collectorType")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public CollectorType CollectorType { get; set; }
     }
 
+    /// <summary>
+    /// The type of the Collector.
+    /// </summary>
+    public enum CollectorType
+    {
+        /// <summary>
+        /// Default collector, meaning <LegacyCollector>false</LegacyCollector>.
+        /// </summary>
+        Default,
+
+        /// <summary>
+        /// The LegacyCollector, meaning <LegacyCollector>true</LegacyCollector>.
+        /// </summary>
+        Legacy
+    }
 }
