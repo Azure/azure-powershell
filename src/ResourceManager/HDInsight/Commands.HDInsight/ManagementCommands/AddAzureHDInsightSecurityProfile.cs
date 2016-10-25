@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 2,
             Mandatory = true,
-            HelpMessage = "A domain user account credential with sufficient permissions for creating the cluster. It should be in user@domain format.")]
+            HelpMessage = "A domain user account credential with sufficient permissions for creating the cluster. Username should be in user@domain format.")]
         public PSCredential DomainUserCredential 
         {
             get { return _securityProfile.DomainUserCredential; }
