@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             var notification = new AutoscaleNotification
             {
                 Email = emailNotification,
-                Operation = Operation,
                 Webhooks = this.Webhooks
             };
 
