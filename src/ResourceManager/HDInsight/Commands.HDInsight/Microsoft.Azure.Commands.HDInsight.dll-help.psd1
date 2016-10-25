@@ -61,7 +61,7 @@ FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    'D:\gitenlistment\azure-powershell\src\Package\Release\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.Azure.Commands.HDInsight.dll'
+    '..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.Azure.Commands.HDInsight.dll'
 )
 
 # Functions to export from this module
