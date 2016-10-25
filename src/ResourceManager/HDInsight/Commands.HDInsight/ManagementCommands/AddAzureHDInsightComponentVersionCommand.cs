@@ -47,8 +47,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            Config.ComponentVersion.Add(ComponentName, ComponentVersion);
-            WriteObject(Config);
+            ConfirmAction("Adding Component Version", Name,
+                () =>
+                {
+                    Config.ComponentVersion.Add(ComponentName, ComponentVersion);
+                    WriteObject(Config);
+                })
         }
     }
 }
