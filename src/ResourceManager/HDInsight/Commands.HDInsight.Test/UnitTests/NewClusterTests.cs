@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 Times.Once);
         }
 
-        private void CreateNewHDInsightCluster()
+        private void CreateNewHDInsightCluster(bool addSecurityProfileInresponse = false)
         {
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
@@ -221,24 +221,29 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Linux,
-                    SecurityProfile = new SecurityProfile()
-                    {
-                        Domain = "domain.com",
-                        DomainUsername = "username",
-                        DomainUserPassword = "pass",
-                        OrganizationalUnitDN = "OUDN",
-                        LdapsUrls = new[]
-                        {
-                            "ldapsurl"
-                        },
-                        ClusterUsersGroupDNs = new[]
-                        {
-                            "userGroupDn"
-                        }
-                    }
+                    OperatingSystemType = OSType.Linux
                 }
             };
+
+            if (addSecurityProfileInresponse)
+            {
+                cluster.Properties.SecurityProfile = new SecurityProfile()
+                {
+                    Domain = "domain.com",
+                    DomainUsername = "username",
+                    DomainUserPassword = "pass",
+                    OrganizationalUnitDN = "OUDN",
+                    LdapsUrls = new[]
+                    {
+                        "ldapsurl"
+                    },
+                    ClusterUsersGroupDNs = new[]
+                    {
+                        "userGroupDn"
+                    }
+                };
+            }
+
             var coreConfigs = new Dictionary<string, string>
             {
                 {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},

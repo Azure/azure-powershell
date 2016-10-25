@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 1,
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = "The Domain of the secure cluster.")]
         public string Domain
         {
