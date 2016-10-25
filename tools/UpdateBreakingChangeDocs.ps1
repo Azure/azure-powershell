@@ -109,27 +109,7 @@ This function will use the given psd1 file to grab the module version.
 #>
 function GetModuleVersion([string]$PathToModule)
 {
-    # Get the content of the psd1 file
-    $content = Get-Content -Path $PathToModule -Encoding UTF8
-
-    # For each line of the file, check if we have found the module version
-    for ($idx = 0; $idx -lt $content.Length; $idx++)
-    {
-        # If we have found the module version, grab the value and return it
-        if ($content[$idx] -like "ModuleVersion*")
-        {
-            $start = $content[$idx].IndexOf("'") + 1
-
-            $end = $content[$idx].LastIndexOf("'")
-
-            $length = $end - $start
-
-            return $content[$idx].Substring($start, $length)
-        }
-    }
-
-    # Throw if we are unable to find the module version
-    throw "Could not find module version for file $PathToModule"
+    return (Test-ModuleManifest -Path $PathToModule).Version.ToString()
 }
 
 <#
@@ -149,7 +129,14 @@ function UpdateARMBreakingChangeDocs([string]$PathToServices)
         $currentDocPath = "$($doc.FullName)\current-breaking-changes.md"
         $upcomingDocPath = "$($doc.FullName)\upcoming-breaking-changes.md"
 
-        $modulePath = "$($doc.FullName)\..\*.psd1"
+        $Service = Get-Item -Path "$($doc.FullName)\.."
+
+        $serviceName = $Service.Name
+
+        if ($serviceName -eq "AzureBackup") { $serviceName = "Backup" }
+        if ($serviceName -eq "AzureBatch") { $serviceName = "Batch" }
+
+        $modulePath = "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"
 
         $moduleVersion = GetModuleVersion -PathToModule $modulePath
 
@@ -218,18 +205,20 @@ if (!$PathToRepo)
     $PathToRepo = "$PSScriptRoot\.."
 }
 
+Import-Module PowerShellGet
+
 # Update all of the ResourceManager breaking change docs
 $ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src\ResourceManager
 
 # Update the ServiceManagement breaking change doc
 $PathToCurrentDoc = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\documentation\current-breaking-changes.md"
-$ModuleVersion = GetModuleVersion -PathToModule $PathToRepo\src\ServiceManagement\Services\Commands.Utilities\Azure.psd1
+$ModuleVersion = GetModuleVersion -PathToModule $PathToRepo\src\Package\Debug\ServiceManagement\Azure\Azure.psd1
 
 $ServiceManagementChanges = UpdateCurrentDoc -PathToCurrentDoc $PathToCurrentDoc -ModuleVersion $ModuleVersion
 
 # Update the Storage breaking change doc
 $PathToCurrentDoc = "$PathToRepo\src\Storage\documentation\current-breaking-changes.md"
-$ModuleVersion = GetModuleVersion -PathToModule $PathToRepo\src\Storage\Azure.Storage.psd1
+$ModuleVersion = GetModuleVersion -PathToModule $PathToRepo\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1
 
 $StorageChanges = UpdateCurrentDoc -PathToCurrentDoc $PathToCurrentDoc -ModuleVersion $ModuleVersion
 
