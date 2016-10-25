@@ -31,15 +31,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Service</maml:name>
 <maml:Description><maml:para>The name of the service that help is being created for.
 </maml:para>
@@ -66,15 +57,6 @@
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Debug</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">Release</command:parameterValue>
 </command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
@@ -111,15 +93,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Storage</maml:name>
 <maml:Description><maml:para>Specifies that the service that help is being created for is Storage.
 </maml:para>
@@ -130,15 +103,6 @@
 </command:parameter>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>New-ServiceMarkdownHelp</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ModuleName</maml:name>
-<maml:Description><maml:para>The name of the service module that will be imported and used to create the markdown help for each cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToCommandsFolder</maml:name>
 <maml:Description><maml:para>A path to the commands folder for the given service which contains the existing XML help (MAML), and will also contain the help folder with all of the markdown help files.
 </maml:para>
@@ -168,15 +132,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ModuleName</maml:name>
-<maml:Description><maml:para>The name of the service module that will be imported and used to create the markdown help for each cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToCommandsFolder</maml:name>
 <maml:Description><maml:para>A path to the commands folder for the given service which contains the existing XML help (MAML), and will also contain the help folder with all of the markdown help files.
 </maml:para>
@@ -188,15 +143,6 @@
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToModule</maml:name>
 <maml:Description><maml:para>A path to the psd1 or dll file for the given service module.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -260,20 +206,20 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- Example 1: Creating markdown for an ARM service --------------------------</maml:title>
-<dev:code>PS C:\&gt; New-ServiceMarkdownHelp -Service Profile -BuildTarget Debug -PathToRepo C:\azure-powershell -ResourceManager</dev:code>
-<dev:remarks><maml:para>This example will create markdown help files for all of the Profile cmdlets. It will import the Profile module from C:\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 and create a help folder in C:\azure-powershell\src\ResourceManager\Profile\Commands.Profile.
+<dev:code>PS C:\&gt; New-ServiceMarkdownHelp -Service Profile -BuildTarget Debug -ResourceManager</dev:code>
+<dev:remarks><maml:para>This example will create markdown help files for all of the Profile cmdlets. It will import the Profile module from PATH_TO_REPO\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 and create a help folder in PATH_TO_REPO\src\ResourceManager\Profile\Commands.Profile.
 </maml:para>
-<maml:para>It will also regenerate the existing XML help (MAML) located at C:\azure-powershell\src\ResourceManager\Profile\Commands.Profile\Microsoft.Azure.Commands.Profile.dll-Help.xml.
+<maml:para>It will also regenerate the existing XML help (MAML) located at PATH_TO_REPO\src\ResourceManager\Profile\Commands.Profile\Microsoft.Azure.Commands.Profile.dll-Help.xml.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>-------------------------- Example 2: Creating markdown for Storage --------------------------</maml:title>
-<dev:code>PS C:\&gt; New-ServiceMarkdownHelp -BuildTarget Debug -PathToRepo C:\azure-powershell -Storage</dev:code>
-<dev:remarks><maml:para>This example will create markdown help files for all of the Storage cmdlets. It will import the Storage module from C:\azure-powershell\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1 and create a help folder in C:\azure-powershell\src\Storage\Commands.Storage.
+<dev:code>PS C:\&gt; New-ServiceMarkdownHelp -BuildTarget Debug -Storage</dev:code>
+<dev:remarks><maml:para>This example will create markdown help files for all of the Storage cmdlets. It will import the Storage module from PATH_TO_REPO\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1 and create a help folder in PATH_TO_REPO\src\Storage\Commands.Storage.
 </maml:para>
-<maml:para>It will also regenerate the existing XML help (MAML) located at C:\azure-powershell\src\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml.
+<maml:para>It will also regenerate the existing XML help (MAML) located at PATH_TO_REPO\src\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -282,12 +228,13 @@
 <command:example><maml:title>-------------------------- Example 3: Creating markdown with specified paths --------------------------</maml:title>
 <dev:code>PS C:\&gt; $PathToModule = "C:\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\AzureRM.TrafficManager.psd1"
 PS C:\&gt; $PathToCommandsFolder = "C:\azure-powershell\src\ResourceManager\TrafficManager\Commands.TrafficManager2"
-PS C:\&gt; $ModuleName = "AzureRM.TrafficManager"
-PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFolder $PathToCommandsFolder -ModuleName $ModuleName</dev:code>
+PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFolder $PathToCommandsFolder</dev:code>
 <dev:remarks><maml:para>This example will create markdown help files for all of the TrafficManager cmdlets. The reason the ResourceManager parameter set is not used is because the commands folder path does not follow the format that this cmdlet is expecting: rather than ending in Commands.TrafficManager, it ends in Commands.TrafficManager2.
 </maml:para>
 <maml:para>It will also regenerate the existing XML help (MAML) located at C:\azure-powershell\src\ResourceManager\TrafficManager\Commands.TrafficManager2\Microsoft.Azure.Commands.TrafficManager.dll-Help.xml.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -318,15 +265,6 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Debug</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">Release</command:parameterValue>
 </command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
@@ -363,15 +301,6 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResourceManager</maml:name>
 <maml:Description><maml:para>Specifies that the service that help is being updated for is ARM.
 </maml:para>
@@ -403,15 +332,6 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Storage</maml:name>
 <maml:Description><maml:para>Specifies that the service that help is being updated for is Storage.
 </maml:para>
@@ -422,15 +342,6 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 </command:parameter>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>Update-ServiceMarkdownHelp</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ModuleName</maml:name>
-<maml:Description><maml:para>The name of the service module that will be imported and used to update the markdown help for each cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToCommandsFolder</maml:name>
 <maml:Description><maml:para>A path to the commands folder for the given service which contains the existing XML help (MAML), and will also contain the help folder with all of the markdown help files.
 </maml:para>
@@ -460,15 +371,6 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ModuleName</maml:name>
-<maml:Description><maml:para>The name of the service module that will be imported and used to update the markdown help for each cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToCommandsFolder</maml:name>
 <maml:Description><maml:para>A path to the commands folder for the given service which contains the existing XML help (MAML), and will also contain the help folder with all of the markdown help files.
 </maml:para>
@@ -480,15 +382,6 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToModule</maml:name>
 <maml:Description><maml:para>A path to the psd1 or dll file for the given service module.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -552,20 +445,20 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- Example 1: Updating markdown for an ARM service --------------------------</maml:title>
-<dev:code>PS C:\&gt; Update-ServiceMarkdownHelp -Service Profile -BuildTarget Debug -PathToRepo C:\azure-powershell -ResourceManager</dev:code>
-<dev:remarks><maml:para>This example will update markdown help files for all of the Profile cmdlets. It will import the Profile module from C:\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1. Then it will update the help files found on the same level as the XML help (MAML).
+<dev:code>PS C:\&gt; Update-ServiceMarkdownHelp -Service Profile -BuildTarget Debug -ResourceManager</dev:code>
+<dev:remarks><maml:para>This example will update markdown help files for all of the Profile cmdlets. It will import the Profile module from PATH_TO_REPO\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1. Then it will update the help files found on the same level as the XML help (MAML).
 </maml:para>
-<maml:para>It will then regenerate the XML help (MAML) located at C:\azure-powershell\src\ResourceManager\Profile\Commands.Profile\Microsoft.Azure.Commands.Profile.dll-Help.xml.
+<maml:para>It will then regenerate the XML help (MAML) located at PATH_TO_REPO\src\ResourceManager\Profile\Commands.Profile\Microsoft.Azure.Commands.Profile.dll-Help.xml.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>-------------------------- Example 2: Updating markdown for Storage --------------------------</maml:title>
-<dev:code>PS C:\&gt; Update-ServiceMarkdownHelp -BuildTarget Debug -PathToRepo C:\azure-powershell -Storage</dev:code>
-<dev:remarks><maml:para>This example will update markdown help files for all of the Storage cmdlets. It will import the Storage module from C:\azure-powershell\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1 and create a help folder in C:\azure-powershell\src\Storage\Commands.Storage. Then it will update the help files found on the same level as the XML help (MAML).
+<dev:code>PS C:\&gt; Update-ServiceMarkdownHelp -BuildTarget Debug -Storage</dev:code>
+<dev:remarks><maml:para>This example will update markdown help files for all of the Storage cmdlets. It will import the Storage module from PATH_TO_REPO\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1. Then it will update the help files found on the same level as the XML help (MAML).
 </maml:para>
-<maml:para>It will also regenerate the XML help (MAML) located at C:\azure-powershell\src\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml.
+<maml:para>It will also regenerate the XML help (MAML) located at PATH_TO_REPO\src\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -574,12 +467,13 @@ PS C:\&gt; New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFo
 <command:example><maml:title>-------------------------- Example 3: Updating markdown with specified paths --------------------------</maml:title>
 <dev:code>PS C:\&gt; $PathToModule = "C:\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\AzureRM.TrafficManager.psd1"
 PS C:\&gt; $PathToCommandsFolder = "C:\azure-powershell\src\ResourceManager\TrafficManager\Commands.TrafficManager2"
-PS C:\&gt; $ModuleName = "AzureRM.TrafficManager"
-PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFolder $PathToCommandsFolder -ModuleName $ModuleName</dev:code>
+PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFolder $PathToCommandsFolder</dev:code>
 <dev:remarks><maml:para>This example will update markdown help files for all of the TrafficManager cmdlets. The reason the ResourceManager parameter set is not used is because the commands folder path does not follow the format that this cmdlet is expecting: rather than ending in Commands.TrafficManager, it ends in Commands.TrafficManager2.
 </maml:para>
 <maml:para>It will also regenerate the XML help (MAML) located at C:\azure-powershell\src\ResourceManager\TrafficManager\Commands.TrafficManager2\Microsoft.Azure.Commands.TrafficManager.dll-Help.xml.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -645,43 +539,6 @@ PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommand
 </command:parameter>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>Validate-ServiceMarkdownHelp</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>The name of the service that help is being validated for.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ServiceManagement</maml:name>
-<maml:Description><maml:para>Specifies that the service that help is being validated for is RDFE.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Validate-ServiceMarkdownHelp</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResourceManager</maml:name>
 <maml:Description><maml:para>Specifies that the service that help is being validated for is ARM.
 </maml:para>
@@ -701,8 +558,8 @@ PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommand
 </command:parameter>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>Validate-ServiceMarkdownHelp</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Service</maml:name>
+<maml:Description><maml:para>The name of the service that help is being validated for.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -710,6 +567,16 @@ PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommand
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ServiceManagement</maml:name>
+<maml:Description><maml:para>Specifies that the service that help is being validated for is RDFE.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Validate-ServiceMarkdownHelp</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Storage</maml:name>
 <maml:Description><maml:para>Specifies that the service that help is being validated for is Storage.
 </maml:para>
@@ -731,15 +598,6 @@ PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommand
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToHelp</maml:name>
 <maml:Description><maml:para>A path to the help folder containing all of the markdown help files for the given service.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathToRepo</maml:name>
-<maml:Description><maml:para>A path to the root of the azure-powershell repository that has been cloned.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -803,7 +661,7 @@ PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommand
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- Example 1: Validating help for an ARM service --------------------------</maml:title>
-<dev:code>PS C:\&gt; Validate-ServiceMarkdownHelp -Service Profile -PathToRepo C:\azure-powershell -ResourceManager</dev:code>
+<dev:code>PS C:\&gt; Validate-ServiceMarkdownHelp -Service Profile -ResourceManager</dev:code>
 <dev:remarks><maml:para>This example will validate the markdown help for the Profile cmdlets. It will find the help folder containing all of the markdown help and iterate over those files, checking if the necessary sections are filled out to completion.
 </maml:para>
 <maml:para></maml:para>
@@ -811,7 +669,7 @@ PS C:\&gt; Update-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommand
 </dev:remarks>
 </command:example>
 <command:example><maml:title>-------------------------- Example 2: Validating help for Storage --------------------------</maml:title>
-<dev:code>PS C:\&gt; Validate-ServiceMarkdownHelp -PathToRepo C:\azure-powershell -Storage</dev:code>
+<dev:code>PS C:\&gt; Validate-ServiceMarkdownHelp -Storage</dev:code>
 <dev:remarks><maml:para>This example will validate the markdown help for the Storage cmdlets. It will find the help folder containing all of the markdown help and iterate over those files, checking if the necessary sections are filled out to completion.
 </maml:para>
 <maml:para></maml:para>
@@ -824,6 +682,8 @@ PS C:\&gt; $ModuleName = "AzureRM.TrafficManager"
 PS C:\&gt; Validate-ServiceMarkdownHelp -PathToHelp $PathToHelp -ModuleName $ModuleName</dev:code>
 <dev:remarks><maml:para>This example will validate the markdown help for the TrafficManager cmdlets. The reason the ResourceManager parameter set is not used is because the help folder path does not follow the format that this cmdlet is expecting: rather than ending in Commands.TrafficManager\help, it ends in Commands.TrafficManager2\help.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
