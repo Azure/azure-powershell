@@ -1343,14 +1343,14 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Add-AzureRmHDInsightSecurityProfile</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Config</maml:name>
 				<maml:description>
 					<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Domain</maml:name>
 				<maml:description>
 					<maml:para>Domain name to join</maml:para>
@@ -1388,7 +1388,7 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Config</maml:name>
 			<maml:description>
 				<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
@@ -1400,7 +1400,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>Domain</maml:name>
 			<maml:description>
 				<maml:para>Domain name to join</maml:para>
@@ -1469,7 +1469,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -1481,7 +1482,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4230,7 +4232,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AadTenantId</maml:name>
 				<maml:description>
-					<maml:para>Specifies the security related properties used to create secure cluster. This object can be created by using the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
+					<maml:para>Specifies the security related properties used to create a secure cluster. You can alternatively use the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureHDInsightSecurityProfile</command:parameterValue>
 			</command:parameter>
@@ -4471,7 +4473,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>SecurityProfile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the security related properties used to create secure cluster. This object can be created by using the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
+					<maml:para>Specifies the security related properties used to create a secure cluster. You can alternatively use the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureHDInsightSecurityProfile</command:parameterValue>
 			</command:parameter>
@@ -4712,7 +4714,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>SecurityProfile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the security related properties used to create secure cluster. This object can be created by using the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
+					<maml:para>Specifies the security related properties used to create a secure cluster. You can alternatively use the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureHDInsightSecurityProfile</command:parameterValue>
 			</command:parameter>
@@ -5096,7 +5098,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SecurityProfile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the security related properties used to create secure cluster. This object can be created by using the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
+				<maml:para>Specifies the security related properties used to create a secure cluster. You can alternatively use the Add-AzureRmHDInsightSecurityProfile cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureHDInsightSecurityProfile</command:parameterValue>
 			<dev:type>
