@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Configuration;
+using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using RecoveryServicesModelsNS = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices.Backup;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
+    /// <summary>
+    /// Adapter for service client to communicate with the backend service
+    /// </summary>
     public partial class ServiceClientAdapter
     {
         const string AppSettingsSectionName = "appSettings";
@@ -33,12 +31,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
         ClientProxy<RecoveryServicesNS.RecoveryServicesBackupClient> BmsAdapter;
 
+        /// <summary>
+        /// Resource provider namespace that this adapter uses to 
+        /// communicate with the backend service. 
+        /// This value depends on the value given in the 
+        /// exe config file of the service client DLL.
+        /// </summary>
         public static string ResourceProviderNamespace
         {
             get
             {
-                System.Configuration.Configuration exeConfiguration = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)exeConfiguration.GetSection(AppSettingsSectionName);
+                Configuration exeConfiguration = ConfigurationManager.OpenExeConfiguration(
+                    Assembly.GetExecutingAssembly().Location);
+                AppSettingsSection appSettings = (AppSettingsSection)exeConfiguration.GetSection(
+                    AppSettingsSectionName);
                 string resourceProviderNamespace = ResourceProviderProductionNamespace;
                 if (appSettings.Settings[ProviderNamespaceKey] != null)
                 {
@@ -49,6 +55,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             }
         }
 
+        /// <summary>
+        /// AzureContext based ctor
+        /// </summary>
+        /// <param name="context">Azure context</param>
         public ServiceClientAdapter(AzureContext context)
         {
             BmsAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupClient>(context);

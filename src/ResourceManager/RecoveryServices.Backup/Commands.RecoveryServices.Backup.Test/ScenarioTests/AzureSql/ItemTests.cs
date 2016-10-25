@@ -13,16 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -31,23 +24,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestGetAzureSqlItemScenario()
         {
-            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.AzureSql, "Test-GetAzureSqlItemScenario");
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.AzureSql, "Test-GetAzureSqlItemScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestDisableAzureSqlProtectionScenario()
         {
-            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.AzureSql, "Test-DisableAzureSqlProtectionScenario");
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.AzureSql, "Test-DisableAzureSqlProtectionScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestGetAzureSqlRecoveryPointsScenario()
         {
-            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.AzureSql, "Test-GetAzureSqlRecoveryPointsScenario");
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.AzureSql, "Test-GetAzureSqlRecoveryPointsScenario");
         }
     }
 }

@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using AutoRestNS = Microsoft.Rest;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
+    /// <summary>
+    /// Client proxy to talk to the backend service
+    /// </summary>
+    /// <typeparam name="TClient">Type of the client - should be a Swagger based client</typeparam>
     public partial class ClientProxy<TClient> : ClientProxyBase
         where TClient : AutoRestNS.ServiceClient<TClient>
     {
@@ -41,24 +39,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             {
                 if (client == null)
                 {
-                    client = AzureSession.ClientFactory.CreateArmClient<TClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                    client = AzureSession.ClientFactory.CreateArmClient<TClient>(
+                        Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return client;
             }
         }
 
+        /// <summary>
+        /// AzureContext based ctor
+        /// </summary>
+        /// <param name="context"></param>
         public ClientProxy(AzureContext context)
             : base(context)
         {
         }
-
-        //internal Dictionary<string, List<string>> GetCustomRequestHeaders()
-        //{
-        //    Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>()
-        //    {
-        //        "x-ms-client-request-id"
-        //    };
-        //}
     }
 }

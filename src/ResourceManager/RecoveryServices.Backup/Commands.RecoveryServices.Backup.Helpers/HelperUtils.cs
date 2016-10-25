@@ -14,12 +14,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Rest.Azure;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -76,23 +75,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Gets list of enum type S equivalents given the corresponding list of enums of type T. 
         /// </summary>
-        /// <typeparam name="T">Type of the enum whose list should be converted to list of strings</typeparam>
-        /// <param name="enumList">List of enums</param>
-        /// <returns></returns>
-        public static List<S> EnumListConverter<T, S>(IList<T> enumList)
+        /// <typeparam name="T">Type of the enum whose list should be converted to list of strings.</typeparam>
+        /// <param name="enumListT">List of enums.</param>
+        /// <returns>List of enums converted.</returns>
+        public static List<S> EnumListConverter<T, S>(IList<T> enumListT)
         {
-            if (enumList == null || enumList.Count == 0)
+            if (enumListT == null || enumListT.Count == 0)
             {
                 return null;
             }
-            var ret = new List<S>();
+            var enumListS = new List<S>();
 
-            foreach (T item in enumList)
+            foreach (T enumT in enumListT)
             {
-                ret.Add(item.ToString().ToEnum<S>());
+                enumListS.Add(enumT.ToString().ToEnum<S>());
             }
 
-            return ret;
+            return enumListS;
         }
 
         /// <summary>
@@ -123,8 +122,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     CmdletModel.UriEnums value;
                     if (keyValuePair.Length == 2)
                     {
-                        if (Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[0], true, out key) &&
-                            !Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[1], true, out value))
+                        if (Enum.TryParse(keyValuePair[0], true, out key) &&
+                            !Enum.TryParse(keyValuePair[1], true, out value))
                         {
                             keyValuePairDict.Add(key, keyValuePair[1]);
                         }
@@ -292,8 +291,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return vaultName;
         }
 
-        public static List<T> GetPagedList<T>(Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
-            where T : Management.RecoveryServices.Backup.Models.Resource
+        /// <summary>
+        /// Retrieves all the pages returned by a paginated API.
+        /// </summary>
+        /// <typeparam name="T">Type of the object returned by the paginated API</typeparam>
+        /// <param name="listResources">Delegate representing the paginated API</param>
+        /// <param name="listNext">Delegate representing the call to retrieve the next page</param>
+        /// <returns>List of objects returned by the API</returns>
+        public static List<T> GetPagedList<T>(
+            Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
+            where T : ServiceClientModel.Resource
         {
             var resources = new List<T>();
             string nextLink = null;
@@ -319,19 +326,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return resources;
-        }
-    }
-
-    public static class EnumExtensions
-    {
-        public static T ToEnum<T>(this Enum enumValue)
-        {
-            return enumValue.ToString().ToEnum<T>();
-        }
-
-        public static T ToEnum<T>(this string enumValue)
-        {
-            return (T)Enum.Parse(typeof(T), enumValue);
         }
     }
 }

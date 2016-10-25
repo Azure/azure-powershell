@@ -34,12 +34,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\tempDll\Debug-Net45\net45\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
+      <HintPath>..\..\..\tempDll\Debug\net45\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\..\tempDll\Debug-Net45\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\tempDll\Debug\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

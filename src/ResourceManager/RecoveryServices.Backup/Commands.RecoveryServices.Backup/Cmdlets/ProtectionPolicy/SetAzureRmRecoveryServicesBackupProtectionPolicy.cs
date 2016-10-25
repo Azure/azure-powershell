@@ -13,17 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -31,14 +28,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy in the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), 
-    OutputType(typeof(List<CmdletModel.JobBase>))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"),
+    OutputType(typeof(List<JobBase>))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
         /// Policy object to be modified
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy, 
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
@@ -56,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy)]
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
-       
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -77,43 +74,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                                                               Policy.Name, ServiceClientAdapter);
                 if (servicePolicy == null)
                 {
-                    throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, 
+                    throw new ArgumentException(string.Format(Resources.PolicyNotFoundException,
                         Policy.Name));
                 }
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<System.Enum, object>()
-                { 
+                {
                     {PolicyParams.ProtectionPolicy, Policy},
                     {PolicyParams.RetentionPolicy, RetentionPolicy},
-                    {PolicyParams.SchedulePolicy, SchedulePolicy},                
+                    {PolicyParams.SchedulePolicy, SchedulePolicy},
                 }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
-                    Policy.WorkloadType,
-                                                                                         Policy.BackupManagementType);
-                Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource> policyResponse = psBackupProvider.ModifyPolicy();
-                WriteDebug("ModifyPolicy http response from service: " + 
+                    Policy.WorkloadType, Policy.BackupManagementType);
+                AzureOperationResponse<ProtectionPolicyResource> policyResponse =
+                    psBackupProvider.ModifyPolicy();
+                WriteDebug("ModifyPolicy http response from service: " +
                     policyResponse.Response.StatusCode.ToString());
 
-                if(policyResponse.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
+                if (policyResponse.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
-                    //WriteDebug("Tracking operation status URL for completion: " +
-                    //            policyResponse.Response.AzureAsyncOperation);
-
                     // Track OperationStatus URL for operation completion
 
                     string policyName = Policy.Name;
 
-                    ServiceClientModel.OperationStatus operationStatus =  
-                        TrackingHelpers.GetOperationStatus<ServiceClientModel.OperationStatus, ServiceClientModel.ProtectionPolicyResource> (
+                    ServiceClientModel.OperationStatus operationStatus =
+                        TrackingHelpers.GetOperationStatus(
                             policyResponse,
-                            operationId => ServiceClientAdapter.GetProtectionPolicyOperationStatus(policyName, operationId));
+                            operationId => 
+                                ServiceClientAdapter.GetProtectionPolicyOperationStatus(
+                                    policyName, operationId));
 
                     WriteDebug("Final operation status: " + operationStatus.Status);
 
                     if (operationStatus.Properties != null &&
-                       ((OperationStatusJobsExtendedInfo)operationStatus.Properties).JobIds != null)
+                       ((OperationStatusJobsExtendedInfo)operationStatus.Properties)
+                            .JobIds != null)
                     {
                         // get list of jobIds and return jobResponses                    
                         WriteObject(GetJobObject(
@@ -130,7 +127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                          "OperationStatus Code: {1}",
                                          operationStatus.Error.Message,
                                          operationStatus.Error.Code));
-                        }                                     
+                        }
                     }
                 }
                 else

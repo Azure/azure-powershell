@@ -14,8 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -103,8 +103,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Name { get; set; }
 
         public ContainerBase(ServiceClientModel.ProtectionContainerResource protectionContainer)
-            : base(ConversionUtils.GetPsContainerType(((ServiceClientModel.ProtectionContainer)protectionContainer.Properties).ContainerType.ToString()),
-                   ((ServiceClientModel.ProtectionContainer)protectionContainer.Properties).BackupManagementType.ToString())
+            : base(ConversionUtils.GetPsContainerType(
+                        protectionContainer.Properties.ContainerType.ToString()),
+                   protectionContainer.Properties.BackupManagementType.ToString())
         {
             Name = IdUtils.GetNameFromUri(protectionContainer.Name);
         }
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public BackupEngineBase(ServiceClientModel.BackupEngineBaseResource backupEngine)
             : base((backupEngine.Properties.GetType().Name),
-                   ((ServiceClientModel.BackupEngineBase)backupEngine.Properties).BackupManagementType.ToString())
+                   backupEngine.Properties.BackupManagementType.ToString())
         {
             Name = backupEngine.Name;
         }
@@ -153,7 +154,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             string containerName, ContainerType containerType)
             : base(containerType, protectedItem.BackupManagementType.Value.ToString())
         {
-            WorkloadType = ConversionUtils.GetPsWorkloadType(protectedItem.WorkloadType.ToString());
+            WorkloadType = ConversionUtils.GetPsWorkloadType(
+                protectedItem.WorkloadType.ToString());
             ContainerName = containerName;
         }
     }
@@ -185,9 +187,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public ItemBase(ServiceClientModel.ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType)
-            : base((ServiceClientModel.ProtectedItem)protectedItemResource.Properties, containerName, containerType)
+            : base(protectedItemResource.Properties, containerName, containerType)
         {
-            ServiceClientModel.ProtectedItem protectedItem = (ServiceClientModel.ProtectedItem)protectedItemResource.Properties;
+            ServiceClientModel.ProtectedItem protectedItem = protectedItemResource.Properties;
             Name = protectedItemResource.Name;
             Id = protectedItemResource.Id;
             LatestRecoveryPoint = protectedItem.LastRecoveryPoint;

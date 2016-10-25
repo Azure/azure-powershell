@@ -81,12 +81,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// Gets the provider type with which the service client calls are to made to contact the backend service. 
+        /// Gets the provider type with which the service client calls 
+        /// are to be made to contact the backend service. 
         /// This is determined by the backupmanagement type of powershell object.
         /// </summary>
-        /// <param name="backupManagementType"></param>
-        /// <returns>service backup management type</returns>
-        public static ServiceClientModel.BackupManagementType? GetServiceClientBackupManagementType(CmdletModel.BackupManagementType? backupManagementType)
+        /// <param name="backupManagementType">Powershell backup management type</param>
+        /// <returns>Service backup management type</returns>
+        public static ServiceClientModel.BackupManagementType? 
+            GetServiceClientBackupManagementType(
+                CmdletModel.BackupManagementType? backupManagementType)
         {
             ServiceClientModel.BackupManagementType? providerType = null;
 
@@ -106,23 +109,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// Gets the provider type with which the service client calls are to made to contact the backend service. 
+        /// Gets the provider type with which the service client calls 
+        /// are to be made to contact the backend service. 
         /// This is determined by the backupmanagement type of powershell object.
         /// </summary>
         /// <param name="backupManagementType"></param>
         /// <returns>service backup management type</returns>
-        public static ServiceClientModel.BackupManagementType? GetServiceClientBackupManagementType(string backupManagementType)
+        public static ServiceClientModel.BackupManagementType? 
+            GetServiceClientBackupManagementType(string backupManagementType)
         {
             ServiceClientModel.BackupManagementType? providerType = null;
 
-            if(string.IsNullOrEmpty(backupManagementType))
+            if (string.IsNullOrEmpty(backupManagementType))
             {
                 return providerType;
             }
 
             return GetServiceClientBackupManagementType(
                 backupManagementType.ToEnum<CmdletModel.BackupManagementType>());
-            
+
         }
 
         /// <summary>
@@ -183,7 +188,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             switch (containerType)
             {
                 case CmdletModel.ContainerType.AzureVM:
-                    serviceClientContainerType = "IaasVMContainer";
+                    serviceClientContainerType = ServiceClientModel.MabServerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;

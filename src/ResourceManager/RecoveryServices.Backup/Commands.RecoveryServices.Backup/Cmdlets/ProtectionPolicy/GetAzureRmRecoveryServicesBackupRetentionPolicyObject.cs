@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
@@ -54,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 base.ExecuteCmdlet();
 
                 PsBackupProviderManager providerManager = 
-                    new PsBackupProviderManager(new Dictionary<System.Enum, object>(), ServiceClientAdapter);
+                    new PsBackupProviderManager(new Dictionary<Enum, object>(), ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = 
                     providerManager.GetProviderInstance(WorkloadType, BackupManagementType);

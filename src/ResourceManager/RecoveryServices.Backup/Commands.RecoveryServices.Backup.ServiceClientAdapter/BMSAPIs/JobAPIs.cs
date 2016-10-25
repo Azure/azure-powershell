@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
-using System.Reflection;
+using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -70,19 +70,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 status,
                 operation);
 
-            Func<Microsoft.Rest.Azure.IPage<JobResource>> listAsync =
+            Func<RestAzureNS.IPage<JobResource>> listAsync =
                 () => BmsAdapter.Client.Jobs.ListWithHttpMessagesAsync(
-                                     resourceName,
-                                     resourceGroupName,
-                                     queryFilter,
-                                     skipToken,
-                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+                    resourceName,
+                    resourceGroupName,
+                    queryFilter,
+                    skipToken,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
-            Func<string, Microsoft.Rest.Azure.IPage<JobResource>> listNextAsync =
-                nextLink => BmsAdapter.Client.Jobs.ListNextWithHttpMessagesAsync(nextLink,
-                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+            Func<string, RestAzureNS.IPage<JobResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.Jobs.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
-            return HelperUtils.GetPagedList<JobResource>(listAsync, listNextAsync);
+            return HelperUtils.GetPagedList(listAsync, listNextAsync);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="jobId">ID of the job to cancel</param>
         /// <returns>Cancelled job response from the service</returns>
-        public Microsoft.Rest.Azure.AzureOperationResponse CancelJob(string jobId)
+        public RestAzureNS.AzureOperationResponse CancelJob(string jobId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -108,7 +109,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="jobId">ID of the job</param>
         /// <param name="operationId">ID of the operation associated with the job</param>
         /// <returns>Job response returned by the service</returns>
-        public Microsoft.Rest.Azure.AzureOperationResponse GetJobOperationStatus(string jobId, string operationId)
+        public RestAzureNS.AzureOperationResponse GetJobOperationStatus(
+            string jobId, string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -145,8 +147,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             // currently we don't support any provider specific filters.
             // so we are initializing the object directly
 
-            JobOperationType? operationType = string.IsNullOrEmpty(operation) ? default(JobOperationType?) :
-                operation.ToEnum<JobOperationType>();
+            JobOperationType? operationType = 
+                string.IsNullOrEmpty(operation) ? 
+                    default(JobOperationType?) : operation.ToEnum<JobOperationType>();
 
             var queryFilterString = QueryBuilder.Instance.GetQueryString(new JobQueryObject()
             {

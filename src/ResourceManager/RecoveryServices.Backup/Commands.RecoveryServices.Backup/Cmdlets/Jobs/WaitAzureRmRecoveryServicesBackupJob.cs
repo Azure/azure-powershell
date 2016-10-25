@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -66,9 +65,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         jobsToWaitOn.Add(job.JobId);
                     }
                 }
-                else if (Job.GetType() == typeof(System.Object[]))
+                else if (Job.GetType() == typeof(object[]))
                 {
-                    System.Object[] castedJobsList = Job as System.Object[];
+                    object[] castedJobsList = Job as object[];
                     object castedJob;
                     foreach (var job in castedJobsList)
                     {

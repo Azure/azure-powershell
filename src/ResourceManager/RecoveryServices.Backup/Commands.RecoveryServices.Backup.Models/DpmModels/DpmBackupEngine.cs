@@ -13,11 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -39,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public DpmBackupEngine(ServiceClientModel.BackupEngineBaseResource backupEngine)
             : base(backupEngine)
         {
-            ServiceClientModel.BackupEngineBase dpmBackupEngine = (ServiceClientModel.BackupEngineBase)backupEngine.Properties;
+            ServiceClientModel.BackupEngineBase dpmBackupEngine = backupEngine.Properties;
             FriendlyName = dpmBackupEngine.FriendlyName;
             Status = dpmBackupEngine.RegistrationStatus;
         }

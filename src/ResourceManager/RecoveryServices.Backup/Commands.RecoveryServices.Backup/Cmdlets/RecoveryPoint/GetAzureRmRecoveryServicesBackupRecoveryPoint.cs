@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -108,11 +105,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 DateTime rangeEnd = DateTime.UtcNow;
                 DateTime rangeStart = rangeEnd.AddDays(-30);
                 
-                Dictionary<System.Enum, object> parameter = new Dictionary<System.Enum, object>();
+                Dictionary<Enum, object> parameter = new Dictionary<Enum, object>();
                 parameter.Add(RecoveryPointParams.Item, Item);
 
-                if (this.ParameterSetName == DateTimeFilterParameterSet ||
-                    this.ParameterSetName == NoFilterParameterSet)
+                if (ParameterSetName == DateTimeFilterParameterSet ||
+                    ParameterSetName == NoFilterParameterSet)
                 {
                     // if both start and end date are given by user
                     if (StartDate.HasValue && EndDate.HasValue)
@@ -134,7 +131,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
 
                     //User want list of RPs between given time range
-                    WriteDebug(String.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
+                    WriteDebug(string.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
                         "StartDate = {0} EndDate = {1}, Item.Name = {2}, Item.ContainerName = {3}",
                         rangeStart, rangeEnd, Item.Name, Item.ContainerName));
                     if (rangeStart >= rangeEnd)
@@ -147,6 +144,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(Resources.GetRPErrorInputDatesShouldBeInUTC);
                     }
 
+                    if(rangeStart > DateTime.UtcNow)
+                    {
+                        throw new ArgumentException(
+                            Resources.GetRPErrorStartTimeShouldBeLessThanUTCNow);
+                    }
+
                     parameter.Add(RecoveryPointParams.StartDate, rangeStart);
                     parameter.Add(RecoveryPointParams.EndDate, rangeEnd);
                     PsBackupProviderManager providerManager = 
@@ -155,13 +158,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     var rpList = psBackupProvider.ListRecoveryPoints();
 
-                    WriteDebug(String.Format("RPCount in Response = {0}", rpList.Count));
+                    WriteDebug(string.Format("RPCount in Response = {0}", rpList.Count));
                     WriteObject(rpList, enumerateCollection: true);
                 }
-                else if (this.ParameterSetName == RecoveryPointIdParameterSet)
+                else if (ParameterSetName == RecoveryPointIdParameterSet)
                 {
                     //User want details of a particular recovery point
-                    WriteDebug(String.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
+                    WriteDebug(string.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
                         "StartDate = {0} EndDate = {1}, RPId = {2}, KeyFileDownloadLocation = {3}",
                         StartDate, EndDate, RecoveryPointId, KeyFileDownloadLocation));
 

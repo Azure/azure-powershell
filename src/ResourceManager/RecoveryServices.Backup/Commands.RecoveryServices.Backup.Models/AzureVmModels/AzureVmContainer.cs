@@ -13,11 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -49,7 +44,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureVmContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
-            IaaSVMContainer iaasVmProtectionContainer = (IaaSVMContainer)protectionContainer.Properties;
+            IaaSVMContainer iaasVmProtectionContainer = 
+                (IaaSVMContainer)protectionContainer.Properties;
             ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
             FriendlyName = iaasVmProtectionContainer.FriendlyName;
             Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(iaasVmProtectionContainer.RegistrationStatus);

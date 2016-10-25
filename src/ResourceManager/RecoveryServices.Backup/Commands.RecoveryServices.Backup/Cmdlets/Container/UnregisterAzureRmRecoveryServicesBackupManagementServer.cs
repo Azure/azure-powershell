@@ -12,16 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
 {
@@ -55,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
                     AzureRmBackupManagementServer.BackupManagementType.ToString() != 
                     BackupManagementType.AzureBackupServer.ToString())
                 {
-                    throw new ArgumentException(String.Format(
+                    throw new ArgumentException(string.Format(
                         Resources.UnsupportedAzureRmBackupManagementServerException, 
                         AzureRmBackupManagementServer.BackupEngineType, 
                         AzureRmBackupManagementServer.BackupManagementType));

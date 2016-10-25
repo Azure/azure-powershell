@@ -118,6 +118,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     throw new Exception(Resources.JobAllowedDateTimeRangeExceeded);
                 }
+                else if(rangeStart > DateTime.UtcNow)
+                {
+                    throw new Exception(Resources.JobStartTimeShouldBeLessThanCurrent);
+                }
 
                 // validate JobId and Job objects
                 if (!string.IsNullOrEmpty(JobId))
@@ -150,13 +154,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             : default(ServiceClientModel.JobStatus?);
 
                 var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
-                    Status.HasValue ? Status.ToEnum<ServiceClientModel.JobStatus>() : default(ServiceClientModel.JobStatus?),
+                    Status.HasValue ? Status.ToEnum<ServiceClientModel.JobStatus>() : 
+                                      default(ServiceClientModel.JobStatus?),
                     Operation.ToString(),
                     rangeStart,
                     rangeEnd,
-                    ServiceClientHelpers.GetServiceClientBackupManagementType(BackupManagementType));
+                    ServiceClientHelpers.GetServiceClientBackupManagementType(
+                        BackupManagementType));
 
-                JobConversions.AddServiceClientJobsToPSList(adapterResponse, result, ref resultCount);
+                JobConversions.AddServiceClientJobsToPSList(
+                    adapterResponse, result, ref resultCount);
 
                 WriteDebug("Number of jobs fetched: " + result.Count);
                 WriteObject(result, enumerateCollection: true);

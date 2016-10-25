@@ -13,14 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -65,8 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteDebug("Stopping job with ID: " + JobId);
 
                 var cancelResponse = ServiceClientAdapter.CancelJob(JobId);
-
-                // Add tracking part
+                
                 var operationStatus = TrackingHelpers.GetOperationResult(
                     cancelResponse,
                     operationId => ServiceClientAdapter.GetCancelJobOperationResult(operationId));

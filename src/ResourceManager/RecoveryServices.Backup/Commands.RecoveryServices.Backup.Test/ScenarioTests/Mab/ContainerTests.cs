@@ -15,11 +15,6 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
@@ -28,16 +23,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.MAB)]
         public void TestGetMabContainerScenario()
         {
-            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.Mab, "Test-GetContainerScenario");
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.Mab, "Test-GetContainerScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.MAB)]
         public void TestUnregisterMabContainer()
         {
-            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.Mab, "Test-GetContainerScenario");
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.Mab, "Test-UnregisterContainerScenario");
         }
     }
 }

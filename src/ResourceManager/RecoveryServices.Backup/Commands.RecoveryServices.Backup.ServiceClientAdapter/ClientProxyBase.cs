@@ -13,18 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
+    /// <summary>
+    /// Basic utilities and initializations for client proxy
+    /// </summary>
     public class ClientProxyBase
     {   
         protected AzureContext Context;
@@ -40,6 +38,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public CancellationToken CmdletCancellationToken;
         
+        /// <summary>
+        /// AzureContext based ctor
+        /// </summary>
+        /// <param name="context">Azure Context</param>
         public ClientProxyBase(AzureContext context)
         {
             Context = context;
@@ -58,6 +60,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
         }
 
+        /// <summary>
+        /// Gets the client request ID set by the context
+        /// </summary>
+        /// <returns>Client request ID</returns>
         public string GetClientRequestId()
         {
             return ClientRequestId;
