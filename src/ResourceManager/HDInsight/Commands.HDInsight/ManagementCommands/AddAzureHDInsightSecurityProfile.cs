@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 1,
             Mandatory = true,
-            HelpMessage = "The Domain of the secure cluster.")]
+            HelpMessage = "Active Directory domain for the cluster.")]
         public string Domain
         {
             get { return _securityProfile.Domain; }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 2,
             Mandatory = true,
-            HelpMessage = "Credential of the domain user. Username should be in user principal format. Eg. sampleuser@contoso.com")]
+            HelpMessage = "A domain user account credential with sufficient permissions for creating the cluster. It should be in user@domain format.")]
         public PSCredential DomainUserCredential 
         {
             get { return _securityProfile.DomainUserCredential; }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 3,
             Mandatory = true,
-            HelpMessage = "The OrganizationalUnit DN.")]
+            HelpMessage = "Distinguished name of the organizational unit in the Active directory where user and computer accounts will be created.")]
         public string OrganizationalUnitDN
         {
             get { return _securityProfile.OrganizationalUnitDN; }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 4,
             Mandatory = true,
-            HelpMessage = "The list of urls of the LDAPS server.")]
+            HelpMessage = "Urls of one or multiple LDAPS servers for the Active Directory.")]
         public string[] LdapsUrls
         {
             get { return _securityProfile.LdapsUrls.ToArray(); }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(Position = 5,
-            HelpMessage = "The list of DNs of the user group which should have access to use the cluster.")]
+            HelpMessage = "Distinguished names of the Active Directory groups that will be available in Ambari and Ranger.")]
         public string[] ClusterUsersGroupDNs
         {
             get { return _securityProfile.ClusterUsersGroupDNs.ToArray(); }
