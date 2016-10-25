@@ -33,14 +33,13 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 0,
         Mandatory = true,
-        ValueFromPipeline = true,
         HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config { get; set; }
 
         [Parameter(Position = 1,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Domain of the secure cluster")]
+            HelpMessage = "The Domain of the secure cluster.")]
         public string Domain
         {
             get { return _securityProfile.Domain; }
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 3,
             Mandatory = true,
-            HelpMessage = "The OrganizationalUnit DN")]
+            HelpMessage = "The OrganizationalUnit DN.")]
         public string OrganizationalUnitDN
         {
             get { return _securityProfile.OrganizationalUnitDN; }
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 4,
             Mandatory = true,
-            HelpMessage = "The list of urls of the LDAPS server")]
+            HelpMessage = "The list of urls of the LDAPS server.")]
         public string[] LdapsUrls
         {
             get { return _securityProfile.LdapsUrls.ToArray(); }
@@ -75,8 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(Position = 5,
-            Mandatory = false,
-            HelpMessage = "The list of DNs of the user group which should have access to use the cluster")]
+            HelpMessage = "The list of DNs of the user group which should have access to use the cluster.")]
         public string[] ClusterUsersGroupDNs
         {
             get { return _securityProfile.ClusterUsersGroupDNs.ToArray(); }
