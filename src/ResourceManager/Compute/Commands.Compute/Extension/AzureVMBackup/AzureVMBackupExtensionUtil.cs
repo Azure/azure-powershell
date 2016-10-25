@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <param name="taskId"></param>
         /// <param name="storageCredentialsFactory"></param>
         /// <returns></returns>
-        public List<CloudPageBlob> FindSnapshot(List<string> blobUris, List<StorageCredentialsFactory> storageCredentialsFactory, Dictionary<string, string> snapshotQuery)
+        public List<CloudPageBlob> FindSnapshot(AzureContext azContext, List<string> blobUris, List<StorageCredentialsFactory> storageCredentialsFactory, Dictionary<string, string> snapshotQuery)
         {
             List<CloudPageBlob> snapshots = new List<CloudPageBlob>();
             for (int i = 0; i < blobUris.Count; i++)
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                 if (BlobUri.TryParseUri(new Uri(blobUris[i]), out blobUri))
                 {
                     StorageCredentials sc = storageCredentialsFactory[i].Create(blobUri);
-                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, true);
+                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, azContext.Environment.GetEndpointSuffix(AzureEnvironment.Endpoint.StorageEndpointSuffix), true);
                     CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
                     CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobUri.BlobContainerName);
                     IEnumerable<IListBlobItem> blobs = blobContainer.ListBlobs(null, true, BlobListingDetails.All);
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 
             Dictionary<string, string> snapshotQuery = new Dictionary<string, string>();
             snapshotQuery.Add(backupExtensionMetadataName, snapshotTag);
-            List<CloudPageBlob> snapshots = this.FindSnapshot(blobSASUris.pageBlobUri, blobSASUris.storageCredentialsFactory, snapshotQuery);
+            List<CloudPageBlob> snapshots = this.FindSnapshot(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, blobSASUris.pageBlobUri, blobSASUris.storageCredentialsFactory, snapshotQuery);
             if (snapshots == null || snapshots.Count == 0)
             {
                 throw new AzureVMBackupException(AzureVMBackupErrorCodes.NoSnapshotFound, "snapshot with the tag not found.");
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             int i = 0;
             for (; i < loopingTimes; i++)
             {
-                List<CloudPageBlob> snapshotsFound = this.FindSnapshot(blobSASUris.pageBlobUri, blobSASUris.storageCredentialsFactory, snapshotQuery);
+                List<CloudPageBlob> snapshotsFound = this.FindSnapshot(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, blobSASUris.pageBlobUri, blobSASUris.storageCredentialsFactory, snapshotQuery);
                 if (snapshotsFound.Count == vmPageBlobUris.Count)
                 {
                     break;
