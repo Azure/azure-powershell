@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string BootstrapVersionTemplate = "bootstrap_version";
         private string ClientRbTemplate = "client_rb";
         private string BootStrapOptionsTemplate = "bootstrap_options";
-        private string JsonAttributesTemplate = "custom_json_attr";
+        private string JsonAttributeTemplate = "custom_json_attr";
         private string ChefServiceIntervalTemplate = "chef_service_interval";
         private string RunListTemplate = "runlist";
 
@@ -98,15 +98,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Chef Client bootstrap options in JSON format. e.g. -JsonAttributes '{\"foo\" : \"bar\"}'")]
+            HelpMessage = "The Chef Client bootstrap options in JSON format.")]
         [ValidateNotNullOrEmpty]
         public string BootstrapOptions { get; set; }
 
         [Parameter(
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "A JSON string to be added to the first run of chef-client.")]
+           HelpMessage = "A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{\"foo\" : \"bar\"}'")]
         [ValidateNotNullOrEmpty]
-        public string JsonAttributes { get; set; }
+        public string JsonAttribute { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
                     bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
-                    bool IsJsonAttributesEmpty = string.IsNullOrEmpty(this.JsonAttributes);
+                    bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
                     bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
 
@@ -290,9 +290,9 @@ validation_client_name 	'{1}'
                         hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
                     }
 
-                    if (!IsJsonAttributesEmpty)
+                    if (!IsJsonAttributeEmpty)
                     {
-                        hashTable.Add(JsonAttributesTemplate, JsonAttributes);
+                        hashTable.Add(JsonAttributeTemplate, JsonAttribute);
                     }
 
                     if (!IsChefServiceIntervalEmpty)

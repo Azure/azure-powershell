@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string ClientRbTemplate = "client_rb";
         protected const string BootstrapVersionTemplate = "bootstrap_version";
         protected const string BootStrapOptionsTemplate = "bootstrap_options";
-        protected const string JsonAttributesTemplate = "custom_json_attr";
+        protected const string JsonAttributeTemplate = "custom_json_attr";
         protected const string ChefServiceIntervalTemplate = "chef_service_interval";
         protected const string RunListTemplate = "runlist";
 

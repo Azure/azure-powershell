@@ -69,9 +69,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         [Parameter(
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "A JSON string to be added to the first run of chef-client. e.g. -JsonAttributes '{\"foo\" : \"bar\"}'")]
+             HelpMessage = "A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{\"foo\" : \"bar\"}'")]
         [ValidateNotNullOrEmpty]
-        public string JsonAttributes { get; set; }
+        public string JsonAttribute { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -173,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
             bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
             bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
-            bool IsJsonAttributesEmpty = string.IsNullOrEmpty(this.JsonAttributes);
+            bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
             bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
             string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
 
@@ -238,9 +238,9 @@ validation_client_name 	'{1}'
                 hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
             }
 
-            if (!IsJsonAttributesEmpty)
+            if (!IsJsonAttributeEmpty)
             {
-                hashTable.Add(JsonAttributesTemplate, JsonAttributes);
+                hashTable.Add(JsonAttributeTemplate, JsonAttribute);
             }
 
             if (!IsChefServiceIntervalEmpty)
