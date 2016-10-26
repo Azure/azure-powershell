@@ -13,10 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
 using System.Management.Automation;
->>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 using System.Security;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 

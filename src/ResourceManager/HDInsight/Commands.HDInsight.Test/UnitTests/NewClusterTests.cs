@@ -279,7 +279,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 };
             }
 
-<<<<<<< HEAD
             var coreConfigs = new Dictionary<string, string>
             {
                 {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},
@@ -382,9 +381,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             
             cluster.Properties.ClusterDefinition.ComponentVersion = componentVersion;
-
-=======
->>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
             var coreConfigs = new Dictionary<string, string>
             {
                 {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},
@@ -410,7 +406,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             var getresponse = new ClusterGetResponse {Cluster = cluster};
 
-<<<<<<< HEAD
             hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
@@ -426,7 +421,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.ComponentVersion["Spark"] == componentVersion["Spark"])))
             .Returns(getresponse)
             .Verifiable();
-=======
             hdinsightManagementMock.Setup(
                 c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
                     parameters =>
@@ -442,12 +436,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.SshPassword == _sshCred.Password.ConvertToString())))
                 .Returns(getresponse)
                 .Verifiable();
->>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
 
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
-<<<<<<< HEAD
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
@@ -459,8 +451,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.OperatingSystemType == OSType.Linux &&
                     clusterout.ComponentVersion[0] == componentVersionResponse)),
                     Times.Once);
-=======
->>>>>>> [Secure Hadoop] Powershell changes to support secure cluster creation
         }
     }
 }
