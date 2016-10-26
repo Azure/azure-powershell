@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {
@@ -56,6 +59,18 @@ namespace Microsoft.Azure.Commands.Insights
             if (!Uri.TryCreate(uri, UriKind.RelativeOrAbsolute, out tempUri))
             {
                 throw new ArgumentException(string.Format("Invalid {0}: {1}", argName, uri));
+            }
+        }
+
+        public static void ExtractCollectionFromResult(this IEnumerator<EventData> enumerator, bool fullDetails, List<IPSEventData> records, Func<EventData, bool> keepTheRecord)
+        {
+            while (enumerator.MoveNext())
+            {
+                var current = enumerator.Current;
+                if (keepTheRecord(current))
+                {
+                    records.Add(fullDetails ? (IPSEventData)new PSEventData(current) : (IPSEventData)new PSEventDataNoDetails(current));
+                }
             }
         }
     }
