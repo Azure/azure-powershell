@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
@@ -76,37 +77,25 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new LogProfileCreatOrUpdateParameters();
+            var putParameters = new LogProfileCreateOrUpdateParameters();
 
             if (this.Categories == null)
             {
                 this.Categories = new List<string>(ValidCategories);
             }
 
-            putParameters.Properties = new LogProfile
+            putParameters.Categories = this.Categories;
+            putParameters.Locations = this.Locations;
+            putParameters.RetentionPolicy = new RetentionPolicy
             {
-                Categories = this.Categories,
-                Locations = this.Locations,
-                RetentionPolicy = new RetentionPolicy
-                {
-                    Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,
-                    Enabled = this.RetentionInDays.HasValue
-                },
-                ServiceBusRuleId = this.ServiceBusRuleId,
-                StorageAccountId = this.StorageAccountId
+                Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,
+                Enabled = this.RetentionInDays.HasValue
             };
+            putParameters.ServiceBusRuleId = this.ServiceBusRuleId;
+            putParameters.StorageAccountId = this.StorageAccountId;
 
-            this.InsightsManagementClient.LogProfilesOperations.CreateOrUpdateAsync(
-                this.Name,
-                putParameters,
-                CancellationToken.None).Wait();
-
-            PSLogProfile psResult = new PSLogProfile(
-                "/subscriptions/{0}/providers/microsoft.insights/logprofiles/{1}"
-                    .FormatInvariant(DefaultContext.Subscription.Id.ToString(), this.Name), 
-                this.Name,
-                putParameters.Properties);
-            WriteObject(psResult);
+            LogProfileResource result = this.InsightsManagementClient.LogProfiles.CreateOrUpdateAsync(logProfileName: this.Name, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+            WriteObject(new PSLogProfile(result));
         }
     }
 }

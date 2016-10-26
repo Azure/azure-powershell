@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Insights.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -61,17 +62,17 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the Autoscale settings for a resource group
-                AutoscaleSettingListResponse result = this.InsightsManagementClient.AutoscaleOperations.ListSettingsAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: null).Result;
+                IPage<AutoscaleSettingResource> result = this.InsightsManagementClient.AutoscaleSettings.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroup).Result;
 
-                var records = result.AutoscaleSettingResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(e) : e);
+                var records = result.Select(e => this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(e) : e);
                 WriteObject(sendToPipeline: records, enumerateCollection: true);
             }
             else
             {
                 // Retrieve a single Autoscale setting determined by the resource group and the rule name
-                AutoscaleSettingGetResponse result = this.InsightsManagementClient.AutoscaleOperations.GetSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
+                AutoscaleSettingResource result = this.InsightsManagementClient.AutoscaleSettings.GetAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
 
-                WriteObject(sendToPipeline: this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(result) : result.ToAutoscaleSettingGetResponse());
+                WriteObject(sendToPipeline: this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(result) : result);
             }
         }
     }

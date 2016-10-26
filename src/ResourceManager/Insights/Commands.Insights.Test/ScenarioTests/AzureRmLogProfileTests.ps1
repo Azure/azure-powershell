@@ -23,9 +23,9 @@ function Test-GetAzureRmLogProfile
         # Test
         $actual = Get-AzureRmLogProfile -Name default
 
-        Assert-AreEqual /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/microsoft.insights/logprofiles/default $actual.Id 
+        Assert-AreEqual /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default $actual.Id 
         Assert-AreEqual default        $actual.Name
-        Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777" $actual.StorageAccountId
+        Assert-AreEqual "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777" $actual.StorageAccountId
         Assert-AreEqual $null          $actual.ServiceBusRuleId
         Assert-AreEqual 1              $actual.Locations.Count
         Assert-AreEqual global         $actual.Locations

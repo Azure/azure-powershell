@@ -205,18 +205,6 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -567,18 +555,6 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -625,9 +601,7 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 				<maml:para>Adds or updates an event-based alert rule</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>RequestId                                                                                                    StatusCode
----------                                                                                                    ----------
-9a5bc388-c7ac-4dc6-aa70-f4bc29c2c712                                                                                 OK</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -666,7 +640,7 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 	<command:details>
 		<command:name>Add-AzureRmLogProfile</command:name>
 		<maml:description>
-			<maml:para>Creates a log profile</maml:para>
+			<maml:para>Creates a log profile.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -676,7 +650,7 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Creates a log profile resource including information about categories, locations, retention, Service Bus rule id, and storage account id.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -807,7 +781,8 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -819,7 +794,8 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1095,18 +1071,6 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -1153,9 +1117,7 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 				<maml:para>This command creates a metric alert rule attached to a website</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>RequestId                                                                                                    StatusCode
----------                                                                                                    ----------
-33574ccf-0b01-43b4-aa97-87e6bbcf1c11                                                                            Created</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -1177,9 +1139,7 @@ If the rule does not exist, it creates it disabled.
 If the rule exists, then it just disables it.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>RequestId                                                                                                    StatusCode
----------                                                                                                    ----------
-96c489f1-8529-46e1-a76d-2c1463ca3116                                                                                 OK</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -1199,9 +1159,7 @@ If the rule exists, then it just disables it.</maml:para>
 				<maml:para>This command creates a metric alert rule attached to a website and with some e-mails to send notifications to.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>RequestId                                                                                                    StatusCode
----------                                                                                                    ----------
-9a5bc388-c7ac-4dc6-aa70-f4bc29c2c712                                                                                 OK</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -1479,18 +1437,6 @@ If the rule exists, then it just disables it.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -1537,9 +1483,7 @@ If the rule exists, then it just disables it.</maml:para>
 				<maml:para>Adds or updates a webtest alert rule</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>RequestId                                                                                                    StatusCode
----------                                                                                                    ----------
-9a5bc388-c7ac-4dc6-aa70-f4bc29c2c712                                                                                 OK</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -1706,18 +1650,6 @@ If the rule exists, then it just disables it.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -1764,146 +1696,7 @@ If the rule exists, then it just disables it.</maml:para>
 				<maml:para>This command retrieves all the alert rule-related events associated to the current subscription</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Authorization        :
-Caller               : Microsoft.Insights/alertRules
-Claims               :
-                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/alertRules
-CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzg4ODU3OTI5OTI2
-Description          : &apos;CpuTime GreaterThan 3 ([Count]) in the last 5 minutes&apos; has been resolved for Website:
-                       garyyang1 (Default-Web-EastUS)
-EventChannels        : Admin, Operation
-EventDataId          : 769fab1c-fc9f-4e18-bc3a-fa79fbdd3616
-EventName            : Alert
-EventSource          : microsoft.insights/alertrules
-EventTimestamp       : 2/11/2015 7:14:45 PM
-HttpRequest          :
-Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/events/769fab1c-fc
-                       9f-4e18-bc3a-fa79fbdd3616/ticks/635592788857929926
-Level                : Informational
-OperationId          : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzg4ODU3OTI5OTI2
-OperationName        : ResolveAlert
-Properties           :
-                       RuleUri        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-
-                       EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleName       : checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleDescription:
-                       Threshold      : 3
-                       WindowSizeInMinutes: 5
-                       Aggregation    : Total
-                       Operator       : GreaterThan
-                       MetricName     : CpuTime
-                       MetricUnit     : Count
-ResourceGroupName    : Default-Web-EastUS
-ResourceProviderName : microsoft.insights
-ResourceId           : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-Status               : Resolved
-SubmissionTimestamp  : 2/11/2015 7:14:45 PM
-SubscriptionId       : b93fb07a-6f93-30be-bf3e-4f0deca15f4f
-SubStatus            :
-
-Authorization        :
-Caller               : Microsoft.Insights/alertRules
-Claims               :
-                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/alertRules
-CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
-Description          : &apos;CpuTime GreaterThan 3 ([Count]) in the last 5 minutes&apos; was activated for Website: garyyang1
-                       (Default-Web-EastUS)
-EventChannels        : Admin, Operation
-EventDataId          : 66277c94-2097-4f5f-860d-e585f1206cd7
-EventName            : Alert
-EventSource          : microsoft.insights/alertrules
-EventTimestamp       : 2/11/2015 7:04:46 PM
-HttpRequest          :
-Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.web/sites/garyyang1/events/66277c94-2097-4f5f-860d-e585f1206cd7/ticks/6355927828650595
-                       14
-Level                : Error
-OperationId          : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
-OperationName        : ActivateAlert
-Properties           :
-                       RuleUri        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-
-                       EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleName       : checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleDescription:
-                       Threshold      : 3
-                       WindowSizeInMinutes: 5
-                       Aggregation    : Total
-                       Operator       : GreaterThan
-                       MetricName     : CpuTime
-                       MetricUnit     : Count
-ResourceGroupName    : Default-Web-EastUS
-ResourceProviderName : microsoft.web
-ResourceId           : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.web/sites/garyyang1
-Status               : Activated
-SubmissionTimestamp  : 2/11/2015 7:04:46 PM
-SubscriptionId       : b93fb07a-6f93-30be-bf3e-4f0deca15f4f
-SubStatus            :
-
-Authorization        :
-Caller               : Microsoft.Insights/alertRules
-Claims               :
-                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/alertRules
-CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
-Description          : &apos;CpuTime GreaterThan 3 ([Count]) in the last 5 minutes&apos; was activated for Website: garyyang1
-                       (Default-Web-EastUS)
-EventChannels        : Admin, Operation
-EventDataId          : ec9f7b3c-c6ea-4b45-bd15-ff43e38491e3
-EventName            : Alert
-EventSource          : microsoft.insights/alertrules
-EventTimestamp       : 2/11/2015 7:04:46 PM
-HttpRequest          :
-Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/events/ec9f7b3c-c6
-                       ea-4b45-bd15-ff43e38491e3/ticks/635592782865059514
-Level                : Error
-OperationId          : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
-OperationName        : ActivateAlert
-Properties           :
-                       RuleUri        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-
-                       EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleName       : checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleDescription:
-                       Threshold      : 3
-                       WindowSizeInMinutes: 5
-                       Aggregation    : Total
-                       Operator       : GreaterThan
-                       MetricName     : CpuTime
-                       MetricUnit     : Count
-ResourceGroupName    : Default-Web-EastUS
-ResourceProviderName : microsoft.insights
-ResourceId           : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-Status               : Activated
-SubmissionTimestamp  : 2/11/2015 7:04:46 PM
-SubscriptionId       : b93fb07a-6f93-30be-bf3e-4f0deca15f4f
-SubStatus            :</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -1923,99 +1716,7 @@ SubStatus            :</maml:para>
 				<maml:para>This command retrieves the alert rule-related events associated to the particular resource identified by its resource id (a.k.a. ResourceUri)</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Authorization        :
-Caller               : Microsoft.Insights/alertRules
-Claims               :
-                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/alertRules
-CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzg4ODU3OTI5OTI2
-Description          : &apos;CpuTime GreaterThan 3 ([Count]) in the last 5 minutes&apos; has been resolved for Website:
-                       garyyang1 (Default-Web-EastUS)
-EventChannels        : Admin, Operation
-EventDataId          : 769fab1c-fc9f-4e18-bc3a-fa79fbdd3616
-EventName            : Alert
-EventSource          : microsoft.insights/alertrules
-EventTimestamp       : 2/11/2015 7:14:45 PM
-HttpRequest          :
-Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/events/769fab1c-fc
-                       9f-4e18-bc3a-fa79fbdd3616/ticks/635592788857929926
-Level                : Informational
-OperationId          : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzg4ODU3OTI5OTI2
-OperationName        : ResolveAlert
-Properties           :
-                       RuleUri        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-
-                       EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleName       : checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleDescription:
-                       Threshold      : 3
-                       WindowSizeInMinutes: 5
-                       Aggregation    : Total
-                       Operator       : GreaterThan
-                       MetricName     : CpuTime
-                       MetricUnit     : Count
-ResourceGroupName    : Default-Web-EastUS
-ResourceProviderName : microsoft.insights
-ResourceId           : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-Status               : Resolved
-SubmissionTimestamp  : 2/11/2015 7:14:45 PM
-SubscriptionId       : b93fb07a-6f93-30be-bf3e-4f0deca15f4f
-SubStatus            :
-
-Authorization        :
-Caller               : Microsoft.Insights/alertRules
-Claims               :
-                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/alertRules
-CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
-Description          : &apos;CpuTime GreaterThan 3 ([Count]) in the last 5 minutes&apos; was activated for Website: garyyang1
-                       (Default-Web-EastUS)
-EventChannels        : Admin, Operation
-EventDataId          : ec9f7b3c-c6ea-4b45-bd15-ff43e38491e3
-EventName            : Alert
-EventSource          : microsoft.insights/alertrules
-EventTimestamp       : 2/11/2015 7:04:46 PM
-HttpRequest          :
-Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/events/ec9f7b3c-c6
-                       ea-4b45-bd15-ff43e38491e3/ticks/635592782865059514
-Level                : Error
-OperationId          : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNj
-                       cmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2Vi
-                       LUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBj
-                       LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
-OperationName        : ActivateAlert
-Properties           :
-                       RuleUri        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-
-                       EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleName       : checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-                       RuleDescription:
-                       Threshold      : 3
-                       WindowSizeInMinutes: 5
-                       Aggregation    : Total
-                       Operator       : GreaterThan
-                       MetricName     : CpuTime
-                       MetricUnit     : Count
-ResourceGroupName    : Default-Web-EastUS
-ResourceProviderName : microsoft.insights
-ResourceId           : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d
-Status               : Activated
-SubmissionTimestamp  : 2/11/2015 7:04:46 PM
-SubscriptionId       : b93fb07a-6f93-30be-bf3e-4f0deca15f4f
-SubStatus            :</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2045,10 +1746,6 @@ SubStatus            :</maml:para>
 		</maml:navigationLink>
 		<maml:navigationLink>
 			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -2186,18 +1883,6 @@ SubStatus            :</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -2315,10 +2000,6 @@ The output contains only basic information about the alert rule.</maml:para>
 		</maml:navigationLink>
 		<maml:navigationLink>
 			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -2460,18 +2141,6 @@ The output contains only basic information about the alert rule.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -2538,140 +2207,7 @@ The output contains only basic information about the alert rule.</maml:para>
 				<maml:para>This command retrieves the list of autoscale-related events associated to a particular resource identified by the resource&#39;s Id (a.k.a. ResourceUri)</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Authorization        :
-Caller               : Microsoft.Insights/autoscaleSettings
-Claims               :
-                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/autoscaleSettings
-CorrelationId        : ac5b03ca-05d4-4811-9c27-0314a145f785
-Description          : The autoscale engine attempting to scale resource &apos;/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deb
-                       a10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm&apos;
-                       from 1 instances count to 2 instances count.
-EventChannels        : Admin, Operation
-EventDataId          : c554f7ed-514c-449c-9338-13e15b4b56a3
-EventName            : AutoscaleAction
-EventSource          : microsoft.insights/autoscalesettings
-EventTimestamp       : 2/10/2015 2:38:19 AM
-HttpRequest          :
-Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS/events/c554f7ed-514c-4
-                       49c-9338-13e15b4b56a3/ticks/635591326997519815
-Level                : Informational
-OperationId          : ac5b03ca-05d4-4811-9c27-0314a145f785
-OperationName        : ScaleUp
-Properties           :
-                       Description    : The autoscale engine attempting to scale resource &apos;/subscriptions/a93fb07c-6c93
-                       -40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/De
-                       faultServerFarm&apos; from 1 instances count to 2 instances count.
-                       ResourceName   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-
-                       EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                       OldInstancesCount: 1
-                       NewInstancesCount: 2
-                       ActiveAutoscaleProfile: {
-                         &quot;Name&quot;: &quot;No scheduled times&quot;,
-                         &quot;Capacity&quot;: {
-                           &quot;Minimum&quot;: &quot;1&quot;,
-                           &quot;Maximum&quot;: &quot;3&quot;,
-                           &quot;Default&quot;: &quot;1&quot;
-                         },
-                         &quot;Rules&quot;: [
-                           {
-                             &quot;MetricTrigger&quot;: {
-                               &quot;Name&quot;: &quot;CpuPercentage&quot;,
-                               &quot;Namespace&quot;: &quot;&quot;,
-                               &quot;Resource&quot;: &quot;/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-
-                       Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm&quot;,
-                               &quot;ResourceLocation&quot;: &quot;East US&quot;,
-                               &quot;TimeGrain&quot;: &quot;PT1M&quot;,
-                               &quot;Statistic&quot;: &quot;Average&quot;,
-                               &quot;TimeWindow&quot;: &quot;PT45M&quot;,
-                               &quot;TimeAggregation&quot;: &quot;Average&quot;,
-                               &quot;Operator&quot;: &quot;GreaterThanOrEqual&quot;,
-                               &quot;Threshold&quot;: 14.0,
-                               &quot;Source&quot;: &quot;WebsiteDedicated:eastuswebspace:DefaultServerFarm&quot;
-                             },
-                             &quot;ScaleAction&quot;: {
-                               &quot;Direction&quot;: &quot;Increase&quot;,
-                               &quot;Type&quot;: &quot;ChangeCount&quot;,
-                               &quot;Value&quot;: &quot;1&quot;,
-                               &quot;Cooldown&quot;: &quot;PT5M&quot;
-                             }
-                           },
-                           {
-                             &quot;MetricTrigger&quot;: {
-                               &quot;Name&quot;: &quot;CpuPercentage&quot;,
-                               &quot;Namespace&quot;: &quot;&quot;,
-                               &quot;Resource&quot;: &quot;/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-
-                       Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm&quot;,
-                               &quot;ResourceLocation&quot;: &quot;East US&quot;,
-                               &quot;TimeGrain&quot;: &quot;PT1M&quot;,
-                               &quot;Statistic&quot;: &quot;Average&quot;,
-                               &quot;TimeWindow&quot;: &quot;PT45M&quot;,
-                               &quot;TimeAggregation&quot;: &quot;Average&quot;,
-                               &quot;Operator&quot;: &quot;LessThanOrEqual&quot;,
-                               &quot;Threshold&quot;: 4.0,
-                               &quot;Source&quot;: &quot;WebsiteDedicated:eastuswebspace:DefaultServerFarm&quot;
-                             },
-                             &quot;ScaleAction&quot;: {
-                               &quot;Direction&quot;: &quot;Decrease&quot;,
-                               &quot;Type&quot;: &quot;ChangeCount&quot;,
-                               &quot;Value&quot;: &quot;1&quot;,
-                               &quot;Cooldown&quot;: &quot;PT2H&quot;
-                             }
-                           },
-                           {
-                             &quot;MetricTrigger&quot;: {
-                               &quot;Name&quot;: &quot;BytesReceived&quot;,
-                               &quot;Namespace&quot;: &quot;&quot;,
-                               &quot;Resource&quot;: &quot;/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-
-                       Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm&quot;,
-                               &quot;ResourceLocation&quot;: &quot;East US&quot;,
-                               &quot;TimeGrain&quot;: &quot;PT1M&quot;,
-                               &quot;Statistic&quot;: &quot;Average&quot;,
-                               &quot;TimeWindow&quot;: &quot;PT10M&quot;,
-                               &quot;TimeAggregation&quot;: &quot;Average&quot;,
-                               &quot;Operator&quot;: &quot;LessThanOrEqual&quot;,
-                               &quot;Threshold&quot;: 50.0,
-                               &quot;Source&quot;: &quot;WebsiteDedicated:eastuswebspace:DefaultServerFarm&quot;
-                             },
-                             &quot;ScaleAction&quot;: {
-                               &quot;Direction&quot;: &quot;Decrease&quot;,
-                               &quot;Type&quot;: &quot;ChangeCount&quot;,
-                               &quot;Value&quot;: &quot;1&quot;,
-                               &quot;Cooldown&quot;: &quot;PT10M&quot;
-                             }
-                           },
-                           {
-                             &quot;MetricTrigger&quot;: {
-                               &quot;Name&quot;: &quot;BytesReceived&quot;,
-                               &quot;Namespace&quot;: &quot;&quot;,
-                               &quot;Resource&quot;: &quot;/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-
-                       Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm&quot;,
-                               &quot;ResourceLocation&quot;: &quot;East US&quot;,
-                               &quot;TimeGrain&quot;: &quot;PT1M&quot;,
-                               &quot;Statistic&quot;: &quot;Average&quot;,
-                               &quot;TimeWindow&quot;: &quot;PT5M&quot;,
-                               &quot;TimeAggregation&quot;: &quot;Average&quot;,
-                               &quot;Operator&quot;: &quot;GreaterThanOrEqual&quot;,
-                               &quot;Threshold&quot;: 100.0,
-                               &quot;Source&quot;: &quot;WebsiteDedicated:eastuswebspace:DefaultServerFarm&quot;
-                             },
-                             &quot;ScaleAction&quot;: {
-                               &quot;Direction&quot;: &quot;Increase&quot;,
-                               &quot;Type&quot;: &quot;ChangeCount&quot;,
-                               &quot;Value&quot;: &quot;1&quot;,
-                               &quot;Cooldown&quot;: &quot;PT10M&quot;
-                             }
-                           }
-                         ]
-                       }
-ResourceGroupName    : Default-Web-EastUS
-ResourceProviderName : microsoft.insights
-ResourceId           : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/
-                       microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
-Status               : Succeeded
-SubmissionTimestamp  : 2/10/2015 2:38:19 AM
-SubscriptionId       : b93fb07a-6f93-30be-bf3e-4f0deca15f4f
-SubStatus            :</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2777,18 +2313,6 @@ SubStatus            :</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -2835,99 +2359,7 @@ SubStatus            :</maml:para>
 				<maml:para>This command retrieves the autoscale settings associated to a resource group</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id         : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.
-             insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
-Location   : East US
-Name       : DefaultServerFarm-Default-Web-EastUS
-Properties :
-             Enabled           : True
-             Profiles          :
-
-                                 Capacity      :
-                                      Default   : 1
-                                      Minimum   : 3
-                                      Maximum   : 1
-                                 FixedDate     :
-
-                                 Name          : No scheduled times
-                                 Recurrence    :
-
-                                 Rules         :
-
-                                           MetricTrigger  :
-                                                MetricName         : CpuPercentage
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : GreaterThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 14
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:45:00
-                                           ScaleAction    :
-                                                Cooldown   : 00:05:00
-                                                Direction  : Increase
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-                                           MetricTrigger  :
-                                                MetricName         : CpuPercentage
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : LessThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 4
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:45:00
-                                           ScaleAction    :
-                                                Cooldown   : 02:00:00
-                                                Direction  : Decrease
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-                                           MetricTrigger  :
-                                                MetricName         : BytesReceived
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : LessThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 50
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:10:00
-                                           ScaleAction    :
-                                                Cooldown   : 00:10:00
-                                                Direction  : Decrease
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-                                           MetricTrigger  :
-                                                MetricName         : BytesReceived
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : GreaterThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 100
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:05:00
-                                           ScaleAction    :
-                                                Cooldown   : 00:10:00
-                                                Direction  : Increase
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-             TargetResourceId : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/
-             providers/microsoft.web/serverFarms/DefaultServerFarm
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,
-             Microsoft.WindowsAzure.Management.Common.Storage], [hidden-link:/subscriptions/a93fb07c-6c93-40be-bf3b-4f0
-             deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm,
-             Resource]}</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2947,99 +2379,7 @@ Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePrese
 				<maml:para>This command retrieves the autoscale settings associated to a resource group and a resource</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id         : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.
-             insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
-Location   : East US
-Name       : DefaultServerFarm-Default-Web-EastUS
-Properties :
-             Enabled           : True
-             Profiles          :
-
-                                 Capacity      :
-                                      Default   : 1
-                                      Minimum   : 3
-                                      Maximum   : 1
-                                 FixedDate     :
-
-                                 Name          : No scheduled times
-                                 Recurrence    :
-
-                                 Rules         :
-
-                                           MetricTrigger  :
-                                                MetricName         : CpuPercentage
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : GreaterThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 14
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:45:00
-                                           ScaleAction    :
-                                                Cooldown   : 00:05:00
-                                                Direction  : Increase
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-                                           MetricTrigger  :
-                                                MetricName         : CpuPercentage
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : LessThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 4
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:45:00
-                                           ScaleAction    :
-                                                Cooldown   : 02:00:00
-                                                Direction  : Decrease
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-                                           MetricTrigger  :
-                                                MetricName         : BytesReceived
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : LessThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 50
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:10:00
-                                           ScaleAction    :
-                                                Cooldown   : 00:10:00
-                                                Direction  : Decrease
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-                                           MetricTrigger  :
-                                                MetricName         : BytesReceived
-                                                MetricResourceId  : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4
-             b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm
-                                                Operator           : GreaterThanOrEqual
-                                                Statistic          : Average
-                                                Threshold          : 100
-                                                TimeAggregation    : Average
-                                                TimeGrain          : 00:01:00
-                                                TimeWindow         : 00:05:00
-                                           ScaleAction    :
-                                                Cooldown   : 00:10:00
-                                                Direction  : Increase
-                                                Type       : ChangeCount
-                                                Value      : 1
-
-
-             TargetResourceId : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/
-             providers/microsoft.web/serverFarms/DefaultServerFarm
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,
-             Microsoft.WindowsAzure.Management.Common.Storage], [hidden-link:/subscriptions/a93fb07c-6c93-40be-bf3b-4f0
-             deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm,
-             Resource]}</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -3107,30 +2447,6 @@ Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePrese
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -3177,13 +2493,7 @@ Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePrese
 				<maml:para>This gets the diagnostic for a keyvault that has resourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/myResourcegroup/providers/microsoft.keyvault/keyvaults/myKeyvault</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>StorageAccountId   : /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/myResourcegroup/providers/microsoft.storage/accounts/myStorageAccount
-            StorageAccountName : myStorageAccount
-            Metrics
-
-            Logs
-            Enabled  : True
-            Category : AuditEvent</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -3195,6 +2505,10 @@ Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePrese
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmDiagnosticSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -3309,9 +2623,9 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>CorrelationId</maml:name>
+				<maml:name>ResourceId</maml:name>
 				<maml:description>
-					<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
+					<maml:para>Specifies a filter by ResoruceId. This parameter is mandatory.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3416,13 +2730,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceId</maml:name>
-				<maml:description>
-					<maml:para>Specifies a filter by ResoruceId. This parameter is mandatory.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>MaxEvents</maml:name>
 				<maml:description>
@@ -3469,6 +2776,13 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>CorrelationId</maml:name>
+				<maml:description>
+					<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>MaxEvents</maml:name>
@@ -3567,9 +2881,9 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>CorrelationId</maml:name>
+			<maml:name>ResourceId</maml:name>
 			<maml:description>
-				<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
+				<maml:para>Specifies a filter by ResoruceId. This parameter is mandatory.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3591,49 +2905,13 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>ResourceId</maml:name>
+			<maml:name>CorrelationId</maml:name>
 			<maml:description>
-				<maml:para>Specifies a filter by ResoruceId. This parameter is mandatory.</maml:para>
+				<maml:para>Specifies a filter by correlationId. This parameter is mandatory.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4133,7 +3411,8 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4145,7 +3424,8 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4160,10 +3440,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 	<command:examples>
 	</command:examples>
 	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText></maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
 		<maml:navigationLink>
 			<maml:linkText>Add-AzureRmLogProfile</maml:linkText>
 			<maml:uri></maml:uri>
@@ -4190,6 +3466,7 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 	</command:details>
 	<maml:description>
 		<maml:para>Retrieves the metric values of a resource that comply with certain criteria.</maml:para>
+		<maml:para>WARNING: This cmdlet will change in the next version. Both input and output are going to change.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4204,35 +3481,37 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>TimeGrain</maml:name>
 				<maml:description>
-					<maml:para>The time grain of the metric given as a TimeSpan (i.e. hh:mm:ss).</maml:para>
+					<maml:para>The time grain of the metric to be retrieve.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>StartTime</maml:name>
 				<maml:description>
-					<maml:para>Earliest Date/Time to search for metric values.</maml:para>
+					<maml:para>Specifies the start time of the query in local time. This parameter is optional. 
+The default is EndTime minus one hour.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>EndTime</maml:name>
 				<maml:description>
-					<maml:para>Latest Time/Date to search for metric values.</maml:para>
+					<maml:para>Specifies the end time of the query in local time. This parameter is optional. The default is the current time.
+The value must be later than StartTime.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>MetricNames</maml:name>
 				<maml:description>
-					<maml:para>An array of names of metrics to retrieve their values.</maml:para>
+					<maml:para>Comma-separated list of metric names</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DetailedOutput</maml:name>
 				<maml:description>
-					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is false (i.e. summarized output.)</maml:para>
+					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -4254,7 +3533,7 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>TimeGrain</maml:name>
 			<maml:description>
-				<maml:para>The time grain of the metric given as a TimeSpan (i.e. hh:mm:ss).</maml:para>
+				<maml:para>The time grain of the metric to be retrieve.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
 			<dev:type>
@@ -4266,31 +3545,33 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>StartTime</maml:name>
 			<maml:description>
-				<maml:para>Earliest Date/Time to search for metric values.</maml:para>
+				<maml:para>Specifies the start time of the query in local time. This parameter is optional. 
+The default is EndTime minus one hour.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			<dev:type>
 				<maml:name>DateTime</maml:name>
 				<maml:uri/>
 			</dev:type>
-			<dev:defaultValue>EndTime - 1 hour</dev:defaultValue>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>EndTime</maml:name>
 			<maml:description>
-				<maml:para>Latest Time/Date to search for metric values.</maml:para>
+				<maml:para>Specifies the end time of the query in local time. This parameter is optional. The default is the current time.
+The value must be later than StartTime.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			<dev:type>
 				<maml:name>DateTime</maml:name>
 				<maml:uri/>
 			</dev:type>
-			<dev:defaultValue>Now</dev:defaultValue>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>MetricNames</maml:name>
 			<maml:description>
-				<maml:para>An array of names of metrics to retrieve their values.</maml:para>
+				<maml:para>Comma-separated list of metric names</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
@@ -4302,23 +3583,11 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DetailedOutput</maml:name>
 			<maml:description>
-				<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is false (i.e. summarized output.)</maml:para>
+				<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>false</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4366,7 +3635,7 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			</maml:introduction>
 			<dev:code>Get-AzureRmMetric -res /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3 -time 00:01:00</dev:code>
 			<dev:remarks>
-				<maml:para>Retrieves the metric values for website3 with a time grain of 1 minute</maml:para>
+				<maml:para>Retrieves the metric values for the given logic app resource. The result is displayed summarized.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para>DimensionName  :
@@ -4406,45 +3675,14 @@ Unit           : Bytes</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmMetric -res /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3 -time 00:01:00 -det</dev:code>
+			<dev:code>Select-AzureRmSubscription -SubscriptionId df602c9c-7aa0-407d-a6fb-eb20c8bd1192
+ 
+Get-AzureRmMetric -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andy0802australia/providers/Microsoft.Logic/workflows/andy0802logicaus -time 00:05:00 -det</dev:code>
 			<dev:remarks>
-				<maml:para>Retrieves the metric values for website3 with a time grain of 1 minute. The output is detailed.</maml:para>
+				<maml:para>Retrieves the metric values for the given logic app resource. The result is displayed detailed.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>MetricValues   :
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:37:00 PM
-                     Total      : 0
-                     Average    : 0.106
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:39:00 PM
-                     Total      : 0.106
-                     Average    : 0.064
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:41:00 PM
-                     Total      : 0.064
-Properties     :
-DimensionName  :
-DimensionValue :
-Name           : AverageResponseTime
-EndTime        : 3/20/2015 6:43:33 PM
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:43:00 PM
-TimeGrain      : 00:01:00
-Unit           : Seconds</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4459,61 +3697,14 @@ Unit           : Seconds</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmMetric -res /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3 -time 00:01:00 -det -met Requests</dev:code>
+			<dev:code>Select-AzureRmSubscription -SubscriptionId df602c9c-7aa0-407d-a6fb-eb20c8bd1192
+ 
+Get-AzureRmMetric -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andy0802australia/providers/Microsoft.Logic/workflows/andy0802logicaus -MetricNames TriggerThrottledEvents,TriggersSucceeded -time 00:05:00 -det</dev:code>
 			<dev:remarks>
+				<maml:para>Retrieves the metric values for the given logic app resource, filtered by metric name. The result is displayed detailed.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para>MetricValues   :
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:39:00 PM
-                     Total      : 1
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:41:00 PM
-                     Total      : 1
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:43:00 PM
-                     Total      : 0
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:44:00 PM
-                     Total      : 1
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:45:00 PM
-                     Total      : 0
-Properties     :
-DimensionName  :
-DimensionValue :
-Name           : Requests
-EndTime        : 3/20/2015 6:47:56 PM
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:47:00 PM
-TimeGrain      : 00:01:00
-Unit           : Count</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4527,10 +3718,6 @@ Unit           : Count</maml:para>
 	<maml:relatedLinks>
 		<maml:navigationLink>
 			<maml:linkText>Get-AzureRmMetricDefinition</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Format-MetricsAsTable</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -4551,6 +3738,7 @@ Unit           : Count</maml:para>
 	</command:details>
 	<maml:description>
 		<maml:para>Retrieves the metric definitions.</maml:para>
+		<maml:para>WARNING: This cmdlet will change in the next version. Both input and output are going to change.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4615,18 +3803,6 @@ Unit           : Count</maml:para>
 			</dev:type>
 			<dev:defaultValue>false</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -4668,30 +3844,14 @@ Unit           : Count</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmMetricDefinition -res /subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2</dev:code>
+			<dev:code>Select-AzureRmSubscription -SubscriptionId df602c9c-7aa0-407d-a6fb-eb20c8bd1192
+ 
+Get-AzureRmMetricDefinition -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andy0802australia/providers/Microsoft.Logic/workflows/andy0802logicaus</dev:code>
 			<dev:remarks>
-				<maml:para>Gets all the metrics definitions for the given resource (identified by the ResourceId)</maml:para>
+				<maml:para>Gets all the metrics definitions for the given resource (identified by the ResourceId). The results are summarized.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Name                   : CpuTime
-Dimensions             : {}
-MetricAvailabilities   : {Microsoft.Azure.Insights.Models.MetricAvailability,
-                         Microsoft.Azure.Insights.Models.MetricAvailability,
-                         Microsoft.Azure.Insights.Models.MetricAvailability}
-PrimaryAggregationType : Total
-Properties             : {}
-ResourceUri            :
-Unit                   : Seconds
-
-Name                   : Requests
-Dimensions             : {}
-MetricAvailabilities   : {Microsoft.Azure.Insights.Models.MetricAvailability,
-                         Microsoft.Azure.Insights.Models.MetricAvailability,
-                         Microsoft.Azure.Insights.Models.MetricAvailability}
-PrimaryAggregationType : Total
-Properties             : {}
-ResourceUri            :
-Unit                   : Count</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4711,39 +3871,12 @@ Unit                   : Count</maml:para>
 				<maml:para>Gets all the metrics definitions for the given resource (identified by the ResourceId). The results are detailed.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Dimensions             :
-MetricAvailabilities   :
-                             Location  :
-                             Retention : 2.00:00:00
-                             Values    : 00:01:00
-                             Location  :
-                             Retention : 30.00:00:00
-                             Values    : 01:00:00
-                             Location  :
-                             Retention : 90.00:00:00
-                             Values    : 1.00:00:00
-Name                   : CpuTime
-Properties             :
-PrimaryAggregationType : Total
-ResourceUri            :
-Unit                   : Seconds
-
-Dimensions             :
-MetricAvailabilities   :
-                             Location  :
-                             Retention : 2.00:00:00
-                             Values    : 00:01:00
-                             Location  :
-                             Retention : 30.00:00:00
-                             Values    : 01:00:00
-                             Location  :
-                             Retention : 90.00:00:00
-                             Values    : 1.00:00:00
-Name                   : Requests
-Properties             :
-PrimaryAggregationType : Total
-ResourceUri            :
-Unit                   : Count</maml:para>
+				<maml:para>MetricAvailabilities   :
+                             Retention : 30.00:00:00,   TimeGrain    : 00:01:00
+                             Retention : 30.00:00:00,   TimeGrain    : 01:00:00
+Name                   :
+                             LocalizedValue : Runs Completed
+                             Value          : RunsCompleted</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4758,44 +3891,12 @@ Unit                   : Count</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmMetricDefinition -res /subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2 -det -met BytesSent,CpuTime</dev:code>
+			<dev:code>Get-AzureRmMetricDefinition -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andy0802australia/providers/Microsoft.Logic/workflows/andy0802logicaus -MetricNames TriggerThrottledEvents -det</dev:code>
 			<dev:remarks>
-				<maml:para>Gets one two metric definitions for the given resource (identified by the ResourceId). The results are detailed.</maml:para>
+				<maml:para>Gets one two metric definitions for the given resource (identified by the ResourceId), filtered by metric names. The results are detailed.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Dimensions             :
-MetricAvailabilities   :
-                             Location  :
-                             Retention : 2.00:00:00
-                             Values    : 00:01:00
-                             Location  :
-                             Retention : 30.00:00:00
-                             Values    : 01:00:00
-                             Location  :
-                             Retention : 90.00:00:00
-                             Values    : 1.00:00:00
-Name                   : CpuTime
-Properties             :
-PrimaryAggregationType : Total
-ResourceUri            :
-Unit                   : Seconds
-
-Dimensions             :
-MetricAvailabilities   :
-                             Location  :
-                             Retention : 2.00:00:00
-                             Values    : 00:01:00
-                             Location  :
-                             Retention : 30.00:00:00
-                             Values    : 01:00:00
-                             Location  :
-                             Retention : 90.00:00:00
-                             Values    : 1.00:00:00
-Name                   : BytesSent
-Properties             :
-PrimaryAggregationType : Total
-ResourceUri            :
-Unit                   : Bytes</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4931,18 +4032,6 @@ Unit                   : Bytes</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -5001,14 +4090,6 @@ Unit                   : Bytes</maml:para>
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>Get-AzureRmMetric</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -5576,44 +4657,6 @@ Unit                   : Bytes</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Rules</maml:name>
-				<maml:description>
-					<maml:para>The list of rules to add to the newly created profile.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmAutoscaleProfile</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>The name of the profile.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DefaultCapacity</maml:name>
-				<maml:description>
-					<maml:para>The default capacity.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>MaximumCapacity</maml:name>
-				<maml:description>
-					<maml:para>The maximum capacity.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>MinimumCapacity</maml:name>
-				<maml:description>
-					<maml:para>The minimum capacity.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>StartTimeWindow</maml:name>
 				<maml:description>
@@ -5692,19 +4735,57 @@ Unit                   : Bytes</maml:para>
 				<maml:description>
 					<maml:para>A list of scheduled hours.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">List`1[Nullable`1]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScheduleMinutes</maml:name>
 				<maml:description>
 					<maml:para>List of scheduled minutes.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">List`1[Nullable`1]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScheduleTimeZone</maml:name>
 				<maml:description>
 					<maml:para>The time zone of the schedule.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Rules</maml:name>
+				<maml:description>
+					<maml:para>The list of rules to add to the newly created profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmAutoscaleProfile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>The name of the profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>DefaultCapacity</maml:name>
+				<maml:description>
+					<maml:para>The default capacity.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaximumCapacity</maml:name>
+				<maml:description>
+					<maml:para>The maximum capacity.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MinimumCapacity</maml:name>
+				<maml:description>
+					<maml:para>The minimum capacity.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5766,18 +4847,6 @@ Unit                   : Bytes</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Rules</maml:name>
-			<maml:description>
-				<maml:para>The list of rules to add to the newly created profile.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
-			<dev:type>
-				<maml:name>List`1[ScaleRule]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>StartTimeWindow</maml:name>
 			<maml:description>
@@ -5814,6 +4883,18 @@ Unit                   : Bytes</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Rules</maml:name>
+			<maml:description>
+				<maml:para>The list of rules to add to the newly created profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
+			<dev:type>
+				<maml:name>List`1[ScaleRule]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecurrenceFrequency</maml:name>
 			<maml:description>
@@ -5843,9 +4924,9 @@ Unit                   : Bytes</maml:para>
 			<maml:description>
 				<maml:para>A list of scheduled hours.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">List`1[Nullable`1]</command:parameterValue>
 			<dev:type>
-				<maml:name>List`1[Int32]</maml:name>
+				<maml:name>List`1[Nullable`1]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5855,9 +4936,9 @@ Unit                   : Bytes</maml:para>
 			<maml:description>
 				<maml:para>List of scheduled minutes.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">List`1[Nullable`1]</command:parameterValue>
 			<dev:type>
-				<maml:name>List`1[Int32]</maml:name>
+				<maml:name>List`1[Nullable`1]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5870,30 +4951,6 @@ Unit                   : Bytes</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
-			<maml:name>Profiles</maml:name>
-			<maml:description>
-				<maml:para>List of profiles to add to the result.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">list`1[autoscaleprofile]</command:parameterValue>
-			<dev:type>
-				<maml:name>list`1[autoscaleprofile]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5946,12 +5003,7 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 				<maml:para>Creates a single profile without a schedule (fix date)</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Capacity   : Microsoft.Azure.Management.Insights.Models.ScaleCapacity
-FixedDate  : Microsoft.Azure.Management.Insights.Models.TimeWindow
-Name       : adios
-Recurrence :
-Rules      : {Microsoft.Azure.Management.Insights.Models.ScaleRule,
-             Microsoft.Azure.Management.Insights.Models.ScaleRule}</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -5973,12 +5025,7 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 				<maml:para>Creates a single profile with a recurrent schedule.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Capacity   : Microsoft.Azure.Management.Insights.Models.ScaleCapacity
-FixedDate  :
-Name       : secondProfileName
-Recurrence : Microsoft.Azure.Management.Insights.Models.Recurrence
-Rules      : {Microsoft.Azure.Management.Insights.Models.ScaleRule,
-             Microsoft.Azure.Management.Insights.Models.ScaleRule}</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -6004,19 +5051,7 @@ $profile2 = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumC
 				<maml:para>Creates two profiles adds them to a list.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Capacity   : Microsoft.Azure.Management.Insights.Models.ScaleCapacity
-FixedDate  : Microsoft.Azure.Management.Insights.Models.TimeWindow
-Name       : profileName
-Recurrence :
-Rules      : {Microsoft.Azure.Management.Insights.Models.ScaleRule,
-             Microsoft.Azure.Management.Insights.Models.ScaleRule}
-
-Capacity   : Microsoft.Azure.Management.Insights.Models.ScaleCapacity
-FixedDate  :
-Name       : secondProfileName
-Recurrence : Microsoft.Azure.Management.Insights.Models.Recurrence
-Rules      : {Microsoft.Azure.Management.Insights.Models.ScaleRule,
-             Microsoft.Azure.Management.Insights.Models.ScaleRule}</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -6162,17 +5197,17 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ScaleDirection</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScaleActionScaleType</maml:name>
 				<maml:description>
-					<maml:para>The scale type. The allowed values are: ChangeSize, ChangeCount, PercentChangeCount, ExactCount.</maml:para>
+					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ScaleType</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">NewAzureRmAutoscaleRuleCommand+ScaleType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScaleActionValue</maml:name>
 				<maml:description>
-					<maml:para>The action value.</maml:para>
+					<maml:para>Indicates the size of the scale. It is intentionally left as string for future extension, but currently only numerals are accepted.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -6299,14 +5334,14 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ScaleActionScaleType</maml:name>
 			<maml:description>
-				<maml:para>The scale type. The allowed values are: ChangeSize, ChangeCount, PercentChangeCount, ExactCount.</maml:para>
+				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ScaleType</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">NewAzureRmAutoscaleRuleCommand+ScaleType</command:parameterValue>
 			<dev:type>
-				<maml:name>ScaleType</maml:name>
+				<maml:name>NewAzureRmAutoscaleRuleCommand+ScaleType</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6314,23 +5349,11 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ScaleActionValue</maml:name>
 			<maml:description>
-				<maml:para>The action value.</maml:para>
+				<maml:para>Indicates the size of the scale. It is intentionally left as string for future extension, but currently only numerals are accepted.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6381,9 +5404,7 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 				<maml:para>Creates a single rule.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>MetricTrigger                                               ScaleAction
--------------                                               -----------
-Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Management.Insights.Models.ScaleAction</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -6405,10 +5426,7 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 				<maml:para>Creates two rules.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>MetricTrigger                                               ScaleAction
--------------                                               -----------
-Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Management.Insights.Models.ScaleAction
-Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Management.Insights.Models.ScaleAction</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -6541,6 +5559,26 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 	<command:examples>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmAutoscaleRule</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmAutoscaleNotification</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmAutoscaleProfile</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmAutoscaleSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmAutoscaleSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -6604,18 +5642,6 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -6662,9 +5688,7 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 				<maml:para>Removes the alert rule identified by name and resource group name.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>RequestId                                                                                                    StatusCode
----------                                                                                                    ----------
-2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -6694,10 +5718,6 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 		</maml:navigationLink>
 		<maml:navigationLink>
 			<maml:linkText>Add-AzureRmWebtestAlertRule</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -6759,18 +5779,6 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6878,7 +5886,8 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6890,7 +5899,8 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -6942,10 +5952,17 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>StorageAccountId</maml:name>
 				<maml:description>
 					<maml:para>The id of the storage account where the data will be saved to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ServiceBusRuleId</maml:name>
+				<maml:description>
+					<maml:para>The Id of the service bus rule</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -6973,14 +5990,21 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RetentionEnabled</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Flag to enable/disable retention</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>WorkspaceId</maml:name>
+				<maml:description>
+					<maml:para>The Id of the workspace</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RetentionInDays</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The number of retention days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
@@ -6999,10 +6023,22 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>StorageAccountId</maml:name>
 			<maml:description>
 				<maml:para>The id of the storage account where the data will be saved to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ServiceBusRuleId</maml:name>
+			<maml:description>
+				<maml:para>The Id of the service bus rule</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -7050,7 +6086,7 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RetentionEnabled</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Flag to enable/disable retention</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
 			<dev:type>
@@ -7059,50 +6095,26 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>WorkspaceId</maml:name>
+			<maml:description>
+				<maml:para>The Id of the workspace</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RetentionInDays</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The number of retention days.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
 				<maml:name>Nullable`1[Int32]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>Enable</maml:name>
-			<maml:description>
-				<maml:para>A boolean value for enabling or disabling diagnostics. If $true, it will enable the specified logs and categories. If it is $false, they will be disabled.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">boolean</command:parameterValue>
-			<dev:type>
-				<maml:name>boolean</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7193,27 +6205,7 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 				<maml:para>This will enable only Category1 and Category2. All timegrains and other categories will remain the same.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>StorageAccountId   : &lt;storageAccountId&gt;
-            StorageAccountName : &lt;storageAccountName&gt;
-            Metrics
-            Enabled   : True
-            Timegrain : PT1M
-
-            Enabled   : True
-            Timegrain : PT1H
-
-            Logs
-            Enabled  : True
-            Category : Category1
-
-            Enabled  : True
-            Category : Category2
-
-            Enabled  : True
-            Category : Category3
-
-            Enabled  : False
-            Category : Category4</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -7245,6 +6237,10 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmDiagnosticSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 </helpItems>
