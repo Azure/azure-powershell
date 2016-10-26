@@ -59,35 +59,33 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
                 Mandatory = false,
-                Position = 2,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Deprecated - Windows Azure Diagnostics is now disabled by default")]
         public SwitchParameter DisableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 2,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
         public SwitchParameter EnableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 3,
+                Position = 2,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Name of the storage account that should be used to store analytics data.")]
         public string WADStorageAccountName { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 4,
+                Position = 3,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 5,
+                Position = 4,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
