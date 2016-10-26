@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string ClusterType { get; set; }
 
         /// <summary>
+        /// Gets or sets the component version of a service in the cluster
+        /// </summary>
+        public Dictionary<string, string> ComponentVersion { get; set; }
+
+        /// <summary>
         /// Gets or sets the cluster tier.
         /// </summary>
         public Tier ClusterTier { get; set; }
@@ -113,6 +118,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Hashtable>();
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
+            ComponentVersion = new Dictionary<string, string>();
         }
     }
 }

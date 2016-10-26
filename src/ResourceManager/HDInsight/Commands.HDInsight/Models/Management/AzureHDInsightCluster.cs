@@ -37,6 +37,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
             Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+            ComponentVersion = new List<string>();
+            foreach(var componentVersion in cluster.Properties.ClusterDefinition.ComponentVersion)
+            {
+                ComponentVersion.Add(componentVersion.ToString());
+            }
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration)
@@ -129,5 +134,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Additional storage accounts for this cluster
         /// </summary>
         public List<string> AdditionalStorageAccounts { get; set; }
+
+        /// <summary>
+        /// Version of a component service in the cluster
+        /// </summary>
+        public List<string> ComponentVersion { get; set; }
     }
 }
