@@ -73,8 +73,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 if (string.IsNullOrEmpty(_psVersion))
                 {   
-                    System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create();
-                    _psVersion = ps.Runspace.Version.ToString();
+                    if(this.Host != null)
+                    {
+                        _psVersion = this.Host.Version.ToString();
+                    }
+                    else
+                    {
+                        System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create();
+                        _psVersion = ps.Runspace.Version.ToString();
+                    }
                 }
 
                 return _psVersion;
@@ -267,9 +274,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            //We do not want to add a prefix 'v' to version, because when data will be read out of the telemetry, it will again have to be parsed to extract the actualy version
-            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, ModuleVersion));
-            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, PSVersion));
+            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
+            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, string.Format("v{0}", PSVersion)));
 
             AzureSession.ClientFactory.AddHandler(
                 new CmdletInfoHandler(this.CommandRuntime.ToString(),
