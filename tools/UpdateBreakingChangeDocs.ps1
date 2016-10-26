@@ -205,7 +205,7 @@ if (!$PathToRepo)
     $PathToRepo = "$PSScriptRoot\.."
 }
 
-Import-Module PowerShellGet
+#Requires -Module PowerShellGet
 
 # Update all of the ResourceManager breaking change docs
 $ResourceManagerChanges = UpdateARMBreakingChangeDocs -PathToServices $PathToRepo\src\ResourceManager
