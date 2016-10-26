@@ -12,20 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Linq;
+using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public sealed class TestsController : RMTestBase
+    public sealed class TestsController //: RMTestBase
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
+        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
         public IInsightsClient InsightsClient { get; private set; }
@@ -46,6 +51,22 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
+        public void RunPsTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
+            RunPsTestWorkflow(
+                () => scripts,
+                // no custom initializer
+                null,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
+        }
+
         public void RunPsTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
@@ -63,23 +84,29 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            using (UndoContext context = UndoContext.Current)
+            var providers = new Dictionary<string, string>()
             {
-                context.Start(callingClassType, mockName);
+                { "Microsoft.Insights", null }
+            };
 
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient: true, providers: providers);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            {
+                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
                 if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
@@ -87,10 +114,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.Insights.psd1"));
+                    helper.GetRMModulePath("AzureRM.Insights.psd1"),
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try
                 {
@@ -114,22 +141,24 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
-            this.InsightsClient = this.GetInsightsClient();
-            this.InsightsManagementClient = this.GetInsightsManagementClient();
+            this.InsightsClient = this.GetInsightsClient(context);
+            this.InsightsManagementClient = this.GetInsightsManagementClient(context);
 
             helper.SetupManagementClients(this.InsightsClient, this.InsightsManagementClient);
         }
 
-        private IInsightsClient GetInsightsClient()
+        private IInsightsClient GetInsightsClient(MockContext context)
         {
-            return TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
+            // return TestBase.GetServiceClient<InsightsClient>(RestTestFramework.  this.csmTestFactory);
+            return context.GetServiceClient<InsightsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private IInsightsManagementClient GetInsightsManagementClient()
+        private IInsightsManagementClient GetInsightsManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
+            //return TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<InsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

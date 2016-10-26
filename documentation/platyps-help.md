@@ -30,7 +30,7 @@ If your service does not currently have any markdown help, follow the below step
 
 ### Installing the `platyPSHelp` Module
 
-The `platyPSHelp` module contains cmdlets that will help service teams with creating, updating, and validating markdown help. 
+The `platyPSHelp` module contains cmdlets that will help service teams with creating, updating, and validating markdown help for their cmdlets.
 
 There are three cmdlets contained in this module:
 - `New-ServiceMarkdownHelp`
@@ -61,7 +61,7 @@ There are four possible parameter sets to choose from when creating your cmdlets
 - `FullPath`
     - This parameter set will be used if there is an issue when using any of the above parameter sets (*e.g.*, the path to the XML help (MAML) or commands folder does not follow what the cmdlet is expecting); in this case, you can provide the full path to the required items
 
-More information about this cmdlet can be found in the [help]("..\tools\platyPSHelp\help\New-ServiceMarkdownHelp.md").
+More information about this cmdlet can be found in the [help](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/New-ServiceMarkdownHelp.md).
 
 Once ran, this cmdlet will create markdown files for each of the cmdlets in your module, and will be placed in the help folder located on the same level as your XML help (MAML). It will also regenerate the XML help (MAML) to ensure that the information in the markdown help is seen when `Get-Help` or `Get-HelpPreview` is ran.
  
@@ -69,7 +69,7 @@ Once ran, this cmdlet will create markdown files for each of the cmdlets in your
 
 Before checking in this markdown, you will need to check to make sure all of the necessary parts are filled out (*i.e.*, synopsis, description, examples, parameter descriptions, and outputs). 
 
-This cmdlet contains the same four parameter sets as the `New-ServiceMarkdownHelp`, and more information about the cmdlet can be found in the [help]("..\tools\platyPSHelp\help\Validate-ServiceMarkdownHelp.md").
+This cmdlet contains the same four parameter sets as the `New-ServiceMarkdownHelp`, and more information about the cmdlet can be found in the [help](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/Validate-ServiceMarkdownHelp.md).
 
 Once ran, this cmdlet will output a list of errors for each cmdlet in the following format:
 
@@ -91,7 +91,7 @@ This will let you know what parts of the markdown help need to be updated. A rec
 
 Anytime that you make changes to a cmdlet (*e.g.*, add/edit/remove parameter, edit output type, etc.), you will need to make sure that those changes are reflected in the markdown. The `Update-ServiceMarkdownHelp` cmdlet will update your markdown with the changes made to your cmdlets.
 
-This cmdlet contains the same four parameter sets as the other two cmdlets, and more information about the cmdlet can be found in the [help]("..\tools\platyPSHelp\help\Update-ServiceMarkdownHelp.md").
+This cmdlet contains the same four parameter sets as the other two cmdlets, and more information about the cmdlet can be found in the [help](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/Update-ServiceMarkdownHelp.md).
 
 In addition to updating the markdown help files, it will also regenerate the XML help (MAML) to ensure that the information in the markdown help is seen when `Get-Help` or `Get-HelpPreview` is ran.
 

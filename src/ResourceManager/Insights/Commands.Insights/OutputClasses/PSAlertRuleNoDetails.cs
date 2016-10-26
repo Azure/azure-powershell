@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the Properties specification
         /// </summary>
-        public Rule Properties { get; set; }
+        public AlertRuleResource Properties { get; set; }
 
         /// <summary>
         /// Gets or sets the Tags of the rule
@@ -36,25 +36,13 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Initializes a new instance of the PSAlertRule class.
         /// </summary>
         /// <param name="ruleSpec"></param>
-        public PSAlertRuleNoDetails(RuleGetResponse ruleSpec)
+        public PSAlertRuleNoDetails(AlertRuleResource ruleSpec)
         {
             this.Id = ruleSpec.Id;
             this.Location = ruleSpec.Location;
             this.Name = ruleSpec.Name;
-            this.Properties = ruleSpec.Properties;
-            this.Tags = ruleSpec.Tags;
-        }
 
-        /// <summary>
-        /// Initializes a new instance of the PSAlertRule class.
-        /// </summary>
-        /// <param name="ruleSpec"></param>
-        public PSAlertRuleNoDetails(RuleResource ruleSpec)
-        {
-            this.Id = ruleSpec.Id;
-            this.Location = ruleSpec.Location;
-            this.Name = ruleSpec.Name;
-            this.Properties = ruleSpec.Properties;
+            this.Properties = ruleSpec;
             this.Tags = ruleSpec.Tags;
         }
     }
