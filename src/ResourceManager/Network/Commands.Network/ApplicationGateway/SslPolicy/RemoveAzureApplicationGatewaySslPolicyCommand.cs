@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewaySslPolicy", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewaySslPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
