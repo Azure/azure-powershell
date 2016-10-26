@@ -2,6 +2,20 @@
 .SYNOPSIS
 Tests Analysis Services server lifecycle (Create, Update, Get, List, Delete).
 #>
+
+function Test-AnalysisServicesServerRestart
+{
+    param
+	(
+		$environment = "aspaaswestusloop1.asazure-int.windows.net"
+	)
+	
+	$secpasswd = ConvertTo-SecureString 'Pa$$word2' -AsPlainText -Force
+	$mycreds = New-Object System.Management.Automation.PSCredential ('aztest0@aspaastestloop1.ccsctp.net', $secpasswd)
+	Login-AzureASAccount -EnvironmentName $environment -Credential $mycreds
+	#Login-AzureRmAccount -EnvironmentName dogfood -TenantId daef39e6-82cb-4664-bbfa-8c332dbdf939 -SubscriptionId e48bff2b-f633-4bd6-857a-ff243767676e
+}
+
 function Test-AnalysisServicesServer
 {
     param

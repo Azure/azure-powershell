@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Analysis Services.
+        /// </summary>
+        internal static string AsAzureDirectoryName {
+            get {
+                return ResourceManager.GetString("AsAzureDirectoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Analysis Services Server.
         /// </summary>
         internal static string CreateNewAnalysisServicesServer {
@@ -93,6 +102,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         internal static string FailedToDiscoverResourceGroup {
             get {
                 return ResourceManager.GetString("FailedToDiscoverResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login to {0}.
+        /// </summary>
+        internal static string LoginTarget {
+            get {
+                return ResourceManager.GetString("LoginTarget", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         internal static string TaskCancelledMessage {
             get {
                 return ResourceManager.GetString("TaskCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Analysis Services environment name specified..
+        /// </summary>
+        internal static string UnknownEnvironment {
+            get {
+                return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
             }
         }
         

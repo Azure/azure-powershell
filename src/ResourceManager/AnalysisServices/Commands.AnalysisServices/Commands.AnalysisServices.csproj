@@ -116,13 +116,20 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ResumeAzureRmAnalysisServicesServer.cs" />
-    <Compile Include="Commands\SuspendAzureRmAnalysisServicesServer.cs" />
-    <Compile Include="Commands\GetAzureRmAnalysisServicesServer.cs" />
-    <Compile Include="Commands\RemoveAzureRmAnalysisServicesServer.cs" />
-    <Compile Include="Commands\SetAzureRmAnalysisServicesServer.cs" />
-    <Compile Include="Commands\TestAzureRmAnalysisServicesServer.cs" />
-    <Compile Include="Commands\NewAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\ControlPlane\ResumeAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\ControlPlane\SuspendAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\ControlPlane\GetAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\ControlPlane\RemoveAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\ControlPlane\SetAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\ControlPlane\TestAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\ControlPlane\NewAzureRmAnalysisServicesServer.cs" />
+    <Compile Include="Commands\DataPlane\AddAzureASAccount.cs" />
+    <Compile Include="Commands\DataPlane\AsAzureProfile.cs" />
+    <Compile Include="Commands\DataPlane\AsAzureContext.cs" />
+    <Compile Include="Commands\DataPlane\AsAzureEnvironment.cs" />
+    <Compile Include="Commands\DataPlane\AsAzureTenant.cs" />
+    <Compile Include="Commands\DataPlane\AsAzureAccount.cs" />
+    <Compile Include="Commands\DataPlane\AsAzureClientUtility.cs" />
     <Compile Include="Models\AnalysisServicesClient.cs" />
     <Compile Include="Models\AnalysisServicesCmdletBase.cs" />
     <Compile Include="Models\StringOrByteArrayInstance.cs" />
@@ -177,6 +184,7 @@
       <Name>Commands.Tags</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

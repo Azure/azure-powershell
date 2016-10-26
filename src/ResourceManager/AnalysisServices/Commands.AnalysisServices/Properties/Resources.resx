@@ -120,6 +120,9 @@
   <data name="AnalysisServerExists" xml:space="preserve">
     <value>Analysis Services server with name '{0}' already exists.</value>
   </data>
+  <data name="AsAzureDirectoryName" xml:space="preserve">
+    <value>Azure Analysis Services</value>
+  </data>
   <data name="CreateNewAnalysisServicesServer" xml:space="preserve">
     <value>Create Analysis Services Server</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
     <value>Could not find server: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this server exists and that the current user has access to it.</value>
+  </data>
+  <data name="LoginTarget" xml:space="preserve">
+    <value>Login to {0}</value>
   </data>
   <data name="LongRunningOperationFailed" xml:space="preserve">
     <value>AnalysisServices server operation failed with the following error code: {0} and message: {1}</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
+  </data>
+  <data name="UnknownEnvironment" xml:space="preserve">
+    <value>Unknown Analysis Services environment name specified.</value>
   </data>
   <data name="UpdateAnalysisServicesServer" xml:space="preserve">
     <value>Are you sure you want to update Analysis Services server: '{0}'?</value>
