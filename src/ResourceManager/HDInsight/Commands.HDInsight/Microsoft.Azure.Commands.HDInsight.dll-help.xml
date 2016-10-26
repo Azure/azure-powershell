@@ -1350,35 +1350,35 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Domain</maml:name>
 				<maml:description>
 					<maml:para>Active Directory domain for the cluster</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DomainUserCredential</maml:name>
 				<maml:description>
 					<maml:para>A domain user account credential with sufficient permissions for creating the cluster. Username should be in user@domain format.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>OrganizationalUnitDN</maml:name>
 				<maml:description>
 					<maml:para>Distinguished name of the organizational unit in the Active directory where user and computer accounts will be created.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="4">
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>LdapsUrls</maml:name>
 				<maml:description>
 					<maml:para>Urls of one or multiple LDAPS servers for the Active Directory.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ClusterUsersGroupDNs</maml:name>
 				<maml:description>
 					<maml:para>Distinguished names of the Active Directory groups that will be available in Ambari and Ranger.</maml:para>
@@ -1400,7 +1400,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Domain</maml:name>
 			<maml:description>
 				<maml:para>Active Directory domain for the cluster</maml:para>
@@ -1412,7 +1412,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>DomainUserCredential</maml:name>
 			<maml:description>
 				<maml:para>A domain user account credential with sufficient permissions for creating the cluster. Username should be in user@domain format.</maml:para>
@@ -1424,7 +1424,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>OrganizationalUnitDN</maml:name>
 			<maml:description>
 				<maml:para>Distinguished name of the organizational unit in the Active directory where user and computer accounts will be created.</maml:para>
@@ -1436,7 +1436,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="4">
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>LdapsUrls</maml:name>
 			<maml:description>
 				<maml:para>Urls of one or multiple LDAPS servers for the Active Directory.</maml:para>
@@ -1448,7 +1448,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ClusterUsersGroupDNs</maml:name>
 			<maml:description>
 				<maml:para>Distinguished names of the Active Directory groups that will be available in Ambari and Ranger.</maml:para>
