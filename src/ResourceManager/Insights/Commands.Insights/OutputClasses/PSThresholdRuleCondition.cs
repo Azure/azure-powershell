@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSThresholdRuleCondition(ThresholdRuleCondition ruleCondition)
         {
             this.DataSource = ruleCondition.DataSource as RuleMetricDataSource;
-            this.Operator = ruleCondition.Operator;
+            this.Operator = ruleCondition.OperatorProperty ?? ConditionOperator.GreaterThan;
             this.Threshold = ruleCondition.Threshold;
             this.TimeAggregation = ruleCondition.TimeAggregation;
-            this.WindowsSize = ruleCondition.WindowSize;
+            this.WindowsSize = (TimeSpan)ruleCondition.WindowSize;
         }
 
         /// <summary>
