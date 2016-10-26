@@ -37,8 +37,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config { get; set; }
 
-        [Parameter(Position = 1,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             HelpMessage = "Active Directory domain for the cluster.")]
         public string Domain
         {
@@ -46,8 +45,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _securityProfile.Domain = value; } 
         }
 
-        [Parameter(Position = 2,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             HelpMessage = "A domain user account credential with sufficient permissions for creating the cluster. Username should be in user@domain format.")]
         public PSCredential DomainUserCredential 
         {
@@ -55,8 +53,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _securityProfile.DomainUserCredential = value; } 
         }
 
-        [Parameter(Position = 3,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             HelpMessage = "Distinguished name of the organizational unit in the Active directory where user and computer accounts will be created.")]
         public string OrganizationalUnitDN
         {
@@ -64,8 +61,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _securityProfile.OrganizationalUnitDN = value; }
         }
 
-        [Parameter(Position = 4,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             HelpMessage = "Urls of one or multiple LDAPS servers for the Active Directory.")]
         public string[] LdapsUrls
         {
@@ -73,8 +69,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _securityProfile.LdapsUrls = value; }
         }
 
-        [Parameter(Position = 5,
-            HelpMessage = "Distinguished names of the Active Directory groups that will be available in Ambari and Ranger.")]
+        [Parameter(HelpMessage = "Distinguished names of the Active Directory groups that will be available in Ambari and Ranger.")]
         public string[] ClusterUsersGroupDNs
         {
             get { return _securityProfile.ClusterUsersGroupDNs.ToArray(); }
