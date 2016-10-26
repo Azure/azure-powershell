@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightSecurityProfile),
+        Constants.CommandNames.AzureHDInsightSecurityProfile,
+        SupportsShouldProcess = true),
     OutputType(
         typeof(AzureHDInsightSecurityProfile))]
     public class AddAzureHDInsightSecurityProfile : HDInsightCmdletBase
@@ -85,9 +86,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            Config.SecurityProfile = _securityProfile;
+            if (ShouldProcess("Config", "Add SecurityProfile"))
+            {
+                Config.SecurityProfile = _securityProfile;
 
-            WriteObject(Config);
+                WriteObject(Config);
+            }
         }
     }
 }

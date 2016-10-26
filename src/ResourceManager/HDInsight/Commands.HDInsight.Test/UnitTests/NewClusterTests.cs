@@ -148,6 +148,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.Name == ClusterName &&
                     clusterout.OperatingSystemType == OSType.Linux)),
                 Times.Once);
+
         }
 
         [Fact]
@@ -170,41 +171,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             CreateNewHDInsightCluster(addSecurityProfileInresponse:true);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
-                clusterout =>
-                    clusterout.ClusterState == "Running" &&
-                    clusterout.ClusterType == ClusterType &&
-                    clusterout.ClusterVersion == "3.1" &&
-                    clusterout.CoresUsed == 24 &&
-                    clusterout.Location == Location &&
-                    clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux &&
-                    clusterout.SecurityProfile.Domain.Equals(cmdlet.SecurityProfile.Domain) &&
-                    clusterout.SecurityProfile.DomainUserCredential.UserName.Equals(
-                        cmdlet.SecurityProfile.DomainUserCredential.UserName) &&
-                    clusterout.SecurityProfile.OrganizationalUnitDN.Equals(cmdlet.SecurityProfile.OrganizationalUnitDN) &&
-                    clusterout.SecurityProfile.LdapsUrls.ArrayToString("")
-                        .Equals(cmdlet.SecurityProfile.LdapsUrls.ArrayToString("")) &&
-                    clusterout.SecurityProfile.ClusterUsersGroupDNs.ArrayToString("")
-                        .Equals(cmdlet.SecurityProfile.ClusterUsersGroupDNs.ArrayToString("")))),
-                Times.Once);
-        }
-
-        private void CreateNewHDInsightCluster(bool addSecurityProfileInresponse = false)
-        {
-            cmdlet.ClusterName = ClusterName;
-            cmdlet.ResourceGroupName = ResourceGroupName;
-            cmdlet.ClusterSizeInNodes = ClusterSize;
-            cmdlet.Location = Location;
-            cmdlet.HttpCredential = _httpCred;
-            cmdlet.DefaultStorageAccountName = StorageName;
-            cmdlet.DefaultStorageAccountKey = StorageKey;
-            cmdlet.ClusterType = ClusterType;
-            cmdlet.SshCredential = _sshCred;
-            cmdlet.OSType = OSType.Linux;
-
-            CreateNewHDInsightCluster();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
                 clusterout =>

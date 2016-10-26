@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateNewSecurityProfile()
         {
+            SetupConfirmation(commandRuntimeMock);
+
             var config = new AzureHDInsightConfig();
             var newconfigcmdlet = new AddAzureHDInsightSecurityProfile()
             {

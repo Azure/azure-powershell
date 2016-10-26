@@ -40,14 +40,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
             Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
-<<<<<<< HEAD
             ComponentVersion = new List<string>();
             foreach(var componentVersion in cluster.Properties.ClusterDefinition.ComponentVersion)
             {
                 ComponentVersion.Add(componentVersion.ToString());
             }
-=======
->>>>>>> 2798012aaa21cac9a9aebe355cf3b3f4566c26d7
             var clusterSecurityProfile = cluster.Properties.SecurityProfile;
             SecurityProfile = clusterSecurityProfile != null ? new AzureHDInsightSecurityProfile()
             {
@@ -56,7 +53,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
                 OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
                 LdapsUrls = clusterSecurityProfile.LdapsUrls != null ? clusterSecurityProfile.LdapsUrls.ToArray() : null,
-                ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs !=null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
+                ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs != null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
             } : null;
         }
 
@@ -152,13 +149,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public List<string> AdditionalStorageAccounts { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Version of a component service in the cluster
         /// </summary>
         public List<string> ComponentVersion { get; set; }
 		
-=======
->>>>>>> 2798012aaa21cac9a9aebe355cf3b3f4566c26d7
         /// Gets or sets the security profile.
         /// </summary>
         /// <value>
