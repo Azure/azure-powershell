@@ -44069,7 +44069,7 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
 		<maml:copyright>
 			<maml:para />
 		</maml:copyright>
-		<command:verb>Set</command:verb>
+		<command:verb>Remove</command:verb>
 		<command:noun>AzureRmApplicationGatewaySslPolicy</command:noun>
 		<dev:version />
 	</command:details>
