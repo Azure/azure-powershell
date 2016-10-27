@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListComputeNodesByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -74,6 +76,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListComputeNodesWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -82,6 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllComputeNodes()
         {
             BatchController controller = BatchController.NewInstance;
@@ -100,6 +104,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListComputeNodePipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -118,6 +123,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveComputeNodeById()
         {
             TestRemoveComputeNode(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
@@ -131,6 +137,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveMultipleComputeNodes()
         {
             BatchController controller = BatchController.NewInstance;
@@ -158,48 +165,56 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootComputeNodeById()
         {
             TestRebootComputeNode(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootComputeNodePipeline()
         {
             TestRebootComputeNode(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestReimageComputeNodeById()
         {
             TestReimageComputeNode(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestReimageComputeNodePipeline()
         {
             TestReimageComputeNode(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableComputeNodeSchedulingById()
         {
             TestDisableAndEnableComputeNodeScheduling(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableComputeNodeSchedulingPipeline()
         {
             TestDisableAndEnableComputeNodeScheduling(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeRemoteLoginSettingsById()
         {
             TestGetComputeNodeRemoteLoginSettings(usePipeline: false, testMethodName: TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeRemoteLoginSettingsPipeline()
         {
             TestGetComputeNodeRemoteLoginSettings(usePipeline: true, testMethodName: TestUtilities.GetCurrentMethodName());
