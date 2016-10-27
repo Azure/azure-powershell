@@ -1362,10 +1362,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 TempAgent = false
             };
             
-            var azureSessionUserAgent = GetDeploymentBaseOptionsUserAgent();
-            if (!string.IsNullOrEmpty(azureSessionUserAgent))
+            var userAgent = GetDeploymentBaseOptionsUserAgent();
+            if (!string.IsNullOrEmpty(userAgent))
             {
-                remoteBaseOptions.UserAgent = azureSessionUserAgent;
+                remoteBaseOptions.UserAgent = userAgent;
             }
 
             return remoteBaseOptions;
@@ -1379,9 +1379,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         {
             var userAgent = string.Empty;
             var managementClient = this.WebsiteManagementClient as WebSiteManagementClient;
-            var userAgents = AzureSession.ClientFactory.UserAgents.Any()
-                    ? AzureSession.ClientFactory.UserAgents as IEnumerable<ProductInfoHeaderValue>
-                    : (managementClient != null) ? managementClient.UserAgent : null;
+            var userAgents = managementClient != null ? managementClient.UserAgent : null;
 
             if (userAgents != null)
             {
