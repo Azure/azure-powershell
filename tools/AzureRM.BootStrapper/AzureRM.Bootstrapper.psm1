@@ -1,5 +1,5 @@
-﻿$RollUpModule = "AzureRM"
-
+$RollUpModule = "AzureRM"
+$PSProfileMapEndpoint = "https://profile.azureedge.net/powershell/ProfileMap.json"
 $PSModule = $ExecutionContext.SessionState.Module
 $script:BootStrapRepo = "BootStrap"
 $RepoLocation = "\\aaptfile01\adxsdk\PowerShell\bootstrapper"
@@ -14,33 +14,90 @@ else
 }
 
 
-function Get-AzProfile 
+function Get-ProfileCachePath
 {
-  @{
-    '2015-05' = 
-    @{
-        'AzureRM' = @('1.2.4');
-        'AzureRM.Storage' = @('1.2.4');
-        'Azure.Storage' = @('1.2.4');
-        'AzureRM.Profile' = @('1.2.4');
-     }; 
-     '2016-09' = 
-     @{
-        'AzureRM' = @('2.0.1');
-        'AzureRM.Storage' = @('2.0.1')
-        'Azure.Storage' = @('2.0.1');
-        'AzureRM.Profile' = @('2.0.1');
-     }
-   }
+  $ProfileCache = Join-Path -path $env:LOCALAPPDATA -childpath "Microsoft\AzurePowerShell\ProfileCache"
+  return $ProfileCache
 }
 
+
+# Get-ProfileMap from Azure Endpoint
+function Get-AzureProfileMap
+{
+  $ProfileCache = Get-ProfileCachePath
+  if(-Not (Test-Path $ProfileCache))
+  {
+    New-Item -ItemType Directory -Force -Path $ProfileCache
+  }
+
+  $response = Invoke-RestMethod -Uri $PSProfileMapEndpoint -ErrorVariable RestError -OutFile "$ProfileCache\ProfileMap.Json"
+
+  if ($RestError)
+  {
+    $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
+    $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
+    
+	Throw "Http Status Code: $($HttpStatusCode) `nHttp Status Description: $($HttpStatusDescription)"
+  }
+
+  $ProfileMap = Get-Content -Raw -Path "$ProfileCache\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json 
+
+  return $ProfileMap
+}
+
+
+function Get-AzProfile
+{
+  [CmdletBinding()]
+  param()
+  DynamicParam
+  {
+    $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+    Add-ForceParam $params
+    Add-SwitchParam $params "ListAvailable" "ListAvailableParameterSet"
+    return $params
+  }
+
+  PROCESS
+  {
+    $Force = $PSBoundParameters.Force
+    # If force is present, download ProfileMap from Storage blob endpoint
+    if ($Force.IsPresent)
+    {
+      return (Get-AzureProfileMap)
+    }
+
+    # Check the cache
+    $ProfileCache = Get-ProfileCachePath
+    if(Test-Path $ProfileCache)
+    {
+        $ProfileMap = Get-Content -Raw -Path "$ProfileCache\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json 
+       
+        if ($ProfileMap -ne $null)
+        {
+           return $ProfileMap
+        }
+    }
+     
+    # If cache doesn't exist, Check embedded source
+    $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
+    $ProfileMap = Get-Content -Raw -Path "$defaults\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json
+    if($profileMap -eq $null)
+    {
+        # Cache & Embedded source empty; Return error and stop
+        throw [System.IO.FileNotFoundException] "$ProfileMap not found."
+    }
+
+    return $ProfileMap
+  }
+}
 
 
 function Add-ProfileParam
 {
   param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$set = "__AllParameterSets")
   $ProfileMap = (Get-AzProfile)
-  $AllProfiles = $ProfileMap.Keys
+  $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
   $profileAttribute = New-Object -Type System.Management.Automation.ParameterAttribute
   $profileAttribute.ParameterSetName = $set
   $profileAttribute.Mandatory = $true
@@ -57,7 +114,6 @@ function Add-ForceParam
 {
   param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$set = "__AllParameterSets")
   Add-SwitchParam $params "Force" $set
-  
 }
 
 function Add-SwitchParam
@@ -83,9 +139,12 @@ function Get-AzureRmModule
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
-    $enum = $ProfileMap.Values.GetEnumerator()
+    $Profiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
+    $enum = $Profiles.GetEnumerator()
     $toss = $enum.MoveNext()
-    $moduleValid = New-Object -Type System.Management.Automation.ValidateSetAttribute($enum.Current.Keys)
+    $Current = $enum.Current
+    $Keys = ($($ProfileMap.$Current) | Get-Member -MemberType NoteProperty).Name
+    $moduleValid = New-Object -Type System.Management.Automation.ValidateSetAttribute($Keys)
     $moduleAttribute = New-Object -Type System.Management.Automation.ParameterAttribute
     $moduleAttribute.ParameterSetName = 
     $moduleAttribute.Mandatory = $true
@@ -101,10 +160,10 @@ function Get-AzureRmModule
   PROCESS
   {
     $ProfileMap = (Get-AzProfile)
-    $AllProfiles = $ProfileMap.Keys
+    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
     $Module = $PSBoundParameters.Module
-    $versionList = $ProfileMap[$Profile][$Module]
+    $versionList = $ProfileMap.$Profile.$Module
     $moduleList = Get-Module -Name $Module -ListAvailable | where {$_.RepositorySourceLocation -ne $null}
     foreach ($version in $versionList)
     {
@@ -132,16 +191,25 @@ function Get-AzureRmProfile
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-SwitchParam $params "ListAvailable" "ListAvailableParameterSet"
+    Add-ForceParam $params
     return $params
   }
   PROCESS
   {
     [switch]$ListAvailable = $PSBoundParameters.ListAvailable
-    $ProfileMap = (Get-AzProfile)
-    $AllProfiles = $ProfileMap.Keys
+    $ProfileMap = (Get-AzProfile @PSBoundParameters)
+    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     if ($ListAvailable.IsPresent)
     {
-      $AllProfiles
+        foreach ($Profile in $ProfileMap) 
+        { 
+            foreach ($Module in ($Profile | get-member -MemberType NoteProperty).Name)
+            {  
+                Write-Output "Profile: $Module"
+                Write-Output "----------------"
+                $Profile.$Module | fl
+            } 
+        }
     }
     else
     {
@@ -177,14 +245,14 @@ function Use-AzureRmProfile
   {
     $Force = $PSBoundParameters.Force
     $ProfileMap = (Get-AzProfile)
-    $AllProfiles = $ProfileMap.Keys
+    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
     if ($PSCmdlet.ShouldProcess($Profile, "Loading modules for profile in the current scope"))
     {
       $version = Get-AzureRmModule -Profile $Profile -Module $RollUpModule
       if (($version -eq $null) -and ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Modules for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
       {
-        $versions = $ProfileMap[$Profile][$RollUpModule]
+        $versions = $ProfileMap.$Profile.$RollUpModule
         $versionEnum = $versions.GetEnumerator()
         $toss = $versionEnum.MoveNext()
         $version = $versionEnum.Current
@@ -213,9 +281,9 @@ function Install-AzureRmProfile
 
   PROCESS {
     $ProfileMap = (Get-AzProfile)
-    $AllProfiles = $ProfileMap.Keys
+    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
-    $versions = $ProfileMap[$Profile][$RollUpModule]
+    $versions = $ProfileMap.$Profile.$RollUpModule
     $versionEnum = $versions.GetEnumerator()
     $toss = $versionEnum.MoveNext()
     $version = $versionEnum.Current
@@ -242,10 +310,10 @@ function Uninstall-AzureRmProfile
   PROCESS {
     $Force = $PSBoundParameters.Force
     $ProfileMap = (Get-AzProfile)
-    $AllProfiles = $ProfileMap.Keys
+    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
-    $versions = $ProfileMap[$Profile]
-    foreach ($module in $versions.Keys)
+    $versions = ($ProfileMap.$profile | Get-Member -MemberType NoteProperty).Name
+    foreach ($module in $versions)
     {
      $canceled = $false
      Do
