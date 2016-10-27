@@ -11,7 +11,7 @@ List the supported AzureRM profiles.
 ## SYNTAX
 
 ```
-Get-AzureRmProfile [-ListAvailable]
+Get-AzureRmProfile [-ListAvailable] [-Force]
 ```
 
 ## DESCRIPTION
@@ -34,6 +34,21 @@ List all ARM profiles available to be installed.
 
 ### -ListAvailable
 If specified, list all available profiles, not just the profiles currently installed.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+If specified, updates Profiles available by querying Azure Endpoint
 
 ```yaml
 Type: SwitchParameter
