@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public NewAzureRmAutoscaleRuleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAutoscaleRuleCommand()
             {
@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.Threshold = 10;
             Cmdlet.ScaleActionCooldown = TimeSpan.FromMinutes(5);
             Cmdlet.ScaleActionDirection = ScaleDirection.Increase;
-            Cmdlet.ScaleActionScaleType = ScaleType.ChangeCount;
             Cmdlet.ScaleActionValue = "1";
             Assert.Throws<ArgumentOutOfRangeException>(() => Cmdlet.ExecuteCmdlet());
 

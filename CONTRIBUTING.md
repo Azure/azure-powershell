@@ -26,6 +26,7 @@ In the Azure Developer Experience, you are at Step 5:
 - [SDK for .NET](#sdk-for-net)
 - [Pull Request Guidelines](#pull-request-guidelines)
     - [Cleaning up commits](#cleaning-up-commits)
+    - [Updating the change log](#updating-the-change-log)
     - [General guidelines](#general-guidelines)
     - [Testing guidelines](#testing-guidelines)
     - [Cmdlet signature guidelines](#cmdlet-signature-guidelines)
@@ -103,6 +104,22 @@ If you find yourself creating a pull request and are unable to see all the chang
 If splitting up the pull request is not an option, we recommend **creating individual commits for different parts of the pull request, which can be reviewed individually on GitHub**.
 
 For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](./documentation/cleaning-up-commits.md).
+
+#### Updating the change log
+
+Any public API changes that are made to a service must be reflected in the respecitve change log. This change log will allow customers to easily track what has been changed between releases of a service.
+
+For ResourceManager services, the change log is located at `src\ResourceManager\SERVICE\ChangeLog.md`.
+
+For ServiceManagement services, the change log is located at `src\ServiceManagement\Services\Commands.Utilities\ChangeLog.md`.
+
+For Storage, this change log is located at `src\Storage\ChangeLog.md`.
+
+#### Breaking Changes
+
+Breaking changes should **not** be introduced into the repository without giving customers at least six months notice. For a description of breaking changes in Azure PowerShell, see [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes.md).
+
+Whenever a service team announces a breaking change, they must add it to the `upcoming-breaking-changes.md` file in their respective service folder. When the service team is ready to release the module with the breaking change, they must move the corresponding information from `upcoming-breaking-changes.md` into the `current-breaking-changes.md` file located in their service folder.
 
 #### General guidelines
 
