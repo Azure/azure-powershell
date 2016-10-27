@@ -20,7 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web;
 using System.Xml.Linq;
 using Microsoft.Build.Evaluation;
@@ -1379,11 +1378,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         {
             var userAgent = string.Empty;
             var managementClient = this.WebsiteManagementClient as WebSiteManagementClient;
-            var userAgents = managementClient != null ? managementClient.UserAgent : null;
-
-            if (userAgents != null)
+            if (managementClient != null && managementClient.UserAgent != null)
             {
-                foreach (var agent in userAgents)
+                foreach (var agent in managementClient.UserAgent)
                 {
                     if (agent != null && agent.Product != null && !string.IsNullOrEmpty(agent.Product.Name))
                     {
