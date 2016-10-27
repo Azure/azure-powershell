@@ -36,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     public abstract class AzurePSCmdlet : PSCmdlet, IDisposable
     {
         private const string PSVERSION = "PSVersion";
+        private const string DEFAULT_PSVERSION = "3.0.0.0";
 
         public ConcurrentQueue<string> DebugMessages { get; private set; }
 
@@ -79,8 +80,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     }
                     else
                     {
-                        System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create();
-                        _psVersion = ps.Runspace.Version.ToString();
+                        //We are doing this for perf. reasons. This code will execute during tests and so reducing the perf. overhead while running tests.
+                        _psVersion = DEFAULT_PSVERSION;
                     }
                 }
 
