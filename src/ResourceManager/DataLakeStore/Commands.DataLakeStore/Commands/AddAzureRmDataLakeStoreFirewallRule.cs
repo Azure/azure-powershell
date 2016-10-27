@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.PowerShell.Commands;
 using System.IO;
@@ -20,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreFirewallRule"), OutputType(typeof(FirewallRule))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(FirewallRule))]
     [Alias("Add-AdlStoreFirewallRule")]
     public class AddAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
     {
@@ -53,8 +54,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var output = DataLakeStoreClient.AddOrUpdateFirewallRule(ResourceGroupName, Account, Name, StartIpAddress, EndIpAddress);
-            WriteObject(output);
+            ConfirmAction(
+                string.Format(Resources.AddDataLakeFirewallRule, Name),
+                Name,
+                () =>
+                    WriteObject(DataLakeStoreClient.AddOrUpdateFirewallRule(
+                        ResourceGroupName, Account, Name, StartIpAddress, EndIpAddress))
+            );
         }
     }
 }

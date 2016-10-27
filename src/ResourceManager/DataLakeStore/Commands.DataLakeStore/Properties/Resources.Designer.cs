@@ -70,6 +70,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding the Data Lake Store firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string AddDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("AddDataLakeFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding the Data Lake Store trusted identity provider: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string AddDataLakeTrustedIdProvider {
+            get {
+                return ResourceManager.GetString("AddDataLakeTrustedIdProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DataLakeStore account with name &apos;{0}&apos; already exists..
         /// </summary>
         internal static string DataLakeStoreAccountExists {
@@ -430,6 +448,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake Store firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("SetDataLakeFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting the Data Lake file or folder ACL at path: &apos;{0}&apos; ....
         /// </summary>
         internal static string SetDataLakeStoreItemAcl {
@@ -453,6 +480,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string SetDataLakeStoreItemPermissions {
             get {
                 return ResourceManager.GetString("SetDataLakeStoreItemPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake Store trusted identity provider: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeTrustedIdProvider {
+            get {
+                return ResourceManager.GetString("SetDataLakeTrustedIdProvider", resourceCulture);
             }
         }
         
