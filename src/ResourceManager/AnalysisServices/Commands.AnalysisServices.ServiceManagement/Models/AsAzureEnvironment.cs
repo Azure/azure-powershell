@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.AnalysisServices
+namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 {
     [Serializable]
     public class AsAzureEnvironment

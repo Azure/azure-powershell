@@ -2,6 +2,21 @@
 .SYNOPSIS
 Tests Analysis Services server lifecycle (Create, Update, Get, List, Delete).
 #>
+
+function Test-AnalysisServicesServerRestart
+{
+    param
+	(
+		$environment = "aspaaswestusloop1.asazure-int.windows.net"
+	)
+	
+	$secpasswd = ConvertTo-SecureString 'Pa$$word2' -AsPlainText -Force
+	$mycreds = New-Object System.Management.Automation.PSCredential ('aztest0@aspaastestloop1.ccsctp.net', $secpasswd)
+	Login-AzureASAccount -EnvironmentName $environment -Credential $mycreds
+	#Login-AzureRmAccount -EnvironmentName dogfood -TenantId daef39e6-82cb-4664-bbfa-8c332dbdf939 -SubscriptionId e48bff2b-f633-4bd6-857a-ff243767676e
+	Restart-AzureAnalysisServer -Instance onesdk796
+}
+
 function Test-AnalysisServicesServer
 {
     param
@@ -160,35 +175,6 @@ function Test-NegativeAnalysisServicesServer
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
-	}
-	finally
-	{
-		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-	}
-}
-
-
-function Test-AnalysisServicesServerRestart
-{
-    param
-	(
-		$environment = "aspaaswestusloop1.asazure-int.windows.net",
-		$location = "West US"
-	)
-	try
-	{
-		# Creating server
-		$resourceGroupName = Get-ResourceGroupName
-		$serverName = Get-AnalysisServicesServerName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
-		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
-
-		Login-AzureASAccount -EnvironmentName $environment
-		Restart-AzureAnalysisServer -Instance $serverName
 	}
 	finally
 	{

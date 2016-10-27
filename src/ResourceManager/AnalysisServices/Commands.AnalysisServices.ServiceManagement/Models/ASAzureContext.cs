@@ -12,44 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
 
-namespace Microsoft.Azure.Commands.AnalysisServices
+namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 {
     /// <summary>
-    /// Represents current Azure session context.
+    /// Represents current AS Azure client context.
     /// </summary>
     [Serializable]
     public class AsAzureContext
     {
         /// <summary>
-        /// Creates new instance of AzureContext.
+        /// Creates new instance of AsAzureContext.
         /// </summary>
-        /// <param name="account">The azure account object</param>
-        /// <param name="environment">The azure environment object</param>
-        /// <param name="tenant">The azure tenant object</param>
+        /// <param name="account">The AS azure account object</param>
+        /// <param name="environment">The AS azure environment object</param>
         public AsAzureContext(AsAzureAccount account, AsAzureEnvironment environment)
         {
             Account = account;
             Environment = environment;
-            //Tenant = tenant;
         }
 
         /// <summary>
-        /// Gets the azure account.
+        /// Gets the AS azure account.
         /// </summary>
         public AsAzureAccount Account { get; private set; }
 
         /// <summary>
-        /// Gets the azure environment.
+        /// Gets the AS Azure environment.
         /// </summary>
         public AsAzureEnvironment Environment { get; private set; }
-
-        ///// <summary>
-        ///// Gets the azure tenant.
-        ///// </summary>
-        //public AsAzureTenant Tenant { get; private set; }
 
         /// <summary>
         /// Gets or sets the token cache contents.

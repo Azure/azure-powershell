@@ -14,16 +14,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using System;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
+using Microsoft.Azure.Commands.AnalysisServices.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.AnalysisServices
+namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 {
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
@@ -33,11 +31,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     [OutputType(typeof(AsAzureProfile))]
     public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
     {
-        [Parameter(Mandatory = true, HelpMessage = "Name of the environment containing the account to log into")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
         [ValidateNotNullOrEmpty]
         public string EnvironmentName { get; set; }
         
-        [Parameter(Mandatory = false, HelpMessage = "Credential")]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = "Login credentials")]
         public PSCredential Credential { get; set; }
 
         protected AsAzureEnvironment AsEnvironment;
@@ -46,6 +44,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         {
             get
             {
+                // Nothing to do with Azure Resource Managment APIs
                 return null;
             }
         }
@@ -66,17 +65,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 #pragma warning disable 0618
             if (EnvironmentName == null)
             {
-                throw new PSInvalidOperationException(string.Format(Properties.Resources.UnknownEnvironment, EnvironmentName));
+                throw new PSInvalidOperationException(string.Format(Resources.UnknownEnvironment, ""));
             }
             else
             {
-                if (AsAzureClientUtility.Instance.Profile.Environments.ContainsKey(EnvironmentName))
+                if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(EnvironmentName))
                 {
-                    AsEnvironment = AsAzureClientUtility.Instance.Profile.Environments[EnvironmentName];
+                    AsEnvironment = AsAzureClientSession.Instance.Profile.Environments[EnvironmentName];
                 }
                 else
                 {
-                    AsEnvironment = AsAzureClientUtility.Instance.Profile.CreateEnvironment(EnvironmentName);
+                    AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(EnvironmentName);
                 }
             }
 #pragma warning restore 0618
@@ -99,40 +98,25 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             }
 
 #pragma warning disable 0618
-            if (ShouldProcess(string.Format(Properties.Resources.LoginTarget, AsEnvironment.Name), "log in"))
+            if (ShouldProcess(string.Format(Resources.LoginTarget, AsEnvironment.Name), "log in"))
             {
-                var currentProfile = AsAzureClientUtility.Instance.Profile;
+                var currentProfile = AsAzureClientSession.Instance.Profile;
 
                 if (currentProfile.Context == null)
                 {
-                    AsAzureClientUtility.Instance.SetCurrentContext(azureAccount, AsEnvironment);
+                    AsAzureClientSession.Instance.SetCurrentContext(azureAccount, AsEnvironment);
                 }
 
-                var asAzureProfile = AsAzureClientUtility.Instance.Login(currentProfile.Context, password);
+                var asAzureProfile = AsAzureClientSession.Instance.Login(currentProfile.Context, password);
+                currentProfile.Environments.Add(AsEnvironment.Name, AsEnvironment);
                 WriteObject(asAzureProfile);
             }
 #pragma warning restore 0618
         }
 
-        /// <summary>
-        /// Load global aliases for ARM
-        /// </summary>
         public void OnImport()
         {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmProfileStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
-            }
+            // Nothing to do on assembly initialize
         }
-
     }
 }
