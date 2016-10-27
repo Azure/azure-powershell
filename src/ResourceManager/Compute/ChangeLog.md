@@ -20,9 +20,9 @@
 ## Current Release
 
     * Update formats for list of VMs, VMScaleSets and ContainerService
-        - The default format of Get-AzureRmVM, Get-AzureRmVmss and Get-AzureRmContainerService is not table format when these cmdlets call List Operation
+        - The default format of Get-AzureRmVM, Get-AzureRmVmss and Get-AzureRmContainerService is now table format when these cmdlets call List Operation
     * Fix overprovision issue for VMScaleSet
         - Because of the bug in Compute client library (and Swagger spec) regarding overprovision property of VMScaleSet, this property did not show up correctly.
     * Better piping scenario for VMScaleSets and ContainerService cmdlets
-        - VMScaleSet and ContainerService now have "ResourceGroupName" property, so when piping Get command to Delete/Update command, -ResourceGroupName is not required.
-    * Separate paremater sets for Set-AzureRmVM with Generalized and Redeploy parameter
+        - VMScaleSet and ContainerService now have "ResourceGroupName" property, so when piping Get command to Delete/Update command, -ResourceGroupName is not required any more.
+    * Separate parameter sets for Set-AzureRmVM with Generalized and Redeploy parameter
