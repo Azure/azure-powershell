@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -48,9 +47,39 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// A string representation of the Dimension including indentation
         /// </summary>
         /// <param name="inputString">The input string</param>
+        /// <param name="indentationTabs">The number of tab chars to insert</param>
+        /// <returns>A string representation of the LocalizableString</returns>
+        public static string ToString(this LocalizableString inputString, int indentationTabs)
+        {
+            StringBuilder output = new StringBuilder();
+            if (inputString != null)
+            {
+                output.AppendLine();
+                output.AddSpacesInFront(indentationTabs).AppendLine("LocalizedValue : " + inputString.LocalizedValue);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Value          : " + inputString.Value);
+            }
+
+            return output.ToString();
+        }
+
+        /// <summary>
+        /// A string representation of the Dimension including indentation
+        /// </summary>
+        /// <param name="inputString">The input string</param>
         /// <param name="localizedValue">Flag to inidicate if the localized value must be printed or not</param>
         /// <returns>A string representation of the LocalizableString</returns>
         public static string ToString(this LocalizableString inputString, bool localizedValue)
+        {
+            return localizedValue ? inputString.LocalizedValue : inputString.Value;
+        }
+
+        /// <summary>
+        /// A string representation of the Dimension including indentation
+        /// </summary>
+        /// <param name="inputString">The input string</param>
+        /// <param name="localizedValue">Flag to inidicate if the localized value must be printed or not</param>
+        /// <returns>A string representation of the LocalizableString</returns>
+        public static string ToString(this Microsoft.Azure.Insights.Legacy.Models.LocalizableString inputString, bool localizedValue)
         {
             return localizedValue ? inputString.LocalizedValue : inputString.Value;
         }
@@ -97,7 +126,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             if (aggregatedCondition != null)
             {
                 output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("Operator            : " + aggregatedCondition.Operator);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Operator            : " + aggregatedCondition.OperatorProperty);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Threshold           : " + aggregatedCondition.Threshold);
                 output.AddSpacesInFront(indentationTabs).Append("Window size         : " + aggregatedCondition.WindowSize);
             }
@@ -194,7 +223,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             if (scaleCapacity != null)
             {
                 output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("Default : " + scaleCapacity.Default);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Default : " + scaleCapacity.DefaultProperty);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Minimum : " + scaleCapacity.Minimum);
                 output.AddSpacesInFront(indentationTabs).Append("Maximum : " + scaleCapacity.Maximum);
             }
@@ -216,7 +245,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 output.AppendLine();
                 output.AddSpacesInFront(indentationTabs).AppendLine("Cooldown  : " + scaleAction.Cooldown);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Direction : " + scaleAction.Direction);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Type      : " + scaleAction.Type);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Type      : " + ScaleAction.Type);
                 output.AddSpacesInFront(indentationTabs).Append("Value     : " + scaleAction.Value);
             }
 
@@ -237,7 +266,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 output.AppendLine();
                 output.AddSpacesInFront(indentationTabs).AppendLine("MetricName       : " + metricTrigger.MetricName);
                 output.AddSpacesInFront(indentationTabs).AppendLine("MetricResourceId : " + metricTrigger.MetricResourceUri);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Operator         : " + metricTrigger.Operator);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Operator         : " + metricTrigger.OperatorProperty);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Statistic        : " + metricTrigger.Statistic);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Threshold        : " + metricTrigger.Threshold);
                 output.AddSpacesInFront(indentationTabs).AppendLine("TimeAggregation  : " + metricTrigger.TimeAggregation);
@@ -350,7 +379,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             {
                 output.AppendLine();
                 output.AddSpacesInFront(indentationTabs).AppendLine("E-mail     : " + autoscaleNotification.Email);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Operation  : " + autoscaleNotification.Operation);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Operation  : " + AutoscaleNotification.Operation);
                 output.AddSpacesInFront(indentationTabs).Append("Webhooks   : " + autoscaleNotification.Webhooks.ToString(indentationTabs + DefaultIndentationTabs));
             }
 
@@ -475,10 +504,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             output.AppendLine();
             output.AddSpacesInFront(indentationTabs).AppendLine("Average    : " + metricValue.Average);
             output.AddSpacesInFront(indentationTabs).AppendLine("Count      : " + metricValue.Count);
-            output.AddSpacesInFront(indentationTabs).AppendLine("Last       : " + metricValue.Last);
             output.AddSpacesInFront(indentationTabs).AppendLine("Maximum    : " + metricValue.Maximum);
             output.AddSpacesInFront(indentationTabs).AppendLine("Minimum    : " + metricValue.Minimum);
-            output.AddSpacesInFront(indentationTabs).AppendLine("Properties : " + metricValue.Properties.ToString(indentationTabs: indentationTabs + 1));
             output.AddSpacesInFront(indentationTabs).AppendLine("Timestamp  : " + metricValue.Timestamp);
             output.AddSpacesInFront(indentationTabs).Append("Total      : " + metricValue.Total);
             return output.ToString();
@@ -500,45 +527,12 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         }
 
         /// <summary>
-        /// A string representation of the list of Dimension objects including indentation
-        /// </summary>
-        /// <param name="metricDimensions">The list of Dimension objects</param>
-        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
-        /// <returns>A string representation of the list of Dimension objects including indentation</returns>
-        public static string ToString(this IList<Dimension> metricDimensions, int indentationTabs)
-        {
-            StringBuilder output = new StringBuilder();
-            metricDimensions.ForEach(dimension => output.Append(dimension.ToString(indentationTabs)));
-
-            return output.ToString();
-        }
-
-        /// <summary>
-        /// A string representation of the Dimension including indentation
-        /// </summary>
-        /// <param name="metricDimension">The Dimension object</param>
-        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
-        /// <returns>A string representation of the Dimension including indentation</returns>
-        public static string ToString(this Dimension metricDimension, int indentationTabs)
-        {
-            StringBuilder output = new StringBuilder();
-            if (metricDimension != null)
-            {
-                output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("Name   : " + metricDimension.Name.ToString(localizedValue: false));
-                output.AddSpacesInFront(indentationTabs).Append("Values : " + metricDimension.Values);
-            }
-
-            return output.ToString();
-        }
-
-        /// <summary>
         /// A string representation of the list of MetricAvailability objects including indentation
         /// </summary>
         /// <param name="metricAvailabilities">The list of MetricAvailability objects</param>
         /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
         /// <returns>A string representation of the list of MetricAvailability objects including indentation</returns>
-        public static string ToString(this IList<MetricAvailability> metricAvailabilities, int indentationTabs)
+        public static string ToString(this IList<Microsoft.Azure.Insights.Legacy.Models.MetricAvailability> metricAvailabilities, int indentationTabs)
         {
             StringBuilder output = new StringBuilder();
             metricAvailabilities.ForEach(availability => output.Append(availability.ToString(indentationTabs)));
@@ -552,71 +546,32 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="metricAvailability">The MetricAvailability object</param>
         /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
         /// <returns>A string representation of the MetricAvailability including indentation</returns>
-        public static string ToString(this MetricAvailability metricAvailability, int indentationTabs)
+        public static string ToString(this Microsoft.Azure.Insights.Legacy.Models.MetricAvailability metricAvailability, int indentationTabs)
         {
             StringBuilder output = new StringBuilder();
             if (metricAvailability != null)
             {
                 output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("Location  : " + metricAvailability.Location.ToString(indentationTabs: indentationTabs + 1));
-                output.AddSpacesInFront(indentationTabs).AppendLine("Retention : " + metricAvailability.Retention);
-                output.AddSpacesInFront(indentationTabs).Append("Values    : " + metricAvailability.TimeGrain);
+                output.AddSpacesInFront(indentationTabs).Append(string.Format("Retention : {0},   TimeGrain    : {1}", metricAvailability.Retention, metricAvailability.TimeGrain));
             }
 
             return output.ToString();
         }
 
         /// <summary>
-        /// A string representation of the MetricLocation including indentation
+        /// A string representation of the RetentionPolicy including indentation
         /// </summary>
-        /// <param name="metricLocation">The MetricLocation object</param>
+        /// <param name="retentionPolicy">The RetentionPolicy object</param>
         /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
-        /// <returns>A string representation of the MetricLocation including indentation</returns>
-        public static string ToString(this MetricLocation metricLocation, int indentationTabs)
+        /// <returns>A string representation of the RecurrentSchedule including indentation</returns>
+        public static string ToString(this RetentionPolicy retentionPolicy, int indentationTabs)
         {
             StringBuilder output = new StringBuilder();
-            if (metricLocation != null)
+            if (retentionPolicy != null)
             {
                 output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("Table endpoint : " + metricLocation.TableEndpoint);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Table info     : " + metricLocation.TableInfo);
-                output.AddSpacesInFront(indentationTabs).Append("PartitionKey   : " + metricLocation.PartitionKey);
-            }
-
-            return output.ToString();
-        }
-
-        /// <summary>
-        /// A string representation of the list of MetricTableInfo objects including indentation
-        /// </summary>
-        /// <param name="metricTableInfos">The list of MetricTableInfo objects</param>
-        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
-        /// <returns>A string representation of the list of MetricTableInfo objects including indentation</returns>
-        public static string ToString(this LazyList<MetricTableInfo> metricTableInfos, int indentationTabs)
-        {
-            StringBuilder output = new StringBuilder();
-            metricTableInfos.ForEach(metricTableInfo => output.Append(metricTableInfo.ToString(indentationTabs)));
-
-            return output.ToString();
-        }
-
-        /// <summary>
-        /// A string representation of the MetricTableInfo including indentation
-        /// </summary>
-        /// <param name="metricTableInfo">The MetricTableInfo object</param>
-        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
-        /// <returns>A string representation of the MetricTableInfo including indentation</returns>
-        public static string ToString(this MetricTableInfo metricTableInfo, int indentationTabs)
-        {
-            StringBuilder output = new StringBuilder();
-            if (metricTableInfo != null)
-            {
-                output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("Table name                 : " + metricTableInfo.TableName);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Table sas token            : " + metricTableInfo.SasToken);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Table sas token expiration : " + metricTableInfo.SasTokenExpirationTime.ToUniversalTime().ToString("O"));
-                output.AddSpacesInFront(indentationTabs).AppendLine("Start time                 : " + metricTableInfo.StartTime.ToUniversalTime().ToString("O"));
-                output.AddSpacesInFront(indentationTabs).Append("End time                   : " + metricTableInfo.EndTime.ToUniversalTime().ToString("O"));
+                output.AddSpacesInFront(indentationTabs).AppendLine("Enabled  : " + string.Join(",", retentionPolicy.Enabled));
+                output.AddSpacesInFront(indentationTabs).Append("Days     : " + string.Join(",", retentionPolicy.Days));
             }
 
             return output.ToString();

@@ -1,6 +1,7 @@
 {
     "Entries": [{
         "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default?api-version=2016-03-01",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvbG9ncHJvZmlsZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
         "RequestMethod": "GET",
         "RequestBody": "",
         "RequestHeaders": {
@@ -13,7 +14,7 @@
             "Host": ["management.azure.com"],
             "Connection": ["Keep-Alive"]
         },
-        "ResponseBody": "{\"id\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/microsoft.insights/logprofiles/default\",\"name\":\"default\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\",\"serviceBusRuleId\":null,\"locations\":[\"global\"],\"categories\":[\"Delete\",\"Write\",\"Action\"],\"retentionPolicy\":{\"enabled\":false,\"days\":0}}}\r\n",
+        "ResponseBody": "{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default\",\"name\":\"default\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountId\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\",\"serviceBusRuleId\":null,\"locations\":[\"global\"],\"categories\":[\"Delete\",\"Write\",\"Action\"],\"retentionPolicy\":{\"enabled\":false,\"days\":0}}}\r\n",
         "ResponseHeaders": {
             "Cache-Control": ["no-cache"],
             "Pragma": ["no-cache"],
@@ -33,7 +34,7 @@
         "StatusCode": "200"
     }],
     "Names": {
-        "Test-AddAlertRule": [""]
+        "Test-GetAzureRmLogProfile": [""]
     },
     "Variables": {
         "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"

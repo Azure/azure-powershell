@@ -123,7 +123,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     AADTenantId = AadTenantId,
                     CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
-                    CertificatePassword = CertificatePassword
+                    CertificatePassword = CertificatePassword,
+                    SecurityProfile = SecurityProfile
                 };
                 foreach (
                     var storageAccount in
@@ -139,6 +140,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 foreach (var action in parameters.ScriptActions.Where(action => !result.ScriptActions.ContainsKey(action.Key)))
                 {
                     result.ScriptActions.Add(action.Key, action.Value.Select(a => new AzureHDInsightScriptAction(a)).ToList());
+                }
+                foreach (var component in parameters.ComponentVersion.Where(component => !result.ComponentVersion.ContainsKey(component.Key)))
+                {
+                    result.ComponentVersion.Add(component.Key, component.Value);
                 }
                 return result;
             }
@@ -164,6 +169,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 AadTenantId = value.AADTenantId;
                 ObjectId = value.ObjectId;
                 CertificatePassword = value.CertificatePassword;
+                SecurityProfile = value.SecurityProfile;
 
                 foreach (
                     var storageAccount in
@@ -179,6 +185,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 foreach (var action in value.ScriptActions.Where(action => !parameters.ScriptActions.ContainsKey(action.Key)))
                 {
                     parameters.ScriptActions.Add(action.Key, action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
+                }
+                foreach (var component in value.ComponentVersion.Where(component => !parameters.ComponentVersion.ContainsKey(component.Key)))
+                {
+                    parameters.ComponentVersion.Add(component.Key, component.Value);
                 }
             }
         }
@@ -238,6 +248,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return parameters.ClusterType; }
             set { parameters.ClusterType = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the version for a service in the cluster.")]
+        public Dictionary<string, string> ComponentVersion
+        {
+            get { return parameters.ComponentVersion; }
+            set { parameters.ComponentVersion = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
@@ -301,6 +318,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets Security Profile which is used for creating secure cluster.")]
+        public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
+
         #endregion
 
 
@@ -310,6 +330,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Dictionary<string, string>>();
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
+            ComponentVersion = new Dictionary<string, string>();
         }
 
         public override void ExecuteCmdlet()
@@ -352,6 +373,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.ScriptActions.Add(action.Key,
                     action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
             }
+            foreach (var component in ComponentVersion.Where(component => !parameters.ComponentVersion.ContainsKey(component.Key)))
+            {
+                parameters.ComponentVersion.Add(component.Key, component.Value);
+            }
             if (OozieMetastore != null)
             {
                 var metastore = OozieMetastore;
@@ -375,6 +400,27 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.Principal = servicePrincipal;
             }
 
+            if (SecurityProfile != null)
+            {
+                parameters.SecurityProfile = new SecurityProfile()
+                {
+                    DirectoryType = DirectoryType.ActiveDirectory,
+                    Domain = SecurityProfile.Domain,
+                    DomainUsername =
+                        SecurityProfile.DomainUserCredential != null
+                            ? SecurityProfile.DomainUserCredential.UserName
+                            : null,
+                    DomainUserPassword =
+                        SecurityProfile.DomainUserCredential != null &&
+                        SecurityProfile.DomainUserCredential.Password != null
+                            ? SecurityProfile.DomainUserCredential.Password.ConvertToString()
+                            : null,
+                    OrganizationalUnitDN = SecurityProfile.OrganizationalUnitDN,
+                    LdapsUrls = SecurityProfile.LdapsUrls,
+                    ClusterUsersGroupDNs = SecurityProfile.ClusterUsersGroupDNs
+                };
+            }
+            
             var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
 
             if (cluster != null)
