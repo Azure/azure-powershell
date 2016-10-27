@@ -136,6 +136,64 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateNewHDInsightCluster_Linux()
         {
+            CreateNewHDInsightCluster();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
+                clusterout =>
+                    clusterout.ClusterState == "Running" &&
+                    clusterout.ClusterType == ClusterType &&
+                    clusterout.ClusterVersion == "3.1" &&
+                    clusterout.CoresUsed == 24 &&
+                    clusterout.Location == Location &&
+                    clusterout.Name == ClusterName &&
+                    clusterout.OperatingSystemType == OSType.Linux)),
+                Times.Once);
+
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateNewHDInsightCluster_Secure_Linux()
+        {
+            cmdlet.SecurityProfile = new AzureHDInsightSecurityProfile()
+            {
+                Domain = "domain.com",
+                DomainUserCredential = new PSCredential("username", "pass".ConvertToSecureString()),
+                OrganizationalUnitDN = "OUDN",
+                LdapsUrls = new[]
+                {
+                    "ldapsurl"
+                },
+                ClusterUsersGroupDNs = new[]
+                {
+                    "userGroupDn"
+                }
+            };
+
+            CreateNewHDInsightCluster(addSecurityProfileInresponse:true);
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
+                clusterout =>
+                    clusterout.ClusterState == "Running" &&
+                    clusterout.ClusterType == ClusterType &&
+                    clusterout.ClusterVersion == "3.1" &&
+                    clusterout.CoresUsed == 24 &&
+                    clusterout.Location == Location &&
+                    clusterout.Name == ClusterName &&
+                    clusterout.OperatingSystemType == OSType.Linux &&
+                    clusterout.SecurityProfile.Domain.Equals(cmdlet.SecurityProfile.Domain) &&
+                    clusterout.SecurityProfile.DomainUserCredential.UserName.Equals(
+                        cmdlet.SecurityProfile.DomainUserCredential.UserName) &&
+                    clusterout.SecurityProfile.OrganizationalUnitDN.Equals(cmdlet.SecurityProfile.OrganizationalUnitDN) &&
+                    clusterout.SecurityProfile.LdapsUrls.ArrayToString("")
+                        .Equals(cmdlet.SecurityProfile.LdapsUrls.ArrayToString("")) &&
+                    clusterout.SecurityProfile.ClusterUsersGroupDNs.ArrayToString("")
+                        .Equals(cmdlet.SecurityProfile.ClusterUsersGroupDNs.ArrayToString("")))),
+                Times.Once);
+        }
+
+        private void CreateNewHDInsightCluster(bool addSecurityProfileInresponse = false)
+        {
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
             cmdlet.ClusterSizeInNodes = ClusterSize;
@@ -146,7 +204,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.SshCredential = _sshCred;
             cmdlet.OSType = OSType.Linux;
-
+            
             var cluster = new Cluster
             {
                 Id = "id",
@@ -167,6 +225,26 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     OperatingSystemType = OSType.Linux
                 }
             };
+
+            if (addSecurityProfileInresponse)
+            {
+                cluster.Properties.SecurityProfile = new SecurityProfile()
+                {
+                    Domain = "domain.com",
+                    DomainUsername = "username",
+                    DomainUserPassword = "pass",
+                    OrganizationalUnitDN = "OUDN",
+                    LdapsUrls = new[]
+                    {
+                        "ldapsurl"
+                    },
+                    ClusterUsersGroupDNs = new[]
+                    {
+                        "userGroupDn"
+                    }
+                };
+            }
+
             var coreConfigs = new Dictionary<string, string>
             {
                 {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},
@@ -190,22 +268,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse { Cluster = cluster };
+            var getresponse = new ClusterGetResponse {Cluster = cluster};
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
-                parameters =>
-                    parameters.ClusterSizeInNodes == ClusterSize &&
-                    parameters.DefaultStorageAccountName == StorageName &&
-                    parameters.DefaultStorageAccountKey == StorageKey &&
-                    parameters.Location == Location &&
-                    parameters.UserName == _httpCred.UserName &&
-                    parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType &&
-                    parameters.OSType == OSType.Linux &&
-                    parameters.SshUserName == _sshCred.UserName &&
-                    parameters.SshPassword == _sshCred.Password.ConvertToString())))
-            .Returns(getresponse)
-            .Verifiable();
+            hdinsightManagementMock.Setup(
+                c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+                    parameters =>
+                        parameters.ClusterSizeInNodes == ClusterSize &&
+                        parameters.DefaultStorageAccountName == StorageName &&
+                        parameters.DefaultStorageAccountKey == StorageKey &&
+                        parameters.Location == Location &&
+                        parameters.UserName == _httpCred.UserName &&
+                        parameters.Password == _httpCred.Password.ConvertToString() &&
+                        parameters.ClusterType == ClusterType &&
+                        parameters.OSType == OSType.Linux &&
+                        parameters.SshUserName == _sshCred.UserName &&
+                        parameters.SshPassword == _sshCred.Password.ConvertToString())))
+                .Returns(getresponse)
+                .Verifiable();
 
             cmdlet.ExecuteCmdlet();
 
@@ -268,7 +347,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             
             cluster.Properties.ClusterDefinition.ComponentVersion = componentVersion;
-
             var coreConfigs = new Dictionary<string, string>
             {
                 {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},
@@ -292,7 +370,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse { Cluster = cluster };
+            var getresponse = new ClusterGetResponse {Cluster = cluster};
 
             hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
                 parameters =>
@@ -309,6 +387,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.ComponentVersion["Spark"] == componentVersion["Spark"])))
             .Returns(getresponse)
             .Verifiable();
+            hdinsightManagementMock.Setup(
+                c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+                    parameters =>
+                        parameters.ClusterSizeInNodes == ClusterSize &&
+                        parameters.DefaultStorageAccountName == StorageName &&
+                        parameters.DefaultStorageAccountKey == StorageKey &&
+                        parameters.Location == Location &&
+                        parameters.UserName == _httpCred.UserName &&
+                        parameters.Password == _httpCred.Password.ConvertToString() &&
+                        parameters.ClusterType == ClusterType &&
+                        parameters.OSType == OSType.Linux &&
+                        parameters.SshUserName == _sshCred.UserName &&
+                        parameters.SshPassword == _sshCred.Password.ConvertToString())))
+                .Returns(getresponse)
+                .Verifiable();
 
             cmdlet.ExecuteCmdlet();
 
