@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -31,7 +32,12 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureIotHubLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTest("Test-AzureRmIotHubLifecycle");
+            IotHubController.NewInstance.RunPsTestWorkflow(
+                () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-AzureRmIotHubLifecycle", "northeurope", "powershelliothub", "powershellrg", "S1") }; },
+                null,
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
         }
     }
 }
