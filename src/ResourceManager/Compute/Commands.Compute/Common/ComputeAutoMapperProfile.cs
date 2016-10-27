@@ -165,6 +165,23 @@ namespace Microsoft.Azure.Commands.Compute
             Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
+            // VirtualMachine => PSVirtualMachineListStatusContext
+            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.AvailabilitySetReference, o => o.MapFrom(r => r.AvailabilitySet))
+                .ForMember(c => c.Extensions, o => o.MapFrom(r => r.Resources))
+                .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachine>>, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachine>>, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<TO.PSVirtualMachineListStatus, TO.PSVirtualMachineList>();
+
             // VirtualMachineSize => PSVirtualMachineSize
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
 
