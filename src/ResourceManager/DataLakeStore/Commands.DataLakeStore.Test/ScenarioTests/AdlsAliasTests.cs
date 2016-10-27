@@ -33,6 +33,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsFirewallRules()
+        {
+            NewInstance.RunPsTest(string.Format("Test-DataLakeStoreFirewall -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsTrustedIdProvider()
+        {
+            NewInstance.RunPsTest(string.Format("Test-DataLakeStoreTrustedIdProvider -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystem()
         {
             NewInstance.RunPsTest(string.Format("Test-DataLakeStoreFileSystem -fileToCopy '{0}' -location '{1}'", ".\\ScenarioTests\\" + this.GetType().Name + ".ps1", AdlsTestsBase.resourceGroupLocation));
