@@ -741,15 +741,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlCredential GetCredential(string accountName,
+        private ObsoleteUSqlCredential GetCredential(string accountName,
             string databaseName, string credName)
         {
             return
-                _catalogClient.Catalog.GetCredential(accountName, databaseName,
-                    credName);
+                new ObsoleteUSqlCredential(_catalogClient.Catalog.GetCredential(accountName, databaseName,
+                    credName), databaseName, computeAccountName: accountName);
         }
 
-        private IList<USqlCredential> GetCredentials(string accountName,
+        private IList<ObsoleteUSqlCredential> GetCredentials(string accountName,
             string databaseName)
         {
             List<USqlCredential> toReturn = new List<USqlCredential>();
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 toReturn.AddRange(response);
             }
 
-            return toReturn;
+            return toReturn.Select(element => new ObsoleteUSqlCredential(element, databaseName, computeAccountName: accountName)).ToList();
         }
 
         private USqlSchema GetSchema(string accountName, string databaseName,
