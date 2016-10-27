@@ -55,3 +55,24 @@ function Test-ResourceLockCRUD
 	$removed = Remove-AzureRMResourceLock -ResourceId $actual.ResourceId -Force
 	Assert-AreEqual True $removed
 }
+
+<#
+.SYNOPSIS
+Tests resource lock which does not exist.
+#>
+function Test-ResourceLockNonExisting
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rglocation = Get-ProviderLocation ResourceManagement
+
+	$rg = New-AzureRMResourceGroup -Name $rgname -Location $rglocation
+	Assert-AreEqual $rgname $rg.ResourceGroupName
+	
+	$lock = Get-AzureRMResourceLock -LockName "NonExisting" -Scope $rg.ResourceId -ErrorAction SilentlyContinue
+
+	Assert-True { $Error[0] -like "*LockNotFound : The lock 'NonExisting' could not be found." }
+	Assert-Null $lock
+
+	$Error.Clear()
+}
