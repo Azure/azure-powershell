@@ -191,5 +191,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineRedeploy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGetStatus()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineGetStatus");
+        }
     }
 }
