@@ -13,17 +13,17 @@ This cmdlet will validate that the markdown help for each cmdlet in a service ha
 
 ### ServiceManagement
 ```
-Validate-ServiceMarkdownHelp -Service <String> -PathToRepo <String> [-ServiceManagement] [<CommonParameters>]
+Validate-ServiceMarkdownHelp -Service <String> [-ServiceManagement] [<CommonParameters>]
 ```
 
 ### ResourceManager
 ```
-Validate-ServiceMarkdownHelp -Service <String> -PathToRepo <String> [-ResourceManager] [<CommonParameters>]
+Validate-ServiceMarkdownHelp -Service <String> [-ResourceManager] [<CommonParameters>]
 ```
 
 ### Storage
 ```
-Validate-ServiceMarkdownHelp -PathToRepo <String> [-Storage] [<CommonParameters>]
+Validate-ServiceMarkdownHelp [-Storage] [<CommonParameters>]
 ```
 
 ### FullPath
@@ -58,14 +58,14 @@ If any cmdlet is found to be missing help, Validate-ServiceMarkdownHelp will thr
 
 ### -------------------------- Example 1: Validating help for an ARM service --------------------------
 ```
-PS C:\> Validate-ServiceMarkdownHelp -Service Profile -PathToRepo C:\azure-powershell -ResourceManager
+PS C:\> Validate-ServiceMarkdownHelp -Service Profile -ResourceManager
 ```
 
 This example will validate the markdown help for the Profile cmdlets. It will find the help folder containing all of the markdown help and iterate over those files, checking if the necessary sections are filled out to completion.
 
 ### -------------------------- Example 2: Validating help for Storage --------------------------
 ```
-PS C:\> Validate-ServiceMarkdownHelp -PathToRepo C:\azure-powershell -Storage
+PS C:\> Validate-ServiceMarkdownHelp -Storage
 ```
 
 This example will validate the markdown help for the Storage cmdlets. It will find the help folder containing all of the markdown help and iterate over those files, checking if the necessary sections are filled out to completion.
@@ -102,21 +102,6 @@ A path to the help folder containing all of the markdown help files for the give
 ```yaml
 Type: String
 Parameter Sets: FullPath
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PathToRepo
-A path to the root of the azure-powershell repository that has been cloned.
-
-```yaml
-Type: String
-Parameter Sets: ServiceManagement, ResourceManager, Storage
 Aliases: 
 
 Required: True

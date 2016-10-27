@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        public bool? OverProvision { get; set; }
+        public bool? Overprovision { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vVirtualMachineScaleSet = new VirtualMachineScaleSet
             {
-                OverProvision = this.OverProvision,
+                Overprovision = this.Overprovision,
                 Location = this.Location,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
                 Sku = vSku,

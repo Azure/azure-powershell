@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        public bool ShouldSerializeBackendAddresses()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
         public bool ShouldSerializeBackendIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);

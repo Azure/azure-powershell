@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Insights.Legacy.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +30,16 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         /// <param name="metricValues">The list of metric values</param>
         public PSMetricValuesCollection(IEnumerable<MetricValue> metricValues)
+        {
+            this.metricValues = metricValues.Select(mv => new PSMetricValue(mv)).ToList();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the PSMetricValuesCollection class
+        /// </summary>
+        /// <param name="metricValues">The list of metric values</param>
+        /// <param name="dummy">Dummy argument to change the method signature</param>
+        public PSMetricValuesCollection(IEnumerable<MetricValue> metricValues, bool dummy = false)
         {
             this.metricValues = metricValues.Select(mv => new PSMetricValue(mv)).ToList();
         }

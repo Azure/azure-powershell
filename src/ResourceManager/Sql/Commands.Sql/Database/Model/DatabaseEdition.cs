@@ -53,11 +53,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Free database edition.  Reserved for special use cases/scenarios.
         /// </summary>
         Free = 8,
-
-        /// <summary>
-        /// A database PremiumRS edition
-        /// </summary>
-        PremiumRS = 9,        
     }
 }
 
