@@ -1042,7 +1042,10 @@ The acceptable values for this parameter are:</maml:para>
 	<command:details>
 		<command:name>Get-AzureRmDataLakeAnalyticsJob</command:name>
 		<maml:description>
-			<maml:para>Retrieves information about a specified Data Lake Analytics job or a list of jobs.</maml:para>
+			<maml:para>Retrieves information about a specified Data Lake Analytics job or a list of jobs.
+When listing jobs, details such as script contents and error messages are omitted.
+Provide a job ID in order to fetch a specific job’s details, such as script contents, error messages, etc.
+</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1052,7 +1055,9 @@ The acceptable values for this parameter are:</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDataLakeAnalyticsJob cmdlet gets information about an Azure Data Lake Analytics job. If no job is specified, this cmdlet gets a list of jobs.</maml:para>
+		<maml:para>The Get-AzureRmDataLakeAnalyticsJob cmdlet gets information about an Azure Data Lake Analytics job. If no job is specified, this cmdlet gets a list of jobs.
+When listing jobs, details such as script contents and error messages are omitted.
+Provide a job ID in order to fetch a specific job’s details, such as script contents, error messages, etc.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
