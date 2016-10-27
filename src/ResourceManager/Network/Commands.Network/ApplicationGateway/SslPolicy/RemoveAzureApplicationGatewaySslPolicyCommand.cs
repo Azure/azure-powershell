@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Network.Models;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -33,6 +33,21 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
+        {
+            if (ApplicationGateway.SslPolicy == null)
+            {
+                throw new ArgumentException("Gateway doesn't have SSL policy.");
+            }
+
+            ConfirmAction(
+               Force.IsPresent,
+               "Are you sure you want to remove SSL policy",
+               "Removing SSL Policy..",
+               ApplicationGateway.SslPolicy.ToString(),
+               () => RemoveSslPolicy());
+        }
+
+        private void RemoveSslPolicy()
         {
             base.ExecuteCmdlet();
             this.ApplicationGateway.SslPolicy = null;
