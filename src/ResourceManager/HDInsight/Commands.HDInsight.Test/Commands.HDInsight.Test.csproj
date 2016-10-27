@@ -165,6 +165,7 @@
     <Compile Include="HDInsightTestBase.cs" />
     <Compile Include="UnitTests\PremiumClusterTests.cs" />
     <Compile Include="UnitTests\ScriptActionTests.cs" />
+    <Compile Include="UnitTests\SecurityProfileTests.cs" />
     <None Include="ScenarioTests\HDInsightConfigurationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

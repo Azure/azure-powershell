@@ -112,6 +112,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the security profile.
+        /// </summary>
+        /// <value>
+        /// The security profile.
+        /// </value>
+        public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;
