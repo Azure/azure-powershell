@@ -47,7 +47,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.0.12.6-preview\lib\net45\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.0.12.8-preview\lib\net45\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.StoreUploader, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -122,6 +122,14 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\AddAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\AddAzureRmDataLakeStoreFirewallRule.cs" />
     <Compile Include="Commands\AddAzureRmDataLakeStoreItemContent.cs" />
     <Compile Include="Commands\ExportAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreChildItem.cs" />
