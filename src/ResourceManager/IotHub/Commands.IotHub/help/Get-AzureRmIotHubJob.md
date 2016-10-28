@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubJob
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the information about an IotHub job.
 
 ## SYNTAX
 
@@ -22,16 +22,22 @@ Get-AzureRmIotHubJob [-ResourceGroupName] <String> [-Name] <String> [<CommonPara
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets the information about an IotHub Job. An IotHub Job gets created when an import or export operation is initialted using the New-AzureRmIotHubExportDevices or New-AzureRmIotHubImportDevices commands.
+You can either list all the jobs or filter the jobs by the Job Identifier.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 List all Jobs
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+Gets all the jobs for the IotHub named "myiothub"
 
-{{ Add example description here }}
+### Example 2 Get a specific Job
+```
+PS C:\> Get-AzureRmIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub" -JobId 3630fc31-4caa-43e8-a232-ea0577221cb2
+```
+Gets information about the job with the identifier "3630fc31-4caa-43e8-a232-ea0577221cb2" for the IotHub named "myiothub"
 
 ## PARAMETERS
 

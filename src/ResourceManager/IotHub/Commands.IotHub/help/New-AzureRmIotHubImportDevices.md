@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmIotHubImportDevices
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new import devices job.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmIotHubImportDevices [-ResourceGroupName] <String> [-Name] <String> [-
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a new import devices job for the IotHub. This will import all the devices to the IotHub from the specified container. 
+Refer to the following article on how to generate the SAS URI. https://azure.microsoft.com/en-us/documentation/articles/iot-hub-bulk-identity-mgmt/ .
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmIotHubImportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -InputBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D" -OutputBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D"
 ```
-
-{{ Add example description here }}
+Creates a new import device request for the IotHub "myiothub".
 
 ## PARAMETERS
 

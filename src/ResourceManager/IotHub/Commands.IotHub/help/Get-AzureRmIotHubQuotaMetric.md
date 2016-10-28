@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubQuotaMetric
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the Quota Metrics for an IotHub.
 
 ## SYNTAX
 
@@ -16,16 +16,15 @@ Get-AzureRmIotHubQuotaMetric [-ResourceGroupName] <String> [-Name] <String> [<Co
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets the Quota Metrics for an IotHub.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get the Quota Metrics 
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubQuotaMetric -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
-
-{{ Add example description here }}
+Gets the Quota Metric information for the IotHub named "myiothub"
 
 ## PARAMETERS
 

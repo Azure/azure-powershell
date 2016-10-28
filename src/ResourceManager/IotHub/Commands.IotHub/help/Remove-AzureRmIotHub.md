@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmIotHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes an IotHub.
 
 ## SYNTAX
 
@@ -17,16 +17,15 @@ Remove-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-Force] [-W
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Deletes an IotHub.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Remove an IotHub
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" 
 ```
-
-{{ Add example description here }}
+Removes an IotHub named "myiothub"
 
 ## PARAMETERS
 

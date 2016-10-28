@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about the IotHubs in a subscription. 
 
 ## SYNTAX
 
@@ -27,16 +27,27 @@ Get-AzureRmIotHub [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets information about the IotHubs in a subscription. You can view all IotHub instances in a subscription, or filter your results by a resource group or a particular IotHub Name.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHub
 ```
+Gets all the IotHubs in the subscription.
 
-{{ Add example description here }}
+### Example 2
+```
+PS C:\> Get-AzureRmIotHub -ResourceGroupName "myresourcegroup"
+```
+Gets all the IotHubs in the subscription belonging to the resourcegroup named "myresourcegroup".
+
+### Example 3
+```
+PS C:\> Get-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```
+Gets information about the IotHub named "myiothub".
 
 ## PARAMETERS
 

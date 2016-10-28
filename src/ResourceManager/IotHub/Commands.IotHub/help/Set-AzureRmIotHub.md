@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmIotHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the properties of an IotHub.
 
 ## SYNTAX
 
@@ -44,16 +44,21 @@ Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Updates the properties of an IotHub.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Update the sku
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName S1 -Units 5
 ```
+Update the sku to S1 and units to 5 for the IotHub named "myiothub"
 
-{{ Add example description here }}
+### Example 2 Update the eventhub properties
+```
+PS C:\> Set-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubRetentionTimeInDays 4
+```
+Update the retention time in days to 4 for both the telemetry and operationsmonitoringevents events for the IotHub named "myiothub"
 
 ## PARAMETERS
 

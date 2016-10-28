@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmIotHubKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates an IotHub Key.
 
 ## SYNTAX
 
@@ -17,16 +17,15 @@ Add-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a Key for the provided IotHub. KeyNames are not unique and need to be managed carefully.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Add a Key to an IotHub
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -SecondaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -Rights RegistryRead
 ```
-
-{{ Add example description here }}
+Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissions.
 
 ## PARAMETERS
 
