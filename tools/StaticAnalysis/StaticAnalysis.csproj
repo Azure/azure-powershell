@@ -53,6 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisReport.cs" />
+    <Compile Include="BreakingChangeAnalyzer\BreakingChangeAnalyzer.cs" />
+    <Compile Include="BreakingChangeAnalyzer\BreakingChangeIssue.cs" />
+    <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeLoader.cs" />
+    <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\OutputMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ParameterMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\TypeMetadata.cs" />
     <Compile Include="Loggers\AnalysisLogger.cs" />
     <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="EnvironmentHelpers.cs" />
