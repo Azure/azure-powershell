@@ -43,8 +43,8 @@ function Test-AnalysisServicesServer
 		Assert-NotNull $serverUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrators 'aztest1@stabletest.ccsctp.net' -PassThru
-		Assert-NotNull $serverUpdated.AsAdministrators.Members "Server Administrators list is empty"
-		Assert-AreEqual $serverUpdated.AsAdministrators.Members.Count 1
+		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrators list is empty"
+		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
     
 		Assert-AreEqual $serverName $serverUpdated.Name
 		Assert-AreEqual $location $serverUpdated.Location
