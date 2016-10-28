@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string ProvisioningState { get; private set; }
 
-        public string ServerFullName { get; private set; }
+        public string Id { get; private set; }
 
         public string Name { get; set; }
 
@@ -52,11 +52,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
             return new AzureAnalysisServicesServer()
             {
-                AsAdministrators = new List<string>(server.AsAdministrators.Members),
+                AsAdministrators = server.AsAdministrators == null 
+                    ? new List<string>() 
+                    : new List<string>(server.AsAdministrators.Members),
                 Location = server.Location,
                 Name = server.Name,
+                Type = server.Type,
                 ProvisioningState = server.ProvisioningState,
-                ServerFullName = server.ServerFullName,
+                Id = server.Id,
                 Sku = ServerSku.FromResourceSku(server.Sku),
                 Tags = new Dictionary<string, string>(server.Tags)
             };

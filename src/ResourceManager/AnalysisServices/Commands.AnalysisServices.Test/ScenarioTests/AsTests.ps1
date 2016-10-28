@@ -38,12 +38,12 @@ function Test-AnalysisServicesServer
 
 		# Updating server
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tags $tagsToUpdate
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tags $tagsToUpdate -PassThru
 		Assert-NotNull $serverUpdated.Tags "Tags do not exists"
 		Assert-NotNull $serverUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
-		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrators 'aztest1@stabletest.ccsctp.net'
-		Assert-NotNull $serverUpdated.AsAdministrators.Members "Server Administrators list i empty"
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrators 'aztest1@stabletest.ccsctp.net' -PassThru
+		Assert-NotNull $serverUpdated.AsAdministrators.Members "Server Administrators list is empty"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Members.Count 1
     
 		Assert-AreEqual $serverName $serverUpdated.Name
