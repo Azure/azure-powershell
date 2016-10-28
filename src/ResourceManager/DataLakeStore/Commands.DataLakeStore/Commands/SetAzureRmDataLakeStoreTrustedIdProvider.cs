@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(TrustedIdProvider))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreTrustedIdProvider))]
     [Alias("Set-AdlStoreTrustedIdProvider")]
     public class SetAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
     {
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 string.Format(Resources.SetDataLakeTrustedIdProvider, Name),
                 Name,
                 () =>
-                    WriteObject(DataLakeStoreClient.AddOrUpdateTrustedProvider(
-                        ResourceGroupName, Account, Name, ProviderEndpoint))
+                    WriteObject(new DataLakeStoreTrustedIdProvider(DataLakeStoreClient.AddOrUpdateTrustedProvider(
+                        ResourceGroupName, Account, Name, ProviderEndpoint)))
             );
         }
     }
