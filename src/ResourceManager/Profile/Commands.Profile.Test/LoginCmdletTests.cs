@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.AcceptanceType)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetPsVersionFromUserAgent()
         {
             var cmdlt = new AddAzureRMAccountCommand();
