@@ -29,12 +29,6 @@
                         <Component Id="cmpEC0AB1B69CF83EA71D24996A83D3A185" Guid="*">
                             <File Id="fil170D10D507E7DBDCFA7E0B7F4FC5EE3B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.Tags.dll" />
                         </Component>
-                        <Component Id="cmp974A521880D93B51CE88F63213CFD02C" Guid="*">
-                            <File Id="filB4E7589E09806FAD84D46AA55DF14BD2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.Tags.dll-help.xml" />
-                        </Component>
-                        <Component Id="cmp63B666DD490ABED235009AFA13D40EFC" Guid="*">
-                            <File Id="fil6055812839E2A3C1DE9743C8A88CD19C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.Tags.format.ps1xml" />
-                        </Component>
                         <Component Id="cmp83A0E14BED2814B44ABE7DA08D9D8D03" Guid="*">
                             <File Id="fil6A53E52E63A0103107AAB4DDC0113301" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Common.dll" />
                         </Component>
