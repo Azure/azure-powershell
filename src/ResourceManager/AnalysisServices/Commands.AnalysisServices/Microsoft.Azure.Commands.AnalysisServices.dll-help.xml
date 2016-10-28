@@ -76,7 +76,7 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name></maml:name>
+				<maml:name>System.Collections.Generic.List`1[[Microsoft.Azure.Management.Analysis.Models.AnalysisServicesServer, Microsoft.Azure.Management.Analysis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
@@ -160,6 +160,20 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Not implemented</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -235,6 +249,30 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Not implemented</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -251,7 +289,7 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name></maml:name>
+				<maml:name>Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
@@ -307,17 +345,24 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Not implemented</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -348,10 +393,10 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-			<maml:name>Force</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -360,10 +405,22 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
-			<maml:name>PassThru</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
 			<maml:description>
-				<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+				<maml:para>Not implemented</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -388,7 +445,7 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name></maml:name>
+				<maml:name>Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
@@ -430,16 +487,6 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Resume-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Resume-AzureRmAnalysisServicesServer</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -454,10 +501,24 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>Force</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+					<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Not implemented</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -488,10 +549,34 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-			<maml:name>Force</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Not implemented</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -516,7 +601,7 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name></maml:name>
+				<maml:name>Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
@@ -530,7 +615,7 @@
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Alias: Resume-AzureAs</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -575,7 +660,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Sku</maml:name>
 				<maml:description>
-					<maml:para>The name of the Sku for the server. The supported values are &#39;S1&#39;, &#39;S2&#39;, &#39;S4&#39; for the Standard tier and &#39;D1&#39; for Development. Currently this is not supported and is ignored.</maml:para>
+					<maml:para>The name of the Sku for the server. The supported values are &#39;S1&#39;, &#39;S2&#39;, &#39;S4&#39; for the Standard tier and &#39;D1&#39; for Development.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -593,10 +678,24 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
-				<maml:name>Force</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+					<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Not implemented</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -630,7 +729,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Sku</maml:name>
 			<maml:description>
-				<maml:para>The name of the Sku for the server. The supported values are &#39;S1&#39;, &#39;S2&#39;, &#39;S4&#39; for the Standard tier and &#39;D1&#39; for Development. Currently this is not supported and is ignored.</maml:para>
+				<maml:para>The name of the Sku for the server. The supported values are &#39;S1&#39;, &#39;S2&#39;, &#39;S4&#39; for the Standard tier and &#39;D1&#39; for Development.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -663,10 +762,34 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
-			<maml:name>Force</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Not implemented</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -691,7 +814,7 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name></maml:name>
+				<maml:name>Microsoft.Azure.Management.Analysis.Models.AnalysisServicesServer</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
@@ -733,16 +856,6 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Suspend-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Suspend-AzureRmAnalysisServicesServer</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -757,10 +870,24 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>Force</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+					<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Not implemented</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -791,10 +918,34 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-			<maml:name>Force</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
+				<maml:para>Will return the deleted server details if the operation completes successfully</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Not implemented</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>Prompts user to confirm whether to perform the operation</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -819,7 +970,7 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name></maml:name>
+				<maml:name>Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
@@ -833,7 +984,7 @@
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Alias: Suspend-AzureAs</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -918,7 +1069,7 @@
 	<command:returnValues>
 		<command:returnValue>
 			<dev:type>
-				<maml:name></maml:name>
+				<maml:name>System.Boolean</maml:name>
 				<maml:uri></maml:uri>
 				<maml:description/>
 			</dev:type>
