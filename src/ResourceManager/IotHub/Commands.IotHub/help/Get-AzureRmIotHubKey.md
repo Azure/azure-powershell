@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets an IotHub Key.
 
 ## SYNTAX
 
@@ -22,16 +22,21 @@ Get-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [<CommonPara
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets an IotHub Key. You can either list all Keys or filter the list by a specific Key Name.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get all Keys
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+Gets all the Keys for the IotHub named "myiothub"
 
-{{ Add example description here }}
+### Example 2 Get information for a specific Key
+```
+PS C:\> Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"
+```
+Gets the information for a key named "iothubowner" for the IotHub named "myiothub"
 
 ## PARAMETERS
 

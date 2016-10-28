@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmIotHubExportDevices
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new export devices job.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmIotHubExportDevices [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a new export devices job for the IotHub. This will export all the devices to the specified container. 
+Refer to the following article on how to generate the SAS URI. https://azure.microsoft.com/en-us/documentation/articles/iot-hub-bulk-identity-mgmt/ .
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Issue an export device request.
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmIotHubExportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -ExportBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D" -ExcludeKeys $true
 ```
-
-{{ Add example description here }}
+Creates a new export device request for the IotHub "myiothub" excluding the keys.
 
 ## PARAMETERS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmIotHubKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an IotHub Key.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Removes an IotHub Key. If there are multiple keys with the same name the first one in the list is removed.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Delete an IotHub
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner1" 
 ```
+Removes the key named iothubowner1 from the IotHub named "myiothub"
 
-{{ Add example description here }}
 
 ## PARAMETERS
 

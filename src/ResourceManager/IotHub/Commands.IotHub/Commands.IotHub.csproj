@@ -140,6 +140,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="help\Add-AzureRmIotHubEventHubConsumerGroup.md" />
+    <None Include="help\Add-AzureRmIotHubKey.md" />
+    <None Include="help\AzureRM.IotHub.md" />
+    <None Include="help\Get-AzureRmIotHub.md" />
+    <None Include="help\Get-AzureRmIotHubConnectionString.md" />
+    <None Include="help\Get-AzureRmIotHubEventHubConsumerGroup.md" />
+    <None Include="help\Get-AzureRmIotHubJob.md" />
+    <None Include="help\Get-AzureRmIotHubKey.md" />
+    <None Include="help\Get-AzureRmIotHubQuotaMetric.md" />
+    <None Include="help\Get-AzureRmIotHubRegistryStatistic.md" />
+    <None Include="help\Get-AzureRmIotHubValidSku.md" />
+    <None Include="help\New-AzureRmIotHub.md" />
+    <None Include="help\New-AzureRmIotHubExportDevices.md" />
+    <None Include="help\New-AzureRmIotHubImportDevices.md" />
+    <None Include="help\Remove-AzureRmIotHub.md" />
+    <None Include="help\Remove-AzureRmIotHubEventHubConsumerGroup.md" />
+    <None Include="help\Remove-AzureRmIotHubKey.md" />
+    <None Include="help\Set-AzureRmIotHub.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubConnectionString
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the IotHub connectionstrings.
 
 ## SYNTAX
 
@@ -23,16 +23,21 @@ Get-AzureRmIotHubConnectionString [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets the IotHub connectionstrings. You can either get connectionstrings for all the keys or filter them by a specific key name.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get All IotHub connectionstrings
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" 
 ```
+Gets the connectionstrings for all keys for the iothub named "myiothub"
 
-{{ Add example description here }}
+### Example 2 Get the IotHub connectionstrings for a specific key
+```
+PS C:\> Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "mykey"
+```
+Gets the connectionstrings for the key named "mykey" for the iothub named "myiothub"
 
 ## PARAMETERS
 

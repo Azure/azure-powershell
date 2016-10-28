@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubRegistryStatistic
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the RegistryStatistics for an IotHub.
 
 ## SYNTAX
 
@@ -16,16 +16,15 @@ Get-AzureRmIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets the RegistryStatistics for an IotHub. This provides information about the number of total, enabled and disabled devices in an IotHub.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get the RegistryStatistics
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
-
-{{ Add example description here }}
+Gets the RegistryStatictics for the IotHub named "myiothub"
 
 ## PARAMETERS
 
