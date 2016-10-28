@@ -5539,8 +5539,6 @@
             <ComponentRef Id="cmp1CEE4E00D234A8D8B553DA9595E61904" />
             <ComponentRef Id="cmpD58ABE4F9591F4B6AFCC66F94E0A0019" />
             <ComponentRef Id="cmpEC0AB1B69CF83EA71D24996A83D3A185" />
-            <ComponentRef Id="cmp974A521880D93B51CE88F63213CFD02C" />
-            <ComponentRef Id="cmp63B666DD490ABED235009AFA13D40EFC" />
             <ComponentRef Id="cmp83A0E14BED2814B44ABE7DA08D9D8D03" />
             <ComponentRef Id="cmp1041C83734412321A7D6AE4994BEB5D1" />
             <ComponentRef Id="cmp02DC06DD48BBD3A3DAE9CB44578BE071" />
