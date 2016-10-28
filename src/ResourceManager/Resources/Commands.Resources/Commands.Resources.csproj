@@ -128,7 +128,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" /> 
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveDirectory\GetAzureADAppCredentialCommand.cs" />
@@ -223,6 +223,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
+      <Name>Commands.Tags</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
       <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
