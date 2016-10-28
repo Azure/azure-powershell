@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(FirewallRule))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreFirewallRule))]
     [Alias("Set-AdlStoreFirewallRule")]
     public class SetAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
     {
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 string.Format(Resources.SetDataLakeFirewallRule, Name),
                 Name,
                 () => 
-                    WriteObject(DataLakeStoreClient.AddOrUpdateFirewallRule(
-                        ResourceGroupName, Account, Name, startIp, endIp))
+                    WriteObject(new DataLakeStoreFirewallRule(DataLakeStoreClient.AddOrUpdateFirewallRule(
+                        ResourceGroupName, Account, Name, startIp, endIp)))
             );
         }
     }
