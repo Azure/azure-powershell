@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreTrustedIdProvider"), OutputType(typeof(DataLakeStoreTrustedIdProvider), typeof(IList<TrustedIdProvider>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreTrustedIdProvider"), OutputType(typeof(DataLakeStoreTrustedIdProvider), typeof(IList<DataLakeStoreTrustedIdProvider>))]
     [Alias("Get-AdlStoreTrustedIdProvider")]
     public class GetAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
     {
