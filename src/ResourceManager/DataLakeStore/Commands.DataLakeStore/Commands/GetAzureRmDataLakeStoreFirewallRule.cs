@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.PowerShell.Commands;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     public class GetAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "The Data Lake Store account to update the firewall rule in")]
+            HelpMessage = "The Data Lake Store account to get the firewall rule from")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
@@ -47,11 +48,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             // get the current firewall rule
             if (string.IsNullOrEmpty(Name))
             {
-                WriteObject(DataLakeStoreClient.ListFirewallRules(ResourceGroupName, Account), true);
+                WriteObject(DataLakeStoreClient.ListFirewallRules(ResourceGroupName, Account)
+                    .Select(element => new DataLakeStoreFirewallRule(element))
+                    .ToList(), true);
             }
             else
             {
-                WriteObject(DataLakeStoreClient.GetFirewallRule(ResourceGroupName, Account, Name));
+                WriteObject(new DataLakeStoreFirewallRule(DataLakeStoreClient.GetFirewallRule(ResourceGroupName, Account, Name)));
             }
         }
     }

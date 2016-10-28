@@ -45,17 +45,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         public PSCredential Password { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Position = 5, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingDataLakeAnalyticsCatalogCredential, Name),
                 string.Format(Resources.RemoveDataLakeAnalyticsCatalogCredential, Name),
                 Name,
                 () =>

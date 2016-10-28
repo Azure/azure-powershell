@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     ///    A wrapper for all ADLA supported data sources.
     ///    This object is returned from a GET
     /// </summary>
-    [Obsolete("This credential is obsolete and will be removed in the next release. Please use USqlCredential instead, which has removed the properties: DatabaseName, Identity, UserName, ComputeAccountName and Version")]
+    [Obsolete("This credential is obsolete and will be removed in a future release. Please use USqlCredential instead, which has removed the properties: DatabaseName, Identity, UserName, ComputeAccountName and Version")]
     public class ObsoleteUSqlCredential : USqlCredential
     {
-        [Obsolete("This property is no longer populated and will be removed in the next release")]
+        [Obsolete("This property is no longer populated and will be removed in a future release")]
         public string DatabaseName { get; set; }
 
-        [Obsolete("This property is no longer populated and will be removed in the next release")]
+        [Obsolete("This property is no longer populated and will be removed in a future release")]
         public string Identity { get; set; }
 
-        [Obsolete("This property is no longer populated and will be removed in the next release")]
+        [Obsolete("This property is no longer populated and will be removed in a future release")]
         public string UserName { get; set; }
         public ObsoleteUSqlCredential(USqlCredential baseCred, string databaseName = null, string identity = null, string userName = null, string computeAccountName = null) :
             base(baseCred.ComputeAccountName ?? computeAccountName, baseCred.Version, baseCred.Name)
