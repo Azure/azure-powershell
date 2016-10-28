@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     public class GetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(Position = 0,
-            ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which the user want to retrieve the server.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
