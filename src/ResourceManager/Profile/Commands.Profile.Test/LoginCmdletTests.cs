@@ -25,6 +25,7 @@ using Xunit;
 using Xunit.Abstractions;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -48,15 +49,20 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new AddAzureRMAccountCommand();
 
-            Assert.True(AzureSession.ClientFactory.UserAgents.Count == 0);
-            // Setup
+            int existingUserAgentCount = AzureSession.ClientFactory.UserAgents.Count;
+            foreach (ProductInfoHeaderValue hv in AzureSession.ClientFactory.UserAgents)
+            {
+                Debug.WriteLine("UserAgents count prior to cmdLet processing = {0}", existingUserAgentCount.ToString());
+                Debug.WriteLine("Product:{0} - Version:{1}", hv.Product.Name, hv.Product.Version);
+            }
+
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             cmdlt.InvokeBeginProcessing();
 
-            Assert.True(AzureSession.ClientFactory.UserAgents.Count > 0);
+            Assert.True(AzureSession.ClientFactory.UserAgents.Count > existingUserAgentCount);
             HashSet<ProductInfoHeaderValue> piHv = AzureSession.ClientFactory.UserAgents;
             string psUserAgentString = string.Empty;
 
