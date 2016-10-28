@@ -208,8 +208,12 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestAnalysisServicesServer.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestNegativeAnalysisServicesServer.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestAnalysisServicesServer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestNegativeAnalysisServicesServer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
