@@ -14,9 +14,6 @@
                         <Component Id="cmpB5FFAB492F5FC283B45A8B0FC8B85B23" Guid="*">
                             <File Id="fil662A002742D1A6B36540F70969B80A9D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.ApplicationInsights.dll" />
                         </Component>
-                        <Component Id="cmp86F0D7B41D7012F3BE0513236DE5DA43" Guid="*">
-                            <File Id="filB00E799CFA5824E75DAC5AEF0E0FF3C1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.AnalsysisServices.format.ps1xml" />
-                        </Component>
                         <Component Id="cmp6108BA66E02AF03106520F7A2C289BC7" Guid="*">
                             <File Id="fil5BB6CCFE42A464236D5EB72623754357" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.dll" />
                         </Component>
@@ -5543,7 +5540,6 @@
             <ComponentRef Id="cmp0D5B7BEC83F252C60F0ED4364BA4E301" />
             <ComponentRef Id="cmpF0D8E7A18EC397D4F297FB010BB719FF" />
             <ComponentRef Id="cmpB5FFAB492F5FC283B45A8B0FC8B85B23" />
-            <ComponentRef Id="cmp86F0D7B41D7012F3BE0513236DE5DA43" />
             <ComponentRef Id="cmp6108BA66E02AF03106520F7A2C289BC7" />
             <ComponentRef Id="cmp0E077802E445D50411F71866C69A9EB9" />
             <ComponentRef Id="cmp1CEE4E00D234A8D8B553DA9595E61904" />
