@@ -776,7 +776,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-AreEqual $credentialName $specificItem.Name
 
 		# Remove the credential
-		Remove-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName -Force:$true
+		Remove-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName
 		
 		# Verify that trying to get the credential fails
 		Assert-Throws {Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}

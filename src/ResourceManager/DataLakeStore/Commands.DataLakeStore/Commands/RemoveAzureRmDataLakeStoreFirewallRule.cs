@@ -37,13 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
-            HelpMessage =
-                "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
-            )]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Indicates a boolean response should be returned indicating the result of the delete operation."
             )]
@@ -58,8 +52,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingDataLakeStoreFirewallRule, Name),
                 string.Format(Resources.RemoveDataLakeStoreFirewallRule, Name),
                 Name,
                 () =>

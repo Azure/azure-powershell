@@ -17,11 +17,12 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.PowerShell.Commands;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreTrustedIdProvider"), OutputType(typeof(TrustedIdProvider), typeof(IList<TrustedIdProvider>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreTrustedIdProvider"), OutputType(typeof(DataLakeStoreTrustedIdProvider), typeof(IList<TrustedIdProvider>))]
     [Alias("Get-AdlStoreTrustedIdProvider")]
     public class GetAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
     {
@@ -47,11 +48,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             // get the current firewall rule
             if (string.IsNullOrEmpty(Name))
             {
-                WriteObject(DataLakeStoreClient.ListTrustedProviders(ResourceGroupName, Account), true);
+                WriteObject(DataLakeStoreClient.ListTrustedProviders(ResourceGroupName, Account)
+                    .Select(element => new DataLakeStoreTrustedIdProvider(element))
+                    .ToList(), true);
             }
             else
             {
-                WriteObject(DataLakeStoreClient.GetTrustedProvider(ResourceGroupName, Account, Name));
+                WriteObject(new DataLakeStoreTrustedIdProvider(DataLakeStoreClient.GetTrustedProvider(ResourceGroupName, Account, Name)));
             }
         }
     }

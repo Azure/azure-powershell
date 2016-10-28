@@ -58,10 +58,10 @@ function Test-DataLakeStoreTrustedIdProvider
 		# Get the provider
 		$result = Get-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName
 		Assert-AreEqual $trustedIdName $result.Name
-		Assert-AreEqual $trustedIdEndpoint $result.Properties.IdProvider
+		Assert-AreEqual $trustedIdEndpoint $result.IdProvider
 
 		# remove the provider
-		Remove-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName -force:$true
+		Remove-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName
 
 		# Make sure get throws.
 		Assert-Throws {Get-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName}
@@ -122,15 +122,19 @@ function Test-DataLakeStoreFirewall
 		Assert-True {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
 
 		$firewallRuleName = getAssetName
+		$startIp = "127.0.0.1"
+		$endIp = "127.0.0.2"
 		# Add a firewall rule
-		Add-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress "127.0.0.1" -EndIpAddress "127.0.0.2"
+		Add-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp
 
 		# Get the firewall rule
 		$result = Get-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName
 		Assert-AreEqual $firewallRuleName $result.Name
+		Assert-AreEqual $startIp $result.StartIpAddress
+		Assert-AreEqual $endIp $result.EndIpAddress
 
 		# remove the firewall rule
-		Remove-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName -force:$true
+		Remove-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName
 
 		# Make sure get throws.
 		Assert-Throws {Get-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName}

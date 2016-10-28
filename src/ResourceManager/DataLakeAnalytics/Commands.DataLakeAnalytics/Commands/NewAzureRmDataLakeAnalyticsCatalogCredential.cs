@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogCredential", SupportsShouldProcess = true), OutputType(typeof(USqlCredential))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogCredential", SupportsShouldProcess = true, DefaultParameterSetName = HostAndPortParameterSetName), OutputType(typeof(USqlCredential))]
     [Alias("New-AdlCatalogCredential")]
     public class NewAzureDataLakeAnalyticsCatalogCredential : DataLakeAnalyticsCmdletBase
     {
