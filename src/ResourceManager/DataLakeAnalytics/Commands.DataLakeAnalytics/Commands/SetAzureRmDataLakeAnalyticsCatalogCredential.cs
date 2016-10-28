@@ -76,9 +76,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             Mandatory = true, HelpMessage = "The Port associated with the host for the database to connect to.")]
         public int Port { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (Uri != null && Uri.Port <= 0)
@@ -88,8 +85,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", DatabaseHost, Port));
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.SettingDataLakeCatalogCredential, CredentialName, DatabaseName),
                 string.Format(Resources.SetDataLakeCatalogCredential, CredentialName, DatabaseName),
                 CredentialName, () =>
                     DataLakeAnalyticsClient.UpdateCredentialPassword(
