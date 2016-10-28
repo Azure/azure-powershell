@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AnalysisServicesServer))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("New-AzureAs")]
     public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -92,7 +92,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     }
                 }
 
-                WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tags, Administrators));
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tags, Administrators);
+                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }
     }

@@ -41,13 +41,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single server
-                WriteObject(AnalysisServicesClient.GetServer(ResourceGroupName, Name));
+                var server = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
+                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(server));
             }
             else
             {
                 // List all servers in given resource group if avaliable otherwise all servers in the subscription
                 var list = AnalysisServicesClient.ListServers(ResourceGroupName);
-                WriteObject(list, true);
+                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServerCollection(list), true);
             }
         }
     }

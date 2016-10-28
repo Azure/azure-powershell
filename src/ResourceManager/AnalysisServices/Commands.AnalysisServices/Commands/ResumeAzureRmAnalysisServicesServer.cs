@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Management.Analysis;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet(VerbsLifecycle.Resume, "AzureRmAnalysisServicesServer", 
         SupportsShouldProcess = true),
-     OutputType(typeof(List<AnalysisServicesServer>))]
+        OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Resume-AzureAs")]
     public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -37,23 +38,30 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.ResumeAnalysisServicesServer, Name),
-                    string.Format(Resources.ResumingAnalysisServicesServer, Name),
-                    Name,
-                    () => AnalysisServicesClient.ResumeServer(ResourceGroupName, Name));
-            }
-            else
+            if (string.IsNullOrEmpty(Name))
             {
                 WriteExceptionError(new PSArgumentNullException("Name", "Name of server not specified"));
+            }
+
+            if (ShouldProcess(Name, Resources.ResumingAnalysisServicesServer))
+            {
+                AnalysisServicesServer server = null;
+                if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out server))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+                }
+
+                AnalysisServicesClient.ResumeServer(ResourceGroupName, Name);
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(server));
+                }
             }
         }
     }
