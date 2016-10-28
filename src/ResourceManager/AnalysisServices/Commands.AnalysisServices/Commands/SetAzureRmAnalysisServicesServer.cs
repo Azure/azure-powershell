@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
@@ -53,28 +54,37 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNull]
         public string Administrators { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.UpdateAnalysisServicesServer, Name),
-                string.Format(Resources.UpdatingAnalysisServicesServer, Name),
-                Name,
-                () =>
+            if (string.IsNullOrEmpty(Name))
+            {
+                WriteExceptionError(new PSArgumentNullException("Name", "Name of server not specified"));
+            }
+
+            if (ShouldProcess(Name, Resources.UpdatingAnalysisServicesServer))
+            {
+                AnalysisServicesServer currentServer = null;
+                if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out currentServer))
                 {
-                    var currentServer = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
-                    var location = currentServer.Location;
+                    throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+                }
 
-                    if (Tags == null && currentServer.Tags != null)
-                    {
-                        Tags = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
-                    }
+                var location = currentServer.Location;
+                if (Tags == null && currentServer.Tags != null)
+                {
+                    Tags = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
+                }
 
-                    WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators, currentServer));
-                });
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators, currentServer);
+
+                if(PassThru.IsPresent)
+                {
+                    WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(updatedServer));
+                }
+            }
         }
     }
 }
