@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmIotHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new IotHub.
 
 ## SYNTAX
 
@@ -17,16 +17,25 @@ New-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <PSI
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a new IotHub. You can create the IotHub with either the default properties or specify the input proerties.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Create a new IotHub with default properties
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope"
 ```
+Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope".
 
-{{ Add example description here }}
+### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudtoDevice Queue set to 20
+```
+PS C:\> New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
+```
+Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" with advanced input properties represented by $properties. 
+
+$psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties -Property @{MaxDeliveryCount=20}
+$properties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties -Property @{CloudToDevice=$psCloudToDeviceProperties}
+New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 
 ## PARAMETERS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubValidSku
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets all valid skus that this IotHub can transition to.
 
 ## SYNTAX
 
@@ -16,16 +16,16 @@ Get-AzureRmIotHubValidSku [-ResourceGroupName] <String> [-Name] <String> [<Commo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets all the valid skus that this IotHub can transition to. An IotHub cannot transition between free and the paid skus and vice versa. 
+You will have to delete and recreate the iothub if you want to achieve this.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Get the valid skus
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubValidSku -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
-
-{{ Add example description here }}
+Gets a list of all skus for the IotHub named "myiothub"
 
 ## PARAMETERS
 

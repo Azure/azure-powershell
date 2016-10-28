@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmIotHubEventHubConsumerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates an eventhub consumer group.
 
 ## SYNTAX
 
@@ -18,16 +18,23 @@ Add-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a consumer group in the Eventhub associated with the specified IotHub. 
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> {{ Add example code here }}
-```
+### Example 1: Add a consumer group to the telemetry eventhub  
 
-{{ Add example description here }}
+```
+PS C:\> Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events" -EventHubConsumerGroupName "myconsumergroup"
+```
+Adds a new consumergroup named "myconsumergroup" to the eventhub for telemetry events in the iothub named "myiothub"
+
+### Example 2: Add a consumer group to the operations monitoring eventhub  
+
+```
+PS C:\> Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents" -EventHubConsumerGroupName "myconsumergroup"
+```
+Adds a new consumergroup named "myconsumergroup" to the eventhub for operations monitoring events in the iothub named "myiothub"
 
 ## PARAMETERS
 

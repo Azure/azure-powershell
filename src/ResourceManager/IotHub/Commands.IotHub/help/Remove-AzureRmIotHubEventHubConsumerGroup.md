@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmIotHubEventHubConsumerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes an eventhub consumergroup.
 
 ## SYNTAX
 
@@ -18,16 +18,15 @@ Remove-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Deletes an eventhub consumergroup.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Remove eventhub consumergroup from the telemetry eventhub
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName events -EventHubConsumerGroupName myconsumergroup
 ```
-
-{{ Add example description here }}
+Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
 
 ## PARAMETERS
 

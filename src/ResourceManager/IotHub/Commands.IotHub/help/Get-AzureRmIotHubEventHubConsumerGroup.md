@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubEventHubConsumerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets all the eventhub consumergroups.
 
 ## SYNTAX
 
@@ -17,16 +17,22 @@ Get-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets all the eventhub consumergroups for the different EventHubs used by IotHub. 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Gets all the eventhub consumergroups for the telemetry eventhub
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events"
 ```
+Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub
 
-{{ Add example description here }}
+### Example 2 Gets all the eventhub consumergroups for the operationsmonitoring eventhub
+```
+PS C:\> Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents"
+```
+Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub for the iothub named myiothub
+
 
 ## PARAMETERS
 
