@@ -10,6 +10,7 @@
     <RootNamespace>StaticAnalysis</RootNamespace>
     <AssemblyName>StaticAnalysis</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+	<RestorePackages>true</RestorePackages>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,12 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\System.Management.Automation_PowerShell_3.0.6.3.9600.17400\lib\net40\System.Management.Automation.dll</HintPath>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\..\src\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\src\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,13 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysisLogger.cs" />
+    <Compile Include="AnalysisReport.cs" />
+    <Compile Include="Loggers\AnalysisLogger.cs" />
+    <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="EnvironmentHelpers.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyLoader.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyNameComparer.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyRecord.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyMetadata.cs" />
-    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="Loggers\ConsoleLogger.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyVersionConflict.cs" />
     <Compile Include="DependencyAnalyzer\DependencyAnalyzer.cs" />
@@ -66,8 +75,9 @@
     <Compile Include="HelpAnalyzer\ReflectionExtensions.cs" />
     <Compile Include="HelpAnalyzer\XmlExtensions.cs" />
     <Compile Include="IStaticAnalyzer.cs" />
-    <Compile Include="ReportLogger.cs" />
+    <Compile Include="Loggers\ReportLogger.cs" />
     <Compile Include="IReportRecord.cs" />
+    <Compile Include="ProblemIds.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignatureVerifier\CmdletSignatureLoader.cs" />
@@ -91,14 +101,22 @@
     <None Include="Exceptions\MissingAssemblies.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Exceptions\SignatureIssues.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
+       Other similar extension points exist, see Microsoft.Common.targets.  
   <Target Name="AfterBuild">
+  </Target>
+    <Target Name="BeforeBuild">
+	<Exec Command="..\Nuget.exe restore StaticAnalysis.sln" ContinueOnError="false" />
   </Target>
   -->
 </Project>

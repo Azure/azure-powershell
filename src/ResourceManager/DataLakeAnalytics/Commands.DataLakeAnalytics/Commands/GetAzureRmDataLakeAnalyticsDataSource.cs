@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     {
         internal const string DataLakeParameterSetName = "Get a Data Lake Store account";
         internal const string BlobParameterSetName = "Get a Blob storage account";
-        internal const string ListStorageParameterSetName = "List a data source";
+        internal const string ListStorageParameterSetName = "List all data sources";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")

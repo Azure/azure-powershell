@@ -14,11 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Concurrent;
     using System.Management.Automation;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Gets the resource lock.
@@ -26,6 +28,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Get, "AzureRmResourceLock"), OutputType(typeof(PSObject))]
     public class GetAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
+        /// <summary>
+        /// Contains the errors that encountered while satifying the request.
+        /// </summary>
+        private readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
+
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
@@ -57,6 +64,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
                 action: resources => this.WriteObject(sendToPipeline: this.GetOutputObjects(resources), enumerateCollection: true));
+
+            if (this.errors.Count != 0)
+            {
+                foreach (var error in this.errors)
+                {
+                    this.WriteError(error);
+                }
+            }
         }
 
         /// <summary>
@@ -64,13 +79,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private async Task<ResponseWithContinuation<JObject[]>> GetResources()
         {
-            if (!string.IsNullOrWhiteSpace(this.LockName))
+            var response = new ResponseWithContinuation<JObject[]> { Value = new JObject[0] };
+
+            try
             {
-                var resource = await this.GetResource().ConfigureAwait(continueOnCapturedContext: false);
-                return new ResponseWithContinuation<JObject[]> { Value = resource.AsArray() };
+                if (!string.IsNullOrWhiteSpace(this.LockName))
+                {
+                    var resource = await this.GetResource().ConfigureAwait(continueOnCapturedContext: false);
+
+                    response.Value = resource.AsArray();
+                }
+                else
+                {
+                    response = await this.ListResourcesTypeCollection().ConfigureAwait(continueOnCapturedContext: false);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.IsFatal())
+                {
+                    throw;
+                }
+
+                ex = (ex is AggregateException)
+                    ? (ex as AggregateException).Flatten()
+                    : ex;
+
+                this.errors.Add(new ErrorRecord(ex, "ErrorGettingResourceLock", ErrorCategory.CloseError, null));
             }
 
-            return await this.ListResourcesTypeCollection().ConfigureAwait(continueOnCapturedContext: false);
+            return response;
         }
 
         /// <summary>

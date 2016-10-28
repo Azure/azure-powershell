@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
         [Alias("Tag")]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Overriding to add warning message

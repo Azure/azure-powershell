@@ -16,6 +16,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreEnums
     {
+        public enum ScopeType
+        {
+            Access,
+            Default
+        }
+
         public enum AceType
         {
             User,

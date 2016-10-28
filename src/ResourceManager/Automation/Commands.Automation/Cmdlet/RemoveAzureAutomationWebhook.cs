@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,10 +32,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             HelpMessage = "The webhook name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Position = 3, HelpMessage = "Confirm the removal of the webhook")]
-        [Obsolete("The Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.

@@ -47,13 +47,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Creates Azure Site Recovery Policy.
         /// </summary>
-        /// <param name="createAndAssociatePolicyInput">Policy Input</param>
+        /// <param name="policyName">Policy name</param>
+        /// <param name="CreatePolicyInput">Policy Input</param>
         /// <returns>Long operation response</returns>
         public LongRunningOperationResponse CreatePolicy(string policyName,
             CreatePolicyInput Policy)
         {
             return this.GetSiteRecoveryClient().Policies.BeginCreating(policyName,
                 Policy,
+                this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Update Azure Site Recovery Policy.
+        /// </summary>
+        /// <param name="UpdatePolicyInput">Policy Input</param>
+        /// <param name="policyName">Policy Name</param>
+        /// <returns>Long operation response</returns>
+        public LongRunningOperationResponse UpdatePolicy(string policyName, UpdatePolicyInput input)
+        {
+            return this.GetSiteRecoveryClient().Policies.BeginUpdating(
+                input,
+                policyName,
                 this.GetRequestHeaders());
         }
 

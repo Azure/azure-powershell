@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditingPolicy"), OutputType(typeof(AuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     public class SetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
@@ -179,7 +179,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.TableIdentifier = TableIdentifier;
             }
+        }
 
+        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
+        {
+            base.PersistChanges(model);
+            ModelAdapter.IgnoreStorage = true;            
+            Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
+            swapAuditType();
+            var otherAuditingTypePolicyModel = GetEntity();
+            if (otherAuditingTypePolicyModel != null)
+            {
+                otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
+                base.PersistChanges(otherAuditingTypePolicyModel);
+            }
+            swapAuditType();
+            return model;
         }
     }
 }

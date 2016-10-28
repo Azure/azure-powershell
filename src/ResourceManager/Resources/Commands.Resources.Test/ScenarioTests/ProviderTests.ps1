@@ -36,7 +36,7 @@ function Test-AzureProvider
 	$globalProviders = Get-AzureRmResourceProvider -Location "global"
 	Assert-True { $globalProviders.Length -gt 0 }
 
-    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" -Force
+    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
 
     $endTime = [DateTime]::UtcNow.AddMinutes(5)
 
@@ -47,7 +47,7 @@ function Test-AzureProvider
 	$provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
     Assert-True { $provider[0].RegistrationState -eq "Registered" } 
 
-    Unregister-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" -Force
+    Unregister-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
 
     while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement")[0].RegistrationState -ne "Unregistered")
     {
@@ -58,6 +58,24 @@ function Test-AzureProvider
  }
 
  <#
+    .SYNOPSIS
+    Tests getting resource provider with zone mappings.
+#>
+function Test-AzureProvider-WithZoneMappings
+{
+    $testProvider = Get-AzureRmResourceProvider -ProviderNamespace "Providers.Test"
+	Assert-True { $testProvider.Count -gt 0 }
+
+	$statefulResources = $testProvider | where-object {$_.ResourceTypes.ResourceTypeName -contains "statefulResources"}
+
+	Assert-NotNull { $statefulResources }
+	Assert-NotNull { $statefulResources.ZoneMappings }
+
+	Assert-True { $statefulResources.ZoneMappings.Count -eq 2 }
+	Assert-True { $statefulResources.ZoneMappings["West Europe"] -contains "3"}
+}
+
+<#
     .SYNOPSIS
     Tests querying for a resource provider's operations/actions
 #>

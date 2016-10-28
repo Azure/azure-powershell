@@ -31,11 +31,11 @@ namespace PSModelGenerator
 
         private static readonly Dictionary<string, string> OMtoPSClassMappings = new Dictionary<string, string>()
         {
-            {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
-            {"Microsoft.Azure.Batch.ImageReference", "PSImageReference"},
+            {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
             {"Microsoft.Azure.Batch.AutoPoolSpecification", "PSAutoPoolSpecification"},
             {"Microsoft.Azure.Batch.AutoScaleRun", "PSAutoScaleRun"},
             {"Microsoft.Azure.Batch.AutoScaleRunError", "PSAutoScaleRunError"},
+            {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
             {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
             {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
             {"Microsoft.Azure.Batch.CloudJob", "PSCloudJob"},
@@ -49,7 +49,12 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.ComputeNodeUser", "PSComputeNodeUser"},
             {"Microsoft.Azure.Batch.DeleteCertificateError", "PSDeleteCertificateError"},
             {"Microsoft.Azure.Batch.EnvironmentSetting", "PSEnvironmentSetting"},
+            {"Microsoft.Azure.Batch.ExitConditions", "PSExitConditions"},
+            {"Microsoft.Azure.Batch.ExitCodeRangeMapping", "PSExitCodeRangeMapping"},
+            {"Microsoft.Azure.Batch.ExitCodeMapping", "PSExitCodeMapping"},
+            {"Microsoft.Azure.Batch.ExitOptions", "PSExitOptions"},
             {"Microsoft.Azure.Batch.FileProperties", "PSFileProperties"},
+            {"Microsoft.Azure.Batch.ImageReference", "PSImageReference"},
             {"Microsoft.Azure.Batch.RemoteLoginSettings", "PSRemoteLoginSettings"},
             {"Microsoft.Azure.Batch.JobConstraints", "PSJobConstraints"},
             {"Microsoft.Azure.Batch.JobExecutionInformation", "PSJobExecutionInformation"},
@@ -67,6 +72,8 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.MetadataItem", "PSMetadataItem"},
             {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
             {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
+            {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
+            {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
             {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
             {"Microsoft.Azure.Batch.PoolInformation", "PSPoolInformation"},
             {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
@@ -81,6 +88,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.StartTaskInformation", "PSStartTaskInformation"},
             {"Microsoft.Azure.Batch.SubtaskInformation", "PSSubtaskInformation"},
             {"Microsoft.Azure.Batch.TaskConstraints", "PSTaskConstraints"},
+            {"Microsoft.Azure.Batch.TaskDependencies", "PSTaskDependencies"},
             {"Microsoft.Azure.Batch.TaskExecutionInformation", "PSTaskExecutionInformation"},
             {"Microsoft.Azure.Batch.TaskInformation", "PSTaskInformation"},
             {"Microsoft.Azure.Batch.TaskIdRange", "PSTaskIdRange"},
@@ -88,11 +96,8 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.TaskSchedulingPolicy", "PSTaskSchedulingPolicy"},
             {"Microsoft.Azure.Batch.TaskStatistics", "PSTaskStatistics"},
             {"Microsoft.Azure.Batch.UsageStatistics", "PSUsageStatistics"},
-            {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
             {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
             {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
-            {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
-            {"Microsoft.Azure.Batch.TaskDependencies", "PSTaskDependencies"},
         };
 
 

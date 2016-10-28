@@ -95,5 +95,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithIpConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceWithAcceleratedNetworking()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithAcceleratedNetworking");
+        }
     }
 }

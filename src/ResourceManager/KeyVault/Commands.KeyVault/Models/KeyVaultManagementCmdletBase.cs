@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             IResourceManagementClient armClient = this.ResourcesClient.ResourceManagementClient;
 
             PSTagValuePair tagValuePair = new PSTagValuePair();
-            if (tag != null)
+            if (tag != null && tag.Count > 0)
             {
                 tagValuePair = TagsConversionHelper.Create(tag);
                 if (tagValuePair == null)
@@ -235,6 +235,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         };
 
         protected readonly string[] DefaultPermissionsToSecrets = { "all" };
+        protected readonly string[] DefaultPermissionsToCertificates = { "all" };
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
     }

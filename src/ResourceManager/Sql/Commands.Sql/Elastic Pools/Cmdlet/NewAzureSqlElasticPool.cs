@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql ElasticPool
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticPool",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticPool", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Elastic Pool")]
         [Alias("Tag")]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Overriding to add warning message

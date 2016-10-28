@@ -10,6 +10,9 @@
   <Cmdlets>
     <CmdletObject verb="Get" noun="AzureRmNotificationHub">
       <Name>Get-AzureRmNotificationHub</Name>
+      <Syntax>
+        <string>Get-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular NotificationHub description.</Synopsis>
         <Description>Get-AzureRmNotificationHub cmdlet gets a list of all NotificationHubs under a Namespace or a specified NotificationHub within the namespace.</Description>
@@ -22,17 +25,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -57,48 +57,17 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmNotificationHubAuthorizationRules">
       <Name>Get-AzureRmNotificationHubAuthorizationRules</Name>
+      <Syntax>
+        <string>Get-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular Authorization Rule description associated with the specified NotificationHub.</Synopsis>
         <Description>Get-AzureRmNotificationHubAuthorizationRules cmdlet gets a list of all the Authorization Rules descriptions or a specified Authorization Rule associated with the NotificationHub specified.</Description>
@@ -111,17 +80,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -140,8 +106,8 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
           <Name>NotificationHub</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -156,48 +122,17 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmNotificationHubListKeys">
       <Name>Get-AzureRmNotificationHubListKeys</Name>
+      <Syntax>
+        <string>Get-AzureRmNotificationHubListKeys [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-AuthorizationRule] &lt;String&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets the Primary and Secondary ConnectionString of a particular NotificationHub Authorization Rule.</Synopsis>
         <Description>Get-AzureRmNotificationHubListKeys cmdlet gets the Primary and Secondary ConnectionString of a particular NotificationHub Authorization Rule. </Description>
@@ -210,17 +145,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmNotificationHubListKeys [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -249,55 +181,24 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
           <Name>AuthorizationRule</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmNotificationHubPNSCredentials">
       <Name>Get-AzureRmNotificationHubPNSCredentials</Name>
+      <Syntax>
+        <string>Get-AzureRmNotificationHubPNSCredentials [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets the NotificationHub PNS credentials</Synopsis>
         <Description>Get-AzureRmNotificationHubPNSCredentials cmdlet gets the PNS credentials for a particular NotificationHub.</Description>
@@ -310,11 +211,8 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmNotificationHubPNSCredentials [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -339,55 +237,24 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
           <Name>NotificationHub</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmNotificationHubsNamespace">
       <Name>Get-AzureRmNotificationHubsNamespace</Name>
+      <Syntax>
+        <string>Get-AzureRmNotificationHubsNamespace [[-ResourceGroup] &lt;String&gt;] [[-Namespace] &lt;String&gt;]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular Namespace description. </Synopsis>
         <Description>Get-AzureRmNotificationHubsNamespace cmdlet gets a list of all Namespaces of type NotificationHub under a subscription or specified resource group.</Description>
@@ -400,11 +267,8 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmNotificationHubsNamespace [[-ResourceGroup] &lt;String&gt;] [[-Namespace] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -424,48 +288,17 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
       <Name>Get-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
+      <Syntax>
+        <string>Get-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular Authorization Rule description associated with the specified Namespace.</Synopsis>
         <Description>Get-AzureRmNotificationHubsNamespaceAuthorizationRulescmdlet gets a list of all the Authorization Rules descriptions or a specified Authorization Rule associated with the Namespace specified.</Description>
@@ -478,11 +311,8 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -513,48 +343,17 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmNotificationHubsNamespaceListKeys">
       <Name>Get-AzureRmNotificationHubsNamespaceListKeys</Name>
+      <Syntax>
+        <string>Get-AzureRmNotificationHubsNamespaceListKeys [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-AuthorizationRule] &lt;String&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets the Primary and Secondary ConnectionString of a particular Namespace Authorization Rule.</Synopsis>
         <Description>Get-AzureRmNotificationHubListKeys cmdlet gets the Primary and Secondary ConnectionString of a particular Namespace Authorization Rule. </Description>
@@ -567,11 +366,8 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmNotificationHubsNamespaceListKeys [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -586,8 +382,8 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -596,55 +392,25 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
           <Name>AuthorizationRule</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="New" noun="AzureRmNotificationHub">
       <Name>New-AzureRmNotificationHub</Name>
+      <Syntax>
+        <string>New-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-InputFile] &lt;String&gt; [-WhatIf] [-Confirm]</string>
+        <string>New-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Creates a new NotificationHub</Synopsis>
         <Description>New-AzureRmNotificationHub cmdlet creates a new Namespace.</Description>
@@ -657,11 +423,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace InputFile NotificationHubObj Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="InputFileParameterSet" Params="ResourceGroup Namespace InputFile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="NotificationHubParameterSet" Params="ResourceGroup Namespace NotificationHubObj Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>New-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [[-Namespace] &lt;String&gt;] [-InputFile] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -673,7 +437,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -686,8 +450,8 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
           <Name>InputFile</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -703,36 +467,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -740,11 +494,15 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="New" noun="AzureRmNotificationHubAuthorizationRules">
       <Name>New-AzureRmNotificationHubAuthorizationRules</Name>
+      <Syntax>
+        <string>New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-InputFile] &lt;String&gt; [-WhatIf] [-Confirm]</string>
+        <string>New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Creates new NotificationHub Authorization Rule</Synopsis>
         <Description>New-AzureRmNotificationHubAuthorizationRules cmdlet creates a new NotificationHub Authorization Rule.</Description>
@@ -757,17 +515,15 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="InputFileParameterSet" Params="ResourceGroup Namespace NotificationHub InputFile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="SASRuleParameterSet" Params="ResourceGroup Namespace NotificationHub SASRule Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -776,14 +532,14 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
           <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -796,8 +552,8 @@
         <ParameterDescription type="SharedAccessAuthorizationRuleAttributes" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>SASRule</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -806,43 +562,33 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>InputFile</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -850,11 +596,14 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="New" noun="AzureRmNotificationHubsNamespace">
       <Name>New-AzureRmNotificationHubsNamespace</Name>
+      <Syntax>
+        <string>New-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-Location] &lt;String&gt; [[-Tags] &lt;Hashtable&gt;] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Creates a new Namespace.</Synopsis>
         <Description>New-AzureRmNotificationHubsNamespace cmdlet creates a new Namespace of type NotificationHub.</Description>
@@ -867,17 +616,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Location Tags Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Location Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>New-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-Location] &lt;String&gt; [[-Tags] &lt;Dictionary`2[String]&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -903,7 +649,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Dictionary`2[String]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
+        <ParameterDescription type="Hashtable" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
           <Name>Tags</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -912,36 +658,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -949,11 +685,15 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="New" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
       <Name>New-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
+      <Syntax>
+        <string>New-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-InputFile] &lt;String&gt; [-WhatIf] [-Confirm]</string>
+        <string>New-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Creates new Namespace Authorization Rule</Synopsis>
         <Description>New-AzureRmNotificationHubAuthorizationRules cmdlet creates a new Namespace Authorization Rule.</Description>
@@ -966,11 +706,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="InputFileParameterSet" Params="ResourceGroup Namespace InputFile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="SASRuleParameterSet" Params="ResourceGroup Namespace SASRule Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>New-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -985,8 +723,8 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1012,36 +750,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1049,11 +777,14 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Remove" noun="AzureRmNotificationHub">
       <Name>Remove-AzureRmNotificationHub</Name>
+      <Syntax>
+        <string>Remove-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Removes an existing NotificationHub.</Synopsis>
         <Description>Remove-AzureRmNotificationHub cmdlet removes existing NotificationHub.</Description>
@@ -1066,17 +797,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Remove-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1085,25 +813,25 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
           <Name>NotificationHub</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1111,27 +839,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1139,11 +866,14 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Remove" noun="AzureRmNotificationHubAuthorizationRules">
       <Name>Remove-AzureRmNotificationHubAuthorizationRules</Name>
+      <Syntax>
+        <string>Remove-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Removes an existing NotificationHub Authorization Rule.</Synopsis>
         <Description>Remove-AzureRmNotificationHubAuthorizationRules cmdlet removes an existing NotificationHub Authorization Rule.</Description>
@@ -1156,17 +886,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Remove-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1175,18 +902,18 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
           <Name>NotificationHub</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1195,15 +922,15 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
           <Name>AuthorizationRule</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1211,27 +938,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1239,11 +965,14 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Remove" noun="AzureRmNotificationHubsNamespace">
       <Name>Remove-AzureRmNotificationHubsNamespace</Name>
+      <Syntax>
+        <string>Remove-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Removes an existing Namespace.</Synopsis>
         <Description>Remove-AzureRmNotificationHub cmdlet removes existing Namespace of type NotificationHub.</Description>
@@ -1256,17 +985,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Remove-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1282,8 +1008,8 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1291,27 +1017,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1319,11 +1044,14 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Remove" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
       <Name>Remove-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
+      <Syntax>
+        <string>Remove-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Removes an existing Namespace Authorization Rule.</Synopsis>
         <Description>Remove-AzureRmNotificationHubsNamespaceAuthorizationRules cmdlet removes an existing Namespace Authorization Rule.</Description>
@@ -1336,11 +1064,8 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Remove-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -1355,8 +1080,8 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1372,8 +1097,8 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1381,27 +1106,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1409,11 +1133,15 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Set" noun="AzureRmNotificationHub">
       <Name>Set-AzureRmNotificationHub</Name>
+      <Syntax>
+        <string>Set-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-InputFile] &lt;String&gt; [-Force] [-WhatIf] [-Confirm]</string>
+        <string>Set-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Sets the PNS credentials and other properties for a NotificationHub.</Synopsis>
         <Description>Set-AzureRmNotificationHub cmdlet sets the PNS credentials and other properties for a NotificationHub.</Description>
@@ -1426,17 +1154,15 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace InputFile NotificationHubObj Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="InputFileParameterSet" Params="ResourceGroup Namespace InputFile Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="NotificationHubParameterSet" Params="ResourceGroup Namespace NotificationHubObj Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-InputFile] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1465,15 +1191,15 @@
         <ParameterDescription type="NotificationHubAttributes" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
           <Name>NotificationHubObj</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1481,27 +1207,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1509,11 +1234,15 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Set" noun="AzureRmNotificationHubAuthorizationRules">
       <Name>Set-AzureRmNotificationHubAuthorizationRules</Name>
+      <Syntax>
+        <string>Set-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-InputFile] &lt;String&gt; [-Force] [-WhatIf] [-Confirm]</string>
+        <string>Set-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Sets the Authorization Rules for a NotificationHub.</Synopsis>
         <Description>Set-AzureRmNotificationHubAuthorizationRules cmdlet sets a NotificationHub Authorization Rule.</Description>
@@ -1526,17 +1255,15 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="InputFileParameterSet" Params="ResourceGroup Namespace NotificationHub InputFile Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="SASRuleParameterSet" Params="ResourceGroup Namespace NotificationHub SASRule Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1552,7 +1279,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
           <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1575,15 +1302,15 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
           <Name>InputFile</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1591,27 +1318,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1619,11 +1345,14 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Set" noun="AzureRmNotificationHubsNamespace">
       <Name>Set-AzureRmNotificationHubsNamespace</Name>
+      <Syntax>
+        <string>Set-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-Location] &lt;String&gt; [[-State] &lt;NamespaceState&gt;] [[-Critical] &lt;Boolean&gt;] [[-Tags] &lt;Hashtable&gt;] [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Sets the Namespace properties.</Synopsis>
         <Description>Set-AzureRmNotificationHubsNamespace cmdlet sets the Namespace properties. This would mainly be to enable/disable a namespace and to make a namespace critical.</Description>
@@ -1636,17 +1365,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace State Critical Tags Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Location State Critical Tags Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-State] &lt;NamespaceState&gt;] [[-Critical] &lt;Boolean&gt;] [[-Tags] &lt;Dictionary`2[String]&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1655,14 +1381,14 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>Namespace</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="NamespaceState" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+        <ParameterDescription type="NamespaceState" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
           <Name>State</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1671,7 +1397,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Boolean" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
+        <ParameterDescription type="Boolean" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="4" globbing="false">
           <Name>Critical</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1680,7 +1406,17 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="Dictionary`2[String]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="4" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+          <Name>Location</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Hashtable" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="5" globbing="false">
           <Name>Tags</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1689,8 +1425,8 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1698,27 +1434,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1726,11 +1461,15 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Set" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
       <Name>Set-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
+      <Syntax>
+        <string>Set-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-InputFile] &lt;String&gt; [-Force] [-WhatIf] [-Confirm]</string>
+        <string>Set-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Sets the Authorization Rules for a Namespace.</Synopsis>
         <Description>Set-AzureRmNotificationHubAuthorizationRules cmdlet sets a NotificationHub Authorization Rule.</Description>
@@ -1743,11 +1482,9 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="InputFileParameterSet" Params="ResourceGroup Namespace InputFile Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="SASRuleParameterSet" Params="ResourceGroup Namespace SASRule Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
           <Name>ResourceGroup</Name>
@@ -1772,8 +1509,8 @@
         <ParameterDescription type="SharedAccessAuthorizationRuleAttributes" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
           <Name>SASRule</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
           <Description />
@@ -1789,8 +1526,8 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="AzureProfile" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Profile</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -1798,27 +1535,26 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1826,7 +1562,213 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="New" noun="AzureRmNotificationHubKey">
+      <Name>New-AzureRmNotificationHubKey</Name>
+      <Syntax>
+        <string>New-AzureRmNotificationHubKey [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;] [-PolicyKey] &lt;String&gt; {PrimaryKey | SecondaryKey}  [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis>Regenerate the Authorization Rule Key for a NotificationHub .</Synopsis>
+        <Description>New-AzureRmNotificationHubKey cmdlet regenerates the Primary Key/Secondary Key for the NotificationHub Authorization Rule.</Description>
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule PolicyKey Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroup</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Namespace</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+          <Name>NotificationHub</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
+          <Name>AuthorizationRule</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>PolicyKey</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="New" noun="AzureRmNotificationHubsNamespaceKey">
+      <Name>New-AzureRmNotificationHubsNamespaceKey</Name>
+      <Syntax>
+        <string>New-AzureRmNotificationHubsNamespaceKey [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;] [-PolicyKey] &lt;String&gt; {PrimaryKey | SecondaryKey}  [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis>Regenerate the Authorization Rule Key for a Namespace.</Synopsis>
+        <Description>New-AzureRmNotificationHubNamespaceKey cmdlet regenerates the Primary Key/Secondary Key for the Namespace Authorization Rule.</Description>
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.NotificationHubs.Models.ResourceListKeys</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule PolicyKey Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroup</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Namespace</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+          <Name>AuthorizationRule</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+          <Name>PolicyKey</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Force</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
   </Cmdlets>

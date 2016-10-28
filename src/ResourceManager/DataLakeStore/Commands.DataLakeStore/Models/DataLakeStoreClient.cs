@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         #region Account Related Operations
 
         public DataLakeStoreAccount CreateOrUpdateAccount(string resourceGroupName, string accountName,
-            string defaultGroup, string location, Hashtable[] customTags = null)
+            string defaultGroup, string location, Hashtable customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using System.Management.Automation;
 using System.Threading;
@@ -39,9 +40,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            ServiceDiagnosticSettingsGetResponse result = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
+            ServiceDiagnosticSettingsResource result = this.InsightsManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 
-            PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(result.Properties);
+            PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(result);
             WriteObject(psResult);
         }
     }

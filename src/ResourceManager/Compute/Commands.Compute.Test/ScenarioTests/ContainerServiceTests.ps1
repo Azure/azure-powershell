@@ -27,7 +27,6 @@ function Test-ContainerService
         $loc = 'australiasoutheast';
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
-
         $csName = 'cs' + $rgname;
         $masterDnsPrefixName = 'master' + $rgname;
         $agentPoolDnsPrefixName = 'ap' + $rgname;
@@ -63,10 +62,13 @@ function Test-ContainerService
         | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName `
         | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
-
         $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $output = $cs | Out-String;
+        Assert-True { $output.Contains("AgentPoolProfiles") };
 
         $cslist = Get-AzureRmContainerService -ResourceGroupName $rgname;
+        $output = $cslist | Out-String;
+        Assert-False { $output.Contains("AgentPoolProfiles") };
 
         $st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
     }
@@ -91,7 +93,6 @@ function Test-ContainerServiceUpdate
         # Common
         $loc = 'australiasoutheast';
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-
 
         $csName = 'cs' + $rgname;
         $masterDnsPrefixName = 'master' + $rgname;
@@ -141,10 +142,9 @@ function Test-ContainerServiceUpdate
             -VmSize $vmSize `
             -DnsPrefix $agentPoolDnsPrefixName `
             -Count 2 `
-        | Update-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        | Update-AzureRmContainerService;
 
-        $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
-        $st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService;
     }
     finally
     {

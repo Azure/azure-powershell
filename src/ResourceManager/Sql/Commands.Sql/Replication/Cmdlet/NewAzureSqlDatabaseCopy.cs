@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseCopy",
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure SQL Database Copy")]
         [Alias("Tag")]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group of the copy.

@@ -44,8 +44,8 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.4.0.1\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.5.1.2\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Batch, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.2.0.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.3.0.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
@@ -78,12 +78,12 @@
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -95,7 +95,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.6-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -149,21 +149,27 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts\RemoveBatchAccountCommand.cs" />
-    <Compile Include="Accounts\GetBatchAccountCommand.cs" />
-    <Compile Include="Accounts\GetBatchAccountKeysCommand.cs" />
-    <Compile Include="Accounts\Helpers.cs" />
-    <Compile Include="Accounts\NewBatchAccountCommand.cs" />
-    <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
-    <Compile Include="Accounts\SetBatchAccountCommand.cs" />
-    <Compile Include="Applications\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="BatchAccounts\RemoveBatchAccountCommand.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountCommand.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountKeysCommand.cs" />
+    <Compile Include="BatchAccounts\Helpers.cs" />
+    <Compile Include="BatchAccounts\NewBatchAccountCommand.cs" />
+    <Compile Include="BatchAccounts\NewBatchAccountKeyCommand.cs" />
+    <Compile Include="BatchAccounts\SetBatchAccountCommand.cs" />
+    <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
+    <Compile Include="Models.Generated\PSExitCodeMapping.cs" />
+    <Compile Include="Models.Generated\PSExitCodeRangeMapping.cs" />
+    <Compile Include="Models.Generated\PSExitConditions.cs" />
+    <Compile Include="Models.Generated\PSExitOptions.cs" />
+    <Compile Include="Models.Generated\PSNetworkConfiguration.cs" />
+    <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
     <Compile Include="Models\NewBulkTaskParameters.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
     <Compile Include="Models\PSApplication.cs" />
     <Compile Include="Applications\RemoveBatchApplicationCommand.cs" />
-    <Compile Include="Applications\RemoveBatchApplicationPackageCommand.cs" />
-    <Compile Include="Applications\GetBatchApplicationPackageCommand.cs" />
+    <Compile Include="ApplicationPackages\RemoveBatchApplicationPackageCommand.cs" />
+    <Compile Include="ApplicationPackages\GetBatchApplicationPackageCommand.cs" />
     <Compile Include="Applications\GetBatchApplicationCommand.cs" />
     <Compile Include="Applications\SetBatchApplicationCommand.cs" />
     <Compile Include="Applications\NewBatchApplicationCommand.cs" />
@@ -235,7 +241,7 @@
     <Compile Include="Models\DisableComputeNodeSchedulingParameters.cs" />
     <Compile Include="Models\EnableAutoScaleParameters.cs" />
     <Compile Include="Models\EvaluateAutoScaleParameters.cs" />
-    <Compile Include="Models\BatchClient.Accounts.cs" />
+    <Compile Include="Models\BatchClient.BatchAccounts.cs" />
     <Compile Include="Models\BatchClient.Certificates.cs" />
     <Compile Include="Models\BatchClient.cs" />
     <Compile Include="BatchCmdletBase.cs" />
@@ -245,7 +251,7 @@
     <Compile Include="Models\BatchClient.Files.cs" />
     <Compile Include="Models\BatchClient.Jobs.cs" />
     <Compile Include="Models\BatchClient.Pools.cs" />
-    <Compile Include="Models\BatchClient.Subscriptions.cs" />
+    <Compile Include="Models\BatchClient.Locations.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
     <Compile Include="Models\BatchClient.ComputeNodeUsers.cs" />
     <Compile Include="Models\BatchClient.ComputeNodes.cs" />
@@ -275,7 +281,7 @@
     <Compile Include="Models.Generated\PSAffinityInformation.cs" />
     <Compile Include="Models\NodeFileOperationParameters.cs" />
     <Compile Include="Models\PoolOperationParameters.cs" />
-    <Compile Include="Models\PSBatchSubscriptionQuotas.cs" />
+    <Compile Include="Models\PSBatchLocationQuotas.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
     <Compile Include="Models.Generated\PSAutoPoolSpecification.cs" />
     <Compile Include="Models.Generated\PSAutoScaleRun.cs" />
@@ -322,7 +328,7 @@
     <Compile Include="Pools\GetBatchPoolStatisticsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolUsageMetricsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
-    <Compile Include="Accounts\GetBatchAccountNodeAgentSkuCommand.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountNodeAgentSkuCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
     <Compile Include="Pools\SetBatchPoolCommand.cs" />
@@ -336,13 +342,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommand.cs" />
+    <Compile Include="Locations\GetBatchLocationQuotasCommand.cs" />
     <Compile Include="Tasks\GetBatchSubtaskCommand.cs" />
     <Compile Include="Tasks\GetBatchTaskCommand.cs" />
     <Compile Include="Tasks\NewBatchTaskCommand.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
     <Compile Include="ComputeNodeUsers\NewBatchComputeNodeUserCommand.cs" />
     <Compile Include="ComputeNodeUsers\RemoveBatchComputeNodeUserCommand.cs" />
+    <Compile Include="Tasks\EnableBatchTaskCommand.cs" />
     <Compile Include="Tasks\SetBatchTaskCommand.cs" />
     <Compile Include="Tasks\StopBatchTaskCommand.cs" />
     <Compile Include="NewApplicationPackageException.cs" />

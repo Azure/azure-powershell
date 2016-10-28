@@ -86,6 +86,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
+        /// particular action (e.g. a resource is being overwritten). By default, both 
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// must have a force parameter.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        protected override void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+            Action action)
+        {
+            ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
+        }
+        
+        /// <summary>
         /// Prompt for confirmation for the specified change to the specified ARM resource
         /// </summary>
         /// <param name="resourceType">The resource type</param>
