@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.AcceptanceType)]
         public void GetPsVersionFromUserAgent()
         {
             var cmdlt = new AddAzureRMAccountCommand();
 
-            int existingUserAgentCount = AzureSession.ClientFactory.UserAgents.Count;
+            int preProcessingUserAgentCount = AzureSession.ClientFactory.UserAgents.Count;
+            Debug.WriteLine("UserAgents count prior to cmdLet processing = {0}", preProcessingUserAgentCount.ToString());
             foreach (ProductInfoHeaderValue hv in AzureSession.ClientFactory.UserAgents)
             {
-                Debug.WriteLine("UserAgents count prior to cmdLet processing = {0}", existingUserAgentCount.ToString());
                 Debug.WriteLine("Product:{0} - Version:{1}", hv.Product.Name, hv.Product.Version);
             }
 
@@ -61,8 +61,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             cmdlt.InvokeBeginProcessing();
-
-            Assert.True(AzureSession.ClientFactory.UserAgents.Count > existingUserAgentCount);
+            int postProcessingUserAgentCount = AzureSession.ClientFactory.UserAgents.Count;
+            Debug.WriteLine("UserAgents count prior to cmdLet post processing = {0}", postProcessingUserAgentCount.ToString());
+            Assert.True(AzureSession.ClientFactory.UserAgents.Count >= preProcessingUserAgentCount);
             HashSet<ProductInfoHeaderValue> piHv = AzureSession.ClientFactory.UserAgents;
             string psUserAgentString = string.Empty;
 
