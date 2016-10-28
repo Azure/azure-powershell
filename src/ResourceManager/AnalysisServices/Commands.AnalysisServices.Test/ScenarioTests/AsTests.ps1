@@ -153,7 +153,7 @@ function Test-NegativeAnalysisServicesServer
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName}
 
 		# Delete Analysis Servicesserver
-		Assert-True {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru} "Remove Account failed."
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
 
 		# Delete Analysis Servicesserver again should throw.
 		Assert-Throws {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru}

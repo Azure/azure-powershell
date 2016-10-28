@@ -19,7 +19,7 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmAnalysisServicesServer</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Azure resource group to which the server belongs</maml:para>
@@ -36,7 +36,7 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Azure resource group to which the server belongs</maml:para>
