@@ -38,9 +38,9 @@ function Test-AnalysisServicesServer
 
 		# Updating server
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tags $tagsToUpdate -PassThru
-		Assert-NotNull $serverUpdated.Tags "Tags do not exists"
-		Assert-NotNull $serverUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tag $tagsToUpdate -PassThru
+		Assert-NotNull $serverUpdated.Tag "Tag do not exists"
+		Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrators 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrators list is empty"
@@ -147,7 +147,7 @@ function Test-NegativeAnalysisServicesServer
 
 		# attempt to update a non-existent server
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		Assert-Throws {Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Tags $tagsToUpdate}
+		Assert-Throws {Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Tag $tagsToUpdate}
 
 		# attempt to get a non-existent server
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName}

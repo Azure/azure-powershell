@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AnalysisServicesServer))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Set-AzureAs")]
     public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this server")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 }
 
                 var location = currentServer.Location;
-                if (Tags == null && currentServer.Tags != null)
+                if (Tag == null && currentServer.Tags != null)
                 {
-                    Tags = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
+                    Tag = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators, currentServer);
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrators, currentServer);
 
                 if(PassThru.IsPresent)
                 {

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public ServerSku Sku { get; set; }
 
-        public System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+        public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
 
         internal static AzureAnalysisServicesServer FromAnalysisServicesServer(AnalysisServicesServer server)
         {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
                 Sku = ServerSku.FromResourceSku(server.Sku),
-                Tags = new Dictionary<string, string>(server.Tags)
+                Tag = new Dictionary<string, string>(server.Tags)
             };
         }
 
