@@ -125,13 +125,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -141,18 +134,6 @@
 				<maml:para>Name of the Analysis Services server instance</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>A switch parameter that will skip confirming the operation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
 				<maml:uri/>

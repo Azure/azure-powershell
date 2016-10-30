@@ -79,29 +79,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restart Analysis Services Server.
+        /// </summary>
+        internal static string RestartingAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("RestartingAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown Analysis Services environment name specified..
         /// </summary>
         internal static string UnknownEnvironment {
             get {
                 return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update Analysis Services server: &apos;{0}&apos;?.
-        /// </summary>
-        internal static string UpdateAnalysisServicesServer {
-            get {
-                return ResourceManager.GetString("UpdateAnalysisServicesServer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update Analysis Services Server.
-        /// </summary>
-        internal static string UpdatingAnalysisServicesServer {
-            get {
-                return ResourceManager.GetString("UpdatingAnalysisServicesServer", resourceCulture);
             }
         }
     }

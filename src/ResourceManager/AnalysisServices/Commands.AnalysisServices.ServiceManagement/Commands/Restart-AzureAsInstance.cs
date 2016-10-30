@@ -36,9 +36,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         protected override AzureContext DefaultContext { get; }
 
         protected override void SaveDataCollectionProfile()
@@ -77,23 +74,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         {
             if (!string.IsNullOrEmpty(Instance))
             {
-                var context = AsAzureClientSession.Instance.Profile.Context;
-                var restartEndpoint = string.Format(context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], Instance);
-                string restartBaseUri = string.Format("https://{0}", context.Environment.Name);
-                var accessToken = AsAzureClientSession.GetAadAuthenticatedToken(
-                    context, 
-                    null, 
-                    PromptBehavior.Auto, 
-                    AsAzureClientSession.AsAzureClientId, 
-                    restartBaseUri, 
-                    AsAzureClientSession.RedirectUri);
-
-                using (HttpResponseMessage message = CallPostAsync(
-                    new Uri(restartBaseUri),
-                    restartEndpoint,
-                    accessToken).Result)
+                if (ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))
                 {
-                    message.EnsureSuccessStatusCode();
+                    var context = AsAzureClientSession.Instance.Profile.Context;
+                    var restartEndpoint = string.Format(context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], Instance);
+                    string restartBaseUri = string.Format("https://{0}", context.Environment.Name);
+                    var accessToken = AsAzureClientSession.GetAadAuthenticatedToken(
+                        context,
+                        null,
+                        PromptBehavior.Auto,
+                        AsAzureClientSession.AsAzureClientId,
+                        restartBaseUri,
+                        AsAzureClientSession.RedirectUri);
+
+                    using (HttpResponseMessage message = CallPostAsync(
+                        new Uri(restartBaseUri),
+                        restartEndpoint,
+                        accessToken).Result)
+                    {
+                        message.EnsureSuccessStatusCode();
+                    }
                 }
             }
             else

@@ -123,13 +123,10 @@
   <data name="NotLoggedInMessage" xml:space="preserve">
     <value>Run Login-AzureAsAccount to login to Analysis Services server</value>
   </data>
+  <data name="RestartingAnalysisServicesServer" xml:space="preserve">
+    <value>Restart Analysis Services Server</value>
+  </data>
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unknown Analysis Services environment name specified.</value>
-  </data>
-  <data name="UpdateAnalysisServicesServer" xml:space="preserve">
-    <value>Are you sure you want to update Analysis Services server: '{0}'?</value>
-  </data>
-  <data name="UpdatingAnalysisServicesServer" xml:space="preserve">
-    <value>Update Analysis Services Server</value>
   </data>
 </root>

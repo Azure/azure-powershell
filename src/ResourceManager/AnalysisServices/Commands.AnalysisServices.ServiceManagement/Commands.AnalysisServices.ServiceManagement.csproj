@@ -109,9 +109,6 @@
     <None Include="AzureRM.AnalysisServices.ServiceManagement.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.AnalsysisServices.ServiceManagement.format.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Microsoft.Azure.Commands.AnalysisServices.ServiceManagement.dll-help.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
