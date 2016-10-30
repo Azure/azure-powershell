@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         public AsAzureEnvironment CreateEnvironment(string environmentName)
         {
             var env = new AsAzureEnvironment(environmentName);
-            env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl, AsAzureClientSession.AadAuthorityUrlProd);
+            env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl, AsAzureClientSession.GetAuthorityUrlForEnvironment(env));
             env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat, AsAzureClientSession.RestartEndpointPathFormat);
 
             return env;

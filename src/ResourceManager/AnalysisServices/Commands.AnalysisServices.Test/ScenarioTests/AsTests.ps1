@@ -187,8 +187,8 @@ function Test-AnalysisServicesServerRestart
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
 
-		Login-AzureASAccount -EnvironmentName $environment
-		Restart-AzureAnalysisServer -Instance $serverName
+		Login-AzureAsAccount -EnvironmentName $environment
+		Restart-AzureAsInstance -Instance $serverName
 	}
 	finally
 	{

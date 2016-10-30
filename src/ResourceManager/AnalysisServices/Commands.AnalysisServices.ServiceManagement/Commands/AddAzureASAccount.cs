@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet("Add", "AzureASAccount", SupportsShouldProcess=true)]
-    [Alias("Login-AzureASAccount")]
+    [Cmdlet("Add", "AzureAsAccount", SupportsShouldProcess=true)]
+    [Alias("Login-AzureAsAccount")]
     [OutputType(typeof(AsAzureProfile))]
     public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
     {

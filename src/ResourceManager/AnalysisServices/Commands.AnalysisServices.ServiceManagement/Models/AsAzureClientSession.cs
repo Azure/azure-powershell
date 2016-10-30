@@ -120,6 +120,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
             return result.AccessToken;
         }
 
+        public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
+        {
+            return environment.Name.Contains("asazure-int") ? AadAuthorityUrlPpe : AadAuthorityUrlProd;
+        }
+
         public void SetCurrentContext(AsAzureAccount azureAccount, AsAzureEnvironment asEnvironment)
         {
             _profile.Context = new AsAzureContext(azureAccount, asEnvironment)

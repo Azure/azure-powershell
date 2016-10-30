@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet("Restart", "AzureAnalysisServer", SupportsShouldProcess=true)]
+    [Cmdlet("Restart", "AzureAsInstance", SupportsShouldProcess=true)]
     [Alias("Restart-AzureAs")]
     [OutputType(typeof(AsAzureProfile))]
     public class RestartAzureAnalysisServer: AzurePSCmdlet, IModuleAssemblyInitializer
