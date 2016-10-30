@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Analysis.Models;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServer"),
-     OutputType(typeof(List<AnalysisServicesServer>))]
+     OutputType(typeof(List<AzureAnalysisServicesServer>))]
     [Alias("Get-AzureAs")]
     public class GetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {

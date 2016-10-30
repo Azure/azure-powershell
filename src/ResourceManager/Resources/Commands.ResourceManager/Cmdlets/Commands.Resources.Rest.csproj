@@ -271,7 +271,7 @@
       <Project>{2493A8F7-1949-4F29-8D53-9D459046C3B8}</Project>
       <Name>Commands.Tags</Name>
     </ProjectReference>
-    </ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
