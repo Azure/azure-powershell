@@ -20,17 +20,13 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServer", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<AnalysisServicesServer>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServer"),
+     OutputType(typeof(List<AzureAnalysisServicesServer>))]
     [Alias("Get-AzureAs")]
     public class GetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string ServerParameterSetName = "Specific Server";
-
         [Parameter(Position = 0,
-            ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which the user want to retrieve the server.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -45,13 +41,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single server
-                WriteObject(AnalysisServicesClient.GetServer(ResourceGroupName, Name));
+                var server = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
+                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(server));
             }
             else
             {
                 // List all servers in given resource group if avaliable otherwise all servers in the subscription
                 var list = AnalysisServicesClient.ListServers(ResourceGroupName);
-                WriteObject(list, true);
+                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServerCollection(list), true);
             }
         }
     }

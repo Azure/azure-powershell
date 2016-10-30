@@ -23,7 +23,7 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), 
-        OutputType(typeof(bool))]
+        OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Remove-AzureAs")]
     public class RemoveAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -37,31 +37,31 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Position = 3, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AnalysisServicesServer server = null;
-            if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out server))
+            if (string.IsNullOrEmpty(Name))
             {
-                throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+                WriteExceptionError(new PSArgumentNullException("Name", "Name of server not specified"));
             }
 
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveAnalysisServicesServer, Name),
-                string.Format(Resources.RemovingAnalysisServicesServer, Name),
-                Name,
-                () => AnalysisServicesClient.DeleteServer(ResourceGroupName, Name));
-
-            if (PassThru)
+            if (ShouldProcess(Name, Resources.RemovingAnalysisServicesServer))
             {
-                WriteObject(server);
+                AnalysisServicesServer server = null;
+                if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out server))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+                }
+
+                AnalysisServicesClient.DeleteServer(ResourceGroupName, Name);
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(server));
+                }
             }
         }
     }

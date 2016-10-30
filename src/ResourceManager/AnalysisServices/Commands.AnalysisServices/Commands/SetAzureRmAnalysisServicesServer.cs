@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
@@ -21,7 +22,7 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AnalysisServicesServer))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Set-AzureAs")]
     public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -46,35 +47,44 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this server")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
         [ValidateNotNull]
         public string Administrators { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.UpdateAnalysisServicesServer, Name),
-                string.Format(Resources.UpdatingAnalysisServicesServer, Name),
-                Name,
-                () =>
+            if (string.IsNullOrEmpty(Name))
+            {
+                WriteExceptionError(new PSArgumentNullException("Name", "Name of server not specified"));
+            }
+
+            if (ShouldProcess(Name, Resources.UpdatingAnalysisServicesServer))
+            {
+                AnalysisServicesServer currentServer = null;
+                if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out currentServer))
                 {
-                    var currentServer = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
-                    var location = currentServer.Location;
+                    throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+                }
 
-                    if (Tags == null && currentServer.Tags != null)
-                    {
-                        Tags = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
-                    }
+                var location = currentServer.Location;
+                if (Tag == null && currentServer.Tags != null)
+                {
+                    Tag = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
+                }
 
-                    WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tags, Administrators, currentServer));
-                });
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrators, currentServer);
+
+                if(PassThru.IsPresent)
+                {
+                    WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(updatedServer));
+                }
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AnalysisServicesServer))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("New-AzureAs")]
     public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this server")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
@@ -92,7 +92,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     }
                 }
 
-                WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tags, Administrators));
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrators);
+                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }
     }

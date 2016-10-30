@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
 
             _subscriptionId = context.Subscription.Id;
-            _client = AnalysisServicesCmdletBase.CreateAsClient<AnalysisServicesManagementClient>(context,
+            _client = AzureSession.ClientFactory.CreateArmClient<AnalysisServicesManagementClient>(
+                context, 
                 AzureEnvironment.Endpoint.ResourceManager);
             _currentUser = context.Account.Id;
         }

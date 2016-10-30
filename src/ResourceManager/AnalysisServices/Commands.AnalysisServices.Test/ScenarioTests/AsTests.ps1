@@ -38,13 +38,13 @@ function Test-AnalysisServicesServer
 
 		# Updating server
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tags $tagsToUpdate
-		Assert-NotNull $serverUpdated.Tags "Tags do not exists"
-		Assert-NotNull $serverUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tag $tagsToUpdate -PassThru
+		Assert-NotNull $serverUpdated.Tag "Tag do not exists"
+		Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 
-		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrators 'aztest1@stabletest.ccsctp.net'
-		Assert-NotNull $serverUpdated.AsAdministrators.Members "Server Administrators list i empty"
-		Assert-AreEqual $serverUpdated.AsAdministrators.Members.Count 1
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrators 'aztest1@stabletest.ccsctp.net' -PassThru
+		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrators list is empty"
+		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
     
 		Assert-AreEqual $serverName $serverUpdated.Name
 		Assert-AreEqual $location $serverUpdated.Location
@@ -103,7 +103,7 @@ function Test-AnalysisServicesServer
 		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
 		
 		# Delete Analysis Servicesserver
-		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -PassThru
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
@@ -111,8 +111,8 @@ function Test-AnalysisServicesServer
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -147,16 +147,16 @@ function Test-NegativeAnalysisServicesServer
 
 		# attempt to update a non-existent server
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		Assert-Throws {Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Tags $tagsToUpdate}
+		Assert-Throws {Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Tag $tagsToUpdate}
 
 		# attempt to get a non-existent server
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName}
 
 		# Delete Analysis Servicesserver
-		Assert-True {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -PassThru} "Remove Account failed."
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
 
 		# Delete Analysis Servicesserver again should throw.
-		Assert-Throws {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -PassThru}
+		Assert-Throws {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru}
 
 		# Verify that it is gone by trying to get it again
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
@@ -164,8 +164,8 @@ function Test-NegativeAnalysisServicesServer
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 

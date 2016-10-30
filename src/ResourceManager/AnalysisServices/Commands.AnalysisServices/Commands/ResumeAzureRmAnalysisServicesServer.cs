@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Management.Analysis;
 using System.Collections.Generic;
@@ -22,43 +23,45 @@ using Microsoft.Azure.Management.Analysis.Models;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet(VerbsLifecycle.Resume, "AzureRmAnalysisServicesServer", 
-        DefaultParameterSetName = BaseParameterSetName,
         SupportsShouldProcess = true),
-     OutputType(typeof(List<AnalysisServicesServer>))]
+        OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Resume-AzureAs")]
     public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string ServerParameterSetName = "Specific Server";
-
-        [Parameter(ParameterSetName = ServerParameterSetName, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,
             Mandatory = false, HelpMessage = "Name of resource group under which to retrieve the server.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = ServerParameterSetName, Position = 0, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "Name of a specific server.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.ResumeAnalysisServicesServer, Name),
-                    string.Format(Resources.ResumingAnalysisServicesServer, Name),
-                    Name,
-                    () => AnalysisServicesClient.ResumeServer(ResourceGroupName, Name));
-            }
-            else
+            if (string.IsNullOrEmpty(Name))
             {
                 WriteExceptionError(new PSArgumentNullException("Name", "Name of server not specified"));
+            }
+
+            if (ShouldProcess(Name, Resources.ResumingAnalysisServicesServer))
+            {
+                AnalysisServicesServer server = null;
+                if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out server))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+                }
+
+                AnalysisServicesClient.ResumeServer(ResourceGroupName, Name);
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(server));
+                }
             }
         }
     }
