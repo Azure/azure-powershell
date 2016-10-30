@@ -149,7 +149,7 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>Tags</maml:name>
+				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Key-value pairs in the form of a hash table set as tags on the server.</maml:para>
 				</maml:description>
@@ -228,7 +228,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>Tags</maml:name>
+			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Key-value pairs in the form of a hash table set as tags on the server.</maml:para>
 			</maml:description>
@@ -673,7 +673,7 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Tags</maml:name>
+				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Key-value pairs in the form of a hash table set as tags on the server.</maml:para>
 				</maml:description>
@@ -747,7 +747,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Tags</maml:name>
+			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Key-value pairs in the form of a hash table set as tags on the server.</maml:para>
 			</maml:description>
