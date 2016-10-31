@@ -220,6 +220,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
         }
 
+        /// <summary>
+        /// Run all of the different breaking change checks for parameters
+        /// </summary>
+        /// <param name="cmdlet"></param>
+        /// <param name="oldParameter"></param>
+        /// <param name="newParameter"></param>
+        /// <param name="issueLogger"></param>
         private void CheckParameters(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
@@ -552,6 +559,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
         }
 
+        /// <summary>
+        /// Check for any position changes in parameters 
+        /// </summary>
+        /// <param name="cmdlet"></param>
+        /// <param name="oldParameter"></param>
+        /// <param name="newParameter"></param>
+        /// <param name="issueLogger"></param>
         public void CheckParameterPositions(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
