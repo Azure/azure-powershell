@@ -87,6 +87,24 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 aliases.SelectMany(a => a.AliasNames));
                         }
 
+                        foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
+                        {
+                            var set = new ParameterSetMetadata
+                            {
+                                Mandatory = parameterSet.Mandatory,
+                                Name = parameterSet.ParameterSetName,
+                                Position = parameterSet.Position
+                            };
+
+                            parameterData.ParameterSets.Add(set);
+                        }
+
+                        if (parameter.HasAttribute<ValidateSetAttribute>())
+                        {
+                            var validateSet = parameter.GetAttribute<ValidateSetAttribute>();
+                            parameterData.ValidateSet.AddRange(validateSet.ValidValues);
+                        }
+
                         cmdletMetadata.Parameters.Add(parameterData);
                     }
 
