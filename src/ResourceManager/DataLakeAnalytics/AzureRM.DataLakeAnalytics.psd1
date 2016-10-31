@@ -130,7 +130,17 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Addition of Catalog CRUD cmdlets:
+    - The following cmdlets are replacing Secret CRUD cmdlets. In the next release Secret CRUD cmdlets will be removed.
+    - New-AzureRMDataLakeAnalyticsCatalogCredential
+    - Set-AzureRMDataLakeAnalyticsCatalogCredential
+    - Remove-AzureRMDataLakeAnalyticsCatalogCredential
+* Fixes for Get-AzureRMDataLakeAnalyticsCatalogItem
+    - Better error messaging and support for invalid input
+* General help improvements
+    - Clearer help for job operations
+    - Fixed typos and incorrect examples
+'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

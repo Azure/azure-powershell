@@ -161,6 +161,35 @@ PrivateData = @{
     * Separate paremater sets for Set-AzureRmVM with Generalized and Redeploy parameter
     * Reduce time taken by Get-AzureRmVMDiskEncryptionStatus cmdlet from two minutes to under five seconds
     * Allow Set-AzureRmVMDiskEncryptionStatus to be used with VHDs residing in multiple resource groups
+# DataLakeAnalytics
+    * Addition of Catalog CRUD cmdlets:
+        - The following cmdlets are replacing Secret CRUD cmdlets. In the next release Secret CRUD cmdlets will be removed.
+        - New-AzureRMDataLakeAnalyticsCatalogCredential
+        - Set-AzureRMDataLakeAnalyticsCatalogCredential
+        - Remove-AzureRMDataLakeAnalyticsCatalogCredential
+    * Fixes for Get-AzureRMDataLakeAnalyticsCatalogItem
+        - Better error messaging and support for invalid input
+    * General help improvements
+        - Clearer help for job operations
+        - Fixed typos and incorrect examples
+* DataLakeStore
+    * Improvements to import and export data cmdlets
+        - Drastically increased performance for distributed download scenarios, where multiple sessions are running across many clients targeting the same ADLS account.
+        - Better error handling and messaging for both upload and download scenarios.
+    * Full Firewall rules management CRUD
+        - The below cmdlets can be used to manage firewall rules for an ADLS account:
+        - Add-AzureRMDataLakeStoreFirewallRule
+        - Set-AzureRMDataLakeStoreFirewallRule
+        - Get-AzureRMDataLakeStoreFirewallRule
+        - Remove-AzureRMDataLakeStoreFirewallRule
+    * Full Trusted ID provider management CRUD
+        - The below cmdlets can be used to manage trusted identity providers for an ADLS account:
+        - Add-AzureRMDataLakeStoreTrustedIdProvider
+        - Set-AzureRMDataLakeStoreTrustedIdProvider
+        - Get-AzureRMDataLakeStoreTrustedIdProvider
+        - Remove-AzureRMDataLakeStoreTrustedIdProvider
+    * Account Encryption Support
+        - You can now encrypt newly created ADLS accounts as well as enable encryption on existing ADLS accounts using the New-AzureRMDataLakeStoreAccount and Set-AzureRMDataLakeStoreAccount cmdlets, respectively.
 * HDInsight
     * Add support to create HDInsight Spark 2.0 cluster using new cmdlet Add-AzureRmHDInsightComponentVersion to specify the component version of Spark
     * Get-AzureRmHDInsightCluster now returns the component version in a Spark 2.0 cluster

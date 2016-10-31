@@ -137,7 +137,24 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Improvements to import and export data cmdlets
+    - Drastically increased performance for distributed download scenarios, where multiple sessions are running across many clients targeting the same ADLS account.
+    - Better error handling and messaging for both upload and download scenarios.
+* Full Firewall rules management CRUD
+    - The below cmdlets can be used to manage firewall rules for an ADLS account:
+    - Add-AzureRMDataLakeStoreFirewallRule
+    - Set-AzureRMDataLakeStoreFirewallRule
+    - Get-AzureRMDataLakeStoreFirewallRule
+    - Remove-AzureRMDataLakeStoreFirewallRule
+* Full Trusted ID provider management CRUD
+    - The below cmdlets can be used to manage trusted identity providers for an ADLS account:
+    - Add-AzureRMDataLakeStoreTrustedIdProvider
+    - Set-AzureRMDataLakeStoreTrustedIdProvider
+    - Get-AzureRMDataLakeStoreTrustedIdProvider
+    - Remove-AzureRMDataLakeStoreTrustedIdProvider
+* Account Encryption Support
+    - You can now encrypt newly created ADLS accounts as well as enable encryption on existing ADLS accounts using the New-AzureRMDataLakeStoreAccount and Set-AzureRMDataLakeStoreAccount cmdlets, respectively.
+'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
