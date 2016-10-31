@@ -18,3 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add-AzureRmAccount
+    - Add position for Credential parameter so the following command is allowed: Add-AzureRmAccount (Get-Credential)
+    - Updated parameter sets so the SubscriptionId and SubscriptionName are mutually exclusive
