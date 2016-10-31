@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.1.0
 * Improvements to import and export data cmdlets
     - Drastically increased performance for distributed download scenarios, where multiple sessions are running across many clients targeting the same ADLS account.
     - Better error handling and messaging for both upload and download scenarios.
