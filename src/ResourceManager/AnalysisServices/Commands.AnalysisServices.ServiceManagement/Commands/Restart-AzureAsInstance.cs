@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 #pragma warning disable 0618
             if (Instance == null)
             {
-                throw new PSArgumentNullException(nameof(Instance), "Name of Azure Analysis Services server not specified");
+                throw new PSArgumentNullException("Instance", "Name of Azure Analysis Services server not specified");
             }
 
             if (AsAzureClientSession.Instance.Profile.Environments.Count == 0)
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
             {
                 if (accessToken == null)
                 {
-                    throw new PSArgumentNullException(nameof(accessToken), string.Format(Resources.NotLoggedInMessage, ""));
+                    throw new PSArgumentNullException("accessToken", string.Format(Resources.NotLoggedInMessage, ""));
                 }
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
