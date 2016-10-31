@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
         [ValidateNotNull]
-        public string Administrators { get; set; }
+        public string Administrator { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     }
                 }
 
-                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrators);
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }

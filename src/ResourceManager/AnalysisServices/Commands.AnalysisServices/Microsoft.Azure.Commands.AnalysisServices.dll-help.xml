@@ -156,7 +156,7 @@
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>Administrators</maml:name>
+				<maml:name>Administrator</maml:name>
 				<maml:description>
 					<maml:para>A string representing a comma separated list of users or groups to be set as administrators on the server. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com</maml:para>
 				</maml:description>
@@ -240,7 +240,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>Administrators</maml:name>
+			<maml:name>Administrator</maml:name>
 			<maml:description>
 				<maml:para>A string representing a comma separated list of users or groups to be set as administrators on the server. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com</maml:para>
 			</maml:description>
@@ -680,7 +680,7 @@
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>Administrators</maml:name>
+				<maml:name>Administrator</maml:name>
 				<maml:description>
 					<maml:para>A string representing a comma separated list of users or groups to be set as administrators on the server. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com</maml:para>
 				</maml:description>
@@ -759,7 +759,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>Administrators</maml:name>
+			<maml:name>Administrator</maml:name>
 			<maml:description>
 				<maml:para>A string representing a comma separated list of users or groups to be set as administrators on the server. The users or groups need to be specified UPN format e.g. user@contoso.com or groups@contoso.com</maml:para>
 			</maml:description>
