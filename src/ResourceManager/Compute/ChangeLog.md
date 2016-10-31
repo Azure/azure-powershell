@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,10 +19,13 @@
 -->
 ## Current Release
 
-    * Update formats for list of VMs, VMScaleSets and ContainerService
-        - The default format of Get-AzureRmVM, Get-AzureRmVmss and Get-AzureRmContainerService is not table format when these cmdlets call List Operation
-    * Fix overprovision issue for VMScaleSet
-        - Because of the bug in Compute client library (and Swagger spec) regarding overprovision property of VMScaleSet, this property did not show up correctly.
-    * Better piping scenario for VMScaleSets and ContainerService cmdlets
-        - VMScaleSet and ContainerService now have "ResourceGroupName" property, so when piping Get command to Delete/Update command, -ResourceGroupName is not required.
-    * Separate paremater sets for Set-AzureRmVM with Generalized and Redeploy parameter
+## Version 2.2.0
+* Update formats for list of VMs, VMScaleSets and ContainerService
+    - The default format of Get-AzureRmVM, Get-AzureRmVmss and Get-AzureRmContainerService is not table format when these cmdlets call List Operation
+* Fix overprovision issue for VMScaleSet
+    - Because of the bug in Compute client library (and Swagger spec) regarding overprovision property of VMScaleSet, this property did not show up correctly.
+* Better piping scenario for VMScaleSets and ContainerService cmdlets
+    - VMScaleSet and ContainerService now have "ResourceGroupName" property, so when piping Get command to Delete/Update command, -ResourceGroupName is not required.
+* Separate paremater sets for Set-AzureRmVM with Generalized and Redeploy parameter
+* Reduce time taken by Get-AzureRmVMDiskEncryptionStatus cmdlet from two minutes to under five seconds
+* Allow Set-AzureRmVMDiskEncryptionStatus to be used with VHDs residing in multiple resource groups
