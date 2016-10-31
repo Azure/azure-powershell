@@ -96,6 +96,8 @@ namespace StaticAnalysis
                 analysisLogger.WriteError(ex.ToString());
                 throw ex;
             }
+
+            Console.ReadLine();
         }
     }
 }
