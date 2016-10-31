@@ -51,6 +51,7 @@ ProcessorArchitecture = 'None'
 RequiredModules = @(
     @{ ModuleName = 'AzureRM.Profile'; RequiredVersion = '2.3.0'},
     @{ ModuleName = 'Azure.Storage'; RequiredVersion = '2.3.0'},
+    @{ ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.0.1'},
     @{ ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '3.1.0'},
     @{ ModuleName = 'AzureRM.Automation'; RequiredVersion = '2.3.0'},
     @{ ModuleName = 'AzureRM.Backup'; RequiredVersion = '2.3.0'},
