@@ -465,24 +465,45 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public void CreateCredential(string accountName, string databaseName,
             string credentialName, string userId, string password, string hostUri)
         {
-            throw new NotImplementedException();
+            _catalogClient.Catalog.CreateCredential(accountName, databaseName, credentialName,
+                new DataLakeAnalyticsCatalogCredentialCreateParameters
+                {
+                    Password = password,
+                    Uri = hostUri,
+                    UserId = userId
+                });
         }
 
         public void UpdateCredentialPassword(string accountName, string databaseName,
             string credentialName, string userId, string password, string newPassword, string hostUri)
         {
-            throw new NotImplementedException();
+            _catalogClient.Catalog.UpdateCredential(accountName, databaseName, credentialName,
+                new DataLakeAnalyticsCatalogCredentialUpdateParameters
+                {
+                    Password = password,
+                    NewPassword = newPassword,
+                    Uri = hostUri,
+                    UserId = userId
+                });
         }
 
         public void DeleteCredential(string accountName, string databaseName, string credentialName, string password = null)
         {
-            throw new NotImplementedException();
+            _catalogClient.Catalog.DeleteCredential(accountName,
+                databaseName,
+                credentialName,
+                string.IsNullOrEmpty(password) ? null : new DataLakeAnalyticsCatalogCredentialDeleteParameters(password));
         }
         
 
         public IList<CatalogItem> GetCatalogItem(string accountName, CatalogPathInstance path,
             DataLakeAnalyticsEnums.CatalogItemType itemType)
         {
+            if (path == null && itemType != DataLakeAnalyticsEnums.CatalogItemType.Database)
+            {
+                throw new InvalidOperationException(Properties.Resources.EmptyCatalogPath);
+            }
+
             var isList = IsCatalogItemOrList(path, itemType);
             var toReturn = new List<CatalogItem>();
 
@@ -720,15 +741,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlCredential GetCredential(string accountName,
+        private ObsoleteUSqlCredential GetCredential(string accountName,
             string databaseName, string credName)
         {
             return
-                _catalogClient.Catalog.GetCredential(accountName, databaseName,
-                    credName);
+                new ObsoleteUSqlCredential(_catalogClient.Catalog.GetCredential(accountName, databaseName,
+                    credName), databaseName, computeAccountName: accountName);
         }
 
-        private IList<USqlCredential> GetCredentials(string accountName,
+        private IList<ObsoleteUSqlCredential> GetCredentials(string accountName,
             string databaseName)
         {
             List<USqlCredential> toReturn = new List<USqlCredential>();
@@ -740,7 +761,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 toReturn.AddRange(response);
             }
 
-            return toReturn;
+            return toReturn.Select(element => new ObsoleteUSqlCredential(element, databaseName, computeAccountName: accountName)).ToList();
         }
 
         private USqlSchema GetSchema(string accountName, string databaseName,
