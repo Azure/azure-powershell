@@ -18,3 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add several warning/deprecation messages about future changes to cmdlets
+    - Add-AzureRmAutoscaleSetting
+    - Get-AzureRmMetric
+    - Get-AzureRmMetricDefinition
+    - New-AzureRmAutoscaleRule
+    - Remove-AzureRmAlertRule
+    - Remove-AzureRmAutoscaleSetting
+    - Remove-AzureRmLogProfile
+* Add new parameter to Set-AzureRmDiagnosticSetting
+    - Parameter WorkspaceId is the OMS workspace Id

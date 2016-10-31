@@ -18,3 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New cmdlets
+    - New-AzureRmNotificationHubKey
+    - New-AzureRmNotificationHubsNamespaceKey

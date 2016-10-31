@@ -18,3 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add support for Azure Machine Learning Committment Plans
+    - Get-AzureRmMLCommitmentAssociation
+    - Get-AzureRmMLCommitmentPlan
+    - Get-AzureRmMLCommitmentPlanUsageHistory
+    - Move-AzureRmMLCommitmentAssociation
+    - New-AzureRmMLCommitmentPlan
+    - Remove-AzureRmMLCommitmentPlan
+    - Update-AzureRmMLCommitmentPlan

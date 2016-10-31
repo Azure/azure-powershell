@@ -18,3 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add-AzureRmVirtualNetworkPeering
+    - Parameter AlloowGatewayTransit renamed to AllowGatewayTransit (an alias for the old parameter was created)
+    - Fixed issue where UseRemoteGateway property was not being populated in the request to the server
+* Get-AzureRmEffectiveNetworkSecurityGroup
+    - Add warning if there is no response from GetEffectiveNSG
+* Add Source property to EffectiveRoute
