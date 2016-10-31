@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
         [ValidateNotNull]
-        public string Administrators { get; set; }
+        public string Administrator { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     Tag = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrators, currentServer);
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer);
 
                 if(PassThru.IsPresent)
                 {
