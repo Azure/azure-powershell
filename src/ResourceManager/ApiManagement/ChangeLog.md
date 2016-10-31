@@ -18,3 +18,5 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed cmdlet Import-AzureRmApiManagementApi when importing Api by SpecificationByUrl parameter
+* New-AzureRmApiManagement supports creating an ApiManagement service in a VirtualNetwork and with additional regions

@@ -18,3 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add new parameter to cmdlet New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource
+    - UseLegacyCollector (switch parameter) will enable collection of 32-bit legacy performance counters on 64-bit machines
+* Rename New-AzureRmOperationalInsightsAzureAuditDataSource to New-AzureRmOperationalInsightsAzureActivityLogDataSource (an alias for the old command was created)
+* Get-AzureRmOperationalInsightsDataSource returns null instead of throwing an exception if not found
+* New-AzureRmOperationalInsightsComputerGroup now supports defining a group simply by separating computer names with commas
