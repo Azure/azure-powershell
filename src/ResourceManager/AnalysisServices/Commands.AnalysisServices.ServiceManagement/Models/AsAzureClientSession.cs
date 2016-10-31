@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 
             _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
 
+            if (!_profile.Environments.ContainsKey(asAzureContext.Environment.Name))
+            {
+                _profile.Environments.Add(asAzureContext.Environment.Name, asAzureContext.Environment);
+            }
+
             return _profile;
         }
 

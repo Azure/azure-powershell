@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         {
             get
             {
-                // Nothing to do with Azure Resource Managment APIs
+                // Nothing to do with Azure Resource Managment context
                 return null;
             }
         }
@@ -108,10 +108,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
                 }
 
                 var asAzureProfile = AsAzureClientSession.Instance.Login(currentProfile.Context, password);
-                if (!currentProfile.Environments.ContainsKey(EnvironmentName))
-                {
-                    currentProfile.Environments.Add(AsEnvironment.Name, AsEnvironment);
-                }
 
                 WriteObject(asAzureProfile);
             }

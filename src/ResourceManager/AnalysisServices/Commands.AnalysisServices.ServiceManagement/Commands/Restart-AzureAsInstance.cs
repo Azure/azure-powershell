@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
+using System.Management.Instrumentation;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -32,11 +34,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
     [OutputType(typeof(AsAzureProfile))]
     public class RestartAzureAnalysisServer: AzurePSCmdlet, IModuleAssemblyInitializer
     {
+        private string serverName;
+
         [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server to restart")]
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
 
-        protected override AzureContext DefaultContext { get; }
+        protected override AzureContext DefaultContext
+        {
+            get
+            {
+                // Nothing to do with Azure Resource Managment context
+                return null;
+            }
+        }
 
         protected override void SaveDataCollectionProfile()
         {
@@ -55,13 +66,30 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 #pragma warning disable 0618
             if (Instance == null)
             {
-                throw new PSArgumentNullException(nameof(Instance));
+                throw new PSArgumentNullException(nameof(Instance), "Name of Azure Analysis Services server not specified");
             }
 
             if (AsAzureClientSession.Instance.Profile.Environments.Count == 0)
             {
                 throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
             }
+
+            serverName = Instance;
+            Uri uriResult;
+
+            // if the user specifies the FQN of the server, then extract the servername out of that.
+            // and set the current context
+            if (Uri.TryCreate(Instance, UriKind.Absolute, out uriResult) && uriResult.Scheme == "asazure")
+            {
+                serverName = uriResult.PathAndQuery.Trim('/');
+                if (string.Compare(AsAzureClientSession.Instance.Profile.Context.Environment.Name, uriResult.DnsSafeHost, StringComparison.InvariantCultureIgnoreCase) != 0)
+                {
+                    AsAzureClientSession.Instance.SetCurrentContext(
+                        new AsAzureAccount(),
+                        AsAzureClientSession.Instance.Profile.CreateEnvironment(uriResult.DnsSafeHost));
+                }
+            }
+
 #pragma warning restore 0618
         }
 
@@ -72,33 +100,28 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Instance))
+            if (ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))
             {
-                if (ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))
-                {
-                    var context = AsAzureClientSession.Instance.Profile.Context;
-                    var restartEndpoint = string.Format(context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], Instance);
-                    string restartBaseUri = string.Format("https://{0}", context.Environment.Name);
-                    var accessToken = AsAzureClientSession.GetAadAuthenticatedToken(
-                        context,
-                        null,
-                        PromptBehavior.Auto,
-                        AsAzureClientSession.AsAzureClientId,
-                        restartBaseUri,
-                        AsAzureClientSession.RedirectUri);
+                var context = AsAzureClientSession.Instance.Profile.Context;
+                AsAzureClientSession.Instance.Login(context, null);
+                TokenCacheItem tokenCacheItem = AsAzureClientSession.TokenCache.ReadItems()
+                    .FirstOrDefault(tokenItem => tokenItem.TenantId.Equals(context.Account.Tenant));
 
-                    using (HttpResponseMessage message = CallPostAsync(
-                        new Uri(restartBaseUri),
-                        restartEndpoint,
-                        accessToken).Result)
-                    {
-                        message.EnsureSuccessStatusCode();
-                    }
+                if (tokenCacheItem == null || string.IsNullOrEmpty(tokenCacheItem.AccessToken))
+                {
+                    throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
                 }
-            }
-            else
-            {
-                WriteExceptionError(new PSArgumentNullException(nameof(Instance), "Name of Azure Analysis Services server not specified"));
+
+                Uri restartBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
+
+                var restartEndpoint = string.Format(context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], serverName);
+                using (HttpResponseMessage message = CallPostAsync(
+                    restartBaseUri,
+                    restartEndpoint,
+                    tokenCacheItem.AccessToken).Result)
+                {
+                    message.EnsureSuccessStatusCode();
+                }
             }
         }
 
