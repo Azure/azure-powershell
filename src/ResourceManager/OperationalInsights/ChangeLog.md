@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.2.0
 * Add new parameter to cmdlet New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource
     - UseLegacyCollector (switch parameter) will enable collection of 32-bit legacy performance counters on 64-bit machines
 * Rename New-AzureRmOperationalInsightsAzureAuditDataSource to New-AzureRmOperationalInsightsAzureActivityLogDataSource (an alias for the old command was created)
