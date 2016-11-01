@@ -174,9 +174,6 @@ function UpdateARMLogs([string]$PathToServices)
         if ($serviceName -eq "AzureBackup") { $serviceName = "Backup" }
         if ($serviceName -eq "AzureBatch") { $serviceName = "Batch" }
 
-
-
-
         # Get the psd1 file
         $Module = Get-Item -Path "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"
 
@@ -193,6 +190,8 @@ function UpdateARMLogs([string]$PathToServices)
         {
             $result += $serviceResult
         }
+
+        Copy-Item -Path $PathToModule -Destination "$($Service.FullName)\AzureRM.$serviceName.psd1" -Force
     }
 
     # Return the list of changes
