@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
             PromptBehavior promptBehavior = password == null ? PromptBehavior.Always : PromptBehavior.Auto;
 
             var resourceUri = new UriBuilder(Uri.UriSchemeHttps, asAzureContext.Environment.Name).ToString();
+            resourceUri = resourceUri.TrimEnd('/');
             GetAadAuthenticatedToken(asAzureContext, password, promptBehavior, AsAzureClientId, resourceUri, RedirectUri);
 
             _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
