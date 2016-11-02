@@ -270,6 +270,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No certificate found with thumbprint {0}..
+        /// </summary>
+        public static string CertificateNotFound {
+            get {
+                return ResourceManager.GetString("CertificateNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No chef extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
         public static string ChefExtensionNotFound {
@@ -522,11 +531,92 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No matching extension is found in {0}..
+        /// </summary>
+        public static string ExtensionNotFound {
+            get {
+                return ResourceManager.GetString("ExtensionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No frontend ip configuration found for load balancer {0}..
+        /// </summary>
+        public static string FrontendIpConfigurationNotFound {
+            get {
+                return ResourceManager.GetString("FrontendIpConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid etw listener extension settings found..
+        /// </summary>
+        public static string InvalidEtwListenerSettings {
+            get {
+                return ResourceManager.GetString("InvalidEtwListenerSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not a valid string for type {1}..
+        /// </summary>
+        public static string InvalidNumberFormat {
+            get {
+                return ResourceManager.GetString("InvalidNumberFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listener state change to: {0}.
+        /// </summary>
+        public static string ListenerStateChange {
+            get {
+                return ResourceManager.GetString("ListenerStateChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current upgrade mode is Manual. You need to trigger manual upgrade for single VMs to take effect..
+        /// </summary>
+        public static string NeedManualUpgradeScaleSetVMs {
+            get {
+                return ResourceManager.GetString("NeedManualUpgradeScaleSetVMs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load balancer inbound NAT pools cannot be removed because they are still referenced by some scale set VMs. You may need to upgrade scale set virtual machines to latest model and try again..
+        /// </summary>
+        public static string NeedManualUpgradeScaleSetVMsToCleanup {
+            get {
+                return ResourceManager.GetString("NeedManualUpgradeScaleSetVMsToCleanup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The account type {0} is not supported for this operation..
+        /// </summary>
+        public static string NotSupportedAccountType {
+            get {
+                return ResourceManager.GetString("NotSupportedAccountType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics.
         /// </summary>
         public static string PremiumStorageAccountForBootDiagnostics {
             get {
                 return ResourceManager.GetString("PremiumStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No primary network interface is found in VM {0}..
+        /// </summary>
+        public static string PrimaryNetworkInterfaceNotFound {
+            get {
+                return ResourceManager.GetString("PrimaryNetworkInterfaceNotFound", resourceCulture);
             }
         }
         
@@ -1090,6 +1180,51 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating load balancer(s)....
+        /// </summary>
+        public static string UpdatingLoadBalancer {
+            get {
+                return ResourceManager.GetString("UpdatingLoadBalancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating network interface(s)....
+        /// </summary>
+        public static string UpdatingNetworkInterface {
+            get {
+                return ResourceManager.GetString("UpdatingNetworkInterface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating network security group(s)....
+        /// </summary>
+        public static string UpdatingNetworkSecurityGroup {
+            get {
+                return ResourceManager.GetString("UpdatingNetworkSecurityGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating virtual machine extension(s)....
+        /// </summary>
+        public static string UpdatingVirtualMachineExtension {
+            get {
+                return ResourceManager.GetString("UpdatingVirtualMachineExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating virtual machine scale set extension(s)....
+        /// </summary>
+        public static string UpdatingVirtualMachineScaleSetExtension {
+            get {
+                return ResourceManager.GetString("UpdatingVirtualMachineScaleSetExtension", resourceCulture);
             }
         }
         
