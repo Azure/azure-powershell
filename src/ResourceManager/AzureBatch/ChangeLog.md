@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,3 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.3.0
+* Rename cmdlet Get-AzureRmBatchSubscriptionQuotas to Get-AzureRmBatchLocationsQuotas (an alias for the old command was created)
+    - Rename return type PSBatchSubscriptionQuotas to PSBatchLocationQuotas (no property changes)
