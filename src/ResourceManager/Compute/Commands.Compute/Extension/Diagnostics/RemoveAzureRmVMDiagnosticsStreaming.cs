@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             DispatchVerboseMessage(Properties.Resources.UpdatingVirtualMachineExtension);
 
 
-            var etwExtension = this.virtualMachine.Resources?.FirstOrDefault(EtwStreamingHelper.IsEtwListenerExtension);
+            var etwExtension = this.virtualMachine.Resources == null? null: 
+                this.virtualMachine.Resources.FirstOrDefault(EtwStreamingHelper.IsEtwListenerExtension);
 
             if (etwExtension != null)
             {

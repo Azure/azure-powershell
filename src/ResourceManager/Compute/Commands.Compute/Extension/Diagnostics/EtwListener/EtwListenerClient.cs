@@ -45,9 +45,9 @@ namespace Microsoft.VisualStudio.EtwListener.Common
         private const string RemoteAddressFormat = "net.tcp://{0}:{1}/VsEtwMonListener/Pipe";
         private static readonly TimeSpan HeartbeatPeriod = TimeSpan.FromSeconds(10);
 
-        public ListenerConnectionInfo ConnectionInfo { get; }
+        public ListenerConnectionInfo ConnectionInfo { get; private set; }
 
-        public ListenerSessionConfiguration SessionConfiguration { get; }
+        public ListenerSessionConfiguration SessionConfiguration { get; private set; }
 
         private ListenerClientState state = ListenerClientState.Disconnected;
 
@@ -95,11 +95,14 @@ namespace Microsoft.VisualStudio.EtwListener.Common
                 return;
             }
 
-            this.EtwEventsCaptured?.Invoke(this, new EventsCapturedEventArgs
+            if (this.EtwEventsCaptured != null)
             {
-                Events = eventData,
-                ListenerThrottling = throttled
-            });
+                this.EtwEventsCaptured(this, new EventsCapturedEventArgs
+                {
+                    Events = eventData,
+                    ListenerThrottling = throttled
+                });
+            }
         }
 
         /// <summary>

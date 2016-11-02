@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 
 namespace Microsoft.VisualStudio.EtwListener.Common.Contracts
@@ -28,8 +29,15 @@ namespace Microsoft.VisualStudio.EtwListener.Common.Contracts
 
         public EtwListenerServiceProxy(IEtwListenerService etwListenerService, string sessionToken)
         {
-            Debug.Assert(etwListenerService != null, $"{nameof(etwListenerService)} should not be null");
-            Debug.Assert(!string.IsNullOrEmpty(sessionToken), $"{nameof(sessionToken)} should not be null or empty");
+            if (etwListenerService == null)
+            {
+                throw new ArgumentNullException("etwListenerService cannot be null.");
+            }
+
+            if (string.IsNullOrEmpty(sessionToken))
+            {
+                throw new ArgumentException("sessionToken cannot be null or empty.");
+            }
 
             this.etwListenerService = etwListenerService;
             this.sessionToken = sessionToken;

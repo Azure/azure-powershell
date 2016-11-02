@@ -19,36 +19,36 @@ namespace Microsoft.VisualStudio.EtwListener.Common
 {
     internal class ListenerConnectionInfo
     {
-        public string DnsName { get; }
+        public string DnsName { get; set; }
 
-        public string IpAddress { get; }
+        public string IpAddress { get; set; }
 
-        public int Port { get; }
+        public int Port { get; set; }
 
-        public string ServerCertificateThumbprint { get; }
+        public string ServerCertificateThumbprint { get; set; }
 
-        public string ClientCertificateThumbprint { get; }
+        public string ClientCertificateThumbprint { get; set; }
 
         public ListenerConnectionInfo(string dnsName, string ipAddress, int port, string serverCertificateThumbprint, string clientCertificateThumbprint)
         {
             if (string.IsNullOrEmpty(dnsName))
             {
-                throw new ArgumentException(nameof(dnsName));
+                throw new ArgumentException("dnsName cannot be null or empty.");
             }
 
             if (string.IsNullOrEmpty(ipAddress))
             {
-                throw new ArgumentException(nameof(ipAddress));
+                throw new ArgumentException("ipAddress cannot be null or empty.");
             }
 
             if (string.IsNullOrEmpty(serverCertificateThumbprint))
             {
-                throw new ArgumentException(nameof(serverCertificateThumbprint));
+                throw new ArgumentException("serverCertificateThumbprint cannot be null or empty.");
             }
 
             if (string.IsNullOrEmpty(clientCertificateThumbprint))
             {
-                throw new ArgumentException(nameof(clientCertificateThumbprint));
+                throw new ArgumentException("clientCertificateThumbprint cannot be null or empty.");
             }
 
             this.DnsName = dnsName;
