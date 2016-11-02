@@ -56,7 +56,7 @@ namespace Microsoft.VisualStudio.EtwListener.Common.Contracts
         {
             if (line == null)
             {
-                throw new ArgumentNullException(nameof(line));
+                throw new ArgumentNullException("line cannot be null.");
             }
 
             var retval = new ProviderConfiguration();
@@ -128,7 +128,7 @@ namespace Microsoft.VisualStudio.EtwListener.Common.Contracts
                     break;
 
                 default:
-                    throw new FormatException(nameof(line));
+                    throw new FormatException("Incorrect provider format.");
             }
 
             return retval;

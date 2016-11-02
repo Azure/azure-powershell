@@ -63,7 +63,7 @@ namespace Microsoft.VisualStudio.EtwListener.Common
         {
             if (string.IsNullOrEmpty(distinguishedNameString))
             {
-                throw new ArgumentException(nameof(distinguishedNameString));
+                throw new ArgumentException("distinguishedNameString cannot be null or empty.");
             }
 
             // create basic constraints. (Required for Vista Sp1)

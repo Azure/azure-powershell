@@ -55,9 +55,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             }
         }
 
-        public IVirtualMachinesOperations VirtualMachineClient => ComputeClient.ComputeManagementClient.VirtualMachines;
+        public IVirtualMachinesOperations VirtualMachineClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachines;
+            }
+        }
 
-        public IVirtualMachineScaleSetsOperations VirtualMachineScaleSetClient => ComputeClient.ComputeManagementClient.VirtualMachineScaleSets;
+        public IVirtualMachineScaleSetsOperations VirtualMachineScaleSetClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSets;
+            }
+        }
 
         public INetworkSecurityGroupsOperations NetworkSecurityGroupClient
         {

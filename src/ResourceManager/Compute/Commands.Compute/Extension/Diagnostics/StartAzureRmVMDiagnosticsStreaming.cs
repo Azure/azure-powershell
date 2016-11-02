@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 {
     [Cmdlet(
         VerbsLifecycle.Start,
-        ProfileNouns.VirtualMachineDiagnosticsStreaming)]
+        ProfileNouns.VirtualMachineDiagnosticsStreaming,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSEtwEvent))]
     public class StartAzureRmVMDiagnosticsStreaming : EtwStreamingVMCmdletBase
     {
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
         private async Task StartStreaming()
         {
-            VirtualMachineExtension extension = this.virtualMachine.Resources?.FirstOrDefault(EtwStreamingHelper.IsEtwListenerExtension);
+            VirtualMachineExtension extension = this.virtualMachine.Resources == null? null: this.virtualMachine.Resources.FirstOrDefault(EtwStreamingHelper.IsEtwListenerExtension);
             if (extension == null || extension.TypeHandlerVersion != EtwListenerConstants.CurrentVersion)
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ExtensionNotFound, this.virtualMachine.Id));

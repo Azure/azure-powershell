@@ -455,17 +455,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                     return false;
                 }
 
-                // If no access limit, always match
-                if (keyVault.Properties?.AccessPolicies?.Any() != true)
+                // If no access policy, always not match
+                if (keyVault.Properties == null || keyVault.Properties.AccessPolicies == null || !keyVault.Properties.AccessPolicies.Any() )
                 {
-                    return true;
+                    return false;
                 }
 
                 // Find if there's a policy entry defines the access
                 return keyVault.Properties.AccessPolicies.Any(accessPolicyEntry =>
                     accessPolicyEntry.ObjectId == objectId &&
                     accessPolicyEntry.TenantId == tenantId &&
-                    accessPolicyEntry.Permissions?.Secrets?.Any(permission => string.Equals(permission, SecretPermissions.All, StringComparison.OrdinalIgnoreCase)) == true);
+                    accessPolicyEntry.Permissions != null &&
+                    accessPolicyEntry.Permissions.Secrets != null &&
+                    accessPolicyEntry.Permissions.Secrets.Any(permission => string.Equals(permission, SecretPermissions.All, StringComparison.OrdinalIgnoreCase)));
             });
 
 

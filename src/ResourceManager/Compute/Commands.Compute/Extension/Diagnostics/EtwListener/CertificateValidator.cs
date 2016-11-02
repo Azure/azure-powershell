@@ -42,11 +42,13 @@ namespace Microsoft.VisualStudio.EtwListener.Common
         public override void Validate(X509Certificate2 certificate)
         {
             if (certificate == null)
-                throw new ArgumentNullException(nameof(certificate));
+            {
+                throw new ArgumentNullException("certificate cannot be null.");
+            }
 
             if (!string.Equals(certificate.Thumbprint, this.allowedThumbprint, StringComparison.OrdinalIgnoreCase))
             {
-                throw new SecurityTokenValidationException(nameof(certificate));
+                throw new SecurityTokenValidationException("Invalid certificate.");
             }
         }
     }

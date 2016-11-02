@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 {
     [Cmdlet(
         VerbsLifecycle.Start,
-        ProfileNouns.VirtualMachineScaleSetDiagnosticsStreaming)]
+        ProfileNouns.VirtualMachineScaleSetDiagnosticsStreaming,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSEtwEvent))]
     public class StartAzureRmVmssDiagnosticsStreaming : EtwStreamingVmssCmdletBase
     {
