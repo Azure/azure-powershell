@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateComputeNodeUser()
         {
             BatchController controller = BatchController.NewInstance;
@@ -69,6 +70,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateComputeNodeUser()
         {
             BatchController controller = BatchController.NewInstance;

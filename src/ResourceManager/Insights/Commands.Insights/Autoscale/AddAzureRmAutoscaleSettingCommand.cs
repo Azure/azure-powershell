@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
+using System.Net;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights;
@@ -101,14 +102,27 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AutoscaleSettingCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+            WriteWarning("This output of this cmdlet will change in the next release to return the newly created object.");
+            AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
 
-            var result = this.InsightsManagementClient.AutoscaleOperations.CreateOrUpdateSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
+            // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility
+            var result = this.InsightsManagementClient.AutoscaleSettings.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
 
-            WriteObject(result);
+            // Keep this response for backwards compatibility.
+            // Note: Create operations return the newly created object in the new specification, i.e. need to use result.Body
+            var response = new List<AzureOperationResponse>
+            {
+                new AzureOperationResponse()
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = HttpStatusCode.OK
+                }
+            };
+
+            WriteObject(response);
         }
 
-        private AutoscaleSettingCreateOrUpdateParameters CreateSdkCallParameters()
+        private AutoscaleSettingResource CreateAutoscaleSettingResource()
         {
             bool enableSetting = !this.DisableSetting.IsPresent || !this.DisableSetting;
 
@@ -116,7 +130,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
 
                 // Receiving a single parameter with the whole spec for an autoscale setting
-                var property = this.SettingSpec.Properties;
+                var property = this.SettingSpec;
 
                 if (property == null)
                 {
@@ -124,30 +138,28 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 }
 
                 this.Location = this.SettingSpec.Location;
-                this.Name = this.SettingSpec.Name;
+                this.Name = this.SettingSpec.AutoscaleSettingResourceName;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
                 this.AutoscaleProfiles = this.AutoscaleProfiles ?? property.Profiles.ToList();
                 this.TargetResourceId = property.TargetResourceUri;
 
-                enableSetting = !this.DisableSetting.IsPresent && property.Enabled;
+                enableSetting = !this.DisableSetting.IsPresent && property.Enabled.HasValue && property.Enabled.Value;
 
                 // The semantics is if Notifications is given it will replace the existing ones
-                this.Notifications = this.Notifications ?? this.SettingSpec.Properties.Notifications.ToList();
+                this.Notifications = this.Notifications ?? (this.SettingSpec.Notifications != null ? this.SettingSpec.Notifications.ToList() : null);
             }
 
-            return new AutoscaleSettingCreateOrUpdateParameters()
+            return new AutoscaleSettingResource()
             {
                 Location = this.Location,
-                Properties = new AutoscaleSetting()
-                {
-                    Name = this.Name,
-                    Enabled = enableSetting,
-                    Profiles = this.AutoscaleProfiles,
-                    TargetResourceUri = this.TargetResourceId,
-                    Notifications = this.Notifications
-                },
-                Tags = this.SettingSpec != null ? new LazyDictionary<string, string>(this.SettingSpec.Tags.Content) : new LazyDictionary<string, string>()
+                Name = this.Name,
+                AutoscaleSettingResourceName = this.Name,
+                Enabled = enableSetting,
+                Profiles = this.AutoscaleProfiles,
+                TargetResourceUri = this.TargetResourceId,
+                Notifications = this.Notifications,
+                Tags = this.SettingSpec != null ? new Dictionary<string, string>(this.SettingSpec.Tags.Content) : new Dictionary<string, string>()
             };
         }
     }

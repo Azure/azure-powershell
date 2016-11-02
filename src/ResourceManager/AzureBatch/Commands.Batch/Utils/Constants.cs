@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureRmBatchAccount = "AzureRmBatchAccount";
         public const string AzureRmBatchAccountKey = "AzureRmBatchAccountKey";
         public const string AzureRmBatchAccountKeys = "AzureRmBatchAccountKeys";
-        public const string AzureRmBatchSubscriptionQuotas = "AzureRmBatchSubscriptionQuotas";
+        public const string AzureRmBatchLocationQuotas = "AzureRmBatchLocationQuotas";
         public const string AzureRmBatchApplication = "AzureRmBatchApplication";
         public const string AzureRmBatchApplicationPackage = "AzureRmBatchApplicationPackage";
 

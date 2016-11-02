@@ -31,6 +31,7 @@
     <ServiceManagementTestDebug>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</ServiceManagementTestDebug>
     <SqlDatabaseTestDebug>.\src\ServiceManagement\Sql\Commands.SqlDatabase.Test\bin\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.Test.dll</SqlDatabaseTestDebug>
     <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
+    <InsightsTestDebug>.\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll</InsightsTestDebug>
     <StorageTestDebug>.\src\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
     <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
     <DataLakeAnalyticsTestDebug>.\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll</DataLakeAnalyticsTestDebug>
@@ -70,41 +71,40 @@
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'all' ">
       <XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
-      <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Dns\Commands.Dns.Test\bin\Debug\Microsoft.Azure.Commands.Dns.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\TrafficManager\Commands.TrafficManager2.Test\bin\Debug\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"/>
       <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Profile\Commands.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
       <XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>
-      <!-- <XUnitTests Include=".\src\ResourceManager\DevTestLabs\Commands.DevTestLabs.Test\bin\Debug\Microsoft.Azure.Commands.DevTestLabs.Test.dll"/> 
+      <!-- <XUnitTests Include=".\src\ResourceManager\DevTestLabs\Commands.DevTestLabs.Test\bin\Debug\Microsoft.Azure.Commands.DevTestLabs.Test.dll"/> -->
+      <XUnitTests Include=".\src\ResourceManager\Dns\Commands.Dns.Test\bin\Debug\Microsoft.Azure.Commands.Dns.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\HDInsight\Commands.HDInsight.Test\bin\Debug\Commands.HDInsight.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll"/> -->
+      <XUnitTests Include=".\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Profile\Commands.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\RecoveryServices.Backup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\RedisCache\Commands.RedisCache.Test\bin\Debug\Microsoft.Azure.Commands.RedisCache.Test.dll"/>
-      <!--<XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>-->
-	  <XUnitTests Include=".\src\ResourceManager\HDInsight\Commands.HDInsight.Test\bin\Debug\Commands.HDInsight.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll"/>
+      <!-- <XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/> -->
+      <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
+      <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\TrafficManager\Commands.TrafficManager2.Test\bin\Debug\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll"/>
       <XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
@@ -247,6 +247,12 @@
         Projects="build.proj"/>
   </Target>
 
+  <Target Name="TestInsights">
+    <MSBuild Targets="InvokeMSTest"
+        Properties="_testAssembly=$(InsightsTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\InsightsDebug.trx"
+        Projects="build.proj"/>
+  </Target>
+  
   <Target Name="TestStorage">
     <MSBuild Targets="InvokeMSTest"
         Properties="_testAssembly=$(StorageTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\StorageDebug.trx"

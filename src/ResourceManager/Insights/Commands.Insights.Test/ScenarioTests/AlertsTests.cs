@@ -69,6 +69,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmAlertRuleByName()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAlertRuleByName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmAlertRule()
         {
             TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAlertRule");

@@ -12,32 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
+namespace Commands.NotificationHubs.Test
 {
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.NotificationHubs;
     using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Test;
+    using LegacyTest = Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using System.Collections.Generic;
+    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+    using System;
+    using System.Linq;
+    using System.IO;
 
     public abstract class TestBaseClass : RMTestBase
     {
         private EnvironmentSetupHelper helper;
+        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
 
         protected TestBaseClass()
         {
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(MockContext context)
         {
-            var nhManagementClient = GetNotificationHubsManagementClient();
+            var nhManagementClient = GetNotificationHubsManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient();
             var gallaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
@@ -49,6 +54,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -57,52 +65,58 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
-            using (UndoContext context = UndoContext.Current)
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
-                SetupManagementClients();
+                SetupManagementClients(context);
+
+                var callingClassName = callingClassType
+                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                        .Last();
 
                 List<string> modules = new List<string>();
                 //modules.Add("Microsoft.Azure.Commands.NotificationHubs.dll");
                 modules.Add("ScenarioTests\\" + this.GetType().Name + ".ps1");
                 modules.Add(helper.RMProfileModule);
                 modules.Add(helper.RMResourceModule);
-                //modules.Add(helper.RMStorageDataPlaneModule);
-                //modules.Add(helper.RMStorageModule);
                 modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));
                 modules.Add("AzureRM.Resources.ps1");
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
-                helper.RunPowerShellTest(scripts);
 
+                if (scripts != null)
+                {
+                    helper.RunPowerShellTest(scripts);
+                }
             }
         }
 
-        protected NotificationHubsManagementClient GetNotificationHubsManagementClient()
+        protected NotificationHubsManagementClient GetNotificationHubsManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<NotificationHubsManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<NotificationHubsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
         private GalleryClient GetGalleryClient()
         {
-            return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
         private ManagementClient GetManagementClient()
         {
-            return TestBase.GetServiceClient<ManagementClient>(new RDFETestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<ManagementClient>(new LegacyTest.RDFETestEnvironmentFactory());
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         public void Dispose()

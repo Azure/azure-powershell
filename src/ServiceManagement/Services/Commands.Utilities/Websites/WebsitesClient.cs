@@ -1360,8 +1360,43 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 AuthenticationType = "Basic",
                 TempAgent = false
             };
+            
+            var userAgent = GetDeploymentBaseOptionsUserAgent();
+            if (!string.IsNullOrEmpty(userAgent))
+            {
+                remoteBaseOptions.UserAgent = userAgent;
+            }
 
             return remoteBaseOptions;
+        }
+
+        /// <summary>
+        /// Gets remote deployment base options useragent using AzureSession/WebSiteManagementClient.
+        /// </summary>
+        /// <returns>useragent string.</returns>
+        private string GetDeploymentBaseOptionsUserAgent()
+        {
+            var userAgent = string.Empty;
+            var managementClient = this.WebsiteManagementClient as WebSiteManagementClient;
+            if (managementClient != null && managementClient.UserAgent != null)
+            {
+                foreach (var agent in managementClient.UserAgent)
+                {
+                    if (agent != null && agent.Product != null && !string.IsNullOrEmpty(agent.Product.Name))
+                    {
+                        if (!string.IsNullOrEmpty(agent.Product.Version))
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, "/", agent.Product.Version, " ");
+                        }
+                        else
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, " ");
+                        }
+                    }
+                }
+            }
+
+            return userAgent.TrimEnd();
         }
 
         /// <summary>
