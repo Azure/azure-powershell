@@ -166,7 +166,7 @@ function Get-FullName
 # enable verbose, debug, and warning streams
 #
 #############################
-function Test-Setup
+function Test-Setup([bool]$runOnCIMachine=$false)
 {
     $global:oldConfirmPreference = $global:ConfirmPreference
     $global:oldDebugPreference = $global:DebugPreference
@@ -177,7 +177,13 @@ function Test-Setup
     $global:oldWarningPreference = $global:WarningPreference
     $global:oldWhatIfPreference = $global:WhatIfPreference
     $global:ConfirmPreference = "None"
-    $global:DebugPreference = "Continue"
+    $global:DebugPreference = "SilentlyContinue"
+
+    if($runOnCIMachine -eq $true)
+    {
+        $global:DebugPreference = "Continue"
+    }
+
     $global:ErrorActionPreference = "Stop"
     $global:FormatEnumerationLimit = 10000
     $global:ProgressPreference = "SilentlyContinue"
@@ -201,6 +207,8 @@ function Test-Cleanup
      $global:VerbosePreference = $global:oldVerbosePreference
      $global:WarningPreference = $global:oldWarningPreference
      $global:WhatIfPreference = $global:oldWhatIfPreference
+
+    Remove-AllSubscriptions
 }
 
 #######################

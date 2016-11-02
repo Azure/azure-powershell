@@ -189,15 +189,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             PSADObject adObject = null;
             if (options.ADObjectFilter.HasFilter)
             {
-                adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
-                if (adObject == null)
+                if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups || options.IncludeClassicAdministrators)
                 {
-                    throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
+                    adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
+
+                    if (adObject == null)
+                    {
+                        throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
+                    }
                 }
 
                 // Filter first by principal
                 if (options.ExpandPrincipalGroups)
-                {
+                {                   
                     if (!(adObject is PSADUser))
                     {
                         throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
@@ -220,9 +224,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
 
                 // Filter out by scope
-                if (!string.IsNullOrEmpty(options.Scope))
+                if (!string.IsNullOrWhiteSpace(options.Scope))
                 {
-                    result.RemoveAll(r => !options.Scope.StartsWith(r.Scope, StringComparison.InvariantCultureIgnoreCase));
+                    roleAssignments.RemoveAll(r => !options.Scope.StartsWith(r.Properties.Scope, StringComparison.InvariantCultureIgnoreCase));
                 }
             }
             else if (!string.IsNullOrEmpty(options.Scope))

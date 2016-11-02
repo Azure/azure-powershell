@@ -33,10 +33,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
             Location = vnetConfigurationResource.Location;
             SubnetResourceId = vnetConfigurationResource.SubnetResourceId;
+            SubnetName = vnetConfigurationResource.SubnetName;
+            VnetId = vnetConfigurationResource.VnetId;
         }
 
         public string Location { get; set; }
 
         public string SubnetResourceId { get; set; }
+
+        public string SubnetName { get; set; }
+
+        public Guid VnetId { get; set; }
     }
 }
