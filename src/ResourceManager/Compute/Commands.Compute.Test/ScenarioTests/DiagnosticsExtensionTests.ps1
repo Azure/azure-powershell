@@ -218,7 +218,8 @@ function Test-VmssDiagnosticsExtension
         # Common
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
-        $vmss = Create-Vmss $rgname $loc
+        $vmssname = 'vmss' + $rgname;
+        $vmss = Create-Vmss $rgname $loc $vmssname
 
         # This storage name will be used in command line directly when set diagnostics extension
         $storagename = 'stoinconfig' + $rgname;
@@ -338,7 +339,8 @@ function Test-VmssDiagnosticsStreaming
     try
     {
         # Setup
-        $vmss = Create-Vmss -rgname $rgname -loc $loc
+        $vmssname = 'vmss' + $rgname;
+        $vmss = Create-Vmss $rgname $loc $vmssname
 
         Add-AzureRmVmssDiagnosticsStreaming -ResourceGroupName $rgname -VMScaleSetName $vmss.Name
 
@@ -355,7 +357,7 @@ function Test-VmssDiagnosticsStreaming
 .SYNOPSIS
 Create vmss with default arguments
 #>
-function Create-Vmss($rgname, $loc)
+function Create-Vmss($rgname, $loc, $vmssname)
 {
 
     # Create VMSS
@@ -373,7 +375,6 @@ function Create-Vmss($rgname, $loc)
     $subnetId = $vnet.Subnets[0].Id;
 
     # New VMSS Parameters
-    $vmssName = 'vmss' + $rgname;
     $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
     $adminUsername = 'Foo12';
@@ -391,9 +392,4 @@ function Create-Vmss($rgname, $loc)
         -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
 
     return $vmss;
-}
-
-function Test-testtest
-{
-	Add-Testtest;
 }
