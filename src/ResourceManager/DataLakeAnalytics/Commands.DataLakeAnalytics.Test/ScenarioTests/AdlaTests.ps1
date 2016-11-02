@@ -751,7 +751,37 @@ function Test-DataLakeAnalyticsCatalog
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
-    
+		
+		# Create the credential using the new create credential cmdlet
+		New-AzureRMDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
+
+		# retrieve the list of credentials and ensure the created credential is in it
+		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path $databaseName
+
+		Assert-NotNull $itemList "The credential list is null"
+
+		Assert-True {$itemList.count -gt 0} "The credential list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $credentialName)
+			{
+				$found = $true
+				break
+			}
+		}
+	
+		# retrieve the specific credential
+		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
+		Assert-NotNull $specificItem "Could not retrieve the credential by name"
+		Assert-AreEqual $credentialName $specificItem.Name
+
+		# Remove the credential
+		Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName
+		
+		# Verify that trying to get the credential fails
+		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
+
 		# delete the secret
 		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
 

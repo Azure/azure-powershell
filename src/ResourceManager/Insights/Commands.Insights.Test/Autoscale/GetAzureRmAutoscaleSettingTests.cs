@@ -15,14 +15,15 @@
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
@@ -31,18 +32,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     {
         private readonly GetAzureRmAutoscaleSettingCommand cmdlet;
         private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
-        private readonly Mock<IAutoscaleOperations> insightsAutoscaleOperationsMock;
+        private readonly Mock<IAutoscaleSettingsOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private AutoscaleSettingGetResponse response;
-        private AutoscaleSettingListResponse responseList;
+        private Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource> responseSimple;
+        private Microsoft.Rest.Azure.AzureOperationResponse<IPage<AutoscaleSettingResource>> responsePage;
         private string resourceGroup;
         private string settingName;
-        private string targetResourceUri = Utilities.ResourceUri;
+        private ODataQuery<AutoscaleSettingResource> query = new ODataQuery<AutoscaleSettingResource>("");
 
         public GetAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsAutoscaleOperationsMock = new Mock<IAutoscaleOperations>();
+            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAutoscaleSettingCommand()
@@ -51,53 +52,39 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 InsightsManagementClient = insightsManagementClientMock.Object
             };
 
-            response = new AutoscaleSettingGetResponse()
-            {
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK,
-                Id = "",
-                Location = "",
-                Name = "",
-                Properties = null,
-                Tags = null,
-            };
-
-            responseList = new AutoscaleSettingListResponse()
-            {
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK,
-                AutoscaleSettingResourceCollection = new AutoscaleSettingResourceCollection()
+            var responseObject = new AutoscaleSettingResource(id: "", location: "", profiles: null, autoscaleSettingResourceName: "")
                 {
-                    Value = new List<AutoscaleSettingResource>()
-                    {
-                        new AutoscaleSettingResource(){
-                                Id = "",
-                                Location = "",
-                                Name = "",
-                                Properties = null,
-                                Tags = null,
-                            },
-                    }
-                }
+                    Name = "",
+                    Tags = null,
+                };
+
+            responseSimple = new Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource>()
+            {
+                Body = responseObject
             };
 
-            insightsAutoscaleOperationsMock.Setup(f => f.GetSettingAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<AutoscaleSettingGetResponse>(response))
-                .Callback((string resourceGrp, string settingNm, CancellationToken t) =>
+            responsePage = new AzureOperationResponse<IPage<AutoscaleSettingResource>>()
+            {
+                Body = JsonConvert.DeserializeObject<Microsoft.Azure.Management.Insights.Models.Page<AutoscaleSettingResource>>(JsonConvert.SerializeObject(responseObject))
+            };
+
+            insightsAutoscaleOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource>>(responseSimple))
+                .Callback((string resourceGrp, string settingNm, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     resourceGroup = resourceGrp;
                     settingName = settingNm;
                 });
 
-            insightsAutoscaleOperationsMock.Setup(f => f.ListSettingsAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<AutoscaleSettingListResponse>(responseList))
-                .Callback((string resourceGrp, string targetResourceId, CancellationToken t) =>
+            insightsAutoscaleOperationsMock.Setup(f => f.ListByResourceGroupWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ODataQuery<AutoscaleSettingResource>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<IPage<AutoscaleSettingResource>>>(responsePage))
+                .Callback((string resourceGrp, ODataQuery<AutoscaleSettingResource> qry, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     resourceGroup = resourceGrp;
-                    targetResourceUri = targetResourceId;
+                    query = qry;
                 });
 
-            insightsManagementClientMock.SetupGet(f => f.AutoscaleOperations).Returns(this.insightsAutoscaleOperationsMock.Object);
+            insightsManagementClientMock.SetupGet(f => f.AutoscaleSettings).Returns(this.insightsAutoscaleOperationsMock.Object);
         }
 
         [Fact]
@@ -110,17 +97,17 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Null(this.settingName);
-            Assert.Null(this.targetResourceUri);
+            Assert.True(this.query == null || string.IsNullOrWhiteSpace(this.query.Filter));
 
             // Calling GetSettingAsync
             this.resourceGroup = null;
-            this.targetResourceUri = Utilities.ResourceUri;
+            this.query = "";
             cmdlet.Name = Utilities.Name;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal(Utilities.Name, this.settingName);
-            Assert.Equal(Utilities.ResourceUri, this.targetResourceUri);
+            // Assert.Equal(Utilities.ResourceUri, this.targetResourceUri);
 
             // Test deatiled output flag calling GetSettingAsync
             this.resourceGroup = null;
@@ -130,7 +117,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal(Utilities.Name, this.settingName);
-            Assert.Equal(Utilities.ResourceUri, this.targetResourceUri);
+            //Assert.Equal(Utilities.ResourceUri, this.targetResourceUri);
         }
     }
 }

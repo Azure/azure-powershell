@@ -1363,5 +1363,27 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHealth</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHealth</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>BackendAddressPools</Label>
+                <PropertyName>BackendAddressPools</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>BackendAddressPoolsText</Label>
+                <PropertyName>BackendAddressPoolsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

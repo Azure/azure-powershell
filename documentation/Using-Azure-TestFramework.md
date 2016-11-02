@@ -1,6 +1,6 @@
 # Using Microsoft.Rest.ClientRuntime.Azure.TestFramework #
 
-1. Getting Started (Another PR that reflects these changes)
+1. Getting Started
 2. Accquring TestFramework
 3. Setup prior to Record/Playback tests
 	1. Environment Variables
@@ -13,11 +13,11 @@
 5. Change Test Environment settings at run-time
 
 
-## 1. Getting Started  (Another PR that reflects these changes)
+## 1. Getting Started
 1. Launch .\tools\PS-VSPrompt shortcut
 	1. This starts VS Dev command prompt in PowerShell
 2. Import module that helps in performing basic repository tasks
-	1. Import-Module Repo-Tasks.psm1
+	1. Import-Module Repo-Tasks.psd1
 	2. Type Get-Commands -Module Repo-Tasks to see list of cmdlets
 	3. Get-Help <CommandName> to get help on individual commands.
 

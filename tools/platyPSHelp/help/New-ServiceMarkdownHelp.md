@@ -13,25 +13,22 @@ This cmdlet will create markdown help files for each cmdlet in a given service, 
 
 ### ServiceManagement
 ```
-New-ServiceMarkdownHelp -Service <String> -BuildTarget <String> -PathToRepo <String> [-ServiceManagement]
- [<CommonParameters>]
+New-ServiceMarkdownHelp -Service <String> -BuildTarget <String> [-ServiceManagement] [<CommonParameters>]
 ```
 
 ### ResourceManager
 ```
-New-ServiceMarkdownHelp -Service <String> -BuildTarget <String> -PathToRepo <String> [-ResourceManager]
- [<CommonParameters>]
+New-ServiceMarkdownHelp -Service <String> -BuildTarget <String> [-ResourceManager] [<CommonParameters>]
 ```
 
 ### Storage
 ```
-New-ServiceMarkdownHelp -BuildTarget <String> -PathToRepo <String> [-Storage] [<CommonParameters>]
+New-ServiceMarkdownHelp -BuildTarget <String> [-Storage] [<CommonParameters>]
 ```
 
 ### FullPath
 ```
-New-ServiceMarkdownHelp -PathToModule <String> -PathToCommandsFolder <String> -ModuleName <String>
- [<CommonParameters>]
+New-ServiceMarkdownHelp -PathToModule <String> -PathToCommandsFolder <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,28 +44,27 @@ To ensure that the generated markdown help files have all of the necessary field
 
 ### -------------------------- Example 1: Creating markdown for an ARM service --------------------------
 ```
-PS C:\> New-ServiceMarkdownHelp -Service Profile -BuildTarget Debug -PathToRepo C:\azure-powershell -ResourceManager
+PS C:\> New-ServiceMarkdownHelp -Service Profile -BuildTarget Debug -ResourceManager
 ```
 
-This example will create markdown help files for all of the Profile cmdlets. It will import the Profile module from C:\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 and create a help folder in C:\azure-powershell\src\ResourceManager\Profile\Commands.Profile.
+This example will create markdown help files for all of the Profile cmdlets. It will import the Profile module from PATH_TO_REPO\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 and create a help folder in PATH_TO_REPO\src\ResourceManager\Profile\Commands.Profile.
 
-It will also regenerate the existing XML help (MAML) located at C:\azure-powershell\src\ResourceManager\Profile\Commands.Profile\Microsoft.Azure.Commands.Profile.dll-Help.xml.
+It will also regenerate the existing XML help (MAML) located at PATH_TO_REPO\src\ResourceManager\Profile\Commands.Profile\Microsoft.Azure.Commands.Profile.dll-Help.xml.
 
 ### -------------------------- Example 2: Creating markdown for Storage --------------------------
 ```
-PS C:\> New-ServiceMarkdownHelp -BuildTarget Debug -PathToRepo C:\azure-powershell -Storage
+PS C:\> New-ServiceMarkdownHelp -BuildTarget Debug -Storage
 ```
 
-This example will create markdown help files for all of the Storage cmdlets. It will import the Storage module from C:\azure-powershell\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1 and create a help folder in C:\azure-powershell\src\Storage\Commands.Storage.
+This example will create markdown help files for all of the Storage cmdlets. It will import the Storage module from PATH_TO_REPO\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1 and create a help folder in PATH_TO_REPO\src\Storage\Commands.Storage.
 
-It will also regenerate the existing XML help (MAML) located at C:\azure-powershell\src\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml.
+It will also regenerate the existing XML help (MAML) located at PATH_TO_REPO\src\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml.
 
 ### -------------------------- Example 3: Creating markdown with specified paths --------------------------
 ```
 PS C:\> $PathToModule = "C:\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\AzureRM.TrafficManager.psd1"
 PS C:\> $PathToCommandsFolder = "C:\azure-powershell\src\ResourceManager\TrafficManager\Commands.TrafficManager2"
-PS C:\> $ModuleName = "AzureRM.TrafficManager"
-PS C:\> New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFolder $PathToCommandsFolder -ModuleName $ModuleName
+PS C:\> New-ServiceMarkdownHelp -PathToModule $PathToModule -PathToCommandsFolder $PathToCommandsFolder
 ```
 
 This example will create markdown help files for all of the TrafficManager cmdlets. The reason the ResourceManager parameter set is not used is because the commands folder path does not follow the format that this cmdlet is expecting: rather than ending in Commands.TrafficManager, it ends in Commands.TrafficManager2.
@@ -85,21 +81,6 @@ Type: String
 Parameter Sets: ServiceManagement, ResourceManager, Storage
 Aliases: 
 Accepted values: Debug, Release
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ModuleName
-The name of the service module that will be imported and used to create the markdown help for each cmdlet.
-
-```yaml
-Type: String
-Parameter Sets: FullPath
-Aliases: 
 
 Required: True
 Position: Named
@@ -129,21 +110,6 @@ A path to the psd1 or dll file for the given service module.
 ```yaml
 Type: String
 Parameter Sets: FullPath
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PathToRepo
-A path to the root of the azure-powershell repository that has been cloned.
-
-```yaml
-Type: String
-Parameter Sets: ServiceManagement, ResourceManager, Storage
 Aliases: 
 
 Required: True
