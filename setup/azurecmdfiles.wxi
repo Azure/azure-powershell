@@ -320,6 +320,9 @@
                         <Component Id="cmpFDFB38E21048DD505BCAD31F5136992E" Guid="*">
                             <File Id="fil725BD220D8CBA56756A4178EC0DF3BD1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.Azure.Common.dll" />
                         </Component>
+                        <Component Id="cmpC2439F65706917CA4AABD3AF6AFB856A" Guid="*">
+                            <File Id="filB30A22185C3B74D7BF42213FB3287E98" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.Azure.Common.NetFramework.dll" />
+                        </Component>
                         <Component Id="cmp048B605B1072F4A5467F2AFFD8ED2459" Guid="*">
                             <File Id="fil38FE506241BEC2CA3B34645613B821F3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.AzureStack.Commands.dll" />
                         </Component>
@@ -5053,6 +5056,7 @@
             <ComponentRef Id="cmp341162180BF390CE2A96709D6793E79A" />
             <ComponentRef Id="cmpD0EF8A0F8719C6D155CF9683A6832BD9" />
             <ComponentRef Id="cmpFDFB38E21048DD505BCAD31F5136992E" />
+            <ComponentRef Id="cmpC2439F65706917CA4AABD3AF6AFB856A" />
             <ComponentRef Id="cmp048B605B1072F4A5467F2AFFD8ED2459" />
             <ComponentRef Id="cmpA2F17B479BD0FE1A81AED68A6C03B7A0" />
             <ComponentRef Id="cmp4E983C9ECBC2D4A29376A70418BE5E2B" />
