@@ -49,7 +49,7 @@ function New-ServiceMarkdownHelp
         # Set the necessary variables for an RDFE service
         elseif ($ServiceManagement.IsPresent)
         {
-            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyps-help.md documentation for more information."
+            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to documentation\platyPSHelp-documentation.md for more information."
             $PathToModule = Get-ServiceManagementDll -Service $Service -PathToAzure "$PathToRepo\src\Package\$BuildTarget\ServiceManagement\Azure"
             $PathToCommandsFolder = "$PathToRepo\src\ServiceManagement\$Service\Commands.$Service"
         }
@@ -186,7 +186,7 @@ function Update-ServiceMarkdownHelp
         # Set the necessary variables for an RDFE service
         elseif ($ServiceManagement.IsPresent)
         {
-            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyps-help.md documentation for more information."
+            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyPSHelp-documentation.md documentation for more information."
             $PathToModule = "$PathToRepo\src\Package\$BuildTarget\ServiceManagement\Azure\Azure.psd1"
             $PathToCommandsFolder = "$PathToRepo\src\ServiceManagement\$Service\Commands.$Service"
         }
