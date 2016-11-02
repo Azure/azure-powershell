@@ -208,11 +208,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 issueLogger.LogBreakingChangeIssue(
                                         cmdlet: oldCmdlet,
                                         severity: 0,
-                                        problemId: 9999,
-                                        description: string.Format("The cmdlet {0} no longer supports the parameter {1} and " +
-                                                                   "no alias was found for the original parameter name.", oldCmdlet.Name, oldParameter.Name),
-                                        remediation: string.Format("Add the parameter {0} back to the cmdlet {1} or " +
-                                                                   "add an alias to the original parameter name.", oldParameter.Name, oldCmdlet.Name));
+                                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameter,
+                                        description: string.Format(Properties.Resources.RemovedParameterDescription, oldCmdlet.Name, oldParameter.Name),
+                                        remediation: string.Format(Properties.Resources.RemovedParameterRemediation, oldParameter.Name, oldCmdlet.Name));
                             }                                
                         }
                     }
@@ -284,9 +282,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                             cmdlet: oldCmdlet,
                             severity: 0,
-                            problemId: 9999,
-                            description: string.Format("The cmdlet {0} has been removed.", oldCmdlet.Name),
-                            remediation: string.Format("Add the cmdlet {0} back to the module.", oldCmdlet.Name));
+                            problemId: ProblemIds.BreakingChangeProblemId.RemovedCmdlet,
+                            description: string.Format(Properties.Resources.RemovedCmdletDescription, oldCmdlet.Name),
+                            remediation: string.Format(Properties.Resources.RemovedCmdletRemediation, oldCmdlet.Name));
                 }
             }
         }
@@ -332,9 +330,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                             cmdlet: oldCmdlet,
                             severity: 0,
-                            problemId: 9999,
-                            description: string.Format("The cmdlet {0} no longer supports the alias {1}.", oldCmdlet.Name, oldAlias),
-                            remediation: string.Format("Add the alias {0} back to the cmdlet {1}.", oldAlias, oldCmdlet.Name));
+                            problemId: ProblemIds.BreakingChangeProblemId.RemovedCmdletAlias,
+                            description: string.Format(Properties.Resources.RemovedCmdletAliasDescription, oldCmdlet.Name, oldAlias),
+                            remediation: string.Format(Properties.Resources.RemovedCmdletAliasRemediation, oldAlias, oldCmdlet.Name));
                 }
             }
         }
@@ -356,9 +354,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                     cmdlet: oldCmdlet,
                     severity: 0,
-                    problemId: 9999,
-                    description: string.Format("The cmdlet {0} no longer implements SupportsShouldProcess.", oldCmdlet.Name),
-                    remediation: string.Format("Make sure the cmdlet {0} implements SupportsShouldProcess.", oldCmdlet.Name));
+                    problemId: ProblemIds.BreakingChangeProblemId.RemovedShouldProcess,
+                    description: string.Format(Properties.Resources.RemovedShouldProcessDescription, oldCmdlet.Name),
+                    remediation: string.Format(Properties.Resources.RemovedShouldProcessRemediation, oldCmdlet.Name));
             }
         }
 
@@ -379,9 +377,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                     cmdlet: oldCmdlet,
                     severity: 0,
-                    problemId: 9999,
-                    description: string.Format("The cmdlet {0} no longer implements SupportsPaging.", oldCmdlet.Name),
-                    remediation: string.Format("Make sure the cmdlet {0} implements SupportsPaging.", oldCmdlet.Name));
+                    problemId: ProblemIds.BreakingChangeProblemId.RemovedPaging,
+                    description: string.Format(Properties.Resources.RemovedPagingDescription, oldCmdlet.Name),
+                    remediation: string.Format(Properties.Resources.RemovedPagingRemediation, oldCmdlet.Name));
             }
         }
 
@@ -403,11 +401,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             issueLogger.LogBreakingChangeIssue(
                 cmdlet: cmdlet,
                 severity: 0,
-                problemId: 9999,
-                description: string.Format("The cmdlet {0} no longer supports the output type {1} for parameter {2}.",
-                                            cmdlet.Name, oldParameter.Type.Name, oldParameter.Name),
-                remediation: string.Format("Change the output type for parameter {0} back to {1}.",
-                                            oldParameter.Name, oldParameter.Type.Name));
+                problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterType,
+                description: string.Format(Properties.Resources.ChangedParameterTypeDescription, cmdlet.Name, oldParameter.Type.Name, oldParameter.Name),
+                remediation: string.Format(Properties.Resources.ChangedParameterTypeRemediation, oldParameter.Name, oldParameter.Type.Name));
             }
         }
 
@@ -454,11 +450,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 9999,
-                        description: string.Format("The cmdlet {0} no longer supports the alias {1} for parameter {2}.",
-                                                   cmdlet.Name, oldAlias, oldParameter.Name),
-                        remediation: string.Format("Add the alias back to parameter {0}.",
-                                                   oldParameter.Name));
+                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterAlias,
+                        description: string.Format(Properties.Resources.RemovedParameterAliasDescription, cmdlet.Name, oldAlias, oldParameter.Name),
+                        remediation: string.Format(Properties.Resources.RemovedParameterAliasRemediation, oldParameter.Name));
                 }
             }
         }
@@ -500,12 +494,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             issueLogger.LogBreakingChangeIssue(
                                 cmdlet: cmdlet,
                                 severity: 0,
-                                problemId: 9999,
-                                description: string.Format("The parameter {0} is no longer optional for the " +
-                                                           "parameter set {1} for cmdlet {2}.",
-                                                           oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
-                                remediation: string.Format("Make {0} optional for the parameter set {1}.",
-                                                           oldParameter.Name, oldParameterSet.Name));
+                                problemId: ProblemIds.BreakingChangeProblemId.MandatoryParameter,
+                                description: string.Format(Properties.Resources.MandatoryParameterDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.MandatoryParameterRemediation, oldParameter.Name, oldParameterSet.Name));
                         }
 
                         break;
@@ -543,11 +534,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         issueLogger.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
-                            problemId: 9999,
-                            description: string.Format("The validation set for parameter {0} no longer contains the value {1} for cmdlet {2}.",
-                                                       oldParameter.Name, oldValue, cmdlet.Name),
-                            remediation: string.Format("Add {0} back to the validation set.",
-                                                       oldValue));
+                            problemId: ProblemIds.BreakingChangeProblemId.ValidateSet,
+                            description: string.Format(Properties.Resources.ValidateSetDescription, oldParameter.Name, oldValue, cmdlet.Name),
+                            remediation: string.Format(Properties.Resources.ValidateSetRemediation, oldValue));
                         break;
                     }
 
@@ -595,12 +584,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             issueLogger.LogBreakingChangeIssue(
                                 cmdlet: cmdlet,
                                 severity: 0,
-                                problemId: 9999,
-                                description: string.Format("The position of parameter {0} has changed for " +
-                                                           "parameter set {1} for cmdlet {2}.",
-                                                           oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
-                                remediation: string.Format("Revert the position changes made to parameter {0}.",
-                                                           oldParameter.Name));
+                                problemId: ProblemIds.BreakingChangeProblemId.PositionChange,
+                                description: string.Format(Properties.Resources.PositionChangeDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.PositionChangeRemediation, oldParameter.Name));
                         }
 
                         break;
