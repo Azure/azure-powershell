@@ -97,6 +97,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineChefExtension = "AzureRmVMChefExtension";
         public const string VirtualMachineAEMExtension = "AzureRmVMAEMExtension";
 
+        public const string VirtualMachineDiagnosticsStreaming = "AzureRmVMDiagnosticsStreaming";
+        public const string VirtualMachineScaleSetDiagnosticsStreaming = "AzureRmVmssDiagnosticsStreaming";
+
         public const string AvailabilitySet = "AzureRmAvailabilitySet";
         public const string VirtualMachineConfig = "AzureRmVMConfig";
         public const string VirtualMachinePlan = "AzureRmVMPlan";
