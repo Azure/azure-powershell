@@ -103,5 +103,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             return this.GetSiteRecoveryClient().ProtectionContainerMapping.BeginUnconfigureProtection(fabricName, protectionContainerName, mappingName, input, this.GetRequestHeaders());
         }
+
+        /// <summary>
+        /// Purge Cloud Mapping
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Container Input</param>
+        /// <param name="mappingName">Mapping Name</param>
+        /// <returns></returns>
+        public LongRunningOperationResponse PurgeCloudMapping(string fabricName,
+            string protectionContainerName, string mappingName)
+        {
+            return this.GetSiteRecoveryClient().ProtectionContainerMapping.BeginPurgeProtection(
+                fabricName, protectionContainerName, mappingName, this.GetRequestHeaders());
+        }
     }
 }
