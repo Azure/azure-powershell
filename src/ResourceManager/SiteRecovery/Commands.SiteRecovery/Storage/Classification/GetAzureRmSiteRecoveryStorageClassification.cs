@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryStorageClassification", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
-    public class GetAzureSiteRecoveryStorageClassification : SiteRecoveryCmdletBase
+    public class GetAzureRmSiteRecoveryStorageClassification : SiteRecoveryCmdletBase
     {
         #region Parameters
         /// <summary>
@@ -46,7 +46,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets friendly name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFabricObject, Mandatory = true, ValueFromPipeline = true)]
+        public ASRFabric Fabric { get; set; }
+
+        /// <summary>
+        /// Gets or sets friendly name of classification.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByServerObject, Mandatory = true, ValueFromPipeline = true)]
         public ASRServer Server { get; set; }
         #endregion
 
@@ -83,21 +89,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
                     break;
-                case ASRParameterSets.ByObject:
+                case ASRParameterSets.ByServerObject:
+                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
                     storageClassifications = storageClassifications.Where(item =>
-                        item.GetFabricId().Equals(Server.GetFabricId())).ToList();
+                        item.GetFabricId().ToLower().Equals(this.Fabric.ID.ToLower())).ToList();
+                    break;
+                case ASRParameterSets.ByFabricObject:
+                    storageClassifications = storageClassifications.Where(item =>
+                        item.GetFabricId().ToLower().Equals(this.Fabric.ID.ToLower())).ToList();
                     break;
             }
 
             var psObject = storageClassifications.ConvertAll(item =>
+            {
+                return new ASRStorageClassification()
                 {
-                    return new ASRStorageClassification()
-                    {
-                        FriendlyName = item.Properties.FriendlyName,
-                        Id = item.Id,
-                        Name = item.Name
-                    };
-                });
+                    FriendlyName = item.Properties.FriendlyName,
+                    Id = item.Id,
+                    Name = item.Name
+                };
+            });
 
             this.WriteObject(psObject, true);
         }
