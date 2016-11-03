@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.2'
+ModuleVersion = '0.10.2'
 
 # ID used to uniquely identify this module
 GUID = 'F237EAAA-BD3A-4965-AD4A-BF38598BFEF7'
@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'  
 
 # Description of the functionality provided by this module
-Description = ''
+Description = 'Azure Stack Administrative module, included commands for operations on Plans, Offers, Subscriptions, Gallery Items, Resource Provider Registration and Usage Connection'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
