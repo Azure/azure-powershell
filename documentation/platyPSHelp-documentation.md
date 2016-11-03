@@ -1,8 +1,11 @@
 # PlatyPS Help
 
 - [Description](#description)
+- [Prerequisites](#prerequisites)
+    - [Install and import platyPS](#install-and-import-platyps)
+    - [Check for valid paths](#check-for-valid-paths)
 - [Getting Started](#getting-started)
-    - [Installing the platyPSHelp Module](#installing-the-platypshelp-module)
+    - [Installing the platyPSHelp module](#installing-the-platypshelp-module)
     - [Running the New-ServiceMarkdownHelp cmdlet](#running-the-new-servicemarkdownhelp-cmdlet)
     - [Running the Validate-ServiceMarkdownHelp cmdlet](#running-the-validate-servicemarkdownhelp-cmdlet)
     - [Running the Update-ServiceMarkdownHelp cmdlet](#running-the-update-servicemarkdownhelp-cmdlet)
@@ -20,7 +23,36 @@
 
 PlatyPS is used to create PowerShell external help in markdown rather than XML (MAML). Where as XML help (MAML) can be difficult to edit by hand or read, markdown is designed to be human-readable and easy to edit. This will allow service teams to quickly and easily edit any help documentation they have for their cmdlets.
 
-Install (and read more about) platyPS from the README, located [here](https://github.com/PowerShell/platyPS/blob/master/README.md).
+You can find the more information on platyPS [here](https://github.com/PowerShell/platyPS/blob/master/README.md).
+
+The platyPSHelp module uses platyPS to allow service teams to achieve the following:
+- Create markdown files for each of their cmdlets
+- Update the markdown files when changes are made to the cmdlets
+- Validate the help content in the markdown files to ensure no sections are missing information
+
+## Prerequisites
+
+### Install and import the platyPS
+
+In order to use the platyPSHelp module, you will first need to install the platyPS module. To do so, run the following commands:
+
+```powershell
+Install-Module -Name platyPS -Scope CurrentUser
+Import-Module platyPS
+```
+
+### Check for valid paths
+
+The platyPSHelp module builds paths to the service module and commands directory using the service name provided, the build target, and if the service is ARM or RDFE.
+
+For ARM services, these paths include:
+- Path to module: `src\Package\<Build Target>\ResourceManager\AzureResourceManager\AzureRM.<Service>\AzureRM.<Service>.psd1`
+- Path to commands: `src\ResourceManager\<Service>\Commands.<Service>`
+- Path to help: `src\ResourceManager\<Service>\Commands.<Service>\help`
+
+TrafficManager, for example, is a service that doesn't follow the format of these paths that are built - the path to their commands folder is `src\ResourceManager\TrafficManager\Commands.TrafficManager2`.
+
+In the case that your service doesn't follow the format of the above paths, you will need to use the "FullPath" parameter set, which allows you to pass in the paths as parameters rather than have them built.
 
 ## Getting Started
 
@@ -28,7 +60,7 @@ If your service does not currently have any markdown help, follow the below step
 
 **NOTE**: Currently, the platyPSHelp module mentioned below is unable to create markdown help for **ServiceManagement** cmdlets. However, markdown help can be created for these cmdlets when running the regular platyPS cmdlets mentioned in the [How it Works](#how-it-works) section.
 
-### Installing the `platyPSHelp` Module
+### Installing the platyPSHelp module
 
 The `platyPSHelp` module contains cmdlets that will help service teams with creating, updating, and validating markdown help for their cmdlets.
 
@@ -39,7 +71,7 @@ There are three cmdlets contained in this module:
 
 Help documentation has been written for each of these cmdlets, outlining the purpose of each cmdlet, the different parameter sets, and examples.
 
-To use this module, change your directory to the **azure-powershell** repo, and from there, go to `tools\platyPS`. Run the following command to import the module:
+To use this module, change your directory to the **azure-powershell** repo, and from there, go to `tools\platyPSHelp`. Run the following command to import the module:
 
 ```powershell
 Import-Module .\platyPSHelp.psd1
@@ -47,7 +79,12 @@ Import-Module .\platyPSHelp.psd1
 
 After executing this command, you will have access to the above cmdlets.
 
-### Running the `New-ServiceMarkdownHelp` cmdlet
+If you are not using the "FullPath" parameter set, you will need the following information to use the cmdlets:
+- `Service` - the name of the service
+- `BuildTarget` - either Build or Release, the type of build used when building the service project locally
+- `ModuleName` - the name of the module corresponding to the service (_i.e._, AzureRM.Profile)
+
+### Running the [New-ServiceMarkdownHelp](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/New-ServiceMarkdownHelp.md) cmdlet
 
 Once the module is installed, you will need to generate the markdown for your cmdlets; to do so, you will run the `New-ServiceMarkdownHelp` cmdlet.
 
@@ -61,15 +98,11 @@ There are four possible parameter sets to choose from when creating your cmdlets
 - `FullPath`
     - This parameter set will be used if there is an issue when using any of the above parameter sets (*e.g.*, the path to the XML help (MAML) or commands folder does not follow what the cmdlet is expecting); in this case, you can provide the full path to the required items
 
-More information about this cmdlet can be found in the [help](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/New-ServiceMarkdownHelp.md).
-
 Once ran, this cmdlet will create markdown files for each of the cmdlets in your module, and will be placed in the help folder located on the same level as your XML help (MAML). It will also regenerate the XML help (MAML) to ensure that the information in the markdown help is seen when `Get-Help` or `Get-HelpPreview` is ran.
  
-### Running the `Validate-ServiceMarkdownHelp` cmdlet
+### Running the [Validate-ServiceMarkdownHelp](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/Validate-ServiceMarkdownHelp.md) cmdlet
 
 Before checking in this markdown, you will need to check to make sure all of the necessary parts are filled out (*i.e.*, synopsis, description, examples, parameter descriptions, and outputs). 
-
-This cmdlet contains the same four parameter sets as the `New-ServiceMarkdownHelp`, and more information about the cmdlet can be found in the [help](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/Validate-ServiceMarkdownHelp.md).
 
 Once ran, this cmdlet will output a list of errors for each cmdlet in the following format:
 
@@ -87,11 +120,9 @@ File: Some-Cmdlet.md
 
 This will let you know what parts of the markdown help need to be updated. A recommended tool for editing and visualizing markdown is [Dillinger](http://dillinger.io/), which will display your markdown changes in real-time.
 
-### Running the `Update-ServiceMarkdownHelp` cmdlet
+### Running the [Update-ServiceMarkdownHelp](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/Update-ServiceMarkdownHelp.md) cmdlet
 
 Anytime that you make changes to a cmdlet (*e.g.*, add/edit/remove parameter, edit output type, etc.), you will need to make sure that those changes are reflected in the markdown. The `Update-ServiceMarkdownHelp` cmdlet will update your markdown with the changes made to your cmdlets.
-
-This cmdlet contains the same four parameter sets as the other two cmdlets, and more information about the cmdlet can be found in the [help](https://github.com/Azure/azure-powershell/blob/dev/tools/platyPSHelp/help/Update-ServiceMarkdownHelp.md).
 
 In addition to updating the markdown help files, it will also regenerate the XML help (MAML) to ensure that the information in the markdown help is seen when `Get-Help` or `Get-HelpPreview` is ran.
 
