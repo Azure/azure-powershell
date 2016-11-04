@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangedOutputTypeDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer has output type '{1}'.</value>
+  </data>
+  <data name="ChangedOutputTypePropertyDescription" xml:space="preserve">
+    <value>The output type '{0}' for cmdlet '{1}' has property '{2}' that is no longer of type '{3}'.</value>
+  </data>
+  <data name="ChangedOutputTypePropertyRemediation" xml:space="preserve">
+    <value>Make sure that property '{0}' for type '{1}' is of type '{2}'.</value>
+  </data>
+  <data name="ChangedOutputTypeRemediation" xml:space="preserve">
+    <value>Make cmdlet '{0}' output '{1}'.</value>
+  </data>
   <data name="ChangedParameterTypeDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer supports the type '{1}' for parameter '{2}'.</value>
+  </data>
+  <data name="ChangedParameterTypePropertyDescription" xml:space="preserve">
+    <value>The property '{0}' of type '{1}' of parameter '{2}' for cmdlet '{3}' has been changed from '{4}'.</value>
+  </data>
+  <data name="ChangedParameterTypePropertyRemediation" xml:space="preserve">
+    <value>Change the type of property '{0}' back to '{1}'.</value>
   </data>
   <data name="ChangedParameterTypeRemediation" xml:space="preserve">
     <value>Change the type for parameter '{0}' back to '{1}'.</value>
@@ -133,7 +151,7 @@
     <value>The position of parameter '{0}' has changed for parameter set '{1}' for cmdlet '{2}'.</value>
   </data>
   <data name="PositionChangeRemediation" xml:space="preserve">
-    <value />
+    <value>Revert the position changes made to parameter '{0}' for parameter set '{1}'.</value>
   </data>
   <data name="RemovedCmdletAliasDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer supports the alias '{1}'.</value>
@@ -146,6 +164,12 @@
   </data>
   <data name="RemovedCmdletRemediation" xml:space="preserve">
     <value>Add the cmdlet '{0}' back to the module.</value>
+  </data>
+  <data name="RemovedOutputTypePropertyDescription" xml:space="preserve">
+    <value>The output type '{0}' for cmdlet '{1}' no longer has property '{2}'.</value>
+  </data>
+  <data name="RemovedOutputTypePropertyRemediation" xml:space="preserve">
+    <value>Make sure that type '{0}' has property '{1}'.</value>
   </data>
   <data name="RemovedPagingDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer implements SupportsPaging.</value>
@@ -164,6 +188,12 @@
   </data>
   <data name="RemovedParameterRemediation" xml:space="preserve">
     <value>Add the parameter '{0}' back to the cmdlet '{1}', or add an alias to the original parameter name.</value>
+  </data>
+  <data name="RemovedParameterTypePropertyDescription" xml:space="preserve">
+    <value>The property '{0}' of type '{1}' of parameter '{2}' for cmdlet '{3}' has been removed.</value>
+  </data>
+  <data name="RemovedParameterTypePropertyRemediation" xml:space="preserve">
+    <value>Add the property '{0}' back to the type '{1}'.</value>
   </data>
   <data name="RemovedShouldProcessDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer implements SupportsShouldProcess.</value>

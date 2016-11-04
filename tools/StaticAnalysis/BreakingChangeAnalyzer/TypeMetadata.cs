@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -43,10 +44,22 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             Namespace = inputType.Namespace;
             Name = inputType.Name;
             AssemblyQualifiedName = inputType.AssemblyQualifiedName;
+
+            Properties = new Dictionary<string, string>();
+
+            var properties = inputType.GetProperties();
+            foreach (var property in properties)
+            {
+                if (!Properties.ContainsKey(property.Name))
+                {
+                    Properties.Add(property.Name, property.PropertyType.ToString());
+                }
+            }
         }
 
         public string Namespace { get; set; }
         public string Name { get; set; }
         public string AssemblyQualifiedName { get; set; }
+        public Dictionary<string, string> Properties { get; set; }
     }
 }

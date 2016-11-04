@@ -25,7 +25,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     {
         private List<string> _aliases = new List<string>();
         private List<ParameterSetMetadata> _parameterSets = new List<ParameterSetMetadata>();
-        public List<string> _validateSet = new List<string>();
+        private List<string> _validateSet = new List<string>();
 
         /// <summary>
         /// The parameter name

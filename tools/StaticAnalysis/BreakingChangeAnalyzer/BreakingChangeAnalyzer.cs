@@ -167,6 +167,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         CheckForRemovedCmdletAlias(oldCmdlet, newCmdlet, issueLogger);
                         CheckForRemovedSupportsShouldProcess(oldCmdlet, newCmdlet, issueLogger);
                         CheckForRemovedSupportsPaging(oldCmdlet, newCmdlet, issueLogger);
+                        CheckForChangedOutputType(oldCmdlet, newCmdlet, issueLogger);
 
                         var oldParameters = oldCmdlet.Parameters;
                         var newParameters = newCmdlet.Parameters;
@@ -384,7 +385,96 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         }
 
         /// <summary>
-        /// Check if the output type for a parameter has been changed.
+        /// Check if the OutputType of the cmdlet has been removed, or if any property
+        /// of the OutputType has been removed or changed
+        /// </summary>
+        /// <param name="oldCmdlet"></param>
+        /// <param name="newCmdlet"></param>
+        /// <param name="issueLogger"></param>
+        private void CheckForChangedOutputType(
+            CmdletBreakingChangeMetadata oldCmdlet,
+            CmdletBreakingChangeMetadata newCmdlet,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            // For each output in the old cmdlet assembly, look for the corresponding
+            // output in the new cmdlet assembly
+            foreach (var oldOutput in oldCmdlet.OutputTypes)
+            {
+                bool found = false;
+
+                foreach (var newOutput in newCmdlet.OutputTypes)
+                {
+                    // If the corresponding output has been found in the new assembly,
+                    // look for through all of the properties
+                    if (oldOutput.Type.Name.Equals(newOutput.Type.Name))
+                    {
+                        found = true;
+
+                        // For each property in the old output type, look for the 
+                        // corresponding property in the new output type
+                        foreach (var oldKey in oldOutput.Type.Properties.Keys)
+                        {
+                            bool foundKey = false;
+
+                            foreach (var newKey in newOutput.Type.Properties.Keys)
+                            {
+                                // If the corresponding property has been found,
+                                // see if the type is the same
+                                if (oldKey.Equals(newKey))
+                                {
+                                    foundKey = true;
+
+                                    // If the type of the property has changed, log an issue
+                                    if (!oldOutput.Type.Properties[oldKey].Equals(newOutput.Type.Properties[newKey]))
+                                    {
+                                        issueLogger.LogBreakingChangeIssue(
+                                            cmdlet: oldCmdlet,
+                                            severity: 0,
+                                            problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputTypeProperty,
+                                            description: string.Format(Properties.Resources.ChangedOutputTypePropertyDescription,
+                                                                        oldOutput.Type.Name, oldCmdlet.Name, oldKey, oldOutput.Type.Properties[oldKey]),
+                                            remediation: string.Format(Properties.Resources.ChangedOutputTypePropertyRemediation,
+                                                                        oldKey, oldOutput.Type.Name, oldOutput.Type.Properties[oldKey]));
+                                    }
+
+                                    break;
+                                }
+                            }
+
+                            // If we were unable to find the property, log an issue
+                            if (!foundKey)
+                            {
+                                issueLogger.LogBreakingChangeIssue(
+                                    cmdlet: oldCmdlet,
+                                    severity: 0,
+                                    problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputTypeProperty,
+                                    description: string.Format(Properties.Resources.RemovedOutputTypePropertyDescription,
+                                                                oldOutput.Type.Name, oldCmdlet.Name, oldKey),
+                                    remediation: string.Format(Properties.Resources.RemovedOutputTypePropertyRemediation,
+                                                                oldOutput.Type.Name, oldKey));
+                            }
+                        }
+
+                        break;
+                    }
+                }
+
+                // If we were unable to find the output type, log an issue
+                if (!found)
+                {
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: oldCmdlet,
+                        severity: 0,
+                        problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
+                        description: string.Format(Properties.Resources.ChangedOutputTypeDescription, oldCmdlet.Name, oldOutput.Type.Name),
+                        remediation: string.Format(Properties.Resources.ChangedOutputTypeRemediation, oldCmdlet.Name, oldOutput.Type.Name));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Check if the type for a parameter has been changed, or if any of the
+        /// type's properties have been removed or changed.
         /// </summary>
         /// <param name="oldCmdlet"></param>
         /// <param name="newCmdlet"></param>
@@ -395,16 +485,63 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
-            // If the output types are different, log an issue
+            // If the types are different, log an issue
             if (!oldParameter.Type.Name.Equals(newParameter.Type.Name))
             {
-            issueLogger.LogBreakingChangeIssue(
-                cmdlet: cmdlet,
-                severity: 0,
-                problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterType,
-                description: string.Format(Properties.Resources.ChangedParameterTypeDescription, cmdlet.Name, oldParameter.Type.Name, oldParameter.Name),
-                remediation: string.Format(Properties.Resources.ChangedParameterTypeRemediation, oldParameter.Name, oldParameter.Type.Name));
+                issueLogger.LogBreakingChangeIssue(
+                    cmdlet: cmdlet,
+                    severity: 0,
+                    problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterType,
+                    description: string.Format(Properties.Resources.ChangedParameterTypeDescription, cmdlet.Name, oldParameter.Type.Name, oldParameter.Name),
+                    remediation: string.Format(Properties.Resources.ChangedParameterTypeRemediation, oldParameter.Name, oldParameter.Type.Name));
             }
+            else
+            {
+                // Look through each of the properties of the type
+                // For each property in the old parameter type, look for
+                // the corresponding property in the new parameter type
+                foreach (var oldKey in oldParameter.Type.Properties.Keys)
+                {
+                    bool found = false;
+
+                    foreach (var newKey in newParameter.Type.Properties.Keys)
+                    {
+                        // If we found the correpsonding property,
+                        // check if the types are the same
+                        if (oldKey.Equals(newKey))
+                        {
+                            found = true;
+
+                            // If the type has changed for the property, log an issue
+                            if (!oldParameter.Type.Properties[oldKey].Equals(newParameter.Type.Properties[newKey]))
+                            {
+                                issueLogger.LogBreakingChangeIssue(
+                                    cmdlet: cmdlet,
+                                    severity: 0,
+                                    problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterTypeProperty,
+                                    description: string.Format(Properties.Resources.ChangedParameterTypePropertyDescription,
+                                                                oldKey, oldParameter.Type.Name, oldParameter.Name, cmdlet.Name, oldParameter.Type.Properties[oldKey]),
+                                    remediation: string.Format(Properties.Resources.ChangedParameterTypePropertyRemediation,
+                                                                oldKey, oldParameter.Type.Properties[oldKey]));
+                            }
+                        }
+                    }
+
+                    // If we were unable to find the property, log an issue
+                    if (!found)
+                    {
+                        issueLogger.LogBreakingChangeIssue(
+                            cmdlet: cmdlet,
+                            severity: 0,
+                            problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterTypeProperty,
+                            description: string.Format(Properties.Resources.RemovedParameterTypePropertyDescription,
+                                                        oldKey, oldParameter.Type.Name, oldParameter.Name, cmdlet.Name),
+                            remediation: string.Format(Properties.Resources.RemovedParameterTypePropertyRemediation,
+                                                        oldKey, oldParameter.Type.Name));
+                    }
+                }
+            }
+
         }
 
         /// <summary>
@@ -586,7 +723,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 severity: 0,
                                 problemId: ProblemIds.BreakingChangeProblemId.PositionChange,
                                 description: string.Format(Properties.Resources.PositionChangeDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
-                                remediation: string.Format(Properties.Resources.PositionChangeRemediation, oldParameter.Name));
+                                remediation: string.Format(Properties.Resources.PositionChangeRemediation, oldParameter.Name, oldParameterSet.Name));
                         }
 
                         break;
