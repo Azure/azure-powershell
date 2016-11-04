@@ -14,8 +14,18 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSConnectionResetSharedKey
+    using System;
+
+    public class PSTunnelConnectionHealth
     {
-        public int KeyLength { get; set; }
+        public string Tunnel { get; set; }
+
+        public string ConnectionStatus { get; set; }
+
+        public ulong IngressBytesTransferred { get; set; }
+
+        public ulong EgressBytesTransferred { get; set; }
+
+        public string LastConnectionEstablishedUtcTime { get; set; }
     }
 }
