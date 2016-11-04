@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             }
 
             var validateCustomDomainOutput = CdnManagementClient.Endpoints.ValidateCustomDomain(
-                EndpointName, 
+                ResourceGroupName,
                 ProfileName,
-                ResourceGroupName, 
+                EndpointName,
                 CustomDomainHostName);
 
             WriteVerbose(Resources.Success);
