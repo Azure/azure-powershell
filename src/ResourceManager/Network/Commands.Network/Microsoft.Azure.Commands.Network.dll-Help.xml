@@ -39903,7 +39903,7 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSVirtualNetworkGateway</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="t"rue position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true" position="named">
 				<maml:name>GatewayVip</maml:name>
 				<maml:description>
 					<maml:para />
