@@ -31,12 +31,16 @@
     {
         public const int RemovedCmdlet = 1000;
         public const int RemovedCmdletAlias = 1010;
+        public const int ChangedOutputType = 1020;
+        public const int ChangedOutputTypeProperty = 1030;
         public const int RemovedParameter = 2000;
         public const int RemovedParameterAlias = 2010;
         public const int ChangedParameterType = 2020;
-        public const int MandatoryParameter = 2030;
-        public const int ValidateSet = 2040;
-        public const int PositionChange = 2050;
+        public const int ChangedParameterTypeProperty = 2030;
+        public const int RemovedParameterTypeProperty = 2040;
+        public const int MandatoryParameter = 2050;
+        public const int ValidateSet = 2060;
+        public const int PositionChange = 2070;
         public const int RemovedShouldProcess = 3000;
         public const int RemovedPaging = 3010;
 

@@ -61,11 +61,65 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The cmdlet &apos;{0}&apos; no longer has output type &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedOutputTypeDescription {
+            get {
+                return ResourceManager.GetString("ChangedOutputTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output type &apos;{0}&apos; for cmdlet &apos;{1}&apos; has property &apos;{2}&apos; that is no longer of type &apos;{3}&apos;..
+        /// </summary>
+        public static string ChangedOutputTypePropertyDescription {
+            get {
+                return ResourceManager.GetString("ChangedOutputTypePropertyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make sure that property &apos;{0}&apos; for type &apos;{1}&apos; is of type &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedOutputTypePropertyRemediation {
+            get {
+                return ResourceManager.GetString("ChangedOutputTypePropertyRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make cmdlet &apos;{0}&apos; output &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedOutputTypeRemediation {
+            get {
+                return ResourceManager.GetString("ChangedOutputTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The cmdlet &apos;{0}&apos; no longer supports the type &apos;{1}&apos; for parameter &apos;{2}&apos;..
         /// </summary>
         public static string ChangedParameterTypeDescription {
             get {
                 return ResourceManager.GetString("ChangedParameterTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The property &apos;{0}&apos; of type &apos;{1}&apos; of parameter &apos;{2}&apos; for cmdlet &apos;{3}&apos; has been changed from &apos;{4}&apos;..
+        /// </summary>
+        public static string ChangedParameterTypePropertyDescription {
+            get {
+                return ResourceManager.GetString("ChangedParameterTypePropertyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the type of property &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedParameterTypePropertyRemediation {
+            get {
+                return ResourceManager.GetString("ChangedParameterTypePropertyRemediation", resourceCulture);
             }
         }
         
@@ -106,7 +160,7 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Revert the position changes made to parameter &apos;{0}&apos; for parameter set &apos;{1}&apos;..
         /// </summary>
         public static string PositionChangeRemediation {
             get {
@@ -147,6 +201,24 @@ namespace StaticAnalysis.Properties {
         public static string RemovedCmdletRemediation {
             get {
                 return ResourceManager.GetString("RemovedCmdletRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output type &apos;{0}&apos; for cmdlet &apos;{1}&apos; no longer has property &apos;{2}&apos;..
+        /// </summary>
+        public static string RemovedOutputTypePropertyDescription {
+            get {
+                return ResourceManager.GetString("RemovedOutputTypePropertyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make sure that type &apos;{0}&apos; has property &apos;{1}&apos;..
+        /// </summary>
+        public static string RemovedOutputTypePropertyRemediation {
+            get {
+                return ResourceManager.GetString("RemovedOutputTypePropertyRemediation", resourceCulture);
             }
         }
         
@@ -201,6 +273,24 @@ namespace StaticAnalysis.Properties {
         public static string RemovedParameterRemediation {
             get {
                 return ResourceManager.GetString("RemovedParameterRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The property &apos;{0}&apos; of type &apos;{1}&apos; of parameter &apos;{2}&apos; for cmdlet &apos;{3}&apos; has been removed..
+        /// </summary>
+        public static string RemovedParameterTypePropertyDescription {
+            get {
+                return ResourceManager.GetString("RemovedParameterTypePropertyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add the property &apos;{0}&apos; back to the type &apos;{1}&apos;..
+        /// </summary>
+        public static string RemovedParameterTypePropertyRemediation {
+            get {
+                return ResourceManager.GetString("RemovedParameterTypePropertyRemediation", resourceCulture);
             }
         }
         
