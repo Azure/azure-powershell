@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.Cdn.Common;
@@ -83,6 +84,12 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = false, HelpMessage = "The port used for HTTPS traffic on the origin server.")]
         public int? HttpsPort { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies any optimization this endpoint has.")]
+        public string OptimizationType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The list of geo filters that applies to this endpoint.")]
+        public PSGeoFilter[] GeoFilters { get; set; }
+
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
         public Hashtable Tags { get; set; }
@@ -96,7 +103,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 Location = CdnProfile.Location;
             }
 
-            var checkExists = CdnManagementClient.NameAvailability.CheckNameAvailability(EndpointName, ResourceType.MicrosoftCdnProfilesEndpoints);
+            var checkExists = CdnManagementClient.CheckNameAvailability(EndpointName);
 
             if (!checkExists.NameAvailable.Value)
             {
@@ -113,7 +120,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         private void NewEndpoint()
         {
-            var endpoint = CdnManagementClient.Endpoints.Create(EndpointName, new EndpointCreateParameters
+            var endpoint = CdnManagementClient.Endpoints.Create(
+                ResourceGroupName,
+                ProfileName,
+                EndpointName, new Management.Cdn.Models.Endpoint
             {
                 ContentTypesToCompress = ContentTypesToCompress,
                 IsCompressionEnabled = IsCompressionEnabled,
@@ -126,8 +136,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 QueryStringCachingBehavior = QueryStringCachingBehavior != null ?
                             QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
                             (QueryStringCachingBehavior?)null,
+                OptimizationType = OptimizationType,
+                GeoFilters = GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
                 Tags = Tags.ToDictionaryTags()
-            }, ProfileName, ResourceGroupName);
+            });
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());

@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
+namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTests
 {
     public class CustomDomainTests
     {
