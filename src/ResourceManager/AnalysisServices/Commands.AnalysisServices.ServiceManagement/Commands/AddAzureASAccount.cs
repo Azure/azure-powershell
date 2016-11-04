@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         [ValidateNotNullOrEmpty]
         public string EnvironmentName { get; set; }
         
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "Login credentials")]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = "Login credentials to the Azure Analysis Services environment")]
         public PSCredential Credential { get; set; }
 
         protected AsAzureEnvironment AsEnvironment;
