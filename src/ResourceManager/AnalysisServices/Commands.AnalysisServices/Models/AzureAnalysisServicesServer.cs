@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string Location { get; set; }
 
+        public string ServerFullName { get; private set; }
+
         public ServerSku Sku { get; set; }
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
@@ -60,6 +62,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 Type = server.Type,
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
+                ServerFullName = server.ServerFullName,
                 Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new ServerSku(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>()
             };
