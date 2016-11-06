@@ -18,7 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsAccount", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Remove-AdlAnalyticsAccount")]
     public class RemoveAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -39,24 +40,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeAnalyticsAccount, Name),
-                    string.Format(Resources.RemoveDataLakeAnalyticsAccount, Name),
-                    Name,
-                    () => DataLakeAnalyticsClient.DeleteAccount(ResourceGroupName, Name));
-            }
-            else
-            {
-                DataLakeAnalyticsClient.DeleteAccount(ResourceGroupName, Name);
-            }
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemovingDataLakeAnalyticsAccount, Name),
+                string.Format(Resources.RemoveDataLakeAnalyticsAccount, Name),
+                Name,
+                () =>
+                {
+                    DataLakeAnalyticsClient.DeleteAccount(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
 
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
         }
     }
 }

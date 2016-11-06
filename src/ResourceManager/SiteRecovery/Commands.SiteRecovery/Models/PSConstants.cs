@@ -114,12 +114,32 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Represents Optimize value ForDowntime.
         /// </summary>
-        public const string ForDowntime = "ForDowntime";
+        public const string ForDownTime = "ForDownTime";
 
         /// <summary>
         /// Represents Optimize value for Synchronization.
         /// </summary>
         public const string ForSynchronization = "ForSynchronization";
+
+        /// <summary>
+        /// Represents Yes.
+        /// </summary>
+        public const string Yes = "Yes";
+
+        /// <summary>
+        /// Represents No.
+        /// </summary>
+        public const string No = "No";
+
+        /// <summary>
+        /// Represents RecoveryVmCreationOption value for CreateVmIfNotFound in failback.
+        /// </summary>
+        public const string CreateVmIfNotFound = "CreateVmIfNotFound";
+
+        /// <summary>
+        /// Represents RecoveryVmCreationOption value for NoAction in failback.
+        /// </summary>
+        public const string NoAction = "NoAction";
 
         /// <summary>
         /// Represents primary location.
@@ -145,6 +165,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Represents HyperVReplica string constant.
         /// </summary>
         public const string HyperVReplicaAzure = "HyperVReplicaAzure";
+
+        /// <summary>
+        /// Represents InMageAzureV2 string constant.
+        /// </summary>
+        public const string InMageAzureV2 = "InMageAzureV2";
 
         /// <summary>
         /// Represents HyperVReplicaAzureReplicationDetails string constant.
@@ -312,6 +337,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public const string SelectedByUser = "SelectedByUser";
 
         /// <summary>
+        /// No license type for HUB https://azure.microsoft.com/en-in/pricing/hybrid-use-benefit/
+        /// </summary>
+        public const string NoLicenseType = "NoLicenseType";
+
+        /// <summary>
+        /// The windows server license type for
+        /// HUB https://azure.microsoft.com/en-in/pricing/hybrid-use-benefit/
+        /// </summary>
+        public const string LicenseTypeWindowsServer = "WindowsServer";
+
+        /// <summary>
         /// Failover deployment model: NotApplicable
         /// </summary>
         public const string NotApplicable = "NotApplicable";
@@ -345,6 +381,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// JSON field: InstanceType
         /// </summary>
         public const string InstanceType = "InstanceType";
+
+        /// <summary>
+        /// Enable.
+        /// </summary>
+        public const string Enable = "Enable";
+
+        /// <summary>
+        /// Disable.
+        /// </summary>
+        public const string Disable = "Disable";
     }
 
     /// <summary>

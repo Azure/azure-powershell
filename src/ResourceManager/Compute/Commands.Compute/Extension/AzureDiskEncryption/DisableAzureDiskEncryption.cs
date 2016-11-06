@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsLifecycle.Disable,
-        ProfileNouns.AzureDiskEncryption)]
+        ProfileNouns.AzureDiskEncryption,
+        SupportsShouldProcess =  true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class DisableAzureDiskEncryptionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -230,8 +231,23 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
-                if (this.Force.IsPresent ||
-                    this.ShouldContinue(Properties.Resources.DisableAzureDiskEncryptionConfirmation, Properties.Resources.DisableAzureDiskEncryptionCaption))
+                if (OperatingSystemTypes.Linux.Equals(currentOSType) &&
+                    !AzureDiskEncryptionExtensionContext.VolumeTypeData.Equals(VolumeType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ThrowTerminatingError(
+                        new ErrorRecord(
+                            new ArgumentException(
+                                string.Format(
+                                    CultureInfo.CurrentUICulture,
+                                    "Disabling encryption is only allowed on Data volumes for Linux VMs.")),
+                            "InvalidType",
+                            ErrorCategory.NotImplemented,
+                            null));
+                }
+
+                if (this.ShouldProcess(VMName, Properties.Resources.DisableDiskEncryptionAction)
+                    && (this.Force.IsPresent ||
+                    this.ShouldContinue(Properties.Resources.DisableAzureDiskEncryptionConfirmation, Properties.Resources.DisableAzureDiskEncryptionCaption)))
                 {
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
@@ -241,17 +257,27 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
 
-                    if (string.IsNullOrWhiteSpace(VolumeType) ||
-                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeAll, StringComparison.InvariantCultureIgnoreCase) ||
-                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeOS, StringComparison.InvariantCultureIgnoreCase))
+                    // +---------+---------------+----------------------------+
+                    // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
+                    // +---------+---------------+----------------------------+
+                    // | Windows | OS            | Yes                        |
+                    // | Windows | Data          | No                         |
+                    // | Windows | Not Specified | Yes                        |
+                    // | Linux   | OS            | N/A                        |
+                    // | Linux   | Data          | Yes                        |
+                    // | Linux   | Not Specified | N/A                        |
+                    // +---------+---------------+----------------------------+
+
+                    if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
+                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var opVm = UpdateVmEncryptionSettings();
-                        var result = Mapper.Map<PSAzureOperationResponse>(opVm);
+                        var result = Mapper.Map<PSAzureOperationResponse>(opExt);
                         WriteObject(result);
                     }
                     else
                     {
-                        var result = Mapper.Map<PSAzureOperationResponse>(opExt);
+                        var opVm = UpdateVmEncryptionSettings();
+                        var result = Mapper.Map<PSAzureOperationResponse>(opVm);
                         WriteObject(result);
                     }
                 }

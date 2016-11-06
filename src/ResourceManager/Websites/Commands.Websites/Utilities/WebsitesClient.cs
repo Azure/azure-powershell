@@ -583,6 +583,57 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return updateWebSite;
         }
 
+        public SlotConfigNamesResource GetSlotConfigNames(string resourceGroupName, string webSiteName)
+        {
+            return WrappedWebsitesClient.Sites.GetSlotConfigNames(resourceGroupName, webSiteName);
+        }
+
+        public SlotConfigNamesResource SetSlotConfigNames(string resourceGroupName, string webSiteName, IList<string> appSettingNames, IList<string> connectionStringNames)
+        {
+            var slotConfigNames = GetSlotConfigNames(resourceGroupName, webSiteName);
+            if(appSettingNames != null)
+            {
+                slotConfigNames.AppSettingNames = appSettingNames;
+            }
+
+            if(connectionStringNames != null)
+            {
+                slotConfigNames.ConnectionStringNames = connectionStringNames;
+            }
+
+            return WrappedWebsitesClient.Sites.UpdateSlotConfigNames(resourceGroupName, webSiteName, slotConfigNames);
+        }
+
+        public void SwapSlot(string resourceGroupName, string webSiteName, string sourceSlotName, string destinationSlotName, bool? preserveVnet)
+        {
+            var csmSlotEntity = new CsmSlotEntity { TargetSlot = destinationSlotName, PreserveVnet = preserveVnet };
+
+            WrappedWebsitesClient.Sites.SwapSlotsSlot(
+                resourceGroupName,
+                webSiteName,
+                csmSlotEntity,
+                sourceSlotName);
+        }
+
+        public void SwapSlotWithPreviewApplySlotConfig(string resourceGroupName, string webSiteName, string sourceSlotName, string destinationSlotName, bool? preserveVnet)
+        {
+            var csmSlotEntity = new CsmSlotEntity { TargetSlot = destinationSlotName, PreserveVnet = preserveVnet };
+
+            WrappedWebsitesClient.Sites.ApplySlotConfigSlot(
+                resourceGroupName,
+                webSiteName,
+                csmSlotEntity,
+                sourceSlotName);
+        }
+
+        public void SwapSlotWithPreviewResetSlotSwap(string resourceGroupName, string webSiteName, string sourceSlotName)
+        {
+            WrappedWebsitesClient.Sites.ResetSlotConfigSlot(
+                resourceGroupName,
+                webSiteName,
+                sourceSlotName);
+        }
+
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
             if (VerboseLogger != null)

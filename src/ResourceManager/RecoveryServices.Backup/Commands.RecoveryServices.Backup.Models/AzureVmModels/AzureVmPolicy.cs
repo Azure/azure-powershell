@@ -25,8 +25,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureVmPolicy : PolicyBase
     {
+        /// <summary>
+        /// Object defining the schedule associated with this policy.
+        /// </summary>
         public SchedulePolicyBase SchedulePolicy { get; set; }
 
+        /// <summary>
+        /// Object defining the retention behavior of this policy.
+        /// </summary>
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
         public override void Validate()

@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using Xunit;
@@ -29,9 +30,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
 {
     public class NewAzureResourceGroupCommandTests : RMTestBase
     {
-        private NewAzureResourceGroupCommand cmdlet;
+        private NewAzureResourceGroupCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -43,34 +44,30 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        private Hashtable[] tags;
+        private Hashtable tags;
 
         public NewAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewAzureResourceGroupCommand()
+            cmdlet = new NewAzureResourceGroupCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
 
-            tags = new[]
-            {
-                new Hashtable
+            tags = new Hashtable
                 {
-                    {"Name", "value1"},
-                    {"Value", ""}
-                }
-            };
+                    {"value1", ""}
+                };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreatesNewPSResourceGroup()
         {
-            CreatePSResourceGroupParameters expectedParameters = new CreatePSResourceGroupParameters()
+            PSCreateResourceGroupParameters expectedParameters = new PSCreateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
@@ -78,17 +75,16 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 DeploymentName = deploymentName,
                 Tag = tags
             };
-            CreatePSResourceGroupParameters actualParameters = new CreatePSResourceGroupParameters();
+            PSCreateResourceGroupParameters actualParameters = new PSCreateResourceGroupParameters();
             PSResourceGroup expected = new PSResourceGroup()
             {
                 Location = expectedParameters.Location,
                 ResourceGroupName = expectedParameters.ResourceGroupName,
-                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } },
                 Tags = expectedParameters.Tag
             };
-            resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<CreatePSResourceGroupParameters>()))
+            resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<PSCreateResourceGroupParameters>()))
                 .Returns(expected)
-                .Callback((CreatePSResourceGroupParameters p) => { actualParameters = p; });
+                .Callback((PSCreateResourceGroupParameters p) => { actualParameters = p; });
 
             cmdlet.Name = expectedParameters.ResourceGroupName;
             cmdlet.Location = expectedParameters.Location;

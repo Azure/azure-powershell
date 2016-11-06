@@ -21,6 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsDataSource")]
+    [Alias("Set-AdlAnalyticsDataSource")]
     public class SetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "Set a Data Lake storage account";

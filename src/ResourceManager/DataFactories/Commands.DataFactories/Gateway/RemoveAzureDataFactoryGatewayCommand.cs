@@ -20,7 +20,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Gateway, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, Constants.Gateway, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

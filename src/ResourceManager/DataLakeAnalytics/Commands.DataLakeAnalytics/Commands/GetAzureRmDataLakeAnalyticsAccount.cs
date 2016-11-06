@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),
      OutputType(typeof(List<DataLakeAnalyticsAccount>), typeof(DataLakeAnalyticsAccount))]
+    [Alias("Get-AdlAnalyticsAccount")]
     public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";

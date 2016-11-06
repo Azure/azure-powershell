@@ -19,11 +19,11 @@ Tests creating Batch jobs
 function Test-NewJob
 {
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    
+
     $jobId1 = "simple"
     $jobId2 = "complex"
 
-    try 
+    try
     {
         # Create a simple job
         $poolInformation1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
@@ -40,9 +40,9 @@ function Test-NewJob
         $startTaskCmd = "cmd /c dir /s"
         $startTask.CommandLine = $startTaskCmd
 
-		$osFamily = 4
-		$targetOS = "*"
-		$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+        $osFamily = 4
+        $targetOS = "*"
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
@@ -149,9 +149,9 @@ function Test-NewJob
         $priority = 1
 
         New-AzureBatchJob -Id $jobId2 -DisplayName $displayName -CommonEnvironmentSettings $commonEnvSettings -Constraints $jobConstraints -JobManagerTask $jobMgr -JobPreparationTask $jobPrep -JobReleaseTask $jobRelease -PoolInformation $poolInformation2 -Metadata $metadata -Priority $priority -BatchContext $context
-        
+
         $job2 = Get-AzureBatchJob -Id $jobId2 -BatchContext $context
-        
+
         # Verify created job matches expectations
         Assert-AreEqual $jobId2 $job2.Id
         Assert-AreEqual $displayName $job2.DisplayName
@@ -226,7 +226,6 @@ function Test-NewJob
         Remove-AzureBatchJob -Id $jobId2 -Force -BatchContext $context
     }
 }
-
 
 <#
 .SYNOPSIS
@@ -346,7 +345,7 @@ function Test-ListJobsUnderSchedule
 
     # Verify that pipelining also works
     $scheduleJobs = $jobSchedule | Get-AzureBatchJob -BatchContext $context
-        
+
     Assert-AreEqual $count $scheduleJobs.Count
     Assert-True { $scheduleJobs.Count -lt $allJobs.Count }
 
@@ -365,11 +364,11 @@ function Test-UpdateJob
 {
     param([string]$jobId)
 
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-	$osFamily = 4
-	$targetOS = "*"
-	$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+    $osFamily = 4
+    $targetOS = "*"
+    $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
     # Create the job with an auto pool
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
@@ -522,4 +521,93 @@ function Test-TerminateJob
     $job = Get-AzureBatchJob $jobId -BatchContext $context
     Assert-True { ($job.State.ToString().ToLower() -eq 'terminating') -or ($job.State.ToString().ToLower() -eq 'completed') }
     Assert-AreEqual $terminateReason $job.ExecutionInformation.TerminateReason
+}
+
+<#
+.SYNOPSIS
+Tests create job with TaskDependencies
+#>
+function Test-JobWithTaskDependencies
+{
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $jobId = "testJob4"
+
+    try
+    {
+        $osFamily = 4
+        $targetOS = "*"
+        $cmd = "cmd /c dir /s"
+        $taskId = "taskId1"
+
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+        $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+        $poolSpec.TargetDedicated = $targetDedicated = 3
+        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
+        $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+        $autoPoolSpec.PoolSpecification = $poolSpec
+        $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+        $autoPoolSpec.KeepAlive =  $FALSE
+        $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
+        $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+        $poolInformation.AutoPoolSpecification = $autoPoolSpec
+
+        $taskIds = @("2","3")
+        $taskIdRange = New-Object Microsoft.Azure.Batch.TaskIdRange(1,10)
+        $dependsOn = New-Object Microsoft.Azure.Batch.TaskDependencies -ArgumentList @([string[]]$taskIds, [Microsoft.Azure.Batch.TaskIdRange[]]$taskIdRange)
+        New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -usesTaskDependencies
+        New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -DependsOn $dependsOn -JobId $jobId
+        $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
+
+        Assert-AreEqual $job.UsesTaskDependencies $TRUE
+        $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
+        Assert-AreEqual $task.DependsOn.TaskIdRanges.End 10
+        Assert-AreEqual $task.DependsOn.TaskIdRanges.Start 1
+        Assert-AreEqual $task.DependsOn.TaskIds[0] 2
+        Assert-AreEqual $task.DependsOn.TaskIds[1] 3
+    }
+    finally
+    {
+        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+    }
+}
+
+
+<#
+.SYNOPSIS
+Tests create job completes when any task fails
+#>
+function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
+{
+    param([string]$jobId, [string]$taskId)
+
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+    $osFamily = 4
+    $targetOS = "*"
+    $cmd = "cmd /c exit 3"
+
+    $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+    $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+    $poolSpec.TargetDedicated = $targetDedicated = 3
+    $poolSpec.VirtualMachineSize = $vmSize = "small"
+    $poolSpec.CloudServiceConfiguration = $paasConfiguration
+    $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+    $autoPoolSpec.PoolSpecification = $poolSpec
+    $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+    $autoPoolSpec.KeepAlive =  $FALSE
+    $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
+    $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+    $poolInformation.AutoPoolSpecification = $autoPoolSpec
+
+    $ExitConditions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitConditions
+    $ExitOptions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitOptions
+    $ExitOptions.JobAction =  [Microsoft.Azure.Batch.Common.JobAction]::Terminate
+    $ExitCodeRangeMapping = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping -ArgumentList @(2, 4, $ExitOptions)
+    $ExitConditions.ExitCodeRanges = [Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping[]]$ExitCodeRangeMapping
+
+    New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -OnTaskFailure PerformExitOptionsJobAction
+    New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -JobId $jobId -ExitConditions $ExitConditions
 }

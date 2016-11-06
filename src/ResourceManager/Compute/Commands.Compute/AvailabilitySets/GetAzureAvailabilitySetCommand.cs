@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.Compute
                     var psResultList = new List<PSAvailabilitySet>();
                     foreach (var item in result.Body)
                     {
-                        var psItem = Mapper.Map<PSAvailabilitySet>(item);
-                        psItem = Mapper.Map(result, psItem);
+                        var psItem = Mapper.Map<PSAvailabilitySet>(result);
+                        psItem = Mapper.Map(item, psItem);
                         psResultList.Add(psItem);
                     }
 

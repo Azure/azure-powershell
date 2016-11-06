@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #region AzureVm job private helpers
 
         /// <summary>
-        /// Helper function to convert ps auzre vm backup policy job from service response.
+        /// Helper function to convert ps azure vm backup policy job from service response.
         /// </summary>
         private static CmdletModel.AzureVmJob GetPSAzureVmJob(JobResource serviceClientJob)
         {
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// Helper function to convert ps auzre vm backup job error info from service response.
+        /// Helper function to convert ps azure vm backup job error info from service response.
         /// </summary>
         private static CmdletModel.AzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
         {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
 
         /// <summary>
-        /// Helper function to get job type from ps backupmanagement type.
+        /// Helper function to get job type from ps backup management type.
         /// </summary>
         public static string GetJobTypeForService(CmdletModel.BackupManagementType mgmtType)
         {

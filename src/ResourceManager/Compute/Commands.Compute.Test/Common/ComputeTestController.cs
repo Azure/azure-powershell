@@ -76,6 +76,22 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
+        public void RunPsTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
+            RunPsTestWorkflow(
+                () => scripts,
+                // no custom initializer
+                null,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
+        }
+
         public void RunPsTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
@@ -134,7 +150,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     helper.RMStorageModule,
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
-                    "AzureRM.Storage.ps1");
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -162,7 +179,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
-            StorageClient = GetStorageManagementClient();
+            StorageClient = GetStorageManagementClient(context);
             GalleryClient = GetGalleryClient();
             //var eventsClient = GetEventsClient();
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
@@ -225,10 +242,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        private StorageManagementClient GetStorageManagementClient()
+        private StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory)
+                ? context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
                 : TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets the script node types.")]
-        public ClusterNodeType[] NodeTypes { get; set; }
+        public RuntimeScriptActionClusterNodeType[] NodeTypes { get; set; }
 
         [Parameter(
             Position = 4,
@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the application name. ")]
+        public string ApplicationName { get; set; }
+
+        [Parameter(
+            Position = 6,
             HelpMessage = "Gets or sets persist on success.")]
         public SwitchParameter PersistOnSuccess { get; set; }
 
@@ -84,7 +90,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                 Name = Name,
                 Parameters = Parameters,
                 Roles = NodeTypes.Select(n => n.ToString()).ToList(),
-                Uri = Uri
+                Uri = Uri,
+                ApplicationName = ApplicationName
             };
 
             var scriptActions = new List<RuntimeScriptAction> { scriptAction };

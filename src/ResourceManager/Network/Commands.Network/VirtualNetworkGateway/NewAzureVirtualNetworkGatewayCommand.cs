@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Collections;
@@ -24,7 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway", SupportsShouldProcess = true),
+        OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -84,6 +85,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+        public SwitchParameter EnableActiveActiveFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type of the Vpn:PolicyBased/RouteBased")]
         [ValidateSet(
@@ -134,35 +140,30 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "An array of hashtables which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+            HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
-            if (this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateVirtualNetworkGateway());
-
-                WriteObject(this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetworkGateway = CreateVirtualNetworkGateway();
-
-                WriteObject(virtualNetworkGateway);
-            }
+            base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+            var present = this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.CreatingResourceMessage,
+                Name,
+                () =>
+                {
+                    var virtualNetworkGateway = CreateVirtualNetworkGateway();
+                    WriteObject(virtualNetworkGateway);
+                },
+                () => present);
         }
 
         private PSVirtualNetworkGateway CreateVirtualNetworkGateway()
@@ -172,15 +173,58 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.ResourceGroupName = this.ResourceGroupName;
             vnetGateway.Location = this.Location;
 
+            if (this.GatewaySku != null)
+            {
+                vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                vnetGateway.Sku.Tier = this.GatewaySku;
+                vnetGateway.Sku.Name = this.GatewaySku;
+            }
+            else
+            {
+                // If gateway sku param value is not passed, set gateway sku to Standard if VpnType is RouteBased and Basic if VpnType is PolicyBased
+                if (this.VpnType != null && this.VpnType.Equals(MNM.VpnType.RouteBased))
+                {
+                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Standard;
+                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Standard;
+                }
+                else
+                {
+                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Basic;
+                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Basic;
+                }
+            }
+
+            if (this.EnableActiveActiveFeature.IsPresent && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
+            {
+                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature flag is set to True.");
+            }
+
+            if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))
+            {
+                throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
+            }
+
+            if (this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count != 2)
+            {
+                throw new ArgumentException("Virtual Network Gateway should have 2 Gateway IpConfigurations specified when Active-Active feature flag is True.");
+            }
+
+            if (!this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count == 2)
+            {
+                throw new ArgumentException("Virtual Network Gateway should have Active-Active feature flag set to True as there are 2 Gateway IpConfigurations specified. OR there should be only one Gateway IpConfiguration specified.");
+            }
+
             if (this.IpConfigurations != null)
             {
-                vnetGateway.IpConfigurations = new List<PSVirtualNetworkGatewayIpConfiguration>();
                 vnetGateway.IpConfigurations = this.IpConfigurations;
             }
 
             vnetGateway.GatewayType = this.GatewayType;
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
+            vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
 
             if (this.GatewayDefaultSite != null)
             {
@@ -192,17 +236,6 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.GatewayDefaultSite = null;
             }
 
-            if (this.GatewaySku != null)
-            {
-                vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                vnetGateway.Sku.Tier = this.GatewaySku;
-                vnetGateway.Sku.Name = this.GatewaySku;
-            }
-            else
-            {
-                vnetGateway.Sku = null;
-            }
-
             if (this.VpnClientAddressPool != null || this.VpnClientRootCertificates != null || this.VpnClientRevokedCertificates != null)
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
@@ -212,7 +245,7 @@ namespace Microsoft.Azure.Commands.Network
                     // Make sure passed Virtual Network gateway type is RouteBased if P2S VpnClientAddressPool is specified.
                     if (this.VpnType == null || !this.VpnType.Equals(MNM.VpnType.RouteBased))
                     {
-                        throw new ArgumentException("Virtual Network Gateway VpnType should be :{0} when P2S VpnClientAddressPool is specified.");
+                        throw new ArgumentException("Virtual Network Gateway VpnType should be :" + MNM.VpnType.RouteBased + " when P2S VpnClientAddressPool is specified.");
                     }
 
                     vnetGateway.VpnClientConfiguration.VpnClientAddressPool = new PSAddressSpace();

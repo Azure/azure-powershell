@@ -148,31 +148,22 @@ namespace Microsoft.Azure.Commands.DataFactories
                 }
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the dataset exists or not.
-                createDataset();
-            }
-            else
-            {
-                bool datasetExists = this.CheckDatasetExists(parameters.ResourceGroupName, parameters.DataFactoryName,
-                    parameters.Name);
-
-                parameters.ConfirmAction(
-                    !datasetExists,  // prompt only if the dataset exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DatasetExists,
-                        parameters.Name,
-                        parameters.DataFactoryName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DatasetCreating,
-                        parameters.Name,
-                        parameters.DataFactoryName),
+            parameters.ConfirmAction(
+                parameters.Force,  // prompt only if the dataset exists
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DatasetExists,
                     parameters.Name,
-                    createDataset);
-            }
+                    parameters.DataFactoryName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DatasetCreating,
+                    parameters.Name,
+                    parameters.DataFactoryName),
+                parameters.Name,
+                createDataset,
+                () => this.CheckDatasetExists(parameters.ResourceGroupName, parameters.DataFactoryName,
+                parameters.Name));
 
             return dataset;
         }

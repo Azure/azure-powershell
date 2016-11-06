@@ -215,6 +215,7 @@ function Test-CRUDNamespaceAuth
     Assert-AreEqual 2 $createdAuthRule.Rights.Count
     Assert-True { $createdAuthRule.Rights -Contains "Listen" }
     Assert-True { $createdAuthRule.Rights -Contains "Send" }
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Assert-AreEqual "IR4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkATU=" $createdAuthRule.PrimaryKey
     Assert-NotNull $createdAuthRule.SecondaryKey
 
@@ -245,6 +246,7 @@ function Test-CRUDNamespaceAuth
             Assert-True { $result[$i].Rights -Contains "Listen" }
             Assert-True { $result[$i].Rights -Contains "Send" }
             Assert-NotNull $result[$i].PrimaryKey
+            #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             Assert-AreEqual "IR4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkATU=" $result[$i].PrimaryKey
             Assert-NotNull $result[$i].SecondaryKey
         }
@@ -264,6 +266,7 @@ function Test-CRUDNamespaceAuth
     Assert-True {$found -eq 2} "Namespace AuthorizationRules created earlier is not found."
 
     Write-Debug "Update Namespace AuthorizationRules"
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $newPrimaryKey = "SW4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkQWE="
     $createdAuthRule.PrimaryKey = $newPrimaryKey
     $createdAuthRule.Rights.Add("Manage")
@@ -485,6 +488,7 @@ function Test-CRUDNHAuth
     Assert-AreEqual 2 $createdAuthRule.Rights.Count
     Assert-True { $createdAuthRule.Rights -Contains "Listen" }
     Assert-True { $createdAuthRule.Rights -Contains "Send" }
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Assert-AreEqual "IR4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkATU=" $createdAuthRule.PrimaryKey
     Assert-NotNull $createdAuthRule.SecondaryKey
 
@@ -501,6 +505,7 @@ function Test-CRUDNHAuth
             Assert-True { $result[$i].Rights -Contains "Listen" }
             Assert-True { $result[$i].Rights -Contains "Send" }
             Assert-NotNull $result[$i].PrimaryKey
+            #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             Assert-AreEqual "IR4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkATU=" $result[$i].PrimaryKey
             Assert-NotNull $result[$i].SecondaryKey
             break
@@ -510,6 +515,7 @@ function Test-CRUDNHAuth
     Assert-True {$found -eq 1} "NotificationHub AuthorizationRule created earlier is not found."
 
     Write-Debug "Update notificationHub AuthorizationRules"
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $newPrimaryKey = "SW4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkQWE="
     $createdAuthRule.PrimaryKey = $newPrimaryKey
     $createdAuthRule.Rights.Add("Manage")

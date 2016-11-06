@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsData.Publish, Constants.ApiManagementTenantGitConfiguration)]
+    [Cmdlet(VerbsData.Publish, Constants.ApiManagementTenantGitConfiguration, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOperationResult))]
     public class PublishAzureApiManagementTenantConfiguration : AzureApiManagementCmdletBase
     {
@@ -75,10 +75,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             else
             {
                 // confirm with user before pushing the update.
-                if (!Force.IsPresent &&
-                    !ShouldProcess(
+                if (!ShouldProcess(
                     Resources.PublishTenantConfigurationDescription,
-                    Resources.PublishTenantConfigurationDescription,
+                    Resources.PublishTenantConfigurationWarning,
                     Resources.ShouldProcessCaption))
                 {
                     return;

@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestZoneListWithEndsWith()
+        public void TestZoneListSubscription()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneListWithEndsWith");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneListSubscription");
         }
 
-        [Fact(Skip = "Service does not yet support this")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneNewAlreadyExists()
         {
@@ -99,6 +99,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         public void TestZoneRemoveNotFound()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneRemoveNonExisting");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneAddRemoveRecordSet()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-AddRemoveRecordSet");
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 
             // Return a pre-built object when the command is issued.
             string location = "westus";
-            PSBatchSubscriptionQuotas quotas = new PSBatchSubscriptionQuotas(location, new SubscriptionQuotasGetResponse() { AccountQuota = 5 });
+            PSBatchSubscriptionQuotas quotas = new PSBatchSubscriptionQuotas(location, new SubscriptionQuotasGetResult(accountQuota: 5));
             batchClientMock.Setup(b => b.GetSubscriptionQuotas(location)).Returns(quotas);
 
             cmdlet.Location = location;

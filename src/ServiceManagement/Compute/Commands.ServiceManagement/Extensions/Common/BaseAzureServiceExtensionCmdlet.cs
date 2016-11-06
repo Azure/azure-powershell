@@ -9,6 +9,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
 using System.IO;
 using System.Linq;
@@ -19,13 +25,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Compute.Models;
-using Microsoft.Azure;
 using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
@@ -82,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected void ValidateService()
         {
             string serviceName;
-            ServiceSettings settings = CommonUtilities.GetDefaultSettings(CommonUtilities.TryGetServiceRootPath(CurrentPath()),
+            CommonUtilities.GetDefaultSettings(CommonUtilities.TryGetServiceRootPath(CurrentPath()),
                 ServiceName, null, null, null, null, Profile.Context.Subscription.Id.ToString(), out serviceName);
 
             if (string.IsNullOrEmpty(serviceName))

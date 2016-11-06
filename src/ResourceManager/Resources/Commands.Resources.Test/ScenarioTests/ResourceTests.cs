@@ -93,6 +93,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveResourceFailed()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-MoveResourceFailed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
@@ -124,6 +131,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestGetResourceWithCollection()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceWithCollection");
+        }
+
+        [Fact(Skip = "Zones are disabled for now.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageResourceWithZones()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ManageResourceWithZones");
         }
     }
 }

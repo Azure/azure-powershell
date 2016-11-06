@@ -23,14 +23,23 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
+    /// <summary>
+    /// Waits for the given job to finish its operation and returns the corresponding job object.
+    /// </summary>
     [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase), typeof(IList<JobBase>))]
     public class WaitAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// Job or List of jobs until end of which the cmdlet should wait.
+        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.WaitJobOrListFilter, 
             ValueFromPipeline = true, Position = 1)]
         [ValidateNotNull]
         public object Job { get; set; }
 
+        /// <summary>
+        /// Maximum time to wait before aborting wait in seconds.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.WaitJobTimeoutFilter, Position = 2)]
         public long? Timeout { get; set; }
 
@@ -131,6 +140,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             });
         }
 
+        /// <summary>
+        /// Gets casted object of type T from the input object obj if possible.
+        /// </summary>
+        /// <typeparam name="T">Type into which the object has to be casted.</typeparam>
+        /// <param name="obj">Object to be casted.</param>
+        /// <param name="castedJob">Object after casting.</param>
+        /// <returns></returns>
         private bool GetCastedObjFromPSObj<T>(object obj, out object castedJob) where T : class
         {
             if (obj is PSObject)
@@ -147,8 +163,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return true;
         }
 
-        // Move the following function to a common helper file later when
-        // more functions of this type are required.
+        /// <summary>
+        /// Checks if the job is already in progress.
+        /// TODO: Move the following function to a common helper file later when
+        ///       more functions of this type are required.
+        /// </summary>
+        /// <param name="job">Job to check if it is in progress.</param>
+        /// <returns></returns>
         private bool IsJobInProgress(JobBase job)
         {
             if (job.Status.CompareTo("InProgress") == 0 ||

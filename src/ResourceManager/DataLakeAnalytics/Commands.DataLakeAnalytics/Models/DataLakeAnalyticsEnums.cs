@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             Schema,
             Assembly,
             Table,
+            TablePartition,
             TableValuedFunction,
             TableStatistics,
             ExternalDataSource,

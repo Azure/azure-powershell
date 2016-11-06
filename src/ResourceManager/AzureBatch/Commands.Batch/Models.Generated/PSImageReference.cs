@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSImageReference
+    public partial class PSImageReference
     {
         
         internal Microsoft.Azure.Batch.ImageReference omObject;
         
-        public PSImageReference(string offer, string publisher, string skuId, string version = null)
+        public PSImageReference(string offer, string publisher, string sku, string version = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.ImageReference(offer, publisher, skuId, version);
+            this.omObject = new Microsoft.Azure.Batch.ImageReference(offer, publisher, sku, version);
         }
         
         internal PSImageReference(Microsoft.Azure.Batch.ImageReference omObject)
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string SkuId
+        public string Sku
         {
             get
             {
-                return this.omObject.SkuId;
+                return this.omObject.Sku;
             }
         }
         

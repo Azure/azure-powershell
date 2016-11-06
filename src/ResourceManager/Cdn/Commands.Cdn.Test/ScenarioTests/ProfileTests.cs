@@ -19,23 +19,40 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
     public class ProfileTests
     {
+        private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+
         public ProfileTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrud()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ProfileCrud");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrudWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ProfileDeleteAndSsoWithPiping");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDeleteAndSsoWithPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfilePipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfilePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileDeleteWithEndpoints()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDeleteWithEndpoints");
         }
     }
 }

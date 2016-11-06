@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,13 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
+        OutputType(typeof(bool))]
+    [Alias("Set-AdlStoreItemAcl")]
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -35,29 +38,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, Position = 2, Mandatory = true,
             HelpMessage =
                 "The ACL to set. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
                 "This cmdlet is not to be used for setting the owner or owning group.")]
-        public DataLakeStoreItemAcl Acl { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
-        public SwitchParameter Force { get; set; }
+        public DataLakeStoreItemAce[] Acl { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.SettingDataLakeStoreItemAcl, Path.OriginalPath),
                 string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
                 Path.OriginalPath,
                 () =>
                     DataLakeStoreFileSystemClient.SetAcl(Path.TransformedPath, Account,
-                        Acl.GetAclSpec()));
-
+                        DataLakeStoreItemAce.GetAclSpec(Acl)));
         }
     }
 }

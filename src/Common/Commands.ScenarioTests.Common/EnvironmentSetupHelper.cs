@@ -29,6 +29,8 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using System.Text;
 using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using System.Net.Http;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -167,45 +169,37 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
+        private void SetAuthenticationFactory(TestEnvironment environment)
+        {
+            if (environment.AuthorizationContext.Certificate != null)
+            {
+                AzureSession.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
+                    environment.AuthorizationContext.Certificate);
+            }
+            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            {
+                var httpMessage = new HttpRequestMessage();
+                environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]
+                    .ProcessHttpRequestAsync(httpMessage, CancellationToken.None)
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+
+                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(
+                    environment.UserName,
+                    httpMessage.Headers.Authorization.Parameter);
+            }
+        }
+
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment rdfeEnvironment, TestEnvironment csmEnvironment)
         {
-            string jwtToken = null;
-            X509Certificate2 certificate = null;
-            TestEnvironment currentEnvironment = (mode == AzureModule.AzureResourceManager ? csmEnvironment : rdfeEnvironment);
-
             if (mode == AzureModule.AzureServiceManagement)
             {
-                if (rdfeEnvironment.Credentials is TokenCloudCredentials)
-                {
-                    jwtToken = ((TokenCloudCredentials)rdfeEnvironment.Credentials).Token;
-                }
-                if (rdfeEnvironment.Credentials is CertificateCloudCredentials)
-                {
-                    certificate = ((CertificateCloudCredentials)rdfeEnvironment.Credentials).ManagementCertificate;
-                }
+                SetAuthenticationFactory(rdfeEnvironment);
             }
             else
             {
-                if (csmEnvironment.Credentials is TokenCloudCredentials)
-                {
-                    jwtToken = ((TokenCloudCredentials)csmEnvironment.Credentials).Token;
-                }
-                if (csmEnvironment.Credentials is CertificateCloudCredentials)
-                {
-                    certificate = ((CertificateCloudCredentials)csmEnvironment.Credentials).ManagementCertificate;
-                }
-            }
-
-
-            if (jwtToken != null)
-            {
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(currentEnvironment.UserName,
-                    jwtToken);
-            }
-            else if (certificate != null)
-            {
-                AzureSession.AuthenticationFactory = new MockCertificateAuthenticationFactory(currentEnvironment.UserName,
-                    certificate);
+                SetAuthenticationFactory(csmEnvironment);
             }
         }
 
@@ -215,9 +209,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
                 this.modules.Add(Path.Combine(PackageDirectory, @"Storage\Azure.Storage\Azure.Storage.psd1"));
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -227,7 +222,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else
             {
@@ -244,19 +241,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Storage\Azure.Storage\Azure.Storage.psd1"));
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Storage\Azure.Storage\Azure.Storage.psd1"));
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else
             {

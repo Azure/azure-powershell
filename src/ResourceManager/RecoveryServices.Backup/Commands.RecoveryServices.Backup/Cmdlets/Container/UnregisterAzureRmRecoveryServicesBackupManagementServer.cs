@@ -25,10 +25,16 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
 {
+    /// <summary>
+    /// Unregisters the backup management server from the vault.
+    /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer")]
     public class UnregisterAzureRmRecoveryServicesBackupManagementServer 
         : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// The backup management server to be unregistered from the vault.
+        /// </summary>
         [Parameter(Mandatory = true, Position = 1,
             HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]

@@ -19,7 +19,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsDataSource"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsDataSource",
+        SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Remove-AdlAnalyticsDataSource")]
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "Remove a Data Lake storage account";
@@ -74,7 +76,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     string.Format(Resources.RemovingDataLakeAnalyticsDataLakeStore, DataLakeStore),
                     string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, DataLakeStore),
                     DataLakeStore,
-                    () => DataLakeAnalyticsClient.RemoveDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore));
+                    () =>
+                    {
+                        DataLakeAnalyticsClient.RemoveDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+
+                    });
 
             }
             else
@@ -84,13 +94,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     string.Format(Resources.RemovingDataLakeAnalyticsBlobAccount, Blob),
                     string.Format(Resources.RemoveDataLakeAnalyticsBlobAccount, Blob),
                     Blob,
-                    () => DataLakeAnalyticsClient.RemoveStorageAccount(ResourceGroupName, Account, Blob));
+                    () =>
+                    {
+                        DataLakeAnalyticsClient.RemoveStorageAccount(ResourceGroupName, Account, Blob);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
             }
 
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
         }
     }
 }

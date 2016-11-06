@@ -439,4 +439,8 @@
   <data name="JobTerminalState" xml:space="preserve">
     <value>"Job terminal state : Id {0}, state {1}, time {2}"</value>
   </data>
+  <data name="MonthlyScheduleNeedsDayOfWeekAndOccurrence" xml:space="preserve">
+    <value>For monthly occurrence, both day of week and occurrence need to be specified.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

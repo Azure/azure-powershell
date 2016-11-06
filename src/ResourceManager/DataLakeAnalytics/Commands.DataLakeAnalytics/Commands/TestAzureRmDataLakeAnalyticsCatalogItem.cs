@@ -18,6 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeAnalyticsCatalogItem"), OutputType(typeof(bool))]
+    [Alias("Test-AdlCatalogItem")]
     public class TestAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

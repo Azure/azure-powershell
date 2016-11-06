@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
         }
 
+        /// <summary>
+        /// Assigns a new client request ID to be used in each service client call - for logging purposes
+        /// </summary>
         public void RefreshClientRequestId()
         {
             ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
@@ -59,6 +62,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             return ClientRequestId;
         }
 
+        /// <summary>
+        /// Gets Recovery Services vault name from the vault context
+        /// </summary>
+        /// <returns></returns>
         public string GetResourceName()
         {
             if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.Name))
@@ -68,15 +75,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             return PSRecoveryServicesClient.arsVault.Name;
         }
 
+        /// <summary>
+        /// Gets Recovery Services Vault's resource group name from the vault context
+        /// </summary>
+        /// <returns></returns>
         public string GetResourceGroupName()
         {
-            if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.ResouceGroupName))
+            if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.ResourceGroupName))
             {
                 throw new ArgumentException(Resources.SetVaultContextFirst);
             }
-            return PSRecoveryServicesClient.arsVault.ResouceGroupName;
+            return PSRecoveryServicesClient.arsVault.ResourceGroupName;
         }
 
+        /// <summary>
+        /// Gets Recovery Services Vault's location from the vault context
+        /// </summary>
+        /// <returns></returns>
         public string GetResourceLocation()
         {
             if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.Location))

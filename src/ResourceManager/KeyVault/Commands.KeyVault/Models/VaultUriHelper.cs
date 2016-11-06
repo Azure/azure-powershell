@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));
 
             if (vaultUri.HostNameType != UriHostNameType.Dns ||
-                !vaultUri.Host.EndsWith(this.KeyVaultDnsSuffix))
+                !vaultUri.Host.EndsWith(this.KeyVaultDnsSuffix, StringComparison.OrdinalIgnoreCase))
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));
 
             return vaultUri;

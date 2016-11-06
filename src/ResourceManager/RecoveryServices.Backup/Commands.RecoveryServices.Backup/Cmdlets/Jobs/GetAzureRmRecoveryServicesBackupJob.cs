@@ -22,36 +22,58 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Get list of jobs
+    /// Gets the list of jobs associated with this recovery services vault 
+    /// according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), 
     OutputType(typeof(JobBase), typeof(IList<JobBase>))]
     public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// Filter value for status of job.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.StatusFilter, Position = 1)]
         [ValidateNotNullOrEmpty]
         public JobStatus? Status { get; set; }
 
+        /// <summary>
+        /// Filter value for type of job.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.OperationFilter, Position = 2)]
         [ValidateNotNullOrEmpty]
         public JobOperation? Operation { get; set; }
 
+        /// <summary>
+        /// Beginning value of time range for which jobs have to be fetched.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.FromFilter, Position = 3)]
         [ValidateNotNull]
         public DateTime? From { get; set; }
 
+        /// <summary>
+        /// Ending value of time range for which jobs have to be fetched.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.ToFilter, Position = 4)]
         [ValidateNotNull]
         public DateTime? To { get; set; }
 
+        /// <summary>
+        /// Filter value for ID of job.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.JobIdFilter, Position = 5)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
+        /// <summary>
+        /// Job whose latest object has to be fetched.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.JobFilter, Position = 6)]
         [ValidateNotNull]
         public JobBase Job { get; set; }
 
+        /// <summary>
+        /// Filter value for backup management type of job.
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.BackupManagementTypeFilter)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }

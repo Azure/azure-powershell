@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to U-SQL Secrets can only be returned by specific database secret name combination. There is no list support..
+        ///   Looks up a localized string similar to U-SQL Secrets and credentials can only be returned by specific database and secret/credential name combination. There is no list support..
         /// </summary>
         internal static string InvalidUSqlSecretRequest {
             get {
@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics catalog credential &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogCredential {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake Analytics catalog secret &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsCatalogSecret {
@@ -246,6 +255,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemovingDataLakeAnalyticsBlobAccount {
             get {
                 return ResourceManager.GetString("RemovingDataLakeAnalyticsBlobAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog credential &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogCredential {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogCredential", resourceCulture);
             }
         }
         

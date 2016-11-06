@@ -27,12 +27,10 @@ using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
-
-
     /// <summary>
     /// Sets an azure subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSubscription"), OutputType(typeof(AzureSubscription))]
+    [Cmdlet(VerbsCommon.Set, "AzureSubscription", DefaultParameterSetName = UpdateSubscriptionByIdParameterSet), OutputType(typeof(AzureSubscription))]
     public class SetAzureSubscriptionCommand : SubscriptionCmdletBase, IStorageContextProvider
     {
         private const string UpdateSubscriptionByIdParameterSet = "UpdateSubscriptionByIdParameterSetName";
@@ -60,11 +58,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public string SubscriptionId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Account subscription ID.", ParameterSetName = AddSubscriptionParameterSet)]
+            HelpMessage = "X509 Certificate.", ParameterSetName = AddSubscriptionParameterSet)]
         [Parameter(ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Account subscription ID.", ParameterSetName = UpdateSubscriptionByIdParameterSet)]
+            HelpMessage = "X509 Certificate.", ParameterSetName = UpdateSubscriptionByIdParameterSet)]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the subscription.", ParameterSetName = UpdateSubscriptionByNameParameterSet)]
+            HelpMessage = "X509 Certificate.", ParameterSetName = UpdateSubscriptionByNameParameterSet)]
         public X509Certificate2 Certificate { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Service endpoint.")]

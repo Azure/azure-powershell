@@ -23,7 +23,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
-        
+        /// <summary>
+        /// Gets detail about the recovery point identified by the input parameters
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <returns>Recovery point response returned by the service</returns>
         public RecoveryPointResponse GetRecoveryPointDetails
             (
             string containerName, 
@@ -47,7 +53,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             return response;
         }
 
-        
+        /// <summary>
+        /// Lists recovery points according to the input parameters
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="queryFilter">Query filter</param>
+        /// <returns>List of recovery points</returns>
         public RecoveryPointListResponse GetRecoveryPoints
             (
             string containerName, 

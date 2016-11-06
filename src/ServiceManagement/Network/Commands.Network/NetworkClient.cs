@@ -1235,9 +1235,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                         GatewayName = localNetworkGateway.GatewayName,
                         IpAddress = localNetworkGateway.IpAddress,
                         AddressSpace = localNetworkGateway.AddressSpace.ToList(),
-                        Asn = localNetworkGateway.BgpSettings.Asn,
-                        BgpPeeringAddress = localNetworkGateway.BgpSettings.BgpPeeringAddress,
-                        PeerWeight = localNetworkGateway.BgpSettings.PeerWeight,
+                        Asn = localNetworkGateway.BgpSettings != null?localNetworkGateway.BgpSettings.Asn : 0,
+                        BgpPeeringAddress = localNetworkGateway.BgpSettings != null?localNetworkGateway.BgpSettings.BgpPeeringAddress : "",
+                        PeerWeight = localNetworkGateway.BgpSettings != null?localNetworkGateway.BgpSettings.PeerWeight : 0,
                     };
                 });
             PopulateOperationContext(response.RequestId, localNetworkGateways);

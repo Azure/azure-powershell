@@ -19,6 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItem"), OutputType(typeof(DataLakeStoreItem))]
+    [Alias("Get-AdlStoreItem")]
     public class GetAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         Path.TransformedPath.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
             }
 
-            WriteObject(new DataLakeStoreItem(toReturn, itemName));
+            WriteObject(new DataLakeStoreItem(toReturn, itemName, "/" + Path.TransformedPath));
         }
     }
 }

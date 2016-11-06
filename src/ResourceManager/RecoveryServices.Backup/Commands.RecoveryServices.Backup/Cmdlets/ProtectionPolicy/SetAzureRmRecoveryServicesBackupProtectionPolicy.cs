@@ -28,21 +28,30 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Update existing protection policy
+    /// Update existing protection policy in the recovery services vault
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"), 
     OutputType(typeof(List<CmdletModel.JobBase>))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
+        /// <summary>
+        /// Policy object to be modified
+        /// </summary>
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy, 
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
+        /// <summary>
+        /// Retention policy object to be modified
+        /// </summary>
         [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy)]
         [ValidateNotNullOrEmpty]
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
+        /// <summary>
+        /// Schedule policy object to be modified
+        /// </summary>
         [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy)]
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
@@ -93,9 +102,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     // Track OperationStatus URL for operation completion
                     BackUpOperationStatusResponse operationResponse =  
-                        WaitForOperationCompletionUsingStatusLink(
-                                                policyResponse.AzureAsyncOperation,
-                                                ServiceClientAdapter.GetProtectionPolicyOperationStatusByURL);
+                        TrackingHelpers.WaitForOperationCompletionUsingStatusLink(
+                            policyResponse.AzureAsyncOperation,
+                            ServiceClientAdapter.GetProtectionPolicyOperationStatusByURL);
 
                     WriteDebug("Final operation status: " + operationResponse.OperationStatus.Status);
 

@@ -25,42 +25,16 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
-        DefaultParameterSetName = SettingsParamSet)]
+        DefaultParameterSetName = SettingsParamSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
         protected const string SettingsParamSet = "Settings";
 
         [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
             Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The publisher.")]
         [ValidateNotNullOrEmpty]
@@ -69,24 +43,13 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("Type")]
         [Parameter(
             Mandatory = true,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionType { get; set; }
 
-        [Alias("HandlerVersion", "Version")]
-        [Parameter(
-            Mandatory = true,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type.")]
-        [ValidateNotNullOrEmpty]
-        public string TypeHandlerVersion { get; set; }
-
         [Parameter(
             ParameterSetName = SettingsParamSet,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The settings.")]
         [ValidateNotNullOrEmpty]
@@ -94,7 +57,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingsParamSet,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected settings.")]
         [ValidateNotNullOrEmpty]
@@ -102,7 +64,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The setting raw string.")]
         [ValidateNotNullOrEmpty]
@@ -110,69 +71,51 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected setting raw string.")]
         [ValidateNotNullOrEmpty]
         public string ProtectedSettingString { get; set; }
 
-        [Parameter(
-            Position = 8,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Disable auto-upgrade of minor version")]
-        public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Force re-run even if extension configuration has not changed")]
-        [ValidateNotNullOrEmpty]
-        public string ForceRerun { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(this.ExtensionType, VerbsCommon.Set))
             {
-                if (this.ParameterSetName.Equals(SettingStringParamSet))
+                ExecuteClientAction(() =>
                 {
-                    this.Settings = string.IsNullOrEmpty(this.SettingString)
-                        ? null
-                        : JsonConvert.DeserializeObject<Hashtable>(this.SettingString);
-                    this.ProtectedSettings = string.IsNullOrEmpty(this.ProtectedSettingString)
-                        ? null
-                        : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
-                }
+                    if (this.ParameterSetName.Equals(SettingStringParamSet))
+                    {
+                        this.Settings = string.IsNullOrEmpty(this.SettingString)
+                            ? null
+                            : JsonConvert.DeserializeObject<Hashtable>(this.SettingString);
+                        this.ProtectedSettings = string.IsNullOrEmpty(this.ProtectedSettingString)
+                            ? null
+                            : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
+                    }
 
-                var parameters = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Publisher = this.Publisher,
-                    VirtualMachineExtensionType = this.ExtensionType,
-                    TypeHandlerVersion = this.TypeHandlerVersion,
-                    Settings = this.Settings,
-                    ProtectedSettings = this.ProtectedSettings,
-                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = this.ForceRerun
-                };
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Publisher = this.Publisher,
+                        VirtualMachineExtensionType = this.ExtensionType,
+                        TypeHandlerVersion = this.TypeHandlerVersion,
+                        Settings = this.Settings,
+                        ProtectedSettings = this.ProtectedSettings,
+                        AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                        ForceUpdateTag = this.ForceRerun
+                    };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }

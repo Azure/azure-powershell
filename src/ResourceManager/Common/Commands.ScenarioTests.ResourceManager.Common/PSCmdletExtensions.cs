@@ -24,12 +24,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             MethodInfo m = typeof(PSCmdlet).GetMethod(
                 name,
-                BindingFlags.Instance | BindingFlags.NonPublic,
-                Type.DefaultBinder,
-                new Type[] { },
-                null);
+                BindingFlags.Instance | BindingFlags.NonPublic);
 
             return m;
+        }
+
+        private static PropertyInfo GetInternalProperty(string name, Type type)
+        {
+            PropertyInfo prop = typeof(PSCmdlet).GetProperty(name);
+            return prop;
         }
 
         public static void ExecuteCmdlet(this PSCmdlet cmdlet)
@@ -42,6 +45,18 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 throw e.InnerException;
             }
+        }
+
+        public static void SetCommandRuntimeMock(this PSCmdlet cmdlet, ICommandRuntime value)
+        {
+            var property = GetInternalProperty("CommandRuntime", typeof(ICommandRuntime));
+            property.SetValue(cmdlet, value);
+        }
+
+        public static ICommandRuntime GetCommandRuntimeMock(this PSCmdlet cmdlet)
+        {
+            var property = GetInternalProperty("CommandRuntime", typeof(ICommandRuntime));
+            return (ICommandRuntime)property.GetValue(cmdlet);
         }
     }
 }

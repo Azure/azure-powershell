@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmAutomationRunbook")]
+    [Cmdlet(VerbsData.Import, "AzureRmAutomationRunbook", SupportsShouldProcess = true)]
     [OutputType(typeof(Runbook))]
     public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
@@ -61,7 +61,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook version type
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Runbook definition type.")]
-        [ValidateSet(Constants.RunbookType.Graph, Constants.RunbookType.PowerShell, Constants.RunbookType.PowerShellWorkflow, IgnoreCase = true)]
+        [ValidateSet(Constants.RunbookType.PowerShell,
+            Constants.RunbookType.GraphicalPowerShell,
+            Constants.RunbookType.PowerShellWorkflow,
+            Constants.RunbookType.GraphicalPowerShellWorkflow,
+            Constants.RunbookType.Graph,
+            IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
@@ -95,20 +100,23 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var runbook = this.AutomationClient.ImportRunbook(
+            if (ShouldProcess(Name, VerbsData.Import))
+            {
+                var runbook = this.AutomationClient.ImportRunbook(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.ResolvePath(this.Path),
                     this.Description,
                     this.Tags,
-                    this.Type,
+                    RunbookTypeSdkValue.Resolve(this.Type),
                     this.LogProgress,
                     this.LogVerbose,
                     this.Published.IsPresent,
                     this.Force.IsPresent,
                     this.Name);
 
-            this.WriteObject(runbook);
+                this.WriteObject(runbook);
+            }
         }
     }
 }

@@ -1,59 +1,57 @@
 ﻿using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
+using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
     public class KeyVaultTestFixture : RMTestBase, IDisposable
     {
+        private HttpRecorderMode mode;
+
         public string tagName = "testtag", tagValue = "testvalue";
         public string resourceGroupName, location, preCreatedVault;
         bool initialized = false;
         public KeyVaultTestFixture()
-        { }
+        {
+            // Initialize has bug which causes null reference exception
+            HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();            
+            mode = HttpMockServer.GetCurrentMode();
+        }
 
         public void Initialize(string className)
         {
             if (initialized)
                 return;
 
-            HttpMockServer server;
-
-            try
+            if (mode == HttpRecorderMode.Record)
             {
-                server = HttpMockServer.CreateInstance();
-            }
-            catch (ApplicationException)
-            {
-                // mock server has never been initialized, we will need to initialize it.
-                HttpMockServer.Initialize(className, "InitialCreation");
-                server = HttpMockServer.CreateInstance();
-            }
+                using (MockContext context = MockContext.Start(TestUtilities.GetCallingClass(), TestUtilities.GetCurrentMethodName(1)))
+                {
+                    var testFactory = new LegacyTest.CSMTestEnvironmentFactory();
+                    var testEnv = testFactory.GetTestEnvironment();
+                    var resourcesClient = LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
+                    var mgmtClient = context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+                    var tenantId = testEnv.AuthorizationContext.TenantId;
 
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                var testFactory = new CSMTestEnvironmentFactory();
-                var testEnv = testFactory.GetTestEnvironment();
-                var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
-                var mgmtClient = TestBase.GetServiceClient<KeyVaultManagementClient>(testFactory);
-                var tenantId = testEnv.AuthorizationContext.TenantId;
+                    //Figure out which locations are available for Key Vault
+                    location = GetKeyVaultLocation(resourcesClient);
 
-                //Figure out which locations are available for Key Vault
-                location = GetKeyVaultLocation(resourcesClient);
+                    //Create a resource group in that location
+                    preCreatedVault = TestUtilities.GenerateName("pshtestvault");
+                    resourceGroupName = TestUtilities.GenerateName("pshtestrg");
 
-                //Create a resource group in that location
-                preCreatedVault = TestUtilities.GenerateName("pshtestvault");
-                resourceGroupName = TestUtilities.GenerateName("pshtestrg");
-
-                resourcesClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup { Location = location });
-                var createResponse = CreateVault(mgmtClient, location, tenantId);
+                    resourcesClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup { Location = location });
+                    var createResponse = CreateVault(mgmtClient, location, tenantId);
+                }
             }
 
             initialized = true;
@@ -74,7 +72,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             return location.ToLowerInvariant().Replace(" ", "");
         }
 
-        private VaultGetResponse CreateVault(KeyVaultManagementClient mgmtClient, string location, string tenantId)
+        private Vault CreateVault(KeyVaultManagementClient mgmtClient, string location, string tenantId)
         {
             var createResponse = mgmtClient.Vaults.CreateOrUpdate(
                 resourceGroupName: resourceGroupName,
@@ -86,7 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                     Properties = new VaultProperties
                     {
                         EnabledForDeployment = false,
-                        Sku = new Sku { Family = "A", Name = "Premium" },
+                        Sku = new Sku { Name = SkuName.Premium },
                         TenantId = Guid.Parse(tenantId),
                         VaultUri = "",
                         AccessPolicies = new AccessPolicyEntry[]
@@ -101,33 +99,36 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         public void ResetPreCreatedVault()
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (mode == HttpRecorderMode.Record)
             {
-                var testFactory = new CSMTestEnvironmentFactory();
-                var testEnv = testFactory.GetTestEnvironment();
-                var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
-                var mgmtClient = TestBase.GetServiceClient<KeyVaultManagementClient>(testFactory);
-                var tenantId = Guid.Parse(testEnv.AuthorizationContext.TenantId);
-
-                var policies = new AccessPolicyEntry[] { };
-
-                mgmtClient.Vaults.CreateOrUpdate(
-                resourceGroupName: resourceGroupName,
-                vaultName: preCreatedVault,
-                parameters: new VaultCreateOrUpdateParameters
+                using (MockContext context = MockContext.Start(TestUtilities.GetCallingClass(), TestUtilities.GetCurrentMethodName(1)))
                 {
-                    Location = location,
-                    Tags = new Dictionary<string, string> { { tagName, tagValue } },
-                    Properties = new VaultProperties
+                    var testFactory = new LegacyTest.CSMTestEnvironmentFactory();
+                    var testEnv = testFactory.GetTestEnvironment();
+                    var resourcesClient = LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
+                    var mgmtClient = context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+                    var tenantId = Guid.Parse(testEnv.AuthorizationContext.TenantId);
+
+                    var policies = new AccessPolicyEntry[] { };
+
+                    mgmtClient.Vaults.CreateOrUpdate(
+                    resourceGroupName: resourceGroupName,
+                    vaultName: preCreatedVault,
+                    parameters: new VaultCreateOrUpdateParameters
                     {
-                        EnabledForDeployment = false,
-                        Sku = new Sku { Family = "A", Name = "Premium" },
-                        TenantId = tenantId,
-                        VaultUri = "",
-                        AccessPolicies = policies
+                        Location = location,
+                        Tags = new Dictionary<string, string> { { tagName, tagValue } },
+                        Properties = new VaultProperties
+                        {
+                            EnabledForDeployment = false,
+                            Sku = new Sku { Name = SkuName.Premium },
+                            TenantId = tenantId,
+                            VaultUri = "",
+                            AccessPolicies = policies
+                        }
                     }
+                    );
                 }
-                );
             }
         }
         public void Dispose()
@@ -140,11 +141,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             if (disposing)
             {
-                if (HttpMockServer.Mode == HttpRecorderMode.Record && initialized)
+                if (mode == HttpRecorderMode.Record && initialized)
                 {
-                    var testFactory = new CSMTestEnvironmentFactory();
+                    var testFactory = new LegacyTest.CSMTestEnvironmentFactory();
                     var testEnv = testFactory.GetTestEnvironment();
-                    var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
+                    var resourcesClient = LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
 
                     resourcesClient.ResourceGroups.Delete(resourceGroupName);
                 }

@@ -23,6 +23,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
+        /// <summary>
+        /// Creates a new policy or updates an already existing policy
+        /// </summary>
+        /// <param name="policyName">Name of the policy</param>
+        /// <param name="request">Policy create or update request</param>
+        /// <returns>Policy created by this operation</returns>
         public ProtectionPolicyResponse CreateOrUpdateProtectionPolicy(
                 string policyName,
                 ProtectionPolicyRequest request)
@@ -36,6 +42,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;            
         }
 
+        /// <summary>
+        /// Gets a protection policy given the name
+        /// </summary>
+        /// <param name="policyName">Name of the policy</param>
+        /// <returns>Policy response returned by the service</returns>
         public ProtectionPolicyResponse GetProtectionPolicy(string policyName)
         {
             return BmsAdapter.Client.ProtectionPolicies.GetAsync(
@@ -46,6 +57,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Lists protection policies according to the input query filter
+        /// </summary>
+        /// <param name="queryFilter">Query filter</param>
+        /// <returns>List of protection policies</returns>
         public ProtectionPolicyListResponse ListProtectionPolicy(
                                             ProtectionPolicyQueryParameters queryFilter)
         {           
@@ -57,6 +73,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Gets protection policy operation status using the operation tracking URL
+        /// </summary>
+        /// <param name="url">Operation tracking URL</param>
+        /// <returns>Operation status response returned by the service</returns>
         public BackUpOperationStatusResponse GetProtectionPolicyOperationStatusByURL(string url)
         {
             return BmsAdapter.Client.GetOperationStatusByURLAsync(
@@ -65,6 +86,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                               BmsAdapter.CmdletCancellationToken).Result;                              
         }
 
+        /// <summary>
+        /// Deletes protection policy from the vault specified by the name
+        /// </summary>
+        /// <param name="policyName">Name of the policy to be deleted</param>
         public AzureOperationResponse RemoveProtectionPolicy(
                 string policyName)
         {

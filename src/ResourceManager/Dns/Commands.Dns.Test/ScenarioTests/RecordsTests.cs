@@ -17,6 +17,8 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
+    using System.Diagnostics;
+
     public class RecordsTests : DnsTestsBase
     {
         public RecordsTests(Xunit.Abstractions.ITestOutputHelper output)
@@ -61,9 +63,23 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetANonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetANonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetAAAA()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetAAAA");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetAAAANonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetAAAANonEmpty");
         }
 
         [Fact]
@@ -75,9 +91,23 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetCNAMENonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCNAMENonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetMX()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetMX");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetMXNonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetMXNonEmpty");
         }
 
         [Fact]
@@ -89,10 +119,39 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetNSNonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetNSNonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetTXT()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXT");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetTXTNonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTNonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetTXTLengthValidation()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTLengthValidation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetTXTLegacyLengthValidation()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTLegacyLengthValidation");
+        }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -103,19 +162,33 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetSRVNonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetSRVNonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetSOA()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetSOA");
         }
 
-        [Fact(Skip = "Not supported in Private Preview")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetPTR()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetPTR");
         }
 
-        [Fact(Skip = "If-None-Match header not supported yet on service")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetPTRNonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetPTRNonEmpty");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetnewAlreadyExists()
         {
@@ -159,9 +232,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecordSetGetWithEndsWith()
+        public void TestRecordSetEndsWithZoneName()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetGetWithEndsWith");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetEndsWithZoneName");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetNewRecordNoName()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetNewRecordNoName");
         }
     }
 }

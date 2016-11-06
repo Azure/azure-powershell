@@ -21,12 +21,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureVmJob : JobBase
     {
+        /// <summary>
+        /// Represents whether this job is cancellable.
+        /// </summary>
         public bool IsCancellable { get; set; }
 
+        /// <summary>
+        /// Represents whether this job is retriable.
+        /// </summary>
         public bool IsRetriable { get; set; }
 
+        /// <summary>
+        /// The VM version of the Azure VM associated with this job.
+        /// </summary>
         public string VmVersion { get; set; }
 
+        /// <summary>
+        /// Error details associated with this job.
+        /// </summary>
         public List<AzureVmJobErrorInfo> ErrorDetails { get; set; }
     }
 
@@ -41,8 +53,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string DynamicErrorMessage { get; set; }
 
+        /// <summary>
+        /// Property bag consisting of the some Azure VM specific job details.
+        /// </summary>
         public Dictionary<string, string> Properties { get; set; }
 
+        /// <summary>
+        /// List of sub tasks triggered as part of this job's operation.
+        /// </summary>
         public List<AzureVmJobSubTask> SubTasks { get; set; }
     }
 
@@ -51,6 +69,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureVmJobErrorInfo : JobErrorInfoBase
     {
+        /// <summary>
+        /// Error code of this job's error.
+        /// </summary>
         public int ErrorCode { get; set; }
     }
 

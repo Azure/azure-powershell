@@ -53,18 +53,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? DestinationSubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets a value that indicates if the user should be prompted for confirmation.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Gets or sets the ids of the resources to move.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Ids of the resources to move.")]
         [ValidateNotNullOrEmpty]
         public string[] ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that indicates if the user should be prompted for confirmation.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Collects subscription ids from the pipeline.
@@ -105,13 +105,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .Where(resourceGroupId => !string.IsNullOrWhiteSpace(resourceGroupId))
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
 
-            var sourceResourceGroup = sourceResourceGroups.SingleOrDefault();
-
-            if (sourceResourceGroup == null)
+            var count = sourceResourceGroups.Count();
+            if (count == 0)
+            {
+                throw new InvalidOperationException("At least one valid resource Id must be provided.");
+            }
+            else if (count > 1)
             {
                 throw new InvalidOperationException(
                     string.Format("The resources being moved must all reside in the same resource group. The resources: {0}", resourceIdsToUse.ConcatStrings(", ")));
             }
+
+            var sourceResourceGroup = sourceResourceGroups.Single();
 
             var destinationResourceGroup = ResourceIdUtility.GetResourceId(
                 subscriptionId: this.DestinationSubscriptionId,

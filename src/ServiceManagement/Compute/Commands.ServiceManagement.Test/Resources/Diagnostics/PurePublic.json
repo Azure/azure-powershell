@@ -1,0 +1,122 @@
+{
+    "WadCfg": {
+        "DiagnosticMonitorConfiguration": {
+            "DiagnosticInfrastructureLogs": {
+                "scheduledTransferLogLevelFilter": "Error"
+            },
+            "Directories": {
+                "IISLogs": {
+                    "containerName": "wad-iis-logfiles"
+                },
+                "FailedRequestLogs": {
+                    "containerName": "wad-failedrequestlogs"
+                },
+                "scheduledTransferPeriod": "PT1M"
+            },
+            "PerformanceCounters": {
+                "PerformanceCounterConfiguration": [
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\Memory\\Available MBytes",
+                        "sampleRate": "PT15S",
+                        "sinks": "HotPath"
+                    },
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\Web Service(_Total)\\ISAPI Extension Requests/sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\Web Service(_Total)\\Bytes Total/Sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\ASP.NET Applications(__Total__)\\Requests/Sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\ASP.NET Applications(__Total__)\\Errors Total/Sec",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\ASP.NET\\Requests Queued",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\ASP.NET\\Requests Rejected",
+                        "sampleRate": "PT3M"
+                    },
+                    {
+                        "annotation": [
+
+                        ],
+                        "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                        "sampleRate": "PT3M"
+                    }
+                ],
+                "scheduledTransferPeriod": "PT1M"
+            },
+            "WindowsEventLog": {
+                "sinks": "HotPath",
+                "DataSource": [
+                    {
+                        "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
+                    },
+                    {
+                        "name": "Windows Azure!*[System[(Level=1 or Level=2 or Level=3 or Level=4)]]"
+                    }
+                ],
+                "scheduledTransferPeriod": "PT1M"
+            },
+            "CrashDumps": {
+                "CrashDumpConfiguration": [
+                    {
+                        "processName": "WaIISHost.exe"
+                    },
+                    {
+                        "processName": "WaWorkerHost.exe"
+                    },
+                    {
+                        "processName": "w3wp.exe"
+                    }
+                ]
+            },
+            "Logs": {
+                "scheduledTransferLogLevelFilter": "Error",
+                "scheduledTransferPeriod": "PT1M"
+            },
+            "overallQuotaInMB": 4096
+        },
+        "SinksConfig": {
+            "Sink": [
+                {
+                    "name": "HotPath",
+                    "EventHub": {
+                        "Url": "Url",
+                        "SharedAccessKeyName": "sasKeyName"
+                    }
+                }
+            ]
+        }
+    },
+    "StorageAccount": "yanmingv2vm9503"
+}

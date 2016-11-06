@@ -42,6 +42,8 @@ using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
+using HybridRunbookWorkerGroup = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup;
+
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -54,6 +56,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public AutomationClient(AzureContext context)
             : this(context.Subscription,
                 AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(context,
@@ -334,7 +340,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     ExpiryTime = schedule.ExpiryTime,
                     Description = schedule.Description,
                     Interval = schedule.Interval,
-                    Frequency = schedule.Frequency.ToString()
+                    Frequency = schedule.Frequency.ToString(),
+                    AdvancedSchedule = schedule.GetAdvancedSchedule(),
+                    TimeZone = schedule.TimeZone,
                 }
             };
 
@@ -452,8 +460,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var rdcprop = new RunbookCreateOrUpdateDraftProperties()
                 {
                     Description = description,
-                    RunbookType = String.IsNullOrWhiteSpace(type) ? RunbookTypeEnum.Script : (0 == string.Compare(type, Constants.RunbookType.PowerShellWorkflow, StringComparison.OrdinalIgnoreCase)) ? RunbookTypeEnum.Script : type,
-                    LogProgress = logProgress.HasValue && logProgress.Value,
+                    RunbookType = String.IsNullOrWhiteSpace(type) ? RunbookTypeEnum.Script : type,
+                    LogProgress =  logProgress.HasValue && logProgress.Value,
                     LogVerbose = logVerbose.HasValue && logVerbose.Value,
                     Draft = new RunbookDraft(),
                 };
@@ -474,7 +482,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite, string name)
         {
-
             var fileExtension = Path.GetExtension(runbookPath);
 
             if (0 !=
@@ -489,14 +496,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             // if graph runbook make sure type is not null and has right value
-            if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase)
-                && string.IsNullOrWhiteSpace(type)
-                && (0 != string.Compare(type, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase)))
+            if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase) 
+                && (string.IsNullOrWhiteSpace(type) || !IsGraphRunbook(type)))
             {
                 throw new ResourceCommonException(typeof(Runbook),
                         string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookTypeForExtension, fileExtension));
             }
-
 
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
 
@@ -868,7 +873,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (createdCredential == null || createdCredential.StatusCode != HttpStatusCode.Created)
             {
-                new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Create",
+                throw new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Create",
                     "credential", name, automationAccountName));
             }
             return new CredentialInfo(resourceGroupName, automationAccountName, createdCredential.Credential);
@@ -892,7 +897,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (credential == null || credential.StatusCode != HttpStatusCode.OK)
             {
-                new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Update",
+                throw new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Update",
                     "credential", name, automationAccountName));
             }
 
@@ -1360,6 +1365,41 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region HybridRunbookworkers
+        
+        public IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink)
+        {
+            HybridRunbookWorkerGroupsListResponse response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.HybridRunbookWorkerGroups.List(resourceGroupName, automationAccountName);
+            }
+            else
+            {
+                response = this.automationManagementClient.HybridRunbookWorkerGroups.ListNext(nextLink);
+            }
+
+            nextLink = response.NextLink;
+
+            return response.HybridRunbookWorkerGroups.Select(c => new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, c));
+        }
+
+        public HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
+        {
+            var hybridRunbookWorkerGroupModel = this.TryGetHybridRunbookWorkerModel(resourceGroupName, automationAccountName, name);
+            if (hybridRunbookWorkerGroupModel == null)
+            {
+                throw new ResourceCommonException(typeof(HybridRunbookWorkerGroup),
+                    string.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, name));
+            }
+
+            return new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupModel);
+            
+        }
+
+        #endregion
+
         #region JobSchedules
 
         public JobSchedule GetJobSchedule(string resourceGroupName, string automationAccountName, Guid jobScheduleId)
@@ -1467,7 +1507,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public JobSchedule RegisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName,
-            string scheduleName, IDictionary parameters)
+            string scheduleName, IDictionary parameters, string runOn)
         {
             var processedParameters = this.ProcessRunbookParameters(resourceGroupName, automationAccountName, runbookName, parameters);
             var sdkJobSchedule = this.automationManagementClient.JobSchedules.Create(
@@ -1479,7 +1519,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
                         Schedule = new ScheduleAssociationProperty { Name = scheduleName },
                         Runbook = new RunbookAssociationProperty { Name = runbookName },
-                        Parameters = processedParameters
+                        Parameters = processedParameters,
+                        RunOn = runOn
                     }
                 }).JobSchedule;
 
@@ -1599,7 +1640,30 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return runbook;
         }
 
-        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName,
+
+        
+
+        private Azure.Management.Automation.Models.HybridRunbookWorkerGroup TryGetHybridRunbookWorkerModel(string resourceGroupName, string automationAccountName, string HybridRunbookWorkerGroupName)
+        {
+            Azure.Management.Automation.Models.HybridRunbookWorkerGroup hybridRunbookWorkerGroup = null;
+            try
+            {
+                hybridRunbookWorkerGroup = this.automationManagementClient.HybridRunbookWorkerGroups.Get(resourceGroupName, automationAccountName, HybridRunbookWorkerGroupName).HybridRunbookWorkerGroup;
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    hybridRunbookWorkerGroup = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return hybridRunbookWorkerGroup;
+        }
+        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName, 
             string certificateName)
         {
             Azure.Management.Automation.Models.Certificate certificate = null;
@@ -1784,7 +1848,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 outputFolderFullPath = this.ValidateAndGetFullPath(outputFolder);
             }
 
-            var fileExtension = (0 == string.Compare(runbookType, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase)) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
+            var fileExtension = IsGraphRunbook(runbookType) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
 
             var outputFilePath = outputFolderFullPath + "\\" + runbookName + fileExtension;
 
@@ -1799,6 +1863,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             this.WriteFile(outputFilePath, content);
 
             return new DirectoryInfo(runbookName + fileExtension);
+        }
+
+        private static bool IsGraphRunbook(string runbookType)
+        {
+            return (string.Equals(runbookType, RunbookTypeEnum.Graph, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, RunbookTypeEnum.GraphPowerShell, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(runbookType, RunbookTypeEnum.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
         }
 
         #endregion

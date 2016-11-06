@@ -81,6 +81,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             public const string PowerShellWorkflow = "PowerShellWorkflow";
 
             public const string Graph = "Graph";
+
+            public const string GraphicalPowerShell = "GraphicalPowerShell";
+
+            public const string GraphicalPowerShellWorkflow = "GraphicalPowerShellWorkflow";
         }
 
         public static class SupportedFileExtensions

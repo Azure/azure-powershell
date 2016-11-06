@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     /// </summary>
     public class PSBatchSubscriptionQuotas
     {
-        public PSBatchSubscriptionQuotas(string location, SubscriptionQuotasGetResponse subscriptionQuotasResponse)
+        public PSBatchSubscriptionQuotas(string location, SubscriptionQuotasGetResult subscriptionQuotasResponse)
         {
             if (string.IsNullOrEmpty(location))
             {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             this.Location = location;
-            this.AccountQuota = subscriptionQuotasResponse.AccountQuota;
+            this.AccountQuota = subscriptionQuotasResponse.AccountQuota.GetValueOrDefault();
         }
 
         /// <summary>

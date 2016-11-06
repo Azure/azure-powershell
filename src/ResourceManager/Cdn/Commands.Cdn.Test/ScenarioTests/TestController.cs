@@ -78,11 +78,12 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
                 CdnManagementClient);
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
+            _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -135,8 +136,8 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.RMResourceModule,
-                    @"AzureRM.Cdn.psd1");
-
+                    @"AzureRM.Cdn.psd1",
+                    "AzureRM.Resources.ps1");
                 try
                 {
                     if (scriptBuilder != null)

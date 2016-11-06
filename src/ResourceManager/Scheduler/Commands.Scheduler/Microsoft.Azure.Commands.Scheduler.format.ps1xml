@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobCollectionName</Label>
+                <PropertyName>JobCollectionName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Plan</Label>
+                <PropertyName>Plan</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>State</Label>
+                <PropertyName>State</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MaxJobCount</Label>
+                <PropertyName>MaxJobCount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MaxRecurrence</Label>
+                <PropertyName>MaxRecurrence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Uri</Label>
+                <PropertyName>Uri</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobCollectionName</Label>
+                <PropertyName>JobCollectionName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobName</Label>
+                <PropertyName>JobName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobActionType</Label>
+                <ScriptBlock>$_.JobAction.JobActionType.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>LastRun</Label>
+                <PropertyName>LastRun</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>NextRun</Label>
+                <PropertyName>NextRun</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                <PropertyName>StartTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Recurrence</Label>
+                <PropertyName>Recurrence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Failures</Label>
+                <PropertyName>Failures</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Faults</Label>
+                <PropertyName>Faults</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Executions</Label>
+                <PropertyName>Executions</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EndSchedule</Label>
+                <PropertyName>EndSchedule</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Method</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.RequestMethod
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Uri</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.Uri
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Body</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.RequestBody
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Headers</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.RequestHeaders
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HttpAuthenticationType</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (t$_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.HttpAuthType
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ClientCertSubjectName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.ClientCertSubjectName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ClientCertThumbprint</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.ClientCertThumbprint
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ClientCertExpiryDate</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.ClientCertExpiryDate
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ClientCertExpiryDate</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.ClientCertExpiryDate
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Username</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobBasicAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.Username
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Tenant</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobOAuthAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.Tenant
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Audience</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobOAuthAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.Audience
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ClientId</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobOAuthAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.HttpJobAuthentication.ClientId
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StorageAccount</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.StorageAccount
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StorageQueueName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.StorageQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StorageQueueMessage</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.StorageQueueMessage
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusQueueName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null -and
+                    ($_.JobAction.JobActionType.ToString() -eq "ServiceBusQueue")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusTopicPath</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null -and
+                    ($_.JobAction.JobActionType.ToString() -eq "ServiceBusTopic")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusQueueName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null -and
+                    ($_.JobAction.JobActionType.ToString() -eq "ServiceBusQueueName")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusMessage</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusMessage
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusNamespaceProperty</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusNamespaceProperty
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusTransportType</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusTransportType
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusSasKeyName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusAuthentication.ServiceBusSasKeyName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusType</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobAction.ServiceBusAuthentication.ServiceBusType
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionType</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.JobErrorAction -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.JobActionType.ToString()
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionMethod</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.RequestMethod
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionUri</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.Uri
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionBody</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.Body
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionHeaders</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.Headers
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionHttpAuthenticationType</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_JobErrorAction.HttpJobAuthentication.HttpAuthType
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionClientCertSubjectName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorActionAction.HttpJobAuthentication.ClientCertSubjectName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionClientCertThumbprint</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.HttpJobAuthentication.ClientCertThumbprint
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionClientCertExpiryDate</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.HttpJobAuthentication.ClientCertExpiryDate
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionClientCertExpiryDate</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobClientCertAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.HttpJobAuthentication.ClientCertExpiryDate
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionUsername</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobBasicAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.HttpJobAuthentication.Username
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionTenant</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobOAuthAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.HttpJobAuthentication.Tenant
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionAudience</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobOAuthAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.HttpJobAuthentication.Audience
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionClientId</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionDetails]) -ne $null) -and
+                    (($_.JobErrorAction.HttpJobAuthentication -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobOAuthAuthenticationDetails]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.HttpJobAuthentication.ClientId
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionStorageAccount</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.StorageAccount
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionStorageQueueName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.StorageQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionStorageQueueMessage</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.StorageQueueMessage
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionStorageQueueMessage</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.StorageQueueMessage
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusQueueName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null -and
+                    ($_.JobErrorAction.JobActionType.ToString() -eq "ServiceBusQueue")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusTopicPath</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null -and
+                    ($_.JobErrorAction.JobActionType.ToString() -eq "ServiceBusTopic")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusTopicPath</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null -and
+                    ($_.JobErrorAction.JobActionType.ToString() -eq "ServiceBusTopic")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusMessage</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusMessage
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusNamespaceProperty</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusNamespaceProperty
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusTransportType</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusTransportType
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusSasKeyName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusAuthentication.ServiceBusSasKeyName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ErrorActionServiceBusType</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.JobErrorAction -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionDetails]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.JobErrorAction.ServiceBusAuthentication.ServiceBusType
+                </ScriptBlock>
+              </ListItem>            
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>JobName</Label>
+                <PropertyName>JobName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Retry</Label>
+                <PropertyName>Retry</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Occurence</Label>
+                <PropertyName>Occurence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                <PropertyName>StartTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EndTime</Label>
+                <PropertyName>EndTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobHistoryActionName</Label>
+                <ScriptBlock>$_.ActionHistory.JobHistoryActionName</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ActionType</Label>
+                <ScriptBlock>$_.ActionHistory.JobActionType</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HostName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.HostName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Response</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.Response
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ResponseBody</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSHttpJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.ResponseBody
+                </ScriptBlock>
+              </ListItem>              
+              <ListItem>
+                <Label>StorageAccountName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.StorageAccountName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StorageQueueName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.StorageQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Response Status</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.Response
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Queue Message</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSStorageJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.ResponseBody
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusQueueName</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionHistory]) -ne $null) -and
+                    ($_.ActionHistory.JobActionType -eq "ServiceBusQueue")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.ServiceBusQueueName
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusTopic</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionHistory]) -ne $null) -and
+                    ($_.ActionHistory.JobActionType -eq "ServiceBusTopic")
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.ServiceBusTopicPath
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBusNamespace</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    (($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionHistory]) -ne $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.ServiceBusNamespace
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Response Status</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.Response
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceBus Message</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    ($_.ActionHistory -as [Microsoft.Azure.Commands.Scheduler.Models.PSServiceBusJobActionHistory]) -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>
+                  $_.ActionHistory.ResponseBody
+                </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

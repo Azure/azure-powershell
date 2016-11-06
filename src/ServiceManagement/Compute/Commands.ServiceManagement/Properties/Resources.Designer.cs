@@ -458,15 +458,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GeoReplicationEnabled property will be deprecated in a future release of Azure PowerShell. The value will be merged into the AccountType property..
-        /// </summary>
-        public static string DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet {
-            get {
-                return ResourceManager.GetString("DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to GeoReplicationEnabled parameter will be deprecated in a future release of Azure PowerShell. The functionality will be merged into the Type parameter..
         /// </summary>
         public static string DeprecationOfTheGeoReplicationEnabledParamInTheSetCmdlet {
@@ -877,6 +868,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string MediaLocationOrDefaultStorageAccountMustBeSpecified {
             get {
                 return ResourceManager.GetString("MediaLocationOrDefaultStorageAccountMustBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Performing migration action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessAction {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you should you want to perform migrate action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessTarget {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessTarget", resourceCulture);
             }
         }
         

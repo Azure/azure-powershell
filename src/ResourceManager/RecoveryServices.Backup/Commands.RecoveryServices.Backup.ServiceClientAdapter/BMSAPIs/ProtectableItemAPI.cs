@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
     public partial class ServiceClientAdapter
     {
+        /// <summary>
+        /// Lists protectable items according to the query filter and the pagination params
+        /// </summary>
+        /// <param name="queryFilter">Query filter</param>
+        /// <param name="paginationRequest">Pagination parameters</param>
+        /// <returns>List of protectable items</returns>
         public ProtectableObjectListResponse ListProtectableItem(
                 ProtectableObjectListQueryParameters queryFilter,
                 PaginationRequest paginationRequest = null)
@@ -37,18 +38,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      paginationRequest,
                                      BmsAdapter.GetCustomRequestHeaders(),
                                      BmsAdapter.CmdletCancellationToken).Result;
-        }
-
-        public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName)
-        {
-            return BmsAdapter.Client.Backups.TriggerBackupAsync(
-                BmsAdapter.GetResourceGroupName(),
-                BmsAdapter.GetResourceName(),
-                BmsAdapter.GetCustomRequestHeaders(),
-                ServiceClientAdapter.AzureFabricName,
-                containerName,
-                itemName,
-                BmsAdapter.CmdletCancellationToken).Result;
         }
     }
 }

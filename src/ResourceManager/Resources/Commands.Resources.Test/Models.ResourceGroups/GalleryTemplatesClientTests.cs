@@ -12,6 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Moq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,27 +26,20 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Common.OData;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Gallery.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Moq;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
     public class GalleryTemplatesClientTests : RMTestBase
     {
-        private GalleryTemplatesClient galleryTemplatesClient;
+        private ResourceManagerSdkClient resourceManagerSdkClient;
 
-        private Mock<IGalleryClient> galleryClientMock;
+        private Mock<IResourceManagementClient> resourceManagementClientMock;
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         public GalleryTemplatesClientTests(ITestOutputHelper output)
         {
+            resourceManagementClientMock = new Mock<IResourceManagementClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            galleryClientMock = new Mock<IGalleryClient>();
-            galleryTemplatesClient = new GalleryTemplatesClient(galleryClientMock.Object);
+            resourceManagerSdkClient = new ResourceManagerSdkClient(resourceManagementClientMock.Object);
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal(key + "FromTemplate", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal(key + "FromTemplate", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal(key + "FromTemplate", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal("appSku", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = galleryTemplatesClient.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
 
             Assert.Equal("ranks", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsDynamicParametersForTemplateFile()
         {
-            RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
                 templateFile,
                 null,
                 null,
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
 
 
-            RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
                 templateFile,
                 templateParameterObject,
                 null,
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Hashtable hashtable = new Hashtable();
             hashtable["Bool"] = true;
             hashtable["Foo"] = "bar";
-            RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
                 templateFile,
                 null,
                 templateParameterFileSchema1,
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Hashtable hashtable = new Hashtable();
             hashtable["Bool"] = true;
             hashtable["Foo"] = "bar";
-            RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
                 templateFile,
                 null,
                 templateParameterFileSchema2,
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Hashtable hashtable = new Hashtable();
             hashtable["Bool"] = true;
             hashtable["Foo"] = "bar";
-            RuntimeDefinedParameterDictionary result = galleryTemplatesClient.GetTemplateParametersFromFile(
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
                 invalidTemplateFile,
                 null,
                 templateParameterFileSchema1,
@@ -498,306 +498,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void FiltersGalleryTemplates()
-        {
-            string filterString = FilterString.Generate<ItemListFilter>(f => f.Publisher == "Microsoft");
-            ItemListParameters actual = new ItemListParameters();
-            galleryClientMock.Setup(f => f.Items.ListAsync(It.IsAny<ItemListParameters>(), new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ItemListResult
-                {
-                    Items = new List<GalleryItem>()
-                    {
-                        new GalleryItem()
-                        {
-                            Name = "Template1",
-                            Publisher = "Microsoft"
-                        },
-                        new GalleryItem()
-                        {
-                            Name = "Template2",
-                            Publisher = "Microsoft"
-                        }
-                    }
-                }))
-                .Callback((ItemListParameters p, CancellationToken c) => actual = p);
-
-            FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
-            {
-                Publisher = "Microsoft",
-                AllVersions = true
-            };
-
-            List<PSGalleryItem> result = galleryTemplatesClient.FilterGalleryTemplates(options);
-
-            Assert.Equal(2, result.Count);
-            Assert.True(result.All(g => g.Publisher == "Microsoft"));
-            Assert.Equal(filterString, actual.Filter);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void FiltersGalleryTemplatesUsingComplexQuery()
-        {
-            string filterString = "Publisher eq 'Microsoft' and CategoryIds/any(c: c eq 'awesome')";
-            ItemListParameters actual = new ItemListParameters();
-            galleryClientMock.Setup(f => f.Items.ListAsync(It.IsAny<ItemListParameters>(), new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ItemListResult
-                {
-                    Items = new List<GalleryItem>()
-                    {
-                        new GalleryItem()
-                        {
-                            Name = "Template1",
-                            Publisher = "Microsoft"
-                        },
-                        new GalleryItem()
-                        {
-                            Name = "Template2",
-                            Publisher = "Microsoft"
-                        }
-                    }
-                }))
-                .Callback((ItemListParameters p, CancellationToken c) => actual = p);
-
-            FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
-            {
-                Publisher = "Microsoft",
-                Category = "awesome",
-                AllVersions = true
-            };
-
-            List<PSGalleryItem> result = galleryTemplatesClient.FilterGalleryTemplates(options);
-
-            Assert.Equal(2, result.Count);
-            Assert.Equal(filterString, actual.Filter);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DownloadsGalleryTemplateFile()
-        {
-            string galleryTemplateFileName = "myFile";
-            string expectedFilePath = Path.Combine(Path.GetTempPath(), galleryTemplateFileName + ".json");
-            try
-            {
-                galleryClientMock.Setup(f => f.Items.GetAsync(galleryTemplateFileName, new CancellationToken()))
-                                 .Returns(Task.Factory.StartNew(() => new ItemGetParameters()
-                                 {
-                                     Item = new GalleryItem()
-                                     {
-                                         Name = galleryTemplateFileName,
-                                         Publisher = "Microsoft",
-                                         DefinitionTemplates = new DefinitionTemplates()
-                                         {
-                                             DefaultDeploymentTemplateId = "DefaultUri",
-                                             DeploymentTemplateFileUrls = new Dictionary<string, string>()
-                                            {
-                                                {"DefaultUri", "fakeurl"}
-                                            }
-                                         }
-                                     }
-                                 }));
-
-                galleryTemplatesClient.DownloadGalleryTemplateFile(
-                    galleryTemplateFileName,
-                    expectedFilePath,
-                    true,
-                    null);
-
-                Assert.Equal(string.Empty, File.ReadAllText(expectedFilePath));
-            }
-            finally
-            {
-                File.Delete(expectedFilePath);
-            }
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DownloadsGalleryTemplateFileFromDirectoryName()
-        {
-            string galleryTemplateFileName = "myFile";
-            string expectedFilePath = Path.Combine(Path.GetTempPath(), galleryTemplateFileName + ".json");
-            try
-            {
-                galleryClientMock.Setup(f => f.Items.GetAsync(galleryTemplateFileName, new CancellationToken()))
-                    .Returns(Task.Factory.StartNew(() => new ItemGetParameters()
-                    {
-                        Item = new GalleryItem()
-                        {
-                            Name = galleryTemplateFileName,
-                            Publisher = "Microsoft",
-                            DefinitionTemplates = new DefinitionTemplates()
-                            {
-                                DefaultDeploymentTemplateId = "DefaultUri",
-                                DeploymentTemplateFileUrls = new Dictionary<string, string>()
-                                {
-                                    { "DefaultUri", "fakeurl" }
-                                }
-                            }
-                        }
-                    }));
-
-                galleryTemplatesClient.DownloadGalleryTemplateFile(
-                    galleryTemplateFileName,
-                    Path.GetTempPath(),
-                    true,
-                    null);
-
-                Assert.Equal(string.Empty, File.ReadAllText(expectedFilePath));
-            }
-            finally
-            {
-                File.Delete(expectedFilePath);
-            }
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DownloadsGalleryTemplateFileFromFileName()
-        {
-            string galleryTemplateFileName = "myFile.adeek";
-            string expectedFilePath = Path.Combine(Path.GetTempPath(), galleryTemplateFileName + ".json");
-            try
-            {
-                galleryClientMock.Setup(f => f.Items.GetAsync(galleryTemplateFileName, new CancellationToken()))
-                    .Returns(Task.Factory.StartNew(() => new ItemGetParameters()
-                    {
-                        Item = new GalleryItem()
-                        {
-                            Name = galleryTemplateFileName,
-                            Publisher = "Microsoft",
-                            DefinitionTemplates = new DefinitionTemplates()
-                            {
-                                DefaultDeploymentTemplateId = "DefaultUri",
-                                DeploymentTemplateFileUrls = new Dictionary<string, string>()
-                                {
-                                    {"DefaultUri", "http://onesdkauremustinvalid-uri12"}
-                                }
-                            }
-                        }
-                    }));
-
-                galleryTemplatesClient.DownloadGalleryTemplateFile(
-                    galleryTemplateFileName,
-                    expectedFilePath,
-                    true,
-                    null);
-
-                Assert.Equal(string.Empty, File.ReadAllText(expectedFilePath));
-            }
-            finally
-            {
-                File.Delete(expectedFilePath);
-            }
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ParseTemplateParameterFileContents_DeserializeWithCorrectType()
         {
-            Dictionary<string, TemplateFileParameterV1> result =
-                galleryTemplatesClient.ParseTemplateParameterFileContents(@"Resources\WebSite.param.dev.json");
-            Assert.Equal(true, result["isWorker"].Value);
-            Assert.Equal((System.Int64)1, result["numberOfWorker"].Value);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void FiltersGalleryTemplatesLatestVersion()
-        {
-            string filterString = FilterString.Generate<ItemListFilter>(f => f.Publisher == "Microsoft");
-            ItemListParameters actual = new ItemListParameters();
-            galleryClientMock.Setup(f => f.Items.ListAsync(It.IsAny<ItemListParameters>(), new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ItemListResult
-                {
-                    Items = new List<GalleryItem>()
-                    {
-                        new GalleryItem()
-                        {
-                            Name = "Template0",
-                            Publisher = "Microsoft",
-                            Version = "0.0.0.0"
-                        },
-                        new GalleryItem()
-                        {
-                            Name = "Template0",
-                            Publisher = "Microsoft",
-                            Version = "0.0.0.1"
-                        },
-                        new GalleryItem()
-                        {
-                            Name = "Template0",
-                            Publisher = "Microsoft",
-                            Version = "0.0.0.2"
-                        }
-                    }
-                }))
-                .Callback((ItemListParameters p, CancellationToken c) => actual = p);
-
-            FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
+            // Add up to 3 retries for flaky test
+            TestExecutionHelpers.RetryAction(() =>
             {
-                ApplicationName = "Template0"
-            };
-
-            List<PSGalleryItem> result = galleryTemplatesClient.FilterGalleryTemplates(options);
-
-            Assert.Equal(1, result.Count);
-            Assert.Equal("Template0", result[0].Name);
-            Assert.Equal("0.0.0.2", result[0].Version);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void FiltersGalleryTemplatesByPublisherLatestVersion()
-        {
-            string filterString = FilterString.Generate<ItemListFilter>(f => f.Publisher == "Microsoft");
-            ItemListParameters actual = new ItemListParameters();
-            galleryClientMock.Setup(f => f.Items.ListAsync(It.IsAny<ItemListParameters>(), new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ItemListResult
-                {
-                    Items = new List<GalleryItem>()
-                    {
-                        new GalleryItem()
-                        {
-                            Name = "Template0",
-                            Publisher = "Microsoft",
-                            Version = "0.0.0.0"
-                        },
-                        new GalleryItem()
-                        {
-                            Name = "Template0",
-                            Publisher = "Microsoft",
-                            Version = "0.0.0.2"
-                        },
-                        new GalleryItem()
-                        {
-                            Name = "Template1",
-                            Publisher = "Microsoft",
-                            Version = "0.0.0.0"
-                        },
-                        new GalleryItem()
-                        {
-                            Name = "Template1",
-                            Publisher = "Microsoft",
-                            Version = "0.0.0.1"
-                        }
-                    }
-                }))
-                .Callback((ItemListParameters p, CancellationToken c) => actual = p);
-
-            FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
-            {
-                Publisher = "Microsoft"
-            };
-
-            List<PSGalleryItem> result = galleryTemplatesClient.FilterGalleryTemplates(options);
-
-            Assert.Equal(2, result.Count);
-            Assert.True(result.Count(x => x.Name.Equals("Template0")) == 1);
-            Assert.True(result.Count(x => x.Name.Equals("Template1")) == 1);
-            Assert.Equal(result.First(x => x.Name.Equals("Template0")).Version, "0.0.0.2");
-            Assert.Equal(result.First(x => x.Name.Equals("Template1")).Version, "0.0.0.1");
+                Dictionary<string, TemplateFileParameterV1> result =
+                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources\WebSite.param.dev.json".AsAbsoluteLocation());
+                Assert.Equal(true, result["isWorker"].Value);
+                Assert.Equal((System.Int64) 1, result["numberOfWorker"].Value);
+            });
         }
     }
 }

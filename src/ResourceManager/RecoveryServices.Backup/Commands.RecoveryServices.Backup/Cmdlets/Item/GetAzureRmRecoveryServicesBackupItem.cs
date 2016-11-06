@@ -24,7 +24,8 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Get list of items
+    /// Get list of items associated with the recovery services vault 
+    /// according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem", 
         DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase),
@@ -34,28 +35,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Item.Container,
-            ParameterSetName = GetItemsForContainerParamSet)]
+        /// <summary>
+        /// When this option is specified, only those items which belong to this container will be returned.
+        /// </summary>
+        [Parameter(
+            Mandatory = true, 
+            Position = 1, 
+            HelpMessage = ParamHelpMsgs.Item.Container,
+            ParameterSetName = GetItemsForContainerParamSet, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
 
+        /// <summary>
+        /// Backup management type of the items to be returned.
+        /// </summary>
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Common.BackupManagementType,
             ParameterSetName = GetItemsForVaultParamSet)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
 
+        /// <summary>
+        /// Friendly name of the item to be returned.
+        /// </summary>
         [Parameter(Mandatory = false, Position = 2, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Status of protection of the item to be returned.
+        /// </summary>
         [Parameter(Mandatory = false, Position = 3, HelpMessage = ParamHelpMsgs.Item.ProtectionStatus)]
         [ValidateNotNullOrEmpty]
         public ItemProtectionStatus ProtectionStatus { get; set; }
 
+        /// <summary>
+        /// State of protection of the item to be returned.
+        /// </summary>
         [Parameter(Mandatory = false, Position = 4, HelpMessage = ParamHelpMsgs.Item.Status)]
         [ValidateNotNullOrEmpty]
         public ItemProtectionState ProtectionState { get; set; }
 
+        /// <summary>
+        /// Workload type of the item to be returned.
+        /// </summary>
         [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void NewAzureAutomationRunbookByNameSuccessfull()
+        public void NewAzureAutomationRunbookByNameSuccessful()
         {
             // Setup
             string resourceGroupName = "resourceGroup";

@@ -12,6 +12,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
 
@@ -34,8 +35,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             _helper = new EnvironmentSetupHelper();
+            _helper.TracingInterceptor = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
         }
 
         protected void SetupManagementClients()
@@ -45,7 +47,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var galaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var managementClient = GetManagementClient();
-            var storageManagementClient = GetStorageManagementClient();
             var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
@@ -92,7 +93,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             return TestBase.GetServiceClient<Management.ApiManagement.ApiManagementClient>(new CSMTestEnvironmentFactory());
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagement()
@@ -109,6 +109,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetApiManagementDeploymentExternalVirtualNetwork()
+        {
+            RunPowerShellTest("Test-SetApiManagementDeploymentExternalVirtualNetwork");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetApiManagementDeploymentInternalVirtualNetwork()
+        {
+            RunPowerShellTest("Test-SetApiManagementDeploymentInternalVirtualNetwork");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateApiManagementDeployment()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeployment");
@@ -118,7 +132,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateDeploymentComplex()
         {
-            RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipline");
+            RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipeline");
         }
 
         [Fact]
@@ -130,13 +144,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApiManagementVirtualNetworks()
-        {
-            RunPowerShellTest("Test-SetApiManagementVirtualNetworks");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementHostnames()
         {
             RunPowerShellTest("Test-SetApiManagementHostnames");
@@ -144,17 +151,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         private void RunPowerShellTest(params string[] scripts)
         {
-#if DEBUG
-            //Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
-
-            //Environment.SetEnvironmentVariable(
-            //    "TEST_CSM_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=;AADTenant=");
-
-            //Environment.SetEnvironmentVariable(
-            //    "TEST_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=");
-#endif
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -177,7 +173,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                     _helper.RMResourceModule,
                     _helper.RMStorageDataPlaneModule,
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
-                    "AzureRM.Storage.ps1");
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }

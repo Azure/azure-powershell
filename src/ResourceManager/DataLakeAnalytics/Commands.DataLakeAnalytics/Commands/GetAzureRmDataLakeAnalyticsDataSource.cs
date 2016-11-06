@@ -20,12 +20,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource"), OutputType(typeof(StorageAccountInfo), typeof(DataLakeStoreAccountInfo), typeof(IEnumerable<StorageAccountInfo>), typeof(IEnumerable<DataLakeStoreAccountInfo>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(StorageAccountInfo), typeof(DataLakeStoreAccountInfo), typeof(IEnumerable<AdlDataSource>))]
+    [Alias("Get-AdlAnalyticsDataSource")]
     public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
-        internal const string DataLakeParameterSetName = "Get a Data Lake storage account";
+        internal const string DataLakeParameterSetName = "Get a Data Lake Store account";
         internal const string BlobParameterSetName = "Get a Blob storage account";
-        internal const string ListStorageParameterSetName = "List a data source";
+        internal const string ListStorageParameterSetName = "List all data sources";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")
@@ -40,20 +41,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
             ParameterSetName = DataLakeParameterSetName,
-            HelpMessage = "The name of the Data Lake Storage account to get from the account.")]
+            HelpMessage = "The name of the Data Lake Store account to get from the account.")]
         [ValidateNotNullOrEmpty]
         public string DataLakeStore { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = BlobParameterSetName, HelpMessage = "The name of the Blob to get from the account.")]
+            ParameterSetName = BlobParameterSetName, HelpMessage = "The name of the Blob storage to get from the account.")]
         [ValidateNotNullOrEmpty]
         [Alias("AzureBlob")]
         public string Blob { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = ListStorageParameterSetName, HelpMessage = "The type of data sources to list.")]
-        [ValidateNotNullOrEmpty]
-        public DataLakeAnalyticsEnums.DataSourceType DataSource { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             ParameterSetName = DataLakeParameterSetName,
@@ -61,6 +57,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             ParameterSetName = BlobParameterSetName,
+            HelpMessage =
+                "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            ParameterSetName = ListStorageParameterSetName,
             HelpMessage =
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
         [ValidateNotNullOrEmpty]
@@ -78,14 +78,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else
             {
-                if (DataSource == DataLakeAnalyticsEnums.DataSourceType.DataLakeStore)
-                {
-                    WriteObject(DataLakeAnalyticsClient.ListDataLakeStoreAccounts(ResourceGroupName, Account), true);
-                }
-                else
-                {
-                    WriteObject(DataLakeAnalyticsClient.ListStorageAccounts(ResourceGroupName, Account), true);
-                }
+                WriteObject(DataLakeAnalyticsClient.GetAllDataSources(ResourceGroupName, Account), true);
             }
         }
     }

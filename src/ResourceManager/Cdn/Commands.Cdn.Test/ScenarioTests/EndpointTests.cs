@@ -19,37 +19,47 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
     public class EndpointTests
     {
+        private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+
         public EndpointTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndAction()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudAndAction");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndAction");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndActionWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudAndActionWithPiping");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndActionWithAllProperties()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudAndActionWithAllProperties");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithAllProperties");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndActionWithAllPropertiesWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudAndActionWithAllPropertiesWithPiping");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithAllPropertiesWithPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointPipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointPipeline");
         }
     }
 }

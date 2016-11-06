@@ -15,74 +15,126 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask)]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask, DefaultParameterSetName = JobIdAndSingleAddParameterSet)]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            HelpMessage = "The id of the job to create the task under.")]
+        internal const string JobIdAndBulkAddParameterSet = "JobId_Bulk";
+        internal const string JobObjectAndBulkAddParameterSet = "JobObject_Bulk";
+        internal const string JobIdAndSingleAddParameterSet = "JobId_Single";
+        internal const string JobObjectAndSingleAddParameterSet = "JobObject_Single";
+
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true,
+            HelpMessage = "The id of the job to which to add the task.")]
+        [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet, Mandatory = true,
+            HelpMessage = "The id of the job to which to add the task.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The id of the task to create.")]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true, HelpMessage = "The id of the task to add.")]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, Mandatory = true, HelpMessage = "The id of the task to add.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The command line for the task.")]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public string CommandLine { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public IDictionary ResourceFiles { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public IDictionary EnvironmentSettings { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         public SwitchParameter RunElevated { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSAffinityInformation AffinityInformation { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTaskConstraints Constraints { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
 
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public TaskDependencies DependsOn { get; set; }
+
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
+        [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet,
+            HelpMessage = "The collection of tasks to add to a job.")]
+        [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet,
+            HelpMessage = "The collection of tasks to add to a job.")]
+        [ValidateNotNullOrEmpty]
+        public PSCloudTask[] Tasks { get; set; }
+
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSExitConditions ExitConditions { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
-                this.Id, this.AdditionalBehaviors)
+            if (Tasks != null)
             {
-                DisplayName = this.DisplayName,
-                CommandLine = this.CommandLine,
-                ResourceFiles = this.ResourceFiles,
-                EnvironmentSettings = this.EnvironmentSettings,
-                RunElevated = this.RunElevated.IsPresent,
-                AffinityInformation = this.AffinityInformation,
-                Constraints = this.Constraints,
-                MultiInstanceSettings = this.MultiInstanceSettings
-            };
+                NewBulkTaskParameters parameters = new NewBulkTaskParameters(this.BatchContext, this.JobId, this.Job, this.Tasks, this.AdditionalBehaviors);
+                BatchClient.AddTaskCollection(parameters);
+            }
+            else
+            {
+                NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
+                    this.Id, this.AdditionalBehaviors)
+                {
+                    DisplayName = this.DisplayName,
+                    CommandLine = this.CommandLine,
+                    ResourceFiles = this.ResourceFiles,
+                    EnvironmentSettings = this.EnvironmentSettings,
+                    RunElevated = this.RunElevated.IsPresent,
+                    AffinityInformation = this.AffinityInformation,
+                    Constraints = this.Constraints,
+                    MultiInstanceSettings = this.MultiInstanceSettings,
+                    DependsOn = this.DependsOn,
+                    ApplicationPackageReferences = this.ApplicationPackageReferences,
+                    ExitConditions = this.ExitConditions,
+                };
 
-            BatchClient.CreateTask(parameters);
+                BatchClient.CreateTask(parameters);
+            }
         }
     }
 }

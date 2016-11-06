@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Batch;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Azure.Commands.Batch.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;
@@ -46,20 +47,25 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
             string endpoint = string.Format("{0}.{1}", account, tenantUrlEnding);
             string subscription = "00000000-0000-0000-0000-000000000000";
             string resourceGroup = "resourceGroup";
+            string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
-            AccountResource resource = new AccountResource()
+            AccountResource resource = new AccountResource(
+                coreQuota: BatchTestHelpers.DefaultQuotaCount,
+                poolQuota: BatchTestHelpers.DefaultQuotaCount,
+                activeJobAndJobScheduleQuota: BatchTestHelpers.DefaultQuotaCount,
+                id: id,
+                type: "type")
             {
-                Id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup),
                 Location = "location",
-                Properties = new AccountProperties() { AccountEndpoint = endpoint, ProvisioningState = AccountProvisioningState.Succeeded },
-                Type = "type"
+                AccountEndpoint = endpoint,
+                ProvisioningState = AccountProvisioningState.Succeeded,
             };
             BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource);
 
             Assert.Equal<string>(context.Id, resource.Id);
-            Assert.Equal<string>(context.AccountEndpoint, resource.Properties.AccountEndpoint);
+            Assert.Equal<string>(context.AccountEndpoint, resource.AccountEndpoint);
             Assert.Equal<string>(context.Location, resource.Location);
-            Assert.Equal<string>(context.State, resource.Properties.ProvisioningState.ToString());
+            Assert.Equal<string>(context.State, resource.ProvisioningState.ToString());
             Assert.Equal<string>(context.AccountName, account);
             Assert.Equal<string>(context.TaskTenantUrl, string.Format("https://{0}", endpoint));
             Assert.Equal<string>(context.Subscription, subscription);

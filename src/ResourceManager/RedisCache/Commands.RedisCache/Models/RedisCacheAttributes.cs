@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
             Sku = cache.Sku.Name;
             ResourceGroupName = resourceGroupName;
-            VirtualNetwork = cache.VirtualNetwork;
-            Subnet = cache.Subnet;
+            SubnetId = cache.SubnetId;
             StaticIP = cache.StaticIP;
             TenantSettings = cache.TenantSettings;
             ShardCount = cache.ShardCount;
@@ -96,9 +95,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public int? ShardCount { get; protected set; }
 
-        public string VirtualNetwork { get; protected set; }
-
-        public string Subnet { get; protected set; }
+        public string SubnetId { get; protected set; }
 
         public string StaticIP { get; protected set; }
     }

@@ -30,10 +30,17 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdap
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {   
+    /// <summary>
+    /// Class hosting helper methods for policy related cmdlets.
+    /// </summary>
     public class PolicyCmdletHelpers 
     {
         public static Regex policyNameRgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
 
+        /// <summary>
+        /// Validates name of the policy
+        /// </summary>
+        /// <param name="policyName">Name of the policy</param>
         public static void ValidateProtectionPolicyName(string policyName)
         {
             if(string.IsNullOrEmpty(policyName))
@@ -53,6 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }
         }
 
+        /// <summary>
+        /// Fetches policies by name
+        /// </summary>
+        /// <param name="policyName">Name of the policy to be fetched</param>
+        /// <param name="serviceClientAdapter">Service client adapter with which to make calls</param>
+        /// <returns></returns>
         public static ProtectionPolicyResponse GetProtectionPolicyByName(string policyName,
                                                  ServiceClientAdapter serviceClientAdapter)
         {

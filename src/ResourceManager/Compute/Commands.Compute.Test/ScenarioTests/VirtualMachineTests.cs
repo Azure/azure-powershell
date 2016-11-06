@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineUpdateWithoutNic()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineUpdateWithoutNic");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachine");
@@ -78,6 +85,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineCapture()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCaptureNegative()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCaptureNegative");
         }
 
         [Fact]
@@ -148,6 +162,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineWithDifferentStorageResource()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithPremiumStorageAccount()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithPremiumStorageAccount");
         }
 
         [Fact]

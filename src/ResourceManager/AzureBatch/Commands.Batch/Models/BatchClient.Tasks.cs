@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -122,10 +123,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.Constraints = parameters.Constraints.omObject;
             }
 
+            if (parameters.DependsOn != null)
+            {
+                task.DependsOn = parameters.DependsOn;
+            }
+
             if (parameters.MultiInstanceSettings != null)
             {
                 Utils.Utils.MultiInstanceSettingsSyncCollections(parameters.MultiInstanceSettings);
                 task.MultiInstanceSettings = parameters.MultiInstanceSettings.omObject;
+            }
+
+            if (parameters.ApplicationPackageReferences != null)
+            {
+                task.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
+            }
+
+            if (parameters.ExitConditions != null)
+            {
+                Utils.Utils.ExitConditionsSyncCollections(parameters.ExitConditions);
+                task.ExitConditions = parameters.ExitConditions.omObject;
             }
 
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
@@ -138,6 +155,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
                 jobOperations.AddTask(parameters.JobId, task, parameters.AdditionalBehaviors);
             }
+        }
+
+        /// <summary>
+        /// Adds a collection of tasks
+        /// </summary>
+        /// <param name="parameters">The parameters to use when creating the tasks.</param>
+        public void AddTaskCollection(NewBulkTaskParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            Func<PSCloudTask, CloudTask> mappingFunc = task =>
+            {
+                Utils.Utils.CloudTaskSyncCollections(task);
+                return task.omObject;
+            };
+
+            IEnumerable<CloudTask> taskCollection = parameters.Tasks.Select(mappingFunc);
+
+            JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+            string jobId = parameters.Job == null ? parameters.JobId : parameters.Job.Id;
+
+            jobOperations.AddTask(jobId, taskCollection, additionalBehaviors: parameters.AdditionalBehaviors);
         }
 
         /// <summary>
@@ -233,6 +275,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
             Func<SubtaskInformation, PSSubtaskInformation> mappingFunction = s => { return new PSSubtaskInformation(s); };
             return PSPagedEnumerable<PSSubtaskInformation, SubtaskInformation>.CreateWithMaxCount(
                 subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+        }
+
+        /// <summary>
+        /// Reactivates a task, allowing it to run again even if its retry count has been exhausted.
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which task to reactivate.</param>
+        public void ReactivateTask(TaskOperationParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            if (parameters.Task != null)
+            {
+                WriteVerbose(string.Format(Resources.ReactivateTask, parameters.Task.Id));
+                parameters.Task.omObject.Reactivate(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                WriteVerbose(string.Format(Resources.ReactivateTask, parameters.TaskId));
+                JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+                jobOperations.ReactivateTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
+            }
         }
     }
 }

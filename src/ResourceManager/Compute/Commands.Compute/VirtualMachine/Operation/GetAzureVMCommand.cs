@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    AzureOperationResponse<IEnumerable<VirtualMachine>> vmListResult = null;
+                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
                     vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
                             .GetAwaiter().GetResult();
                     var psResultList = new List<PSVirtualMachine>();
@@ -146,8 +146,8 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         foreach (var item in vmListResult.Body)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachine>(item);
-                            psItem = Mapper.Map(vmListResult, psItem);
+                            var psItem = Mapper.Map<PSVirtualMachine>(vmListResult);
+                            psItem = Mapper.Map(item, psItem);
                             psResultList.Add(psItem);
                         }
                     }

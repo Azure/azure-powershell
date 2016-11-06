@@ -45,5 +45,10 @@ namespace Microsoft.Azure.Commands.Compute
         /// Auto-backup settings
         /// </summary>
         public AutoBackupSettings AutoBackupSettings;
+
+        /// <summary>
+        /// Key Vault Credential settings
+        /// </summary>
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
     }
 }

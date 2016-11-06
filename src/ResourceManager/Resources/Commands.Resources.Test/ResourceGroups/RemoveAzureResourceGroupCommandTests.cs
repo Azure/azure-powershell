@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
 {
     public class RemoveAzureResourceGroupCommandTests : RMTestBase
     {
-        private RemoveAzureResourceGroupCommand cmdlet;
+        private RemoveAzureResourceGroupCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         public RemoveAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new RemoveAzureResourceGroupCommand()
+            cmdlet = new RemoveAzureResourceGroupCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 

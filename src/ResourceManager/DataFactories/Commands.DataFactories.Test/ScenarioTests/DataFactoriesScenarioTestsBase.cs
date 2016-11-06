@@ -22,7 +22,6 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -73,7 +72,8 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.DataFactories.psd1"));
+                    helper.GetRMModulePath("AzureRM.DataFactories.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 helper.RunPowerShellTest(scripts);
             }
@@ -92,11 +92,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         protected SubscriptionClient GetSubscriptionClient()
         {
             return TestBase.GetServiceClient<SubscriptionClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected StorageManagementClient GetStorageManagementClient()
-        {
-            return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         protected GalleryClient GetGalleryClient()

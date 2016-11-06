@@ -19,23 +19,26 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
     public class CustomDomainTests
     {
+        private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+
         public CustomDomainTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithRunningEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-CustomDomainGetRemoveWithRunningEndpoint");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainGetRemoveWithRunningEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithStoppedEndpoint()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-CustomDomainGetRemoveWithStoppedEndpoint");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainGetRemoveWithStoppedEndpoint");
         }
     }
 }

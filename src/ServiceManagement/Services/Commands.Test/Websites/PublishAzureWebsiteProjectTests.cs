@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.Commands.Websites;
 using Microsoft.WindowsAzure.Management.WebSites.Models;
 using Moq;
 using Xunit;
+using Microsoft.Web.Deployment;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {

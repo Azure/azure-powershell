@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
             {
                 throw new ArgumentException(Resources.MaxMemoryPolicyException);
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             WriteObject(new RedisCacheAttributesWithAccessKeys(
                 CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, response.Location, skuFamily, skuCapacity, skuName, RedisConfiguration, EnableNonSslPort,
-                    TenantSettings, ShardCount, response.VirtualNetwork, response.Subnet, response.StaticIP),
+                    TenantSettings, ShardCount, response.SubnetId, response.StaticIP, response.Tags),
                 ResourceGroupName));
         }
     }

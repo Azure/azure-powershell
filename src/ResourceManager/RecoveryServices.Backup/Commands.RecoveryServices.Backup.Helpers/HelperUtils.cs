@@ -23,8 +23,18 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Utilities used by the helpers.
+    /// </summary>
     public class HelperUtils
     {
+        /// <summary>
+        /// Gets list of enums of type T given the corresponding list of string equivalents. 
+        /// This method parses each of the strings and converts them into enums.
+        /// </summary>
+        /// <typeparam name="T">Type of the enum into which each string in the input list is to be type casted</typeparam>
+        /// <param name="strList">List of strings</param>
+        /// <returns></returns>
         public static List<T> GetEnumListFromStringList<T>(IList<string> strList)
         {
             if (strList == null || strList.Count == 0)
@@ -41,6 +51,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ret;
         }
 
+        /// <summary>
+        /// Gets list of string equivalents given the corresponding list of enums of type T. 
+        /// </summary>
+        /// <typeparam name="T">Type of the enum whose list should be converted to list of strings</typeparam>
+        /// <param name="enumList">List of enums</param>
+        /// <returns></returns>
         public static List<string> GetStringListFromEnumList<T>(IList<T> enumList)
         {
             if (enumList == null || enumList.Count == 0)
@@ -68,8 +84,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 new Dictionary<CmdletModel.UriEnums, string>();
             if (!string.IsNullOrEmpty(id))
             {
-                string idPattern = @"/[a-zA-Z]*/[a-zA-Z0-9-;.]*";
-                string uriPattern = @"/";                    
+                string idPattern = @"/[^/]*/[^/]*";
+                string uriPattern = @"/";
                 Regex reg = new Regex(idPattern, RegexOptions.IgnoreCase);
 
                 // Match the regular expression pattern against a uri string.
@@ -97,6 +113,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return keyValuePairDict;
         }
 
+        /// <summary>
+        /// Gets container URI from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetContainerUri(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id
@@ -116,6 +138,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return containerUri;
         }
 
+        /// <summary>
+        /// Gets protected item URI from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetProtectedItemUri(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id
@@ -135,6 +163,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return itemUri;
         }
 
+        /// <summary>
+        /// Gets protectable item URI from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetProtectableItemUri(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id
@@ -154,6 +188,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return protectableItemUri;
         }
 
+        /// <summary>
+        /// Gets polcy name from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetPolicyNameFromPolicyId(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id
@@ -172,6 +212,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             return policyName;
         }
-    
+
+        public static string GetSubscriptionIdFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
+            string id)
+        {
+            string subscriptionId = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.Subscriptions))
+            {
+                subscriptionId = keyValuePairs[CmdletModel.UriEnums.Subscriptions];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.Subscriptions.ToString(), id));
+            }
+
+            return subscriptionId;
+        }
+
+        public static string GetResourceGroupNameFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            string id)
+        {
+            string resourceGroupName = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.ResourceGroups))
+            {
+                resourceGroupName = keyValuePairs[CmdletModel.UriEnums.ResourceGroups];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.ResourceGroups.ToString(), id));
+            }
+
+            return resourceGroupName;
+        }
+
+        public static string GetVaultNameFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            string id)
+        {
+            string vaultName = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.Vaults))
+            {
+                vaultName = keyValuePairs[CmdletModel.UriEnums.Vaults];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.Vaults.ToString(), id));
+            }
+
+            return vaultName;
+        }
     }
 }

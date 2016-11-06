@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add diagnostics extension to the VM scale set.
+        /// </summary>
+        public static string AddVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("AddVmssDiagnosticsExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
         public static string AEMExtensionNotFound {
@@ -261,6 +270,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No chef extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string ChefExtensionNotFound {
+            get {
+                return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
         public static string CreatingStorageAccountForBootDiagnostics {
@@ -342,6 +360,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No matching diagnostics extension found..
+        /// </summary>
+        public static string DiagnosticsExtensionNotFoundForVMSS {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNotFoundForVMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically..
         /// </summary>
         public static string DiagnosticsExtensionNullStorageAccountEndpoint {
@@ -369,6 +396,33 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overwriting existing diagnostics extension..
+        /// </summary>
+        public static string DiagnosticsExtensionOverwriting {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwriting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnostics extension overwritting operation .
+        /// </summary>
+        public static string DiagnosticsExtensionOverwrittingCaption {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will overwrite existing diagnostics extension. Do you want to continue?.
+        /// </summary>
+        public static string DiagnosticsExtensionOverwrittingConfirmation {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disable AzureDiskEncryption on the VM.
         /// </summary>
         public static string DisableAzureDiskEncryptionCaption {
@@ -383,6 +437,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DisableAzureDiskEncryptionConfirmation {
             get {
                 return ResourceManager.GetString("DisableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable disk encryption.
+        /// </summary>
+        public static string DisableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("DisableDiskEncryptionAction", resourceCulture);
             }
         }
         
@@ -419,6 +482,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string EnableAzureDiskEncryptionConfirmation {
             get {
                 return ResourceManager.GetString("EnableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable disk encryption.
+        /// </summary>
+        public static string EnableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("EnableDiskEncryptionAction", resourceCulture);
             }
         }
         
@@ -955,6 +1027,51 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove VM access extension.
+        /// </summary>
+        public static string RemoveAccessExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveAccessExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove disk encryption.
+        /// </summary>
+        public static string RemoveDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("RemoveDiskEncryptionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove &apos;{0}&apos; extension.
+        /// </summary>
+        public static string RemoveExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove custom script extension.
+        /// </summary>
+        public static string RemoveScriptExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveScriptExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove diagnostics extension from the VM scale set.
+        /// </summary>
+        public static string RemoveVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveVmssDiagnosticsExtensionAction", resourceCulture);
             }
         }
         

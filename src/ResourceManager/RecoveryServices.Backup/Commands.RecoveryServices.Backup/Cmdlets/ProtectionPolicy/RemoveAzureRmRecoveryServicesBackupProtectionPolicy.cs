@@ -27,26 +27,35 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Update existing protection policy
+    /// Deletes an existing protection policy from the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesBackupProtectionPolicy", 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesBackupProtectionPolicy", SupportsShouldProcess = true,
         DefaultParameterSetName = PolicyNameParameterSet)]
     public class RemoveAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         internal const string PolicyNameParameterSet = "PolicyName";
         internal const string PolicyObjectParameterSet = "PolicyObject";
 
+        /// <summary>
+        /// Name of the policy to be deleted
+        /// </summary>
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name, 
             ParameterSetName = PolicyNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Policy object to be deleted
+        /// </summary>
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy, 
             ValueFromPipeline = true,
             ParameterSetName = PolicyObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
+        /// <summary>
+        /// When provided, force delete policy, without asking for user confirmation
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.ConfirmationMessage)]
         public SwitchParameter Force { get; set; }
 

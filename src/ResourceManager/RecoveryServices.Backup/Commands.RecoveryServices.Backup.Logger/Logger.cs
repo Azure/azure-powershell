@@ -21,6 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup
 {
+    /// <summary>
+    /// Utility for logging. Uses PS logging underneath. 
+    /// Plan to add more functionality in the upcoming releases.
+    /// </summary>
     public class Logger
     {
         private Action<string> writeWarningAction;
@@ -33,6 +37,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup
 
         public static Logger Instance { get; set; }
 
+        /// <summary>
+        /// Constructor. Takes the delegates for the various logging operations as input.
+        /// </summary>
+        /// <param name="writeWarning">Delegate to write warnings</param>
+        /// <param name="writeDebug">Delegate to write debug messages</param>
+        /// <param name="writeVerbose">Delegate to write verbose messages</param>
+        /// <param name="throwTerminatingError">Delegate to throw terminating errors</param>
         public Logger(Action<string> writeWarning,
                       Action<string> writeDebug,
                       Action<string> writeVerbose,
@@ -44,21 +55,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup
             throwTerminatingErrorAction = throwTerminatingError;
         }
 
+        /// <summary>
+        /// Writes verbose message.
+        /// </summary>
+        /// <param name="text"></param>
         public void WriteVerbose(string text)
         {
             writeVerboseAction(text);
         }
 
+        /// <summary>
+        /// Writes debug message.
+        /// </summary>
+        /// <param name="text"></param>
         public void WriteDebug(string text)
         {
             writeDebugAction(text);
         }
 
+        /// <summary>
+        /// Writes warning message.
+        /// </summary>
+        /// <param name="text"></param>
         public void WriteWarning(string text)
         {
             writeWarningAction(text);
         }
 
+        /// <summary>
+        /// Throws a terminating error.
+        /// </summary>
+        /// <param name="errorRecord"></param>
         public void ThrowTerminatingError(ErrorRecord errorRecord)
         {
             throwTerminatingErrorAction(errorRecord);

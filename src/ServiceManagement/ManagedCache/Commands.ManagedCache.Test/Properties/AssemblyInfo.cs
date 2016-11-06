@@ -25,6 +25,6 @@ using Xunit;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("3E5D3114-DEBB-4DC2-BB9D-CF2A2707F74D")]
-[assembly: AssemblyVersion("1.3.3")]
-[assembly: AssemblyFileVersion("1.3.3")]
+[assembly: AssemblyVersion("2.1.0")]
+[assembly: AssemblyFileVersion("2.1.0")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

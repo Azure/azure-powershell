@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -135,6 +137,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             PathIntrinsics currentPath = SessionState.Path;
             var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
 
+            using (var vds = new VirtualDiskStream(filePath.FullName))
+            {
+                if (vds.DiskType == DiskType.Fixed)
+                {
+                    long divisor = Convert.ToInt64(Math.Pow(2, 9));
+                    long rem = 0;
+                    Math.DivRem(filePath.Length, divisor, out rem);
+                    if (rem != 0)
+                    {
+                        throw new ArgumentOutOfRangeException("LocalFilePath", "Given vhd file is a corrupted fixed vhd");
+                    }
+                }
+            }
+
             var parameters = new UploadParameters(
                 destinationUri, baseImageUri, filePath, OverWrite.IsPresent,
                 (NumberOfUploaderThreads) ?? DefaultNumberOfUploaderThreads)
@@ -150,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         {
             StorageCredentialsFactory storageCredentialsFactory;
 
-            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))

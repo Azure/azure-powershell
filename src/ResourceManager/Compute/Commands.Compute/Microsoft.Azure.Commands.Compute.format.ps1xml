@@ -28,24 +28,12 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>OperationId</Label>
+                <PropertyName>OperationId</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Status</Label>
                 <PropertyName>Status</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>StatusCode</Label>
-                <PropertyName>StatusCode</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>RequestId </Label>
-                <PropertyName>RequestId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Output</Label>
-                <PropertyName>Output</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Error</Label>
-                <PropertyName>ErrorText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>StartTime</Label>
@@ -56,8 +44,8 @@
                 <PropertyName>EndTime</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TrackingOperationId</Label>
-                <PropertyName>TrackingOperationId</PropertyName>
+                <Label>Error</Label>
+                <PropertyName>Error</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -561,12 +549,16 @@
                 <PropertyName>OsVolumeEncrypted</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>OsVolumeEncryptionSettings</Label>
-                <PropertyName>OsVolumeEncryptionSettingsText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>DataVolumesEncrypted</Label>
                 <PropertyName>DataVolumesEncrypted</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OsVolumeEncryptionSettings</Label>
+                <PropertyName>OsVolumeEncryptionSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProgressMessage</Label>
+                <PropertyName>ProgressMessage</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

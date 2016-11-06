@@ -21,7 +21,6 @@ using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 {
@@ -80,11 +79,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
         protected SubscriptionClient GetSubscriptionClient()
         {
             return TestBase.GetServiceClient<SubscriptionClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected StorageManagementClient GetStorageManagementClient()
-        {
-            return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         protected GalleryClient GetGalleryClient()

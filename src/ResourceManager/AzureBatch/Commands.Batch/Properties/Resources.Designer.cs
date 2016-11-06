@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AccountAlreadyExists: Account already exists..
-        /// </summary>
-        internal static string AccountAlreadyExists {
-            get {
-                return ResourceManager.GetString("AccountAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
         /// </summary>
         internal static string AccountAndKeyInUse {
@@ -84,6 +75,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string AddingCertificate {
             get {
                 return ResourceManager.GetString("AddingCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}. The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number..
+        /// </summary>
+        internal static string ApplicationDoesNotAllowUpdates {
+            get {
+                return ResourceManager.GetString("ApplicationDoesNotAllowUpdates", resourceCulture);
             }
         }
         
@@ -277,11 +277,92 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to activate application package {0} version {1}. {2}..
+        /// </summary>
+        internal static string FailedToActivate {
+            get {
+                return ResourceManager.GetString("FailedToActivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to add application package {0} version {1}. {2}..
+        /// </summary>
+        internal static string FailedToAddApplicationPackage {
+            get {
+                return ResourceManager.GetString("FailedToAddApplicationPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}. The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}..
+        /// </summary>
+        internal static string FailedToCheckApplication {
+            get {
+                return ResourceManager.GetString("FailedToCheckApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create application package {0} version {1}.  Unable to determine whether the application package already exists. {2}..
+        /// </summary>
+        internal static string FailedToGetApplicationPackage {
+            get {
+                return ResourceManager.GetString("FailedToGetApplicationPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage. {1}..
+        /// </summary>
+        internal static string FailedToUpload {
+            get {
+                return ResourceManager.GetString("FailedToUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}..
+        /// </summary>
+        internal static string FailedToUploadAndDelete {
+            get {
+                return ResourceManager.GetString("FailedToUploadAndDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File not found {0}..
+        /// </summary>
+        internal static string FileNotFound {
+            get {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting all accounts in subscription.
         /// </summary>
         internal static string GetAllAccounts {
             get {
                 return ResourceManager.GetString("GetAllAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the jobs..
+        /// </summary>
+        internal static string GetAllJobsLifetimeStatistics {
+            get {
+                return ResourceManager.GetString("GetAllJobsLifetimeStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting lifetime statistics for all of the pools..
+        /// </summary>
+        internal static string GetAllPoolsLifetimeStatistics {
+            get {
+                return ResourceManager.GetString("GetAllPoolsLifetimeStatistics", resourceCulture);
             }
         }
         
@@ -493,6 +574,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools with the filter {0}..
+        /// </summary>
+        internal static string GetPoolUsageMetricsByFilter {
+            get {
+                return ResourceManager.GetString("GetPoolUsageMetricsByFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting usage metrics, aggregated for pools..
+        /// </summary>
+        internal static string GetPoolUsageMetricsByNoFilter {
+            get {
+                return ResourceManager.GetString("GetPoolUsageMetricsByNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting accounts in resource group {0}.
         /// </summary>
         internal static string GetResourceGroupAccounts {
@@ -637,6 +736,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When uploading a new application package, you must specify a value for the FilePath parameter..
+        /// </summary>
+        internal static string NewApplicationPackageNoPathSpecified {
+            get {
+                return ResourceManager.GetString("NewApplicationPackageNoPathSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No certificate data was specified. Supply the path to a certificate file, or provide the raw certificate data..
         /// </summary>
         internal static string NoCertificateData {
@@ -723,6 +831,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string NoTask {
             get {
                 return ResourceManager.GetString("NoTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reactivating task {0}..
+        /// </summary>
+        internal static string ReactivateTask {
+            get {
+                return ResourceManager.GetString("ReactivateTask", resourceCulture);
             }
         }
         
@@ -1020,6 +1137,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string UpdatingTask {
             get {
                 return ResourceManager.GetString("UpdatingTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}..
+        /// </summary>
+        internal static string UploadedApplicationButFailedToActivate {
+            get {
+                return ResourceManager.GetString("UploadedApplicationButFailedToActivate", resourceCulture);
             }
         }
     }

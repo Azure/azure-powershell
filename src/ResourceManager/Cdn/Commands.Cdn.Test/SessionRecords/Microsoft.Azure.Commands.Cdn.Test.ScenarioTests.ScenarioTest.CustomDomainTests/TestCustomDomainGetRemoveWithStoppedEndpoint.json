@@ -1,59 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL29uZXNkazI2P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
-      "RequestMethod": "HEAD",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "100"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
-        ],
-        "x-ms-request-id": [
-          "87366800-799b-46af-b6ca-db7440b428b3"
-        ],
-        "x-ms-correlation-request-id": [
-          "87366800-799b-46af-b6ca-db7440b428b3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160225T014505Z:87366800-799b-46af-b6ca-db7440b428b3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 25 Feb 2016 01:45:04 GMT"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL29uZXNkazI2P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlZ3JvdXBzL29uZXNkazQ5NjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -67,10 +16,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26\",\r\n  \"name\": \"onesdk26\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960\",\r\n  \"name\": \"onesdk4960\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "169"
+          "173"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -82,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-request-id": [
-          "41805969-2e4a-401f-8834-42b1c1dae312"
+          "ebc83081-9882-401d-b2ad-abf6772ace3f"
         ],
         "x-ms-correlation-request-id": [
-          "41805969-2e4a-401f-8834-42b1c1dae312"
+          "ebc83081-9882-401d-b2ad-abf6772ace3f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014505Z:41805969-2e4a-401f-8834-42b1c1dae312"
+          "SOUTHCENTRALUS:20160728T233700Z:ebc83081-9882-401d-b2ad-abf6772ace3f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -100,127 +49,31 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:45:05 GMT"
+          "Thu, 28 Jul 2016 23:37:00 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/resources?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Jlc291cmNlcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "12"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14972"
-        ],
-        "x-ms-request-id": [
-          "e3803f2d-f918-4a9c-a1c0-8bc8afe8e72f"
-        ],
-        "x-ms-correlation-request-id": [
-          "e3803f2d-f918-4a9c-a1c0-8bc8afe8e72f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160225T014505Z:e3803f2d-f918-4a9c-a1c0-8bc8afe8e72f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 25 Feb 2016 01:45:05 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQ/YXBpLXZlcnNpb249MjAxNS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/providers/Microsoft.Cdn/profiles?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzP2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "16b18a95-b4a9-4d00-8f65-a66656863016"
+          "622c9c23-d353-4f07-9f1d-6ebb7c8bbd68"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Cdn/profiles/onesdk6494' under resource group 'onesdk26' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"CdnDemo\",\r\n      \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/CdnDemoRG/providers/Microsoft.Cdn/profiles/CdnDemo\",\r\n      \"type\": \"Microsoft.Cdn/profiles\",\r\n      \"tags\": {},\r\n      \"location\": \"CentralUs\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_Verizon\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceState\": \"Active\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CdnPremiumDemo\",\r\n      \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/CdnDemoRG/providers/Microsoft.Cdn/profiles/CdnPremiumDemo\",\r\n      \"type\": \"Microsoft.Cdn/profiles\",\r\n      \"tags\": {},\r\n      \"location\": \"CentralUs\",\r\n      \"sku\": {\r\n        \"name\": \"Premium_Verizon\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceState\": \"Active\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "145"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "942600c1-20bd-4cca-b7b7-2e6c21ad7ab1"
-        ],
-        "x-ms-correlation-request-id": [
-          "942600c1-20bd-4cca-b7b7-2e6c21ad7ab1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160225T014506Z:942600c1-20bd-4cca-b7b7-2e6c21ad7ab1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 25 Feb 2016 01:45:05 GMT"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQ/YXBpLXZlcnNpb249MjAxNS0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk6494\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494\",\r\n  \"type\": \"Microsoft.Cdn/profiles\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    }\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "379"
+          "806"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -232,10 +85,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4ef49e55-66e2-4b7b-8b8c-6b03b4dcda8e"
+          "18dae460-69e8-4a01-8926-291eb5954703"
         ],
         "x-ms-client-request-id": [
-          "a153c25d-3b24-4d40-8f64-0aa2973932b5"
+          "622c9c23-d353-4f07-9f1d-6ebb7c8bbd68"
         ],
         "OData-Version": [
           "4.0"
@@ -244,19 +97,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14908"
+          "14990"
         ],
         "x-ms-correlation-request-id": [
-          "8ece4532-6e9e-4a29-ac8c-a83938e9f443"
+          "b927501f-7055-46c5-81d7-4c46678b63aa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014611Z:8ece4532-6e9e-4a29-ac8c-a83938e9f443"
+          "SOUTHCENTRALUS:20160728T233701Z:b927501f-7055-46c5-81d7-4c46678b63aa"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:10 GMT"
+          "Thu, 28 Jul 2016 23:37:00 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -271,31 +124,31 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQ/YXBpLXZlcnNpb249MjAxNS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3P2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"EastUS\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"EastUS\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_Verizon\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "164"
+          "142"
         ],
         "x-ms-client-request-id": [
-          "2a2c6940-767f-4e46-9bad-d3d0803c65d5"
+          "4b7496d7-ffee-439f-b7a9-93965fa4c417"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk6494\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494\",\r\n  \"type\": \"Microsoft.Cdn/profiles\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk307\",\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307\",\r\n  \"type\": \"Microsoft.Cdn/profiles\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"EastUs\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Verizon\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "380"
+          "384"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal"
@@ -310,13 +163,13 @@
           "10"
         ],
         "x-ms-request-id": [
-          "fb5f22b2-9a18-40a7-96fc-0243d1b556e9"
+          "30c308c5-55e4-4b51-acdc-3397ed34181c"
         ],
         "x-ms-client-request-id": [
-          "2a2c6940-767f-4e46-9bad-d3d0803c65d5"
+          "4b7496d7-ffee-439f-b7a9-93965fa4c417"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/d27923ef-a68b-41af-89bf-4a0332d1ffd3?api-version=2015-06-01"
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/4faf5160-194f-47c5-8b2b-9c31a0fa0701?api-version=2016-04-02"
         ],
         "OData-Version": [
           "4.0"
@@ -325,19 +178,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "ef9a0dd6-285c-4e37-a3b1-77110964312a"
+          "ef143a85-b53b-463a-b664-6ffd0a292639"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014509Z:ef9a0dd6-285c-4e37-a3b1-77110964312a"
+          "SOUTHCENTRALUS:20160728T233703Z:ef143a85-b53b-463a-b664-6ffd0a292639"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:45:08 GMT"
+          "Thu, 28 Jul 2016 23:37:02 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -352,13 +205,13 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/d27923ef-a68b-41af-89bf-4a0332d1ffd3?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL29wZXJhdGlvbnJlc3VsdHMvZDI3OTIzZWYtYTY4Yi00MWFmLTg5YmYtNGEwMzMyZDFmZmQzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/4faf5160-194f-47c5-8b2b-9c31a0fa0701?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlZ3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vb3BlcmF0aW9ucmVzdWx0cy80ZmFmNTE2MC0xOTRmLTQ3YzUtOGIyYi05YzMxYTBmYTA3MDE/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"InProgress\",\r\n  \"error\": {\r\n    \"code\": \"None\",\r\n    \"message\": null\r\n  }\r\n}",
@@ -376,10 +229,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5c8d50bb-ba6d-4abf-b614-aad2243ce307"
+          "715e8aa5-782a-4910-847e-cfaa6fb12a88"
         ],
         "x-ms-client-request-id": [
-          "dafa975b-bfa9-46ae-b533-a15677f159de"
+          "5598300c-e716-4bfc-af5f-73ca1be7fb07"
         ],
         "OData-Version": [
           "4.0"
@@ -388,19 +241,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14910"
+          "14989"
         ],
         "x-ms-correlation-request-id": [
-          "567c7311-19bc-40d6-b596-babde9d075cf"
+          "89616afc-5cc1-4269-abec-571886f15da3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014540Z:567c7311-19bc-40d6-b596-babde9d075cf"
+          "SOUTHCENTRALUS:20160728T233733Z:89616afc-5cc1-4269-abec-571886f15da3"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:45:39 GMT"
+          "Thu, 28 Jul 2016 23:37:32 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -415,13 +268,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/d27923ef-a68b-41af-89bf-4a0332d1ffd3?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL29wZXJhdGlvbnJlc3VsdHMvZDI3OTIzZWYtYTY4Yi00MWFmLTg5YmYtNGEwMzMyZDFmZmQzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/4faf5160-194f-47c5-8b2b-9c31a0fa0701?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlZ3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vb3BlcmF0aW9ucmVzdWx0cy80ZmFmNTE2MC0xOTRmLTQ3YzUtOGIyYi05YzMxYTBmYTA3MDE/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"error\": {\r\n    \"code\": \"None\",\r\n    \"message\": null\r\n  }\r\n}",
@@ -439,10 +292,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e0d482b9-41ae-4127-b3d3-577e55380760"
+          "f8054386-cf02-4f93-a1ab-b93b88846c32"
         ],
         "x-ms-client-request-id": [
-          "0de664c4-2e64-419d-8a50-c22bb43c8ad6"
+          "596cd7f3-3b7e-4dc1-a56a-010f62fc47fe"
         ],
         "OData-Version": [
           "4.0"
@@ -451,19 +304,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14909"
+          "14988"
         ],
         "x-ms-correlation-request-id": [
-          "7fcc41a6-d013-404a-9a15-834f78a43806"
+          "1dc47137-1854-40f2-b588-40e453a573f0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014610Z:7fcc41a6-d013-404a-9a15-834f78a43806"
+          "SOUTHCENTRALUS:20160728T233803Z:1dc47137-1854-40f2-b588-40e453a573f0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:10 GMT"
+          "Thu, 28 Jul 2016 23:38:03 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -478,25 +331,94 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3P2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"onesdk307\",\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307\",\r\n  \"type\": \"Microsoft.Cdn/profiles\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"EastUs\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Verizon\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "383"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "826bd08c-9b9f-4113-980b-a80109c26810"
+        ],
         "x-ms-client-request-id": [
-          "de3a7b70-6c03-4f01-84aa-a040c8f90516"
+          "2fd2edd2-10fc-4325-987e-18251f8259e5"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "7139ecc6-f676-4397-95c0-cf9ddd0014ea"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233804Z:7139ecc6-f676-4397-95c0-cf9ddd0014ea"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:38:04 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Cdn/checkNameAvailability?api-version=2016-04-02",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL2NoZWNrTmFtZUF2YWlsYWJpbGl0eT9hcGktdmVyc2lvbj0yMDE2LTA0LTAy",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"name\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/Endpoints\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "109"
+        ],
+        "x-ms-client-request-id": [
+          "5aea3687-af02-4403-a883-aa06e03aadc3"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def' under resource group 'onesdk26' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"NameAvailable\": true,\r\n  \"Reason\": null,\r\n  \"Message\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "200"
+          "51"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -507,80 +429,29 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
         "x-ms-request-id": [
-          "6511169b-4336-4006-be1b-8630ba6ea200"
-        ],
-        "x-ms-correlation-request-id": [
-          "6511169b-4336-4006-be1b-8630ba6ea200"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160225T014611Z:6511169b-4336-4006-be1b-8630ba6ea200"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 25 Feb 2016 01:46:10 GMT"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints\",\r\n  \"tags\": {},\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def.azureedge.net\",\r\n    \"originHostHeader\": null,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"isHttpAllowed\": true,\r\n    \"isHttpsAllowed\": true,\r\n    \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n    \"originPath\": null,\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk6065\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\",\r\n          \"httpPort\": null,\r\n          \"httpsPort\": null\r\n        }\r\n      }\r\n    ],\r\n    \"contentTypesToCompress\": [],\r\n    \"isCompressionEnabled\": false\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "852"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "ef3f4fd4-b0f6-42da-a24a-296f624fe0ac"
+          "d92f54f6-dc94-4bdf-a9b9-1a1487d73aee"
         ],
         "x-ms-client-request-id": [
-          "32f184ad-65a6-4d5d-aa63-52f5ba87a614"
-        ],
-        "OData-Version": [
-          "4.0"
+          "5aea3687-af02-4403-a883-aa06e03aadc3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14904"
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "ff3984c2-cc31-4c86-a4f3-00241fcc19d9"
+          "6e9870f6-bf75-4799-82f6-4796b84ad8d3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014644Z:ff3984c2-cc31-4c86-a4f3-00241fcc19d9"
+          "SOUTHCENTRALUS:20160728T233805Z:6e9870f6-bf75-4799-82f6-4796b84ad8d3"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:43 GMT"
+          "Thu, 28 Jul 2016 23:38:05 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -595,79 +466,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "33ec0738-237d-45d5-8469-c639edea1bf0"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints\",\r\n  \"tags\": {},\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def.azureedge.net\",\r\n    \"originHostHeader\": null,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"isHttpAllowed\": true,\r\n    \"isHttpsAllowed\": true,\r\n    \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n    \"originPath\": null,\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk6065\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\",\r\n          \"httpPort\": null,\r\n          \"httpsPort\": null\r\n        }\r\n      }\r\n    ],\r\n    \"contentTypesToCompress\": [],\r\n    \"isCompressionEnabled\": false\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "852"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "30c2ee9e-3091-4ad9-8e5b-5dbd5c57cfd5"
-        ],
-        "x-ms-client-request-id": [
-          "33ec0738-237d-45d5-8469-c639edea1bf0"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14903"
-        ],
-        "x-ms-correlation-request-id": [
-          "2773748f-be00-409d-94c4-c4d5fbe5b63c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160225T014644Z:2773748f-be00-409d-94c4-c4d5fbe5b63c"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 25 Feb 2016 01:46:44 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMz9hcGktdmVyc2lvbj0yMDE2LTA0LTAy",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"EastUS\",\r\n  \"properties\": {\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk6065\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"EastUS\",\r\n  \"properties\": {\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk2544\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -676,19 +478,19 @@
           "206"
         ],
         "x-ms-client-request-id": [
-          "0683bd58-47e3-4393-96a4-38a0538bfdd3"
+          "80da734e-fe34-4f59-9844-8bfb681bbb16"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints\",\r\n  \"tags\": {},\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def.azureedge.net\",\r\n    \"originHostHeader\": null,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"isHttpAllowed\": true,\r\n    \"isHttpsAllowed\": true,\r\n    \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n    \"originPath\": null,\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk6065\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\",\r\n          \"httpPort\": null,\r\n          \"httpsPort\": null\r\n        }\r\n      }\r\n    ],\r\n    \"contentTypesToCompress\": [],\r\n    \"isCompressionEnabled\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713\",\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints\",\r\n  \"tags\": {},\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713.azureedge.net\",\r\n    \"originHostHeader\": null,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"isHttpAllowed\": true,\r\n    \"isHttpsAllowed\": true,\r\n    \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n    \"originPath\": null,\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk2544\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\",\r\n          \"httpPort\": null,\r\n          \"httpsPort\": null\r\n        }\r\n      }\r\n    ],\r\n    \"contentTypesToCompress\": [],\r\n    \"isCompressionEnabled\": false\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "852"
+          "853"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal"
@@ -703,13 +505,13 @@
           "10"
         ],
         "x-ms-request-id": [
-          "a3f6125a-4238-45e7-b636-aafbe9408871"
+          "289ae79a-e108-42f4-bb59-04e6837b4c94"
         ],
         "x-ms-client-request-id": [
-          "0683bd58-47e3-4393-96a4-38a0538bfdd3"
+          "80da734e-fe34-4f59-9844-8bfb681bbb16"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/a3b3d967-a728-4f5b-9be7-e3a5ba26da10?api-version=2015-06-01"
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/7c26179d-6da6-4416-bf66-36436b1261a0?api-version=2016-04-02"
         ],
         "OData-Version": [
           "4.0"
@@ -718,19 +520,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "d31b7751-1d9e-4c1d-a575-d211b18aa537"
+          "01a2206a-840a-4f60-9290-77d5c43abd89"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014613Z:d31b7751-1d9e-4c1d-a575-d211b18aa537"
+          "SOUTHCENTRALUS:20160728T233807Z:01a2206a-840a-4f60-9290-77d5c43abd89"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:12 GMT"
+          "Thu, 28 Jul 2016 23:38:07 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -745,13 +547,13 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/a3b3d967-a728-4f5b-9be7-e3a5ba26da10?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL29wZXJhdGlvbnJlc3VsdHMvYTNiM2Q5NjctYTcyOC00ZjViLTliZTctZTNhNWJhMjZkYTEwP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/7c26179d-6da6-4416-bf66-36436b1261a0?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlZ3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vb3BlcmF0aW9ucmVzdWx0cy83YzI2MTc5ZC02ZGE2LTQ0MTYtYmY2Ni0zNjQzNmIxMjYxYTA/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"error\": {\r\n    \"code\": \"None\",\r\n    \"message\": null\r\n  }\r\n}",
@@ -769,10 +571,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cb0118b5-d864-4eb4-8191-6a38dfd2fd91"
+          "27f127d0-95b2-4a1b-910a-8b4f649d3d66"
         ],
         "x-ms-client-request-id": [
-          "2320370b-f552-47c1-a2cc-bb8c50b0dcca"
+          "5f84e4b3-2adb-47c7-8eea-765b2ce9c968"
         ],
         "OData-Version": [
           "4.0"
@@ -781,19 +583,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14905"
+          "14986"
         ],
         "x-ms-correlation-request-id": [
-          "7e4ccb15-4d02-4250-8c13-5abaebc858ab"
+          "19b72e07-0957-49fe-ab15-ac315f45fd24"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014643Z:7e4ccb15-4d02-4250-8c13-5abaebc858ab"
+          "SOUTHCENTRALUS:20160728T233837Z:19b72e07-0957-49fe-ab15-ac315f45fd24"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:43 GMT"
+          "Thu, 28 Jul 2016 23:38:37 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -808,34 +610,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/validateCustomDomain?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL3ZhbGlkYXRlQ3VzdG9tRG9tYWluP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"hostName\": \"sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net\"\r\n}",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMz9hcGktdmVyc2lvbj0yMDE2LTA0LTAy",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "85"
-        ],
-        "x-ms-client-request-id": [
-          "8d37e7b3-06a1-4e17-bd83-b36f6d04b4e1"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"customDomainValidated\": true,\r\n  \"message\": null,\r\n  \"reason\": null\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713\",\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints\",\r\n  \"tags\": {},\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713.azureedge.net\",\r\n    \"originHostHeader\": null,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"isHttpAllowed\": true,\r\n    \"isHttpsAllowed\": true,\r\n    \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n    \"originPath\": null,\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk2544\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\",\r\n          \"httpPort\": null,\r\n          \"httpsPort\": null\r\n        }\r\n      }\r\n    ],\r\n    \"contentTypesToCompress\": [],\r\n    \"isCompressionEnabled\": false\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "65"
+          "853"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal"
+          "application/json; odata.metadata=minimal; odata.streaming=true"
         ],
         "Expires": [
           "-1"
@@ -844,10 +634,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6a4d4cf9-4528-47e5-95fb-3dca562a0e62"
+          "4c4c8b46-1625-46b6-99f4-6f6393bfc09d"
         ],
         "x-ms-client-request-id": [
-          "8d37e7b3-06a1-4e17-bd83-b36f6d04b4e1"
+          "a934f816-926c-4841-949a-8479c172218b"
         ],
         "OData-Version": [
           "4.0"
@@ -855,20 +645,20 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
         ],
         "x-ms-correlation-request-id": [
-          "74d5e62e-5848-4490-b7ca-dfc128db6796"
+          "5239879e-bf67-4194-a8f2-5688453dac85"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014645Z:74d5e62e-5848-4490-b7ca-dfc128db6796"
+          "SOUTHCENTRALUS:20160728T233838Z:5239879e-bf67-4194-a8f2-5688453dac85"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:44 GMT"
+          "Thu, 28 Jul 2016 23:38:37 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -883,10 +673,79 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/validateCustomDomain?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL3ZhbGlkYXRlQ3VzdG9tRG9tYWluP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMz9hcGktdmVyc2lvbj0yMDE2LTA0LTAy",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "51366c14-3a1f-461e-9999-5a9ad918831c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713\",\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints\",\r\n  \"tags\": {},\r\n  \"location\": \"EastUs\",\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713.azureedge.net\",\r\n    \"originHostHeader\": null,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Running\",\r\n    \"isHttpAllowed\": true,\r\n    \"isHttpsAllowed\": true,\r\n    \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n    \"originPath\": null,\r\n    \"origins\": [\r\n      {\r\n        \"name\": \"onesdk2544\",\r\n        \"properties\": {\r\n          \"hostName\": \"www.microsoft.com\",\r\n          \"httpPort\": null,\r\n          \"httpsPort\": null\r\n        }\r\n      }\r\n    ],\r\n    \"contentTypesToCompress\": [],\r\n    \"isCompressionEnabled\": false\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "853"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "249b18a5-8a67-4b84-a899-ee6ca38007f4"
+        ],
+        "x-ms-client-request-id": [
+          "51366c14-3a1f-461e-9999-5a9ad918831c"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "a3b36edc-89cd-464f-83d6-b208a1e57462"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233838Z:a3b36edc-89cd-464f-83d6-b208a1e57462"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:38:38 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/validateCustomDomain?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy92YWxpZGF0ZUN1c3RvbURvbWFpbj9hcGktdmVyc2lvbj0yMDE2LTA0LTAy",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"hostName\": \"sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net\"\r\n}",
+      "RequestBody": "{\r\n  \"hostName\": \"sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -895,13 +754,13 @@
           "85"
         ],
         "x-ms-client-request-id": [
-          "019e21ce-cd1f-4e91-a5df-536362d233a1"
+          "df1ad585-aac7-426c-a268-07d4fcb69a1c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"customDomainValidated\": true,\r\n  \"message\": null,\r\n  \"reason\": null\r\n}",
@@ -919,10 +778,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8c4eee70-4a48-43eb-a559-5324263b81ba"
+          "03080541-3826-46e4-9621-217a40c9becd"
         ],
         "x-ms-client-request-id": [
-          "019e21ce-cd1f-4e91-a5df-536362d233a1"
+          "df1ad585-aac7-426c-a268-07d4fcb69a1c"
         ],
         "OData-Version": [
           "4.0"
@@ -934,16 +793,16 @@
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "3864667d-d98c-4068-a68a-cf048622dd49"
+          "f2bbc8b6-afbc-4bff-b5e4-589fc952e973"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014645Z:3864667d-d98c-4068-a68a-cf048622dd49"
+          "SOUTHCENTRALUS:20160728T233838Z:f2bbc8b6-afbc-4bff-b5e4-589fc952e973"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:45 GMT"
+          "Thu, 28 Jul 2016 23:38:38 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -958,22 +817,97 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/stop?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL3N0b3A/YXBpLXZlcnNpb249MjAxNS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/validateCustomDomain?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy92YWxpZGF0ZUN1c3RvbURvbWFpbj9hcGktdmVyc2lvbj0yMDE2LTA0LTAy",
       "RequestMethod": "POST",
-      "RequestBody": "",
+      "RequestBody": "{\r\n  \"hostName\": \"sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net\"\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "85"
+        ],
         "x-ms-client-request-id": [
-          "ae48cffb-5cc0-4981-8cd3-c63e799ee78e"
+          "7f0d9196-de34-4d9e-b4cb-c8e81fb2ae8e"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"hostName\": \"sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def.azureedge.net\",\r\n  \"originHostHeader\": null,\r\n  \"provisioningState\": \"Succeeded\",\r\n  \"resourceState\": \"Stopping\",\r\n  \"isHttpAllowed\": true,\r\n  \"isHttpsAllowed\": true,\r\n  \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n  \"originPath\": null,\r\n  \"origins\": [\r\n    {\r\n      \"name\": \"onesdk6065\",\r\n      \"properties\": {\r\n        \"hostName\": \"www.microsoft.com\",\r\n        \"httpPort\": null,\r\n        \"httpsPort\": null\r\n      }\r\n    }\r\n  ],\r\n  \"contentTypesToCompress\": [],\r\n  \"isCompressionEnabled\": false\r\n}",
+      "ResponseBody": "{\r\n  \"customDomainValidated\": true,\r\n  \"message\": null,\r\n  \"reason\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "65"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "510613c3-19cc-47ea-9850-a086db989ba2"
+        ],
+        "x-ms-client-request-id": [
+          "7f0d9196-de34-4d9e-b4cb-c8e81fb2ae8e"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "b0b5ea29-32f5-49be-b4aa-6233d7751ee9"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233839Z:b0b5ea29-32f5-49be-b4aa-6233d7751ee9"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:38:39 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/stop?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9zdG9wP2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d77ddd16-b0c6-408f-ac4d-e857395ec4cd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"hostName\": \"sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713.azureedge.net\",\r\n  \"originHostHeader\": null,\r\n  \"provisioningState\": \"Succeeded\",\r\n  \"resourceState\": \"Stopping\",\r\n  \"isHttpAllowed\": true,\r\n  \"isHttpsAllowed\": true,\r\n  \"queryStringCachingBehavior\": \"IgnoreQueryString\",\r\n  \"originPath\": null,\r\n  \"origins\": [\r\n    {\r\n      \"name\": \"onesdk2544\",\r\n      \"properties\": {\r\n        \"hostName\": \"www.microsoft.com\",\r\n        \"httpPort\": null,\r\n        \"httpsPort\": null\r\n      }\r\n    }\r\n  ],\r\n  \"contentTypesToCompress\": [],\r\n  \"isCompressionEnabled\": false\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "494"
@@ -991,13 +925,13 @@
           "10"
         ],
         "x-ms-request-id": [
-          "00ea0363-f839-4978-ad99-1fc015753196"
+          "49c70ef2-9eab-47ce-9252-c402529be181"
         ],
         "x-ms-client-request-id": [
-          "ae48cffb-5cc0-4981-8cd3-c63e799ee78e"
+          "d77ddd16-b0c6-408f-ac4d-e857395ec4cd"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/4c99b72c-4535-4ec3-9b62-665cd08b0ea5?api-version=2015-06-01"
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/ba71ecde-468d-4eac-b221-fd8d14c37911?api-version=2016-04-02"
         ],
         "OData-Version": [
           "4.0"
@@ -1006,22 +940,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "77b18a8f-31f9-49f0-9176-1a5cdca147e2"
+          "ca6f6c85-341a-4a4f-b7f2-ecc87fc64584"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014646Z:77b18a8f-31f9-49f0-9176-1a5cdca147e2"
+          "SOUTHCENTRALUS:20160728T233839Z:ca6f6c85-341a-4a4f-b7f2-ecc87fc64584"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:46:46 GMT"
+          "Thu, 28 Jul 2016 23:38:39 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/4c99b72c-4535-4ec3-9b62-665cd08b0ea5/profileresults/onesdk6494/endpointresults/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def?api-version=2015-06-01"
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/ba71ecde-468d-4eac-b221-fd8d14c37911/profileresults/onesdk307/endpointresults/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713?api-version=2016-04-02"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1036,13 +970,13 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/operationresults/4c99b72c-4535-4ec3-9b62-665cd08b0ea5?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL29wZXJhdGlvbnJlc3VsdHMvNGM5OWI3MmMtNDUzNS00ZWMzLTliNjItNjY1Y2QwOGIwZWE1P2FwaS12ZXJzaW9uPTIwMTUtMDYtMDE=",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/operationresults/ba71ecde-468d-4eac-b221-fd8d14c37911?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlZ3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vb3BlcmF0aW9ucmVzdWx0cy9iYTcxZWNkZS00NjhkLTRlYWMtYjIyMS1mZDhkMTRjMzc5MTE/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"error\": {\r\n    \"code\": \"None\",\r\n    \"message\": null\r\n  }\r\n}",
@@ -1060,10 +994,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c64a2884-9e07-42b8-89be-c54b8fad62bc"
+          "9e972b1b-176b-41c0-8c4d-3af6abff7ec1"
         ],
         "x-ms-client-request-id": [
-          "d0325e2c-ab19-4978-a233-b1a7e764a798"
+          "bd8cc947-7fd7-4c6d-8438-9ea160ca6521"
         ],
         "OData-Version": [
           "4.0"
@@ -1072,19 +1006,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14902"
+          "14983"
         ],
         "x-ms-correlation-request-id": [
-          "288fb057-6e1c-4336-b5c2-f290fbcbc914"
+          "7ec7e7eb-c90b-4144-a3ff-30a26232bc88"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014716Z:288fb057-6e1c-4336-b5c2-f290fbcbc914"
+          "SOUTHCENTRALUS:20160728T233910Z:7ec7e7eb-c90b-4144-a3ff-30a26232bc88"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:47:15 GMT"
+          "Thu, 28 Jul 2016 23:39:09 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1099,94 +1033,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zP2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ef714e72-cb6e-497a-91b7-d5971bd71dd9"
+          "82f6c9f6-d801-40b1-980e-ec0dd8888b5b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The requested resource was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "104"
-        ],
-        "Content-Language": [
-          "en-US"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "bf3b646b-22f4-4b6b-9dfa-b0f18cf7ceb3"
-        ],
-        "x-ms-client-request-id": [
-          "ef714e72-cb6e-497a-91b7-d5971bd71dd9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14901"
-        ],
-        "x-ms-correlation-request-id": [
-          "6c3ac35c-d7f7-4058-9509-9f444a6532b0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160225T014717Z:6c3ac35c-d7f7-4058-9509-9f444a6532b0"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 25 Feb 2016 01:47:16 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ee3a8012-bea5-4da9-8f95-33c084f63f00"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk1010\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customdomains/onesdk1010\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\",\r\n    \"hostName\": \"sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "449"
+          "28"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -1198,10 +1063,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "bddf69b5-712e-45d5-98a5-60d0415ef86c"
+          "26d84512-060b-4e35-b767-1b5e7d5863ce"
         ],
         "x-ms-client-request-id": [
-          "ee3a8012-bea5-4da9-8f95-33c084f63f00"
+          "82f6c9f6-d801-40b1-980e-ec0dd8888b5b"
         ],
         "OData-Version": [
           "4.0"
@@ -1210,19 +1075,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14900"
+          "14982"
         ],
         "x-ms-correlation-request-id": [
-          "d1a4a598-67dd-4038-b755-7d593f440a9d"
+          "f3f7b293-3d27-4e1a-9f74-2ccf8daa2fd3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014718Z:d1a4a598-67dd-4038-b755-7d593f440a9d"
+          "SOUTHCENTRALUS:20160728T233910Z:f3f7b293-3d27-4e1a-9f74-2ccf8daa2fd3"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:47:17 GMT"
+          "Thu, 28 Jul 2016 23:39:10 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1237,25 +1102,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zP2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6effbe2d-3032-4194-9cee-fcee0eb2e89d"
+          "ad956cf3-0fd7-47fa-974d-eb843c8edc1b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk1010\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customdomains/onesdk1010\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\",\r\n    \"hostName\": \"sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"onesdk7173\",\r\n      \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customdomains/onesdk7173\",\r\n      \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceState\": \"Active\",\r\n        \"hostName\": \"sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net\",\r\n        \"customHttpsProvisioningState\": \"Disabled\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "449"
+          "536"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -1267,10 +1132,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1aeb5ce8-ec5a-4af0-8cdd-660939ddab25"
+          "46cc3119-6c42-4b03-9dc2-eab948f76e86"
         ],
         "x-ms-client-request-id": [
-          "6effbe2d-3032-4194-9cee-fcee0eb2e89d"
+          "ad956cf3-0fd7-47fa-974d-eb843c8edc1b"
         ],
         "OData-Version": [
           "4.0"
@@ -1279,19 +1144,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14899"
+          "14981"
         ],
         "x-ms-correlation-request-id": [
-          "6c852886-5d09-45c1-a350-06eea7f1e39e"
+          "8bc8d268-034d-4e67-9680-c203bfa057f6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014718Z:6c852886-5d09-45c1-a350-06eea7f1e39e"
+          "SOUTHCENTRALUS:20160728T233911Z:8bc8d268-034d-4e67-9680-c203bfa057f6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:47:17 GMT"
+          "Thu, 28 Jul 2016 23:39:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1306,25 +1171,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zP2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "85716d58-e627-42eb-8f8e-b93f768cf052"
+          "906c21ac-af31-448f-b020-2b60167cb054"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk1010\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customdomains/onesdk1010\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\",\r\n    \"hostName\": \"sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"onesdk7173\",\r\n      \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customdomains/onesdk7173\",\r\n      \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceState\": \"Active\",\r\n        \"hostName\": \"sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net\",\r\n        \"customHttpsProvisioningState\": \"Disabled\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "449"
+          "536"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -1336,10 +1201,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ad3f741a-a1b5-4e7b-89d1-0837ff19aa9d"
+          "aa670da4-a4aa-480d-81f2-f8acd2542d1f"
         ],
         "x-ms-client-request-id": [
-          "85716d58-e627-42eb-8f8e-b93f768cf052"
+          "906c21ac-af31-448f-b020-2b60167cb054"
         ],
         "OData-Version": [
           "4.0"
@@ -1348,19 +1213,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14898"
+          "14979"
         ],
         "x-ms-correlation-request-id": [
-          "75605b0d-db4a-4146-9a65-46de174a02c3"
+          "7f5dd0b5-3cd6-4234-b107-51af9d448a7c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014719Z:75605b0d-db4a-4146-9a65-46de174a02c3"
+          "SOUTHCENTRALUS:20160728T233912Z:7f5dd0b5-3cd6-4234-b107-51af9d448a7c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:47:18 GMT"
+          "Thu, 28 Jul 2016 23:39:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1375,31 +1240,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zP2FwaS12ZXJzaW9uPTIwMTYtMDQtMDI=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "09fd3d60-9baa-4734-8f28-e9eac58aec10"
+          "942113aa-e789-4d0d-9d1a-6c79ed305603"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The requested resource was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "104"
-        ],
-        "Content-Language": [
-          "en-US"
+          "28"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json; odata.metadata=minimal; odata.streaming=true"
         ],
         "Expires": [
           "-1"
@@ -1408,28 +1270,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "dce9e75f-c6df-4a2c-9d2a-d71caa1c5a5b"
+          "6826e3fc-ef0d-4beb-844a-ac4e0468c77b"
         ],
         "x-ms-client-request-id": [
-          "09fd3d60-9baa-4734-8f28-e9eac58aec10"
+          "942113aa-e789-4d0d-9d1a-6c79ed305603"
+        ],
+        "OData-Version": [
+          "4.0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14897"
+          "14978"
         ],
         "x-ms-correlation-request-id": [
-          "76f8a14c-3e1c-4b13-81e9-e023715227ce"
+          "55ad9532-3441-48a9-a0b2-60d9b826ee7e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014719Z:76f8a14c-3e1c-4b13-81e9-e023715227ce"
+          "SOUTHCENTRALUS:20160728T233913Z:55ad9532-3441-48a9-a0b2-60d9b826ee7e"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:47:18 GMT"
+          "Thu, 28 Jul 2016 23:39:12 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1441,82 +1306,13 @@
           "ASP.NET"
         ]
       },
-      "StatusCode": 404
+      "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fff5816b-c5aa-4c63-9a90-3d861527b9f6"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The requested resource was not found.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "104"
-        ],
-        "Content-Language": [
-          "en-US"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d7689839-e1e9-4785-b25e-a8c75ffe01ff"
-        ],
-        "x-ms-client-request-id": [
-          "fff5816b-c5aa-4c63-9a90-3d861527b9f6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14896"
-        ],
-        "x-ms-correlation-request-id": [
-          "2054c5ca-ac4d-47fa-ae5e-12cf2dafdc3b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160225T014720Z:2054c5ca-ac4d-47fa-ae5e-12cf2dafdc3b"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 25 Feb 2016 01:47:19 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains/onesdk7173?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zL29uZXNkazcxNzM/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hostName\": \"sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1525,19 +1321,19 @@
           "111"
         ],
         "x-ms-client-request-id": [
-          "81657eca-a8e3-4a6c-bb00-7ae5f82b317a"
+          "fa6719ec-bc98-4c08-8520-5891220ff5c7"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk1010\",\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customdomains/onesdk1010\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\",\r\n    \"hostName\": \"sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk7173\",\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customdomains/onesdk7173\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\",\r\n    \"hostName\": \"sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net\",\r\n    \"customHttpsProvisioningState\": \"Disabled\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "449"
+          "492"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal"
@@ -1549,10 +1345,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2e677e88-d1c5-49fe-9372-4e8b4111d081"
+          "a2cdbd42-f228-49f8-a73a-a80398efeaf0"
         ],
         "x-ms-client-request-id": [
-          "81657eca-a8e3-4a6c-bb00-7ae5f82b317a"
+          "fa6719ec-bc98-4c08-8520-5891220ff5c7"
         ],
         "OData-Version": [
           "4.0"
@@ -1561,19 +1357,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1193"
         ],
         "x-ms-correlation-request-id": [
-          "e54188ef-1c6d-4498-9e86-6ef46575f2b3"
+          "905d19fa-f419-4859-9dae-564554d5b794"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014718Z:e54188ef-1c6d-4498-9e86-6ef46575f2b3"
+          "SOUTHCENTRALUS:20160728T233911Z:905d19fa-f419-4859-9dae-564554d5b794"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:47:17 GMT"
+          "Thu, 28 Jul 2016 23:39:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1588,19 +1384,157 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/onesdk26/providers/Microsoft.Cdn/profiles/onesdk6494/endpoints/sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def/customDomains/onesdk1010?api-version=2015-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL29uZXNkazI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3Byb2ZpbGVzL29uZXNkazY0OTQvZW5kcG9pbnRzL3Nka3Rlc3QtY2VlOTFiYjEtOTk2YS00NGYxLTk2ZTYtZGNlYWE2NzA3ZGVmL2N1c3RvbURvbWFpbnMvb25lc2RrMTAxMD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
-      "RequestMethod": "DELETE",
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains/onesdk7173?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zL29uZXNkazcxNzM/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "17d3873d-6481-4dd1-b63b-b5528d71c146"
+          "56a21026-b4fd-4e7c-baae-b96e7935a8f3"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"onesdk7173\",\r\n  \"id\": \"/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customdomains/onesdk7173\",\r\n  \"type\": \"Microsoft.Cdn/profiles/endpoints/customdomains\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\",\r\n    \"hostName\": \"sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net\",\r\n    \"customHttpsProvisioningState\": \"Disabled\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "492"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "50b6cba7-0b8e-4460-b3f6-bd9d807481cf"
+        ],
+        "x-ms-client-request-id": [
+          "56a21026-b4fd-4e7c-baae-b96e7935a8f3"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14980"
+        ],
+        "x-ms-correlation-request-id": [
+          "59c81920-6bf4-4e6e-9a91-c71eb49a8844"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233912Z:59c81920-6bf4-4e6e-9a91-c71eb49a8844"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:39:11 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains/onesdk7173?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zL29uZXNkazcxNzM/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "482d169b-f561-40ae-86f8-3fd758dfb720"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The requested resource was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "104"
+        ],
+        "Content-Language": [
+          "en-US"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bf153615-367d-4680-8437-2133db535776"
+        ],
+        "x-ms-client-request-id": [
+          "482d169b-f561-40ae-86f8-3fd758dfb720"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14977"
+        ],
+        "x-ms-correlation-request-id": [
+          "5055a632-b1d3-4528-acd8-21339088877f"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233913Z:5055a632-b1d3-4528-acd8-21339088877f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:39:12 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourceGroups/onesdk4960/providers/Microsoft.Cdn/profiles/onesdk307/endpoints/sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713/customDomains/onesdk7173?api-version=2016-04-02",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlR3JvdXBzL29uZXNkazQ5NjAvcHJvdmlkZXJzL01pY3Jvc29mdC5DZG4vcHJvZmlsZXMvb25lc2RrMzA3L2VuZHBvaW50cy9zZGt0ZXN0LWIwOTM5ZTc0LTc1YmEtNDU1OC1hZmU2LWVkYzVjMTllYTcxMy9jdXN0b21Eb21haW5zL29uZXNkazcxNzM/YXBpLXZlcnNpb249MjAxNi0wNC0wMg==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0a9eaca2-0ae6-4e9c-a697-3a2a22987448"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/1.1.0"
         ]
       },
       "ResponseBody": "",
@@ -1615,28 +1549,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5344a142-c4a6-4f07-9849-08398505aba2"
+          "7d5b336f-8ac3-47c9-a639-2446043e23f6"
         ],
         "x-ms-client-request-id": [
-          "17d3873d-6481-4dd1-b63b-b5528d71c146"
+          "0a9eaca2-0ae6-4e9c-a697-3a2a22987448"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1192"
         ],
         "x-ms-correlation-request-id": [
-          "0546a974-0ae7-46aa-95b6-51982939a27c"
+          "c95234b1-7720-49ac-9fde-0e086c88d831"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160225T014719Z:0546a974-0ae7-46aa-95b6-51982939a27c"
+          "SOUTHCENTRALUS:20160728T233912Z:c95234b1-7720-49ac-9fde-0e086c88d831"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Feb 2016 01:47:18 GMT"
+          "Thu, 28 Jul 2016 23:39:12 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1649,17 +1583,494 @@
         ]
       },
       "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/resourcegroups/onesdk4960?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L3Jlc291cmNlZ3JvdXBzL29uZXNkazQ5NjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "513a13c4-a7a9-4c69-bff7-92852fa50c29"
+        ],
+        "x-ms-correlation-request-id": [
+          "513a13c4-a7a9-4c69-bff7-92852fa50c29"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233914Z:513a13c4-a7a9-4c69-bff7-92852fa50c29"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:39:13 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-request-id": [
+          "f2c620c6-57af-47cf-937e-421abc94c5ee"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2c620c6-57af-47cf-937e-421abc94c5ee"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233914Z:f2c620c6-57af-47cf-937e-421abc94c5ee"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:39:13 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-request-id": [
+          "60bed44e-d4b5-4b43-b44e-17ead95052cb"
+        ],
+        "x-ms-correlation-request-id": [
+          "60bed44e-d4b5-4b43-b44e-17ead95052cb"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233929Z:60bed44e-d4b5-4b43-b44e-17ead95052cb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:39:28 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "0c8448ff-2952-495e-9d5b-84e734e5f0bf"
+        ],
+        "x-ms-correlation-request-id": [
+          "0c8448ff-2952-495e-9d5b-84e734e5f0bf"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233944Z:0c8448ff-2952-495e-9d5b-84e734e5f0bf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:39:43 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-request-id": [
+          "c154741d-95d5-4780-9ef1-e9a2ab0cdc39"
+        ],
+        "x-ms-correlation-request-id": [
+          "c154741d-95d5-4780-9ef1-e9a2ab0cdc39"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T233959Z:c154741d-95d5-4780-9ef1-e9a2ab0cdc39"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:39:59 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-request-id": [
+          "0f888637-a1cc-4561-a2e2-e08b0f8e89dd"
+        ],
+        "x-ms-correlation-request-id": [
+          "0f888637-a1cc-4561-a2e2-e08b0f8e89dd"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T234014Z:0f888637-a1cc-4561-a2e2-e08b0f8e89dd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:40:14 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-request-id": [
+          "44ce325f-e3be-46dc-9d8d-4e9b58f80cfe"
+        ],
+        "x-ms-correlation-request-id": [
+          "44ce325f-e3be-46dc-9d8d-4e9b58f80cfe"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T234030Z:44ce325f-e3be-46dc-9d8d-4e9b58f80cfe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:40:29 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-request-id": [
+          "7439993d-fa2e-4847-b4cf-9bb392567884"
+        ],
+        "x-ms-correlation-request-id": [
+          "7439993d-fa2e-4847-b4cf-9bb392567884"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T234045Z:7439993d-fa2e-4847-b4cf-9bb392567884"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:40:45 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/376c977e-dcb5-4959-a52f-7d6999058559/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0OTYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzc2Yzk3N2UtZGNiNS00OTU5LWE1MmYtN2Q2OTk5MDU4NTU5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBPVFl3TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-request-id": [
+          "7284e1e3-ad08-4f97-9f82-7ba4e0fc390c"
+        ],
+        "x-ms-correlation-request-id": [
+          "7284e1e3-ad08-4f97-9f82-7ba4e0fc390c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20160728T234100Z:7284e1e3-ad08-4f97-9f82-7ba4e0fc390c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jul 2016 23:41:00 GMT"
+        ]
+      },
+      "StatusCode": 200
     }
   ],
   "Names": {
     "Test-CustomDomainGetRemoveWithStoppedEndpoint": [
-      "onesdk1010",
-      "onesdk6494",
-      "onesdk26",
-      "onesdk6065"
+      "onesdk7173",
+      "onesdk307",
+      "onesdk4960",
+      "onesdk2544"
     ]
   },
   "Variables": {
-    "SubscriptionId": "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
+    "SubscriptionId": "376c977e-dcb5-4959-a52f-7d6999058559"
   }
 }

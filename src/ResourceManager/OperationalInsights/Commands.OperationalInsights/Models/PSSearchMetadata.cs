@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             }
         }
         public string ResultType { get; set; }
-        public int? Total { get; set; }
-        public int? Top { get; set; }
+        public long? Total { get; set; }
+        public long? Top { get; set; }
         public Guid? Id { get; set; }
         public IEnumerable<object> CoreResponses { get; set; }
         public List<PSCoreSummary> CoreSummaries { get; set; }
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public DateTime? LastUpdated { get; set; }
         public string ETag { get; set; }
         public List<PSSearchSort> Sort { get; set; }
-        public int? RequestTime { get; set; }
+        public long? RequestTime { get; set; }
         public string AggregatedValueField { get; set; }
         public string AggregatedGroupingFields { get; set; }
-        public int? Sum { get; set; }
-        public int? Max { get; set; }
+        public long? Sum { get; set; }
+        public long? Max { get; set; }
         public PSMetadataSchema Schema { get; set; }
     }
 }

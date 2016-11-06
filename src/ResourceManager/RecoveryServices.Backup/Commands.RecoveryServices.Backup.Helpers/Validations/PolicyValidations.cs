@@ -22,6 +22,9 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Backup policy validation helpers.
+    /// </summary>
     public partial class PolicyHelpers
     {
         // <summary>
@@ -93,7 +96,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             // validate yearly retention schedule with schPolicy
-            if (ltrPolicy.YearlySchedule != null)
+            if (ltrPolicy.YearlySchedule != null && ltrPolicy.IsYearlyScheduleEnabled == true)
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.YearlySchedule.RetentionTimes);
 

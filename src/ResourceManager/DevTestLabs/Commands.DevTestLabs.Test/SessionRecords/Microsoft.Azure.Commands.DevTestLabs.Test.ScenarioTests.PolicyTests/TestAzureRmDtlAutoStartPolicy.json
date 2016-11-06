@@ -1,0 +1,428 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtQXV0b1N0YXJ0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c035ce61-b0a4-43e1-bf96-7f6fd6f58960"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource 'LabVmAutoStart' under resource group 'onesdk72' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "126"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14920"
+        ],
+        "x-ms-request-id": [
+          "720607b7-ae35-4ba3-b2ed-27bd24827996"
+        ],
+        "x-ms-correlation-request-id": [
+          "720607b7-ae35-4ba3-b2ed-27bd24827996"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014615Z:720607b7-ae35-4ba3-b2ed-27bd24827996"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:14 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=8314fb771ca89de12894c3fc60da175f7ad72d091bac8fe6afdd429e8d2192a5;Path=/;Domain=westus.rp1.vsdth.visualstudio.com"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtQXV0b1N0YXJ0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2bcf7499-6b95-423f-88f6-b6307dfee3d6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsStartupTask\",\r\n    \"weeklyRecurrence\": {\r\n      \"weekdays\": [],\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueIdentifier\": \"907ae591-eae3-4823-a71f-83d97c5363ea\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmautostart\",\r\n  \"name\": \"LabVmAutoStart\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "466"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14919"
+        ],
+        "x-ms-request-id": [
+          "515fa2e2-d181-4219-9457-83db5b0ccf35"
+        ],
+        "x-ms-correlation-request-id": [
+          "515fa2e2-d181-4219-9457-83db5b0ccf35"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014616Z:515fa2e2-d181-4219-9457-83db5b0ccf35"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:16 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtQXV0b1N0YXJ0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b5077ae-c725-48bb-b936-318e53a4e429"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsStartupTask\",\r\n    \"weeklyRecurrence\": {\r\n      \"weekdays\": [],\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueIdentifier\": \"907ae591-eae3-4823-a71f-83d97c5363ea\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmautostart\",\r\n  \"name\": \"LabVmAutoStart\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "466"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14918"
+        ],
+        "x-ms-request-id": [
+          "db5add41-1e11-4b1f-8dc4-ecb48df6c8bb"
+        ],
+        "x-ms-correlation-request-id": [
+          "db5add41-1e11-4b1f-8dc4-ecb48df6c8bb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014616Z:db5add41-1e11-4b1f-8dc4-ecb48df6c8bb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:16 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtQXV0b1N0YXJ0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ca0621a8-8dce-4cca-bba7-1c105cd0c386"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsStartupTask\",\r\n    \"weeklyRecurrence\": {\r\n      \"weekdays\": [\r\n        \"Monday\",\r\n        \"Tuesday\"\r\n      ],\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueIdentifier\": \"907ae591-eae3-4823-a71f-83d97c5363ea\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmautostart\",\r\n  \"name\": \"LabVmAutoStart\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "484"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14917"
+        ],
+        "x-ms-request-id": [
+          "8c9f33a2-35b4-4ade-b0ec-762946b53b4b"
+        ],
+        "x-ms-correlation-request-id": [
+          "8c9f33a2-35b4-4ade-b0ec-762946b53b4b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014616Z:8c9f33a2-35b4-4ade-b0ec-762946b53b4b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:16 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtQXV0b1N0YXJ0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsStartupTask\",\r\n    \"weeklyRecurrence\": {\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "192"
+        ],
+        "x-ms-client-request-id": [
+          "d4c6e27e-f1d7-4921-b13a-8dd6bb6a018e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsStartupTask\",\r\n    \"weeklyRecurrence\": {\r\n      \"weekdays\": [],\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueIdentifier\": \"907ae591-eae3-4823-a71f-83d97c5363ea\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmautostart\",\r\n  \"name\": \"LabVmAutoStart\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "466"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "5de10b4b-046a-4f76-82ca-52585b5a0df8"
+        ],
+        "x-ms-correlation-request-id": [
+          "5de10b4b-046a-4f76-82ca-52585b5a0df8"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014616Z:5de10b4b-046a-4f76-82ca-52585b5a0df8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:16 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtQXV0b1N0YXJ0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsStartupTask\",\r\n    \"weeklyRecurrence\": {\r\n      \"weekdays\": [\r\n        \"Monday\",\r\n        \"Tuesday\"\r\n      ],\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmautostart\",\r\n  \"name\": \"LabVmAutoStart\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "539"
+        ],
+        "x-ms-client-request-id": [
+          "bfb90fce-0b1e-4b0c-87f5-2a36eab1da7e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsStartupTask\",\r\n    \"weeklyRecurrence\": {\r\n      \"weekdays\": [\r\n        \"Monday\",\r\n        \"Tuesday\"\r\n      ],\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueIdentifier\": \"907ae591-eae3-4823-a71f-83d97c5363ea\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmautostart\",\r\n  \"name\": \"LabVmAutoStart\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "484"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmAutoStart?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "3c3dceaf-de0e-4320-9a2a-6e5da752fe7d"
+        ],
+        "x-ms-correlation-request-id": [
+          "3c3dceaf-de0e-4320-9a2a-6e5da752fe7d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014616Z:3c3dceaf-de0e-4320-9a2a-6e5da752fe7d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:16 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e605a3bc-ee4e-4c7a-9709-1868a28b1d4d"
+  }
+}

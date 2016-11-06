@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// MAB specific container class.
+    /// Microsoft Azure Backup (MAB) Container
     /// </summary>
     public class MabContainer : ContainerBase
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Registration Status
+        /// Status of registration of the MAB container with the Recovery Services vault
         /// </summary>
         public ContainerRegistrationStatus Status { get; set; }
 

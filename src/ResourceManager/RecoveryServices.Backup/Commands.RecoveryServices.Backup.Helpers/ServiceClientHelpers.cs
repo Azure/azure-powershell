@@ -20,13 +20,25 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Constants used by the service client helpers.
+    /// </summary>
     public class ServiceClientConstants
     {
         public const string SkipToken = "skipToken";
     }
 
+    /// <summary>
+    /// Helper methods used by the service client adapter.
+    /// </summary>
     public class ServiceClientHelpers
     {
+        /// <summary>
+        /// Gets the provider type with which the service client calls are to made to contact the backend service. 
+        /// This can be determined by the container type in case of certain containers such as those of the type AzureVM.
+        /// </summary>
+        /// <param name="containerType">Type of the container</param>
+        /// <returns></returns>
         public static string GetServiceClientProviderType(CmdletModel.ContainerType containerType)
         {
             string providerType = string.Empty;
@@ -43,6 +55,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return providerType;
         }
 
+        /// <summary>
+        /// Gets the provider type with which the service client calls are to made to contact the backend service. 
+        /// This is determined by the workload type in case of certain containers such as those of the type AzureVM.
+        /// </summary>
+        /// <param name="workloadType"></param>
+        /// <returns></returns>
         public static string GetServiceClientProviderType(CmdletModel.WorkloadType workloadType)
         {
             string providerType = string.Empty;
@@ -52,6 +70,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.WorkloadType.AzureVM:
                     providerType = ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
+                case CmdletModel.WorkloadType.AzureSQLDatabase:
+                    providerType = ServiceClientModel.BackupManagementType.AzureSql.ToString();
+                    break;
                 default:
                     break;
             }
@@ -59,6 +80,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return providerType;
         }
 
+        /// <summary>
+        /// Gets the skip token from the next link. Usually, next link is the location uri returned as a header
+        /// when an ARM call is made. When this skip token (if non-null) is used in the next call to the backend service,
+        /// the next set of objects are returned.
+        /// </summary>
+        /// <param name="nextLink">The next link a.k.a location url</param>
+        /// <param name="skipToken">The skip token extracted from the next link</param>
         public static void GetSkipTokenFromNextLink(string nextLink, out string skipToken)
         {
             if (nextLink != null)
@@ -98,6 +126,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return splitArr[splitArr.Length - 1];
         }
 
+        /// <summary>
+        /// Gets the service client specific container type given the PS container type
+        /// </summary>
+        /// <param name="containerType">PS container type</param>
+        /// <returns></returns>
         public static string GetServiceClientContainerType(CmdletModel.ContainerType containerType)
         {
             string serviceClientContainerType = string.Empty;
@@ -114,6 +147,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return serviceClientContainerType;
         }
 
+        /// <summary>
+        /// Gets the service client specific workload type given the PS workload type
+        /// </summary>
+        /// <param name="workloadType"></param>
+        /// <returns></returns>
         public static string GetServiceClientWorkloadType(CmdletModel.WorkloadType workloadType)
         {
             string serviceClientWorkloadType = string.Empty;

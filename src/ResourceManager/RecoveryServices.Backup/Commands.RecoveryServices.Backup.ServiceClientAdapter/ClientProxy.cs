@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         private Func<string, THeader> CustomRequestHeaderGenerator;
 
         /// <summary>
-        /// Get Azure backup client.
+        /// Get Recovery Services Backup service client.
         /// </summary>
         public TClient Client
         {
@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CustomRequestHeaderGenerator = headerGenerator;
         }
 
+        /// <summary>
+        /// Gets customer request headers
+        /// </summary>
         public THeader GetCustomRequestHeaders()
         {
             return CustomRequestHeaderGenerator(this.ClientRequestId);

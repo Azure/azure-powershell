@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.GettingSubscriptionQuotas, location));
 
-            SubscriptionQuotasGetResponse response = this.BatchManagementClient.Subscriptions.GetSubscriptionQuotas(location);
+            SubscriptionQuotasGetResult response = this.BatchManagementClient.Subscription.GetSubscriptionQuotas(location);
             return new PSBatchSubscriptionQuotas(location, response);
         }
     }
