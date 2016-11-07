@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string Location { get; set; }
 
+        public string ServerFullName { get; private set; }
+
         public ServerSku Sku { get; set; }
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
@@ -52,16 +54,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
             return new AzureAnalysisServicesServer()
             {
-                AsAdministrators = server.AsAdministrators == null 
-                    ? new List<string>() 
+                AsAdministrators = server.AsAdministrators == null
+                    ? new List<string>()
                     : new List<string>(server.AsAdministrators.Members),
                 Location = server.Location,
                 Name = server.Name,
                 Type = server.Type,
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
-                Sku = ServerSku.FromResourceSku(server.Sku),
-                Tag = new Dictionary<string, string>(server.Tags)
+                ServerFullName = server.ServerFullName,
+                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new ServerSku(),
+                Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>()
             };
         }
 
