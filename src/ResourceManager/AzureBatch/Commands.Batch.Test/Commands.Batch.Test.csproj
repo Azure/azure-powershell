@@ -44,8 +44,9 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.5.0.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.5.1.2\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -64,7 +65,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Batch, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.2.0.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.3.0.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
@@ -187,20 +188,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts\GetBatchAccountCommandTests.cs" />
-    <Compile Include="Accounts\GetBatchAccountKeysCommandTests.cs" />
-    <Compile Include="Accounts\GetBatchNodeAgentSkusCommandTests.cs" />
-    <Compile Include="Accounts\NewBatchAccountCommandTests.cs" />
-    <Compile Include="Accounts\RegenBatchAccountKeyCommandTests.cs" />
-    <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
-    <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountKeysCommandTests.cs" />
+    <Compile Include="BatchAccounts\GetBatchNodeAgentSkusCommandTests.cs" />
+    <Compile Include="BatchAccounts\NewBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\RegenBatchAccountKeyCommandTests.cs" />
+    <Compile Include="BatchAccounts\RemoveBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="Applications\NewBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\RemoveBatchApplicationPackageCommandTests.cs" />
+    <Compile Include="ApplicationPackages\RemoveBatchApplicationPackageCommandTests.cs" />
     <Compile Include="Applications\GetBatchApplicationCommandTests.cs" />
     <Compile Include="Applications\RemoveBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\GetBatchApplicationPackageCommandTests.cs" />
+    <Compile Include="ApplicationPackages\GetBatchApplicationPackageCommandTests.cs" />
     <Compile Include="Applications\SetBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\NewBatchApplicationPackageCommandTests.cs" />
+    <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommandTests.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Pools\TestBatchAutoScaleCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BatchAccountTests.cs" />
+    <Compile Include="ScenarioTests\BatchApplicationPackageTests.cs" />
     <Compile Include="ScenarioTests\BatchApplicationTests.cs" />
     <Compile Include="ScenarioTests\BatchController.cs" />
     <Compile Include="ScenarioTests\CertificateTests.cs" />
@@ -253,12 +255,12 @@
     <Compile Include="ScenarioTests\PoolTests.cs" />
     <Compile Include="ScenarioTests\ScenarioTestContext.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
-    <Compile Include="ScenarioTests\SubscriptionTests.cs" />
+    <Compile Include="ScenarioTests\LocationTests.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeUserTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeTests.cs" />
     <Compile Include="ScenarioTests\JobScheduleTests.cs" />
-    <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommandTests.cs" />
+    <Compile Include="Locations\GetBatchLocationQuotasCommandTests.cs" />
     <Compile Include="Tasks\GetBatchSubtaskCommandTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
@@ -270,6 +272,7 @@
     <Compile Include="JobSchedules\NewBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\RemoveBatchJobScheduleCommandTests.cs" />
     <Compile Include="Tasks\SetBatchTaskCommandTests.cs" />
+    <Compile Include="Tasks\EnableBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\StopBatchTaskCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +289,9 @@
     <Content Include="Resources\TestApplicationPackage.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="ScenarioTests\BatchApplicationPackageTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\BatchApplicationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -307,7 +313,7 @@
     <None Include="ScenarioTests\PoolTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\SubscriptionTests.ps1">
+    <None Include="ScenarioTests\LocationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TaskTests.ps1">
@@ -340,19 +346,19 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\TestUpdatesExistingBatchAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestCreatePoolWithApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestCreatePoolWithApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUpdateApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestUpdateApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUpdatePoolWithApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestUpdatePoolWithApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUploadApplication.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestAddApplication.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUploadApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestUploadApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestCancelCertificateDelete.json">
@@ -526,6 +532,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobScheduleTests\TestUpdateJobSchedule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDeleteJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -634,7 +643,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestUpdatePool.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.SubscriptionTests\TestGetSubscriptionQuotas.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.LocationTests\TestGetLocationQuotas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">

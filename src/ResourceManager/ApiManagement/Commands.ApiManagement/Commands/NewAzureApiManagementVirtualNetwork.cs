@@ -34,16 +34,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
-            HelpMessage = "Name of the sub network.")]
+            HelpMessage = "The full resource ID of a subnet in a virtual network to deploy the Api Management service in. Example format:" +
+                          "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1.")]
         [ValidateNotNullOrEmpty]
-        public string SubnetName { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = false,
-            Mandatory = true,
-            HelpMessage = "Identifier of the virtual network.")]
-        [ValidateNotNullOrEmpty]
-        public Guid VnetId { get; set; }
+        public string SubnetResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -51,8 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 new PsApiManagementVirtualNetwork
                 {
                     Location = Location,
-                    SubnetName = SubnetName,
-                    VnetId = VnetId
+                    SubnetResourceId = SubnetResourceId
                 });
         }
     }

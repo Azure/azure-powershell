@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute
 
 
             VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
-            if (vm != null)
+            if (vm != null && vm.Resources != null)
             {
                 VirtualMachineExtension extension = vm.Resources.Where(x => x.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace)).FirstOrDefault();
                 if (extension != null)

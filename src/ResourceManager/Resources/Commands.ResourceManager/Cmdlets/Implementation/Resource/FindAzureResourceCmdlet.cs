@@ -144,6 +144,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
+        /// Gets or sets the default api-version to use.
+        /// </summary>
+        public string DefaultApiVersion { get; set; }
+
+        /// <summary>
         /// Collects subscription ids from the pipeline.
         /// </summary>
         protected override void OnProcessRecord()
@@ -166,6 +171,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            this.DefaultApiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ResourcesApiVersion : this.ApiVersion;
+
             if (!this.TenantLevel)
             {
                 this.SubscriptionId = DefaultContext.Subscription.Id;
@@ -246,10 +253,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 extensionResourceType: this.ExtensionResourceType,
                 extensionResourceName: null);
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceCollectionId)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             var odataQuery = QueryFilterBuilder.CreateFilter(
                 resourceType: null,
                 resourceName: null,
@@ -263,7 +266,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .GetResourcesClient()
                 .ListObjectColleciton<JObject>(
                     resourceCollectionId: resourceCollectionId,
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     cancellationToken: this.CancellationToken.Value,
                     odataQuery: odataQuery)
                 .ConfigureAwait(continueOnCapturedContext: false);
@@ -286,14 +289,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     resourceGroupNameContains: this.ResourceGroupNameContains,
                     nameContains: this.ResourceNameContains);
 
-            var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             return await this
                 .GetResourcesClient()
                 .ListResources<JObject>(
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     top: this.Top,
                     filter: filterQuery,
                     cancellationToken: this.CancellationToken.Value)
@@ -315,16 +314,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     resourceGroupNameContains: this.ResourceGroupNameContains,
                     nameContains: this.ResourceNameContains);
 
-            var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             return await this
                 .GetResourcesClient()
                 .ListResources<JObject>(
                     subscriptionId: this.SubscriptionId.Value,
                     resourceGroupName: null,
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     top: this.Top,
                     filter: filterQuery,
                     cancellationToken: this.CancellationToken.Value)
@@ -345,15 +340,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     filter: this.ODataQuery,
                     nameContains: this.ResourceNameContains);
 
-            var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             return await this
                 .GetResourcesClient()
                 .ListResources<JObject>(
                     subscriptionId: this.SubscriptionId.Value,
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     top: this.Top,
                     filter: filterQuery,
                     cancellationToken: this.CancellationToken.Value)

@@ -62,9 +62,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.ApiManagement, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.ApiManagement, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.2.0.3-preview\lib\net40\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.3.1.0-preview\lib\net45\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -151,12 +151,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\NewAzureApiManagementHostnameConfiguration.cs" />
+    <Compile Include="Commands\NewAzureApiManagementRegion.cs" />
     <Compile Include="Commands\NewAzureApiManagementVirtualNetwork.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementRegion.cs" />
     <Compile Include="Commands\SetAzureApiManagementHostnames.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Commands\SetAzureApiManagementVirtualNetworks.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\UpdateAzureApiManagementDeployment.cs">
@@ -177,6 +175,7 @@
     <Compile Include="Models\PsApiManagementRegion.cs" />
     <Compile Include="Models\PsApiManagementSku.cs" />
     <Compile Include="Models\PsApiManagementVirtualNetwork.cs" />
+    <Compile Include="Models\PsApiManagementVpnType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

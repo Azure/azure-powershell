@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public enum PsApiManagementApiFormat
     {
         Wadl = 1,
-        Swagger = 2
+        Swagger = 2,
+        Wsdl = 3
     }
 }

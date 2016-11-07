@@ -101,9 +101,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ApiImportExportTest()
+        public void ApiImportExportWadlTest()
         {
-            RunPowerShellTest("Api-ImportExportTest");
+            RunPowerShellTest("Api-ImportExportWadlTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportExportSwaggerTest()
+        {
+            RunPowerShellTest("Api-ImportExportSwaggerTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportExportWsdlTest()
+        {
+            RunPowerShellTest("Api-ImportExportWsdlTest");
         }
 
         [Fact]
