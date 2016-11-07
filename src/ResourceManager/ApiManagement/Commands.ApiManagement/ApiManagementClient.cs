@@ -77,23 +77,57 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string administratorEmail,
             PsApiManagementSku sku = PsApiManagementSku.Developer,
             int capacity = 1,
-            IDictionary<string, string> tags = null)
+            PsApiManagementVpnType vpnType = PsApiManagementVpnType.None,
+            IDictionary<string, string> tags = null,
+            PsApiManagementVirtualNetwork virtualNetwork = null,
+            PsApiManagementRegion[] additionalRegions = null)
         {
             var parameters = new ApiServiceCreateOrUpdateParameters
             {
                 Location = location,
                 Properties = new ApiServiceProperties
                 {
-                    SkuProperties = new ApiServiceSkuProperties
-                    {
-                        Capacity = capacity,
-                        SkuType = MapSku(sku)
-                    },
                     PublisherEmail = administratorEmail,
-                    PublisherName = organization
+                    PublisherName = organization,
+                    VpnType = MapVirtualNetworkType(vpnType)
+                },
+                SkuProperties = new ApiServiceSkuProperties
+                {
+                    Capacity = capacity,
+                    SkuType = MapSku(sku)
                 },
                 Tags = tags
             };
+
+            if (virtualNetwork != null)
+            {
+                parameters.Properties.VirtualNetworkConfiguration = new VirtualNetworkConfiguration
+                {
+                    Location = virtualNetwork.Location,
+                    SubnetResourceId = virtualNetwork.SubnetResourceId
+                };
+            }
+            
+            if (additionalRegions != null && additionalRegions.Any())
+            {
+                parameters.Properties.AdditionalRegions =
+                    additionalRegions
+                        .Select(region =>
+                            new AdditionalRegion
+                            {
+                                Location = region.Location,
+                                SkuType = MapSku(region.Sku),
+                                SkuUnitCount = region.Capacity,
+                                VirtualNetworkConfiguration = region.VirtualNetwork == null
+                                    ? null
+                                    : new VirtualNetworkConfiguration
+                                    {
+                                        Location = region.VirtualNetwork.Location,
+                                        SubnetResourceId = region.VirtualNetwork.SubnetResourceId
+                                    }
+                            })
+                        .ToList();
+            }
 
             var longrunningResponse = Client.ResourceProvider.BeginCreatingOrUpdating(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
@@ -161,11 +195,13 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagementSku sku,
             int capacity,
             PsApiManagementVirtualNetwork vnetConfiguration,
+            PsApiManagementVpnType vpnType,
             IList<PsApiManagementRegion> additionalRegions)
         {
             var parameters = new ApiServiceManageDeploymentsParameters(location, MapSku(sku))
             {
-                SkuUnitCount = capacity
+                SkuUnitCount = capacity,
+                VpnType = MapVirtualNetworkType(vpnType)
             };
 
             if (vnetConfiguration != null)
@@ -173,8 +209,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 parameters.VirtualNetworkConfiguration = new VirtualNetworkConfiguration
                 {
                     Location = vnetConfiguration.Location,
-                    SubnetName = vnetConfiguration.SubnetName,
-                    VnetId = vnetConfiguration.VnetId
+                    SubnetResourceId = vnetConfiguration.SubnetResourceId
                 };
             }
 
@@ -193,8 +228,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
                                     : new VirtualNetworkConfiguration
                                     {
                                         Location = region.VirtualNetwork.Location,
-                                        SubnetName = region.VirtualNetwork.SubnetName,
-                                        VnetId = region.VirtualNetwork.VnetId
+                                        SubnetResourceId = region.VirtualNetwork.SubnetResourceId
                                     }
                             })
                         .ToList();
@@ -251,29 +285,6 @@ namespace Microsoft.Azure.Commands.ApiManagement
             return Client.ResourceProvider.GetSsoToken(resourceGroupName, serviceName).RedirectUrl;
         }
 
-        public ApiManagementLongRunningOperation BeginManageVirtualNetworks(
-            string resourceGroupName,
-            string serviceName,
-            IList<PsApiManagementVirtualNetwork> virtualNetworks)
-        {
-            var parameters = new ApiServiceManageVirtualNetworksParameters
-            {
-                VirtualNetworkConfigurations = (virtualNetworks == null || virtualNetworks.Count == 0)
-                    ? null
-                    : virtualNetworks.Select(vn =>
-                        new VirtualNetworkConfiguration
-                        {
-                            Location = vn.Location,
-                            SubnetName = vn.SubnetName,
-                            VnetId = vn.VnetId
-                        }).ToList()
-            };
-
-            var longrunningResponse = Client.ResourceProvider.BeginManagingVirtualNetworks(resourceGroupName, serviceName, parameters);
-            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureRmApiManagementVirtualNetworks", longrunningResponse);
-        }
-
         internal ApiManagementLongRunningOperation GetLongRunningOperationStatus(ApiManagementLongRunningOperation longRunningOperation)
         {
             var response =
@@ -305,6 +316,11 @@ namespace Microsoft.Azure.Commands.ApiManagement
         private static SkuType MapSku(PsApiManagementSku sku)
         {
             return Mapper.Map<PsApiManagementSku, SkuType>(sku);
+        }
+
+        private static VirtualNetworkType MapVirtualNetworkType(PsApiManagementVpnType vpnType)
+        {
+            return Mapper.Map<PsApiManagementVpnType, VirtualNetworkType>(vpnType);
         }
 
         private static IEnumerable<HostnameConfiguration> GetHostnamesToCreateOrUpdate(

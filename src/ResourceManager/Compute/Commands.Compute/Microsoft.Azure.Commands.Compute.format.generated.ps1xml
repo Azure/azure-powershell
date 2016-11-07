@@ -82,6 +82,64 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</TypeName>
       </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumberOfCores</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MemoryInMB</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxDataDiskCount</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSDiskSizeInMB</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceDiskSizeInMB</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumberOfCores</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MemoryInMB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxDataDiskCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSDiskSizeInMB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceDiskSizeInMB</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</TypeName>
+      </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
@@ -212,6 +270,22 @@
             <Label>Location</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VmSize</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OsType</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NIC</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -224,6 +298,24 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Location</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.HardwareProfile.VmSize</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.StorageProfile.OsDisk.OsType</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $nics = $_.NetworkProfile.NetworkInterfaces;
+                  foreach ($nic in $nics)
+                  {
+                    $nic.Id.Substring($nic.Id.LastIndexof('/') + 1);
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ProvisioningState</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

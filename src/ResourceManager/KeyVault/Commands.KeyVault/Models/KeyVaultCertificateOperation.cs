@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     {
         public string Id { get; private set; }
         public string Status { get; private set; }
-        public string StatusDetais { get; private set; }
+        public string StatusDetails { get; private set; }
         public string RequestId { get; private set; }
         public string Target { get; private set; }
         public string Issuer { get; private set; }
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 Id = certificateOperation.Id,
                 Status = certificateOperation.Status,
-                StatusDetais = certificateOperation.StatusDetails,
+                StatusDetails = certificateOperation.StatusDetails,
                 RequestId = certificateOperation.RequestId,
                 Target = certificateOperation.Target,
-                Issuer = certificateOperation.IssuerReference.Name,
+                Issuer = certificateOperation.IssuerParameters.Name,
                 CancellationRequested = certificateOperation.CancellationRequested,
             };
 

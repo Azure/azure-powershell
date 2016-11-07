@@ -24,7 +24,7 @@ function Test-GetAzureCorrelationIdLog
     try 
     {
         # Test
-        $actual = Get-AzureRmLog -CorrelationId $correlation -starttime 2015-03-02T10:00:00 -endtime 2015-03-02T12:00:00 -detailedOutput
+        $actual = Get-AzureRmLog -CorrelationId $correlation -starttime 2015-03-02T18:00:00Z -endtime 2015-03-02T20:00:00Z -detailedOutput
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Count 2
@@ -47,7 +47,7 @@ function Test-GetAzureResourceGroupLog
 
     try 
     {
-	    $actual = Get-AzureRmLog -ResourceGroup $rgname -starttime 2015-01-15T04:30:00 -endtime 2015-01-15T12:30:00
+	    $actual = Get-AzureRmLog -ResourceGroup $rgname -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Count 2
@@ -117,7 +117,7 @@ function Test-GetAzureSubscriptionIdLog
     try 
     {
         # Test
-        $actual = Get-AzureRmLog -starttime 2015-01-15T04:30:00 -endtime 2015-01-15T12:30:00 
+        $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
 
         # Assert
         Assert-AreEqual $actual.Count 1

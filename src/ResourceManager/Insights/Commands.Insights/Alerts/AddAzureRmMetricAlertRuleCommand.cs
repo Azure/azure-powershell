@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     MetricName = this.MetricName,
                     ResourceUri = this.TargetResourceId,
                 },
-                Operator = this.Operator,
+                OperatorProperty = this.Operator,
                 Threshold = this.Threshold,
                 TimeAggregation = this.TimeAggregationOperator,
                 WindowSize = this.WindowSize,
@@ -86,26 +85,19 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             return this.CreateThresholdRuleCondition();
         }
 
-        protected override RuleCreateOrUpdateParameters CreateSdkCallParameters()
+        protected override AlertRuleResource CreateSdkCallParameters()
         {
             RuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(String.Format("CreateSdkCallParameters: Creating rule object"));
-            return new RuleCreateOrUpdateParameters()
+            return new AlertRuleResource(location: this.Location, isEnabled: !this.DisableRule, alertRuleResourceName: this.Name)
             {
-                Location = this.Location,
-                Properties = new Rule()
-                {
-                    Name = this.Name,
-                    IsEnabled = !this.DisableRule,
-                    Description = this.Description ?? Utilities.GetDefaultDescription("metric alert rule"),
-                    LastUpdatedTime = DateTime.Now,
-                    Condition = condition,
-                    Actions = this.Actions,
-                },
+                Description = this.Description ?? Utilities.GetDefaultDescription("metric alert rule"),
+                Condition = condition,
+                Actions = this.Actions,
 
                 // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.
-                Tags = new LazyDictionary<string, string>()
+                Tags = new Dictionary<string, string>()
                 {
                     {"$type" , "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage"},
                     {"hidden-link:" + this.TargetResourceId, "Resource" },

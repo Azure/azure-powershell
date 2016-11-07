@@ -310,6 +310,10 @@
                 <Label>EnableIPForwarding</Label>
                 <PropertyName>EnableIPForwarding</PropertyName>
               </ListItem>
+			        <ListItem>
+                <Label>EnableAcceleratedNetworking</Label>
+                <PropertyName>EnableAcceleratedNetworking</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
@@ -1353,6 +1357,28 @@
               <ListItem>
                 <Label>AvailableIPAddresses</Label>
                 <PropertyName>AvailableIPAddressesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHealth</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHealth</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>BackendAddressPools</Label>
+                <PropertyName>BackendAddressPools</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>BackendAddressPoolsText</Label>
+                <PropertyName>BackendAddressPoolsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
