@@ -55,6 +55,21 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         public DetectionType[] ExcludedDetectionType { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the storage account to use.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of retention days for the audit logs table.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The number of retention days for the audit logs")]
+        [ValidateNotNullOrEmpty]
+        public uint? RetentionInDays { get; internal set; }
+
+        /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
         /// </summary>
         /// <returns>True if the model object should be written out, False otherwise</returns>
@@ -86,6 +101,17 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             {
                 model.ExcludedDetectionTypes = BaseThreatDetectionPolicyModel.ProcessExcludedDetectionTypes(ExcludedDetectionType);
             }
+
+            if (RetentionInDays != null)
+            {
+                model.RetentionInDays = RetentionInDays;
+            }
+
+            if (StorageAccountName != null)
+            {
+                model.StorageAccountName = StorageAccountName;
+            }
+
             model.ValidateContent();
             return model;
         }

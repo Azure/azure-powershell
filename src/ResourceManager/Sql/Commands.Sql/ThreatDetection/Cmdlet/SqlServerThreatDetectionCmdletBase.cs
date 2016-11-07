@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerThreatDetectionPolicyModel PersistChanges(ServerThreatDetectionPolicyModel model)
         {
-            ModelAdapter.SetServerThreatDetectionPolicy(model, clientRequestId);
+            ModelAdapter.SetServerThreatDetectionPolicy(model, clientRequestId,
+                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
             return null;
         }
     }
