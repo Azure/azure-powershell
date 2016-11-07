@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
+        [Alias("VMName")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of ETW providers.")]
         [ValidateNotNullOrEmpty]
-        public string[] EtwProviders { get; set; }
+        public string[] EtwProvider { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
             ExecuteClientAction(() =>
             {
-                this.virtualMachine = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+                this.virtualMachine = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.Name);
                 FlushMessageWhileWait(Task.Run(() => StartStreaming()));
             });
         }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             IPEndPoint endpoint = EtwStreamingHelper.GetEtwConnectionInfo(networkInterface, this.NetworkClient);
 
             var connectionInfo = new ListenerConnectionInfo(this.virtualMachine.Name, endpoint.Address.ToString(), endpoint.Port, settings.ServerCertificateThumbprint, settings.ClientCertificateThumbprint);
-            EtwStreamingHelper.StartListening(this, connectionInfo, this.EtwProviders);
+            EtwStreamingHelper.StartListening(this, connectionInfo, this.EtwProvider);
         }
     }
 }

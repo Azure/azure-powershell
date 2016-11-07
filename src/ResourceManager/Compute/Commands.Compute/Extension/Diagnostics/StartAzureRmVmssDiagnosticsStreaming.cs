@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
+        [Alias("ResourceName", "Name")]
         [Parameter(
             Mandatory = true,
             Position = 1,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of ETW providers.")]
         [ValidateNotNullOrEmpty]
-        public string[] EtwProviders { get; set; }
+        public string[] EtwProvider { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             IPEndPoint endpoint = EtwStreamingHelper.GetEtwConnectionInfo(networkInterface, this.NetworkClient);
 
             var connectionInfo = new ListenerConnectionInfo(this.virtualMachineScaleSet.Name, endpoint.Address.ToString(), endpoint.Port, settings.ServerCertificateThumbprint, settings.ClientCertificateThumbprint);
-            EtwStreamingHelper.StartListening(this, connectionInfo, this.EtwProviders);
+            EtwStreamingHelper.StartListening(this, connectionInfo, this.EtwProvider);
         }
     }
 }

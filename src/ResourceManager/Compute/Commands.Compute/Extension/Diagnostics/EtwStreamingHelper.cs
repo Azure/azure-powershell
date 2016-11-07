@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.KeyVault;
@@ -560,7 +561,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 {
                     foreach (var evt in args.Events)
                     {
-                        cmdlet.DispatchOutputMessage(evt.ToPSEtwEvent());
+                        cmdlet.DispatchOutputMessage(Mapper.Map<PSEtwEvent>(evt));
                     }
                 };
 

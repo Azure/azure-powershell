@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         VerbsCommon.Add,
         ProfileNouns.VirtualMachineScaleSetDiagnosticsStreaming,
         SupportsShouldProcess = true)]
+    [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssDiagnosticsStreaming : EtwStreamingVmssCmdletBase
     {
         [Parameter(
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
+        [Alias("ResourceName", "Name")]
         [Parameter(
             Mandatory = true,
             Position = 1,
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             ExecuteClientAction(() =>
             {
                 this.virtualMachineScaleSet = this.ComputeClient.ComputeManagementClient.VirtualMachineScaleSets.Get(this.ResourceGroupName, this.VMScaleSetName);
@@ -95,57 +96,58 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
             // If there have multiple extensions exist (by mistake), keep first one and remove others
             VirtualMachineScaleSetExtension etwExtension = installedEtwListenerExtensions.FirstOrDefault();
-            if (etwExtension != null && etwExtension.TypeHandlerVersion.Equals(EtwListenerConstants.CurrentVersion, StringComparison.InvariantCultureIgnoreCase))
+            if (etwExtension == null || !etwExtension.TypeHandlerVersion.Equals(EtwListenerConstants.CurrentVersion, StringComparison.InvariantCultureIgnoreCase))
             {
-                return;
-            }
+                var keyVault = await this.KeyVaultManagementClient.CreateAzureToolsKeyVaultIfNotExists(this.ResourceGroupName, this.virtualMachineScaleSet.Location, this.AccountUniqueId, DefaultContext.Tenant.Id);
 
-            var keyVault = await this.KeyVaultManagementClient.CreateAzureToolsKeyVaultIfNotExists(this.ResourceGroupName, this.virtualMachineScaleSet.Location, this.AccountUniqueId, DefaultContext.Tenant.Id);
+                var settings = await EtwStreamingHelper.GenerateEtwListenerSettings(this.VMScaleSetName, this.KeyVaultClient, keyVault.Properties.VaultUri);
 
-            var settings = await EtwStreamingHelper.GenerateEtwListenerSettings(this.VMScaleSetName, this.KeyVaultClient, keyVault.Properties.VaultUri);
-
-            if (this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets == null)
-            {
-                this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets = new List<VaultSecretGroup>();
-            }
-
-            var secretGroup = this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.FirstOrDefault(v => string.Equals(v.SourceVault.Id, keyVault.Id, StringComparison.OrdinalIgnoreCase));
-            if (secretGroup == null)
-            {
-                secretGroup = new VaultSecretGroup
+                if (this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets == null)
                 {
-                    SourceVault = new SubResource(keyVault.Id),
-                    VaultCertificates = new List<VaultCertificate>()
-                };
+                    this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets = new List<VaultSecretGroup>();
+                }
 
-                this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.Add(secretGroup);
+                var secretGroup = this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.FirstOrDefault(v => string.Equals(v.SourceVault.Id, keyVault.Id, StringComparison.OrdinalIgnoreCase));
+                if (secretGroup == null)
+                {
+                    secretGroup = new VaultSecretGroup
+                    {
+                        SourceVault = new SubResource(keyVault.Id),
+                        VaultCertificates = new List<VaultCertificate>()
+                    };
+
+                    this.virtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.Add(secretGroup);
+                }
+                else if (secretGroup.VaultCertificates == null)
+                {
+                    secretGroup.VaultCertificates = new List<VaultCertificate>();
+                }
+
+                secretGroup.VaultCertificates.Add(new VaultCertificate(settings.ServerCertificateUrl, StoreName.My.ToString()));
+
+                await this.VirtualMachineScaleSetClient.CreateOrUpdateAsync(this.ResourceGroupName, this.VMScaleSetName, this.virtualMachineScaleSet);
+
+                etwExtension = new VirtualMachineScaleSetExtension
+                    (name: EtwListenerConstants.EtwListenerExtension.Name,
+                    publisher: EtwListenerConstants.EtwListenerExtension.Publisher,
+                    type: EtwListenerConstants.EtwListenerExtension.Type,
+                    settings: settings,
+                    typeHandlerVersion: EtwListenerConstants.CurrentVersion,
+                    autoUpgradeMinorVersion: false
+                    );
+
+                installedExtensions.Add(etwExtension);
+                this.virtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = installedExtensions;
+                await this.VirtualMachineScaleSetClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.VMScaleSetName, virtualMachineScaleSet);
+
+                if (this.virtualMachineScaleSet.UpgradePolicy.Mode != UpgradeMode.Automatic)
+                {
+                    DispatchWarningMessage(Properties.Resources.NeedManualUpgradeScaleSetVMs);
+                }
             }
-            else if (secretGroup.VaultCertificates == null)
-            {
-                secretGroup.VaultCertificates = new List<VaultCertificate>();
-            }
 
-            secretGroup.VaultCertificates.Add(new VaultCertificate(settings.ServerCertificateUrl, StoreName.My.ToString()));
-
-            await this.VirtualMachineScaleSetClient.CreateOrUpdateAsync(this.ResourceGroupName, this.VMScaleSetName, this.virtualMachineScaleSet);
-
-            etwExtension = new VirtualMachineScaleSetExtension
-                (name: EtwListenerConstants.EtwListenerExtension.Name,
-                publisher: EtwListenerConstants.EtwListenerExtension.Publisher,
-                type: EtwListenerConstants.EtwListenerExtension.Type,
-                settings: settings,
-                typeHandlerVersion: EtwListenerConstants.CurrentVersion,
-                autoUpgradeMinorVersion: false
-                );
-
-            installedExtensions.Add(etwExtension);
-            this.virtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = installedExtensions;
-            await this.VirtualMachineScaleSetClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.VMScaleSetName, virtualMachineScaleSet);
-
-            if (this.virtualMachineScaleSet.UpgradePolicy.Mode != UpgradeMode.Automatic)
-            {
-                DispatchWarningMessage(Properties.Resources.NeedManualUpgradeScaleSetVMs);
-            }
+            this.virtualMachineScaleSet = this.VirtualMachineScaleSetClient.Get(this.ResourceGroupName, this.VMScaleSetName);
+            DispatchOutputMessage(this.virtualMachineScaleSet);
         }
     }
 }
