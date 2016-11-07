@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Extension.Diagnostics;
 using Microsoft.Rest.Azure;
+using Microsoft.VisualStudio.EtwListener.Common.Contracts;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -200,6 +202,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             Mapper.CreateMap<AzureOperationResponse<IPage<FROM.Usage>>, TO.PSUsage>()
                 .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<EtwEventData, PSEtwEvent>();
         }
     }
 }

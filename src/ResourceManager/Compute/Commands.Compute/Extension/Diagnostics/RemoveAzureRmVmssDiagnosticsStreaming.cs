@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineScaleSetDiagnosticsStreaming,
         SupportsShouldProcess = true)]
+    [OutputType(typeof(VirtualMachineScaleSet))]
     public class RemoveAzureRmVmssDiagnosticsStreaming : EtwStreamingVmssCmdletBase
     {
         [Parameter(
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
+        [Alias("ResourceName", "Name")]
         [Parameter(
             Mandatory = true,
             Position = 1,
@@ -81,6 +82,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
             // Remove network security group rules and load balancer inbound NAT rules
             await CleanupNetworkPortsAsync(EtwListenerConstants.EtwListenerPortMap);
+
+            this.virtualMachineScaleSet = this.VirtualMachineScaleSetClient.Get(this.ResourceGroupName, this.VMScaleSetName);
+            DispatchOutputMessage(this.virtualMachineScaleSet);
         }
     }
 }

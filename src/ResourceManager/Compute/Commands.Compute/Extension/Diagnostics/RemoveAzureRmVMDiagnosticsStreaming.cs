@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using System.Linq;
@@ -25,6 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineDiagnosticsStreaming,
         SupportsShouldProcess = true)]
+    [OutputType(typeof(PSVirtualMachine))]
     public class RemoveAzureRmVMDiagnosticsStreaming : EtwStreamingVMCmdletBase
     {
         [Parameter(
@@ -35,14 +38,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
+        [Alias("VMName")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -50,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
             ExecuteClientAction(() =>
             {
-                this.virtualMachine = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+                this.virtualMachine = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.Name);
                 FlushMessageWhileWait(DisableEtwListenerAsync());
             });
         }
@@ -65,11 +68,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
             if (etwExtension != null)
             {
-                await this.ComputeClient.ComputeManagementClient.VirtualMachineExtensions.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, etwExtension.Name);
+                await this.ComputeClient.ComputeManagementClient.VirtualMachineExtensions.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.Name, etwExtension.Name);
             }
 
             // Remove network security group rules and load balancer inbound NAT rules
             await CleanupNetworkPortsAsync(EtwListenerConstants.EtwListenerPortMap, new[] { EtwListenerConstants.EtwListenerExtension });
+
+            this.virtualMachine = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
+            DispatchOutputMessage(Mapper.Map<PSVirtualMachine>(this.virtualMachine));
         }
     }
 }
