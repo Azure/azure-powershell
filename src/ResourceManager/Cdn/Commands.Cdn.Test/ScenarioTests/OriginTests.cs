@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
     public class OriginTests
     {
