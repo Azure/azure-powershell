@@ -22,6 +22,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
+		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("*$serverName*")}
 	
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
