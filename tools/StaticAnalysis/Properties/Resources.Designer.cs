@@ -313,6 +313,42 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; in parameter set &apos;{1}&apos; for cmdlet &apos;{2}&apos; no longer has the attribute &apos;ValueFromPipelineByPropertyName&apos;..
+        /// </summary>
+        public static string RemovedValueFromPipelineByPropertyNameDescription {
+            get {
+                return ResourceManager.GetString("RemovedValueFromPipelineByPropertyNameDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add the attribute &apos;ValueFromPipelineByPropertyName&apos; back to parameter &apos;{0}&apos; in parameter set &apos;{1}&apos;..
+        /// </summary>
+        public static string RemovedValueFromPipelineByPropertyNameRemediation {
+            get {
+                return ResourceManager.GetString("RemovedValueFromPipelineByPropertyNameRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; in parameter set &apos;{1}&apos; for cmdlet &apos;{2}&apos; no longer has the attribute &apos;ValueFromPipeline&apos;..
+        /// </summary>
+        public static string RemovedValueFromPipelineDescription {
+            get {
+                return ResourceManager.GetString("RemovedValueFromPipelineDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add the attribute &apos;ValueFromPipeline&apos; back to parameter &apos;{0}&apos; in parameter set &apos;{1}&apos;..
+        /// </summary>
+        public static string RemovedValueFromPipelineRemediation {
+            get {
+                return ResourceManager.GetString("RemovedValueFromPipelineRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The validation set for parameter &apos;{0}&apos; for cmdlet &apos;{1}&apos; no longer contains the value &apos;{2}&apos;..
         /// </summary>
         public static string ValidateSetDescription {

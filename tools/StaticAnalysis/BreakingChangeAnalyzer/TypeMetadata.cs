@@ -45,14 +45,25 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             Name = inputType.Name;
             AssemblyQualifiedName = inputType.AssemblyQualifiedName;
 
-            Properties = new Dictionary<string, string>();
+            Properties = new SerializableMap<string, string>();
 
             var properties = inputType.GetProperties();
             foreach (var property in properties)
             {
-                if (!Properties.ContainsKey(property.Name))
+                bool found = false;
+
+                foreach (var key in Properties.Keys)
                 {
-                    Properties.Add(property.Name, property.PropertyType.ToString());
+                    if (property.Name.Equals(key))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    Properties.Put(property.Name, property.PropertyType.ToString());
                 }
             }
         }
@@ -60,6 +71,57 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public string Namespace { get; set; }
         public string Name { get; set; }
         public string AssemblyQualifiedName { get; set; }
-        public Dictionary<string, string> Properties { get; set; }
+        public SerializableMap<string, string> Properties { get; set; }
+
+    }
+
+    [Serializable]
+    public class SerializableMap<K, V>
+    {
+        private List<K> _keys = new List<K>();
+        private List<Pair<K, V>> _pairs = new List<Pair<K, V>>();
+
+        public List<K> Keys { get { return _keys; } }
+        public List<Pair<K, V>> Pairs { get { return _pairs; } }
+
+        public V Get(K key)
+        {
+            foreach (var pair in _pairs)
+            {
+                if (pair.Key.Equals(key))
+                {
+                    return pair.Value;
+                }
+            }
+
+            return default(V);
+        }
+
+        public void Put(K key, V value)
+        {
+            foreach (var pair in _pairs)
+            {
+                if (pair.Key.Equals(key))
+                {
+                    pair.Value = value;
+                    return;
+                }
+            }
+
+            _pairs.Add(new Pair<K, V>
+            {
+                Key = key,
+                Value = value
+            });
+
+            _keys.Add(key);
+        }
+    }
+
+    [Serializable]
+    public class Pair<E, T>
+    {
+        public E Key { get; set; }
+        public T Value { get; set; }
     }
 }

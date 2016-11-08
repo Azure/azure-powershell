@@ -24,8 +24,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     [Serializable]
     public class CmdletBreakingChangeMetadata
     {
-        private IList<OutputMetadata> _outputTypes = new List<OutputMetadata>();
-        private IList<ParameterMetadata> _parameters = new List<ParameterMetadata>();
+        private List<OutputMetadata> _outputTypes = new List<OutputMetadata>();
+        private List<ParameterMetadata> _parameters = new List<ParameterMetadata>();
 
         private List<string> _aliases = new List<string>();
 
@@ -67,12 +67,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// The set of output types for the cmdlet
         /// </summary>
-        public IList<OutputMetadata> OutputTypes { get { return _outputTypes; } }
+        public List<OutputMetadata> OutputTypes { get { return _outputTypes; } }
 
         /// <summary>
         /// The set of cmdlet parameters
         /// </summary>
-        public IList<ParameterMetadata> Parameters { get { return _parameters; } }
+        public List<ParameterMetadata> Parameters { get { return _parameters; } }
 
         /// <summary>
         /// The set of aliases

@@ -40,5 +40,18 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Position of the parameter in the parameter set
         /// </summary>
         public int Position { get; set; }
+
+        /// <summary>
+        /// Indicates whether the parameter takes its value from a
+        /// pipeline object
+        /// </summary>
+        public bool ValueFromPipeline { get; set; }
+
+        /// <summary>
+        /// Indicates whether the parameter takes its value from a property
+        /// of a pipeline object that has either the same name or the same 
+        /// alias as this parameter
+        /// </summary>
+        public bool ValueFromPipelineByPropertyName { get; set; }
     }
 }
