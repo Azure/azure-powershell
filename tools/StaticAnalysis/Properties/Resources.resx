@@ -201,6 +201,18 @@
   <data name="RemovedShouldProcessRemediation" xml:space="preserve">
     <value>Make sure the cmdlet '{0}' implements SupportsShouldProcess.</value>
   </data>
+  <data name="RemovedValueFromPipelineByPropertyNameDescription" xml:space="preserve">
+    <value>The parameter '{0}' in parameter set '{1}' for cmdlet '{2}' no longer has the attribute 'ValueFromPipelineByPropertyName'.</value>
+  </data>
+  <data name="RemovedValueFromPipelineByPropertyNameRemediation" xml:space="preserve">
+    <value>Add the attribute 'ValueFromPipelineByPropertyName' back to parameter '{0}' in parameter set '{1}'.</value>
+  </data>
+  <data name="RemovedValueFromPipelineDescription" xml:space="preserve">
+    <value>The parameter '{0}' in parameter set '{1}' for cmdlet '{2}' no longer has the attribute 'ValueFromPipeline'.</value>
+  </data>
+  <data name="RemovedValueFromPipelineRemediation" xml:space="preserve">
+    <value>Add the attribute 'ValueFromPipeline' back to parameter '{0}' in parameter set '{1}'.</value>
+  </data>
   <data name="ValidateSetDescription" xml:space="preserve">
     <value>The validation set for parameter '{0}' for cmdlet '{1}' no longer contains the value '{2}'.</value>
   </data>

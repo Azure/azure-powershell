@@ -41,8 +41,9 @@
         public const int MandatoryParameter = 2050;
         public const int ValidateSet = 2060;
         public const int PositionChange = 2070;
+        public const int ValueFromPipeline = 2080;
+        public const int ValueFromPipelineByPropertyName = 2090;
         public const int RemovedShouldProcess = 3000;
         public const int RemovedPaging = 3010;
-
     }
 }

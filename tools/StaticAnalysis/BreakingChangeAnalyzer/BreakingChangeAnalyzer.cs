@@ -20,6 +20,7 @@ using System.Management.Automation;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -76,14 +77,24 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") && 
                                                                         Directory.Exists(Path.GetFullPath(s))))
             {
-                foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
+                // Add current directory for probing
+                probingDirectories.Add(baseDirectory);
+                probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));
+
+                foreach (var directory in probingDirectories)
                 {
                     var index = Path.GetFileName(directory).IndexOf(".");
                     var service = Path.GetFileName(directory).Substring(index + 1);
 
                     var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
                         .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f),
-                            StringComparer.OrdinalIgnoreCase) && Path.GetFileName(f).IndexOf(service) >= 0).ToList();
+                            StringComparer.OrdinalIgnoreCase)).ToList();
+
+                    if (helpFiles.Count > 1)
+                    {
+                        helpFiles = helpFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
+                    }
+
                     if (helpFiles.Any())
                     {
                         Directory.SetCurrentDirectory(directory);
@@ -99,15 +110,20 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 var proxy = EnvironmentHelpers.CreateProxy<CmdletBreakingChangeLoader>(directory, out _appDomain);
                                 var newCmdlets = proxy.GetCmdlets(cmdletFile);
 
-                                string fileName = cmdletFileName + ".bin";
+                                string fileName = cmdletFileName + ".xml";
                                 var oldCmdlets = DeserializeCmdlets(fileName);
 
                                 if (cmdletFilter != null)
                                 {
                                     newCmdlets = newCmdlets.Where<CmdletBreakingChangeMetadata>(
-                                        (cmdlet) => cmdletFilter(cmdlet.Name)).ToList<CmdletBreakingChangeMetadata>();
+                                        (cmdlet) => cmdletFilter(cmdlet.Name) ||
+                                        cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
+                                        .ToList<CmdletBreakingChangeMetadata>();
+
                                     oldCmdlets = oldCmdlets.Where<CmdletBreakingChangeMetadata>(
-                                        (cmdlet) => cmdletFilter(cmdlet.Name)).ToList<CmdletBreakingChangeMetadata>();
+                                        (cmdlet) => cmdletFilter(cmdlet.Name) ||
+                                        cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
+                                        .ToList<CmdletBreakingChangeMetadata>();
                                 }
 
                                 RunBreakingChangeChecks(oldCmdlets, newCmdlets, issueLogger);
@@ -123,12 +139,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="cmdlets"></param>
-        private void SerializeCmdlets(string fileName, IList<CmdletBreakingChangeMetadata> cmdlets)
+        private void SerializeCmdlets(string fileName, List<CmdletBreakingChangeMetadata> cmdlets)
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, cmdlets);
-            stream.Close();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<CmdletBreakingChangeMetadata>));
+            StreamWriter writer = new StreamWriter(fileName);
+            serializer.Serialize(writer, cmdlets);
+            writer.Close();
         }
 
         /// <summary>
@@ -136,11 +152,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        private IList<CmdletBreakingChangeMetadata> DeserializeCmdlets(string fileName)
+        private List<CmdletBreakingChangeMetadata> DeserializeCmdlets(string fileName)
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
-            IList<CmdletBreakingChangeMetadata> cmdlets = (IList<CmdletBreakingChangeMetadata>)formatter.Deserialize(stream);
+            XmlSerializer serializer = new XmlSerializer(typeof(List<CmdletBreakingChangeMetadata>));
+            FileStream stream = new FileStream(fileName, FileMode.Open);
+            List<CmdletBreakingChangeMetadata> cmdlets = (List<CmdletBreakingChangeMetadata>)serializer.Deserialize(stream);
             stream.Close();
             return cmdlets;
         }
@@ -237,6 +253,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             CheckForMandatoryParameters(cmdlet, oldParameter, newParameter, issueLogger);
             CheckParameterValidationSets(cmdlet, oldParameter, newParameter, issueLogger);
             CheckParameterPositions(cmdlet, oldParameter, newParameter, issueLogger);
+            CheckValueFromPipeline(cmdlet, oldParameter, newParameter, issueLogger);
+            CheckValueFromPipelineByPropertyName(cmdlet, oldParameter, newParameter, issueLogger);
         }
 
         /// <summary>
@@ -425,16 +443,16 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                     foundKey = true;
 
                                     // If the type of the property has changed, log an issue
-                                    if (!oldOutput.Type.Properties[oldKey].Equals(newOutput.Type.Properties[newKey]))
+                                    if (!oldOutput.Type.Properties.Get(oldKey).Equals(newOutput.Type.Properties.Get(newKey)))
                                     {
                                         issueLogger.LogBreakingChangeIssue(
                                             cmdlet: oldCmdlet,
                                             severity: 0,
                                             problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputTypeProperty,
                                             description: string.Format(Properties.Resources.ChangedOutputTypePropertyDescription,
-                                                                        oldOutput.Type.Name, oldCmdlet.Name, oldKey, oldOutput.Type.Properties[oldKey]),
+                                                                        oldOutput.Type.Name, oldCmdlet.Name, oldKey, oldOutput.Type.Properties.Get(oldKey)),
                                             remediation: string.Format(Properties.Resources.ChangedOutputTypePropertyRemediation,
-                                                                        oldKey, oldOutput.Type.Name, oldOutput.Type.Properties[oldKey]));
+                                                                        oldKey, oldOutput.Type.Name, oldOutput.Type.Properties.Get(oldKey)));
                                     }
 
                                     break;
@@ -456,6 +474,38 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         }
 
                         break;
+                    }
+                    else
+                    {
+                        // Check to see if the output type name has changed,
+                        // but all of the properties are the same
+                        bool sameOutput = true;
+
+                        foreach (var oldKey in oldOutput.Type.Properties.Keys)
+                        {
+                            bool foundKey = false;
+
+                            foreach (var newKey in newOutput.Type.Properties.Keys)
+                            {
+                                if (oldKey.Equals(newKey) && 
+                                    oldOutput.Type.Properties.Get(oldKey).Equals(newOutput.Type.Properties.Get(newKey)))
+                                {
+                                    foundKey = true;
+                                    break;
+                                }
+                            }
+
+                            if (!foundKey)
+                            {
+                                sameOutput = false;
+                                break;
+                            }
+                        }
+
+                        if (sameOutput)
+                        {
+                            found = true;
+                        }
                     }
                 }
 
@@ -513,16 +563,16 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             found = true;
 
                             // If the type has changed for the property, log an issue
-                            if (!oldParameter.Type.Properties[oldKey].Equals(newParameter.Type.Properties[newKey]))
+                            if (!oldParameter.Type.Properties.Get(oldKey).Equals(newParameter.Type.Properties.Get(newKey)))
                             {
                                 issueLogger.LogBreakingChangeIssue(
                                     cmdlet: cmdlet,
                                     severity: 0,
                                     problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterTypeProperty,
                                     description: string.Format(Properties.Resources.ChangedParameterTypePropertyDescription,
-                                                                oldKey, oldParameter.Type.Name, oldParameter.Name, cmdlet.Name, oldParameter.Type.Properties[oldKey]),
+                                                                oldKey, oldParameter.Type.Name, oldParameter.Name, cmdlet.Name, oldParameter.Type.Properties.Get(oldKey)),
                                     remediation: string.Format(Properties.Resources.ChangedParameterTypePropertyRemediation,
-                                                                oldKey, oldParameter.Type.Properties[oldKey]));
+                                                                oldKey, oldParameter.Type.Properties.Get(oldKey)));
                             }
                         }
                     }
@@ -589,7 +639,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterAlias,
                         description: string.Format(Properties.Resources.RemovedParameterAliasDescription, cmdlet.Name, oldAlias, oldParameter.Name),
-                        remediation: string.Format(Properties.Resources.RemovedParameterAliasRemediation, oldParameter.Name));
+                        remediation: string.Format(Properties.Resources.RemovedParameterAliasRemediation, oldAlias, oldParameter.Name));
                 }
             }
         }
@@ -663,24 +713,31 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // that the value is still in the validation set of the new assembly
             foreach (var oldValue in oldValidateSet)
             {
+                bool found = false;
+
                 foreach (var newValue in newValidateSet)
                 {
-                    // Log an issue if the value is not in the validation set
                     if (oldValue.CompareTo(newValue) < 0)
                     {
-                        issueLogger.LogBreakingChangeIssue(
-                            cmdlet: cmdlet,
-                            severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.ValidateSet,
-                            description: string.Format(Properties.Resources.ValidateSetDescription, oldParameter.Name, oldValue, cmdlet.Name),
-                            remediation: string.Format(Properties.Resources.ValidateSetRemediation, oldValue));
                         break;
                     }
 
                     if (oldValue.Equals(newValue))
                     {
+                        found = true;
                         break;
                     }
+                }
+
+                // Log an issue if the value is not in the validation set
+                if (!found)
+                {
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: cmdlet,
+                        severity: 0,
+                        problemId: ProblemIds.BreakingChangeProblemId.ValidateSet,
+                        description: string.Format(Properties.Resources.ValidateSetDescription, oldParameter.Name, oldValue, cmdlet.Name),
+                        remediation: string.Format(Properties.Resources.ValidateSetRemediation, oldValue, oldParameter.Name));
                 }
             }
         }
@@ -724,6 +781,102 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 problemId: ProblemIds.BreakingChangeProblemId.PositionChange,
                                 description: string.Format(Properties.Resources.PositionChangeDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
                                 remediation: string.Format(Properties.Resources.PositionChangeRemediation, oldParameter.Name, oldParameterSet.Name));
+                        }
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Check if the parameter has a parameter set where it
+        /// can no longer obtain its value from the pipeline
+        /// </summary>
+        /// <param name="cmdlet"></param>
+        /// <param name="oldParameter"></param>
+        /// <param name="newParameter"></param>
+        /// <param name="issueLogger"></param>
+        public void CheckValueFromPipeline(
+            CmdletBreakingChangeMetadata cmdlet,
+            ParameterMetadata oldParameter,
+            ParameterMetadata newParameter,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            var oldParameterSets = oldParameter.ParameterSets;
+            var newParameterSets = newParameter.ParameterSets;
+
+            newParameterSets = newParameterSets.OrderBy(p => p.Name).ToList();
+
+            // For each parameter set in the old assembly, find the matching
+            // parameter set in the new assembly and compare their values
+            foreach (var oldParameterSet in oldParameterSets)
+            {
+                foreach (var newParameterSet in newParameterSets)
+                {
+                    if (oldParameterSet.Name.CompareTo(newParameterSet.Name) < 0)
+                    {
+                        break;
+                    }
+
+                    if (oldParameterSet.Name.Equals(newParameterSet.Name))
+                    {
+                        if (oldParameterSet.ValueFromPipeline && !newParameterSet.ValueFromPipeline)
+                        {
+                            issueLogger.LogBreakingChangeIssue(
+                                cmdlet: cmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipeline,
+                                description: string.Format(Properties.Resources.RemovedValueFromPipelineDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.RemovedValueFromPipelineRemediation, oldParameter.Name, oldParameterSet.Name));
+                        }
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Check if the parameter has a parameter set where it can no
+        /// longer obtain its value from the pipeline by property name 
+        /// </summary>
+        /// <param name="cmdlet"></param>
+        /// <param name="oldParameter"></param>
+        /// <param name="newParameter"></param>
+        /// <param name="issueLogger"></param>
+        public void CheckValueFromPipelineByPropertyName(
+            CmdletBreakingChangeMetadata cmdlet,
+            ParameterMetadata oldParameter,
+            ParameterMetadata newParameter,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            var oldParameterSets = oldParameter.ParameterSets;
+            var newParameterSets = newParameter.ParameterSets;
+
+            newParameterSets = newParameterSets.OrderBy(p => p.Name).ToList();
+
+            // For each parameter set in the old assembly, find the matching
+            // parameter set in the new assembly and compare their values
+            foreach (var oldParameterSet in oldParameterSets)
+            {
+                foreach (var newParameterSet in newParameterSets)
+                {
+                    if (oldParameterSet.Name.CompareTo(newParameterSet.Name) < 0)
+                    {
+                        break;
+                    }
+
+                    if (oldParameterSet.Name.Equals(newParameterSet.Name))
+                    {
+                        if (oldParameterSet.ValueFromPipelineByPropertyName && !newParameterSet.ValueFromPipelineByPropertyName)
+                        {
+                            issueLogger.LogBreakingChangeIssue(
+                                cmdlet: cmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipelineByPropertyName,
+                                description: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameRemediation, oldParameter.Name, oldParameterSet.Name));
                         }
 
                         break;

@@ -30,9 +30,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// </summary>
         /// <param name="assmeblyPath"></param>
         /// <returns></returns>
-        public IList<CmdletBreakingChangeMetadata> GetCmdlets(string assemblyPath)
+        public List<CmdletBreakingChangeMetadata> GetCmdlets(string assemblyPath)
         {
-            IList<CmdletBreakingChangeMetadata> results = new List<CmdletBreakingChangeMetadata>();
+            List<CmdletBreakingChangeMetadata> results = new List<CmdletBreakingChangeMetadata>();
             try
             {
                 var assembly = Assembly.LoadFrom(assemblyPath);
@@ -93,7 +93,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             {
                                 Mandatory = parameterSet.Mandatory,
                                 Name = parameterSet.ParameterSetName,
-                                Position = parameterSet.Position
+                                Position = parameterSet.Position,
+                                ValueFromPipeline = parameterSet.ValueFromPipeline,
+                                ValueFromPipelineByPropertyName = parameterSet.ValueFromPipelineByPropertyName
                             };
 
                             parameterData.ParameterSets.Add(set);
