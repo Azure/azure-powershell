@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                             QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
                             (QueryStringCachingBehavior?)null,
                 OptimizationType = OptimizationType,
-                GeoFilters = GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                GeoFilters = GeoFilters == null ? null : GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
                 Tags = Tags.ToDictionaryTags()
             });
 
