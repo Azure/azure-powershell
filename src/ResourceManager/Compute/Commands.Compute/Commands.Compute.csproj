@@ -250,6 +250,7 @@
     <Compile Include="Extension\SqlServer\RemoveAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\SetAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\VirtualMachineSqlServerExtensionContext.cs" />
+    <Compile Include="Generated\**\*.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\AzureDiskEncryptionStatusContext.cs" />
@@ -373,6 +374,9 @@
     <None Include="..\AzureRM.Compute.psd1">
       <Link>AzureRM.Compute.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
