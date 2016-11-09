@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
             properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tags, properties.Query);
 
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, true, ConfirmAction), true);
+            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, true, ConfirmAction, ETag), true);
         }
 
     }
