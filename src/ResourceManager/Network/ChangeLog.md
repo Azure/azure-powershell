@@ -19,10 +19,9 @@
 -->
 ## Current Release
 
-## Version 3.1.0
-* Add-AzureRmVirtualNetworkPeering
-    - Parameter AlloowGatewayTransit renamed to AllowGatewayTransit (an alias for the old parameter was created)
-    - Fixed issue where UseRemoteGateway property was not being populated in the request to the server
-* Get-AzureRmEffectiveNetworkSecurityGroup
-    - Add warning if there is no response from GetEffectiveNSG
-* Add Source property to EffectiveRoute
+## Version 3.2.0
+*Get-AzureRmVirtualNetworkGatewayConnection
+	- Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
+*Reset-AzureRmVirtualNetworkGateway 
+	- Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
+	- Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
