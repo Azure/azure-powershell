@@ -57,7 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.1.1.0\lib\portable-net45+win+wpa81\Microsoft.Azure.Management.Cdn.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.2.0.0\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -166,6 +166,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.EndpointTests\TestEndpointPipeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.EndpointTests\TestEndpointGeoFilters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.OriginTests\TestOriginGetSetWhenEndpointDoesnotExist.json">
