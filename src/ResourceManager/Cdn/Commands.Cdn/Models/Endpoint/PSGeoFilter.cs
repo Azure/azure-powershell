@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Cdn.Models.Profile
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
-    public enum PSSkuName
+    public class PSGeoFilter
     {
-        Standard_Verizon,
-        Premium_Verizon,
-        Custom_Verizon,
-        Standard_Akamai,
-        Standard_ChinaCdn
+        public string RelativePath { get; set; }
+
+        public PSGeoFilterAction Action { get; set; }
+
+        public string[] CountryCodes { get; set; }
     }
 }
