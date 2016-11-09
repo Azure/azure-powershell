@@ -51,11 +51,11 @@ function Get-ProviderLocation($provider)
 			{  
 			if($location.Locations[0] -eq "West US")
 			{ 
-			return "West US"; #return $location.Locations[1]
+				return $location.Locations[1]
 			}
 			else
 			{
-				return "West US"; #return $location.Locations[0]
+				return $location.Locations[0]
 				}
 			}  
 		}
