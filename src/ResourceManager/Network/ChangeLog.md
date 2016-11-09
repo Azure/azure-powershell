@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+    * Get-AzureRmVirtualNetworkGatewayConnection
+        - Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
+    * Reset-AzureRmVirtualNetworkGateway
+        - Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
+        - Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
+		
 ## Version 3.2.0
-*Get-AzureRmVirtualNetworkGatewayConnection
-	- Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
-*Reset-AzureRmVirtualNetworkGateway 
-	- Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
-	- Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
