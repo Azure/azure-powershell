@@ -305,3 +305,87 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveValueFromPipelineB
         }
     }
 }
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddParameterSet
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "AddParameterSet")]
+    public class TestAddParameterSet : Cmdlet
+    {
+        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
+        public string Parameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-AddParameterSet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameterFromParameterSet
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "RemoveParameterFromParameterSet")]
+    public class TestRemovedParameterFromParameterSet : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public string Foo { get; set; }
+
+        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
+        public string Bar { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-RemoveParameterFromParameterSet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterSetForParameter
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterSetForParameter")]
+    public class TestChangeParameterSetForParameter : Cmdlet
+    {
+        [Parameter(ParameterSetName = "NewParameterSet", Mandatory = false)]
+        public string Foo { get; set; }
+
+        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
+        public string Bar { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeParameterSetForParameter BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeDefaultParameterSet
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeDefaultParameterSet", DefaultParameterSetName = "Bar")]
+    public class TestChangeDefaultParameterSet : Cmdlet
+    {
+        [Parameter(ParameterSetName = "Foo", Mandatory = false)]
+        public string First { get; set; }
+
+        [Parameter(ParameterSetName = "Bar", Mandatory = false)]
+        public string Second { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string Third { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeDefaultParameterSet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}

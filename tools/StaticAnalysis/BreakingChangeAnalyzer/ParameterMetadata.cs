@@ -24,7 +24,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     public class ParameterMetadata
     {
         private List<string> _aliases = new List<string>();
-        private List<ParameterSetMetadata> _parameterSets = new List<ParameterSetMetadata>();
         private List<string> _validateSet = new List<string>();
 
         /// <summary>
@@ -41,11 +40,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// The parameter type
         /// </summary>
         public TypeMetadata Type { get; set; }
-
-        /// <summary>
-        /// The set of parameter sets of the parameter
-        /// </summary>
-        public List<ParameterSetMetadata> ParameterSets { get { return _parameterSets; } }
 
         /// <summary>
         /// The set of valid arguments for the parameter

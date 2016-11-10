@@ -111,22 +111,32 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 var newCmdlets = proxy.GetCmdlets(cmdletFile);
 
                                 string fileName = cmdletFileName + ".xml";
-                                var oldCmdlets = DeserializeCmdlets(fileName);
 
-                                if (cmdletFilter != null)
+                                bool serialize = false;
+
+                                if (serialize)
                                 {
-                                    newCmdlets = newCmdlets.Where<CmdletBreakingChangeMetadata>(
-                                        (cmdlet) => cmdletFilter(cmdlet.Name) ||
-                                        cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
-                                        .ToList<CmdletBreakingChangeMetadata>();
-
-                                    oldCmdlets = oldCmdlets.Where<CmdletBreakingChangeMetadata>(
-                                        (cmdlet) => cmdletFilter(cmdlet.Name) ||
-                                        cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
-                                        .ToList<CmdletBreakingChangeMetadata>();
+                                    SerializeCmdlets(fileName, newCmdlets);
                                 }
+                                else
+                                {
+                                    var oldCmdlets = DeserializeCmdlets(fileName);
 
-                                RunBreakingChangeChecks(oldCmdlets, newCmdlets, issueLogger);
+                                    if (cmdletFilter != null)
+                                    {
+                                        newCmdlets = newCmdlets.Where<CmdletBreakingChangeMetadata>(
+                                            (cmdlet) => cmdletFilter(cmdlet.Name) ||
+                                            cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
+                                            .ToList<CmdletBreakingChangeMetadata>();
+
+                                        oldCmdlets = oldCmdlets.Where<CmdletBreakingChangeMetadata>(
+                                            (cmdlet) => cmdletFilter(cmdlet.Name) ||
+                                            cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
+                                            .ToList<CmdletBreakingChangeMetadata>();
+                                    }
+
+                                    RunBreakingChangeChecks(oldCmdlets, newCmdlets, issueLogger);
+                                }
                             }
                         }
                     }
@@ -178,39 +188,31 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 foreach (var newCmdlet in newCmdlets)
                 {
-                    if (oldCmdlet.Name.Equals(newCmdlet.Name))
+                    if (oldCmdlet.Name.Equals(newCmdlet.Name) ||
+                        newCmdlet.AliasList
+                            .Where(alias => alias.Equals(oldCmdlet.Name))
+                            .ToList().Count > 0)
                     {
                         CheckForRemovedCmdletAlias(oldCmdlet, newCmdlet, issueLogger);
                         CheckForRemovedSupportsShouldProcess(oldCmdlet, newCmdlet, issueLogger);
                         CheckForRemovedSupportsPaging(oldCmdlet, newCmdlet, issueLogger);
                         CheckForChangedOutputType(oldCmdlet, newCmdlet, issueLogger);
-
-                        var oldParameters = oldCmdlet.Parameters;
-                        var newParameters = newCmdlet.Parameters;
+                        CheckDefaultParameterName(oldCmdlet, newCmdlet, issueLogger);
 
                         // For each parameter in the old cmdlet assembly, check if the parameter has been removed with no alias
-                        foreach (var oldParameter in oldParameters)
+                        foreach (var oldParameter in oldCmdlet.Parameters)
                         {
                             bool found = false;
 
                             // For each parameter in the new assembly, check if it contains the name of 
                             // the old parameter or an alias to the parameter
-                            foreach (var newParameter in newParameters)
+                            foreach (var newParameter in newCmdlet.Parameters)
                             {
-                                // For each alias the new parameter contains, check if it is the old parameter name
-                                foreach (var alias in newParameter.AliasList)
-                                {
-                                    if (oldParameter.Name.Equals(alias))
-                                    {
-                                        // Check if there are any breaking changes in the parameter
-                                        CheckParameters(oldCmdlet, oldParameter, newParameter, issueLogger);
-                                        found = true;
-                                        break;
-                                    }
-                                }
-
                                 // Check if the parameter name is equal to the old parameter name
-                                if (oldParameter.Name.Equals(newParameter.Name))
+                                if (oldParameter.Name.Equals(newParameter.Name) ||
+                                    newParameter.AliasList
+                                        .Where(alias => alias.Equals(oldParameter.Name))
+                                        .ToList().Count > 0)
                                 {
                                     // Check if there are any breaking changes in the parameter
                                     CheckParameters(oldCmdlet, oldParameter, newParameter, issueLogger);
@@ -229,6 +231,35 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                         description: string.Format(Properties.Resources.RemovedParameterDescription, oldCmdlet.Name, oldParameter.Name),
                                         remediation: string.Format(Properties.Resources.RemovedParameterRemediation, oldParameter.Name, oldCmdlet.Name));
                             }                                
+                        }
+
+                        // For each of the parameter sets in the old assembly,
+                        // find the corresponding parameter set in the new assembly
+                        // and run all of the necessary checks
+                        foreach (var oldParameterSet in oldCmdlet.ParameterSets)
+                        {
+                            bool found = false;
+
+                            foreach (var newParameterSet in newCmdlet.ParameterSets)
+                            {
+                                if (oldParameterSet.Name.Equals(newParameterSet.Name))
+                                {
+                                    CheckParameterSets(oldCmdlet, oldParameterSet, newParameterSet, issueLogger);
+                                    found = true;
+                                }
+                            }
+
+                            // If the parameter set can not be found, log an issue
+                            // If there was no parameter set previously, do not log an issue
+                            if (!found && !oldParameterSet.Name.Equals("__AllParameterSets"))
+                            {
+                                issueLogger.LogBreakingChangeIssue(
+                                    cmdlet: oldCmdlet,
+                                    severity: 0,
+                                    problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterSet,
+                                    description: string.Format(Properties.Resources.RemovedParameterSetDescription, oldParameterSet.Name, oldCmdlet.Name),
+                                    remediation: string.Format(Properties.Resources.RemovedParameterSetRemediation, oldParameterSet.Name, oldCmdlet.Name));
+                            }
                         }
                     }
                 }
@@ -250,11 +281,102 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         {
             CheckForChangedParameterType(cmdlet, oldParameter, newParameter, issueLogger);
             CheckForRemovedParameterAlias(cmdlet, oldParameter, newParameter, issueLogger);
-            CheckForMandatoryParameters(cmdlet, oldParameter, newParameter, issueLogger);
             CheckParameterValidationSets(cmdlet, oldParameter, newParameter, issueLogger);
-            CheckParameterPositions(cmdlet, oldParameter, newParameter, issueLogger);
-            CheckValueFromPipeline(cmdlet, oldParameter, newParameter, issueLogger);
-            CheckValueFromPipelineByPropertyName(cmdlet, oldParameter, newParameter, issueLogger);
+        }
+
+        /// <summary>
+        /// Run all of the different breaking change checks for parameter sets
+        /// </summary>
+        /// <param name="cmdlet"></param>
+        /// <param name="oldParameterSet"></param>
+        /// <param name="newParameterSet"></param>
+        /// <param name="issueLogger"></param>
+        private void CheckParameterSets(
+            CmdletBreakingChangeMetadata cmdlet,
+            ParameterSetMetadata oldParameterSet,
+            ParameterSetMetadata newParameterSet,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            // For each of the parameters in the old parameter set assembly, find the parameter
+            // in the new parameter set assembly that either has the same name, or an alias to
+            // the original name
+            foreach (var oldParameter in oldParameterSet.Parameters)
+            {
+                bool found = false;
+
+                foreach (var newParameter in newParameterSet.Parameters)
+                {
+                    if (oldParameter.ParameterMetadata.Name.Equals(newParameter.ParameterMetadata.Name) ||
+                        newParameter.ParameterMetadata.AliasList
+                            .Where(alias => alias.Equals(oldParameter.ParameterMetadata.Name))
+                            .ToList().Count > 0)
+                    {
+                        found = true;
+
+                        // If the parameter was optional in the old assembly and
+                        // mandatory in the new assembly, log an issue
+                        if (!oldParameter.Mandatory && newParameter.Mandatory)
+                        {
+                            issueLogger.LogBreakingChangeIssue(
+                                cmdlet: cmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.MandatoryParameter,
+                                description: string.Format(Properties.Resources.MandatoryParameterDescription, oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.MandatoryParameterRemediation, oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
+                        }
+
+                        // If the parameter had a position and it has changed in the
+                        // new assembly, log an issue
+                        if (oldParameter.Position >= 0 && oldParameter.Position != newParameter.Position)
+                        {
+                            issueLogger.LogBreakingChangeIssue(
+                                cmdlet: cmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.PositionChange,
+                                description: string.Format(Properties.Resources.PositionChangeDescription, oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.PositionChangeRemediation, oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
+                        }
+
+                        // If the parameter can no longer get its value from
+                        // the pipeline, log an issue
+                        if (oldParameter.ValueFromPipeline && !newParameter.ValueFromPipeline)
+                        {
+                            issueLogger.LogBreakingChangeIssue(
+                                cmdlet: cmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipeline,
+                                description: string.Format(Properties.Resources.RemovedValueFromPipelineDescription, oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.RemovedValueFromPipelineRemediation, oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
+                        }
+
+                        // If the parameter can no longer get its value from
+                        // the pipeline by property name, log an issue
+                        if (oldParameter.ValueFromPipelineByPropertyName && !newParameter.ValueFromPipelineByPropertyName)
+                        {
+                            issueLogger.LogBreakingChangeIssue(
+                                cmdlet: cmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipelineByPropertyName,
+                                description: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameDescription, oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
+                                remediation: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameRemediation, oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
+                        }
+
+                        break;
+                    }
+                }
+
+                // If we were unable to find the parameter in the new
+                // parameter set assembly, log an issue
+                if (!found)
+                {
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: cmdlet,
+                        severity: 0,
+                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterFromParameterSet,
+                        description: string.Format(Properties.Resources.RemovedParameterFromParameterSetDescription, oldParameter.ParameterMetadata.Name, cmdlet.Name, oldParameterSet.Name),
+                        remediation: string.Format(Properties.Resources.RemovedParameterFromParameterSetRemediation, oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
+                }
+            }
         }
 
         /// <summary>
@@ -277,18 +399,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // name of the old cmdlet or an alias to the cmdlet
                 foreach (var newCmdlet in newCmdlets)
                 {
-                    // For each alias the new cmdlet contains, check if it is the old cmdlet name
-                    foreach (var alias in newCmdlet.AliasList)
-                    {
-                        if (oldCmdlet.Name.Equals(alias))
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-
-                    // Check if the cmdlet name is equal to the old cmdlet name
-                    if (oldCmdlet.Name.Equals(newCmdlet.Name))
+                    // Check if the cmdlet name is equal to the old cmdlet name or if
+                    // there is an alias to the original cmdlet name
+                    if (oldCmdlet.Name.Equals(newCmdlet.Name) ||
+                        newCmdlet.AliasList
+                            .Where(alias => alias.Equals(oldCmdlet.Name))
+                            .ToList().Count > 0)
                     {
                         found = true;
                         break;
@@ -523,6 +639,94 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         }
 
         /// <summary>
+        /// Check if the default parameter set has changed, and if so, make sure
+        /// that the parameters are the same
+        /// </summary>
+        /// <param name="oldCmdlet"></param>
+        /// <param name="newCmdlet"></param>
+        /// <param name="issueLogger"></param>
+        private void CheckDefaultParameterName(
+            CmdletBreakingChangeMetadata oldCmdlet,
+            CmdletBreakingChangeMetadata newCmdlet,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            // If the default parameter name hasn't changed, or if there wasn't a
+            // default parameter set defined before, return
+            if (oldCmdlet.DefaultParameterSetName.Equals(newCmdlet.DefaultParameterSetName) ||
+                oldCmdlet.DefaultParameterSetName.Equals("__AllParameterSets"))
+            {
+                return;
+            }
+
+            ParameterSetMetadata oldDefaultParameterSet = null;
+            ParameterSetMetadata newDefaultParameterSet = null;
+
+            // Get the ParameterSetMetadata object corresponding to the
+            // default parameter set for the old assembly
+            foreach (var oldParameterSet in oldCmdlet.ParameterSets)
+            {
+                if (oldParameterSet.Name.Equals(oldCmdlet.DefaultParameterSetName))
+                {
+                    oldDefaultParameterSet = oldParameterSet;
+                    break;
+                }
+            }
+
+            // Get the ParameterSetMetadata object corresponding to the
+            // default parameter set for the new assembly
+            foreach (var newParameterSet in newCmdlet.ParameterSets)
+            {
+                if (newParameterSet.Name.Equals(newCmdlet.DefaultParameterSetName))
+                {
+                    newDefaultParameterSet = newParameterSet;
+                    break;
+                }
+            }
+
+            bool issue = false;
+
+            // For each parameter in the old default parameter set, find
+            // the corresponding parameter in the new default parameter set
+            foreach (var oldParameter in oldDefaultParameterSet.Parameters)
+            {
+                bool found = false;
+
+                foreach (var newParameter in newDefaultParameterSet.Parameters)
+                {
+                    if (oldParameter.ParameterMetadata.Name.Equals(newParameter.ParameterMetadata.Name) ||
+                        newParameter.ParameterMetadata.AliasList
+                            .Where(alias => alias.Equals(oldParameter.ParameterMetadata.Name))
+                            .ToList().Count > 0)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                // If we weren't able to find the parameter, file an issue
+                if (!found)
+                {
+                    issue = true;
+                    break;
+                }
+            }
+
+            // File an issue if a parameter in the old default parameter set
+            // has been removed in the new default parameter set
+            if (issue)
+            {
+                issueLogger.LogBreakingChangeIssue(
+                    cmdlet: oldCmdlet,
+                    severity: 0,
+                    problemId: ProblemIds.BreakingChangeProblemId.ChangeDefaultParameter,
+                    description: string.Format(Properties.Resources.ChangeDefaultParameterDescription, oldCmdlet.DefaultParameterSetName, oldCmdlet.Name),
+                    remediation: string.Format(Properties.Resources.ChangeDefaultParameterRemediation, oldCmdlet.Name, oldCmdlet.DefaultParameterSetName));
+            }
+
+            
+        }
+
+        /// <summary>
         /// Check if the type for a parameter has been changed, or if any of the
         /// type's properties have been removed or changed.
         /// </summary>
@@ -645,60 +849,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         }
 
         /// <summary>
-        /// Checks if a parameter has been made mandatory for a given parameter set.
-        /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
-        private void CheckForMandatoryParameters(
-            CmdletBreakingChangeMetadata cmdlet,
-            ParameterMetadata oldParameter,
-            ParameterMetadata newParameter,
-            ReportLogger<BreakingChangeIssue> issueLogger)
-        {
-            var oldParameterSets = oldParameter.ParameterSets;
-            var newParameterSets = newParameter.ParameterSets;
-
-            newParameterSets = newParameterSets.OrderBy(p => p.Name).ToList();
-
-            // For each parameter set in the old assembly, find the matching
-            // parameter set in the new assembly and compare their values
-            foreach (var oldParameterSet in oldParameterSets)
-            {
-                foreach (var newParameterSet in newParameterSets)
-                {
-                    if (oldParameterSet.Name.CompareTo(newParameterSet.Name) < 0)
-                    {
-                        break;
-                    }
-
-                    if (oldParameterSet.Name.Equals(newParameterSet.Name))
-                    {
-                        // If the parameter was optional in the old assembly and
-                        // mandatory in the new assembly, log an issue
-                        if (!oldParameterSet.Mandatory && newParameterSet.Mandatory)
-                        {
-                            issueLogger.LogBreakingChangeIssue(
-                                cmdlet: cmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.MandatoryParameter,
-                                description: string.Format(Properties.Resources.MandatoryParameterDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
-                                remediation: string.Format(Properties.Resources.MandatoryParameterRemediation, oldParameter.Name, oldParameterSet.Name));
-                        }
-
-                        break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Check for any values that were removed from a validation set of a parameter.
         /// </summary>
         /// <param name="oldCmdlet"></param>
         /// <param name="newCmdlet"></param>
         /// <param name="issueLogger"></param>
-        public void CheckParameterValidationSets(
+        private void CheckParameterValidationSets(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
@@ -738,149 +894,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         problemId: ProblemIds.BreakingChangeProblemId.ValidateSet,
                         description: string.Format(Properties.Resources.ValidateSetDescription, oldParameter.Name, oldValue, cmdlet.Name),
                         remediation: string.Format(Properties.Resources.ValidateSetRemediation, oldValue, oldParameter.Name));
-                }
-            }
-        }
-
-        /// <summary>
-        /// Check for any position changes in parameters 
-        /// </summary>
-        /// <param name="cmdlet"></param>
-        /// <param name="oldParameter"></param>
-        /// <param name="newParameter"></param>
-        /// <param name="issueLogger"></param>
-        public void CheckParameterPositions(
-            CmdletBreakingChangeMetadata cmdlet,
-            ParameterMetadata oldParameter,
-            ParameterMetadata newParameter,
-            ReportLogger<BreakingChangeIssue> issueLogger)
-        {
-            var oldParameterSets = oldParameter.ParameterSets;
-            var newParameterSets = newParameter.ParameterSets;
-
-            newParameterSets = newParameterSets.OrderBy(p => p.Name).ToList();
-
-            // For each parameter set in the old assembly, find the matching
-            // parameter set in the new assembly and compare their values
-            foreach (var oldParameterSet in oldParameterSets)
-            {
-                foreach (var newParameterSet in newParameterSets)
-                {
-                    if (oldParameterSet.Name.CompareTo(newParameterSet.Name) < 0)
-                    {
-                        break;
-                    }
-
-                    if (oldParameterSet.Name.Equals(newParameterSet.Name))
-                    {
-                        if (oldParameterSet.Position >= 0 && oldParameterSet.Position != newParameterSet.Position)
-                        {
-                            issueLogger.LogBreakingChangeIssue(
-                                cmdlet: cmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.PositionChange,
-                                description: string.Format(Properties.Resources.PositionChangeDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
-                                remediation: string.Format(Properties.Resources.PositionChangeRemediation, oldParameter.Name, oldParameterSet.Name));
-                        }
-
-                        break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Check if the parameter has a parameter set where it
-        /// can no longer obtain its value from the pipeline
-        /// </summary>
-        /// <param name="cmdlet"></param>
-        /// <param name="oldParameter"></param>
-        /// <param name="newParameter"></param>
-        /// <param name="issueLogger"></param>
-        public void CheckValueFromPipeline(
-            CmdletBreakingChangeMetadata cmdlet,
-            ParameterMetadata oldParameter,
-            ParameterMetadata newParameter,
-            ReportLogger<BreakingChangeIssue> issueLogger)
-        {
-            var oldParameterSets = oldParameter.ParameterSets;
-            var newParameterSets = newParameter.ParameterSets;
-
-            newParameterSets = newParameterSets.OrderBy(p => p.Name).ToList();
-
-            // For each parameter set in the old assembly, find the matching
-            // parameter set in the new assembly and compare their values
-            foreach (var oldParameterSet in oldParameterSets)
-            {
-                foreach (var newParameterSet in newParameterSets)
-                {
-                    if (oldParameterSet.Name.CompareTo(newParameterSet.Name) < 0)
-                    {
-                        break;
-                    }
-
-                    if (oldParameterSet.Name.Equals(newParameterSet.Name))
-                    {
-                        if (oldParameterSet.ValueFromPipeline && !newParameterSet.ValueFromPipeline)
-                        {
-                            issueLogger.LogBreakingChangeIssue(
-                                cmdlet: cmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipeline,
-                                description: string.Format(Properties.Resources.RemovedValueFromPipelineDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
-                                remediation: string.Format(Properties.Resources.RemovedValueFromPipelineRemediation, oldParameter.Name, oldParameterSet.Name));
-                        }
-
-                        break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Check if the parameter has a parameter set where it can no
-        /// longer obtain its value from the pipeline by property name 
-        /// </summary>
-        /// <param name="cmdlet"></param>
-        /// <param name="oldParameter"></param>
-        /// <param name="newParameter"></param>
-        /// <param name="issueLogger"></param>
-        public void CheckValueFromPipelineByPropertyName(
-            CmdletBreakingChangeMetadata cmdlet,
-            ParameterMetadata oldParameter,
-            ParameterMetadata newParameter,
-            ReportLogger<BreakingChangeIssue> issueLogger)
-        {
-            var oldParameterSets = oldParameter.ParameterSets;
-            var newParameterSets = newParameter.ParameterSets;
-
-            newParameterSets = newParameterSets.OrderBy(p => p.Name).ToList();
-
-            // For each parameter set in the old assembly, find the matching
-            // parameter set in the new assembly and compare their values
-            foreach (var oldParameterSet in oldParameterSets)
-            {
-                foreach (var newParameterSet in newParameterSets)
-                {
-                    if (oldParameterSet.Name.CompareTo(newParameterSet.Name) < 0)
-                    {
-                        break;
-                    }
-
-                    if (oldParameterSet.Name.Equals(newParameterSet.Name))
-                    {
-                        if (oldParameterSet.ValueFromPipelineByPropertyName && !newParameterSet.ValueFromPipelineByPropertyName)
-                        {
-                            issueLogger.LogBreakingChangeIssue(
-                                cmdlet: cmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipelineByPropertyName,
-                                description: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameDescription, oldParameter.Name, oldParameterSet.Name, cmdlet.Name),
-                                remediation: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameRemediation, oldParameter.Name, oldParameterSet.Name));
-                        }
-
-                        break;
-                    }
                 }
             }
         }

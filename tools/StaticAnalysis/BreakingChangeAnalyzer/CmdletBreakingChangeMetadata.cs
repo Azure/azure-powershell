@@ -26,7 +26,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     {
         private List<OutputMetadata> _outputTypes = new List<OutputMetadata>();
         private List<ParameterMetadata> _parameters = new List<ParameterMetadata>();
-
+        private List<ParameterSetMetadata> _parameterSets = new List<ParameterSetMetadata>();
         private List<string> _aliases = new List<string>();
 
         /// <summary>
@@ -65,6 +65,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public bool SupportsPaging { get; set; }
 
         /// <summary>
+        /// The default parameter set for the cmdlet
+        /// </summary>
+        public string DefaultParameterSetName { get; set; }
+
+        /// <summary>
         /// The set of output types for the cmdlet
         /// </summary>
         public List<OutputMetadata> OutputTypes { get { return _outputTypes; } }
@@ -73,6 +78,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// The set of cmdlet parameters
         /// </summary>
         public List<ParameterMetadata> Parameters { get { return _parameters; } }
+
+        /// <summary>
+        /// The set of cmdlet parameter sets
+        /// </summary>
+        public List<ParameterSetMetadata> ParameterSets { get { return _parameterSets; } }
 
         /// <summary>
         /// The set of aliases

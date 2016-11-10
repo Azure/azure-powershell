@@ -61,6 +61,24 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parameter set &apos;{0}&apos; for cmdlet &apos;{1}&apos; is no longer the default parameter set..
+        /// </summary>
+        public static string ChangeDefaultParameterDescription {
+            get {
+                return ResourceManager.GetString("ChangeDefaultParameterDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the default parameter for cmdlet &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangeDefaultParameterRemediation {
+            get {
+                return ResourceManager.GetString("ChangeDefaultParameterRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The cmdlet &apos;{0}&apos; no longer has output type &apos;{1}&apos;..
         /// </summary>
         public static string ChangedOutputTypeDescription {
@@ -268,11 +286,47 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; in cmdlet &apos;{1}&apos; is no longer in the parameter set &apos;{2}&apos;..
+        /// </summary>
+        public static string RemovedParameterFromParameterSetDescription {
+            get {
+                return ResourceManager.GetString("RemovedParameterFromParameterSetDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add parameter &apos;{0}&apos; back to the parameter set &apos;{1}&apos;..
+        /// </summary>
+        public static string RemovedParameterFromParameterSetRemediation {
+            get {
+                return ResourceManager.GetString("RemovedParameterFromParameterSetRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add the parameter &apos;{0}&apos; back to the cmdlet &apos;{1}&apos;, or add an alias to the original parameter name..
         /// </summary>
         public static string RemovedParameterRemediation {
             get {
                 return ResourceManager.GetString("RemovedParameterRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter set &apos;{0}&apos; for cmdlet &apos;{1}&apos; has been removed..
+        /// </summary>
+        public static string RemovedParameterSetDescription {
+            get {
+                return ResourceManager.GetString("RemovedParameterSetDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add parameter set &apos;{0}&apos; back to cmdlet &apos;{1}&apos;..
+        /// </summary>
+        public static string RemovedParameterSetRemediation {
+            get {
+                return ResourceManager.GetString("RemovedParameterSetRemediation", resourceCulture);
             }
         }
         
