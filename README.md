@@ -80,7 +80,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 ### Source Code
 
 1. Download the source code from GitHub repo
-2. Follow the [Microsoft Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide)
+2. Follow the [Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide)
 
 ### Supported PowerShell Versions
 
