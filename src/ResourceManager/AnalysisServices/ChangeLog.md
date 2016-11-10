@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 0.0.2
+## Version 3.2.0
 * Fixed bug in Get-AzureRMAnalysisServicesServer
     - When this command was run against some resources, it would fail with a null reference exception.
 * Added two new dataplane APIs in a separate module AzureRM.AnalysisServices.ServiceManagement.psd1
