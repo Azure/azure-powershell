@@ -80,8 +80,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public bool Use32BitWorkerProcess { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Destination slot name for auto swap")]        
+        [Parameter(Mandatory = false, HelpMessage = "Destination slot name for auto swap")]
+
         public string AutoSwapSlotName { get; set; }
+        [Parameter(Position = 16, Mandatory = false, HelpMessage = "The number of workers to be allocated", ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public int NumberOfWorkers { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -114,7 +118,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                             WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
                             Use32BitWorkerProcess =
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
-                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null
+                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
+                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
                         };
                     }
 
