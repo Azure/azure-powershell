@@ -27,10 +27,10 @@ function Get-AzureProfileMap
   $ProfileCache = Get-ProfileCachePath
   if(-Not (Test-Path $ProfileCache))
   {
-    New-Item -ItemType Directory -Force -Path $ProfileCache
+    New-Item -ItemType Directory -Force -Path $ProfileCache | Out-Null
   }
 
-  $response = Invoke-RestMethod -Uri $PSProfileMapEndpoint -ErrorVariable RestError -OutFile "$ProfileCache\ProfileMap.Json"
+  $response = Invoke-RestMethod -ea SilentlyContinue -Uri $PSProfileMapEndpoint -ErrorVariable RestError -OutFile "$ProfileCache\ProfileMap.Json"
 
   if ($RestError)
   {
@@ -82,7 +82,7 @@ function Get-AzProfile
     # If cache doesn't exist, Check embedded source
     $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
     $ProfileMap = Get-Content -Raw -Path "$defaults\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json
-    if($profileMap -eq $null)
+    if($ProfileMap -eq $null)
     {
         # Cache & Embedded source empty; Return error and stop
         throw [System.IO.FileNotFoundException] "$ProfileMap not found."
@@ -139,6 +139,7 @@ function Get-AzureRmModule
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
+    $ProfileMap = (Get-AzProfile)
     $Profiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $enum = $Profiles.GetEnumerator()
     $toss = $enum.MoveNext()
