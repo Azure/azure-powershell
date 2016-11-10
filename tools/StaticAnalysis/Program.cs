@@ -28,9 +28,9 @@ namespace StaticAnalysis
     {
         static readonly IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
-            // new HelpAnalyzer.HelpAnalyzer(),
-            // new DependencyAnalyzer.DependencyAnalyzer(),
-            // new SignatureVerifier.SignatureVerifier()
+            new HelpAnalyzer.HelpAnalyzer(),
+            new DependencyAnalyzer.DependencyAnalyzer(),
+            new SignatureVerifier.SignatureVerifier(),
             new BreakingChangeAnalyzer.BreakingChangeAnalyzer()
         };
 
@@ -96,8 +96,6 @@ namespace StaticAnalysis
                 analysisLogger.WriteError(ex.ToString());
                 throw ex;
             }
-
-            Console.ReadLine();
         }
     }
 }
