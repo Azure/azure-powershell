@@ -86,9 +86,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 15, Mandatory = false, HelpMessage = "Destination slot name for auto swap")]
         public string AutoSwapSlotName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 16, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
+
+        [Parameter(Position = 17, Mandatory = false, HelpMessage = "The number of workers to be allocated", ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public int NumberOfWorkers { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -121,7 +125,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
                             Use32BitWorkerProcess =
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
-                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null
+                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
+                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
                         };
                     }
 
