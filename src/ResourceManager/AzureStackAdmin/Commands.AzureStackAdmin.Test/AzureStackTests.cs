@@ -39,6 +39,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOffer()
         {
             AzStackTestRunner.NewInstance.RunPsTest("Test-Offer");
