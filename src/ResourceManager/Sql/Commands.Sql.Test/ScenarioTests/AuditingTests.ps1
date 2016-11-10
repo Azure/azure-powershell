@@ -949,7 +949,7 @@ Tests that when modifying properties of a server's blob auditing policy, these p
 function Test-BlobAuditingOnServer
 {
 	# Setup
-	$testSuffix = 881277
+	$testSuffix = 881267
 	Create-TestEnvironment $testSuffix "Japan East"
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
