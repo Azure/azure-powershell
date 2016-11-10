@@ -49,7 +49,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         ConfirmImpact = cmdlet.ConfirmImpact,
                         SupportsPaging = cmdlet.SupportsPaging,
                         SupportsShouldProcess = cmdlet.SupportsShouldProcess,
-                        ClassName = type.FullName
+                        ClassName = type.FullName,
+                        DefaultParameterSetName = cmdlet.DefaultParameterSetName ?? "__AllParameterSets"
                     };
 
                     if (type.HasAttribute<AliasAttribute>())
@@ -72,6 +73,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         }
                     }
 
+                    List<Parameter> globalParameters = new List<Parameter>();
+
                     foreach (var parameter in parameters)
                     {
                         var parameterData = new ParameterMetadata
@@ -85,29 +88,66 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             var aliases = parameter.GetAttributes<AliasAttribute>();
                             parameterData.AliasList.AddRange(
                                 aliases.SelectMany(a => a.AliasNames));
-                        }
-
-                        foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
-                        {
-                            var set = new ParameterSetMetadata
-                            {
-                                Mandatory = parameterSet.Mandatory,
-                                Name = parameterSet.ParameterSetName,
-                                Position = parameterSet.Position,
-                                ValueFromPipeline = parameterSet.ValueFromPipeline,
-                                ValueFromPipelineByPropertyName = parameterSet.ValueFromPipelineByPropertyName
-                            };
-
-                            parameterData.ParameterSets.Add(set);
-                        }
+                        }                        
 
                         if (parameter.HasAttribute<ValidateSetAttribute>())
                         {
                             var validateSet = parameter.GetAttribute<ValidateSetAttribute>();
                             parameterData.ValidateSet.AddRange(validateSet.ValidValues);
-                        }
+                        }                        
 
                         cmdletMetadata.Parameters.Add(parameterData);
+
+                        foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
+                        {
+                            ParameterSetMetadata parameterSetMetadata = new ParameterSetMetadata()
+                            {
+                                Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
+                            };
+
+                            foreach (var set in cmdletMetadata.ParameterSets)
+                            {
+                                if (set.Name.Equals(parameterSet.ParameterSetName))
+                                {
+                                    parameterSetMetadata = set;
+                                    break;
+                                }
+                            }
+
+                            Parameter param = new Parameter
+                            {
+                                ParameterMetadata = parameterData,
+                                Mandatory = parameterSet.Mandatory,
+                                Position = parameterSet.Position,
+                                ValueFromPipeline = parameterSet.ValueFromPipeline,
+                                ValueFromPipelineByPropertyName = parameterSet.ValueFromPipelineByPropertyName
+                            };
+
+                            if (parameterSet.ParameterSetName.Equals("__AllParameterSets"))
+                            {
+                                globalParameters.Add(param);
+                            }
+
+                            parameterSetMetadata.Parameters.Add(param);
+
+                            if (parameterSetMetadata.Parameters.Count == 1)
+                            {
+                                cmdletMetadata.ParameterSets.Add(parameterSetMetadata);
+                            }
+                        }
+                    }
+
+                    foreach (var parameterSet in cmdletMetadata.ParameterSets)
+                    {
+                        if (parameterSet.Name.Equals("__AllParameterSets"))
+                        {
+                            continue;
+                        }
+
+                        foreach (var parameter in globalParameters)
+                        {
+                            parameterSet.Parameters.Add(parameter);
+                        }
                     }
 
                     results.Add(cmdletMetadata);

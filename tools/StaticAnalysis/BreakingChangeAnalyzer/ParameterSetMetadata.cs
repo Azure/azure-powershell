@@ -26,15 +26,32 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     [Serializable]
     public class ParameterSetMetadata
     {
-        /// <summary>
-        /// Specifies if the parameter is mandatory in the given parameter set
-        /// </summary>
-        public bool Mandatory { get; set; }
+        private List<Parameter> _parameters = new List<Parameter>();
 
         /// <summary>
         /// Name of the parameter set
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// The set of parameters in the parameter set
+        /// </summary>
+        public List<Parameter> Parameters { get { return _parameters; } }
+    }
+
+    [Serializable]
+    public class Parameter
+    {
+        /// <summary>
+        /// Contains information shared among the parameter throughout
+        /// all of the parameter sets it may be apart of
+        /// </summary>
+        public ParameterMetadata ParameterMetadata { get; set; }
+
+        /// <summary>
+        /// Specifies if the parameter is mandatory in the given parameter set
+        /// </summary>
+        public bool Mandatory { get; set; }
 
         /// <summary>
         /// Position of the parameter in the parameter set

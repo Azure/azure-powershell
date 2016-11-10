@@ -283,5 +283,63 @@ namespace StaticAnalysis.Test
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ValueFromPipelineByPropertyName))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ValueFromPipelineByPropertyName));
         }
+
+        [Fact()]
+        public void AddParameterSet()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-AddParameterSet", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
+
+        [Fact()]
+        public void RemoveParameterFromParameterSet()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-RemoveParameterFromParameterSet", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
+
+        [Fact()]
+        public void ChangeParameterSetForParameter()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeParameterSetForParameter", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterFromParameterSet))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterFromParameterSet));
+        }
+
+        [Fact()]
+        public void ChangeDefaultParameterSet()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeDefaultParameterSet", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangeDefaultParameter))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangeDefaultParameter));
+        }
     }
 }
