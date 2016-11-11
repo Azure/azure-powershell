@@ -169,32 +169,3 @@ function Test-NegativeAnalysisServicesServer
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
-
-
-function Test-AnalysisServicesServerRestart
-{
-    param
-	(
-		$environment = "aspaaswestusloop1.asazure-int.windows.net",
-		$location = "West US"
-	)
-	try
-	{
-		# Creating server
-		$resourceGroupName = Get-ResourceGroupName
-		$serverName = Get-AnalysisServicesServerName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
-		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
-
-		Login-AzureAsAccount -EnvironmentName $environment
-		Restart-AzureAsInstance -Instance $serverName
-	}
-	finally
-	{
-		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-	}
-}
