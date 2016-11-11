@@ -108,7 +108,6 @@ function Test-VirtualNetworkGatewayCRUD
 
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-
       $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
@@ -126,6 +125,12 @@ function Test-VirtualNetworkGatewayCRUD
       # Reset/Reboot virtualNetworkGateway primary
       $actual = Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected
       $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+
+	  # Reset/Reboot virtualNetworkGateway by passing gateway vip
+	  $publicipAddress = Get-AzureRmPublicIpAddress -Name $publicip.Name -ResourceGroupName $publicip.ResourceGroupName
+	  $actual = Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewayVip $publicipAddress.IpAddress
+	  $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
 
       # Delete virtualNetworkGateway
