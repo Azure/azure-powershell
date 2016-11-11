@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Commands.AnalysisServices")]
+[assembly: AssemblyTitle("Commands.AnalysisServices.ServiceManagement")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Commands.AnalysisServices")]
+[assembly: AssemblyProduct("Commands.AnalysisServices.ServiceManagement")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("9688e9d1-7c21-41b7-86de-6056fb60a9f8")]
+[assembly: Guid("899ba147-12e6-4553-97ae-65e27f7a372a")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -35,5 +35,5 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 
 
-[assembly: AssemblyVersion("0.0.2")]
-[assembly: AssemblyFileVersion("0.0.2")]
+[assembly: AssemblyVersion("0.0.1")]
+[assembly: AssemblyFileVersion("0.0.1")]

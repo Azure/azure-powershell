@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AnalysisServices.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AnalysisServices", "Commands.AnalysisServices\Commands.AnalysisServices.csproj", "{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AnalysisServices.ServiceManagement", "Commands.AnalysisServices.ServiceManagement\Commands.AnalysisServices.ServiceManagement.csproj", "{4944B213-4F12-4815-B416-3FF1853ADCC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4944B213-4F12-4815-B416-3FF1853ADCC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4944B213-4F12-4815-B416-3FF1853ADCC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4944B213-4F12-4815-B416-3FF1853ADCC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4944B213-4F12-4815-B416-3FF1853ADCC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
