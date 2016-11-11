@@ -79,7 +79,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.1.1.0\lib\portable-net45+win+wpa81\Microsoft.Azure.Management.Cdn.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.2.0.0\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -111,6 +111,8 @@
     <Compile Include="Models\Endpoint\PSCustomDomainInvalidReason.cs" />
     <Compile Include="Models\Endpoint\PSDeepCreatedOrigin.cs" />
     <Compile Include="Models\Endpoint\PSEndpointResourceState.cs" />
+    <Compile Include="Models\Endpoint\PSGeoFilter.cs" />
+    <Compile Include="Models\Endpoint\PSGeoFilterAction.cs" />
     <Compile Include="Models\Endpoint\PSLoadInput.cs" />
     <Compile Include="Models\Endpoint\PSEndpoint.cs" />
     <Compile Include="Models\Endpoint\PSPurgeInput.cs" />
