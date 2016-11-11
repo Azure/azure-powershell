@@ -59,13 +59,13 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
             if (OriginName == null)
             {
                 //list all origins on this endpoint
-                var origins = CdnManagementClient.Origins.ListByEndpoint(EndpointName, ProfileName, ResourceGroupName).Select(o => o.ToPsOrigin());
+                var origins = CdnManagementClient.Origins.ListByEndpoint(ResourceGroupName, ProfileName, EndpointName).Select(o => o.ToPsOrigin());
                 WriteVerbose(Resources.Success);
                 WriteObject(origins, true);
             }
             else
             {
-                var origin = CdnManagementClient.Origins.Get(OriginName, EndpointName, ProfileName, ResourceGroupName);
+                var origin = CdnManagementClient.Origins.Get(ResourceGroupName, ProfileName, EndpointName, OriginName);
                 WriteVerbose(Resources.Success);
                 WriteObject(origin.ToPsOrigin());
             }

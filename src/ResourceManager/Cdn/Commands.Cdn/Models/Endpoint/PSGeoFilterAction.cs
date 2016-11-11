@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Cdn.Models.Profile
+
+namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
-    public enum PSSkuName
+    public enum PSGeoFilterAction
     {
-        Standard_Verizon,
-        Premium_Verizon,
-        Custom_Verizon,
-        Standard_Akamai,
-        Standard_ChinaCdn
+        Allow,
+        Block
     }
 }

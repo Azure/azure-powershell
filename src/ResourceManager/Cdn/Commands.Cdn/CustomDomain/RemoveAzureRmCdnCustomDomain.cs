@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
             }
 
 
-            var existingCustomDomain = CdnManagementClient.CustomDomains.ListByEndpoint(EndpointName, ProfileName, ResourceGroupName)
-                .Where(cd => cd.Name.ToLower() == CustomDomainName.ToLower())
-                .FirstOrDefault();
+            var existingCustomDomain = CdnManagementClient.CustomDomains
+                .ListByEndpoint(ResourceGroupName, ProfileName, EndpointName)
+                .FirstOrDefault(cd => cd.Name.ToLower() == CustomDomainName.ToLower());
 
             if (existingCustomDomain == null)
             {
@@ -80,10 +80,11 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
             ConfirmAction(MyInvocation.InvocationName,
                 String.Format("{0} ({1})", existingCustomDomain.Name, existingCustomDomain.HostName),
-                () => CdnManagementClient.CustomDomains.DeleteIfExists(CustomDomainName,
-                    EndpointName,
+                () => CdnManagementClient.CustomDomains.Delete(
+                    ResourceGroupName,
                     ProfileName,
-                    ResourceGroupName));
+                    EndpointName,
+                    CustomDomainName));
 
             if (PassThru)
             {
