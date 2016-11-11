@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
@@ -67,8 +68,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             var processedHelpFiles = new List<string>();
             var issueLogger = Logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
 
-            List<string> probingDirectories = new List<string>();
-
             if (directoryFilter != null)
             {
                 cmdletProbingDirs = directoryFilter(cmdletProbingDirs);
@@ -77,6 +76,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") && 
                                                                         Directory.Exists(Path.GetFullPath(s))))
             {
+                List<string> probingDirectories = new List<string>();
+
                 // Add current directory for probing
                 probingDirectories.Add(baseDirectory);
                 probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));
@@ -111,7 +112,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 var newCmdlets = proxy.GetCmdlets(cmdletFile);
 
                                 string fileName = cmdletFileName + ".xml";
+                                string executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
+                                string filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
                                 bool serialize = false;
 
                                 if (serialize)
@@ -120,7 +123,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 }
                                 else
                                 {
-                                    var oldCmdlets = DeserializeCmdlets(fileName);
+                                    var oldCmdlets = DeserializeCmdlets(filePath);
 
                                     if (cmdletFilter != null)
                                     {

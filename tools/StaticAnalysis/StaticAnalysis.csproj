@@ -129,6 +129,139 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SerializedCmdlets\TestCmdletsModule.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SerializedCmdlets\Microsoft.WindowsAzure.Commands.Storage.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.AnalysisServices.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ApiManagement.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.AzureBackup.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Batch.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Cdn.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DataFactories.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DataLakeAnalytics.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DataLakeStore.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DevTestLabs.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Dns.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.HDInsight.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Insights.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.KeyVault.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.LogicApp.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.MachineLearning.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Management.CognitiveServices.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Management.Storage.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Media.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Network.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.NotificationHubs.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.OperationalInsights.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Profile.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RecoveryServices.ARM.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RecoveryServices.Backup.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RedisCache.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ResourceManager.Automation.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Resources.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Scheduler.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServerManagement.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.SiteRecovery.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Sql.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.StreamAnalytics.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Tags.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.TrafficManager.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.UsageAggregates.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Websites.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Compute.dll.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.  
