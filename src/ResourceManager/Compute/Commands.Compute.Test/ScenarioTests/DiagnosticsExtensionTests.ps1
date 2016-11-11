@@ -316,9 +316,9 @@ function Test-VMDiagnosticsStreaming
         # Setup
         $vm = Create-VirtualMachine -rgname $rgname -loc $loc
 
-        Add-AzureRmVMDiagnosticsStreaming -ResourceGroupName $rgname -VMName $vm.Name
+        Add-AzureRmVMDiagnosticsStreaming -ResourceGroupName $rgname -Name $vm.Name
 
-        Remove-AzureRmVMDiagnosticsStreaming -ResourceGroupName $rgname -VMName $vm.Name
+        Remove-AzureRmVMDiagnosticsStreaming -ResourceGroupName $rgname -Name $vm.Name
     }
     finally
     {
@@ -378,7 +378,7 @@ function Create-Vmss($rgname, $loc, $vmssname)
     $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
     $adminUsername = 'Foo12';
-    $adminPassword = "BaR@123" + $rgname;
+    $adminPassword = $PLACEHOLDER;
 
     $imgRef = Get-DefaultCRPImage -loc $loc;
     $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
