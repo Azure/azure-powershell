@@ -54,7 +54,7 @@ function Test-ListLocationsSupportCaching
 {
     $allLocations = Get-AzureManagedCacheLocation
     
-    Assert-AreNotEqual 0 $allLocations.Count
+	Assert-AreNotEqual 0 $allLocations.Count
 
     $found = $FALSE
     foreach ($location in $allLocations)
@@ -66,6 +66,30 @@ function Test-ListLocationsSupportCaching
         }
     }
     Assert-True {$found}
+}
+
+
+########################## Cache Retirement Warning message test  #############################
+<#
+.SYNOPSIS
+List locations that support managed caching service
+#>
+function Test-RetirementWarningMessage
+{
+	$datetime = Get-Date            
+	$datetime.ToUniversalTime()
+	$cacheRetired = $datetime -gt "2016-12-01 00:00:00Z"
+    $allLocations = Get-AzureManagedCacheLocation
+    $warningText =  ""
+	if($cacheRetired)
+	{
+		$warningText =  "The Azure Managed Cache Service has been retired as of"
+	}
+	else
+	{
+		$warningText =  "The Azure Managed Cache Service will be retired on"
+	}
+    Assert-ThrowsContains {Get-AzureManagedCacheLocation} $warningText
 }
 
 ########################## Managed Cache (Named cache) Scenario Tests #############################
