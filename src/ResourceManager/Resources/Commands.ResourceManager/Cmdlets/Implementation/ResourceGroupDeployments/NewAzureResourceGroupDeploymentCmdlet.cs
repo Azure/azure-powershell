@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         ResourceGroupName = ResourceGroupName,
                         DeploymentName = Name,
                         DeploymentMode = Mode,
-                        TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                        TemplateFile = TemplateUri ?? this.TryResolvePathWithException(TemplateFile),
                         TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                         ParameterUri = TemplateParameterUri,
                         DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
