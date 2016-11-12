@@ -40,11 +40,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        public static string TryResolvePathWithException(this PSCmdlet psCmdlet, string path)
-        {
-            return psCmdlet.ResolvePath(path);
-        }
-
         public static string ResolvePath(this PSCmdlet psCmdlet, string path)
         {
             if (path == null)
