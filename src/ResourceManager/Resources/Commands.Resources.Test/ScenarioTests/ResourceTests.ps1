@@ -358,6 +358,40 @@ function Test-FindAResource
 
 <#
 .SYNOPSIS
+Tests finding a resource by tag.
+#>
+function Test-FindAResource-ByTag
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = "testname"
+	$rname2 = "test2name"
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{ScenarioTestTag = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -Tag @{ScenarioTestTag = "ScenarioTestVal"}
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	$expected = Find-AzureRmResource -Tag @{ScenarioTestTag = $null}
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	$expected = Find-AzureRmResource -TagName "ScenarioTestTag"
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	$expected = Find-AzureRmResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+}
+
+<#
+.SYNOPSIS
 Tests getting a resource with properties expanded
 #>
 function Test-GetResourceExpandProperties
