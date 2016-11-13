@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                     throw new Exception(Properties.Resources.InvalidEventTypeSet);
                 }
             }
-            return string.Join(";", model.EventType.Select(t => t.ToString()));
+            return string.Join(",", model.EventType.Select(t => t.ToString()));
         }
 
         /// <summary>
