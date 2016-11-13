@@ -2,7 +2,7 @@ $RollUpModule = "AzureRM"
 $PSProfileMapEndpoint = "https://profile.azureedge.net/powershell/ProfileMap.json"
 $PSModule = $ExecutionContext.SessionState.Module
 $script:BootStrapRepo = "BootStrap"
-$RepoLocation = "\\aaptfile01\adxsdk\PowerShell\bootstrapper"
+$RepoLocation = "https://www.powershellgallery.com/api/v2/"
 $existingRepos = Get-PSRepository | Where {$_.SourceLocation -eq $RepoLocation}
 if ($existingRepos -eq $null)
 {
@@ -53,16 +53,16 @@ function Get-AzProfile
   DynamicParam
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
-    Add-ForceParam $params
+    Add-SwitchParam $params "Update"
     Add-SwitchParam $params "ListAvailable" "ListAvailableParameterSet"
     return $params
   }
 
   PROCESS
   {
-    $Force = $PSBoundParameters.Force
-    # If force is present, download ProfileMap from Storage blob endpoint
-    if ($Force.IsPresent)
+    $Update = $PSBoundParameters.Update
+    # If Update is present, download ProfileMap from Storage blob endpoint
+    if ($Update.IsPresent)
     {
       return (Get-AzureProfileMap)
     }
@@ -192,7 +192,7 @@ function Get-AzureRmProfile
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-SwitchParam $params "ListAvailable" "ListAvailableParameterSet"
-    Add-ForceParam $params
+    Add-SwitchParam $params "Update"
     return $params
   }
   PROCESS
