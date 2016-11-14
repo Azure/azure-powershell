@@ -20,3 +20,4 @@
 ## Current Release
 
 ## Version 3.1.0
+* Adding changes related to communication of retirement message for managed cache customers. For more information, see http://go.microsoft.com/fwlink/?LinkID=717458
