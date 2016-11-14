@@ -26,9 +26,9 @@ Test the usage of the Set virtual machine chef extension command
 #>
 
 # Setup
-$vmName = "vm4"
-$svcName = "strvm4"
-$storageName = "strvm4"
+$vmName = "vmtwo"
+$svcName = "storone"
+$storageName = "storone"
 $location = "West US"
 
 function Test-SetAzureVMChefExtension
@@ -88,8 +88,8 @@ function Test-SetAzureVMChefExtension
 	finally
 	{
 		# Cleanup
-		Cleanup-CloudService $svcName
 		Remove-AzureStorageAccount -StorageAccountName $storageName -ErrorAction SilentlyContinue
+		Cleanup-CloudService $svcName
 	}
 	
 }
