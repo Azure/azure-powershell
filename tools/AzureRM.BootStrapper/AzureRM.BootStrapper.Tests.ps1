@@ -19,8 +19,6 @@ Describe "Get-AzureProfileMap" {
         Context "ProfilePath does not exist" {
             It "Returns the proper json file" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
-            }
-            It "Checks all the verifiable Mock calls" {
                 Assert-VerifiableMocks
             }
         }
@@ -53,7 +51,7 @@ Describe Get-AzProfile {
             Mock Get-AzureProfileMap { $global:testProfileMap }
             
             It "Should get ProfileMap from Azure Endpoint" {
-                 Get-AzProfile -Force  | Should Be "{`"profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"profile2`": { `"Module1`": [`"2.0`"], `"Module2`": [`"2.0`"] }}"
+                 Get-AzProfile -Update  | Should Be "{`"profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"profile2`": { `"Module1`": [`"2.0`"], `"Module2`": [`"2.0`"] }}"
             }
             It "Checks Mock calls to Get-AzureProfileMap" {
                 Assert-MockCalled Get-AzureProfileMap -Exactly 1
@@ -67,8 +65,6 @@ Describe Get-AzProfile {
             
             It "Should get ProfileMap from Cache" {
                 Get-AzProfile | Should Be "@{profile1=; profile2=}"
-            }
-            It "Checks all verifiable mocks" {
                 Assert-VerifiableMocks
             }
         }
@@ -80,8 +76,6 @@ Describe Get-AzProfile {
 
             It "Should get ProfileMap from Embedded source" {
                 Get-AzProfile | Should Be "@{profile1=; profile2=}"
-            }
-            It "Checks all verifiable mocks" {
                 Assert-VerifiableMocks
             }
         }
@@ -93,8 +87,6 @@ Describe Get-AzProfile {
 
             It "Should throw FileNotFound Exception" {
                 { Get-AzProfile } | Should Throw
-            }
-            It "Checks all verifiable mocks" {
                 Assert-VerifiableMocks
             }
         }
@@ -144,6 +136,14 @@ Describe "Get-AzureRmModule" {
                 Assert-VerifiableMocks
             }
         }
+
+        Context "Module not in the list" {
+            Mock Get-Module -Verifiable { @( [PSCustomObject] @{ Name='Module1'; Version='1.0'; RepositorySourceLocation='foo\bar' }, [PSCustomObject] @{ Name='Module1'; Version='2.0'}) }
+            It "Should return null" {
+                Get-AzureRmModule -Profile 'Profile2' -Module 'Module2' | Should be $null
+                Assert-VerifiableMocks
+            }
+        }
     }
 }
 
@@ -160,9 +160,9 @@ Describe "Get-AzureRmProfile" {
             }
         }
 
-        Context "With ListAvailable and Force Switches" {
+        Context "With ListAvailable and update Switches" {
             It "Should return available profiles" {
-                $Result = (Get-AzureRmProfile -ListAvailable -Force)
+                $Result = (Get-AzureRmProfile -ListAvailable -Update)
                 $Result.Length | Should Be 14
                 $Result[0] | Should Be "Profile: Profile1"
                 Assert-VerifiableMocks
@@ -209,9 +209,11 @@ Describe "Use-AzureRmProfile" {
 
         Context "Modules are installed" {
             Mock Get-AzureRmModule -Verifiable { "1.0" } -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
+            Mock Import-Module { "Module1 1.0 Imported"} -ParameterFilter { $Name -eq "Module1" -and $RequiredVersion -eq "1.0"}
             It "Should skip installing modules" {
-                (Use-AzureRmProfile -Profile 'Profile1' -Force) | Should Be "Importing Module..."
+                (Use-AzureRmProfile -Profile 'Profile1' -Force) | Should Be "Module1 1.0 Imported"
                 Assert-MockCalled Install-Module -Exactly 0
+                Assert-MockCalled Import-Module -Exactly 1
                 Assert-VerifiableMocks
             }
         }
