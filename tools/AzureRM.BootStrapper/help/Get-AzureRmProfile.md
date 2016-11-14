@@ -11,7 +11,7 @@ List the supported AzureRM profiles.
 ## SYNTAX
 
 ```
-Get-AzureRmProfile [-ListAvailable] [-Force]
+Get-AzureRmProfile [-ListAvailable] [-Update]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
+### -Update
 If specified, updates Profiles available by querying Azure Endpoint
 
 ```yaml
