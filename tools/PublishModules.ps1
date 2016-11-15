@@ -180,19 +180,12 @@ function Change-RMModule
 		  Expand-Archive $zipPath
 		  Write-Output "Adding PSM1 dependency to $unzippedManifest"
 
-          if ($moduleName -ne "AzureStack")
-          {
-              Add-PSM1Dependency -Path $unzippedManifest
-          }
+          Add-PSM1Dependency -Path $unzippedManifest
 
 		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
           
-          # There is no psm1 file for AzureStack, just the psd1 file
-          if ($moduleName -ne "AzureStack")
-          {
-              Remove-ModuleDependencies -Path $unzippedManifest
-          }
-		  
+          Remove-ModuleDependencies -Path $unzippedManifest
+          
 		  Remove-Item -Path $zipPath -Force
 		  Write-Output "Compressing $zipPath"
 		  Compress-Archive (Join-Path -Path $dirPath -ChildPath "*") -DestinationPath $zipPath
