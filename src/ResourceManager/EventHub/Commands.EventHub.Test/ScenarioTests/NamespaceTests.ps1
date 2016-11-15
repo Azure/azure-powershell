@@ -18,7 +18,7 @@ Get ResourceGroup name
 #>
 function Get-ResourceGroupName
 {
-    return "RGName-" + (getAssetName)
+  return "RGName-" + (getAssetName)
 }
 
 <#
@@ -295,6 +295,5 @@ function NamespaceAuthTests
     Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
 
 	Write-Debug " Delete resourcegroup"
-	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-	   
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force	   
 }

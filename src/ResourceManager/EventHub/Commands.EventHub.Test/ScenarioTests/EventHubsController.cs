@@ -42,13 +42,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
         public EventHubManagementClient EventHubsManagementClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-        //public GalleryClient GalleryClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -144,26 +138,8 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
-            EventHubsManagementClient = GetEventHubsManagementClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
-            //GalleryClient = GetGalleryClient();
-
-            //var armStorageManagementClient = GetArmStorageManagementClient();
-            //helper.SetupManagementClients(ResourceManagementClient,
-            //    SubscriptionClient,
-            //    EventHubsManagementClient,
-            //    AuthorizationManagementClient,
-            //    GalleryClient,
-            //    armStorageManagementClient
-            //    );
-            var armStorageManagementClient = GetArmStorageManagementClient();
-            helper.SetupManagementClients(ResourceManagementClient,
-                SubscriptionClient,
-                EventHubsManagementClient,
-                AuthorizationManagementClient,                
-                armStorageManagementClient
-                );
+            EventHubsManagementClient = GetEventHubsManagementClient(context);            
+            helper.SetupManagementClients(ResourceManagementClient,EventHubsManagementClient);
         }
 
         protected StorageManagementClient GetArmStorageManagementClient()
@@ -189,11 +165,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
-
-        //private GalleryClient GetGalleryClient()
-        //{
-        //    return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        //}
-
+        
     }
 }

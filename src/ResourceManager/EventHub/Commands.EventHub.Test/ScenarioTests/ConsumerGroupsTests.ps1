@@ -18,8 +18,7 @@ Get valid resource group name
 #>
 function Get-ResourceGroupName
 {
-    return "RGName-" + (getAssetName)	
-	
+    return "RGName-" + (getAssetName)		
 }
 
 <#
