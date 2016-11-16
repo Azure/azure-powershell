@@ -18,6 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updating Managed Cache warning message which notifies customer about service deprecation. For more information about Managed Cache service deprecation, see http://go.microsoft.com/fwlink/?LinkID=717458
 
 ## Version 3.1.0
-* Adding changes related to communication of retirement message for managed cache customers. For more information, see http://go.microsoft.com/fwlink/?LinkID=717458
