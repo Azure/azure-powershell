@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Model
 {
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             MaxSizeBytes = database.Properties.MaxSizeBytes;
             DatabaseName = database.Name;
             Status = database.Properties.Status;
-            Tags = database.Tags as Dictionary<string, string>;
+            Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
             ElasticPoolName = database.Properties.ElasticPoolName;
             Location = database.Location;
             ResourceId = database.Id;

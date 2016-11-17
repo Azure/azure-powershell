@@ -95,12 +95,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             // Construct a new entity so we only send the relevant data to the server
             List<Model.AzureSqlServerModel> updateData = new List<Model.AzureSqlServerModel>();
+
             updateData.Add(new Model.AzureSqlServerModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 SqlAdministratorPassword = this.SqlAdministratorPassword,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tags")? TagsConversionHelper.CreateTagDictionary(Tags, validate: true) : model.FirstOrDefault().Tags,
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
             });
