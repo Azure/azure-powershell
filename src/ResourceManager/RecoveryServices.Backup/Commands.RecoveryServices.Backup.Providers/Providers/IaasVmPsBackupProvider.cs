@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 protectedItemUri = HelperUtils.GetProtectableItemUri(
                     keyValueDict, protectableObjectResource.Id);
 
-
                 IaaSVMProtectableItem iaasVmProtectableItem =
                     (IaaSVMProtectableItem)protectableObjectResource.Properties;
                 if (iaasVmProtectableItem != null)
@@ -260,7 +259,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-            
+
             var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
                 containerUri, protectedItemName, recoveryPointId);
 
@@ -644,7 +643,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //Default is daily scedule at 10:30 AM local time
             defaultSchedule.ScheduleRunFrequency = CmdletModel.ScheduleRunType.Daily;
 
-
             DateTime scheduleTime = GenerateRandomTime();
             defaultSchedule.ScheduleRunTimes = new List<DateTime>();
             defaultSchedule.ScheduleRunTimes.Add(scheduleTime);
@@ -969,7 +967,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string virtualMachineId = GetAzureIaasVirtualMachineId(rgName, vmVersion, vmName);
 
             ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
-                q => q.BackupManagementType 
+                q => q.BackupManagementType
                      == ServiceClientModel.BackupManagementType.AzureIaasVM);
 
             var protectableItemList = ServiceClientAdapter.ListProtectableItem(queryParam);
@@ -1007,14 +1005,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string errorMessage = string.Empty;
             var refreshContainerJobResponse = ServiceClientAdapter.RefreshContainers();
-            
+
             var operationStatus = TrackingHelpers.GetOperationResult(
                 refreshContainerJobResponse,
-                operationId => 
+                operationId =>
                     ServiceClientAdapter.GetRefreshContainerOperationResult(operationId));
 
             //Now wait for the operation to Complete
-            if (refreshContainerJobResponse.Response.StatusCode 
+            if (refreshContainerJobResponse.Response.StatusCode
                     != SystemNet.HttpStatusCode.NoContent)
             {
                 errorMessage = string.Format(Resources.DiscoveryFailureErrorCode,

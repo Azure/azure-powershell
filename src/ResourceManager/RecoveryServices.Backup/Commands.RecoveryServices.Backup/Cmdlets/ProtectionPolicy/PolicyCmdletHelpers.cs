@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Class hosting helper methods for policy related cmdlets.
     /// </summary>
-    public class PolicyCmdletHelpers 
+    public class PolicyCmdletHelpers
     {
         public static Regex policyNameRgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
 
@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <param name="policyName">Name of the policy</param>
         public static void ValidateProtectionPolicyName(string policyName)
         {
-            if(string.IsNullOrEmpty(policyName))
+            if (string.IsNullOrEmpty(policyName))
             {
                 throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
             }
 
-            if (policyName.Length < PolicyConstants.MinPolicyNameLength || 
+            if (policyName.Length < PolicyConstants.MinPolicyNameLength ||
                 policyName.Length > PolicyConstants.MaxPolicyNameLength)
             {
                 throw new ArgumentException(Resources.ProtectionPolicyNameLengthException);

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Cancels a job. Returns the corresponding job object after the trigger of the cancellation finishes. 
     /// The job may not cancel successfully. The cmdlet will ensure that the service is notified that a cancellation has been triggered.
     /// </summary>
-    [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet), 
+    [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet),
     OutputType(typeof(JobBase))]
     public class StopAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Job which needs to be canceled.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.StopJobJobFilter, 
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.StopJobJobFilter,
             ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public JobBase Job { get; set; }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// ID of the job which needs to be canceled.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.StopJobJobIdFilter, 
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.StopJobJobIdFilter,
             ParameterSetName = IdFilterSet, Position = 2)]
         [ValidateNotNull]
         public string JobId { get; set; }
@@ -62,14 +62,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteDebug("Stopping job with ID: " + JobId);
 
                 var cancelResponse = ServiceClientAdapter.CancelJob(JobId);
-                
+
                 var operationStatus = TrackingHelpers.GetOperationResult(
                     cancelResponse,
                     operationId => ServiceClientAdapter.GetCancelJobOperationResult(operationId));
 
                 if (operationStatus.Response.StatusCode != HttpStatusCode.NoContent)
                 {
-                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob, 
+                    throw new Exception(string.Format(Resources.JobCouldNotCancelJob,
                         cancelResponse.Response.StatusCode.ToString()));
                 }
                 else

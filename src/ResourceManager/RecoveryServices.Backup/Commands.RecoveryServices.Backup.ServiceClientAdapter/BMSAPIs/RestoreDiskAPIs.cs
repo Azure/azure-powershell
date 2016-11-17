@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="storageAccountType">Type of the storage account where to restore the disk</param>
         /// <returns>Job created by this operation</returns>
         public RestAzureNS.AzureOperationResponse RestoreDisk(
-            AzureVmRecoveryPoint rp, 
-            string storageAccountId, 
-            string storageAccountLocation, 
+            AzureVmRecoveryPoint rp,
+            string storageAccountId,
+            string storageAccountLocation,
             string storageAccountType)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -46,20 +46,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
             string recoveryPointId = rp.RecoveryPointId;
             //validtion block
-            if(storageAccountLocation != vaultLocation)
+            if (storageAccountLocation != vaultLocation)
             {
                 throw new Exception(Resources.RestoreDiskIncorrectRegion);
             }
-            
-            string vmType = containerUri.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) 
+
+            string vmType = containerUri.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase)
                 ? "Classic" : "Compute";
-            string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts", 
+            string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts",
                 StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
-            if(vmType != strType)
+            if (vmType != strType)
             {
                 throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
-            
+
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
                 resourceName,
-                resourceGroupName, 
-                AzureFabricName, 
-                containerUri, 
-                protectedItemUri, 
-                recoveryPointId, 
+                resourceGroupName,
+                AzureFabricName,
+                containerUri,
+                protectedItemUri,
+                recoveryPointId,
                 triggerRestoreRequest,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 

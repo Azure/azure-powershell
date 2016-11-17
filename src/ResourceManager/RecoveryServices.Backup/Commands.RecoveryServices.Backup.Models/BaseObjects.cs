@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public ContainerContext(string backupManagementType)
             : base(backupManagementType)
         {
-            
+
         }
     }
 
@@ -270,14 +270,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// Base class for backup rentention policy.
     /// </summary>
     public class RetentionPolicyBase : ObjectBase
-    {      
+    {
     }
 
     /// <summary>
     /// Base class for backup schedule policy.
     /// </summary>
     public class SchedulePolicyBase : ObjectBase
-    {      
+    {
     }
 
     /// <summary>
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Time taken by this job to run
         /// </summary>
-        public TimeSpan Duration { get; set; }       
+        public TimeSpan Duration { get; set; }
     }
 
     /// <summary>

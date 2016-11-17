@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
     /// Basic utilities and initializations for client proxy
     /// </summary>
     public class ClientProxyBase
-    {   
+    {
         protected AzureContext Context;
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public CancellationToken CmdletCancellationToken;
-        
+
         /// <summary>
         /// AzureContext based ctor
         /// </summary>

@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             break;
                     }
 
-                    var backupManagementTypeFilter = 
+                    var backupManagementTypeFilter =
                         string.IsNullOrEmpty(serviceClientProviderType) ?
                             default(ServiceClientModel.BackupManagementType?) :
                             serviceClientProviderType

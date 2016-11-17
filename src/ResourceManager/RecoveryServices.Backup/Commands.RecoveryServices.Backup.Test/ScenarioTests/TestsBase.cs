@@ -12,13 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.Authentication;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +20,13 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.Authentication;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using HyakRmNS = Microsoft.Azure.Management.Internal.Resources;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourceManagementNS = Microsoft.Azure.Management.Resources;
@@ -139,10 +139,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
 
-            HttpMockServer.RecordsDirectory = 
+            HttpMockServer.RecordsDirectory =
                 Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (RestTestFramework.MockContext context = 
+            using (RestTestFramework.MockContext context =
                 RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
                 csmTestFactory = new CSMTestEnvironmentFactory();
@@ -157,10 +157,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var testFolderName = providerType.ToString();
-                var callingClassName = 
+                var callingClassName =
                     callingClassType
                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
-                string psFile = 
+                string psFile =
                     "ScenarioTests\\" + testFolderName + "\\" + callingClassName + ".ps1";
                 string commonPsFile = "ScenarioTests\\" + testFolderName + "\\Common.ps1";
                 string rmProfileModule = helper.RMProfileModule;
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         }
 
         public static T GetServiceClient<T>(
-            TestEnvironmentFactory factory, 
+            TestEnvironmentFactory factory,
             RecoveryServicesNS.RecoveryServicesManagementClient client) where T : class
         {
             TestEnvironment testEnvironment = factory.GetTestEnvironment();

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
     /// Unregisters the backup management server from the vault.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer")]
-    public class UnregisterAzureRmRecoveryServicesBackupManagementServer 
+    public class UnregisterAzureRmRecoveryServicesBackupManagementServer
         : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -40,18 +40,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
-                if ((AzureRmBackupManagementServer.BackupEngineType != 
-                    BackupEngineType.DpmBackupEngine.ToString() && 
-                    AzureRmBackupManagementServer.BackupEngineType != 
-                    BackupEngineType.AzureBackupServerEngine.ToString())||
-                    AzureRmBackupManagementServer.BackupManagementType.ToString() != 
+                if ((AzureRmBackupManagementServer.BackupEngineType !=
+                    BackupEngineType.DpmBackupEngine.ToString() &&
+                    AzureRmBackupManagementServer.BackupEngineType !=
+                    BackupEngineType.AzureBackupServerEngine.ToString()) ||
+                    AzureRmBackupManagementServer.BackupManagementType.ToString() !=
                     BackupManagementType.SCDPM.ToString() &&
-                    AzureRmBackupManagementServer.BackupManagementType.ToString() != 
+                    AzureRmBackupManagementServer.BackupManagementType.ToString() !=
                     BackupManagementType.AzureBackupServer.ToString())
                 {
                     throw new ArgumentException(string.Format(
-                        Resources.UnsupportedAzureRmBackupManagementServerException, 
-                        AzureRmBackupManagementServer.BackupEngineType, 
+                        Resources.UnsupportedAzureRmBackupManagementServerException,
+                        AzureRmBackupManagementServer.BackupEngineType,
                         AzureRmBackupManagementServer.BackupManagementType));
                 }
 

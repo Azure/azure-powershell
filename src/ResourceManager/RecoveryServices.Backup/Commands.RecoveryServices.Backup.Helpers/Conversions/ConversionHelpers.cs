@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 backupEngine.Properties != null)
             {
                 string friendlyName = backupEngine.Properties.FriendlyName;
-                string backupManagementType = 
+                string backupManagementType =
                     backupEngine.Properties.BackupManagementType.ToString();
                 string registrationStatus = backupEngine.Properties.RegistrationStatus;
                 string healthStatus = backupEngine.Properties.HealthStatus;
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             List<PolicyBase> policyModels = new List<PolicyBase>();
             PolicyBase policyModel = null;
 
-            foreach (ServiceClientModel.ProtectionPolicyResource resource 
+            foreach (ServiceClientModel.ProtectionPolicyResource resource
                 in serviceClientListResponse)
             {
                 policyModel = GetPolicyModel(resource);
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         policyName);
                 }
 
-                if (protectedItem.Properties.GetType() == 
+                if (protectedItem.Properties.GetType() ==
                     typeof(ServiceClientModel.AzureSqlProtectedItem))
                 {
                     ServiceClientModel.AzureSqlProtectedItem azureSqlProtectedItem =

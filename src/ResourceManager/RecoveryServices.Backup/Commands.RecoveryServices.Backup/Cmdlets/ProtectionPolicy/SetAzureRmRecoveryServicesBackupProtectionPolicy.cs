@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     ServiceClientModel.OperationStatus operationStatus =
                         TrackingHelpers.GetOperationStatus(
                             policyResponse,
-                            operationId => 
+                            operationId =>
                                 ServiceClientAdapter.GetProtectionPolicyOperationStatus(
                                     policyName, operationId));
 

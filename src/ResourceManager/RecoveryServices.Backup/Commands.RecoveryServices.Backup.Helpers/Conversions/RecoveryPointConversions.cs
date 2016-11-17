@@ -160,8 +160,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     throw new ArgumentNullException("RecoveryPointTime is null");
                 }
 
-                bool isInstantILRSessionActive = 
-                    recPoint.IsInstantILRSessionActive.HasValue ? 
+                bool isInstantILRSessionActive =
+                    recPoint.IsInstantILRSessionActive.HasValue ?
                         (bool)recPoint.IsInstantILRSessionActive : false;
                 AzureVmRecoveryPoint vmResult = new AzureVmRecoveryPoint()
                 {

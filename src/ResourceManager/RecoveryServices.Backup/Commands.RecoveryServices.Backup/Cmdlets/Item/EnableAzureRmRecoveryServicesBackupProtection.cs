@@ -19,14 +19,13 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
-
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Enable protection of an item with the recovery services vault. 
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection", 
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection",
         DefaultParameterSetName = AzureVMComputeParameterSet), OutputType(typeof(JobBase))]
     public class EnableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
@@ -44,9 +43,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Name of the Azure VM whose representative item needs to be protected.
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
         public string Name { get; set; }
 
@@ -54,22 +53,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Service name of the classic Azure VM whose representative item needs to be protected.
         /// </summary>
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureVMClassicComputeParameterSet, 
+            ParameterSetName = AzureVMClassicComputeParameterSet,
             HelpMessage = ParamHelpMsgs.Item.AzureVMServiceName)]
         public string ServiceName { get; set; }
 
         /// <summary>
         /// Resource group name of the compute Azure VM whose representative item needs to be protected.
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            ParameterSetName = AzureVMComputeParameterSet, 
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureVMComputeParameterSet,
             HelpMessage = ParamHelpMsgs.Item.AzureVMResourceGroupName)]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Item whose protection needs to be modified.
         /// </summary>
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet, 
+        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet,
             HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
@@ -79,10 +78,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-                
-                PsBackupProviderManager providerManager = 
+
+                PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
-                {  
+                {
                     {ItemParams.AzureVMName, Name},
                     {ItemParams.AzureVMCloudServiceName, ServiceName},
                     {ItemParams.AzureVMResourceGroupName, ResourceGroupName},
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ItemParams.ParameterSetName, this.ParameterSetName},
                 }, ServiceClientAdapter);
 
-                IPsBackupProvider psBackupProvider = (Item != null) ? 
+                IPsBackupProvider psBackupProvider = (Item != null) ?
                     providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                     : providerManager.GetProviderInstance(Policy.WorkloadType);
 

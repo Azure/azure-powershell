@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public void Validate()
         {
-            if (RetentionCount <= 0 || 
+            if (RetentionCount <= 0 ||
                 RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);

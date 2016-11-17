@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureVmContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
-            IaaSVMContainer iaasVmProtectionContainer = 
+            IaaSVMContainer iaasVmProtectionContainer =
                 (IaaSVMContainer)protectionContainer.Properties;
             ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
             FriendlyName = iaasVmProtectionContainer.FriendlyName;

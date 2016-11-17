@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Recovery point response returned by the service</returns>
         public RecoveryPointResource GetRecoveryPointDetails
             (
-            string containerName, 
+            string containerName,
             string protectedItemName,
             string recoveryPointId
             )
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             var response = BmsAdapter.Client.RecoveryPoints.GetWithHttpMessagesAsync(
                 resourceName,
-                resourceGroupName, 
+                resourceGroupName,
                 AzureFabricName,
-                containerName, 
+                containerName,
                 protectedItemName,
                 recoveryPointId,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="queryFilter">Query filter</param>
         /// <returns>List of recovery points</returns>
         public List<RecoveryPointResource> GetRecoveryPoints(
-            string containerName, 
+            string containerName,
             string protectedItemName,
             ODataQuery<BMSRPQueryObject> queryFilter)
         {

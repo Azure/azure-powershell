@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             SimpleSchedulePolicy psPolicy = new SimpleSchedulePolicy();
 
-            psPolicy.ScheduleRunDays = 
+            psPolicy.ScheduleRunDays =
                 HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(
                     serviceClientPolicy.ScheduleRunDays);
-            psPolicy.ScheduleRunFrequency = 
+            psPolicy.ScheduleRunFrequency =
                 (ScheduleRunType)Enum.Parse(
                     typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
             psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             foreach (DateTime localTime in localTimes)
             {
-                if(localTime == null)
+                if (localTime == null)
                 {
                     throw new ArgumentNullException("Policy date time object is null");
                 }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (localTime.Kind != DateTimeKind.Utc)
                 {
                     temp = localTime.ToUniversalTime();
-                }                
+                }
                 utcTimes.Add(temp);
             }
 
@@ -100,17 +100,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();
-            serviceClientPolicy.ScheduleRunFrequency = 
+            serviceClientPolicy.ScheduleRunFrequency =
                 psPolicy.ScheduleRunFrequency.ToEnum<ServiceClientModel.ScheduleRunType>();
 
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
-                serviceClientPolicy.ScheduleRunDays = 
+                serviceClientPolicy.ScheduleRunDays =
                     HelperUtils.EnumListConverter<DayOfWeek, ServiceClientModel.DayOfWeek>(
                         psPolicy.ScheduleRunDays).Cast<ServiceClientModel.DayOfWeek?>().ToList();
             }
-            serviceClientPolicy.ScheduleRunTimes = 
-                psPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?) dateTime);
+            serviceClientPolicy.ScheduleRunTimes =
+                psPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime);
             return serviceClientPolicy;
         }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             List<DateTime?> convertedTime = new List<DateTime?>();
-            
+
             foreach (DateTime localTime in localTimes)
             {
                 convertedTime.Add(localTime);
