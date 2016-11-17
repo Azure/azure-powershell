@@ -71,22 +71,22 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
         /// 'Removing', 'Removed', 'Failed'
         /// </summary>
-        public Models.NamespaceState? Status { get; }
+        public Models.NamespaceState? Status { get; set; }
 
         /// <summary>
         /// The time the namespace was created.
         /// </summary>
-        public DateTime? CreatedAt { get; }
+        public DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// The time the namespace was updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; }
+        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// Endpoint you can use to perform ServiceBus operations.
         /// </summary>
-        public string ServiceBusEndpoint { get;}
+        public string ServiceBusEndpoint { get; set; }
         
         /// <summary>
         /// Specifies whether this instance is enabled.

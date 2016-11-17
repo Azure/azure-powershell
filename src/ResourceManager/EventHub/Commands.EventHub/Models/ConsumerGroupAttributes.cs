@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Exact time the Event was created.
         /// </summary>
-        public DateTime? CreatedAt { get;}
-        
+        public DateTime? CreatedAt { get; set; }
+
         /// <summary>
         /// The exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; }
+        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// The path of the event hub.
