@@ -13,13 +13,18 @@ else
   $script:BootStrapRepo = $existingRepos[0].Name
 }
 
-
 function Get-ProfileCachePath
 {
   $ProfileCache = Join-Path -path $env:LOCALAPPDATA -childpath "Microsoft\AzurePowerShell\ProfileCache"
   return $ProfileCache
 }
 
+# Make Rest-Call
+function Get-RestResponse
+{
+  $response = Invoke-RestMethod -ea SilentlyContinue -Uri $PSProfileMapEndpoint -ErrorVariable RestError -OutFile "$ProfileCache\ProfileMap.Json"
+  return $RestError
+}
 
 # Get-ProfileMap from Azure Endpoint
 function Get-AzureProfileMap
@@ -30,7 +35,7 @@ function Get-AzureProfileMap
     New-Item -ItemType Directory -Force -Path $ProfileCache | Out-Null
   }
 
-  $response = Invoke-RestMethod -ea SilentlyContinue -Uri $PSProfileMapEndpoint -ErrorVariable RestError -OutFile "$ProfileCache\ProfileMap.Json"
+  $RestError = Get-RestResponse  
 
   if ($RestError)
   {
