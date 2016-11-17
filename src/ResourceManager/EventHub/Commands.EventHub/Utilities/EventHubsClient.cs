@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public NamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, bool? createACSNamespace, Dictionary<string, string> tags)
+        public NamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
         {
             NamespaceCreateOrUpdateParameters parameter = new NamespaceCreateOrUpdateParameters();
             parameter.Location = location;
@@ -85,11 +85,6 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (skuCapacity.HasValue)
             {
                 parameter.Sku.Capacity = skuCapacity;
-            }
-
-            if (createACSNamespace.HasValue)
-            {
-                parameter.CreateACSNamespace = createACSNamespace;
             }
 
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
@@ -202,23 +197,33 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public EventHubAttributes CreateOrUpdateEventHub(string resourceGroupName, string namespaceName, string eventHubName, EventHubAttributes parameter)
+        public EventHubAttributes CreateOrUpdateEventHub(string resourceGroupName, string namespaceName,  string eventHubName, EventHubAttributes parameter)
         {
             var Parameter1 = new EventHubCreateOrUpdateParameters()
             {
                 Name = parameter.Name,
                 Location = parameter.Location,
                 Properties = new EventHubProperties()
-                {
-                    CreatedAt = parameter.CreatedAt,
-                    MessageRetentionInDays = parameter.MessageRetentionInDays,
-                    PartitionCount = parameter.PartitionCount,
-                    PartitionIds = parameter.PartitionIds.ToList(),
-                    Status = parameter.Status,
-                    UpdatedAt = parameter.UpdatedAt
-                }
-
             };
+
+            if (parameter.CreatedAt.HasValue)
+                Parameter1.Properties.CreatedAt = parameter.CreatedAt;
+
+            if (parameter.MessageRetentionInDays.HasValue)
+                Parameter1.Properties.MessageRetentionInDays = parameter.MessageRetentionInDays;
+
+            if (parameter.PartitionCount.HasValue)
+                Parameter1.Properties.PartitionCount = parameter.PartitionCount;
+
+            if (parameter.PartitionIds != null)
+                Parameter1.Properties.PartitionIds = parameter.PartitionIds;
+
+            if (parameter.Status.HasValue)
+                Parameter1.Properties.Status = parameter.Status;
+
+            if (parameter.UpdatedAt.HasValue)
+                Parameter1.Properties.UpdatedAt = parameter.UpdatedAt;
+            
             var response = Client.EventHubs.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, Parameter1);
             return new EventHubAttributes(response);
         }

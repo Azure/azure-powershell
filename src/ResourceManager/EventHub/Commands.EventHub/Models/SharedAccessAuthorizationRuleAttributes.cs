@@ -21,8 +21,13 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 {    /// <summary>
     /// 
     /// </summary>
+    /// 
     public class SharedAccessAuthorizationRuleAttributes
     {
+
+        public SharedAccessAuthorizationRuleAttributes()
+        { }
+
         /// <summary>
         /// 
         /// </summary>

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
     public class ConsumerGroupAttributes
     {
+        public ConsumerGroupAttributes()
+        { }
+
         public ConsumerGroupAttributes(ConsumerGroupResource consumerGroupResourceResource)
         {
             if (consumerGroupResourceResource != null)
@@ -47,12 +50,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Exact time the Event was created.
         /// </summary>
-        public DateTime? CreatedAt { get; set; }
+        public DateTime? CreatedAt { get;}
         
         /// <summary>
         /// The exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; }
 
         /// <summary>
         /// The path of the event hub.

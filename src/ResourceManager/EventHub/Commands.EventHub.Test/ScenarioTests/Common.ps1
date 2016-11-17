@@ -70,19 +70,3 @@ function Get-SecondaryLocation
 
 	return "EastUS"
 }
-
-<#
-.SYNOPSIS
-update the New Name in resource file
-#>
-function update-NameInResourceFile ($fileName, $newName )
-{
- 
- $fpath = '.\.\Resources\'
-$fileContent = Get-Content $fpath$fileName -raw | ConvertFrom-Json
-
-$fileContent.Name = $newName
-$fileContent.update 
-$fileContent | ConvertTo-Json  | set-content $fpath$fileName
-
-}

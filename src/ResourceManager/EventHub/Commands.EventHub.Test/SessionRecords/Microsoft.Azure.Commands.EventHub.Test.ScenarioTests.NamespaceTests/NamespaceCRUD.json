@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14982"
         ],
         "x-ms-request-id": [
-          "db0b24a9-b8fa-4580-9f78-1803a06575de"
+          "33ddbfd0-20c9-49ed-847c-a9b243372346"
         ],
         "x-ms-correlation-request-id": [
-          "db0b24a9-b8fa-4580-9f78-1803a06575de"
+          "33ddbfd0-20c9-49ed-847c-a9b243372346"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204255Z:db0b24a9-b8fa-4580-9f78-1803a06575de"
+          "WESTUS2:20161117T002618Z:33ddbfd0-20c9-49ed-847c-a9b243372346"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,25 +43,25 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 14 Nov 2016 20:42:54 GMT"
+          "Thu, 17 Nov 2016 00:26:18 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs0ODIyP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGsyMjIzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"properties\": {\r\n    \"createACSNamespace\": false\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "174"
+          "116"
         ],
         "x-ms-client-request-id": [
-          "6b254af9-1610-4919-8ec3-3f6e39191dd2"
+          "dc179478-12ca-4e52-aa82-d68f73c21ad7"
         ],
         "accept-language": [
           "en-US"
@@ -70,7 +70,7 @@
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822\",\r\n  \"name\": \"Eventhub-Namespace-onesdk4822\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Unknown\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4822\",\r\n    \"enabled\": false,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223\",\r\n  \"name\": \"Eventhub-Namespace-onesdk2223\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Unknown\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk2223\",\r\n    \"enabled\": false,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "542"
@@ -85,7 +85,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "39667b5b-9a18-4cdc-aee7-091cb9c8c4a4_M2_M2"
+          "27a4c94f-7572-492d-bdd9-15f57c5c0b44_M7_M7"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -101,23 +101,23 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "c2dafcf0-55a1-42d0-bd28-ec70f587eb63"
+          "c63beb84-772e-4164-b7ab-60b40a900da6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204256Z:c2dafcf0-55a1-42d0-bd28-ec70f587eb63"
+          "WESTUS2:20161117T002619Z:c63beb84-772e-4164-b7ab-60b40a900da6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 14 Nov 2016 20:42:56 GMT"
+          "Thu, 17 Nov 2016 00:26:19 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs0ODIyP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGsyMjIzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -125,190 +125,7 @@
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822\",\r\n  \"name\": \"Eventhub-Namespace-onesdk4822\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4822\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2016-11-14T20:42:57.85Z\",\r\n    \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4822.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2016-11-14T20:43:21.42Z\",\r\n    \"eventHubEnabled\": true,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "764"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "19fdc5e1-2f33-43c5-95d2-3ad84cebdd58_M2_M2"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
-        ],
-        "x-ms-correlation-request-id": [
-          "46b41094-aba2-4358-aa86-5d722495ce1b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204326Z:46b41094-aba2-4358-aa86-5d722495ce1b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Mon, 14 Nov 2016 20:43:26 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs0ODIyP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "49ec0e58-4a29-4bf5-98f5-df9dd8dedd22"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822\",\r\n  \"name\": \"Eventhub-Namespace-onesdk4822\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4822\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2016-11-14T20:42:57.85Z\",\r\n    \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4822.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2016-11-14T20:43:21.42Z\",\r\n    \"eventHubEnabled\": true,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "764"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1f1f1ef0-d4b2-40de-a00a-ec5925768b14_M2_M2"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
-        ],
-        "x-ms-correlation-request-id": [
-          "d035618a-de75-4258-a489-1e5f7da83203"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204342Z:d035618a-de75-4258-a489-1e5f7da83203"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Mon, 14 Nov 2016 20:43:41 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs2NzY0P2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "29"
-        ],
-        "x-ms-client-request-id": [
-          "a6c43483-c9c7-4cae-8a68-93d14691fc7f"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764\",\r\n  \"name\": \"Eventhub-Namespace-onesdk6764\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Unknown\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk6764\",\r\n    \"enabled\": false,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "485"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "ff75b97c-d6e4-40e5-87a8-a4b5e972cd22_M2_M2"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-correlation-request-id": [
-          "afcb5928-fe95-4708-b693-8614f8cb9424"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204342Z:afcb5928-fe95-4708-b693-8614f8cb9424"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Mon, 14 Nov 2016 20:43:42 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs2NzY0P2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764\",\r\n  \"name\": \"Eventhub-Namespace-onesdk6764\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk6764\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2016-11-14T20:43:43.763Z\",\r\n    \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk6764.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2016-11-14T20:44:06.94Z\",\r\n    \"eventHubEnabled\": true,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223\",\r\n  \"name\": \"Eventhub-Namespace-onesdk2223\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk2223\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2016-11-17T00:26:21.603Z\",\r\n    \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk2223.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2016-11-17T00:26:43.24Z\",\r\n    \"eventHubEnabled\": true,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "765"
@@ -323,242 +140,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "35053a72-a7da-4074-abc3-f18e331bc68d_M2_M2"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
-        ],
-        "x-ms-correlation-request-id": [
-          "9c1f80ab-49d8-4c92-9898-b8209bac01e1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204412Z:9c1f80ab-49d8-4c92-9898-b8209bac01e1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Mon, 14 Nov 2016 20:44:11 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "4b7e6dfe-5371-4df2-9814-160aaba2c541"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4704\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4704\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4704\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T19:57:41.447Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4704.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T19:58:04.143Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk1551\",\r\n      \"name\": \"Eventhub-Namespace-onesdk1551\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk1551\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T01:15:57.643Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk1551.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T01:16:20.99Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764\",\r\n      \"name\": \"Eventhub-Namespace-onesdk6764\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk6764\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-14T20:43:43.763Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk6764.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-14T20:44:06.94Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2007\",\r\n      \"name\": \"Eventhub-Namespace-onesdk2007\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk2007\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-14T19:41:29.047Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk2007.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-14T19:41:51.163Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4915\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4915\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4915\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-02T00:44:40.033Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4915.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-02T00:45:02.71Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4822\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4822\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-14T20:42:57.85Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4822.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-14T20:43:21.42Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4987\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4987\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4987\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-02T00:52:32.39Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4987.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-02T00:52:54.027Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6350\",\r\n      \"name\": \"Eventhub-Namespace-onesdk6350\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk6350\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T01:26:59.443Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk6350.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T01:27:20.7Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk5018\",\r\n      \"name\": \"Eventhub-Namespace-onesdk5018\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk5018\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T01:14:45.103Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk5018.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T01:15:05.673Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "6922"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "2e202c6b-e6ac-4bcb-a371-1bd86c1a938e_M6_M6"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
-        ],
-        "x-ms-correlation-request-id": [
-          "cd2220e9-b7e5-4c65-b303-bd019eaba572"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204428Z:cd2220e9-b7e5-4c65-b303-bd019eaba572"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Mon, 14 Nov 2016 20:44:27 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/providers/Microsoft.EventHub/namespaces?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d632da96-a97c-48d5-a1cc-17c274985d05"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-EventHub-SouthCentralUS/providers/Microsoft.EventHub/namespaces/sometest11\",\r\n      \"name\": \"sometest11\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:sometest11\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-08-10T23:43:40.983Z\",\r\n        \"serviceBusEndpoint\": \"https://sometest11.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-08-10T23:44:03.043Z\",\r\n        \"createACSNamespace\": true,\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-servicebus-WESTUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4704\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4704\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4704\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T19:57:41.447Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4704.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T19:58:04.143Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-servicebus-WESTUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk1551\",\r\n      \"name\": \"Eventhub-Namespace-onesdk1551\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk1551\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T01:15:57.643Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk1551.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T01:16:20.99Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764\",\r\n      \"name\": \"Eventhub-Namespace-onesdk6764\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk6764\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-14T20:43:43.763Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk6764.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-14T20:44:06.94Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2007\",\r\n      \"name\": \"Eventhub-Namespace-onesdk2007\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk2007\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-14T19:41:29.047Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk2007.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-14T19:41:51.163Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-servicebus-WESTUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4915\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4915\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4915\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-02T00:44:40.033Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4915.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-02T00:45:02.71Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4822\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4822\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-14T20:42:57.85Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4822.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-14T20:43:21.42Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-servicebus-WESTUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4987\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4987\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4987\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-02T00:52:32.39Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4987.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-02T00:52:54.027Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-servicebus-WESTUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6350\",\r\n      \"name\": \"Eventhub-Namespace-onesdk6350\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk6350\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T01:26:59.443Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk6350.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T01:27:20.7Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-servicebus-WESTUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk5018\",\r\n      \"name\": \"Eventhub-Namespace-onesdk5018\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk5018\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-01T01:14:45.103Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk5018.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-01T01:15:05.673Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "7654"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "b1371b84-4336-498a-9eef-d481ed574020_M6_M6"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
-        ],
-        "x-ms-correlation-request-id": [
-          "ad8134b1-c258-4b87-85fa-833289589f67"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204428Z:ad8134b1-c258-4b87-85fa-833289589f67"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Mon, 14 Nov 2016 20:44:28 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs2NzY0P2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c133bd2a-a859-48ea-8fd0-f966a9e22a8b"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "6874e545-febf-403f-a886-fd6b549314f5_M2_M2"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764/operationresults/Eventhub-Namespace-onesdk6764?api-version=2015-08-01"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "ffaa527b-66c3-4589-9cb6-d2d0368ac51f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204428Z:ffaa527b-66c3-4589-9cb6-d2d0368ac51f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Mon, 14 Nov 2016 20:44:28 GMT"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk6764/operationresults/Eventhub-Namespace-onesdk6764?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs2NzY0L29wZXJhdGlvbnJlc3VsdHMvRXZlbnRodWItTmFtZXNwYWNlLW9uZXNkazY3NjQ/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "ed825f89-4eed-45af-b7ed-feb5e31e8243_M2_M2"
+          "382105ff-81fa-4e12-bb1e-6e41d4c65b87_M7_M7"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -574,28 +156,333 @@
           "14994"
         ],
         "x-ms-correlation-request-id": [
-          "7907f52c-f7d1-43db-b6aa-b245a7ceb901"
+          "eeb78fb0-a2ae-437d-a319-efad60beeb37"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204458Z:7907f52c-f7d1-43db-b6aa-b245a7ceb901"
+          "WESTUS2:20161117T002649Z:eeb78fb0-a2ae-437d-a319-efad60beeb37"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 14 Nov 2016 20:44:58 GMT"
+          "Thu, 17 Nov 2016 00:26:49 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs0ODIyP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGsyMjIzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c54ee664-20c8-44a3-b3d7-3b3f156265b5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223\",\r\n  \"name\": \"Eventhub-Namespace-onesdk2223\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk2223\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2016-11-17T00:26:21.603Z\",\r\n    \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk2223.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2016-11-17T00:26:43.24Z\",\r\n    \"eventHubEnabled\": true,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "765"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f0bd5324-d4e2-44ff-b8d2-34e2beb24572_M7_M7"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "19a233db-0e7c-47d1-a0b3-71f12590c958"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161117T002704Z:19a233db-0e7c-47d1-a0b3-71f12590c958"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 17 Nov 2016 00:27:04 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs5MTAxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "19d13eff-6310-4be6-90f0-641548ee53e5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101\",\r\n  \"name\": \"Eventhub-Namespace-onesdk9101\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Unknown\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk9101\",\r\n    \"enabled\": false,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "485"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4973c7af-c68d-42da-9a49-572a4aac964f_M7_M7"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "eddd0249-4ec0-4012-8b7d-3054ce153268"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161117T002705Z:eddd0249-4ec0-4012-8b7d-3054ce153268"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 17 Nov 2016 00:27:04 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs5MTAxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101\",\r\n  \"name\": \"Eventhub-Namespace-onesdk9101\",\r\n  \"type\": \"Microsoft.EventHub/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"EventHub\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk9101\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2016-11-17T00:27:07.483Z\",\r\n    \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk9101.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2016-11-17T00:27:30.817Z\",\r\n    \"eventHubEnabled\": true,\r\n    \"namespaceType\": \"EventHub\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "766"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ac915677-adf1-47bc-b67e-6521eb1e2a06_M7_M7"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "be3686cc-52b1-4efe-a725-8adb752aed3c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161117T002735Z:be3686cc-52b1-4efe-a725-8adb752aed3c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 17 Nov 2016 00:27:34 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "234a301b-1b3c-4ccc-b8ed-370eba34d1db"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9334\",\r\n      \"name\": \"Eventhub-Namespace-onesdk9334\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk9334\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-16T23:06:29.78Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk9334.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-16T23:06:50.717Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4430\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4430\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4430\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-16T23:11:51.963Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4430.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-16T23:12:12.467Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101\",\r\n      \"name\": \"Eventhub-Namespace-onesdk9101\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk9101\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-17T00:27:07.483Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk9101.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-17T00:27:30.817Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223\",\r\n      \"name\": \"Eventhub-Namespace-onesdk2223\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk2223\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-17T00:26:21.603Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk2223.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-17T00:26:43.24Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "246c5cde-4cc3-414c-a521-6706d80d5ad8_M7_M7"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "959600bc-74e3-46c4-b70b-88d3f91a55e6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161117T002750Z:959600bc-74e3-46c4-b70b-88d3f91a55e6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 17 Nov 2016 00:27:50 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/providers/Microsoft.EventHub/namespaces?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c09d6052-0c3a-4a0e-a748-790358bef0de"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-EventHub-SouthCentralUS/providers/Microsoft.EventHub/namespaces/sometest11\",\r\n      \"name\": \"sometest11\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:sometest11\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-08-10T23:43:40.983Z\",\r\n        \"serviceBusEndpoint\": \"https://sometest11.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-08-10T23:44:03.043Z\",\r\n        \"createACSNamespace\": true,\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9334\",\r\n      \"name\": \"Eventhub-Namespace-onesdk9334\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk9334\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-16T23:06:29.78Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk9334.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-16T23:06:50.717Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4430\",\r\n      \"name\": \"Eventhub-Namespace-onesdk4430\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk4430\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-16T23:11:51.963Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk4430.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-16T23:12:12.467Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101\",\r\n      \"name\": \"Eventhub-Namespace-onesdk9101\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk9101\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-17T00:27:07.483Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk9101.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-17T00:27:30.817Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223\",\r\n      \"name\": \"Eventhub-Namespace-onesdk2223\",\r\n      \"type\": \"Microsoft.EventHub/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"kind\": \"EventHub\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"metricId\": \"e2f361f0-3b27-4503-a9cc-21cfba380093:eventhub-namespace-onesdk2223\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2016-11-17T00:26:21.603Z\",\r\n        \"serviceBusEndpoint\": \"https://Eventhub-Namespace-onesdk2223.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2016-11-17T00:26:43.24Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"EventHub\",\r\n        \"messagingSku\": 2\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3825"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2380f2c7-0b82-4bbb-971b-6b62784eca5f_M7_M7"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "f409c926-739d-46a5-8bbf-9af113bfda8e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161117T002751Z:f409c926-739d-46a5-8bbf-9af113bfda8e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 17 Nov 2016 00:27:50 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs5MTAxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "751df84d-716e-432e-acc5-e57ff02f0b8f"
+          "ef56f758-04be-4439-8281-a2ce09890253"
         ],
         "accept-language": [
           "en-US"
@@ -616,7 +503,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "70161566-5642-41a7-9202-0ca7da80947b_M2_M2"
+          "0222a7bd-e2f2-4f5a-8f38-7652bad14c98_M7_M7"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -625,33 +512,33 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822/operationresults/Eventhub-Namespace-onesdk4822?api-version=2015-08-01"
+          "https://management.azure.com/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101/operationresults/Eventhub-Namespace-onesdk9101?api-version=2015-08-01"
         ],
         "Server": [
           "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "c280c07c-f1e5-4752-ab4f-9bc18abd51cb"
+          "61d2aaf2-c99a-416f-a10d-babc680051f0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204459Z:c280c07c-f1e5-4752-ab4f-9bc18abd51cb"
+          "WESTUS2:20161117T002751Z:61d2aaf2-c99a-416f-a10d-babc680051f0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 14 Nov 2016 20:44:58 GMT"
+          "Thu, 17 Nov 2016 00:27:51 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-westus/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk4822/operationresults/Eventhub-Namespace-onesdk4822?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy13ZXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs0ODIyL29wZXJhdGlvbnJlc3VsdHMvRXZlbnRodWItTmFtZXNwYWNlLW9uZXNkazQ4MjI/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk9101/operationresults/Eventhub-Namespace-onesdk9101?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGs5MTAxL29wZXJhdGlvbnJlc3VsdHMvRXZlbnRodWItTmFtZXNwYWNlLW9uZXNkazkxMDE/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -671,7 +558,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0c63a055-697f-4ff3-aecc-6a5570deae02_M2_M2"
+          "0a354c5f-c7c3-4526-b770-e7f78f1c9758_M7_M7"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -684,19 +571,132 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14989"
         ],
         "x-ms-correlation-request-id": [
-          "a142512b-a57d-4eae-b4eb-6387cd508c82"
+          "419d771e-6f2a-49bb-8921-7ee085b66842"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20161114T204529Z:a142512b-a57d-4eae-b4eb-6387cd508c82"
+          "WESTUS2:20161117T002821Z:419d771e-6f2a-49bb-8921-7ee085b66842"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 14 Nov 2016 20:45:28 GMT"
+          "Thu, 17 Nov 2016 00:28:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGsyMjIzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9278c89b-4330-435d-b13f-4a8951d59178"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1cb09854-b2b0-438f-b668-4aae897db0e2_M7_M7"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223/operationresults/Eventhub-Namespace-onesdk2223?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "39275cfe-43f3-4269-a5d0-460e52707cfe"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161117T002821Z:39275cfe-43f3-4269-a5d0-460e52707cfe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 17 Nov 2016 00:28:21 GMT"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-onesdk2223/operationresults/Eventhub-Namespace-onesdk2223?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJmMzYxZjAtM2IyNy00NTAzLWE5Y2MtMjFjZmJhMzgwMDkzL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1XZXN0VVMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS1vbmVzZGsyMjIzL29wZXJhdGlvbnJlc3VsdHMvRXZlbnRodWItTmFtZXNwYWNlLW9uZXNkazIyMjM/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.EventHub.EventHubManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8f1d080b-792a-4c25-b58d-af6084051221_M7_M7"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "69b682be-870b-40cd-9b84-a70809e927de"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161117T002851Z:69b682be-870b-40cd-9b84-a70809e927de"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 17 Nov 2016 00:28:51 GMT"
         ]
       },
       "StatusCode": 200
@@ -704,8 +704,8 @@
   ],
   "Names": {
     "": [
-      "onesdk4822",
-      "onesdk6764"
+      "onesdk2223",
+      "onesdk9101"
     ]
   },
   "Variables": {

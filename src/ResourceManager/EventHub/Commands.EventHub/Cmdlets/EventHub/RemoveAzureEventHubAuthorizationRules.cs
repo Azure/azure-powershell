@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 3,
             HelpMessage = "EventHub AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRule { get; set; }
+        public string AuthorizationRuleName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Delete EventHub authorizationRule
-            bool deleteAuthRule = Client.DeleteEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRule);
+            bool deleteAuthRule = Client.DeleteEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRuleName);
             WriteObject(deleteAuthRule);
         }
     }

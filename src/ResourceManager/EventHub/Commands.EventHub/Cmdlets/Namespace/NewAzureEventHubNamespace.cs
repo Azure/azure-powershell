@@ -81,16 +81,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "The eventhub throughput units.")]
         public int? SkuCapacity { get; set; }
-
-        /// <summary>
-        /// Indicates whether to create ACS namespace.
-        /// </summary>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Indicates whether to create ACS namespace.")]
-        public bool? CreateACSNamespace { get; set; }
-
+        
         /// <summary>
         /// Hashtables which represents resource Tags.
         /// </summary>
@@ -107,7 +98,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         {
             // Create a new EventHub namespaces
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-            NamespaceAttributes nsAttribute = Client.BeginCreateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, CreateACSNamespace, tagDictionary);
+            NamespaceAttributes nsAttribute = Client.BeginCreateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, tagDictionary);
             WriteObject(nsAttribute);
         }
     }

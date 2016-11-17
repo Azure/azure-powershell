@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Position = 2,
             HelpMessage = "Authorization Rule Name.")]        
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRule { get; set; }        
+        public string AuthorizationRuleName { get; set; }        
 
         [Parameter(Mandatory = true,
             Position = 3,
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             var regenKey = new RegenerateKeysParameters(ParsePolicyKey(RegenerateKeys));
 
             // Get a EventHub List Keys for the specified AuthorizationRule
-            ListKeysAttributes keys = Client.SetRegenerateKeys(ResourceGroup, NamespaceName, AuthorizationRule, RegenerateKeys);
+            ListKeysAttributes keys = Client.SetRegenerateKeys(ResourceGroup, NamespaceName, AuthorizationRuleName, RegenerateKeys);
             WriteObject(keys);
         }
     }

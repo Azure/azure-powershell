@@ -136,7 +136,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
 <maml:Description><maml:para>EventHub AuthorizationRule Name.
 </maml:para>
 </maml:Description>
@@ -147,16 +147,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub AuthorizationRule Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
 <maml:Description><maml:para>EventHub Name.
 </maml:para>
 </maml:Description>
@@ -176,6 +167,15 @@
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Resource Group Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>EventHub AuthorizationRule Name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -364,7 +364,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
 <maml:Description><maml:para>EventHub AuthorizationRule Name.
 </maml:para>
 </maml:Description>
@@ -375,16 +375,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub AuthorizationRule Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
 <maml:Description><maml:para>EventHub Name.
 </maml:para>
 </maml:Description>
@@ -404,6 +395,15 @@
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Resource Group Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>EventHub AuthorizationRule Name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -643,7 +643,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthorizationRule</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
 <maml:Description><maml:para>EventHub Namespace AuthorizationRule Name.
 </maml:para>
 </maml:Description>
@@ -654,16 +654,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub Namespace AuthorizationRule Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
 <maml:Description><maml:para>EventHub Namespace Name.
 </maml:para>
 </maml:Description>
@@ -674,6 +665,15 @@
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Resource Group Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>EventHub Namespace AuthorizationRule Name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -748,7 +748,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
 <maml:Description><maml:para>EventHub object.
 </maml:para>
 </maml:Description>
@@ -773,10 +773,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>New-AzureRmEventHub</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Location</maml:name>
+<maml:Description><maml:para>Namespace Location.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -784,48 +782,23 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace Name.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>MessageRetentionInDays</maml:name>
+<maml:Description><maml:para>Eventhub Message Retention In Days.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
-<maml:Description><maml:para>Eventhub Name.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PartitionCount</maml:name>
+<maml:Description><maml:para>Eventhub PartitionCount.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -847,21 +820,12 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
 <maml:Description><maml:para>EventHub object.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">EventHubAttributes</command:parameterValue>
 <dev:type><maml:name>EventHubAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -891,6 +855,33 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Location</maml:name>
+<maml:Description><maml:para>Namespace Location.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>MessageRetentionInDays</maml:name>
+<maml:Description><maml:para>Eventhub Message Retention In Days.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PartitionCount</maml:name>
+<maml:Description><maml:para>Eventhub PartitionCount.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -959,15 +950,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -984,10 +966,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>New-AzureRmEventHubAuthorizationRule</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -995,48 +975,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace Name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Rights, e.g.  @("Listen","Send","Manage")
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
-<maml:Description><maml:para>EventHub Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>SASRule</maml:name>
-<maml:Description><maml:para>EventHub AuthorizationRule Object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -1058,15 +1004,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
 <maml:Description><maml:para>Namespace Name.
 </maml:para>
@@ -1085,15 +1022,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>SASRule</maml:name>
-<maml:Description><maml:para>EventHub AuthorizationRule Object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
@@ -1102,6 +1030,24 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Rights, e.g.  @("Listen","Send","Manage")
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -1179,15 +1125,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>ConsumerGroupObj</maml:name>
-<maml:Description><maml:para>ConsumerGroup definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ConsumerGroupAttributes</command:parameterValue>
-<dev:type><maml:name>ConsumerGroupAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -1204,68 +1141,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>New-AzureRmEventHubConsumerGroup</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>UserMetadata</maml:name>
+<maml:Description><maml:para>User Metadata for ConsumerGroup
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
-<maml:Description><maml:para>EventHub Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ConsumerGroupName</maml:name>
-<maml:Description><maml:para>ConsumerGroup Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>File name containing a single ConsumerGroup definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -1287,26 +1170,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>ConsumerGroupObj</maml:name>
-<maml:Description><maml:para>ConsumerGroup definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ConsumerGroupAttributes</command:parameterValue>
-<dev:type><maml:name>ConsumerGroupAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
 <maml:Description><maml:para>EventHub Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>File name containing a single ConsumerGroup definition.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1340,6 +1205,15 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>UserMetadata</maml:name>
+<maml:Description><maml:para>User Metadata for ConsumerGroup
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -1408,15 +1282,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
-<maml:Description><maml:para>Authorization Rule Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>RegenerateKey</maml:name>
 <maml:Description><maml:para>Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.
 </maml:para>
@@ -1445,9 +1310,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
 <maml:Description><maml:para>Authorization Rule Name.
 </maml:para>
 </maml:Description>
@@ -1456,7 +1319,9 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
@@ -1509,6 +1374,15 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>Authorization Rule Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -1599,15 +1473,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>CreateACSNamespace</maml:name>
-<maml:Description><maml:para>Indicates whether to create ACS namespace.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-<dev:type><maml:name>Boolean</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>Tag</maml:name>
 <maml:Description><maml:para>Hashtables which represents resource Tags.
 </maml:para>
@@ -1643,15 +1508,6 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>CreateACSNamespace</maml:name>
-<maml:Description><maml:para>Indicates whether to create ACS namespace.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-<dev:type><maml:name>Boolean</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>Location</maml:name>
 <maml:Description><maml:para>EventHub Namespace Location.
@@ -1774,15 +1630,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub NameSpace AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -1799,10 +1646,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>New-AzureRmEventHubNamespaceAuthorizationRule</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1810,39 +1655,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>EventHub Namespace Name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Rights, e.g.  @("Listen","Send","Manage")
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>SharedAccessAuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub Namespace AuthorizationRule Object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -1855,15 +1675,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub NameSpace AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
 <maml:Description><maml:para>EventHub Namespace Name.
 </maml:para>
@@ -1882,15 +1693,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>SharedAccessAuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub Namespace AuthorizationRule Object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
@@ -1899,6 +1701,24 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Rights, e.g.  @("Listen","Send","Manage")
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -1958,15 +1778,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthorizationRule</maml:name>
-<maml:Description><maml:para>Authorization Rule Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>RegenerateKeys</maml:name>
 <maml:Description><maml:para>Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.
 </maml:para>
@@ -1995,9 +1806,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthorizationRule</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
 <maml:Description><maml:para>Authorization Rule Name.
 </maml:para>
 </maml:Description>
@@ -2006,7 +1815,9 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
@@ -2050,6 +1861,15 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>Authorization Rule Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -2248,15 +2068,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub AuthorizationRule Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -2273,9 +2084,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRule</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
 <maml:Description><maml:para>EventHub AuthorizationRule Name.
 </maml:para>
 </maml:Description>
@@ -2284,7 +2093,9 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
@@ -2328,6 +2139,15 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>EventHub AuthorizationRule Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -2786,7 +2606,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
 <maml:Description><maml:para>EventHub object.
 </maml:para>
 </maml:Description>
@@ -2811,59 +2631,23 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Set-AzureRmEventHub</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>messageRetentionInDays</maml:name>
+<maml:Description><maml:para>Eventhub Message Retention In Days.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace Name.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>partitionCount</maml:name>
+<maml:Description><maml:para>Eventhub PartitionCount.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
-<maml:Description><maml:para>Namespace Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -2885,21 +2669,12 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EventHubObj</maml:name>
 <maml:Description><maml:para>EventHub object.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">EventHubAttributes</command:parameterValue>
 <dev:type><maml:name>EventHubAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2929,6 +2704,24 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>messageRetentionInDays</maml:name>
+<maml:Description><maml:para>Eventhub Message Retention In Days.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>partitionCount</maml:name>
+<maml:Description><maml:para>Eventhub PartitionCount.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+<dev:type><maml:name>Int64</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -2997,15 +2790,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -3022,10 +2806,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Set-AzureRmEventHubAuthorizationRule</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3033,25 +2815,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
-<maml:Description><maml:para>EventHub Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>SASRule</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AuthRuleObj</maml:name>
 <maml:Description><maml:para>EventHub AuthorizationRule Object.
 </maml:para>
 </maml:Description>
@@ -3060,21 +2824,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Required if 'AuthruleObj' not specified. Rights - e.g.  @("Listen","Send","Manage")
 </maml:para>
 </maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -3096,15 +2853,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
 <maml:Description><maml:para>Namespace Name.
 </maml:para>
@@ -3123,15 +2871,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>SASRule</maml:name>
-<maml:Description><maml:para>EventHub AuthorizationRule Object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
@@ -3140,6 +2879,33 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AuthRuleObj</maml:name>
+<maml:Description><maml:para>EventHub AuthorizationRule Object.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
+<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Required if 'AuthruleObj' not specified. Rights - e.g.  @("Listen","Send","Manage")
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -3217,15 +2983,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>ConsumerGroupObj</maml:name>
-<maml:Description><maml:para>ConsumerGroup definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ConsumerGroupAttributes</command:parameterValue>
-<dev:type><maml:name>ConsumerGroupAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -3242,68 +2999,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Set-AzureRmEventHubConsumerGroup</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>UserMetadata</maml:name>
+<maml:Description><maml:para>User Metadata for ConsumerGroup
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
-<maml:Description><maml:para>EventHub Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ConsumerGroupName</maml:name>
-<maml:Description><maml:para>ConsumerGroup Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single ConsumerGroup definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -3325,26 +3028,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>ConsumerGroupObj</maml:name>
-<maml:Description><maml:para>ConsumerGroup definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ConsumerGroupAttributes</command:parameterValue>
-<dev:type><maml:name>ConsumerGroupAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>EventHubName</maml:name>
 <maml:Description><maml:para>EventHub Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single ConsumerGroup definition.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3378,6 +3063,15 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>UserMetadata</maml:name>
+<maml:Description><maml:para>User Metadata for ConsumerGroup
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
@@ -3657,15 +3351,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub Namespace AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -3682,10 +3367,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Set-AzureRmEventHubNamespaceAuthorizationRule</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Resource Group Name.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name - Required if 'AuthruleObj' not specified.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3693,17 +3376,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>EventHub Namespace Name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>SharedAccessAuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub Namespace AuthorizationRule Object.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AuthRuleObj</maml:name>
+<maml:Description><maml:para>EventHub NameSpace AuthorizationRule Object.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
@@ -3711,21 +3385,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Required if 'AuthruleObj' not specified. Rights - e.g.  @("Listen","Send","Manage")
 </maml:para>
 </maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -3738,15 +3405,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>InputFile</maml:name>
-<maml:Description><maml:para>Name of file containing a single EventHub Namespace AuthorizationRule definition.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
 <maml:Description><maml:para>EventHub Namespace Name.
 </maml:para>
@@ -3765,15 +3423,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>SharedAccessAuthorizationRule</maml:name>
-<maml:Description><maml:para>EventHub Namespace AuthorizationRule Object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
@@ -3782,6 +3431,33 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
+<maml:Description><maml:para>AuthorizationRule Name - Required if 'AuthruleObj' not specified.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AuthRuleObj</maml:name>
+<maml:Description><maml:para>EventHub NameSpace AuthorizationRule Object.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
+<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Rights</maml:name>
+<maml:Description><maml:para>Required if 'AuthruleObj' not specified. Rights - e.g.  @("Listen","Send","Manage")
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+<dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>

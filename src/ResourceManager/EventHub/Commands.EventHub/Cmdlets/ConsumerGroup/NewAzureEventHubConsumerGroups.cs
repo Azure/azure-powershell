@@ -51,33 +51,27 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         [ValidateNotNullOrEmpty]
         public string ConsumerGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputFileParameterSetName,
-            Position = 4,
-            HelpMessage = "File name containing a single ConsumerGroup definition.")]
+        [Parameter(Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             Position = 4,
+             HelpMessage = " User Metadata for ConsumerGroup")]
         [ValidateNotNullOrEmpty]
-        public string InputFile { get; set; }
-
-        [Parameter(Mandatory = true,
-            ParameterSetName = ConsumerGroupParameterSetName,
-            Position = 4,
-            HelpMessage = "ConsumerGroup definition.")]
-        [ValidateNotNullOrEmpty]
-        public ConsumerGroupAttributes ConsumerGroupObj { get; set; }
-
+        public string UserMetadata { get; set; }
+        
         public override void ExecuteCmdlet()
         {
-            ConsumerGroupAttributes consumerGroup = null;
-            if (!string.IsNullOrEmpty(InputFile))
-            {
-                consumerGroup = ParseInputFile<ConsumerGroupAttributes>(InputFile);
-            }
-            else
-            {
-                consumerGroup = ConsumerGroupObj;
-            }
+            ConsumerGroupAttributes consumerGroup = new ConsumerGroupAttributes();
 
+            EventHubAttributes getEventHub = Client.GetEventHub(ResourceGroupName, NamespaceName, EventHubName);
+
+            consumerGroup.Name = ConsumerGroupName;
+            consumerGroup.Location = getEventHub.Location;
+
+            if (!string.IsNullOrEmpty(UserMetadata))
+                consumerGroup.UserMetadata = UserMetadata;
+                        
             ConsumerGroupAttributes consumergrpAttributes = Client.CreateOrUpdateConsumerGroup(ResourceGroupName, NamespaceName, EventHubName, consumerGroup.Name, consumerGroup);
+
             WriteObject(consumergrpAttributes);
         }
     }

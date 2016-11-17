@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "EventHub AuthorizationRule Name.")]
-        public string AuthorizationRule { get; set; }
+        public string AuthorizationRuleName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(AuthorizationRule))
+            if (!string.IsNullOrEmpty(AuthorizationRuleName))
             {
                 // Get a eventHub AuthorizationRule
-                SharedAccessAuthorizationRuleAttributes authRule = Client.GetEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRule);
+                SharedAccessAuthorizationRuleAttributes authRule = Client.GetEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRuleName);
                 WriteObject(authRule);
             }
             else

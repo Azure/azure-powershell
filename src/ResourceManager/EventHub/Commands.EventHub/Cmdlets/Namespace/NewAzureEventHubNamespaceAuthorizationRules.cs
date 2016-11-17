@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
@@ -39,32 +40,36 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public string NamespaceName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 2,
-            ParameterSetName = InputFileParameterSetName,
-            HelpMessage = "Name of file containing a single EventHub NameSpace AuthorizationRule definition.")]
+           ValueFromPipelineByPropertyName = true,
+           Position = 2,
+           HelpMessage = "AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string InputFile { get; set; }
+        public string AuthorizationRuleName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 2,
-            ParameterSetName = SASRuleParameterSetName,
-            HelpMessage = "EventHub Namespace AuthorizationRule Object.")]
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes SharedAccessAuthorizationRule { get; set; }
+        public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
-        {
-            SharedAccessAuthorizationRuleAttributes sasRule = null;
-            if (!string.IsNullOrEmpty(InputFile))
+        {   
+            SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
+            NamespaceAttributes getNamespace = Client.GetNamespace(ResourceGroupName, NamespaceName);
+
+            IList<Management.EventHub.Models.AccessRights?> newListAry = new List<Management.EventHub.Models.AccessRights?>();
+
+            foreach (string test in Rights)
             {
-                sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
-            }
-            else
-            {
-                sasRule = SharedAccessAuthorizationRule;
+                newListAry.Add(ParseAccessRights(test));
             }
 
-            // Create a new EventHub namespace authorizationRule
+            sasRule.Name = AuthorizationRuleName;
+            sasRule.Rights = newListAry;
+            sasRule.Location = getNamespace.Location;
+
+            // Create a new eventHub authorizationRule
             SharedAccessAuthorizationRuleAttributes authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule);
             WriteObject(authRule);
         }

@@ -63,8 +63,6 @@ function EventHubsTests
 	$namespaceName = Get-NamespaceName
 	$eventHubName = Get-EventHubName
 
-	update-NameInResourceFile "NewEventHub.json" $eventHubName	
-
 	# Create Resource Group
     Write-Debug "Create resource group"    
     Write-Debug " Resource Group Name : $resourceGroupName"
@@ -105,7 +103,10 @@ function EventHubsTests
 
 	# Create a EventHub
     Write-Debug " Create new eventHub "    
-    $result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -InputFile .\.\Resources\NewEventHub.json
+	$msgRetentionInDays = 3
+	$partionCount = 2
+    $result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
+
 	
 		
     Write-Debug " Get the created Eventhub "
@@ -167,9 +168,6 @@ function EventHubsAuthTests
 	$namespaceName = Get-NamespaceName    
 	$eventHubName = Get-EventHubName	
     $authRuleName = Get-AuthorizationRuleName
-	update-NameInResourceFile "NewEventHub.json" $eventHubName	
-	update-NameInResourceFile "NewAuthorizationRule.json" $authRuleName	
-
 
 	# Create ResourceGroup
     Write-Debug " Create resource group"    
@@ -209,7 +207,9 @@ function EventHubsAuthTests
 
 	# Create New EventHub
     Write-Debug " Create new eventHub "    
-    $result_eventHub = New-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -InputFile .\.\Resources\NewEventHub.json
+	$msgRetentionInDays = 3
+	$partionCount = 2
+    $result_eventHub = New-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
 	
     Write-Debug "Get the created eventHub"
     $createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name
@@ -219,7 +219,7 @@ function EventHubsAuthTests
 
 	# Create Eventhub Authorization Rule
     Write-Debug "Create a EventHub Authorization Rule"
-    $result = New-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -InputFile .\.\Resources\NewAuthorizationRule.json
+    $result = New-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
 
 	# Assert
     Assert-AreEqual $authRuleName $result.Name
@@ -230,7 +230,7 @@ function EventHubsAuthTests
 
 	# Get Created Eventhub Authorization Rule
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -AuthorizationRule $authRuleName
+    $createdAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRule $authRuleName
 
 	# Assert
     Assert-AreEqual $authRuleName $createdAuthRule.Name
@@ -240,8 +240,7 @@ function EventHubsAuthTests
 
 	# Get all Eventhub Authorization Rules
     Write-Debug "Get All eventHub AuthorizationRule"
-    $result = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name 
-
+    $result = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName
 	# Assert
     $found = 0
     for ($i = 0; $i -lt $result.Count; $i++)
@@ -260,7 +259,7 @@ function EventHubsAuthTests
 	# Update the Eventhub Authorization Rule
     Write-Debug "Update eventHub AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
-    $updatedAuthRule = Set-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -SASRule $createdAuthRule
+    $updatedAuthRule = Set-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
     Wait-Seconds 15
 
 	# Assert
@@ -271,7 +270,7 @@ function EventHubsAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	   
     # get the Updated Eventhub Authorization Rule
-    $updatedAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -AuthorizationRule $authRuleName
+    $updatedAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName
     
 	# Assert
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -282,7 +281,7 @@ function EventHubsAuthTests
 	
 	# Get the List Keys
     Write-Debug "Get Eventhub authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmEventHubKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -AuthorizationRule $authRuleName
+    $namespaceListKeys = Get-AzureRmEventHubKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -290,21 +289,21 @@ function EventHubsAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -AuthorizationRule $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -AuthorizationRule $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 
 
 	# Cleanup
     Write-Debug "Delete the created EventHub AuthorizationRule"
-    $result = Remove-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name -AuthorizationRule $authRuleName
+    $result = Remove-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName
     
     Write-Debug "Delete the Eventhub"
-    Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name
+    Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName
     
     Write-Debug "Delete NameSpace"
     Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName

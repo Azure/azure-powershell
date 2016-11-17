@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
@@ -45,31 +46,34 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public string EventHubName { get; set; }
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 3,
-            ParameterSetName = InputFileParameterSetName,
-            HelpMessage = "Name of file containing a single AuthorizationRule definition.")]
+            HelpMessage = "AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string InputFile { get; set; }
+        public string AuthorizationRuleName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 3,
-            ParameterSetName = SASRuleParameterSetName,
-            HelpMessage = "EventHub AuthorizationRule Object.")]
+            ValueFromPipelineByPropertyName = true,
+            Position = 4,
+            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
+        public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {            
-            SharedAccessAuthorizationRuleAttributes sasRule = null;
-            if (!string.IsNullOrEmpty(InputFile))
-            {
-                sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
-            }
-            else
-            {
-                sasRule = SASRule;
-            }
+            SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
+            EventHubAttributes getEventHub = Client.GetEventHub(ResourceGroupName, NamespaceName, EventHubName);
 
+            IList<Management.EventHub.Models.AccessRights?> newListAry = new List<Management.EventHub.Models.AccessRights?>();
+
+            foreach (string test in Rights)
+            {
+                newListAry.Add(ParseAccessRights(test));
+            }
+           
+            sasRule.Name = AuthorizationRuleName;
+            sasRule.Rights = newListAry;
+            sasRule.Location = getEventHub.Location;
             // Create a new eventHub authorizationRule
             SharedAccessAuthorizationRuleAttributes authRule = Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName,
                                                     sasRule.Name, sasRule);

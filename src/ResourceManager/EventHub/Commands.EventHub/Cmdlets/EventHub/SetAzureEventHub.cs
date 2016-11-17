@@ -44,31 +44,44 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [ValidateNotNullOrEmpty]
         public string EventHubName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputFileParameterSetName,
-            Position = 3,
-            HelpMessage = "Name of file containing a single EventHub definition.")]
-        [ValidateNotNullOrEmpty]
-        public string InputFile { get; set; }
-
-        [Parameter(Mandatory = true,
-            ParameterSetName = EventHubParameterSetName,
-            Position = 3,
-            HelpMessage = "EventHub object.")]
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = EventHubParameterSetName,
+           HelpMessage = "EventHub object.")]
         [ValidateNotNullOrEmpty]
         public EventHubAttributes EventHubObj { get; set; }
-        
+
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Eventhub Message Retention In Days.")]
+        [ValidateNotNullOrEmpty]
+        public long? messageRetentionInDays { get; set; }
+
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Eventhub PartitionCount.")]
+        [ValidateNotNullOrEmpty]
+        public long? partitionCount { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
             EventHubAttributes eventHub = null;
-            if (!string.IsNullOrEmpty(InputFile))
+            
+            if (EventHubObj != null)
             {
-                eventHub = ParseInputFile<EventHubAttributes>(InputFile);
+                eventHub = EventHubObj;
             }
             else
             {
-                eventHub = EventHubObj;
+                if (string.IsNullOrEmpty(EventHubName))
+                    eventHub.Name = EventHubName;
+
+                if (messageRetentionInDays.HasValue)
+                    eventHub.MessageRetentionInDays = messageRetentionInDays;
+
+                if (partitionCount.HasValue)
+                    eventHub.PartitionCount = partitionCount;
             }
 
             EventHubAttributes eventhubAttributes = Client.CreateOrUpdateEventHub(ResourceGroupName, NamespaceName, eventHub.Name, eventHub);

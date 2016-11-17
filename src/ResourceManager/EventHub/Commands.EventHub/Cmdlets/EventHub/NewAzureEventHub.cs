@@ -38,37 +38,60 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [ValidateNotNullOrEmpty]
         public string NamespaceName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
+            HelpMessage = "Namespace Location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
             HelpMessage = "Eventhub Name.")]
         [ValidateNotNullOrEmpty]
         public string EventHubName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputFileParameterSetName,
-            Position = 3,
-            HelpMessage = "Name of file containing a single EventHub definition.")]
-        [ValidateNotNullOrEmpty]
-        public string InputFile { get; set; }
-
-        [Parameter(Mandatory = true,
-            ParameterSetName = EventHubParameterSetName,
-            Position = 3,
-            HelpMessage = "EventHub object.")]
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = EventHubParameterSetName,
+           HelpMessage = "EventHub object.")]
         [ValidateNotNullOrEmpty]
         public EventHubAttributes EventHubObj { get; set; }
 
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Eventhub Message Retention In Days.")]
+        [ValidateNotNullOrEmpty]
+        public long? MessageRetentionInDays { get; set; }
+
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Eventhub PartitionCount.")]
+        [ValidateNotNullOrEmpty]
+        public long? PartitionCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            EventHubAttributes eventHub = null;
-            if (!string.IsNullOrEmpty(InputFile))
+            EventHubAttributes eventHub = new EventHubAttributes();
+
+            if (EventHubObj != null)
             {
-                eventHub = ParseInputFile<EventHubAttributes>(InputFile);
+                eventHub = EventHubObj;
             }
             else
             {
-                eventHub = EventHubObj;
+                if (!string.IsNullOrEmpty(EventHubName))
+                    eventHub.Name = EventHubName;
+
+                if (MessageRetentionInDays.HasValue)
+                    eventHub.MessageRetentionInDays = MessageRetentionInDays;
+
+                if (PartitionCount.HasValue)
+                    eventHub.PartitionCount = PartitionCount;
+
+                eventHub.Location = Location;       
             }
 
             EventHubAttributes eventHubAttributes = Client.CreateOrUpdateEventHub(ResourceGroupName, NamespaceName, eventHub.Name, eventHub);

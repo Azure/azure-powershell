@@ -75,6 +75,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             return returnPolicyKey;
         }
 
+        protected static AccessRights ParseAccessRights(string rightsName)
+        {
+            AccessRights returnAccessRights;
+            if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
+            {
+                throw new ArgumentOutOfRangeException("AccessRights");
+            }
+            return returnAccessRights;
+        }
+
 
         public EventHubsClient Client
         {

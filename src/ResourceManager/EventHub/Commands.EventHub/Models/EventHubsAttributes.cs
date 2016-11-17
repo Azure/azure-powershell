@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
     public class EventHubAttributes
     {
+        public EventHubAttributes()
+        { }
+
         public EventHubAttributes(EventHubResource ehResource)
         {
             if (ehResource != null)
@@ -43,7 +46,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Exact time the Event was created.
         /// </summary>
-        public DateTime? CreatedAt { get; set; }
+        public DateTime? CreatedAt { get;}
 
         /// <summary>
         /// Number of days to retain the events for this Event Hub.
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Current number of shards on the Event Hub.
         /// </summary>
-        public IList<int?> PartitionIds { get; set; }
+        public IList<int?> PartitionIds { get;}
 
         /// <summary>
         /// Enumerates the possible values for the status of the EventHub.
@@ -66,11 +69,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
         /// 'Renaming', 'Unknown'
         /// </summary>
-        public EntityStatus? Status { get; set; }
+        public EntityStatus? Status { get;}
 
         /// <summary>
         /// The exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get;}
     }
 }

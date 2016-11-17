@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
@@ -40,33 +41,53 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(Mandatory = true,
             Position = 2,
-            ParameterSetName = InputFileParameterSetName,
-            HelpMessage = "Name of file containing a single EventHub Namespace AuthorizationRule definition.")]
-        [ValidateNotNullOrEmpty]
-        public string InputFile { get; set; }
-
-        [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = SASRuleParameterSetName,
-            HelpMessage = "EventHub Namespace AuthorizationRule Object.")]
+            HelpMessage = "EventHub NameSpace AuthorizationRule Object.")]
         [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes SharedAccessAuthorizationRule { get; set; }
+        public SharedAccessAuthorizationRuleAttributes AuthRuleObj { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "AuthorizationRule Name - Required if 'AuthruleObj' not specified.")]
+        [ValidateNotNullOrEmpty]
+        public string AuthorizationRuleName { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 4,
+            HelpMessage = "Required if 'AuthruleObj' not specified. Rights - e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [ValidateNotNullOrEmpty]
+        public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SharedAccessAuthorizationRuleAttributes sasRule = null;
-            if (!string.IsNullOrEmpty(InputFile))
+
+            SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
+
+            if (AuthRuleObj != null)
             {
-                sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
+                sasRule = AuthRuleObj;
             }
             else
             {
-                sasRule = SharedAccessAuthorizationRule;
+                NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroupName, NamespaceName);
+
+                IList<Management.EventHub.Models.AccessRights?> newListAry = new List<Management.EventHub.Models.AccessRights?>();
+
+                foreach (string test in Rights)
+                {
+                    newListAry.Add(ParseAccessRights(test));
+                }
+
+                sasRule.Name = AuthorizationRuleName;
+                sasRule.Rights = newListAry;
+                sasRule.Location = getNameSpace.Location;
             }
 
-            // Update EventHub namespace authorizationRule
-            SharedAccessAuthorizationRuleAttributes updateNSAuthRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule);
-            WriteObject(updateNSAuthRule);
+            // Update a eventHub authorizationRule
+            SharedAccessAuthorizationRuleAttributes authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule);
+            WriteObject(authRule);            
         }
     }
 }

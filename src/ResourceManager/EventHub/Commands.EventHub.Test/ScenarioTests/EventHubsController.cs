@@ -138,7 +138,8 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
-            EventHubsManagementClient = GetEventHubsManagementClient(context);            
+            EventHubsManagementClient = GetEventHubsManagementClient(context);
+            helper.SetupManagementClients(EventHubsManagementClient);
             helper.SetupManagementClients(ResourceManagementClient,EventHubsManagementClient);
         }
 

@@ -34,9 +34,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 Status = (Microsoft.Azure.Commands.EventHub.Models.NamespaceState)evResource.Status;
                 CreatedAt = evResource.CreatedAt;
                 UpdatedAt = evResource.UpdatedAt;
-                ServiceBusEndpoint = evResource.ServiceBusEndpoint;
-                CreateACSNamespace = evResource.CreateACSNamespace;
+                ServiceBusEndpoint = evResource.ServiceBusEndpoint;               
                 Enabled = evResource.Enabled;
+                Location = evResource.Location;
+                
             }
         }
         
@@ -49,6 +50,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Gets or sets the Id of the Namespace
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Id of the Namespace
+        /// </summary>
+        public string Location { get; set; }
 
         /// <summary>
         /// </summary>
@@ -65,28 +71,23 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
         /// 'Removing', 'Removed', 'Failed'
         /// </summary>
-        public Models.NamespaceState? Status { get; set; }
+        public Models.NamespaceState? Status { get; }
 
         /// <summary>
         /// The time the namespace was created.
         /// </summary>
-        public DateTime? CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; }
 
         /// <summary>
         /// The time the namespace was updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; }
 
         /// <summary>
         /// Endpoint you can use to perform ServiceBus operations.
         /// </summary>
-        public string ServiceBusEndpoint { get; set; }
-
-        /// <summary>
-        /// Indicates whether to create ACS namespace.
-        /// </summary>
-        public bool? CreateACSNamespace { get; set; }
-
+        public string ServiceBusEndpoint { get;}
+        
         /// <summary>
         /// Specifies whether this instance is enabled.
         /// </summary>

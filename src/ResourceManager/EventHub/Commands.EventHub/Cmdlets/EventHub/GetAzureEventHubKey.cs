@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 3,
             HelpMessage = "EventHub AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRule { get; set; }
+        public string AuthorizationRuleName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Get a EventHub List Keys for the specified AuthorizationRule
-            ListKeysAttributes keys = Client.GetEventHubListKeys(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRule);
+            ListKeysAttributes keys = Client.GetEventHubListKeys(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRuleName);
             WriteObject(keys);
         }
     }
