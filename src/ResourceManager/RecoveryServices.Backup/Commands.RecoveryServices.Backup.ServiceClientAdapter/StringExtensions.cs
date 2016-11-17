@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Camel-cased string.</returns>
         public static string ToCamelCase(this string str)
         {
-            return string.IsNullOrEmpty(str) ? 
+            return string.IsNullOrEmpty(str) ?
                 str : string.Format("{0}{1}", char.ToLower(str[0]), str.Substring(1));
         }
     }

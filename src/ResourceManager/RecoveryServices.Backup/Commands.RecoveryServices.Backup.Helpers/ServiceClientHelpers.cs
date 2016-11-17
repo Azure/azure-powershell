@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         /// <param name="backupManagementType">Powershell backup management type</param>
         /// <returns>Service backup management type</returns>
-        public static ServiceClientModel.BackupManagementType? 
+        public static ServiceClientModel.BackupManagementType?
             GetServiceClientBackupManagementType(
                 CmdletModel.BackupManagementType? backupManagementType)
         {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         /// <param name="backupManagementType"></param>
         /// <returns>service backup management type</returns>
-        public static ServiceClientModel.BackupManagementType? 
+        public static ServiceClientModel.BackupManagementType?
             GetServiceClientBackupManagementType(string backupManagementType)
         {
             ServiceClientModel.BackupManagementType? providerType = null;
@@ -127,7 +127,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return GetServiceClientBackupManagementType(
                 backupManagementType.ToEnum<CmdletModel.BackupManagementType>());
-
         }
 
         /// <summary>

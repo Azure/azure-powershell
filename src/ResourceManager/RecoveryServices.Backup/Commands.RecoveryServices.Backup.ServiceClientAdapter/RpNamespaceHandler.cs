@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
         protected override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request, CancellationToken cancellationToken)
-        {            
+        {
             request.RequestUri = new Uri(request.RequestUri.AbsoluteUri.Replace(
                 ServiceClientAdapter.ResourceProviderProductionNamespace, rpNamespace));
-            
+
             return base.SendAsync(request, cancellationToken);
         }
 

@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps backup job list model from service response.
         /// </summary>
         public static void AddServiceClientJobsToPSList(
-            List<JobResource> serviceClientJobs, 
-            List<CmdletModel.JobBase> psJobs, 
+            List<JobResource> serviceClientJobs,
+            List<CmdletModel.JobBase> psJobs,
             ref int jobsCount)
         {
-            if (serviceClientJobs != null )
+            if (serviceClientJobs != null)
             {
                 foreach (var job in serviceClientJobs)
                 {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 throw new ArgumentNullException("Job Start Time is null");
             }
             response.EndTime = vmJob.EndTime;
-            response.Duration = 
+            response.Duration =
                 vmJob.Duration.HasValue ? (TimeSpan)vmJob.Duration : default(TimeSpan);
             response.Status = vmJob.Status;
             response.VmVersion = vmJob.VirtualMachineVersion;
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 throw new Exception("Invalid JobType provided: " + jobType);
             }
         }
-                    
+
         #endregion
     }
 }

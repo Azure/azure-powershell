@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             ProviderData = providerData;
             ServiceClientAdapter = serviceClientAdapter;
-        }       
+        }
 
         public RestAzureNS.AzureOperationResponse EnableProtection()
         {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public RestAzureNS.AzureOperationResponse<ServiceClientModel.ProtectionPolicyResource> 
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.ProtectionPolicyResource>
             ModifyPolicy()
         {
             throw new NotImplementedException();
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string name = (string)ProviderData[ContainerParams.Name];
 
-            ODataQuery<ServiceClientModel.BMSBackupEngineQueryObject> queryParams = 
+            ODataQuery<ServiceClientModel.BMSBackupEngineQueryObject> queryParams =
                 new ODataQuery<ServiceClientModel.BMSBackupEngineQueryObject>();
 
             var listResponse = ServiceClientAdapter.ListBackupEngines(queryParams);

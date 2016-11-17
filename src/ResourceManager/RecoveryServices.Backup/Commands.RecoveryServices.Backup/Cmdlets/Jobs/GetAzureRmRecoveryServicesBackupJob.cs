@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets the list of jobs associated with this recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"),
     OutputType(typeof(JobBase), typeof(IList<JobBase>))]
     public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     throw new Exception(Resources.JobAllowedDateTimeRangeExceeded);
                 }
-                else if(rangeStart > DateTime.UtcNow)
+                else if (rangeStart > DateTime.UtcNow)
                 {
                     throw new Exception(Resources.JobStartTimeShouldBeLessThanCurrent);
                 }
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 List<JobBase> result = new List<JobBase>();
 
-                WriteDebug(string.Format("Filters provided are: StartTime - {0} " + 
+                WriteDebug(string.Format("Filters provided are: StartTime - {0} " +
                     "EndTime - {1} Status - {2} Operation - {3} Type - {4}",
                     From,
                     To,
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             : default(ServiceClientModel.JobStatus?);
 
                 var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
-                    Status.HasValue ? Status.ToEnum<ServiceClientModel.JobStatus>() : 
+                    Status.HasValue ? Status.ToEnum<ServiceClientModel.JobStatus>() :
                                       default(ServiceClientModel.JobStatus?),
                     Operation.ToString(),
                     rangeStart,

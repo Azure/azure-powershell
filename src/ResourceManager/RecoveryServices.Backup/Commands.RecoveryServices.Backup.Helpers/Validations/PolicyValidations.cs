@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             // for weekly schedule, daily retention policy should be NULL
             // AND weekly retention policy is required
             if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
-               (ltrPolicy.IsDailyScheduleEnabled != false || ltrPolicy.WeeklySchedule == null || 
+               (ltrPolicy.IsDailyScheduleEnabled != false || ltrPolicy.WeeklySchedule == null ||
                (ltrPolicy.IsWeeklyScheduleEnabled == false)))
             {
                 throw new ArgumentException(Resources.WeeklyRetentionScheduleNullException);
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
                 if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
-                    ltrPolicy.MonthlySchedule.RetentionScheduleFormatType 
+                    ltrPolicy.MonthlySchedule.RetentionScheduleFormatType
                         == RetentionScheduleFormat.Daily)
                 {
                     throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
                 }
 
                 // for monthly and weeklyFormat, validate days of week
-                if (ltrPolicy.MonthlySchedule.RetentionScheduleFormatType 
+                if (ltrPolicy.MonthlySchedule.RetentionScheduleFormatType
                         == RetentionScheduleFormat.Weekly &&
                    schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
                 {
@@ -101,14 +101,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
                 if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
-                    ltrPolicy.YearlySchedule.RetentionScheduleFormatType 
+                    ltrPolicy.YearlySchedule.RetentionScheduleFormatType
                         == RetentionScheduleFormat.Daily)
                 {
                     throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
                 }
 
                 // for yearly and weeklyFormat, validate days of week                 
-                if (ltrPolicy.YearlySchedule.RetentionScheduleFormatType 
+                if (ltrPolicy.YearlySchedule.RetentionScheduleFormatType
                         == RetentionScheduleFormat.Weekly &&
                     schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
                 {
@@ -143,11 +143,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (!schList.Contains(day))
                 {
-                    throw new ArgumentException(Resources.MonthlyYearlyRetentionDaysOfWeekException);                        
+                    throw new ArgumentException(Resources.MonthlyYearlyRetentionDaysOfWeekException);
                 }
             }
         }
-                
+
         #endregion
     }
 }

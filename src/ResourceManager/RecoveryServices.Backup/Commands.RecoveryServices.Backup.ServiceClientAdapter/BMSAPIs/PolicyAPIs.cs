@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="policyName">Name of the policy</param>
         /// <param name="request">Policy create or update request</param>
         /// <returns>Policy created by this operation</returns>
-        public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> 
+        public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource>
             CreateOrUpdateProtectionPolicy(string policyName, ProtectionPolicyResource request)
-        {           
+        {
             return BmsAdapter.Client.ProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(
                 BmsAdapter.GetResourceName(),
                 BmsAdapter.GetResourceGroupName(),
-                policyName, 
+                policyName,
                 request,
-                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;            
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
         /// <summary>

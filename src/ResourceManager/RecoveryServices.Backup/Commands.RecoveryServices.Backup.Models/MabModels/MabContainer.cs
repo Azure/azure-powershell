@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public MabContainer(ServiceClientModel.ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
-            ServiceClientModel.MabContainer mabProtectionContainer = 
+            ServiceClientModel.MabContainer mabProtectionContainer =
                 (ServiceClientModel.MabContainer)protectionContainer.Properties;
             FriendlyName = mabProtectionContainer.FriendlyName;
             Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(mabProtectionContainer.RegistrationStatus);

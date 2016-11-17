@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             ProviderData = providerData;
             ServiceClientAdapter = serviceClientAdapter;
-        }       
+        }
 
         public RestAzureNS.AzureOperationResponse EnableProtection()
         {
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string name = (string)ProviderData[ContainerParams.Name];
 
-            ODataQuery<BMSContainerQueryObject> queryParams = 
+            ODataQuery<BMSContainerQueryObject> queryParams =
                 new ODataQuery<BMSContainerQueryObject>(
-                    q => q.FriendlyName == name && 
+                    q => q.FriendlyName == name &&
                          q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
 
             var listResponse = ServiceClientAdapter.ListContainers(queryParams);

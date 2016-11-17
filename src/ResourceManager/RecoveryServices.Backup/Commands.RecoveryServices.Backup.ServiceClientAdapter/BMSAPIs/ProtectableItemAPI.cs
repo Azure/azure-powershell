@@ -30,9 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="skipToken">Skip token for pagination</param>
         /// <returns>List of protectable items</returns>
         public List<WorkloadProtectableItemResource> ListProtectableItem(
-                ODataQuery<BMSPOQueryObject> queryFilter,
-                string skipToken = default(string)
-                )
+            ODataQuery<BMSPOQueryObject> queryFilter,
+            string skipToken = default(string))
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();

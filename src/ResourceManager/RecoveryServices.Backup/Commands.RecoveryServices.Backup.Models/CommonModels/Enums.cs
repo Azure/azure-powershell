@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// Represents how the policy can be scheduled.
     /// </summary>
     public enum ScheduleRunType
-    {    
+    {
         Daily = 1,
         Weekly = 2,
     }

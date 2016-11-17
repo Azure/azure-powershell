@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                         var dateTime = (DateTime)property.GetValue(queryObject);
                         DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
                         rightHandSide = string.Format(
-                            "'{0}'", 
+                            "'{0}'",
                             dateTime.ToUniversalTime().ToString(
                                 "yyyy-MM-dd hh:mm:ss tt", dateFormat));
                     }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                         string.Format("'{0}'", property.GetValue(queryObject).ToString()) : null;
                 }
 
-                if(!string.IsNullOrEmpty(rightHandSide))
+                if (!string.IsNullOrEmpty(rightHandSide))
                 {
                     queryStrings.Add(leftHandSide + " eq " + rightHandSide);
                 }

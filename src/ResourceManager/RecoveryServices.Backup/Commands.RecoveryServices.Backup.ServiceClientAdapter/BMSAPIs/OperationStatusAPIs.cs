@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns>Operation status response returned by the service</returns>
-        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus> 
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
             GetProtectedItemOperationStatus(string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="policyName">Name of the policy associated with the operation</param>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
-        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus> 
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
             GetProtectionPolicyOperationStatus(string policyName, string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();

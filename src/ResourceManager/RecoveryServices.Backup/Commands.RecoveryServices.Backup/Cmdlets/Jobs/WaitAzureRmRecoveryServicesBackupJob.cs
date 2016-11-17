@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Job or List of jobs until end of which the cmdlet should wait.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.WaitJobOrListFilter, 
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.WaitJobOrListFilter,
             ValueFromPipeline = true, Position = 1)]
         [ValidateNotNull]
         public object Job { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                         else
                         {
-                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput,
                                 Job.GetType().FullName));
                         }
                     }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 else
                 {
                     // not a valid object. throw exception.
-                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput,
                         Job.GetType().FullName));
                 }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     if (Timeout.HasValue)
                     {
-                        if (DateTime.UtcNow.Subtract(waitBeginning) >= 
+                        if (DateTime.UtcNow.Subtract(waitBeginning) >=
                             TimeSpan.FromSeconds(Timeout.Value))
                         {
                             break;

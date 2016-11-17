@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
             request.Headers.TryAddWithoutValidation("Accept-Language", "en-US");
-            
+
             return base.SendAsync(request, cancellationToken);
         }
 

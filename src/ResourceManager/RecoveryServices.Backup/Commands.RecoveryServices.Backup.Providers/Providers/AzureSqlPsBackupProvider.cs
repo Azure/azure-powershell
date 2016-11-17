@@ -249,9 +249,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string name = (string)this.ProviderData[ContainerParams.Name];
 
-            ODataQuery<BMSContainerQueryObject> queryParams = 
+            ODataQuery<BMSContainerQueryObject> queryParams =
                 new ODataQuery<BMSContainerQueryObject>(
-                    q => q.BackupManagementType 
+                    q => q.BackupManagementType
                             == ServiceClientModel.BackupManagementType.AzureSql);
 
 
@@ -313,9 +313,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
 
-            ODataQuery<ProtectedItemQueryObject> queryParams = 
+            ODataQuery<ProtectedItemQueryObject> queryParams =
                 new ODataQuery<ProtectedItemQueryObject>(
-                    q => q.BackupManagementType 
+                    q => q.BackupManagementType
                             == ServiceClientModel.BackupManagementType.AzureSql &&
                          q.ItemType == DataSourceType.AzureSqlDb);
 
@@ -338,9 +338,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }).ToList();
             }
 
-            List<ProtectedItemResource> protectedItemGetResponses = 
+            List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
-    
+
             // 2. Filter by item's friendly name
             if (!string.IsNullOrEmpty(name))
             {
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     return protectedItemUri.ToLower().Contains(name.ToLower());
                 }).ToList();
 
-                ODataQuery<GetProtectedItemQueryObject> getItemQueryParams = 
+                ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
                     new ODataQuery<GetProtectedItemQueryObject>(q => q.Expand == extendedInfo);
 
                 for (int i = 0; i < protectedItems.Count; i++)

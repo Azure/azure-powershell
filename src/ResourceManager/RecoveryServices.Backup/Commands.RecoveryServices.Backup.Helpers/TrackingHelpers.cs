@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
-            while (opStatusResponse.Body.Status == 
+            while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
-            while (opStatusResponse.Body.Status == 
+            while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
