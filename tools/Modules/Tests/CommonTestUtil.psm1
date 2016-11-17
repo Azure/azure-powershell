@@ -17,3 +17,5 @@ function Write-Log
         $obj | Out-String | Write-Verbose
     }
 }
+export-modulemember -Function Log-Info
+export-modulemember -Function Write-Log

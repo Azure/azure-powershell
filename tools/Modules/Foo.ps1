@@ -90,8 +90,6 @@ Function Get-ServicePrincipal
         [Parameter(Mandatory=$false, HelpMessage="True: Spn is created if does not exist")]
         [bool]$createIfNotFound = $false
     )
-
-
 }
 
 
@@ -285,4 +283,4 @@ Function Print-ConnectionString([string]$uid, [string]$pwd, [string]$subId, [str
 export-modulemember -Function Set-TestEnvironment
 export-modulemember -Function Delete-ActiveDirectoryApp
 
-Delete-ActiveDirectoryApp -ADAppDisplayName "Hello" -SubscriptionId "sub" -TenantId "tenant" -WhatIf
+Delete-ActiveDirectoryApp -ADAppDisplayName "Hello" -SubscriptionId "sub" -TenantId "tenant"
