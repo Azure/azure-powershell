@@ -1,5 +1,13 @@
-﻿Function Get-ActiveDirectoryApp
+﻿[cmdletBinding]
+Function New-ServicePrincipal
 {
+<#
+.SYNOPSIS
+This cmdlet helps you create:
+1) AD Apllication needed for SPN
+2) AD SPN
+3) Assigning Reader role to the newly created SPN
+#>
     param(
     [Parameter(Mandatory=$true, HelpMessage="Azure AD Apllication Display Name")]
     [ValidateNotNullOrEmpty()]
@@ -20,41 +28,145 @@
     
     )
 
-    $displayName = $ADAppDisplayName
-    $homePage = "http://www.$displayName.com"
-    $identityUri = "http://$displayName"
+    Set-Subscription -SubscriptionId $SubscriptionId -TenantId $TenantId
 
-    Select-AzureRmSubscription -SubscriptionId $SubscriptionId -TenantId $TenantId
-    $azSub = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
-
-    if($azSub -ne $null)
-    {
-        if($azSub.SubscriptionId -ne $SubscriptionId)
-        {
-            throw [System.ApplicationException] "'$SubscriptionId' subscriptionId is not selected'. Exiting......"
-        }
-    }
-    
-    $azAdApp = Get-AzureRmADApplication -DisplayNameStartWith $displayName
+    $azAdApp = Get-ADApp -ADAppDisplayName $ADAppDisplayName
     if($azAdApp -eq $null -and $createADAppIfNotFound -eq $true)
     {
+        $displayName = $ADAppDisplayName
+        $homePage = "http://www.$displayName.psmodule"
+        $identityUri = "http://$displayName"
         $azAdApp = New-AzureRmADApplication -DisplayName $displayName -HomePage $homePage -IdentifierUris $identityUri
     }
 
-    if($azAdApp -ne $null -and $createADSpnIfNotFound -eq $true)
+    $azSpn = Get-SPN -ADAppId $azAdApp.ApplicationId
+
+    if(($azAdApp -ne $null) -and ($azSpn -eq $null))
     {
-        $adAppSpn = New-AzureRmADServicePrincipal -ApplicationId $psAutoADApp.ApplicationId
-    }
-    else
-    {
-        throw [System.ApplicationException] "Unable to create new Azure AD Applicaiton using 'New-AzureRmADApplication'. Exiting......"
+        if($createADSpnIfNotFound -eq $true)
+        {
+            $azSpn = New-AzureRmADServicePrincipal -ApplicationId $azAdApp.ApplicationId            
+            Write-Host "Waiting for SPN to fully create and able to query ....."
+
+            for($i=0; $i -lt 3; $i++)
+            {
+                #need to find a better deterministic way
+                #Cases are when you try to assign roles to newly created SPN, it is not able to find it and hence Role Assignment fails
+                #Get-SPN -ADAppId $azAdApp.ApplicationId
+                Start-Sleep -Seconds 5
+            }
+        }
     }
 
-    Get-ADAppSpnDetails -AdApp $azAdApp -AdSpn $adAppSpn
+    if($azSpn -ne $null)
+    {
+        $spnScope = [string]::Format("{0}{1}", "/subscriptions/", "$SubscriptionId/")
+
+        $rdStr = [string]::Format("{0} Role will be assigned to SPNName:{1} for scope {2}", "Reader", $azAdApp.ApplicationId, $spnScope)
+        Write-Host $rdStr
+
+        $roleDef = Get-AzureRmRoleAssignment -ServicePrincipalName $azAdApp.ApplicationId -Scope $spnScope
+        if($roleDef -eq $null)
+        {
+            New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ServicePrincipalName $azAdApp.ApplicationId -scope $spnScope
+        }
+    }
+
+    Get-ServicePrincipalDetails -AdApp $azAdApp -AdSpn $azSpn
+
+    Write-Host "Log onto Azure Portal and use Above SPN Details to find your Service Principal and obtain SPN Secret/ Authentication Key/ Secret Key for the newly created Service Principal" -ForegroundColor DarkYellow
+    Write-Host "Visit https://docs.microsoft.com/en-us/azure/resource-group-create-service-principal-portal" -ForegroundColor DarkYellow
+}
+
+Function Get-ADApp
+{
+    param(
+    [Parameter(Mandatory=$true, HelpMessage="Azure AD Apllication Display Name")]
+    [ValidateNotNullOrEmpty()]
+    [string]$ADAppDisplayName
+    )
+
+    $displayName = $ADAppDisplayName
+    $homePage = "http://www.$displayName.psmodule"
+    $identityUri = "http://$displayName"
+
+    $azAdApp = Get-AzureRmADApplication -IdentifierUri $identityUri
+
+    $PsCmdLet.WriteObject($azAdApp)
+}
+
+[CmdletBinding]
+Function Get-SPN
+{
+    param(
+    [Parameter(Mandatory=$true, ParameterSetName="DisplayName", HelpMessage="Azure AD Apllication Display Name")]
+    [ValidateNotNullOrEmpty()]
+    [string]$ADAppDisplayName,
+
+    [Parameter(Mandatory=$true, ParameterSetName="AppId", HelpMessage="Azure AD Apllication ID")]
+    [ValidateNotNullOrEmpty()]
+    [string]$ADAppId
+    )
+
+    $appId = ""
+    if([string]::IsNullOrEmpty($ADAppDisplayName) -eq $false)
+    {
+        $azAdApp = Get-ADApp -ADAppDisplayName $ADAppDisplayName
+        $appId = $azAdApp.ApplicationId
+    }
+    
+    if([string]::IsNullOrEmpty($ADAppDisplayName) -eq $true)
+    {
+        $appId = $ADAppId
+    }
+
+    $azSpn = Get-AzureRmADServicePrincipal -ServicePrincipalName $appId
+    
+
+    $Pscmdlet.WriteObject($azSpn)
+}
+
+[CmdletBinding]
+Function Set-Subscription
+{    
+    param(
+    [Parameter(Mandatory=$true, HelpMessage="Azure Subscription Id")]
+    [ValidateNotNullOrEmpty()]
+    [string]$SubscriptionId,
+    
+    [Parameter(Mandatory=$false, HelpMessage="Azure AD Apllication Display Name")]
+    [string]$TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    )
+
+    $azCtx = Get-AzureRmContext
+
+    if($azCtx -ne $null)
+    {
+        if($azCtx.Subscription.SubscriptionId -ne $SubscriptionId)
+        {
+            $azSub = Get-AzureRmSubscription -SubscriptionId $SubscriptionId -TenantId $TenantId
+
+            if($azSub -ne $null)
+            {
+                if($azSub.SubscriptionId -ne $SubscriptionId)
+                {
+                    throw [System.ApplicationException] "'$SubscriptionId' subscriptionId is not selected'. Exiting......"
+                }
+                else
+                {
+                    Select-AzureRmSubscription -SubscriptionId $SubscriptionId -TenantId $TenantId
+                }
+            }
+            else
+            {
+                throw [System.ApplicationException] "Unable to retrieve '$SubscriptionId'. Exiting......"
+            }
+        }
+    }
 }
 
 [cmdletBinding]
-Function Get-ADAppSpnDetails
+Function Get-ServicePrincipalDetails
 {
     param(
         [Parameter(Mandatory=$false, HelpMessage="Azure AD Apllication")]
@@ -67,65 +179,103 @@ Function Get-ADAppSpnDetails
     if($AdApp -ne $null)
     {
         Write-Host "AD App Info"
-        Write-Host $AdApp
+        Write-Host ([string]::Format("Active Directory App Display Name: {0}", $AdApp.DisplayName))
+        Write-Host ([string]::Format("Active Directory App ClientId: {0}", $AdApp.ApplicationId))
+        Write-Host ([string]::Format("Active Directory App Identifier Uri: {0}", $AdApp.IdentifierUris[0].ToString()))
+        Write-Host
     }
 
     if($AdSpn -ne $null)
     {
-        Write-Host "AD SPN Info"
-        Write-Host $AdSpn
+        Write-Host "SPN Info"
+        Write-Host ([string]::Format("SPN Id: {0}", $AdSpn.Id))        
+        Write-Host ([string]::Format("SPN Display Name: {0}", $AdSpn.DisplayName))        
+        Write-Host ([string]::Format("SPN associated with Active Directory App Id: {0}", $AdSpn.ApplicationId))        
+        Write-Host
     }
 }
 
 [cmdletBinding]
-Function Get-ServicePrincipal
-{
-    param(
-        [Parameter(Mandatory=$true, HelpMessage="Azure AD Apllication Display Name")]
-        [string]$ADAppDisplayName,
-
-        [Parameter(Mandatory=$false, HelpMessage="Please provide the role that needs to be assigned to ServicePrinciple")]
-        [string]$Role,
-
-        [Parameter(Mandatory=$false, HelpMessage="True: Spn is created if does not exist")]
-        [bool]$createIfNotFound = $false
-    )
-
-
-}
-
-
-Function Delete-ActiveDirectoryApp
+Function Remove-ServicePrincipal
 {
     [CmdletBinding(SupportsShouldProcess=$true)]
 
     param(
     [Parameter(Mandatory=$true, HelpMessage="Azure AD Apllication Display Name")]
-    #[ValidateNotNullOrEmpty()]
+    [ValidateNotNullOrEmpty()]
     [string]$ADAppDisplayName,
     
     [Parameter(Mandatory=$true, HelpMessage="Azure Subscription Id")]
-    #[ValidateNotNullOrEmpty()]
+    [ValidateNotNullOrEmpty()]
     [string]$SubscriptionId,
     
     [Parameter(Mandatory=$false, HelpMessage="Azure AD Apllication Display Name")]
     [string]$TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
-
     )
 
-    #process
-    #{
-        if($PSCmdlet.ShouldProcess("$ADAppDisplayName"))
-        {
-            Write-Host "ShouldProcess is True"
-        }
-        else
-        {
-            Write-Host "ShouldProcess is False"
-        }
+    Set-Subscription -SubscriptionId $SubscriptionId -TenantId $TenantId
 
-    #}
+    if($PSCmdlet.ShouldProcess("$ADAppDisplayName"))
+    {
+        $AdApp = Get-ADApp -ADAppDisplayName $ADAppDisplayName
+        $azSpn = Get-SPN -ADAppId $adApp.ApplicationId
+        $adappStr = [string]::Format("{0} ADApp will be deleted", $AdApp.ApplicationId.ToString())
+        $spnStr = [string]::Format("{0} SPN will be deleted", $azSpn.DisplayName)
+
+        Remove-AzureRmADServicePrincipal -ObjectId $azSpn.Id -Force
+        Remove-AzureRmADApplication -ObjectId $AdApp.ObjectId -Force
+        Write-Host $adappStr
+        Write-Host $spnStr
+
+    }
+    else
+    {
+        $AdApp = Get-ADApp -ADAppDisplayName $ADAppDisplayName
+        $azSpn = Get-SPN -ADAppId $adApp.ApplicationId
+
+        $adappStr = [string]::Format("{0} ADApp will be deleted", $AdApp.ApplicationId.ToString())
+        $spnStr = [string]::Format("{0} SPN will be deleted", $azSpn.DisplayName)
+        Write-Host $adappStr
+        Write-Host $spnStr
+    }
+}
+
+[cmdletBinding]
+Function Set-SPNRole
+{
+    param(
+    [Parameter(Mandatory=$true, HelpMessage="Azure AD Application Display Name")]
+    [ValidateNotNullOrEmpty()]
+    [string]$ADAppDisplayName,
     
+    [Parameter(Mandatory=$true, HelpMessage="Azure Subscription Id")]
+    [ValidateNotNullOrEmpty()]
+    [string]$SubscriptionId,
+
+    [Parameter(Mandatory=$false, HelpMessage="Azure AD Apllication Display Name")]
+    [string]$TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    )
+
+    Set-Subscription -SubscriptionId $SubscriptionId -TenantId $TenantId
+    $adApp = Get-ADApp -ADAppDisplayName $ADAppDisplayName
+
+    if($adApp -ne $null)
+    {
+        $azSpn = Get-SPN -ADAppId $adApp.ApplicationId
+        $spnScope = [string]::Format("{0}{1}", "/subscriptions/", "$SubscriptionId/")    
+        $roleDef = Get-AzureRmRoleAssignment -ServicePrincipalName $adApp.ApplicationId -Scope $spnScope
+
+        if($roleDef -eq $null)
+        {
+            $rdStr = [string]::Format("{0} Role will be assigned to SPNName:{1} for scope {2}", "Reader", $adApp.ApplicationId, $spnScope)
+            Write-Host $rdStr
+            New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ServicePrincipalName $adApp.ApplicationId -scope $spnScope
+        }
+    }
+    else
+    {
+        Write-Host "Unable to find AD App: $ADAppDisplayName"
+    }
 }
 
 [CmdletBinding]
@@ -280,9 +430,7 @@ Function Print-ConnectionString([string]$uid, [string]$pwd, [string]$subId, [str
     Write-Host ""
 }
 
-#Delete-ActiveDirectoryApp -ADAppDisplayName "" -SubscriptionId "" -TenantId "" -WhatIf
-
 export-modulemember -Function Set-TestEnvironment
-export-modulemember -Function Delete-ActiveDirectoryApp
-
-Delete-ActiveDirectoryApp -ADAppDisplayName "Hello" -SubscriptionId "sub" -TenantId "tenant" -WhatIf
+export-modulemember -Function Remove-ServicePrincipal
+export-modulemember -Function New-ServicePrincipal
+export-modulemember -Function Set-SPNRole
