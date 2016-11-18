@@ -177,11 +177,21 @@
     <None Include="ScenarioTests\EventHubsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.ConsumerGroupsTests\ConsumerGroupsCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsAuthorizationRulesCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\NamespaceAuthorizationRulesCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\NamespaceCRUD.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.ConsumerGroupsTests\ConsumerGroupsCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsAuthorizationRulesCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\NamespaceAuthorizationRulesCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\NamespaceCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
