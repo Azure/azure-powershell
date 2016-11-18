@@ -25,6 +25,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 {
     public class CmdletBreakingChangeLoader : MarshalByRefObject
     {
+        public static HashSet<string> TypeSet;
+
         /// <summary>
         /// Get cmdlets from the given assembly
         /// </summary>
@@ -33,6 +35,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public List<CmdletBreakingChangeMetadata> GetCmdlets(string assemblyPath)
         {
             List<CmdletBreakingChangeMetadata> results = new List<CmdletBreakingChangeMetadata>();
+
+            InitializeTypeSet();
+
             try
             {
                 var assembly = Assembly.LoadFrom(assemblyPath);
@@ -72,7 +77,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             cmdletMetadata.OutputTypes.Add(outputMetadata);
                         }
                     }
-
+                    
                     List<Parameter> globalParameters = new List<Parameter>();
 
                     foreach (var parameter in parameters)
@@ -94,7 +99,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         {
                             var validateSet = parameter.GetAttribute<ValidateSetAttribute>();
                             parameterData.ValidateSet.AddRange(validateSet.ValidValues);
-                        }                        
+                        }
+
+                        parameterData.ValidateNotNullOrEmpty = parameter.HasAttribute<ValidateNotNullOrEmptyAttribute>();                
 
                         cmdletMetadata.Parameters.Add(parameterData);
 
@@ -158,6 +165,25 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
 
             return results;
+        }
+
+        private void InitializeTypeSet()
+        {
+            TypeSet = new HashSet<string>();
+            TypeSet.Add("System.String");
+            TypeSet.Add("System.Boolean");
+            TypeSet.Add("System.Byte");
+            TypeSet.Add("System.SByte");
+            TypeSet.Add("System.Int16");
+            TypeSet.Add("System.UInt16");
+            TypeSet.Add("System.Int32");
+            TypeSet.Add("System.UInt32");
+            TypeSet.Add("System.Int64");
+            TypeSet.Add("System.UInt64");
+            TypeSet.Add("System.Single");
+            TypeSet.Add("System.Double");
+            TypeSet.Add("System.Decimal");
+            TypeSet.Add("System.Char");
         }
     }
 }

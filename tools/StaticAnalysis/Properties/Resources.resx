@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddedValidateNotNullOrEmptyDescription" xml:space="preserve">
+    <value>The ValidateNotNullOrEmpty attribute has been added to parameter '{0}' for cmdlet '{1}'.</value>
+  </data>
+  <data name="AddedValidateNotNullOrEmptyRemediation" xml:space="preserve">
+    <value>Remove the ValidateNotNullOrEmpty attribute from parameter '{0}'.</value>
+  </data>
+  <data name="AddedValidateSetDescription" xml:space="preserve">
+    <value>A validate set has been added for parameter '{0}' for cmdlet '{1}'.</value>
+  </data>
+  <data name="AddedValidateSetRemediation" xml:space="preserve">
+    <value>Remove the validate set from parameter '{0}'.</value>
+  </data>
   <data name="ChangeDefaultParameterDescription" xml:space="preserve">
     <value>The parameter set '{0}' for cmdlet '{1}' is no longer the default parameter set.</value>
   </data>
@@ -126,26 +138,20 @@
   <data name="ChangedOutputTypeDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer has output type '{1}'.</value>
   </data>
-  <data name="ChangedOutputTypePropertyDescription" xml:space="preserve">
-    <value>The output type '{0}' for cmdlet '{1}' has property '{2}' that is no longer of type '{3}'.</value>
-  </data>
-  <data name="ChangedOutputTypePropertyRemediation" xml:space="preserve">
-    <value>Make sure that property '{0}' for type '{1}' is of type '{2}'.</value>
-  </data>
   <data name="ChangedOutputTypeRemediation" xml:space="preserve">
-    <value>Make cmdlet '{0}' output '{1}'.</value>
+    <value>Make cmdlet '{0}' return type '{1}'.</value>
   </data>
   <data name="ChangedParameterTypeDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer supports the type '{1}' for parameter '{2}'.</value>
   </data>
-  <data name="ChangedParameterTypePropertyDescription" xml:space="preserve">
-    <value>The property '{0}' of type '{1}' of parameter '{2}' for cmdlet '{3}' has been changed from '{4}'.</value>
-  </data>
-  <data name="ChangedParameterTypePropertyRemediation" xml:space="preserve">
-    <value>Change the type of property '{0}' back to '{1}'.</value>
-  </data>
   <data name="ChangedParameterTypeRemediation" xml:space="preserve">
     <value>Change the type for parameter '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedPropertyTypeDescription" xml:space="preserve">
+    <value>The type of property '{0}' of type '{1}' has changed from '{2}' to '{3}'.</value>
+  </data>
+  <data name="ChangedPropertyTypeRemediation" xml:space="preserve">
+    <value>Change the type of property '{0}' back to '{1}'.</value>
   </data>
   <data name="MandatoryParameterDescription" xml:space="preserve">
     <value>The parameter '{0}' is no longer optional for the parameter set '{1}' for cmdlet '{2}'.</value>
@@ -157,7 +163,7 @@
     <value>The position of parameter '{0}' has changed for parameter set '{1}' for cmdlet '{2}'.</value>
   </data>
   <data name="PositionChangeRemediation" xml:space="preserve">
-    <value>Revert the position changes made to parameter '{0}' for parameter set '{1}'.</value>
+    <value>Revert the position change made to parameter '{0}' for parameter set '{1}'.</value>
   </data>
   <data name="RemovedCmdletAliasDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer supports the alias '{1}'.</value>
@@ -166,16 +172,10 @@
     <value>Add the alias '{0} back to the cmdlet '{1}'.</value>
   </data>
   <data name="RemovedCmdletDescription" xml:space="preserve">
-    <value>The cmdlet '{0}' has been removed.</value>
+    <value>The cmdlet '{0}' has been removed and no alias was found for the original cmdlet name.</value>
   </data>
   <data name="RemovedCmdletRemediation" xml:space="preserve">
-    <value>Add the cmdlet '{0}' back to the module.</value>
-  </data>
-  <data name="RemovedOutputTypePropertyDescription" xml:space="preserve">
-    <value>The output type '{0}' for cmdlet '{1}' no longer has property '{2}'.</value>
-  </data>
-  <data name="RemovedOutputTypePropertyRemediation" xml:space="preserve">
-    <value>Make sure that type '{0}' has property '{1}'.</value>
+    <value>Add the cmdlet '{0}' back to the module, or add an alias to the original cmdlet name.</value>
   </data>
   <data name="RemovedPagingDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer implements SupportsPaging.</value>
@@ -207,17 +207,23 @@
   <data name="RemovedParameterSetRemediation" xml:space="preserve">
     <value>Add parameter set '{0}' back to cmdlet '{1}'.</value>
   </data>
-  <data name="RemovedParameterTypePropertyDescription" xml:space="preserve">
-    <value>The property '{0}' of type '{1}' of parameter '{2}' for cmdlet '{3}' has been removed.</value>
+  <data name="RemovedPropertyDescription" xml:space="preserve">
+    <value>The property '{0}' of type '{1}' has been removed.</value>
   </data>
-  <data name="RemovedParameterTypePropertyRemediation" xml:space="preserve">
-    <value>Add the property '{0}' back to the type '{1}'.</value>
+  <data name="RemovedPropertyRemediation" xml:space="preserve">
+    <value>Add the property '{0}' back to type '{1}'.</value>
   </data>
   <data name="RemovedShouldProcessDescription" xml:space="preserve">
     <value>The cmdlet '{0}' no longer implements SupportsShouldProcess.</value>
   </data>
   <data name="RemovedShouldProcessRemediation" xml:space="preserve">
     <value>Make sure the cmdlet '{0}' implements SupportsShouldProcess.</value>
+  </data>
+  <data name="RemovedValidateSetValueDescription" xml:space="preserve">
+    <value>The validation set for parameter '{0}' for cmdlet '{1}' no longer contains the value '{2}'.</value>
+  </data>
+  <data name="RemovedValidateSetValueRemediation" xml:space="preserve">
+    <value>Add '{0}' back to the validation set for '{1}'.</value>
   </data>
   <data name="RemovedValueFromPipelineByPropertyNameDescription" xml:space="preserve">
     <value>The parameter '{0}' in parameter set '{1}' for cmdlet '{2}' no longer has the attribute 'ValueFromPipelineByPropertyName'.</value>
@@ -230,11 +236,5 @@
   </data>
   <data name="RemovedValueFromPipelineRemediation" xml:space="preserve">
     <value>Add the attribute 'ValueFromPipeline' back to parameter '{0}' in parameter set '{1}'.</value>
-  </data>
-  <data name="ValidateSetDescription" xml:space="preserve">
-    <value>The validation set for parameter '{0}' for cmdlet '{1}' no longer contains the value '{2}'.</value>
-  </data>
-  <data name="ValidateSetRemediation" xml:space="preserve">
-    <value>Add '{0}' back to the validation set for '{1}'.</value>
   </data>
 </root>

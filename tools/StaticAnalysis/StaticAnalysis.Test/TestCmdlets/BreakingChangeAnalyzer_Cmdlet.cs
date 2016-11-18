@@ -172,6 +172,25 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeValidateSet
     }
 }
 
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddValidateSet
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "AddValidateSet")]
+    public class TestAddValidateSet : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        [ValidateSet("Foo")]
+        public string Parameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-AddValidateSet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
 namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputType
 {
     using System.Management.Automation;
@@ -182,26 +201,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputType
         protected override void BeginProcessing()
         {
             WriteObject("Test-ChangeOutputType BeginProcessing()");
-            WriteInformation("Info", null);
-        }
-    }
-}
-
-namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeProperty
-{
-    using System.Management.Automation;
-
-    public class TestOutput
-    {
-        public string Property { get; set; }
-    }
-
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputTypeProperty"), OutputType(typeof(TestOutput))]
-    public class TestChangeOutputTypeProperty : Cmdlet
-    {
-        protected override void BeginProcessing()
-        {
-            WriteObject("Test-ChangeOutputTypeProperty BeginProcessing()");
             WriteInformation("Info", null);
         }
     }
@@ -229,6 +228,61 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName
     }
 }
 
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType
+{
+    using System.Management.Automation;
+
+    public class TestType
+    {
+        public int PropertyOne { get; set; }
+        public int PropertyTwo { get; set; }
+        public bool PropertyThree { get; set; }
+    }
+
+    public class TestOutput
+    {
+        public string PropertyOne { get; set; }
+        public TestType PropertyTwo { get; set; }
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangePropertyType"), OutputType(typeof(TestOutput))]
+    public class TestChangePropertyType : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangePropertyType BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty
+{
+    using System.Management.Automation;
+
+    public class TestType
+    {
+        public int PropertyTwo { get; set; }
+        public bool PropertyThree { get; set; }
+    }
+
+    public class TestOutput
+    {
+        public string PropertyOne { get; set; }
+        public TestType PropertyTwo { get; set; }
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "RemoveProperty"), OutputType(typeof(TestOutput))]
+    public class TestRemoveProperty : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-RemoveProperty BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
 namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterType
 {
     using System.Management.Automation;
@@ -242,29 +296,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterType
         protected override void BeginProcessing()
         {
             WriteObject("Test-ChangeParameterType BeginProcessing()");
-            WriteInformation("Info", null);
-        }
-    }
-}
-
-namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterTypeProperty
-{
-    using System.Management.Automation;
-
-    public class TestOutput
-    {
-        public string Property { get; set; }
-    }
-
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterTypeProperty")]
-    public class TestChangeParameterTypeProperty : Cmdlet
-    {
-        [Parameter(Mandatory = false)]
-        public TestOutput Parameter { get; set; }
-
-        protected override void BeginProcessing()
-        {
-            WriteObject("Test-ChangeParameterTypeProperty BeginProcessing()");
             WriteInformation("Info", null);
         }
     }
@@ -385,6 +416,25 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeDefaultParameterSe
         protected override void BeginProcessing()
         {
             WriteObject("Test-ChangeDefaultParameterSet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddValidateNotNullOrEmpty
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "AddValidateNotNullOrEmpty")]
+    public class TestAddValidateNotNullOrEmpty : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string Parameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-AddValidateSet BeginProcessing()");
             WriteInformation("Info", null);
         }
     }
