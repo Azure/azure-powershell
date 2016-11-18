@@ -32,21 +32,22 @@
         public const int RemovedCmdlet = 1000;
         public const int RemovedCmdletAlias = 1010;
         public const int ChangedOutputType = 1020;
-        public const int ChangedOutputTypeProperty = 1030;
-        public const int RemovedShouldProcess = 1040;
-        public const int RemovedPaging = 1050;
-        public const int RemovedParameterSet = 1060;
-        public const int ChangeDefaultParameter = 1070;
+        public const int RemovedShouldProcess = 1030;
+        public const int RemovedPaging = 1040;
+        public const int RemovedParameterSet = 1050;
+        public const int ChangeDefaultParameter = 1060;
         public const int RemovedParameter = 2000;
         public const int RemovedParameterAlias = 2010;
         public const int ChangedParameterType = 2020;
-        public const int ChangedParameterTypeProperty = 2030;
-        public const int RemovedParameterTypeProperty = 2040;
-        public const int MandatoryParameter = 2050;
-        public const int ValidateSet = 2060;
-        public const int PositionChange = 2070;
-        public const int ValueFromPipeline = 2080;
-        public const int ValueFromPipelineByPropertyName = 2090;
+        public const int MandatoryParameter = 2030;
+        public const int RemovedValidateSetValue = 2040;
+        public const int AddedValidateSet = 2050;
+        public const int PositionChange = 2060;
+        public const int ValueFromPipeline = 2070;
+        public const int ValueFromPipelineByPropertyName = 2080;
+        public const int AddedValidateNotNullOrEmpty = 2090;
         public const int RemovedParameterFromParameterSet = 2100;
+        public const int ChangedPropertyType = 3000;
+        public const int RemovedProperty = 3010;
     }
 }

@@ -1,0 +1,705 @@
+[
+  {
+    "VerbName": "Remove",
+    "NounName": "AzureRmTag",
+    "Name": "Remove-AzureRmTag",
+    "ClassName": "Microsoft.Azure.Commands.Tags.Tag.RemoveAzureTagCommand",
+    "SupportsShouldProcess": true,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [
+      {
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
+          "Name": "PSTag",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ValuesTable": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Count": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Values": {
+              "Namespace": "System.Collections.Generic",
+              "Name": "List`1",
+              "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "Capacity": {
+                  "Namespace": "System",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Count": {
+                  "Namespace": "System",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Item": {
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
+                  "Name": "PSTagValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Name": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Count": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ParameterSets": [
+          "__AllParameterSets"
+        ]
+      }
+    ],
+    "Parameters": [
+      {
+        "Name": "Name",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "Value",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String[]",
+          "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "LongLength": {
+              "Namespace": "System",
+              "Name": "Int64",
+              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Rank": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SyncRoot": {
+              "Namespace": "System",
+              "Name": "Object",
+              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "PassThru",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System.Management.Automation",
+          "Name": "SwitchParameter",
+          "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+          "Properties": {
+            "IsPresent": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Present": {
+              "Namespace": "System.Management.Automation",
+              "Name": "SwitchParameter",
+              "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {
+                "IsPresent": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Present": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {}
+                }
+              }
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Name",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": 0,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": true
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Value",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String[]",
+                "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "LongLength": {
+                    "Namespace": "System",
+                    "Name": "Int64",
+                    "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Rank": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SyncRoot": {
+                    "Namespace": "System",
+                    "Name": "Object",
+                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": false,
+            "Position": 1,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": true
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "PassThru",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System.Management.Automation",
+                "Name": "SwitchParameter",
+                "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                "Properties": {
+                  "IsPresent": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Present": {
+                    "Namespace": "System.Management.Automation",
+                    "Name": "SwitchParameter",
+                    "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                    "Properties": {
+                      "IsPresent": {
+                        "Namespace": "System",
+                        "Name": "Boolean",
+                        "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                        "Properties": {}
+                      },
+                      "Present": {
+                        "Namespace": "System.Management.Automation",
+                        "Name": "SwitchParameter",
+                        "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                        "Properties": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": true
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "Get",
+    "NounName": "AzureRmTag",
+    "Name": "Get-AzureRmTag",
+    "ClassName": "Microsoft.Azure.Commands.Tags.Tag.GetAzureTagCommand",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [
+      {
+        "Type": {
+          "Namespace": "System.Collections.Generic",
+          "Name": "List`1",
+          "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Capacity": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Count": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Item": {
+              "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
+              "Name": "PSTag",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {
+                "Name": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "ValuesTable": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Count": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Values": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List`1",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                }
+              }
+            }
+          }
+        },
+        "ParameterSets": [
+          "__AllParameterSets"
+        ]
+      }
+    ],
+    "Parameters": [
+      {
+        "Name": "Name",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "Detailed",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System.Management.Automation",
+          "Name": "SwitchParameter",
+          "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+          "Properties": {
+            "IsPresent": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Present": {
+              "Namespace": "System.Management.Automation",
+              "Name": "SwitchParameter",
+              "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Name",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": false,
+            "Position": 0,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": true
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Detailed",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System.Management.Automation",
+                "Name": "SwitchParameter",
+                "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                "Properties": {
+                  "IsPresent": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Present": {
+                    "Namespace": "System.Management.Automation",
+                    "Name": "SwitchParameter",
+                    "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": true
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "New",
+    "NounName": "AzureRmTag",
+    "Name": "New-AzureRmTag",
+    "ClassName": "Microsoft.Azure.Commands.Tags.Tag.NewAzureTagCommand",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [
+      {
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
+          "Name": "PSTag",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ValuesTable": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Count": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Values": {
+              "Namespace": "System.Collections.Generic",
+              "Name": "List`1",
+              "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ParameterSets": [
+          "__AllParameterSets"
+        ]
+      }
+    ],
+    "Parameters": [
+      {
+        "Name": "Name",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "Value",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Name",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": 0,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": true
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Value",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": false,
+            "Position": 1,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": true
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  }
+]

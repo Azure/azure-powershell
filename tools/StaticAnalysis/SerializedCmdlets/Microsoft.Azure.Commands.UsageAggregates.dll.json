@@ -1,0 +1,900 @@
+[
+  {
+    "VerbName": "Get",
+    "NounName": "UsageAggregates",
+    "Name": "Get-UsageAggregates",
+    "ClassName": "Microsoft.Azure.Commands.UsageAggregates.GetUsageAggregatesCommand",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [
+      {
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
+          "Name": "UsageAggregationGetResponse",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregationGetResponse, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+          "Properties": {
+            "NextLink": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ContinuationToken": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "UsageAggregations": {
+              "Namespace": "System.Collections.Generic",
+              "Name": "IList`1",
+              "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "Item": {
+                  "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
+                  "Name": "UsageAggregation",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Id": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Name": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Properties": {
+                      "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
+                      "Name": "UsageSample",
+                      "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {
+                        "InfoFields": {
+                          "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
+                          "Name": "InfoField",
+                          "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                          "Properties": {
+                            "Project": {
+                              "Namespace": "System",
+                              "Name": "String",
+                              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            }
+                          }
+                        },
+                        "InstanceData": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "MeterCategory": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "MeterId": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "MeterName": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "MeterRegion": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "MeterSubCategory": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Quantity": {
+                          "Namespace": "System",
+                          "Name": "Decimal",
+                          "AssemblyQualifiedName": "System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Unit": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "UsageEndTime": {
+                          "Namespace": "System",
+                          "Name": "DateTime",
+                          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {
+                            "Date": {
+                              "Namespace": "System",
+                              "Name": "DateTime",
+                              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Day": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "DayOfWeek": {
+                              "Namespace": "System",
+                              "Name": "DayOfWeek",
+                              "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "DayOfYear": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Hour": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Kind": {
+                              "Namespace": "System",
+                              "Name": "DateTimeKind",
+                              "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Millisecond": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Minute": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Month": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Now": {
+                              "Namespace": "System",
+                              "Name": "DateTime",
+                              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "UtcNow": {
+                              "Namespace": "System",
+                              "Name": "DateTime",
+                              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Second": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Ticks": {
+                              "Namespace": "System",
+                              "Name": "Int64",
+                              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "TimeOfDay": {
+                              "Namespace": "System",
+                              "Name": "TimeSpan",
+                              "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {
+                                "Ticks": {
+                                  "Namespace": "System",
+                                  "Name": "Int64",
+                                  "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "Days": {
+                                  "Namespace": "System",
+                                  "Name": "Int32",
+                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "Hours": {
+                                  "Namespace": "System",
+                                  "Name": "Int32",
+                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "Milliseconds": {
+                                  "Namespace": "System",
+                                  "Name": "Int32",
+                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "Minutes": {
+                                  "Namespace": "System",
+                                  "Name": "Int32",
+                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "Seconds": {
+                                  "Namespace": "System",
+                                  "Name": "Int32",
+                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "TotalDays": {
+                                  "Namespace": "System",
+                                  "Name": "Double",
+                                  "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "TotalHours": {
+                                  "Namespace": "System",
+                                  "Name": "Double",
+                                  "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "TotalMilliseconds": {
+                                  "Namespace": "System",
+                                  "Name": "Double",
+                                  "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "TotalMinutes": {
+                                  "Namespace": "System",
+                                  "Name": "Double",
+                                  "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                },
+                                "TotalSeconds": {
+                                  "Namespace": "System",
+                                  "Name": "Double",
+                                  "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                  "Properties": {}
+                                }
+                              }
+                            },
+                            "Today": {
+                              "Namespace": "System",
+                              "Name": "DateTime",
+                              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Year": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            }
+                          }
+                        },
+                        "UsageStartTime": {
+                          "Namespace": "System",
+                          "Name": "DateTime",
+                          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "Type": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    }
+                  }
+                }
+              }
+            },
+            "RequestId": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "StatusCode": {
+              "Namespace": "System.Net",
+              "Name": "HttpStatusCode",
+              "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ParameterSets": [
+          "__AllParameterSets"
+        ]
+      }
+    ],
+    "Parameters": [
+      {
+        "Name": "ReportedStartTime",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "DateTime",
+          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Date": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Day": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "DayOfWeek": {
+              "Namespace": "System",
+              "Name": "DayOfWeek",
+              "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "DayOfYear": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Hour": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Kind": {
+              "Namespace": "System",
+              "Name": "DateTimeKind",
+              "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Millisecond": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Minute": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Month": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Now": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "UtcNow": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Second": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Ticks": {
+              "Namespace": "System",
+              "Name": "Int64",
+              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "TimeOfDay": {
+              "Namespace": "System",
+              "Name": "TimeSpan",
+              "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Today": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Year": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      },
+      {
+        "Name": "ReportedEndTime",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "DateTime",
+          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Date": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Day": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "DayOfWeek": {
+              "Namespace": "System",
+              "Name": "DayOfWeek",
+              "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "DayOfYear": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Hour": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Kind": {
+              "Namespace": "System",
+              "Name": "DateTimeKind",
+              "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Millisecond": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Minute": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Month": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Now": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "UtcNow": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Second": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Ticks": {
+              "Namespace": "System",
+              "Name": "Int64",
+              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "TimeOfDay": {
+              "Namespace": "System",
+              "Name": "TimeSpan",
+              "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Today": {
+              "Namespace": "System",
+              "Name": "DateTime",
+              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Year": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      },
+      {
+        "Name": "AggregationGranularity",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
+          "Name": "AggregationGranularity",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+          "Properties": {}
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      },
+      {
+        "Name": "ShowDetails",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "Boolean",
+          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {}
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      },
+      {
+        "Name": "ContinuationToken",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "ReportedStartTime",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "DateTime",
+                "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Date": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Day": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "DayOfWeek": {
+                    "Namespace": "System",
+                    "Name": "DayOfWeek",
+                    "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "DayOfYear": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Hour": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Kind": {
+                    "Namespace": "System",
+                    "Name": "DateTimeKind",
+                    "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Millisecond": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Minute": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Month": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Now": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "UtcNow": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Second": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Ticks": {
+                    "Namespace": "System",
+                    "Name": "Int64",
+                    "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "TimeOfDay": {
+                    "Namespace": "System",
+                    "Name": "TimeSpan",
+                    "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Today": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Year": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "ReportedEndTime",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "DateTime",
+                "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Date": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Day": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "DayOfWeek": {
+                    "Namespace": "System",
+                    "Name": "DayOfWeek",
+                    "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "DayOfYear": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Hour": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Kind": {
+                    "Namespace": "System",
+                    "Name": "DateTimeKind",
+                    "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Millisecond": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Minute": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Month": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Now": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "UtcNow": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Second": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Ticks": {
+                    "Namespace": "System",
+                    "Name": "Int64",
+                    "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "TimeOfDay": {
+                    "Namespace": "System",
+                    "Name": "TimeSpan",
+                    "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Today": {
+                    "Namespace": "System",
+                    "Name": "DateTime",
+                    "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Year": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "AggregationGranularity",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
+                "Name": "AggregationGranularity",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                "Properties": {}
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "ShowDetails",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "Boolean",
+                "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {}
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "ContinuationToken",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  }
+]

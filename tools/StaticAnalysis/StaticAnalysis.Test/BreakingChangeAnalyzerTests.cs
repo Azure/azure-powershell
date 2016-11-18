@@ -179,8 +179,22 @@ namespace StaticAnalysis.Test
             Assert.Equal(2, testReport.ProblemIdList.Count);
             foreach (var problemId in testReport.ProblemIdList)
             {
-                Assert.Equal(BreakingChangeProblemId.ValidateSet, problemId);
+                Assert.Equal(BreakingChangeProblemId.RemovedValidateSetValue, problemId);
             }
+        }
+
+        [Fact()]
+        public void AddValidateSet()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-AddValidateSet", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.AddedValidateSet)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.AddedValidateSet));
         }
 
         [Fact()]
@@ -195,20 +209,6 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputType));
-        }
-
-        [Fact()]
-        public void ChangeOutputTypeProperty()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
-                (cmdletName) => cmdletName.Equals("Test-ChangeOutputTypeProperty", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputTypeProperty)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputTypeProperty));
         }
 
         [Fact()]
@@ -236,20 +236,6 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterType));
-        }
-
-        [Fact()]
-        public void ChangeParameterTypeProperty()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
-                (cmdletName) => cmdletName.Equals("Test-ChangeParameterTypeProperty", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterTypeProperty)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterTypeProperty));
         }
 
         [Fact()]
@@ -340,6 +326,54 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangeDefaultParameter))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangeDefaultParameter));
+        }
+
+        [Fact()]
+        public void AddValidateNotNullOrEmpty()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-AddValidateNotNullOrEmpty", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.AddedValidateNotNullOrEmpty))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.AddedValidateNotNullOrEmpty));
+        }
+
+        [Fact()]
+        public void ChangePropertyType()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangePropertyType", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedPropertyType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedPropertyType));
+        }
+
+        [Fact()]
+        public void RemoveProperty()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-RemoveProperty", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedProperty))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedProperty));
         }
     }
 }

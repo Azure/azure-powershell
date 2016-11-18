@@ -45,5 +45,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// The set of valid arguments for the parameter
         /// </summary>
         public List<string> ValidateSet { get { return _validateSet; } }
+
+        /// <summary>
+        /// Specifies if the parameter has the ValidateNotNullOrEmpty attribute
+        /// </summary>
+        public bool ValidateNotNullOrEmpty { get; set; }
     }
 }

@@ -39,89 +39,58 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
         }
 
+        private Dictionary<string, TypeMetadata> _properties = new Dictionary<string, TypeMetadata>();
+
         public TypeMetadata(Type inputType)
         {
             Namespace = inputType.Namespace;
             Name = inputType.Name;
             AssemblyQualifiedName = inputType.AssemblyQualifiedName;
 
-            Properties = new SerializableMap<string, string>();
-
+            // Get the properties of the type
             var properties = inputType.GetProperties();
+
+            // For each property, check if we have seen it before, and if so,
+            // create a new TypeMetadata object that contains information about
+            // the type EXCEPT for the properties (since we have already computed
+            // this part of the type previously)
+            // 
+            // Using this method avoids issues with circular properties (e.g., type A
+            // has a property of type B, and type B has a property of type A). This
+            // will avoid serializing types that will keep repeating.
             foreach (var property in properties)
             {
-                bool found = false;
+                // Get the property type
+                var propertyType = property.PropertyType;
 
-                foreach (var key in Properties.Keys)
+                // If we have already seen this type before, create a new TypeMetadata
+                // object without iterating over its properties
+                if (CmdletBreakingChangeLoader.TypeSet.Contains(propertyType.ToString()))
                 {
-                    if (property.Name.Equals(key))
+                    TypeMetadata foundType = new TypeMetadata()
                     {
-                        found = true;
-                        break;
-                    }
+                        Namespace = propertyType.Namespace,
+                        Name = propertyType.Name,
+                        AssemblyQualifiedName = propertyType.AssemblyQualifiedName
+                    };
+
+                    // Add the property to the dictionary
+                    _properties.Add(property.Name, foundType);
+                    continue;
                 }
 
-                if (!found)
-                {
-                    Properties.Put(property.Name, property.PropertyType.ToString());
-                }
+                // If we haven't seen the type before, add it to the set of types
+                CmdletBreakingChangeLoader.TypeSet.Add(propertyType.ToString());
+                // Create a new TypeMetadata object that will iterate over the type properties
+                TypeMetadata newType = new TypeMetadata(property.PropertyType);
+                // Add the property to the dictionary
+                _properties.Add(property.Name, newType);
             }
         }
 
         public string Namespace { get; set; }
         public string Name { get; set; }
         public string AssemblyQualifiedName { get; set; }
-        public SerializableMap<string, string> Properties { get; set; }
-
-    }
-
-    [Serializable]
-    public class SerializableMap<K, V>
-    {
-        private List<K> _keys = new List<K>();
-        private List<Pair<K, V>> _pairs = new List<Pair<K, V>>();
-
-        public List<K> Keys { get { return _keys; } }
-        public List<Pair<K, V>> Pairs { get { return _pairs; } }
-
-        public V Get(K key)
-        {
-            foreach (var pair in _pairs)
-            {
-                if (pair.Key.Equals(key))
-                {
-                    return pair.Value;
-                }
-            }
-
-            return default(V);
-        }
-
-        public void Put(K key, V value)
-        {
-            foreach (var pair in _pairs)
-            {
-                if (pair.Key.Equals(key))
-                {
-                    pair.Value = value;
-                    return;
-                }
-            }
-
-            _pairs.Add(new Pair<K, V>
-            {
-                Key = key,
-                Value = value
-            });
-
-            _keys.Add(key);
-        }
-    }
-
-    [Serializable]
-    public class Pair<E, T>
-    {
-        public E Key { get; set; }
-        public T Value { get; set; }
+        public Dictionary<string, TypeMetadata> Properties { get { return _properties; } }
     }
 }

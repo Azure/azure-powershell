@@ -1,0 +1,1832 @@
+[
+  {
+    "VerbName": "Get",
+    "NounName": "AzureRmRecoveryServicesBackupProperties",
+    "Name": "Get-AzureRmRecoveryServicesBackupProperties",
+    "ClassName": "Microsoft.Azure.Commands.RecoveryServices.GetAzureRmRecoveryServicesBackupProperties",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [
+      {
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+          "Name": "ASRVaultBackupProperties",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ASRVaultBackupProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "BackupStorageRedundancy": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ParameterSets": [
+          "__AllParameterSets"
+        ]
+      }
+    ],
+    "Parameters": [
+      {
+        "Name": "Vault",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+          "Name": "ARSVault",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ID": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SubscriptionId": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Properties": {
+              "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+              "Name": "ARSVaultProperties",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {
+                "ProvisioningState": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                }
+              }
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {
+                      "ProvisioningState": {
+                        "Namespace": "System",
+                        "Name": "String",
+                        "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                        "Properties": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "Get",
+    "NounName": "AzureRmRecoveryServicesVault",
+    "Name": "Get-AzureRmRecoveryServicesVault",
+    "ClassName": "Microsoft.Azure.Commands.RecoveryServices.GetAzureRmRecoveryServicesVaults",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [
+      {
+        "Type": {
+          "Namespace": "System.Collections.Generic",
+          "Name": "List`1",
+          "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Capacity": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Count": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Item": {
+              "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+              "Name": "ARSVault",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {
+                "Name": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "ID": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Location": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "ResourceGroupName": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "SubscriptionId": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Properties": {
+                  "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                  "Name": "ARSVaultProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {}
+                }
+              }
+            }
+          }
+        },
+        "ParameterSets": [
+          "__AllParameterSets"
+        ]
+      }
+    ],
+    "Parameters": [
+      {
+        "Name": "ResourceGroupName",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      },
+      {
+        "Name": "Name",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "ResourceGroupName",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Name",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "Get",
+    "NounName": "AzureRmRecoveryServicesVaultSettingsFile",
+    "Name": "Get-AzureRmRecoveryServicesVaultSettingsFile",
+    "ClassName": "Microsoft.Azure.Commands.RecoveryServices.GetAzureRmRecoveryServicesVaultSettingsFile",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [
+      {
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+          "Name": "VaultSettingsFilePath",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.VaultSettingsFilePath, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "FilePath": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ParameterSets": [
+          "__AllParameterSets"
+        ]
+      }
+    ],
+    "Parameters": [
+      {
+        "Name": "Vault",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+          "Name": "ARSVault",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ID": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SubscriptionId": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Properties": {
+              "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+              "Name": "ARSVaultProperties",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "SiteIdentifier",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "SiteFriendlyName",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "Path",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      },
+      {
+        "Name": "SiteRecovery",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System.Management.Automation",
+          "Name": "SwitchParameter",
+          "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+          "Properties": {
+            "IsPresent": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Present": {
+              "Namespace": "System.Management.Automation",
+              "Name": "SwitchParameter",
+              "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {
+                "IsPresent": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Present": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {}
+                }
+              }
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      },
+      {
+        "Name": "Backup",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System.Management.Automation",
+          "Name": "SwitchParameter",
+          "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+          "Properties": {
+            "IsPresent": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Present": {
+              "Namespace": "System.Management.Automation",
+              "Name": "SwitchParameter",
+              "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": 1,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Path",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": 2,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      },
+      {
+        "Name": "ForSite",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "SiteIdentifier",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "SiteFriendlyName",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "SiteRecovery",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System.Management.Automation",
+                "Name": "SwitchParameter",
+                "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                "Properties": {
+                  "IsPresent": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Present": {
+                    "Namespace": "System.Management.Automation",
+                    "Name": "SwitchParameter",
+                    "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                    "Properties": {
+                      "IsPresent": {
+                        "Namespace": "System",
+                        "Name": "Boolean",
+                        "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                        "Properties": {}
+                      },
+                      "Present": {
+                        "Namespace": "System.Management.Automation",
+                        "Name": "SwitchParameter",
+                        "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                        "Properties": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": 1,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Path",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": 2,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      },
+      {
+        "Name": "ByDefault",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "SiteRecovery",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System.Management.Automation",
+                "Name": "SwitchParameter",
+                "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                "Properties": {
+                  "IsPresent": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Present": {
+                    "Namespace": "System.Management.Automation",
+                    "Name": "SwitchParameter",
+                    "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                    "Properties": {
+                      "IsPresent": {
+                        "Namespace": "System",
+                        "Name": "Boolean",
+                        "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                        "Properties": {}
+                      },
+                      "Present": {
+                        "Namespace": "System.Management.Automation",
+                        "Name": "SwitchParameter",
+                        "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                        "Properties": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": 1,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Path",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": 2,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      },
+      {
+        "Name": "ForBackupVaultType",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Backup",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System.Management.Automation",
+                "Name": "SwitchParameter",
+                "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                "Properties": {
+                  "IsPresent": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Present": {
+                    "Namespace": "System.Management.Automation",
+                    "Name": "SwitchParameter",
+                    "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": 1,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Path",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": 2,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "New",
+    "NounName": "AzureRmRecoveryServicesVault",
+    "Name": "New-AzureRmRecoveryServicesVault",
+    "ClassName": "Microsoft.Azure.Commands.RecoveryServices.NewAzureRmRecoveryServicesVault",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [],
+    "Parameters": [
+      {
+        "Name": "Name",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "ResourceGroupName",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "Location",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "String",
+          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "Chars": {
+              "Namespace": "System",
+              "Name": "Char",
+              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Length": {
+              "Namespace": "System",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Name",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "ResourceGroupName",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "Location",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "String",
+                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "Chars": {
+                    "Namespace": "System",
+                    "Name": "Char",
+                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Length": {
+                    "Namespace": "System",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "Remove",
+    "NounName": "AzureRmRecoveryServicesVault",
+    "Name": "Remove-AzureRmRecoveryServicesVault",
+    "ClassName": "Microsoft.Azure.Commands.RecoveryServices.RemoveAzureRmRecoveryServicesVault",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [],
+    "Parameters": [
+      {
+        "Name": "Vault",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+          "Name": "ARSVault",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ID": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SubscriptionId": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Properties": {
+              "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+              "Name": "ARSVaultProperties",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "Set",
+    "NounName": "AzureRmRecoveryServicesBackupProperties",
+    "Name": "Set-AzureRmRecoveryServicesBackupProperties",
+    "ClassName": "Microsoft.Azure.Commands.RecoveryServices.SetAzureRmRecoveryServicesBackupProperties",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [],
+    "Parameters": [
+      {
+        "Name": "Vault",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+          "Name": "ARSVault",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ID": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SubscriptionId": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Properties": {
+              "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+              "Name": "ARSVaultProperties",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      },
+      {
+        "Name": "BackupStorageRedundancy",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "System",
+          "Name": "Nullable`1",
+          "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "Properties": {
+            "HasValue": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Value": {
+              "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+              "Name": "AzureRmRecoveryServicesBackupStorageRedundancyType",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": false
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          },
+          {
+            "ParameterMetadata": {
+              "Name": "BackupStorageRedundancy",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "System",
+                "Name": "Nullable`1",
+                "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "Properties": {
+                  "HasValue": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Value": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "AzureRmRecoveryServicesBackupStorageRedundancyType",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": false
+            },
+            "Mandatory": false,
+            "Position": -2147483648,
+            "ValueFromPipeline": false,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  },
+  {
+    "VerbName": "Set",
+    "NounName": "AzureRmRecoveryServicesVaultContext",
+    "Name": "Set-AzureRmRecoveryServicesVaultContext",
+    "ClassName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.SetAzureRmRecoveryServicesVaultContext",
+    "SupportsShouldProcess": false,
+    "ConfirmImpact": 2,
+    "SupportsPaging": false,
+    "DefaultParameterSetName": "__AllParameterSets",
+    "OutputTypes": [],
+    "Parameters": [
+      {
+        "Name": "Vault",
+        "AliasList": [],
+        "Type": {
+          "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+          "Name": "ARSVault",
+          "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+          "Properties": {
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ID": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SubscriptionId": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Properties": {
+              "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+              "Name": "ARSVaultProperties",
+              "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {}
+            }
+          }
+        },
+        "ValidateSet": [],
+        "ValidateNotNullOrEmpty": true
+      }
+    ],
+    "ParameterSets": [
+      {
+        "Name": "__AllParameterSets",
+        "Parameters": [
+          {
+            "ParameterMetadata": {
+              "Name": "Vault",
+              "AliasList": [],
+              "Type": {
+                "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                "Name": "ARSVault",
+                "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                "Properties": {
+                  "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ID": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Type": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Location": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "ResourceGroupName": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "SubscriptionId": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Properties": {
+                    "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
+                    "Name": "ARSVaultProperties",
+                    "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  }
+                }
+              },
+              "ValidateSet": [],
+              "ValidateNotNullOrEmpty": true
+            },
+            "Mandatory": true,
+            "Position": -2147483648,
+            "ValueFromPipeline": true,
+            "ValueFromPipelineByPropertyName": false
+          }
+        ]
+      }
+    ],
+    "AliasList": []
+  }
+]
