@@ -69,6 +69,62 @@ function Test-NewDeploymentFromTemplateFile
 
 <#
 .SYNOPSIS
+Tests deployment exception thrown with nonexistent template file.
+#>
+function Test-NewDeploymentFromNonexistentTemplateFile
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "EastUS"
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		
+		# Assert exception is thrown
+		$exceptionMessage = "Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'C:\nonexistentFile.json' because it does not exist.";
+		Assert-Throws { New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile C:\nonexistentFile.json -TemplateParameterFile sampleTemplateParams.json } $exceptionMessage
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment exception thrown with nonexistent template parameter file.
+#>
+function Test-NewDeploymentFromNonexistentTemplateParameterFile
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "EastUS"
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+		
+		# Assert exception is thrown
+		$exceptionMessage = "Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'C:\nonexistentFile.json' because it does not exist.";
+		Assert-Throws { New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateParams.json -TemplateParameterFile C:\nonexistentFile.json } $exceptionMessage
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests nested errors displayed when temployment put fails.
 #>
 function Test-NestedErrorsDisplayed
