@@ -81,8 +81,7 @@
       <XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>
-      <!-- <XUnitTests Include=".\src\ResourceManager\DevTestLabs\Commands.DevTestLabs.Test\bin\Debug\Microsoft.Azure.Commands.DevTestLabs.Test.dll"/> -->
-	  
+      <!-- <XUnitTests Include=".\src\ResourceManager\DevTestLabs\Commands.DevTestLabs.Test\bin\Debug\Microsoft.Azure.Commands.DevTestLabs.Test.dll"/> -->	  
       <XUnitTests Include=".\src\ResourceManager\Dns\Commands.Dns.Test\bin\Debug\Microsoft.Azure.Commands.Dns.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\HDInsight\Commands.HDInsight.Test\bin\Debug\Commands.HDInsight.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll"/>
