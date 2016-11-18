@@ -24,10 +24,8 @@ $vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
 
 function Test-GetItemScenario
 {
-	
 	# 1. Create / update and get vault
     $vaultLocation = get_available_location;	
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $vaultLocation -Force;	
     $vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
