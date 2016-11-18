@@ -59,28 +59,33 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
                 Mandatory = false,
-                Position = 2,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "If this parameter is provided, the commandlet will not enable Windows Azure Diagnostics for this virtual machine.")]
+                HelpMessage = "Deprecated - Windows Azure Diagnostics is now disabled by default")]
         public SwitchParameter DisableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 3,
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
+        public SwitchParameter EnableWAD { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 2,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Name of the storage account that should be used to store analytics data.")]
         public string WADStorageAccountName { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 4,
+                Position = 3,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 5,
+                Position = 4,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
@@ -98,6 +103,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
+                if (this.DisableWAD)
+                {
+                    this._Helper.WriteWarning("The parameter DisableWAD is deprecated. Windows Azure Diagnostics is disabled by default.");
+                }
+
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
@@ -278,7 +288,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 WriteVerbose("Chechking if WAD needs to be configured");
                 // Enable VM Diagnostics
-                if (!this.DisableWAD.IsPresent)
+                if (this.EnableWAD.IsPresent)
                 {
                     this._Helper.WriteHost("[INFO] Enabling IaaSDiagnostics for VM {0}", selectedVM.Name);
                     KeyValuePair wadstorage = null;
@@ -298,7 +308,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (wadstorage == null)
                     {
-                        this._Helper.WriteError("A Standard Storage Account is required.");
+                        this._Helper.WriteError("A standard storage account is required. Please use parameter WADStorageAccountName to specify a standard storage account you want to use for this VM.");
                         return;
                     }
 
