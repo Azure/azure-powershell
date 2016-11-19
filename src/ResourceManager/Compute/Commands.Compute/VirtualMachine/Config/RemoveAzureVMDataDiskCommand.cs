@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("Name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskName)]
         [ValidateNotNullOrEmpty]
         public string[] DataDiskNames { get; set; }
@@ -54,9 +53,17 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var disks = storageProfile.DataDisks.ToList();
                 var comp = StringComparison.OrdinalIgnoreCase;
-                foreach (var diskName in DataDiskNames)
+
+                if (DataDiskNames == null)
                 {
-                    disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                    disks.Clear();
+                }
+                else
+                {
+                    foreach (var diskName in DataDiskNames)
+                    {
+                        disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                    }
                 }
                 storageProfile.DataDisks = disks;
             }
