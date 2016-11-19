@@ -1643,12 +1643,32 @@ function Test-VirtualMachineTags
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
 
-        #Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.RequestId;
         Assert-NotNull $vm.StatusCode;
 
         # Assert
         Assert-AreEqual "testval1" $vm.Tags["test1"];
         Assert-AreEqual "testval2" $vm.Tags["test2"];
+
+        # Update VM
+        $vm = $vm | Update-AzureRmVM;
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
+        Assert-AreEqual "testval1" $vm.Tags["test1"];
+        Assert-AreEqual "testval2" $vm.Tags["test2"];
+
+        # Update VM with new Tags
+        $new_tags = @{test1 = "testval3"; test2 = "testval4" };
+        $st = $vm | Update-AzureRmVM -Tags $new_tags;
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
+        Assert-AreEqual "testval3" $vm.Tags["test1"];
+        Assert-AreEqual "testval4" $vm.Tags["test2"];
+
     }
     finally
     {
