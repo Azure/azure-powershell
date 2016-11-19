@@ -57,13 +57,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -145,13 +145,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -281,13 +281,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -482,13 +482,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -742,13 +742,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -806,13 +806,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -851,24 +851,55 @@
           "Name": "DataLakeStoreItem",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
+            "AccessTime": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "System",
+                  "Name": "Int64",
+                  "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                }
+              }
+            },
+            "BlockSize": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ChildrenNum": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ExpirationTime": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Group": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "LastWriteTime": {
               "Namespace": "System",
               "Name": "DateTimeOffset",
               "AssemblyQualifiedName": "System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {
-                "Now": {
-                  "Namespace": "System",
-                  "Name": "DateTimeOffset",
-                  "AssemblyQualifiedName": "System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "UtcNow": {
-                  "Namespace": "System",
-                  "Name": "DateTimeOffset",
-                  "AssemblyQualifiedName": "System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "DateTime": {
+                "Date": {
                   "Namespace": "System",
                   "Name": "DateTime",
                   "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -933,12 +964,6 @@
                       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                       "Properties": {}
                     },
-                    "UtcNow": {
-                      "Namespace": "System",
-                      "Name": "DateTime",
-                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
                     "Second": {
                       "Namespace": "System",
                       "Name": "Int32",
@@ -956,12 +981,6 @@
                       "Name": "TimeSpan",
                       "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                       "Properties": {
-                        "Ticks": {
-                          "Namespace": "System",
-                          "Name": "Int64",
-                          "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
                         "Days": {
                           "Namespace": "System",
                           "Name": "Int32",
@@ -990,6 +1009,12 @@
                           "Namespace": "System",
                           "Name": "Int32",
                           "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Ticks": {
+                          "Namespace": "System",
+                          "Name": "Int64",
+                          "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                           "Properties": {}
                         },
                         "TotalDays": {
@@ -1030,6 +1055,12 @@
                       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                       "Properties": {}
                     },
+                    "UtcNow": {
+                      "Namespace": "System",
+                      "Name": "DateTime",
+                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
                     "Year": {
                       "Namespace": "System",
                       "Name": "Int32",
@@ -1038,19 +1069,7 @@
                     }
                   }
                 },
-                "UtcDateTime": {
-                  "Namespace": "System",
-                  "Name": "DateTime",
-                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "LocalDateTime": {
-                  "Namespace": "System",
-                  "Name": "DateTime",
-                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Date": {
+                "DateTime": {
                   "Namespace": "System",
                   "Name": "DateTime",
                   "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1080,6 +1099,12 @@
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
+                "LocalDateTime": {
+                  "Namespace": "System",
+                  "Name": "DateTime",
+                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
                 "Millisecond": {
                   "Namespace": "System",
                   "Name": "Int32",
@@ -1096,6 +1121,12 @@
                   "Namespace": "System",
                   "Name": "Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Now": {
+                  "Namespace": "System",
+                  "Name": "DateTimeOffset",
+                  "AssemblyQualifiedName": "System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
                 "Offset": {
@@ -1116,16 +1147,28 @@
                   "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "UtcTicks": {
-                  "Namespace": "System",
-                  "Name": "Int64",
-                  "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "TimeOfDay": {
                   "Namespace": "System",
                   "Name": "TimeSpan",
                   "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "UtcDateTime": {
+                  "Namespace": "System",
+                  "Name": "DateTime",
+                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "UtcNow": {
+                  "Namespace": "System",
+                  "Name": "DateTimeOffset",
+                  "AssemblyQualifiedName": "System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "UtcTicks": {
+                  "Namespace": "System",
+                  "Name": "Int64",
+                  "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
                 "Year": {
@@ -1135,61 +1178,6 @@
                   "Properties": {}
                 }
               }
-            },
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Path": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "AccessTime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "System",
-                  "Name": "Int64",
-                  "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "BlockSize": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ChildrenNum": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ExpirationTime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Group": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
             },
             "Length": {
               "Namespace": "System",
@@ -1203,7 +1191,19 @@
               "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Owner": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Path": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1283,13 +1283,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1347,13 +1347,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1434,13 +1434,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1498,13 +1498,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1543,6 +1543,24 @@
           "Name": "Byte[]",
           "AssemblyQualifiedName": "System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -1565,24 +1583,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -1652,13 +1652,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1777,13 +1777,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1962,13 +1962,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2038,13 +2038,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2156,13 +2156,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2220,13 +2220,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2345,13 +2345,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2564,13 +2564,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2786,24 +2786,6 @@
               "Name": "DataLakeStoreAccount",
               "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccount, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {
-                "Location": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "Id": {
                   "Namespace": "System",
                   "Name": "String",
@@ -2815,25 +2797,6 @@
                   "Name": "EncryptionIdentity",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentity, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Type": {
-                      "Namespace": "System",
-                      "Name": "Nullable`1",
-                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentityType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "HasValue": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Value": {
-                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                          "Name": "EncryptionIdentityType",
-                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentityType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                          "Properties": {}
-                        }
-                      }
-                    },
                     "PrincipalId": {
                       "Namespace": "System",
                       "Name": "Nullable`1",
@@ -2858,6 +2821,208 @@
                       "Name": "Nullable`1",
                       "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                       "Properties": {}
+                    },
+                    "Type": {
+                      "Namespace": "System",
+                      "Name": "Nullable`1",
+                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentityType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "HasValue": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Value": {
+                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                          "Name": "EncryptionIdentityType",
+                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentityType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                          "Properties": {}
+                        }
+                      }
+                    }
+                  }
+                },
+                "Location": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Name": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Properties": {
+                  "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                  "Name": "DataLakeStoreAccountProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountProperties, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "CreationTime": {
+                      "Namespace": "System",
+                      "Name": "Nullable`1",
+                      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "HasValue": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Value": {
+                          "Namespace": "System",
+                          "Name": "DateTime",
+                          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "DefaultGroup": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "EncryptionConfig": {
+                      "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                      "Name": "EncryptionConfig",
+                      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfig, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {
+                        "KeyVaultMetaInfo": {
+                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                          "Name": "KeyVaultMetaInfo",
+                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.KeyVaultMetaInfo, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                          "Properties": {
+                            "EncryptionKeyName": {
+                              "Namespace": "System",
+                              "Name": "String",
+                              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "EncryptionKeyVersion": {
+                              "Namespace": "System",
+                              "Name": "String",
+                              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "KeyVaultResourceId": {
+                              "Namespace": "System",
+                              "Name": "String",
+                              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            }
+                          }
+                        },
+                        "Type": {
+                          "Namespace": "System",
+                          "Name": "Nullable`1",
+                          "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {
+                            "HasValue": {
+                              "Namespace": "System",
+                              "Name": "Boolean",
+                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Value": {
+                              "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                              "Name": "EncryptionConfigType",
+                              "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                              "Properties": {}
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "EncryptionProvisioningState": {
+                      "Namespace": "System",
+                      "Name": "Nullable`1",
+                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "HasValue": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Value": {
+                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                          "Name": "EncryptionProvisioningState",
+                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "EncryptionState": {
+                      "Namespace": "System",
+                      "Name": "Nullable`1",
+                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "HasValue": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Value": {
+                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                          "Name": "EncryptionState",
+                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "Endpoint": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "LastModifiedTime": {
+                      "Namespace": "System",
+                      "Name": "Nullable`1",
+                      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "ProvisioningState": {
+                      "Namespace": "System",
+                      "Name": "Nullable`1",
+                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "HasValue": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Value": {
+                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                          "Name": "DataLakeStoreAccountStatus",
+                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "State": {
+                      "Namespace": "System",
+                      "Name": "Nullable`1",
+                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "HasValue": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Value": {
+                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+                          "Name": "DataLakeStoreAccountState",
+                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                          "Properties": {}
+                        }
+                      }
                     }
                   }
                 },
@@ -2899,176 +3064,11 @@
                     }
                   }
                 },
-                "Properties": {
-                  "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                  "Name": "DataLakeStoreAccountProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountProperties, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "ProvisioningState": {
-                      "Namespace": "System",
-                      "Name": "Nullable`1",
-                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "HasValue": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Value": {
-                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                          "Name": "DataLakeStoreAccountStatus",
-                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "State": {
-                      "Namespace": "System",
-                      "Name": "Nullable`1",
-                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "HasValue": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Value": {
-                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                          "Name": "DataLakeStoreAccountState",
-                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "CreationTime": {
-                      "Namespace": "System",
-                      "Name": "Nullable`1",
-                      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "HasValue": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Value": {
-                          "Namespace": "System",
-                          "Name": "DateTime",
-                          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "EncryptionState": {
-                      "Namespace": "System",
-                      "Name": "Nullable`1",
-                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "HasValue": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Value": {
-                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                          "Name": "EncryptionState",
-                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "EncryptionProvisioningState": {
-                      "Namespace": "System",
-                      "Name": "Nullable`1",
-                      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "HasValue": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Value": {
-                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                          "Name": "EncryptionProvisioningState",
-                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "EncryptionConfig": {
-                      "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                      "Name": "EncryptionConfig",
-                      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfig, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {
-                        "Type": {
-                          "Namespace": "System",
-                          "Name": "Nullable`1",
-                          "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {
-                            "HasValue": {
-                              "Namespace": "System",
-                              "Name": "Boolean",
-                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "Value": {
-                              "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                              "Name": "EncryptionConfigType",
-                              "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                              "Properties": {}
-                            }
-                          }
-                        },
-                        "KeyVaultMetaInfo": {
-                          "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
-                          "Name": "KeyVaultMetaInfo",
-                          "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.KeyVaultMetaInfo, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                          "Properties": {
-                            "KeyVaultResourceId": {
-                              "Namespace": "System",
-                              "Name": "String",
-                              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "EncryptionKeyName": {
-                              "Namespace": "System",
-                              "Name": "String",
-                              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "EncryptionKeyVersion": {
-                              "Namespace": "System",
-                              "Name": "String",
-                              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "LastModifiedTime": {
-                      "Namespace": "System",
-                      "Name": "Nullable`1",
-                      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Endpoint": {
-                      "Namespace": "System",
-                      "Name": "String",
-                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "DefaultGroup": {
-                      "Namespace": "System",
-                      "Name": "String",
-                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    }
-                  }
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
                 }
               }
             }
@@ -3313,6 +3313,24 @@
           "Name": "DataLakeStorePathInstance[]",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -3336,24 +3354,6 @@
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
             }
           }
         },
@@ -3368,13 +3368,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3459,6 +3459,24 @@
                 "Name": "DataLakeStorePathInstance[]",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -3482,24 +3500,6 @@
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
                   }
                 }
               },
@@ -3520,13 +3520,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3651,13 +3651,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3676,13 +3676,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3765,13 +3765,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3796,13 +3796,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3872,24 +3872,6 @@
           "Name": "DataLakeStoreAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccount, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
           "Properties": {
-            "Location": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Type": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "Id": {
               "Namespace": "System",
               "Name": "String",
@@ -3902,16 +3884,34 @@
               "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentity, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
-            "Tags": {
-              "Namespace": "System.Collections.Generic",
-              "Name": "IDictionary`2",
-              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Properties": {
               "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
               "Name": "DataLakeStoreAccountProperties",
               "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountProperties, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "Tags": {
+              "Namespace": "System.Collections.Generic",
+              "Name": "IDictionary`2",
+              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -4046,19 +4046,19 @@
           "Name": "Hashtable",
           "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
-            "Item": {
+            "Count": {
               "Namespace": "System",
-              "Name": "Object",
-              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsReadOnly": {
+            "IsFixedSize": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsFixedSize": {
+            "IsReadOnly": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4068,6 +4068,12 @@
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Item": {
+              "Namespace": "System",
+              "Name": "Object",
+              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Keys": {
@@ -4081,25 +4087,19 @@
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "SyncRoot": {
-                  "Namespace": "System",
-                  "Name": "Object",
-                  "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "IsSynchronized": {
                   "Namespace": "System",
                   "Name": "Boolean",
                   "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
+                },
+                "SyncRoot": {
+                  "Namespace": "System",
+                  "Name": "Object",
+                  "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
                 }
               }
-            },
-            "Values": {
-              "Namespace": "System.Collections",
-              "Name": "ICollection",
-              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
             },
             "SyncRoot": {
               "Namespace": "System",
@@ -4107,10 +4107,10 @@
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Count": {
-              "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Values": {
+              "Namespace": "System.Collections",
+              "Name": "ICollection",
+              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -4272,19 +4272,19 @@
                 "Name": "Hashtable",
                 "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "Properties": {
-                  "Item": {
+                  "Count": {
                     "Namespace": "System",
-                    "Name": "Object",
-                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsReadOnly": {
+                  "IsFixedSize": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsFixedSize": {
+                  "IsReadOnly": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4294,6 +4294,12 @@
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Item": {
+                    "Namespace": "System",
+                    "Name": "Object",
+                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
                   "Keys": {
@@ -4307,25 +4313,19 @@
                         "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                         "Properties": {}
                       },
-                      "SyncRoot": {
-                        "Namespace": "System",
-                        "Name": "Object",
-                        "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
                       "IsSynchronized": {
                         "Namespace": "System",
                         "Name": "Boolean",
                         "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                         "Properties": {}
+                      },
+                      "SyncRoot": {
+                        "Namespace": "System",
+                        "Name": "Object",
+                        "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                        "Properties": {}
                       }
                     }
-                  },
-                  "Values": {
-                    "Namespace": "System.Collections",
-                    "Name": "ICollection",
-                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
                   },
                   "SyncRoot": {
                     "Namespace": "System",
@@ -4333,10 +4333,10 @@
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Count": {
-                    "Namespace": "System",
-                    "Name": "Int32",
-                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Values": {
+                    "Namespace": "System.Collections",
+                    "Name": "ICollection",
+                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -4427,13 +4427,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4565,13 +4565,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5009,6 +5009,24 @@
           "Name": "DataLakeStorePathInstance[]",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -5031,24 +5049,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -5203,6 +5203,24 @@
                 "Name": "DataLakeStorePathInstance[]",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -5225,24 +5243,6 @@
                     "Namespace": "System",
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -5444,13 +5444,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5558,13 +5558,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5707,13 +5707,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5732,6 +5732,24 @@
           "Name": "DataLakeStoreItemAce[]",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -5754,24 +5772,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -5875,13 +5875,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5906,6 +5906,24 @@
                 "Name": "DataLakeStoreItemAce[]",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -5928,24 +5946,6 @@
                     "Namespace": "System",
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -6005,13 +6005,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6159,13 +6159,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6184,6 +6184,24 @@
           "Name": "DataLakeStoreItemAce[]",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -6206,24 +6224,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -6339,13 +6339,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6370,6 +6370,24 @@
                 "Name": "DataLakeStoreItemAce[]",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -6392,24 +6410,6 @@
                     "Namespace": "System",
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -6469,13 +6469,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6599,24 +6599,6 @@
           "Name": "DataLakeStoreAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccount, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
           "Properties": {
-            "Location": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Type": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "Id": {
               "Namespace": "System",
               "Name": "String",
@@ -6629,16 +6611,34 @@
               "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentity, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
-            "Tags": {
-              "Namespace": "System.Collections.Generic",
-              "Name": "IDictionary`2",
-              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Properties": {
               "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
               "Name": "DataLakeStoreAccountProperties",
               "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountProperties, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "Tags": {
+              "Namespace": "System.Collections.Generic",
+              "Name": "IDictionary`2",
+              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -6707,19 +6707,19 @@
           "Name": "Hashtable",
           "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
-            "Item": {
+            "Count": {
               "Namespace": "System",
-              "Name": "Object",
-              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsReadOnly": {
+            "IsFixedSize": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsFixedSize": {
+            "IsReadOnly": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6731,13 +6731,13 @@
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Keys": {
-              "Namespace": "System.Collections",
-              "Name": "ICollection",
-              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Item": {
+              "Namespace": "System",
+              "Name": "Object",
+              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Values": {
+            "Keys": {
               "Namespace": "System.Collections",
               "Name": "ICollection",
               "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6749,10 +6749,10 @@
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Count": {
-              "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Values": {
+              "Namespace": "System.Collections",
+              "Name": "ICollection",
+              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -6861,19 +6861,19 @@
                 "Name": "Hashtable",
                 "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "Properties": {
-                  "Item": {
+                  "Count": {
                     "Namespace": "System",
-                    "Name": "Object",
-                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsReadOnly": {
+                  "IsFixedSize": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsFixedSize": {
+                  "IsReadOnly": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6885,13 +6885,13 @@
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Keys": {
-                    "Namespace": "System.Collections",
-                    "Name": "ICollection",
-                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Item": {
+                    "Namespace": "System",
+                    "Name": "Object",
+                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Values": {
+                  "Keys": {
                     "Namespace": "System.Collections",
                     "Name": "ICollection",
                     "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -6903,10 +6903,10 @@
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Count": {
-                    "Namespace": "System",
-                    "Name": "Int32",
-                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Values": {
+                    "Namespace": "System.Collections",
+                    "Name": "ICollection",
+                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -7015,13 +7015,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7040,6 +7040,24 @@
           "Name": "DataLakeStoreItemAce[]",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -7062,24 +7080,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -7134,13 +7134,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7165,6 +7165,24 @@
                 "Name": "DataLakeStoreItemAce[]",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -7187,24 +7205,6 @@
                     "Namespace": "System",
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -7282,13 +7282,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7370,13 +7370,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7493,13 +7493,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7569,13 +7569,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7821,13 +7821,13 @@
           "Name": "DataLakeStorePathInstance",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "TransformedPath": {
+            "OriginalPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "OriginalPath": {
+            "TransformedPath": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7897,13 +7897,13 @@
                 "Name": "DataLakeStorePathInstance",
                 "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "TransformedPath": {
+                  "OriginalPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "OriginalPath": {
+                  "TransformedPath": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",

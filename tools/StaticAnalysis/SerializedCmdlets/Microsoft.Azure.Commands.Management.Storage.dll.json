@@ -15,17 +15,644 @@
           "Name": "PSStorageAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "ResourceGroupName": {
+            "AccessTier": {
               "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
+                  "Name": "AccessTier",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {}
+                }
+              }
             },
-            "StorageAccountName": {
+            "Context": {
+              "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
+              "Name": "AzureStorageContext",
+              "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {
+                "BlobEndPoint": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Context": {
+                  "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
+                  "Name": "AzureStorageContext",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {}
+                },
+                "EmptyContextInstance": {
+                  "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
+                  "Name": "AzureStorageContext",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {}
+                },
+                "EndPointSuffix": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "FileEndPoint": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Name": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "QueueEndPoint": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "StorageAccount": {
+                  "Namespace": "Microsoft.WindowsAzure.Storage",
+                  "Name": "CloudStorageAccount",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.CloudStorageAccount, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "BlobEndpoint": {
+                      "Namespace": "System",
+                      "Name": "Uri",
+                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "AbsolutePath": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "AbsoluteUri": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Authority": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "DnsSafeHost": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Fragment": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Host": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "HostNameType": {
+                          "Namespace": "System",
+                          "Name": "UriHostNameType",
+                          "AssemblyQualifiedName": "System.UriHostNameType, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IdnHost": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsAbsoluteUri": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsDefaultPort": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsFile": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsLoopback": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsUnc": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "LocalPath": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "OriginalString": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "PathAndQuery": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Port": {
+                          "Namespace": "System",
+                          "Name": "Int32",
+                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Query": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Scheme": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Segments": {
+                          "Namespace": "System",
+                          "Name": "String[]",
+                          "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {
+                            "IsFixedSize": {
+                              "Namespace": "System",
+                              "Name": "Boolean",
+                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "IsReadOnly": {
+                              "Namespace": "System",
+                              "Name": "Boolean",
+                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "IsSynchronized": {
+                              "Namespace": "System",
+                              "Name": "Boolean",
+                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Length": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "LongLength": {
+                              "Namespace": "System",
+                              "Name": "Int64",
+                              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "Rank": {
+                              "Namespace": "System",
+                              "Name": "Int32",
+                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            },
+                            "SyncRoot": {
+                              "Namespace": "System",
+                              "Name": "Object",
+                              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                              "Properties": {}
+                            }
+                          }
+                        },
+                        "UserEscaped": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "UserInfo": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "BlobStorageUri": {
+                      "Namespace": "Microsoft.WindowsAzure.Storage",
+                      "Name": "StorageUri",
+                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {
+                        "PrimaryUri": {
+                          "Namespace": "System",
+                          "Name": "Uri",
+                          "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "SecondaryUri": {
+                          "Namespace": "System",
+                          "Name": "Uri",
+                          "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "Credentials": {
+                      "Namespace": "Microsoft.WindowsAzure.Storage.Auth",
+                      "Name": "StorageCredentials",
+                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.Auth.StorageCredentials, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {
+                        "AccountName": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsAnonymous": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsSAS": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsSharedKey": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "KeyName": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "SASSignature": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "SASToken": {
+                          "Namespace": "System",
+                          "Name": "String",
+                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "DevelopmentStorageAccount": {
+                      "Namespace": "Microsoft.WindowsAzure.Storage",
+                      "Name": "CloudStorageAccount",
+                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.CloudStorageAccount, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {}
+                    },
+                    "FileEndpoint": {
+                      "Namespace": "System",
+                      "Name": "Uri",
+                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "FileStorageUri": {
+                      "Namespace": "Microsoft.WindowsAzure.Storage",
+                      "Name": "StorageUri",
+                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {}
+                    },
+                    "QueueEndpoint": {
+                      "Namespace": "System",
+                      "Name": "Uri",
+                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "QueueStorageUri": {
+                      "Namespace": "Microsoft.WindowsAzure.Storage",
+                      "Name": "StorageUri",
+                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {}
+                    },
+                    "TableEndpoint": {
+                      "Namespace": "System",
+                      "Name": "Uri",
+                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "TableStorageUri": {
+                      "Namespace": "Microsoft.WindowsAzure.Storage",
+                      "Name": "StorageUri",
+                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {}
+                    },
+                    "UseV1MD5": {
+                      "Namespace": "System",
+                      "Name": "Boolean",
+                      "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    }
+                  }
+                },
+                "StorageAccountName": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "TableEndPoint": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                }
+              }
+            },
+            "CreationTime": {
               "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "System",
+                  "Name": "DateTime",
+                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Date": {
+                      "Namespace": "System",
+                      "Name": "DateTime",
+                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Day": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "DayOfWeek": {
+                      "Namespace": "System",
+                      "Name": "DayOfWeek",
+                      "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "DayOfYear": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Hour": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Kind": {
+                      "Namespace": "System",
+                      "Name": "DateTimeKind",
+                      "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Millisecond": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Minute": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Month": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Now": {
+                      "Namespace": "System",
+                      "Name": "DateTime",
+                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Second": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Ticks": {
+                      "Namespace": "System",
+                      "Name": "Int64",
+                      "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "TimeOfDay": {
+                      "Namespace": "System",
+                      "Name": "TimeSpan",
+                      "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "Days": {
+                          "Namespace": "System",
+                          "Name": "Int32",
+                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Hours": {
+                          "Namespace": "System",
+                          "Name": "Int32",
+                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Milliseconds": {
+                          "Namespace": "System",
+                          "Name": "Int32",
+                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Minutes": {
+                          "Namespace": "System",
+                          "Name": "Int32",
+                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Seconds": {
+                          "Namespace": "System",
+                          "Name": "Int32",
+                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "Ticks": {
+                          "Namespace": "System",
+                          "Name": "Int64",
+                          "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "TotalDays": {
+                          "Namespace": "System",
+                          "Name": "Double",
+                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "TotalHours": {
+                          "Namespace": "System",
+                          "Name": "Double",
+                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "TotalMilliseconds": {
+                          "Namespace": "System",
+                          "Name": "Double",
+                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "TotalMinutes": {
+                          "Namespace": "System",
+                          "Name": "Double",
+                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "TotalSeconds": {
+                          "Namespace": "System",
+                          "Name": "Double",
+                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "Today": {
+                      "Namespace": "System",
+                      "Name": "DateTime",
+                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "UtcNow": {
+                      "Namespace": "System",
+                      "Name": "DateTime",
+                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Year": {
+                      "Namespace": "System",
+                      "Name": "Int32",
+                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    }
+                  }
+                }
+              }
+            },
+            "CustomDomain": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "CustomDomain",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CustomDomain, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {
+                "Name": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "UseSubDomain": {
+                  "Namespace": "System",
+                  "Name": "Nullable`1",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "HasValue": {
+                      "Namespace": "System",
+                      "Name": "Boolean",
+                      "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Value": {
+                      "Namespace": "System",
+                      "Name": "Boolean",
+                      "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    }
+                  }
+                }
+              }
+            },
+            "Encryption": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Encryption",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Encryption, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {
+                "KeySource": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Services": {
+                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
+                  "Name": "EncryptionServices",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionServices, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Blob": {
+                      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+                      "Name": "EncryptionService",
+                      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionService, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                      "Properties": {
+                        "Enabled": {
+                          "Namespace": "System",
+                          "Name": "Nullable`1",
+                          "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "LastEnabledTime": {
+                          "Namespace": "System",
+                          "Name": "Nullable`1",
+                          "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             },
             "Id": {
               "Namespace": "System",
@@ -33,7 +660,106 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
+            "Kind": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
+                  "Name": "Kind",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {}
+                }
+              }
+            },
+            "LastGeoFailoverTime": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "PrimaryEndpoints": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Endpoints",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {
+                "Blob": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "File": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Queue": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Table": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                }
+              }
+            },
+            "PrimaryLocation": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ProvisioningState": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
+                  "Name": "ProvisioningState",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {}
+                }
+              }
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SecondaryEndpoints": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Endpoints",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "SecondaryLocation": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -71,372 +797,6 @@
                 }
               }
             },
-            "Kind": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
-                  "Name": "Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {}
-                }
-              }
-            },
-            "Encryption": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Encryption",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Encryption, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {
-                "Services": {
-                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
-                  "Name": "EncryptionServices",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionServices, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "Blob": {
-                      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-                      "Name": "EncryptionService",
-                      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionService, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {
-                        "Enabled": {
-                          "Namespace": "System",
-                          "Name": "Nullable`1",
-                          "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {
-                            "HasValue": {
-                              "Namespace": "System",
-                              "Name": "Boolean",
-                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "Value": {
-                              "Namespace": "System",
-                              "Name": "Boolean",
-                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            }
-                          }
-                        },
-                        "LastEnabledTime": {
-                          "Namespace": "System",
-                          "Name": "Nullable`1",
-                          "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {
-                            "HasValue": {
-                              "Namespace": "System",
-                              "Name": "Boolean",
-                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "Value": {
-                              "Namespace": "System",
-                              "Name": "DateTime",
-                              "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {
-                                "Date": {
-                                  "Namespace": "System",
-                                  "Name": "DateTime",
-                                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Day": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "DayOfWeek": {
-                                  "Namespace": "System",
-                                  "Name": "DayOfWeek",
-                                  "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "DayOfYear": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Hour": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Kind": {
-                                  "Namespace": "System",
-                                  "Name": "DateTimeKind",
-                                  "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Millisecond": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Minute": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Month": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Now": {
-                                  "Namespace": "System",
-                                  "Name": "DateTime",
-                                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "UtcNow": {
-                                  "Namespace": "System",
-                                  "Name": "DateTime",
-                                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Second": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Ticks": {
-                                  "Namespace": "System",
-                                  "Name": "Int64",
-                                  "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "TimeOfDay": {
-                                  "Namespace": "System",
-                                  "Name": "TimeSpan",
-                                  "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {
-                                    "Ticks": {
-                                      "Namespace": "System",
-                                      "Name": "Int64",
-                                      "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "Days": {
-                                      "Namespace": "System",
-                                      "Name": "Int32",
-                                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "Hours": {
-                                      "Namespace": "System",
-                                      "Name": "Int32",
-                                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "Milliseconds": {
-                                      "Namespace": "System",
-                                      "Name": "Int32",
-                                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "Minutes": {
-                                      "Namespace": "System",
-                                      "Name": "Int32",
-                                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "Seconds": {
-                                      "Namespace": "System",
-                                      "Name": "Int32",
-                                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "TotalDays": {
-                                      "Namespace": "System",
-                                      "Name": "Double",
-                                      "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "TotalHours": {
-                                      "Namespace": "System",
-                                      "Name": "Double",
-                                      "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "TotalMilliseconds": {
-                                      "Namespace": "System",
-                                      "Name": "Double",
-                                      "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "TotalMinutes": {
-                                      "Namespace": "System",
-                                      "Name": "Double",
-                                      "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    },
-                                    "TotalSeconds": {
-                                      "Namespace": "System",
-                                      "Name": "Double",
-                                      "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                      "Properties": {}
-                                    }
-                                  }
-                                },
-                                "Today": {
-                                  "Namespace": "System",
-                                  "Name": "DateTime",
-                                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                },
-                                "Year": {
-                                  "Namespace": "System",
-                                  "Name": "Int32",
-                                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                  "Properties": {}
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "KeySource": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "AccessTier": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
-                  "Name": "AccessTier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {}
-                }
-              }
-            },
-            "CreationTime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "CustomDomain": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "CustomDomain",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CustomDomain, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "UseSubDomain": {
-                  "Namespace": "System",
-                  "Name": "Nullable`1",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "LastGeoFailoverTime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "PrimaryEndpoints": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Endpoints",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {
-                "Blob": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Queue": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Table": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "File": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "PrimaryLocation": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ProvisioningState": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "Microsoft.Azure.Management.Storage.Models",
-                  "Name": "ProvisioningState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {}
-                }
-              }
-            },
-            "SecondaryEndpoints": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Endpoints",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {}
-            },
-            "SecondaryLocation": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "StatusOfPrimary": {
               "Namespace": "System",
               "Name": "Nullable`1",
@@ -460,6 +820,12 @@
               "Namespace": "System",
               "Name": "Nullable`1",
               "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "StorageAccountName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Tags": {
@@ -496,372 +862,6 @@
                   "Namespace": "System.Collections.Generic",
                   "Name": "ICollection`1",
                   "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "Context": {
-              "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-              "Name": "AzureStorageContext",
-              "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
-              "Properties": {
-                "StorageAccountName": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "BlobEndPoint": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "TableEndPoint": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "QueueEndPoint": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "FileEndPoint": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Context": {
-                  "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-                  "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {}
-                },
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "StorageAccount": {
-                  "Namespace": "Microsoft.WindowsAzure.Storage",
-                  "Name": "CloudStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.CloudStorageAccount, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "UseV1MD5": {
-                      "Namespace": "System",
-                      "Name": "Boolean",
-                      "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "DevelopmentStorageAccount": {
-                      "Namespace": "Microsoft.WindowsAzure.Storage",
-                      "Name": "CloudStorageAccount",
-                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.CloudStorageAccount, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {}
-                    },
-                    "BlobEndpoint": {
-                      "Namespace": "System",
-                      "Name": "Uri",
-                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "AbsolutePath": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "AbsoluteUri": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "LocalPath": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Authority": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "HostNameType": {
-                          "Namespace": "System",
-                          "Name": "UriHostNameType",
-                          "AssemblyQualifiedName": "System.UriHostNameType, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsDefaultPort": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsFile": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsLoopback": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "PathAndQuery": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Segments": {
-                          "Namespace": "System",
-                          "Name": "String[]",
-                          "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {
-                            "Length": {
-                              "Namespace": "System",
-                              "Name": "Int32",
-                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "LongLength": {
-                              "Namespace": "System",
-                              "Name": "Int64",
-                              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "Rank": {
-                              "Namespace": "System",
-                              "Name": "Int32",
-                              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "SyncRoot": {
-                              "Namespace": "System",
-                              "Name": "Object",
-                              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "IsReadOnly": {
-                              "Namespace": "System",
-                              "Name": "Boolean",
-                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "IsFixedSize": {
-                              "Namespace": "System",
-                              "Name": "Boolean",
-                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            },
-                            "IsSynchronized": {
-                              "Namespace": "System",
-                              "Name": "Boolean",
-                              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                              "Properties": {}
-                            }
-                          }
-                        },
-                        "IsUnc": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Host": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Port": {
-                          "Namespace": "System",
-                          "Name": "Int32",
-                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Query": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Fragment": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Scheme": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "OriginalString": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "DnsSafeHost": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IdnHost": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsAbsoluteUri": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "UserEscaped": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "UserInfo": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "QueueEndpoint": {
-                      "Namespace": "System",
-                      "Name": "Uri",
-                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "TableEndpoint": {
-                      "Namespace": "System",
-                      "Name": "Uri",
-                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "FileEndpoint": {
-                      "Namespace": "System",
-                      "Name": "Uri",
-                      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "BlobStorageUri": {
-                      "Namespace": "Microsoft.WindowsAzure.Storage",
-                      "Name": "StorageUri",
-                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {
-                        "PrimaryUri": {
-                          "Namespace": "System",
-                          "Name": "Uri",
-                          "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "SecondaryUri": {
-                          "Namespace": "System",
-                          "Name": "Uri",
-                          "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "QueueStorageUri": {
-                      "Namespace": "Microsoft.WindowsAzure.Storage",
-                      "Name": "StorageUri",
-                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {}
-                    },
-                    "TableStorageUri": {
-                      "Namespace": "Microsoft.WindowsAzure.Storage",
-                      "Name": "StorageUri",
-                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {}
-                    },
-                    "FileStorageUri": {
-                      "Namespace": "Microsoft.WindowsAzure.Storage",
-                      "Name": "StorageUri",
-                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {}
-                    },
-                    "Credentials": {
-                      "Namespace": "Microsoft.WindowsAzure.Storage.Auth",
-                      "Name": "StorageCredentials",
-                      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.Auth.StorageCredentials, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                      "Properties": {
-                        "SASToken": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "AccountName": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "KeyName": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsAnonymous": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsSAS": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsSharedKey": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "SASSignature": {
-                          "Namespace": "System",
-                          "Name": "String",
-                          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        }
-                      }
-                    }
-                  }
-                },
-                "EndPointSuffix": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "EmptyContextInstance": {
-                  "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-                  "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {}
                 }
               }
@@ -1060,12 +1060,6 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Value": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "Permissions": {
               "Namespace": "System",
               "Name": "Nullable`1",
@@ -1084,6 +1078,12 @@
                   "Properties": {}
                 }
               }
+            },
+            "Value": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
             }
           }
         },
@@ -1237,58 +1237,10 @@
           "Name": "StorageAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccount, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
           "Properties": {
-            "Sku": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Sku",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Sku, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {}
-            },
-            "Kind": {
+            "AccessTier": {
               "Namespace": "System",
               "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ProvisioningState": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "PrimaryEndpoints": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Endpoints",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {}
-            },
-            "PrimaryLocation": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "StatusOfPrimary": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "LastGeoFailoverTime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "SecondaryLocation": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "StatusOfSecondary": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "CreationTime": {
@@ -1303,25 +1255,31 @@
               "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CustomDomain, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
-            "SecondaryEndpoints": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Endpoints",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {}
-            },
             "Encryption": {
               "Namespace": "Microsoft.Azure.Management.Storage.Models",
               "Name": "Encryption",
               "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Encryption, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
-            "AccessTier": {
+            "Id": {
               "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Id": {
+            "Kind": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "LastGeoFailoverTime": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1333,22 +1291,64 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Type": {
+            "PrimaryEndpoints": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Endpoints",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "PrimaryLocation": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Location": {
+            "ProvisioningState": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SecondaryEndpoints": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Endpoints",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "SecondaryLocation": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Sku": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Sku",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Sku, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "StatusOfPrimary": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "StatusOfSecondary": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Tags": {
               "Namespace": "System.Collections.Generic",
               "Name": "IDictionary`2",
               "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -1613,19 +1613,19 @@
           "Name": "Hashtable",
           "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
-            "Item": {
+            "Count": {
               "Namespace": "System",
-              "Name": "Object",
-              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsReadOnly": {
+            "IsFixedSize": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsFixedSize": {
+            "IsReadOnly": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1635,6 +1635,12 @@
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Item": {
+              "Namespace": "System",
+              "Name": "Object",
+              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Keys": {
@@ -1648,25 +1654,19 @@
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "SyncRoot": {
-                  "Namespace": "System",
-                  "Name": "Object",
-                  "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "IsSynchronized": {
                   "Namespace": "System",
                   "Name": "Boolean",
                   "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
+                },
+                "SyncRoot": {
+                  "Namespace": "System",
+                  "Name": "Object",
+                  "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
                 }
               }
-            },
-            "Values": {
-              "Namespace": "System.Collections",
-              "Name": "ICollection",
-              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
             },
             "SyncRoot": {
               "Namespace": "System",
@@ -1674,10 +1674,10 @@
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Count": {
-              "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Values": {
+              "Namespace": "System.Collections",
+              "Name": "ICollection",
+              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -1999,19 +1999,19 @@
                 "Name": "Hashtable",
                 "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "Properties": {
-                  "Item": {
+                  "Count": {
                     "Namespace": "System",
-                    "Name": "Object",
-                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsReadOnly": {
+                  "IsFixedSize": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsFixedSize": {
+                  "IsReadOnly": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2021,6 +2021,12 @@
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "Item": {
+                    "Namespace": "System",
+                    "Name": "Object",
+                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
                   "Keys": {
@@ -2034,25 +2040,19 @@
                         "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                         "Properties": {}
                       },
-                      "SyncRoot": {
-                        "Namespace": "System",
-                        "Name": "Object",
-                        "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
                       "IsSynchronized": {
                         "Namespace": "System",
                         "Name": "Boolean",
                         "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                         "Properties": {}
+                      },
+                      "SyncRoot": {
+                        "Namespace": "System",
+                        "Name": "Object",
+                        "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                        "Properties": {}
                       }
                     }
-                  },
-                  "Values": {
-                    "Namespace": "System.Collections",
-                    "Name": "ICollection",
-                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
                   },
                   "SyncRoot": {
                     "Namespace": "System",
@@ -2060,10 +2060,10 @@
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Count": {
-                    "Namespace": "System",
-                    "Name": "Int32",
-                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Values": {
+                    "Namespace": "System.Collections",
+                    "Name": "ICollection",
+                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -2103,16 +2103,16 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Value": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "Permissions": {
               "Namespace": "System",
               "Name": "Nullable`1",
               "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.KeyPermission, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Value": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -2578,31 +2578,7 @@
           "Name": "AzureStorageContext",
           "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "StorageAccountName": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "BlobEndPoint": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "TableEndPoint": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "QueueEndPoint": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "FileEndPoint": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2614,7 +2590,31 @@
               "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {}
             },
+            "EmptyContextInstance": {
+              "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
+              "Name": "AzureStorageContext",
+              "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+              "Properties": {}
+            },
+            "EndPointSuffix": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "FileEndPoint": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Name": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "QueueEndPoint": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2626,16 +2626,16 @@
               "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.CloudStorageAccount, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
-            "EndPointSuffix": {
+            "StorageAccountName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "EmptyContextInstance": {
-              "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-              "Name": "AzureStorageContext",
-              "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "TableEndPoint": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -2710,31 +2710,7 @@
                 "Name": "AzureStorageContext",
                 "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "Properties": {
-                  "StorageAccountName": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
                   "BlobEndPoint": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "TableEndPoint": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "QueueEndPoint": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "FileEndPoint": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2746,7 +2722,31 @@
                     "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                     "Properties": {}
                   },
+                  "EmptyContextInstance": {
+                    "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
+                    "Name": "AzureStorageContext",
+                    "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "Properties": {}
+                  },
+                  "EndPointSuffix": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "FileEndPoint": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Name": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "QueueEndPoint": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2758,16 +2758,16 @@
                     "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.CloudStorageAccount, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                     "Properties": {}
                   },
-                  "EndPointSuffix": {
+                  "StorageAccountName": {
                     "Namespace": "System",
                     "Name": "String",
                     "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "EmptyContextInstance": {
-                    "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-                    "Name": "AzureStorageContext",
-                    "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "TableEndPoint": {
+                    "Namespace": "System",
+                    "Name": "String",
+                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -2871,58 +2871,10 @@
           "Name": "StorageAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccount, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
           "Properties": {
-            "Sku": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Sku",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Sku, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {}
-            },
-            "Kind": {
+            "AccessTier": {
               "Namespace": "System",
               "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ProvisioningState": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "PrimaryEndpoints": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Endpoints",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {}
-            },
-            "PrimaryLocation": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "StatusOfPrimary": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "LastGeoFailoverTime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "SecondaryLocation": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "StatusOfSecondary": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "CreationTime": {
@@ -2937,25 +2889,31 @@
               "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CustomDomain, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
-            "SecondaryEndpoints": {
-              "Namespace": "Microsoft.Azure.Management.Storage.Models",
-              "Name": "Endpoints",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-              "Properties": {}
-            },
             "Encryption": {
               "Namespace": "Microsoft.Azure.Management.Storage.Models",
               "Name": "Encryption",
               "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Encryption, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
-            "AccessTier": {
+            "Id": {
               "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Id": {
+            "Kind": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "LastGeoFailoverTime": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2967,22 +2925,64 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Type": {
+            "PrimaryEndpoints": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Endpoints",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "PrimaryLocation": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Location": {
+            "ProvisioningState": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "SecondaryEndpoints": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Endpoints",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "SecondaryLocation": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Sku": {
+              "Namespace": "Microsoft.Azure.Management.Storage.Models",
+              "Name": "Sku",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Sku, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+              "Properties": {}
+            },
+            "StatusOfPrimary": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "StatusOfSecondary": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Tags": {
               "Namespace": "System.Collections.Generic",
               "Name": "IDictionary`2",
               "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Type": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -3244,19 +3244,19 @@
           "Name": "Hashtable",
           "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
-            "Item": {
+            "Count": {
               "Namespace": "System",
-              "Name": "Object",
-              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsReadOnly": {
+            "IsFixedSize": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "IsFixedSize": {
+            "IsReadOnly": {
               "Namespace": "System",
               "Name": "Boolean",
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3268,13 +3268,13 @@
               "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Keys": {
-              "Namespace": "System.Collections",
-              "Name": "ICollection",
-              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Item": {
+              "Namespace": "System",
+              "Name": "Object",
+              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Values": {
+            "Keys": {
               "Namespace": "System.Collections",
               "Name": "ICollection",
               "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3286,10 +3286,10 @@
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Count": {
-              "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Values": {
+              "Namespace": "System.Collections",
+              "Name": "ICollection",
+              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -3608,19 +3608,19 @@
                 "Name": "Hashtable",
                 "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "Properties": {
-                  "Item": {
+                  "Count": {
                     "Namespace": "System",
-                    "Name": "Object",
-                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Name": "Int32",
+                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsReadOnly": {
+                  "IsFixedSize": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "IsFixedSize": {
+                  "IsReadOnly": {
                     "Namespace": "System",
                     "Name": "Boolean",
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3632,13 +3632,13 @@
                     "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Keys": {
-                    "Namespace": "System.Collections",
-                    "Name": "ICollection",
-                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Item": {
+                    "Namespace": "System",
+                    "Name": "Object",
+                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Values": {
+                  "Keys": {
                     "Namespace": "System.Collections",
                     "Name": "ICollection",
                     "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3650,10 +3650,10 @@
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   },
-                  "Count": {
-                    "Namespace": "System",
-                    "Name": "Int32",
-                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Values": {
+                    "Namespace": "System.Collections",
+                    "Name": "ICollection",
+                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -3687,6 +3687,12 @@
           "Name": "CheckNameAvailabilityResult",
           "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CheckNameAvailabilityResult, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
           "Properties": {
+            "Message": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "NameAvailable": {
               "Namespace": "System",
               "Name": "Nullable`1",
@@ -3711,12 +3717,6 @@
                   "Properties": {}
                 }
               }
-            },
-            "Message": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
             }
           }
         },
@@ -3814,6 +3814,31 @@
           "Name": "PSUsage",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUsage, Microsoft.Azure.Commands.Management.Storage, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
+            "CurrentValue": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "System",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                }
+              }
+            },
+            "Limit": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "LocalizedName": {
               "Namespace": "System",
               "Name": "String",
@@ -3844,31 +3869,6 @@
                   "Properties": {}
                 }
               }
-            },
-            "CurrentValue": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "System",
-                  "Name": "Int32",
-                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "Limit": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
             }
           }
         },
