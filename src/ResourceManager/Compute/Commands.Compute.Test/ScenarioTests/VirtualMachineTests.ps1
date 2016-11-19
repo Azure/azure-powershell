@@ -127,6 +127,7 @@ function Test-VirtualMachine
         Write-Verbose("Get-AzureRmVM | Format-Table output:");
         Write-Verbose($a);
 
+        Assert-NotNull $vm1.VmId;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;

@@ -42,9 +42,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("Id", "NicIds")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMNetworkInterfaceID)]
         [ValidateNotNullOrEmpty]
         public string[] NetworkInterfaceIDs { get; set; }
@@ -53,15 +52,22 @@ namespace Microsoft.Azure.Commands.Compute
         {
             var networkProfile = this.VM.NetworkProfile;
 
-            foreach (var id in this.NetworkInterfaceIDs)
+            if (NetworkInterfaceIDs == null)
             {
-                if (networkProfile != null &&
-                    networkProfile.NetworkInterfaces != null &&
-                    networkProfile.NetworkInterfaces.Any(nic =>
-                        string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase)))
+                networkProfile.NetworkInterfaces.Clear();
+            }
+            else
+            {
+                foreach (var id in this.NetworkInterfaceIDs)
                 {
-                    var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase));
-                    networkProfile.NetworkInterfaces.Remove(nicReference);
+                    if (networkProfile != null &&
+                        networkProfile.NetworkInterfaces != null &&
+                        networkProfile.NetworkInterfaces.Any(nic =>
+                            string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase));
+                        networkProfile.NetworkInterfaces.Remove(nicReference);
+                    }
                 }
             }
 
