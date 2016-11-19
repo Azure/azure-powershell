@@ -179,11 +179,8 @@ function Change-RMModule
 		  Write-Output "Expanding $zipPath"
 		  Expand-Archive $zipPath
 		  Write-Output "Adding PSM1 dependency to $unzippedManifest"
-
           Add-PSM1Dependency -Path $unzippedManifest
-
 		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
-          
           Remove-ModuleDependencies -Path $unzippedManifest
           
 		  Remove-Item -Path $zipPath -Force
