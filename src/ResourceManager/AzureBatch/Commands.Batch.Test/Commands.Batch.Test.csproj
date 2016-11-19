@@ -505,46 +505,13 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDeleteJob.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDisableEnableTerminateJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDeleteJobPipeline.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDisableAndEnableJob.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestGetAndListJobsWithSelect.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestGetJobById.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestJobCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestJobWithTaskDependencies.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestListAllJobs.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestListJobsByFilter.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestListJobsUnderSchedule.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestListJobsWithMaxCount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestNewJob.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestTerminateJobById.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestTerminateJobPipeline.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestUpdateJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestChangeOSVersionById.json">
