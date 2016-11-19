@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -49,6 +50,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
             // Get the properties of the type
             var properties = inputType.GetProperties();
+
+            // Sort the properties by name to retain ordering when loading cmdlets
+            Array.Sort(properties, delegate (PropertyInfo p1, PropertyInfo p2)
+                                    {
+                                        return p1.Name.CompareTo(p2.Name);
+                                    });
 
             // For each property, check if we have seen it before, and if so,
             // create a new TypeMetadata object that contains information about

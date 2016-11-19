@@ -15,13 +15,38 @@
           "Name": "PSCognitiveServicesAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "ResourceGroupName": {
+            "AccountName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "AccountName": {
+            "AccountType": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.Kind, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "Kind",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Kind, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {}
+                }
+              }
+            },
+            "Endpoint": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Etag": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -33,13 +58,38 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Endpoint": {
+            "Location": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Location": {
+            "ProvisioningState": {
+              "Namespace": "System",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {
+                "HasValue": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Value": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "ProvisioningState",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {}
+                }
+              }
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceType": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -74,56 +124,6 @@
                       "Properties": {}
                     }
                   }
-                }
-              }
-            },
-            "AccountType": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.Kind, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
-                  "Name": "Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Kind, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {}
-                }
-              }
-            },
-            "ResourceType": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Etag": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ProvisioningState": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
-                  "Name": "ProvisioningState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {}
                 }
               }
             },
@@ -675,40 +675,10 @@
           "Name": "PSCognitiveServicesAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "ResourceGroupName": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "AccountName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Id": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Endpoint": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Location": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Sku": {
-              "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
-              "Name": "Sku",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
             "AccountType": {
@@ -717,7 +687,7 @@
               "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.Kind, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceType": {
+            "Endpoint": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -729,10 +699,40 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
+            "Id": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "ProvisioningState": {
               "Namespace": "System",
               "Name": "Nullable`1",
               "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceType": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Sku": {
+              "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+              "Name": "Sku",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
             "Tags": {
@@ -907,6 +907,24 @@
           "Name": "Hashtable[]",
           "AssemblyQualifiedName": "System.Collections.Hashtable[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -929,24 +947,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -1186,6 +1186,24 @@
                 "Name": "Hashtable[]",
                 "AssemblyQualifiedName": "System.Collections.Hashtable[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -1208,24 +1226,6 @@
                     "Namespace": "System",
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -1748,40 +1748,10 @@
           "Name": "PSCognitiveServicesAccount",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "ResourceGroupName": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "AccountName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Id": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Endpoint": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Location": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Sku": {
-              "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
-              "Name": "Sku",
-              "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
             "AccountType": {
@@ -1790,7 +1760,7 @@
               "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.Kind, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceType": {
+            "Endpoint": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1802,10 +1772,40 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
+            "Id": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "ProvisioningState": {
               "Namespace": "System",
               "Name": "Nullable`1",
               "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceType": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Sku": {
+              "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+              "Name": "Sku",
+              "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
               "Properties": {}
             },
             "Tags": {
@@ -1917,6 +1917,24 @@
           "Name": "Hashtable[]",
           "AssemblyQualifiedName": "System.Collections.Hashtable[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -1939,24 +1957,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -2108,6 +2108,24 @@
                 "Name": "Hashtable[]",
                 "AssemblyQualifiedName": "System.Collections.Hashtable[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -2130,24 +2148,6 @@
                     "Namespace": "System",
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }

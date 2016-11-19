@@ -15,19 +15,13 @@
           "Name": "PSTag",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ValuesTable": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "Count": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -55,13 +49,13 @@
                   "Name": "PSTagValue",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Name": {
+                    "Count": {
                       "Namespace": "System",
                       "Name": "String",
                       "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                       "Properties": {}
                     },
-                    "Count": {
+                    "Name": {
                       "Namespace": "System",
                       "Name": "String",
                       "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -70,6 +64,12 @@
                   }
                 }
               }
+            },
+            "ValuesTable": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
             }
           }
         },
@@ -112,6 +112,24 @@
           "Name": "String[]",
           "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
           "Properties": {
+            "IsFixedSize": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsReadOnly": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "IsSynchronized": {
+              "Namespace": "System",
+              "Name": "Boolean",
+              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
             "Length": {
               "Namespace": "System",
               "Name": "Int32",
@@ -134,24 +152,6 @@
               "Namespace": "System",
               "Name": "Object",
               "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -242,6 +242,24 @@
                 "Name": "String[]",
                 "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "Properties": {
+                  "IsFixedSize": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsReadOnly": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
+                  "IsSynchronized": {
+                    "Namespace": "System",
+                    "Name": "Boolean",
+                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "Properties": {}
+                  },
                   "Length": {
                     "Namespace": "System",
                     "Name": "Int32",
@@ -264,24 +282,6 @@
                     "Namespace": "System",
                     "Name": "Object",
                     "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "Properties": {}
                   }
                 }
@@ -376,19 +376,13 @@
               "Name": "PSTag",
               "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "ValuesTable": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "Count": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Name": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -398,6 +392,12 @@
                   "Namespace": "System.Collections.Generic",
                   "Name": "List`1",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "ValuesTable": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 }
               }
@@ -548,19 +548,13 @@
           "Name": "PSTag",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ValuesTable": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "Count": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -570,6 +564,12 @@
               "Namespace": "System.Collections.Generic",
               "Name": "List`1",
               "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ValuesTable": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }

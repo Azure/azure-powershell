@@ -32,19 +32,13 @@
               "Name": "PSFunction",
               "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "JobName": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "ResourceGroupName": {
+                "Name": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -74,6 +68,12 @@
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
+                },
+                "ResourceGroupName": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
                 }
               }
             }
@@ -89,19 +89,13 @@
           "Name": "PSFunction",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -114,6 +108,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -321,19 +321,13 @@
           "Name": "PSFunction",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -346,6 +340,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -609,19 +609,13 @@
           "Name": "PSFunction",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -634,6 +628,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1374,19 +1374,13 @@
               "Name": "PSInput",
               "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "JobName": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "ResourceGroupName": {
+                "Name": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1500,12 +1494,6 @@
                                           "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                                           "Properties": {}
                                         },
-                                        "UtcNow": {
-                                          "Namespace": "System",
-                                          "Name": "DateTime",
-                                          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                          "Properties": {}
-                                        },
                                         "Second": {
                                           "Namespace": "System",
                                           "Name": "Int32",
@@ -1523,12 +1511,6 @@
                                           "Name": "TimeSpan",
                                           "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                                           "Properties": {
-                                            "Ticks": {
-                                              "Namespace": "System",
-                                              "Name": "Int64",
-                                              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                              "Properties": {}
-                                            },
                                             "Days": {
                                               "Namespace": "System",
                                               "Name": "Int32",
@@ -1557,6 +1539,12 @@
                                               "Namespace": "System",
                                               "Name": "Int32",
                                               "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                              "Properties": {}
+                                            },
+                                            "Ticks": {
+                                              "Namespace": "System",
+                                              "Name": "Int64",
+                                              "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                                               "Properties": {}
                                             },
                                             "TotalDays": {
@@ -1592,6 +1580,12 @@
                                           }
                                         },
                                         "Today": {
+                                          "Namespace": "System",
+                                          "Name": "DateTime",
+                                          "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                          "Properties": {}
+                                        },
+                                        "UtcNow": {
                                           "Namespace": "System",
                                           "Name": "DateTime",
                                           "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1645,6 +1639,12 @@
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
+                },
+                "ResourceGroupName": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
                 }
               }
             }
@@ -1660,19 +1660,13 @@
           "Name": "PSInput",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1685,6 +1679,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1892,19 +1892,13 @@
           "Name": "PSInput",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -1917,6 +1911,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2631,16 +2631,10 @@
               "Name": "PSJob",
               "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {
-                "JobName": {
+                "CreatedDate": {
                   "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "ResourceGroupName": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "Nullable`1",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
                 "JobId": {
@@ -2649,19 +2643,7 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "Location": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "CreatedDate": {
-                  "Namespace": "System",
-                  "Name": "Nullable`1",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "ProvisioningState": {
+                "JobName": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -2673,43 +2655,11 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "Tags": {
-                  "Namespace": "System.Collections.Generic",
-                  "Name": "IDictionary`2",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "Item": {
-                      "Namespace": "System",
-                      "Name": "String",
-                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Keys": {
-                      "Namespace": "System.Collections.Generic",
-                      "Name": "ICollection`1",
-                      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "Count": {
-                          "Namespace": "System",
-                          "Name": "Int32",
-                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "IsReadOnly": {
-                          "Namespace": "System",
-                          "Name": "Boolean",
-                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "Values": {
-                      "Namespace": "System.Collections.Generic",
-                      "Name": "ICollection`1",
-                      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    }
-                  }
+                "Location": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
                 },
                 "Properties": {
                   "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
@@ -2969,6 +2919,56 @@
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
+                },
+                "ProvisioningState": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "ResourceGroupName": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "Tags": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "IDictionary`2",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Item": {
+                      "Namespace": "System",
+                      "Name": "String",
+                      "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    },
+                    "Keys": {
+                      "Namespace": "System.Collections.Generic",
+                      "Name": "ICollection`1",
+                      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {
+                        "Count": {
+                          "Namespace": "System",
+                          "Name": "Int32",
+                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        },
+                        "IsReadOnly": {
+                          "Namespace": "System",
+                          "Name": "Boolean",
+                          "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                          "Properties": {}
+                        }
+                      }
+                    },
+                    "Values": {
+                      "Namespace": "System.Collections.Generic",
+                      "Name": "ICollection`1",
+                      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                      "Properties": {}
+                    }
+                  }
                 }
               }
             }
@@ -2984,16 +2984,10 @@
           "Name": "PSJob",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "JobName": {
+            "CreatedDate": {
               "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ResourceGroupName": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "JobId": {
@@ -3002,19 +2996,7 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Location": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "CreatedDate": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ProvisioningState": {
+            "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3026,10 +3008,10 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Tags": {
-              "Namespace": "System.Collections.Generic",
-              "Name": "IDictionary`2",
-              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Properties": {
@@ -3042,6 +3024,24 @@
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ProvisioningState": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Tags": {
+              "Namespace": "System.Collections.Generic",
+              "Name": "IDictionary`2",
+              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -3282,16 +3282,10 @@
           "Name": "PSJob",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "JobName": {
+            "CreatedDate": {
               "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ResourceGroupName": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "Nullable`1",
+              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "JobId": {
@@ -3300,19 +3294,7 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Location": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "CreatedDate": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ProvisioningState": {
+            "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -3324,10 +3306,10 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "Tags": {
-              "Namespace": "System.Collections.Generic",
-              "Name": "IDictionary`2",
-              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Location": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Properties": {
@@ -3340,6 +3322,24 @@
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ProvisioningState": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "Tags": {
+              "Namespace": "System.Collections.Generic",
+              "Name": "IDictionary`2",
+              "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             }
           }
@@ -4128,19 +4128,13 @@
               "Name": "PSOutput",
               "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "JobName": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "ResourceGroupName": {
+                "Name": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4153,6 +4147,12 @@
                   "Properties": {}
                 },
                 "PropertiesInJson": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "ResourceGroupName": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4172,19 +4172,13 @@
           "Name": "PSOutput",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4197,6 +4191,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4404,19 +4404,13 @@
           "Name": "PSOutput",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -4429,6 +4423,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5143,10 +5143,10 @@
               "Name": "PSQuota",
               "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {
-                "Name": {
+                "CurrentCount": {
                   "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
                 "Location": {
@@ -5155,16 +5155,16 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "CurrentCount": {
+                "MaxCount": {
                   "Namespace": "System",
                   "Name": "Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "MaxCount": {
+                "Name": {
                   "Namespace": "System",
-                  "Name": "Int32",
-                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
                 "Properties": {
@@ -5200,10 +5200,10 @@
           "Name": "PSQuota",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
+            "CurrentCount": {
               "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "Int32",
+              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Location": {
@@ -5212,16 +5212,16 @@
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "CurrentCount": {
+            "MaxCount": {
               "Namespace": "System",
               "Name": "Int32",
               "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "MaxCount": {
+            "Name": {
               "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
             "Properties": {
@@ -5337,19 +5337,13 @@
               "Name": "PSTransformation",
               "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
               "Properties": {
-                "Name": {
-                  "Namespace": "System",
-                  "Name": "String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
                 "JobName": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {}
                 },
-                "ResourceGroupName": {
+                "Name": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5362,6 +5356,12 @@
                   "Properties": {}
                 },
                 "PropertiesInJson": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {}
+                },
+                "ResourceGroupName": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5381,19 +5381,13 @@
           "Name": "PSTransformation",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5406,6 +5400,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5613,19 +5613,13 @@
           "Name": "PSTransformation",
           "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
           "Properties": {
-            "Name": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
             "JobName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "Properties": {}
             },
-            "ResourceGroupName": {
+            "Name": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -5638,6 +5632,12 @@
               "Properties": {}
             },
             "PropertiesInJson": {
+              "Namespace": "System",
+              "Name": "String",
+              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "Properties": {}
+            },
+            "ResourceGroupName": {
               "Namespace": "System",
               "Name": "String",
               "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
