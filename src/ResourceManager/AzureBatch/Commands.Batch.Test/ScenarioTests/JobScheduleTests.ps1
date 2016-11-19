@@ -47,7 +47,6 @@ function Test-JobScheduleCRUD
         Assert-NotNull $jobSchedule2
 
         # Update a job schedule
-        $oldDoNotRunUntil = $jobSchedule2.Schedule.DoNotRunUntil
         $jobSchedule2.Schedule.DoNotRunUntil = $newDoNotRunUntil = New-Object System.DateTime -ArgumentList @(2025, 01, 01, 12, 30, 0)
         $jobSchedule2 | Set-AzureBatchJobSchedule -BatchContext $context
         $updatedJobSchedule = Get-AzureBatchJobSchedule -Id $jsId2 -BatchContext $context
@@ -84,7 +83,7 @@ function Test-DisableEnableTerminateJobSchedule
 
     $jobSchedule | Enable-AzureBatchJobSchedule -BatchContext $context
 
-    # Verify the job schedule is again Active
+    # Verify the job schedule is Active
     $jobSchedule = Get-AzureBatchJobSchedule -Filter "id eq '$jobScheduleId'" -BatchContext $context
     Assert-AreEqual 'Active' $jobSchedule.State
 
