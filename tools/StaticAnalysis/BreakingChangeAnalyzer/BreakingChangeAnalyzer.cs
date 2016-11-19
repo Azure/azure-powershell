@@ -152,8 +152,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Serialize the cmdlets so they can be compared to change modules later
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="cmdlets"></param>
+        /// <param name="fileName">Name of the file cmdlets are being serialized to.</param>
+        /// <param name="cmdlets">List of cmdlets that are to be serialized.</param>
         private void SerializeCmdlets(string fileName, List<CmdletBreakingChangeMetadata> cmdlets)
         {
             string json = JsonConvert.SerializeObject(cmdlets, Formatting.Indented);
@@ -163,7 +163,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Deserialize the cmdlets to compare them to the changed modules
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="fileName">Name of the file we are to deserialize the cmdlets from.</param>
         /// <returns></returns>
         private List<CmdletBreakingChangeMetadata> DeserializeCmdlets(string fileName)
         {
@@ -173,9 +173,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Run all of the different breaking change checks that we have for the tool
         /// </summary>
-        /// <param name="oldCmdlets"></param>
-        /// <param name="newCmdlets"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlets">List of cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlets">List of cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void RunBreakingChangeChecks(
             IList<CmdletBreakingChangeMetadata> oldCmdlets,
             IList<CmdletBreakingChangeMetadata> newCmdlets,
@@ -309,9 +309,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Run all of the different breaking change checks for parameters
         /// </summary>
         /// <param name="cmdlet"></param>
-        /// <param name="oldParameter"></param>
-        /// <param name="newParameter"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldParameter">The parameter metadata from the old (serialized) assembly. </param>
+        /// <param name="newParameter">The parameter metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckParameters(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
@@ -328,9 +328,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Run all of the different breaking change checks for parameter sets
         /// </summary>
         /// <param name="cmdlet"></param>
-        /// <param name="oldParameterSet"></param>
-        /// <param name="newParameterSet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldParameterSet">The parameter set metadata from the old (serialized) assembly.</param>
+        /// <param name="newParameterSet">The parameter set metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckParameterSets(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterSetMetadata oldParameterSet,
@@ -432,9 +432,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Checks if an alias to a cmdlet has been removed.
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedCmdletAlias(
             CmdletBreakingChangeMetadata oldCmdlet,
             CmdletBreakingChangeMetadata newCmdlet,
@@ -482,9 +482,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Check if a cmdlet no longer implements SupportsShouldProcess.
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedSupportsShouldProcess(
             CmdletBreakingChangeMetadata oldCmdlet,
             CmdletBreakingChangeMetadata newCmdlet,
@@ -505,9 +505,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Check if a cmdlet no longer implements SupportsPaging.
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedSupportsPaging(
             CmdletBreakingChangeMetadata oldCmdlet,
             CmdletBreakingChangeMetadata newCmdlet,
@@ -529,9 +529,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Check if the OutputType of the cmdlet has been removed, or if any property
         /// of the OutputType has been removed or changed
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForChangedOutputType(
             CmdletBreakingChangeMetadata oldCmdlet,
             CmdletBreakingChangeMetadata newCmdlet,
@@ -610,9 +610,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Check if the default parameter set has changed, and if so, make sure
         /// that the parameters are the same
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckDefaultParameterName(
             CmdletBreakingChangeMetadata oldCmdlet,
             CmdletBreakingChangeMetadata newCmdlet,
@@ -698,9 +698,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Check if the type for a parameter has been changed, or if any of the
         /// type's properties have been removed or changed.
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForChangedParameterType(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
@@ -731,9 +731,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Check if an alias to a parameter has been removed.
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from new assembly</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedParameterAlias(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
@@ -783,9 +783,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Check for any values that were removed from a validation set of a parameter.
         /// </summary>
-        /// <param name="oldCmdlet"></param>
-        /// <param name="newCmdlet"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="oldCmdlet">The cmdlet metadata from the old (serialized) assembly.</param>
+        /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckParameterValidationSets(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
@@ -851,10 +851,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <summary>
         /// Check if the parameter now supports the ValidateNotNullOrEmpty attribute
         /// </summary>
-        /// <param name="cmdlet"></param>
-        /// <param name="oldParameter"></param>
-        /// <param name="newParameter"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="cmdlet">The cmdlet metadata currently being checked.</param>
+        /// <param name="oldParameter">The parameter metadata from the old (serialized) assembly.</param>
+        /// <param name="newParameter">The parameter metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForValidateNotNullOrEmpty(
             CmdletBreakingChangeMetadata cmdlet,
             ParameterMetadata oldParameter,
@@ -880,10 +880,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Compare two types by recursively checking their properties and property
         /// types, making sure that nothing has been removed or changed.
         /// </summary>
-        /// <param name="cmdlet"></param>
-        /// <param name="oldType"></param>
-        /// <param name="newType"></param>
-        /// <param name="issueLogger"></param>
+        /// <param name="cmdlet">The cmdlet metadata currently being checked.</param>
+        /// <param name="oldType">The type metadata from the old (serialized) assembly.</param>
+        /// <param name="newType">The type metadata from the new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CompareTypes(
             CmdletBreakingChangeMetadata cmdlet,
             TypeMetadata oldType,
