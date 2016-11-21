@@ -50,5 +50,12 @@ namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-ManagedCacheNamedCacheDoNotExists");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRetirementWarningMessage()
+        {
+            this.RunPowerShellTest("Test-RetirementWarningMessage");
+        }
     }
 }
