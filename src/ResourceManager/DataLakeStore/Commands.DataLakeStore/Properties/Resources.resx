@@ -120,6 +120,12 @@
   <data name="AccountDoesNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified account '{0}' does not exist.</value>
   </data>
+  <data name="AddDataLakeFirewallRule" xml:space="preserve">
+    <value>Adding the Data Lake Store firewall rule: '{0}' ...</value>
+  </data>
+  <data name="AddDataLakeTrustedIdProvider" xml:space="preserve">
+    <value>Adding the Data Lake Store trusted identity provider: '{0}' ...</value>
+  </data>
   <data name="DataLakeStoreAccountExists" xml:space="preserve">
     <value>DataLakeStore account with name '{0}' already exists.</value>
   </data>
@@ -137,6 +143,12 @@
   </data>
   <data name="FilePreviewTooLarge" xml:space="preserve">
     <value>The remaining data to preview is greater than {0} bytes. Please specify a length or use the Force parameter to preview the entire file. The length of the file that would have been previewed: {1}</value>
+  </data>
+  <data name="FirewallRuleNotFound" xml:space="preserve">
+    <value>The specified firewall rule '{0}' does not exist.</value>
+  </data>
+  <data name="IgnoredKeyVaultParams" xml:space="preserve">
+    <value>User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored.</value>
   </data>
   <data name="InvalidAce" xml:space="preserve">
     <value>Invalid ACE returned. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}</value>
@@ -183,8 +195,14 @@
   <data name="LongRunningOperationFailed" xml:space="preserve">
     <value>DataLakeStore account operation failed with the following error code: {0} and message: {1}</value>
   </data>
+  <data name="MissingKeyVaultParams" xml:space="preserve">
+    <value>For user managed encryption, KeyVaultId, KeyName and KeyVersion are required parameters and must be supplied.</value>
+  </data>
   <data name="MoveFailed" xml:space="preserve">
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
+  </data>
+  <data name="ObsoleteWarningForAclObjects" xml:space="preserve">
+    <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry</value>
   </data>
   <data name="OffsetOutOfRange" xml:space="preserve">
     <value>The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero.</value>
@@ -196,14 +214,23 @@
   <data name="RemoveDataLakeStoreAccount" xml:space="preserve">
     <value>Removing DataLakeStore account '{0}' ...</value>
   </data>
+  <data name="RemoveDataLakeStoreFirewallRule" xml:space="preserve">
+    <value>Removing Data Lake Store firewall rule: '{0}' ...</value>
+  </data>
   <data name="RemoveDataLakeStoreItem" xml:space="preserve">
     <value>Removing Data Lake file or folder at path: '{0}' ...</value>
   </data>
   <data name="RemoveDataLakeStoreItemAcl" xml:space="preserve">
     <value>Removing {0}DataLake ACL at path: '{1}' ...</value>
   </data>
+  <data name="RemoveDataLakeStoreTrustedProvider" xml:space="preserve">
+    <value>Removing Data Lake Store trusted identity provider: '{0}' ...</value>
+  </data>
   <data name="RemovingDataLakeStoreAccount" xml:space="preserve">
     <value>Are you sure you want to remove DataLakeStore account '{0}'?</value>
+  </data>
+  <data name="RemovingDataLakeStoreFirewallRule" xml:space="preserve">
+    <value>Are you sure you want to remove the Data Lake Store firewall rule: '{0}'?</value>
   </data>
   <data name="RemovingDataLakeStoreItem" xml:space="preserve">
     <value>Are you sure you want to remove the Data Lake item at path: '{0}'?</value>
@@ -211,11 +238,17 @@
   <data name="RemovingDataLakeStoreItemAcl" xml:space="preserve">
     <value>Are you sure you want to remove the {0}DataLake ACL at path: '{1}'?</value>
   </data>
+  <data name="RemovingDataLakeStoreTrustedProvider" xml:space="preserve">
+    <value>Are you sure you want to remove the Data Lake Store trusted identity provider: '{0}'?</value>
+  </data>
   <data name="ScriptFilePathDoesNotExist" xml:space="preserve">
     <value>The script file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
   </data>
   <data name="ServerFileAlreadyExists" xml:space="preserve">
     <value>The destination path '{0}' already exists in the system. To overwrite this location, use the -Force parameter.</value>
+  </data>
+  <data name="SetDataLakeFirewallRule" xml:space="preserve">
+    <value>Setting the Data Lake Store firewall rule: '{0}' ...</value>
   </data>
   <data name="SetDataLakeStoreItemAcl" xml:space="preserve">
     <value>Setting the Data Lake file or folder ACL at path: '{0}' ...</value>
@@ -223,20 +256,23 @@
   <data name="SetDataLakeStoreItemOwner" xml:space="preserve">
     <value>Setting the Data Lake file or folder owning group or user at path: '{0}' ...</value>
   </data>
+  <data name="SetDataLakeStoreItemPermissions" xml:space="preserve">
+    <value>Setting the Data Lake file or folder permissions at path: '{0}' ...</value>
+  </data>
+  <data name="SetDataLakeTrustedIdProvider" xml:space="preserve">
+    <value>Setting the Data Lake Store trusted identity provider: '{0}' ...</value>
+  </data>
   <data name="SettingDataLakeStoreItemAcl" xml:space="preserve">
     <value>The entry or entries you provided may already exist in the item's ACL. Are you sure you want to overwrite the existing entry or entries at item path '{0}'?</value>
   </data>
   <data name="SettingDataLakeStoreItemOwner" xml:space="preserve">
     <value>Are you sure you want to replace the existing owning group or user at the Data Lake item at path: '{0}'?</value>
   </data>
-  <data name="TagsWarning" xml:space="preserve">
-    <value>The usage of 'Tags' parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494</value>
-  </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
   </data>
   <data name="UploadFailedMessage" xml:space="preserve">
-    <value>"Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the "Resume" option. If the error persists, please contact Microsoft support."</value>
+    <value>Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the "Resume" option. If the error persists, please contact Microsoft support.</value>
   </data>
   <data name="UploadFileMessage" xml:space="preserve">
     <value>Upload file or directory</value>

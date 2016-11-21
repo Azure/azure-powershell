@@ -2,7 +2,7 @@
 .SYNOPSIS
 Tests DataLakeStore Account Lifecycle (Create, Update, Get, List, Delete).
 #>
-function Test-DataLakeStoreAccount
+function Test-DataLakeStoreTrustedIdProvider
 {
     param
 	(
@@ -21,7 +21,7 @@ function Test-DataLakeStoreAccount
 		# Test it without specifying a resource group
 		Assert-False {Test-AdlStore -Name $accountName}
 
-		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -48,11 +48,157 @@ function Test-DataLakeStoreAccount
 
 		# Test to make sure the account does exist
 		Assert-True {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		$trustedIdName = getAssetName
+		$trustedIdEndpoint = "https://sts.windows.net/6b04908c-b91f-40ce-8024-7ee8a4fd6150"
+
+		# Add a provider
+		Add-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName -ProviderEndpoint $trustedIdEndpoint
+
+		# Get the provider
+		$result = Get-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName
+		Assert-AreEqual $trustedIdName $result.Name
+		Assert-AreEqual $trustedIdEndpoint $result.IdProvider
+
+		# remove the provider
+		Remove-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName
+
+		# Make sure get throws.
+		Assert-Throws {Get-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+function Test-DataLakeStoreFirewall
+{
+    param
+	(
+		$location = "West US"
+	)
+	
+	try
+	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AdlStore -Name $accountName}
+
+		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		$firewallRuleName = getAssetName
+		$startIp = "127.0.0.1"
+		$endIp = "127.0.0.2"
+		# Add a firewall rule
+		Add-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp
+
+		# Get the firewall rule
+		$result = Get-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName
+		Assert-AreEqual $firewallRuleName $result.Name
+		Assert-AreEqual $startIp $result.StartIpAddress
+		Assert-AreEqual $endIp $result.EndIpAddress
+
+		# remove the firewall rule
+		Remove-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName
+
+		# Make sure get throws.
+		Assert-Throws {Get-AdlStoreFirewallRule -AccountName $accountName -Name $firewallRuleName}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+function Test-DataLakeStoreAccount
+{
+    param
+	(
+		$location = "West US"
+	)
+	
+	try
+	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AdlStore -Name $accountName}
+
+		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				Assert-True {$accountGet[0].Identity -ne $null}
+				Assert-True {$accountGet[0].Properties.EncryptionConfig -ne $null}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
+		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
 		# Test it without specifying a resource group
 		Assert-True {Test-AdlStore -Name $accountName}
 
 		# Updating Account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$accountUpdated = Set-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
@@ -316,42 +462,67 @@ function Test-DataLakeStoreFileSystemPermissions
 		$aceUserId = "027c28d5-c91d-49f0-98c5-d10134b169b3"
 
 		# Set and get all the permissions
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
 		Assert-NotNull $result "Did not get any result from ACL get" 
-		Assert-True {$result.UserAces.count -ge 0} "UserAces is negative or null"
-		$currentCount = $result.UserAces.Count
-		$result.UserAces.Add($aceUserId, "rwx") 
-		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.UserACes.Count
-		$result.UserAces.Remove($aceUserId)
+		Assert-True {$result.Count -ge 0} "UserAces is negative or null"
+ 		$currentCount = $result.Count
+ 		$result.Add("user:$aceUserId`:rwx")
+ 		$toRemove = $result[$result.Count -1]
+		Assert-AreEqual $aceUserId $toRemove.Id
+
+		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		# mask gets added as part of adding the user
+		Assert-AreEqual $($currentCount+2) $result.Count
+ 		$found = $false
+ 		for($i = 0; $i -lt $result.Count; $i++)
+ 		{
+ 			if($result[$i].Id -like $aceUserId)
+ 			{
+ 				$found = $true
+ 				$result.RemoveAt($i)
+ 				break
+ 			}
+ 		}
+ 
+ 		Assert-True { $found } "Failed to remove the element: $($toRemove.Entry)"
+
 		# remove the account
-		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.UserAces.Count
+		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount+1) $result.Count
 
 		# Set and get a specific permission with friendly sets
-		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All -Force
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
+		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount+2) $result.Count
 		# remove a specific permission with friendly remove
-		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Force
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.UserAces.Count
+		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount+1) $result.Count
 		# set and get a specific permission with the ACE string
-		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId)) -Force
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
+		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount+2) $result.Count
 		# remove a specific permission with the ACE string
-		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId)) -force
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.UserAces.Count
+		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount+1) $result.Count
 
-		# verify that removal of full acl and default acl fail
-		# NOTE: commenting these tests out as these cmdlets have been temporarily removed until
-		# They are actually supported. This avoids confusion for our customers who might try to use them.
-		# Assert-Throws {Remove-AdlStoreItemAcl -Account $accountName -Path "/" -Force }
-		# Assert-Throws {Remove-AdlStoreItemAcl -Account $accountName -Path "/" -Force -Default }
+		# Validate full ACL removal
+		Remove-AdlStoreItemAcl -Account $accountName -Path "/" -Force -Default
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual 4 $result.Count
+		Remove-AdlStoreItemAcl -Account $accountName -Path "/" -Force
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual 3 $result.Count
+
+		# validate permissions
+		$permission = Get-AdlStoreItemPermission -Account $accountName -path "/"
+		Assert-AreEqual 770 $permission
+		Set-AdlStoreItemPermission -Account $accountName -path "/" -Permission 777 | Out-Null
+		$permission = Get-AdlStoreItemPermission -Account $accountName -path "/"
+		Assert-AreEqual 777 $permission
 
 		# Delete Data Lake account
 		Assert-True {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
@@ -415,7 +586,7 @@ function Test-NegativeDataLakeStoreAccount
 		Assert-Throws {New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}
 
 		# attempt to update a non-existent account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		Assert-Throws {Set-AdlStore -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 		# attempt to get a non-existent account

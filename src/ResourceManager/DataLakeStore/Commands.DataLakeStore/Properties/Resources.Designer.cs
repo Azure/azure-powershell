@@ -70,6 +70,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding the Data Lake Store firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string AddDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("AddDataLakeFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding the Data Lake Store trusted identity provider: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string AddDataLakeTrustedIdProvider {
+            get {
+                return ResourceManager.GetString("AddDataLakeTrustedIdProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DataLakeStore account with name &apos;{0}&apos; already exists..
         /// </summary>
         internal static string DataLakeStoreAccountExists {
@@ -120,6 +138,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string FilePreviewTooLarge {
             get {
                 return ResourceManager.GetString("FilePreviewTooLarge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string FirewallRuleNotFound {
+            get {
+                return ResourceManager.GetString("FirewallRuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored..
+        /// </summary>
+        internal static string IgnoredKeyVaultParams {
+            get {
+                return ResourceManager.GetString("IgnoredKeyVaultParams", resourceCulture);
             }
         }
         
@@ -259,11 +295,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For user managed encryption, KeyVaultId, KeyName and KeyVersion are required parameters and must be supplied..
+        /// </summary>
+        internal static string MissingKeyVaultParams {
+            get {
+                return ResourceManager.GetString("MissingKeyVaultParams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to move source: &apos;{0}&apos; to destination: &apos;{1}&apos;. Please ensure the file or folder exists at the source and that the destination does not or force was used..
         /// </summary>
         internal static string MoveFailed {
             get {
                 return ResourceManager.GetString("MoveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry.
+        /// </summary>
+        internal static string ObsoleteWarningForAclObjects {
+            get {
+                return ResourceManager.GetString("ObsoleteWarningForAclObjects", resourceCulture);
             }
         }
         
@@ -295,6 +349,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Store firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeStoreFirewallRule {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeStoreFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake file or folder at path: &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeStoreItem {
@@ -313,11 +376,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Store trusted identity provider: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeStoreTrustedProvider {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeStoreTrustedProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove DataLakeStore account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeStoreAccount {
             get {
                 return ResourceManager.GetString("RemovingDataLakeStoreAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake Store firewall rule: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeStoreFirewallRule {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeStoreFirewallRule", resourceCulture);
             }
         }
         
@@ -340,6 +421,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake Store trusted identity provider: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeStoreTrustedProvider {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeStoreTrustedProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
         /// </summary>
         internal static string ScriptFilePathDoesNotExist {
@@ -354,6 +444,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string ServerFileAlreadyExists {
             get {
                 return ResourceManager.GetString("ServerFileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake Store firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("SetDataLakeFirewallRule", resourceCulture);
             }
         }
         
@@ -376,6 +475,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake file or folder permissions at path: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeStoreItemPermissions {
+            get {
+                return ResourceManager.GetString("SetDataLakeStoreItemPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake Store trusted identity provider: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeTrustedIdProvider {
+            get {
+                return ResourceManager.GetString("SetDataLakeTrustedIdProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The entry or entries you provided may already exist in the item&apos;s ACL. Are you sure you want to overwrite the existing entry or entries at item path &apos;{0}&apos;?.
         /// </summary>
         internal static string SettingDataLakeStoreItemAcl {
@@ -394,15 +511,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The usage of &apos;Tags&apos; parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        internal static string TagsWarning {
-            get {
-                return ResourceManager.GetString("TagsWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The operation is being cancelled, please wait....
         /// </summary>
         internal static string TaskCancelledMessage {
@@ -412,7 +520,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the &quot;Resume&quot; option. If the error persists, please contact Microsoft support.&quot;.
+        ///   Looks up a localized string similar to Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the &quot;Resume&quot; option. If the error persists, please contact Microsoft support..
         /// </summary>
         internal static string UploadFailedMessage {
             get {

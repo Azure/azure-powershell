@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool EnableBgp { get; set; }
 
+        public bool ActiveActive { get; set; }
+
         public PSResourceId GatewayDefaultSite { get; set; }
 
         public string ProvisioningState { get; set; }

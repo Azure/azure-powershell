@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Text;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -19,25 +20,29 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the ServiceDiagnosticSettings
     /// </summary>
-    public class PSRetentionPolicy
+    public class PSRetentionPolicy : RetentionPolicy
     {
-        /// <summary>
-        /// Gets or sets a value indicating whether the retention is enabled.
-        /// </summary>
-        public bool Enabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets the retention in days.
-        /// </summary>
-        public int Days { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the PSRetentionPolicy class.
         /// </summary>
+        /// <param name="retentionPolicy">The input retention policy</param>
         public PSRetentionPolicy(RetentionPolicy retentionPolicy)
         {
             this.Enabled = retentionPolicy.Enabled;
             this.Days = retentionPolicy.Days;
+        }
+
+        /// <summary>
+        /// A string representation of the PSRetentionPolicy
+        /// </summary>
+        /// <returns>A string representation of the PSRetentionPolicy</returns>
+        public override string ToString()
+        {
+            StringBuilder output = new StringBuilder();
+            output.AppendLine();
+            output.AppendLine("Enabled : " + this.Enabled);
+            output.Append("Days    : " + this.Days);
+            return output.ToString();
         }
     }
 }

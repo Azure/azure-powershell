@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
@@ -24,29 +25,40 @@ using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.Quer
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmCdnEndpoint"), OutputType(typeof(PSEndpoint))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmCdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(PSEndpoint))]
     public class SetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.")]
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var resourceGroupgName = CdnEndpoint.ResourceGroupName;
+            ConfirmAction(MyInvocation.InvocationName,
+                CdnEndpoint.Name,
+                SetEndpoint);
+        }
+
+        private void SetEndpoint()
+        {
+            var resourceGroupName = CdnEndpoint.ResourceGroupName;
             var profileName = CdnEndpoint.ProfileName;
 
-            var endpoint = CdnManagementClient.Endpoints.Update(CdnEndpoint.Name,
+            var endpoint = CdnManagementClient.Endpoints.Update(
+                resourceGroupName,
+                profileName,
+                CdnEndpoint.Name,
                 new EndpointUpdateParameters(
-                    CdnEndpoint.Tags.ToDictionaryTags(), 
-                    CdnEndpoint.OriginHostHeader, 
+                    CdnEndpoint.Tags.ToDictionaryTags(),
+                    CdnEndpoint.OriginHostHeader,
                     CdnEndpoint.OriginPath,
-                    CdnEndpoint.ContentTypesToCompress.ToList(), 
-                    CdnEndpoint.IsCompressionEnabled, 
+                    CdnEndpoint.ContentTypesToCompress.ToList(),
+                    CdnEndpoint.IsCompressionEnabled,
                     CdnEndpoint.IsHttpAllowed,
                     CdnEndpoint.IsHttpsAllowed,
-                    CdnEndpoint.QueryStringCachingBehavior
-                        .CastEnum<PSQueryStringCachingBehavior, SdkQueryStringCachingBehavior>()), profileName, resourceGroupgName);
+                    (QueryStringCachingBehavior) Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
+                    CdnEndpoint.OptimizationType,
+                    CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList()));
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());

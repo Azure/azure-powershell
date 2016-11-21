@@ -207,6 +207,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
+        /// Start applying Recovery Point.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item.</param>
+        /// <param name="input">Input for applying recovery point.</param>
+        /// <returns>Job Response</returns>
+        public LongRunningOperationResponse StartAzureSiteRecoveryApplyRecoveryPoint(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            ApplyRecoveryPointInput input)
+        {
+            return this.GetSiteRecoveryClient().ReplicationProtectedItem.BeginApplyRecoveryPoint(
+                fabricName,
+                protectionContainerName,
+                replicationProtectedItemName,
+                input,
+                this.GetRequestHeaders());
+        }
+
+        /// <summary>
         /// Starts Commit Failover
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>

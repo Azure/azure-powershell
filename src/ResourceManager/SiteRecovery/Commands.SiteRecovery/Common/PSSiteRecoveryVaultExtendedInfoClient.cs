@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             // Update vault settings with the working vault to generate file
             Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
-                ResourceGroupName = vault.ResouceGroupName,
+                ResourceGroupName = vault.ResourceGroupName,
                 ResourceName = vault.Name,
                 ResourceNamespace = resourceProviderNamespace,
                 ARMResourceType = resourceType
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
             Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
-                ResourceGroupName = vault.ResouceGroupName,
+                ResourceGroupName = vault.ResourceGroupName,
                 ResourceName = vault.Name,
                 ResourceNamespace = resourceProviderNamespace,
                 ARMResourceType = resourceType
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             // Update vault settings along with Channel integrity key
             Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
-                ResourceGroupName = vault.ResouceGroupName,
+                ResourceGroupName = vault.ResourceGroupName,
                 ResourceName = vault.Name,
                 ChannelIntegrityKey = getChannelIntegrityKey.Result,
                 ResourceNamespace = resourceProviderNamespace,
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                             serializedCertifivate,
                                             acsNamespace,
                                             channelIntegrityKey,
-                                            vault.ResouceGroupName,
+                                            vault.ResourceGroupName,
                                             site.ID,
                                             site.Name,
                                             resourceProviderNamespace,

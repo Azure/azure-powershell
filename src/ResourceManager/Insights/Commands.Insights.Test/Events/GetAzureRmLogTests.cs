@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.Events;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -29,16 +32,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
     {
         private readonly GetAzureRmLogCommand cmdlet;
         private readonly Mock<InsightsClient> insightsClientMock;
-        private readonly Mock<IEventOperations> insightsEventOperationsMock;
+        private readonly Mock<IEventsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private EventDataListResponse response;
-        private string filter;
+        private AzureOperationResponse<IPage<EventData>> response;
+        private ODataQuery<EventData> filter;
         private string selected;
 
         public GetAzureRmLogTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsEventOperationsMock = new Mock<IEventOperations>();
+            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            insightsEventOperationsMock = new Mock<IEventsOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmLogCommand()
@@ -49,15 +52,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
 
             response = Utilities.InitializeResponse();
 
-            insightsEventOperationsMock.Setup(f => f.ListEventsAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<EventDataListResponse>(response))
-                .Callback((string f, string s, CancellationToken t) =>
+            insightsEventOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<ODataQuery<EventData>>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(response))
+                .Callback((ODataQuery<EventData> f, string s, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     filter = f;
                     selected = s;
                 });
 
-            insightsClientMock.SetupGet(f => f.EventOperations).Returns(this.insightsEventOperationsMock.Object);
+            insightsClientMock.SetupGet(f => f.Events).Returns(this.insightsEventOperationsMock.Object);
         }
 
         [Fact]

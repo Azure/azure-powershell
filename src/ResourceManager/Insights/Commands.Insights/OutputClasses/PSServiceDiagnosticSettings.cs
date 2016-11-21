@@ -20,37 +20,27 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the ServiceDiagnosticSettings
     /// </summary>
-    public class PSServiceDiagnosticSettings
+    public class PSServiceDiagnosticSettings : ServiceDiagnosticSettingsResource
     {
-        /// <summary>
-        /// The storage account id.
-        /// </summary>
-        public string StorageAccountId { get; set; }
-
-        /// <summary>
-        /// The service bus rule id.
-        /// </summary>
-        public string ServiceBusRuleId { get; set; }
-
-        /// <summary>
-        /// The storage account name.
-        /// </summary>
-        public string StorageAccountName { get; set; }
-
         /// <summary>
         /// Gets or sets the metric settings.
         /// </summary>
-        public List<PSMetricSettings> Metrics { get; set; }
+        public new List<PSMetricSettings> Metrics { get; set; }
 
         /// <summary>
         /// Gets or sets the log settings.
         /// </summary>
-        public List<PSLogSettings> Logs { get; set; }
+        public new List<PSLogSettings> Logs { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSServiceDiagnosticSettings class.
         /// </summary>
-        public PSServiceDiagnosticSettings(ServiceDiagnosticSettings serviceDiagnosticSettings)
+        public PSServiceDiagnosticSettings(ServiceDiagnosticSettingsResource serviceDiagnosticSettings)
+            : base(
+                id: serviceDiagnosticSettings.Id, 
+                location: serviceDiagnosticSettings.Location, 
+                metrics: serviceDiagnosticSettings.Metrics, 
+                logs: serviceDiagnosticSettings.Logs)
         {
             this.StorageAccountId = serviceDiagnosticSettings.StorageAccountId;
             this.ServiceBusRuleId = serviceDiagnosticSettings.ServiceBusRuleId;
@@ -66,7 +56,9 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 this.Logs.Add(new PSLogSettings(LogSettings));
             }
 
-            this.StorageAccountName = serviceDiagnosticSettings.StorageAccountName;
+            this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;
+            this.Name = serviceDiagnosticSettings.Name;
+            this.Tags = serviceDiagnosticSettings.Tags;
         }
     }
 }

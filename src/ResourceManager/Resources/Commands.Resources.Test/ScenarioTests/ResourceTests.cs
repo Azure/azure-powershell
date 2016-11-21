@@ -132,5 +132,26 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceWithCollection");
         }
+
+        [Fact(Skip = "Zones are disabled for now.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageResourceWithZones()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ManageResourceWithZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveASetOfResourcesTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveASetOfResources");
+        }
     }
 }

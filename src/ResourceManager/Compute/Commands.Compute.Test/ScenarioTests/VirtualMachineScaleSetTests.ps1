@@ -71,7 +71,7 @@ function Test-VirtualMachineScaleSet
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
 
@@ -131,6 +131,7 @@ function Test-VirtualMachineScaleSet
 
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss');
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual $vmssName $vmssResult.Name;
         Assert-True { $vmssName -eq $vmssResult.Name };
         $output = $vmssResult | Out-String;
         Write-Verbose ($output);
@@ -142,10 +143,7 @@ function Test-VirtualMachineScaleSet
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss | Format-Table');
-        $output = $vmssList | Format-Table | Out-String;
-        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List from RG
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss List');
@@ -153,7 +151,7 @@ function Test-VirtualMachineScaleSet
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List Skus
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssSku');
@@ -170,10 +168,7 @@ function Test-VirtualMachineScaleSet
         $vmListResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $output = $vmListResult | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("StorageProfile") };
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM | Format-Table');
-        $output = $vmListResult | Format-Table | Out-String;
-        Write-Verbose ($output);
+        Assert-False { $output.Contains("StorageProfile") };
 
         # List each VM
         for ($i = 0; $i -lt 2; $i++)
@@ -189,14 +184,15 @@ function Test-VirtualMachineScaleSet
             $vmInstance = Get-AzureRmVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $i;
             Assert-NotNull $vmInstance;
             $output = $vmInstance | Out-String;
+
             Write-Verbose($output);
             Assert-True { $output.Contains("PlatformUpdateDomain") };
         }
 
-        $st = Stop-AzureRmVmss -StayProvision -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $st = Stop-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $st = Start-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $st = Restart-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision;
+        $st = $vmssResult | Stop-AzureRmVmss;
+        $st = $vmssResult | Start-AzureRmVmss;
+        $st = $vmssResult | Restart-AzureRmVmss;
 
         $instanceListParam = @();
         for ($i = 0; $i -lt 2; $i++)
@@ -204,14 +200,14 @@ function Test-VirtualMachineScaleSet
             $instanceListParam += $i.ToString();
         }
 
-        $st = Stop-AzureRmVmss -StayProvision -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
-        $st = Stop-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
-        $st = Start-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
-        $st = Restart-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -InstanceId $instanceListParam;
+        $st = $vmssResult | Stop-AzureRmVmss -InstanceId $instanceListParam;
+        $st = $vmssResult | Start-AzureRmVmss -InstanceId $instanceListParam;
+        $st = $vmssResult | Restart-AzureRmVmss -InstanceId $instanceListParam;
 
         # Remove
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $st = $vmssResult | Remove-AzureRmVmss;
     }
     finally
     {
@@ -243,7 +239,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
 
@@ -369,7 +365,7 @@ function Test-VirtualMachineScaleSetLB
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -491,7 +487,7 @@ function Test-VirtualMachineScaleSetLB
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List from RG
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss List');
@@ -499,7 +495,7 @@ function Test-VirtualMachineScaleSetLB
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List Skus
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssSku');
@@ -512,7 +508,7 @@ function Test-VirtualMachineScaleSetLB
         $vmListResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName; # -Select $null;
         $output = $vmListResult | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("StorageProfile") };
+        Assert-False { $output.Contains("StorageProfile") };
 
         # List each VM
         for ($i = 0; $i -lt 2; $i++)

@@ -21,11 +21,13 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureBatchPool, DefaultParameterSetName = TargetDedicatedParameterSet)]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchPool, DefaultParameterSetName = CloudServiceTargetDedicatedParameterSet, SupportsShouldProcess=true)]
     public class NewBatchPoolCommand : BatchObjectModelCmdletBase
     {
-        internal const string TargetDedicatedParameterSet = "TargetDedicated";
-        internal const string AutoScaleParameterSet = "AutoScale";
+        internal const string CloudServiceTargetDedicatedParameterSet = "CloudServiceAndTargetDedicated";
+        internal const string CloudServiceAutoScaleParameterSet = "CloudServiceAndAutoScale";
+        internal const string VirtualMachineTargetDedicatedParameterSet = "VirtualMachineAndTargetDedicated";
+        internal const string VirtualMachineAutoScaleParameterSet = "VirtualMachineAndAutoScale";
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The id of the pool to create.")]
         [ValidateNotNullOrEmpty]
@@ -39,19 +41,23 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        [Parameter(ParameterSetName = TargetDedicatedParameterSet)]
+        [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public TimeSpan? ResizeTimeout { get; set; }
 
-        [Parameter(ParameterSetName = TargetDedicatedParameterSet)]
+        [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public int? TargetDedicated { get; set; }
 
-        [Parameter(ParameterSetName = AutoScaleParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
+        [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
         [ValidateNotNullOrEmpty]
         public TimeSpan? AutoScaleEvaluationInterval { get; set; }
 
-        [Parameter(ParameterSetName = AutoScaleParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
+        [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
         [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
@@ -82,13 +88,19 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
+        [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
+        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkConfiguration NetworkConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -108,10 +120,14 @@ namespace Microsoft.Azure.Commands.Batch
                 CertificateReferences = this.CertificateReferences,
                 ApplicationPackageReferences = this.ApplicationPackageReferences,
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
-                CloudServiceConfiguration = this.CloudServiceConfiguration
+                CloudServiceConfiguration = this.CloudServiceConfiguration,
+                NetworkConfiguration = this.NetworkConfiguration
             };
 
-            BatchClient.CreatePool(parameters);
+            if (ShouldProcess("AzureBatchPool"))
+            {
+                BatchClient.CreatePool(parameters);
+            }
         }
     }
 }

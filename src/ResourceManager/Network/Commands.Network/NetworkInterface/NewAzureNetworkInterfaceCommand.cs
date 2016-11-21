@@ -1,4 +1,4 @@
-﻿
+
 
 // ----------------------------------------------------------------------------------
 //
@@ -204,12 +204,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "EnableIPForwarding")]
         public SwitchParameter EnableIPForwarding { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "EnableAcceleratedNetworking")]
+        public SwitchParameter EnableAcceleratedNetworking { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "An array of hashtables which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+            HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -219,8 +224,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {           
-            base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+          base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -244,8 +249,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             var networkInterface = new PSNetworkInterface();
             networkInterface.Name = this.Name;
+
             networkInterface.Location = this.Location;
+
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
+            networkInterface.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
 
             // Get the subnetId and publicIpAddressId from the object if specified
             if (ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByIpConfiguration))
@@ -382,7 +390,7 @@ namespace Microsoft.Azure.Commands.Network
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
-
+             
             var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
 
             return getNetworkInterface;

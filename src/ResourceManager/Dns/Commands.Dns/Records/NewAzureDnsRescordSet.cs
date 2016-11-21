@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Dns
         public RecordType RecordType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Metadata { get; set; }
+        public Hashtable Metadata { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "The dns records that are part of this record set.")]
         [ValidateNotNull]
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Dns
         public SwitchParameter Overwrite { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Obsolete("This parameter is obsolete; use Confirm instead")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -69,6 +71,11 @@ namespace Microsoft.Azure.Commands.Dns
             string zoneName = null;
             string resourceGroupname = null;
             DnsRecordSet result = null;
+
+            if (RecordType == RecordType.SOA)
+            {
+                throw new System.ArgumentException(ProjectResources.Error_AddRecordSOA);
+            }
 
             if (ParameterSetName == "Fields")
             {
@@ -79,6 +86,10 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 zoneName = this.Zone.Name;
                 resourceGroupname = this.Zone.ResourceGroupName;
+            }
+            if(this.Name.EndsWith(zoneName.ToString()))
+            {   
+                this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName.ToString()));
             }
 
             if (zoneName != null && zoneName.EndsWith("."))
@@ -93,8 +104,6 @@ namespace Microsoft.Azure.Commands.Dns
             }
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
                 ProjectResources.Progress_CreatingRecordSet,
                 this.Name,
                 () =>
@@ -109,8 +118,7 @@ namespace Microsoft.Azure.Commands.Dns
                     }
 
                     WriteObject(result);
-                },
-                () => Overwrite.IsPresent);
+                });
         }
     }
 }

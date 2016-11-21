@@ -18,29 +18,50 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
+using System.Linq;
+using Microsoft.Azure.Commands.Cdn.Models.Profile;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpoint"), OutputType(typeof(PSEndpoint))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
     public class GetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN profile name.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN Profile.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "Azure CDN profile object.", ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNull]
+        public PSProfile CdnProfile { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var endpoint = CdnManagementClient.Endpoints.Get(EndpointName, ProfileName, ResourceGroupName);
-            WriteVerbose(Resources.Success);
-            WriteObject(endpoint.ToPsEndpoint());
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ProfileName = CdnProfile.Name;
+                ResourceGroupName = CdnProfile.ResourceGroupName;
+            }
+
+            if (EndpointName != null)
+            {
+                var endpoint = CdnManagementClient.Endpoints.Get(ResourceGroupName, ProfileName, EndpointName);
+                WriteVerbose(Resources.Success);
+                WriteObject(endpoint.ToPsEndpoint());
+            }
+            else
+            {
+                var endpoints = CdnManagementClient.Endpoints.ListByProfile(ResourceGroupName, ProfileName).Select(e => e.ToPsEndpoint());
+                WriteVerbose(Resources.Success);
+                WriteObject(endpoints, true);
+            }
         }
     }
 }

@@ -51,7 +51,7 @@ function Get-ProviderLocation($provider)
 			{  
 			if($location.Locations[0] -eq "West US")
 			{ 
-			return $location.Locations[1]
+				return $location.Locations[1]
 			}
 			else
 			{
@@ -74,5 +74,17 @@ function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
         Remove-AzureRmResourceGroup -Name $rgname -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+function Start-TestSleep($milliseconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Start-Sleep -Milliseconds $milliseconds
     }
 }

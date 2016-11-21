@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = deploymentName;
-            cmdlet.Force = true;
 
             cmdlet.ExecuteCmdlet();
 

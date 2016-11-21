@@ -47,38 +47,38 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.0.12.2-preview\lib\net45\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.0.12.8-preview\lib\net45\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.StoreUploader, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.StoreUploader.0.10.4-preview\lib\net45\Microsoft.Azure.Management.DataLake.StoreUploader.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.StoreUploader.0.10.8-preview\lib\net45\Microsoft.Azure.Management.DataLake.StoreUploader.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.1.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.5-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -122,14 +122,22 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\AddAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\AddAzureRmDataLakeStoreFirewallRule.cs" />
     <Compile Include="Commands\AddAzureRmDataLakeStoreItemContent.cs" />
     <Compile Include="Commands\ExportAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreChildItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItem.cs" />
-    <Compile Include="Commands\GetAzureRmDataLakeStoreItemAcl.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreItemAclEntry.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemContent.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemOwner.cs" />
-    <Compile Include="Commands\GetAzureRmDataLakeStoreItemPermissions.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreItemPermission.cs" />
     <Compile Include="Commands\ImportAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreAccount.cs" />
     <Compile Include="Commands\JoinAzureRmDataLakeStoreItem.cs" />
@@ -144,7 +152,7 @@
     <Compile Include="Commands\SetAzureRmDataLakeStoreAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreItemAcl.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreItemOwner.cs" />
-    <Compile Include="Commands\SetAzureRmDataLakeStoreItemPermissions.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreItemPermission.cs" />
     <Compile Include="Commands\TestAzureRmDataLakeStoreAccount.cs" />
     <Compile Include="Commands\TestAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Models\DataLakeStoreClient.cs" />
@@ -152,8 +160,10 @@
     <Compile Include="Models\DataLakeStoreEnums.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemClient.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemCmdletBase.cs" />
+    <Compile Include="Models\DataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Models\DataLakeStoreFirewallRule.cs" />
     <Compile Include="Models\DataLakeStoreItem.cs" />
-    <Compile Include="Models\DataLakeStoreItemAcl.cs" />
+    <Compile Include="Models\DataLakeStoreItemAce.cs" />
     <Compile Include="Models\DataLakeStoreItemPermissionInstance.cs" />
     <Compile Include="Models\DataLakeStorePathInstance.cs" />
     <Compile Include="Models\GlobalMembers.cs" />

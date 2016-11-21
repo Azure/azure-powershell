@@ -196,7 +196,7 @@
     <value>U-SQL Types can only be returned in a list of all types within a database and schema combination.</value>
   </data>
   <data name="InvalidUSqlSecretRequest" xml:space="preserve">
-    <value>U-SQL Secrets can only be returned by specific database secret name combination. There is no list support.</value>
+    <value>U-SQL Secrets and credentials can only be returned by specific database and secret/credential name combination. There is no list support.</value>
   </data>
   <data name="RemoveDataLakeAnalyticsCatalogSecrets" xml:space="preserve">
     <value>Removing ALL Data Lake Analytics catalog secrets in database '{0}' ...</value>
@@ -204,7 +204,22 @@
   <data name="RemovingDataLakeAnalyticsCatalogSecrets" xml:space="preserve">
     <value>Are you sure you want to remove ALL Data Lake Analytics catalog secrets in database '{0}'?</value>
   </data>
-  <data name="TagsWarning" xml:space="preserve">
-    <value>The usage of 'Tags' parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494</value>
+  <data name="RemoveDataLakeAnalyticsCatalogCredential" xml:space="preserve">
+    <value>Removing Data Lake Analytics catalog credential '{0}' ...</value>
+  </data>
+  <data name="RemovingDataLakeAnalyticsCatalogCredential" xml:space="preserve">
+    <value>Are you sure you want to remove Data Lake Analytics catalog credential '{0}'?</value>
+  </data>
+  <data name="NewDataLakeCatalogCredential" xml:space="preserve">
+    <value>Creating Data Lake Analytics catalog credential '{0}' in database '{1}' ...</value>
+  </data>
+  <data name="SetDataLakeCatalogCredential" xml:space="preserve">
+    <value>Updating Data Lake Analytics catalog credential '{0}' in database '{1}' ...</value>
+  </data>
+  <data name="SettingDataLakeCatalogCredential" xml:space="preserve">
+    <value>Are you sure you want to update Data Lake Analytics catalog credential '{0}' in database '{1}'?</value>
+  </data>
+  <data name="EmptyCatalogPath" xml:space="preserve">
+    <value>Invalid empty catalog path. A catalog path is required unless listing databases and must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName</value>
   </data>
 </root>

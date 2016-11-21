@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,10 +52,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to allow the forwarded traffic from the VMs in the remote virtual network")]
         public SwitchParameter AllowForwardedTraffic { get; set; }
 
+        [Alias("AlloowGatewayTransit")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to allow gatewayLinks be used in remote virtual network’s link to this virtual network")]
-        public SwitchParameter AlloowGatewayTransit { get; set; }
+            HelpMessage = "Flag to allow gatewayLinks be used in remote virtual network's link to this virtual network")]
+        public SwitchParameter AllowGatewayTransit { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             if (this.IsVirtualNetworkPeeringPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name))
             {
@@ -91,8 +92,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
-            vnetPeering.AllowGatewayTransit = this.AlloowGatewayTransit;
+            vnetPeering.AllowGatewayTransit = this.AllowGatewayTransit;
             vnetPeering.AllowForwardedTraffic = this.AllowForwardedTraffic;
+            vnetPeering.UseRemoteGateways = this.UseRemoteGateways;
 
             // Map to the sdk object
             var vnetPeeringModel = Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);

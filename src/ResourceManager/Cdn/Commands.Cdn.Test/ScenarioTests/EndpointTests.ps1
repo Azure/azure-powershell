@@ -21,7 +21,7 @@ function Test-EndpointCrudAndAction
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -60,7 +60,7 @@ function Test-EndpointCrudAndAction
     $validateResult = Test-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResult.CustomDomainValidated}
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
+    $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
     Assert-True{$endpointRemoved}
 
     Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
@@ -77,7 +77,7 @@ function Test-EndpointCrudAndActionWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -125,7 +125,7 @@ function Test-EndpointCrudAndActionWithPiping
     Assert-AreEqual $startedEndpoint.OriginPath $updatedEndpoint.OriginPath
     Assert-AreEqual $startedEndpoint.QueryStringCachingBehavior $updatedEndpoint.QueryStringCachingBehavior
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
+    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
     Assert-True{$endpointRemoved}
 
     Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
@@ -142,7 +142,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -204,7 +204,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $validateResult = Test-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResult.CustomDomainValidated}
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
+    $endpointRemoved = Remove-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
     Assert-True{$endpointRemoved}
 
     Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
@@ -221,7 +221,7 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -289,7 +289,7 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
     Assert-AreEqual $startedEndpoint.OriginPath $updatedEndpoint.OriginPath
     Assert-AreEqual $startedEndpoint.QueryStringCachingBehavior $updatedEndpoint.QueryStringCachingBehavior
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
+    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
     Assert-True{$endpointRemoved}
 
     Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
@@ -306,7 +306,7 @@ function Test-EndpointCrudAndActionWithStoppedEndpoint
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -349,10 +349,83 @@ function Test-EndpointCrudAndActionWithStoppedEndpoint
     Assert-AreEqual $startedEndpoint.OriginPath $updatedEndpoint.OriginPath
     Assert-AreEqual $startedEndpoint.QueryStringCachingBehavior $updatedEndpoint.QueryStringCachingBehavior
 
-    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Confirm:$false -PassThru
+    $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
     Assert-True{$endpointRemoved}
 
     Assert-ThrowsContains { Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Endpoint pipeline exercise
+#>
+function Test-EndpointPipeline
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Verizon"
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName1 = getAssetName
+    $endpointName2 = getAssetName
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+
+
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName2 -OriginName $originName -OriginHostName $originHostName
+
+    $endpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
+
+    Assert-True {$endpoints.Count -eq 2}
+
+    Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint | Remove-AzureRmCdnEndpoint -Force
+
+    $deletedEndpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
+
+    Assert-True {$deletedEndpoints.Count -eq 0}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Endpoint geo filters exercise
+#>
+function Test-EndpointGeoFilters
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+	$GeoFilter_1 = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsGeoFilter -Prop(@{'RelativePath'="/mycar";'Action'="Block"})
+	$GeoFilter_1.CountryCodes = @("GA", "AT")
+
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName1 = getAssetName
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName -GeoFilters @($GeoFilter_1)
+
+    $endpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-True {$endpoint.GeoFilters.Count -eq 1}
+	Assert-True {$endpoint.GeoFilters[0].Action -eq "Block"}
+	Assert-True {$endpoint.GeoFilters[0].CountryCodes.Count -eq 2}
+
+	$GeoFilter_2 = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsGeoFilter -Prop(@{'RelativePath'="/mypicture";'Action'="Block"})
+	$GeoFilter_2.CountryCodes = @("GA", "AT")
+
+	$endpoint.GeoFilters.Add($GeoFilter_2)
+    
+	$updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
+
+	Assert-True {$updatedEndpoint.GeoFilters.Count -eq 2}
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

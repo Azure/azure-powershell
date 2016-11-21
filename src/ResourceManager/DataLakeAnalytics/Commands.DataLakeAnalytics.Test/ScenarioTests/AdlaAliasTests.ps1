@@ -58,7 +58,7 @@ function Test-DataLakeAnalyticsAccount
 		Assert-True {Test-AdlAnalyticsAccount -Name $accountName}
 
 		# Updating Account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$accountUpdated = Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
@@ -306,7 +306,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		Assert-Throws {New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName}
 
 		# attempt to update a non-existent account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		Assert-Throws {Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 		# attempt to get a non-existent account
@@ -751,6 +751,36 @@ function Test-DataLakeAnalyticsCatalog
 		$result = Wait-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
     
+		# Create the credential using the new create credential cmdlet
+		New-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
+
+		# retrieve the list of credentials and ensure the created credential is in it
+		$itemList = Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path $databaseName
+
+		Assert-NotNull $itemList "The credential list is null"
+
+		Assert-True {$itemList.count -gt 0} "The credential list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $credentialName)
+			{
+				$found = $true
+				break
+			}
+		}
+	
+		# retrieve the specific credential
+		$specificItem = Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
+		Assert-NotNull $specificItem "Could not retrieve the credential by name"
+		Assert-AreEqual $credentialName $specificItem.Name
+
+		# Remove the credential
+		Remove-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName
+		
+		# Verify that trying to get the credential fails
+		Assert-Throws {Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
+
 		# delete the secret
 		Remove-AdlCatalogSecret -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
 

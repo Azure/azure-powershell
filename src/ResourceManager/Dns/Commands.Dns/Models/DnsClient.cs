@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
         public DnsZone CreateDnsZone(
             string name,
             string resourceGroupName,
-            Hashtable[] tags)
+            Hashtable tags)
         {
             var response = this.DnsManagementClient.Zones.CreateOrUpdate(
                 resourceGroupName,
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             string relativeRecordSetName,
             uint ttl,
             RecordType recordType,
-            Hashtable[] tags,
+            Hashtable tags,
             bool overwrite,
             DnsRecordBase[] resourceRecords)
         {
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(zoneName, resourceGroupName, response);
         }
 
-        private RecordSet ConstructRecordSetPropeties(string recordSetName, RecordType recordType, uint ttl, Hashtable[] tags, DnsRecordBase[] resourceRecords)
+        private RecordSet ConstructRecordSetPropeties(string recordSetName, RecordType recordType, uint ttl, Hashtable tags, DnsRecordBase[] resourceRecords)
         {
 
             var properties = new RecordSet
@@ -474,6 +474,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 Etag = zone.Etag,
                 Tags = TagsConversionHelper.CreateTagHashtable(zone.Tags),
                 NameServers = zone.NameServers != null ? zone.NameServers.ToList() : new List<string>(),
+                NumberOfRecordSets = zone.NumberOfRecordSets,
+                MaxNumberOfRecordSets = zone.MaxNumberOfRecordSets,
             };
         }
 
