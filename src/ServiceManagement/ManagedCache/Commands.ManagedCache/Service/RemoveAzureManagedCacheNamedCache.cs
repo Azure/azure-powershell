@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
         
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Managed Cache will be retired on 11/30/2016. Please migrate to Azure Redis Cache. For more information, see http://go.microsoft.com/fwlink/?LinkID=717458");
+            WriteWarning(CacheClient.GetManagedCacheRetirementMessage());
 
             string cacheServiceName = CacheClient.NormalizeCacheServiceName(Name);
             CacheClient.ProgressRecorder = (p) => { WriteVerbose(p); };
