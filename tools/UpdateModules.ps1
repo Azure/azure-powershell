@@ -69,7 +69,7 @@ Write-Host "Updating $scope package(and its dependencies)"
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-$publishToLocal = test-path $repositoryLocation
+$publishToLocal = $true
 $templateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
 if (($scope -eq 'All') -or $publishToLocal ) {
     # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
@@ -93,7 +93,7 @@ if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
 } 
 
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-if ($scope -eq 'All') {  
+if ($scope -eq 'All' -or $scope -eq 'AzureRM') {  
     foreach ($module in $resourceManagerModules) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
@@ -103,6 +103,23 @@ if ($scope -eq 'All') {
             Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
             Write-Host "Updated $module module"
         }
+    }
+} elseif ($scope -eq 'AzureStack') {
+    $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.AzureStackAdmin"
+    if (Test-Path $modulePath) {
+        Write-Host "Updating AzureRM.AzureStackAdmin module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureRM.AzureStackAdmin module"        
+    } else {
+        Write-Error "Can not find module with name $scope to publish"
+    }
+    $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.AzureStackStorage"
+    if (Test-Path $modulePath) {
+        Write-Host "Updating AzureRM.AzureStackStorage module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureRM.AzureStackStorage module"        
+    } else {
+        Write-Error "Can not find module with name $scope to publish"
     }
 } elseif ($scope -ne 'AzureRM' -and $scope -ne 'AzureStack') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"

@@ -8,9 +8,6 @@
 
 @{
 
-# Script module or binary module file associated with this manifest.
-# RootModule = ''
-
 # Version number of this module.
 ModuleVersion = '1.2.7'
 
@@ -45,12 +42,12 @@ DotNetFrameworkVersion = '4.0'
 CLRVersion = '4.0'
 
 # Processor architecture (None, X86, Amd64) required by this module
-# ProcessorArchitecture = ''
+# ProcessorArchitecture = 'None'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '1.0.4.1'; }, 
-               @{ModuleName = 'AzureRM.AzureStackAdmin'; RequiredVersion = '0.9.11'; }, 
-               @{ModuleName = 'AzureRM.AzureStackStorage'; RequiredVersion = '0.10.1'; })
+RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.AzureStackAdmin"; RequiredVersion="0.10.2"},
+  @{ModuleName="AzureRM.AzureStackStorage"; RequiredVersion="0.10.1"})
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
