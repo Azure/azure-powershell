@@ -251,6 +251,8 @@
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psd1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" />
   </Target>
   
   <Target Name="CodeSignInstaller">
