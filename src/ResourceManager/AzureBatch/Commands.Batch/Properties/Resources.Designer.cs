@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AccountAlreadyExists: Account already exists..
-        /// </summary>
-        internal static string AccountAlreadyExists {
-            get {
-                return ResourceManager.GetString("AccountAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
         /// </summary>
         internal static string AccountAndKeyInUse {
@@ -664,11 +655,11 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting the quotas of the subscription in the Batch Service for region: {0}..
+        ///   Looks up a localized string similar to Getting the Batch service quotas for the subscription at region: {0}..
         /// </summary>
-        internal static string GettingSubscriptionQuotas {
+        internal static string GettingLocationQuotas {
             get {
-                return ResourceManager.GetString("GettingSubscriptionQuotas", resourceCulture);
+                return ResourceManager.GetString("GettingLocationQuotas", resourceCulture);
             }
         }
         
@@ -840,6 +831,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string NoTask {
             get {
                 return ResourceManager.GetString("NoTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reactivating task {0}..
+        /// </summary>
+        internal static string ReactivateTask {
+            get {
+                return ResourceManager.GetString("ReactivateTask", resourceCulture);
             }
         }
         

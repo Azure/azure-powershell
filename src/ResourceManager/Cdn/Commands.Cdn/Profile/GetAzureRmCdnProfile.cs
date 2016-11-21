@@ -19,26 +19,29 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
+using System;
+using System.Net;
+using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
     /// Defines the New-AzureRMCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMCdnProfile"), OutputType(typeof(PSProfile))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfile"), OutputType(typeof(PSProfile))]
     public class GetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile name.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure CDN profile name.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
         /// <summary>
         /// The resource group name of the profile.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -48,9 +51,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
             if (ProfileName == null && ResourceGroupName == null)
             {
                 // List by subscription.
-                var profiles = CdnManagementClient.Profiles.ListBySubscriptionId();
+                var profiles = CdnManagementClient.Profiles.List().Select(p => p.ToPsProfile());
                 WriteVerbose(Resources.Success);
-                WriteObject(profiles);
+                WriteObject(profiles, true);
             }
             else if (ProfileName == null && ResourceGroupName != null)
             {
@@ -58,19 +61,41 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 var profiles =
                     CdnManagementClient.Profiles.ListByResourceGroup(ResourceGroupName).Select(p => p.ToPsProfile());
                 WriteVerbose(Resources.Success);
-                WriteObject(profiles);
+                WriteObject(profiles.ToArray(), true);
             }
             else if (ProfileName != null && ResourceGroupName == null)
             {
-                // Not possible.
-                throw new PSArgumentException(string.Format(Resources.Error_ResourceGroupNotSpecified));
+                // Let's return all profiles that match that name, or a single profile if there's just one.
+                var profiles = CdnManagementClient.Profiles.List().Select(p => p.ToPsProfile()).Where(p => p.Name == ProfileName);
+                WriteVerbose(Resources.Success);
+                if(profiles.Count() == 1)
+                {
+                    WriteObject(profiles.First());
+                }
+                else
+                {
+                    WriteObject(profiles, true);
+                }
             }
             else
             {
-                // Get by both Profile Name and Resource Group Name.
-                var profile = CdnManagementClient.Profiles.Get(ProfileName, ResourceGroupName);
-                WriteVerbose(Resources.Success);
-                WriteObject(profile.ToPsProfile());
+                try
+                {
+                    // Get by both Profile Name and Resource Group Name.
+                    var profile = CdnManagementClient.Profiles.Get(ResourceGroupName, ProfileName);
+                    WriteVerbose(Resources.Success);
+                    WriteObject(profile.ToPsProfile());
+                }
+                catch(ErrorResponseException ex)
+                {
+                    if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                    {
+                        throw new PSArgumentException(string.Format(
+                            Resources.Error_ProfileNotFound,
+                            ProfileName,
+                            ResourceGroupName));
+                    }
+                }
             }
         }
     }

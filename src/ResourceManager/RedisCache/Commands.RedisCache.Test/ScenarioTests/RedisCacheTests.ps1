@@ -422,7 +422,7 @@ function Test-RemoveAzureRedisCacheDiagnostics
     $cacheName = "sunnycache"
     
     # Set Diagnostics
-    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -Force
+    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName
 }
 
 <#
@@ -461,6 +461,63 @@ function Test-ImportAzureRmRedisCache
     $cacheName = "sunny-importexport"
     $files = @("<blob sas key>")
     Import-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Files $files -Force
+}
+
+<#
+.SYNOPSIS
+Tests schedule patching
+#>
+function Test-RedisCachePatchSchedules
+{
+    $resourceGroupName = "SiddharthsSub"
+    $cacheName = "sunny-premium"
+    
+    $weekend = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
+    $thursday = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Thursday" -StartHourUtc 10 -MaintenanceWindow "09:00:00"
+
+    $createResult = New-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName -Entries @($weekend, $thursday)
+    Assert-True {$createResult.Count -eq 3}
+    foreach ($scheduleEntry in $createResult)
+    {
+        if($scheduleEntry.DayOfWeek -eq "Thursday")
+        {
+            Assert-AreEqual 10 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "09:00:00" $scheduleEntry.MaintenanceWindow
+        } 
+        elseif($scheduleEntry.DayOfWeek -eq "Saturday" -or $scheduleEntry.DayOfWeek -eq "Sunday")
+        {
+            Assert-AreEqual 2 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "06:00:00" $scheduleEntry.MaintenanceWindow
+        }
+        else
+        {
+            Assert-True $false "Unknown DayOfWeek."
+        }
+    }
+
+    $getResult = Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
+    Assert-True {$getResult.Count -eq 3}
+    foreach ($scheduleEntry in $getResult)
+    {
+        if($scheduleEntry.DayOfWeek -eq "Thursday")
+        {
+            Assert-AreEqual 10 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "09:00:00" $scheduleEntry.MaintenanceWindow
+        } 
+        elseif($scheduleEntry.DayOfWeek -eq "Saturday" -or $scheduleEntry.DayOfWeek -eq "Sunday")
+        {
+            Assert-AreEqual 2 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "06:00:00" $scheduleEntry.MaintenanceWindow
+        }
+        else
+        {
+            Assert-True $false "Unknown DayOfWeek."
+        }
+    }
+
+    Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
+
+    Assert-ThrowsContains {Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "There are no patch schedules found for redis cache 'sunny-premium'"
 }
 
 <#

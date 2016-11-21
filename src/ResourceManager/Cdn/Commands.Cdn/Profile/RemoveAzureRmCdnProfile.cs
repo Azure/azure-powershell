@@ -20,26 +20,31 @@ using Microsoft.Azure.Commands.Cdn.Models.Profile;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
+using System.Linq;
+using Microsoft.Azure.Commands.Cdn.Helpers;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnProfile", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmCdnProfile : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the Azure CDN profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
         public PSProfile CdnProfile { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter()]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -49,37 +54,44 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
 
-            try
-            {
-                CdnManagementClient.Profiles.GetWithHttpMessagesAsync(ProfileName, ResourceGroupName).Wait();
-            }
-            catch (AggregateException exception)
-            {
-                var errorResponseException = exception.InnerException as ErrorResponseException;
-                if (errorResponseException == null)
-                {
-                    throw;
-                }
+            var existingProfile = CdnManagementClient.Profiles.List()
+                .Select(p => p.ToPsProfile())
+                .Where(p => p.Name.ToLower() == ProfileName.ToLower())
+                .FirstOrDefault(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower());
 
-                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(string.Format(
-                        Resources.Error_DeleteNonExistingProfile, 
-                        ProfileName,
-                        ResourceGroupName));
-                }
+            if (existingProfile == null)
+            {
+                throw new PSArgumentException(string.Format(
+                    Resources.Error_DeleteNonExistingProfile,
+                    ProfileName,
+                    ResourceGroupName));
             }
 
-            if (!ShouldProcess(string.Format(Resources.Confirm_RemoveProfile, ProfileName)))
-            {
-                return;
-            }
 
-            CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName);
+            ConfirmAction(Force,
+                string.Format(Resources.Confirm_RemoveProfile, ProfileName),
+                this.MyInvocation.InvocationName,
+                ProfileName,
+                () => CdnManagementClient.Profiles.Delete(ResourceGroupName, ProfileName),
+                () => ContainsEndpoints());
 
             if (PassThru)
             {
                 WriteObject(true);
+            }
+
+        }
+
+        private bool ContainsEndpoints()
+        {
+            var existingEndpoints = CdnManagementClient.Endpoints.ListByProfile(ResourceGroupName, ProfileName);
+            if(existingEndpoints.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

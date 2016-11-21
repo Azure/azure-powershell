@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSAffinityInformation affinityInformation;
         
+        private IList<PSApplicationPackageReference> applicationPackageReferences;
+        
         private PSComputeNodeInformation computeNodeInformation;
         
         private PSTaskConstraints constraints;
@@ -45,6 +47,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private IList<PSEnvironmentSetting> environmentSettings;
         
         private PSTaskExecutionInformation executionInformation;
+        
+        private PSExitConditions exitConditions;
         
         private PSMultiInstanceSettings multiInstanceSettings;
         
@@ -88,6 +92,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.AffinityInformation = value.omObject;
                 }
                 this.affinityInformation = value;
+            }
+        }
+        
+        public IList<PSApplicationPackageReference> ApplicationPackageReferences
+        {
+            get
+            {
+                if (((this.applicationPackageReferences == null) 
+                            && (this.omObject.ApplicationPackageReferences != null)))
+                {
+                    List<PSApplicationPackageReference> list;
+                    list = new List<PSApplicationPackageReference>();
+                    IEnumerator<Microsoft.Azure.Batch.ApplicationPackageReference> enumerator;
+                    enumerator = this.omObject.ApplicationPackageReferences.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSApplicationPackageReference(enumerator.Current));
+                    }
+                    this.applicationPackageReferences = list;
+                }
+                return this.applicationPackageReferences;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ApplicationPackageReferences = null;
+                }
+                else
+                {
+                    this.omObject.ApplicationPackageReferences = new List<Microsoft.Azure.Batch.ApplicationPackageReference>();
+                }
+                this.applicationPackageReferences = value;
             }
         }
         
@@ -239,6 +278,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.executionInformation = new PSTaskExecutionInformation(this.omObject.ExecutionInformation);
                 }
                 return this.executionInformation;
+            }
+        }
+        
+        public PSExitConditions ExitConditions
+        {
+            get
+            {
+                if (((this.exitConditions == null) 
+                            && (this.omObject.ExitConditions != null)))
+                {
+                    this.exitConditions = new PSExitConditions(this.omObject.ExitConditions);
+                }
+                return this.exitConditions;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ExitConditions = null;
+                }
+                else
+                {
+                    this.omObject.ExitConditions = value.omObject;
+                }
+                this.exitConditions = value;
             }
         }
         

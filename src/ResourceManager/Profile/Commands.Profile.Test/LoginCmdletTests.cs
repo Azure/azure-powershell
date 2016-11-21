@@ -23,6 +23,9 @@ using System.Management.Automation;
 using System.Reflection;
 using Xunit;
 using Xunit.Abstractions;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -38,6 +41,42 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetPsVersionFromUserAgent()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+
+            int preProcessingUserAgentCount = AzureSession.ClientFactory.UserAgents.Count;
+            Debug.WriteLine("UserAgents count prior to cmdLet processing = {0}", preProcessingUserAgentCount.ToString());
+            foreach (ProductInfoHeaderValue hv in AzureSession.ClientFactory.UserAgents)
+            {
+                Debug.WriteLine("Product:{0} - Version:{1}", hv.Product.Name, hv.Product.Version);
+            }
+
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+
+            cmdlt.InvokeBeginProcessing();
+            int postProcessingUserAgentCount = AzureSession.ClientFactory.UserAgents.Count;
+            Debug.WriteLine("UserAgents count prior to cmdLet post processing = {0}", postProcessingUserAgentCount.ToString());
+            Assert.True(AzureSession.ClientFactory.UserAgents.Count >= preProcessingUserAgentCount);
+            HashSet<ProductInfoHeaderValue> piHv = AzureSession.ClientFactory.UserAgents;
+            string psUserAgentString = string.Empty;
+
+            foreach(ProductInfoHeaderValue hv in piHv)
+            {
+                if(hv.Product.Name.Equals("PSVersion") && (!string.IsNullOrEmpty(hv.Product.Version)))
+                {
+                    psUserAgentString = string.Format("{0}-{1}", hv.Product.Name, hv.Product.Version);
+                }
+            }
+
+            Assert.NotEmpty(psUserAgentString);
+            Assert.Contains("PSVersion", psUserAgentString);
         }
 
         [Fact]
@@ -170,7 +209,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
-            // NOTE: Use owner1@rbactest.onmicrosoft.com credentials for this test case
+            // NOTE: Use owner1@AzureSDKTeam.onmicrosoft.com credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
 
@@ -180,7 +219,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("rbactest.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.Equal("AzureSDKTeam.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
             Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
             Assert.Null(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
         }
@@ -194,8 +233,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // NOTE: Use rbac SPN credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.ServicePrincipal = true;
-            cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
-            cmdlt.ApplicationId = "20c58db7-4501-44e8-8e76-6febdb400c6b";
+            cmdlt.TenantId = "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a";
+            cmdlt.ApplicationId = "99edf981-74c0-4284-bddf-3e9d092ba4e2";
             cmdlt.CertificateThumbprint = "F064B7C7EACC942D10662A5115E047E94FA18498";
 
             // Act
@@ -219,7 +258,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
-            // NOTE: Use admin@rbactest.onmicrosoft.com credentials for this test case
+            // NOTE: Use account that has at exactly two tenants
             cmdlt.CommandRuntime = commandRuntimeMock;
 
             // Act
@@ -231,7 +270,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Account);
             var tenants = AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
             Assert.NotNull(tenants);
-            Assert.Equal(3, tenants.Length);
+            Assert.Equal(2, tenants.Length);
         }
 
         [Fact]

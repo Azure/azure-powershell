@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
@@ -264,6 +265,101 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(idsOfConstructedTasks.Length, pipeline.Count);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WhenGettingATaskFromTheService_ExitConditionsAreMapped()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "task-1";
+            cmdlet.JobId = "job-1";
+            cmdlet.Filter = null;
+
+            // Build a CloudTask instead of querying the service on a Get CloudTask call
+            ProxyModels.ExitOptions none = new ProxyModels.ExitOptions { JobAction = ProxyModels.JobAction.None };
+            ProxyModels.ExitOptions terminate = new ProxyModels.ExitOptions { JobAction = ProxyModels.JobAction.Terminate };
+
+            ProxyModels.CloudTask cloudTask = new ProxyModels.CloudTask {
+                Id = "task-1",
+                ExitConditions = new ProxyModels.ExitConditions {
+                ExitCodeRanges = new []{ new ProxyModels.ExitCodeRangeMapping(2, 5, none) },
+                ExitCodes = new[] { new ProxyModels.ExitCodeMapping(4, terminate) },
+                SchedulingError = terminate,
+                DefaultProperty = none,
+            }};
+
+            AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(cloudTask);
+
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskGetOptions,
+                AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>>(response);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            var pipeline = new List<PSCloudTask>();
+            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSCloudTask>())).Callback<object>(t => pipeline.Add((PSCloudTask)t));
+
+            cmdlet.ExecuteCmdlet();
+
+            // Verify that the cmdlet wrote the task returned from the OM to the pipeline
+            Assert.Equal(1, pipeline.Count);
+            Assert.Equal(cmdlet.Id, pipeline[0].Id);
+
+            PSExitConditions psExitConditions = pipeline[0].ExitConditions;
+
+            Assert.Equal(psExitConditions.Default.JobAction, JobAction.None);
+            Assert.Equal(psExitConditions.ExitCodeRanges.First().ExitOptions.JobAction, JobAction.None);
+            Assert.Equal(psExitConditions.SchedulingError.JobAction, JobAction.Terminate);
+
+            Assert.Equal(4, psExitConditions.ExitCodes.First().Code);
+            Assert.Equal(JobAction.Terminate, psExitConditions.ExitCodes.First().ExitOptions.JobAction);
+            Assert.Equal(2, psExitConditions.ExitCodeRanges.First().Start);
+            Assert.Equal(5, psExitConditions.ExitCodeRanges.First().End);
+            Assert.Equal(JobAction.None, psExitConditions.ExitCodeRanges.First().ExitOptions.JobAction);
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WhenGettingATaskFromTheService_ApplicationPackageReferencesAreMapped()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "task-1";
+            cmdlet.JobId = "job-1";
+            cmdlet.Filter = null;
+
+            // Build a CloudTask instead of querying the service on a Get CloudTask call
+            string applicationId = "foo";
+            string applicationVersion = "beta";
+            ProxyModels.CloudTask cloudTask = new ProxyModels.CloudTask
+            {
+                Id = "task-1",
+                ApplicationPackageReferences = new[] { new ProxyModels.ApplicationPackageReference(applicationId, applicationVersion) }
+            };
+
+            AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(cloudTask);
+
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskGetOptions,
+                AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>>(response);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            var pipeline = new List<PSCloudTask>();
+            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSCloudTask>())).Callback<object>(t => pipeline.Add((PSCloudTask)t));
+
+            cmdlet.ExecuteCmdlet();
+
+            // Verify that the cmdlet wrote the task returned from the OM to the pipeline
+            Assert.Equal(1, pipeline.Count);
+            Assert.Equal(cmdlet.Id, pipeline[0].Id);
+
+            var psApplicationPackageReference = pipeline[0].ApplicationPackageReferences.First();
+            Assert.Equal(applicationId, psApplicationPackageReference.ApplicationId);
+            Assert.Equal(applicationVersion, psApplicationPackageReference.Version);
         }
     }
 }

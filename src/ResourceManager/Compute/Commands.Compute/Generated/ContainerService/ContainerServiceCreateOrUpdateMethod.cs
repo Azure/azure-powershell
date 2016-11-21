@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -28,7 +27,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -121,12 +119,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "ContainerServiceCreateOrUpdate";
-
-            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsCommon.New))
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.New))
             {
                 base.ProcessRecord();
             }
-
         }
 
         public override object GetDynamicParameters()
@@ -140,6 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
@@ -153,6 +150,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
@@ -166,6 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = false,
                 ValueFromPipeline = true
             });
             pParameters.Attributes.Add(new AllowNullAttribute());
@@ -183,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "ContainerServiceCreateOrUpdate";
-            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsData.Update))
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsData.Update))
             {
                 base.ProcessRecord();
             }
@@ -200,6 +199,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
@@ -213,6 +213,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
@@ -226,6 +227,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = false,
                 ValueFromPipeline = true
             });
             pParameters.Attributes.Add(new AllowNullAttribute());

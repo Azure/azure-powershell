@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -108,6 +111,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -136,6 +140,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllJobs()
         {
             BatchController controller = BatchController.NewInstance;
@@ -164,6 +169,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListJobsUnderSchedule()
         {
             BatchController controller = BatchController.NewInstance;
@@ -197,6 +203,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -225,6 +232,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteJobPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -244,6 +252,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -266,18 +275,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateJobById()
         {
             TestTerminateJob(false);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateJobPipeline()
         {
             TestTerminateJob(true);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobWithTaskDependencies()
         {
             BatchController controller = BatchController.NewInstance;
@@ -302,6 +314,35 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 TestUtilities.GetCallingClass(),
                 usePipeline ? "TestTerminateJobPipeline" : "TestTerminateJobById");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobId = "testJobCompletesWhenTaskFails";
+            string taskId = "taskId-1";
+            PSCloudJob completedJob = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
+                null,
+                () =>
+                {
+                    context = new ScenarioTestContext();
+                    completedJob = ScenarioTestHelpers.WaitForJobCompletion(controller, context, jobId, taskId);
+                    AssertJobIsCompleteDueToTaskFailure(completedJob);
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        private void AssertJobIsCompleteDueToTaskFailure(PSCloudJob job)
+        {
+            Assert.Equal(Azure.Batch.Common.JobState.Completed, job.State);
+            Assert.Equal("TaskFailed", job.ExecutionInformation.TerminateReason);
         }
     }
 }

@@ -25,18 +25,28 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
     [Cmdlet(VerbsCommon.Set, "AzureRmCdnOrigin"), OutputType(typeof(PSOrigin))]
     public class SetAzureRmCdnOrigin : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The origin.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN origin object.")]
         [ValidateNotNull]
         public PSOrigin CdnOrigin { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            ConfirmAction(MyInvocation.InvocationName,
+               string.Format("{0} ({1})", CdnOrigin.Name, CdnOrigin.HostName),
+               SetOrigin);
+        }
+
+        private void SetOrigin()
+        {
             var origin = CdnManagementClient.Origins.Update(
-                CdnOrigin.Name, 
-                new OriginParameters(CdnOrigin.HostName, CdnOrigin.HttpPort, CdnOrigin.HttpsPort), 
+                CdnOrigin.ResourceGroupName,
+                CdnOrigin.ProfileName,
                 CdnOrigin.EndpointName,
-                CdnOrigin.ProfileName, 
-                CdnOrigin.ResourceGroupName);
+                CdnOrigin.Name,
+                new OriginUpdateParameters(
+                    hostName: CdnOrigin.HostName,
+                    httpPort: CdnOrigin.HttpPort,
+                    httpsPort: CdnOrigin.HttpsPort));
 
             WriteVerbose(Resources.Success);
             WriteObject(origin.ToPsOrigin());

@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingRedisCache, Name),

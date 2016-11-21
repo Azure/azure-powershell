@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$PLACEHOLDER = "PLACEHOLDER"
+$PLACEHOLDER = "PLACEHOLDER1@"
 
 <#
 .SYNOPSIS
@@ -127,7 +127,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
 
     # NRP
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
     $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
     $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -177,7 +177,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
 
     # OS & Image
     $user = "Foo12";
-    $password = 'BaR@123' + $rgname;
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
@@ -575,4 +575,9 @@ function Get-SubscriptionIdFromResourceGroup
       $first = $rgid.IndexOf('/', 1);
       $last = $rgid.IndexOf('/', $first + 1);
       return $rgid.Substring($first + 1, $last - $first - 1);
+}
+
+function Get-ComputeVmssLocation
+{
+      Get-ResourceProviderLocation "Microsoft.Compute/virtualMachineScaleSets"
 }

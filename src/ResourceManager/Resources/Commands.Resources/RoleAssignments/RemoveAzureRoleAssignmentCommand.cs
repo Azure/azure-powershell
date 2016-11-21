@@ -148,10 +148,6 @@ namespace Microsoft.Azure.Commands.Resources
         public Guid RoleDefinitionId { get; set; }
 
         [Parameter(Mandatory = false)]
-        [Obsolete("The Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -176,7 +172,11 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.Context.Subscription.Id.ToString()
                 },
-                ExcludeAssignmentsForDeletedPrincipals = false
+                ExcludeAssignmentsForDeletedPrincipals = false,
+                // we should never expand principal groups in the Delete scenario
+                ExpandPrincipalGroups = false,
+                // never include classic administrators in the Delete scenario
+                IncludeClassicAdministrators = false
             };
 
             ConfirmAction(

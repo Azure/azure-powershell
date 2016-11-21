@@ -21,7 +21,7 @@ function Test-OriginGetSetWithRunningEndpoint
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -31,7 +31,7 @@ function Test-OriginGetSetWithRunningEndpoint
 
     $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort
 
-    $createdOrigin = Get-AzureRmCdnOrigin -OriginName $originName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $createdOrigin = $createdEndpoint | Get-AzureRmCdnOrigin -OriginName $originName 
     Assert-AreEqual $originName $createdOrigin.Name
     Assert-AreEqual $originHostName $createdOrigin.HostName
     Assert-AreEqual $httpPort $createdOrigin.HttpPort
@@ -41,7 +41,7 @@ function Test-OriginGetSetWithRunningEndpoint
     $createdOrigin.HttpsPort = 456
     $createdOrigin.HostName = "www.azure.com"
 
-    $updatedOrigin = Set-AzureRmCdnOrigin -CdnOrigin $createdOrigin
+    $updatedOrigin = $createdOrigin | Set-AzureRmCdnOrigin
 
     Assert-AreEqual $originName $updatedOrigin.Name
     Assert-AreEqual "www.azure.com" $updatedOrigin.HostName
@@ -60,7 +60,7 @@ function Test-OriginGetSetWithStoppedEndpoint
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -100,7 +100,7 @@ function Test-OriginGetSetWhenEndpointDoesnotExist
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName

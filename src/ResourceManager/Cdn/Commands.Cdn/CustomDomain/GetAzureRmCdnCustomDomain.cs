@@ -18,38 +18,61 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
+using System.Linq;
+using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnCustomDomain"), OutputType(typeof(PSCustomDomain))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSCustomDomain))]
     public class GetAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn CustomDomain name.")]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN custom domain name.")]
         [ValidateNotNullOrEmpty]
         public string CustomDomainName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN profile name.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.", ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNull]
+        public PSEndpoint CdnEndpoint { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var customDomain = CdnManagementClient.CustomDomains.Get(
-                CustomDomainName, 
-                EndpointName, 
-                ProfileName, 
-                ResourceGroupName);
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnEndpoint.ResourceGroupName;
+                ProfileName = CdnEndpoint.ProfileName;
+                EndpointName = CdnEndpoint.Name;
+            }
 
-            WriteVerbose(Resources.Success);
-            WriteObject(customDomain.ToPsCustomDomain());
+            if (CustomDomainName == null)
+            {
+                //List all custom domains on this endpoint
+                var customDomains = CdnManagementClient.CustomDomains.ListByEndpoint(ResourceGroupName, ProfileName, EndpointName).Select(c => c.ToPsCustomDomain());
+                WriteVerbose(Resources.Success);
+                WriteObject(customDomains, true);
+            }
+            else
+            {
+                var customDomain = CdnManagementClient.CustomDomains.Get(
+                    ResourceGroupName,
+                    ProfileName,
+                    EndpointName,
+                    CustomDomainName);
+
+                WriteVerbose(Resources.Success);
+                WriteObject(customDomain.ToPsCustomDomain());
+            }
         }
     }
 }

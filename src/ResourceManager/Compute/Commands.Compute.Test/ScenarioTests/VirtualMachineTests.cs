@@ -89,6 +89,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCaptureNegative()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCaptureNegative");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDisk()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");
@@ -183,6 +190,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineRedeploy()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineRedeploy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGetStatus()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineGetStatus");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Returns the auditing policy of a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditingPolicy"), OutputType(typeof(ServerAuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Alias("Get-AzureRmSqlDatabaseServerAuditingPolicy")]
     public class GetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
@@ -28,9 +28,28 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
+        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
         {
             return null;
+        }
+
+        /// <summary>
+        /// Provides the model element that this cmdlet operates on
+        /// </summary>
+        /// <returns>A model object</returns>
+        protected override AuditingPolicyModel GetEntity()
+        {
+            AuditType = AuditType.Table;
+            var tablePolicy = base.GetEntity();
+            AuditType = AuditType.Blob;
+            var blobPolicy = base.GetEntity();
+            if (tablePolicy.AuditState == AuditStateType.Enabled && blobPolicy.AuditState == AuditStateType.Disabled)
+            {
+                AuditType = AuditType.Table;
+                return tablePolicy;
+            }
+            AuditType = AuditType.Blob;
+            return blobPolicy;
         }
     }
 }

@@ -24,74 +24,78 @@ using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
+using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnCustomDomain"), OutputType(typeof(PSCustomDomain))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCustomDomain))]
     public class NewAzureRmCdnCustomDomain : AzureCdnCmdletBase, IModuleAssemblyInitializer
     {
-        [Parameter(Mandatory = true, HelpMessage = "Host name of the Azure Cdn CustomDomain name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Host name (address) of the Azure CDN custom domain name.")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn CustomDomain name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN custom domain display name.")]
         [ValidateNotNullOrEmpty]
         public string CustomDomainName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN profile name.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.", ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNull]
+        public PSEndpoint CdnEndpoint { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                CdnManagementClient.CustomDomains.GetWithHttpMessagesAsync(
-                    CustomDomainName, 
-                    EndpointName, 
-                    ProfileName,
-                    ResourceGroupName).Wait();
 
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnEndpoint.ResourceGroupName;
+                ProfileName = CdnEndpoint.ProfileName;
+                EndpointName = CdnEndpoint.Name;
+            }
+
+            var existingCustomDomain = CdnManagementClient.CustomDomains
+                .ListByEndpoint(ResourceGroupName, ProfileName, EndpointName)
+                .FirstOrDefault(cd => cd.Name.ToLower() == CustomDomainName.ToLower());
+
+            if (existingCustomDomain != null)
+            {
                 throw new PSArgumentException(string.Format(
-                    Resources.Error_CreateExistingCustomDomain, 
+                    Resources.Error_CreateExistingCustomDomain,
                     CustomDomainName,
                     EndpointName,
                     ProfileName,
                     ResourceGroupName));
             }
-            catch (AggregateException exception)
-            {
-                var errorResponseException = exception.InnerException as ErrorResponseException;
-                if (errorResponseException == null)
-                {
-                    throw;
-                }
 
-                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    var customDomain = CdnManagementClient.CustomDomains.Create(
-                        CustomDomainName,
-                        EndpointName,
-                        ProfileName,
-                        ResourceGroupName,
-                        HostName);
+            ConfirmAction(MyInvocation.InvocationName,
+                HostName,
+                NewCustomDomain);
+        }
 
-                    WriteVerbose(Resources.Success);
-                    WriteObject(customDomain.ToPsCustomDomain());
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        private void NewCustomDomain()
+        {
+            var customDomain = CdnManagementClient.CustomDomains.Create(
+                ResourceGroupName,
+                ProfileName,
+                EndpointName,
+                CustomDomainName,
+                HostName);
+
+            WriteVerbose(Resources.Success);
+            WriteObject(customDomain.ToPsCustomDomain());
         }
 
         public void OnImport()

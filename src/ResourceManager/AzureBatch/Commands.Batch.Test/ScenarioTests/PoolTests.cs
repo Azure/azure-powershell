@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
-        private const string specificOSVersion = "WA-GUEST-OS-4.27_201512-01";
+        private const string specificOSVersion = "WA-GUEST-OS-2.51_201605-01";
 
         public PoolTests(Xunit.Abstractions.ITestOutputHelper output)
         {
@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPoolById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPoolsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -96,6 +98,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPoolsWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -124,6 +127,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllPools()
         {
             BatchController controller = BatchController.NewInstance;
@@ -155,6 +159,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatePool()
         {
             BatchController controller = BatchController.NewInstance;
@@ -177,6 +182,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeletePool()
         {
             BatchController controller = BatchController.NewInstance;
@@ -216,6 +222,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResizePoolById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -233,6 +240,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResizePoolByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -250,6 +258,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopResizePoolById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -267,6 +276,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopResizePoolByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -284,6 +294,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableAutoScaleById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -306,6 +317,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableAutoScaleByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -328,6 +340,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAutoScaleById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -347,6 +360,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAutoScaleByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -366,6 +380,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEvaluateAutoScaleById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -387,6 +402,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEvaluateAutoScaleByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -408,12 +424,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionById()
         {
             TestChangeOSVersion(false);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionPipeline()
         {
             TestChangeOSVersion(true);
