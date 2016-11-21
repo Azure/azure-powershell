@@ -32,7 +32,7 @@ function Create-ModulePsm1
 	 $manifestDir = Get-Item -Path $ModulePath
 	 $moduleName = $manifestDir.Name + ".psd1"
 	 $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
-     $module = Test-ModuleManifest -Path $manifestPath
+     $module = Test-ModuleManifest -Path $manifestPath -ErrorAction "SilentlyContinue"
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
      [string]$strict
      [string]$loose
