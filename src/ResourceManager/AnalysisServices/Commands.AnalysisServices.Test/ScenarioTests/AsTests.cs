@@ -37,5 +37,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             NewInstance.RunPsTest(string.Format("Test-NegativeAnalysisServicesServer -location '{0}'", AsTestsBase.resourceGroupLocation));
         }
+
+        [Fact]
+        public void TestAnalysisServicesServerRestart()
+        {
+            NewInstance.RunPsTest(string.Format("Test-AnalysisServicesServerRestart -environment '{0}'", "aspaaswestusloop1.asazure-int.windows.net"));
+        }
     }
 }
