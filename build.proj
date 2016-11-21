@@ -194,7 +194,9 @@
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-    
+     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psd1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+   
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
