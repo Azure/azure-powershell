@@ -98,8 +98,8 @@ if ($scope -eq 'All' -or $scope -eq 'AzureRM') {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
         # And the AzureStack modules
-        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")
-              -and ($module.Name -ne "AzureRM.AzureStackAdmin") -and ($module.Name -ne "AzureRM.AzureStackStorage")) {
+        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and `
+        ($module.Name -ne "AzureRM.AzureStackAdmin") -and ($module.Name -ne "AzureRM.AzureStackStorage")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
             Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
