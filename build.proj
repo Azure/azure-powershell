@@ -196,6 +196,8 @@
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
      <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psm1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')"/>
    
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
@@ -252,9 +254,9 @@
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psd1" 
-      DestinationFolder="$(LibraryRoot)tools\AzureStack" />
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psm1" 
-      DestinationFolder="$(LibraryRoot)tools\AzureStack" />  </Target>
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />  </Target>
   
   <Target Name="CodeSignInstaller">
     <PropertyGroup>

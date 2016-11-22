@@ -97,14 +97,16 @@ if ($scope -eq 'All' -or $scope -eq 'AzureRM') {
     foreach ($module in $resourceManagerModules) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
-        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
+        # And the AzureStack modules
+        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")
+              -and ($module.Name -ne "AzureRM.AzureStackAdmin") -and ($module.Name -ne "AzureRM.AzureStackStorage")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
             Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
             Write-Host "Updated $module module"
         }
     }
-} elseif ($scope -eq 'AzureStack') {
+} elseif ($scope -eq 'AzureStack' -or $scope -eq 'All') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.AzureStackAdmin"
     if (Test-Path $modulePath) {
         Write-Host "Updating AzureRM.AzureStackAdmin module from $modulePath"
