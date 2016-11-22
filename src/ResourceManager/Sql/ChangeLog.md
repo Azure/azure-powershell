@@ -18,5 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+    * Overview of change #3213
+        - This change includes the changes to implement read scale feature for azure sql databases.
+        - The influenced cmdlets are: New-AzureRmSqlDatabase, Set-AzureRmSqlDatabase, Get-AzureRmSqlDatabase
+        - The newly added read scale functionality allows customers to enabled read-only access to Geo Secondary databases.
+        - The implmentation adds a new member in the Database Properties, called "ReadScale". It supports 2 values: Enabled/Disabled.
 ## Version 2.3.0
