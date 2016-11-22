@@ -12,22 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ManagedCache
+namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Microsoft.Azure.Commands.ManagedCache.Models;
     using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureManagedCacheLocation"), OutputType(typeof(List<Microsoft.Azure.Management.ManagedCache.Models.RegionsResponse.Region>))]
-    public class AzureManagedCacheLocation : ManagedCacheCmdletBase
+    public class PSTunnelConnectionHealth
     {
-        public override void ExecuteCmdlet()
-        {
-            WriteWarning(CacheClient.GetManagedCacheRetirementMessage());
+        public string Tunnel { get; set; }
 
-            List<Microsoft.Azure.Management.ManagedCache.Models.RegionsResponse.Region> locations = CacheClient.GetLocations();
-            WriteObject(locations);
-        }      
+        public string ConnectionStatus { get; set; }
+
+        public ulong IngressBytesTransferred { get; set; }
+
+        public ulong EgressBytesTransferred { get; set; }
+
+        public string LastConnectionEstablishedUtcTime { get; set; }
     }
 }

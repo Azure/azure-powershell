@@ -1,4 +1,12 @@
-﻿## 2016.11.02 - Version 3.1.0
+﻿## 2016.11.14 - Version 3.2.0
+* Network
+	* Get-AzureRmVirtualNetworkGatewayConnection
+	    - Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
+	* Reset-AzureRmVirtualNetworkGateway
+	    - Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
+	    - Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
+
+## 2016.11.02 - Version 3.1.0
 * ApiManagement
     * Fixed cmdlet Import-AzureRmApiManagementApi when importing Api by SpecificationByUrl parameter
     * New-AzureRmApiManagement supports creating an ApiManagement service in a VirtualNetwork and with additional regions
