@@ -31,7 +31,7 @@ function Test-TaskCRUD
         New-AzureBatchTask -Id $taskId1 -JobId $jobId -CommandLine "cmd /c echo task1" -BatchContext $context
         New-AzureBatchTask -Id $taskId2 -JobId $jobId -CommandLine "cmd /c echo task2" -BatchContext $context
 
-        # List the job schedules to ensure they were created
+        # List the tasks to ensure they were created
         $tasks = Get-AzureBatchTask -JobId $jobId -Filter "id eq '$taskId1' or id eq '$taskId2'" -BatchContext $context
         $task1 = $tasks | Where-Object { $_.Id -eq $taskId1 }
         $task2 = $tasks | Where-Object { $_.Id -eq $taskId2 }
