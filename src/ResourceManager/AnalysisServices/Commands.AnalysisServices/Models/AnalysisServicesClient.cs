@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
                 {
                     Sku = existingServer.Sku,
-                    Tags = tags ?? new Dictionary<string, string>(),
+                    Tags = tags,
                     AsAdministrators = new ServerAdministrators(adminList)
                 };
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         AsAdministrators = new ServerAdministrators(adminList),
                         Location = location,
                         Sku = GetResourceSkuFromName(skuName),
-                        Tags = tags ?? new Dictionary<string, string>()
+                        Tags = tags
                     });
             }
 
