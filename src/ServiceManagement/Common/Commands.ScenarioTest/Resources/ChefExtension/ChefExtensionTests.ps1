@@ -26,10 +26,11 @@ Test the usage of the Set virtual machine chef extension command
 #>
 
 # Setup
-$vmName = "vmtwo"
+$vmName = "vmone"
 $svcName = "storone"
 $storageName = "storone"
 $location = "West US"
+$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
 
 function Test-SetAzureVMChefExtension
 {	
@@ -43,7 +44,7 @@ function Test-SetAzureVMChefExtension
 
 		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
 
-		Set-AzureVMChefExtension -VM $vm -ValidationPem ".\Resources\ChefExtension\tstorgnztn-validator.pem" -ClientRb ".\Resources\ChefExtension\client.rb" -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}' -ChefServiceInterval 35 -Windows
+		Set-AzureVMChefExtension -VM $vm -ValidationPem "$TestOutputRoot\Resources\ChefExtension\tstorgnztn-validator.pem" -ClientRb "$TestOutputRoot\Resources\ChefExtension\client.rb" -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}' -ChefServiceInterval 35 -Windows
 	
 		Update-AzureVM -VM $vm.VM -ServiceName $svcName -Name $vmName
 
