@@ -24,9 +24,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
+        public void TestAEMExtensionBasicWindowsWAD()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindowsWAD");
+        }
+
+        [Fact]
         public void TestAEMExtensionBasicWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindows");
+        }
+
+        [Fact]
+        public void TestAEMExtensionBasicLinuxWAD()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinuxWAD");
         }
 
         [Fact]
@@ -36,9 +48,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
+        public void TestAEMExtensionAdvancedWindowsWAD()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsWAD");
+        }
+
+        [Fact]
         public void TestAEMExtensionAdvancedWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindows");
+        }
+
+        [Fact]
+        public void TestAEMExtensionAdvancedLinuxWAD()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxWAD");
         }
 
         [Fact]
