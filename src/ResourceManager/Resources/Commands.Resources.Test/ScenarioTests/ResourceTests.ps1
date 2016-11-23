@@ -446,3 +446,62 @@ function Test-ManageResourceWithZones
 	Assert-AreEqual $resourceGet.Zones.Length 1
 	Assert-AreEqual $resourceGet.Zones[0] "3"
 }
+
+<#
+.SYNOPSIS
+Tests removing a resource.
+#>
+function Test-RemoveAResource
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = "testname"
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname | Remove-AzureRmResource -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-Null $expected
+}
+
+<#
+.SYNOPSIS
+Tests removing a set of resources.
+#>
+function Test-RemoveASetOfResources
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = "testname"
+	$rname2 = "test2name"
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+	
+	$expected = Find-AzureRmResource -ResourceType $resourceType -ResourceGroupNameContains $rgName
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-AreEqual 2 @($expected).Count
+
+	Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname | Remove-AzureRmResource -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-Null $expected
+}

@@ -168,6 +168,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
+                if (this.cancellationSource == null)
+                {
+                    this.cancellationSource = new CancellationTokenSource();
+                }
+
                 base.ExecuteCmdlet();
                 this.OnProcessRecord();
             }

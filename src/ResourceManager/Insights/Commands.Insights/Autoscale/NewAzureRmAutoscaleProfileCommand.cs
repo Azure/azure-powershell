@@ -105,14 +105,14 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule hours for the recurrence")]
         [ValidateNotNull]
-        public List<int> ScheduleHours { get; set; }
+        public List<int?> ScheduleHours { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleMinutes
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule minutes for the recurrence")]
         [ValidateNotNull]
-        public List<int> ScheduleMinutes { get; set; }
+        public List<int?> ScheduleMinutes { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleTimeZone
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 Name = this.Name ?? string.Empty,
                 Capacity = new ScaleCapacity()
                 {
-                    Default = this.DefaultCapacity,
+                    DefaultProperty = this.DefaultCapacity,
                     Minimum = this.MinimumCapacity,
                     Maximum = this.MaximumCapacity,
                 },

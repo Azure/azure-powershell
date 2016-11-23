@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
+using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Insights
 {
@@ -30,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights
     public abstract class EventCmdletBase : InsightsClientCmdletBase
     {
         private static readonly TimeSpan MaximumDateDifferenceAllowedInDays = TimeSpan.FromDays(15);
-        private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(1);
+        private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromDays(7);
         private const int MaxNumberOfReturnedRecords = 1000;
         private int MaxEvents = 0;
 
@@ -209,16 +212,19 @@ namespace Microsoft.Azure.Commands.Insights
 
             // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
-            EventDataListResponse response = this.InsightsClient.EventOperations.ListEventsAsync(filterString: queryFilter, selectedProperties: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
-            var records = new List<IPSEventData>(response.EventDataCollection.Value.Where(this.KeepTheRecord).Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
-            string nextLink = response.EventDataCollection.NextLink;
+            var query = new ODataQuery<EventData>(queryFilter);
+            IPage<EventData> response = this.InsightsClient.Events.ListAsync(odataQuery: query, select: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
+            var records = new List<IPSEventData>();
+            var enumerator = response.GetEnumerator();
+            enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
+            string nextLink = response.NextPageLink;
 
             // Adding a safety check to stop returning records if too many have been read already.
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
-                response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
-                records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
-                nextLink = response.EventDataCollection.NextLink;
+                response = this.InsightsClient.Events.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
+                enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
+                nextLink = response.NextPageLink;
             }
 
             var recordsReturned = new List<IPSEventData>();

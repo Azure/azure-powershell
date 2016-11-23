@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Cdn.Models.CustomDomain
 
         public string HostName { get; set; }
 
+        public string ValidationData { get; set; }
+
         public PSCustomDomainResourceState ResourceState { get; set; }
 
         public string ResourceGroupName

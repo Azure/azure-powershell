@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             ConfirmAction(MyInvocation.InvocationName,
                 EndpointName,
-                () => CdnManagementClient.Endpoints.Start(EndpointName, ProfileName, ResourceGroupName));
+                () => CdnManagementClient.Endpoints.Start(ResourceGroupName, ProfileName, EndpointName));
             
             WriteVerbose(Resources.Success);
             WriteVerbose(string.Format(Resources.Success_StartEndpoint, EndpointName, ProfileName, ResourceGroupName));
