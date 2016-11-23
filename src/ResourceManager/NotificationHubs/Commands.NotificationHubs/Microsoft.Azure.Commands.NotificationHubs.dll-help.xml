@@ -1564,7 +1564,7 @@
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>skuTier</maml:name>
+				<maml:name>SkuTier</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -1636,7 +1636,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>skuTier</maml:name>
+			<maml:name>SkuTier</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
@@ -3380,7 +3380,7 @@
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>skuTier</maml:name>
+				<maml:name>SkuTier</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -3483,7 +3483,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>skuTier</maml:name>
+			<maml:name>SkuTier</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
