@@ -61,6 +61,7 @@
     <Compile Include="BreakingChangeAnalyzer\BreakingChangeIssue.cs" />
     <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeLoader.cs" />
     <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ModuleMetadata.cs" />
     <Compile Include="BreakingChangeAnalyzer\OutputMetadata.cs" />
     <Compile Include="BreakingChangeAnalyzer\ParameterMetadata.cs" />
     <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadata.cs" />

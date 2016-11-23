@@ -33,6 +33,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public string BreakingChangeIssueReportLoggerName { get; set; }
 
         private AppDomain _appDomain;
+        private HashSet<string> _typeSet;
+        private Dictionary<string, TypeMetadata> _oldTypeDictionary;
+        private Dictionary<string, TypeMetadata> _newTypeDictionary;
 
         public BreakingChangeAnalyzer()
         {
@@ -44,7 +47,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// Given a set of directory paths containing PowerShell module folders, 
         /// analyze the breaking changes in the modules and report any issues
         /// </summary>
-        /// <param name="scopes"></param>
+        /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
         public void Analyze(IEnumerable<string> cmdletProbingDirs)
         {
             Analyze(cmdletProbingDirs, null, null);
@@ -56,9 +59,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// 
         /// Filters can be added to find breaking changes for specific modules
         /// </summary>
-        /// <param name="cmdletProbingDirs"></param>
-        /// <param name="directoryFilter"></param>
-        /// <param name="cmdletFilter"></param>
+        /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
+        /// <param name="directoryFilter">Function that filters the directory paths to be checked.</param>
+        /// <param name="cmdletFilter">Function that filters the cmdlets to be checked.</param>
         public void Analyze(
             IEnumerable<string> cmdletProbingDirs,
             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
@@ -110,7 +113,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 processedHelpFiles.Add(helpFileName);
                                 var proxy = 
                                     EnvironmentHelpers.CreateProxy<CmdletBreakingChangeLoader>(directory, out _appDomain);
-                                var newCmdlets = proxy.GetCmdlets(cmdletFile);
+                                var newModuleMetadata = proxy.GetModuleMetadata(cmdletFile);
 
                                 string fileName = cmdletFileName + ".json";
                                 string executingPath = 
@@ -121,26 +124,19 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                                 if (serialize)
                                 {
-                                    SerializeCmdlets(filePath, newCmdlets);
+                                    SerializeCmdlets(filePath, newModuleMetadata);
                                 }
                                 else
                                 {
-                                    var oldCmdlets = DeserializeCmdlets(filePath);
+                                    var oldModuleMetadata = DeserializeCmdlets(filePath);
 
                                     if (cmdletFilter != null)
                                     {
-                                        newCmdlets = newCmdlets.Where<CmdletBreakingChangeMetadata>(
-                                            (cmdlet) => cmdletFilter(cmdlet.Name) ||
-                                            cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
-                                            .ToList<CmdletBreakingChangeMetadata>();
-
-                                        oldCmdlets = oldCmdlets.Where<CmdletBreakingChangeMetadata>(
-                                            (cmdlet) => cmdletFilter(cmdlet.Name) ||
-                                            cmdlet.AliasList.Where(a => cmdletFilter(a)).ToList().Count > 0)
-                                            .ToList<CmdletBreakingChangeMetadata>();
+                                        oldModuleMetadata.FilterCmdlets(cmdletFilter);
+                                        newModuleMetadata.FilterCmdlets(cmdletFilter);
                                     }
 
-                                    RunBreakingChangeChecks(oldCmdlets, newCmdlets, issueLogger);
+                                    RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
                                 }
                             }
                         }
@@ -154,9 +150,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// </summary>
         /// <param name="fileName">Name of the file cmdlets are being serialized to.</param>
         /// <param name="cmdlets">List of cmdlets that are to be serialized.</param>
-        private void SerializeCmdlets(string fileName, List<CmdletBreakingChangeMetadata> cmdlets)
+        private void SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
         {
-            string json = JsonConvert.SerializeObject(cmdlets, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(moduleMetadata, Formatting.Indented);
             File.WriteAllText(fileName, json);
         }
 
@@ -165,9 +161,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// </summary>
         /// <param name="fileName">Name of the file we are to deserialize the cmdlets from.</param>
         /// <returns></returns>
-        private List<CmdletBreakingChangeMetadata> DeserializeCmdlets(string fileName)
+        private ModuleMetadata DeserializeCmdlets(string fileName)
         {
-           return JsonConvert.DeserializeObject<List<CmdletBreakingChangeMetadata>>(File.ReadAllText(fileName));
+           return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
         }
 
         /// <summary>
@@ -177,10 +173,17 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newCmdlets">List of cmdlet metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void RunBreakingChangeChecks(
-            IList<CmdletBreakingChangeMetadata> oldCmdlets,
-            IList<CmdletBreakingChangeMetadata> newCmdlets,
+            ModuleMetadata oldModuleMetadata,
+            ModuleMetadata newModuleMetadata,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
+            var oldCmdlets = oldModuleMetadata.Cmdlets;
+            var newCmdlets = newModuleMetadata.Cmdlets;
+
+            _typeSet = new HashSet<String>();
+            _oldTypeDictionary = oldModuleMetadata.TypeDictionary;
+            _newTypeDictionary = newModuleMetadata.TypeDictionary;
+
             // Create a dictionary that maps a cmdlet name (and alias) to the corresponding metadata
             IDictionary<string, CmdletBreakingChangeMetadata> cmdletMap = 
                 new Dictionary<string, CmdletBreakingChangeMetadata>();
@@ -570,7 +573,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             foreach (var newKey in newOutput.Type.Properties.Keys)
                             {
                                 if (oldKey.Equals(newKey) && 
-                                    oldOutput.Type.Properties[oldKey].Name.Equals(newOutput.Type.Properties[newKey].Name))
+                                    oldOutput.Type.Properties[oldKey].Equals(newOutput.Type.Properties[newKey]))
                                 {
                                     foundKey = true;
                                     break;
@@ -896,13 +899,21 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 if (newType.Properties.ContainsKey(oldProperty))
                 {
-                    var oldTypeMetadata = oldType.Properties[oldProperty];
-                    var newTypeMetadata = newType.Properties[oldProperty];
+                    var oldPropertyType = oldType.Properties[oldProperty];
+                    var newPropertyType = newType.Properties[oldProperty];
 
                     // If the types are the same, compare their properties
-                    if (oldTypeMetadata.Name.Equals(newTypeMetadata.Name))
+                    if (oldPropertyType.Equals(newPropertyType))
                     {
-                        CompareTypes(cmdlet, oldTypeMetadata, newTypeMetadata, issueLogger);
+                        if (!_typeSet.Contains(oldPropertyType))
+                        {
+                            _typeSet.Add(oldPropertyType);
+
+                            var oldTypeMetadata = _oldTypeDictionary[oldPropertyType];
+                            var newTypeMetadata = _newTypeDictionary[newPropertyType];
+
+                            CompareTypes(cmdlet, oldTypeMetadata, newTypeMetadata, issueLogger);
+                        }
                     }
                     else
                     {
@@ -912,9 +923,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             severity: 0,
                             problemId: ProblemIds.BreakingChangeProblemId.ChangedPropertyType,
                             description: string.Format(Properties.Resources.ChangedPropertyTypeDescription, 
-                                oldProperty, oldType.Name, oldTypeMetadata.Name, newTypeMetadata.Name),
+                                oldProperty, oldType.Name, oldPropertyType, newPropertyType),
                             remediation: string.Format(Properties.Resources.ChangedPropertyTypeRemediation, 
-                                oldProperty, oldTypeMetadata.Name));
+                                oldProperty, oldPropertyType));
                     }
                 }
                 else

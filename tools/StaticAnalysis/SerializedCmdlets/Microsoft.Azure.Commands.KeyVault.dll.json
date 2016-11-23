@@ -1,1073 +1,589 @@
-[
-  {
-    "VerbName": "Add",
-    "NounName": "AzureKeyVaultCertificate",
-    "Name": "Add-AzureKeyVaultCertificate",
-    "ClassName": "Microsoft.Azure.Commands.KeyVault.AddAzureKeyVaultCertificate",
-    "SupportsShouldProcess": true,
-    "ConfirmImpact": 2,
-    "SupportsPaging": false,
-    "DefaultParameterSetName": "__AllParameterSets",
-    "OutputTypes": [
-      {
-        "Type": {
-          "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-          "Name": "KeyVaultCertificateOperation",
-          "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
-          "Properties": {
-            "CancellationRequested": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
+{
+  "Cmdlets": [
+    {
+      "VerbName": "Add",
+      "NounName": "AzureKeyVaultCertificate",
+      "Name": "Add-AzureKeyVaultCertificate",
+      "ClassName": "Microsoft.Azure.Commands.KeyVault.AddAzureKeyVaultCertificate",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "KeyVaultCertificateOperation",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CancellationRequested": "System.Nullable`1[System.Boolean]",
+              "CertificateSigningRequest": "System.String",
+              "ErrorCode": "System.String",
+              "ErrorMessage": "System.String",
+              "Id": "System.String",
+              "Issuer": "System.String",
+              "RequestId": "System.String",
+              "Status": "System.String",
+              "StatusDetails": "System.String",
+              "Target": "System.String"
             },
-            "CertificateSigningRequest": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+            "ElementType": null,
+            "GenericTypeName": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "VaultName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {
+              "Chars": "System.Char",
+              "Length": "System.Int32"
             },
-            "ErrorCode": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ErrorMessage": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Id": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Issuer": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "RequestId": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Status": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "StatusDetails": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Target": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            }
-          }
+            "ElementType": null,
+            "GenericTypeName": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": true
         },
-        "ParameterSets": [
-          "__AllParameterSets"
-        ]
-      }
-    ],
-    "Parameters": [
-      {
-        "Name": "VaultName",
-        "AliasList": [],
-        "Type": {
-          "Namespace": "System",
-          "Name": "String",
-          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-          "Properties": {
-            "Chars": {
-              "Namespace": "System",
-              "Name": "Char",
-              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+        {
+          "Name": "Name",
+          "AliasList": [
+            "CertificateName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {
+              "Chars": "System.Char",
+              "Length": "System.Int32"
             },
-            "Length": {
-              "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            }
-          }
+            "ElementType": null,
+            "GenericTypeName": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": true
         },
-        "ValidateSet": [],
-        "ValidateNotNullOrEmpty": true
-      },
-      {
-        "Name": "Name",
-        "AliasList": [
-          "CertificateName"
-        ],
-        "Type": {
-          "Namespace": "System",
-          "Name": "String",
-          "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-          "Properties": {
-            "Chars": {
-              "Namespace": "System",
-              "Name": "Char",
-              "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+        {
+          "Name": "CertificatePolicy",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "KeyVaultCertificatePolicy",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CertificateType": "System.String",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "DnsNames": "System.Collections.Generic.List`1[System.String]",
+              "Ekus": "System.Collections.Generic.List`1[System.String]",
+              "EmailAtNumberOfDaysBeforeExpiry": "System.Nullable`1[System.Int32]",
+              "EmailAtPercentageLifetime": "System.Nullable`1[System.Int32]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "Exportable": "System.Nullable`1[System.Boolean]",
+              "IssuerName": "System.String",
+              "KeySize": "System.Nullable`1[System.Int32]",
+              "KeyUsage": "System.Collections.Generic.List`1[System.String]",
+              "Kty": "System.String",
+              "RenewAtNumberOfDaysBeforeExpiry": "System.Nullable`1[System.Int32]",
+              "RenewAtPercentageLifetime": "System.Nullable`1[System.Int32]",
+              "ReuseKeyOnRenewal": "System.Nullable`1[System.Boolean]",
+              "SecretContentType": "System.String",
+              "SubjectName": "System.String",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ValidityInMonths": "System.Nullable`1[System.Int32]"
             },
-            "Length": {
-              "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            }
-          }
+            "ElementType": null,
+            "GenericTypeName": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
         },
-        "ValidateSet": [],
-        "ValidateNotNullOrEmpty": true
-      },
-      {
-        "Name": "CertificatePolicy",
-        "AliasList": [],
-        "Type": {
-          "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-          "Name": "KeyVaultCertificatePolicy",
-          "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
-          "Properties": {
-            "CertificateType": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+        {
+          "Name": "Tag",
+          "AliasList": [
+            "Tags"
+          ],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {
+              "Count": "System.Int32",
+              "IsFixedSize": "System.Boolean",
+              "IsReadOnly": "System.Boolean",
+              "IsSynchronized": "System.Boolean",
+              "Item": "System.Object",
+              "Keys": "System.Collections.ICollection",
+              "SyncRoot": "System.Object",
+              "Values": "System.Collections.ICollection"
             },
-            "Created": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Value": {
-                  "Namespace": "System",
-                  "Name": "DateTime",
-                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "Date": {
-                      "Namespace": "System",
-                      "Name": "DateTime",
-                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Day": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "DayOfWeek": {
-                      "Namespace": "System",
-                      "Name": "DayOfWeek",
-                      "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "DayOfYear": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Hour": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Kind": {
-                      "Namespace": "System",
-                      "Name": "DateTimeKind",
-                      "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Millisecond": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Minute": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Month": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Now": {
-                      "Namespace": "System",
-                      "Name": "DateTime",
-                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Second": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Ticks": {
-                      "Namespace": "System",
-                      "Name": "Int64",
-                      "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "TimeOfDay": {
-                      "Namespace": "System",
-                      "Name": "TimeSpan",
-                      "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {
-                        "Days": {
-                          "Namespace": "System",
-                          "Name": "Int32",
-                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Hours": {
-                          "Namespace": "System",
-                          "Name": "Int32",
-                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Milliseconds": {
-                          "Namespace": "System",
-                          "Name": "Int32",
-                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Minutes": {
-                          "Namespace": "System",
-                          "Name": "Int32",
-                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Seconds": {
-                          "Namespace": "System",
-                          "Name": "Int32",
-                          "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "Ticks": {
-                          "Namespace": "System",
-                          "Name": "Int64",
-                          "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "TotalDays": {
-                          "Namespace": "System",
-                          "Name": "Double",
-                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "TotalHours": {
-                          "Namespace": "System",
-                          "Name": "Double",
-                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "TotalMilliseconds": {
-                          "Namespace": "System",
-                          "Name": "Double",
-                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "TotalMinutes": {
-                          "Namespace": "System",
-                          "Name": "Double",
-                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        },
-                        "TotalSeconds": {
-                          "Namespace": "System",
-                          "Name": "Double",
-                          "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                          "Properties": {}
-                        }
-                      }
-                    },
-                    "Today": {
-                      "Namespace": "System",
-                      "Name": "DateTime",
-                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "UtcNow": {
-                      "Namespace": "System",
-                      "Name": "DateTime",
-                      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    },
-                    "Year": {
-                      "Namespace": "System",
-                      "Name": "Int32",
-                      "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                      "Properties": {}
-                    }
-                  }
-                }
-              }
-            },
-            "DnsNames": {
-              "Namespace": "System.Collections.Generic",
-              "Name": "List`1",
-              "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "Capacity": {
-                  "Namespace": "System",
-                  "Name": "Int32",
-                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Count": {
-                  "Namespace": "System",
-                  "Name": "Int32",
-                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "Item": {
+            "ElementType": null,
+            "GenericTypeName": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
                   "Namespace": "System",
                   "Name": "String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "Ekus": {
-              "Namespace": "System.Collections.Generic",
-              "Name": "List`1",
-              "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "EmailAtNumberOfDaysBeforeExpiry": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "HasValue": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
+                  "Properties": {
+                    "Chars": "System.Char",
+                    "Length": "System.Int32"
+                  },
+                  "ElementType": null,
+                  "GenericTypeName": null,
+                  "GenericTypeArguments": []
                 },
-                "Value": {
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "CertificateName"
+                ],
+                "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
-                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Chars": "System.Char",
+                    "Length": "System.Int32"
+                  },
+                  "ElementType": null,
+                  "GenericTypeName": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             },
-            "EmailAtPercentageLifetime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+            {
+              "ParameterMetadata": {
+                "Name": "CertificatePolicy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+                  "Name": "KeyVaultCertificatePolicy",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "CertificateType": "System.String",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "DnsNames": "System.Collections.Generic.List`1[System.String]",
+                    "Ekus": "System.Collections.Generic.List`1[System.String]",
+                    "EmailAtNumberOfDaysBeforeExpiry": "System.Nullable`1[System.Int32]",
+                    "EmailAtPercentageLifetime": "System.Nullable`1[System.Int32]",
+                    "Enabled": "System.Nullable`1[System.Boolean]",
+                    "Exportable": "System.Nullable`1[System.Boolean]",
+                    "IssuerName": "System.String",
+                    "KeySize": "System.Nullable`1[System.Int32]",
+                    "KeyUsage": "System.Collections.Generic.List`1[System.String]",
+                    "Kty": "System.String",
+                    "RenewAtNumberOfDaysBeforeExpiry": "System.Nullable`1[System.Int32]",
+                    "RenewAtPercentageLifetime": "System.Nullable`1[System.Int32]",
+                    "ReuseKeyOnRenewal": "System.Nullable`1[System.Boolean]",
+                    "SecretContentType": "System.String",
+                    "SubjectName": "System.String",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ValidityInMonths": "System.Nullable`1[System.Int32]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeName": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             },
-            "Enabled": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Exportable": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IssuerName": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "KeySize": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "KeyUsage": {
-              "Namespace": "System.Collections.Generic",
-              "Name": "List`1",
-              "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Kty": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "RenewAtNumberOfDaysBeforeExpiry": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "RenewAtPercentageLifetime": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ReuseKeyOnRenewal": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "SecretContentType": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "SubjectName": {
-              "Namespace": "System",
-              "Name": "String",
-              "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Updated": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "ValidityInMonths": {
-              "Namespace": "System",
-              "Name": "Nullable`1",
-              "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
+            {
+              "ParameterMetadata": {
+                "Name": "Tag",
+                "AliasList": [
+                  "Tags"
+                ],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Count": "System.Int32",
+                    "IsFixedSize": "System.Boolean",
+                    "IsReadOnly": "System.Boolean",
+                    "IsSynchronized": "System.Boolean",
+                    "Item": "System.Object",
+                    "Keys": "System.Collections.ICollection",
+                    "SyncRoot": "System.Object",
+                    "Values": "System.Collections.ICollection"
+                  },
+                  "ElementType": null,
+                  "GenericTypeName": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             }
-          }
-        },
-        "ValidateSet": [],
-        "ValidateNotNullOrEmpty": false
+          ]
+        }
+      ],
+      "AliasList": []
+    }
+  ],
+  "TypeDictionary": {
+    "System.String": {
+      "Namespace": null,
+      "Name": "System.String",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Boolean": {
+      "Namespace": null,
+      "Name": "System.Boolean",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Byte": {
+      "Namespace": null,
+      "Name": "System.Byte",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.SByte": {
+      "Namespace": null,
+      "Name": "System.SByte",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Int16": {
+      "Namespace": null,
+      "Name": "System.Int16",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.UInt16": {
+      "Namespace": null,
+      "Name": "System.UInt16",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Int32": {
+      "Namespace": null,
+      "Name": "System.Int32",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.UInt32": {
+      "Namespace": null,
+      "Name": "System.UInt32",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Int64": {
+      "Namespace": null,
+      "Name": "System.Int64",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.UInt64": {
+      "Namespace": null,
+      "Name": "System.UInt64",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Single": {
+      "Namespace": null,
+      "Name": "System.Single",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Double": {
+      "Namespace": null,
+      "Name": "System.Double",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Decimal": {
+      "Namespace": null,
+      "Name": "System.Decimal",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Char": {
+      "Namespace": null,
+      "Name": "System.Char",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "Nullable`1",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "HasValue": "System.Boolean",
+        "Value": "System.Boolean"
       },
-      {
-        "Name": "Tag",
-        "AliasList": [
-          "Tags"
-        ],
-        "Type": {
-          "Namespace": "System.Collections",
-          "Name": "Hashtable",
-          "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-          "Properties": {
-            "Count": {
-              "Namespace": "System",
-              "Name": "Int32",
-              "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsFixedSize": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsReadOnly": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "IsSynchronized": {
-              "Namespace": "System",
-              "Name": "Boolean",
-              "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Item": {
-              "Namespace": "System",
-              "Name": "Object",
-              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Keys": {
-              "Namespace": "System.Collections",
-              "Name": "ICollection",
-              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {
-                "Count": {
-                  "Namespace": "System",
-                  "Name": "Int32",
-                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "IsSynchronized": {
-                  "Namespace": "System",
-                  "Name": "Boolean",
-                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                },
-                "SyncRoot": {
-                  "Namespace": "System",
-                  "Name": "Object",
-                  "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {}
-                }
-              }
-            },
-            "SyncRoot": {
-              "Namespace": "System",
-              "Name": "Object",
-              "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            },
-            "Values": {
-              "Namespace": "System.Collections",
-              "Name": "ICollection",
-              "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-              "Properties": {}
-            }
-          }
-        },
-        "ValidateSet": [],
-        "ValidateNotNullOrEmpty": false
-      }
-    ],
-    "ParameterSets": [
-      {
-        "Name": "__AllParameterSets",
-        "Parameters": [
-          {
-            "ParameterMetadata": {
-              "Name": "VaultName",
-              "AliasList": [],
-              "Type": {
-                "Namespace": "System",
-                "Name": "String",
-                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                "Properties": {
-                  "Chars": {
-                    "Namespace": "System",
-                    "Name": "Char",
-                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Length": {
-                    "Namespace": "System",
-                    "Name": "Int32",
-                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  }
-                }
-              },
-              "ValidateSet": [],
-              "ValidateNotNullOrEmpty": true
-            },
-            "Mandatory": true,
-            "Position": 0,
-            "ValueFromPipeline": false,
-            "ValueFromPipelineByPropertyName": true
-          },
-          {
-            "ParameterMetadata": {
-              "Name": "Name",
-              "AliasList": [
-                "CertificateName"
-              ],
-              "Type": {
-                "Namespace": "System",
-                "Name": "String",
-                "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                "Properties": {
-                  "Chars": {
-                    "Namespace": "System",
-                    "Name": "Char",
-                    "AssemblyQualifiedName": "System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Length": {
-                    "Namespace": "System",
-                    "Name": "Int32",
-                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  }
-                }
-              },
-              "ValidateSet": [],
-              "ValidateNotNullOrEmpty": true
-            },
-            "Mandatory": true,
-            "Position": 1,
-            "ValueFromPipeline": false,
-            "ValueFromPipelineByPropertyName": true
-          },
-          {
-            "ParameterMetadata": {
-              "Name": "CertificatePolicy",
-              "AliasList": [],
-              "Type": {
-                "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-                "Name": "KeyVaultCertificatePolicy",
-                "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
-                "Properties": {
-                  "CertificateType": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Created": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {
-                      "HasValue": {
-                        "Namespace": "System",
-                        "Name": "Boolean",
-                        "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
-                      "Value": {
-                        "Namespace": "System",
-                        "Name": "DateTime",
-                        "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {
-                          "Date": {
-                            "Namespace": "System",
-                            "Name": "DateTime",
-                            "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Day": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "DayOfWeek": {
-                            "Namespace": "System",
-                            "Name": "DayOfWeek",
-                            "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "DayOfYear": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Hour": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Kind": {
-                            "Namespace": "System",
-                            "Name": "DateTimeKind",
-                            "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Millisecond": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Minute": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Month": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Now": {
-                            "Namespace": "System",
-                            "Name": "DateTime",
-                            "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Second": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Ticks": {
-                            "Namespace": "System",
-                            "Name": "Int64",
-                            "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "TimeOfDay": {
-                            "Namespace": "System",
-                            "Name": "TimeSpan",
-                            "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {
-                              "Days": {
-                                "Namespace": "System",
-                                "Name": "Int32",
-                                "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "Hours": {
-                                "Namespace": "System",
-                                "Name": "Int32",
-                                "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "Milliseconds": {
-                                "Namespace": "System",
-                                "Name": "Int32",
-                                "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "Minutes": {
-                                "Namespace": "System",
-                                "Name": "Int32",
-                                "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "Seconds": {
-                                "Namespace": "System",
-                                "Name": "Int32",
-                                "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "Ticks": {
-                                "Namespace": "System",
-                                "Name": "Int64",
-                                "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "TotalDays": {
-                                "Namespace": "System",
-                                "Name": "Double",
-                                "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "TotalHours": {
-                                "Namespace": "System",
-                                "Name": "Double",
-                                "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "TotalMilliseconds": {
-                                "Namespace": "System",
-                                "Name": "Double",
-                                "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "TotalMinutes": {
-                                "Namespace": "System",
-                                "Name": "Double",
-                                "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              },
-                              "TotalSeconds": {
-                                "Namespace": "System",
-                                "Name": "Double",
-                                "AssemblyQualifiedName": "System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                                "Properties": {}
-                              }
-                            }
-                          },
-                          "Today": {
-                            "Namespace": "System",
-                            "Name": "DateTime",
-                            "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "UtcNow": {
-                            "Namespace": "System",
-                            "Name": "DateTime",
-                            "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          },
-                          "Year": {
-                            "Namespace": "System",
-                            "Name": "Int32",
-                            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                            "Properties": {}
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "DnsNames": {
-                    "Namespace": "System.Collections.Generic",
-                    "Name": "List`1",
-                    "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {
-                      "Capacity": {
-                        "Namespace": "System",
-                        "Name": "Int32",
-                        "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
-                      "Count": {
-                        "Namespace": "System",
-                        "Name": "Int32",
-                        "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
-                      "Item": {
-                        "Namespace": "System",
-                        "Name": "String",
-                        "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      }
-                    }
-                  },
-                  "Ekus": {
-                    "Namespace": "System.Collections.Generic",
-                    "Name": "List`1",
-                    "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "EmailAtNumberOfDaysBeforeExpiry": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {
-                      "HasValue": {
-                        "Namespace": "System",
-                        "Name": "Boolean",
-                        "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
-                      "Value": {
-                        "Namespace": "System",
-                        "Name": "Int32",
-                        "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      }
-                    }
-                  },
-                  "EmailAtPercentageLifetime": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Enabled": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Exportable": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IssuerName": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "KeySize": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "KeyUsage": {
-                    "Namespace": "System.Collections.Generic",
-                    "Name": "List`1",
-                    "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Kty": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "RenewAtNumberOfDaysBeforeExpiry": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "RenewAtPercentageLifetime": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "ReuseKeyOnRenewal": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "SecretContentType": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "SubjectName": {
-                    "Namespace": "System",
-                    "Name": "String",
-                    "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Updated": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "ValidityInMonths": {
-                    "Namespace": "System",
-                    "Name": "Nullable`1",
-                    "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  }
-                }
-              },
-              "ValidateSet": [],
-              "ValidateNotNullOrEmpty": false
-            },
-            "Mandatory": false,
-            "Position": 2,
-            "ValueFromPipeline": false,
-            "ValueFromPipelineByPropertyName": true
-          },
-          {
-            "ParameterMetadata": {
-              "Name": "Tag",
-              "AliasList": [
-                "Tags"
-              ],
-              "Type": {
-                "Namespace": "System.Collections",
-                "Name": "Hashtable",
-                "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                "Properties": {
-                  "Count": {
-                    "Namespace": "System",
-                    "Name": "Int32",
-                    "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsFixedSize": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsReadOnly": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "IsSynchronized": {
-                    "Namespace": "System",
-                    "Name": "Boolean",
-                    "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Item": {
-                    "Namespace": "System",
-                    "Name": "Object",
-                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Keys": {
-                    "Namespace": "System.Collections",
-                    "Name": "ICollection",
-                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {
-                      "Count": {
-                        "Namespace": "System",
-                        "Name": "Int32",
-                        "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
-                      "IsSynchronized": {
-                        "Namespace": "System",
-                        "Name": "Boolean",
-                        "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      },
-                      "SyncRoot": {
-                        "Namespace": "System",
-                        "Name": "Object",
-                        "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                        "Properties": {}
-                      }
-                    }
-                  },
-                  "SyncRoot": {
-                    "Namespace": "System",
-                    "Name": "Object",
-                    "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  },
-                  "Values": {
-                    "Namespace": "System.Collections",
-                    "Name": "ICollection",
-                    "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "Properties": {}
-                  }
-                }
-              },
-              "ValidateSet": [],
-              "ValidateNotNullOrEmpty": false
-            },
-            "Mandatory": false,
-            "Position": -2147483648,
-            "ValueFromPipeline": false,
-            "ValueFromPipelineByPropertyName": true
-          }
-        ]
-      }
-    ],
-    "AliasList": []
+      "ElementType": null,
+      "GenericTypeName": "Nullable",
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ]
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "Nullable`1",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "HasValue": "System.Boolean",
+        "Value": "System.DateTime"
+      },
+      "ElementType": null,
+      "GenericTypeName": "Nullable",
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "DateTime",
+      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "Date": "System.DateTime",
+        "Day": "System.Int32",
+        "DayOfWeek": "System.DayOfWeek",
+        "DayOfYear": "System.Int32",
+        "Hour": "System.Int32",
+        "Kind": "System.DateTimeKind",
+        "Millisecond": "System.Int32",
+        "Minute": "System.Int32",
+        "Month": "System.Int32",
+        "Now": "System.DateTime",
+        "Second": "System.Int32",
+        "Ticks": "System.Int64",
+        "TimeOfDay": "System.TimeSpan",
+        "Today": "System.DateTime",
+        "UtcNow": "System.DateTime",
+        "Year": "System.Int32"
+      },
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.DayOfWeek": {
+      "Namespace": "System",
+      "Name": "DayOfWeek",
+      "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.DateTimeKind": {
+      "Namespace": "System",
+      "Name": "DateTimeKind",
+      "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.TimeSpan": {
+      "Namespace": "System",
+      "Name": "TimeSpan",
+      "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "Days": "System.Int32",
+        "Hours": "System.Int32",
+        "Milliseconds": "System.Int32",
+        "Minutes": "System.Int32",
+        "Seconds": "System.Int32",
+        "Ticks": "System.Int64",
+        "TotalDays": "System.Double",
+        "TotalHours": "System.Double",
+        "TotalMilliseconds": "System.Double",
+        "TotalMinutes": "System.Double",
+        "TotalSeconds": "System.Double"
+      },
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "List`1",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "Capacity": "System.Int32",
+        "Count": "System.Int32",
+        "Item": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeName": "List",
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "Nullable`1",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "HasValue": "System.Boolean",
+        "Value": "System.Int32"
+      },
+      "ElementType": null,
+      "GenericTypeName": "Nullable",
+      "GenericTypeArguments": [
+        "System.Int32"
+      ]
+    },
+    "System.Object": {
+      "Namespace": "System",
+      "Name": "Object",
+      "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.ICollection": {
+      "Namespace": "System.Collections",
+      "Name": "ICollection",
+      "AssemblyQualifiedName": "System.Collections.ICollection, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "Count": "System.Int32",
+        "IsSynchronized": "System.Boolean",
+        "SyncRoot": "System.Object"
+      },
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Security.Cryptography.X509Certificates.X509Certificate2": null,
+    "System.Security.Cryptography.X509Certificates.X509ExtensionCollection": null,
+    "System.Security.Cryptography.X509Certificates.X509Extension": {
+      "Namespace": "System.Security.Cryptography.X509Certificates",
+      "Name": "X509Extension",
+      "AssemblyQualifiedName": "System.Security.Cryptography.X509Certificates.X509Extension, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "Critical": "System.Boolean",
+        "Oid": "System.Security.Cryptography.Oid",
+        "RawData": "System.Byte[]"
+      },
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Security.Cryptography.Oid": {
+      "Namespace": "System.Security.Cryptography",
+      "Name": "Oid",
+      "AssemblyQualifiedName": "System.Security.Cryptography.Oid, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "FriendlyName": "System.String",
+        "Value": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "System.Byte[]": {
+      "Namespace": "System",
+      "Name": "Byte[]",
+      "AssemblyQualifiedName": "System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {
+        "IsFixedSize": "System.Boolean",
+        "IsReadOnly": "System.Boolean",
+        "IsSynchronized": "System.Boolean",
+        "Length": "System.Int32",
+        "LongLength": "System.Int64",
+        "Rank": "System.Int32",
+        "SyncRoot": "System.Object"
+      },
+      "ElementType": "System.Byte",
+      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    }
   }
-]
+}
