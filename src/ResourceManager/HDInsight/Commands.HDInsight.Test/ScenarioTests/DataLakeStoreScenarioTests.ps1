@@ -78,6 +78,7 @@ function Test-DataLakeStoreDefaultFSClusterCreate {
 	$version = 3.5
 	$saName = "test"
 	$clusterName = "sisankarpsadlstoragetype"
+	$storageRootPath = "/path/to/your/cluster/root"
 	$clusterNodes = 2
 	$headnodeSize = "Standard_D3"
 	$workernodeSize = "Standard_D3"
@@ -98,7 +99,8 @@ function Test-DataLakeStoreDefaultFSClusterCreate {
 	#execute
 	$cluster = New-AzureRmHDInsightCluster -Location $locName -ResourceGroupName $rmGroup -ClusterType Hadoop `
 				-ClusterName $clusterName -ClusterSizeInNodes $clusterNodes -HttpCredential $credential `
-				-DefaultStorageAccountType AzureDataLakeStore -DefaultStorageAccountName "$saName" `
+				-DefaultStorageAccountType AzureDataLakeStore `
+				-DefaultStorageAccountName "$saName" -DefaultStorageRootPath $storageRootPath `
 				-Version $version -SshCredential $sshCred -OSType Linux `
 				-AadTenantId $tenantId -ObjectId $objectId `
 				-CertificateFilePath $certPath -CertificatePassword $certPasswd

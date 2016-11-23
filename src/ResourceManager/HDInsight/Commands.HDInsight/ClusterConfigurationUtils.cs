@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
                     return new AzureHDInsightDataLakeDefaultStorageAccount
                     (
-                        storageAccountName: defaultFSUrl.Substring(AdlPrefix.Length),
+                        storageAccountName: coreSiteConfiguration.Single(k => k.Key.StartsWith("dfs.adls.") && k.Key.EndsWith(".hostname")).Value,
                         storageRootPath: storageRootPath,
                         applicationId: appId,
                         tenantId: tenantId,

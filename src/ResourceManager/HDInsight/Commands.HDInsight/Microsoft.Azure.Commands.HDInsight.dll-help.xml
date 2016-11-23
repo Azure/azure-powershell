@@ -5373,7 +5373,6 @@
         </maml:introduction>
         <dev:code>
           PS C:\&amp;gt; # Primary storage account info
-          $storageAccountResourceGroupName = &quot;Group&quot;
           $storageAccountName = &quot;yourstorageacct002&quot;
           $storageRootPath = &quot;/Clusters/mycluster01&quot;
 
