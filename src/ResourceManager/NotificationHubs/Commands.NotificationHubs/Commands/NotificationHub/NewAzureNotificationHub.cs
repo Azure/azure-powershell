@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHub"), OutputType(typeof(NotificationHubAttributes))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHub", SupportsShouldProcess = true), OutputType(typeof(NotificationHubAttributes))]
     public class NewAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -61,8 +61,11 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
                 hub = NotificationHubObj;
             }
 
-            var hubAttributes = Client.CreateNotificationHub(ResourceGroup, Namespace, hub);
-            WriteObject(hubAttributes);
+            if (ShouldProcess(string.Empty, Resources.CreateNotificationHub))
+            {
+                var hubAttributes = Client.CreateNotificationHub(ResourceGroup, Namespace, hub);
+                WriteObject(hubAttributes);
+            }
         }
     }
 }

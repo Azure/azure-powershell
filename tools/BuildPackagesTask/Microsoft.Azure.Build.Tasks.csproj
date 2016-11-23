@@ -41,6 +41,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DebugTask.cs" />
@@ -49,6 +50,10 @@
     <Compile Include="RegexReplacementTask.cs" />
     <Compile Include="StrongNameUtility.cs" />
     <Compile Include="ValidateStrongNameSignatureTask.cs" />
+    <Compile Include="VerifyAuthenticodeSignatureTask.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tests\AuthenticodeSignedTaskSmokeTest.proj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

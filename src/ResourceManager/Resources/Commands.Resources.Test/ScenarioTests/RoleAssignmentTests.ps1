@@ -37,14 +37,18 @@ Tests verifies negative scenarios for RoleAssignments
 function Test-RaNegativeScenarios
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
     $subscription = Get-AzureRmSubscription
 
-    # Bad OID does not throw when getting a non-existing role assignment
+    # Bad OID returns zero role assignments
     $badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
     $badObjectResult = "Cannot find principal using the specified options"
-    Assert-Throws { Get-AzureRmRoleAssignment -ObjectId $badOid} $badObjectResult
+	$assignments = Get-AzureRmRoleAssignment -ObjectId $badOid
+    Assert-AreEqual 0 $assignments.Count
+
+	# Bad OID throws if Expand Principal Groups included
+	Assert-Throws { Get-AzureRmRoleAssignment -ObjectId $badOid -ExpandPrincipalGroups } $badObjectResult
 
     # Bad UPN
     $badUpn = 'nonexistent@provider.com'
@@ -184,7 +188,7 @@ function Test-RaByServicePrincipal
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("a4b82891-ebee-4568-b606-632899bf9453")
     $newAssignment = New-AzureRmRoleAssignment `
-                        -ServicePrincipalName $servicePrincipals[0].DisplayName `
+                        -ServicePrincipalName $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope 
                         
@@ -243,8 +247,8 @@ function Test-RaUserPermissions
     
     # Test 
     $rg = Get-AzureRmResourceGroup
-
-	Assert-AreEqual 1 $rg.Count "User should have access to only 1 RG." 
+	$errorMsg = "User should have access to only 1 RG. Found: {0}" -f $rg.Count
+	Assert-AreEqual 1 $rg.Count $errorMsg
 
 	# User should not be able to create another RG as he doesnt have access to the subscription.
 	Assert-Throws{ New-AzureRmResourceGroup -Name 'NewGroupFromTest' -Location 'WestUS'}        

@@ -117,7 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthorizationRuleNameNull" xml:space="preserve">
+    <value>Authorization Rule name cannot be empty</value>
+  </data>
+  <data name="CreateNamespace" xml:space="preserve">
+    <value>Creates a Namespace</value>
+  </data>
+  <data name="CreateNamespaceAuthorizationRule" xml:space="preserve">
+    <value>Creates a Namespace Authorization Rules</value>
+  </data>
+  <data name="CreateNotificationHub" xml:space="preserve">
+    <value>Creates a Notification Hub</value>
+  </data>
+  <data name="CreateNotificationHubAuthorizationRule" xml:space="preserve">
+    <value>Creates a Notification Hub Authorization Rules</value>
+  </data>
+  <data name="DeleteNamespaceAuthorizationRule_Confirm" xml:space="preserve">
+    <value>Are you sure you want to delete the Namespace Authorization Rule '{0}'.</value>
+  </data>
+  <data name="DeleteNamespaceAuthorizationRule_WhatIf" xml:space="preserve">
+    <value>Deletes the Namespace Authorization Rule</value>
+  </data>
+  <data name="DeleteNamespace_Confirm" xml:space="preserve">
+    <value>Are you sure you want to delete the Namespace '{0}'.</value>
+  </data>
+  <data name="DeleteNamespace_WhatIf" xml:space="preserve">
+    <value>Deletes the Namespace and its corresponding DNS. It will remove all the Notification Hubs created in it as well </value>
+  </data>
+  <data name="DeleteNotificationHubAuthorizationRule_Confirm" xml:space="preserve">
+    <value>Are you sure you want to delete the Notification Hub Authorization Rule '{0}'.</value>
+  </data>
+  <data name="DeleteNotificationHubAuthorizationRule_WhatIf" xml:space="preserve">
+    <value>Deletes the Notification Hub Authorization Rule</value>
+  </data>
+  <data name="DeleteNotificationHub_Confirm" xml:space="preserve">
+    <value>Are you sure you want to delete the Notification Hub '{0}'.</value>
+  </data>
+  <data name="DeleteNotificationHub_WhatIf" xml:space="preserve">
+    <value>Deletes the Notification Hub</value>
+  </data>
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist</value>
+  </data>
+  <data name="NotificationHubNameNull" xml:space="preserve">
+    <value>Notification Hub name cannot be empty</value>
+  </data>
+  <data name="RegenerateNamespaceKey_Confirm" xml:space="preserve">
+    <value>Are you sure you want to Regenerate the Namespace Key '{0}'.</value>
+  </data>
+  <data name="RegenerateNamespaceKey_WhatIf" xml:space="preserve">
+    <value>Regenerates the Namespace Authorization Rules Primary/Secondary Key</value>
+  </data>
+  <data name="RegenerateNotificationHubKey_Confirm" xml:space="preserve">
+    <value>Are you sure you want to Regenerate the Notification Hub Key '{0}'.</value>
+  </data>
+  <data name="RegenerateNotificationHubKey_WhatIf" xml:space="preserve">
+    <value>Regenerates the Notification Hub Authorization Rules Primary/Secondary Key</value>
+  </data>
+  <data name="UpdateNamespaceAuthorizationRule_Confirm" xml:space="preserve">
+    <value>Are you sure you want to Update the Namespace  Authorization Rule '{0}'.</value>
+  </data>
+  <data name="UpdateNamespaceAuthorizationRule_WhatIf" xml:space="preserve">
+    <value>Updates the Namespace Authorization Rule Access Rights</value>
+  </data>
+  <data name="UpdateNamespace_Confirm" xml:space="preserve">
+    <value>Are you sure you want to Update the Namespace  '{0}'.</value>
+  </data>
+  <data name="UpdateNamespace_WhatIf" xml:space="preserve">
+    <value>Updates the Namespace </value>
+  </data>
+  <data name="UpdateNotificationHubAuthorizationRule_Confirm" xml:space="preserve">
+    <value>Are you sure you want to Update the Notification Hub Authorization Rule '{0}'.</value>
+  </data>
+  <data name="UpdateNotificationHubAuthorizationRule_WhatIf" xml:space="preserve">
+    <value>Updates the Notification Hub Authorization Rule Access Rights</value>
+  </data>
+  <data name="UpdateNotificationHub_Confirm" xml:space="preserve">
+    <value>Are you sure you want to Update the Notification Hub '{0}'.</value>
+  </data>
+  <data name="UpdateNotificationHub_WhatIf" xml:space="preserve">
+    <value>Updates the Notification Hub properties like the PNS Credentials, TTL and the Authorization Rules</value>
   </data>
 </root>

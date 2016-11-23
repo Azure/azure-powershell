@@ -31,5 +31,5 @@
       </Metrics>
     </DiagnosticMonitorConfiguration>
   </WadCfg>
-  <StorageAccount>definedinconfigstorage</StorageAccount>
+  <StorageAccount>[StorageAccountName]</StorageAccount>
 </PublicConfig>

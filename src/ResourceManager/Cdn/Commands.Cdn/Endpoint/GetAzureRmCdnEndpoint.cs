@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             if (EndpointName != null)
             {
-                var endpoint = CdnManagementClient.Endpoints.Get(EndpointName, ProfileName, ResourceGroupName);
+                var endpoint = CdnManagementClient.Endpoints.Get(ResourceGroupName, ProfileName, EndpointName);
                 WriteVerbose(Resources.Success);
                 WriteObject(endpoint.ToPsEndpoint());
             }
             else
             {
-                var endpoints = CdnManagementClient.Endpoints.ListByProfile(ProfileName, ResourceGroupName).Select(e => e.ToPsEndpoint());
+                var endpoints = CdnManagementClient.Endpoints.ListByProfile(ResourceGroupName, ProfileName).Select(e => e.ToPsEndpoint());
                 WriteVerbose(Resources.Success);
                 WriteObject(endpoints, true);
             }

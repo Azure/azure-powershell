@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -22,49 +24,30 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public sealed class PSAutoscaleSetting : AutoscaleSettingResource
     {
         /// <summary>
-        /// <para>Gets or sets the Propeties of the object.</para>
-        /// <para>This property hides a property of the super class to enable the display of details</para>
-        /// </summary>
-        public new PSAutoscaleSettingProperty Properties { get; set; }
-
-        /// <summary>
         /// <para>Gets or sets the Tags of the object.</para>
         /// <para>This property hides a property of the super class to enable the display of details</para>
         /// </summary>
         public new PSDictionaryElement Tags { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the PSAutoscaleSetting class.
+        /// <para>Gets or sets the Tags of the object.</para>
+        /// <para>This property hides a property of the super class to enable the display of details</para>
         /// </summary>
-        /// <param name="autoscaleSettingSpec">The autoscale setting spec</param>
-        public PSAutoscaleSetting(AutoscaleSettingGetResponse autoscaleSettingSpec)
-        {
-            // Keep the original values (types) in the base class
-            base.Properties = autoscaleSettingSpec.Properties;
-            base.Tags = autoscaleSettingSpec.Tags;
-
-            this.Id = autoscaleSettingSpec.Id;
-            this.Location = autoscaleSettingSpec.Location;
-            this.Name = autoscaleSettingSpec.Name;
-            this.Properties = new PSAutoscaleSettingProperty(autoscaleSettingSpec.Properties);
-            this.Tags = new PSDictionaryElement(autoscaleSettingSpec.Tags);
-        }
+        public new PSAutoscaleProfilesList Profiles { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSAutoscaleSetting class.
         /// </summary>
         /// <param name="autoscaleSettingSpec">The autoscale setting spec</param>
         public PSAutoscaleSetting(AutoscaleSettingResource autoscaleSettingSpec)
+            : base(id: autoscaleSettingSpec.Id, location: autoscaleSettingSpec.Location, autoscaleSettingResourceName: autoscaleSettingSpec.Name, profiles: autoscaleSettingSpec.Profiles, type: autoscaleSettingSpec.Type, tags: autoscaleSettingSpec.Tags)
         {
-            // Keep the original values (types) in the base class
-            base.Properties = autoscaleSettingSpec.Properties;
-            base.Tags = autoscaleSettingSpec.Tags;
-
-            this.Id = autoscaleSettingSpec.Id;
-            this.Location = autoscaleSettingSpec.Location;
             this.Name = autoscaleSettingSpec.Name;
-            this.Properties = new PSAutoscaleSettingProperty(autoscaleSettingSpec.Properties);
+            this.TargetResourceUri = autoscaleSettingSpec.TargetResourceUri;
+            this.Enabled = autoscaleSettingSpec.Enabled;
+            this.Notifications = autoscaleSettingSpec.Notifications;
             this.Tags = new PSDictionaryElement(autoscaleSettingSpec.Tags);
+            this.Profiles = new PSAutoscaleProfilesList(autoscaleSettingSpec.Profiles);
         }
     }
 }

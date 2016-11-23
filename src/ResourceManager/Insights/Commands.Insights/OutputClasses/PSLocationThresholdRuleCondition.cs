@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             }
 
             this.FailedLocationCount = ruleCondition.FailedLocationCount;
-            this.WindowSize = ruleCondition.WindowSize;
+            this.WindowSize = (TimeSpan)ruleCondition.WindowSize;
         }
 
         /// <summary>

@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Insights.Legacy;
+using Microsoft.Azure.Insights.Legacy.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -127,16 +129,22 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("API deprecation: The use of the legacy metrics API will be discontinued in the next release. This implies a change in the call and the output of this cmdlet.");
+
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 
-            // Call the proper API methods to return a list of raw records.
-            // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
-            MetricListResponse response = this.InsightsClient.MetricOperations.GetMetricsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;
+            // Try first with the old API for metrics
+            using (var insightsClientTemp = AzureSession.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.Context, Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment.Endpoint.ResourceManager))
+            {
+                // Call the proper API methods to return a list of raw records.
+                var response = insightsClientTemp.MetricOperations.GetMetricsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;
 
-            var records = response.MetricCollection.Value.Select(e => fullDetails ? (Metric)new PSMetric(e) : new PSMetricNoDetails(e)).ToArray();
+                // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
+                var records = response.MetricCollection.Value.Select(e => fullDetails ? (Microsoft.Azure.Insights.Legacy.Models.Metric)new PSMetric(e) : new PSMetricNoDetails(e)).ToArray();
 
-            WriteObject(sendToPipeline: records);
+                WriteObject(sendToPipeline: records);
+            }
         }
     }
 }
