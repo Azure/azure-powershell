@@ -18,5 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added storage properties to threat detection cmdlets
 
 ## Version 2.3.0
