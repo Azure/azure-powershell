@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Net;
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using System.Collections.Generic;
@@ -75,16 +77,30 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            RuleCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+            WriteWarning("This output of this cmdlet will change in the next release to return the updated or newly created object.");
+            AlertRuleResource parameters = this.CreateSdkCallParameters();
 
-            var result = this.InsightsManagementClient.AlertOperations.CreateOrUpdateRuleAsync(resourceGroupName: this.ResourceGroup, parameters: parameters).Result;
-            WriteObject(result);
+            // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
+            var result = this.InsightsManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
+
+            // Keep this response for backwards compatibility.
+            // Note: Create operations return the newly created object in the new specification, i.e. need to use result.Body
+            var response = new List<AzureOperationResponse>
+            {
+                new AzureOperationResponse()
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = HttpStatusCode.OK
+                }
+            };
+
+            WriteObject(response);
         }
 
         /// <summary>
         /// When overriden by a descendant class this method creates the set of parameters for the call to the sdk
         /// </summary>
         /// <returns>The set of parameters for the call to the sdk</returns>
-        protected abstract RuleCreateOrUpdateParameters CreateSdkCallParameters();
+        protected abstract AlertRuleResource CreateSdkCallParameters();
     }
 }

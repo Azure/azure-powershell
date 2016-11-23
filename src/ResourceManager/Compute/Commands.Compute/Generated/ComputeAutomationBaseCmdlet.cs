@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -34,6 +33,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public abstract class ComputeAutomationBaseCmdlet : Microsoft.Azure.Commands.Compute.ComputeClientBaseCmdlet
     {
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            ComputeAutomationAutoMapperProfile.Initialize();
+        }
+
         protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)
         {
             var arguments = new PSArgument[objects.Length];
