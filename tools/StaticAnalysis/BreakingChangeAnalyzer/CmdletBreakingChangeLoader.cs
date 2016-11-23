@@ -25,18 +25,18 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 {
     public class CmdletBreakingChangeLoader : MarshalByRefObject
     {
-        public static HashSet<string> TypeSet;
+        public static ModuleMetadata ModuleMetadata;
 
         /// <summary>
         /// Get cmdlets from the given assembly
         /// </summary>
         /// <param name="assmeblyPath"></param>
         /// <returns></returns>
-        public List<CmdletBreakingChangeMetadata> GetCmdlets(string assemblyPath)
+        public ModuleMetadata GetModuleMetadata(string assemblyPath)
         {
             List<CmdletBreakingChangeMetadata> results = new List<CmdletBreakingChangeMetadata>();
 
-            InitializeTypeSet();
+            ModuleMetadata = new ModuleMetadata();
 
             try
             {
@@ -164,26 +164,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
             }
 
-            return results;
-        }
-
-        private void InitializeTypeSet()
-        {
-            TypeSet = new HashSet<string>();
-            TypeSet.Add("System.String");
-            TypeSet.Add("System.Boolean");
-            TypeSet.Add("System.Byte");
-            TypeSet.Add("System.SByte");
-            TypeSet.Add("System.Int16");
-            TypeSet.Add("System.UInt16");
-            TypeSet.Add("System.Int32");
-            TypeSet.Add("System.UInt32");
-            TypeSet.Add("System.Int64");
-            TypeSet.Add("System.UInt64");
-            TypeSet.Add("System.Single");
-            TypeSet.Add("System.Double");
-            TypeSet.Add("System.Decimal");
-            TypeSet.Add("System.Char");
+            ModuleMetadata.Cmdlets = results;
+            return ModuleMetadata;
         }
     }
 }

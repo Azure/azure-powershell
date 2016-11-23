@@ -25,6 +25,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     [Serializable]
     public class TypeMetadata
     {
+        private Dictionary<string, string> _properties = new Dictionary<string, string>();
+        private List<string> _genericTypeArguments = new List<string>();
+
         /// <summary>
         /// Allow easy conversion between types and type metadata objects.
         /// </summary>
@@ -39,8 +42,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         {
 
         }
-
-        private Dictionary<string, TypeMetadata> _properties = new Dictionary<string, TypeMetadata>();
 
         public TypeMetadata(Type inputType)
         {
@@ -57,47 +58,67 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                         return p1.Name.CompareTo(p2.Name);
                                     });
 
-            // For each property, check if we have seen it before, and if so,
-            // create a new TypeMetadata object that contains information about
-            // the type EXCEPT for the properties (since we have already computed
-            // this part of the type previously)
-            // 
-            // Using this method avoids issues with circular properties (e.g., type A
-            // has a property of type B, and type B has a property of type A). This
-            // will avoid serializing types that will keep repeating.
+            ModuleMetadata moduleMetadata = CmdletBreakingChangeLoader.ModuleMetadata;
+
+            if (inputType.HasElementType)
+            {
+                ElementType = inputType.GetElementType().ToString();
+
+                if (!moduleMetadata.TypeDictionary.ContainsKey(ElementType))
+                {
+                    moduleMetadata.TypeDictionary.Add(ElementType, null);
+                    var typeMetadata = new TypeMetadata(inputType.GetElementType());
+                    moduleMetadata.TypeDictionary[ElementType] = typeMetadata;
+                }
+            }
+
+            if (inputType.IsGenericType)
+            {
+                GenericTypeName = inputType.Name.Substring(0, inputType.Name.IndexOf('`'));
+                var genericTypeArguments = inputType.GetGenericArguments();
+
+                foreach (var arg in genericTypeArguments)
+                {
+                    _genericTypeArguments.Add(arg.ToString());
+
+                    if (!moduleMetadata.TypeDictionary.ContainsKey(arg.ToString()))
+                    {
+                        moduleMetadata.TypeDictionary.Add(arg.ToString(), null);
+                        var typeMetadata = new TypeMetadata(arg);
+                        moduleMetadata.TypeDictionary[arg.ToString()] = typeMetadata;
+                    }
+                }
+            }
+
+            // For each property, check to see if we have already processed its type before,
+            // and if not, we will add it to the global dictionary and process the TypeMetadata.
             foreach (var property in properties)
             {
                 // Get the property type
                 var propertyType = property.PropertyType;
-
-                // If we have already seen this type before, create a new TypeMetadata
-                // object without iterating over its properties
-                if (CmdletBreakingChangeLoader.TypeSet.Contains(propertyType.ToString()))
+                
+                // If the type has not been seen before, we will map it to a null value in the
+                // global dictionary so we don't repeat the computation, and then create the
+                // TypeMetadata object associated with it, and finally set it as the value
+                // associated with the type name key in the dictionary.
+                if (!moduleMetadata.TypeDictionary.ContainsKey(propertyType.ToString()))
                 {
-                    TypeMetadata foundType = new TypeMetadata()
-                    {
-                        Namespace = propertyType.Namespace,
-                        Name = propertyType.Name,
-                        AssemblyQualifiedName = propertyType.AssemblyQualifiedName
-                    };
-
-                    // Add the property to the dictionary
-                    _properties.Add(property.Name, foundType);
-                    continue;
+                    moduleMetadata.TypeDictionary.Add(propertyType.ToString(), null);
+                    var typeMetadata = new TypeMetadata(propertyType);
+                    moduleMetadata.TypeDictionary[propertyType.ToString()] = typeMetadata;    
                 }
 
-                // If we haven't seen the type before, add it to the set of types
-                CmdletBreakingChangeLoader.TypeSet.Add(propertyType.ToString());
-                // Create a new TypeMetadata object that will iterate over the type properties
-                TypeMetadata newType = new TypeMetadata(property.PropertyType);
                 // Add the property to the dictionary
-                _properties.Add(property.Name, newType);
+                _properties.Add(property.Name, propertyType.ToString());
             }
         }
 
         public string Namespace { get; set; }
         public string Name { get; set; }
         public string AssemblyQualifiedName { get; set; }
-        public Dictionary<string, TypeMetadata> Properties { get { return _properties; } }
+        public Dictionary<string, string> Properties { get { return _properties; } }
+        public string ElementType { get; set; }
+        public string GenericTypeName { get; set; }
+        public List<string> GenericTypeArguments { get { return _genericTypeArguments; } }
     }
 }
