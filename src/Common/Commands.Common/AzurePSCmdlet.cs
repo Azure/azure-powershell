@@ -35,6 +35,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     /// </summary>
     public abstract class AzurePSCmdlet : PSCmdlet, IDisposable
     {
+        private const string PSVERSION = "PSVersion";
+        private const string DEFAULT_PSVERSION = "3.0.0.0";
+
         public ConcurrentQueue<string> DebugMessages { get; private set; }
 
         private RecordingTracingInterceptor _httpTracingInterceptor;
@@ -55,6 +58,35 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected virtual bool IsErrorMetricEnabled
         {
             get { return true; }
+        }
+
+        /// <summary>
+        /// Indicates installed PowerShell version
+        /// </summary>
+        private string _psVersion;
+
+        /// <summary>
+        /// Get PsVersion returned from PowerShell.Runspace instance
+        /// </summary>
+        protected string PSVersion
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_psVersion))
+                {   
+                    if(this.Host != null)
+                    {
+                        _psVersion = this.Host.Version.ToString();
+                    }
+                    else
+                    {
+                        //We are doing this for perf. reasons. This code will execute during tests and so reducing the perf. overhead while running tests.
+                        _psVersion = DEFAULT_PSVERSION;
+                    }
+                }
+
+                return _psVersion;
+            }
         }
 
         /// <summary>
@@ -243,9 +275,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
-                ModuleName, string.Format("v{0}", ModuleVersion));
-            AzureSession.ClientFactory.UserAgents.Add(userAgentValue);
+            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
+            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, string.Format("v{0}", PSVersion)));
+
             AzureSession.ClientFactory.AddHandler(
                 new CmdletInfoHandler(this.CommandRuntime.ToString(),
                     this.ParameterSetName, this._clientRequestId));

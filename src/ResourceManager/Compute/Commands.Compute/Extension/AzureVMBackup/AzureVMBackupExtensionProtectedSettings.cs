@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.StorageServices;
 using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -20,8 +21,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public AzureVMBackupBlobSasUris()
         {
             blobSASUri = new List<string>();
+            pageBlobUri = new List<string>();
+            storageCredentialsFactory = new List<StorageCredentialsFactory>();
         }
         public List<string> blobSASUri { get; set; }
+        public List<string> pageBlobUri { get; set; }
+        public List<StorageCredentialsFactory> storageCredentialsFactory { get; set; }
     }
 
     public class AzureVMBackupExtensionProtectedSettings

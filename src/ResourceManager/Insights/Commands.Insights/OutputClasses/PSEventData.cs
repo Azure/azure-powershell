@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Claims = new PSDictionaryElement(eventData.Claims);
             this.CorrelationId = eventData.CorrelationId;
             this.Description = eventData.Description;
-            this.EventChannels = eventData.EventChannels;
+            this.EventChannels = eventData.Channels;
             this.EventDataId = eventData.EventDataId;
             this.EventName = eventData.EventName.Value;
             this.Category = eventData.Category.Value;

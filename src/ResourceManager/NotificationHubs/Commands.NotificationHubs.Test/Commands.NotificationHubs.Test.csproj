@@ -9,7 +9,7 @@
     <ProjectGuid>{EA66BF2C-4E5F-42FE-912C-B62AEB588308}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.NotificationHubs.Test</RootNamespace>
+    <RootNamespace>Commands.NotificationHubs.Test</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.NotificationHubs.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -70,8 +70,8 @@
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.NotificationHubs, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.NotificationHubs.0.1.0-preview\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.Management.NotificationHubs.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.NotificationHubs.2.0.0-preview\lib\net45\Microsoft.Azure.Management.NotificationHubs.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -96,8 +96,16 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.4.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -161,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\NotificationHubServiceTests.cs" />
+    <Compile Include="ScenarioTests\NHServiceTests.cs" />
     <Compile Include="ScenarioTests\TestBaseClass.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,19 +182,19 @@
     <None Include="Resources\NewAuthorizationRule.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\NotificationHubServiceTests.ps1">
+    <None Include="ScenarioTests\NHServiceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespace.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNamespace.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespaceAuth.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNamespaceAuth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNHAuth.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNHAuth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNotificationHub.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNotificationHub.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

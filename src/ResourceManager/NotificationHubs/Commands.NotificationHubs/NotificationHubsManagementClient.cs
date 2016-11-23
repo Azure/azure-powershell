@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 if (_client == null)
                 {
                     _client =
-                        AzureSession.ClientFactory.CreateClient<Management.NotificationHubs.NotificationHubsManagementClient>(
+                        AzureSession.ClientFactory.CreateArmClient<Management.NotificationHubs.NotificationHubsManagementClient>(
                             _context,
                             AzureEnvironment.Endpoint.ResourceManager);
                 }
@@ -60,34 +60,30 @@ namespace Microsoft.Azure.Commands.NotificationHubs
         #region Namespace
         public NamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
-            NamespaceGetResponse response = Client.Namespaces.Get(resourceGroupName, namespaceName);
-            return new NamespaceAttributes(resourceGroupName, response.Value);
+            var response = Client.Namespaces.Get(resourceGroupName, namespaceName);
+            return new NamespaceAttributes(resourceGroupName, response);
         }
 
         public IEnumerable<NamespaceAttributes> ListNamespaces(string resourceGroupName)
         {
-            NamespaceListResponse response = Client.Namespaces.List(resourceGroupName);
-            IEnumerable<NamespaceAttributes> resourceList = response.Value.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
+            var response = Client.Namespaces.List(resourceGroupName);
+            IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             return resourceList;
         }
 
         public IEnumerable<NamespaceAttributes> ListAllNamespaces()
         {
-            NamespaceListResponse response = Client.Namespaces.ListAll();
+            var response = Client.Namespaces.ListAll();
 
-            var resourceList = response.Value.Select(resource => new NamespaceAttributes(null, resource));
+            var resourceList = response.Select(resource => new NamespaceAttributes(null, resource));
             return resourceList;
         }
 
-        public NamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, Dictionary<string, string> tags)
+        public NamespaceAttributes CreateNamespace(string resourceGroupName, string namespaceName, string location, Dictionary<string, string> tags)
         {
             var parameter = new NamespaceCreateOrUpdateParameters()
             {
-                Location = location,
-                Properties = new NamespaceProperties()
-                {
-                    NamespaceType = NamespaceType.NotificationHub
-                }
+                Location = location
             };
 
             if (tags != null)
@@ -96,24 +92,22 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             }
 
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-            return new NamespaceAttributes(resourceGroupName, response.Value);
+            return new NamespaceAttributes(resourceGroupName, response);
         }
+
         public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, NamespaceState state, bool critical, Dictionary<string, string> tags)
         {
             var parameter = new NamespaceCreateOrUpdateParameters()
             {
                 Location = location,
-                Properties = new NamespaceProperties()
-                {
-                    NamespaceType = NamespaceType.NotificationHub,
-                    Status = ((state == NamespaceState.Disabled) ? state : NamespaceState.Active).ToString(),
-                    Enabled = (state == NamespaceState.Disabled) ? false : true
-                }
+                NamespaceType = NamespaceType.NotificationHub,
+                Status = ((state == NamespaceState.Disabled) ? state : NamespaceState.Active).ToString(),
+                Enabled = (state == NamespaceState.Disabled) ? false : true
             };
 
             if (critical)
             {
-                parameter.Properties.Critical = critical;
+                parameter.Critical = critical;
             }
 
             if (tags != null && tags.Count() > 0)
@@ -122,81 +116,48 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             }
 
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-            return new NamespaceAttributes(resourceGroupName, response.Value);
+            return new NamespaceAttributes(resourceGroupName, response);
         }
 
-        public NamespaceLongRunningOperation BeginDeleteNamespace(string resourceGroupName, string namespaceName)
+        public void DeleteNamespace(string resourceGroupName, string namespaceName)
         {
-            NamespaceLongRunningResponse response = Client.Namespaces.Delete(resourceGroupName, namespaceName);
-            RetryAfter(response, Client.LongRunningOperationInitialTimeout);
-
-            return NamespaceLongRunningOperation.CreateLongRunningOperation(NamespaceLongRunningOperation.DeleteOperation, response);
-        }
-
-        internal NamespaceLongRunningOperation GetLongRunningOperationStatus(NamespaceLongRunningOperation longRunningOperation)
-        {
-            var response = Client.Namespaces.GetLongRunningOperationStatus(longRunningOperation.OperationLink);
-
-            RetryAfter(response, Client.LongRunningOperationInitialTimeout);
-            var result = NamespaceLongRunningOperation.CreateLongRunningOperation(longRunningOperation.OperationName, response as NamespaceLongRunningResponse);
-
-            return result;
-        }
-
-        private static void RetryAfter(LongRunningOperationResponse longrunningResponse, int longRunningOperationInitialTimeout)
-        {
-            if (longRunningOperationInitialTimeout >= 0)
-            {
-                longrunningResponse.RetryAfter = longRunningOperationInitialTimeout;
-            }
+            Client.Namespaces.Delete(resourceGroupName, namespaceName);
         }
 
         public SharedAccessAuthorizationRuleAttributes GetNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
         {
-            SharedAccessAuthorizationRuleGetResponse response = Client.Namespaces.GetAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
+            var response = Client.Namespaces.GetAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
 
-            return new SharedAccessAuthorizationRuleAttributes(response.Value);
+            return new SharedAccessAuthorizationRuleAttributes(response);
         }
 
         public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListNamespaceAuthorizationRules(string resourceGroupName, string namespaceName)
         {
-            SharedAccessAuthorizationRuleListResponse response = Client.Namespaces.ListAuthorizationRules(resourceGroupName, namespaceName);
-            IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Value.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
+            var response = Client.Namespaces.ListAuthorizationRules(resourceGroupName, namespaceName);
+            IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
 
             return resourceList;
         }
 
-        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName,
-                                List<AccessRights> rights, string primarykey, string secondaryKey = null)
+        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string location, string namespaceName, string authRuleName,
+                                List<AccessRights?> rights)
         {
             var parameter = new SharedAccessAuthorizationRuleCreateOrUpdateParameters()
             {
-                Name = authRuleName,
+                Location = location,
                 Properties = new SharedAccessAuthorizationRuleProperties()
                 {
-                    KeyName = authRuleName,
-                    Rights = new List<AccessRights>(rights),
-                    PrimaryKey = primarykey,
-                    ClaimType = SharedAccessAuthorizationRuleAttributes.DefaultClaimType,
-                    ClaimValue = SharedAccessAuthorizationRuleAttributes.DefaultClaimValue
+                    Rights = new List<AccessRights?>(rights)
                 }
             };
 
-            parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey() : secondaryKey;
-
             var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authRuleName, parameter);
-            return new SharedAccessAuthorizationRuleAttributes(response.Value);
+            return new SharedAccessAuthorizationRuleAttributes(response);
         }
-
-        public bool DeleteNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
+        
+        public void DeleteNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
         {
-            if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return false;
-            }
-
-            var response = Client.Namespaces.DeleteAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
-            return true;
+            Client.Namespaces.DeleteAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
         }
 
         public ResourceListKeys GetNamespaceListKeys(string resourceGroupName, string namespaceName, string authRuleName)
@@ -205,25 +166,37 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             return listKeys;
         }
 
+        public ResourceListKeys RegenerateNamespacKeys(string resourceGroupName, string namespaceName, string authRuleName, string policyKeyName)
+        {
+            ResourceListKeys listKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName,
+                new PolicykeyResource()
+                {
+                    PolicyKey = policyKeyName
+                });
+
+            return listKeys;
+        }
+
+
         #endregion
 
         #region NotificationHub
         public NotificationHubAttributes GetNotificationHub(string resourceGroupName, string namespaceName, string notificationHubName)
         {
-            NotificationHubGetResponse response = Client.NotificationHubs.Get(resourceGroupName, namespaceName, notificationHubName);
-            return new NotificationHubAttributes(response.Value);
+            var response = Client.NotificationHubs.Get(resourceGroupName, namespaceName, notificationHubName);
+            return new NotificationHubAttributes(response);
         }
 
         public NotificationHubAttributes GetNotificationHubPNSCredentials(string resourceGroupName, string namespaceName, string notificationHubName)
         {
-            NotificationHubGetResponse response = Client.NotificationHubs.GetPnsCredentials(resourceGroupName, namespaceName, notificationHubName);
-            return new NotificationHubAttributes(response.Value);
+            var response = Client.NotificationHubs.GetPnsCredentials(resourceGroupName, namespaceName, notificationHubName);
+            return new NotificationHubAttributes(response);
         }
 
         public IEnumerable<NotificationHubAttributes> ListNotificationHubs(string resourceGroupName, string namespaceName)
         {
-            NotificationHubListResponse response = Client.NotificationHubs.List(resourceGroupName, namespaceName);
-            IEnumerable<NotificationHubAttributes> resourceList = response.Value.Select(resource => new NotificationHubAttributes(resource));
+            var response = Client.NotificationHubs.List(resourceGroupName, namespaceName);
+            IEnumerable<NotificationHubAttributes> resourceList = response.Select(resource => new NotificationHubAttributes(resource));
             return resourceList;
         }
 
@@ -232,25 +205,22 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             var parameter = new NotificationHubCreateOrUpdateParameters()
             {
                 Location = nhAttributes.Location,
-                Properties = new NotificationHubProperties()
-                {
-                    AdmCredential = nhAttributes.AdmCredential,
-                    ApnsCredential = nhAttributes.ApnsCredential,
-                    BaiduCredential = nhAttributes.BaiduCredential,
-                    GcmCredential = nhAttributes.GcmCredential,
-                    MpnsCredential = nhAttributes.MpnsCredential,
-                    WnsCredential = nhAttributes.WnsCredential,
-                    Name = nhAttributes.Name,
-                    RegistrationTtl = nhAttributes.RegistrationTtl
-                }
+                AdmCredential = nhAttributes.AdmCredential,
+                ApnsCredential = nhAttributes.ApnsCredential,
+                BaiduCredential = nhAttributes.BaiduCredential,
+                GcmCredential = nhAttributes.GcmCredential,
+                MpnsCredential = nhAttributes.MpnsCredential,
+                WnsCredential = nhAttributes.WnsCredential,
+                Name = nhAttributes.Name,
+                RegistrationTtl = nhAttributes.RegistrationTtl
             };
 
             if (nhAttributes.Tags != null)
             {
                 parameter.Tags = new Dictionary<string, string>(nhAttributes.Tags);
             }
-            var response = Client.NotificationHubs.Create(resourceGroupName, namespaceName, nhAttributes.Name, parameter);
-            return new NotificationHubAttributes(response.Value);
+            var response = Client.NotificationHubs.CreateOrUpdate(resourceGroupName, namespaceName, nhAttributes.Name, parameter);
+            return new NotificationHubAttributes(response);
         }
 
         public NotificationHubAttributes UpdateNotificationHub(string resourceGroupName, string namespaceName, NotificationHubAttributes nhAttributes)
@@ -259,84 +229,79 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             {
                 Location = nhAttributes.Location,
                 Tags = new Dictionary<string, string>(nhAttributes.Tags),
-                Properties = new NotificationHubProperties()
-                {
-                    AdmCredential = nhAttributes.AdmCredential,
-                    ApnsCredential = nhAttributes.ApnsCredential,
-                    BaiduCredential = nhAttributes.BaiduCredential,
-                    GcmCredential = nhAttributes.GcmCredential,
-                    MpnsCredential = nhAttributes.MpnsCredential,
-                    WnsCredential = nhAttributes.WnsCredential,
-                    Name = nhAttributes.Name,
-                    RegistrationTtl = nhAttributes.RegistrationTtl
-                }
+                AdmCredential = nhAttributes.AdmCredential,
+                ApnsCredential = nhAttributes.ApnsCredential,
+                BaiduCredential = nhAttributes.BaiduCredential,
+                GcmCredential = nhAttributes.GcmCredential,
+                MpnsCredential = nhAttributes.MpnsCredential,
+                WnsCredential = nhAttributes.WnsCredential,
+                Name = nhAttributes.Name,
+                RegistrationTtl = nhAttributes.RegistrationTtl
             };
 
-            var response = Client.NotificationHubs.Update(resourceGroupName, namespaceName, nhAttributes.Name, parameter);
-            return new NotificationHubAttributes(response.Value);
+            var response = Client.NotificationHubs.CreateOrUpdate(resourceGroupName, namespaceName, nhAttributes.Name, parameter);
+            return new NotificationHubAttributes(response);
         }
 
-        public bool DeleteNotificationHub(string resourceGroupName, string namespaceName, string notificationHubName)
+        public void DeleteNotificationHub(string resourceGroupName, string namespaceName, string notificationHubName)
         {
-            var response = Client.NotificationHubs.Delete(resourceGroupName, namespaceName, notificationHubName);
-            return true;
+            Client.NotificationHubs.Delete(resourceGroupName, namespaceName, notificationHubName);
         }
 
         public SharedAccessAuthorizationRuleAttributes GetNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName, string notificationHubName, string authRuleName)
         {
-            SharedAccessAuthorizationRuleGetResponse response = Client.NotificationHubs.GetAuthorizationRule(resourceGroupName, namespaceName,
+            var response = Client.NotificationHubs.GetAuthorizationRule(resourceGroupName, namespaceName,
                                         notificationHubName, authRuleName);
 
-            return new SharedAccessAuthorizationRuleAttributes(response.Value);
+            return new SharedAccessAuthorizationRuleAttributes(response);
         }
 
         public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName,
                                                     string notificationHubName)
         {
-            SharedAccessAuthorizationRuleListResponse response = Client.NotificationHubs.ListAuthorizationRules(resourceGroupName, namespaceName, notificationHubName);
-            IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Value.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
+            var response = Client.NotificationHubs.ListAuthorizationRules(resourceGroupName, namespaceName, notificationHubName);
+            IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
 
             return resourceList;
         }
 
-        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName,
+        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNotificationHubAuthorizationRules(string resourceGroupName, string location, string namespaceName,
                                 string notificationHubName, string authRuleName,
-                                List<AccessRights> rights, string primarykey, string secondaryKey)
+                                List<AccessRights?> rights)
         {
             var parameter = new SharedAccessAuthorizationRuleCreateOrUpdateParameters()
             {
-                Name = authRuleName,
+                Location = location,
                 Properties = new SharedAccessAuthorizationRuleProperties()
                 {
-                    KeyName = authRuleName,
-                    Rights = new List<AccessRights>(rights),
-                    PrimaryKey = primarykey,
-                    ClaimType = SharedAccessAuthorizationRuleAttributes.DefaultClaimType,
-                    ClaimValue = SharedAccessAuthorizationRuleAttributes.DefaultClaimValue
+                    Rights = new List<AccessRights?>(rights),
                 }
             };
 
-            parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey() : secondaryKey;
-
             var response = Client.NotificationHubs.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, notificationHubName, authRuleName, parameter);
-            return new SharedAccessAuthorizationRuleAttributes(response.Value);
+            return new SharedAccessAuthorizationRuleAttributes(response);
         }
 
-        public bool DeleteNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName, string notificationHubName, string authRuleName)
+        public void DeleteNotificationHubAuthorizationRules(string resourceGroupName, string namespaceName, string notificationHubName, string authRuleName)
         {
-            if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return false;
-            }
-
-            var response = Client.NotificationHubs.DeleteAuthorizationRule(resourceGroupName, namespaceName, notificationHubName, authRuleName);
-            return true;
+            Client.NotificationHubs.DeleteAuthorizationRule(resourceGroupName, namespaceName, notificationHubName, authRuleName);
         }
 
         public ResourceListKeys GetNotificationHubListKeys(string resourceGroupName, string namespaceName, string notificationHubName, string authRuleName)
         {
             ResourceListKeys listKeys = Client.NotificationHubs.ListKeys(resourceGroupName, namespaceName,
                                         notificationHubName, authRuleName);
+
+            return listKeys;
+        }
+
+        public ResourceListKeys RegenerateNotificationHubKeys(string resourceGroupName, string namespaceName, string notificationHubName, string authRuleName, string policyKeyName)
+        {
+            ResourceListKeys listKeys = Client.NotificationHubs.RegenerateKeys(resourceGroupName, namespaceName, notificationHubName, authRuleName,
+                new PolicykeyResource()
+                {
+                    PolicyKey = policyKeyName
+                });
 
             return listKeys;
         }

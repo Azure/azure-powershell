@@ -14,6 +14,15 @@
 
 <#
 .SYNOPSIS
+Generate new WAD config file from given template and storage account name
+#>
+function New-WADConfigFromTemplate ($inputPath, $outputPath, $storageAccountName)
+{
+    (Get-Content $inputPath).replace('[StorageAccountName]', $storageAccountName) | Set-Content $outputPath;
+}
+
+<#
+.SYNOPSIS
 Test the basic usage of the Set/Get/Remove virtual machine diagnostics extension command
 #>
 function Test-DiagnosticsExtensionBasic
@@ -28,7 +37,7 @@ function Test-DiagnosticsExtensionBasic
         $vmname = $vm.Name
 
         # This is the storage name defined in config file
-        $storagename = 'definedinconfigstorage'
+        $storagename = 'stoinconfig' + $rgname
         $storagetype = 'Standard_GRS'
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
 
@@ -40,8 +49,13 @@ function Test-DiagnosticsExtensionBasic
             Assert-Null $extension
         }
 
+        $configTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml";
+        $configFilePath = "$TestOutputRoot\ConfigFiles\config-$rgname.xml";
+
+        New-WADConfigFromTemplate $configTemplate $configFilePath $storagename;
+
         # Test Set and Get command. It should use the storage account defined in configuration file
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml"
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath $configFilePath
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
@@ -60,6 +74,11 @@ function Test-DiagnosticsExtensionBasic
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+
+        if (Test-Path $configFilePath)
+        {
+            Remove-Item $configFilePath;
+        }
     }
 }
 
@@ -80,7 +99,7 @@ function Test-DiagnosticsExtensionSepcifyStorageAccountName
         $vmname = $vm.Name
 
         # This storage name will be used in command line directly when set diagnostics extension
-        $storagename = 'definedincommandline'
+        $storagename = 'stoincmd' + $rgname
         $storagetype = 'Standard_GRS'
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
 
@@ -228,7 +247,7 @@ function Test-VmssDiagnosticsExtension
         $diagExtType = 'IaaSDiagnostics';
 
         # This storage name will be used in command line directly when set diagnostics extension
-        $storagename = 'definedinconfigstorage';
+        $storagename = 'stoinconfig' + $rgname;
         $storagetype = 'Standard_GRS';
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype;
 
@@ -242,8 +261,15 @@ function Test-VmssDiagnosticsExtension
 
         # Full parameter test
         $version = '1.5';
-        $publicSettingFilePath = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPublicConfig.json";
-        $privateSettingFilePath = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPrivateConfig.json";
+        $publicSettingTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPublicConfig.json";
+        $privateSettingTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPrivateConfig.json";
+
+        $publicSettingFilePath = "$TestOutputRoot\ConfigFiles\publicconfig-$rgname.json";
+        $privateSettingFilePath = "$TestOutputRoot\ConfigFiles\privateconfig-$rgname.json";
+
+        New-WADConfigFromTemplate $publicSettingTemplate $publicSettingFilePath $storagename
+        New-WADConfigFromTemplate $privateSettingTemplate $privateSettingFilePath $storagename
+
         $vmss = Add-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname -SettingFilePath $publicSettingFilePath `
             -ProtectedSettingFilePath $privateSettingFilePath -TypeHandlerVersion $version -AutoUpgradeMinorVersion $false -Force;
 
@@ -292,5 +318,15 @@ function Test-VmssDiagnosticsExtension
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+
+        if (Test-Path $publicSettingFilePath)
+        {
+            Remove-Item $publicSettingFilePath;
+        }
+
+        if (Test-Path $privateSettingFilePath)
+        {
+            Remove-Item $privateSettingFilePath;
+        }
     }
 }

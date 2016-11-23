@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -33,17 +32,17 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     {
         private readonly AddAzureRmAutoscaleSettingCommand cmdlet;
         private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
-        private readonly Mock<IAutoscaleOperations> insightsAutoscaleOperationsMock;
+        private readonly Mock<IAutoscaleSettingsOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private AzureOperationResponse response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource> response;
         private string resourceGroup;
         private string settingName;
-        private AutoscaleSettingCreateOrUpdateParameters createOrUpdatePrms;
+        private AutoscaleSettingResource createOrUpdatePrms;
 
         public AddAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsAutoscaleOperationsMock = new Mock<IAutoscaleOperations>();
+            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new AddAzureRmAutoscaleSettingCommand()
@@ -52,22 +51,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 InsightsManagementClient = insightsManagementClientMock.Object
             };
 
-            response = new AzureOperationResponse()
+            response = new AzureOperationResponse<AutoscaleSettingResource>()
             {
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK,
+                Body = new AutoscaleSettingResource()
             };
 
-            insightsAutoscaleOperationsMock.Setup(f => f.CreateOrUpdateSettingAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<AutoscaleSettingCreateOrUpdateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<AzureOperationResponse>(response))
-                .Callback((string resourceGrp, string settingNm, AutoscaleSettingCreateOrUpdateParameters createOrUpdateParams, CancellationToken t) =>
+            insightsAutoscaleOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<AutoscaleSettingResource>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource>>(response))
+                .Callback((string resourceGrp, string settingNm, AutoscaleSettingResource createOrUpdateParams, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     resourceGroup = resourceGrp;
                     settingName = settingNm;
                     createOrUpdatePrms = createOrUpdateParams;
                 });
 
-            insightsManagementClientMock.SetupGet(f => f.AutoscaleOperations).Returns(this.insightsAutoscaleOperationsMock.Object);
+            insightsManagementClientMock.SetupGet(f => f.AutoscaleSettings).Returns(this.insightsAutoscaleOperationsMock.Object);
         }
 
         [Fact]
@@ -121,7 +119,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             var notification = new AutoscaleNotification
             {
                 Email = eMailNotification,
-                Operation = "Scale",
                 Webhooks = null
             };
 
@@ -141,7 +138,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 TimeGrain = TimeSpan.FromMinutes(1),
                 ScaleActionCooldown = TimeSpan.FromMinutes(5),
                 ScaleActionDirection = ScaleDirection.Increase,
-                ScaleActionScaleType = ScaleType.ChangeCount,
                 ScaleActionValue = "1"
             };
 
@@ -172,20 +168,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 profiles = new List<AutoscaleProfile>() { this.CreateAutoscaleProfile() };
             }
 
-            var settingProperty = new AutoscaleSetting
-            {
-                Name = name,
-                Enabled = true,
-                Profiles = profiles,
-                TargetResourceUri = Utilities.ResourceUri
-            };
-
             var setting = new AutoscaleSettingResource
             {
                 Location = location,
                 Name = name,
-                Properties = new PSAutoscaleSettingProperty(settingProperty),
-                Tags = new LazyDictionary<string, string>()
+                Enabled = true,
+                Profiles = profiles,
+                TargetResourceUri = Utilities.ResourceUri,
+                Tags = new Dictionary<string, string>()
             };
 
             return new PSAutoscaleSetting(setting);
