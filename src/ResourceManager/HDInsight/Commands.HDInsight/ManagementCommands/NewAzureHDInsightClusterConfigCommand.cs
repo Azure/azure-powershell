@@ -46,9 +46,12 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.DefaultStorageAccountKey = value; }
         }
 
-        [Parameter(
-            HelpMessage = "Gets or sets the type of the default storage account.")]
-        public StorageType DefaultStorageAccountType { get; set; }
+        [Parameter(HelpMessage = "Gets or sets the type of the default storage account.")]
+        public StorageType DefaultStorageAccountType
+        {
+            get { return _config.DefaultStorageAccountType; }
+            set { _config.DefaultStorageAccountType = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
         public AzureHDInsightMetastore OozieMetastore
