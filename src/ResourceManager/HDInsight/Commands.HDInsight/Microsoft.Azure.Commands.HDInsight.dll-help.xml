@@ -5471,7 +5471,7 @@
           <maml:description>
             <maml:para>Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">StorageType</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">StorageType</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>OozieMetastore</maml:name>
@@ -5603,7 +5603,7 @@
         <maml:description>
           <maml:para>Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">StorageType</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">StorageType</command:parameterValue>
         <dev:type>
           <maml:name>StorageType</maml:name>
           <maml:uri/>
@@ -8224,6 +8224,13 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>StorageAccountType</maml:name>
+          <maml:description>
+					<maml:para>Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore. Defaults to the value in the config object, if not specified.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">StorageType</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
             <maml:para />
@@ -8276,6 +8283,17 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>StorageAccountType</maml:name>
+          <maml:description>
+					<maml:para>Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore. Defaults to the value in the config object, if not specified.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">StorageType</command:parameterValue>
+          <dev:type>
+            <maml:name>StorageType</maml:name>
+            <maml:uri/>
+          </dev:type>
+        </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
         <maml:description>
@@ -8375,7 +8393,6 @@
             | Set-AzureRmHDInsightDefaultStorage `
                 -StorageAccountName &quot;$secondStorageAccountName.blob.core.contoso.net&quot; `
                 -StorageAccountKey $key2 `
-                -StorageContainer $storageContainer `
             | New-AzureRmHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `

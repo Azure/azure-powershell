@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            Config.DefaultStorageAccountType = StorageAccountType ?? StorageType.AzureStorage;
+            Config.DefaultStorageAccountType = StorageAccountType ?? Config.DefaultStorageAccountType;
             Config.DefaultStorageAccountName = StorageAccountName;
             Config.DefaultStorageAccountKey = StorageAccountKey;
             WriteObject(Config);
