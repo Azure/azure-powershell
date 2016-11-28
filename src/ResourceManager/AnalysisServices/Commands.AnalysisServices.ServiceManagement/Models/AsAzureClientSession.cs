@@ -16,7 +16,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Security;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Represents current AS Azure session.
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         /// </summary>
         public static string GetAadAuthenticatedToken(AsAzureContext asAzureContext, SecureString password, PromptBehavior promptBehavior, string clientId, string resourceUri, Uri resourceRedirectUri)
         {
-            var authUriBuilder = new UriBuilder(asAzureContext.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl]);
+            var authUriBuilder = new UriBuilder((string)asAzureContext.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl]);
             authUriBuilder.Path = string.IsNullOrEmpty(asAzureContext.Account.Tenant)
                 ? "common"
                 : asAzureContext.Account.Tenant; 

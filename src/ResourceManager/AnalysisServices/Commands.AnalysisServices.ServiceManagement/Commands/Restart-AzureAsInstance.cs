@@ -19,26 +19,29 @@ using System.Management.Instrumentation;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.AnalysisServices.ServiceManagement.Properties;
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
     [Cmdlet("Restart", "AzureAnalysisServicesInstance", SupportsShouldProcess=true)]
     [Alias("Restart-AzureAsInstance")]
-    [OutputType(typeof(AsAzureProfile))]
-    public class RestartAzureAnalysisServer: AzurePSCmdlet, IModuleAssemblyInitializer
+    [OutputType(typeof(bool))]
+    public class RestartAzureAnalysisServer: AzurePSCmdlet
     {
         private string serverName;
 
         [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server to restart")]
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         protected override AzureContext DefaultContext
         {
@@ -114,13 +117,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
 
                 Uri restartBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
 
-                var restartEndpoint = string.Format(context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], serverName);
+                var restartEndpoint = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], serverName);
                 using (HttpResponseMessage message = CallPostAsync(
                     restartBaseUri,
                     restartEndpoint,
                     tokenCacheItem.AccessToken).Result)
                 {
                     message.EnsureSuccessStatusCode();
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 }
             }
         }
@@ -139,11 +146,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
                 HttpResponseMessage response = await client.PostAsync(requestURL, new StringContent(""));
                 return response;
             }
-        }
-
-        public void OnImport()
-        {
-            // Nothing to do on assembly initialize
         }
     }
 }

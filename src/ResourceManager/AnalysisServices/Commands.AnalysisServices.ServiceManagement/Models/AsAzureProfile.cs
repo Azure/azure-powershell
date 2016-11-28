@@ -14,9 +14,10 @@
 
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Represents AS Azure profile structure with default context, environments and token cache.
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         /// <summary>
         /// Gets or sets AS Azure environments.
         /// </summary>
-        public Dictionary<string, AsAzureEnvironment> Environments { get; set; }
+        public Hashtable Environments { get; set; }
 
         /// <summary>
         /// Gets or sets the AS azure context object.
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         /// </summary>
         public AsAzureProfile()
         {
-            this.Environments = new Dictionary<string, AsAzureEnvironment>();
+            this.Environments = new Hashtable();
         }
 
         /// <summary>

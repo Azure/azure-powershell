@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Commands.AnalysisServices.ServiceManagement")]
+[assembly: AssemblyTitle("Commands.AnalysisServices.Dataplane")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Commands.AnalysisServices.ServiceManagement")]
+[assembly: AssemblyProduct("Commands.AnalysisServices.Dataplane")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

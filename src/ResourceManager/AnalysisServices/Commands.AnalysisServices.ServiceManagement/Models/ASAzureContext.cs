@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Represents current AS Azure client context.

@@ -18,10 +18,10 @@ using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
-using Microsoft.Azure.Commands.AnalysisServices.ServiceManagement.Properties;
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
             {
                 if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(EnvironmentName))
                 {
-                    AsEnvironment = AsAzureClientSession.Instance.Profile.Environments[EnvironmentName];
+                    AsEnvironment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[EnvironmentName];
                 }
                 else
                 {

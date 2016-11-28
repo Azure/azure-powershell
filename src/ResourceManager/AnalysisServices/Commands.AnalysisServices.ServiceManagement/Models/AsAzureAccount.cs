@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     [Serializable]
     public partial class AsAzureAccount

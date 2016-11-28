@@ -13,9 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     [Serializable]
     public class AsAzureEnvironment
@@ -23,12 +24,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.ServiceManagement
         public AsAzureEnvironment(string Name)
         {
             this.Name = Name;
-            this.Endpoints = new Dictionary<AsRolloutEndpoints, string>();
+            this.Endpoints = new Hashtable();
         }
 
         public string Name { get; set; }
 
-        public Dictionary<AsRolloutEndpoints, string> Endpoints { get; set; }
+        public Hashtable Endpoints { get; set; }
 
         public enum AsRolloutEndpoints
         {
