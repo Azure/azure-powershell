@@ -78,22 +78,28 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
 		Assert-AreEqual $db.CurrentServiceObjectiveName Basic
 		Assert-AreEqual $db.CollationName "Japanese_Bushu_Kakusu_100_CS_AS"
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
+		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
 
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = $server | New-AzureRmSqlDatabase -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
 		Assert-AreEqual $db.CurrentServiceObjectiveName Basic
 		Assert-AreEqual $db.CollationName "Japanese_Bushu_Kakusu_100_CS_AS"
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
+		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
 	}
 	finally
 	{
@@ -142,20 +148,26 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 		{
 			# Alter all properties
 			$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_new_value"}
 			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db1.MaxSizeBytes 1GB
 			Assert-AreEqual $db1.Edition Basic
 			Assert-AreEqual $db1.CurrentServiceObjectiveName Basic
 			Assert-AreEqual $db1.CollationName $db.CollationName
+			Assert-NotNull $db.Tags
+			Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
+			Assert-AreEqual "tag_new_value" $db.Tags["tag_key"]
 
 			# Alter all properties using piping
-			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
+			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1 -Tags @{"tag_key"="tag_new_value"}
 			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db2.MaxSizeBytes 100GB
 			Assert-AreEqual $db2.Edition Standard
 			Assert-AreEqual $db2.CurrentServiceObjectiveName S1
 			Assert-AreEqual $db2.CollationName $db.CollationName
+			Assert-NotNull $db.Tags
+			Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
+			Assert-AreEqual "tag_new_value" $db.Tags["tag_key"]
 
 			# Create and alter data warehouse database.
 			$databaseName = Get-DatabaseName
@@ -176,20 +188,26 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 		{
 			# Alter all properties
 			$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_new_value"}
 			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db1.MaxSizeBytes 250GB
 			Assert-AreEqual $db1.Edition Standard
 			Assert-AreEqual $db1.CurrentServiceObjectiveName S0
 			Assert-AreEqual $db1.CollationName $db.CollationName
+			Assert-NotNull $db.Tags
+			Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
+			Assert-AreEqual "tag_new_value" $db.Tags["tag_key"]
 
 			# Alter all properties using piping
-			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
+			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1 -Tags @{"tag_key"="tag_new_value"}
 			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db2.MaxSizeBytes 1GB
 			Assert-AreEqual $db2.Edition Basic
 			Assert-AreEqual $db2.CurrentServiceObjectiveName Basic
 			Assert-AreEqual $db2.CollationName $db.CollationName
+			Assert-NotNull $db.Tags
+			Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
+			Assert-AreEqual "tag_new_value" $db.Tags["tag_key"]
 		}
 	}
 	finally
