@@ -96,15 +96,15 @@ Tests getting a list of Batch node agent skus
 #>
 function Test-GetBatchNodeAgentSkus
 {
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-	# Get the node agent skus
-	$nodeAgentSkus = Get-AzureBatchNodeAgentSku -BatchContext $context
+    # Get the node agent skus
+    $nodeAgentSkus = Get-AzureBatchNodeAgentSku -BatchContext $context
 
-	foreach($nodeAgentSku in $nodeAgentSkus)
+    foreach($nodeAgentSku in $nodeAgentSkus)
     {
         Assert-True { $nodeAgentSku.Id.StartsWith("batch.node") }
-		Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
-		Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
+        Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
+        Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
     }
 }
