@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Edition = Edition,
                 MaxSizeBytes = MaxSizeBytes,
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tags") ? TagsConversionHelper.CreateTagDictionary(Tags, validate: true) : model.FirstOrDefault().Tags,
+                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ElasticPoolName = ElasticPoolName,
                 Location = model.FirstOrDefault().Location,
             });
