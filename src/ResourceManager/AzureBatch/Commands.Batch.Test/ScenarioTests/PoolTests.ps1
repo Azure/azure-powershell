@@ -30,7 +30,7 @@ function Test-PoolCRUD
         $targetOSVersion = "*"
         $targetDedicated = 0
         $vmSize = "small"
-		$paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
         New-AzureBatchPool $poolId1 -CloudServiceConfiguration $paasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
 
         $vmSize = "standard_a1"
@@ -39,7 +39,7 @@ function Test-PoolCRUD
         $osSKU = "16.04.0-LTS"
         $nodeAgent = "batch.node.ubuntu 16.04"
         $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @($offer, $publisher, $osSKU)
-		$iaasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, $nodeAgent)
+        $iaasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, $nodeAgent)
         New-AzureBatchPool $poolId2 -VirtualMachineConfiguration $iaasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
 
         # List the pools to ensure they were created

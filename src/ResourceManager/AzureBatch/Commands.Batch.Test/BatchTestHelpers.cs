@@ -630,8 +630,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             foreach (string id in jobIds)
             {
-                ProxyModels.CloudJob job = new ProxyModels.CloudJob();
-                job.Id = id;
+                ProxyModels.CloudJob job = new ProxyModels.CloudJob(id: id);
                 jobs.Add(job);
             }
 

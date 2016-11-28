@@ -99,12 +99,12 @@ Tests getting remote login settings from compute node
 #>
 function Test-GetRemoteLoginSettings
 {
-	param([string]$poolId, [string]$computeNodeId)
-	
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-	$remoteLoginSettings = Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
+    param([string]$poolId, [string]$computeNodeId)
+    
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $remoteLoginSettings = Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzureBatchRemoteLoginSettings -BatchContext $context
 
-	Assert-AreNotEqual $null $remoteLoginSettings.IPAddress
-	Assert-AreNotEqual $null $remoteLoginSettings.Port
+    Assert-AreNotEqual $null $remoteLoginSettings.IPAddress
+    Assert-AreNotEqual $null $remoteLoginSettings.Port
 }
 
