@@ -60,10 +60,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
             ModuleMetadata moduleMetadata = CmdletBreakingChangeLoader.ModuleMetadata;
 
+            // If the type is an array
             if (inputType.HasElementType)
             {
+                // Get the element type of the array
                 ElementType = inputType.GetElementType().ToString();
 
+                // If the element type is not in the type dictionary,
+                // add it and check its properties
                 if (!moduleMetadata.TypeDictionary.ContainsKey(ElementType))
                 {
                     moduleMetadata.TypeDictionary.Add(ElementType, null);
@@ -72,11 +76,17 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 }
             }
 
+            // If the type is a generic
             if (inputType.IsGenericType)
             {
+                // Get the generic type name
                 GenericTypeName = inputType.Name.Substring(0, inputType.Name.IndexOf('`'));
+
+                // Get the argument types
                 var genericTypeArguments = inputType.GetGenericArguments();
 
+                // For each of the arguments, add them to the list of arguments
+                // and check if the type is in the type dictionary
                 foreach (var arg in genericTypeArguments)
                 {
                     _genericTypeArguments.Add(arg.ToString());
