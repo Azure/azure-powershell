@@ -1,7 +1,23 @@
-﻿namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdletAlias
+﻿namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdlet
 {
     using System.Management.Automation;
 
+    [Cmdlet(VerbsDiagnostic.Test, "RemoveCmdlet")]
+    public class TestRemoveCmdlet : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-RemoveCmdlet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdletAlias
+{
+    using System.Management.Automation;
+
+    [Alias("Test-CmdletAlias")]
     [Cmdlet(VerbsDiagnostic.Test, "RemoveCmdletAlias")]
     public class TestRemoveCmdletAlias : Cmdlet
     {
@@ -17,8 +33,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddAliasForChangedCmdlet
 {
     using System.Management.Automation;
 
-    [Alias("Test-AddAliasForChangedCmdlet")]
-    [Cmdlet(VerbsDiagnostic.Test, "ChangedCmdlet")]
+    [Cmdlet(VerbsDiagnostic.Test, "AddAliasForChangedCmdlet")]
     public class TestAddAliasForChangedCmdlet : Cmdlet
     {
         protected override void BeginProcessing()
@@ -33,7 +48,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveSupportsShouldProc
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsShouldProcess")]
+    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsShouldProcess", SupportsShouldProcess = true)]
     public class TestRemoveSupportsShouldProcess : Cmdlet
     {
         protected override void BeginProcessing()
@@ -48,7 +63,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveSupportsPaging
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsPaging")]
+    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsPaging", SupportsPaging = true)]
     public class TestRemoveSupportsPaging : Cmdlet
     {
         protected override void BeginProcessing()
@@ -66,6 +81,9 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameter
     [Cmdlet(VerbsDiagnostic.Test, "RemoveParameter")]
     public class TestRemoveParameter : Cmdlet
     {
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Switch { get; set; }
+
         protected override void BeginProcessing()
         {
             WriteObject("Test-RemoveParameter BeginProcessing()");
@@ -81,6 +99,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameterAlias
     [Cmdlet(VerbsDiagnostic.Test, "RemoveParameterAlias")]
     public class TestRemoveParameterAlias : Cmdlet
     {
+        [Alias("SwitchAlias")]
         [Parameter(Mandatory = false)]
         public SwitchParameter Switch { get; set; }
 
@@ -99,9 +118,8 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddAliasForChangedParame
     [Cmdlet(VerbsDiagnostic.Test, "AddAliasForChangedParameter")]
     public class TestAddAliasForChangedParameter : Cmdlet
     {
-        [Alias("Parameter")]
         [Parameter(Mandatory = false)]
-        public string ChangedParameter { get; set; }
+        public string Parameter { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -118,7 +136,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.MakeParameterRequired
     [Cmdlet(VerbsDiagnostic.Test, "MakeParameterRequired")]
     public class TestMakeParameterRequired : Cmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter Switch { get; set; }
 
         protected override void BeginProcessing()
@@ -136,13 +154,13 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterOrder
     [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterOrder")]
     public class TestChangeParameterOrder : Cmdlet
     {
-        [Parameter(Position = 1)]
+        [Parameter(Position = 0)]
         public SwitchParameter FirstSwitch { get; set; }
 
-        [Parameter(Position = 2)]
+        [Parameter(Position = 1)]
         public SwitchParameter SecondSwitch { get; set; }
 
-        [Parameter(Position = 0)]
+        [Parameter(Position = 2)]
         public SwitchParameter ThirdSwitch { get; set; }
 
         protected override void BeginProcessing()
@@ -161,7 +179,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeValidateSet
     public class TestChangeValidateSet : Cmdlet
     {
         [Parameter(Mandatory = false)]
-        [ValidateSet("First")]
+        [ValidateSet("First", "Second", "Third")]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -180,7 +198,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddValidateSet
     public class TestAddValidateSet : Cmdlet
     {
         [Parameter(Mandatory = false)]
-        [ValidateSet("Foo")]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -195,7 +212,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputType
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputType"), OutputType(typeof(int))]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputType"), OutputType(typeof(string))]
     public class TestChangeOutputType : Cmdlet
     {
         protected override void BeginProcessing()
@@ -210,19 +227,19 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName
 {
     using System.Management.Automation;
 
-    public class ChangedOutput
+    public class TestOutput
     {
         public string PropertyOne { get; set; }
         public int PropertyTwo { get; set; }
         public bool PropertyThree { get; set; }
     }
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputTypeName"), OutputType(typeof(ChangedOutput))]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputTypeName"), OutputType(typeof(TestOutput))]
     public class TestChangeOutputTypeName : Cmdlet
     {
         protected override void BeginProcessing()
         {
-            WriteObject("Test-ChangeOutputTypeName BeginProcess()");
+            WriteObject("Test-ChangeOutputTypeName BeginProcessing()");
             WriteInformation("Info", null);
         }
     }
@@ -234,7 +251,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType
 
     public class TestType
     {
-        public int PropertyOne { get; set; }
+        public string PropertyOne { get; set; }
         public int PropertyTwo { get; set; }
         public bool PropertyThree { get; set; }
     }
@@ -262,6 +279,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty
 
     public class TestType
     {
+        public string PropertyOne { get; set; }
         public int PropertyTwo { get; set; }
         public bool PropertyThree { get; set; }
     }
@@ -291,7 +309,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterType
     public class TestChangeParameterType : Cmdlet
     {
         [Parameter(Mandatory = false)]
-        public int Parameter { get; set; }
+        public string Parameter { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -308,7 +326,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveValueFromPipeline
     [Cmdlet(VerbsDiagnostic.Test, "RemoveValueFromPipeline")]
     public class TestRemoveValueFromPipeline : Cmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipeline = false)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true)]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -326,7 +344,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveValueFromPipelineB
     [Cmdlet(VerbsDiagnostic.Test, "RemoveValueFromPipelineByPropertyName")]
     public class TestRemoveValueFromPipelineByPropertyName : Cmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -344,7 +362,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddParameterSet
     [Cmdlet(VerbsDiagnostic.Test, "AddParameterSet")]
     public class TestAddParameterSet : Cmdlet
     {
-        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -362,7 +380,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameterFromParam
     [Cmdlet(VerbsDiagnostic.Test, "RemoveParameterFromParameterSet")]
     public class TestRemovedParameterFromParameterSet : Cmdlet
     {
-        [Parameter(Mandatory = false)]
+        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
         public string Foo { get; set; }
 
         [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
@@ -383,7 +401,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterSetForPar
     [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterSetForParameter")]
     public class TestChangeParameterSetForParameter : Cmdlet
     {
-        [Parameter(ParameterSetName = "NewParameterSet", Mandatory = false)]
+        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
         public string Foo { get; set; }
 
         [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
@@ -401,7 +419,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeDefaultParameterSe
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeDefaultParameterSet", DefaultParameterSetName = "Bar")]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeDefaultParameterSet", DefaultParameterSetName = "Foo")]
     public class TestChangeDefaultParameterSet : Cmdlet
     {
         [Parameter(ParameterSetName = "Foo", Mandatory = false)]
@@ -429,7 +447,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddValidateNotNullOrEmpt
     public class TestAddValidateNotNullOrEmpty : Cmdlet
     {
         [Parameter(Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()

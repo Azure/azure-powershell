@@ -61,11 +61,15 @@
     <Compile Include="BreakingChangeAnalyzer\BreakingChangeIssue.cs" />
     <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeLoader.cs" />
     <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\CmdletMetadataHelper.cs" />
     <Compile Include="BreakingChangeAnalyzer\ModuleMetadata.cs" />
     <Compile Include="BreakingChangeAnalyzer\OutputMetadata.cs" />
     <Compile Include="BreakingChangeAnalyzer\ParameterMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ParameterMetadataHelper.cs" />
     <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadataHelper.cs" />
     <Compile Include="BreakingChangeAnalyzer\TypeMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\TypeMetadataHelper.cs" />
     <Compile Include="Loggers\AnalysisLogger.cs" />
     <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="EnvironmentHelpers.cs" />

@@ -31,6 +31,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             InitializeTypeDictionary();
         }
 
+        /// <summary>
+        /// Add primitive types to the type dictionary.
+        /// </summary>
         private void InitializeTypeDictionary()
         {
             _typeDictionary.Add("System.String",  new TypeMetadata() { Name = "System.String" });
