@@ -7,8 +7,8 @@
     <ProjectGuid>{4944B213-4F12-4815-B416-3FF1853ADCC1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.AnalysisServices.Dataplane</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.AnalysisServices.Dataplane</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.AnalysisServices.ServiceManagement</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.AnalysisServices.ServiceManagement</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices.Dataplane\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices.ServiceManagement</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -75,7 +75,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Management.Automation" />
+    <Reference Include="System.Management.Automation" />	
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddAzureASAccount.cs" />
@@ -93,13 +93,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-help.xml">
+    <Content Include="Microsoft.Azure.Commands.AnalysisServices.ServiceManagement.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="AzureRM.AnalysisServices.Dataplane.psd1">
+    <None Include="AzureRM.AnalysisServices.ServiceManagement.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-help.psd1">
+    <None Include="Microsoft.Azure.Commands.AnalysisServices.ServiceManagement.dll-help.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
