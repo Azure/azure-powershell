@@ -18,5 +18,19 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updating Managed Cache warning message which notifies customer about service deprecation on the following cmdlets :
+Get-AzureManagedCache
+Get-AzureManagedCacheAccessKey
+Get-AzureManagedCacheLocation
+Get-AzureManagedCacheNamedCache
+New-AzureManagedCache
+New-AzureManagedCacheAccessKey
+New-AzureManagedCacheNamedCache
+Remove-AzureManagedCache
+Remove-AzureManagedCacheNamedCache
+Set-AzureManagedCache
+Set-AzureManagedCacheNamedCache
+
+For more information about Managed Cache service deprecation, see http://go.microsoft.com/fwlink/?LinkID=717458
 
 ## Version 3.1.0
