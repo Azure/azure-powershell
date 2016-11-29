@@ -26,3 +26,5 @@
 * Fix for showing on GET and persisting Tags on SET (if not given) for Database, Server and Elastic Pool
 	- If Tags is used in command it will save tags, if not it will not wipe out tags on resource.
 ## Version 2.3.0
+* Fix for showing on GET and persisting Tags on SET (if not given) for Database, Server and Elastic Pool
+	- If Tags is used in command it will save tags, if not it will not wipe out tags on resource.
