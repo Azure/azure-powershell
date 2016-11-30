@@ -191,15 +191,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.State);
             ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
-            ModelizeAuditActionsAndGroupsInfo(dbPolicyModel, properties.AuditActionsAndGroups);
+            ModelizeAuditActionGroups(dbPolicyModel, properties.AuditActionsAndGroups);
+            ModelizeAuditActions(dbPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays);
             return dbPolicyModel;
         }
 
-        private void ModelizeAuditActionsAndGroupsInfo(BaseBlobAuditingPolicyModel dbPolicyModel, IEnumerable<string> auditActionsAndGroups)
+        private void ModelizeAuditActionGroups(BaseBlobAuditingPolicyModel policyModel, IEnumerable<string> auditActionsAndGroups)
         {
             var groups = new List<AuditActionGroups>();
-            var actions = new List<string>();
             auditActionsAndGroups.ForEach(item =>
             {
                 AuditActionGroups group;
@@ -207,13 +207,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 {
                     groups.Add(group);
                 }
-                else
+            });
+            policyModel.AuditActionGroup = groups.ToArray();
+        }
+
+        private void ModelizeAuditActions(DatabaseBlobAuditingPolicyModel policyModel, IEnumerable<string> auditActionsAndGroups)
+        {
+            var actions = new List<string>();
+            auditActionsAndGroups.ForEach(item =>
+            {
+                AuditActionGroups group;
+                if (!Enum.TryParse(item, true, out group))
                 {
                     actions.Add(item);
                 }
             });
-            dbPolicyModel.AuditActionGroup = groups.ToArray();
-            dbPolicyModel.AuditAction = actions.ToArray();
+            policyModel.AuditAction = actions.ToArray();
         }
 
         private void ModelizeRetentionInfo(BaseBlobAuditingPolicyModel model, int retentionDays)
@@ -256,7 +265,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var properties = policy.Properties;
             serverPolicyModel.AuditState = ModelizeAuditState(properties.State);
             ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
-            ModelizeAuditActionsAndGroupsInfo(serverPolicyModel, properties.AuditActionsAndGroups);
+            ModelizeAuditActionGroups(serverPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays);
             return serverPolicyModel;
         }
@@ -424,14 +433,23 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(model.StorageAccountName);
             }
             properties.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model);
-            properties.RetentionDays = (int) model.RetentionInDays;
+            if (model.RetentionInDays != null)
+            {
+                properties.RetentionDays = (int) model.RetentionInDays;
+            }
 
             return updateParameters;
         }
 
         private static IList<string> ExtractAuditActionsAndGroups(BaseBlobAuditingPolicyModel model)
         {
-            var actionsAndGroups = new List<string>(model.AuditAction);
+            var dbPolicyModel = model as DatabaseBlobAuditingPolicyModel;
+            var actionsAndGroups = new List<string>();
+            if (dbPolicyModel != null)
+            {
+                actionsAndGroups.AddRange(dbPolicyModel.AuditAction);
+            }
+            
             model.AuditActionGroup.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
             if (actionsAndGroups.Count == 0) // default audit actions and groups in case nothing was defined by the user
             {
@@ -521,7 +539,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                     throw new Exception(Properties.Resources.InvalidEventTypeSet);
                 }
             }
-            return string.Join(";", model.EventType.Select(t => t.ToString()));
+            return string.Join(",", model.EventType.Select(t => t.ToString()));
         }
 
         /// <summary>

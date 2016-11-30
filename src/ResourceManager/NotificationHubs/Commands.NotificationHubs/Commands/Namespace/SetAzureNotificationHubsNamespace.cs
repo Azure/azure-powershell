@@ -61,6 +61,12 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             HelpMessage = "Hashtables which represents resource Tags.")]
         public Hashtable Tags { get; set; }
 
+        [Parameter(Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          Position = 4,
+          HelpMessage = "Sku tier of the namespace")]
+        public string SkuTier { get; set; }
+
         /// <summary>
         /// If present, do not ask for confirmation
         /// </summary>
@@ -78,7 +84,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
                 () =>
                 {
                     // Update a namespace 
-                    var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tags));
+                    var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tags), SkuTier);
                     WriteObject(nsAttribute);
                 });
         }

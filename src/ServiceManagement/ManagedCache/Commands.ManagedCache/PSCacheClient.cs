@@ -284,6 +284,14 @@ namespace Microsoft.Azure.Commands.ManagedCache
             return cacheResource;
         }
 
+        public string GetManagedCacheRetirementMessage()
+        {
+            var managedCacheRetirementDate = new DateTime(2016, 12, 01, 00, 00, 00, DateTimeKind.Utc);
+            return DateTime.UtcNow > managedCacheRetirementDate 
+                ? "The Azure Managed Cache Service has been retired as of 11/30/2016. Please migrate to the Azure Redis Cache Service. For more information, see http://go.microsoft.com/fwlink/?LinkID=717458" 
+                : "The Azure Managed Cache Service will be retired on 11/30/2016. Please migrate to the Azure Redis Cache Service. For more information, see http://go.microsoft.com/fwlink/?LinkID=717458";
+        }
+
         public void RemoveNamedCache(string cacheServiceName, string namedCacheName, Action<bool, string, string, string, Action> ConfirmAction, bool force)
         {
             if ("default".Equals(namedCacheName))

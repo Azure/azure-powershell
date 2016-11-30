@@ -46,5 +46,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
+        }
     }
 }

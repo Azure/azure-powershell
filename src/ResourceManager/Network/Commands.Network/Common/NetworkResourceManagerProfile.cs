@@ -277,6 +277,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSLocalNetworkGateway, MNM.LocalNetworkGateway>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayConnection, MNM.VirtualNetworkGatewayConnection>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIPConfiguration>();
+            Mapper.CreateMap<CNM.PSTunnelConnectionHealth, MNM.TunnelConnectionHealth>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewaySku, MNM.VirtualNetworkGatewaySku>();
             Mapper.CreateMap<CNM.PSVpnClientConfiguration, MNM.VpnClientConfiguration>();
             Mapper.CreateMap<CNM.PSVpnClientParameters, MNM.VpnClientParameters>();
@@ -291,6 +292,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayIPConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
+            Mapper.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>(); 
             Mapper.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();
             Mapper.CreateMap<MNM.VpnClientConfiguration, CNM.PSVpnClientConfiguration>();
             Mapper.CreateMap<MNM.VpnClientParameters, CNM.PSVpnClientParameters>();

@@ -442,6 +442,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzurePSComletMessageQueue()
         {
             ConcurrentQueue<string> queue = new ConcurrentQueue<string>();

@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         public string NotificationRecipientsEmails { get; internal set; }
 
         /// <summary>
+        /// Gets or sets the Threat Detection Email Addresses
+        /// </summary>
+        public string StorageAccountName { get; internal set; }
+ 
+        /// <summary>
         /// Gets or sets the whether to email service and co-administrators
         /// </summary>
         public bool EmailAdmins { get; internal set; }
@@ -69,6 +74,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         /// Gets or sets the detection types to filter 
         /// </summary>
         public DetectionType[] ExcludedDetectionTypes { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the retention days
+        /// </summary>
+        public uint? RetentionInDays { get; internal set; }
 
         /// <summary>
         /// In cases where the user decided to use the shortcut NONE, this method sets the value of the ExcludedDetectionType property to reflect the correct values.
