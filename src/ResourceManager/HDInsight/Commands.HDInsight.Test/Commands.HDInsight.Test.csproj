@@ -185,9 +185,6 @@
     <Compile Include="UnitTests\DataLakeStoreTests.cs" />
     <Compile Include="UnitTests\NewClusterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.HDInsight.Test.DataLakeStoreScenarioTests\test.pfx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.HDInsight.Test.DataLakeStoreScenarioTests\TestDataLakeStoreDefaultFsClusterCreate.json" />
   </ItemGroup>
   <ItemGroup>
