@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "AccountType": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.Kind]",
@@ -175,7 +175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "PSCognitiveServicesAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -299,7 +299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "PSCognitiveServicesSkus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "List": "System.Collections.Generic.IEnumerable`1[System.String]"
             },
@@ -422,7 +422,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "AccountType": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.Kind]",
@@ -1138,7 +1138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.4.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "AccountType": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.Kind]",

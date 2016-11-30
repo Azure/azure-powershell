@@ -21,6 +21,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "ProvisioningState": "System.String",
+              "ServerFullName": "System.String",
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Type": "System.String"
@@ -187,6 +188,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "ProvisioningState": "System.String",
+              "ServerFullName": "System.String",
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Type": "System.String"
@@ -472,6 +474,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "ProvisioningState": "System.String",
+              "ServerFullName": "System.String",
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Type": "System.String"
@@ -638,6 +641,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "ProvisioningState": "System.String",
+              "ServerFullName": "System.String",
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Type": "System.String"
@@ -1061,6 +1065,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "ProvisioningState": "System.String",
+              "ServerFullName": "System.String",
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Type": "System.String"
@@ -1547,6 +1552,7 @@
         "Location": "System.String",
         "Name": "System.String",
         "ProvisioningState": "System.String",
+        "ServerFullName": "System.String",
         "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
         "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Type": "System.String"
