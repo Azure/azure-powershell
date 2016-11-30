@@ -21,16 +21,16 @@ namespace StaticAnalysis.Test
     /// </summary>
     public class SignatureVerifierTests
     {
-        string testCmdletDirPath, exceptionsDirPath;
+        string _testCmdletDirPath, _exceptionsDirPath;
         SignatureVerifier.SignatureVerifier cmdletSignatureVerifier;
         AnalysisLogger analysisLogger;
 
         public SignatureVerifierTests()
         {
-            testCmdletDirPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-            exceptionsDirPath = Path.Combine(testCmdletDirPath, "Exceptions");
+            _testCmdletDirPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            _exceptionsDirPath = Path.Combine(_testCmdletDirPath, "Exceptions");
 
-            analysisLogger = new AnalysisLogger(testCmdletDirPath, exceptionsDirPath);
+            analysisLogger = new AnalysisLogger(_testCmdletDirPath, _exceptionsDirPath);
             cmdletSignatureVerifier = new StaticAnalysis.SignatureVerifier.SignatureVerifier();
             cmdletSignatureVerifier.Logger = analysisLogger;
         }
@@ -38,14 +38,14 @@ namespace StaticAnalysis.Test
         #region Verb Cmdlets and SupportsShouldProcess
         /// <summary>
         /// 
-        /// </summary>
-        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        /// </summary>        
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddVerbWithoutSupportsShouldProcessParameter()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath},
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Add-AddVerbWithoutSupportsShouldProcessParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
@@ -55,11 +55,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddVerbWithSupportsShouldProcessParameter()
         {   
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath},
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Add-AddVerbWithSupportsShouldProcessParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
@@ -69,15 +70,18 @@ namespace StaticAnalysis.Test
         #endregion
 
         #region ForceSwitch and SupportsShouldProcess
-
-        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+                
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ForceParameterWithoutSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Test-ForceParameterWithoutSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
+
+            analysisLogger.Info("Foo");
+
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
             Assert.True(testReport.ProblemIdList.Count == 1);
@@ -85,11 +89,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ForceParameterWithSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Test-ForceParameterWithSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
@@ -100,24 +105,25 @@ namespace StaticAnalysis.Test
 
         #region ConfirmImpact and SupportsShouldProcess
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConfirmImpactWithSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Test-ConfirmImpactWithSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
             Assert.True(testReport.ProblemIdList.Count == 0);
         }
-
-        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConfirmImpactWithoutSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Test-ConfirmImpactWithoutSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
@@ -129,24 +135,25 @@ namespace StaticAnalysis.Test
 
         #region IsShouldContinueVerb and ForceSwitch
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ShouldContinueVerbWithForceSwitch()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Copy-ShouldContinueVerbWithForceSwitch", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
             Assert.True(testReport.ProblemIdList.Count == 0);
         }
-
-        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+                
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ShouldContinueVerbWithoutForceSwitch()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
                 (cmdletName) => cmdletName.Equals("Export-ShouldContinueVerbWithoutForceSwitch", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
