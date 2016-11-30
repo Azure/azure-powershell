@@ -11,6 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+param(
+    [Parameter(Mandatory = $false, Position = 0)]
+    [string] $buildConfig,
+    [Parameter(Mandatory = $false, Position = 1)]
+    [string] $scope
+)
+
 function Create-ModulePsm1
 {
   [CmdletBinding()]
@@ -44,13 +52,6 @@ function Create-ModulePsm1
   }
 }
 
-param(
-    [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig,
-    [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope
-)
-
 if ([string]::IsNullOrEmpty($buildConfig))
 {
     Write-Verbose "Setting build configuration to 'Release'"
@@ -66,8 +67,6 @@ if ([string]::IsNullOrEmpty($scope))
 Write-Host "Updating $scope package(and its dependencies)" 
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
-
-
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $publishToLocal = test-path $repositoryLocation
@@ -105,7 +104,7 @@ if ($scope -eq 'All') {
             Write-Host "Updated $module module"
         }
     }
-} elseif ($scope -ne 'AzureRM') {
+} elseif ($scope -ne 'AzureRM' -and $scope -ne 'AzureStack') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Updating $scope module from $modulePath"
@@ -123,3 +122,12 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
     Write-Host "Updated Azure module"
 } 
+
+if ($scope -eq 'AzureStack') {
+    # Update AzureStack module    
+    $modulePath = "$PSScriptRoot\AzureStack"
+    Write-Host "Updating AzureStack module from $modulePath"
+    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+    Write-Host "Updated AzureStack module"
+} 
+
