@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
                     throw new ValidationMetadataException("Connection string type must be specified.");
                 }
 
-                DatabaseServerType type;
+                ConnectionStringType type;
                 if (!Enum.TryParse(typeValuePairIgnoreCase["Type"].ToString(), true, out type))
                 {
                     throw new ValidationMetadataException("Database server type values are [MySql| SQLAzure| SQLServer| Custom]");

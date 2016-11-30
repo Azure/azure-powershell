@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 kvp => kvp.Key.ToString(), kvp =>
                 {
                     var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
-                    var type = (DatabaseServerType?)Enum.Parse(typeof(DatabaseServerType), typeValuePair["Type"].ToString(), true);
+                    var type = (ConnectionStringType?)Enum.Parse(typeof(ConnectionStringType), typeValuePair["Type"].ToString(), true);
                     return new ConnStringValueTypePair
                     {
                         Type = type,

@@ -518,18 +518,18 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public void RecoverSite(string resourceGroupName, string webSiteName, string slotName,
+        public RecoverResponse RecoverSite(string resourceGroupName, string webSiteName, string slotName,
             CsmSiteRecoveryEntity recoveryEntity)
         {
             string qualifiedSiteName;
             bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                WrappedWebsitesClient.Sites.RecoverSiteSlot(resourceGroupName, webSiteName, recoveryEntity, slotName);
+                return WrappedWebsitesClient.Sites.RecoverSiteSlot(resourceGroupName, webSiteName, recoveryEntity, slotName);
             }
             else
             {
-                WrappedWebsitesClient.Sites.RecoverSite(resourceGroupName, webSiteName, recoveryEntity);
+                return WrappedWebsitesClient.Sites.RecoverSite(resourceGroupName, webSiteName, recoveryEntity);
             }
         }
 
@@ -632,6 +632,20 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 resourceGroupName,
                 webSiteName,
                 sourceSlotName);
+        }
+
+        public SnapshotCollection GetSiteSnapshots(string resourceGroupName, string webSiteName, string slotName)
+        {
+            string qualifiedSiteName;
+            bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteSnapshotsSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteSnapshots(resourceGroupName, webSiteName);
+            }
         }
 
         private void WriteVerbose(string verboseFormat, params object[] args)

@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<# To run the snapshots test live, create a Premium Web App and let it run for at least
+a day so a few snapshots will be taken. Update the global variables below with the
+web app's information.
+#>
+# Global variables for the snapshots tests
+$snapshotAppResourceGroup = "nicking"
+$snapshotAppName = "nickingpremium"
+$snapshotAppSlot = "staging1"
+$snapshotTargetName = "nickingrestored"
+$snapshotTargetSlot = "slot1"
+
 function Test-CreateNewWebAppBackup
 {
     $rgName = Get-ResourceGroupName
@@ -90,6 +101,7 @@ function Test-CreateNewWebAppBackupPiping
 
 function Test-GetWebAppBackup
 {
+    Start-Transcript -Path E:\tmp\pstest.txt
     # Names and strings setup
     $rgName = Get-ResourceGroupName
     $wName = Get-WebsiteName
@@ -314,8 +326,83 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
     }
 }
 
-# Utility functions
+# Snapshots
+function Test-GetSnapshotList
+{
+    $snapshots = Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName
+    Assert-True { $snapshots.Count -gt 1 }
 
+    $snap = $snapshots[0]
+    Assert-NotNull $snap.ResourceGroupName
+    Assert-NotNull $snap.Name
+    Assert-NotNull $snap.SnapshotTime
+    Assert-True { $snap.SnapshotTime -gt [DateTime]::MinValue -and $snap.SnapshotTime -lt [DateTime]::MaxValue }
+
+    # Test slot API
+    $slotSnapshots = Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName -Slot $snapshotAppSlot
+    Assert-True { $slotSnapshots.Count -gt 1 }
+
+    $slotSnap = $slotSnapshots[0]
+    Assert-NotNull $slotSnap.ResourceGroupName
+    Assert-NotNull $slotSnap.Name
+    Assert-NotNull $slotSnap.Slot
+    Assert-NotNull $slotSnap.SnapshotTime
+    $time = $slotSnap.SnapshotTime
+    Assert-True { $time -gt [DateTime]::MinValue -and $time -lt [DateTime]::MaxValue }
+
+    # Test piping
+    $app = Get-AzureRmWebApp -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName
+    $pipeSnapshots = $app | Get-AzureRmWebAppSnapshotList
+    Assert-True { $pipeSnapshots.Count -gt 1 }
+}
+
+function Test-RestoreSnapshot
+{
+    $snapshot = (Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName)[0]
+    Assert-NotNull $snapshot
+
+    $response = Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime
+    Assert-NotNull $response.OperationId
+}
+
+function Test-RestoreSnapshotPiping
+{
+    $snapshot = (Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName)[0]
+    Assert-NotNull $snapshot
+
+    $response = $snapshot | Restore-AzureRmWebAppSnapshot
+    Assert-NotNull $response.OperationId
+}
+
+function Test-RestoreSnapshotSlot
+{
+    $snapshot = (Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName -Slot $snapshotAppSlot)[0]
+    Assert-NotNull $snapshot
+
+    $response = Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName -Slot $snapshotAppSlot -SnapshotTime $snapshot.SnapshotTime
+    Assert-NotNull $response.OperationId
+}
+
+function Test-RestoreSnapshotSlotPiping
+{
+    $snapshot = (Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName -Slot $snapshotAppSlot)[0]
+    Assert-NotNull $snapshot
+
+    $response = $snapshot | Restore-AzureRmWebAppSnapshot
+    Assert-NotNull $response.OperationId
+}
+
+function Test-RestoreSnapshotToTargetSite
+{
+    $snapshot = (Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName -Slot $snapshotAppSlot)[0]
+    Assert-NotNull $snapshot
+
+    $response = Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName `
+        -SnapshotTime $snapshot.SnapshotTime -TargetSite $snapshotTargetName -TargetSlot $snapshotTargetSlot
+    Assert-NotNull $response.OperationId
+}
+
+# Utility functions
 # Creates a new web app
 function Create-TestWebApp
 {

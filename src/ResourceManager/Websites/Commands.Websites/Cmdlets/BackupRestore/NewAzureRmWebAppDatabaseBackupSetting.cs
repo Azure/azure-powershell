@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [ValidateNotNullOrEmpty]
         public string DatabaseType { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The database's connection string. If the restore should happen to a new database, the database name inside is the new one.",
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The database's connection string. If the restore should happen to a new database, the database name inside is the new one.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ConnectionString { get; set; }
