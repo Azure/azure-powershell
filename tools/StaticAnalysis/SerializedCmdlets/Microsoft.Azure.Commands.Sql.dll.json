@@ -11874,7 +11874,9 @@
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "NotificationRecipientsEmails": "System.String",
               "ResourceGroupName": "System.String",
+              "RetentionInDays": "System.Nullable`1[System.UInt32]",
               "ServerName": "System.String",
+              "StorageAccountName": "System.String",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType"
             },
             "ElementType": null,
@@ -11996,7 +11998,9 @@
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "NotificationRecipientsEmails": "System.String",
               "ResourceGroupName": "System.String",
+              "RetentionInDays": "System.Nullable`1[System.UInt32]",
               "ServerName": "System.String",
+              "StorageAccountName": "System.String",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType"
             },
             "ElementType": null,
@@ -12158,7 +12162,9 @@
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "NotificationRecipientsEmails": "System.String",
               "ResourceGroupName": "System.String",
+              "RetentionInDays": "System.Nullable`1[System.UInt32]",
               "ServerName": "System.String",
+              "StorageAccountName": "System.String",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType"
             },
             "ElementType": null,
@@ -12233,6 +12239,39 @@
           },
           "ValidateSet": [],
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageAccountName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {
+              "Chars": "System.Char",
+              "Length": "System.Int32"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "RetentionInDays",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.UInt32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "ServerName",
@@ -12363,6 +12402,51 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "StorageAccountName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Chars": "System.Char",
+                    "Length": "System.Int32"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RetentionInDays",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.UInt32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ServerName",
                 "AliasList": [],
                 "Type": {
@@ -12433,7 +12517,9 @@
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "NotificationRecipientsEmails": "System.String",
               "ResourceGroupName": "System.String",
+              "RetentionInDays": "System.Nullable`1[System.UInt32]",
               "ServerName": "System.String",
+              "StorageAccountName": "System.String",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType"
             },
             "ElementType": null,
@@ -12596,7 +12682,9 @@
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "NotificationRecipientsEmails": "System.String",
               "ResourceGroupName": "System.String",
+              "RetentionInDays": "System.Nullable`1[System.UInt32]",
               "ServerName": "System.String",
+              "StorageAccountName": "System.String",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType"
             },
             "ElementType": null,
@@ -12671,6 +12759,39 @@
           },
           "ValidateSet": [],
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageAccountName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {
+              "Chars": "System.Char",
+              "Length": "System.Int32"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "RetentionInDays",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.UInt32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "ServerName",
@@ -12818,6 +12939,51 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "StorageAccountName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Chars": "System.Char",
+                    "Length": "System.Int32"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RetentionInDays",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.UInt32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ServerName",
                 "AliasList": [],
                 "Type": {
@@ -12911,7 +13077,9 @@
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "NotificationRecipientsEmails": "System.String",
               "ResourceGroupName": "System.String",
+              "RetentionInDays": "System.Nullable`1[System.UInt32]",
               "ServerName": "System.String",
+              "StorageAccountName": "System.String",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType"
             },
             "ElementType": null,
@@ -19452,20 +19620,6 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "AuditAction",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "String[]",
-            "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": "System.String",
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateNotNullOrEmpty": false
-        },
-        {
           "Name": "PassThru",
           "AliasList": [],
           "Type": {
@@ -19648,26 +19802,6 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "AuditAction",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "String[]",
-                  "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": "System.String",
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],

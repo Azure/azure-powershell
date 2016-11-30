@@ -70,7 +70,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     // For each parameter in the parameter set, add its name and alias to the dictionary
                     foreach (var newParameter in newParameterSet.Parameters)
                     {
-                        parameterDictionary.Add(newParameter.ParameterMetadata.Name, newParameter);
+                        if (!parameterDictionary.ContainsKey(newParameter.ParameterMetadata.Name))
+                        {
+                            parameterDictionary.Add(newParameter.ParameterMetadata.Name, newParameter);
+                        }
 
                         foreach (var alias in newParameter.ParameterMetadata.AliasList)
                         {

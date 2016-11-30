@@ -4662,6 +4662,7 @@
               "ResourceGroupName": "System.String",
               "ScaleUnit": "System.String",
               "ServiceBusEndpoint": "System.Uri",
+              "SkuName": "System.String",
               "Status": "System.String",
               "SubscriptionId": "System.String",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4743,6 +4744,23 @@
               "Keys": "System.Collections.ICollection",
               "SyncRoot": "System.Object",
               "Values": "System.Collections.ICollection"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SkuTier",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {
+              "Chars": "System.Char",
+              "Length": "System.Int32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4850,6 +4868,29 @@
               },
               "Mandatory": false,
               "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SkuTier",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Chars": "System.Char",
+                    "Length": "System.Int32"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 4,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             }
@@ -5027,6 +5068,7 @@
               "ResourceGroupName": "System.String",
               "ScaleUnit": "System.String",
               "ServiceBusEndpoint": "System.Uri",
+              "SkuName": "System.String",
               "Status": "System.String",
               "SubscriptionId": "System.String",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -5136,6 +5178,23 @@
               "Keys": "System.Collections.ICollection",
               "SyncRoot": "System.Object",
               "Values": "System.Collections.ICollection"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SkuTier",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {
+              "Chars": "System.Char",
+              "Length": "System.Int32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5300,6 +5359,29 @@
               },
               "Mandatory": false,
               "Position": 5,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SkuTier",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {
+                    "Chars": "System.Char",
+                    "Length": "System.Int32"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 4,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -5651,6 +5733,7 @@
         "ResourceGroupName": "System.String",
         "ScaleUnit": "System.String",
         "ServiceBusEndpoint": "System.Uri",
+        "SkuName": "System.String",
         "Status": "System.String",
         "SubscriptionId": "System.String",
         "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
