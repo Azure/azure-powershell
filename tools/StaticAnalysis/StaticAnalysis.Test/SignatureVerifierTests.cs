@@ -9,6 +9,7 @@ namespace StaticAnalysis.Test
     using Xunit;
     using System.Linq;
     using StaticAnalysis.ProblemIds;
+    using System.Reflection;
 
     /// <summary>
     /// Add a way to send filterDirectory, FiltercmdLets delegates to the analyze method.
@@ -26,7 +27,7 @@ namespace StaticAnalysis.Test
 
         public SignatureVerifierTests()
         {
-            testCmdletDirPath = System.Environment.CurrentDirectory;
+            testCmdletDirPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
             exceptionsDirPath = Path.Combine(testCmdletDirPath, "Exceptions");
 
             analysisLogger = new AnalysisLogger(testCmdletDirPath, exceptionsDirPath);
@@ -38,7 +39,8 @@ namespace StaticAnalysis.Test
         /// <summary>
         /// 
         /// </summary>
-        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        [Fact]
         public void AddVerbWithoutSupportsShouldProcessParameter()
         {
             cmdletSignatureVerifier.Analyze(
@@ -68,7 +70,8 @@ namespace StaticAnalysis.Test
 
         #region ForceSwitch and SupportsShouldProcess
 
-        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        [Fact]
         public void ForceParameterWithoutSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
@@ -108,7 +111,8 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Count == 0);
         }
 
-        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        [Fact]
         public void ConfirmImpactWithoutSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
@@ -136,7 +140,8 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Count == 0);
         }
 
-        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        //[Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
+        [Fact]
         public void ShouldContinueVerbWithoutForceSwitch()
         {
             cmdletSignatureVerifier.Analyze(
