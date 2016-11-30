@@ -117,6 +117,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     throw new Exception(Resources.JobAllowedDateTimeRangeExceeded);
                 }
+                else if(rangeStart > DateTime.UtcNow)
+                {
+                    throw new Exception(Resources.JobStartTimeShouldBeLessThanCurrent);
+                }
 
                 // validate JobId and Job objects
                 if (!string.IsNullOrEmpty(JobId))
