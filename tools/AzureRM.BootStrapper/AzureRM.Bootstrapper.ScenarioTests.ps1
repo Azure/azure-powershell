@@ -10,6 +10,12 @@ function Remove-InstalledProfile {
             Write-Host "Removing profile $profile"
             Uninstall-AzureRmProfile -Profile $profile -Force -ErrorAction Stop
         }
+        
+        $profiles = (Get-AzureRmProfile)
+        if ($profiles -ne $null)
+        {
+            Throw "Uninstallation was not successful: Profile(s) $profiles were not uninstalled correctly."
+        }
     }
 }
 
@@ -177,13 +183,22 @@ Describe "User can uninstall a profile" {
         $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
         $profilesInstalled.Contains('Latest') | Should Be $true
 
+        # Get the version of the Latest profile
+        $ProfileMap = Get-AzProfile
+        $latestVersion = $ProfileMap.'Latest'.$RollupModule
+
         # Act
         Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile 'Latest' -Force }
-        $result = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
         
         # Assert
         It "Profile Latest is uninstalled" {
+            $result = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
             $result.Contains('Latest') | Should Be $false
+        }
+
+        It "Available Modules should not contain uninstalled modules" {
+            $result = Invoke-Command -Session $session -ScriptBlock { Get-Module -ListAvailable -FullyQualifiedName @{ModuleName=$RollupModule;ModuleVersion=$latestVersion} }
+            $result | Should Be $null
         }
 
         # Cleanup
@@ -258,7 +273,7 @@ Describe "Invalid Cases" {
 
         # Act
         # Uninstall profile '2015-05'
-        $result = Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile '2015-05'} 
+        $result = Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile '2015-05' -Force} 
 
         It "Doesn't uninstall/throw" {
             $result | Should Be $null
