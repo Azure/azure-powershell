@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
         [ValidateNotNullOrEmpty]
-        public string EnvironmentName { get; set; }
+        public string AsAzureHostName { get; set; }
         
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Login credentials to the Azure Analysis Services environment")]
         public PSCredential Credential { get; set; }
@@ -63,19 +63,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             base.BeginProcessing();
 #pragma warning disable 0618
-            if (EnvironmentName == null)
+            if (AsAzureHostName == null)
             {
                 throw new PSInvalidOperationException(string.Format(Resources.UnknownEnvironment, ""));
             }
             else
             {
-                if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(EnvironmentName))
+                if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(AsAzureHostName))
                 {
-                    AsEnvironment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[EnvironmentName];
+                    AsEnvironment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[AsAzureHostName];
                 }
                 else
                 {
-                    AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(EnvironmentName);
+                    AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(AsAzureHostName);
                 }
             }
 #pragma warning restore 0618
