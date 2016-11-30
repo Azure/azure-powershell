@@ -104,6 +104,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 return;
             }
 
+            // If the type is in the System namespace, don't look at any of its properties
+            if (Namespace.StartsWith("System"))
+            {
+                return;
+            }
+
             // For each property, check to see if we have already processed its type before,
             // and if not, we will add it to the global dictionary and process the TypeMetadata.
             foreach (var property in properties)

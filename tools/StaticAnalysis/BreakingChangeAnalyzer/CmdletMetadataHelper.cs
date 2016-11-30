@@ -235,62 +235,17 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                     _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
                 }
-                // If the output cannot be found, check to see if there
-                // is another output type with the same properties
+                // If the output cannot be found, log an issue
                 else
                 {
-                    bool foundOutput = false;
-
-                    // For each output type in the new metadata,
-                    // see if the properties are the same as the
-                    // output type in the old metadata
-                    foreach (var newOutput in newCmdlet.OutputTypes)
-                    {
-                        // This set will contain the properties of the output type
-                        HashSet<string> keySet = new HashSet<string>();
-
-                        // Add each property to the set
-                        foreach (var newKey in newOutput.Type.Properties.Keys)
-                        {
-                            keySet.Add(newKey);
-                        }
-
-                        bool flag = false;
-
-                        // For each property in the old metadata output type,
-                        // see if it exists in the new metadata output type
-                        foreach (var oldKey in oldOutput.Type.Properties.Keys)
-                        {
-                            // If the property does not exist, set the flag
-                            if (!keySet.Contains(oldKey))
-                            {
-                                flag = true;
-                                break;
-                            }
-                        }
-
-                        // If we were able to find every property, these
-                        // types are the same
-                        if (!flag)
-                        {
-                            foundOutput = true;
-
-                            _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutput.Type, issueLogger);
-                        }
-                    }
-
-                    // If we could not find a matching output type, log an issue
-                    if (!foundOutput)
-                    {
-                        issueLogger.LogBreakingChangeIssue(
-                            cmdlet: oldCmdlet,
-                            severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
-                            description: string.Format(Properties.Resources.ChangedOutputTypeDescription,
-                                oldCmdlet.Name, oldOutput.Type.Name),
-                            remediation: string.Format(Properties.Resources.ChangedOutputTypeRemediation,
-                                oldCmdlet.Name, oldOutput.Type.Name));
-                    }
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: oldCmdlet,
+                        severity: 0,
+                        problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
+                        description: string.Format(Properties.Resources.ChangedOutputTypeDescription,
+                            oldCmdlet.Name, oldOutput.Type.Name),
+                        remediation: string.Format(Properties.Resources.ChangedOutputTypeRemediation,
+                            oldCmdlet.Name, oldOutput.Type.Name));
                 }
             }
         }
