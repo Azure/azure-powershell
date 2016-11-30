@@ -375,5 +375,197 @@ namespace StaticAnalysis.Test
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedProperty))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedProperty));
         }
+
+        [Fact()]
+        public void ChangeOutputElementType()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeOutputElementType", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputElementType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputElementType));
+        }
+
+        [Fact()]
+        public void ChangeOutputGenericType()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeOutputGenericType", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputGenericType));
+        }
+
+        [Fact()]
+        public void ChangeOutputGenericTypeArgument()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeOutputGenericTypeArgument", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputGenericTypeArgument))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputGenericTypeArgument));
+        }
+
+        [Fact()]
+        public void DifferentOutputGenericTypeArgumentSize()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-DifferentOutputGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentOutputGenericTypeArgumentSize))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentOutputGenericTypeArgumentSize));
+        }
+
+        [Fact()]
+        public void ChangeParameterElementType()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeParameterElementType", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterElementType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterElementType));
+        }
+
+        [Fact()]
+        public void ChangeParameterGenericType()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeParameterGenericType", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterGenericType));
+        }
+
+        [Fact()]
+        public void ChangeParameterGenericTypeArgument()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeParameterGenericTypeArgument", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterGenericTypeArgument))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterGenericTypeArgument));
+        }
+
+        [Fact()]
+        public void DifferentParameterGenericTypeArgumentSize()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-DifferentParameterGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentParameterGenericTypeArgumentSize))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentParameterGenericTypeArgumentSize));
+        }
+
+        [Fact()]
+        public void ChangeElementType()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeElementType", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedElementType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedElementType));
+        }
+
+        [Fact()]
+        public void ChangeGenericType()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeGenericType", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
+        }
+
+        [Fact()]
+        public void ChangeGenericTypeArgument()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangeGenericTypeArgument", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
+        }
+
+        [Fact()]
+        public void DifferentGenericTypeArgumentSize()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { Environment.CurrentDirectory },
+                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                (cmdletName) => cmdletName.Equals("Test-DifferentGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
+        }
     }
 }

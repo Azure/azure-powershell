@@ -74,13 +74,15 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     var typeMetadata = new TypeMetadata(inputType.GetElementType());
                     moduleMetadata.TypeDictionary[ElementType] = typeMetadata;
                 }
+
+                return;
             }
 
             // If the type is a generic
             if (inputType.IsGenericType)
             {
                 // Get the generic type name
-                GenericTypeName = inputType.Name.Substring(0, inputType.Name.IndexOf('`'));
+                Name = inputType.Name.Substring(0, inputType.Name.IndexOf('`'));
 
                 // Get the argument types
                 var genericTypeArguments = inputType.GetGenericArguments();
@@ -98,6 +100,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         moduleMetadata.TypeDictionary[arg.ToString()] = typeMetadata;
                     }
                 }
+
+                return;
             }
 
             // For each property, check to see if we have already processed its type before,
@@ -128,7 +132,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public string AssemblyQualifiedName { get; set; }
         public Dictionary<string, string> Properties { get { return _properties; } }
         public string ElementType { get; set; }
-        public string GenericTypeName { get; set; }
         public List<string> GenericTypeArguments { get { return _genericTypeArguments; } }
     }
 }

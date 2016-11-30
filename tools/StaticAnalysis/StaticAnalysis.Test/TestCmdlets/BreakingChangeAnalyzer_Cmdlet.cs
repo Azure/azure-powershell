@@ -1,23 +1,7 @@
-﻿namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdlet
+﻿namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdletAlias
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "RemoveCmdlet")]
-    public class TestRemoveCmdlet : Cmdlet
-    {
-        protected override void BeginProcessing()
-        {
-            WriteObject("Test-RemoveCmdlet BeginProcessing()");
-            WriteInformation("Info", null);
-        }
-    }
-}
-
-namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdletAlias
-{
-    using System.Management.Automation;
-
-    [Alias("Test-CmdletAlias")]
     [Cmdlet(VerbsDiagnostic.Test, "RemoveCmdletAlias")]
     public class TestRemoveCmdletAlias : Cmdlet
     {
@@ -33,7 +17,8 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddAliasForChangedCmdlet
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "AddAliasForChangedCmdlet")]
+    [Alias("Test-AddAliasForChangedCmdlet")]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangedCmdlet")]
     public class TestAddAliasForChangedCmdlet : Cmdlet
     {
         protected override void BeginProcessing()
@@ -48,7 +33,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveSupportsShouldProc
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsShouldProcess", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsShouldProcess")]
     public class TestRemoveSupportsShouldProcess : Cmdlet
     {
         protected override void BeginProcessing()
@@ -63,7 +48,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveSupportsPaging
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsPaging", SupportsPaging = true)]
+    [Cmdlet(VerbsDiagnostic.Test, "RemoveSupportsPaging")]
     public class TestRemoveSupportsPaging : Cmdlet
     {
         protected override void BeginProcessing()
@@ -81,9 +66,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameter
     [Cmdlet(VerbsDiagnostic.Test, "RemoveParameter")]
     public class TestRemoveParameter : Cmdlet
     {
-        [Parameter(Mandatory = false)]
-        public SwitchParameter Switch { get; set; }
-
         protected override void BeginProcessing()
         {
             WriteObject("Test-RemoveParameter BeginProcessing()");
@@ -99,7 +81,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameterAlias
     [Cmdlet(VerbsDiagnostic.Test, "RemoveParameterAlias")]
     public class TestRemoveParameterAlias : Cmdlet
     {
-        [Alias("SwitchAlias")]
         [Parameter(Mandatory = false)]
         public SwitchParameter Switch { get; set; }
 
@@ -118,8 +99,9 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddAliasForChangedParame
     [Cmdlet(VerbsDiagnostic.Test, "AddAliasForChangedParameter")]
     public class TestAddAliasForChangedParameter : Cmdlet
     {
+        [Alias("Parameter")]
         [Parameter(Mandatory = false)]
-        public string Parameter { get; set; }
+        public string ChangedParameter { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -136,7 +118,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.MakeParameterRequired
     [Cmdlet(VerbsDiagnostic.Test, "MakeParameterRequired")]
     public class TestMakeParameterRequired : Cmdlet
     {
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true)]
         public SwitchParameter Switch { get; set; }
 
         protected override void BeginProcessing()
@@ -154,13 +136,13 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterOrder
     [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterOrder")]
     public class TestChangeParameterOrder : Cmdlet
     {
-        [Parameter(Position = 0)]
+        [Parameter(Position = 1)]
         public SwitchParameter FirstSwitch { get; set; }
 
-        [Parameter(Position = 1)]
+        [Parameter(Position = 2)]
         public SwitchParameter SecondSwitch { get; set; }
 
-        [Parameter(Position = 2)]
+        [Parameter(Position = 0)]
         public SwitchParameter ThirdSwitch { get; set; }
 
         protected override void BeginProcessing()
@@ -179,7 +161,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeValidateSet
     public class TestChangeValidateSet : Cmdlet
     {
         [Parameter(Mandatory = false)]
-        [ValidateSet("First", "Second", "Third")]
+        [ValidateSet("First")]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -198,6 +180,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddValidateSet
     public class TestAddValidateSet : Cmdlet
     {
         [Parameter(Mandatory = false)]
+        [ValidateSet("Foo")]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -212,7 +195,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputType
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputType"), OutputType(typeof(string))]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputType"), OutputType(typeof(int))]
     public class TestChangeOutputType : Cmdlet
     {
         protected override void BeginProcessing()
@@ -227,14 +210,14 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName
 {
     using System.Management.Automation;
 
-    public class TestOutput
+    public class ChangedOutput
     {
         public string PropertyOne { get; set; }
         public int PropertyTwo { get; set; }
         public bool PropertyThree { get; set; }
     }
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputTypeName"), OutputType(typeof(TestOutput))]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputTypeName"), OutputType(typeof(ChangedOutput))]
     public class TestChangeOutputTypeName : Cmdlet
     {
         protected override void BeginProcessing()
@@ -251,7 +234,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType
 
     public class TestType
     {
-        public string PropertyOne { get; set; }
+        public int PropertyOne { get; set; }
         public int PropertyTwo { get; set; }
         public bool PropertyThree { get; set; }
     }
@@ -279,7 +262,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty
 
     public class TestType
     {
-        public string PropertyOne { get; set; }
         public int PropertyTwo { get; set; }
         public bool PropertyThree { get; set; }
     }
@@ -309,7 +291,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterType
     public class TestChangeParameterType : Cmdlet
     {
         [Parameter(Mandatory = false)]
-        public string Parameter { get; set; }
+        public int Parameter { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -326,7 +308,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveValueFromPipeline
     [Cmdlet(VerbsDiagnostic.Test, "RemoveValueFromPipeline")]
     public class TestRemoveValueFromPipeline : Cmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -344,7 +326,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveValueFromPipelineB
     [Cmdlet(VerbsDiagnostic.Test, "RemoveValueFromPipelineByPropertyName")]
     public class TestRemoveValueFromPipelineByPropertyName : Cmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false)]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -362,7 +344,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddParameterSet
     [Cmdlet(VerbsDiagnostic.Test, "AddParameterSet")]
     public class TestAddParameterSet : Cmdlet
     {
-        [Parameter(Mandatory = false)]
+        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
@@ -380,7 +362,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameterFromParam
     [Cmdlet(VerbsDiagnostic.Test, "RemoveParameterFromParameterSet")]
     public class TestRemovedParameterFromParameterSet : Cmdlet
     {
-        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string Foo { get; set; }
 
         [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
@@ -401,7 +383,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterSetForPar
     [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterSetForParameter")]
     public class TestChangeParameterSetForParameter : Cmdlet
     {
-        [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
+        [Parameter(ParameterSetName = "NewParameterSet", Mandatory = false)]
         public string Foo { get; set; }
 
         [Parameter(ParameterSetName = "SampleParameterSet", Mandatory = false)]
@@ -419,7 +401,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeDefaultParameterSe
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeDefaultParameterSet", DefaultParameterSetName = "Foo")]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeDefaultParameterSet", DefaultParameterSetName = "Bar")]
     public class TestChangeDefaultParameterSet : Cmdlet
     {
         [Parameter(ParameterSetName = "Foo", Mandatory = false)]
@@ -447,11 +429,275 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddValidateNotNullOrEmpt
     public class TestAddValidateNotNullOrEmpty : Cmdlet
     {
         [Parameter(Mandatory = false)]
+        [ValidateNotNullOrEmpty]
         public string Parameter { get; set; }
 
         protected override void BeginProcessing()
         {
             WriteObject("Test-AddValidateSet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputElementType
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputElementType"), OutputType(typeof(string[]))]
+    public class TestChangeOutputElementType : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeOutputElementType BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputGenericType
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericType"), OutputType(typeof(HashSet<int>))]
+    public class TestChangeOutputGenericType : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeOutputGenericType BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputGenericTypeArgument
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericTypeArgument"), OutputType(typeof(List<string>))]
+    public class TestChangeOutputGenericTypeArgument : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeOutputGenericTypeArgument BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentOutputGenericTypeArgumentSize
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    public class Test<T, K>
+    {
+
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "DifferentOutputGenericTypeArgumentSize"), OutputType(typeof(Test<int, int>))]
+    public class TestDifferentOutputGenericTypeArgumentSize : Cmdlet
+    {
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-DifferentOutputGenericTypeArgumentSize BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterElementType
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterElementType")]
+    public class TestChangeParameterElementType : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public string[] Foo { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public int[] Bar { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeParameterElementType BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterGenericType
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterGenericType")]
+    public class TestChangeParameterGenericType : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public HashSet<int> Foo { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public List<int> Bar { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeParameterGenericType BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterGenericTypeArgument
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeParameterGenericTypeArgument")]
+    public class TestChangeParameterGenericTypeArgument : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public List<string> Foo { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public List<int> Bar { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeParameterGenericTypeArgument BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    public class Test<T, K>
+    {
+
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "DifferentParameterGenericTypeArgumentSize")]
+    public class TestDifferentParameterGenericTypeArgumentSize : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public Test<int, int> Foo { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-DifferentParameterGenericTypeArgumentSize BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    public class Test
+    {
+        public string[] Foo { get; set; }
+        public int[] Bar { get; set; }
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeElementType")]
+    public class TestChangeElementType : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public Test Parameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeElementType BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    public class Test
+    {
+        public HashSet<int> Foo { get; set; }
+        public List<int> Bar { get; set; }
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeGenericType")]
+    public class TestChangeGenericType : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public Test Parameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeGenericType BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    public class Test
+    {
+        public List<string> Foo { get; set; }
+        public List<int> Bar { get; set; }
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeGenericTypeArgument")]
+    public class TestChangeGenericTypeArgument : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public Test Parameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangeGenericTypeArgument BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize
+{
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
+    public class Test
+    {
+        public TestType<int, int> Foo { get; set; }
+    }
+
+    public class TestType<T, K>
+    {
+
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "DifferentGenericTypeArgumentSize")]
+    public class TestDifferentGenericTypeArgumentSize : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public Test Parameter { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-DifferentGenericTypeArgumentSize BeginProcessing()");
             WriteInformation("Info", null);
         }
     }

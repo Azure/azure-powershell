@@ -115,6 +115,114 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The element type for property &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedElementTypeDescription {
+            get {
+                return ResourceManager.GetString("ChangedElementTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the element type for property &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedElementTypeRemediation {
+            get {
+                return ResourceManager.GetString("ChangedElementTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The generic type argument for property &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedGenericTypeArgumentDescription {
+            get {
+                return ResourceManager.GetString("ChangedGenericTypeArgumentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the generic type argument for property &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedGenericTypeArgumentRemediation {
+            get {
+                return ResourceManager.GetString("ChangedGenericTypeArgumentRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The generic type for property &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;. .
+        /// </summary>
+        public static string ChangedGenericTypeDescription {
+            get {
+                return ResourceManager.GetString("ChangedGenericTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the generic type for property &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedGenericTypeRemediation {
+            get {
+                return ResourceManager.GetString("ChangedGenericTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The element type for the output has been changed from &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedOutputElementTypeDescription {
+            get {
+                return ResourceManager.GetString("ChangedOutputElementTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the element type for the output back to &apos;{0}&apos;..
+        /// </summary>
+        public static string ChangedOutputElementTypeRemediation {
+            get {
+                return ResourceManager.GetString("ChangedOutputElementTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The generic type argument for the output has been changed from &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedOutputGenericTypeArgumentDescription {
+            get {
+                return ResourceManager.GetString("ChangedOutputGenericTypeArgumentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the generic type argument for the output back to &apos;{0}&apos;..
+        /// </summary>
+        public static string ChangedOutputGenericTypeArgumentRemediation {
+            get {
+                return ResourceManager.GetString("ChangedOutputGenericTypeArgumentRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The generic type for the output has been changed from &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedOutputGenericTypeDescription {
+            get {
+                return ResourceManager.GetString("ChangedOutputGenericTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the generic type for the output back to &apos;{0}&apos;..
+        /// </summary>
+        public static string ChangedOutputGenericTypeRemediation {
+            get {
+                return ResourceManager.GetString("ChangedOutputGenericTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The cmdlet &apos;{0}&apos; no longer has output type &apos;{1}&apos;..
         /// </summary>
         public static string ChangedOutputTypeDescription {
@@ -129,6 +237,60 @@ namespace StaticAnalysis.Properties {
         public static string ChangedOutputTypeRemediation {
             get {
                 return ResourceManager.GetString("ChangedOutputTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The element type for parameter &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedParameterElementTypeDescription {
+            get {
+                return ResourceManager.GetString("ChangedParameterElementTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the element type for parameter &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedParameterElementTypeRemediation {
+            get {
+                return ResourceManager.GetString("ChangedParameterElementTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The generic type argument for parameter &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedParameterGenericTypeArgumentDescription {
+            get {
+                return ResourceManager.GetString("ChangedParameterGenericTypeArgumentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the generic type argument for parameter &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedParameterGenericTypeArgumentRemediation {
+            get {
+                return ResourceManager.GetString("ChangedParameterGenericTypeArgumentRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The generic type for parameter &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedParameterGenericTypeDescription {
+            get {
+                return ResourceManager.GetString("ChangedParameterGenericTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the generic type for parameter &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedParameterGenericTypeRemediation {
+            get {
+                return ResourceManager.GetString("ChangedParameterGenericTypeRemediation", resourceCulture);
             }
         }
         
@@ -165,6 +327,60 @@ namespace StaticAnalysis.Properties {
         public static string ChangedPropertyTypeRemediation {
             get {
                 return ResourceManager.GetString("ChangedPropertyTypeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of arguments for generic type &apos;{0}&apos; for property &apos;{1}&apos; has been changed from &apos;{2}&apos; to &apos;{3}&apos;..
+        /// </summary>
+        public static string DifferentGenericTypeArgumentSizeDescription {
+            get {
+                return ResourceManager.GetString("DifferentGenericTypeArgumentSizeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the number of arguments for generic type &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string DifferentGenericTypeArgumentSizeRemediation {
+            get {
+                return ResourceManager.GetString("DifferentGenericTypeArgumentSizeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of arguments for generic type &apos;{0}&apos; for the output has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string DifferentOutputGenericTypeArgumentSizeDescription {
+            get {
+                return ResourceManager.GetString("DifferentOutputGenericTypeArgumentSizeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the number of arguments for generic type &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string DifferentOutputGenericTypeArgumentSizeRemediation {
+            get {
+                return ResourceManager.GetString("DifferentOutputGenericTypeArgumentSizeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of arguments for generic type &apos;{0}&apos; for parameter &apos;{1}&apos; has been changed from &apos;{2}&apos; to &apos;{3}&apos;..
+        /// </summary>
+        public static string DifferentParameterGenericTypeArgumentSizeDescription {
+            get {
+                return ResourceManager.GetString("DifferentParameterGenericTypeArgumentSizeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the number of arguments for generic type &apos;{0}&apos; back to &apos;{1}&apos;..
+        /// </summary>
+        public static string DifferentParameterGenericTypeArgumentSizeRemediation {
+            get {
+                return ResourceManager.GetString("DifferentParameterGenericTypeArgumentSizeRemediation", resourceCulture);
             }
         }
         

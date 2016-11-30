@@ -36,6 +36,10 @@
         public const int RemovedPaging = 1040;
         public const int RemovedParameterSet = 1050;
         public const int ChangeDefaultParameter = 1060;
+        public const int ChangedOutputElementType = 1070;
+        public const int ChangedOutputGenericType = 1080;
+        public const int ChangedOutputGenericTypeArgument = 1090;
+        public const int DifferentOutputGenericTypeArgumentSize = 1100;
         public const int RemovedParameter = 2000;
         public const int RemovedParameterAlias = 2010;
         public const int ChangedParameterType = 2020;
@@ -47,7 +51,15 @@
         public const int ValueFromPipelineByPropertyName = 2080;
         public const int AddedValidateNotNullOrEmpty = 2090;
         public const int RemovedParameterFromParameterSet = 2100;
+        public const int ChangedParameterElementType = 2110;
+        public const int ChangedParameterGenericType = 2120;
+        public const int ChangedParameterGenericTypeArgument = 2130;
+        public const int DifferentParameterGenericTypeArgumentSize = 2140;
         public const int ChangedPropertyType = 3000;
         public const int RemovedProperty = 3010;
+        public const int ChangedElementType = 3020;
+        public const int ChangedGenericType = 3030;
+        public const int ChangedGenericTypeArgument = 3040;
+        public const int DifferentGenericTypeArgumentSize = 3050;
     }
 }
