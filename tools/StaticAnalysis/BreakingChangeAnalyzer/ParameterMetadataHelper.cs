@@ -115,25 +115,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
-            // If the types are different, log an issue
-            if (!oldParameter.Type.Name.Equals(newParameter.Type.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                issueLogger.LogBreakingChangeIssue(
-                    cmdlet: cmdlet,
-                    severity: 0,
-                    problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterType,
-                    description: string.Format(Properties.Resources.ChangedParameterTypeDescription,
-                        cmdlet.Name, oldParameter.Type.Name, oldParameter.Name),
-                    remediation: string.Format(Properties.Resources.ChangedParameterTypeRemediation,
-                        oldParameter.Name, oldParameter.Type.Name));
-            }
-            else
-            {
-                // Recursively look at the properties of each type and their
-                // types to see if there are any breaking changes
-                _typeMetadataHelper.CompareTypeMetadata(cmdlet, oldParameter.Type, newParameter.Type, issueLogger);
-            }
-
+            // Recursively look at the properties of each type and their
+            // types to see if there are any breaking changes
+            _typeMetadataHelper.CheckParameterType(cmdlet, oldParameter, oldParameter.Type, newParameter.Type, issueLogger);
         }
 
         /// <summary>

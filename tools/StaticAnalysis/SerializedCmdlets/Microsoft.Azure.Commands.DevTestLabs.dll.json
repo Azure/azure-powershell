@@ -30,7 +30,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -51,7 +50,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -69,7 +67,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -93,7 +90,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -117,7 +113,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -163,7 +158,6 @@
               "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -184,7 +178,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -202,7 +195,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -226,7 +218,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -250,7 +241,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -296,7 +286,6 @@
               "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -317,7 +306,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -335,7 +323,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -359,7 +346,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -383,7 +369,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -429,7 +414,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -450,7 +434,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -468,7 +451,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -492,7 +474,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -516,7 +497,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -562,7 +542,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -583,7 +562,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -601,7 +579,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -625,7 +602,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -649,7 +625,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -695,7 +670,6 @@
               "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -709,14 +683,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.DateTime"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.DateTime"
             ]
@@ -731,17 +701,8 @@
             "Namespace": "System",
             "Name": "DayOfWeek[]",
             "AssemblyQualifiedName": "System.DayOfWeek[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "IsFixedSize": "System.Boolean",
-              "IsReadOnly": "System.Boolean",
-              "IsSynchronized": "System.Boolean",
-              "Length": "System.Int32",
-              "LongLength": "System.Int64",
-              "Rank": "System.Int32",
-              "SyncRoot": "System.Object"
-            },
+            "Properties": {},
             "ElementType": "System.DayOfWeek",
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -759,7 +720,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -777,7 +737,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -795,7 +754,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -813,7 +771,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -830,14 +787,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.DateTime"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.DateTime"
                   ]
@@ -858,17 +811,8 @@
                   "Namespace": "System",
                   "Name": "DayOfWeek[]",
                   "AssemblyQualifiedName": "System.DayOfWeek[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.DayOfWeek",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -892,7 +836,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -916,7 +859,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -945,7 +887,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -962,14 +903,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.DateTime"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.DateTime"
                   ]
@@ -990,17 +927,8 @@
                   "Namespace": "System",
                   "Name": "DayOfWeek[]",
                   "AssemblyQualifiedName": "System.DayOfWeek[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.DayOfWeek",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1024,7 +952,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1048,7 +975,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1077,7 +1003,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1094,14 +1019,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.DateTime"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.DateTime"
                   ]
@@ -1122,17 +1043,8 @@
                   "Namespace": "System",
                   "Name": "DayOfWeek[]",
                   "AssemblyQualifiedName": "System.DayOfWeek[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.DayOfWeek",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1156,7 +1068,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1180,7 +1091,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1226,7 +1136,6 @@
               "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1240,14 +1149,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.DateTime"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.DateTime"
             ]
@@ -1267,7 +1172,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1285,7 +1189,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1303,7 +1206,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1321,7 +1223,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1338,14 +1239,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.DateTime"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.DateTime"
                   ]
@@ -1371,7 +1268,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1395,7 +1291,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1424,7 +1319,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1441,14 +1335,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.DateTime"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.DateTime"
                   ]
@@ -1474,7 +1364,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1498,7 +1387,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1527,7 +1415,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1544,14 +1431,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.DateTime"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.DateTime"
                   ]
@@ -1577,7 +1460,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1601,7 +1483,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1647,7 +1528,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1661,14 +1541,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.Int32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.Int32"
             ]
@@ -1688,7 +1564,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1706,7 +1581,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1724,7 +1598,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1742,7 +1615,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1759,14 +1631,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -1792,7 +1660,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1816,7 +1683,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1845,7 +1711,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1862,14 +1727,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -1895,7 +1756,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1919,7 +1779,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1948,7 +1807,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1965,14 +1823,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -1998,7 +1852,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2022,7 +1875,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2068,7 +1920,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2084,17 +1935,8 @@
             "Namespace": "System",
             "Name": "String[]",
             "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "IsFixedSize": "System.Boolean",
-              "IsReadOnly": "System.Boolean",
-              "IsSynchronized": "System.Boolean",
-              "Length": "System.Int32",
-              "LongLength": "System.Int64",
-              "Rank": "System.Int32",
-              "SyncRoot": "System.Object"
-            },
+            "Properties": {},
             "ElementType": "System.String",
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2112,7 +1954,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2130,7 +1971,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2148,7 +1988,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2166,7 +2005,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2185,17 +2023,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2219,7 +2048,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2243,7 +2071,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2272,7 +2099,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2291,17 +2117,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2325,7 +2142,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2349,7 +2165,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2378,7 +2193,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2397,17 +2211,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2431,7 +2236,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2455,7 +2259,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2501,7 +2304,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2515,14 +2317,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.Int32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.Int32"
             ]
@@ -2542,7 +2340,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2560,7 +2357,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2578,7 +2374,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2596,7 +2391,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2613,14 +2407,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -2646,7 +2436,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2670,7 +2459,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2699,7 +2487,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2716,14 +2503,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -2749,7 +2532,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2773,7 +2555,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2802,7 +2583,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2819,14 +2599,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -2852,7 +2628,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2876,7 +2651,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2900,7 +2674,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -2909,7 +2682,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -2918,7 +2690,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -2927,7 +2698,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -2936,7 +2706,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -2945,7 +2714,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -2954,7 +2722,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -2963,7 +2730,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -2972,7 +2738,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -2981,7 +2746,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -2990,7 +2754,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -2999,7 +2762,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -3008,7 +2770,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -3017,36 +2778,16 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary`2",
+      "Name": "IDictionary",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Item": "System.String",
-        "Keys": "System.Collections.Generic.ICollection`1[System.String]",
-        "Values": "System.Collections.Generic.ICollection`1[System.String]"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "IDictionary",
       "GenericTypeArguments": [
         "System.String",
-        "System.String"
-      ]
-    },
-    "System.Collections.Generic.ICollection`1[System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "ICollection`1",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Count": "System.Int32",
-        "IsReadOnly": "System.Boolean"
-      },
-      "ElementType": null,
-      "GenericTypeName": "ICollection",
-      "GenericTypeArguments": [
         "System.String"
       ]
     },
@@ -3058,7 +2799,6 @@
         "Time": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails": {
@@ -3069,19 +2809,14 @@
         "Minute": "System.Nullable`1[System.Int32]"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.Int32]": {
       "Namespace": "System",
-      "Name": "Nullable`1",
+      "Name": "Nullable",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "HasValue": "System.Boolean",
-        "Value": "System.Int32"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "Nullable",
       "GenericTypeArguments": [
         "System.Int32"
       ]
@@ -3095,18 +2830,14 @@
         "Weekdays": "System.Collections.Generic.IList`1[System.String]"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList`1",
+      "Name": "IList",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Item": "System.String"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "IList",
       "GenericTypeArguments": [
         "System.String"
       ]
@@ -3134,7 +2865,6 @@
         "Year": "System.Int32"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.DayOfWeek": {
@@ -3143,7 +2873,6 @@
       "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.DateTimeKind": {
@@ -3152,7 +2881,6 @@
       "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.TimeSpan": {
@@ -3173,16 +2901,6 @@
         "TotalSeconds": "System.Double"
       },
       "ElementType": null,
-      "GenericTypeName": null,
-      "GenericTypeArguments": []
-    },
-    "System.Object": {
-      "Namespace": "System",
-      "Name": "Object",
-      "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Management.Automation.SwitchParameter": {
@@ -3194,7 +2912,6 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

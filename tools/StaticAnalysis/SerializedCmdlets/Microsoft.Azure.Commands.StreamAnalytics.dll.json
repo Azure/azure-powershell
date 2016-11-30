@@ -13,15 +13,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction"
-            },
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction"
             ]
@@ -34,7 +29,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSFunction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -43,7 +38,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -64,7 +58,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -82,7 +75,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -100,7 +92,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -124,7 +115,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -148,7 +138,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -172,7 +161,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -202,7 +190,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSFunction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -211,7 +199,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -232,7 +219,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -250,7 +236,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -268,7 +253,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -286,7 +270,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -310,7 +293,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -334,7 +316,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -358,7 +339,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -382,7 +362,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -412,7 +391,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSFunction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -421,7 +400,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -442,7 +420,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -460,7 +437,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -478,7 +454,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -496,7 +471,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -514,7 +488,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -538,7 +511,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -562,7 +534,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -586,7 +557,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -610,7 +580,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -634,7 +603,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -673,7 +641,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -691,7 +658,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -709,7 +675,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -733,7 +698,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -757,7 +721,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -781,7 +744,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -820,7 +782,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -838,7 +799,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -856,7 +816,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -880,7 +839,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -904,7 +862,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -928,7 +885,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -957,15 +913,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput"
-            },
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput"
             ]
@@ -978,7 +929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSInput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -987,7 +938,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1008,7 +958,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1026,7 +975,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1044,7 +992,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1068,7 +1015,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1092,7 +1038,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1116,7 +1061,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1146,7 +1090,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSInput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -1155,7 +1099,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1176,7 +1119,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1194,7 +1136,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1212,7 +1153,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1230,7 +1170,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1248,7 +1187,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1272,7 +1210,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1296,7 +1233,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1320,7 +1256,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1344,7 +1279,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1368,7 +1302,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1407,7 +1340,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1425,7 +1357,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1443,7 +1374,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1467,7 +1397,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1491,7 +1420,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1515,7 +1443,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1554,7 +1481,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1572,7 +1498,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1590,7 +1515,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1614,7 +1538,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1638,7 +1561,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1662,7 +1584,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1691,15 +1612,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob"
-            },
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob"
             ]
@@ -1712,7 +1628,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreatedDate": "System.Nullable`1[System.DateTime]",
               "JobId": "System.String",
@@ -1726,7 +1642,6 @@
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1747,7 +1662,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1765,7 +1679,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1783,7 +1696,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1807,7 +1719,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1831,7 +1742,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1855,7 +1765,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1884,7 +1793,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1914,7 +1822,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreatedDate": "System.Nullable`1[System.DateTime]",
               "JobId": "System.String",
@@ -1928,7 +1836,6 @@
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1949,7 +1856,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1967,7 +1873,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1985,7 +1890,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2003,7 +1907,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2027,7 +1930,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2051,7 +1953,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2075,7 +1976,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2099,7 +1999,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2138,7 +2037,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2156,7 +2054,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2180,7 +2077,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2204,7 +2100,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2243,7 +2138,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2261,7 +2155,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2272,14 +2165,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.DateTime"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.DateTime"
             ]
@@ -2299,7 +2188,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2323,7 +2211,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2347,7 +2234,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2364,14 +2250,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.DateTime"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.DateTime"
                   ]
@@ -2397,7 +2279,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2436,7 +2317,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2454,7 +2334,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2478,7 +2357,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2502,7 +2380,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2531,15 +2408,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput"
-            },
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput"
             ]
@@ -2552,7 +2424,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -2561,7 +2433,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2582,7 +2453,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2600,7 +2470,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2618,7 +2487,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2642,7 +2510,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2666,7 +2533,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2690,7 +2556,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2720,7 +2585,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -2729,7 +2594,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2750,7 +2614,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2768,7 +2631,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2786,7 +2648,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2804,7 +2665,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2822,7 +2682,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2846,7 +2705,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2870,7 +2728,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2894,7 +2751,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2918,7 +2774,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2942,7 +2797,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2981,7 +2835,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2999,7 +2852,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3017,7 +2869,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3041,7 +2892,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3065,7 +2915,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3089,7 +2938,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3128,7 +2976,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3146,7 +2993,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3164,7 +3010,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3188,7 +3033,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3212,7 +3056,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3236,7 +3079,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3265,15 +3107,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota"
-            },
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota"
             ]
@@ -3286,7 +3123,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSQuota",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CurrentCount": "System.Int32",
               "Location": "System.String",
@@ -3295,7 +3132,6 @@
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3316,7 +3152,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3340,7 +3175,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3369,15 +3203,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation"
-            },
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation"
             ]
@@ -3390,7 +3219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSTransformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -3399,7 +3228,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3420,7 +3248,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3438,7 +3265,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3456,7 +3282,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3480,7 +3305,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3504,7 +3328,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3528,7 +3351,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3558,7 +3380,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "PSTransformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobName": "System.String",
               "Name": "System.String",
@@ -3567,7 +3389,6 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3588,7 +3409,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3606,7 +3426,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3624,7 +3443,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3642,7 +3460,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3660,7 +3477,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3684,7 +3500,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3708,7 +3523,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3732,7 +3546,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3756,7 +3569,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3780,7 +3592,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3804,7 +3615,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -3813,7 +3623,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -3822,7 +3631,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -3831,7 +3639,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -3840,7 +3647,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -3849,7 +3655,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -3858,7 +3663,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -3867,7 +3671,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -3876,7 +3679,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -3885,7 +3687,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -3894,7 +3695,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -3903,7 +3703,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -3912,7 +3711,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -3921,13 +3719,12 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction": {
       "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
       "Name": "PSFunction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobName": "System.String",
         "Name": "System.String",
@@ -3936,7 +3733,6 @@
         "ResourceGroupName": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties": {
@@ -3948,7 +3744,6 @@
         "Type": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Management.Automation.SwitchParameter": {
@@ -3960,13 +3755,12 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput": {
       "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
       "Name": "PSInput",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobName": "System.String",
         "Name": "System.String",
@@ -3975,7 +3769,6 @@
         "ResourceGroupName": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties": {
@@ -3989,7 +3782,6 @@
         "Type": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics": {
@@ -4000,18 +3792,14 @@
         "Conditions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList`1",
+      "Name": "IList",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Item": "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "IList",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition"
       ]
@@ -4026,19 +3814,14 @@
         "Since": "System.Nullable`1[System.DateTime]"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
-      "Name": "Nullable`1",
+      "Name": "Nullable",
       "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "HasValue": "System.Boolean",
-        "Value": "System.DateTime"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "Nullable",
       "GenericTypeArguments": [
         "System.DateTime"
       ]
@@ -4066,7 +3849,6 @@
         "Year": "System.Int32"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.DayOfWeek": {
@@ -4075,7 +3857,6 @@
       "AssemblyQualifiedName": "System.DayOfWeek, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.DateTimeKind": {
@@ -4084,7 +3865,6 @@
       "AssemblyQualifiedName": "System.DateTimeKind, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.TimeSpan": {
@@ -4105,7 +3885,6 @@
         "TotalSeconds": "System.Double"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization": {
@@ -4116,13 +3895,12 @@
         "Type": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob": {
       "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
       "Name": "PSJob",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CreatedDate": "System.Nullable`1[System.DateTime]",
         "JobId": "System.String",
@@ -4136,7 +3914,6 @@
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties": {
@@ -4163,32 +3940,24 @@
         "Transformation": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.Int32]": {
       "Namespace": "System",
-      "Name": "Nullable`1",
+      "Name": "Nullable",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "HasValue": "System.Boolean",
-        "Value": "System.Int32"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "Nullable",
       "GenericTypeArguments": [
         "System.Int32"
       ]
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Function]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList`1",
+      "Name": "IList",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.Function, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Item": "Microsoft.Azure.Management.StreamAnalytics.Models.Function"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "IList",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.StreamAnalytics.Models.Function"
       ]
@@ -4202,18 +3971,14 @@
         "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Input]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList`1",
+      "Name": "IList",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.Input, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Item": "Microsoft.Azure.Management.StreamAnalytics.Models.Input"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "IList",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.StreamAnalytics.Models.Input"
       ]
@@ -4227,18 +3992,14 @@
         "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Output]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList`1",
+      "Name": "IList",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.Output, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Item": "Microsoft.Azure.Management.StreamAnalytics.Models.Output"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "IList",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.StreamAnalytics.Models.Output"
       ]
@@ -4252,7 +4013,6 @@
         "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties": {
@@ -4266,7 +4026,6 @@
         "Serialization": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource": {
@@ -4277,7 +4036,6 @@
         "Type": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.Sku": {
@@ -4288,7 +4046,6 @@
         "Name": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation": {
@@ -4300,7 +4057,6 @@
         "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties": {
@@ -4313,43 +4069,23 @@
         "StreamingUnits": "System.Nullable`1[System.Int32]"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary`2",
+      "Name": "IDictionary",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Item": "System.String",
-        "Keys": "System.Collections.Generic.ICollection`1[System.String]",
-        "Values": "System.Collections.Generic.ICollection`1[System.String]"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "IDictionary",
       "GenericTypeArguments": [
         "System.String",
-        "System.String"
-      ]
-    },
-    "System.Collections.Generic.ICollection`1[System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "ICollection`1",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Count": "System.Int32",
-        "IsReadOnly": "System.Boolean"
-      },
-      "ElementType": null,
-      "GenericTypeName": "ICollection",
-      "GenericTypeArguments": [
         "System.String"
       ]
     },
     "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput": {
       "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
       "Name": "PSOutput",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobName": "System.String",
         "Name": "System.String",
@@ -4358,13 +4094,12 @@
         "ResourceGroupName": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota": {
       "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
       "Name": "PSQuota",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CurrentCount": "System.Int32",
         "Location": "System.String",
@@ -4373,7 +4108,6 @@
         "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties": {
@@ -4385,13 +4119,12 @@
         "MaxCount": "System.Int32"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation": {
       "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
       "Name": "PSTransformation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobName": "System.String",
         "Name": "System.String",
@@ -4400,7 +4133,6 @@
         "ResourceGroupName": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

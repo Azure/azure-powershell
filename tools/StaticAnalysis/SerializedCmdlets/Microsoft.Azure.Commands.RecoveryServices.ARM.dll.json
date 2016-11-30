@@ -19,7 +19,6 @@
               "BackupStorageRedundancy": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -45,7 +44,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -74,7 +72,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -103,15 +100,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
+            "Name": "List",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.RecoveryServices.ARSVault"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.RecoveryServices.ARSVault"
             ]
@@ -134,7 +126,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -152,7 +143,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -176,7 +166,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -200,7 +189,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -235,7 +223,6 @@
               "FilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -261,7 +248,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -279,7 +265,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -297,7 +282,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -315,7 +299,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -333,7 +316,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -351,7 +333,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -380,7 +361,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -404,7 +384,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -433,7 +412,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -457,7 +435,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -481,7 +458,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -510,7 +486,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -534,7 +509,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -563,7 +537,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -592,7 +565,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -616,7 +588,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -645,7 +616,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -674,7 +644,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -698,7 +667,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -737,7 +705,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -755,7 +722,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -773,7 +739,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -797,7 +762,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -821,7 +785,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -845,7 +808,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -889,7 +851,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -918,7 +879,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -962,7 +922,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -973,14 +932,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType"
             ]
@@ -1011,7 +966,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1028,14 +982,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType"
                   ]
@@ -1081,7 +1031,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1110,7 +1059,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1134,7 +1082,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -1143,7 +1090,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -1152,7 +1098,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -1161,7 +1106,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -1170,7 +1114,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -1179,7 +1122,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -1188,7 +1130,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -1197,7 +1138,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -1206,7 +1146,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -1215,7 +1154,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -1224,7 +1162,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -1233,7 +1170,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -1242,7 +1178,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -1251,7 +1186,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties": {
@@ -1262,7 +1196,6 @@
         "ProvisioningState": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.ARSVault": {
@@ -1279,7 +1212,6 @@
         "Type": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Management.Automation.SwitchParameter": {
@@ -1291,7 +1223,6 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType": {
@@ -1300,7 +1231,6 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

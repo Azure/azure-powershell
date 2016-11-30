@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
             "Name": "PSTag",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Count": "System.String",
               "Name": "System.String",
@@ -22,7 +22,6 @@
               "ValuesTable": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -43,7 +42,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -56,17 +54,8 @@
             "Namespace": "System",
             "Name": "String[]",
             "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "IsFixedSize": "System.Boolean",
-              "IsReadOnly": "System.Boolean",
-              "IsSynchronized": "System.Boolean",
-              "Length": "System.Int32",
-              "LongLength": "System.Int64",
-              "Rank": "System.Int32",
-              "SyncRoot": "System.Object"
-            },
+            "Properties": {},
             "ElementType": "System.String",
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -84,7 +73,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -108,7 +96,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -127,17 +114,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -161,7 +139,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -190,15 +167,10 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List`1",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "Capacity": "System.Int32",
-              "Count": "System.Int32",
-              "Item": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag"
-            },
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "List",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag"
             ]
@@ -221,7 +193,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -239,7 +210,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -263,7 +233,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -287,7 +256,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -317,7 +285,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
             "Name": "PSTag",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Count": "System.String",
               "Name": "System.String",
@@ -325,7 +293,6 @@
               "ValuesTable": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -346,7 +313,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -364,7 +330,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -388,7 +353,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -412,7 +376,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -436,7 +399,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -445,7 +407,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -454,7 +415,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -463,7 +423,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -472,7 +431,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -481,7 +439,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -490,7 +447,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -499,7 +455,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -508,7 +463,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -517,7 +471,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -526,7 +479,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -535,7 +487,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -544,7 +495,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -553,20 +503,14 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List`1",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Capacity": "System.Int32",
-        "Count": "System.Int32",
-        "Item": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue"
-      },
+      "Name": "List",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "List",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue"
       ]
@@ -574,22 +518,12 @@
     "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
       "Name": "PSTagValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Count": "System.String",
         "Name": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
-      "GenericTypeArguments": []
-    },
-    "System.Object": {
-      "Namespace": "System",
-      "Name": "Object",
-      "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Management.Automation.SwitchParameter": {
@@ -601,13 +535,12 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
       "Name": "PSTag",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Count": "System.String",
         "Name": "System.String",
@@ -615,7 +548,6 @@
         "ValuesTable": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

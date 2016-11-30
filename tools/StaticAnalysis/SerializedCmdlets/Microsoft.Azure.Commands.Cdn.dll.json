@@ -27,7 +27,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -48,7 +47,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -66,7 +64,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -90,7 +87,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -114,7 +110,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -149,7 +144,6 @@
               "SsoUriValue": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -170,7 +164,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -188,7 +181,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -213,7 +205,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -237,7 +228,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -261,7 +251,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -297,7 +286,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -340,7 +328,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -361,7 +348,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -379,7 +365,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -394,7 +379,6 @@
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -412,7 +396,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -436,7 +419,6 @@
               "Values": "System.Collections.ICollection"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -460,7 +442,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -484,7 +465,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -505,7 +485,6 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -529,7 +508,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -559,7 +537,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -592,7 +569,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -613,7 +589,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -631,7 +606,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -656,7 +630,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -674,7 +647,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -692,7 +664,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -716,7 +687,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -740,7 +710,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -764,7 +733,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -788,7 +756,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -824,7 +791,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -848,7 +814,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -872,7 +837,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -901,7 +865,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -925,7 +888,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -968,7 +930,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -996,7 +957,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1027,7 +987,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1072,7 +1031,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1093,7 +1051,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1111,7 +1068,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1129,7 +1085,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1147,7 +1102,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1181,7 +1135,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1205,7 +1158,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1234,7 +1186,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1258,7 +1209,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1282,7 +1232,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1306,7 +1255,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1351,7 +1299,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1375,7 +1322,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1420,7 +1366,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1450,7 +1395,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1483,7 +1427,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1520,7 +1463,6 @@
               "Reason": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1541,7 +1483,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1565,7 +1506,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1617,7 +1557,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1638,7 +1577,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1656,7 +1594,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1674,7 +1611,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1699,7 +1635,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1723,7 +1658,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1752,7 +1686,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1776,7 +1709,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1800,7 +1732,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1836,7 +1767,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1860,7 +1790,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1893,7 +1822,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1914,7 +1842,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1932,7 +1859,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1950,7 +1876,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1984,7 +1909,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1997,17 +1921,8 @@
             "Namespace": "System",
             "Name": "String[]",
             "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "IsFixedSize": "System.Boolean",
-              "IsReadOnly": "System.Boolean",
-              "IsSynchronized": "System.Boolean",
-              "Length": "System.Int32",
-              "LongLength": "System.Int64",
-              "Rank": "System.Int32",
-              "SyncRoot": "System.Object"
-            },
+            "Properties": {},
             "ElementType": "System.String",
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2025,7 +1940,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2049,7 +1963,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2073,7 +1986,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2097,7 +2009,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2116,17 +2027,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2150,7 +2052,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2195,7 +2096,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2214,17 +2114,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2248,7 +2139,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2272,17 +2162,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2306,7 +2187,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2358,7 +2238,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2379,7 +2258,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2397,7 +2275,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2415,7 +2292,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2440,7 +2316,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2458,7 +2333,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2476,7 +2350,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2494,7 +2367,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2507,17 +2379,8 @@
             "Namespace": "System",
             "Name": "String[]",
             "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "IsFixedSize": "System.Boolean",
-              "IsReadOnly": "System.Boolean",
-              "IsSynchronized": "System.Boolean",
-              "Length": "System.Int32",
-              "LongLength": "System.Int64",
-              "Rank": "System.Int32",
-              "SyncRoot": "System.Object"
-            },
+            "Properties": {},
             "ElementType": "System.String",
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2528,14 +2391,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.Boolean"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.Boolean"
             ]
@@ -2548,14 +2407,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.Boolean"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.Boolean"
             ]
@@ -2568,14 +2423,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.Boolean"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.Boolean"
             ]
@@ -2588,14 +2439,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
             ]
@@ -2615,7 +2462,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2633,7 +2479,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2644,14 +2489,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.Int32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.Int32"
             ]
@@ -2664,14 +2505,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.Int32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.Int32"
             ]
@@ -2697,7 +2534,6 @@
               "Values": "System.Collections.ICollection"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2721,7 +2557,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2745,7 +2580,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2769,7 +2603,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2788,17 +2621,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2815,14 +2639,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -2841,14 +2661,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -2867,14 +2683,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -2893,14 +2705,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
                   ]
@@ -2926,7 +2734,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2950,7 +2757,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2967,14 +2773,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -2993,14 +2795,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -3032,7 +2830,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3061,7 +2858,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3085,7 +2881,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3109,7 +2904,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3133,7 +2927,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3157,7 +2950,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3181,7 +2973,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3200,17 +2991,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3227,14 +3009,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -3253,14 +3031,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -3279,14 +3053,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -3305,14 +3075,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
                   ]
@@ -3338,7 +3104,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3362,7 +3127,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3379,14 +3143,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -3405,14 +3165,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -3444,7 +3200,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3480,7 +3235,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3504,7 +3258,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3528,7 +3281,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3552,7 +3304,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3571,17 +3322,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3598,14 +3340,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -3624,14 +3362,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -3650,14 +3384,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Boolean"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Boolean"
                   ]
@@ -3676,14 +3406,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
                   ]
@@ -3709,7 +3435,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3733,7 +3458,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3750,14 +3474,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -3776,14 +3496,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.Int32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.Int32"
                   ]
@@ -3815,7 +3531,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3848,7 +3563,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3869,7 +3583,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3887,7 +3600,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3905,7 +3617,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3939,7 +3650,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3952,17 +3662,8 @@
             "Namespace": "System",
             "Name": "String[]",
             "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "IsFixedSize": "System.Boolean",
-              "IsReadOnly": "System.Boolean",
-              "IsSynchronized": "System.Boolean",
-              "Length": "System.Int32",
-              "LongLength": "System.Int64",
-              "Rank": "System.Int32",
-              "SyncRoot": "System.Object"
-            },
+            "Properties": {},
             "ElementType": "System.String",
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3980,7 +3681,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4004,7 +3704,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4028,7 +3727,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4052,7 +3750,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4071,17 +3768,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4105,7 +3793,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4150,7 +3837,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4169,17 +3855,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4203,7 +3880,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4227,17 +3903,8 @@
                   "Namespace": "System",
                   "Name": "String[]",
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4261,7 +3928,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4294,7 +3960,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -4315,7 +3980,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4333,7 +3997,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4351,7 +4014,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4385,7 +4047,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4403,7 +4064,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4421,7 +4081,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4445,7 +4104,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4469,7 +4127,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4493,7 +4150,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4517,7 +4173,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4541,7 +4196,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4586,7 +4240,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4610,7 +4263,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4634,7 +4286,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4663,7 +4314,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4687,7 +4337,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4739,7 +4388,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -4776,7 +4424,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4816,7 +4463,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4849,7 +4495,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -4870,7 +4515,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4888,7 +4532,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4906,7 +4549,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4940,7 +4582,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4958,7 +4599,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4982,7 +4622,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5006,7 +4645,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5030,7 +4668,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5054,7 +4691,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5099,7 +4735,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5123,7 +4758,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5152,7 +4786,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5185,7 +4818,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -5206,7 +4838,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5224,7 +4855,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5242,7 +4872,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5276,7 +4905,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5294,7 +4922,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5318,7 +4945,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5342,7 +4968,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5366,7 +4991,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5390,7 +5014,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5435,7 +5058,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5459,7 +5081,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5488,7 +5109,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5525,7 +5145,6 @@
               "Reason": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -5546,7 +5165,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5564,7 +5182,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5582,7 +5199,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5616,7 +5232,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5634,7 +5249,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5658,7 +5272,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5682,7 +5295,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5706,7 +5318,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5730,7 +5341,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5775,7 +5385,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5799,7 +5408,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5828,7 +5436,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5871,7 +5478,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -5892,7 +5498,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5910,7 +5515,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5928,7 +5532,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5946,7 +5549,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5980,7 +5582,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6004,7 +5605,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6033,7 +5633,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6057,7 +5656,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6081,7 +5679,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6105,7 +5702,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6150,7 +5746,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6174,7 +5769,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6217,7 +5811,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -6238,7 +5831,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6256,7 +5848,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6274,7 +5865,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6292,7 +5882,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6310,7 +5899,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6344,7 +5932,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6368,7 +5955,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6392,7 +5978,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6421,7 +6006,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6445,7 +6029,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6469,7 +6052,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6493,7 +6075,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6517,7 +6098,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6562,7 +6142,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6586,7 +6165,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6610,7 +6188,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6643,7 +6220,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -6664,7 +6240,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6682,7 +6257,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6700,7 +6274,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6718,7 +6291,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6743,7 +6315,6 @@
               "Type": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6761,7 +6332,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -6785,7 +6355,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6809,7 +6378,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6833,7 +6401,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6857,7 +6424,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6881,7 +6447,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6917,7 +6482,6 @@
                     "Type": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6941,7 +6505,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6970,7 +6533,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -6994,7 +6556,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -7003,7 +6564,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -7012,7 +6572,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -7021,7 +6580,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -7030,7 +6588,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -7039,7 +6596,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -7048,7 +6604,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -7057,7 +6612,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -7066,7 +6620,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -7075,7 +6628,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -7084,7 +6636,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -7093,7 +6644,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -7102,7 +6652,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -7111,7 +6660,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState": {
@@ -7120,7 +6668,6 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState": {
@@ -7129,7 +6676,6 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku": {
@@ -7140,7 +6686,6 @@
         "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName": {
@@ -7149,7 +6694,6 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Hashtable": {
@@ -7167,7 +6711,6 @@
         "Values": "System.Collections.ICollection"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Object": {
@@ -7176,7 +6719,6 @@
       "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.ICollection": {
@@ -7189,7 +6731,6 @@
         "SyncRoot": "System.Object"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Management.Automation.SwitchParameter": {
@@ -7201,19 +6742,14 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.Int32]": {
       "Namespace": "System",
-      "Name": "Nullable`1",
+      "Name": "Nullable",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "HasValue": "System.Boolean",
-        "Value": "System.Int32"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "Nullable",
       "GenericTypeArguments": [
         "System.Int32"
       ]
@@ -7224,36 +6760,22 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.String[]": {
       "Namespace": "System",
       "Name": "String[]",
       "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "IsFixedSize": "System.Boolean",
-        "IsReadOnly": "System.Boolean",
-        "IsSynchronized": "System.Boolean",
-        "Length": "System.Int32",
-        "LongLength": "System.Int64",
-        "Rank": "System.Int32",
-        "SyncRoot": "System.Object"
-      },
+      "Properties": {},
       "ElementType": "System.String",
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "ICollection`1",
+      "Name": "ICollection",
       "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Count": "System.Int32",
-        "IsReadOnly": "System.Boolean"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "ICollection",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin"
       ]
@@ -7269,7 +6791,6 @@
         "Name": "System.String"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior": {
@@ -7278,7 +6799,6 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState": {
@@ -7287,7 +6807,6 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState": {
@@ -7296,7 +6815,6 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState, Microsoft.Azure.Commands.Cdn, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

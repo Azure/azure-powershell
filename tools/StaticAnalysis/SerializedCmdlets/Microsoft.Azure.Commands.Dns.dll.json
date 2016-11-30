@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -26,7 +26,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -47,7 +46,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -65,7 +63,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -83,7 +80,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -95,7 +91,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -106,7 +102,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -117,14 +112,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "Microsoft.Azure.Management.Dns.Models.RecordType"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "Microsoft.Azure.Management.Dns.Models.RecordType"
             ]
@@ -150,7 +141,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -174,7 +164,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -198,7 +187,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -215,14 +203,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "Microsoft.Azure.Management.Dns.Models.RecordType"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.RecordType"
                   ]
@@ -253,7 +237,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -271,7 +254,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -282,7 +265,6 @@
                     "Tags": "System.Collections.Hashtable"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -299,14 +281,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "Microsoft.Azure.Management.Dns.Models.RecordType"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.RecordType"
                   ]
@@ -330,14 +308,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "Microsoft.Azure.Management.Dns.Models.RecordType"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.RecordType"
                   ]
@@ -369,10 +343,9 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -393,7 +366,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -411,7 +383,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -429,7 +400,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -447,7 +417,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -462,7 +431,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -480,7 +448,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -498,7 +465,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -513,7 +479,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -531,7 +496,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -546,7 +510,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -561,7 +524,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -579,7 +541,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -603,7 +564,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -632,7 +592,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -661,7 +620,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -690,7 +648,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -711,7 +668,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -740,7 +696,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -769,7 +724,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -795,7 +749,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -819,7 +772,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -840,7 +792,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -861,7 +812,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -890,7 +840,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -923,7 +872,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -944,7 +892,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -959,7 +906,6 @@
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -977,7 +923,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -995,7 +940,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1007,7 +951,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1018,7 +962,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1030,7 +973,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1042,7 +985,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1060,7 +1002,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1078,7 +1019,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1096,7 +1036,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1120,7 +1059,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1141,7 +1079,6 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1165,7 +1102,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1189,7 +1125,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1213,7 +1148,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1237,7 +1171,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1266,7 +1199,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1287,7 +1219,6 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1305,7 +1236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1316,7 +1247,6 @@
                     "Tags": "System.Collections.Hashtable"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1340,7 +1270,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1364,7 +1293,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1387,7 +1315,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1399,7 +1327,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1423,7 +1350,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1447,7 +1373,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1471,7 +1396,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1500,7 +1424,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1524,7 +1447,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1554,7 +1476,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1566,7 +1488,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1581,7 +1502,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1593,7 +1514,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1611,7 +1531,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1629,7 +1548,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1641,7 +1560,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1670,7 +1588,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1688,7 +1605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1700,7 +1617,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1730,7 +1646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1742,7 +1658,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1757,7 +1672,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1769,7 +1684,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1787,7 +1701,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1805,7 +1718,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1823,7 +1735,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1841,7 +1752,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1856,7 +1766,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1874,7 +1783,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1892,7 +1800,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1907,7 +1814,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1925,7 +1831,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1940,7 +1845,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1955,7 +1859,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1973,7 +1876,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1991,7 +1893,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2003,7 +1905,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2032,7 +1933,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2050,7 +1950,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2062,7 +1962,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2091,7 +1990,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2109,7 +2007,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2121,7 +2019,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2150,7 +2047,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2168,7 +2064,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2180,7 +2076,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2209,7 +2104,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2230,7 +2124,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2248,7 +2141,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2260,7 +2153,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2289,7 +2181,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2307,7 +2198,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2319,7 +2210,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2348,7 +2238,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2366,7 +2255,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2378,7 +2267,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2404,7 +2292,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2428,7 +2315,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2449,7 +2335,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2470,7 +2355,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2488,7 +2372,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2500,7 +2384,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2529,7 +2412,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2547,7 +2429,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2559,7 +2441,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2589,7 +2470,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -2601,7 +2482,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2616,7 +2496,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -2628,7 +2508,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2646,7 +2525,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2664,7 +2542,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2682,7 +2559,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2700,7 +2576,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2715,7 +2590,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2733,7 +2607,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2751,7 +2624,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2766,7 +2638,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2784,7 +2655,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2799,7 +2669,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2814,7 +2683,6 @@
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2832,7 +2700,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2850,7 +2717,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2862,7 +2729,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2891,7 +2757,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2909,7 +2774,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2921,7 +2786,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2950,7 +2814,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2968,7 +2831,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2980,7 +2843,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3009,7 +2871,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3027,7 +2888,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3039,7 +2900,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3068,7 +2928,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3089,7 +2948,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3107,7 +2965,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3119,7 +2977,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3148,7 +3005,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3166,7 +3022,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3178,7 +3034,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3207,7 +3062,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3225,7 +3079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3237,7 +3091,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3263,7 +3116,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3287,7 +3139,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3308,7 +3159,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3329,7 +3179,6 @@
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3347,7 +3196,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3359,7 +3208,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3388,7 +3236,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3406,7 +3253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3418,7 +3265,6 @@
                     "ZoneName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3448,7 +3294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -3460,7 +3306,6 @@
               "ZoneName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3481,7 +3326,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3499,7 +3343,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3517,7 +3360,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3529,7 +3371,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -3540,7 +3382,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3555,7 +3396,6 @@
             "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3570,7 +3410,6 @@
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3594,7 +3433,6 @@
               "Values": "System.Collections.ICollection"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3606,18 +3444,9 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordBase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "IsFixedSize": "System.Boolean",
-              "IsReadOnly": "System.Boolean",
-              "IsSynchronized": "System.Boolean",
-              "Length": "System.Int32",
-              "LongLength": "System.Int64",
-              "Rank": "System.Int32",
-              "SyncRoot": "System.Object"
-            },
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3635,7 +3464,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3653,7 +3481,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3677,7 +3504,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3698,7 +3524,6 @@
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3719,7 +3544,6 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3749,7 +3573,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3767,18 +3590,9 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3802,7 +3616,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3826,7 +3639,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3855,7 +3667,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3879,7 +3690,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3903,7 +3713,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3924,7 +3733,6 @@
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3945,7 +3753,6 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3975,7 +3782,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3993,18 +3799,9 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4028,7 +3825,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4052,7 +3848,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4075,7 +3870,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4086,7 +3881,6 @@
                     "Tags": "System.Collections.Hashtable"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4110,7 +3904,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4131,7 +3924,6 @@
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4152,7 +3944,6 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4182,7 +3973,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4200,18 +3990,9 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "IsFixedSize": "System.Boolean",
-                    "IsReadOnly": "System.Boolean",
-                    "IsSynchronized": "System.Boolean",
-                    "Length": "System.Int32",
-                    "LongLength": "System.Int64",
-                    "Rank": "System.Int32",
-                    "SyncRoot": "System.Object"
-                  },
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4235,7 +4016,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4259,7 +4039,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4289,7 +4068,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4300,7 +4079,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -4321,7 +4099,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4339,7 +4116,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4363,7 +4139,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4387,7 +4162,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4420,7 +4194,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -4441,7 +4214,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4459,7 +4231,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4471,7 +4242,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4482,7 +4253,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4500,7 +4270,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4518,7 +4287,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4536,7 +4304,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4560,7 +4327,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4584,7 +4350,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4608,7 +4373,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4632,7 +4396,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4655,7 +4418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4666,7 +4429,6 @@
                     "Tags": "System.Collections.Hashtable"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4690,7 +4452,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4714,7 +4475,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4738,7 +4498,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4767,7 +4526,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4791,7 +4549,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4821,7 +4578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4832,7 +4589,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -4853,7 +4609,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4871,7 +4626,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4897,7 +4651,6 @@
               "Values": "System.Collections.ICollection"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4909,7 +4662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4920,7 +4673,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4938,7 +4690,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -4962,7 +4713,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4986,7 +4736,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5018,7 +4767,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5041,7 +4789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -5052,7 +4800,6 @@
                     "Tags": "System.Collections.Hashtable"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5076,7 +4823,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5106,7 +4852,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -5117,7 +4863,6 @@
               "Tags": "System.Collections.Hashtable"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -5138,7 +4883,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5156,7 +4900,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5182,7 +4925,6 @@
               "Values": "System.Collections.ICollection"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -5206,7 +4948,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5230,7 +4971,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5262,7 +5002,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -5286,7 +5025,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -5295,7 +5033,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -5304,7 +5041,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -5313,7 +5049,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -5322,7 +5057,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -5331,7 +5065,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -5340,7 +5073,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -5349,7 +5081,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -5358,7 +5089,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -5367,7 +5097,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -5376,7 +5105,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -5385,7 +5113,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -5394,7 +5121,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -5403,7 +5129,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Hashtable": {
@@ -5421,7 +5146,6 @@
         "Values": "System.Collections.ICollection"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Object": {
@@ -5430,7 +5154,6 @@
       "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.ICollection": {
@@ -5443,20 +5166,14 @@
         "SyncRoot": "System.Object"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List`1",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Capacity": "System.Int32",
-        "Count": "System.Int32",
-        "Item": "Microsoft.Azure.Commands.Dns.DnsRecordBase"
-      },
+      "Name": "List",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "List",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Dns.DnsRecordBase"
       ]
@@ -5464,10 +5181,9 @@
     "Microsoft.Azure.Commands.Dns.DnsRecordBase": {
       "Namespace": "Microsoft.Azure.Commands.Dns",
       "Name": "DnsRecordBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.Dns.Models.RecordType": {
@@ -5476,34 +5192,24 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.Int64]": {
       "Namespace": "System",
-      "Name": "Nullable`1",
+      "Name": "Nullable",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "HasValue": "System.Boolean",
-        "Value": "System.Int64"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "Nullable",
       "GenericTypeArguments": [
         "System.Int64"
       ]
     },
     "System.Collections.Generic.List`1[System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List`1",
+      "Name": "List",
       "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Capacity": "System.Int32",
-        "Count": "System.Int32",
-        "Item": "System.String"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "List",
       "GenericTypeArguments": [
         "System.String"
       ]
@@ -5517,7 +5223,6 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

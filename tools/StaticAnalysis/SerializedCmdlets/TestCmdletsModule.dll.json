@@ -2,6 +2,708 @@
   "Cmdlets": [
     {
       "VerbName": "Test",
+      "NounName": "DifferentGenericTypeArgumentSize",
+      "Name": "Test-DifferentGenericTypeArgumentSize",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestDifferentGenericTypeArgumentSize",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Parameter",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize",
+            "Name": "Test",
+            "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Foo": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[System.Int32]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize",
+                  "Name": "Test",
+                  "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Foo": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[System.Int32]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeGenericTypeArgument",
+      "Name": "Test-ChangeGenericTypeArgument",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.TestChangeGenericTypeArgument",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Parameter",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument",
+            "Name": "Test",
+            "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Bar": "System.Collections.Generic.List`1[System.Int32]",
+              "Foo": "System.Collections.Generic.List`1[System.Int32]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument",
+                  "Name": "Test",
+                  "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Bar": "System.Collections.Generic.List`1[System.Int32]",
+                    "Foo": "System.Collections.Generic.List`1[System.Int32]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeGenericType",
+      "Name": "Test-ChangeGenericType",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.TestChangeGenericType",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Parameter",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType",
+            "Name": "Test",
+            "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Bar": "System.Collections.Generic.List`1[System.Int32]",
+              "Foo": "System.Collections.Generic.List`1[System.Int32]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType",
+                  "Name": "Test",
+                  "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Bar": "System.Collections.Generic.List`1[System.Int32]",
+                    "Foo": "System.Collections.Generic.List`1[System.Int32]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeElementType",
+      "Name": "Test-ChangeElementType",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.TestChangeElementType",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Parameter",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType",
+            "Name": "Test",
+            "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Bar": "System.Int32[]",
+              "Foo": "System.Int32[]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType",
+                  "Name": "Test",
+                  "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Bar": "System.Int32[]",
+                    "Foo": "System.Int32[]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "DifferentParameterGenericTypeArgumentSize",
+      "Name": "Test-DifferentParameterGenericTypeArgumentSize",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize.TestDifferentParameterGenericTypeArgumentSize",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Foo",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize",
+            "Name": "Test",
+            "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize.Test`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Foo",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize",
+                  "Name": "Test",
+                  "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGenericTypeArgumentSize.Test`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeParameterGenericTypeArgument",
+      "Name": "Test-ChangeParameterGenericTypeArgument",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterGenericTypeArgument.TestChangeParameterGenericTypeArgument",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Foo",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Bar",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Foo",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Bar",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeParameterGenericType",
+      "Name": "Test-ChangeParameterGenericType",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterGenericType.TestChangeParameterGenericType",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Foo",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Bar",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Foo",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Bar",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeParameterElementType",
+      "Name": "Test-ChangeParameterElementType",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeParameterElementType.TestChangeParameterElementType",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Foo",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Int32[]",
+            "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": "System.Int32",
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Bar",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Int32[]",
+            "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": "System.Int32",
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Foo",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Int32[]",
+                  "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": "System.Int32",
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Bar",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Int32[]",
+                  "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": "System.Int32",
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "DifferentOutputGenericTypeArgumentSize",
+      "Name": "Test-DifferentOutputGenericTypeArgumentSize",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentOutputGenericTypeArgumentSize.TestDifferentOutputGenericTypeArgumentSize",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentOutputGenericTypeArgumentSize",
+            "Name": "Test",
+            "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentOutputGenericTypeArgumentSize.Test`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [],
+      "ParameterSets": [],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeOutputGenericTypeArgument",
+      "Name": "Test-ChangeOutputGenericTypeArgument",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputGenericTypeArgument.TestChangeOutputGenericTypeArgument",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [],
+      "ParameterSets": [],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeOutputGenericType",
+      "Name": "Test-ChangeOutputGenericType",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputGenericType.TestChangeOutputGenericType",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [],
+      "ParameterSets": [],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "ChangeOutputElementType",
+      "Name": "Test-ChangeOutputElementType",
+      "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputElementType.TestChangeOutputElementType",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "Int32[]",
+            "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": "System.Int32",
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [],
+      "ParameterSets": [],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
       "NounName": "AddValidateNotNullOrEmpty",
       "Name": "Test-AddValidateNotNullOrEmpty",
       "ClassName": "StaticAnalysis.Test.CmdletTest.BreakingChange.AddValidateNotNullOrEmpty.TestAddValidateNotNullOrEmpty",
@@ -23,7 +725,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -47,7 +748,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -86,7 +786,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -104,7 +803,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -122,7 +820,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -146,7 +843,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -170,7 +866,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -199,7 +894,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -223,7 +917,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -252,7 +945,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -291,7 +983,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -309,7 +1000,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -333,7 +1023,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -357,7 +1046,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -396,7 +1084,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -414,7 +1101,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -438,7 +1124,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -462,7 +1147,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -501,7 +1185,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -525,7 +1208,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -564,7 +1246,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -588,7 +1269,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -627,7 +1307,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -651,7 +1330,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -690,7 +1368,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -714,7 +1391,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -750,7 +1426,6 @@
               "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -782,7 +1457,6 @@
               "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -815,7 +1489,6 @@
               "PropertyTwo": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -847,7 +1520,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -882,7 +1554,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -906,7 +1577,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -945,7 +1615,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -973,7 +1642,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -1016,7 +1684,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1034,7 +1701,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1052,7 +1718,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1076,7 +1741,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1100,7 +1764,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1124,7 +1787,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1163,7 +1825,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1187,7 +1848,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1226,7 +1886,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1250,7 +1909,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1291,7 +1949,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1317,7 +1974,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1356,7 +2012,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1380,7 +2035,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1505,7 +2159,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1529,7 +2182,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1568,7 +2220,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1592,7 +2243,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1645,7 +2295,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1669,7 +2318,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1708,7 +2356,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1726,7 +2373,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1750,7 +2396,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1774,7 +2419,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1813,7 +2457,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1837,7 +2480,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1876,7 +2518,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1900,7 +2541,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1924,7 +2564,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -1933,7 +2572,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -1942,7 +2580,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -1951,7 +2588,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -1960,7 +2596,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -1969,7 +2604,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -1978,7 +2612,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -1987,7 +2620,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -1996,7 +2628,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -2005,7 +2636,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -2014,7 +2644,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -2023,7 +2652,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -2032,7 +2660,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -2041,7 +2668,34 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
+      "GenericTypeArguments": []
+    },
+    "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[System.Int32]": {
+      "Namespace": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize",
+      "Name": "TestType",
+      "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentGenericTypeArgumentSize.TestType`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ]
+    },
+    "System.Collections.Generic.List`1[System.Int32]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "List",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ]
+    },
+    "System.Int32[]": {
+      "Namespace": "System",
+      "Name": "Int32[]",
+      "AssemblyQualifiedName": "System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": "System.Int32",
       "GenericTypeArguments": []
     },
     "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType": {
@@ -2054,7 +2708,6 @@
         "PropertyTwo": "System.Int32"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType": {
@@ -2067,7 +2720,6 @@
         "PropertyTwo": "System.Int32"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Management.Automation.SwitchParameter": {
@@ -2079,7 +2731,6 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

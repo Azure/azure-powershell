@@ -17,7 +17,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -38,7 +37,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -56,7 +54,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -78,7 +75,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -96,7 +92,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -108,7 +103,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -125,7 +120,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -143,7 +137,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -167,7 +160,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -191,7 +183,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -219,7 +210,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -243,7 +233,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -267,7 +256,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -290,7 +278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
@@ -307,7 +295,6 @@
                     "Weight": "System.Nullable`1[System.UInt32]"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -331,7 +318,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -360,7 +346,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -393,7 +378,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -414,7 +398,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -432,7 +415,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -454,7 +436,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -472,7 +453,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -484,7 +464,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -501,7 +481,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -525,7 +504,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -549,7 +527,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -577,7 +554,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -601,7 +577,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -624,7 +599,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
@@ -641,7 +616,6 @@
                     "Weight": "System.Nullable`1[System.UInt32]"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -671,7 +645,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -688,7 +662,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -703,7 +676,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -720,7 +693,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -738,7 +710,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
@@ -755,7 +727,6 @@
                     "Weight": "System.Nullable`1[System.UInt32]"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -785,7 +756,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -802,7 +773,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -823,7 +793,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -841,7 +810,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -863,7 +831,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -881,7 +848,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -893,7 +859,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -910,7 +876,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -934,7 +899,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -958,7 +922,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -986,7 +949,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1010,7 +972,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1033,7 +994,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
@@ -1050,7 +1011,6 @@
                     "Weight": "System.Nullable`1[System.UInt32]"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1083,7 +1043,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1104,7 +1063,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1122,7 +1080,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -1144,7 +1101,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1162,7 +1118,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1174,7 +1129,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -1191,7 +1146,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1209,7 +1163,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1233,7 +1186,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1257,7 +1209,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -1285,7 +1236,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1309,7 +1259,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1333,7 +1282,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1356,7 +1304,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
@@ -1373,7 +1321,6 @@
                     "Weight": "System.Nullable`1[System.UInt32]"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1397,7 +1344,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1426,7 +1372,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1456,7 +1401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
@@ -1473,7 +1418,6 @@
               "Weight": "System.Nullable`1[System.UInt32]"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -1494,7 +1438,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1512,7 +1455,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1530,7 +1472,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1548,7 +1489,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -1570,7 +1510,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1588,7 +1527,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1606,7 +1544,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -1620,14 +1557,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.UInt32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.UInt32"
             ]
@@ -1640,14 +1573,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.UInt32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.UInt32"
             ]
@@ -1667,7 +1596,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1678,14 +1606,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.UInt32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.UInt32"
             ]
@@ -1711,7 +1635,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1735,7 +1658,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1759,7 +1681,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1783,7 +1704,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -1811,7 +1731,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1835,7 +1754,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1859,7 +1777,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -1879,14 +1796,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.UInt32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.UInt32"
                   ]
@@ -1905,14 +1818,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.UInt32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.UInt32"
                   ]
@@ -1938,7 +1847,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1955,14 +1863,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.UInt32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.UInt32"
                   ]
@@ -1994,7 +1898,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2009,7 +1913,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2030,7 +1933,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2042,7 +1944,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2057,7 +1959,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2081,7 +1982,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2099,7 +1999,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -2114,7 +2014,6 @@
                     "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2144,7 +2043,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2159,7 +2058,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2180,7 +2078,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2192,7 +2089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2207,7 +2104,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2225,7 +2121,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -2247,7 +2142,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2265,7 +2159,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2283,7 +2176,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -2297,14 +2189,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.UInt32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.UInt32"
             ]
@@ -2317,14 +2205,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.UInt32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.UInt32"
             ]
@@ -2344,7 +2228,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2355,14 +2238,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable`1",
+            "Name": "Nullable",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {
-              "HasValue": "System.Boolean",
-              "Value": "System.UInt32"
-            },
+            "Properties": {},
             "ElementType": null,
-            "GenericTypeName": "Nullable",
             "GenericTypeArguments": [
               "System.UInt32"
             ]
@@ -2388,7 +2267,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2406,7 +2284,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -2421,7 +2299,6 @@
                     "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2445,7 +2322,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -2473,7 +2349,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2497,7 +2372,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2521,7 +2395,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -2541,14 +2414,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.UInt32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.UInt32"
                   ]
@@ -2567,14 +2436,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.UInt32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.UInt32"
                   ]
@@ -2600,7 +2465,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2617,14 +2481,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable`1",
+                  "Name": "Nullable",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {
-                    "HasValue": "System.Boolean",
-                    "Value": "System.UInt32"
-                  },
+                  "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": "Nullable",
                   "GenericTypeArguments": [
                     "System.UInt32"
                   ]
@@ -2659,7 +2519,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2680,7 +2539,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2698,7 +2556,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2710,7 +2567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2725,7 +2582,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2743,7 +2599,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2767,7 +2622,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2791,7 +2645,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2815,7 +2668,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2838,7 +2690,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -2853,7 +2705,6 @@
                     "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2877,7 +2728,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2906,7 +2756,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2939,7 +2788,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -2960,7 +2808,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2978,7 +2825,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -2990,7 +2836,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3005,7 +2851,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3029,7 +2874,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3053,7 +2897,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3076,7 +2919,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -3091,7 +2934,6 @@
                     "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3124,7 +2966,6 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3145,7 +2986,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3163,7 +3003,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3175,7 +3014,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3190,7 +3029,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3208,7 +3046,6 @@
               "Present": "System.Management.Automation.SwitchParameter"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3232,7 +3069,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3256,7 +3092,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3280,7 +3115,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3303,7 +3137,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -3318,7 +3152,6 @@
                     "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3342,7 +3175,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3371,7 +3203,6 @@
                     "Present": "System.Management.Automation.SwitchParameter"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3401,7 +3232,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3416,7 +3247,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3431,7 +3261,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3446,7 +3276,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3464,7 +3293,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -3479,7 +3308,6 @@
                     "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3509,7 +3337,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3524,7 +3352,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3545,7 +3372,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3563,7 +3389,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3587,7 +3412,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3611,7 +3435,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3641,7 +3464,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3656,7 +3479,6 @@
               "Ttl": "System.UInt32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ParameterSets": [
@@ -3677,7 +3499,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3695,7 +3516,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3713,7 +3533,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -3734,7 +3553,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3749,7 +3567,6 @@
             "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3767,7 +3584,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -3789,7 +3605,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
@@ -3807,7 +3622,6 @@
             "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3825,7 +3639,6 @@
               "Length": "System.Int32"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3851,7 +3664,6 @@
               "Values": "System.Collections.ICollection"
             },
             "ElementType": null,
-            "GenericTypeName": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -3875,7 +3687,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3899,7 +3710,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3923,7 +3733,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -3950,7 +3759,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3971,7 +3779,6 @@
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -3995,7 +3802,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -4023,7 +3829,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
@@ -4047,7 +3852,6 @@
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4071,7 +3875,6 @@
                     "Length": "System.Int32"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4103,7 +3906,6 @@
                     "Values": "System.Collections.ICollection"
                   },
                   "ElementType": null,
-                  "GenericTypeName": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -4127,7 +3929,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Boolean": {
@@ -4136,7 +3937,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Byte": {
@@ -4145,7 +3945,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.SByte": {
@@ -4154,7 +3953,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int16": {
@@ -4163,7 +3961,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt16": {
@@ -4172,7 +3969,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int32": {
@@ -4181,7 +3977,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt32": {
@@ -4190,7 +3985,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Int64": {
@@ -4199,7 +3993,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.UInt64": {
@@ -4208,7 +4001,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Single": {
@@ -4217,7 +4009,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Double": {
@@ -4226,7 +4017,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Decimal": {
@@ -4235,7 +4025,6 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Char": {
@@ -4244,19 +4033,14 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.UInt32]": {
       "Namespace": "System",
-      "Name": "Nullable`1",
+      "Name": "Nullable",
       "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "HasValue": "System.Boolean",
-        "Value": "System.UInt32"
-      },
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "Nullable",
       "GenericTypeArguments": [
         "System.UInt32"
       ]
@@ -4270,20 +4054,14 @@
         "Present": "System.Management.Automation.SwitchParameter"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List`1",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {
-        "Capacity": "System.Int32",
-        "Count": "System.Int32",
-        "Item": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint"
-      },
+      "Name": "List",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
       "ElementType": null,
-      "GenericTypeName": "List",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint"
       ]
@@ -4291,7 +4069,7 @@
     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
       "Name": "TrafficManagerEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EndpointMonitorStatus": "System.String",
         "EndpointStatus": "System.String",
@@ -4308,7 +4086,6 @@
         "Weight": "System.Nullable`1[System.UInt32]"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Object": {
@@ -4317,7 +4094,6 @@
       "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     },
     "System.Collections.ICollection": {
@@ -4330,7 +4106,6 @@
         "SyncRoot": "System.Object"
       },
       "ElementType": null,
-      "GenericTypeName": null,
       "GenericTypeArguments": []
     }
   }

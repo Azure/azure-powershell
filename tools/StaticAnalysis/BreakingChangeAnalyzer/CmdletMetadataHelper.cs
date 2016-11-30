@@ -233,7 +233,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 {
                     var newOutputType = outputDictionary[oldOutput.Type.Name];
 
-                    _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
+                    _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
                 }
                 // If the output cannot be found, check to see if there
                 // is another output type with the same properties
@@ -275,7 +275,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         {
                             foundOutput = true;
 
-                            _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, newOutput.Type, issueLogger);
+                            _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutput.Type, issueLogger);
                         }
                     }
 
