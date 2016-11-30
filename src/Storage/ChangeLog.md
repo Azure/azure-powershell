@@ -18,3 +18,5 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.2.0

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            CdnManagementClient.Endpoints.LoadContent(EndpointName, ProfileName, ResourceGroupName, LoadContent);
+            CdnManagementClient.Endpoints.LoadContent(ResourceGroupName, ProfileName, EndpointName, LoadContent);
             WriteVerbose(Resources.Success);
 
             if (PassThru)

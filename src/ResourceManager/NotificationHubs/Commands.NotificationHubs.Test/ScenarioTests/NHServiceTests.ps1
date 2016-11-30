@@ -73,18 +73,18 @@ function Test-CRUDNamespace
 {
     # Setup    
     $location = "South Central US"
- 
+	$skuTier = "Basic"
     Write-Debug "Create resource group"
     $resourceGroupName = Get-ResourceGroupName
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
     Write-Debug "ResourceGroup name : $resourceGroupName" 
-
+	
     $namespaceName = Get-NamespaceName
     
     Write-Debug " Create new notificationHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
-    
+    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -skuTier $skuTier
+
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
         Is-NamespaceActive $resourceGroupName $namespaceName
@@ -102,12 +102,13 @@ function Test-CRUDNamespace
             $found = 1
             Assert-AreEqual $location $createdNamespace[$i].Location
             Assert-AreEqual "NotificationHub" $createdNamespace[$i].NamespaceType
+			Assert-AreEqual "Basic" $createdNamespace[$i].SkuName
             break
         }
     }
 
     Assert-True {$found -eq 1} "Namespace created earlier is not found."
-
+  
     Write-Debug "Create one more resource group"
     $secondResourceGroup = Get-ResourceGroupName
     Write-Debug "ResourceGroup name : $secondResourceGroup" 
@@ -135,6 +136,7 @@ function Test-CRUDNamespace
             Assert-AreEqual $location $allCreatedNamespace[$i].Location
             Assert-AreEqual $secondResourceGroup $allCreatedNamespace[$i].ResourceGroupName
             Assert-AreEqual "NotificationHub" $allCreatedNamespace[$i].NamespaceType
+			Assert-AreEqual "Free" $allCreatedNamespace[$i].SkuName
             break
         }
     }
@@ -169,11 +171,12 @@ function Test-CRUDNamespace
     Write-Debug " Update an existing namespace"
     $tags = @{"tag1" = "value1" ; "tag2" = "value2"}
     Write-Debug  "Tags List : $tags"
+	$skuTier = "Standard"
     
-    $updatedNamespace = Set-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location -Tags $tags -Force
+    $updatedNamespace = Set-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location -Tags $tags -skuTier $skuTier -Force
     Assert-AreEqual 2 $updatedNamespace.Tags.Count
-    
-    if($env:AZURE_TEST_MODE -ne "Playback")
+
+	if($env:AZURE_TEST_MODE -ne "Playback")
     {
         Wait-Seconds 15
     }
@@ -182,6 +185,7 @@ function Test-CRUDNamespace
     $getUpdatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2
 	#uncomment once the playback mode doesnt fail on this 
     #Assert-AreEqual $updatedNamespace.Tags.Count $getUpdatedNamespace.Tags.Count
+	Assert-AreEqual "Standard" $updatedNamespace.SkuName
 
     Write-Debug " Delete namespaces"
     Remove-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Force
@@ -200,6 +204,7 @@ function Test-CRUDNamespaceAuth
 {
     # Setup    
     $location = "South Central US"
+	$skuTier = "Basic"
     
     Write-Debug " Create resource group"
     $resourceGroupName = Get-ResourceGroupName
@@ -211,7 +216,7 @@ function Test-CRUDNamespaceAuth
     Write-Debug " Create new notificationHub namespace"
     Write-Debug "Namespace name : $namespaceName"
 
-    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
+    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -skuTier $skuTier
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
         Is-NamespaceActive $resourceGroupName $namespaceName
@@ -378,7 +383,7 @@ function Test-CRUDNotificationHub
 {
     # Setup    
     $location = "South Central US"
-    
+	$skuTier = "Basic"
     Write-Debug "  Create resource group"
     $resourceGroupName = Get-ResourceGroupName
     Write-Debug " Resource Group Name : $resourceGroupName"
@@ -388,7 +393,7 @@ function Test-CRUDNotificationHub
     
     Write-Debug "  Create new notificationHub namespace"
     Write-Debug " Namespace name : $namespaceName"
-    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
+    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -skuTier $skuTier
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
         Is-NamespaceActive $resourceGroupName $namespaceName
@@ -495,7 +500,7 @@ function Test-CRUDNHAuth
 {
     # Setup    
     $location = "South Central US"
-    
+    $skuTier = "Basic"
     Write-Debug " Create resource group"
     $resourceGroupName = Get-ResourceGroupName
     Write-Debug "Resource group name : $resourceGroupName"
@@ -505,7 +510,7 @@ function Test-CRUDNHAuth
     
     Write-Debug " Create new notificationHub namespace"
     Write-Debug "Namespace name : $namespaceName"
-    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location
+    $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -skuTier $skuTier
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
         Is-NamespaceActive $resourceGroupName $namespaceName

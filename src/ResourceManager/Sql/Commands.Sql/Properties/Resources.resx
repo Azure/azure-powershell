@@ -306,4 +306,7 @@
   <data name="SetRecommendedActionStateWarning" xml:space="preserve">
     <value>Are you sure you want to update state of the recommended action '{0}' to '{1}'</value>
   </data>
+  <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
+    <value>Cannot set threat detection policy without a storage account name.</value>
+  </data>
 </root>

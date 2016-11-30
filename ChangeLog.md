@@ -1,3 +1,111 @@
+﻿## 2016.11.14 - Version 3.2.0
+* Network
+	* Get-AzureRmVirtualNetworkGatewayConnection
+	    - Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
+	* Reset-AzureRmVirtualNetworkGateway
+	    - Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
+	    - Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
+
+## 2016.11.02 - Version 3.1.0
+* ApiManagement
+    * Fixed cmdlet Import-AzureRmApiManagementApi when importing Api by SpecificationByUrl parameter
+    * New-AzureRmApiManagement supports creating an ApiManagement service in a VirtualNetwork and with additional regions
+* AzureBatch
+    * Rename cmdlet Get-AzureRmBatchSubscriptionQuotas to Get-AzureRmBatchLocationsQuotas (an alias for the old command was created)
+        - Rename return type PSBatchSubscriptionQuotas to PSBatchLocationQuotas (no property changes)
+* Compute
+    * Update formats for list of VMs, VMScaleSets and ContainerService
+        - The default format of Get-AzureRmVM, Get-AzureRmVmss and Get-AzureRmContainerService is not table format when these cmdlets call List Operation
+    * Fix overprovision issue for VMScaleSet
+        - Because of the bug in Compute client library (and Swagger spec) regarding overprovision property of VMScaleSet, this property did not show up correctly.
+    * Better piping scenario for VMScaleSets and ContainerService cmdlets
+        - VMScaleSet and ContainerService now have "ResourceGroupName" property, so when piping Get command to Delete/Update command, -ResourceGroupName is not required.
+    * Separate paremater sets for Set-AzureRmVM with Generalized and Redeploy parameter
+    * Reduce time taken by Get-AzureRmVMDiskEncryptionStatus cmdlet from two minutes to under five seconds
+    * Allow Set-AzureRmVMDiskEncryptionStatus to be used with VHDs residing in multiple resource groups
+* DataLakeAnalytics
+    * Addition of Catalog CRUD cmdlets:
+        - The following cmdlets are replacing Secret CRUD cmdlets. In the next release Secret CRUD cmdlets will be removed.
+        - New-AzureRMDataLakeAnalyticsCatalogCredential
+        - Set-AzureRMDataLakeAnalyticsCatalogCredential
+        - Remove-AzureRMDataLakeAnalyticsCatalogCredential
+    * Fixes for Get-AzureRMDataLakeAnalyticsCatalogItem
+        - Better error messaging and support for invalid input
+    * General help improvements
+        - Clearer help for job operations
+        - Fixed typos and incorrect examples
+* DataLakeStore
+    * Improvements to import and export data cmdlets
+        - Drastically increased performance for distributed download scenarios, where multiple sessions are running across many clients targeting the same ADLS account.
+        - Better error handling and messaging for both upload and download scenarios.
+    * Full Firewall rules management CRUD
+        - The below cmdlets can be used to manage firewall rules for an ADLS account:
+        - Add-AzureRMDataLakeStoreFirewallRule
+        - Set-AzureRMDataLakeStoreFirewallRule
+        - Get-AzureRMDataLakeStoreFirewallRule
+        - Remove-AzureRMDataLakeStoreFirewallRule
+    * Full Trusted ID provider management CRUD
+        - The below cmdlets can be used to manage trusted identity providers for an ADLS account:
+        - Add-AzureRMDataLakeStoreTrustedIdProvider
+        - Set-AzureRMDataLakeStoreTrustedIdProvider
+        - Get-AzureRMDataLakeStoreTrustedIdProvider
+        - Remove-AzureRMDataLakeStoreTrustedIdProvider
+    * Account Encryption Support
+        - You can now encrypt newly created ADLS accounts as well as enable encryption on existing ADLS accounts using the New-AzureRMDataLakeStoreAccount and Set-AzureRMDataLakeStoreAccount cmdlets, respectively.
+* HDInsight
+    * Add support to create HDInsight Spark 2.0 cluster using new cmdlet Add-AzureRmHDInsightComponentVersion to specify the component version of Spark
+    * Get-AzureRmHDInsightCluster now returns the component version in a Spark 2.0 cluster
+    * New cmdlet
+        - Add-AzureRmHDInsightSecurityProfile
+* Insights
+    * Add several warning/deprecation messages about future changes to cmdlets
+        - Add-AzureRmAutoscaleSetting
+        - Get-AzureRmMetric
+        - Get-AzureRmMetricDefinition
+        - New-AzureRmAutoscaleRule
+        - Remove-AzureRmAlertRule
+        - Remove-AzureRmAutoscaleSetting
+        - Remove-AzureRmLogProfile
+    * Add new parameter to Set-AzureRmDiagnosticSetting
+        - Parameter WorkspaceId is the OMS workspace Id
+* MachineLearning
+    * Add support for Azure Machine Learning Committment Plans
+        - Get-AzureRmMLCommitmentAssociation
+        - Get-AzureRmMLCommitmentPlan
+        - Get-AzureRmMLCommitmentPlanUsageHistory
+        - Move-AzureRmMLCommitmentAssociation
+        - New-AzureRmMLCommitmentPlan
+        - Remove-AzureRmMLCommitmentPlan
+        - Update-AzureRmMLCommitmentPlan
+* Network
+    * Add-AzureRmVirtualNetworkPeering
+        - Parameter AlloowGatewayTransit renamed to AllowGatewayTransit (an alias for the old parameter was created)
+        - Fixed issue where UseRemoteGateway property was not being populated in the request to the server
+    * Get-AzureRmEffectiveNetworkSecurityGroup
+        - Add warning if there is no response from GetEffectiveNSG
+    * Add Source property to EffectiveRoute
+* NotificationHubs
+    * New cmdlets
+        - New-AzureRmNotificationHubKey
+        - New-AzureRmNotificationHubsNamespaceKey
+* OperationalInsights
+    * Add new parameter to cmdlet New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource
+        - UseLegacyCollector (switch parameter) will enable collection of 32-bit legacy performance counters on 64-bit machines
+    * Rename New-AzureRmOperationalInsightsAzureAuditDataSource to New-AzureRmOperationalInsightsAzureActivityLogDataSource (an alias for the old command was created)
+    * Get-AzureRmOperationalInsightsDataSource returns null instead of throwing an exception if not found
+    * New-AzureRmOperationalInsightsComputerGroup now supports defining a group simply by separating computer names with commas
+* Profile
+    * Add-AzureRmAccount
+        - Add position for Credential parameter so the following command is allowed: Add-AzureRmAccount (Get-Credential)
+        - Updated parameter sets so the SubscriptionId and SubscriptionName are mutually exclusive
+* Resources
+    * Lookup of AAD group by Id now uses GetObjectsByObjectId AAD Graph call instead of Groups/<id>
+        - This will enable Groups lookup in CSP scenario
+    * Remove unnecessary AAD graph call in Get role assignments logic
+        - Only make call when needed instead of always
+    * Fixed issue where Remove-AzureRmResource would throw an exception if one of the resources passed through the pipeline failed to be removed
+        - If cmdlet fails to remove one of the resources, the result will not have an effect on the removal of other resources
+
 ## 2016.09.28 version 3.0.0
 * This release contains breaking changes. Please see [the migration guide](documentation/release-notes/migration-guide.3.0.0.md) for change details and the impact on existing scripts.
 * ApiManagement
