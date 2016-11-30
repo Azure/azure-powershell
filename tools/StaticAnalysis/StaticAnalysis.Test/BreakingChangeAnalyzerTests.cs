@@ -212,19 +212,6 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
-        public void ChangeOutputTypeName()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
-                (cmdletName) => cmdletName.Equals("Test-ChangeOutputTypeName", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            Assert.Equal(0, testReport.ProblemIdList.Count);
-        }
-
-        [Fact()]
         public void ChangeParameterType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
@@ -374,38 +361,6 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedProperty))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedProperty));
-        }
-
-        [Fact()]
-        public void ChangeOutputElementType()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
-                (cmdletName) => cmdletName.Equals("Test-ChangeOutputElementType", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputElementType))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputElementType));
-        }
-
-        [Fact()]
-        public void ChangeOutputGenericType()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
-                (cmdletName) => cmdletName.Equals("Test-ChangeOutputGenericType", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputGenericType))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputGenericType));
         }
 
         [Fact()]
