@@ -23,6 +23,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 {
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 Properties = new ServerCreateOrUpdateProperties()
                 {
                     AdministratorLogin = model.SqlAdministratorLogin,
-                    AdministratorLoginPassword = Decrypt(model.SqlAdministratorPassword),
+                    AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
                     Version = model.ServerVersion,
                 }
             });
@@ -124,6 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.ServerVersion = resp.Properties.Version;
             server.SqlAdministratorLogin = resp.Properties.AdministratorLogin;
             server.Location = resp.Location;
+            server.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false);
 
             return server;
         }
