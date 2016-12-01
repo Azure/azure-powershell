@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
         [ValidateNotNullOrEmpty]
-        public string AsAzureHostName { get; set; }
+        public string RolloutEnvironment { get; set; }
         
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Login credentials to the Azure Analysis Services environment")]
         public PSCredential Credential { get; set; }
@@ -63,19 +63,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             base.BeginProcessing();
 #pragma warning disable 0618
-            if (AsAzureHostName == null)
+            if (RolloutEnvironment == null)
             {
                 throw new PSInvalidOperationException(string.Format(Resources.UnknownEnvironment, ""));
             }
             else
             {
-                if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(AsAzureHostName))
+                if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(RolloutEnvironment))
                 {
-                    AsEnvironment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[AsAzureHostName];
+                    AsEnvironment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[RolloutEnvironment];
                 }
                 else
                 {
-                    AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(AsAzureHostName);
+                    AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
                 }
             }
 #pragma warning restore 0618

@@ -174,7 +174,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InMemoryTests\AddAzureASAccountTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InMemoryTests\DataPlaneCommandTests.cs" />
     <Compile Include="ScenarioTests\AsTests.cs" />
     <Compile Include="ScenarioTests\AsTestsBase.cs" />
     <Compile Include="ScenarioTests\UrlDecodingRecordMatcher.cs" />

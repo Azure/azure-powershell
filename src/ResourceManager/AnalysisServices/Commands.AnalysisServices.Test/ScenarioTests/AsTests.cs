@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         [Fact]
         public void TestAnalysisServicesServerRestart()
         {
-            NewInstance.RunPsTest(string.Format("Test-AnalysisServicesServerRestart -asazurehost '{0}'", "aspaaswestusloop1.asazure-int.windows.net"));
+            NewInstance.RunPsTest(string.Format("Test-AnalysisServicesServerRestart -rolloutEnvironment '{0}'", "aspaaswestusloop1.asazure-int.windows.net"));
         }
     }
 }

@@ -15,6 +15,7 @@
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Security;
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -39,6 +40,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// </summary>
         private AsAzureProfile _profile;
 
+        private IAsAzureAuthenticationProvider _asAzureAuthenticationProvider;
+
         static AsAzureClientSession()
         {
             Instance = new AsAzureClientSession();
@@ -48,6 +51,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             TokenCache = new TokenCache();
             _profile = new AsAzureProfile();
+            _asAzureAuthenticationProvider = new AsAzureAuthenticationProvider();
+        }
+
+        public void SetAsAzureAuthenticationProvider(IAsAzureAuthenticationProvider  asAzureAuthenticationProvider)
+        {
+            _asAzureAuthenticationProvider = asAzureAuthenticationProvider;
         }
 
         public static AsAzureClientSession Instance { get; private set; }
@@ -67,7 +76,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
             var resourceUri = new UriBuilder(Uri.UriSchemeHttps, asAzureContext.Environment.Name).ToString();
             resourceUri = resourceUri.TrimEnd('/');
-            GetAadAuthenticatedToken(asAzureContext, password, promptBehavior, AsAzureClientId, resourceUri, RedirectUri);
+            _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, promptBehavior, AsAzureClientId, resourceUri, RedirectUri);
 
             _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
 
@@ -77,53 +86,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
 
             return _profile;
-        }
-
-        /// <summary>
-        /// Function to get an AAD token for a given user, client id and resource
-        /// </summary>
-        public static string GetAadAuthenticatedToken(AsAzureContext asAzureContext, SecureString password, PromptBehavior promptBehavior, string clientId, string resourceUri, Uri resourceRedirectUri)
-        {
-            var authUriBuilder = new UriBuilder((string)asAzureContext.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl]);
-            authUriBuilder.Path = string.IsNullOrEmpty(asAzureContext.Account.Tenant)
-                ? "common"
-                : asAzureContext.Account.Tenant; 
-
-            var authenticationContext = new AuthenticationContext(
-                authUriBuilder.ToString(),
-                AsAzureClientSession.TokenCache);
-
-            AuthenticationResult result = null;
-            if (password == null)
-            {
-                if (asAzureContext.Account.Id != null)
-                {
-                    result = authenticationContext.AcquireToken(
-                        resourceUri,
-                        clientId,
-                        resourceRedirectUri,
-                        promptBehavior,
-                        new UserIdentifier(asAzureContext.Account.Id, UserIdentifierType.OptionalDisplayableId));
-                }
-                else
-                {
-                    result = authenticationContext.AcquireToken(
-                        resourceUri,
-                        clientId,
-                        resourceRedirectUri,
-                        promptBehavior);
-                }
-            }
-            else
-            {
-                UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
-                result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
-            }
-
-            asAzureContext.Account.Id = result.UserInfo.DisplayableId;
-            asAzureContext.Account.Tenant = result.TenantId;
-
-            return result.AccessToken;
         }
 
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)

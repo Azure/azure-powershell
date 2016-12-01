@@ -175,7 +175,7 @@ function Test-AnalysisServicesServerRestart
 {
     param
 	(
-		$asazurehost = "aspaaswestusloop1.asazure-int.windows.net",
+		$rolloutEnvironment = "aspaaswestusloop1.asazure-int.windows.net",
 		$location = "West US"
 	)
 	try
@@ -188,7 +188,7 @@ function Test-AnalysisServicesServerRestart
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
 
-		Login-AzureAsAccount -AsAzureHostName $asazurehost
+		Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment
 		Restart-AzureAsInstance -Instance $serverName
 	}
 	finally

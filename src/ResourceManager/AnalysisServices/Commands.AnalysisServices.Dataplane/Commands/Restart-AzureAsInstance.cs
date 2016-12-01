@@ -19,6 +19,7 @@ using System.Management.Instrumentation;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -42,6 +43,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
+
+        public IAsAzureHttpClient AsAzureHttpClient { get; private set; }
+
+        public ITokenCacheItemProvider TokenCacheItemProvider { get; private set; }
+
+        public RestartAzureAnalysisServer(IAsAzureHttpClient AsAzureHttpClient, ITokenCacheItemProvider TokenCacheItemProvider)
+        {
+            this.AsAzureHttpClient = AsAzureHttpClient;
+            this.TokenCacheItemProvider = TokenCacheItemProvider;
+        }
 
         protected override AzureContext DefaultContext
         {
@@ -94,6 +105,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
 
 #pragma warning restore 0618
+
+            if (this.AsAzureHttpClient == null)
+            {
+                this.AsAzureHttpClient = new AsAzureHttpClient(() =>
+                {
+                    return new HttpClient();
+                });
+            }
+
+            if (this.TokenCacheItemProvider == null)
+            {
+                this.TokenCacheItemProvider = new TokenCacheItemProvider();
+            }
         }
 
         protected override void InitializeQosEvent()
@@ -107,21 +131,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 var context = AsAzureClientSession.Instance.Profile.Context;
                 AsAzureClientSession.Instance.Login(context, null);
-                TokenCacheItem tokenCacheItem = AsAzureClientSession.TokenCache.ReadItems()
-                    .FirstOrDefault(tokenItem => tokenItem.TenantId.Equals(context.Account.Tenant));
-
-                if (tokenCacheItem == null || string.IsNullOrEmpty(tokenCacheItem.AccessToken))
-                {
-                    throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
-                }
+                string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.Tenant);
 
                 Uri restartBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
 
                 var restartEndpoint = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat], serverName);
-                using (HttpResponseMessage message = CallPostAsync(
+
+                using (HttpResponseMessage message = AsAzureHttpClient.CallPostAsync(
                     restartBaseUri,
                     restartEndpoint,
-                    tokenCacheItem.AccessToken).Result)
+                    accessToken).Result)
                 {
                     message.EnsureSuccessStatusCode();
                     if (PassThru.IsPresent)
@@ -129,22 +148,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         WriteObject(true);
                     }
                 }
-            }
-        }
-
-        public static async Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                if (accessToken == null)
-                {
-                    throw new PSArgumentNullException("accessToken", string.Format(Resources.NotLoggedInMessage, ""));
-                }
-
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                client.BaseAddress = baseURI;
-                HttpResponseMessage response = await client.PostAsync(requestURL, new StringContent(""));
-                return response;
             }
         }
     }

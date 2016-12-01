@@ -12,7 +12,7 @@ Adds an authenticated account to use for Azure Analysis Services server cmdlet r
 ## SYNTAX
 
 ```
-Add-AzureAnalysisServicesAccount [-AsAzureHostName] <String> [[-Credential] <PSCredential>] [-WhatIf]
+Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [[-Credential] <PSCredential>] [-WhatIf]
  [-Confirm]
 ```
 
@@ -24,7 +24,7 @@ The Add-AzureAnalysisServicesAccount cmdlet is used to login to an instance of A
 ### Example 1
 ```
 PS C:\>Add-AzureAnalysisServicesAccount
-AsAzureHostName: westcentralus.asazure.windows.net
+RolloutEnvironment: westcentralus.asazure.windows.net
 Credential: $UserCredential
 ```
 
@@ -47,7 +47,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AsAzureHostName
+### -RolloutEnvironment
 Name of the Azure Analysis Services environment to which to logon to. Given the full name of the server for example asazure://westcentralus.asazure.windows.net/testserver , the correct value for this variable will be westcentralus.asazure.windows.net
 
 ```yaml
