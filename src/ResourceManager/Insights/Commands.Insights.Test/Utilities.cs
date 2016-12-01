@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
-using Microsoft.Azure.Insights.Legacy.Models;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
                     value: "Microsoft Resources"),
                 authorization: new SenderAuthorization(
                     action: "PUT",
-                    condition: "",
                     role: "Sender",
                     scope: "None"),
                 caller: Caller,
@@ -117,12 +115,11 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             return new AzureOperationResponse<LogProfileResource>()
             {
-                Body = new LogProfileResource(location: "East US", id: "MyLogProfileId")
+                Body = new LogProfileResource(location: "East US", id: "MyLogProfileId", locations: new string[] { "EastUs" })
                 {
                     Categories = new List<string>() { "cat2" },
                     ServiceBusRuleId = "myBusId",
                     StorageAccountId = "myStorageAccId",
-                    Locations = new string[] { "EastUs" },
                     Name = Utilities.Name,
                     RetentionPolicy = new RetentionPolicy(enabled: true, days: 10),
                     Tags = null
@@ -130,32 +127,10 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
         }
 
-        public static MetricListResponse InitializeMetricResponse()
+        public static IEnumerable<Microsoft.Azure.Insights.Models.MetricDefinition> InitializeMetricDefinitionResponse()
         {
             // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
-            return new MetricListResponse
-            {
-                MetricCollection = new MetricCollection
-                {
-                    Value = new List<Microsoft.Azure.Insights.Legacy.Models.Metric>()
-                },
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK
-            };
-        }
-
-        public static MetricDefinitionListResponse InitializeMetricDefinitionResponse()
-        {
-            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
-            return new MetricDefinitionListResponse
-            {
-                MetricDefinitionCollection = new MetricDefinitionCollection
-                {
-                    Value = new Microsoft.Azure.Insights.Legacy.Models.MetricDefinition[] { }
-                },
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK
-            };
+            return new List<MetricDefinition>();
         }
 
         public static void VerifyDetailedOutput(EventCmdletBase cmdlet, ref string selected)
