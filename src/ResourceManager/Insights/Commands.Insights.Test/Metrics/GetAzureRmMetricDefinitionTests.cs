@@ -15,8 +15,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.Metrics;
-using Microsoft.Azure.Insights.Legacy;
-using Microsoft.Azure.Insights.Legacy.Models;
+using Microsoft.Azure.Insights;
+using Microsoft.Azure.Insights.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -31,38 +31,41 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
     {
         private readonly GetAzureRmMetricDefinitionCommand cmdlet;
         private readonly Mock<InsightsClient> insightsClientMock;
-        private readonly Mock<IMetricDefinitionOperations> insightsMetricDefinitionOperationsMock;
+        private readonly Mock<IMetricDefinitionsOperations> insightsMetricDefinitionOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private MetricDefinitionListResponse response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<MetricDefinition>> response;
         private string resourceId;
-        private string filter;
+        private ODataQuery<MetricDefinition> filter;
 
         public GetAzureRmMetricDefinitionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsMetricDefinitionOperationsMock = new Mock<IMetricDefinitionOperations>();
+            insightsMetricDefinitionOperationsMock = new Mock<IMetricDefinitionsOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmMetricDefinitionCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                //InsightsClient = insightsClientMock.Object
+                InsightsClient = insightsClientMock.Object
             };
 
-            response = Utilities.InitializeMetricDefinitionResponse();
+            response = new Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<MetricDefinition>>()
+            {
+                Body = Utilities.InitializeMetricDefinitionResponse()
+            };
 
-            insightsMetricDefinitionOperationsMock.Setup(f => f.GetMetricDefinitionsAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<MetricDefinitionListResponse>(response))
-                .Callback((string f, string s, CancellationToken t) =>
+            insightsMetricDefinitionOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ODataQuery<MetricDefinition>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<MetricDefinition>>>(response))
+                .Callback((string resource, ODataQuery<MetricDefinition> query, Dictionary<string, List<string>> header, CancellationToken t) =>
                 {
-                    resourceId = f;
-                    filter = s;
+                    resourceId = resource;
+                    filter = query;
                 });
 
-            insightsClientMock.SetupGet(f => f.MetricDefinitionOperations).Returns(this.insightsMetricDefinitionOperationsMock.Object);
+            insightsClientMock.SetupGet(f => f.MetricDefinitions).Returns(this.insightsMetricDefinitionOperationsMock.Object);
         }
 
-        [Fact(Skip = "Disable this release since there are conflicts between DLL versions")]
+        [Fact] //(Skip = "Disable this release since there are conflicts between DLL versions")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetMetricDefinitionsCommandParametersProcessing()
         {
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             cmdlet.ResourceId = Utilities.ResourceUri;
 
             cmdlet.ExecuteCmdlet();
-            Assert.True(string.IsNullOrWhiteSpace(filter));
+            Assert.True(string.IsNullOrWhiteSpace(filter.Filter));
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
             // Testing with optional parameters
@@ -78,7 +81,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             const string expected = "name.value eq 'n1' or name.value eq 'n2'";
 
             cmdlet.ExecuteCmdlet();
-            Assert.Equal(expected, filter);
+            Assert.Equal(expected, filter.Filter);
             Assert.Equal(Utilities.ResourceUri, resourceId);
         }
     }
