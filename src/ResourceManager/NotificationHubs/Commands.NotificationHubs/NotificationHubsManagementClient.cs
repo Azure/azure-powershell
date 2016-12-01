@@ -79,11 +79,12 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             return resourceList;
         }
 
-        public NamespaceAttributes CreateNamespace(string resourceGroupName, string namespaceName, string location, Dictionary<string, string> tags)
+        public NamespaceAttributes CreateNamespace(string resourceGroupName, string namespaceName, string location, Dictionary<string, string> tags, string skuTier)
         {
             var parameter = new NamespaceCreateOrUpdateParameters()
             {
-                Location = location
+                Location = location,
+                Sku = new Sku { Name = skuTier }
             };
 
             if (tags != null)
@@ -95,14 +96,15 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             return new NamespaceAttributes(resourceGroupName, response);
         }
 
-        public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, NamespaceState state, bool critical, Dictionary<string, string> tags)
+        public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, NamespaceState state, bool critical, Dictionary<string, string> tags, string skuTier)
         {
             var parameter = new NamespaceCreateOrUpdateParameters()
             {
                 Location = location,
                 NamespaceType = NamespaceType.NotificationHub,
                 Status = ((state == NamespaceState.Disabled) ? state : NamespaceState.Active).ToString(),
-                Enabled = (state == NamespaceState.Disabled) ? false : true
+                Enabled = (state == NamespaceState.Disabled) ? false : true,
+                Sku = new Sku { Name = skuTier}
             };
 
             if (critical)
@@ -211,7 +213,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 GcmCredential = nhAttributes.GcmCredential,
                 MpnsCredential = nhAttributes.MpnsCredential,
                 WnsCredential = nhAttributes.WnsCredential,
-                Name = nhAttributes.Name,
+                NotificationHubCreateOrUpdateParametersName = nhAttributes.Name,
                 RegistrationTtl = nhAttributes.RegistrationTtl
             };
 
@@ -234,8 +236,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 BaiduCredential = nhAttributes.BaiduCredential,
                 GcmCredential = nhAttributes.GcmCredential,
                 MpnsCredential = nhAttributes.MpnsCredential,
-                WnsCredential = nhAttributes.WnsCredential,
-                Name = nhAttributes.Name,
+                WnsCredential = nhAttributes.WnsCredential,                
+                NotificationHubCreateOrUpdateParametersName = nhAttributes.Name,
                 RegistrationTtl = nhAttributes.RegistrationTtl
             };
 
