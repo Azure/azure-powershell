@@ -98,8 +98,6 @@
     * Add-AzureRmAccount
         - Add position for Credential parameter so the following command is allowed: Add-AzureRmAccount (Get-Credential)
         - Updated parameter sets so the SubscriptionId and SubscriptionName are mutually exclusive
-* RecoveryServices.Backup
-    * Migrated from Hyak based Azure SDK to Swagger based Azure SDK
 * Resources
     * Lookup of AAD group by Id now uses GetObjectsByObjectId AAD Graph call instead of Groups/<id>
         - This will enable Groups lookup in CSP scenario
