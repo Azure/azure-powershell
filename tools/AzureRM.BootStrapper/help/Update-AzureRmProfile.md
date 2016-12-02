@@ -11,7 +11,7 @@ Update a profile to the latest versions in that profile and import updated modul
 ## SYNTAX
 
 ```
-Update-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Force] [-Remove]
+Update-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Force] [-RemovePreviousVersions]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Update the modules associated with profile '2016-09' to their latest versions an
 
 ### Example 2
 ```
-PS C:\> Update-AzureRmProfile -Profile 'Latest' -Remove -Force
+PS C:\> Update-AzureRmProfile -Profile 'Latest' -RemovePreviousVersions -Force
 ```
 
 Update the modules associated with profile version 'Latest' and load the modules in the current session. It downloads and installs the required modules and removes old versions of the modules without prompting the user. This should be executed after opening a new PowerShell session.
@@ -65,13 +65,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Remove
+### -RemovePreviousVersions
 Automatically remove old versions of the modules currently installed.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: r
 
 Required: False
 Position: Named
