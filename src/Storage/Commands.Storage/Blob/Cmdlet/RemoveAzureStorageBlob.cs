@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             try
             {
-                await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption).ConfigureAwait(false);
                 retryDeleteSnapshot = false;
             }
             catch (StorageException e)
@@ -169,10 +169,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 string message = string.Format(Resources.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.Container.Name);
 
-                if (await OutputStream.ConfirmAsync(message))
+                if (await OutputStream.ConfirmAsync(message).ConfigureAwait(false))
                 {
                     deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
-                    await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                    await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption).ConfigureAwait(false);
                 }
                 else
                 {
@@ -188,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             BlobRequestOptions requestOptions = null;
 
             await localChannel.DeleteCloudBlobAsync(blob, deleteSnapshotsOption, accessCondition,
-                    requestOptions, OperationContext, CmdletCancellationToken);
+                    requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
             string result = String.Format(Resources.RemoveBlobSuccessfully, blob.Name, blob.Container.Name);
 
@@ -222,7 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             try
             {
                 blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition,
-                      requestOptions, OperationContext, CmdletCancellationToken);
+                      requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (InvalidOperationException)
             {
@@ -240,7 +240,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 blob = container.GetBlockBlobReference(blobName);
             }
 
-            await RemoveAzureBlob(taskId, localChannel, blob, true);
+            await RemoveAzureBlob(taskId, localChannel, blob, true).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         internal async Task RemoveAzureBlob(long taskId, IStorageBlobManagement localChannel, string containerName, string blobName)
         {
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            await RemoveAzureBlob(taskId, localChannel, container, blobName);
+            await RemoveAzureBlob(taskId, localChannel, container, blobName).ConfigureAwait(false);
         }
 
         /// <summary>
