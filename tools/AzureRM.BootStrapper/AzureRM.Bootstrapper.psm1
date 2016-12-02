@@ -121,6 +121,19 @@ function Add-ForceParam
   Add-SwitchParam $params "Force" $set
 }
 
+function Add-RemoveParam
+{
+  param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$set = "__AllParameterSets")
+  $name = "RemovePreviousVersions" 
+  $newAttribute = New-Object -Type System.Management.Automation.ParameterAttribute
+  $newAttribute.ParameterSetName = $set
+  $newAttribute.Mandatory = $false
+  $newCollection = New-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
+  $newCollection.Add($newAttribute)
+  $newParam = New-Object -Type System.Management.Automation.RuntimeDefinedParameter($name, [switch], $newCollection)
+  $params.Add($name, [Alias("r")]$newParam)
+}
+
 function Add-SwitchParam
 {
   param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$name, [string] $set = "__AllParameterSets")
@@ -350,6 +363,46 @@ function Uninstall-AzureRmProfile
        }
      }
      While($version -ne $null);
+    }
+  }
+}
+
+<#
+.ExternalHelp help\AzureRM.Bootstrapper-help.xml 
+#>
+function Update-AzureRmProfile
+{
+  [CmdletBinding(SupportsShouldProcess = $true)]
+  param()
+  DynamicParam
+  {
+    $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+    Add-ProfileParam $params
+    Add-ForceParam $params
+    Add-RemoveParam $params 
+    return $params
+  }
+
+  PROCESS {
+    $ProfileMap = (Get-AzProfile -Update)
+    Use-AzureRmProfile @PSBoundParameters
+    $profile = $PSBoundParameters.Profile
+
+    # Remove old profiles?
+    $Remove = $PSBoundParameters.RemovePreviousVersions
+    $installedProfiles = Get-AzureRmProfile
+    foreach ($installedProfile in $installedProfiles)
+    {
+      if ($installedProfile -ne $profile)
+      {
+        if ($PSCmdlet.ShouldProcess("Profile $installedProfile", "Remove Profile"))
+        {
+          if (($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Remove Profile $installedProfile", "Removing profile $installedProfile")))
+          {
+             Uninstall-AzureRmProfile -Profile $installedProfile -Force
+          }
+        }
+      }
     }
   }
 }
