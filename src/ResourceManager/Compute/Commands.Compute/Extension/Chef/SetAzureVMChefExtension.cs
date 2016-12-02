@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string BootstrapVersionTemplate = "bootstrap_version";
         private string ClientRbTemplate = "client_rb";
         private string BootStrapOptionsTemplate = "bootstrap_options";
+        private string JsonAttributeTemplate = "custom_json_attr";
+        private string ChefServiceIntervalTemplate = "chef_service_interval";
         private string RunListTemplate = "runlist";
 
         [Parameter(
@@ -99,6 +101,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             HelpMessage = "The Chef Client bootstrap options in JSON format.")]
         [ValidateNotNullOrEmpty]
         public string BootstrapOptions { get; set; }
+
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{\"foo\" : \"bar\"}'")]
+        [ValidateNotNullOrEmpty]
+        public string JsonAttribute { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.")]
+        [ValidateNotNullOrEmpty]
+        public string ChefServiceInterval { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -211,6 +225,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
                     bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
+                    bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
+                    bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
 
                     //Cases handled:
@@ -259,44 +275,32 @@ validation_client_name 	'{1}'
 ";
                         ClientConfig = string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
                     }
-                    if (IsRunListEmpty)
+
+                    var hashTable = new Hashtable();
+                    hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                    hashTable.Add(ClientRbTemplate, ClientConfig);
+
+                    if (!IsRunListEmpty)
                     {
-                        if (IsBootstrapOptionsEmpty)
-                        {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            this.publicConfiguration = hashTable;
-                        }
-                        else
-                        {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
-                            this.publicConfiguration = hashTable;
-                        }
+                        hashTable.Add(RunListTemplate, this.RunList);
                     }
-                    else
+
+                    if (!IsBootstrapOptionsEmpty)
                     {
-                        if (IsBootstrapOptionsEmpty)
-                        {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            hashTable.Add(RunListTemplate, this.RunList);
-                            this.publicConfiguration = hashTable;
-                        }
-                        else
-                        {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            hashTable.Add(RunListTemplate, this.RunList);
-                            hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
-                            this.publicConfiguration = hashTable;
-                        }
+                        hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
                     }
+
+                    if (!IsJsonAttributeEmpty)
+                    {
+                        hashTable.Add(JsonAttributeTemplate, JsonAttribute);
+                    }
+
+                    if (!IsChefServiceIntervalEmpty)
+                    {
+                        hashTable.Add(ChefServiceIntervalTemplate, ChefServiceInterval);
+                    }
+
+                    this.publicConfiguration = hashTable;
                 }
 
                 return this.publicConfiguration;
