@@ -116,7 +116,7 @@ function Test-VirtualMachineExtension
         $extver = '1.1';
 
         # Set extension settings by raw strings
-        $settingstr = '{"fileUris":[],"commandToExecute":""}';
+        $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
         Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
 
@@ -256,7 +256,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         $extver = '1.1';
 
         # Set extension settings by hash table
-        $settings = @{"fileUris" = @(); "commandToExecute" = ""};
+        $settings = @{"fileUris" = @(); "commandToExecute" = "powershell Get-Process"};
         $protectedsettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
         Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;
 
