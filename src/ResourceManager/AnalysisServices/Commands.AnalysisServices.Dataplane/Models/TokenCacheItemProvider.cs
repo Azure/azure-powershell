@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         {
             var tokenCacheItem  = tokenCache.ReadItems().FirstOrDefault(tokenItem => tokenItem.TenantId.Equals(tenant));
 
-            if (string.IsNullOrEmpty(tokenCacheItem?.AccessToken))
+            if (tokenCacheItem == null || string.IsNullOrEmpty(tokenCacheItem.AccessToken))
             {
                 throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
             }
