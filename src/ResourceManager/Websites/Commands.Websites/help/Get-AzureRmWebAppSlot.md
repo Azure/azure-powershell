@@ -21,20 +21,22 @@ Get-AzureRmWebAppSlot [[-Slot] <String>] [-WebApp] <Site>
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmWebApp** cmdlet gets information about an Azure Web App Slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmWebApp -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -Slot "Slot001"
 ```
 
-{{ Add example description here }}
+This command gets the slot named Slot001 from the Web App named WebAppStandard that belongs to the resource group Default-Web-WestUS.
+
 
 ## PARAMETERS
 
 ### -Name
-@{Text=}
+WebApp Name
 
 ```yaml
 Type: String
@@ -49,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-@{Text=}
+Resource Group Name
 
 ```yaml
 Type: String
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-@{Text=}
+WebApp Slot Name
 
 ```yaml
 Type: String
@@ -79,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-@{Text=}
+WebApp Object
 
 ```yaml
 Type: Site

@@ -17,20 +17,22 @@ New-AzureRmWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <S
 ```
 
 ## DESCRIPTION
+The **New-AzureRmWebApp** cmdlet creates an Azure Web App Slot in a given a resource group that uses the specified App Service plan and data center.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmWebApp -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -Location "West US" -AppServicePlan "ContosoServicePlan" -Slot "Slot001"
 ```
 
-{{ Add example description here }}
+This command creates a Slot named Slot001 under an existing Web App names ContosoSite in the existing resource group named Default-Web-WestUS in data center West US.
+The command uses an existing App Service plan named ContosoServicePlan.
 
 ## PARAMETERS
 
 ### -AppServicePlan
-@{Text=}
+App Service Plan Name
 
 ```yaml
 Type: String
@@ -45,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettingsOverrides
-@{Text=}
+App Settings Overrides Hashtable
 
 ```yaml
 Type: Hashtable
@@ -60,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -AseName
-@{Text=}
+App Service Environment Name
 
 ```yaml
 Type: String
@@ -75,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -AseResourceGroupName
-@{Text=}
+App Service Environment Resource Group Name
 
 ```yaml
 Type: String
@@ -90,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -IgnoreCustomHostNames
-@{Text=}
+Ignore Custom HostNames Option
 
 ```yaml
 Type: SwitchParameter
@@ -105,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -IgnoreSourceControl
-@{Text=}
+Ignore Source Control Option
 
 ```yaml
 Type: SwitchParameter
@@ -120,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-@{Text=}
+Webapp Name
 
 ```yaml
 Type: String
@@ -135,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-@{Text=}
+Resource Group Name
 
 ```yaml
 Type: String
@@ -150,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-@{Text=}
+Webapp Slot Name
 
 ```yaml
 Type: String
@@ -165,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceWebApp
-@{Text=}
+Source WebApp Object
 
 ```yaml
 Type: Site

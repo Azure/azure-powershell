@@ -34,20 +34,21 @@ Set-AzureRmWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[
 ```
 
 ## DESCRIPTION
+The **Set-AzureRmWebApp** cmdlet sets an Azure Web App Slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -HttpLoggingEnabled $true
 ```
 
-{{ Add example description here }}
+This command sets HttpLoggingEnabled to true for Slot Slot001 pertaining to Web App ContosoWebApp associated with the resource group Default-Web-WestUS
 
 ## PARAMETERS
 
 ### -AppServicePlan
-@{Text=}
+App Service Plan Name
 
 ```yaml
 Type: String
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettings
-@{Text=}
+App Settings HashTable
 
 ```yaml
 Type: Hashtable
@@ -92,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionStrings
-@{Text=}
+Connection Strings HashTable
 
 ```yaml
 Type: Hashtable
@@ -107,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultDocuments
-@{Text=}
+Default Documents String Array
 
 ```yaml
 Type: String[]
@@ -122,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -DetailedErrorLoggingEnabled
-@{Text=}
+Detailed Error Logging Enabled Boolean
 
 ```yaml
 Type: Boolean
@@ -137,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -HandlerMappings
-@{Text=}
+Handler Mappings IList
 
 ```yaml
 Type: System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HandlerMapping]
@@ -152,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -HttpLoggingEnabled
-@{Text=}
+HttpLoggingEnabled Boolean
 
 ```yaml
 Type: Boolean
@@ -167,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedPipelineMode
-@{Text=}
+Managed Pipeline Mode Name
 
 ```yaml
 Type: String
@@ -182,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-@{Text=}
+WebApp Name
 
 ```yaml
 Type: String
@@ -197,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetFrameworkVersion
-@{Text=}
+Net Framework Version
 
 ```yaml
 Type: String
@@ -227,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -PhpVersion
-@{Text=}
+Php Version
 
 ```yaml
 Type: String
@@ -242,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequestTracingEnabled
-@{Text=}
+Request Tracing Enabled Boolean
 
 ```yaml
 Type: Boolean
@@ -257,7 +258,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-@{Text=}
+Resource Group Name
 
 ```yaml
 Type: String
@@ -272,7 +273,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-@{Text=}
+WebApp Slot Name
 
 ```yaml
 Type: String
@@ -287,7 +288,7 @@ Accept wildcard characters: False
 ```
 
 ### -Use32BitWorkerProcess
-@{Text=}
+Use 32-bit Worker Process Boolean
 
 ```yaml
 Type: Boolean
@@ -302,7 +303,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-@{Text=}
+WebApp Object
 
 ```yaml
 Type: Site
@@ -317,7 +318,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebSocketsEnabled
-@{Text=}
+Web Sockets Enabled Boolean
 
 ```yaml
 Type: Boolean

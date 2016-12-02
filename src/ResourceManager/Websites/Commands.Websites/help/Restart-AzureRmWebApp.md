@@ -38,6 +38,8 @@ This command stops the Azure Web App named ContosoSite that belongs to the resou
 ## PARAMETERS
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -51,6 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -64,6 +68,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: S2

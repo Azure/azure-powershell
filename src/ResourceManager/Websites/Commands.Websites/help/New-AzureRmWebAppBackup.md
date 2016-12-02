@@ -24,17 +24,22 @@ New-AzureRmWebAppBackup [[-BackupName] <String>] [-WebApp] <Site> [-StorageAccou
 ```
 
 ## DESCRIPTION
+The **New-AzureRmWebAppBackup** cmdlet creates an Azure Web App Backup.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\> New-AzureRmWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StorageAccountUrl "https://storageaccount.file.core.windows.net"
 ```
+
+Creates a backup of the specified app ContosoWebApp that is within resource group Default-Web-WestUS in https://storageaccount.file.core.windows.net
 
 ## PARAMETERS
 
 ### -BackupName
+Backup Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -48,6 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -61,6 +68,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -74,6 +83,8 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
+WebApp Slot Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -87,6 +98,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountUrl
+Storage Account Url
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -100,6 +113,8 @@ Accept wildcard characters: False
 ```
 
 ### -Databases
+Databases of type DatabaseBackupSetting[]
+
 ```yaml
 Type: DatabaseBackupSetting[]
 Parameter Sets: (All)
@@ -113,6 +128,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: FromWebApp

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 6, Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
         [ValidateNotNullOrEmpty]
         public bool PerSiteScaling { get; set; }
 

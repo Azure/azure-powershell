@@ -21,20 +21,21 @@ Start-AzureRmWebAppSlot [-WebApp] <Site>
 ```
 
 ## DESCRIPTION
+The **Start-AzureRmWebAppSlot** cmdlet starts an Azure Web App Slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Start-AzureRmWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001"
 ```
 
-{{ Add example description here }}
+This command starts the Slot named Slot001 pertaining to the Web App named ContosoWebApp that belongs to the resource group named Default-Web-WestUS.
 
 ## PARAMETERS
 
 ### -Name
-@{Text=}
+WebApp Name
 
 ```yaml
 Type: String
@@ -49,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-@{Text=}
+Resource Group Name
 
 ```yaml
 Type: String
@@ -64,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-@{Text=}
+WebApp Slot Name
 
 ```yaml
 Type: String
@@ -79,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-@{Text=}
+WebApp Object
 
 ```yaml
 Type: Site

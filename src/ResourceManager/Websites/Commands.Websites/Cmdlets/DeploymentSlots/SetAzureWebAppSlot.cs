@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Mandatory = false, HelpMessage = "Destination slot name for auto swap")]
 
         public string AutoSwapSlotName { get; set; }
-        [Parameter(Position = 16, Mandatory = false, HelpMessage = "The number of workers to be allocated", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = "The number of workers to be allocated", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public int NumberOfWorkers { get; set; }
 

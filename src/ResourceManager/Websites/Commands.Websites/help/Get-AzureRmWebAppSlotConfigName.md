@@ -23,18 +23,22 @@ Get-AzureRmWebAppSlotConfigName [-WebApp] <Site> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The cmdlet retrieves the list of App Setting and Connection String names that are currently marked as slot settings
+The **Get-AzureRmWebAppSlotConfigName** cmdlet retrieves the list of App Setting and Connection String names that are currently marked as slot settings
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\>Get-AzureRmWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
+
+This command gets App Settings and Connection strings pertaining to the Web App named ContosoSite associated with the resource group Default-Web-WestUS
 
 ## PARAMETERS
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -48,6 +52,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -61,6 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: S2

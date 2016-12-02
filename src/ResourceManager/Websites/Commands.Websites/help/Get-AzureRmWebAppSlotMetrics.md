@@ -23,20 +23,22 @@ Get-AzureRmWebAppSlotMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-En
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmWebAppSlotMetrics** gets Web App metrics for the specified slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmAppServicePlanMetrics -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StartTime 2016-11-30T22:00:00Z -EndTime 2016-11-30T22:30:00Z -Granularity PT1M -Metrics ["Requests"]
 ```
 
-{{ Add example description here }}
+This command gets Request of the specified Web App 
+    per minute(PT1M - Poll Time 1 minute) between StartTime and EndTime
 
 ## PARAMETERS
 
 ### -EndTime
-@{Text=}
+End Time in UTC
 
 ```yaml
 Type: DateTime
@@ -51,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Granularity
-@{Text=}
+Granularity
 
 ```yaml
 Type: String
@@ -66,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceDetails
-@{Text=}
+Instance Details
 
 ```yaml
 Type: SwitchParameter
@@ -81,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Metrics
-@{Text=}
+Metrics
 
 ```yaml
 Type: String[]
@@ -96,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-@{Text=}
+WebApp Name
 
 ```yaml
 Type: String
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-@{Text=}
+Resource Group Name
 
 ```yaml
 Type: String
@@ -126,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-@{Text=}
+WebApp Slot Name
 
 ```yaml
 Type: String
@@ -141,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-@{Text=}
+Start Time in UTC
 
 ```yaml
 Type: DateTime
@@ -156,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-@{Text=}
+WebApp Object
 
 ```yaml
 Type: Site

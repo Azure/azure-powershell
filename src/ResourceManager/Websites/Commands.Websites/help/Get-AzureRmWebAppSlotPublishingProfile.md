@@ -22,20 +22,22 @@ Get-AzureRmWebAppSlotPublishingProfile [-OutputFile] <String> [[-Format] <String
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmWebAppSlotPublishingProfile** cmdlet gets the Web App publishing profile for the specified slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "slot001" -Format "Ftp" -OutputFile "C:\Users\contoso\outputfile"
 ```
 
-{{ Add example description here }}
+This command gets the publishing profile in Ftp format for slot Slot001 pertaining to the Web App ContosoWebApp associated with the resource group Default-Web-WestUS
+    and stores it in the specified output file.
 
 ## PARAMETERS
 
 ### -Format
-@{Text=}
+Format
 
 ```yaml
 Type: String
@@ -50,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-@{Text=}
+WebApp Name
 
 ```yaml
 Type: String
@@ -65,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputFile
-@{Text=}
+Output File
 
 ```yaml
 Type: String
@@ -80,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-@{Text=}
+Resource Group Name
 
 ```yaml
 Type: String
@@ -95,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-@{Text=}
+WebApp Slot Name
 
 ```yaml
 Type: String
@@ -110,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-@{Text=}
+WebApp Object
 
 ```yaml
 Type: Site

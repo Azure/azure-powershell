@@ -27,20 +27,22 @@ Switch-AzureRmWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <Str
 ```
 
 ## DESCRIPTION
+The **Switch-AzureRmWebAppSlot** switches two slots associated with an Azure Web App.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Switch-AzureRmWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
+ 
 ```
 
-{{ Add example description here }}
+This command will switch slot "sourceslot" slot with "destinationslot" for for Web App ContosoWebApp associated with the resource group Default-Web-WestUS
 
 ## PARAMETERS
 
 ### -SourceSlotName
-
+Source Slot Name
 
 ```yaml
 Type: String
@@ -55,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationSlotName
-
+Destination Slot Name
 
 ```yaml
 Type: String
@@ -70,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -SwapWithPreviewAction
-
+Swap With Preview Action
 
 ```yaml
 Type: SwapWithPreviewAction
@@ -85,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreserveVnet
-
+Preserve Vnet Boolean
 
 ```yaml
 Type: Boolean
@@ -100,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+Resource Group Name
 
 ```yaml
 Type: String
@@ -115,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+WebApp Name
 
 ```yaml
 Type: String
@@ -130,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-
+WebApp Object
 
 ```yaml
 Type: Site

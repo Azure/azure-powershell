@@ -23,17 +23,22 @@ Remove-AzureRmWebAppBackup [-BackupId] <String> [-WebApp] <Site> [<CommonParamet
 ```
 
 ## DESCRIPTION
+The **Remove-AzureRmWebAppBackup** cmdlet gets the specified backup of an Azure Web App.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\>Remove-AzureRmWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -BackupId "12345"
 ```
+
+This command removes the backup with backup with ID of "12345" from the Web App named WebAppStandard that belongs to the resource group Default-Web-WestUS.
 
 ## PARAMETERS
 
 ### -BackupId
+Backup Id
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -47,6 +52,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -60,6 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -73,6 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
+WebApp Slot Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -86,6 +97,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: FromWebApp

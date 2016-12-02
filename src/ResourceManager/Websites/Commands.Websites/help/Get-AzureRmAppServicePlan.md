@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmAppServicePlan
 
 ## SYNOPSIS
-Gets an Azure App Service plan in the specified resource group.
+Gets an Azure App Service plan in the specified resource group or location.
 
 ## SYNTAX
 
@@ -34,9 +34,18 @@ PS C:\>Get-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "
 
 This command gets the App Service plan named ContosoAppServPlan that belongs to the resource group named Default-Web-WestUS.
 
+### Example 2: Get all App Service plans in a location
+```
+PS C:\>Get-AzureRmAppServicePlan -Location "West US"
+```
+
+This command gets all App Service plans located in the "West US" region.
+
 ## PARAMETERS
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -50,6 +59,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+App Service Plan Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -63,6 +74,8 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+Location 
+
 ```yaml
 Type: String
 Parameter Sets: S2

@@ -39,6 +39,8 @@ This command removes the Azure App Service plan named ContosoAppPlan that belong
 ## PARAMETERS
 
 ### -Force
+Forcefully Remove Option
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -52,6 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -65,6 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+App Service Plan Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -78,6 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -AppServicePlan
+App Service Plan Object
+
 ```yaml
 Type: ServerFarmWithRichSku
 Parameter Sets: S2
@@ -91,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -107,7 +115,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml

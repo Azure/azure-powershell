@@ -27,21 +27,23 @@ New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWor
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAppServicePlan** cmdlet creates an Azure App Service plan in a given Geo location with the specified SKU, worker size, and number of workers.
+The **New-AzureRmAppServicePlan** cmdlet creates an Azure App Service plan in a given Geo location with the specified Tier, worker size, and number of workers.
 
 ## EXAMPLES
 
 ### Example 1: Create an App Service plan
 ```
-PS C:\>New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -AppServicePlanName "NgoliWHP" -location "West US"  -Debug -Sku Basic -NumberofWorkers 2 -WorkerSize Small
+PS C:\>New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -location "West US" -Tier Basic -NumberofWorkers 2 -WorkerSize Small
 ```
 
-This command creates an App Service plan named ContosoWHP in the resource group named Default-Web-WestUS in Geo location West US.
+This command creates an App Service plan named ContosoASP in the resource group named Default-Web-WestUS in Geo location West US.
 The command uses a Basic SKU and allocates two small workers.
 
 ## PARAMETERS
 
 ### -Location
+Location 
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -55,6 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tier
+Tier
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -62,12 +66,14 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: Free
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -NumberofWorkers
+Number Of Workers
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -75,12 +81,14 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WorkerSize
+Size of web worker
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -88,12 +96,14 @@ Aliases:
 
 Required: False
 Position: 5
-Default value: None
+Default value: Small
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -AseName
+App Service Environment Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -107,6 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -AseResourceGroupName
+App Service Environment Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -120,6 +132,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -133,6 +147,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+App Service Plan Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -146,6 +162,8 @@ Accept wildcard characters: False
 ```
 
 ### -AppServicePlan
+App Service Plan Object
+
 ```yaml
 Type: ServerFarmWithRichSku
 Parameter Sets: S2

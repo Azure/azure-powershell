@@ -17,17 +17,22 @@ New-AzureRmWebAppDatabaseBackupSetting [-Name] <String> [-DatabaseType] <String>
 ```
 
 ## DESCRIPTION
+The **New-AzureRmWebAppDatabaseBackupSetting** cmdlet creates a new Azure Web App Backup setting.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\> New-AzureRmWebAppDatabaseBackupSetting -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -ConnectionString "MyConnectionString" -DatabaseType "SqlAzure"
 ```
+
+Creates a database backup setting (connection string) of type SqlAzure for the specified app ContosoWebApp that is within resource group Default-Web-WestUS.
 
 ## PARAMETERS
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -41,6 +46,8 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseType
+Database Type ( e.g. "SqlAzure" or "MySql" )
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -54,6 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionString
+Connection String
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -67,6 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionStringName
+Connection String Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
