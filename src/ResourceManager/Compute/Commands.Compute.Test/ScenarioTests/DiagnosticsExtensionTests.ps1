@@ -218,46 +218,17 @@ function Test-VmssDiagnosticsExtension
         # Common
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
-        # Create VMSS
-
-        # SRP
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
-
-        # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-
-        # New VMSS Parameters
-        $vmssName = 'vmss' + $rgname;
-        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-
-        $adminUsername = 'Foo12';
-        $adminPassword = "BaR@123" + $rgname;
-
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
-
-        $extname = 'diagextest';
-        $diagExtPublisher = 'Microsoft.Azure.Diagnostics';
-        $diagExtType = 'IaaSDiagnostics';
+        $vmssname = 'vmss' + $rgname;
+        $vmss = Create-Vmss $rgname $loc $vmssname
 
         # This storage name will be used in command line directly when set diagnostics extension
         $storagename = 'stoinconfig' + $rgname;
         $storagetype = 'Standard_GRS';
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype;
 
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
+        $extname = 'diagextest';
+        $diagExtPublisher = 'Microsoft.Azure.Diagnostics';
+        $diagExtType = 'IaaSDiagnostics';
 
         # Full parameter test
         $version = '1.5';
@@ -329,4 +300,96 @@ function Test-VmssDiagnosticsExtension
             Remove-Item $privateSettingFilePath;
         }
     }
+}
+
+<#
+.SYNOPSIS
+Test diagnostics streaming on VM
+#>
+function Test-VMDiagnosticsStreaming
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVmssLocation
+
+    try
+    {
+        # Setup
+        $vm = Create-VirtualMachine -rgname $rgname -loc $loc
+
+        Add-AzureRmVMDiagnosticsStreaming -ResourceGroupName $rgname -Name $vm.Name
+
+        Remove-AzureRmVMDiagnosticsStreaming -ResourceGroupName $rgname -Name $vm.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test diagnostics streaming on Vmss
+#>
+function Test-VmssDiagnosticsStreaming
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVmssLocation
+
+    try
+    {
+        # Setup
+        $vmssname = 'vmss' + $rgname;
+        $vmss = Create-Vmss $rgname $loc $vmssname
+
+        Add-AzureRmVmssDiagnosticsStreaming -ResourceGroupName $rgname -VMScaleSetName $vmss.Name
+
+        Remove-AzureRmVmssDiagnosticsStreaming -ResourceGroupName $rgname -VMScaleSetName $vmss.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Create vmss with default arguments
+#>
+function Create-Vmss($rgname, $loc, $vmssname)
+{
+
+    # Create VMSS
+
+    # SRP
+    $stoname = 'sto' + $rgname;
+    $stotype = 'Standard_GRS';
+    New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+    # NRP
+    $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+    $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+    $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+    $subnetId = $vnet.Subnets[0].Id;
+
+    # New VMSS Parameters
+    $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+    $adminUsername = 'Foo12';
+    $adminPassword = $PLACEHOLDER;
+
+    $imgRef = Get-DefaultCRPImage -loc $loc;
+    $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+
+    $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
+    $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
+        | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+        | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+        | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+        -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+        -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
+
+    return $vmss;
 }
