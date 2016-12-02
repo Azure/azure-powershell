@@ -482,7 +482,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Remove</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="r"><maml:name>RemovePreviousVersions</maml:name>
 <maml:Description><maml:para>Automatically remove old versions of the modules currently installed.
 </maml:para>
 </maml:Description>
@@ -518,7 +518,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Remove</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="r"><maml:name>RemovePreviousVersions</maml:name>
 <maml:Description><maml:para>Automatically remove old versions of the modules currently installed.
 </maml:para>
 </maml:Description>
@@ -572,7 +572,7 @@
 </command:example>
 </command:examples>
 <command:examples><command:example><maml:title>Example 2</maml:title>
-<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2016-09' -Remove -Force</dev:code>
+<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2016-09' -RemovePreviousVersions -Force</dev:code>
 <dev:remarks><maml:para>Update the modules associated with profile version '2016-09' and load the modules in the current session. It downloads and installs the required modules and removes old versions of the modules without prompting the user. This should be executed after opening a new PowerShell session.
 </maml:para>
 </dev:remarks>
