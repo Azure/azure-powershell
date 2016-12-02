@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineSqlServerExtension = "AzureRmVMSqlServerExtension";
         public const string VirtualMachineSqlServerAutoBackupConfig = "AzureRmVMSqlServerAutoBackupConfig";
         public const string VirtualMachineSqlServerAutoPatchingConfig = "AzureRmVMSqlServerAutoPatchingConfig";
-        public const string VirtualMachineSqlServerKeyVaultCredentialConfig = "AzureVMSqlServerKeyVaultCredentialConfig";
+        public const string VirtualMachineSqlServerKeyVaultCredentialConfig = "AzureRmVMSqlServerKeyVaultCredentialConfig";
 
         //AzureDiskEncryption
         public const string AzureDiskEncryptionExtension = "AzureRmVMDiskEncryptionExtension";
