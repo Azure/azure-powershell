@@ -211,6 +211,15 @@
     <None Include="Resources\CredentialTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\ChefExtension\ChefExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ChefExtension\client.rb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ChefExtension\tstorgnztn-validator.pem">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\DiagnosticsExtension\DiagnosticsExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -266,6 +275,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionWrongServiceName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtension.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DscExtensionTests\TestGetAzureVMDscExtension.json">
@@ -418,6 +430,7 @@
     <Compile Include="CredentialTests\AddAccountForArmTests.cs" />
     <Compile Include="CredentialTests\CredentialTestBase.cs" />
     <Compile Include="CredentialTests\CredentialTestHelper.cs" />
+    <Compile Include="ChefExtension\ChefExtensionTests.cs" />
     <Compile Include="DiagnosticsExtension\DiagnosticsExtensionTests.cs" />
     <Compile Include="DscExtension\DscExtensionTests.cs" />
     <Compile Include="MediaServicesTests\MediaServicesTests.cs" />
