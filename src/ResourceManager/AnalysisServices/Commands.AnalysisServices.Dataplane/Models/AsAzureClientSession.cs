@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
-            var environmentKey = Enumerable.FirstOrDefault(AsAzureRolloutEnvironmentMapping.Keys, s => environment.Name.Contains(s));
+            var environmentKey = AsAzureRolloutEnvironmentMapping.Keys.FirstOrDefault(s => environment.Name.Contains(s));
             AsAzureAuthInfo authInfo = null;
-            if (!AsAzureRolloutEnvironmentMapping.TryGetValue(environmentKey, out authInfo))
+            if (string.IsNullOrEmpty(environmentKey) || !AsAzureRolloutEnvironmentMapping.TryGetValue(environmentKey, out authInfo))
             {
                 throw new ArgumentException(Properties.Resources.UnknownEnvironment);
             }

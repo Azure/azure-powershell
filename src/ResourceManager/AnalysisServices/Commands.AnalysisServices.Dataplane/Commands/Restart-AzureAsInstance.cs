@@ -48,6 +48,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public ITokenCacheItemProvider TokenCacheItemProvider { get; private set; }
 
+        public RestartAzureAnalysisServer()
+        {
+            this.AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
+            this.TokenCacheItemProvider = new TokenCacheItemProvider();
+
+        }
+
         public RestartAzureAnalysisServer(IAsAzureHttpClient AsAzureHttpClient, ITokenCacheItemProvider TokenCacheItemProvider)
         {
             this.AsAzureHttpClient = AsAzureHttpClient;
@@ -77,11 +84,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             base.BeginProcessing();
 
-            if (Instance == null)
-            {
-                throw new PSArgumentNullException("Instance", "Name of Azure Analysis Services server not specified");
-            }
-
             if (AsAzureClientSession.Instance.Profile.Environments.Count == 0)
             {
                 throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
@@ -100,6 +102,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     AsAzureClientSession.Instance.SetCurrentContext(
                         new AsAzureAccount(),
                         AsAzureClientSession.Instance.Profile.CreateEnvironment(uriResult.DnsSafeHost));
+                }
+            }
+            else
+            {
+                var currentContext = AsAzureClientSession.Instance.Profile.Context;
+                if (currentContext != null 
+                    && AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
+                {
+                    throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, serverName));
                 }
             }
 
