@@ -15629,6 +15629,13 @@ Tags                          :</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				  <maml:name>StorageAccountName</maml:name>
+				  <maml:description>
+					  <maml:para>Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the threat detection policy of the database. If this is the first time a database threat detection policy is defined and this parameter is not provided, the cmdlet will fail.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			  </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>ServerName</maml:name>
           <maml:description>
@@ -15715,7 +15722,19 @@ Tags                          :</maml:para>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+ 		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			  <maml:name>StorageAccountName</maml:name>
+			  <maml:description>
+				  <maml:para>Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the threat detection policy of the database. If this is the first time a database theat detection policy is defined and this parameter is not provided, the cmdlet will fail.</maml:para>
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			  <dev:type>
+				  <maml:name>String</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue>none</dev:defaultValue>
+		  </command:parameter>     
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>ServerName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the server.</maml:para>
@@ -17955,7 +17974,14 @@ ValidSince                 : 4/21/2016 3:24:47 PM</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-		</command:syntaxItem>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the threat detection policy of the database. If this is the first time a database threat detection policy is defined and this parameter is not provided, the cmdlet will fail.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>	
+  </command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
@@ -18071,7 +18097,19 @@ ValidSince                 : 4/21/2016 3:24:47 PM</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-	</command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>StorageAccountName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the threat detection policy of the database. If this is the first time a database threat detection policy is defined and this parameter is not provided, the cmdlet will fail.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+  </command:parameters>
 	<command:inputTypes>
 		<command:inputType>
 			<dev:type>

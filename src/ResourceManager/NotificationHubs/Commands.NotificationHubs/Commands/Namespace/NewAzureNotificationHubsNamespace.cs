@@ -49,12 +49,23 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             HelpMessage = "Hashtables which represents resource Tags.")]
         public Hashtable Tags { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 4,
+            HelpMessage = "Sku tier of the namespace")]
+        public string SkuTier { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(string.Empty, Resources.CreateNamespace))
             {
-                // Create a new namespace 
-                var nsAttribute = Client.CreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));
+                // Create a new namespace
+                if(string.IsNullOrWhiteSpace(SkuTier))
+                {
+                    SkuTier = "free";
+                }
+
+                var nsAttribute = Client.CreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags), SkuTier);
                 WriteObject(nsAttribute);
             }
         }
