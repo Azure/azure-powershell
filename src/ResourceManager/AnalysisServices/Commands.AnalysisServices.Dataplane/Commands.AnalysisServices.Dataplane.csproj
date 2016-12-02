@@ -102,9 +102,6 @@
     <None Include="Azure.AnalysisServices.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-help.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -12,34 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Threading;
+using System.Security;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
+using Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Moq;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Security;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.AnalysisServices.Dataplane;
-    using Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Moq;
-    using Xunit;
-    using Xunit.Abstractions;
-
     public class DataPlaneCommandTests : AsTestsBase
     {
         private const string testAsAzureEnvironment = "westcentralus.asazure-int.windows.net";
@@ -71,18 +65,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                                         + "65kxhZWVUbTHaPuEvg03ZQ3esDb6wxQewJPAL-GARg6S9wIN776Esw8-53AWhzFu0fIut-9FXGma6jV7"
                                         + "MYPoUUcFuQzLZgphecPyMPXSVhummVCdBwX9sizxnmFA";
 
-        private Mock<ICommandRuntime> commandRuntimeMock;
-
         public DataPlaneCommandTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            commandRuntimeMock = new Mock<ICommandRuntime>();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureASAccountCommand()
         {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             var addAmdlet = new AddAzureASAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
@@ -156,6 +148,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartAzureASInstance_Succeeds()
         {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             // Setup
             // Clear the the current profile
             AsAzureClientSession.Instance.Profile.Environments.Clear();
@@ -204,6 +197,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartAzureASInstance_NullInstanceThrows()
         {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+
             var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
             var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
             var restartCmdlet = new RestartAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
@@ -235,6 +230,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartAzureASInstance_NotLoggedInThrows()
         {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+
             var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
             var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
             var restartCmdlet = new RestartAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
@@ -271,6 +268,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
         private void DoLogin(AddAzureASAccountCommand addAmdlet)
         {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+
             addAmdlet.RolloutEnvironment = testAsAzureEnvironment;
             var password = new SecureString();
             var testpwd = testPassword;

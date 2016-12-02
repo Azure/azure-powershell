@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
-        [ValidateNotNullOrEmpty]
         public string RolloutEnvironment { get; set; }
         
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Login credentials to the Azure Analysis Services environment")]
@@ -62,8 +61,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-#pragma warning disable 0618
-            if (RolloutEnvironment == null)
+            if (string.IsNullOrEmpty(RolloutEnvironment))
             {
                 RolloutEnvironment = AsAzureClientSession.GetDefaultEnvironmentName();
             }
@@ -76,8 +74,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
             }
-
-#pragma warning restore 0618
         }
 
         protected override void InitializeQosEvent()

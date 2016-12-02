@@ -41,24 +41,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
         private const string testPassword = "testpassword";
 
-        private AddAzureASAccountCommand cmdlet;
-
-        private Mock<ICommandRuntime> commandRuntimeMock;
-
         public AddAzureASAccountTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new AddAzureASAccountCommand()
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreatesNewPSResourceGroup()
         {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            AddAzureASAccountCommand cmdlet = new AddAzureASAccountCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
             // Setup
             cmdlet.RolloutEnvironment = testAsAzureEnvironment;
             var password = new SecureString();

@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             base.BeginProcessing();
 
-#pragma warning disable 0618
             if (Instance == null)
             {
                 throw new PSArgumentNullException("Instance", "Name of Azure Analysis Services server not specified");
@@ -103,8 +102,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         AsAzureClientSession.Instance.Profile.CreateEnvironment(uriResult.DnsSafeHost));
                 }
             }
-
-#pragma warning restore 0618
 
             if (this.AsAzureHttpClient == null)
             {

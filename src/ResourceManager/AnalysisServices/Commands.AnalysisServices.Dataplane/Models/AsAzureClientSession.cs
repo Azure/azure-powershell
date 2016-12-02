@@ -136,7 +136,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 return AsAzureRolloutEnvironmentMapping[DefaultRolloutEnvironmentKey].DefaultResourceUriSuffix;
             }
 
-            return AsAzureRolloutEnvironmentMapping.FirstOrDefault(kv => kv.Key.Equals(environmentName)).Value.DefaultResourceUriSuffix;
+            var authoInfo = AsAzureRolloutEnvironmentMapping.FirstOrDefault(kv => kv.Key.Equals(environmentName)).Value;
+            if (authoInfo != null)
+            {
+                return authoInfo.DefaultResourceUriSuffix;
+            }
+
+            return environmentName;
         }
     }
 }

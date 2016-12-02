@@ -120,9 +120,6 @@
     <Content Include="Microsoft.Azure.Commands.AnalysisServices.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Microsoft.Azure.Commands.AnalysisServices.dll-help.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
