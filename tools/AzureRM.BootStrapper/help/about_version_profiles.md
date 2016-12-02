@@ -91,3 +91,11 @@ This loads the modules associated with the ```2015-05``` profile in the current 
 # Setting the Default Version Profile for all PowerShell sessions
 
 # Updating and Removing Profiles
+
+To update a profile to the latest versions in that profile and import updated modules to the current session, execute the following cmdlet:
+
+```
+Update-AzureRmProfile -Profile '2016-09'
+```
+
+This checks if the latest versions of the module in profile ```2016-09``` are installed, if not prompts the user if it should be installed and imports them into the current session. It also prompts the user if the old versions of the module should be removed. This should always be executed in a new PowerShell session.
