@@ -1,0 +1,234 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk5191?api-version=2016-10-10&path=soapToRestApi&wsdlServiceName=StockQuote&wsdlEndpointName=StockQuoteSoap&apiType=Soap",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs1MTkxP2FwaS12ZXJzaW9uPTIwMTYtMTAtMTAmcGF0aD1zb2FwVG9SZXN0QXBpJndzZGxTZXJ2aWNlTmFtZT1TdG9ja1F1b3RlJndzZGxFbmRwb2ludE5hbWU9U3RvY2tRdW90ZVNvYXAmYXBpVHlwZT1Tb2Fw",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"link\": \"http://www.webservicex.net/stockquote.asmx?WSDL\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/vnd.ms.wsdl.link+xml"
+        ],
+        "Content-Length": [
+          "58"
+        ],
+        "If-Match": [
+          "*"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8dbf45f8-1654-41f8-8b3c-539d021d56fe"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "275ac737-7ab4-4a65-986a-ecef6ef0dfdf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161202T224231Z:275ac737-7ab4-4a65-986a-ecef6ef0dfdf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Dec 2016 22:42:31 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk5191?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs1MTkxP2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/apis/onesdk5191\",\r\n  \"name\": \"StockQuote\",\r\n  \"description\": null,\r\n  \"serviceUrl\": \"http://www.webservicex.net/stockquote.asmx\",\r\n  \"path\": \"soapToRestApi\",\r\n  \"protocols\": [\r\n    \"https\"\r\n  ],\r\n  \"authenticationSettings\": {\r\n    \"oAuth2\": null,\r\n    \"openid\": null\r\n  },\r\n  \"subscriptionKeyParameterNames\": {\r\n    \"header\": \"Ocp-Apim-Subscription-Key\",\r\n    \"query\": \"subscription-key\"\r\n  },\r\n  \"type\": \"soap\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "334"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "652c2f4d-e4a2-4e51-b1ee-27e9413b166d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "654135df-dda8-47c6-8342-41c5a78b76ee"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161202T224233Z:654135df-dda8-47c6-8342-41c5a78b76ee"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Dec 2016 22:42:33 GMT"
+        ],
+        "ETag": [
+          "\"AAAAAAAAF3E=\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk5191?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs1MTkxP2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/wsdl+xml"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
+        ]
+      },
+      "ResponseBody": "<wsdl:definitions xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\" xmlns:tns=\"http://www.webserviceX.NET/\" targetNamespace=\"http://www.webserviceX.NET/\">\r\n  <wsdl:types>\r\n    <s:schema elementFormDefault=\"qualified\" targetNamespace=\"http://www.webserviceX.NET/\" xmlns:apim-wsdltns=\"http://www.webserviceX.NET/\" xmlns:s=\"http://www.w3.org/2001/XMLSchema\">\r\n      <s:element name=\"GetQuote\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"symbol\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetQuoteResponse\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"GetQuoteResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"string\" nillable=\"true\" type=\"s:string\" />\r\n    </s:schema>\r\n  </wsdl:types>\r\n  <wsdl:message name=\"GetQuote_InputMessage\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetQuote\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetQuote_OutputMessage\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetQuoteResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:portType name=\"StockQuote\">\r\n    <wsdl:operation name=\"GetQuote\">\r\n      <wsdl:input message=\"tns:GetQuote_InputMessage\" />\r\n      <wsdl:output message=\"tns:GetQuote_OutputMessage\" />\r\n    </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:binding name=\"StockQuote\" type=\"tns:StockQuote\">\r\n    <binding transport=\"http://schemas.xmlsoap.org/soap/http\" xmlns=\"http://schemas.xmlsoap.org/wsdl/soap/\" />\r\n    <wsdl:operation name=\"GetQuote\">\r\n      <soap:operation soapAction=\"http://www.webserviceX.NET/GetQuote\" xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\" xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\" xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n  <wsdl:service name=\"StockQuote\">\r\n    <wsdl:port name=\"StockQuote\" binding=\"tns:StockQuote\">\r\n      <address location=\"https://hydraapimservice9895.azure-api.net/soapToRestApi\" xmlns=\"http://schemas.xmlsoap.org/wsdl/soap/\" />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2053"
+        ],
+        "Content-Type": [
+          "application/wsdl+xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "391eeb1a-0532-4ff6-aae4-b7d9232c1d3e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed284dc1-d1b0-45e0-9fae-826551ce2d04"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161202T224237Z:ed284dc1-d1b0-45e0-9fae-826551ce2d04"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Dec 2016 22:42:36 GMT"
+        ],
+        "ETag": [
+          "\"AAAAAAAAF3E=\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk5191?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs1MTkxP2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "If-Match": [
+          "*"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "009624fc-70e8-43b1-bc1c-8e11c52423cd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae5909c9-7093-4b24-9d3a-f80acf93ad3b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161202T224245Z:ae5909c9-7093-4b24-9d3a-f80acf93ad3b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Dec 2016 22:42:44 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 204
+    }
+  ],
+  "Names": {
+    "": [
+      "onesdk5191"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "bab08e11-7b12-4354-9fd1-4b5d64d40b68"
+  }
+}
