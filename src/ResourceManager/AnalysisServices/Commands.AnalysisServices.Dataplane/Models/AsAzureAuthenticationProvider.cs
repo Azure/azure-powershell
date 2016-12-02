@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,16 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
+    [DataContract]
+    public class AsAzureAuthInfo
+    {
+        [DataMember]
+        public string DefaultResourceUriSuffix { get; set; }
+
+        [DataMember]
+        public string AuthorityUrl { get; set; }
+    }
+
     public interface IAsAzureAuthenticationProvider
     {
         string GetAadAuthenticatedToken(AsAzureContext asAzureContext, SecureString password, PromptBehavior promptBehavior, string clientId, string resourceUri, Uri resourceRedirectUri);
@@ -69,6 +80,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
             asAzureContext.Account.Id = result.UserInfo.DisplayableId;
             asAzureContext.Account.Tenant = result.TenantId;
+            asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
 
             return result.AccessToken;
         }

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [OutputType(typeof(AsAzureProfile))]
     public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
         [ValidateNotNullOrEmpty]
         public string RolloutEnvironment { get; set; }
         
@@ -65,19 +65,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 #pragma warning disable 0618
             if (RolloutEnvironment == null)
             {
-                throw new PSInvalidOperationException(string.Format(Resources.UnknownEnvironment, ""));
+                RolloutEnvironment = AsAzureClientSession.GetDefaultEnvironmentName();
+            }
+
+            if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(RolloutEnvironment))
+            {
+                AsEnvironment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[RolloutEnvironment];
             }
             else
             {
-                if (AsAzureClientSession.Instance.Profile.Environments.ContainsKey(RolloutEnvironment))
-                {
-                    AsEnvironment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[RolloutEnvironment];
-                }
-                else
-                {
-                    AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
-                }
+                AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
             }
+
 #pragma warning restore 0618
         }
 
@@ -101,8 +100,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             if (ShouldProcess(string.Format(Resources.LoginTarget, AsEnvironment.Name), "log in"))
             {
                 var currentProfile = AsAzureClientSession.Instance.Profile;
+                var currentContext = currentProfile.Context;
 
-                if (currentProfile.Context == null)
+                // If there is no current context create one. If there is one already then
+                // if the current credentials (userid) match the one that is already in context then use it.
+                // if either the userid that is logging in or the environment to which login is happening is
+                // different than the one in the context then clear the current context and proceed to login.
+                // At any given point in time, we should only have one context i.e. one user logged in to one
+                // environment.
+                if (currentContext == null || Credential == null ||
+                    string.IsNullOrEmpty(currentContext.Account.Id) || 
+                    !currentContext.Account.Id.Equals(Credential.UserName) ||
+                    !RolloutEnvironment.Equals(currentContext.Environment.Name))
                 {
                     AsAzureClientSession.Instance.SetCurrentContext(azureAccount, AsEnvironment);
                 }

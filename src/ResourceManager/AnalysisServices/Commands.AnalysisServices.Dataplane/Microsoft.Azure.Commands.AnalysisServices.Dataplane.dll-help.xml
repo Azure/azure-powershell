@@ -13,7 +13,7 @@
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Add-AzureAnalysisServicesAccount</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>RolloutEnvironment</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>RolloutEnvironment</maml:name>
 <maml:Description><maml:para>Name of the Azure Analysis Services environment to which to logon to. Given the full name of the server for example asazure://westcentralus.asazure.windows.net/testserver , the correct value for this variable will be westcentralus.asazure.windows.net
 </maml:para>
 </maml:Description>
@@ -58,7 +58,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>RolloutEnvironment</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>RolloutEnvironment</maml:name>
 <maml:Description><maml:para>Name of the Azure Analysis Services environment to which to logon to. Given the full name of the server for example asazure://westcentralus.asazure.windows.net/testserver , the correct value for this variable will be westcentralus.asazure.windows.net
 </maml:para>
 </maml:Description>

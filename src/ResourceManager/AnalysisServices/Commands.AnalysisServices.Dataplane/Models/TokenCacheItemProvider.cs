@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
     public interface ITokenCacheItemProvider
     {
-        string GetTokenFromTokenCache(TokenCache tokenCache, string tenant);
+        string GetTokenFromTokenCache(TokenCache tokenCache, string uniqueId);
     }
 
     public class TokenCacheItemProvider : ITokenCacheItemProvider
     {
-        public string GetTokenFromTokenCache(TokenCache tokenCache, string tenant)
+        public string GetTokenFromTokenCache(TokenCache tokenCache, string uniqueId)
         {
-            var tokenCacheItem  = tokenCache.ReadItems().FirstOrDefault(tokenItem => tokenItem.TenantId.Equals(tenant));
+            var tokenCacheItem  = tokenCache.ReadItems().FirstOrDefault(tokenItem => tokenItem.UniqueId.Equals(uniqueId));
 
             if (tokenCacheItem == null || string.IsNullOrEmpty(tokenCacheItem.AccessToken))
             {

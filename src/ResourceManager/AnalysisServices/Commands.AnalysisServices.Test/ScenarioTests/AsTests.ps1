@@ -170,12 +170,18 @@ function Test-NegativeAnalysisServicesServer
 	}
 }
 
-
+<#
+.SYNOPSIS
+Tests Analysis Services server Login and restart.
+In order to run this test successfully, Following environment variables need to be set.
+ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
+ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
+#>
 function Test-AnalysisServicesServerRestart
 {
     param
 	(
-		$rolloutEnvironment = "aspaaswestusloop1.asazure-int.windows.net",
+		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT,
 		$location = "West US"
 	)
 	try
@@ -188,8 +194,29 @@ function Test-AnalysisServicesServerRestart
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
 
-		Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment
+		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+
+		$secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
+		$cred = New-Object System.Management.Automation.PSCredential ('aztest1@aspaastestloop1.ccsctp.net', $secpasswd)
+
+		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
 		Restart-AzureAsInstance -Instance $serverName
+
+		$asAzureProfile = Login-AzureAsAccount
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount for empty rolloutname must not return null"
+
+		$asAzureProfile = Login-AzureAsAccount -Credential $cred
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount for empty rolloutname must not return null"
+
+		$rolloutEnvironment = 'asazure-int.windows.net'
+		$asAzureProfile = Login-AzureAsAccount $rolloutEnvironment
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+
+		$rolloutEnvironment = 'asazure.windows.net'
+		$asAzureProfile = Login-AzureAsAccount $rolloutEnvironment
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
 	}
 	finally
 	{

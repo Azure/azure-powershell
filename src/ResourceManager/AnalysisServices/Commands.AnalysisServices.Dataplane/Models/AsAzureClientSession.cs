@@ -14,8 +14,11 @@
 
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
+using Enumerable = System.Linq.Enumerable;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -25,10 +28,23 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     public class AsAzureClientSession
     {
         public const string RestartEndpointPathFormat = "/webapi/servers/{0}/restart?api-version=2016-10-01";
-        public const string AadAuthorityUrlProd = "https://login.windows.net";
-        public const string AadAuthorityUrlPpe = "https://login.windows-ppe.net";
         public const string AsAzureClientId = "cf710c6e-dfcc-4fa8-a093-d47294e44c66";
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
+        public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
+
+        public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>()
+            {
+             { "asazure-int.windows.net", new AsAzureAuthInfo()
+             {
+                 AuthorityUrl = "https://login.windows-ppe.net" ,
+                 DefaultResourceUriSuffix = "*.asazure-int.windows.net"
+             }},
+             { "asazure.windows.net", new AsAzureAuthInfo()
+             {
+                 AuthorityUrl = "https://login.windows.net" ,
+                 DefaultResourceUriSuffix = "*.asazure.windows.net"
+             }},
+            };
 
         /// <summary>
         /// Gets or sets the token cache store.
@@ -74,7 +90,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             PromptBehavior promptBehavior = password == null ? PromptBehavior.Always : PromptBehavior.Auto;
 
-            var resourceUri = new UriBuilder(Uri.UriSchemeHttps, asAzureContext.Environment.Name).ToString();
+            var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
             resourceUri = resourceUri.TrimEnd('/');
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, promptBehavior, AsAzureClientId, resourceUri, RedirectUri);
 
@@ -90,7 +106,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
-            return environment.Name.Contains("asazure-int") ? AadAuthorityUrlPpe : AadAuthorityUrlProd;
+            var environmentKey = Enumerable.FirstOrDefault(AsAzureRolloutEnvironmentMapping.Keys, s => environment.Name.Contains(s));
+            AsAzureAuthInfo authInfo = null;
+            if (!AsAzureRolloutEnvironmentMapping.TryGetValue(environmentKey, out authInfo))
+            {
+                throw new ArgumentException(Properties.Resources.UnknownEnvironment);
+            }
+
+            return authInfo.AuthorityUrl;
         }
 
         public void SetCurrentContext(AsAzureAccount azureAccount, AsAzureEnvironment asEnvironment)
@@ -99,6 +122,21 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 TokenCache = AsAzureClientSession.TokenCache.Serialize()
             };
+        }
+
+        public static string GetDefaultEnvironmentName()
+        {
+            return AsAzureRolloutEnvironmentMapping[DefaultRolloutEnvironmentKey].DefaultResourceUriSuffix;
+        }
+
+        public static string GetResourceUriSuffix(string environmentName)
+        {
+            if (string.IsNullOrEmpty(environmentName))
+            {
+                return AsAzureRolloutEnvironmentMapping[DefaultRolloutEnvironmentKey].DefaultResourceUriSuffix;
+            }
+
+            return AsAzureRolloutEnvironmentMapping.FirstOrDefault(kv => kv.Key.Equals(environmentName)).Value.DefaultResourceUriSuffix;
         }
     }
 }

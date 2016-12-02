@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             addAmdlet.InvokeEndProcessing();
 
             var environment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[testAsAzureEnvironment];
-            Assert.Equal(environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl], AsAzureClientSession.AadAuthorityUrlPpe);
+            Assert.Equal(environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl], AsAzureClientSession.GetAuthorityUrlForEnvironment(environment));
             Assert.NotNull(environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat]);
 
             commandRuntimeMock.Verify(f => f.WriteObject(AsAzureClientSession.Instance.Profile));

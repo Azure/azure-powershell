@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     {
         public string Id { get; set; }
 
+        public string UniqueId { get; set; }
+
         public string Tenant { get; set; }
     }
 }
