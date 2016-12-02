@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
-            HelpMessage = "Tier of the deployment region. Valid values are Developer, Standard and Premium. Default value is Developer.")]
+            HelpMessage = "Tier of the deployment region. Valid values are Developer, Standard and Premium. Default value is Premium.")]
         public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ExecuteCmdLetWrap(
                 () =>
                 {
-                    ApiManagement.AddRegion(Location, Sku ?? PsApiManagementSku.Developer, Capacity ?? 1, VirtualNetwork);
+                    ApiManagement.AddRegion(Location, Sku ?? PsApiManagementSku.Premium, Capacity ?? 1, VirtualNetwork);
 
                     return ApiManagement;
                 },
