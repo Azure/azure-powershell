@@ -31,12 +31,17 @@ The **Get-AzureRmWebAppPublishingProfile** cmdlet gets an Azure Web App publishi
 
 ### 1:
 ```
-
+PS C:\> Get-AzureRmWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Format "Ftp" -OutputFile "C:\Users\contoso\outputfile"
 ```
+
+This command gets the publishing profile in Ftp format for Web App ContosoWebApp associated with the resource group Default-Web-WestUS
+    and stores it in the specified output file.
 
 ## PARAMETERS
 
 ### -OutputFile
+Output File
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -50,6 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -Format
+Format
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -63,6 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -76,6 +85,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -89,6 +100,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: S2

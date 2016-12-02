@@ -23,17 +23,22 @@ Get-AzureRmWebAppBackupList [-WebApp] <Site> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmWebAppBackupList** cmdlet gets a list of backups for an Azure Web App.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\>Get-AzureRmWebAppBackupList -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
 ```
+
+This command returns a backup list pertaining to WebApp WebAppStandard associated with the resource group ContosoResourceGroup.
 
 ## PARAMETERS
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -47,6 +52,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -60,6 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
+Slot name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -73,6 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+Piped WebApp
+
 ```yaml
 Type: Site
 Parameter Sets: FromWebApp

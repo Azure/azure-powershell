@@ -27,17 +27,21 @@ Edit-AzureRmWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUn
 ```
 
 ## DESCRIPTION
+The **Edit-AzureRmWebAppBackupConfiguration** cmdlet edits the current configuration backup for an Azure Web App.
 
 ## EXAMPLES
 
 ### 1:
 ```
-
+PS C:\>
 ```
+
 
 ## PARAMETERS
 
 ### -FrequencyInterval
+Frequency Interval
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -51,6 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -FrequencyUnit
+Frequency Unit
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -64,6 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionPeriodInDays
+Retention Period In Days
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -77,6 +85,8 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
+StartTime in UTC
+
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
@@ -90,6 +100,8 @@ Accept wildcard characters: False
 ```
 
 ### -KeepAtLeastOneBackup
+Keep At Least One Backup Option
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -103,6 +115,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -116,6 +130,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -129,6 +145,8 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
+WebApp Slot Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -142,6 +160,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountUrl
+Storage Account Url
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -155,6 +175,8 @@ Accept wildcard characters: False
 ```
 
 ### -Databases
+Databases of type DatabaseBackupSetting[]
+
 ```yaml
 Type: DatabaseBackupSetting[]
 Parameter Sets: (All)
@@ -168,6 +190,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: FromWebApp

@@ -25,17 +25,22 @@ Restore-AzureRmWebAppBackup [-Databases <DatabaseBackupSetting[]>] [-IgnoreConfl
 ```
 
 ## DESCRIPTION
+The **Restore-AzureRmWebAppBackup** cmdlet restores an Azure Web App Backup.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\> Restore-AzureRmWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StorageAccountUrl "https://storageaccount.file.core.windows.net" -BlobName "myBlob"
 ```
+
+Restores a backup of the specified app ContosoWebApp that is within resource group Default-Web-WestUS in blob "myBlob" located at https://storageaccount.file.core.windows.net
 
 ## PARAMETERS
 
 ### -Databases
+Databases of type DatabaseBackupSetting[]
+
 ```yaml
 Type: DatabaseBackupSetting[]
 Parameter Sets: (All)
@@ -49,6 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -IgnoreConflictingHostNames
+Ignore Conflicting HostNames Option
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -62,6 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -75,6 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -88,6 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
+WebApp Slot Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -101,6 +114,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountUrl
+Storage Account Url
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -114,6 +129,8 @@ Accept wildcard characters: False
 ```
 
 ### -BlobName
+Blob Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -127,6 +144,8 @@ Accept wildcard characters: False
 ```
 
 ### -Overwrite
+Overwrite Option
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -140,7 +159,10 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
+
 Type: Site
 Parameter Sets: FromWebApp
 Aliases: 

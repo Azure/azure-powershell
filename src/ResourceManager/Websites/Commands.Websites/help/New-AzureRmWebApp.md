@@ -44,6 +44,8 @@ The command uses an existing App Service plan named ContosoServicePlan.
 ## PARAMETERS
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -57,6 +59,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -70,6 +74,8 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+Location
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -83,6 +89,8 @@ Accept wildcard characters: False
 ```
 
 ### -AppServicePlan
+App Service Plan Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -96,6 +104,8 @@ Accept wildcard characters: False
 ```
 
 ### -SourceWebApp
+Source WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: (All)
@@ -109,6 +119,8 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficManagerProfileId
+Traffic Manager Profile Id
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -122,6 +134,8 @@ Accept wildcard characters: False
 ```
 
 ### -IgnoreSourceControl
+Ignore Source Control Option
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -135,6 +149,8 @@ Accept wildcard characters: False
 ```
 
 ### -IgnoreCustomHostNames
+Ignore Custom Host Names Option
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -148,6 +164,8 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettingsOverrides
+App Settings Overrides HashTable
+
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
@@ -161,6 +179,8 @@ Accept wildcard characters: False
 ```
 
 ### -AseName
+App Service Environment Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -174,6 +194,8 @@ Accept wildcard characters: False
 ```
 
 ### -AseResourceGroupName
+App Service Environment Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -187,6 +209,8 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeSourceWebAppSlots
+Include Source WebApp Slots Option
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -200,6 +224,8 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficManagerProfileName
+Traffic Manager Profile Name
+
 ```yaml
 Type: String
 Parameter Sets: S2

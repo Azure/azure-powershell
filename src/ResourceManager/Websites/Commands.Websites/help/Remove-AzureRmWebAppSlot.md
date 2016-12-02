@@ -22,20 +22,23 @@ Remove-AzureRmWebAppSlot [-Force] [-WebApp] <Site> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
+The **Remove-AzureRmWebAppSlot** cmdlet removes an Azure Web App Slot provided the resource group and Web App name.
+This cmdlet, by default, also removes all slots and metrics.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a Web App Slot
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Remove-AzureRmWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
-{{ Add example description here }}
+This command removes the Slot named Slot001 associated with Web App ContosoSite that belongs to the resource group named Default-Web-WestUS.
+
 
 ## PARAMETERS
 
 ### -Force
-@{Text=}
+Forcefully Remove Option
 
 ```yaml
 Type: SwitchParameter
@@ -50,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-@{Text=}
+WebApp Name
 
 ```yaml
 Type: String
@@ -65,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-@{Text=}
+Resource Group Name
 
 ```yaml
 Type: String
@@ -80,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-@{Text=}
+WebApp Slot Name
 
 ```yaml
 Type: String
@@ -95,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-@{Text=}
+WebApp Object
 
 ```yaml
 Type: Site

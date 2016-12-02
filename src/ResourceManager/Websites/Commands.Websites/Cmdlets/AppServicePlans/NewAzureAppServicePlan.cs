@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
 
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
         [ValidateNotNullOrEmpty]
         public bool PerSiteScaling { get; set; }
 

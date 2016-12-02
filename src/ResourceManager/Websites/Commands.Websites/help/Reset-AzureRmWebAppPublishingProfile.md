@@ -22,17 +22,22 @@ Reset-AzureRmWebAppPublishingProfile [-WebApp] <Site> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The **Reset-AzureRmWebAppPublishingProfile** cmdlet resets the publishing profile for the specified Web App.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\> Reset-AzureRmWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" 
 ```
+
+This command resets the publishing profile for the Web App ContosoWebApp associated with the resource group Default-Web-WestUS.
 
 ## PARAMETERS
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -46,6 +51,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -59,6 +66,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Object
+
 ```yaml
 Type: Site
 Parameter Sets: S2

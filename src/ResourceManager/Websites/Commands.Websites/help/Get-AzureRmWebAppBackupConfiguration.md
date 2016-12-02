@@ -23,17 +23,22 @@ Get-AzureRmWebAppBackupConfiguration [-WebApp] <Site> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmWebAppBackupConfiguration** cmdlet gets the backup configuration of an Azure Web App.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\>Get-AzureRmWebAppBackupConfiguration -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
 ```
+
+This command gets the backup configuration from the Web App named WebAppStandard that belongs to the resource group Default-Web-WestUS.
 
 ## PARAMETERS
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -47,6 +52,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+WebApp Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -60,6 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
+Slot Name
+
 ```yaml
 Type: String
 Parameter Sets: FromResourceName
@@ -73,6 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
+WebApp Name
+
 ```yaml
 Type: Site
 Parameter Sets: FromWebApp

@@ -24,17 +24,23 @@ Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmAppServicePlanMetrics** gets App Service Plan metrics.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>
+PS C:\>Get-AzureRmAppServicePlanMetrics -ResourceGroupName "Default-Web-WestUS" -Name "ContosoAppServPlan" -StartTime 2016-11-30T22:00:00Z -EndTime 2016-11-30T22:30:00Z -Granularity PT1M -Metrics ["CPU Percentage"]
 ```
+
+This command gets CPU percentage of the App Service Plan 
+    per minute(PT1M - Poll Time 1 minute) between StartTime and EndTime
 
 ## PARAMETERS
 
 ### -Metrics
+Metrics
+
 ```yaml
 Type: String[]
 Parameter Sets: (All)
@@ -48,6 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
+Start Time in UTC
+
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
@@ -61,6 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -EndTime
+End Time in UTC
+
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
@@ -74,6 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -Granularity
+Granularity
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -87,6 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceDetails
+Instance Details
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -100,6 +114,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Resource Group Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -113,6 +129,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+App Service Plan Name
+
 ```yaml
 Type: String
 Parameter Sets: S1
@@ -126,6 +144,8 @@ Accept wildcard characters: False
 ```
 
 ### -AppServicePlan
+App Service Plan Object
+
 ```yaml
 Type: ServerFarmWithRichSku
 Parameter Sets: S2
