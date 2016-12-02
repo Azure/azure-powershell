@@ -17,6 +17,7 @@ using System.Security;
 using System.Security.Permissions;
 using System;
 using System.Runtime.InteropServices;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -25,17 +26,12 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureVMSqlServerKeyVaultCredentialConfigNoun,
+         ProfileNouns.VirtualMachineSqlServerKeyVaultCredentialConfig,
          SupportsShouldProcess = true),
      OutputType(
          typeof(KeyVaultCredentialSettings))]
     public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
     {
-        /// <summary>
-        /// Configuration object friendly name
-        /// </summary>
-        protected const string AzureVMSqlServerKeyVaultCredentialConfigNoun = "AzureVMSqlServerKeyVaultCredentialConfig";
-
         [Parameter(
             Mandatory = true,
             Position = 0,

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -21,13 +22,11 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureVMSqlServerAutoPatchingConfigNoun),
+         ProfileNouns.VirtualMachineSqlServerAutoPatchingConfig),
      OutputType(
          typeof(AutoPatchingSettings))]
     public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet
     {
-        protected const string AzureVMSqlServerAutoPatchingConfigNoun = "AzureVMSqlServerAutoPatchingConfig";
-
         [Parameter]
         public SwitchParameter Enable { get; set; }
 
