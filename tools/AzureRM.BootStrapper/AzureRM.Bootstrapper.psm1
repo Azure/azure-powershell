@@ -258,6 +258,7 @@ function Use-AzureRmProfile
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
     Add-ForceParam $params
+    Add-RemoveParam $params
     return $params
   }
   PROCESS 
