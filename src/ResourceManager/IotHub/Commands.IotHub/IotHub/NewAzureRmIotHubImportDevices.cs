@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmIotHubImportDevices", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzureRmIotHubImportDevices")]
     [OutputType(typeof(JobResponse))]
     public class NewAzureRmIotHubImportDevices : IotHubBaseCmdlet
     {
@@ -41,12 +41,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
+            Position = 2,
             Mandatory = true,
             HelpMessage = "The BlobContainerUri to import from")]
         [ValidateNotNullOrEmpty]
         public string InputBlobContainerUri { get; set; }
 
         [Parameter(
+            Position = 3,
             Mandatory = true,
             HelpMessage = "The BlobContainerUri to write output to")]
         [ValidateNotNullOrEmpty]

@@ -26,17 +26,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [OutputType(typeof(PSIotHubJobResponse), typeof(List<PSIotHubJobResponse>))]
     public class GetAzureRmIotHubJob : IotHubBaseCmdlet
     {
-        const string GetIotHubJobParameterSet = "GetIotHubJob";
-        const string ListIotHubJobParameterSet = "ListIotHubJob";
-
         [Parameter(
-            ParameterSetName = GetIotHubJobParameterSet,
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Resource Group")]
-        [Parameter(
-            ParameterSetName = ListIotHubJobParameterSet,
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -45,13 +35,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = GetIotHubJobParameterSet,
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
-        [Parameter(
-            ParameterSetName = ListIotHubJobParameterSet,
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -60,7 +43,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = GetIotHubJobParameterSet,
+            Position = 2,
             Mandatory = false,
             HelpMessage = "Job Identifier")]
         [ValidateNotNullOrEmpty]
@@ -68,18 +51,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            switch (ParameterSetName)
+            if (JobId != null)
+            { 
+                JobResponse jobResponse = this.IotHubClient.IotHubResource.GetJob(this.ResourceGroupName, this.Name, this.JobId);
+                this.WriteObject(IotHubUtils.ToPSIotHubJobResponse(jobResponse), false);
+            }
+            else
             {
-                case GetIotHubJobParameterSet:
-                    JobResponse jobResponse = this.IotHubClient.IotHubResource.GetJob(this.ResourceGroupName, this.Name, this.JobId);
-                    this.WriteObject(IotHubUtils.ToPSIotHubJobResponse(jobResponse), false);
-                    break;
-                case ListIotHubJobParameterSet:
-                    IEnumerable<JobResponse> jobResponseList = this.IotHubClient.IotHubResource.ListJobs(this.ResourceGroupName, this.Name);
-                    this.WriteObject(IotHubUtils.ToPSIotHubJobResponseList(jobResponseList), true);
-                    break;
-                default:
-                    throw new ArgumentException("BadParameterSetName");
+                IEnumerable<JobResponse> jobResponseList = this.IotHubClient.IotHubResource.ListJobs(this.ResourceGroupName, this.Name);
+                this.WriteObject(IotHubUtils.ToPSIotHubJobResponseList(jobResponseList), true);
             }
         }
     }

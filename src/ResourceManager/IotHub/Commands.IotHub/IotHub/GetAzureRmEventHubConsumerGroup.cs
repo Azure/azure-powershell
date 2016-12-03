@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Event Hub Endpoint. Possible values are 'events', 'operationsMonitoringEvents'")]
         [ValidateNotNullOrEmpty]
+        [ValidateSetAttribute(EventsEndpointName, OperationsMonitoringEventsEndpointName)]
         public string EventHubEndpointName { get; set; }
 
         public override void ExecuteCmdlet()
@@ -53,5 +54,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             IEnumerable<string> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, this.EventHubEndpointName);
             this.WriteObject(iotHubEHConsumerGroups, true);
         }
+
+        private const string EventsEndpointName = "events";
+        private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }
