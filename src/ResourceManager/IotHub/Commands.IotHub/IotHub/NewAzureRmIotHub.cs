@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using ResourceProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
 
     [Cmdlet(VerbsCommon.New, "AzureRmIotHub", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
     public class NewAzureRmIotHub : IotHubBaseCmdlet
     {
         [Parameter(
-            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
@@ -66,26 +65,29 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            var iotHubDescription = new IotHubDescription()
+            if (ShouldProcess(Name, ResourceProperties.Resources.AddIotHub))
             {
-                Resourcegroup = this.ResourceGroupName,
-                Subscriptionid = this.DefaultContext.Subscription.Id.ToString(),
-                Location = this.Location,
-                Sku = new IotHubSkuInfo()
+                var iotHubDescription = new IotHubDescription()
                 {
-                    Name = this.SkuName.ToString(),
-                    Capacity = this.Units
+                    Resourcegroup = this.ResourceGroupName,
+                    Subscriptionid = this.DefaultContext.Subscription.Id.ToString(),
+                    Location = this.Location,
+                    Sku = new IotHubSkuInfo()
+                    {
+                        Name = this.SkuName.ToString(),
+                        Capacity = this.Units
+                    }
+                };
+
+                if (this.Properties != null)
+                {
+                    iotHubDescription.Properties = IotHubUtils.ToIotHubProperties(this.Properties);
                 }
-            };
 
-            if (this.Properties != null)
-            {
-                iotHubDescription.Properties = IotHubUtils.ToIotHubProperties(this.Properties);
+                this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iotHubDescription);
+                IotHubDescription updatedIotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
+                this.WriteObject(IotHubUtils.ToPSIotHub(updatedIotHubDescription), false);
             }
-
-            this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iotHubDescription);
-            IotHubDescription updatedIotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
-            this.WriteObject(IotHubUtils.ToPSIotHub(updatedIotHubDescription), false);
         }
     }
 }

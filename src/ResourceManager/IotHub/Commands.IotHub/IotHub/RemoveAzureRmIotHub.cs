@@ -39,49 +39,28 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        /// <summary>
-        /// If present, do not ask for confirmation
-        /// </summary>
-        [Parameter(Mandatory = false,
-           HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
-
+        
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(Name, Properties.Resources.RemoveIotHub))
             {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        PSIotHubProperties.Resources.RemoveIotHubWarning,
-                        this.Name),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        PSIotHubProperties.Resources.RemoveIotHubWhatIfMessage,
-                        this.Name),
-                    this.Name,
-                    () =>
-                    {
-                        this.IotHubClient.IotHubResource.Delete(this.ResourceGroupName, this.Name);
-                    });
-            }
-            catch (Exception e)
-            {
-                // This is because the underlying IotHubClient sdk currently throws an exception when it receives a 404 during the 
-                // long running delete operation. Remove this once the sdk is fixed to handle this.
-
-                if (!e.Message.Contains("NotFound"))
+                try
                 {
-                    throw e;
+                    this.IotHubClient.IotHubResource.Delete(this.ResourceGroupName, this.Name);
                 }
-            }
+                catch (Exception e)
+                {
+                    // This is because the underlying IotHubClient sdk currently throws an exception when it receives a 404 during the 
+                    // long running delete operation. Remove this once the sdk is fixed to handle this.
 
-            this.WriteObject("Iot Hub Deleted");
+                    if (!e.Message.Contains("NotFound"))
+                    {
+                        throw e;
+                    }
+                }
+
+                this.WriteObject("Iot Hub Deleted");
+            }
         }
     }
 }

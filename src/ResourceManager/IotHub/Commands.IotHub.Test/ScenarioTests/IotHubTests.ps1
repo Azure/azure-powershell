@@ -35,7 +35,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $allIotHubs.Count -gt 1 }
 
 	# Create or Update Resource Group
-	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location -Force:$true
+	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub
 	$newIothub1 = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
@@ -109,7 +109,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $keys.Count -eq 6 }
 
 	# Remove Key
-	Remove-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -Force:$true
+	Remove-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1
 
 	# Get Keys
 	$keys = Get-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
@@ -137,5 +137,5 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $iothubUpdated.Properties.OperationsMonitoringProperties.OperationMonitoringEvents["Connections"] -eq "Information" }
 
 	# Remove IotHub
-	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Force:$true
+	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
 }

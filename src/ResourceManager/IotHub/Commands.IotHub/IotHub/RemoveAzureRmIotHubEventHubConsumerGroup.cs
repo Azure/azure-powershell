@@ -41,12 +41,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
+            Position = 2,
             Mandatory = true,
             HelpMessage = "EventHubEndpointName. Possible values events, operationsMonitoringEvents")]
         [ValidateNotNullOrEmpty]
+        [ValidateSetAttribute(EventsEndpointName, OperationsMonitoringEventsEndpointName)]
         public string EventHubEndpointName { get; set; }
 
         [Parameter(
+            Position = 3,
             Mandatory = true,
             HelpMessage = "Name of the EventHub ConsumerGroupName")]
         [ValidateNotNullOrEmpty]
@@ -54,9 +57,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            this.IotHubClient.IotHubResource.DeleteEventHubConsumerGroup(this.ResourceGroupName, this.Name, this.EventHubEndpointName, this.EventHubConsumerGroupName);
-            IEnumerable<string> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, this.EventHubEndpointName);
-            this.WriteObject(iotHubEHConsumerGroups, true);
+            if (ShouldProcess(EventHubConsumerGroupName, Properties.Resources.RemoveEventHubConsumerGroup))
+            {
+                this.IotHubClient.IotHubResource.DeleteEventHubConsumerGroup(this.ResourceGroupName, this.Name, this.EventHubEndpointName, this.EventHubConsumerGroupName);
+                IEnumerable<string> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, this.EventHubEndpointName);
+                this.WriteObject(iotHubEHConsumerGroups, true);
+            }
         }
+
+        private const string EventsEndpointName = "events";
+        private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }

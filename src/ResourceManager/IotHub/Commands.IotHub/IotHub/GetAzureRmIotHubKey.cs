@@ -26,18 +26,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule), typeof(List<PSSharedAccessSignatureAuthorizationRule>))]
     public class GetAzureRmIotHubKey : IotHubBaseCmdlet
     {
-        const string GetIotHubKeyParameterSet = "GetIotHubKey";
-        const string ListIotHubKeysParameterSet = "ListIotHubKeys";
-
         [Parameter(
             Position = 0,
-            ParameterSetName = GetIotHubKeyParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Resource Group")]
-        [Parameter(
-            Position = 0,
-            ParameterSetName = ListIotHubKeysParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
@@ -46,13 +36,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         [Parameter(
             Position = 1,
-            ParameterSetName = GetIotHubKeyParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
-        [Parameter(
-            Position = 1,
-            ParameterSetName = ListIotHubKeysParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
@@ -60,26 +43,23 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = GetIotHubKeyParameterSet,
-            Mandatory = true,
+            Position = 2,
+            Mandatory = false,
             HelpMessage = "Name of the Key")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            switch (ParameterSetName)
+            if (KeyName != null)
             {
-                case GetIotHubKeyParameterSet:
-                    SharedAccessSignatureAuthorizationRule authPolicy = this.IotHubClient.IotHubResource.GetKeysForKeyName(this.ResourceGroupName, this.Name, this.KeyName);
-                    this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRule(authPolicy), false);
-                    break;
-                case ListIotHubKeysParameterSet:
-                    IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name);
-                    this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRules(authPolicies), true);
-                    break;
-                default:
-                    throw new ArgumentException("BadParameterSetName");
+                SharedAccessSignatureAuthorizationRule authPolicy = this.IotHubClient.IotHubResource.GetKeysForKeyName(this.ResourceGroupName, this.Name, this.KeyName);
+                this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRule(authPolicy), false);
+            }
+            else
+            {
+                IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name);
+                this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRules(authPolicies), true);
             }
         }
     }

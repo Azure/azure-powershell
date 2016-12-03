@@ -7,8 +7,8 @@
     <ProjectGuid>{4D4F91FD-616E-4F39-A10F-6CC28DC1068A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.IotHub.Test</RootNamespace>
-    <AssemblyName>Commands.IotHub.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.IotHub.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.IotHub.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.IotHub</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -116,18 +116,6 @@
     <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
       <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
       <Name>Commands.Profile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
-      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
-      <Name>Commands.Resources.Rest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources.Test\Commands.Resources.Test.csproj">
-      <Project>{4c2fe49a-09e1-4979-ad46-cd64fd04c8f7}</Project>
-      <Name>Commands.Resources.Test</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
-      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
-      <Name>Commands.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.IotHub\Commands.IotHub.csproj">
       <Project>{78770a60-b18a-4442-a982-0cee0356f8db}</Project>

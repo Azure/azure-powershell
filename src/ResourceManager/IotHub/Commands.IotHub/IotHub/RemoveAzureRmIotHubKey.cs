@@ -47,52 +47,34 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
+            Position = 2,
             Mandatory = true,
             HelpMessage = "Name of the Key")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
-        /// <summary>
-        /// If present, do not ask for confirmation
-        /// </summary>
-        [Parameter(Mandatory = false,
-           HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
+            if (ShouldProcess(KeyName, Properties.Resources.RemoveIotHubKey))
+            {
+                IotHubDescription iothubDesc = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
+                IList<SharedAccessSignatureAuthorizationRule> authRules = (List<SharedAccessSignatureAuthorizationRule>)this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name).ToList();
 
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    PSIotHubProperties.Resources.RemoveIotHubKeyWarning,
-                    this.Name),
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    PSIotHubProperties.Resources.RemoveIotHubKeyWhatIfMessage,
-                    this.Name),
-                this.Name,
-                () =>
+                foreach (var authRule in authRules)
                 {
-                    IotHubDescription iothubDesc = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
-                    IList<SharedAccessSignatureAuthorizationRule> authRules = (List<SharedAccessSignatureAuthorizationRule>)this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name).ToList();
-
-                    foreach (var authRule in authRules)
+                    if (authRule.KeyName.Equals(this.KeyName, StringComparison.OrdinalIgnoreCase))
                     {
-                        if (authRule.KeyName.Equals(this.KeyName, StringComparison.OrdinalIgnoreCase))
-                        {
-                            authRules.Remove(authRule);
-                            break;
-                        }
+                        authRules.Remove(authRule);
+                        break;
                     }
+                }
 
-                    iothubDesc.Properties.AuthorizationPolicies = authRules;
+                iothubDesc.Properties.AuthorizationPolicies = authRules;
 
-                    this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iothubDesc);
-                    IEnumerable<SharedAccessSignatureAuthorizationRule> updatedAuthRules = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name);
-                    this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRules(updatedAuthRules), true);
-                });
+                this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iothubDesc);
+                IEnumerable<SharedAccessSignatureAuthorizationRule> updatedAuthRules = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name);
+                this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRules(updatedAuthRules), true);
+            }
         }
     }
 }

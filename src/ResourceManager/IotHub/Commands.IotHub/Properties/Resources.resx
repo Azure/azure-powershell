@@ -117,16 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RemoveIotHubKeyWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the key '{0}'.</value>
+  <data name="AddEventHubConsumerGroup" xml:space="preserve">
+    <value>Add EventHub Consumer Group</value>
   </data>
-  <data name="RemoveIotHubKeyWhatIfMessage" xml:space="preserve">
-    <value>Remove Key</value>
+  <data name="AddIotHub" xml:space="preserve">
+    <value>Add an IoT Hub</value>
   </data>
-  <data name="RemoveIotHubWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the IotHub '{0}'.</value>
+  <data name="AddIotHubKey" xml:space="preserve">
+    <value>Add an IoT Hub Key</value>
   </data>
-  <data name="RemoveIotHubWhatIfMessage" xml:space="preserve">
-    <value>Remove IotHub</value>
+  <data name="RemoveEventHubConsumerGroup" xml:space="preserve">
+    <value>Remove Event Hub Consumer Group</value>
+  </data>
+  <data name="RemoveIotHub" xml:space="preserve">
+    <value>Remove IoT Hub</value>
+  </data>
+  <data name="RemoveIotHubKey" xml:space="preserve">
+    <value>Remove IoT Hub Key</value>
+  </data>
+  <data name="UpdateIotHub" xml:space="preserve">
+    <value>Update IoT Hub </value>
   </data>
 </root>

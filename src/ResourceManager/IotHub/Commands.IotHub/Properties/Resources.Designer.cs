@@ -61,38 +61,65 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the key &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Add EventHub Consumer Group.
         /// </summary>
-        internal static string RemoveIotHubKeyWarning {
+        internal static string AddEventHubConsumerGroup {
             get {
-                return ResourceManager.GetString("RemoveIotHubKeyWarning", resourceCulture);
+                return ResourceManager.GetString("AddEventHubConsumerGroup", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Key.
+        ///   Looks up a localized string similar to Add an IoT Hub.
         /// </summary>
-        internal static string RemoveIotHubKeyWhatIfMessage {
+        internal static string AddIotHub {
             get {
-                return ResourceManager.GetString("RemoveIotHubKeyWhatIfMessage", resourceCulture);
+                return ResourceManager.GetString("AddIotHub", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the IotHub &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Add an IoT Hub Key.
         /// </summary>
-        internal static string RemoveIotHubWarning {
+        internal static string AddIotHubKey {
             get {
-                return ResourceManager.GetString("RemoveIotHubWarning", resourceCulture);
+                return ResourceManager.GetString("AddIotHubKey", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove IotHub.
+        ///   Looks up a localized string similar to Remove Event Hub Consumer Group.
         /// </summary>
-        internal static string RemoveIotHubWhatIfMessage {
+        internal static string RemoveEventHubConsumerGroup {
             get {
-                return ResourceManager.GetString("RemoveIotHubWhatIfMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveEventHubConsumerGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove IoT Hub.
+        /// </summary>
+        internal static string RemoveIotHub {
+            get {
+                return ResourceManager.GetString("RemoveIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove IoT Hub Key.
+        /// </summary>
+        internal static string RemoveIotHubKey {
+            get {
+                return ResourceManager.GetString("RemoveIotHubKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update IoT Hub .
+        /// </summary>
+        internal static string UpdateIotHub {
+            get {
+                return ResourceManager.GetString("UpdateIotHub", resourceCulture);
             }
         }
     }
