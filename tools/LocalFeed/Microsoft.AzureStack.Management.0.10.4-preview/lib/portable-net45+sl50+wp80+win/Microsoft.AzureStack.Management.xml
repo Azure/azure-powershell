@@ -3405,14 +3405,14 @@
             Optional. Gets or sets the provisioning state.
             </summary>
         </member>
-        <member name="P:Microsoft.AzureStack.Management.Models.ManifestPropertiesDefinition.ResourceManagerType">
-            <summary>
-            Optional. Gets or sets the resource manager type.
-            </summary>
-        </member>
         <member name="P:Microsoft.AzureStack.Management.Models.ManifestPropertiesDefinition.ResourceTypes">
             <summary>
             Optional. Gets or sets the resource types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Models.ManifestPropertiesDefinition.RoutingResourceManagerType">
+            <summary>
+            Optional. Gets or sets the resource manager type.
             </summary>
         </member>
         <member name="M:Microsoft.AzureStack.Management.Models.ManifestPropertiesDefinition.#ctor">

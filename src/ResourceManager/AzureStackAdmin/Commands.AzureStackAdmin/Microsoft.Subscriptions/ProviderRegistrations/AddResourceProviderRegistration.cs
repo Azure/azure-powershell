@@ -63,7 +63,7 @@ namespace Microsoft.AzureStack.Commands
         public string ArmLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource manager type.
+        /// Gets or sets the routing resource manager type.
         /// </summary>
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
@@ -142,7 +142,7 @@ namespace Microsoft.AzureStack.Commands
                                 Namespace = this.Namespace,
                                 // Note: The default value is set to Admin ARM to have backward compatibility with existing deployment scripts
                                 // The default value will get changed to User ARM in future.
-                                ResourceManagerType = this.ResourceManagerType,
+                                RoutingResourceManagerType = this.ResourceManagerType,
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
                                 ExtensionName = this.ExtensionName,
@@ -166,7 +166,7 @@ namespace Microsoft.AzureStack.Commands
                                 Namespace = this.Namespace,
                                 // Note: The default value is set to Admin ARM to have backward compatibility with existing deployment scripts
                                 // The default value will get changed to User ARM in future.
-                                ResourceManagerType = this.ResourceManagerType,
+                                RoutingResourceManagerType = this.ResourceManagerType,
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
                                 Extensions = (this.Extensions == null) ? null : this.Extensions.FromJson<List<Extension>>(),
