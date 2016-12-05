@@ -13,22 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Helper cmdlet to construct instance of AutoPatching settings class
-    /// NOTE: This cmdlet is here for backward compatibility, don't make any further edits to this. See the new one : NewAzureRmVMSqlServerAutoPatchingConfigCommand
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureVMSqlServerAutoPatchingConfigNoun),
+         ProfileNouns.VirtualMachineSqlServerAutoPatchingConfig),
      OutputType(
          typeof(AutoPatchingSettings))]
-    public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet
+    public class NewAzureRmVMSqlServerAutoPatchingConfigCommand : PSCmdlet
     {
-        protected const string AzureVMSqlServerAutoPatchingConfigNoun = "AzureVMSqlServerAutoPatchingConfig";
-
         [Parameter]
         public SwitchParameter Enable { get; set; }
 

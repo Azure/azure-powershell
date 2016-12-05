@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Management.Automation;
 
@@ -168,7 +169,8 @@ namespace Microsoft.Azure.Commands.Compute
                 AutoPatchingSettings = this.AutoPatchingSettings,
                 AutoBackupSettings = this.AutoBackupSettings,
                 KeyVaultCredentialSettings = this.KeyVaultCredentialSettings,
-                AutoTelemetrySettings = new AutoTelemetrySettings() { Region = this.Location }
+                AutoTelemetrySettings = new AutoTelemetrySettings() { Region = this.Location },
+                DeploymentToken = new Random().Next()
             };
         }
 

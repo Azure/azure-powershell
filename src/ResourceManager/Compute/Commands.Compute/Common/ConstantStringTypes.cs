@@ -63,6 +63,10 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string ReadOnly = "ReadOnly";
         public const string ReadWrite = "ReadWrite";
         public const string None = "None";
+        public const string Manual = "Manual";
+        public const string Automated = "Automated";
+        public const string Daily = "Daily";
+        public const string Weekly = "Weekly";
     }
 
     public static class ProfileNouns
