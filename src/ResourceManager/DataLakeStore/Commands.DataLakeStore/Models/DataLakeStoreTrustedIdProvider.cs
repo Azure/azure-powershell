@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public DataLakeStoreTrustedIdProvider(TrustedIdProvider baseProvider)
         {
             Name = baseProvider.Name;
-            IdProvider = baseProvider.Properties.IdProvider;
+            IdProvider = baseProvider.IdProvider;
         }
     }
 }
