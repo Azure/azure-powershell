@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string AssemblyVersion = "1.0.0";
 
-        public const string AssemblyFileVersion = "1.0.4.1";
+        public const string AssemblyFileVersion = "1.0.4.2";
 
         public const string ProfileFile = "AzureProfile.json";
 
