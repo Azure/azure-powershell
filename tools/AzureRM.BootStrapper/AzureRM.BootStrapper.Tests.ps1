@@ -358,3 +358,71 @@ Describe "Uninstall-AzureRmProfile" {
         }
     }
 }
+
+Describe "Update-AzureRmProfile" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+        Mock Get-AzProfile -Verifiable -ParameterFilter { $Update.IsPresent } { ($global:testProfileMap | ConvertFrom-Json) }
+        
+        Context "Profile is installed" {
+            # Arrange
+            $RollupModule = 'Module1'
+            Mock Get-AzureRmModule -Verifiable { "2.0"} -ParameterFilter {$Profile -eq "Profile2" -and $Module -eq "Module1"}
+            Mock Get-AzureRmProfile -Verifiable { 'Profile2' }
+            Mock Install-Module {}
+            Mock Import-Module -Verifiable {'Importing module'}
+            Mock Uninstall-AzureRmProfile {}
+
+            # Act
+            $result = Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
+
+            # Assert
+            It "Updates and imports modules" {
+                $result | Should Be 'Importing module'
+                Assert-VerifiableMocks
+                Assert-MockCalled Install-Module -Exactly 0
+                Assert-MockCalled Uninstall-AzureRmProfile -Exactly 0
+            }
+        }
+
+        Context "Profile is not installed" {
+            # Arrange
+            Mock Get-AzureRmProfile -Verifiable {}
+            $RollupModule = 'Module1'
+            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile2" -and $Module -eq "Module1"}
+            Mock Install-Module -Verifiable {'Installing module'}
+            Mock Import-Module -Verifiable {'Importing module'}
+            Mock Uninstall-AzureRmProfile {}
+
+            # Act
+            $result = Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
+
+            It "Should download and import modules" {
+                $result[0] | Should Be 'Installing module'
+                $result[1] | Should Be 'Importing module'
+                Assert-VerifiableMocks
+                Assert-MockCalled Uninstall-AzureRmProfile -Exactly 0
+            }
+        }
+
+        Context "Old version (Profile1) was detected" {
+            # Arrange
+            Mock Uninstall-AzureRmProfile -Verifiable { "Uninstalling Profile..." }
+            Mock Get-AzureRmProfile -Verifiable { @('Profile1', 'Profile2') }
+            $RollupModule = 'Module1'
+            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile2" -and $Module -eq "Module1"}
+            Mock Install-Module -Verifiable {'Installing module'}
+            Mock Import-Module -Verifiable {'Importing module'}
+
+            # Act
+            $result = Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
+
+            It "Removes old version and updates new version" {
+                $result[0] | Should Be 'Installing module'
+                $result[1] | Should Be 'Importing module'
+                $result[2] | Should Be 'Uninstalling Profile...'
+                Assert-VerifiableMocks
+            }
+        }
+    }
+}
