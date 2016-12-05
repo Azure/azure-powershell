@@ -88,6 +88,24 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export All Devices.
+        /// </summary>
+        internal static string NewAzureRmIotHubExportDevices {
+            get {
+                return ResourceManager.GetString("NewAzureRmIotHubExportDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import All Devices.
+        /// </summary>
+        internal static string NewAzureRmIotHubImportDevices {
+            get {
+                return ResourceManager.GetString("NewAzureRmIotHubImportDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Event Hub Consumer Group.
         /// </summary>
         internal static string RemoveEventHubConsumerGroup {
