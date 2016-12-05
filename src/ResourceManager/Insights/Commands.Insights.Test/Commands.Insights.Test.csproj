@@ -62,7 +62,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.14.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.14.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <SpecificVersion>False</SpecificVersion>
@@ -150,6 +150,7 @@
     <Compile Include="ScenarioTests\EventsTests.cs" />
     <Compile Include="ScenarioTests\MetricsTests.cs" />
     <Compile Include="ScenarioTests\TestsController.cs" />
+    <Compile Include="ScenarioTests\TestsControllerLegacy.cs" />
     <Compile Include="ScenarioTests\UsageMetricsTests.cs" />
     <Compile Include="UsageMetrics\GetAzureRmUsageTests.cs" />
     <Compile Include="Utilities.cs" />

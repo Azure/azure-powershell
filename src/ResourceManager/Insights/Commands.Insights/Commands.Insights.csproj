@@ -54,7 +54,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.14.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.14.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm">
@@ -129,10 +129,58 @@
     <Compile Include="Autoscale\GetAzureRmAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookCommand.cs" />
     <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Customizations\IMetricOperations.Customization.cs" />
+    <Compile Include="Customizations\InsightsClient.Customization.cs" />
+    <Compile Include="Customizations\MetricDefinitionOperations.Customization.cs" />
+    <Compile Include="Customizations\MetricOperations.Customization.cs" />
+    <Compile Include="Customizations\MetricOperationsExtensions.Customization.cs" />
+    <Compile Include="Customizations\Shoebox\BlobShoeboxMetricRetriever.cs" />
+    <Compile Include="Customizations\Shoebox\EmptyMetricRetriever.cs" />
+    <Compile Include="Customizations\Shoebox\IMetricRetriever.cs" />
+    <Compile Include="Customizations\Shoebox\MetricDefinitionFilterParser.cs" />
+    <Compile Include="Customizations\Shoebox\MetricDimension.cs" />
+    <Compile Include="Customizations\Shoebox\MetricFilter.cs" />
+    <Compile Include="Customizations\Shoebox\MetricFilterDimension.cs" />
+    <Compile Include="Customizations\Shoebox\MetricFilterExpressionParser.cs" />
+    <Compile Include="Customizations\Shoebox\MetricFilterRegexParser.cs" />
+    <Compile Include="Customizations\Shoebox\MetricWrap.cs" />
+    <Compile Include="Customizations\Shoebox\ProxyMetricRetriever.cs" />
+    <Compile Include="Customizations\Shoebox\SasMetricRetriever.cs" />
+    <Compile Include="Customizations\Shoebox\ShoeboxClient.cs" />
+    <Compile Include="Customizations\Shoebox\ShoeboxHelper.cs" />
+    <Compile Include="Customizations\Shoebox\ShoeboxMetricRetriever.cs" />
+    <Compile Include="Customizations\Shoebox\SizeBoundedCache.cs" />
+    <Compile Include="Customizations\Shoebox\StorageConstants.cs" />
+    <Compile Include="Customizations\Shoebox\StorageMetricRetriever.cs" />
+    <Compile Include="Customizations\Shoebox\TableOperationContextLogger.cs" />
+    <Compile Include="Customizations\Util.cs" />
     <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
     <Compile Include="Events\GetAzureRmLogCommand.cs" />
+    <Compile Include="Generated\Insights\IInsightsClient.cs" />
+    <Compile Include="Generated\Insights\IMetricDefinitionOperations.cs" />
+    <Compile Include="Generated\Insights\IMetricOperations.cs" />
+    <Compile Include="Generated\Insights\InsightsClient.cs" />
+    <Compile Include="Generated\Insights\InsightsClientExtensions.cs" />
+    <Compile Include="Generated\Insights\MetricDefinitionOperationsExtensions.cs" />
+    <Compile Include="Generated\Insights\MetricOperationsExtensions.cs" />
+    <Compile Include="Generated\Insights\Models\AggregationType.cs" />
+    <Compile Include="Generated\Insights\Models\BlobInfo.cs" />
+    <Compile Include="Generated\Insights\Models\BlobLocation.cs" />
+    <Compile Include="Generated\Insights\Models\Dimension.cs" />
+    <Compile Include="Generated\Insights\Models\LocalizableString.cs" />
+    <Compile Include="Generated\Insights\Models\Metric.cs" />
+    <Compile Include="Generated\Insights\Models\MetricAvailability.cs" />
+    <Compile Include="Generated\Insights\Models\MetricCollection.cs" />
+    <Compile Include="Generated\Insights\Models\MetricDefinition.cs" />
+    <Compile Include="Generated\Insights\Models\MetricDefinitionCollection.cs" />
+    <Compile Include="Generated\Insights\Models\MetricDefinitionListResponse.cs" />
+    <Compile Include="Generated\Insights\Models\MetricListResponse.cs" />
+    <Compile Include="Generated\Insights\Models\MetricLocation.cs" />
+    <Compile Include="Generated\Insights\Models\MetricTableInfo.cs" />
+    <Compile Include="Generated\Insights\Models\MetricValue.cs" />
+    <Compile Include="Generated\Insights\Models\Unit.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
     <Compile Include="InsightsCmdletBase.cs" />
     <Compile Include="LogProfiles\RemoveAzureRmLogProfileCommand.cs" />
@@ -141,6 +189,8 @@
     <Compile Include="ManagementCmdletBase.cs" />
     <Compile Include="Metrics\GetAzureRmMetricDefinitionCommand.cs" />
     <Compile Include="Metrics\GetAzureRmMetricCommand.cs" />
+    <Compile Include="OnetimeGenerated\Insights\MetricDefinitionOperations.cs" />
+    <Compile Include="OnetimeGenerated\Insights\MetricOperations.cs" />
     <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />

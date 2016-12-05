@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             // New-AutoscaleRule -MetricName <String> -MetricResourceUri <String> -Operator <{Equals | NotEquals | GreaterThan | GreaterThanOrEqual | LessThan | LessThanOrEqual}> 
             //                   -MetricStatistic <{Average | Min | Max | Sum}> -Threshold <Double> [-TimeAggregationOperator <{Average | Minimum | Maximum | Last | Total | Count}>] 
             //                   -TimeGrain <TimeSpan> [-TimeWindow <TimeSpan>] -ScaleActionCooldown <TimeSpan> -ScaleActionDirection <{None | Increase | Decrease}> 
-            //                   -ScaleActionScaleType <{ChangeSize | ChangeCount | PercentChangeCount}> -ScaleActionValue <String>
+            //                   -ScaleActionScaleType <{ChangeSize | ChangeCount | PercentChangeCount | ExactCount}> -ScaleActionValue <String>
             Cmdlet.MetricName = "Requests";
             Cmdlet.MetricResourceId = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo";
             Cmdlet.Operator = ComparisonOperationType.GreaterThan;
