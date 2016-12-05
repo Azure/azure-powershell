@@ -165,6 +165,7 @@ namespace StaticAnalysis.Test
 
         #region CmdletWithUnapprovedVerb
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CmdletWithApprovedVerb()
         {
             cmdletSignatureVerifier.Analyze(
@@ -177,6 +178,7 @@ namespace StaticAnalysis.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CmdletWithUnapprovedVerb()
         {
             cmdletSignatureVerifier.Analyze(
