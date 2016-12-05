@@ -32,12 +32,13 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Initializes a new instance of the <see cref="PSLogProfile"/> class.
         /// </summary>
         /// <param name="logProfile">The input logProfile</param>
-        public PSLogProfile(LogProfileResource logProfile) : base(id: logProfile.Id, location: logProfile.Location, locations: logProfile.Locations)
+        public PSLogProfile(LogProfileResource logProfile) : base(id: logProfile.Id, location: logProfile.Location)
         {
             base.RetentionPolicy = logProfile.RetentionPolicy;
 
             this.Name = logProfile.Name;
             this.Categories = logProfile.Categories;
+            this.Locations = logProfile.Locations;
             this.RetentionPolicy = new PSRetentionPolicy(logProfile.RetentionPolicy);
             this.ServiceBusRuleId = logProfile.ServiceBusRuleId;
             this.StorageAccountId = logProfile.StorageAccountId;

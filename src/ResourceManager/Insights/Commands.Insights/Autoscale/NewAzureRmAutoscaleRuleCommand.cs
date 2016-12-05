@@ -29,6 +29,15 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(5);
         private readonly TimeSpan MinimumTimeGrain = TimeSpan.FromMinutes(1);
 
+        /// <summary>
+        /// Scale type enum.
+        /// Keep this enum for backwards compatibility. The only value supported is ChangeCount
+        /// </summary>
+        public enum ScaleType
+        {
+            ChangeCount
+        }
+
         #region Cmdlet parameters
 
         /// <summary>
@@ -96,7 +105,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Gets or sets the scale action value
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale type for the setting. It supports these values: ChangeCount (default), PercentChangeCount, ExactCount")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale type for the setting. It defaults to ChangeCount, only value supported. Warning: This parameter has no effect.")]
         [ValidateNotNullOrEmpty]
         public ScaleType ScaleActionScaleType { get; set; }
 
@@ -114,7 +123,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The parameter ScaleActionType has been extended, it receives the following values now: ChangeCount (previous only value and current default), PercentChangeCount, ExactCount. The parameter could become mandatory in future versions.");
+            WriteWarning("The parameter ScaleActionType has no effect. It was kept here for backwards compatibility, but it could be removed in the future.");
             ScaleRule rule = this.CreateSettingRule();
             WriteObject(rule);
         }
@@ -147,13 +156,11 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 TimeWindow = this.TimeWindow == default(TimeSpan) ? MinimumTimeWindow : this.TimeWindow,
             };
 
-            // Notice ChangeCount is (ScaleType)0, so this is the default in this version. It was the only value in the previous version.
             ScaleAction action = new ScaleAction()
             {
                 Cooldown = this.ScaleActionCooldown,
                 Direction = this.ScaleActionDirection,
-                Value = this.ScaleActionValue,
-                Type = this.ScaleActionScaleType
+                Value = this.ScaleActionValue
             };
 
             return new ScaleRule()

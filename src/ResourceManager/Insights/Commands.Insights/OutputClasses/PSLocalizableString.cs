@@ -19,19 +19,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wraps around a list of Dimension objects to display them with indentation
     /// </summary>
-    public class PSLocalizableString : LocalizableString
+    public class PSLocalizableString
     {
+        private LocalizableString localizableString;
+
         /// <summary>
         /// Initializes a new instance of the PSLocalizableString class
         /// </summary>
         /// <param name="localizableString">The input LocalizableString object</param>
         public PSLocalizableString(LocalizableString localizableString)
         {
-            if (localizableString != null)
-            {
-                this.LocalizedValue = localizableString.LocalizedValue;
-                this.Value = localizableString.Value;
-            }
+            this.localizableString = localizableString;
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <returns>A string representation of the LocalizableString object including indentation</returns>
         public override string ToString()
         {
-            return this.ToString(indentationTabs: 1);
+            return this.localizableString.ToString(indentationTabs: 1);
         }
     }
 }
