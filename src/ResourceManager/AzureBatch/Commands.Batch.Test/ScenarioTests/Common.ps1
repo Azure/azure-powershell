@@ -57,13 +57,13 @@ function Get-BatchAccountProviderLocation($index)
   
         if ($location -eq $null) 
         {  
-            return "West US"  
+            return "westus"  
         } 
         else 
         {  
             if ($index -eq $null)
             {
-                return "West US"
+                return "westus"
             }
             else
             {
@@ -72,39 +72,5 @@ function Get-BatchAccountProviderLocation($index)
         }  
     }
 
-    return "West US"
-}
-
-<#
-.SYNOPSIS
-Cleans the created Batch account and resource group
-#>
-function Clean-BatchAccountAndResourceGroup($accountName,$resourceGroup)
-{
-    Clean-BatchAccount $accountName $resourceGroup
-    Clean-ResourceGroup $resourceGroup
-}
-
-<#
-.SYNOPSIS
-Cleans the created Batch account
-#>
-function Clean-BatchAccount($accountName,$resourceGroup)
-{
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
-    {
-        Remove-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
-    }
-}
-
-<#
-.SYNOPSIS
-Cleans the created resource group
-#>
-function Clean-ResourceGroup($resourceGroup)
-{
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
-    {
-        Remove-AzureRmResourceGroup -Name $resourceGroup -Force
-    }
+    return "westus"
 }

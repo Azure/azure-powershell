@@ -619,6 +619,27 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a JobListFromJobScheduleResponse object
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListFromJobScheduleHeaders> CreateJobListFromJobScheduleResponse(IEnumerable<string> jobIds)
+        {
+            var response = new AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListFromJobScheduleHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            List<ProxyModels.CloudJob> jobs = new List<ProxyModels.CloudJob>();
+
+            foreach (string id in jobIds)
+            {
+                ProxyModels.CloudJob job = new ProxyModels.CloudJob(id: id);
+                jobs.Add(job);
+            }
+
+            response.Body = new MockPagedEnumerable<ProxyModels.CloudJob>(jobs);
+
+            return response;
+        }
+
+        /// <summary>
         /// Builds a CloudTaskGetResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> CreateCloudTaskGetResponse(string taskId)
