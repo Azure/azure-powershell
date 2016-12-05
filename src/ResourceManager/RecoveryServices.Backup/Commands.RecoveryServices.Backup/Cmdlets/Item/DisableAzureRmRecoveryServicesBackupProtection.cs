@@ -18,21 +18,20 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
-
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Disable protection of an item protected by the recovery services vault. 
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection", SupportsShouldProcess = true),
     OutputType(typeof(JobBase))]
     public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
         /// The protected item whose protection needs to be disabled.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem, 
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Item.ProtectedItem,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// If this option is used, all the data backed up for this item will 
         /// also be deleted and restoring the data will not be possible.
         /// </summary>
-        [Parameter(Position = 2, Mandatory = false, 
+        [Parameter(Position = 2, Mandatory = false,
             HelpMessage = ParamHelpMsgs.Item.RemoveProtectionOption)]
         public SwitchParameter RemoveRecoveryPoints
         {
@@ -68,15 +67,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     ExecutionBlock(() =>
                     {
                         base.ExecuteCmdlet();
-                        PsBackupProviderManager providerManager = 
+                        PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                         {
                             {ItemParams.Item, Item},
                             {ItemParams.DeleteBackupData, this.DeleteBackupData},
                         }, ServiceClientAdapter);
 
-                        IPsBackupProvider psBackupProvider = 
-                            providerManager.GetProviderInstance(Item.WorkloadType, 
+                        IPsBackupProvider psBackupProvider =
+                            providerManager.GetProviderInstance(Item.WorkloadType,
                             Item.BackupManagementType);
 
                         var itemResponse = psBackupProvider.DisableProtection();
