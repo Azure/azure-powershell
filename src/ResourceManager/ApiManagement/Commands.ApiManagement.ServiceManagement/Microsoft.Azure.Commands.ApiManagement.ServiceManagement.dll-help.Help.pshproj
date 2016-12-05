@@ -1752,6 +1752,12 @@ Imported API</ReturnTypeDescription>
           <Description>Import Wsdl Api</Description>
           <Output />
         </Example>
+        <Example>
+          <Name>Example 5</Name>
+          <Cmd>Import-AzureRmApiManagementApi –Context $apimContext –SpecificationFormat 'Wsdl' –SpecificationPath 'C:\contoso\specifications\weather.wsdl' –Path 'apis' -WsdlServiceName 'Weather' -WsdlEndpointName 'WeatherSoap' -ApiType Soap</Cmd>
+          <Description />
+          <Output />
+        </Example>
       </Examples>
       <RelatedLinks />
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
@@ -7928,10 +7934,10 @@ OpenId Connect Provider.</Description>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context Type ClientId ClientSecret AllowedTenants Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context Type ClientId ClientSecret AllowedTenants Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureRmApiManagementIdentityProvider -Context &lt;PsApiManagementContext&gt; -Type &lt;PsApiManagementIdentityProviderType&gt; -ClientId &lt;String&gt; -ClientSecret &lt;String&gt; [-AllowedTenants &lt;String[]&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>New-AzureRmApiManagementIdentityProvider -Context &lt;PsApiManagementContext&gt; -Type &lt;PsApiManagementIdentityProviderType&gt; -ClientId &lt;String&gt; -ClientSecret &lt;String&gt; [-AllowedTenants &lt;String[]&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagementContext" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -8003,6 +8009,30 @@ OpenId Connect Provider.</Description>
           </Attributes>
           <Aliases>
             <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -8145,10 +8175,10 @@ OpenId Connect Provider.</Description>
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context Type ClientId ClientSecret AllowedTenants PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Context Type ClientId ClientSecret AllowedTenants PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmApiManagementIdentityProvider -Context &lt;PsApiManagementContext&gt; -Type &lt;PsApiManagementIdentityProviderType&gt; [-ClientId &lt;String&gt;] [-ClientSecret &lt;String&gt;] [-AllowedTenants &lt;String[]&gt;] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmApiManagementIdentityProvider -Context &lt;PsApiManagementContext&gt; -Type &lt;PsApiManagementIdentityProviderType&gt; [-ClientId &lt;String&gt;] [-ClientSecret &lt;String&gt;] [-AllowedTenants &lt;String[]&gt;] [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="PsApiManagementContext" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -8228,6 +8258,30 @@ OpenId Connect Provider.</Description>
           </Attributes>
           <Aliases>
             <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
