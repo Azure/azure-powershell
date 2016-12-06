@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Gets detailed information about a particular job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails",
         DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RecoveryServicesBackupCmdletBase
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Job whose details are to be fetched.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.JobFilter, 
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.JobFilter,
             ParameterSetName = JobFilterSet, Position = 1)]
         [ValidateNotNull]
         public JobBase Job { get; set; }
