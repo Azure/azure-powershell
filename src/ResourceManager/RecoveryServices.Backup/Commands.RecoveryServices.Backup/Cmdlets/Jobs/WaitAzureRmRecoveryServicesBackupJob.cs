@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Job or List of jobs until end of which the cmdlet should wait.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.WaitJobOrListFilter, 
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Job.WaitJobOrListFilter,
             ValueFromPipeline = true, Position = 1)]
         [ValidateNotNull]
         public object Job { get; set; }
@@ -66,9 +65,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         jobsToWaitOn.Add(job.JobId);
                     }
                 }
-                else if (Job.GetType() == typeof(System.Object[]))
+                else if (Job.GetType() == typeof(object[]))
                 {
-                    System.Object[] castedJobsList = Job as System.Object[];
+                    object[] castedJobsList = Job as object[];
                     object castedJob;
                     foreach (var job in castedJobsList)
                     {
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                         else
                         {
-                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                            throw new Exception(string.Format(Resources.JobWaitJobInvalidInput,
                                 Job.GetType().FullName));
                         }
                     }
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 else
                 {
                     // not a valid object. throw exception.
-                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput, 
+                    throw new Exception(string.Format(Resources.JobWaitJobInvalidInput,
                         Job.GetType().FullName));
                 }
 
@@ -97,7 +96,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     if (Timeout.HasValue)
                     {
-                        if (DateTime.UtcNow.Subtract(waitBeginning) >= 
+                        if (DateTime.UtcNow.Subtract(waitBeginning) >=
                             TimeSpan.FromSeconds(Timeout.Value))
                         {
                             break;

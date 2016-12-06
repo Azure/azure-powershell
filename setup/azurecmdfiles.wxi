@@ -2331,6 +2331,9 @@
                         <Component Id="cmp902DC2364C6FF451A60B4D115B5DC7A9" Guid="*">
                             <File Id="filDFC93A6AA2A808957B249CC88C7D6EE5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
+                        <Component Id="cmpDB3F89FCB6F69647096085E3C07D2EA7" Guid="*">
+                            <File Id="fil981731C42616352E119DFCB2CDFCF8BB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Rest.ClientRuntime.Azure.dll" />
+                        </Component>
                         <Component Id="cmpF8AEF0C5D785D40AEC8F1BF4ACE4E939" Guid="*">
                             <File Id="filA708CDDEB8C8A8363E22F4C83953E14E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
@@ -6277,6 +6280,7 @@
             <ComponentRef Id="cmp13B3F08D31DD4410B1934B82517CAC9A" />
             <ComponentRef Id="cmpA2EFAF047A9595A3CA7DFC6031140F27" />
             <ComponentRef Id="cmp902DC2364C6FF451A60B4D115B5DC7A9" />
+            <ComponentRef Id="cmpDB3F89FCB6F69647096085E3C07D2EA7" />
             <ComponentRef Id="cmpF8AEF0C5D785D40AEC8F1BF4ACE4E939" />
             <ComponentRef Id="cmp0FB4C1F5BB0FB399774156C4B56696B8" />
             <ComponentRef Id="cmp7B84FC694FB5281CF08E6F1B41D07E12" />

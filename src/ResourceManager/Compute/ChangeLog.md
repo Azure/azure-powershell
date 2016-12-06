@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+* Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
+    - JsonAttribute : A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}'
+
+    - ChefServiceInterval : Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field. e.g. -ChefServiceInterval 45
+
 ## Version 2.3.0
 * Update formats for list of VMs, VMScaleSets and ContainerService
     - The default format of Get-AzureRmVM, Get-AzureRmVmss and Get-AzureRmContainerService is not table format when these cmdlets call List Operation

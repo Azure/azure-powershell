@@ -19,7 +19,6 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {

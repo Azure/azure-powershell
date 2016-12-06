@@ -83,6 +83,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
+            ApiId = ApiId ?? Guid.NewGuid().ToString("N");
+
             if (ParameterSetName.Equals(FromLocalFile))
             {
                 Client.ApiImportFromFile(Context, ApiId, SpecificationFormat, SpecificationPath, Path, WsdlServiceName, WsdlEndpointName);

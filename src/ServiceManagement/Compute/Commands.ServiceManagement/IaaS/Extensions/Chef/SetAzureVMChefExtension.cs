@@ -20,6 +20,8 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Management.Compute;
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -64,6 +66,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             HelpMessage = "The Chef Server Node Runlist.")]
         [ValidateNotNullOrEmpty]
         public string RunList { get; set; }
+
+        [Parameter(
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{\"foo\" : \"bar\"}'")]
+        [ValidateNotNullOrEmpty]
+        public string JsonAttribute { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.")]
+        [ValidateNotNullOrEmpty]
+        public string ChefServiceInterval { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -159,7 +173,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
             bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
             bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
-            string BootstrapVersion = this.BootstrapVersion;
+            bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
+            bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
+            string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -171,14 +187,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
             if (!IsClientRbEmpty)
             {
-                ClientConfig = Regex.Replace(File.ReadAllText(this.ClientRb),
-                    "\"|'", "\\\"").TrimEnd('\r', '\n').Replace("\r\n", "\\r\\n");
+                ClientConfig = File.ReadAllText(this.ClientRb).TrimEnd('\r', '\n');
                 // Append ChefServerUrl and ValidationClientName to end of ClientRb
                 if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
                 {
                     string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
+chef_server_url  '{0}'
+validation_client_name 	'{1}'
 ";
                     ClientConfig += string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
                 }
@@ -186,7 +201,7 @@ validation_client_name 	\""{1}\""
                 else if (!IsChefServerUrlEmpty)
                 {
                     string UserConfig = @"
-chef_server_url  \""{0}\""
+chef_server_url  '{0}'
 ";
                     ClientConfig += string.Format(UserConfig, this.ChefServerUrl);
                 }
@@ -194,7 +209,7 @@ chef_server_url  \""{0}\""
                 else if (!IsValidationClientNameEmpty)
                 {
                     string UserConfig = @"
-validation_client_name 	\""{0}\""
+validation_client_name 	'{0}'
 ";
                     ClientConfig += string.Format(UserConfig, this.ValidationClientName);
                 }
@@ -203,46 +218,37 @@ validation_client_name 	\""{0}\""
             else if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
             {
                 string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
+chef_server_url  '{0}'
+validation_client_name 	'{1}'
 ";
                 ClientConfig = string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
             }
 
-            if (IsRunListEmpty)
+            var hashTable = new Hashtable();
+            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+            hashTable.Add(ClientRbTemplate, ClientConfig);
+
+            if (!IsRunListEmpty)
             {
-                if (IsBootstrapOptionsEmpty)
-                {
-                    this.PublicConfiguration = string.Format("{{{0},{1}}}",
-                        string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                }
-                else
-                {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                        string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                }
+                hashTable.Add(RunListTemplate, this.RunList);
             }
-            else
+
+            if (!IsBootstrapOptionsEmpty)
             {
-                if (IsBootstrapOptionsEmpty)
-                {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                        string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(RunListTemplate, this.RunList),
-                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                }
-                else
-                {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                         string.Format(ClientRbTemplate, ClientConfig),
-                         string.Format(RunListTemplate, this.RunList),
-                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                }
+                hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
             }
+
+            if (!IsJsonAttributeEmpty)
+            {
+                hashTable.Add(JsonAttributeTemplate, JsonAttribute);
+            }
+
+            if (!IsChefServiceIntervalEmpty)
+            {
+                hashTable.Add(ChefServiceIntervalTemplate, this.ChefServiceInterval);
+            }
+
+            this.PublicConfiguration = JsonConvert.SerializeObject(hashTable);
         }
 
         protected override void ValidateParameters()
