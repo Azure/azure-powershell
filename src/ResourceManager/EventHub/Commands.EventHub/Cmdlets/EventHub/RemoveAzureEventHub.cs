@@ -45,8 +45,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public override void ExecuteCmdlet()
         {
             // delete a EventHub 
-            bool deleteHub = Client.DeleteEventHub(ResourceGroupName, NamespaceName, EventHubName);
-            WriteObject(deleteHub);
+            if(ShouldProcess(target:EventHubName, action:string.Format("Deleting EventHub: {0} of NnameSpace{1}",EventHubName,NamespaceName)))
+            {
+                WriteObject(Client.DeleteEventHub(ResourceGroupName, NamespaceName, EventHubName));
+            }            
         }
     }
 }

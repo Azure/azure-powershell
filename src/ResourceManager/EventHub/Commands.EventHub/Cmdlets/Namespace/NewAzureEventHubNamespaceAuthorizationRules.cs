@@ -70,8 +70,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             sasRule.Location = getNamespace.Location;
 
             // Create a new eventHub authorizationRule
-            SharedAccessAuthorizationRuleAttributes authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule);
-            WriteObject(authRule);
+            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Create new AuthorizationRule: {0} for NameSpace:{1}", AuthorizationRuleName, NamespaceName)))
+            {
+                WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule));
+            }           
         }
     }
 }
