@@ -31,12 +31,6 @@ The **Edit-AzureRmWebAppBackupConfiguration** cmdlet edits the current configura
 
 ## EXAMPLES
 
-### 1:
-```
-PS C:\>
-```
-
-
 ## PARAMETERS
 
 ### -FrequencyInterval
