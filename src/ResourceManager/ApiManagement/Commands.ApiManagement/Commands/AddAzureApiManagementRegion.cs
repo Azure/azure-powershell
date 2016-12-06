@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
-            HelpMessage = "Tier of the deployment region. Valid values are Developer, Standard and Premium. Default value is Premium.")]
+            HelpMessage = "Tier of the deployment region. Valid and Default value is Premium.")]
         public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
