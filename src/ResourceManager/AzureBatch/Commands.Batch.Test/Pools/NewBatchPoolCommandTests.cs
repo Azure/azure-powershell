@@ -72,6 +72,107 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolParametersGetPassedToRequestTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testPool";
+            cmdlet.CertificateReferences = new PSCertificateReference[]
+            {
+                new PSCertificateReference()
+                {
+                    StoreLocation = Azure.Batch.Common.CertStoreLocation.LocalMachine,
+                    Thumbprint = "thumbprint",
+                    ThumbprintAlgorithm = "sha1",
+                    StoreName = "My",
+                    Visibility = Azure.Batch.Common.CertificateVisibility.StartTask
+                }
+            };
+            cmdlet.CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*");
+            cmdlet.DisplayName = "display name";
+            cmdlet.InterComputeNodeCommunicationEnabled = true;
+            cmdlet.MaxTasksPerComputeNode = 4;
+            cmdlet.Metadata = new Dictionary<string, string>();
+            cmdlet.Metadata.Add("meta1", "value1");
+            cmdlet.ResizeTimeout = TimeSpan.FromMinutes(20);
+            cmdlet.StartTask = new PSStartTask("cmd /c echo start task");
+            cmdlet.TargetDedicated = 3;
+            cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
+            cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
+            cmdlet.VirtualMachineSize = "small";
+            
+            PoolAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.CertificateReferences.Length, requestParameters.CertificateReferences.Count);
+            Assert.Equal(cmdlet.CertificateReferences[0].StoreName, requestParameters.CertificateReferences[0].StoreName);
+            Assert.Equal(cmdlet.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
+            Assert.Equal(cmdlet.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
+            Assert.Equal(cmdlet.CloudServiceConfiguration.OSFamily, requestParameters.CloudServiceConfiguration.OsFamily);
+            Assert.Equal(cmdlet.CloudServiceConfiguration.TargetOSVersion, requestParameters.CloudServiceConfiguration.TargetOSVersion);
+            Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
+            Assert.Equal(cmdlet.InterComputeNodeCommunicationEnabled, requestParameters.EnableInterNodeCommunication);
+            Assert.Equal(cmdlet.MaxTasksPerComputeNode, requestParameters.MaxTasksPerNode);
+            Assert.Equal(cmdlet.Metadata.Count, requestParameters.Metadata.Count);
+            Assert.Equal(cmdlet.Metadata["meta1"], requestParameters.Metadata[0].Value);
+            Assert.Equal(cmdlet.ResizeTimeout, requestParameters.ResizeTimeout);
+            Assert.Equal(cmdlet.StartTask.CommandLine, requestParameters.StartTask.CommandLine);
+            Assert.Equal(cmdlet.TargetDedicated, requestParameters.TargetDedicated);
+            Assert.Equal(cmdlet.TaskSchedulingPolicy.ComputeNodeFillType.ToString(), requestParameters.TaskSchedulingPolicy.NodeFillType.ToString());
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.NodeAgentSkuId, requestParameters.VirtualMachineConfiguration.NodeAgentSKUId);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Publisher, requestParameters.VirtualMachineConfiguration.ImageReference.Publisher);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Offer, requestParameters.VirtualMachineConfiguration.ImageReference.Offer);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Sku, requestParameters.VirtualMachineConfiguration.ImageReference.Sku);
+            Assert.Equal(cmdlet.VirtualMachineSize, requestParameters.VmSize);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolAutoScaleHandledProperlyTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testPool";
+            cmdlet.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(15);
+            cmdlet.AutoScaleFormula = "$TargetDedicated=3";
+
+            PoolAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.AutoScaleEvaluationInterval, requestParameters.AutoScaleEvaluationInterval);
+            Assert.Equal(cmdlet.AutoScaleFormula, requestParameters.AutoScaleFormula);
+            Assert.Equal(true, requestParameters.EnableAutoScale);
+            Assert.Equal(null, requestParameters.TargetDedicated);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewBatchPoolNetworkConfigurationParameterTest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
