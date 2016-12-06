@@ -54,7 +54,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.14.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.14.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm">
