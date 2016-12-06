@@ -155,6 +155,21 @@ namespace StaticAnalysis.SignatureVerifier
                                         remediation: "Consider wether the cmdlet should have a Force " +
                                                       "parameter and use ShouldContinue under some circumstances. ");
                                     }
+
+                                    if (!cmdlet.IsApprovedVerb)
+                                    {
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                        problemId: SignatureProblemId.CmdletWithUnapprovedVerb,
+                                        description:
+                                            string.Format(
+                                                "{0} uses the verb '{1}', which is not on the list of approved " +
+                                                "verbs for PowerShell commands. Use the cmdlet 'Get-Verb' to see " +
+                                                "the full list of approved verbs and consider renaming the cmdlet.",
+                                                cmdlet.Name, cmdlet.VerbName),
+                                        remediation: "Consider renaming the cmdlet to use an approved verb for PowerShell.");
+                                    }
                                 }
 
                                 AppDomain.Unload(_appDomain);
