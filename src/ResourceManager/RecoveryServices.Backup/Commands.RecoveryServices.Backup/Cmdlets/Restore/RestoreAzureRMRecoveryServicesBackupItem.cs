@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 ResourcesNS.Models.ResourceGetResult resource = null;
                 try
                 {
-                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}",
+                    WriteDebug(string.Format("Query Microsoft.ClassicStorage with name = {0}",
                         StorageAccountName));
                     resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
                         identity, CancellationToken.None).Result;
@@ -85,10 +85,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string storageAccountlocation = resource.Resource.Location;
                 string storageAccountType = resource.Resource.Type;
 
-                WriteDebug(String.Format("StorageId = {0}", storageAccountId));
+                WriteDebug(string.Format("StorageId = {0}", storageAccountId));
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
-                    new Dictionary<System.Enum, object>()
+                    new Dictionary<Enum, object>()
                 {
                     {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
                     {RestoreBackupItemParams.StorageAccountId, storageAccountId},
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
 
-                WriteDebug(String.Format("Restore submitted"));
+                WriteDebug(string.Format("Restore submitted"));
                 HandleCreatedJob(jobResponse, Resources.RestoreOperation);
             });
         }
