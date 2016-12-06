@@ -53,13 +53,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public string AuthorizationRuleName { get; set; }        
 
         [Parameter(Mandatory = true,
-            Position = 4,
             ParameterSetName = RegenerateKeySetName,
             HelpMessage = "Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.")]
         [ValidateSet(RegeneKeys.PrimaryKey,
             RegeneKeys.SecondaryKey,
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]        
+            IgnoreCase = true)]      
         public string RegenerateKey { get; set; }
 
         public override void ExecuteCmdlet()
@@ -67,8 +65,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             var regenKey = new RegenerateKeysParameters(ParsePolicyKey(RegenerateKey));
 
             // Get a EventHub List Keys for the specified AuthorizationRule
-            ListKeysAttributes keys = Client.SetRegenerateKeys(ResourceGroup, NamespaceName, EventHubName, AuthorizationRuleName, RegenerateKey);
-            WriteObject(keys);
+            if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of EventHub:{1}", AuthorizationRuleName, EventHubName)))
+            {
+               WriteObject(Client.SetRegenerateKeys(ResourceGroup, NamespaceName, EventHubName, AuthorizationRuleName, RegenerateKey));
+            }
         }
     }
 }

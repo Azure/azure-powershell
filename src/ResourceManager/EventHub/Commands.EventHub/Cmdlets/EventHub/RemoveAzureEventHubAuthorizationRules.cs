@@ -53,8 +53,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public override void ExecuteCmdlet()
         {
             // Delete EventHub authorizationRule
-            bool deleteAuthRule = Client.DeleteEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRuleName);
-            WriteObject(deleteAuthRule);
+            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Deleting AtuhorizationRule:{0} from Eventhub:{1} of Namespace: {2}", AuthorizationRuleName, EventHubName, NamespaceName)))
+            {
+                WriteObject(Client.DeleteEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName, AuthorizationRuleName));
+            }            
         }
     }
 }

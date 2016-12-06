@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 4,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
         public string[] Rights { get; set; }
@@ -74,10 +73,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             sasRule.Name = AuthorizationRuleName;
             sasRule.Rights = newListAry;
             sasRule.Location = getEventHub.Location;
+
             // Create a new eventHub authorizationRule
-            SharedAccessAuthorizationRuleAttributes authRule = Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName,
-                                                    sasRule.Name, sasRule);
-            WriteObject(authRule);
+
+            if (ShouldProcess(target: sasRule.Name, action: string.Format("Creating new AuthorizationRule named:{0} for EventHub: {1}", sasRule.Name, EventHubName)))
+            {
+                WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, NamespaceName, EventHubName,sasRule.Name, sasRule));
+            }
         }
     }
 }

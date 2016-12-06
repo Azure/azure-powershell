@@ -76,9 +76,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public override void ExecuteCmdlet()
         {
             // Update a EventHub namespace 
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-            NamespaceAttributes nsAttribute = Client.UpdateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, State, tagDictionary);
-            WriteObject(nsAttribute);
+            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);            
+
+            if (ShouldProcess(target: NamespaceName, action: string.Format("Update NameSpace:{0} from ResourceGroup:{1}", NamespaceName, ResourceGroupName)))
+            {
+                WriteObject(Client.UpdateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, State, tagDictionary));
+            }
         }
     }
 }

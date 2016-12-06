@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 4,
             HelpMessage = "Required if 'AuthruleObj' not specified. Rights - e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
         public string[] Rights { get; set; }
@@ -86,8 +85,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             }
 
             // Update a eventHub authorizationRule
-            SharedAccessAuthorizationRuleAttributes authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule);
-            WriteObject(authRule);            
+            
+            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Update AuthoriationRule:{0} of NameSpace:{1}", AuthorizationRuleName, NamespaceName)))
+            {
+                WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule));
+            }
         }
     }
 }
