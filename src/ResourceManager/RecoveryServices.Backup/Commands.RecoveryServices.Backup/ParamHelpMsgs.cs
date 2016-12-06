@@ -12,12 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
@@ -28,7 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal static class Container
         {
             public const string Name = "The name of the resource being managed by the Azure Backup service (for example: resource name of the VM).";
-            public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service" + 
+            public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service" +
                 " (for example: ResourceGroup name of the VM).";
             public const string Status = "The registration status of the Azure Backup container.";
             public const string ContainerType = "The type of the Azure Backup container (for example:  Windows Server or Azure IaaS VM).";
@@ -78,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ProtectionStatus = "Protection status of Item";
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
-            public const string RemoveProtectionOption = "If this option is used, all the backup data for this item will " + 
+            public const string RemoveProtectionOption = "If this option is used, all the backup data for this item will " +
                 "also be deleted and restoring data will not be possible.";
             public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
@@ -92,15 +86,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string EndDate = "End time of Time range for which recovery point need to be fetched";
             public const string Item = "Protected Item object for which recovery point need to be fetched";
             public const string RecoveryPointId = "Recovery point Id for which detail is needed";
-            public const string ILRRecoveryPoint = 
+            public const string ILRRecoveryPoint =
                 "Recovery point to be explored for file folder restore";
-            public const string ILRConnect = 
+            public const string ILRConnect =
                 "Initiate an iCSCI connection for file folder restore";
-            public const string ILRExtend = 
+            public const string ILRExtend =
                 "Extend the existing iCSCI connection for file folder restore";
-            public const string ILRTerminate = 
+            public const string ILRTerminate =
                 "Terminate the existing iCSCI connection for file folder restore";
-            public const string KeyFileDownloadLocation = 
+            public const string KeyFileDownloadLocation =
                 "Location where the key file should be downloaded in the case of encrypted VMs.";
         }
 

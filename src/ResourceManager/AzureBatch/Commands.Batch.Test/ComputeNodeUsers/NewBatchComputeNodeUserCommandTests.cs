@@ -70,5 +70,40 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchComputeNodeUserParametersGetPassedToRequestTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.PoolId = "testPool";
+            cmdlet.ComputeNodeId = "computeNode1";
+            cmdlet.Name = "user";
+            cmdlet.Password = "password";
+            cmdlet.IsAdmin = true;
+            cmdlet.ExpiryTime = DateTime.Now.AddDays(30);
+
+            ProxyModels.ComputeNodeUser requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.ComputeNodeUser,
+                ProxyModels.ComputeNodeAddUserOptions,
+                AzureOperationHeaderResponse<ProxyModels.ComputeNodeAddUserHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.Name, requestParameters.Name);
+            Assert.Equal(cmdlet.Password, requestParameters.Password);
+            Assert.Equal(cmdlet.IsAdmin, requestParameters.IsAdmin);
+            Assert.Equal(cmdlet.ExpiryTime, requestParameters.ExpiryTime);
+        }
     }
 }
