@@ -141,10 +141,10 @@ CmdletsToExport = 'Add-AzureRmApiManagementRegion',
                'Set-AzureRmApiManagementSubscription', 
                'Set-AzureRmApiManagementUser', 
                'Set-AzureRmApiManagementTenantAccess',
-	           'Get-AzureRmApiManagementIdentityProvider',
-	           'New-AzureRmApiManagementIdentityProvider',
-	           'Set-AzureRmApiManagementIdentityProvider',
-	           'Remove-AzureRmApiManagementIdentityProvider'
+               'Get-AzureRmApiManagementIdentityProvider',
+               'New-AzureRmApiManagementIdentityProvider',
+               'Set-AzureRmApiManagementIdentityProvider',
+               'Remove-AzureRmApiManagementIdentityProvider'
 
 # Variables to export from this module
 # VariablesToExport = @()
