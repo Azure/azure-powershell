@@ -20,6 +20,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -44,6 +45,53 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
             };
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetBatchJobParametersGetPassedToRequestTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context, new CloudJob(id: "testJob")));
+
+            // Update job
+            cmdlet.Job.Constraints = new PSJobConstraints(TimeSpan.FromHours(1), 5);
+            cmdlet.Job.PoolInformation = new PSPoolInformation()
+            {
+                PoolId = "myPool"
+            };
+            cmdlet.Job.Priority = 2;
+            cmdlet.Job.Metadata = new List<PSMetadataItem>()
+            {
+                new PSMetadataItem("meta1", "value1"),
+                new PSMetadataItem("meta2", "value2")
+            };
+
+            JobUpdateParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                JobUpdateParameter,
+                JobUpdateOptions,
+                AzureOperationHeaderResponse<JobUpdateHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.Job.Constraints.MaxTaskRetryCount, requestParameters.Constraints.MaxTaskRetryCount);
+            Assert.Equal(cmdlet.Job.Constraints.MaxWallClockTime, requestParameters.Constraints.MaxWallClockTime);
+            Assert.Equal(cmdlet.Job.PoolInformation.PoolId, requestParameters.PoolInfo.PoolId);
+            Assert.Equal(cmdlet.Job.Priority, requestParameters.Priority);
+            Assert.Equal(cmdlet.Job.Metadata.Count, requestParameters.Metadata.Count);
+            Assert.Equal(cmdlet.Job.Metadata[0].Name, requestParameters.Metadata[0].Name);
+            Assert.Equal(cmdlet.Job.Metadata[0].Value, requestParameters.Metadata[0].Value);
+            Assert.Equal(cmdlet.Job.Metadata[1].Name, requestParameters.Metadata[1].Name);
+            Assert.Equal(cmdlet.Job.Metadata[1].Value, requestParameters.Metadata[1].Value);
         }
 
         [Fact]

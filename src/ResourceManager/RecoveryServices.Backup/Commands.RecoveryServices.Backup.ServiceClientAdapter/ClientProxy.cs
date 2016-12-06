@@ -12,28 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using AutoRestNS = Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public partial class ClientProxy<TClient, THeader> : ClientProxyBase
-        where TClient : ServiceClient<TClient>
+    /// <summary>
+    /// Client proxy to talk to the backend service
+    /// </summary>
+    /// <typeparam name="TClient">Type of the client - should be a Swagger based client</typeparam>
+    public partial class ClientProxy<TClient> : ClientProxyBase
+        where TClient : AutoRestNS.ServiceClient<TClient>
     {
         /// <summary>
         /// Client to talk to backend service
         /// </summary>
         private TClient client;
-
-        /// <summary>
-        /// Delegate action to generate custom request headers
-        /// </summary>
-        private Func<string, THeader> CustomRequestHeaderGenerator;
 
         /// <summary>
         /// Get Recovery Services Backup service client.
@@ -42,27 +37,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             get
             {
-                if (this.client == null)
+                if (client == null)
                 {
-                    this.client = AzureSession.ClientFactory.CreateCustomClient<TClient>(Parameters);
+                    client = AzureSession.ClientFactory.CreateArmClient<TClient>(
+                        Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
-                return this.client;
+                return client;
             }
         }
 
-        public ClientProxy(Func<string, THeader> headerGenerator, params object[] parameters)
-            : base(parameters)
-        {
-            CustomRequestHeaderGenerator = headerGenerator;
-        }
-
         /// <summary>
-        /// Gets customer request headers
+        /// AzureContext based ctor
         /// </summary>
-        public THeader GetCustomRequestHeaders()
+        /// <param name="context"></param>
+        public ClientProxy(AzureContext context)
+            : base(context)
         {
-            return CustomRequestHeaderGenerator(this.ClientRequestId);
         }
     }
 }

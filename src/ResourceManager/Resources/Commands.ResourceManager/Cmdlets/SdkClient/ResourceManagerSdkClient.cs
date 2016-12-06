@@ -313,12 +313,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
-            int counter = 5000;
+
+            // Poll deployment state and deployment operations with two phases. In phase one, poll every 5 seconds. Phase one 
+            // takes 400 seconds. In phase two, poll every 60 seconds. 
+            const int counterUnit = 1000;
+            int step = 5;
+            int phaseOne = 400;
 
             do
             {
-                WriteVerbose(string.Format(ProjectResources.CheckingDeploymentStatus, counter / 1000));
-                TestMockSupport.Delay(counter);
+                WriteVerbose(string.Format(ProjectResources.CheckingDeploymentStatus, step));
+                TestMockSupport.Delay(step * counterUnit);
+
+                if (phaseOne > 0)
+                {
+                    phaseOne -= step;
+                }
 
                 if (job != null)
                 {
@@ -326,7 +336,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName);
-                counter = counter + 5000 > 60000 ? 60000 : counter + 5000;
+
+                step = phaseOne > 0 ? 5 : 60;
 
             } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 

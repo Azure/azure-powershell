@@ -12,16 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -29,33 +23,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Unregisters container from the recovery services vault.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer")]
-    public class UnregisterAzureRmRecoveryServicesBackupContainer 
+    public class UnregisterAzureRmRecoveryServicesBackupContainer
         : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
         /// Container model object to be unregistered from the vault.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
-        public ContainerBase Container { get; set; }        
+        public ContainerBase Container { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-                
-                if (!((Container.ContainerType == ContainerType.Windows && 
+
+                if (!((Container.ContainerType == ContainerType.Windows &&
                        Container.BackupManagementType == BackupManagementType.MARS) ||
-                    (Container.ContainerType == ContainerType.AzureSQL && 
+                    (Container.ContainerType == ContainerType.AzureSQL &&
                      Container.BackupManagementType == BackupManagementType.AzureSQL)))
                 {
-                    throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, 
+                    throw new ArgumentException(string.Format(Resources.UnsupportedContainerException,
                         Container.ContainerType, Container.BackupManagementType));
                 }
                 string containerName = Container.Name;
-                
+
                 if (Container.ContainerType == ContainerType.AzureSQL)
                 {
                     containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
