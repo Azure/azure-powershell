@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementIdentityProvider, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementIdentityProvider>), ParameterSetName = new[] { GetAll })]
-    [OutputType(typeof(PsApiManagementIdentityProvider), ParameterSetName = new[] { GetByType })]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementIdentityProvider, DefaultParameterSetName = AllIdentityProviders)]
+    [OutputType(typeof(IList<PsApiManagementIdentityProvider>), ParameterSetName = new[] { AllIdentityProviders })]
+    [OutputType(typeof(PsApiManagementIdentityProvider), ParameterSetName = new[] { IdentityProviderByType })]
     public class GetAzureApiManagementIdentityProvider : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all identity Providers";
-        private const string GetByType = "Get by identity provider type";
+        private const string AllIdentityProviders = "AllIdentityProviders";
+        private const string IdentityProviderByType = "IdentityProviderByType";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -35,20 +35,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ParameterSetName = GetByType,
+            ParameterSetName = IdentityProviderByType,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.")]
         public PsApiManagementIdentityProviderType Type { get; set; }
         
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ParameterSetName.Equals(GetAll))
+            if (ParameterSetName.Equals(AllIdentityProviders))
             {
                 var identityProviders = Client.IdentityProviderList(Context);
                 WriteObject(identityProviders, true);
             }
-            else if (ParameterSetName.Equals(GetByType))
+            else if (ParameterSetName.Equals(IdentityProviderByType))
             {
                 var identityProvider = Client.IdentityProviderByName(Context, Type.ToString("g"));
                 WriteObject(identityProvider);

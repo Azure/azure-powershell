@@ -312,16 +312,16 @@ Param($resourceGroupName, $serviceName)
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-	$wsdlUrl = "http://www.webservicex.net/stockquote.asmx?WSDL"
+	$wsdlPath1 = "./Resources/Weather.wsdl"
 	$path1 = "soapToRestApi"
 	$wsdlApiId1 = getAssetName	
-	$wsdlServiceName2 = "StockQuote" # from Url StockQuote
-	$wsdlEndpointName2 = "StockQuoteSoap" # from Url StockQuote
+	$wsdlServiceName1 = "Weather" # from file Weather.wsdl
+	$wsdlEndpointName1 = "WeatherSoap" # from file Weather.wsdl
 	
     try
     {		 
 		 # import api from Url
-        $api = Import-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -SpecificationUrl $wsdlUrl -SpecificationFormat Wsdl -Path $path1 -WsdlServiceName $wsdlServiceName2 -WsdlEndpointName $wsdlEndpointName2 -ApiType Soap
+        $api = Import-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -SpecificationPath $wsdlPath1 -SpecificationFormat Wsdl -Path $path1 -WsdlServiceName $wsdlServiceName1 -WsdlEndpointName $wsdlEndpointName1 -ApiType Soap
 
         Assert-AreEqual $wsdlApiId1 $api.ApiId
         Assert-AreEqual $path1 $api.Path
@@ -329,7 +329,7 @@ Param($resourceGroupName, $serviceName)
 		 # export api to pipeline
         $result = Export-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -SpecificationFormat Wsdl
 		Assert-NotNull $result
-		Assert-True {$result -like '*<wsdl:service name="StockQuote"*'}
+		Assert-True {$result -like '*<wsdl:service name="Weather"*'}
     }
     finally
     {

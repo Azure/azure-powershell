@@ -50,19 +50,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.IdentityProviderRemoveWarning, Type.ToString("g"));
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!ShouldProcess(
+            if (ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))
             {
-                return;
-            }
+                Client.IdentityProviderRemove(Context, Type.ToString("g"));
 
-            Client.IdentityProviderRemove(Context, Type.ToString("g"));
-
-            if (PassThru.IsPresent)
-            {
-                WriteObject(true);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
