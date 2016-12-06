@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new ServiceDiagnosticSettingsCreateOrUpdateParameters();
+            var putParameters = new ServiceDiagnosticSettingsResource(location: string.Empty);
 
             ServiceDiagnosticSettingsResource getResponse = this.InsightsManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 
