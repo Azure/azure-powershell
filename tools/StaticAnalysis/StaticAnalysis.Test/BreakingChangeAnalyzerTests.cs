@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -11,26 +12,27 @@ namespace StaticAnalysis.Test
 {
     public class BreakingChangeAnalyzerTests
     {
-        string testCmdletDirPath, exceptionsDirPath;
+        string _testCmdletDirPath, _exceptionsDirPath;
         BreakingChangeAnalyzer.BreakingChangeAnalyzer cmdletBreakingChangeAnalyzer;
         AnalysisLogger analysisLogger;
 
         public BreakingChangeAnalyzerTests()
         {
-            testCmdletDirPath = System.Environment.CurrentDirectory;
-            exceptionsDirPath = Path.Combine(testCmdletDirPath, "Exceptions");
+            _testCmdletDirPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            _exceptionsDirPath = Path.Combine(_testCmdletDirPath, "Exceptions");
 
-            analysisLogger = new AnalysisLogger(testCmdletDirPath, exceptionsDirPath);
+            analysisLogger = new AnalysisLogger(_testCmdletDirPath, _exceptionsDirPath);
             cmdletBreakingChangeAnalyzer = new StaticAnalysis.BreakingChangeAnalyzer.BreakingChangeAnalyzer();
             cmdletBreakingChangeAnalyzer.Logger = analysisLogger;
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveCmdlet()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveCmdlet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -40,11 +42,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveCmdletAlias()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveCmdletAlias", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -54,11 +57,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAliasForChangedCmdlet()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-AddAliasForChangedCmdlet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -67,11 +71,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSupportsShouldProcess()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -81,11 +86,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSupportsPaging()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveSupportsPaging", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -95,11 +101,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveParameter()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -109,11 +116,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveParameterAlias()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveParameterAlias", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -123,11 +131,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAliasForChangedParameter()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-AddAliasForChangedParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -136,11 +145,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MakeParameterRequired()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-MakeParameterRequired", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -150,11 +160,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterOrder()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterOrder", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -167,11 +178,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeValidateSet()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeValidateSet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -184,11 +196,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddValidateSet()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-AddValidateSet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -198,11 +211,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeOutputType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeOutputType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -212,11 +226,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -226,11 +241,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveValueFromPipeline()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveValueFromPipeline", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -242,11 +258,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveValueFromPipelineByPropertyName()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveValueFromPipelineByPropertyName", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -258,11 +275,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddParameterSet()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-AddParameterSet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -271,11 +289,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveParameterFromParameterSet()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveParameterFromParameterSet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -284,11 +303,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterSetForParameter()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterSetForParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -300,11 +320,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeDefaultParameterSet()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeDefaultParameterSet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -316,11 +337,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddValidateNotNullOrEmpty()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-AddValidateNotNullOrEmpty", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -332,11 +354,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangePropertyType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangePropertyType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -348,11 +371,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveProperty()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-RemoveProperty", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -364,11 +388,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeOutputGenericTypeArgument()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeOutputGenericTypeArgument", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -380,11 +405,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DifferentOutputGenericTypeArgumentSize()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-DifferentOutputGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -396,11 +422,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterElementType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterElementType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -412,11 +439,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterGenericType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterGenericType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -428,11 +456,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterGenericTypeArgument()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterGenericTypeArgument", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -444,11 +473,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DifferentParameterGenericTypeArgumentSize()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-DifferentParameterGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -460,11 +490,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeElementType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeElementType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -476,11 +507,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeGenericType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeGenericType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -492,11 +524,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeGenericTypeArgument()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-ChangeGenericTypeArgument", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
@@ -508,11 +541,12 @@ namespace StaticAnalysis.Test
         }
 
         [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DifferentGenericTypeArgumentSize()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Test-DifferentGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
