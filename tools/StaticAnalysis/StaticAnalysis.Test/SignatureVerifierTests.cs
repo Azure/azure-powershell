@@ -169,8 +169,8 @@ namespace StaticAnalysis.Test
         public void CmdletWithApprovedVerb()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Get-SampleCmdlet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
@@ -182,8 +182,8 @@ namespace StaticAnalysis.Test
         public void CmdletWithUnapprovedVerb()
         {
             cmdletSignatureVerifier.Analyze(
-                new List<string> { Environment.CurrentDirectory },
-                ((dirList) => { return new List<string> { Environment.CurrentDirectory }; }),
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
                 (cmdletName) => cmdletName.Equals("Prepare-SampleCmdlet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
