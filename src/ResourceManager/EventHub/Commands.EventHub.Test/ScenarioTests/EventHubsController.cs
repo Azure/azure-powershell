@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 //using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -33,7 +32,7 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     public class EventHubsController
-    {
+    {       
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
@@ -143,10 +142,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             helper.SetupManagementClients(ResourceManagementClient,EventHubsManagementClient);
         }
 
-        protected StorageManagementClient GetArmStorageManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
-        }
+        
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
