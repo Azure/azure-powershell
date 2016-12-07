@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -58,10 +54,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)
         {
-            AzureSqlProtectedItem protectedItem = 
+            AzureSqlProtectedItem protectedItem =
                 (AzureSqlProtectedItem)protectedItemResource.Properties;
             ProtectedItemDataId = protectedItem.ProtectedItemDataId;
-            ProtectionState = protectedItem.ProtectionState;
+            ProtectionState = protectedItem.ProtectionState.ToString();
             ProtectionPolicyName = policyName;
         }
     }

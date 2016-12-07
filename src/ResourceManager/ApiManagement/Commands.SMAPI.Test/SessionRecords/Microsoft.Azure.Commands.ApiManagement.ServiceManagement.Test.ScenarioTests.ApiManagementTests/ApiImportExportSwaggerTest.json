@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk8213?api-version=2016-07-07&path=swaggerapifromFile",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs4MjEzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDcmcGF0aD1zd2FnZ2VyYXBpZnJvbUZpbGU=",
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk1915?api-version=2016-10-10&path=swaggerapifromFile",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGsxOTE1P2FwaS12ZXJzaW9uPTIwMTYtMTAtMTAmcGF0aD1zd2FnZ2VyYXBpZnJvbUZpbGU=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"x-comment\": \"This file was extended from /github.com/swagger-api/swagger-spec/blob/master/examples/v2.0/json/petstore-with-external-docs.json\",\r\n  \"swagger\": \"2.0\",\r\n  \"info\": {\r\n    \"version\": \"1.0.0\",\r\n    \"title\": \"Swagger Petstore Extensive\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n    \"termsOfService\": \"http://helloreverb.com/terms/\",\r\n    \"contact\": {\r\n      \"name\": \"Wordnik API Team\",\r\n      \"email\": \"foo@example.com\",\r\n      \"url\": \"http://madskristensen.net\"\r\n    },\r\n    \"license\": {\r\n      \"name\": \"MIT\",\r\n      \"url\": \"http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT\"\r\n    }\r\n  },\r\n  \"externalDocs\": {\r\n    \"description\": \"find more info here\",\r\n    \"url\": \"https://helloreverb.com/about\"\r\n  },\r\n  \"host\": \"petstore.swagger.wordnik.com\",\r\n  \"basePath\": \"/api\",\r\n  \"schemes\": [\r\n    \"http\"\r\n  ],\r\n  \"consumes\": [\r\n    \"application/json\"\r\n  ],\r\n  \"produces\": [\r\n    \"application/json\"\r\n  ],\r\n  \"paths\": {\r\n    \"/mySamplePath?willbeignored={willbeignored}\": {\r\n      \"post\": {\r\n        \"description\": \"Dummy desc\",\r\n        \"operationId\": \"dummyid1\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyDateHeaderParam\",\r\n            \"in\": \"header\",\r\n            \"description\": \"dummyDateHeaderParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\",\r\n            \"format\": \"date\"\r\n          },\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyNotReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyNotReqQueryParam description\",\r\n            \"required\": false,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyBodyParam\",\r\n            \"in\": \"body\",\r\n            \"description\": \"dummyBodyParam description\",\r\n            \"required\": false,\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\",\r\n              \"example\": {\r\n                \"id\": 2,\r\n                \"name\": \"myreqpet\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"type\": \"array\",\r\n              \"items\": {\r\n                \"$ref\": \"#/definitions/pet\"\r\n              }\r\n            },\r\n            \"headers\": {\r\n              \"header1\": {\r\n                \"description\": \"sampleheader\",\r\n                \"type\": \"integer\",\r\n                \"format\": \"int64\"\r\n              }\r\n            },\r\n            \"examples\": {\r\n              \"application/json\": {\r\n                \"id\": 3,\r\n                \"name\": \"myresppet\"\r\n              }\r\n            }\r\n          },\r\n          \"default\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"/resourceWithFormData\": {\r\n      \"post\": {\r\n        \"description\": \"resourceWithFormData desc\",\r\n        \"operationId\": \"resourceWithFormDataPOST\",\r\n        \"consumes\": [\r\n          \"multipart/form-data\"\r\n        ],\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyFormDataParam\",\r\n            \"in\": \"formData\",\r\n            \"description\": \"dummyFormDataParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"sample response\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"/mySamplePath2?definedQueryParam={definedQueryParam}\": {\r\n      \"post\": {\r\n        \"produces\": [\r\n          \"contenttype1\",\r\n          \"application/xml\"\r\n        ],\r\n        \"description\": \"Dummy desc\",\r\n        \"operationId\": \"dummyid2\",\r\n        \"parameters\": [\r\n          {\r\n            \"$ref\": \"#/parameters/dummyQueryParameterDef\"\r\n          },\r\n          {\r\n            \"$ref\": \"#/parameters/dummyBodyParameterDef\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"204\": {\r\n            \"$ref\": \"#/responses/dummyResponseDef\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"/pets2?dummyParam={dummyParam}\": {\r\n      \"get\": {\r\n        \"description\": \"Dummy description\",\r\n        \"operationId\": \"dummyOperationId\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyParam desc\",\r\n            \"required\": true,\r\n            \"type\": \"string\",\r\n            \"collectionFormat\": \"csv\"\r\n          },\r\n          {\r\n            \"name\": \"limit\",\r\n            \"in\": \"query\",\r\n            \"description\": \"maximum number of results to return\",\r\n            \"required\": false,\r\n            \"type\": \"integer\",\r\n            \"format\": \"int32\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"type\": \"array\",\r\n              \"items\": {\r\n                \"type\": \"string\"\r\n              }\r\n            }\r\n          },\r\n          \"default\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"/pets\": {\r\n      \"get\": {\r\n        \"description\": \"Returns all pets from the system that the user has access to\",\r\n        \"operationId\": \"findPets\",\r\n        \"externalDocs\": {\r\n          \"description\": \"find more info here\",\r\n          \"url\": \"https://helloreverb.com/about\"\r\n        },\r\n        \"produces\": [\r\n          \"application/json\",\r\n          \"application/xml\"\r\n        ],\r\n        \"consumes\": [\r\n          \"text/xml\",\r\n          \"text/html\"\r\n        ],\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"tags\",\r\n            \"in\": \"query\",\r\n            \"description\": \"tags to filter by\",\r\n            \"required\": false,\r\n            \"type\": \"string\",\r\n            \"collectionFormat\": \"csv\"\r\n          },\r\n          {\r\n            \"name\": \"limit\",\r\n            \"in\": \"query\",\r\n            \"description\": \"maximum number of results to return\",\r\n            \"required\": false,\r\n            \"type\": \"integer\",\r\n            \"format\": \"int32\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"type\": \"array\",\r\n              \"items\": {\r\n                \"$ref\": \"#/definitions/pet\"\r\n              }\r\n            }\r\n          },\r\n          \"default\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"post\": {\r\n        \"description\": \"Creates a new pet in the store.  Duplicates are allowed\",\r\n        \"operationId\": \"addPet\",\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ],\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"pet\",\r\n            \"in\": \"body\",\r\n            \"description\": \"Pet to add to the store\",\r\n            \"required\": true,\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/newPet\"\r\n            }\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            }\r\n          },\r\n          \"default\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"/pets/{id}\": {\r\n      \"get\": {\r\n        \"description\": \"Returns a user based on a single ID, if the user does not have access to the pet\",\r\n        \"operationId\": \"findPetById\",\r\n        \"produces\": [\r\n          \"application/json\",\r\n          \"application/xml\",\r\n          \"text/xml\",\r\n          \"text/html\"\r\n        ],\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"in\": \"path\",\r\n            \"description\": \"ID of pet to fetch\",\r\n            \"required\": true,\r\n            \"type\": \"integer\",\r\n            \"format\": \"int64\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            }\r\n          },\r\n          \"default\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      \"delete\": {\r\n        \"description\": \"deletes a single pet based on the ID supplied\",\r\n        \"operationId\": \"deletePet\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"in\": \"path\",\r\n            \"description\": \"ID of pet to delete\",\r\n            \"required\": true,\r\n            \"type\": \"integer\",\r\n            \"format\": \"int64\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"204\": {\r\n            \"description\": \"pet deleted\"\r\n          },\r\n          \"default\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"definitions\": {\r\n    \"pet\": {\r\n      \"required\": [\r\n        \"id\",\r\n        \"name\"\r\n      ],\r\n      \"externalDocs\": {\r\n        \"description\": \"find more info here\",\r\n        \"url\": \"https://helloreverb.com/about\"\r\n      },\r\n      \"properties\": {\r\n        \"id\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int64\"\r\n        },\r\n        \"name\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"tag\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"newPet\": {\r\n      \"allOf\": [\r\n        {\r\n          \"$ref\": \"#/definitions/pet\"\r\n        },\r\n        {\r\n          \"required\": [\r\n            \"name\"\r\n          ],\r\n          \"properties\": {\r\n            \"id\": {\r\n              \"type\": \"integer\",\r\n              \"format\": \"int64\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"errorModel\": {\r\n      \"required\": [\r\n        \"code\",\r\n        \"message\"\r\n      ],\r\n      \"properties\": {\r\n        \"code\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int32\"\r\n        },\r\n        \"message\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"parameters\": {\r\n    \"dummyBodyParameterDef\": {\r\n      \"name\": \"definedBodyParam\",\r\n      \"in\": \"body\",\r\n      \"description\": \"definedBodyParam description\",\r\n      \"required\": true,\r\n      \"schema\": {\r\n        \"title\": \"Example Schema\",\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n          \"firstName\": {\r\n            \"type\": \"string\"\r\n          },\r\n          \"lastName\": {\r\n            \"type\": \"string\"\r\n          },\r\n          \"age\": {\r\n            \"description\": \"Age in years\",\r\n            \"type\": \"integer\",\r\n            \"minimum\": 0\r\n          }\r\n        },\r\n        \"required\": [\r\n          \"firstName\",\r\n          \"lastName\"\r\n        ]\r\n      }\r\n    },\r\n    \"dummyQueryParameterDef\": {\r\n      \"name\": \"definedQueryParam\",\r\n      \"in\": \"query\",\r\n      \"description\": \"definedQueryParam description\",\r\n      \"required\": true,\r\n      \"type\": \"string\",\r\n      \"format\": \"whateverformat\"\r\n    }\r\n  },\r\n  \"responses\": {\r\n    \"dummyResponseDef\": {\r\n      \"description\": \"dummyResponseDef description\",\r\n      \"schema\": {\r\n        \"$ref\": \"#/definitions/pet\"\r\n      },\r\n      \"headers\": {\r\n        \"header1\": {\r\n          \"type\": \"integer\"\r\n        },\r\n        \"header2\": {\r\n          \"type\": \"integer\"\r\n        }\r\n      },\r\n      \"examples\": {\r\n        \"contenttype1\": \"contenttype1 example\",\r\n        \"contenttype2\": \"contenttype2 example\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -16,7 +16,7 @@
           "*"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
         ]
       },
       "ResponseBody": "",
@@ -31,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fb59a1bc-cd0f-405e-bbf5-32b471e8b650"
+          "04d5598b-a519-4395-a94b-cf76880e3482"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3e94d93f-eb0f-4e35-b5b5-7067b70c373e"
+          "d39f76a4-d18a-4111-8f57-494875708bf7"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161011T203342Z:3e94d93f-eb0f-4e35-b5b5-7067b70c373e"
+          "WESTUS:20161202T170118Z:d39f76a4-d18a-4111-8f57-494875708bf7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 11 Oct 2016 20:33:42 GMT"
+          "Fri, 02 Dec 2016 17:01:18 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -58,8 +58,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk8213?api-version=2016-07-07",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs4MjEzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDc=",
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk1915?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGsxOTE1P2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -67,10 +67,10 @@
           "application/json"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/apis/onesdk8213\",\r\n  \"name\": \"Swagger Petstore Extensive\",\r\n  \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n  \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n  \"path\": \"swaggerapifromFile\",\r\n  \"protocols\": [\r\n    \"http\"\r\n  ],\r\n  \"authenticationSettings\": {\r\n    \"oAuth2\": null,\r\n    \"openid\": null\r\n  },\r\n  \"subscriptionKeyParameterNames\": {\r\n    \"header\": \"Ocp-Apim-Subscription-Key\",\r\n    \"query\": \"subscription-key\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/apis/onesdk1915\",\r\n  \"name\": \"Swagger Petstore Extensive\",\r\n  \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\",\r\n  \"serviceUrl\": \"http://petstore.swagger.wordnik.com/api\",\r\n  \"path\": \"swaggerapifromFile\",\r\n  \"protocols\": [\r\n    \"http\"\r\n  ],\r\n  \"authenticationSettings\": {\r\n    \"oAuth2\": null,\r\n    \"openid\": null\r\n  },\r\n  \"subscriptionKeyParameterNames\": {\r\n    \"header\": \"Ocp-Apim-Subscription-Key\",\r\n    \"query\": \"subscription-key\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "439"
@@ -85,16 +85,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "11004068-307e-4c93-8d6d-588aef72099a"
+          "30326e21-11a8-4a74-b391-3d070e306201"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "376698ad-0393-494c-8212-dccb65c73282"
+          "2ccdf4fc-2663-4641-a05b-e675353b4fd4"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161011T203343Z:376698ad-0393-494c-8212-dccb65c73282"
+          "WESTUS:20161202T170118Z:2ccdf4fc-2663-4641-a05b-e675353b4fd4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -103,10 +103,10 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 11 Oct 2016 20:33:42 GMT"
+          "Fri, 02 Dec 2016 17:01:18 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAACCA=\""
+          "\"AAAAAAAACaY=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -115,8 +115,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk8213?api-version=2016-07-07",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs4MjEzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDc=",
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk1915?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGsxOTE1P2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -124,13 +124,13 @@
           "application/vnd.swagger.doc+json"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"swagger\": \"2.0\",\r\n  \"info\": {\r\n    \"title\": \"Swagger Petstore Extensive\",\r\n    \"version\": \"1.0\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\"\r\n  },\r\n  \"host\": \"hydraapimservice9895.azure-api.net\",\r\n  \"basePath\": \"/swaggerapifromFile\",\r\n  \"schemes\": [\r\n    \"http\"\r\n  ],\r\n  \"paths\": {\r\n    \"/mySamplePath\": {\r\n      \"post\": {\r\n        \"description\": \"Dummy desc\",\r\n        \"operationId\": \"dummyid1\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyNotReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyNotReqQueryParam description\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyDateHeaderParam\",\r\n            \"in\": \"header\",\r\n            \"description\": \"Format - date (as full-date in RFC3339). dummyDateHeaderParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"pet\",\r\n            \"in\": \"body\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            }\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"application/json\"\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"headers\": {\r\n              \"header1\": {\r\n                \"type\": \"integer\",\r\n                \"description\": \"sampleheader\"\r\n              }\r\n            },\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/petArray\"\r\n            },\r\n            \"examples\": {\r\n              \"application/json\": {\r\n                \"id\": 3,\r\n                \"name\": \"myresppet\"\r\n              }\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/resourceWithFormData\": {\r\n      \"post\": {\r\n        \"description\": \"resourceWithFormData desc\",\r\n        \"operationId\": \"resourceWithFormDataPOST\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyFormDataParam\",\r\n            \"in\": \"formData\",\r\n            \"description\": \"dummyFormDataParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"multipart/form-data\"\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"sample response\"\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/mySamplePath2\": {\r\n      \"post\": {\r\n        \"description\": \"Dummy desc\",\r\n        \"operationId\": \"dummyid2\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"definedQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"Format - whateverformat. definedQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"definedBodyParam\",\r\n            \"in\": \"body\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/DefinedBodyParam\"\r\n            }\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"application/json\"\r\n        ],\r\n        \"responses\": {\r\n          \"204\": {\r\n            \"description\": \"dummyResponseDef description\",\r\n            \"headers\": {\r\n              \"header1\": {\r\n                \"type\": \"integer\"\r\n              },\r\n              \"header2\": {\r\n                \"type\": \"integer\"\r\n              }\r\n            },\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            },\r\n            \"examples\": {\r\n              \"contenttype1\": \"contenttype1 example\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"contenttype1\",\r\n          \"application/xml\"\r\n        ]\r\n      }\r\n    },\r\n    \"/pets2\": {\r\n      \"get\": {\r\n        \"description\": \"Dummy description\",\r\n        \"operationId\": \"dummyOperationId\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyParam desc\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"limit\",\r\n            \"in\": \"query\",\r\n            \"description\": \"Format - int32. maximum number of results to return\",\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/Pets2Get200ApplicationJsonResponse\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/pets\": {\r\n      \"get\": {\r\n        \"description\": \"Returns all pets from the system that the user has access to\",\r\n        \"operationId\": \"findPets\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"tags\",\r\n            \"in\": \"query\",\r\n            \"description\": \"tags to filter by\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"limit\",\r\n            \"in\": \"query\",\r\n            \"description\": \"Format - int32. maximum number of results to return\",\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/petArray\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\",\r\n          \"application/xml\"\r\n        ]\r\n      },\r\n      \"post\": {\r\n        \"description\": \"Creates a new pet in the store.  Duplicates are allowed\",\r\n        \"operationId\": \"addPet\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"newPet\",\r\n            \"in\": \"body\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/newPet\"\r\n            }\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"application/json\"\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/pets/{id}\": {\r\n      \"get\": {\r\n        \"description\": \"Returns a user based on a single ID, if the user does not have access to the pet\",\r\n        \"operationId\": \"findPetById\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"in\": \"path\",\r\n            \"description\": \"Format - int64. ID of pet to fetch\",\r\n            \"required\": true,\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\",\r\n          \"application/xml\",\r\n          \"text/xml\",\r\n          \"text/html\"\r\n        ]\r\n      },\r\n      \"delete\": {\r\n        \"description\": \"deletes a single pet based on the ID supplied\",\r\n        \"operationId\": \"deletePet\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"in\": \"path\",\r\n            \"description\": \"Format - int64. ID of pet to delete\",\r\n            \"required\": true,\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"204\": {\r\n            \"description\": \"pet deleted\"\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"definitions\": {\r\n    \"pet\": {\r\n      \"required\": [\r\n        \"id\",\r\n        \"name\"\r\n      ],\r\n      \"externalDocs\": {\r\n        \"description\": \"find more info here\",\r\n        \"url\": \"https://helloreverb.com/about\"\r\n      },\r\n      \"properties\": {\r\n        \"id\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int64\"\r\n        },\r\n        \"name\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"tag\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"newPet\": {\r\n      \"allOf\": [\r\n        {\r\n          \"$ref\": \"#/definitions/pet\"\r\n        },\r\n        {\r\n          \"required\": [\r\n            \"name\"\r\n          ],\r\n          \"properties\": {\r\n            \"id\": {\r\n              \"type\": \"integer\",\r\n              \"format\": \"int64\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"errorModel\": {\r\n      \"required\": [\r\n        \"code\",\r\n        \"message\"\r\n      ],\r\n      \"properties\": {\r\n        \"code\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int32\"\r\n        },\r\n        \"message\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"petArray\": {\r\n      \"type\": \"array\",\r\n      \"items\": {\r\n        \"$ref\": \"#/definitions/pet\"\r\n      }\r\n    },\r\n    \"DefinedBodyParam\": {\r\n      \"title\": \"Example Schema\",\r\n      \"type\": \"object\",\r\n      \"properties\": {\r\n        \"firstName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"lastName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"age\": {\r\n          \"description\": \"Age in years\",\r\n          \"type\": \"integer\",\r\n          \"minimum\": 0\r\n        }\r\n      },\r\n      \"required\": [\r\n        \"firstName\",\r\n        \"lastName\"\r\n      ]\r\n    },\r\n    \"Pets2Get200ApplicationJsonResponse\": {\r\n      \"type\": \"array\",\r\n      \"items\": {\r\n        \"type\": \"string\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"swagger\": \"2.0\",\r\n  \"info\": {\r\n    \"title\": \"Swagger Petstore Extensive\",\r\n    \"version\": \"1.0\",\r\n    \"description\": \"A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification\"\r\n  },\r\n  \"host\": \"hydraapimservice9895.azure-api.net\",\r\n  \"basePath\": \"/swaggerapifromFile\",\r\n  \"schemes\": [\r\n    \"http\"\r\n  ],\r\n  \"paths\": {\r\n    \"/mySamplePath\": {\r\n      \"post\": {\r\n        \"description\": \"Dummy desc\",\r\n        \"operationId\": \"dummyid1\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyNotReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyNotReqQueryParam description\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyDateHeaderParam\",\r\n            \"in\": \"header\",\r\n            \"description\": \"Format - date (as full-date in RFC3339). dummyDateHeaderParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"pet\",\r\n            \"in\": \"body\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            },\r\n            \"description\": \"dummyBodyParam description\"\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"application/json\"\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"headers\": {\r\n              \"header1\": {\r\n                \"type\": \"integer\",\r\n                \"description\": \"sampleheader\"\r\n              }\r\n            },\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/petArray\"\r\n            },\r\n            \"examples\": {\r\n              \"application/json\": {\r\n                \"id\": 3,\r\n                \"name\": \"myresppet\"\r\n              }\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/resourceWithFormData\": {\r\n      \"post\": {\r\n        \"description\": \"resourceWithFormData desc\",\r\n        \"operationId\": \"resourceWithFormDataPOST\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyReqQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyReqQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"dummyFormDataParam\",\r\n            \"in\": \"formData\",\r\n            \"description\": \"dummyFormDataParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"multipart/form-data\"\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"sample response\"\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/mySamplePath2\": {\r\n      \"post\": {\r\n        \"description\": \"Dummy desc\",\r\n        \"operationId\": \"dummyid2\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"definedQueryParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"Format - whateverformat. definedQueryParam description\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"definedBodyParam\",\r\n            \"in\": \"body\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/DefinedBodyParam\"\r\n            },\r\n            \"description\": \"definedBodyParam description\"\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"application/json\"\r\n        ],\r\n        \"responses\": {\r\n          \"204\": {\r\n            \"description\": \"dummyResponseDef description\",\r\n            \"headers\": {\r\n              \"header1\": {\r\n                \"type\": \"integer\"\r\n              },\r\n              \"header2\": {\r\n                \"type\": \"integer\"\r\n              }\r\n            },\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            },\r\n            \"examples\": {\r\n              \"contenttype1\": \"contenttype1 example\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"contenttype1\",\r\n          \"application/xml\"\r\n        ]\r\n      }\r\n    },\r\n    \"/pets2\": {\r\n      \"get\": {\r\n        \"description\": \"Dummy description\",\r\n        \"operationId\": \"dummyOperationId\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"dummyParam\",\r\n            \"in\": \"query\",\r\n            \"description\": \"dummyParam desc\",\r\n            \"required\": true,\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"limit\",\r\n            \"in\": \"query\",\r\n            \"description\": \"Format - int32. maximum number of results to return\",\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/Pets2Get200ApplicationJsonResponse\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/pets\": {\r\n      \"get\": {\r\n        \"description\": \"Returns all pets from the system that the user has access to\",\r\n        \"operationId\": \"findPets\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"tags\",\r\n            \"in\": \"query\",\r\n            \"description\": \"tags to filter by\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"limit\",\r\n            \"in\": \"query\",\r\n            \"description\": \"Format - int32. maximum number of results to return\",\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/petArray\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\",\r\n          \"application/xml\"\r\n        ]\r\n      },\r\n      \"post\": {\r\n        \"description\": \"Creates a new pet in the store.  Duplicates are allowed\",\r\n        \"operationId\": \"addPet\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"newPet\",\r\n            \"in\": \"body\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/newPet\"\r\n            },\r\n            \"description\": \"Pet to add to the store\"\r\n          }\r\n        ],\r\n        \"consumes\": [\r\n          \"application/json\"\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    },\r\n    \"/pets/{id}\": {\r\n      \"get\": {\r\n        \"description\": \"Returns a user based on a single ID, if the user does not have access to the pet\",\r\n        \"operationId\": \"findPetById\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"in\": \"path\",\r\n            \"description\": \"Format - int64. ID of pet to fetch\",\r\n            \"required\": true,\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"pet response\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/pet\"\r\n            }\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\",\r\n          \"application/xml\",\r\n          \"text/xml\",\r\n          \"text/html\"\r\n        ]\r\n      },\r\n      \"delete\": {\r\n        \"description\": \"deletes a single pet based on the ID supplied\",\r\n        \"operationId\": \"deletePet\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"id\",\r\n            \"in\": \"path\",\r\n            \"description\": \"Format - int64. ID of pet to delete\",\r\n            \"required\": true,\r\n            \"type\": \"integer\"\r\n          },\r\n          {\r\n            \"name\": \"subscription-key\",\r\n            \"in\": \"query\",\r\n            \"description\": \"subscription key in url\",\r\n            \"type\": \"string\"\r\n          },\r\n          {\r\n            \"name\": \"Ocp-Apim-Subscription-Key\",\r\n            \"in\": \"header\",\r\n            \"description\": \"subscription key in header\",\r\n            \"type\": \"string\"\r\n          }\r\n        ],\r\n        \"responses\": {\r\n          \"204\": {\r\n            \"description\": \"pet deleted\"\r\n          },\r\n          \"500\": {\r\n            \"description\": \"unexpected error\",\r\n            \"schema\": {\r\n              \"$ref\": \"#/definitions/errorModel\"\r\n            }\r\n          }\r\n        },\r\n        \"produces\": [\r\n          \"application/json\"\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"definitions\": {\r\n    \"pet\": {\r\n      \"required\": [\r\n        \"id\",\r\n        \"name\"\r\n      ],\r\n      \"externalDocs\": {\r\n        \"description\": \"find more info here\",\r\n        \"url\": \"https://helloreverb.com/about\"\r\n      },\r\n      \"properties\": {\r\n        \"id\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int64\"\r\n        },\r\n        \"name\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"tag\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"newPet\": {\r\n      \"allOf\": [\r\n        {\r\n          \"$ref\": \"#/definitions/pet\"\r\n        },\r\n        {\r\n          \"required\": [\r\n            \"name\"\r\n          ],\r\n          \"properties\": {\r\n            \"id\": {\r\n              \"type\": \"integer\",\r\n              \"format\": \"int64\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"errorModel\": {\r\n      \"required\": [\r\n        \"code\",\r\n        \"message\"\r\n      ],\r\n      \"properties\": {\r\n        \"code\": {\r\n          \"type\": \"integer\",\r\n          \"format\": \"int32\"\r\n        },\r\n        \"message\": {\r\n          \"type\": \"string\"\r\n        }\r\n      }\r\n    },\r\n    \"petArray\": {\r\n      \"type\": \"array\",\r\n      \"items\": {\r\n        \"$ref\": \"#/definitions/pet\"\r\n      }\r\n    },\r\n    \"DefinedBodyParam\": {\r\n      \"title\": \"Example Schema\",\r\n      \"type\": \"object\",\r\n      \"properties\": {\r\n        \"firstName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"lastName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"age\": {\r\n          \"description\": \"Age in years\",\r\n          \"type\": \"integer\",\r\n          \"minimum\": 0\r\n        }\r\n      },\r\n      \"required\": [\r\n        \"firstName\",\r\n        \"lastName\"\r\n      ]\r\n    },\r\n    \"Pets2Get200ApplicationJsonResponse\": {\r\n      \"type\": \"array\",\r\n      \"items\": {\r\n        \"type\": \"string\"\r\n      }\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "13792"
+          "13965"
         ],
         "Content-Type": [
           "application/vnd.swagger.doc+json; charset=utf-8"
@@ -142,16 +142,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "966be7d6-1ef0-448a-b537-a2e95701b157"
+          "c3538c46-984e-4069-988a-52f6a9c263a0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "c5a75327-047b-4cca-b362-7b97ba265a81"
+          "cc0e1e28-f048-4858-8321-6ab65e6846ca"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161011T203344Z:c5a75327-047b-4cca-b362-7b97ba265a81"
+          "WESTUS:20161202T170119Z:cc0e1e28-f048-4858-8321-6ab65e6846ca"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -160,10 +160,10 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 11 Oct 2016 20:33:44 GMT"
+          "Fri, 02 Dec 2016 17:01:19 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAACCA=\""
+          "\"AAAAAAAACaY=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -172,8 +172,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk5974?api-version=2016-07-07&path=swaggerapifromUrl",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs1OTc0P2FwaS12ZXJzaW9uPTIwMTYtMDctMDcmcGF0aD1zd2FnZ2VyYXBpZnJvbVVybA==",
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk2344?api-version=2016-10-10&path=swaggerapifromUrl",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGsyMzQ0P2FwaS12ZXJzaW9uPTIwMTYtMTAtMTAmcGF0aD1zd2FnZ2VyYXBpZnJvbVVybA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"link\": \"http://petstore.swagger.io/v2/swagger.json\"\r\n}",
       "RequestHeaders": {
@@ -187,7 +187,7 @@
           "*"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
         ]
       },
       "ResponseBody": "",
@@ -202,16 +202,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "44fe7d9c-5d7b-41f9-bfdd-280d3b5b89f6"
+          "d30de4c9-df65-42ef-aecc-4c819ae4e112"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "b2920ec3-6ee8-4672-943d-3cdf30dd5500"
+          "cd8bb8fd-4f44-45d0-b527-af562afc9307"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161011T203346Z:b2920ec3-6ee8-4672-943d-3cdf30dd5500"
+          "WESTUS:20161202T170120Z:cd8bb8fd-4f44-45d0-b527-af562afc9307"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -220,7 +220,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 11 Oct 2016 20:33:45 GMT"
+          "Fri, 02 Dec 2016 17:01:20 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -229,8 +229,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk5974?api-version=2016-07-07",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs1OTc0P2FwaS12ZXJzaW9uPTIwMTYtMDctMDc=",
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk2344?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGsyMzQ0P2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -238,10 +238,10 @@
           "application/json"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/apis/onesdk5974\",\r\n  \"name\": \"Swagger Petstore\",\r\n  \"description\": \"This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\",\r\n  \"serviceUrl\": \"http://petstore.swagger.io/v2\",\r\n  \"path\": \"swaggerapifromUrl\",\r\n  \"protocols\": [\r\n    \"http\"\r\n  ],\r\n  \"authenticationSettings\": {\r\n    \"oAuth2\": null,\r\n    \"openid\": null\r\n  },\r\n  \"subscriptionKeyParameterNames\": {\r\n    \"header\": \"Ocp-Apim-Subscription-Key\",\r\n    \"query\": \"subscription-key\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/apis/onesdk2344\",\r\n  \"name\": \"Swagger Petstore\",\r\n  \"description\": \"This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\",\r\n  \"serviceUrl\": \"http://petstore.swagger.io/v2\",\r\n  \"path\": \"swaggerapifromUrl\",\r\n  \"protocols\": [\r\n    \"http\"\r\n  ],\r\n  \"authenticationSettings\": {\r\n    \"oAuth2\": null,\r\n    \"openid\": null\r\n  },\r\n  \"subscriptionKeyParameterNames\": {\r\n    \"header\": \"Ocp-Apim-Subscription-Key\",\r\n    \"query\": \"subscription-key\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "584"
@@ -256,16 +256,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "81617382-5ced-4f66-8809-d57265646f64"
+          "28bbd9fd-b932-4b91-965f-0f2b7ab0416a"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "ae49a870-93ef-451c-928e-c8c2144fd1e1"
+          "8593707d-c677-4c92-acca-a22c869210c4"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161011T203346Z:ae49a870-93ef-451c-928e-c8c2144fd1e1"
+          "WESTUS:20161202T170120Z:8593707d-c677-4c92-acca-a22c869210c4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -274,10 +274,10 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 11 Oct 2016 20:33:45 GMT"
+          "Fri, 02 Dec 2016 17:01:20 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAACCs=\""
+          "\"AAAAAAAACbE=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -286,8 +286,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk8213?api-version=2016-07-07",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs4MjEzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDc=",
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk1915?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGsxOTE1P2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -295,7 +295,7 @@
           "*"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
         ]
       },
       "ResponseBody": "",
@@ -310,16 +310,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cb975627-1b6a-4dad-bd3a-6da3b9d07c11"
+          "b40d720d-ccf9-4934-b1d6-f58518a332ba"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "93b2d1ce-10d2-472d-b707-68bbd23efddc"
+          "4d114825-7475-44e7-995b-1e1a796784d2"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161011T203351Z:93b2d1ce-10d2-472d-b707-68bbd23efddc"
+          "WESTUS:20161202T170123Z:4d114825-7475-44e7-995b-1e1a796784d2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -328,7 +328,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 11 Oct 2016 20:33:50 GMT"
+          "Fri, 02 Dec 2016 17:01:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -337,8 +337,8 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk5974?api-version=2016-07-07",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGs1OTc0P2FwaS12ZXJzaW9uPTIwMTYtMDctMDc=",
+      "RequestUri": "/subscriptions/bab08e11-7b12-4354-9fd1-4b5d64d40b68/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/hydraapimservice9895/apis/onesdk2344?api-version=2016-10-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmFiMDhlMTEtN2IxMi00MzU0LTlmZDEtNGI1ZDY0ZDQwYjY4L3Jlc291cmNlR3JvdXBzL0FwaS1EZWZhdWx0LUVhc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5BcGlNYW5hZ2VtZW50L3NlcnZpY2UvaHlkcmFhcGltc2VydmljZTk4OTUvYXBpcy9vbmVzZGsyMzQ0P2FwaS12ZXJzaW9uPTIwMTYtMTAtMTA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -346,7 +346,7 @@
           "*"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.0.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/3.2.0.0"
         ]
       },
       "ResponseBody": "",
@@ -361,16 +361,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ca85d253-9096-4070-b95e-5023b0ec366c"
+          "a428db20-928b-419b-9334-c67aae976529"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "70928cbc-c1f3-4842-a43d-f50925c1328d"
+          "92b73ca2-636e-4f57-bc4f-f65dcb62b647"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161011T203352Z:70928cbc-c1f3-4842-a43d-f50925c1328d"
+          "WESTUS:20161202T170124Z:92b73ca2-636e-4f57-bc4f-f65dcb62b647"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -379,7 +379,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 11 Oct 2016 20:33:51 GMT"
+          "Fri, 02 Dec 2016 17:01:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -390,8 +390,8 @@
   ],
   "Names": {
     "": [
-      "onesdk8213",
-      "onesdk5974"
+      "onesdk1915",
+      "onesdk2344"
     ]
   },
   "Variables": {

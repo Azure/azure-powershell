@@ -31,9 +31,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         public override void ExecuteCmdlet()
         {
-            var result = CdnManagementClient.NameAvailability.CheckNameAvailability(
-                EndpointName,
-                ResourceType.MicrosoftCdnProfilesEndpoints);
+            var result = CdnManagementClient.CheckNameAvailability(EndpointName);
 
             WriteVerbose(Resources.Success);
             WriteObject(result.ToPsCheckNameAvailabilityOutput());
