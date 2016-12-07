@@ -13,16 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Extension.Diagnostics;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
@@ -133,9 +139,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     initialize(this.csmTestFactory);
                 }
 
-                SetupManagementClients(context);
-
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
+
+                // set up environment before set up management client.
+                // because mock credentials need to be loaded from environment
+                SetupManagementClients(context);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
@@ -185,7 +193,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            // GraphClient = GetGraphClient();
+            GraphClient = GetGraphClient(context);
 
             helper.SetupManagementClients(
                 ResourceManagementClient,
@@ -195,36 +203,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 //eventsClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
-                AuthorizationManagementClient);
-            // GraphClient);
+                GetKeyVaultClient(context),
+                GetKeyVaultManagementClient(context),
+                AuthorizationManagementClient,
+                GraphClient);
         }
 
-        private GraphRbacManagementClient GetGraphClient()
+        private GraphRbacManagementClient GetGraphClient(RestTestFramework.MockContext context)
         {
-            var environment = this.csmTestFactory.GetTestEnvironment();
-            string tenantId = null;
+            var environment = RestTestFramework.TestEnvironmentFactory.GetTestEnvironment();
 
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                tenantId = environment.AuthorizationContext.TenantId;
-                UserDomain = environment.AuthorizationContext.UserDomain;
-
-                HttpMockServer.Variables[TenantIdKey] = tenantId;
-                HttpMockServer.Variables[DomainKey] = UserDomain;
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
-                {
-                    tenantId = HttpMockServer.Variables[TenantIdKey];
-                }
-                if (HttpMockServer.Variables.ContainsKey(DomainKey))
-                {
-                    UserDomain = HttpMockServer.Variables[DomainKey];
-                }
-            }
-
-            return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
+            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            client.TenantID = environment.Tenant;
+            return client;
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
@@ -272,5 +263,30 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 ? context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
                 : TestBase.GetServiceClient<ComputeManagementClient>(new RDFETestEnvironmentFactory());
         }
+
+        private KeyVaultClient GetKeyVaultClient(RestTestFramework.MockContext context)
+        {
+            var env = RestTestFramework.TestEnvironmentFactory.GetTestEnvironment();
+            ServiceClientCredentials serviceClientCredentials;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                var credential = new DataServiceCredential(AzureSession.AuthenticationFactory, AzureRmProfileProvider.Instance.Profile.Context, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+                serviceClientCredentials = new KeyVaultCredential(credential.OnAuthentication);
+            }
+            else
+            {
+                // In playback mode, use a mock credential
+                serviceClientCredentials = new TokenCredentials("abc");
+            }
+
+            return context.GetServiceClientWithCredentials<KeyVaultClient>(env, serviceClientCredentials, true);
+        }
+
+        private KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClientWithCredentials<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment(), AzureSession.AuthenticationFactory.GetServiceClientCredentials(AzureRmProfileProvider.Instance.Profile.Context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+        }
     }
 }
+

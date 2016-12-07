@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 if (keyVaultClient == null)
                 {
                     var credential = new DataServiceCredential(AzureSession.AuthenticationFactory, DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
-                    this.keyVaultClient = new KeyVaultClient(credential.OnAuthentication);
+                    this.keyVaultClient = AzureSession.ClientFactory.CreateCustomArmClient<KeyVaultClient>(new KeyVaultClient.AuthenticationCallback(credential.OnAuthentication));
                 }
 
                 return this.keyVaultClient;
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             {
                 if (this.keyVaultManagementClient == null)
                 {
-                    this.keyVaultManagementClient = new KeyVaultManagementClient(AzureSession.AuthenticationFactory.GetServiceClientCredentials(DefaultContext));
+                    this.keyVaultManagementClient = AzureSession.ClientFactory.CreateCustomArmClient<KeyVaultManagementClient>(AzureSession.AuthenticationFactory.GetServiceClientCredentials(DefaultContext));
                     this.keyVaultManagementClient.SubscriptionId = DefaultContext.Subscription.Id.ToString();
                 }
 

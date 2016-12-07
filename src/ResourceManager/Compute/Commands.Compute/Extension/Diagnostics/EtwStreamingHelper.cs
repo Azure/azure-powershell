@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
         private static Random random = new Random();
 
+        internal static Func<string, string, Predicate<string>, string> GenerateKeyVaultName = (resourceGroupName, prefix, predicate) =>
+        {
+            return GenerateUniqueId(prefix, predicate);
+        };
+
         /// <summary>
         /// Check if a virtual machine extension is included in extension list
         /// </summary>
@@ -291,7 +296,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             string frontIpConfigurationId = loadBalancer.FrontendIPConfigurations.First().Id;
 
             VirtualMachineScaleSetNetworkConfiguration networkConfiguration = FindNetworkInterfaceIpConfigurationForGivenLoadBalancer(loadBalancer, scaleSet.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations).FirstOrDefault();
-            VirtualMachineScaleSetIPConfiguration ipConfiguration = networkConfiguration.IpConfigurations.FirstOrDefault(ipc => ipc.LoadBalancerInboundNatPools != null && ipc.LoadBalancerInboundNatPools.Any(natPool => IsParentOf(loadBalancer.Id, natPool.Id)));
+            VirtualMachineScaleSetIPConfiguration ipConfiguration = networkConfiguration.IpConfigurations.FirstOrDefault(ipc => ipc.LoadBalancerBackendAddressPools != null && ipc.LoadBalancerBackendAddressPools.Any(inboundPool => IsParentOf(loadBalancer.Id, inboundPool.Id)));
 
             foreach (var item in portMap)
             {
@@ -329,6 +334,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 else
                 {
                     inboundNatPoolId = inboundNatPool.Id;
+                }
+
+                if (ipConfiguration.LoadBalancerInboundNatPools == null)
+                {
+                    ipConfiguration.LoadBalancerInboundNatPools = new List<Azure.Management.Compute.Models.SubResource>();
                 }
 
                 if (!ipConfiguration.LoadBalancerInboundNatPools.Any(resource => string.Equals(resource.Id, inboundNatPoolId, StringComparison.InvariantCultureIgnoreCase)))
@@ -474,7 +484,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
             if (azureToolsKeyVault == null)
             {
-                string newKeyVaultName = GenerateUniqueId(KeyVaultNamePrefix, v => !keyVaults.Any(kv => string.Equals(kv.Name, v, StringComparison.InvariantCultureIgnoreCase)));
+                string newKeyVaultName = GenerateKeyVaultName(resourceGroupName, KeyVaultNamePrefix, v => !keyVaults.Any(kv => string.Equals(kv.Name, v, StringComparison.InvariantCultureIgnoreCase)));
 
                 azureToolsKeyVault = await keyVaultManagementClient.Vaults.CreateOrUpdateAsync(resourceGroupName, newKeyVaultName, new VaultCreateOrUpdateParameters(
                     location: location,
@@ -692,7 +702,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         /// <returns></returns>
         private static List<VirtualMachineScaleSetNetworkConfiguration> FindNetworkInterfaceIpConfigurationForGivenLoadBalancer(LoadBalancer loadBalancer, IList<VirtualMachineScaleSetNetworkConfiguration> ipConfigurations)
         {
-            return ipConfigurations.Where(v => v.IpConfigurations.Any(ipConfiguration => ipConfiguration.LoadBalancerInboundNatPools.Any(p => IsParentOf(loadBalancer.Id, p.Id)))).ToList();
+            return ipConfigurations.Where(v => v.IpConfigurations.Any(ipConfiguration => ipConfiguration.LoadBalancerBackendAddressPools.Any(p => IsParentOf(loadBalancer.Id, p.Id)))).ToList();
         }
 
         /// <summary>

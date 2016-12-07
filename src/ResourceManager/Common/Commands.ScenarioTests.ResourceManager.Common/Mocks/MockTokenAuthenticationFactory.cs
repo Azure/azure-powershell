@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
 
-        public IAccessToken Authenticate(
+        public virtual IAccessToken Authenticate(
             AzureAccount account,
             AzureEnvironment environment,
             string tenant,
@@ -99,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
         }
 
-        public IAccessToken Authenticate(
+        public virtual IAccessToken Authenticate(
             AzureAccount account,
             AzureEnvironment environment,
             string tenant,
@@ -127,9 +127,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
 
-        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public virtual ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
+
     }
 }

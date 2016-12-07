@@ -313,6 +313,9 @@ function Test-VMDiagnosticsStreaming
 
     try
     {
+        # Common
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+
         # Setup
         $vm = Create-VirtualMachine -rgname $rgname -loc $loc
 
@@ -338,9 +341,14 @@ function Test-VmssDiagnosticsStreaming
 
     try
     {
+        # Common
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+
         # Setup
         $vmssname = 'vmss' + $rgname;
         $vmss = Create-Vmss $rgname $loc $vmssname
+
+        $vmss = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         Add-AzureRmVmssDiagnosticsStreaming -ResourceGroupName $rgname -VMScaleSetName $vmss.Name
 
@@ -370,9 +378,20 @@ function Create-Vmss($rgname, $loc, $vmssname)
 
     # NRP
     $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+
     $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
     $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
+
+    $lbname = 'lb' + $rgname
+    $publicIpAddressName = 'pia' + $rgname
+
+    $publicIpAddress = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -Name $publicIpAddressName -AllocationMethod Dynamic -Location $loc
+    $frontendIpName = $lbname + '-Frontend'
+    $backendAddressPoolName = $lbname + '-Backend'
+    $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendIpName -PublicIpAddress $publicIpAddress
+    $backendaddressPool= New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+    $lb = New-AzureRmLoadBalancer -ResourceGroupName $rgname -Name $lbname -Location $loc -FrontendIpConfiguration $frontendIP -BackendAddressPool $backendaddressPool
 
     # New VMSS Parameters
     $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
@@ -380,10 +399,10 @@ function Create-Vmss($rgname, $loc, $vmssname)
     $adminUsername = 'Foo12';
     $adminPassword = $PLACEHOLDER;
 
-    $imgRef = Get-DefaultCRPImage -loc $loc;
+    $imgRef = Get-DefaultCRPWindowsImageOffline;
     $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
 
-    $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
+    $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId -LoadBalancerBackendAddressPoolsId $backendaddressPool.Id;
     $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
         | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
         | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `

@@ -152,6 +152,7 @@
     <Compile Include="Mocks\MockClientFactory.cs" />
     <Compile Include="Mocks\MockCommandRuntime.cs" />
     <Compile Include="Mocks\MockDeploymentClientFactory.cs" />
+    <Compile Include="Mocks\MockServicePrincipalAuthenticationFactory.cs" />
     <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
     <Compile Include="PageExtensions.cs" />
     <Compile Include="ProfileClient.cs" />
