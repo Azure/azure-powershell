@@ -285,14 +285,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return usageMetrics.Value;
         }
 
-        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku, string aseName = null, string aseResourceGroupName = null)
+        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku, string aseName = null, string aseResourceGroupName = null, bool? perSiteScaling = false)
         {
             var serverFarm = new ServerFarmWithRichSku
             {
                 Location = location,
                 ServerFarmWithRichSkuName = appServicePlanName,
                 Sku = sku,
-                AdminSiteName = adminSiteName
+                AdminSiteName = adminSiteName,
+                PerSiteScaling = perSiteScaling
             };
 
             if (!string.IsNullOrEmpty(aseName)
