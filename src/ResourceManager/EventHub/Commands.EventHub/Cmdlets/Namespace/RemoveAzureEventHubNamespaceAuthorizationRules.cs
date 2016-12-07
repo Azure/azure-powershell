@@ -46,8 +46,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public override void ExecuteCmdlet()
         {
             // Create a new EventHub namespace authorizationRule
-            bool deleteAuthRule = Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, AuthorizationRuleName);
-            WriteObject(deleteAuthRule);
+            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Delete AuthorizationRule:{0} of NameSpace:{1}", AuthorizationRuleName, NamespaceName)))
+            {
+                WriteObject(Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, AuthorizationRuleName));
+            }
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           ParameterSetName = EventHubParameterSetName,
+           ParameterSetName = EventHubParameterSetName,           
            HelpMessage = "EventHub object.")]
         [ValidateNotNullOrEmpty]
         public EventHubAttributes EventHubObj { get; set; }
@@ -94,8 +94,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 eventHub.Location = Location;       
             }
 
-            EventHubAttributes eventHubAttributes = Client.CreateOrUpdateEventHub(ResourceGroupName, NamespaceName, eventHub.Name, eventHub);
-            WriteObject(eventHubAttributes);
+            if(ShouldProcess(target:eventHub.Name, action:string.Format("Creating new EventHub:{0} under NameSpace:{1} ",eventHub.Name,NamespaceName)))
+            {
+                WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, NamespaceName, eventHub.Name, eventHub));
+            }
+                        
         }
     }
 }
