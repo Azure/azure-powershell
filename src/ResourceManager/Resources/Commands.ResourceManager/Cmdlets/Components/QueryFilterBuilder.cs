@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Creates a filter from the given properties.
         /// </summary>
-        /// <param name="subscriptionIds">The subscriptions to query.</param>
+        /// <param name="subscriptionId">The subscription to query.</param>
         /// <param name="resourceGroup">The name of the resource group/</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="resourceName">The resource name.</param>
