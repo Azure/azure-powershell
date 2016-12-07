@@ -386,7 +386,6 @@ function Update-AzureRmProfile
 
   PROCESS {
     $ProfileMap = (Get-AzProfile -Update)
-    Use-AzureRmProfile @PSBoundParameters
     $profile = $PSBoundParameters.Profile
 
     # Remove old profiles?
@@ -405,6 +404,9 @@ function Update-AzureRmProfile
         }
       }
     }
+    
+    # Install & import the required version
+    Use-AzureRmProfile @PSBoundParameters
   }
 }
 
