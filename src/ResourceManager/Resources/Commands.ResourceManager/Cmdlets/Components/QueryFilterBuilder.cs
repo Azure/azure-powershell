@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="tagValue">The tag value.</param>
         /// <param name="filter">The filter.</param>
         public static string CreateFilter(
-            Guid[] subscriptionIds,
+            string subscriptionId,
             string resourceGroup,
             string resourceType,
             string resourceName,
@@ -47,21 +47,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         {
             var filterStringBuilder = new StringBuilder();
 
-            if (subscriptionIds.CoalesceEnumerable().Any())
+            if (!string.IsNullOrWhiteSpace(subscriptionId))
             {
-                if (subscriptionIds.Length > 1)
-                {
-                    filterStringBuilder.Append("(");
-                }
-
-                filterStringBuilder.Append(subscriptionIds
-                    .Select(subscriptionId => string.Format("subscriptionId EQ '{0}'", subscriptionId))
-                    .ConcatStrings(" OR "));
-
-                if (subscriptionIds.Length > 1)
-                {
-                    filterStringBuilder.Append(")");
-                }
+                filterStringBuilder.AppendFormat("subscriptionId EQ '{0}'", subscriptionId);
             }
 
             if (!string.IsNullOrWhiteSpace(resourceGroup))
@@ -74,33 +62,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 filterStringBuilder.AppendFormat("resourceGroup EQ '{0}'", resourceGroup);
             }
 
-            var remainderFilter = QueryFilterBuilder.CreateFilter(resourceType, resourceName, tagName, tagValue, filter, nameContains, resourceGroupNameContains);
-
-            if (filterStringBuilder.Length > 0 && !string.IsNullOrWhiteSpace(remainderFilter))
-            {
-                return filterStringBuilder.ToString() + " AND " + remainderFilter;
-            }
-
-            return filterStringBuilder.Length > 0
-                ? filterStringBuilder.ToString()
-                : remainderFilter;
-        }
-
-        /// <summary>
-        /// Creates a filter from the given properties.
-        /// </summary>
-        /// <param name="resourceType">The resource type.</param>
-        /// <param name="resourceName">The resource name.</param>
-        /// <param name="tagName">The tag name.</param>
-        /// <param name="tagValue">The tag value.</param>
-        /// <param name="filter">The filter.</param>
-        public static string CreateFilter(string resourceType, string resourceName, string tagName, string tagValue, string filter, string nameContains = null, string resourceGroupNameContains = null)
-        {
-            var filterStringBuilder = new StringBuilder();
-            var substringStringBuilder = new StringBuilder();
-
             if (!string.IsNullOrWhiteSpace(resourceType))
             {
+                if (filterStringBuilder.Length > 0)
+                {
+                    filterStringBuilder.Append(" AND ");
+                }
+
                 filterStringBuilder.AppendFormat("resourceType EQ '{0}'", resourceType);
             }
 
@@ -134,16 +102,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 filterStringBuilder.AppendFormat("tagValue EQ '{0}'", tagValue);
             }
 
-            if (!string.IsNullOrWhiteSpace(nameContains))
-            {
-                if (filterStringBuilder.Length > 0)
-                {
-                    filterStringBuilder.Append(" AND ");
-                }
-
-                filterStringBuilder.AppendFormat("substringof('{0}', name)", nameContains);
-            }
-
             if (!string.IsNullOrWhiteSpace(resourceGroupNameContains))
             {
                 if (filterStringBuilder.Length > 0)
@@ -152,6 +110,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 }
 
                 filterStringBuilder.AppendFormat("substringof('{0}', resourceGroup)", resourceGroupNameContains);
+            }
+
+            if (!string.IsNullOrWhiteSpace(nameContains))
+            {
+                if (filterStringBuilder.Length > 0)
+                {
+                    filterStringBuilder.Append(" AND ");
+                }
+
+                filterStringBuilder.AppendFormat("substringof('{0}', name)", nameContains);
             }
 
             if (!string.IsNullOrWhiteSpace(filter))
