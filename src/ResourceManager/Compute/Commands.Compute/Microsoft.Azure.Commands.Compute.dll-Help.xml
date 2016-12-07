@@ -1776,8 +1776,7 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2038,8 +2037,7 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2385,8 +2383,7 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2529,8 +2526,7 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2680,8 +2676,7 @@ PS C:\&gt; Add-AzureRmVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId $V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -10168,8 +10163,7 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -10215,7 +10209,7 @@ This cmdlet does not generate any output.</maml:para>
 	<command:details>
 		<command:name>New-AzureVMSqlServerAutoBackupConfig</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>(OBSOLETE! Use New-AzureRmVMSqlServerAutoBackupConfig.) Creates a configuration object for SQL Server automatic backup.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10225,7 +10219,7 @@ This cmdlet does not generate any output.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>The New-AzureRmVMSqlServerAutoBackupConfig cmdlet creates a configuration object for SQL Server automatic backup.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10446,7 +10440,8 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -10458,7 +10453,8 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -10480,7 +10476,7 @@ This cmdlet does not generate any output.</maml:para>
 	<command:details>
 		<command:name>New-AzureVMSqlServerAutoPatchingConfig</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>(OBSOLETE! Use New-AzureRmVMSqlServerAutoPatchingConfig.) Creates a configuration object for automatic patching on a virtual machine.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10490,7 +10486,7 @@ This cmdlet does not generate any output.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>The New-AzureVMSqlServerAutoPatchingConfig cmdlet creates a configuration object for automatic patching on a virtual machine.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10602,7 +10598,8 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -10614,7 +10611,8 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -10636,7 +10634,7 @@ This cmdlet does not generate any output.</maml:para>
 	<command:details>
 		<command:name>New-AzureVMSqlServerKeyVaultCredentialConfig</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>(OBSOLETE! Use New-AzureRmVMSqlServerKeyVaultCredentialConfig.) Creates a configuration object for azure key vault credential for a virtual machine.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10646,7 +10644,7 @@ This cmdlet does not generate any output.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>The New-AzureRmVMSqlServerKeyVaultCredentialConfig cmdlet creates a configuration object for azure key vault credential for a virtual machine.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10815,7 +10813,8 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -10827,7 +10826,8 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -10842,6 +10842,10 @@ This cmdlet does not generate any output.</maml:para>
 	<command:examples>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmVMSqlServerKeyVaultCredentialConfig</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -14526,8 +14530,7 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName &quot;ResourceGroup11&quot; -Name
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -15103,8 +15106,7 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -23549,8 +23551,7 @@ PS C:\&gt; Get-AzureRmVM -ServiceName &quot;Service02&quot; -Name &quot;VirtualM
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -24057,8 +24058,7 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -25652,8 +25652,7 @@ This cmdlet does not generate any output.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet does not generate any output.</maml:para>
+				<maml:para>This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -26039,8 +26038,7 @@ RetentionPeriodInDays : 10</dev:code>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-This cmdlet returns object contains settings for automated patching.</maml:para>
+				<maml:para>This cmdlet returns object contains settings for automated patching.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>

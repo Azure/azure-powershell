@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 Location = this.Location,
                 Publisher = VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
-                VirtualMachineExtensionType = VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
+                VirtualMachineExtensionType = VirtualMachineSqlServerExtensionContext.ExtensionPublishedType,
                 TypeHandlerVersion = string.IsNullOrEmpty(this.Version) ? VirtualMachineSqlServerExtensionContext.ExtensionDefaultVersion : this.Version,
                 Settings = this.GetPublicConfiguration(),
                 ProtectedSettings = this.GetPrivateConfiguration(),
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute
                     op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         ResourceGroupName,
                         VMName,
-                        Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
+                        Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
                     break;
                 }

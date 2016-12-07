@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (String.IsNullOrEmpty(Name))
                 {
-                    Name = VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName;
+                    Name = VirtualMachineSqlServerExtensionContext.ExtensionPublishedName;
                 }
             }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute
             if (
                 extension.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
                     StringComparison.InvariantCultureIgnoreCase) &&
-                extension.ExtensionType.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
+                extension.ExtensionType.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedType,
                     StringComparison.InvariantCultureIgnoreCase))
             {
                 WriteObject(GetSqlServerExtensionContext(extension));
