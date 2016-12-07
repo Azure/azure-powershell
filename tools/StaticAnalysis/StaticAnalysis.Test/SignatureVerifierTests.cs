@@ -191,5 +191,34 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.CmdletWithUnapprovedVerb)).SingleOrDefault<int>().Equals(SignatureProblemId.CmdletWithUnapprovedVerb));
         }
         #endregion
+
+        #region CmdletWithPluralNoun
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CmdletWithSingularNoun()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-SampleKey", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CmdletWithPluralNoun()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-SampleKeys", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.CmdletWithPluralNoun)).SingleOrDefault<int>().Equals(SignatureProblemId.CmdletWithPluralNoun));
+        }
+        #endregion
     }
 }

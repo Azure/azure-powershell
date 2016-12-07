@@ -141,6 +141,19 @@ namespace StaticAnalysis.SignatureVerifier
         }
         #endregion
 
+        #region SingularNouns
+        private static readonly List<string> SingularNouns = new List<string>
+        {
+            "Access",
+            "Address",
+            "Diagnostics",
+            "Statistics",
+            "Status",
+            "Vmss"
+        };
+
+        #endregion
+
         /// <summary>
         /// The name of the assembly containing cmdlet
         /// </summary>
@@ -183,6 +196,14 @@ namespace StaticAnalysis.SignatureVerifier
         public bool IsApprovedVerb
         {
             get { return VerbName != null && GetApprovedVerbs().Contains(VerbName); }
+        }
+
+        /// <summary>
+        /// True if the cmdlet has a singular noun
+        /// </summary>
+        public bool HasSingularNoun
+        {
+            get { return !NounName.EndsWith("s") || SingularNouns.Find(n => NounName.EndsWith(n)) != null; }
         }
 
         /// <summary>

@@ -271,3 +271,47 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithUnapprovedVerb
     }
 }
 #endregion
+
+#region CmdletWithPluralNoun
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithSingularNoun
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has a singular noun in its name.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "SampleKey")]
+    public class CmdletGetSampleKey : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleKey BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithPluralNoun
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has a plural noun in its name.
+    /// </summary>
+    [Cmdlet("Get", "SampleKeys")]
+    public class CmdletGetSampleKeys : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleKeys BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+#endregion
