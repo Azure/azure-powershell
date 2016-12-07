@@ -54,19 +54,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The maximum supported degree of parallelism for this account.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
         public int? MaxDegreeOfParallelism { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The maximum supported jobs running under the account at the same time.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
         public int? MaxJobCount { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The number of days that job metadata is retained.")]
         [ValidateNotNull]
         [ValidateRange(1, 180)]
