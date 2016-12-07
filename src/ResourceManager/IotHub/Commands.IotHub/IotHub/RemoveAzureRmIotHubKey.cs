@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Position = 2,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Key")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }

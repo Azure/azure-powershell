@@ -15,15 +15,13 @@
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
-    using System.Linq;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmIotHub", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIotHub", DefaultParameterSetName = "UpdateSku", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
     public class SetAzureRmIotHub : IotHubBaseCmdlet
     {
@@ -34,27 +32,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         const string UpdateOperationsMonitoringPropertiesParameterSet = "UpdateOperationsMonitoringProperties";
 
         [Parameter(
-            ParameterSetName = UpdateSkuParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Resource Group")]
-        [Parameter(
-            ParameterSetName = UpdateEventHubEndpointPropertiesParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Resource Group")]
-        [Parameter(
-            ParameterSetName = UpdateFileUploadPropertiesParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Resource Group")]
-        [Parameter(
-            ParameterSetName = UpdateCloudToDevicePropertiesParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Resource Group")]
-        [Parameter(
-            ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
@@ -62,27 +39,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = UpdateSkuParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
-        [Parameter(
-            ParameterSetName = UpdateEventHubEndpointPropertiesParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
-        [Parameter(
-            ParameterSetName = UpdateFileUploadPropertiesParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
-        [Parameter(
-            ParameterSetName = UpdateCloudToDevicePropertiesParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
-        [Parameter(
-            ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]

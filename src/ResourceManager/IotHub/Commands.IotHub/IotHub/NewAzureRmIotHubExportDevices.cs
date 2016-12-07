@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
 
     [Cmdlet(VerbsCommon.New, "AzureRmIotHubExportDevices", SupportsShouldProcess = true)]
-    [OutputType(typeof(JobResponse))]
+    [OutputType(typeof(PSIotHubJobResponse))]
     public class NewAzureRmIotHubExportDevices : IotHubBaseCmdlet
     {
         [Parameter(
@@ -48,12 +48,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string ExportBlobContainerUri { get; set; }
 
-        [Parameter(
-            Position = 3,
-            Mandatory = true,
-            HelpMessage = "ExcludeKeys")]
-        [ValidateNotNullOrEmpty]
-        public bool ExcludeKeys { get; set; }
+        public SwitchParameter ExcludeKeys { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -62,7 +57,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 var exportDevicesRequest = new PSExportDevicesRequest()
                 {
                     ExportBlobContainerUri = this.ExportBlobContainerUri,
-                    ExcludeKeys = this.ExcludeKeys
+                    ExcludeKeys = this.ExcludeKeys.IsPresent
                 };
 
                 JobResponse jobResponse = this.IotHubClient.IotHubResource.ExportDevices(this.ResourceGroupName, this.Name, IotHubUtils.ToExportDevicesRequest(exportDevicesRequest));
