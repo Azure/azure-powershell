@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public Uri NextLink { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public DisplayHintType DisplayHint { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -105,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute
                                     var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
                                     psItem.PowerState = psstate.Statuses[1].DisplayStatus;
                                 }
+                                psItem.DisplayHint = this.DisplayHint;
                                 psResultListStatus.Add(psItem);
                             }
                         }
@@ -152,6 +160,7 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             psResult = Mapper.Map(result.Body, psResult);
                         }
+                        psResult.DisplayHint = this.DisplayHint;
                         WriteObject(psResult);
                     }
                 }
@@ -175,7 +184,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 var psstate = state.ToPSVirtualMachineInstanceView(this.ResourceGroupName, psItem.Name);
                                 psItem.PowerState = psstate.Statuses[1].DisplayStatus;
                             }
-
+                            psItem.DisplayHint = this.DisplayHint;
                             psResultListStatus.Add(psItem);
                         }
                     }
