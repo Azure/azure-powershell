@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
+    - Users can now use ResourceNameEquals and ResourceGroupNameEquals with Find-AzureRmResource
 
 ## Version 3.3.0
 * Lookup of AAD group by Id now uses GetObjectsByObjectId AAD Graph call instead of Groups/<id>
@@ -26,5 +28,3 @@
     - Only make call when needed instead of always
 * Fixed issue where Remove-AzureRmResource would throw an exception if one of the resources passed through the pipeline failed to be removed
     - If cmdlet fails to remove one of the resources, the result will not have an effect on the removal of other resources
-* Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
-    - Users can now use ResourceNameEquals and ResourceGroupNameEquals with Find-AzureRmResource
