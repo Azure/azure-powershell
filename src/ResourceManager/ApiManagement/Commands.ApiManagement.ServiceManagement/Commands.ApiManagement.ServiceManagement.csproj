@@ -66,9 +66,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.ApiManagement, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.3.1.0-preview\lib\net45\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.3.2.0-preview\lib\net45\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -151,6 +151,7 @@
     <Compile Include="Commands\GetAzureApiManagementAuthorizationServer.cs" />
     <Compile Include="Commands\GetAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\GetAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\GetAzureApiManagementIdentityProvider.cs" />
     <Compile Include="Commands\GetAzureApiManagementLogger.cs" />
     <Compile Include="Commands\GetAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\GetAzureApiManagementOperation.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Commands\NewAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\NewAzureApiManagementContext.cs" />
     <Compile Include="Commands\NewAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\NewAzureApiManagementIdentityProvider.cs" />
     <Compile Include="Commands\NewAzureApiManagementLogger.cs" />
     <Compile Include="Commands\NewAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\NewAzureApiManagementOperation.cs" />
@@ -182,6 +184,7 @@
     <Compile Include="Commands\RemoveAzureApiManagementAuthorizationServer.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\RemoveAzureApiManagementIdentityProvider.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementLogger.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementOperation.cs" />
@@ -197,6 +200,7 @@
     <Compile Include="Commands\SetAzureApiManagementAuthorizationServer.cs" />
     <Compile Include="Commands\SetAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\SetAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\SetAzureApiManagementIdentityProvider.cs" />
     <Compile Include="Commands\SetAzureApiManagementLogger.cs" />
     <Compile Include="Commands\SetAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\SetAzureApiManagementOperation.cs" />
@@ -209,6 +213,9 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Models\ErrorBody.cs" />
     <Compile Include="Models\ErrorField.cs" />
+    <Compile Include="Models\PsApiManagementApiType.cs" />
+    <Compile Include="Models\PsApiManagementIdentityProvider.cs" />
+    <Compile Include="Models\PsApiManagementIdentityProviderType.cs" />
     <Compile Include="Models\PsApiManagementOperationResult.cs" />
     <Compile Include="Models\PsApiManagementTenantConfigurationSyncState.cs" />
     <Compile Include="Models\TenantConfigurationState.cs" />

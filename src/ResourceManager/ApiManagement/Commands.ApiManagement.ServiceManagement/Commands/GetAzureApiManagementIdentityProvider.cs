@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementLogger, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementLogger>), ParameterSetName = new[] { GetAll })]
-    [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { GetById })]
-    public class GetAzureApiManagementLogger : AzureApiManagementCmdletBase
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementIdentityProvider, DefaultParameterSetName = AllIdentityProviders)]
+    [OutputType(typeof(IList<PsApiManagementIdentityProvider>), ParameterSetName = new[] { AllIdentityProviders })]
+    [OutputType(typeof(PsApiManagementIdentityProvider), ParameterSetName = new[] { IdentityProviderByType })]
+    public class GetAzureApiManagementIdentityProvider : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all loggers";
-        private const string GetById = "Get by logger ID";
+        private const string AllIdentityProviders = "AllIdentityProviders";
+        private const string IdentityProviderByType = "IdentityProviderByType";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -35,23 +35,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ParameterSetName = GetById,
+            ParameterSetName = IdentityProviderByType,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of a logger. If specified will try to find logger by the identifier. This parameter is optional.")]
-        public String LoggerId { get; set; }
-
+            HelpMessage = "Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.")]
+        public PsApiManagementIdentityProviderType Type { get; set; }
+        
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ParameterSetName.Equals(GetAll))
+            if (ParameterSetName.Equals(AllIdentityProviders))
             {
-                var loggers = Client.LoggersList(Context);
-                WriteObject(loggers, true);
+                var identityProviders = Client.IdentityProviderList(Context);
+                WriteObject(identityProviders, true);
             }
-            else if (ParameterSetName.Equals(GetById))
+            else if (ParameterSetName.Equals(IdentityProviderByType))
             {
-                var logger = Client.LoggerById(Context, LoggerId);
-                WriteObject(logger);
+                var identityProvider = Client.IdentityProviderByName(Context, Type.ToString("g"));
+                WriteObject(identityProvider);
             }
             else
             {
