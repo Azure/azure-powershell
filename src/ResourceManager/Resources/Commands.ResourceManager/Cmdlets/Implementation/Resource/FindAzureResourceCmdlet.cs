@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private readonly List<Guid> subscriptionIds = new List<Guid>();
 
         /// <summary>
-        /// Gets or sets the resource name parameter.
+        /// Gets or sets the resource name for query as contains.
         /// </summary>
         [Alias("Name")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
