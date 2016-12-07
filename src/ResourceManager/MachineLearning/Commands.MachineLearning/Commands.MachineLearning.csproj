@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.5-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.6-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
