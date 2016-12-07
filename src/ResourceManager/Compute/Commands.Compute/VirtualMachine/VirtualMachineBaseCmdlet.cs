@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
@@ -40,9 +41,21 @@ namespace Microsoft.Azure.Commands.Compute
             var objType = obj.GetType();
 
             System.Reflection.PropertyInfo[] pros = objType.GetProperties();
+            bool expand = true;
+            foreach (var p in pros)
+            {
+                if (p.Name.Equals("DisplayHint"))
+                {
+                    if (p.GetValue(obj, null).Equals(DisplayHintType.Compact))
+                    {
+                        expand = false;
+                    }
+                }
+            }
+
             string result = "\n";
             var resultTuples = new List<Tuple<string, string, int>>();
-            var totalTab = GetTabLength(obj, 0, 0, resultTuples) + 1;
+            var totalTab = GetTabLength(obj, 0, 0, resultTuples, expand) + 1;
             foreach (var t in resultTuples)
             {
                 string preTab = new string(' ', t.Item3 * 2);
@@ -53,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
             return result;
         }
 
-        private static int GetTabLength(Object obj, int max, int depth, List<Tuple<string, string, int>> tupleList)
+        private static int GetTabLength(Object obj, int max, int depth, List<Tuple<string, string, int>> tupleList, bool expand = true)
         {
             var objType = obj.GetType();
             var propertySet = new List<PropertyInfo>();
@@ -61,12 +74,18 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 foreach (var property in objType.BaseType.GetProperties())
                 {
-                    propertySet.Add(property);
+                    if (!property.Name.Equals("RequestId") && !property.Name.Equals("StatusCode") && !property.Name.Equals("DisplayHint"))
+                    {
+                        propertySet.Add(property);
+                    }
                 }
             }
             foreach (var property in objType.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public))
             {
-                propertySet.Add(property);
+                if (!property.Name.Equals("DisplayHint"))
+                {
+                    propertySet.Add(property);
+                }
             }
 
             foreach (var property in propertySet)
@@ -109,8 +128,15 @@ namespace Microsoft.Azure.Commands.Compute
                                 }
                                 else
                                 {
-                                    tupleList.Add(MakeTuple(property.Name + "[" + i + "]", "", depth));
-                                    max = Math.Max(max, GetTabLength((Object)elem[i], max, depth + 1, tupleList));
+                                    if (expand)
+                                    {
+                                        tupleList.Add(MakeTuple(property.Name + "[" + i + "]", "", depth));
+                                        max = Math.Max(max, GetTabLength((Object)elem[i], max, depth + 1, tupleList));
+                                    }
+                                    else
+                                    {
+                                        tupleList.Add(MakeTuple(property.Name + "[" + i + "]", GetChildProperties((Object)elem[i]), depth));
+                                    }
                                 }
                             }
                         }
@@ -135,14 +161,52 @@ namespace Microsoft.Azure.Commands.Compute
                             }
                             else if (childObject != null)
                             {
-                                tupleList.Add(MakeTuple(property.Name, "", depth));
-                                max = Math.Max(max, GetTabLength(childObject, max, depth + 1, tupleList));
+                                if (expand)
+                                {
+                                    tupleList.Add(MakeTuple(property.Name, "", depth));
+                                    max = Math.Max(max, GetTabLength(childObject, max, depth + 1, tupleList));
+                                }
+                                else
+                                {
+                                    tupleList.Add(MakeTuple(property.Name, GetChildProperties(childObject), depth));
+                                }
                             }
                         }
                     }
                 }
             }
             return max;
+        }
+
+        private static string GetChildProperties(Object obj)
+        {
+            var objType = obj.GetType();
+            var propertySet = new List<PropertyInfo>();
+
+            if (objType.BaseType != null)
+            {
+                foreach (var property in objType.BaseType.GetProperties())
+                {
+                    propertySet.Add(property);
+                }
+            }
+            foreach (var property in objType.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public))
+            {
+                propertySet.Add(property);
+            }
+
+            var propertyList = new List<string>();
+            foreach (var property in propertySet)
+            {
+                Object childObject = property.GetValue(obj, null);
+
+                if (childObject != null)
+                {
+                    propertyList.Add(property.Name);
+                }
+            }
+
+            return "{" + string.Join(", ", propertyList) + "}";
         }
 
         private static Tuple<string, string, int> MakeTuple(string key, string value, int depth)

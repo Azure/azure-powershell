@@ -119,10 +119,20 @@ function Test-VirtualMachine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
+
+        # VM Expand output
         $a = $vm1 | Out-String;
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
+        Assert-True {$a.Contains("Sku");}
+
+        # VM Compact output
+        $vm1.DisplayHint = "Compact";
+        $a = $vm1 | Out-String;
+        Assert-False {$a.Contains("Sku");}
+
+        # Table format output
         $a = $vm1 | Format-Table | Out-String;
         Write-Verbose("Get-AzureRmVM | Format-Table output:");
         Write-Verbose($a);
@@ -179,6 +189,15 @@ function Test-VirtualMachine
         Write-Verbose($a);
         Assert-True{$a.Contains("NIC");}
         Assert-AreNotEqual $vms $null;
+
+        # VM Compact output
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-False {$a.Contains("Sku");}
+
+        # VM Expand output
+        $vms[0].DisplayHint = "Expand";
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-True {$a.Contains("Sku");}
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;
@@ -2799,6 +2818,15 @@ function Test-VirtualMachineGetStatus
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("PowerState");}
+
+        # VM Compact output
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-False{$a.Contains("Sku");};
+
+        # VM Expand output
+        $vms[0].DisplayHint = "Expand"
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-True{$a.Contains("Sku");};
 
         # Remove
         Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;

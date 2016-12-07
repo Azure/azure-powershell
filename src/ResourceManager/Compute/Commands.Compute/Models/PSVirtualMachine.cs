@@ -91,5 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the storage profile.
         public StorageProfile StorageProfile { get; set; }
 
+        public DisplayHintType DisplayHint { get; set; }
+
     }
 }
