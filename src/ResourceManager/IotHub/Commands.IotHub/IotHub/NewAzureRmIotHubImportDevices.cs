@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
 
     [Cmdlet(VerbsCommon.New, "AzureRmIotHubImportDevices", SupportsShouldProcess = true)]
-    [OutputType(typeof(JobResponse))]
+    [OutputType(typeof(PSIotHubJobResponse))]
     public class NewAzureRmIotHubImportDevices : IotHubBaseCmdlet
     {
         [Parameter(

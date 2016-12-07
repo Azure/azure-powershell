@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(IEnumerable<string>))]
+    [Alias("Remove-AzureRmIotHubEHCG")]
     public class RemoveAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
     {
         [Parameter(
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Position = 3,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the EventHub ConsumerGroupName")]
         [ValidateNotNullOrEmpty]
         public string EventHubConsumerGroupName { get; set; }

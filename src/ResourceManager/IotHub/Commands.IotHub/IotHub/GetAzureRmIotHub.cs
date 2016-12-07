@@ -23,13 +23,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using Microsoft.Rest.Azure;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHub", DefaultParameterSetName = "ListIotHubsBySubscription")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIotHub", DefaultParameterSetName = "ListIotHubsByResourceGroup")]
     [OutputType(typeof(PSIotHub), typeof(List<PSIotHub>))]
     public class GetAzureRmIotHub : IotHubBaseCmdlet
     {
         const string GetIotHubParameterSet = "GetIotHubByName";
         const string ListIotHubsByRGParameterSet = "ListIotHubsByResourceGroup";
-        const string ListIotHubsBySubscriptionParameterSet = "ListIotHubsBySubscription";
 
         [Parameter(
             ParameterSetName = GetIotHubParameterSet,
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             ParameterSetName = ListIotHubsByRGParameterSet,
             Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
@@ -64,13 +63,18 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     this.WriteObject(IotHubUtils.ToPSIotHub(iotHubDescription), false);
                     break;
                 case ListIotHubsByRGParameterSet:
-                    IEnumerable<IotHubDescription> iotHubDescriptions = this.IotHubClient.IotHubResource.ListByResourceGroup(this.ResourceGroupName);
-                    this.WriteObject(IotHubUtils.ToPSIotHubs(iotHubDescriptions), true);
-                    break;
-                case ListIotHubsBySubscriptionParameterSet:
-                    IEnumerable<IotHubDescription> iotHubDescriptionsBySubscription = this.IotHubClient.IotHubResource.ListBySubscription();
-                    this.WriteObject(IotHubUtils.ToPSIotHubs(iotHubDescriptionsBySubscription), true);
-                    break;
+                    if (string.IsNullOrEmpty(this.ResourceGroupName))
+                    {
+                        IEnumerable<IotHubDescription> iotHubDescriptionsBySubscription = this.IotHubClient.IotHubResource.ListBySubscription();
+                        this.WriteObject(IotHubUtils.ToPSIotHubs(iotHubDescriptionsBySubscription), true);
+                        break;
+                    }
+                    else
+                    {
+                        IEnumerable<IotHubDescription> iotHubDescriptions = this.IotHubClient.IotHubResource.ListByResourceGroup(this.ResourceGroupName);
+                        this.WriteObject(IotHubUtils.ToPSIotHubs(iotHubDescriptions), true);
+                        break;
+                    }
                 default:
                     throw new ArgumentException("BadParameterSetName");
             }

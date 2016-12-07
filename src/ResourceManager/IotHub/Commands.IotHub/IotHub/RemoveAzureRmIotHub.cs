@@ -58,8 +58,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         throw e;
                     }
                 }
-
-                this.WriteObject("Iot Hub Deleted");
             }
         }
     }
