@@ -125,6 +125,7 @@
     <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreItemExpiry.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\AddAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreFirewallRule.cs" />
@@ -189,7 +190,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.DataLakeStore.dll-help.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

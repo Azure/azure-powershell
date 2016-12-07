@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1193"
         ],
         "x-ms-request-id": [
-          "b1535fbd-ce0b-4663-8d6f-14bdb91cf7e7"
+          "f7ce2f60-c5c9-4c60-9c1b-06ad29f4f4c9"
         ],
         "x-ms-correlation-request-id": [
-          "b1535fbd-ce0b-4663-8d6f-14bdb91cf7e7"
+          "f7ce2f60-c5c9-4c60-9c1b-06ad29f4f4c9"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192706Z:b1535fbd-ce0b-4663-8d6f-14bdb91cf7e7"
+          "WESTUS2:20161207T002101Z:f7ce2f60-c5c9-4c60-9c1b-06ad29f4f4c9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:05 GMT"
+          "Wed, 07 Dec 2016 00:21:00 GMT"
         ]
       },
       "StatusCode": 200
@@ -73,16 +73,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "14992"
         ],
         "x-ms-request-id": [
-          "a9f33d02-5dd3-4256-be65-0d4658a3f953"
+          "1731c285-2640-4411-af2d-61cf53aff5ad"
         ],
         "x-ms-correlation-request-id": [
-          "a9f33d02-5dd3-4256-be65-0d4658a3f953"
+          "1731c285-2640-4411-af2d-61cf53aff5ad"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192706Z:a9f33d02-5dd3-4256-be65-0d4658a3f953"
+          "WESTUS2:20161207T002101Z:1731c285-2640-4411-af2d-61cf53aff5ad"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -91,14 +91,14 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:05 GMT"
+          "Wed, 07 Dec 2016 00:21:00 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourcegroups/onesdk5745?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlZ3JvdXBzL29uZXNkazU3NDU/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourcegroups/onesdk4392?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlZ3JvdXBzL29uZXNkazQzOTI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"East US 2\"\r\n}",
       "RequestHeaders": {
@@ -112,7 +112,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745\",\r\n  \"name\": \"onesdk5745\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392\",\r\n  \"name\": \"onesdk4392\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "174"
@@ -127,16 +127,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1192"
         ],
         "x-ms-request-id": [
-          "6c726cc0-2fc1-48c9-a3af-d67f6e57dd73"
+          "82ab9ae1-6625-413c-bf72-533123861675"
         ],
         "x-ms-correlation-request-id": [
-          "6c726cc0-2fc1-48c9-a3af-d67f6e57dd73"
+          "82ab9ae1-6625-413c-bf72-533123861675"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192707Z:6c726cc0-2fc1-48c9-a3af-d67f6e57dd73"
+          "WESTUS2:20161207T002102Z:82ab9ae1-6625-413c-bf72-533123861675"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -145,19 +145,19 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:07 GMT"
+          "Wed, 07 Dec 2016 00:21:02 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3fcad624-e56a-46c6-9eb2-b442b103873b"
+          "f962f33d-2da3-4789-b716-01da38fbdb23"
         ],
         "accept-language": [
           "en-US"
@@ -166,7 +166,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk8114' under resource group 'onesdk5745' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk6987' under resource group 'onesdk4392' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "157"
@@ -184,13 +184,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "00047072-94b8-450c-afb6-1a43e1cfdd5c"
+          "de3728e0-178d-4f25-b4a4-b8f4bffb336e"
         ],
         "x-ms-correlation-request-id": [
-          "00047072-94b8-450c-afb6-1a43e1cfdd5c"
+          "de3728e0-178d-4f25-b4a4-b8f4bffb336e"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192708Z:00047072-94b8-450c-afb6-1a43e1cfdd5c"
+          "WESTUS2:20161207T002103Z:de3728e0-178d-4f25-b4a4-b8f4bffb336e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -199,14 +199,14 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:07 GMT"
+          "Wed, 07 Dec 2016 00:21:02 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -214,7 +214,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"trustedIdProviderState\": \"Disabled\",\r\n    \"trustedIdProviders\": [],\r\n    \"encryptionState\": \"Enabled\",\r\n    \"encryptionConfig\": {\r\n      \"type\": \"ServiceManaged\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk8114.azuredatalakestore.net\",\r\n    \"accountId\": \"52a2f699-6142-490e-8f96-178d53592b38\",\r\n    \"creationTime\": \"2016-12-05T19:27:13.9841025Z\",\r\n    \"lastModifiedTime\": \"2016-12-05T19:27:13.9841025Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114\",\r\n  \"name\": \"onesdk8114\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"trustedIdProviderState\": \"Disabled\",\r\n    \"trustedIdProviders\": [],\r\n    \"encryptionState\": \"Enabled\",\r\n    \"encryptionConfig\": {\r\n      \"type\": \"ServiceManaged\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk6987.azuredatalakestore.net\",\r\n    \"accountId\": \"1436f56e-671b-496d-b0d2-a07d8f8757d2\",\r\n    \"creationTime\": \"2016-12-07T00:21:10.2763419Z\",\r\n    \"lastModifiedTime\": \"2016-12-07T00:21:10.2763419Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987\",\r\n  \"name\": \"onesdk6987\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "672"
@@ -229,19 +229,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "db9d47f4-5fbe-4d48-801d-77c1d0c4fad2"
+          "e2122ec7-aaef-4651-93b9-7aec41acb699"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "0adc2862-6b36-4648-a6b5-f442f7ad8917"
+          "5a6bcad0-f43d-4d3b-89a3-1b6c60369b8d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192740Z:0adc2862-6b36-4648-a6b5-f442f7ad8917"
+          "WESTUS2:20161207T002136Z:5a6bcad0-f43d-4d3b-89a3-1b6c60369b8d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -253,7 +253,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:39 GMT"
+          "Wed, 07 Dec 2016 00:21:36 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -268,13 +268,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fcb4dae-e660-499b-91e7-3634bfcbaf06"
+          "b804e367-6d53-418f-b8c6-2dd6501b13ad"
         ],
         "accept-language": [
           "en-US"
@@ -283,7 +283,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"trustedIdProviderState\": \"Disabled\",\r\n    \"trustedIdProviders\": [],\r\n    \"encryptionState\": \"Enabled\",\r\n    \"encryptionConfig\": {\r\n      \"type\": \"ServiceManaged\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk8114.azuredatalakestore.net\",\r\n    \"accountId\": \"52a2f699-6142-490e-8f96-178d53592b38\",\r\n    \"creationTime\": \"2016-12-05T19:27:13.9841025Z\",\r\n    \"lastModifiedTime\": \"2016-12-05T19:27:13.9841025Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114\",\r\n  \"name\": \"onesdk8114\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"trustedIdProviderState\": \"Disabled\",\r\n    \"trustedIdProviders\": [],\r\n    \"encryptionState\": \"Enabled\",\r\n    \"encryptionConfig\": {\r\n      \"type\": \"ServiceManaged\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk6987.azuredatalakestore.net\",\r\n    \"accountId\": \"1436f56e-671b-496d-b0d2-a07d8f8757d2\",\r\n    \"creationTime\": \"2016-12-07T00:21:10.2763419Z\",\r\n    \"lastModifiedTime\": \"2016-12-07T00:21:10.2763419Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987\",\r\n  \"name\": \"onesdk6987\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "672"
@@ -298,19 +298,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "17c2332b-21e9-4bc9-8d7a-d72c0351c858"
+          "e2d9b6f2-eaa9-4562-9837-5064ac3cac73"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "defccf71-0c3b-4be5-8e79-cdbf199f4c44"
+          "8d6e405f-b49a-4410-af85-257ff15992d9"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192741Z:defccf71-0c3b-4be5-8e79-cdbf199f4c44"
+          "WESTUS2:20161207T002137Z:8d6e405f-b49a-4410-af85-257ff15992d9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -322,7 +322,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:41 GMT"
+          "Wed, 07 Dec 2016 00:21:37 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -337,13 +337,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64bfdb00-818a-4165-8503-f55f091b5bf0"
+          "4278038b-2629-43db-a2d8-7c8f5e43c1b6"
         ],
         "accept-language": [
           "en-US"
@@ -352,7 +352,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"trustedIdProviderState\": \"Disabled\",\r\n    \"trustedIdProviders\": [],\r\n    \"encryptionState\": \"Enabled\",\r\n    \"encryptionConfig\": {\r\n      \"type\": \"ServiceManaged\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk8114.azuredatalakestore.net\",\r\n    \"accountId\": \"52a2f699-6142-490e-8f96-178d53592b38\",\r\n    \"creationTime\": \"2016-12-05T19:27:13.9841025Z\",\r\n    \"lastModifiedTime\": \"2016-12-05T19:27:13.9841025Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114\",\r\n  \"name\": \"onesdk8114\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"trustedIdProviderState\": \"Disabled\",\r\n    \"trustedIdProviders\": [],\r\n    \"encryptionState\": \"Enabled\",\r\n    \"encryptionConfig\": {\r\n      \"type\": \"ServiceManaged\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk6987.azuredatalakestore.net\",\r\n    \"accountId\": \"1436f56e-671b-496d-b0d2-a07d8f8757d2\",\r\n    \"creationTime\": \"2016-12-07T00:21:10.2763419Z\",\r\n    \"lastModifiedTime\": \"2016-12-07T00:21:10.2763419Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987\",\r\n  \"name\": \"onesdk6987\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "672"
@@ -367,19 +367,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c6be4d12-b83f-42b6-aebf-32301fc0287a"
+          "0895e153-83c0-41b8-a331-4eeb763907d0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14987"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "a535a476-651c-471b-ac13-4b66731df3ff"
+          "82c88b91-dbc9-48c8-a814-ad5d667886d2"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192753Z:a535a476-651c-471b-ac13-4b66731df3ff"
+          "WESTUS2:20161207T002146Z:82c88b91-dbc9-48c8-a814-ad5d667886d2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -391,7 +391,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:52 GMT"
+          "Wed, 07 Dec 2016 00:21:45 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -406,13 +406,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "20821631-058e-401b-93ec-26066fb0aeb5"
+          "bb3fe621-91ec-4492-b681-73880ba2528b"
         ],
         "accept-language": [
           "en-US"
@@ -421,7 +421,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk8114' under resource group 'onesdk5745' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk6987' under resource group 'onesdk4392' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "157"
@@ -439,13 +439,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ad990d28-7124-4070-96a4-9dc2a98d5b7a"
+          "9d2971dd-1ca4-4945-8c5f-38f2f0506ab3"
         ],
         "x-ms-correlation-request-id": [
-          "ad990d28-7124-4070-96a4-9dc2a98d5b7a"
+          "9d2971dd-1ca4-4945-8c5f-38f2f0506ab3"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192756Z:ad990d28-7124-4070-96a4-9dc2a98d5b7a"
+          "WESTUS2:20161207T002220Z:9d2971dd-1ca4-4945-8c5f-38f2f0506ab3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -454,19 +454,19 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:56 GMT"
+          "Wed, 07 Dec 2016 00:22:20 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "421aea15-ee77-4525-ae0d-ade8f96fed81"
+          "fd594c1f-44ac-4ccd-b113-c678be8079c4"
         ],
         "accept-language": [
           "en-US"
@@ -475,7 +475,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk8114' under resource group 'onesdk5745' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk6987' under resource group 'onesdk4392' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "157"
@@ -493,13 +493,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "6a92ae66-22d0-4839-9d7a-775182982153"
+          "57da717a-6286-44d9-a025-67c1c5190a84"
         ],
         "x-ms-correlation-request-id": [
-          "6a92ae66-22d0-4839-9d7a-775182982153"
+          "57da717a-6286-44d9-a025-67c1c5190a84"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192757Z:6a92ae66-22d0-4839-9d7a-775182982153"
+          "WESTUS2:20161207T002220Z:57da717a-6286-44d9-a025-67c1c5190a84"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -508,14 +508,14 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:56 GMT"
+          "Wed, 07 Dec 2016 00:22:20 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -526,7 +526,7 @@
           "46"
         ],
         "x-ms-client-request-id": [
-          "ce1b7006-b015-45a4-a943-e94558faf5ba"
+          "e54d6425-22a0-439e-b6fd-d7e23eb1cd76"
         ],
         "accept-language": [
           "en-US"
@@ -535,7 +535,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"state\": null,\r\n    \"endpoint\": null,\r\n    \"accountId\": \"52a2f699-6142-490e-8f96-178d53592b38\",\r\n    \"creationTime\": null,\r\n    \"lastModifiedTime\": null\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114\",\r\n  \"name\": \"onesdk8114\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"state\": null,\r\n    \"endpoint\": null,\r\n    \"accountId\": \"1436f56e-671b-496d-b0d2-a07d8f8757d2\",\r\n    \"creationTime\": null,\r\n    \"lastModifiedTime\": null\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987\",\r\n  \"name\": \"onesdk6987\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "405"
@@ -553,22 +553,22 @@
           "10"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/locations/EastUS2/operationResults/52a2f699-6142-490e-8f96-178d53592b380?api-version=2016-11-01&expanded=true"
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/locations/EastUS2/operationResults/1436f56e-671b-496d-b0d2-a07d8f8757d20?api-version=2016-11-01&expanded=true"
         ],
         "x-ms-request-id": [
-          "0030268c-4d9c-4dc0-aac2-31ca4c52c9db"
+          "2783ffff-1057-4e7a-9860-0ac2d89f4615"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "9d393161-6dcb-49c1-955b-e43c288c284c"
+          "a4ab97fc-0959-40c4-a9d4-707b88ed065c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192709Z:9d393161-6dcb-49c1-955b-e43c288c284c"
+          "WESTUS2:20161207T002104Z:a4ab97fc-0959-40c4-a9d4-707b88ed065c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -580,10 +580,10 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:09 GMT"
+          "Wed, 07 Dec 2016 00:21:04 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourcegroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114/operationresults/0?api-version=2016-11-01"
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourcegroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987/operationresults/0?api-version=2016-11-01"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -598,8 +598,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/locations/EastUS2/operationResults/52a2f699-6142-490e-8f96-178d53592b380?api-version=2016-11-01&expanded=true",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUxha2VTdG9yZS9sb2NhdGlvbnMvRWFzdFVTMi9vcGVyYXRpb25SZXN1bHRzLzUyYTJmNjk5LTYxNDItNDkwZS04Zjk2LTE3OGQ1MzU5MmIzODA/YXBpLXZlcnNpb249MjAxNi0xMS0wMSZleHBhbmRlZD10cnVl",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/locations/EastUS2/operationResults/1436f56e-671b-496d-b0d2-a07d8f8757d20?api-version=2016-11-01&expanded=true",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUxha2VTdG9yZS9sb2NhdGlvbnMvRWFzdFVTMi9vcGVyYXRpb25SZXN1bHRzLzE0MzZmNTZlLTY3MWItNDk2ZC1iMGQyLWEwN2Q4Zjg3NTdkMjA/YXBpLXZlcnNpb249MjAxNi0xMS0wMSZleHBhbmRlZD10cnVl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -622,19 +622,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b79dcf21-735c-40ce-b67d-20165ef2d1ac"
+          "f067e6cd-7503-43c1-8f25-4bb8a414df72"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "b70fa98f-fdd0-4ce7-935c-8538be051e62"
+          "6d750ad0-b824-4bf7-92be-5fae6f042478"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192740Z:b70fa98f-fdd0-4ce7-935c-8538be051e62"
+          "WESTUS2:20161207T002135Z:6d750ad0-b824-4bf7-92be-5fae6f042478"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -646,7 +646,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:39 GMT"
+          "Wed, 07 Dec 2016 00:21:35 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -667,7 +667,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4889b735-5d14-481c-bd42-0333bcd2dc67"
+          "3bab894b-65cf-4dce-a092-4fbaed9b56d2"
         ],
         "accept-language": [
           "en-US"
@@ -676,7 +676,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder [05696784-3924-41f3-8a6e-9b0e88a22319][2016-12-05T11:27:42.9505464-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder [708a2f8d-b5df-4419-9fd3-de2ccd47046c][2016-12-06T16:21:38.2928620-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "237"
@@ -691,7 +691,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "05696784-3924-41f3-8a6e-9b0e88a22319"
+          "708a2f8d-b5df-4419-9fd3-de2ccd47046c"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -709,7 +709,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:42 GMT"
+          "Wed, 07 Dec 2016 00:21:37 GMT"
         ]
       },
       "StatusCode": 404
@@ -721,7 +721,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "72b628ff-b8d0-461b-a0b1-841e0c16c20e"
+          "f8aa4354-a9a8-4a11-bf9a-f41c976a779d"
         ],
         "accept-language": [
           "en-US"
@@ -730,7 +730,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"DIRECTORY\",\r\n    \"blockSize\": 0,\r\n    \"accessTime\": 1480966063110,\r\n    \"modificationTime\": 1480966063110,\r\n    \"replication\": 0,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"DIRECTORY\",\r\n    \"blockSize\": 0,\r\n    \"accessTime\": 1481070098440,\r\n    \"modificationTime\": 1481070098440,\r\n    \"replication\": 0,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "265"
@@ -745,7 +745,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5e6a538f-1212-44e1-aefe-e2174035baed"
+          "e637a6f1-ffc3-477b-9f7d-624d5ee094d1"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -763,7 +763,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:42 GMT"
+          "Wed, 07 Dec 2016 00:21:37 GMT"
         ]
       },
       "StatusCode": 200
@@ -775,7 +775,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "17e106cb-59de-4c71-9d08-9f0723ad6468"
+          "800e444f-8f3a-4828-92e5-e4f31f825a15"
         ],
         "accept-language": [
           "en-US"
@@ -784,7 +784,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder [fb3c068f-b2ea-47f9-8971-a13eadc7b979][2016-12-05T11:27:52.0911966-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder [86b447ad-6a96-4952-8a75-90f96acb2707][2016-12-06T16:21:45.0741998-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "237"
@@ -799,7 +799,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fb3c068f-b2ea-47f9-8971-a13eadc7b979"
+          "86b447ad-6a96-4952-8a75-90f96acb2707"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -817,7 +817,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 404
@@ -829,7 +829,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "eec480e3-b861-4756-b7cf-e788eed7b466"
+          "94381ff8-1ee8-47d2-92e9-573099f18dfc"
         ],
         "accept-language": [
           "en-US"
@@ -853,7 +853,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "16b0fe50-384b-4bcb-b50e-2cb027b5a598"
+          "6ce045d8-4aa6-4f21-95b9-c62906aaf779"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -871,7 +871,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:42 GMT"
+          "Wed, 07 Dec 2016 00:21:37 GMT"
         ]
       },
       "StatusCode": 200
@@ -883,7 +883,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "99bdb063-4c39-40b2-95a9-8ef547ab31aa"
+          "5c37c563-8a6e-4779-9d3d-075744dee67c"
         ],
         "accept-language": [
           "en-US"
@@ -892,7 +892,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/emptyfile.txt [8a9caa08-1b73-46d6-9156-a428641b27c5][2016-12-05T11:27:43.3099052-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/emptyfile.txt [e41adb6e-877b-4bc9-8433-25bee6f70fb0][2016-12-06T16:21:38.6366181-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "251"
@@ -907,7 +907,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8a9caa08-1b73-46d6-9156-a428641b27c5"
+          "e41adb6e-877b-4bc9-8433-25bee6f70fb0"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -925,7 +925,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:42 GMT"
+          "Wed, 07 Dec 2016 00:21:38 GMT"
         ]
       },
       "StatusCode": 404
@@ -937,7 +937,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "03d54272-559e-44b1-a648-c167b64fecab"
+          "1eb19379-ecc5-4c00-8b34-c8afb464a05f"
         ],
         "accept-language": [
           "en-US"
@@ -946,7 +946,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966063459,\r\n    \"modificationTime\": 1480966063459,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070098763,\r\n    \"modificationTime\": 1481070098763,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "308"
@@ -961,7 +961,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "25f87d80-beef-4f7d-a1b5-515d3317ce21"
+          "05244e22-89e1-4542-85df-fa386af84321"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -979,7 +979,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:43 GMT"
+          "Wed, 07 Dec 2016 00:21:38 GMT"
         ]
       },
       "StatusCode": 200
@@ -991,7 +991,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8849867b-b18d-44fc-ab4c-2a61f2725bfa"
+          "38acf230-b838-4dc6-a1e6-99b26f7ccabe"
         ],
         "accept-language": [
           "en-US"
@@ -1000,7 +1000,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966063459,\r\n    \"modificationTime\": 1480966065276,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070098763,\r\n    \"modificationTime\": 1481070100685,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1015,7 +1015,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c1b63be4-8a9d-4bca-a8f0-451899e82a9e"
+          "274d0cb3-c3ed-4ae1-9afb-e02fcd2ebb46"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1033,7 +1033,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:45 GMT"
+          "Wed, 07 Dec 2016 00:21:40 GMT"
         ]
       },
       "StatusCode": 200
@@ -1051,7 +1051,7 @@
           "0"
         ],
         "x-ms-client-request-id": [
-          "fa57e291-c06f-4924-b3a6-ea0670ee45b1"
+          "8ed24c00-3795-49d3-b77e-8e8e62d1f6f1"
         ],
         "accept-language": [
           "en-US"
@@ -1072,7 +1072,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "abd1f6e5-4f06-4d67-bb47-b57590730fee"
+          "a8091afd-2232-43ae-a1ac-264fce8a98f4"
         ],
         "ContentLength": [
           "0"
@@ -1093,10 +1093,10 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:43 GMT"
+          "Wed, 07 Dec 2016 00:21:38 GMT"
         ],
         "Location": [
-          "https://onesdk8114.azuredatalakestore.net/webhdfs/v1/adlspstestfolder/emptyfile.txt?overwrite=false&op=CREATE&write=true&api-version=2016-11-01"
+          "https://onesdk6987.azuredatalakestore.net/webhdfs/v1/adlspstestfolder/emptyfile.txt?overwrite=false&op=CREATE&write=true&api-version=2016-11-01"
         ]
       },
       "StatusCode": 201
@@ -1108,7 +1108,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fa5437fd-abe4-4a44-b200-5b64bf991ad1"
+          "ad866444-e2be-48ce-956e-2da3985796bb"
         ],
         "accept-language": [
           "en-US"
@@ -1117,7 +1117,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/contentfile.txt [14cd39de-6a21-4e0c-9cc8-6412a889d428][2016-12-05T11:27:43.7005517-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/contentfile.txt [44b81cc4-eed3-4b9d-895c-a378229c30fe][2016-12-06T16:21:38.9803716-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "253"
@@ -1132,7 +1132,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "14cd39de-6a21-4e0c-9cc8-6412a889d428"
+          "44b81cc4-eed3-4b9d-895c-a378229c30fe"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1150,7 +1150,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:43 GMT"
+          "Wed, 07 Dec 2016 00:21:38 GMT"
         ]
       },
       "StatusCode": 404
@@ -1162,7 +1162,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "50b2b9b6-4bb5-4a0d-a440-4a3216a20fe1"
+          "09db2ef8-da06-43b1-b080-b6157975877c"
         ],
         "accept-language": [
           "en-US"
@@ -1171,7 +1171,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966063919,\r\n    \"modificationTime\": 1480966064403,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070099193,\r\n    \"modificationTime\": 1481070099240,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1186,7 +1186,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c249ccd2-ec62-4e59-a364-ba34956384f4"
+          "a748f9f9-4314-4b12-af57-11e2c7df8422"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1204,7 +1204,223 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:44 GMT"
+          "Wed, 07 Dec 2016 00:21:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/webhdfs/v1/adlspstestfolder%2Fcontentfile.txt?op=MSGETFILESTATUS&api-version=2016-11-01",
+      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlciUyRmNvbnRlbnRmaWxlLnR4dD9vcD1NU0dFVEZJTEVTVEFUVVMmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "90bc0feb-9738-4fca-b154-6c6776fc7bcd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070099193,\r\n    \"modificationTime\": 1481070099240,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "309"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d958ffc5-682d-4633-adab-77fff41f638d"
+        ],
+        "x-ms-webhdfs-version": [
+          "16.07.18.01"
+        ],
+        "Status": [
+          "0x0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache, max-age=0"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 00:21:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/webhdfs/v1/adlspstestfolder%2Fcontentfile.txt?op=MSGETFILESTATUS&api-version=2016-11-01",
+      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlciUyRmNvbnRlbnRmaWxlLnR4dD9vcD1NU0dFVEZJTEVTVEFUVVMmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "407ceb4b-377b-42c4-862f-66021291f021"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070099193,\r\n    \"modificationTime\": 1481070099240,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 1481070219000,\r\n    \"msExpirationTime\": 1481070219000\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "333"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a9bc6fa3-5231-49a4-924a-8050e76e0563"
+        ],
+        "x-ms-webhdfs-version": [
+          "16.07.18.01"
+        ],
+        "Status": [
+          "0x0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache, max-age=0"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 00:21:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/webhdfs/v1/adlspstestfolder%2Fcontentfile.txt?op=MSGETFILESTATUS&api-version=2016-11-01",
+      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlciUyRmNvbnRlbnRmaWxlLnR4dD9vcD1NU0dFVEZJTEVTVEFUVVMmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c69652c4-ec4c-43d1-af1a-e79bc960faa7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070099193,\r\n    \"modificationTime\": 1481070099240,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 1481070219000,\r\n    \"msExpirationTime\": 1481070219000\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "333"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "86649c72-ee42-49b6-9c94-14f89fccea5b"
+        ],
+        "x-ms-webhdfs-version": [
+          "16.07.18.01"
+        ],
+        "Status": [
+          "0x0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache, max-age=0"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 00:21:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/webhdfs/v1/adlspstestfolder%2Fcontentfile.txt?op=MSGETFILESTATUS&api-version=2016-11-01",
+      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlciUyRmNvbnRlbnRmaWxlLnR4dD9vcD1NU0dFVEZJTEVTVEFUVVMmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2ac44385-1db5-497f-9942-c869c3e3c8cc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 36,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070099193,\r\n    \"modificationTime\": 1481070099240,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "309"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "285c84cc-1c92-4a8f-a745-321ade492761"
+        ],
+        "x-ms-webhdfs-version": [
+          "16.07.18.01"
+        ],
+        "Status": [
+          "0x0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache, max-age=0"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 00:21:39 GMT"
         ]
       },
       "StatusCode": 200
@@ -1222,7 +1438,7 @@
           "36"
         ],
         "x-ms-client-request-id": [
-          "4991e958-fb2e-45d9-b5f8-19b9e42a404d"
+          "25c09e63-977c-4174-9ab0-eb185342bdad"
         ],
         "accept-language": [
           "en-US"
@@ -1243,7 +1459,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "25791501-cb71-4000-870b-3d7a9c9b9135"
+          "631802e9-924d-4dd8-a4c5-ed786168b333"
         ],
         "ContentLength": [
           "0"
@@ -1264,22 +1480,22 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:44 GMT"
+          "Wed, 07 Dec 2016 00:21:39 GMT"
         ],
         "Location": [
-          "https://onesdk8114.azuredatalakestore.net/webhdfs/v1/adlspstestfolder/contentfile.txt?overwrite=false&op=CREATE&write=true&api-version=2016-11-01"
+          "https://onesdk6987.azuredatalakestore.net/webhdfs/v1/adlspstestfolder/contentfile.txt?overwrite=false&op=CREATE&write=true&api-version=2016-11-01"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/webhdfs/v1/adlspstestfolder?op=MSLISTSTATUS&api-version=2016-11-01",
-      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlcj9vcD1NU0xJU1RTVEFUVVMmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
-      "RequestMethod": "GET",
+      "RequestUri": "/WebHdfsExt/adlspstestfolder%2Fcontentfile.txt?expiryOption=Absolute&expireTime=1481070219000&op=SETEXPIRY&api-version=2016-11-01",
+      "EncodedRequestUri": "L1dlYkhkZnNFeHQvYWRsc3BzdGVzdGZvbGRlciUyRmNvbnRlbnRmaWxlLnR4dD9leHBpcnlPcHRpb249QWJzb2x1dGUmZXhwaXJlVGltZT0xNDgxMDcwMjE5MDAwJm9wPVNFVEVYUElSWSZhcGktdmVyc2lvbj0yMDE2LTExLTAx",
+      "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e88a7135-bb76-4399-915e-4105f5eb5ac9"
+          "98d98468-4516-4be3-bce4-b7033a15802b"
         ],
         "accept-language": [
           "en-US"
@@ -1288,7 +1504,97 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatuses\": {\r\n    \"FileStatus\": [\r\n      {\r\n        \"length\": 36,\r\n        \"pathSuffix\": \"contentfile.txt\",\r\n        \"type\": \"FILE\",\r\n        \"blockSize\": 268435456,\r\n        \"accessTime\": 1480966063919,\r\n        \"modificationTime\": 1480966064403,\r\n        \"replication\": 1,\r\n        \"permission\": \"770\",\r\n        \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"expirationTime\": 0,\r\n        \"msExpirationTime\": 0\r\n      },\r\n      {\r\n        \"length\": 0,\r\n        \"pathSuffix\": \"emptyfile.txt\",\r\n        \"type\": \"FILE\",\r\n        \"blockSize\": 268435456,\r\n        \"accessTime\": 1480966063459,\r\n        \"modificationTime\": 1480966063459,\r\n        \"replication\": 1,\r\n        \"permission\": \"770\",\r\n        \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"expirationTime\": 0,\r\n        \"msExpirationTime\": 0\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "52f57f9d-f0dc-4274-9143-5aeb53e7bc18"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache, max-age=0"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 00:21:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/WebHdfsExt/adlspstestfolder%2Fcontentfile.txt?expiryOption=NeverExpire&op=SETEXPIRY&api-version=2016-11-01",
+      "EncodedRequestUri": "L1dlYkhkZnNFeHQvYWRsc3BzdGVzdGZvbGRlciUyRmNvbnRlbnRmaWxlLnR4dD9leHBpcnlPcHRpb249TmV2ZXJFeHBpcmUmb3A9U0VURVhQSVJZJmFwaS12ZXJzaW9uPTIwMTYtMTEtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "122bc216-593e-400a-9235-c3c9056ee8da"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5ef54c93-78bb-400b-8f02-fb3cb6bad328"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache, max-age=0"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 00:21:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/webhdfs/v1/adlspstestfolder?op=MSLISTSTATUS&api-version=2016-11-01",
+      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlcj9vcD1NU0xJU1RTVEFUVVMmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d7bde6e5-094e-42da-a763-8841a207ebb1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"FileStatuses\": {\r\n    \"FileStatus\": [\r\n      {\r\n        \"length\": 36,\r\n        \"pathSuffix\": \"contentfile.txt\",\r\n        \"type\": \"FILE\",\r\n        \"blockSize\": 268435456,\r\n        \"accessTime\": 1481070099193,\r\n        \"modificationTime\": 1481070099240,\r\n        \"replication\": 1,\r\n        \"permission\": \"770\",\r\n        \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"expirationTime\": 0,\r\n        \"msExpirationTime\": 0\r\n      },\r\n      {\r\n        \"length\": 0,\r\n        \"pathSuffix\": \"emptyfile.txt\",\r\n        \"type\": \"FILE\",\r\n        \"blockSize\": 268435456,\r\n        \"accessTime\": 1481070098763,\r\n        \"modificationTime\": 1481070098763,\r\n        \"replication\": 1,\r\n        \"permission\": \"770\",\r\n        \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n        \"expirationTime\": 0,\r\n        \"msExpirationTime\": 0\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "650"
@@ -1303,7 +1609,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "126f3766-d47c-410d-bae9-ea3e3e8f92b3"
+          "96cacd3c-51dc-4c42-a1a0-92cd20de8408"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1321,7 +1627,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:44 GMT"
+          "Wed, 07 Dec 2016 00:21:39 GMT"
         ]
       },
       "StatusCode": 200
@@ -1339,7 +1645,7 @@
           "36"
         ],
         "x-ms-client-request-id": [
-          "31b5d054-e29c-4f22-8129-df05e4e35b8f"
+          "28482bb5-4668-439d-922c-54f396da05dd"
         ],
         "accept-language": [
           "en-US"
@@ -1360,7 +1666,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "37a4c3cf-d574-45c5-8f3d-20ce9d569ed6"
+          "9834a596-7e23-4d13-982e-d4bb32f40bc1"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1378,7 +1684,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:45 GMT"
+          "Wed, 07 Dec 2016 00:21:40 GMT"
         ]
       },
       "StatusCode": 200
@@ -1396,7 +1702,7 @@
           "71"
         ],
         "x-ms-client-request-id": [
-          "4810f087-b32e-40e5-ae0a-6135efb744f2"
+          "03f49e81-40e2-43b3-8c2f-25a0bf2b7e18"
         ],
         "accept-language": [
           "en-US"
@@ -1417,7 +1723,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f6a90794-5139-4969-a04a-45d5f8e95c26"
+          "074b63c3-f3e4-4508-afc4-1e3cb1412a11"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1435,7 +1741,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:46 GMT"
+          "Wed, 07 Dec 2016 00:21:40 GMT"
         ]
       },
       "StatusCode": 200
@@ -1447,7 +1753,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "be684738-e43b-4e4b-a0c1-fb8015bb1790"
+          "737fe926-99e6-4f6c-9e17-21e325df97eb"
         ],
         "accept-language": [
           "en-US"
@@ -1456,7 +1762,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1471,7 +1777,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "87aac120-076d-4fb6-a8a6-078a6f56f6c2"
+          "52bef9e7-d30e-45b6-8e90-26a87d1010e6"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1489,7 +1795,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:46 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -1501,7 +1807,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64efe090-096d-45ac-907b-c925b84ea616"
+          "bd5f295c-2dc8-43bf-a5ff-b85757c81c63"
         ],
         "accept-language": [
           "en-US"
@@ -1510,7 +1816,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1525,7 +1831,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1a55dbe6-0593-4f31-bde9-e7e354483b72"
+          "f7c26def-5de8-44ce-85bc-603543f199d9"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1543,7 +1849,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:46 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -1555,7 +1861,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5b4f520e-eaac-437f-91bb-6da83a5380f2"
+          "52628f30-e73a-4af7-a6da-5fe53ccd802b"
         ],
         "accept-language": [
           "en-US"
@@ -1564,7 +1870,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1579,7 +1885,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "caa2010c-1c91-4852-a13e-5cbb23afa264"
+          "b0ee1937-c938-4635-b808-159434f069ff"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1597,7 +1903,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:46 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -1609,7 +1915,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "28e7651a-bf08-40cd-9e91-12aabdb89555"
+          "461bb58b-1e4c-46d7-b8cb-ff10e7cc0064"
         ],
         "accept-language": [
           "en-US"
@@ -1618,7 +1924,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1633,7 +1939,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9a8dc153-98d4-43cf-8fad-69258657ad3f"
+          "78d28092-8306-4474-92ea-40785b4c937b"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1651,7 +1957,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:47 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -1663,7 +1969,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6137c150-8a8d-4bf8-b3f8-259e64ebfc6a"
+          "0ea869ef-5859-4222-ac84-edb96ed12d66"
         ],
         "accept-language": [
           "en-US"
@@ -1672,7 +1978,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1687,7 +1993,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4a7ffeb1-2cfb-4c1c-9590-c2d7a14686b8"
+          "e6c80866-1f88-4fea-a2dd-0754ee0972ee"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1705,7 +2011,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:47 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -1717,7 +2023,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ced0e795-5d9e-428d-8a6e-946965e4d5d5"
+          "6b0d488f-1cd1-45f0-9730-655b02285384"
         ],
         "accept-language": [
           "en-US"
@@ -1726,7 +2032,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1741,7 +2047,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5b4c8005-a857-4d69-a7dc-3356277858e4"
+          "c939472a-95b1-487a-a8d2-59d786ff8a69"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1759,7 +2065,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:48 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -1771,7 +2077,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "724b424e-8d50-43da-9eed-4d67efa9574c"
+          "a4096e02-0b3c-4757-95af-e887eeec118e"
         ],
         "accept-language": [
           "en-US"
@@ -1780,7 +2086,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1795,7 +2101,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ca1f1196-52d2-47c6-880b-e27bc5838d25"
+          "2bc9087a-b3d8-45a0-9af7-730147c0ac6b"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1813,7 +2119,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -1825,7 +2131,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "23305247-b9da-4cc7-beb8-5ce160a7b346"
+          "6585cec8-f83d-42a9-b7dc-326589fdc70d"
         ],
         "accept-language": [
           "en-US"
@@ -1834,7 +2140,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1849,7 +2155,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8fe47f85-a371-4dc2-9c86-5f6d5d43fdf2"
+          "f12473c1-088b-4f94-a787-c2a318bb8d87"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1867,7 +2173,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -1879,7 +2185,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "38781ee1-db31-4d8c-a192-454572377ea8"
+          "f21649ae-cc97-4851-9a43-5feeca20b3a5"
         ],
         "accept-language": [
           "en-US"
@@ -1888,7 +2194,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1903,7 +2209,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "608f586d-9163-4468-a871-44984f87c822"
+          "affecded-aa02-4b62-b399-bd9fee367d9f"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1921,7 +2227,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -1933,7 +2239,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d15c3802-f336-4116-b6b1-09fcd35de61c"
+          "367baba0-c0c0-468d-b4c6-292b667128c4"
         ],
         "accept-language": [
           "en-US"
@@ -1942,7 +2248,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -1957,7 +2263,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "afb19e59-c7e3-4fa7-99fd-734278662cac"
+          "1a3b0ed1-e894-47eb-b546-808db05cc4a3"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -1975,7 +2281,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -1987,7 +2293,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8f2e6931-7bad-45d6-bed0-3d8eb876b392"
+          "fa414e44-b4b7-4ffd-b945-904686c52ffb"
         ],
         "accept-language": [
           "en-US"
@@ -1996,7 +2302,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -2011,7 +2317,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "52bdb2cb-806a-4a08-bf45-689b9873c3fa"
+          "8a1e9d4e-97ae-4f44-a40a-4a7a92f91478"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2029,7 +2335,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -2041,7 +2347,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e26dfae3-177d-4dbd-93ce-502c1bbb87af"
+          "15ec8fa6-54fb-4639-ac94-f5b4dc26e89c"
         ],
         "accept-language": [
           "en-US"
@@ -2050,7 +2356,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/concatfile.txt [c1d3e16d-920c-4a89-9ec1-e956aca79ee3][2016-12-05T11:27:51.7318046-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/concatfile.txt [0155f71a-1aae-4c06-acc4-28f482f5fa49][2016-12-06T16:21:44.7304634-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "252"
@@ -2065,7 +2371,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c1d3e16d-920c-4a89-9ec1-e956aca79ee3"
+          "0155f71a-1aae-4c06-acc4-28f482f5fa49"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2083,7 +2389,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 404
@@ -2095,7 +2401,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2e0bed85-f0b1-49d3-bffc-e2e6690ad03e"
+          "dcc6ff4a-dcd2-43c0-a373-bfb6b4c87dbd"
         ],
         "accept-language": [
           "en-US"
@@ -2119,7 +2425,7 @@
           "chunked"
         ],
         "x-ms-request-id": [
-          "19c95ff9-8742-4e9b-9b94-63eadfd69569"
+          "4842b4ed-f1ce-41e8-b69a-02d55d122ec4"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2137,7 +2443,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:47 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -2149,7 +2455,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e13630e3-b3a5-48ed-b505-2ea6cd359b18"
+          "9d49b5d6-ea2f-4b51-9239-9e28377b80d3"
         ],
         "accept-language": [
           "en-US"
@@ -2173,7 +2479,7 @@
           "chunked"
         ],
         "x-ms-request-id": [
-          "43f492cc-6e25-4d57-b3ab-d34546193928"
+          "ba034ce5-cf6d-4259-821c-68d4275c950d"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2191,7 +2497,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -2203,7 +2509,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5e8b1038-c6cf-4652-9eab-f3eef3a5b863"
+          "73543f73-b70a-4184-b6a6-4bb34b769b7c"
         ],
         "accept-language": [
           "en-US"
@@ -2227,7 +2533,7 @@
           "chunked"
         ],
         "x-ms-request-id": [
-          "de43532a-31e6-4f1e-85d0-6d593e230198"
+          "400fec16-04c9-4ce8-9092-c4168bea2f4e"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2245,7 +2551,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:47 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -2257,7 +2563,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "366c57c6-46ef-481f-b015-4ea21907cbc7"
+          "58103e95-db84-4963-8a5f-be8e71049148"
         ],
         "accept-language": [
           "en-US"
@@ -2281,7 +2587,7 @@
           "chunked"
         ],
         "x-ms-request-id": [
-          "8e4294a5-7cc8-40f2-afa3-b0278293fa8b"
+          "1d6412de-66b1-4eed-9c6b-0471f12f6651"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2299,7 +2605,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:48 GMT"
+          "Wed, 07 Dec 2016 00:21:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -2311,7 +2617,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f06ac750-c06b-43a8-b758-06f5fcbeeab3"
+          "9c350f38-0969-4f84-b682-241f4be25f76"
         ],
         "accept-language": [
           "en-US"
@@ -2320,7 +2626,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/importfile.txt [4343af01-f477-45ce-9e82-ba5edceb3fb6][2016-12-05T11:27:48.9661878-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/importfile.txt [494f7ffa-460d-4997-9a11-8bf9e5048ef0][2016-12-06T16:21:42.7616706-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "252"
@@ -2335,7 +2641,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4343af01-f477-45ce-9e82-ba5edceb3fb6"
+          "494f7ffa-460d-4997-9a11-8bf9e5048ef0"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2353,7 +2659,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:48 GMT"
+          "Wed, 07 Dec 2016 00:21:42 GMT"
         ]
       },
       "StatusCode": 404
@@ -2365,7 +2671,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7a9dea9b-ff02-467f-a815-4709bdbef1ec"
+          "b2a35b75-0400-478e-9271-a0c9f332a4cc"
         ],
         "accept-language": [
           "en-US"
@@ -2374,7 +2680,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/importfile.txt [8ea212db-4927-48e7-a487-651a61ad61f8][2016-12-05T11:27:49.1068127-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/importfile.txt [cbfbdbf5-ef32-4a75-af1a-4a62dcc88738][2016-12-06T16:21:42.9022961-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "252"
@@ -2389,7 +2695,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8ea212db-4927-48e7-a487-651a61ad61f8"
+          "cbfbdbf5-ef32-4a75-af1a-4a62dcc88738"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2407,7 +2713,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:48 GMT"
+          "Wed, 07 Dec 2016 00:21:42 GMT"
         ]
       },
       "StatusCode": 404
@@ -2419,7 +2725,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "993500f6-363e-46aa-856d-021de6a66234"
+          "eb71ace0-d3dc-4a9d-9ed0-9d20d07570a8"
         ],
         "accept-language": [
           "en-US"
@@ -2428,7 +2734,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 29084,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966069430,\r\n    \"modificationTime\": 1480966070044,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 29842,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070103185,\r\n    \"modificationTime\": 1481070103573,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "312"
@@ -2443,7 +2749,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "59e3596e-d670-46eb-ab89-7dfa6a99855b"
+          "e7ae8036-45ce-4473-a69d-7265cb982429"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2461,7 +2767,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:49 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -2473,7 +2779,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5f23a8c7-e5ad-4464-a992-770dc2df0b31"
+          "b8342bbd-2cd5-4ed2-b433-c8296a999180"
         ],
         "accept-language": [
           "en-US"
@@ -2482,7 +2788,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 29084,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966069430,\r\n    \"modificationTime\": 1480966070044,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 29842,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070103185,\r\n    \"modificationTime\": 1481070103573,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "312"
@@ -2497,7 +2803,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3e3f0235-b5a8-43fe-a26b-e9184d6e90ca"
+          "48e11829-5cb7-428e-9762-f26cc5d3d4bf"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2515,7 +2821,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -2524,16 +2830,16 @@
       "RequestUri": "/webhdfs/v1/adlspstestfolder%2Fimportfile.txt?overwrite=true&op=CREATE&write=true&api-version=2016-11-01",
       "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlciUyRmltcG9ydGZpbGUudHh0P292ZXJ3cml0ZT10cnVlJm9wPUNSRUFURSZ3cml0ZT10cnVlJmFwaS12ZXJzaW9uPTIwMTYtMTEtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "<#\r\n.SYNOPSIS\r\nTests DataLakeStore Account Lifecycle (Create, Update, Get, List, Delete).\r\n#>\r\nfunction Test-DataLakeStoreTrustedIdProvider\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\r\n\t\t# Test to make sure the account doesn't exist\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# Test to make sure the account does exist\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\r\n\t\t$trustedIdName = getAssetName\r\n\t\t$trustedIdEndpoint = \"https://sts.windows.net/6b04908c-b91f-40ce-8024-7ee8a4fd6150\"\r\n\r\n\t\t# Add a provider\r\n\t\tAdd-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName -ProviderEndpoint $trustedIdEndpoint\r\n\r\n\t\t# Get the provider\r\n\t\t$result = Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName\r\n\t\tAssert-AreEqual $trustedIdName $result.Name\r\n\t\tAssert-AreEqual $trustedIdEndpoint $result.IdProvider\r\n\r\n\t\t# remove the provider\r\n\t\tRemove-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName\r\n\r\n\t\t# Make sure get throws.\r\n\t\tAssert-Throws {Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\nfunction Test-DataLakeStoreFirewall\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\r\n\t\t# Test to make sure the account doesn't exist\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# Test to make sure the account does exist\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\r\n\t\t$firewallRuleName = getAssetName\r\n\t\t$startIp = \"127.0.0.1\"\r\n\t\t$endIp = \"127.0.0.2\"\r\n\t\t# Add a firewall rule\r\n\t\tAdd-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp\r\n\r\n\t\t# Get the firewall rule\r\n\t\t$result = Get-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName\r\n\t\tAssert-AreEqual $firewallRuleName $result.Name\r\n\t\tAssert-AreEqual $startIp $result.StartIpAddress\r\n\t\tAssert-AreEqual $endIp $result.EndIpAddress\r\n\r\n\t\t# remove the firewall rule\r\n\t\tRemove-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName\r\n\r\n\t\t# Make sure get throws.\r\n\t\tAssert-Throws {Get-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\nfunction Test-DataLakeStoreAccount\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\r\n\t\t# Test to make sure the account doesn't exist\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tAssert-True {$accountGet[0].Identity -ne $null}\r\n\t\t\t\tAssert-True {$accountGet[0].Properties.EncryptionConfig -ne $null}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# Test to make sure the account does exist\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t# Updating Account\r\n\t\t$tagsToUpdate = @{\"TestTag\" = \"TestUpdate\"}\r\n\t\t$accountUpdated = Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate\r\n    \r\n\t\tAssert-AreEqual $accountName $accountUpdated.Name\r\n\t\tAssert-AreEqual $location $accountUpdated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountUpdated.Type\r\n\t\tAssert-True {$accountUpdated.Id -like \"*$resourceGroupName*\"}\r\n\t\r\n\t\tAssert-NotNull $accountUpdated.Tags \"Tags do not exists\"\r\n\t\tAssert-NotNull $accountUpdated.Tags[\"TestTag\"] \"The updated tag 'TestTag' does not exist\"\r\n\r\n\t\t# List all accounts in resource group\r\n\t\t[array]$accountsInResourceGroup = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName\r\n\t\tAssert-True {$accountsInResourceGroup.Count -ge 1}\r\n    \r\n\t\t$found = 0\r\n\t\tfor ($i = 0; $i -lt $accountsInResourceGroup.Count; $i++)\r\n\t\t{\r\n\t\t\tif ($accountsInResourceGroup[$i].Name -eq $accountName)\r\n\t\t\t{\r\n\t\t\t\t$found = 1\r\n\t\t\t\tAssert-AreEqual $location $accountsInResourceGroup[$i].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountsInResourceGroup[$i].Type\r\n\t\t\t\tAssert-True {$accountsInResourceGroup[$i].Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\t\t}\r\n\t\tAssert-True {$found -eq 1} \"Account created earlier is not found when listing all in resource group: $resourceGroupName.\"\r\n\r\n\t\t# List all Data Lake accounts in subscription\r\n\t\t[array]$accountsInSubscription = Get-AzureRMDataLakeStoreAccount\r\n\t\tAssert-True {$accountsInSubscription.Count -ge 1}\r\n\t\tAssert-True {$accountsInSubscription.Count -ge $accountsInResourceGroup.Count}\r\n    \r\n\t\t$found = 0\r\n\t\tfor ($i = 0; $i -lt $accountsInSubscription.Count; $i++)\r\n\t\t{\r\n\t\t\tif ($accountsInSubscription[$i].Name -eq $accountName)\r\n\t\t\t{\r\n\t\t\t\t$found = 1\r\n\t\t\t\tAssert-AreEqual $location $accountsInSubscription[$i].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountsInSubscription[$i].Type\r\n\t\t\t\tAssert-True {$accountsInSubscription[$i].Id -like \"*$resourceGroupName*\"}\r\n    \r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\t\t}\r\n\t\tAssert-True {$found -eq 1} \"Account created earlier is not found when listing all in subscription.\"\r\n\r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\nfunction Test-DataLakeStoreFileSystem\r\n{\r\n\tparam\r\n\t(\r\n\t\t$fileToCopy,\r\n\t\t$location = \"West US\"\r\n\t)\r\n\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# define all the files and folders to create\r\n\t\t$folderToCreate = \"/adlspstestfolder\"\r\n\t\t$emptyFilePath = \"$folderToCreate\\emptyfile.txt\" # have one where the slash is in the wrong direction to make sure they get fixed.\r\n\t\t$contentFilePath = \"$folderToCreate/contentfile.txt\"\r\n\t\t$concatFile = \"$folderToCreate/concatfile.txt\"\r\n\t\t$moveFile = \"$folderToCreate/movefile.txt\"\r\n\t\t$movefolder = \"/adlspstestmovefolder\"\r\n\t\t$importFile = \"$folderToCreate/importfile.txt\"\r\n\t\t$content = \"Test file content! @ Azure PsTest01?\"\r\n\t\r\n\r\n\t\t# Create and get Empty folder\r\n\t\t$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate -Folder\r\n\t\tAssert-NotNull $result \"No value was returned on folder creation\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate\r\n\t\tAssert-NotNull $result \"No value was returned on folder get\"\r\n\t\tAssert-AreEqual \"Directory\" $result.Type\r\n\t\t# Create and get Empty File\r\n\t\t$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on empty file creation\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on empty file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual 0 $result.Length\r\n\t\t# Create and get file with content\r\n\t\t$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $contentFilePath -Value $content\r\n\t\tAssert-NotNull $result \"No value was returned on content file creation\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $contentFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on content file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $content.length $result.Length\r\n\t\t# list files\r\n\t\t$result = Get-AzureRMDataLakeStoreChildItem -Account $accountName -path $folderToCreate\r\n\t\tAssert-NotNull $result \"No value was returned on folder list\"\r\n\t\tAssert-AreEqual 2 $result.length\r\n\t\t# add content to empty file\r\n\t\tAdd-AzureRMDataLakeStoreItemContent -Account $accountName -Path $emptyFilePath -Value $content\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on empty file get with content added\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $content.length $result.Length\r\n\t\t# concat files\r\n\t\t$result = Join-AzureRMDataLakeStoreItem -Account $accountName -Paths $emptyFilePath,$contentFilePath -Destination $concatFile\r\n\t\tAssert-NotNull $result \"No value was returned on concat file\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $concatFile\r\n\t\tAssert-NotNull $result \"No value was returned on concat file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $($content.length*2) $result.Length\r\n\t\r\n\t\t# Preview content from the file\r\n\t\t$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile\r\n\t\tAssert-AreEqual $($content.length*2) $previewContent.Length\r\n\r\n\t\t# Preview a subset of the content\r\n\t\t$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2\r\n\t\tAssert-AreEqual $(($content.length*2) - 2) $previewContent.Length\r\n\r\n\t\t# Preview a subset with a specific length\r\n\t\t$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2 -Length $content.Length\r\n\t\tAssert-AreEqual $content.length $previewContent.Length\r\n\r\n\t\t# Import and get file\r\n\t\t$localFileInfo = Get-ChildItem $fileToCopy\r\n\t\t$result = Import-AzureRMDataLakeStoreItem -Account $accountName -Path $fileToCopy -Destination $importFile\r\n\t\tAssert-NotNull $result \"No value was returned on import file\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $importFile\r\n\t\tAssert-NotNull $result \"No value was returned on import file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $localFileInfo.length $result.Length\r\n\t\t# download file\r\n\t\t$currentDir = Split-Path $fileToCopy\r\n\t\t$targetFile = Join-Path $currentDir \"adlspstestdownload.txt\"\r\n\t\tif(Test-Path $targetFile)\r\n\t\t{\r\n\t\t\tRemove-Item -path $targetFile -force -confirm:$false\r\n\t\t}\r\n\r\n\t\tExport-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $targetFile\r\n\t\t$downloadedFileInfo = Get-ChildItem $targetFile\r\n\t\tAssert-AreEqual $($content.length*2) $downloadedFileInfo.length\r\n\t\tRemove-Item -path $targetFile -force -confirm:$false\r\n\r\n\t\t# move a file\r\n\t\t$result = Move-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $moveFile\r\n\t\tAssert-NotNull $result \"No value was returned on move file\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile\r\n\t\tAssert-NotNull $result \"No value was returned on move file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $($content.length*2) $result.Length\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $concatFile}\r\n\t\t# move a folder\r\n\t\t$result = Move-AzureRMDataLakeStoreItem -Account $accountName -Path $folderToCreate -Destination $moveFolder\r\n\t\tAssert-NotNull $result \"No value was returned on move folder\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder\r\n\t\tAssert-NotNull $result \"No value was returned on move folder get\"\r\n\t\tAssert-AreEqual \"Directory\" $result.Type\r\n\t\tAssert-AreEqual 0 $result.Length\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate}\r\n\t\t# delete a file\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths \"$moveFolder/movefile.txt\" -force -passthru } \"Remove File Failed\"\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile}\r\n\t\t# delete a folder\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} \"Remove folder failed\"\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder}\r\n    \r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\nfunction Test-DataLakeStoreFileSystemPermissions\r\n{\r\n\tparam\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# define the permissions to add/remove\r\n\t\t$aceUserId = \"027c28d5-c91d-49f0-98c5-d10134b169b3\"\r\n\r\n\t\t# Set and get all the permissions\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-NotNull $result \"Did not get any result from ACL get\" \r\n\t\tAssert-True {$result.Count -ge 0} \"UserAces is negative or null\"\r\n \t\t$currentCount = $result.Count\r\n \t\t$result.Add(\"user:$aceUserId`:rwx\")\r\n \t\t$toRemove = $result[$result.Count -1]\r\n\t\tAssert-AreEqual $aceUserId $toRemove.Id\r\n\r\n\t\tSet-AzureRMDataLakeStoreItemAcl -Account $accountName -path \"/\" -Acl $result\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\t# it is +2 because the mask gets computed when the first user is added.\r\n\t\tAssert-AreEqual $($currentCount+2) $result.Count\r\n \t\t$found = $false\r\n \t\tfor($i = 0; $i -lt $result.Count; $i++)\r\n \t\t{\r\n \t\t\tif($result[$i].Id -like $aceUserId)\r\n \t\t\t{\r\n \t\t\t\t$found = $true\r\n \t\t\t\t$result.RemoveAt($i)\r\n \t\t\t\tbreak\r\n \t\t\t}\r\n \t\t}\r\n \r\n \t\tAssert-True { $found } \"Failed to remove the element: $($toRemove.Entry)\"\r\n\r\n\t\t# remove the account\r\n\t\tSet-AzureRMDataLakeStoreItemAcl -Account $accountName -path \"/\" -Acl $result\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\r\n\t\t# mask does not get removed when removing the user\r\n\t\tAssert-AreEqual $($currentCount+1) $result.Count\r\n\r\n\t\t# Set and get a specific permission with friendly sets\r\n\t\tSet-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -AceType User -Id $aceUserId -Permissions All\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+2) $result.Count\r\n\t\t# remove a specific permission with friendly remove\r\n\t\tRemove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -AceType User -Id $aceUserId\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+1) $result.Count\r\n\t\t# set and get a specific permission with the ACE string\r\n\t\tSet-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -Acl $([string]::Format(\"user:{0}:rwx\", $aceUserId))\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+2) $result.Count\r\n\t\t# remove a specific permission with the ACE string\r\n\t\tRemove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -Acl $([string]::Format(\"user:{0}:---\", $aceUserId))\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+1) $result.Count\r\n\r\n\t\t# Validate full ACL removal\r\n\t\tRemove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path \"/\" -Force -Default\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 4 $result.Count\r\n\t\tRemove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path \"/\" -Force\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 3 $result.Count\r\n\r\n\t\t# validate permissions\r\n\t\t$permission = Get-AzureRMDataLakeStoreItemPermission -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 770 $permission\r\n\t\tSet-AzureRMDataLakeStoreItemPermission -Account $accountName -path \"/\" -Permission 777 | Out-Null\r\n\t\t$permission = Get-AzureRMDataLakeStoreItemPermission -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 777 $permission\r\n\r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\n<#\r\n.SYNOPSIS\r\nTests DataLakeStore Account Lifecycle Failure scenarios (Create, Update, Get, Delete).\r\n#>\r\nfunction Test-NegativeDataLakeStoreAccount\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\",\r\n\t\t$fakeaccountName = \"psfakedataLakeaccounttest\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n        \r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# attempt to recreate the already created account\r\n\t\tAssert-Throws {New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}\r\n\r\n\t\t# attempt to update a non-existent account\r\n\t\t$tagsToUpdate = @{\"TestTag\" = \"TestUpdate\"}\r\n\t\tAssert-Throws {Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}\r\n\r\n\t\t# attempt to get a non-existent account\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}\r\n\r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Delete Data Lake account again should throw.\r\n\t\tAssert-Throws {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n",
+      "RequestBody": "<#\r\n.SYNOPSIS\r\nTests DataLakeStore Account Lifecycle (Create, Update, Get, List, Delete).\r\n#>\r\nfunction Test-DataLakeStoreTrustedIdProvider\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\r\n\t\t# Test to make sure the account doesn't exist\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# Test to make sure the account does exist\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\r\n\t\t$trustedIdName = getAssetName\r\n\t\t$trustedIdEndpoint = \"https://sts.windows.net/6b04908c-b91f-40ce-8024-7ee8a4fd6150\"\r\n\r\n\t\t# Add a provider\r\n\t\tAdd-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName -ProviderEndpoint $trustedIdEndpoint\r\n\r\n\t\t# Get the provider\r\n\t\t$result = Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName\r\n\t\tAssert-AreEqual $trustedIdName $result.Name\r\n\t\tAssert-AreEqual $trustedIdEndpoint $result.IdProvider\r\n\r\n\t\t# remove the provider\r\n\t\tRemove-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName\r\n\r\n\t\t# Make sure get throws.\r\n\t\tAssert-Throws {Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\nfunction Test-DataLakeStoreFirewall\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\r\n\t\t# Test to make sure the account doesn't exist\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# Test to make sure the account does exist\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\r\n\t\t$firewallRuleName = getAssetName\r\n\t\t$startIp = \"127.0.0.1\"\r\n\t\t$endIp = \"127.0.0.2\"\r\n\t\t# Add a firewall rule\r\n\t\tAdd-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp\r\n\r\n\t\t# Get the firewall rule\r\n\t\t$result = Get-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName\r\n\t\tAssert-AreEqual $firewallRuleName $result.Name\r\n\t\tAssert-AreEqual $startIp $result.StartIpAddress\r\n\t\tAssert-AreEqual $endIp $result.EndIpAddress\r\n\r\n\t\t# remove the firewall rule\r\n\t\tRemove-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName\r\n\r\n\t\t# Make sure get throws.\r\n\t\tAssert-Throws {Get-AzureRmDataLakeStoreFirewallRule -AccountName $accountName -Name $firewallRuleName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\nfunction Test-DataLakeStoreAccount\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\r\n\t\t# Test to make sure the account doesn't exist\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -Encryption ServiceManaged\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tAssert-True {$accountGet[0].Identity -ne $null}\r\n\t\t\t\tAssert-True {$accountGet[0].Properties.EncryptionConfig -ne $null}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# Test to make sure the account does exist\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t\t# Test it without specifying a resource group\r\n\t\tAssert-True {Test-AzureRMDataLakeStoreAccount -Name $accountName}\r\n\r\n\t\t# Updating Account\r\n\t\t$tagsToUpdate = @{\"TestTag\" = \"TestUpdate\"}\r\n\t\t$accountUpdated = Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate\r\n    \r\n\t\tAssert-AreEqual $accountName $accountUpdated.Name\r\n\t\tAssert-AreEqual $location $accountUpdated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountUpdated.Type\r\n\t\tAssert-True {$accountUpdated.Id -like \"*$resourceGroupName*\"}\r\n\t\r\n\t\tAssert-NotNull $accountUpdated.Tags \"Tags do not exists\"\r\n\t\tAssert-NotNull $accountUpdated.Tags[\"TestTag\"] \"The updated tag 'TestTag' does not exist\"\r\n\r\n\t\t# List all accounts in resource group\r\n\t\t[array]$accountsInResourceGroup = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName\r\n\t\tAssert-True {$accountsInResourceGroup.Count -ge 1}\r\n    \r\n\t\t$found = 0\r\n\t\tfor ($i = 0; $i -lt $accountsInResourceGroup.Count; $i++)\r\n\t\t{\r\n\t\t\tif ($accountsInResourceGroup[$i].Name -eq $accountName)\r\n\t\t\t{\r\n\t\t\t\t$found = 1\r\n\t\t\t\tAssert-AreEqual $location $accountsInResourceGroup[$i].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountsInResourceGroup[$i].Type\r\n\t\t\t\tAssert-True {$accountsInResourceGroup[$i].Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\t\t}\r\n\t\tAssert-True {$found -eq 1} \"Account created earlier is not found when listing all in resource group: $resourceGroupName.\"\r\n\r\n\t\t# List all Data Lake accounts in subscription\r\n\t\t[array]$accountsInSubscription = Get-AzureRMDataLakeStoreAccount\r\n\t\tAssert-True {$accountsInSubscription.Count -ge 1}\r\n\t\tAssert-True {$accountsInSubscription.Count -ge $accountsInResourceGroup.Count}\r\n    \r\n\t\t$found = 0\r\n\t\tfor ($i = 0; $i -lt $accountsInSubscription.Count; $i++)\r\n\t\t{\r\n\t\t\tif ($accountsInSubscription[$i].Name -eq $accountName)\r\n\t\t\t{\r\n\t\t\t\t$found = 1\r\n\t\t\t\tAssert-AreEqual $location $accountsInSubscription[$i].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountsInSubscription[$i].Type\r\n\t\t\t\tAssert-True {$accountsInSubscription[$i].Id -like \"*$resourceGroupName*\"}\r\n    \r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\t\t}\r\n\t\tAssert-True {$found -eq 1} \"Account created earlier is not found when listing all in subscription.\"\r\n\r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\nfunction Test-DataLakeStoreFileSystem\r\n{\r\n\tparam\r\n\t(\r\n\t\t$fileToCopy,\r\n\t\t$location = \"West US\"\r\n\t)\r\n\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# define all the files and folders to create\r\n\t\t$folderToCreate = \"/adlspstestfolder\"\r\n\t\t$emptyFilePath = \"$folderToCreate\\emptyfile.txt\" # have one where the slash is in the wrong direction to make sure they get fixed.\r\n\t\t$contentFilePath = \"$folderToCreate/contentfile.txt\"\r\n\t\t$concatFile = \"$folderToCreate/concatfile.txt\"\r\n\t\t$moveFile = \"$folderToCreate/movefile.txt\"\r\n\t\t$movefolder = \"/adlspstestmovefolder\"\r\n\t\t$importFile = \"$folderToCreate/importfile.txt\"\r\n\t\t$content = \"Test file content! @ Azure PsTest01?\"\r\n\t\r\n\r\n\t\t# Create and get Empty folder\r\n\t\t$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate -Folder\r\n\t\tAssert-NotNull $result \"No value was returned on folder creation\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate\r\n\t\tAssert-NotNull $result \"No value was returned on folder get\"\r\n\t\tAssert-AreEqual \"Directory\" $result.Type\r\n\t\t# Create and get Empty File\r\n\t\t$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on empty file creation\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on empty file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual 0 $result.Length\r\n\t\t# Create and get file with content\r\n\t\t$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $contentFilePath -Value $content\r\n\t\tAssert-NotNull $result \"No value was returned on content file creation\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $contentFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on content file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $content.length $result.Length\r\n\t\t# set and validate expiration for a file\r\n\t\tAssert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value\r\n\t\t$timeToUse = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable(\"absoluteTime\", [DateTimeOffset]::Now.AddSeconds(120))\r\n\t\t$result = Set-AzureRmDataLakeStoreItemExpiry -Account $accountName -path $contentFilePath -Expiration $timeToUse\r\n\t\tAssert-AreEqual $timeToUse $result.Expiration\r\n\t\t# set it back to \"never expire\"\r\n\t\t$result = Set-AzureRmDataLakeStoreItemExpiry -Account $accountName -path $contentFilePath\r\n\t\tAssert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value\r\n\t\t# list files\r\n\t\t$result = Get-AzureRMDataLakeStoreChildItem -Account $accountName -path $folderToCreate\r\n\t\tAssert-NotNull $result \"No value was returned on folder list\"\r\n\t\tAssert-AreEqual 2 $result.length\r\n\t\t# add content to empty file\r\n\t\tAdd-AzureRMDataLakeStoreItemContent -Account $accountName -Path $emptyFilePath -Value $content\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $emptyFilePath\r\n\t\tAssert-NotNull $result \"No value was returned on empty file get with content added\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $content.length $result.Length\r\n\t\t# concat files\r\n\t\t$result = Join-AzureRMDataLakeStoreItem -Account $accountName -Paths $emptyFilePath,$contentFilePath -Destination $concatFile\r\n\t\tAssert-NotNull $result \"No value was returned on concat file\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $concatFile\r\n\t\tAssert-NotNull $result \"No value was returned on concat file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $($content.length*2) $result.Length\r\n\t\r\n\t\t# Preview content from the file\r\n\t\t$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile\r\n\t\tAssert-AreEqual $($content.length*2) $previewContent.Length\r\n\r\n\t\t# Preview a subset of the content\r\n\t\t$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2\r\n\t\tAssert-AreEqual $(($content.length*2) - 2) $previewContent.Length\r\n\r\n\t\t# Preview a subset with a specific length\r\n\t\t$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2 -Length $content.Length\r\n\t\tAssert-AreEqual $content.length $previewContent.Length\r\n\r\n\t\t# Import and get file\r\n\t\t$localFileInfo = Get-ChildItem $fileToCopy\r\n\t\t$result = Import-AzureRMDataLakeStoreItem -Account $accountName -Path $fileToCopy -Destination $importFile\r\n\t\tAssert-NotNull $result \"No value was returned on import file\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $importFile\r\n\t\tAssert-NotNull $result \"No value was returned on import file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $localFileInfo.length $result.Length\r\n\t\t# download file\r\n\t\t$currentDir = Split-Path $fileToCopy\r\n\t\t$targetFile = Join-Path $currentDir \"adlspstestdownload.txt\"\r\n\t\tif(Test-Path $targetFile)\r\n\t\t{\r\n\t\t\tRemove-Item -path $targetFile -force -confirm:$false\r\n\t\t}\r\n\r\n\t\tExport-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $targetFile\r\n\t\t$downloadedFileInfo = Get-ChildItem $targetFile\r\n\t\tAssert-AreEqual $($content.length*2) $downloadedFileInfo.length\r\n\t\tRemove-Item -path $targetFile -force -confirm:$false\r\n\r\n\t\t# move a file\r\n\t\t$result = Move-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $moveFile\r\n\t\tAssert-NotNull $result \"No value was returned on move file\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile\r\n\t\tAssert-NotNull $result \"No value was returned on move file get\"\r\n\t\tAssert-AreEqual \"File\" $result.Type\r\n\t\tAssert-AreEqual $($content.length*2) $result.Length\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $concatFile}\r\n\t\t# move a folder\r\n\t\t$result = Move-AzureRMDataLakeStoreItem -Account $accountName -Path $folderToCreate -Destination $moveFolder\r\n\t\tAssert-NotNull $result \"No value was returned on move folder\"\r\n\t\t$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder\r\n\t\tAssert-NotNull $result \"No value was returned on move folder get\"\r\n\t\tAssert-AreEqual \"Directory\" $result.Type\r\n\t\tAssert-AreEqual 0 $result.Length\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate}\r\n\t\t# delete a file\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths \"$moveFolder/movefile.txt\" -force -passthru } \"Remove File Failed\"\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile}\r\n\t\t# delete a folder\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} \"Remove folder failed\"\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder}\r\n    \r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\nfunction Test-DataLakeStoreFileSystemPermissions\r\n{\r\n\tparam\r\n\t(\r\n\t\t$location = \"West US\"\r\n\t)\r\n\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account is not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# define the permissions to add/remove\r\n\t\t$aceUserId = \"027c28d5-c91d-49f0-98c5-d10134b169b3\"\r\n\r\n\t\t# Set and get all the permissions\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-NotNull $result \"Did not get any result from ACL get\" \r\n\t\tAssert-True {$result.Count -ge 0} \"UserAces is negative or null\"\r\n \t\t$currentCount = $result.Count\r\n \t\t$result.Add(\"user:$aceUserId`:rwx\")\r\n \t\t$toRemove = $result[$result.Count -1]\r\n\t\tAssert-AreEqual $aceUserId $toRemove.Id\r\n\r\n\t\tSet-AzureRMDataLakeStoreItemAcl -Account $accountName -path \"/\" -Acl $result\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\t# it is +2 because the mask gets computed when the first user is added.\r\n\t\tAssert-AreEqual $($currentCount+2) $result.Count\r\n \t\t$found = $false\r\n \t\tfor($i = 0; $i -lt $result.Count; $i++)\r\n \t\t{\r\n \t\t\tif($result[$i].Id -like $aceUserId)\r\n \t\t\t{\r\n \t\t\t\t$found = $true\r\n \t\t\t\t$result.RemoveAt($i)\r\n \t\t\t\tbreak\r\n \t\t\t}\r\n \t\t}\r\n \r\n \t\tAssert-True { $found } \"Failed to remove the element: $($toRemove.Entry)\"\r\n\r\n\t\t# remove the account\r\n\t\tSet-AzureRMDataLakeStoreItemAcl -Account $accountName -path \"/\" -Acl $result\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\r\n\t\t# mask does not get removed when removing the user\r\n\t\tAssert-AreEqual $($currentCount+1) $result.Count\r\n\r\n\t\t# Set and get a specific permission with friendly sets\r\n\t\tSet-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -AceType User -Id $aceUserId -Permissions All\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+2) $result.Count\r\n\t\t# remove a specific permission with friendly remove\r\n\t\tRemove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -AceType User -Id $aceUserId\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+1) $result.Count\r\n\t\t# set and get a specific permission with the ACE string\r\n\t\tSet-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -Acl $([string]::Format(\"user:{0}:rwx\", $aceUserId))\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+2) $result.Count\r\n\t\t# remove a specific permission with the ACE string\r\n\t\tRemove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\" -Acl $([string]::Format(\"user:{0}:---\", $aceUserId))\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual $($currentCount+1) $result.Count\r\n\r\n\t\t# Validate full ACL removal\r\n\t\tRemove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path \"/\" -Force -Default\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 4 $result.Count\r\n\t\tRemove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path \"/\" -Force\r\n\t\t$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 3 $result.Count\r\n\r\n\t\t# validate permissions\r\n\t\t$permission = Get-AzureRMDataLakeStoreItemPermission -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 770 $permission\r\n\t\tSet-AzureRMDataLakeStoreItemPermission -Account $accountName -path \"/\" -Permission 777 | Out-Null\r\n\t\t$permission = Get-AzureRMDataLakeStoreItemPermission -Account $accountName -path \"/\"\r\n\t\tAssert-AreEqual 777 $permission\r\n\r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n}\r\n\r\n<#\r\n.SYNOPSIS\r\nTests DataLakeStore Account Lifecycle Failure scenarios (Create, Update, Get, Delete).\r\n#>\r\nfunction Test-NegativeDataLakeStoreAccount\r\n{\r\n    param\r\n\t(\r\n\t\t$location = \"West US\",\r\n\t\t$fakeaccountName = \"psfakedataLakeaccounttest\"\r\n\t)\r\n\t\r\n\ttry\r\n\t{\r\n\t\t# Creating Account\r\n\t\t$resourceGroupName = Get-ResourceGroupName\r\n\t\t$accountName = Get-DataLakeStoreAccountName\r\n\t\tNew-AzureRmResourceGroup -Name $resourceGroupName -Location $location\r\n\t\t$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location\r\n    \r\n\t\tAssert-AreEqual $accountName $accountCreated.Name\r\n\t\tAssert-AreEqual $location $accountCreated.Location\r\n\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountCreated.Type\r\n\t\tAssert-True {$accountCreated.Id -like \"*$resourceGroupName*\"}\r\n\r\n\t\t# In loop to check if account exists\r\n\t\tfor ($i = 0; $i -le 60; $i++)\r\n\t\t{\r\n        \r\n\t\t\t[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName\r\n\t\t\tif ($accountGet[0].Properties.ProvisioningState -like \"Succeeded\")\r\n\t\t\t{\r\n\t\t\t\tAssert-AreEqual $accountName $accountGet[0].Name\r\n\t\t\t\tAssert-AreEqual $location $accountGet[0].Location\r\n\t\t\t\tAssert-AreEqual \"Microsoft.DataLakeStore/accounts\" $accountGet[0].Type\r\n\t\t\t\tAssert-True {$accountGet[0].Id -like \"*$resourceGroupName*\"}\r\n\t\t\t\tbreak\r\n\t\t\t}\r\n\r\n\t\t\tWrite-Host \"account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)\"\r\n\t\t\t[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)\r\n\t\t\tAssert-False {$i -eq 60} \" Data Lake Store account not in succeeded state even after 30 min.\"\r\n\t\t}\r\n\r\n\t\t# attempt to recreate the already created account\r\n\t\tAssert-Throws {New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}\r\n\r\n\t\t# attempt to update a non-existent account\r\n\t\t$tagsToUpdate = @{\"TestTag\" = \"TestUpdate\"}\r\n\t\tAssert-Throws {Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}\r\n\r\n\t\t# attempt to get a non-existent account\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}\r\n\r\n\t\t# Delete Data Lake account\r\n\t\tAssert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} \"Remove Account failed.\"\r\n\r\n\t\t# Delete Data Lake account again should throw.\r\n\t\tAssert-Throws {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}\r\n\r\n\t\t# Verify that it is gone by trying to get it again\r\n\t\tAssert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}\r\n\t}\r\n\tfinally\r\n\t{\r\n\t\t# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t\tInvoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures\r\n\t}\r\n",
       "RequestHeaders": {
         "Content-Type": [
           "application/octet-stream"
         ],
         "Content-Length": [
-          "29083"
+          "29841"
         ],
         "x-ms-client-request-id": [
-          "ec155b64-5ca0-480a-a34c-da851a774395"
+          "14fc4498-9c25-48e7-9670-78ad8434916b"
         ],
         "accept-language": [
           "en-US"
@@ -2554,7 +2860,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "26e73194-5f53-4fee-bf66-4c687235dc73"
+          "200a66f5-75a5-44f6-80aa-dab76405f972"
         ],
         "ContentLength": [
           "0"
@@ -2575,17 +2881,17 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:49 GMT"
+          "Wed, 07 Dec 2016 00:21:42 GMT"
         ],
         "Location": [
-          "https://onesdk8114.azuredatalakestore.net/webhdfs/v1/adlspstestfolder/importfile.txt?overwrite=true&op=CREATE&write=true&api-version=2016-11-01"
+          "https://onesdk6987.azuredatalakestore.net/webhdfs/v1/adlspstestfolder/importfile.txt?overwrite=true&op=CREATE&write=true&api-version=2016-11-01"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/webhdfs/v1/adlspstestfolder%2Fimportfile.txt?offset=29083&op=APPEND&append=true&api-version=2016-11-01",
-      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlciUyRmltcG9ydGZpbGUudHh0P29mZnNldD0yOTA4MyZvcD1BUFBFTkQmYXBwZW5kPXRydWUmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/webhdfs/v1/adlspstestfolder%2Fimportfile.txt?offset=29841&op=APPEND&append=true&api-version=2016-11-01",
+      "EncodedRequestUri": "L3dlYmhkZnMvdjEvYWRsc3BzdGVzdGZvbGRlciUyRmltcG9ydGZpbGUudHh0P29mZnNldD0yOTg0MSZvcD1BUFBFTkQmYXBwZW5kPXRydWUmYXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "}",
       "RequestHeaders": {
@@ -2596,7 +2902,7 @@
           "1"
         ],
         "x-ms-client-request-id": [
-          "c7059421-2e6f-426c-a6da-1f7204eff1fc"
+          "021a105d-083d-48c9-846a-10d7d1890da4"
         ],
         "accept-language": [
           "en-US"
@@ -2617,7 +2923,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "17541493-1b6c-44a6-a6d8-4086b1d21a18"
+          "9ecec8b8-bc54-4349-83d5-171afdf5de47"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2635,7 +2941,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:49 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -2647,7 +2953,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "081750f8-3a47-4014-ba87-a58f5a9a22e1"
+          "f4850782-ed4a-415a-bd19-76820992e702"
         ],
         "accept-language": [
           "en-US"
@@ -2671,7 +2977,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "7a7298ca-bbba-4dea-81d8-4eb7f83d0b4c"
+          "2ae5a59c-a0e5-4597-a573-b00dedbadcba"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2689,7 +2995,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:50 GMT"
+          "Wed, 07 Dec 2016 00:21:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -2701,7 +3007,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3a6071f8-1ad8-4772-b21c-5af54adf3d7b"
+          "365f0f28-44b6-42c1-9ebb-5b028c2c44ac"
         ],
         "accept-language": [
           "en-US"
@@ -2710,7 +3016,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -2725,7 +3031,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f0d9ad0c-20e6-4c4e-b38a-37e4e3b5b583"
+          "85d7b80d-feea-4986-8ca7-dd6005879c97"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2743,7 +3049,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 200
@@ -2755,7 +3061,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c4407cd8-a33e-480e-a013-2ba743006ea5"
+          "71eebad6-8e6d-4707-94cc-9b6fb2d66286"
         ],
         "accept-language": [
           "en-US"
@@ -2764,7 +3070,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/movefile.txt [764d4300-ac35-46b9-8cd2-9289b579211b][2016-12-05T11:27:52.5130740-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestfolder/movefile.txt [c494027f-3670-48a7-8940-f619e8d46e88][2016-12-06T16:21:45.4648298-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "250"
@@ -2779,7 +3085,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "764d4300-ac35-46b9-8cd2-9289b579211b"
+          "c494027f-3670-48a7-8940-f619e8d46e88"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2797,7 +3103,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 404
@@ -2809,7 +3115,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b16d7702-61bf-45fb-954d-8b45fc4ef8af"
+          "58b97b33-eca2-4462-976a-55ffdc88e271"
         ],
         "accept-language": [
           "en-US"
@@ -2833,7 +3139,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b86c0059-7d60-43fa-bb79-5dcd04ee18f4"
+          "e27d68c0-27e9-4e3e-af7d-00004380ab7a"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2851,7 +3157,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 200
@@ -2863,7 +3169,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "465e610a-86ca-4ef3-b45c-2495d1d89607"
+          "5e841f73-cf45-4d71-b7cb-9295cefe3272"
         ],
         "accept-language": [
           "en-US"
@@ -2872,7 +3178,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"DIRECTORY\",\r\n    \"blockSize\": 0,\r\n    \"accessTime\": 1480966063110,\r\n    \"modificationTime\": 1480966071504,\r\n    \"replication\": 0,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"DIRECTORY\",\r\n    \"blockSize\": 0,\r\n    \"accessTime\": 1481070098440,\r\n    \"modificationTime\": 1481070104524,\r\n    \"replication\": 0,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "265"
@@ -2887,7 +3193,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ff4a3ed7-6325-4b1a-b387-f4c3341f61e0"
+          "164c359a-ac76-43f9-b34c-1a150c50d55a"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2905,7 +3211,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 200
@@ -2917,7 +3223,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9f9c0bc5-0485-460c-91be-813bbbaae47e"
+          "1dbc4b2a-ff8d-4606-9e5a-d08e0987c9ca"
         ],
         "accept-language": [
           "en-US"
@@ -2926,7 +3232,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"DIRECTORY\",\r\n    \"blockSize\": 0,\r\n    \"accessTime\": 1480966063110,\r\n    \"modificationTime\": 1480966072365,\r\n    \"replication\": 0,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 0,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"DIRECTORY\",\r\n    \"blockSize\": 0,\r\n    \"accessTime\": 1481070098440,\r\n    \"modificationTime\": 1481070105337,\r\n    \"replication\": 0,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "265"
@@ -2941,7 +3247,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1d511fd8-7da0-475d-8cbf-4947c36ded39"
+          "46418b4b-65dd-47eb-b635-2f9d5d3101d6"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -2959,7 +3265,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:52 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 200
@@ -2971,7 +3277,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f1b69942-5820-45bb-8d4a-983ef24f0a28"
+          "f0c8e32e-af15-422d-82ca-17315136772e"
         ],
         "accept-language": [
           "en-US"
@@ -2980,7 +3286,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestmovefolder [56afdb95-b750-4931-a0e5-91ce0052ef5b][2016-12-05T11:27:52.8880734-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"RemoteException\": {\r\n    \"exception\": \"FileNotFoundException\",\r\n    \"message\": \"File/Folder does not exist: /adlspstestmovefolder [3c131138-146e-4a2a-b167-af8d624a4f3f][2016-12-06T16:21:45.8242159-08:00]\",\r\n    \"javaClassName\": \"java.io.FileNotFoundException\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "241"
@@ -2995,7 +3301,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "56afdb95-b750-4931-a0e5-91ce0052ef5b"
+          "3c131138-146e-4a2a-b167-af8d624a4f3f"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -3013,7 +3319,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:52 GMT"
+          "Wed, 07 Dec 2016 00:21:45 GMT"
         ]
       },
       "StatusCode": 404
@@ -3025,7 +3331,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "29f16475-2d4f-4e02-a310-b5c799e2fc3e"
+          "30e030ce-2bd4-4a29-8685-6eabc3f6f132"
         ],
         "accept-language": [
           "en-US"
@@ -3034,7 +3340,7 @@
           "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreFileSystemManagementClient/1.0.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1480966066553,\r\n    \"modificationTime\": 1480966066584,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"FileStatus\": {\r\n    \"length\": 72,\r\n    \"pathSuffix\": \"\",\r\n    \"type\": \"FILE\",\r\n    \"blockSize\": 268435456,\r\n    \"accessTime\": 1481070101390,\r\n    \"modificationTime\": 1481070101421,\r\n    \"replication\": 1,\r\n    \"permission\": \"770\",\r\n    \"owner\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"group\": \"2e6c02d2-a364-4530-9137-d17403996cbf\",\r\n    \"expirationTime\": 0,\r\n    \"msExpirationTime\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "309"
@@ -3049,7 +3355,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "31c2f823-ca72-46e0-92b6-3661437440df"
+          "ebbab263-d131-4e72-b231-f9e43e4cd528"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -3067,7 +3373,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 200
@@ -3079,7 +3385,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a705a454-f330-4345-b535-260a8e74938e"
+          "510bf384-fbc2-4166-8694-78badcecb1bd"
         ],
         "accept-language": [
           "en-US"
@@ -3103,7 +3409,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3b41549b-8319-4da2-ad20-267093eece3a"
+          "0e50ab51-6cda-4544-82f4-5ef7bb0b7626"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -3121,7 +3427,7 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:51 GMT"
+          "Wed, 07 Dec 2016 00:21:44 GMT"
         ]
       },
       "StatusCode": 200
@@ -3133,7 +3439,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "92cc3b06-b041-4cee-8ef6-869e0e664d60"
+          "bdd6068e-a1d9-4dad-9412-74cd4cea78ea"
         ],
         "accept-language": [
           "en-US"
@@ -3157,7 +3463,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d8296d65-8741-4f77-ab89-e015b5779529"
+          "5cdbe379-5a73-4b17-9c05-16f8aca3566a"
         ],
         "x-ms-webhdfs-version": [
           "16.07.18.01"
@@ -3175,19 +3481,19 @@
           "no-store, no-cache, max-age=0"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:52 GMT"
+          "Wed, 07 Dec 2016 00:21:45 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5745/providers/Microsoft.DataLakeStore/accounts/onesdk8114?api-version=2016-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazU3NDUvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazgxMTQ/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987?api-version=2016-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlR3JvdXBzL29uZXNkazQzOTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhTGFrZVN0b3JlL2FjY291bnRzL29uZXNkazY5ODc/YXBpLXZlcnNpb249MjAxNi0xMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64a4e0a6-ce5c-4f22-8e7a-16938e2ae65a"
+          "27836da8-5506-47d3-a7da-aa5fd2675cd9"
         ],
         "accept-language": [
           "en-US"
@@ -3207,17 +3513,23 @@
         "Pragma": [
           "no-cache"
         ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/locations/EastUS2/operationResults/1436f56e-671b-496d-b0d2-a07d8f8757d21?api-version=2016-11-01&expanded=true"
+        ],
         "x-ms-request-id": [
-          "9e5dfc41-7106-4e28-bb8e-897da29062ca"
+          "a5ee4da3-c5b8-456f-abdc-c15cfd346da0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "e782c6b7-aff1-4cf9-8c02-4cc1fe98f22f"
+          "79d5dd8f-f3b7-40d5-98b7-2dce77c59afd"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192755Z:e782c6b7-aff1-4cf9-8c02-4cc1fe98f22f"
+          "WESTUS2:20161207T002149Z:79d5dd8f-f3b7-40d5-98b7-2dce77c59afd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3229,7 +3541,73 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:55 GMT"
+          "Wed, 07 Dec 2016 00:21:49 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourcegroups/onesdk4392/providers/Microsoft.DataLakeStore/accounts/onesdk6987/operationresults/1?api-version=2016-11-01"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/locations/EastUS2/operationResults/1436f56e-671b-496d-b0d2-a07d8f8757d21?api-version=2016-11-01&expanded=true",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUxha2VTdG9yZS9sb2NhdGlvbnMvRWFzdFVTMi9vcGVyYXRpb25SZXN1bHRzLzE0MzZmNTZlLTY3MWItNDk2ZC1iMGQyLWEwN2Q4Zjg3NTdkMjE/YXBpLXZlcnNpb249MjAxNi0xMS0wMSZleHBhbmRlZD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/1.0.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c13b98cd-f998-42f8-b3f9-811dbae94760"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "b7c1efb8-fcbd-453b-9034-19858aa20222"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20161207T002220Z:b7c1efb8-fcbd-453b-9034-19858aa20222"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Connection": [
+          "close"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 00:22:20 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -3244,8 +3622,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourcegroups/onesdk5745?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlZ3JvdXBzL29uZXNkazU3NDU/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourcegroups/onesdk4392?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL3Jlc291cmNlZ3JvdXBzL29uZXNkazQzOTI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3268,16 +3646,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1191"
         ],
         "x-ms-request-id": [
-          "8c761bae-5b3c-4142-91fd-acf7a7f6e69b"
+          "349cd791-47bf-41c1-a418-29d1b562f09f"
         ],
         "x-ms-correlation-request-id": [
-          "8c761bae-5b3c-4142-91fd-acf7a7f6e69b"
+          "349cd791-47bf-41c1-a418-29d1b562f09f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192757Z:8c761bae-5b3c-4142-91fd-acf7a7f6e69b"
+          "WESTUS2:20161207T002222Z:349cd791-47bf-41c1-a418-29d1b562f09f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3286,17 +3664,17 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:57 GMT"
+          "Wed, 07 Dec 2016 00:22:21 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOelExTFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBNemt5TFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3322,16 +3700,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14986"
+          "14991"
         ],
         "x-ms-request-id": [
-          "ca1fa9eb-b44f-4c3b-bdff-00ec67d4cb6a"
+          "8d7a308a-aa19-4636-8d95-cb0cf1a5fcfa"
         ],
         "x-ms-correlation-request-id": [
-          "ca1fa9eb-b44f-4c3b-bdff-00ec67d4cb6a"
+          "8d7a308a-aa19-4636-8d95-cb0cf1a5fcfa"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192758Z:ca1fa9eb-b44f-4c3b-bdff-00ec67d4cb6a"
+          "WESTUS2:20161207T002222Z:8d7a308a-aa19-4636-8d95-cb0cf1a5fcfa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3340,17 +3718,17 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:27:57 GMT"
+          "Wed, 07 Dec 2016 00:22:21 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOelExTFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBNemt5TFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3376,16 +3754,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14985"
+          "14990"
         ],
         "x-ms-request-id": [
-          "876299b7-8cc8-4b01-81bc-9e9a4f73bffc"
+          "905bf3ab-8646-4bef-940e-ae416f509afd"
         ],
         "x-ms-correlation-request-id": [
-          "876299b7-8cc8-4b01-81bc-9e9a4f73bffc"
+          "905bf3ab-8646-4bef-940e-ae416f509afd"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192813Z:876299b7-8cc8-4b01-81bc-9e9a4f73bffc"
+          "WESTUS2:20161207T002237Z:905bf3ab-8646-4bef-940e-ae416f509afd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3394,17 +3772,17 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:28:12 GMT"
+          "Wed, 07 Dec 2016 00:22:37 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOelExTFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBNemt5TFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3430,16 +3808,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14984"
+          "14989"
         ],
         "x-ms-request-id": [
-          "f3c2aee3-5988-41dc-ab03-2e335b6db568"
+          "e891b151-6934-400c-bf9d-8db91c72ebad"
         ],
         "x-ms-correlation-request-id": [
-          "f3c2aee3-5988-41dc-ab03-2e335b6db568"
+          "e891b151-6934-400c-bf9d-8db91c72ebad"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192828Z:f3c2aee3-5988-41dc-ab03-2e335b6db568"
+          "WESTUS2:20161207T002252Z:e891b151-6934-400c-bf9d-8db91c72ebad"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3448,17 +3826,17 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:28:27 GMT"
+          "Wed, 07 Dec 2016 00:22:52 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzQ1LUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOelExTFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs0MzkyLUVBU1RVUzIiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czIifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTNkOTA2M2QtODdhZS00ZWE4LWJlOTAtMzY4NmMzYjg2NjlmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczBNemt5TFVWQlUxUlZVeklpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3481,16 +3859,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14983"
+          "14988"
         ],
         "x-ms-request-id": [
-          "83ac95e2-5ab0-45d9-9d81-3a945a131d8c"
+          "a00069cb-ee63-447c-a9ab-afdd06fd7373"
         ],
         "x-ms-correlation-request-id": [
-          "83ac95e2-5ab0-45d9-9d81-3a945a131d8c"
+          "a00069cb-ee63-447c-a9ab-afdd06fd7373"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161205T192843Z:83ac95e2-5ab0-45d9-9d81-3a945a131d8c"
+          "WESTUS2:20161207T002308Z:a00069cb-ee63-447c-a9ab-afdd06fd7373"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3499,7 +3877,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 05 Dec 2016 19:28:43 GMT"
+          "Wed, 07 Dec 2016 00:23:07 GMT"
         ]
       },
       "StatusCode": 200
@@ -3507,11 +3885,12 @@
   ],
   "Names": {
     "Test-DataLakeStoreFileSystem": [
-      "onesdk5745",
-      "onesdk8114"
+      "onesdk4392",
+      "onesdk6987"
     ]
   },
   "Variables": {
-    "SubscriptionId": "53d9063d-87ae-4ea8-be90-3686c3b8669f"
+    "SubscriptionId": "53d9063d-87ae-4ea8-be90-3686c3b8669f",
+    "absoluteTime": "12/06/2016 16:23:39 -08:00"
   }
 }
