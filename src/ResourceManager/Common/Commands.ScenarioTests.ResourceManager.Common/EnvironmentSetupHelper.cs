@@ -212,15 +212,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 AzureRmProfileProvider.Instance.Profile.Environments[testEnvironmentName] = environment;
             }
 
+            var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
             if (currentEnvironment.SubscriptionId != null)
             {
                 if (string.IsNullOrEmpty(currentEnvironment.ServicePrincipal))
                 {
                     testAccount = new AzureAccount()
                     {
-                        // In playback, use fixed upn
-                        // Some http records have upn in url
-                        Id = HttpMockServer.Mode == HttpRecorderMode.Record ? currentEnvironment.UserName: "abc",
+                        Id = currentEnvironment.UserName,
                         Type = AzureAccount.AccountType.User,
                         Properties = new Dictionary<AzureAccount.Property, string>
                     {
@@ -232,8 +231,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     testAccount = new AzureAccount()
                     {
-                        // In playback, don't need a real SPN
-                        Id = HttpMockServer.Mode == HttpRecorderMode.Record ? currentEnvironment.ServicePrincipal: "abc",
+                        Id = currentEnvironment.ServicePrincipal,
                         Type = AzureAccount.AccountType.ServicePrincipal,
                         Properties = new Dictionary<AzureAccount.Property, string>
                     {
@@ -263,7 +261,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
                 ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
 
-                var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
                     Guid tenant;
@@ -273,6 +270,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                 }
                 AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
+            }
+
+            // In playback, use fixed account id
+            // Some http records have account id in the url.
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                testAccount.Id = "abc";
+                testAccount.Type = AzureAccount.AccountType.User;
+                testTenant.Id = new Guid("12341234-1234-1234-1234-123412341234");
             }
         }
 

@@ -3765,8 +3765,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals?$filter=servicePrincipalNames/any(c:%20c%20eq%20'abc')&api-version=1.6",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXNlcnZpY2VQcmluY2lwYWxOYW1lcy9hbnkoYzolMjBjJTIwZXElMjAnYWJjJykmYXBpLXZlcnNpb249MS42",
+      "RequestUri": "/12341234-1234-1234-1234-123412341234/servicePrincipals?$filter=servicePrincipalNames/any(c:%20c%20eq%20'abc')&api-version=1.6",
+      "EncodedRequestUri": "LzEyMzQxMjM0LTEyMzQtMTIzNC0xMjM0LTEyMzQxMjM0MTIzNC9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXNlcnZpY2VQcmluY2lwYWxOYW1lcy9hbnkoYzolMjBjJTIwZXElMjAnYWJjJykmYXBpLXZlcnNpb249MS42",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3841,8 +3841,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/users?$filter=userPrincipalName%20eq%20'abc'",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny91c2Vycz8kZmlsdGVyPXVzZXJQcmluY2lwYWxOYW1lJTIwZXElMjAnYWJjJw==",
+      "RequestUri": "/12341234-1234-1234-1234-123412341234/users?$filter=userPrincipalName%20eq%20'abc'",
+      "EncodedRequestUri": "LzEyMzQxMjM0LTEyMzQtMTIzNC0xMjM0LTEyMzQxMjM0MTIzNC91c2Vycz8kZmlsdGVyPXVzZXJQcmluY2lwYWxOYW1lJTIwZXElMjAnYWJjJw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
