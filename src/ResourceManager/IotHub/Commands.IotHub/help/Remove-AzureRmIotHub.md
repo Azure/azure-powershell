@@ -12,8 +12,7 @@ Deletes an IotHub.
 ## SYNTAX
 
 ```
-Remove-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +22,15 @@ Deletes an IotHub.
 
 ### Example 1 Remove an IotHub
 ```
-PS C:\> Remove-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" 
+PS C:\> Remove-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Removes an IotHub named "myiothub"
 
 ## PARAMETERS
 
-### -Force
-Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -58,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of hte resource group.
 
 ```yaml
 Type: String

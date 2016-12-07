@@ -26,12 +26,13 @@ Deletes an eventhub consumergroup.
 ```
 PS C:\> Remove-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName events -EventHubConsumerGroupName myconsumergroup
 ```
+
 Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
 
 ## PARAMETERS
 
 ### -EventHubConsumerGroupName
-EventHubConsumerGroupName.
+Name of the Event hub consumer group.
 
 ```yaml
 Type: String
@@ -41,13 +42,12 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-EventHubEndpointName.
-Possible values events, operationsMonitoringEvents
+Name of the event hub endpoint. The possible values are events, operationsMonitoringEvents.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

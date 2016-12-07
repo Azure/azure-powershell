@@ -13,7 +13,7 @@ Creates a new export devices job.
 
 ```
 New-AzureRmIotHubExportDevices [-ResourceGroupName] <String> [-Name] <String>
- [-ExportBlobContainerUri] <String> [-ExcludeKeys] <Boolean> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExportBlobContainerUri] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,27 +26,13 @@ Refer to the following article on how to generate the SAS URI. https://azure.mic
 ```
 PS C:\> New-AzureRmIotHubExportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -ExportBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D" -ExcludeKeys $true
 ```
+
 Creates a new export device request for the IotHub "myiothub" excluding the keys.
 
 ## PARAMETERS
 
-### -ExcludeKeys
-ExcludeKeys
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExportBlobContainerUri
-ExportBlobContainerUri
+The Uri to export the blob to.
 
 ```yaml
 Type: String
@@ -61,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -76,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

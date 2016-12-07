@@ -11,19 +11,14 @@ Gets information about the IotHubs in a subscription.
 
 ## SYNTAX
 
-### ListIotHubsBySubscription (Default)
+### ListIotHubsByResourceGroup (Default)
 ```
-Get-AzureRmIotHub [<CommonParameters>]
+Get-AzureRmIotHub [[-ResourceGroupName] <String>] [<CommonParameters>]
 ```
 
 ### GetIotHubByName
 ```
 Get-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
-```
-
-### ListIotHubsByResourceGroup
-```
-Get-AzureRmIotHub [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,24 +30,27 @@ Gets information about the IotHubs in a subscription. You can view all IotHub in
 ```
 PS C:\> Get-AzureRmIotHub
 ```
+
 Gets all the IotHubs in the subscription.
 
 ### Example 2
 ```
 PS C:\> Get-AzureRmIotHub -ResourceGroupName "myresourcegroup"
 ```
+
 Gets all the IotHubs in the subscription belonging to the resourcegroup named "myresourcegroup".
 
 ### Example 3
 ```
 PS C:\> Get-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Gets information about the IotHub named "myiothub".
 
 ## PARAMETERS
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -67,11 +65,23 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: GetIotHubByName, ListIotHubsByResourceGroup
+Parameter Sets: ListIotHubsByResourceGroup
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: GetIotHubByName
 Aliases: 
 
 Required: True

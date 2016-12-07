@@ -11,15 +11,9 @@ Gets the IotHub connectionstrings.
 
 ## SYNTAX
 
-### GetIotHubConnectionString
 ```
-Get-AzureRmIotHubConnectionString [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+Get-AzureRmIotHubConnectionString [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
  [<CommonParameters>]
-```
-
-### ListIotHubConnectionStrings
-```
-Get-AzureRmIotHubConnectionString [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,27 +23,29 @@ Gets the IotHub connectionstrings. You can either get connectionstrings for all 
 
 ### Example 1 Get All IotHub connectionstrings
 ```
-PS C:\> Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" 
+PS C:\> Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Gets the connectionstrings for all keys for the iothub named "myiothub"
 
 ### Example 2 Get the IotHub connectionstrings for a specific key
 ```
 PS C:\> Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "mykey"
 ```
+
 Gets the connectionstrings for the key named "mykey" for the iothub named "myiothub"
 
 ## PARAMETERS
 
 ### -KeyName
-KeyName
+Name of the key.
 
 ```yaml
 Type: String
-Parameter Sets: GetIotHubConnectionString
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -57,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -72,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

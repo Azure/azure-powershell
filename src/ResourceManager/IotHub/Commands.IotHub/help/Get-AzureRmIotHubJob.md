@@ -11,14 +11,8 @@ Gets the information about an IotHub job.
 
 ## SYNTAX
 
-### GetIotHubJob
 ```
 Get-AzureRmIotHubJob [-ResourceGroupName] <String> [-Name] <String> [[-JobId] <String>] [<CommonParameters>]
-```
-
-### ListIotHubJob
-```
-Get-AzureRmIotHubJob [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,22 +25,24 @@ You can either list all the jobs or filter the jobs by the Job Identifier.
 ```
 PS C:\> Get-AzureRmIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Gets all the jobs for the IotHub named "myiothub"
 
 ### Example 2 Get a specific Job
 ```
 PS C:\> Get-AzureRmIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub" -JobId 3630fc31-4caa-43e8-a232-ea0577221cb2
 ```
+
 Gets information about the job with the identifier "3630fc31-4caa-43e8-a232-ea0577221cb2" for the IotHub named "myiothub"
 
 ## PARAMETERS
 
 ### -JobId
-JobId
+The Job Identifier.
 
 ```yaml
 Type: String
-Parameter Sets: GetIotHubJob
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -57,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -72,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

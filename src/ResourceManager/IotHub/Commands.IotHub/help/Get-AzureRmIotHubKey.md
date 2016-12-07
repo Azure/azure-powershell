@@ -11,14 +11,8 @@ Gets an IotHub Key.
 
 ## SYNTAX
 
-### GetIotHubKey
 ```
-Get-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [<CommonParameters>]
-```
-
-### ListIotHubKeys
-```
-Get-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,25 +24,27 @@ Gets an IotHub Key. You can either list all Keys or filter the list by a specifi
 ```
 PS C:\> Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Gets all the Keys for the IotHub named "myiothub"
 
 ### Example 2 Get information for a specific Key
 ```
 PS C:\> Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"
 ```
+
 Gets the information for a key named "iothubowner" for the IotHub named "myiothub"
 
 ## PARAMETERS
 
 ### -KeyName
-Name
+Name of the key.
 
 ```yaml
 Type: String
-Parameter Sets: GetIotHubKey
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -56,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of hte IoT hub.
 
 ```yaml
 Type: String
@@ -71,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

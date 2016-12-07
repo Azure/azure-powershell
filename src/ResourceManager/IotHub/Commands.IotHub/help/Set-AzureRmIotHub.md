@@ -11,7 +11,7 @@ Updates the properties of an IotHub.
 
 ## SYNTAX
 
-### UpdateSku
+### UpdateSku (Default)
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -SkuName <PSIotHubSku> [-Units <Int64>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -52,18 +52,20 @@ Updates the properties of an IotHub.
 ```
 PS C:\> Set-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName S1 -Units 5
 ```
+
 Update the sku to S1 and units to 5 for the IotHub named "myiothub"
 
 ### Example 2 Update the eventhub properties
 ```
 PS C:\> Set-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubRetentionTimeInDays 4
 ```
+
 Update the retention time in days to 4 for both the telemetry and operationsmonitoringevents events for the IotHub named "myiothub"
 
 ## PARAMETERS
 
 ### -CloudToDevice
-CloudToDevice
+The properties for the cloud to device command queue.
 
 ```yaml
 Type: PSCloudToDeviceProperties
@@ -78,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableFileUploadNotifications
-EnableFileUploadNotifications
+Flag that specifies whether notifications should be enabled for file upload.
 
 ```yaml
 Type: Boolean
@@ -93,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubRetentionTimeInDays
-EventHubRetentionTimeInDays
+Retention time in days.
 
 ```yaml
 Type: Int64
@@ -108,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadContainerName
-FileUploadContainerName
+The name of the container to upload the files to.
 
 ```yaml
 Type: String
@@ -123,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadNotificationMaxDeliveryCount
-fileUploadNotificationMaxDeliveryCount
+The maximum delivery count for file upload notifications. 
 
 ```yaml
 Type: Int32
@@ -138,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadNotificationTtl
-FileUploadNotificationTtl
+Time to live value for the messages in the file upload notification queue.
 
 ```yaml
 Type: TimeSpan
@@ -153,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadSasUriTtl
-FileUploadSasUriTtl
+Time to live for the for the SAS Uri thats generated for file upload.
 
 ```yaml
 Type: TimeSpan
@@ -168,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadStorageConnectionString
-FileUploadStorageConnectionString
+The storage connection string to upload the files to.
 
 ```yaml
 Type: String
@@ -183,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -198,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationsMonitoringProperties
-OperationsMonitoringProperties
+The properties related to operations monitoring.
 
 ```yaml
 Type: PSOperationsMonitoringProperties
@@ -213,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of hte resource group.
 
 ```yaml
 Type: String
@@ -228,7 +230,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-SkuName
+Name of the Sku.
 
 ```yaml
 Type: PSIotHubSku
@@ -244,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -Units
-Units
+The number of units.
 
 ```yaml
 Type: Int64

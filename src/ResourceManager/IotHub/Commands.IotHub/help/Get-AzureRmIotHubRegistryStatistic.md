@@ -24,12 +24,13 @@ Gets the RegistryStatistics for an IotHub. This provides information about the n
 ```
 PS C:\> Get-AzureRmIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Gets the RegistryStatictics for the IotHub named "myiothub"
 
 ## PARAMETERS
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -44,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

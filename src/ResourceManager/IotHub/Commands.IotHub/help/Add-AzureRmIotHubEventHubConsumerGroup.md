@@ -22,24 +22,24 @@ Creates a consumer group in the Eventhub associated with the specified IotHub.
 
 ## EXAMPLES
 
-### Example 1: Add a consumer group to the telemetry eventhub  
-
+### Example 1: Add a consumer group to the telemetry eventhub
 ```
 PS C:\> Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events" -EventHubConsumerGroupName "myconsumergroup"
 ```
+
 Adds a new consumergroup named "myconsumergroup" to the eventhub for telemetry events in the iothub named "myiothub"
 
-### Example 2: Add a consumer group to the operations monitoring eventhub  
-
+### Example 2: Add a consumer group to the operations monitoring eventhub
 ```
 PS C:\> Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents" -EventHubConsumerGroupName "myconsumergroup"
 ```
+
 Adds a new consumergroup named "myconsumergroup" to the eventhub for operations monitoring events in the iothub named "myiothub"
 
 ## PARAMETERS
 
 ### -EventHubConsumerGroupName
-EventHubConsumerGroupName.
+Name of the EventHub ConsumerGroup that you want to add.
 
 ```yaml
 Type: String
@@ -54,8 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-EventHubEndpointName.
-Possible values events, operationsMonitoringEvents
+Name of the EventHub endpoint. The possible values for this are events, operationsMonitoringEvents
 
 ```yaml
 Type: String
@@ -70,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the Iot Hub.
 
 ```yaml
 Type: String
@@ -85,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the Resource Group.
 
 ```yaml
 Type: String
