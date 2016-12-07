@@ -98,8 +98,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         {
             // Create a new EventHub namespaces
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-            NamespaceAttributes nsAttribute = Client.BeginCreateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, tagDictionary);
-            WriteObject(nsAttribute);
+            if (ShouldProcess(target: NamespaceName, action: string.Format("Create a new EvetntHub-Namespace:{0} under Resource Group:{1}", NamespaceName, ResourceGroupName)))
+            {
+                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, tagDictionary));
+            }
         }
     }
 }
