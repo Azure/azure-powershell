@@ -8,6 +8,7 @@
         public const int ConfirmLevelChange = 8200;
         public const int CmdletWithDestructiveVerbNoForce = 8210;
         public const int CmdletWithUnapprovedVerb = 8300;
+        public const int CmdletWithPluralNoun = 8400;
         public const int CmdletWithDestructiveVerb = 98300;
         public const int CmdletWithForceParameter = 98310;
     }
