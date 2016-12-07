@@ -71,16 +71,18 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMDiagnosticsStreaming()
         {
-            EtwStreamingHelper.GenerateKeyVaultName = MockGenerateKeyVaultName;
+            EtwStreamingHelper.CustomGenerateKeyVaultName = MockGenerateKeyVaultName;
             ComputeTestController.NewInstance.RunPsTest("Test-VMDiagnosticsStreaming");
+            EtwStreamingHelper.CustomGenerateKeyVaultName = null;
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVmssDiagnosticsStreaming()
         {
-            EtwStreamingHelper.GenerateKeyVaultName = MockGenerateKeyVaultName;
+            EtwStreamingHelper.CustomGenerateKeyVaultName = MockGenerateKeyVaultName;
             ComputeTestController.NewInstance.RunPsTest("Test-VmssDiagnosticsStreaming");
+            EtwStreamingHelper.CustomGenerateKeyVaultName = null;
         }
     }
 }

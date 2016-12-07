@@ -230,7 +230,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     testAccount = new AzureAccount()
                     {
-                        Id = currentEnvironment.ServicePrincipal,
+                        // In playback, don't need a real SPN
+                        Id = HttpMockServer.Mode == HttpRecorderMode.Record ? currentEnvironment.ServicePrincipal: "abc",
                         Type = AzureAccount.AccountType.ServicePrincipal,
                         Properties = new Dictionary<AzureAccount.Property, string>
                     {

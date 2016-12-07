@@ -60,10 +60,17 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
         private static Random random = new Random();
 
-        internal static Func<string, string, Predicate<string>, string> GenerateKeyVaultName = (resourceGroupName, prefix, predicate) =>
+        private static Func<string, string, Predicate<string>, string> GenerateKeyVaultName
+        {
+            get { return CustomGenerateKeyVaultName ?? DefaultGenerateKeyVaultName; }
+        }
+
+        internal static Func<string, string, Predicate<string>, string> CustomGenerateKeyVaultName = null;
+
+        internal static string DefaultGenerateKeyVaultName(string resourceGroupName, string prefix, Predicate<string> predicate)
         {
             return GenerateUniqueId(prefix, predicate);
-        };
+        }
 
         /// <summary>
         /// Check if a virtual machine extension is included in extension list
@@ -467,7 +474,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 }
 
                 // If no access policy, always not match
-                if (keyVault.Properties == null || keyVault.Properties.AccessPolicies == null || !keyVault.Properties.AccessPolicies.Any() )
+                if (keyVault.Properties == null || keyVault.Properties.AccessPolicies == null || !keyVault.Properties.AccessPolicies.Any())
                 {
                     return false;
                 }
