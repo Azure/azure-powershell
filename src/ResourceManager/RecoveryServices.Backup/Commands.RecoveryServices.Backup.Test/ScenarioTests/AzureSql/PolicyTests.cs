@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class PolicyTests : TestsBase
+    public partial class PolicyTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlPolicyScenario()
         {
-            this.RunPowerShellTest(
-                PsBackupProviderTypes.AzureSql.ToString(), "Test-AzureSqlPolicyScenario");
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.AzureSql, "Test-AzureSqlPolicyScenario");
         }
     }
 }

@@ -23,5 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the database name
         /// </summary>
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the audit actions
+        /// </summary>
+        public string[] AuditAction { get; set; }
     }
 }

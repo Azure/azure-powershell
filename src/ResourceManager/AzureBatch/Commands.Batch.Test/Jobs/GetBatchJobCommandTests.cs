@@ -243,6 +243,43 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListBatchJobsUnderScheduleTest()
+        {
+            // Setup cmdlet to list jobs without filters. 
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobScheduleId = "jobSchedule";
+
+            string[] idsOfConstructedJobs = new[] { "job-1", "job-2", "job-3" };
+
+            // Build some CloudJobs instead of querying the service on a List Jobs from Job Schedule call
+            AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListFromJobScheduleHeaders> response = 
+                BatchTestHelpers.CreateJobListFromJobScheduleResponse(idsOfConstructedJobs);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobListFromJobScheduleOptions, 
+                AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListFromJobScheduleHeaders>>(response);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            List<PSCloudJob> pipeline = new List<PSCloudJob>();
+            commandRuntimeMock.Setup(r =>
+                r.WriteObject(It.IsAny<PSCloudJob>()))
+                .Callback<object>(j => pipeline.Add((PSCloudJob)j));
+
+            cmdlet.ExecuteCmdlet();
+
+            // Verify that the cmdlet wrote the constructed jobs to the pipeline
+            Assert.Equal(3, pipeline.Count);
+            int jobCount = 0;
+            foreach (PSCloudJob j in pipeline)
+            {
+                Assert.True(idsOfConstructedJobs.Contains(j.Id));
+                jobCount++;
+            }
+            Assert.Equal(idsOfConstructedJobs.Length, jobCount);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WhenGettingAJobFromTheService_ApplicationPackageReferencesAreMapped()
         {
             // Setup cmdlet to get a Job by id

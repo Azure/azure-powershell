@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Protocol used to send probe")]
-        [ValidateSet("Http", IgnoreCase = true)]
+        [ValidateSet("Http", "Https", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 

@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
+        [ValidateNotNullOrEmpty]
+        public bool PerSiteScaling { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -50,6 +54,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     AppServicePlan.Sku.Capacity = NumberofWorkers > 0 ? NumberofWorkers : AppServicePlan.Sku.Capacity;
                     var workerSizeAsNumber = int.Parse(AppServicePlan.Sku.Name.Substring(1, AppServicePlan.Sku.Name.Length - 1));
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
+                    AppServicePlan.PerSiteScaling = PerSiteScaling;
                     break;
             }
 
@@ -57,7 +62,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             AppServicePlan.Sku.Size = AppServicePlan.Sku.Name;
             AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, AppServicePlan.Location, AdminSiteName, AppServicePlan.Sku), true);
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, AppServicePlan.Location, AdminSiteName, AppServicePlan.Sku, null, null, AppServicePlan.PerSiteScaling), true);
         }
     }
 }
