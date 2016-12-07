@@ -20,16 +20,17 @@ Gets the Quota Metrics for an IotHub.
 
 ## EXAMPLES
 
-### Example 1 Get the Quota Metrics 
+### Example 1 Get the Quota Metrics
 ```
 PS C:\> Get-AzureRmIotHubQuotaMetric -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Gets the Quota Metric information for the IotHub named "myiothub"
 
 ## PARAMETERS
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -44,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of hte resource group.
 
 ```yaml
 Type: String

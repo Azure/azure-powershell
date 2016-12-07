@@ -25,20 +25,20 @@ Gets all the eventhub consumergroups for the different EventHubs used by IotHub.
 ```
 PS C:\> Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events"
 ```
+
 Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub
 
 ### Example 2 Gets all the eventhub consumergroups for the operationsmonitoring eventhub
 ```
 PS C:\> Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents"
 ```
-Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub for the iothub named myiothub
 
+Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub for the iothub named myiothub
 
 ## PARAMETERS
 
 ### -EventHubEndpointName
-EventHubEndpointName.
-Possible values events, operationsMonitoringEvents
+Name of the Event Hub endpoint. The possible values are events, operationsMonitoringEvents.
 
 ```yaml
 Type: String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of hte IoT hub.
 
 ```yaml
 Type: String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

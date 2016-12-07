@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <helpItems schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -144,12 +144,16 @@
 <dev:code>PS C:\&gt; Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events" -EventHubConsumerGroupName "myconsumergroup"</dev:code>
 <dev:remarks><maml:para>Adds a new consumergroup named "myconsumergroup" to the eventhub for telemetry events in the iothub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a consumer group to the operations monitoring eventhub</maml:title>
 <dev:code>PS C:\&gt; Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents" -EventHubConsumerGroupName "myconsumergroup"</dev:code>
 <dev:remarks><maml:para>Adds a new consumergroup named "myconsumergroup" to the eventhub for operations monitoring events in the iothub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -336,9 +340,11 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1 Add a Key to an IotHub</maml:title>
-<dev:code>PS C:\&gt; Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "primarykey" -SecondaryKey "secondarykey" -Rights RegistryRead</dev:code>
+<dev:code>PS C:\&gt; Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -SecondaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -Rights RegistryRead</dev:code>
 <dev:remarks><maml:para>Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissions.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -376,7 +382,7 @@
 </command:parameter>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>Get-AzureRmIotHub</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Resource Group Name
 </maml:para>
 </maml:Description>
@@ -396,7 +402,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Resource Group Name
 </maml:para>
 </maml:Description>
@@ -428,18 +434,24 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHub</dev:code>
 <dev:remarks><maml:para>Gets all the IotHubs in the subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmIotHub -ResourceGroupName "myresourcegroup"</dev:code>
 <dev:remarks><maml:para>Gets all the IotHubs in the subscription belonging to the resourcegroup named "myresourcegroup".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Gets information about the IotHub named "myiothub".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -475,7 +487,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>KeyName
 </maml:para>
 </maml:Description>
@@ -486,7 +498,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>KeyName
 </maml:para>
 </maml:Description>
@@ -536,12 +548,16 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Gets the connectionstrings for all keys for the iothub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2 Get the IotHub connectionstrings for a specific key</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "mykey"</dev:code>
 <dev:remarks><maml:para>Gets the connectionstrings for the key named "mykey" for the iothub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -638,12 +654,16 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events"</dev:code>
 <dev:remarks><maml:para>Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2 Gets all the eventhub consumergroups for the operationsmonitoring eventhub</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents"</dev:code>
 <dev:remarks><maml:para>Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub for the iothub named myiothub
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -740,12 +760,16 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Gets all the jobs for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2 Get a specific Job</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub" -JobId 3630fc31-4caa-43e8-a232-ea0577221cb2</dev:code>
 <dev:remarks><maml:para>Gets information about the job with the identifier "3630fc31-4caa-43e8-a232-ea0577221cb2" for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -781,7 +805,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>Name
 </maml:para>
 </maml:Description>
@@ -792,7 +816,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>Name
 </maml:para>
 </maml:Description>
@@ -842,12 +866,16 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Gets all the Keys for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2 Get information for a specific Key</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"</dev:code>
 <dev:remarks><maml:para>Gets the information for a key named "iothubowner" for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -926,6 +954,8 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHubQuotaMetric -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Gets the Quota Metric information for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1004,6 +1034,8 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Gets the RegistryStatictics for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1082,6 +1114,8 @@
 <dev:code>PS C:\&gt; Get-AzureRmIotHubValidSku -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Gets a list of all skus for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1271,6 +1305,8 @@
 <dev:code>PS C:\&gt; New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope"</dev:code>
 <dev:remarks><maml:para>Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudtoDevice Queue set to 20</maml:title>
@@ -1279,6 +1315,8 @@
 </maml:para>
 <maml:para>$psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties -Property @{MaxDeliveryCount=20} $properties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties -Property @{CloudToDevice=$psCloudToDeviceProperties} New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1314,15 +1352,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>ExcludeKeys</maml:name>
-<maml:Description><maml:para>ExcludeKeys
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-<dev:type><maml:name>Boolean</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>ExportBlobContainerUri</maml:name>
 <maml:Description><maml:para>ExportBlobContainerUri
 </maml:para>
@@ -1350,16 +1379,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>ExcludeKeys</maml:name>
-<maml:Description><maml:para>ExcludeKeys
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-<dev:type><maml:name>Boolean</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>ExportBlobContainerUri</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>ExportBlobContainerUri</maml:name>
 <maml:Description><maml:para>ExportBlobContainerUri
 </maml:para>
 </maml:Description>
@@ -1427,6 +1447,8 @@
 <dev:code>PS C:\&gt; New-AzureRmIotHubExportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -ExportBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&amp;ss=bfqt&amp;sr=c&amp;srt=sco&amp;sp=rwdl&amp;se=2016-10-27T04:01:48Z&amp;st=2016-10-26T20:01:48Z&amp;spr=https&amp;sig=QqpIhHsIMF8hNuFO%3D" -ExcludeKeys $true</dev:code>
 <dev:remarks><maml:para>Creates a new export device request for the IotHub "myiothub" excluding the keys.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1575,6 +1597,8 @@
 <dev:code>PS C:\&gt; New-AzureRmIotHubImportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -InputBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&amp;ss=bfqt&amp;sr=c&amp;srt=sco&amp;sp=rwdl&amp;se=2016-10-27T04:01:48Z&amp;st=2016-10-26T20:01:48Z&amp;spr=https&amp;sig=QqpIhHsIMF8hNuFO%3D" -OutputBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&amp;ss=bfqt&amp;sr=c&amp;srt=sco&amp;sp=rwdl&amp;se=2016-10-27T04:01:48Z&amp;st=2016-10-26T20:01:48Z&amp;spr=https&amp;sig=QqpIhHsIMF8hNuFO%3D"</dev:code>
 <dev:remarks><maml:para>Creates a new import device request for the IotHub "myiothub".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1610,14 +1634,6 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -1636,16 +1652,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Name</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Name
 </maml:para>
 </maml:Description>
@@ -1704,6 +1711,8 @@
 <dev:code>PS C:\&gt; Remove-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"</dev:code>
 <dev:remarks><maml:para>Removes an IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1748,7 +1757,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>EventHubConsumerGroupName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EventHubConsumerGroupName</maml:name>
 <maml:Description><maml:para>EventHubConsumerGroupName.
 </maml:para>
 </maml:Description>
@@ -1775,7 +1784,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>EventHubConsumerGroupName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EventHubConsumerGroupName</maml:name>
 <maml:Description><maml:para>EventHubConsumerGroupName.
 </maml:para>
 </maml:Description>
@@ -1852,6 +1861,8 @@
 <dev:code>PS C:\&gt; Remove-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName events -EventHubConsumerGroupName myconsumergroup</dev:code>
 <dev:remarks><maml:para>Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1887,7 +1898,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>KeyName
 </maml:para>
 </maml:Description>
@@ -1895,14 +1906,6 @@
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
@@ -1922,16 +1925,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>KeyName
 </maml:para>
 </maml:Description>
@@ -1999,6 +1993,8 @@
 <dev:code>PS C:\&gt; Remove-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner1"</dev:code>
 <dev:remarks><maml:para>Removes the key named iothubowner1 from the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2458,12 +2454,16 @@
 <dev:code>PS C:\&gt; Set-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName S1 -Units 5</dev:code>
 <dev:remarks><maml:para>Update the sku to S1 and units to 5 for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2 Update the eventhub properties</maml:title>
 <dev:code>PS C:\&gt; Set-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubRetentionTimeInDays 4</dev:code>
 <dev:remarks><maml:para>Update the retention time in days to 4 for both the telemetry and operationsmonitoringevents events for the IotHub named "myiothub"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>

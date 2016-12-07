@@ -25,12 +25,13 @@ Creates a Key for the provided IotHub. KeyNames are not unique and need to be ma
 ```
 PS C:\> Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -SecondaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -Rights RegistryRead
 ```
+
 Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissions.
 
 ## PARAMETERS
 
 ### -KeyName
-Name
+Name of the key.
 
 ```yaml
 Type: String
@@ -45,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the Iot Hub.
 
 ```yaml
 Type: String
@@ -60,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryKey
-PrimaryKey
+The Primary Key.
 
 ```yaml
 Type: String
@@ -75,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String
@@ -90,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights
+Access Rights that determine what kind of access the key will provide to the user of the key.
 
 ```yaml
 Type: PSAccessRights
@@ -106,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryKey
-SecondaryKey
+The Secondary Key.
 
 ```yaml
 Type: String

@@ -25,12 +25,13 @@ You will have to delete and recreate the iothub if you want to achieve this.
 ```
 PS C:\> Get-AzureRmIotHubValidSku -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
+
 Gets a list of all skus for the IotHub named "myiothub"
 
 ## PARAMETERS
 
 ### -Name
-Name
+Name of hte IoT hub.
 
 ```yaml
 Type: String
@@ -45,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

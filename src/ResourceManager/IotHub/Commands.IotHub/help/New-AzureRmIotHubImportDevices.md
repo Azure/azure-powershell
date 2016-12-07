@@ -26,12 +26,13 @@ Refer to the following article on how to generate the SAS URI. https://azure.mic
 ```
 PS C:\> New-AzureRmIotHubImportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -InputBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D" -OutputBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D"
 ```
+
 Creates a new import device request for the IotHub "myiothub".
 
 ## PARAMETERS
 
 ### -InputBlobContainerUri
-InputBlobContainerUri
+The Uri for the InputBlobContainerUri
 
 ```yaml
 Type: String
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -61,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputBlobContainerUri
-OutputBlobContainerUri
+The Uri to write the output to.
 
 ```yaml
 Type: String
@@ -76,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group.
 
 ```yaml
 Type: String

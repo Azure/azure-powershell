@@ -25,12 +25,14 @@ Creates a new IotHub. You can create the IotHub with either the default properti
 ```
 PS C:\> New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope"
 ```
+
 Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope".
 
 ### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudtoDevice Queue set to 20
 ```
 PS C:\> New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 ```
+
 Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" with advanced input properties represented by $properties. 
 
 $psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties -Property @{MaxDeliveryCount=20}
@@ -40,7 +42,7 @@ New-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName
 ## PARAMETERS
 
 ### -Location
-Location
+Location where the IoT hub needs to be created.
 
 ```yaml
 Type: String
@@ -55,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -70,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Properties
-Properties
+Properties of the IoT hub.
 
 ```yaml
 Type: PSIotHubInputProperties
@@ -85,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of hte resource group.
 
 ```yaml
 Type: String
@@ -100,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-SkuName
+Name of the Sku.
 
 ```yaml
 Type: PSIotHubSku
@@ -116,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -Units
-Units
+Number of units.
 
 ```yaml
 Type: Int64

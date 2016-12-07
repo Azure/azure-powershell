@@ -12,8 +12,8 @@ Removes an IotHub Key.
 ## SYNTAX
 
 ```
-Remove-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,28 +23,15 @@ Removes an IotHub Key. If there are multiple keys with the same name the first o
 
 ### Example 1 Delete an IotHub
 ```
-PS C:\> Remove-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner1" 
+PS C:\> Remove-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner1"
 ```
-Removes the key named iothubowner1 from the IotHub named "myiothub"
 
+Removes the key named iothubowner1 from the IotHub named "myiothub"
 
 ## PARAMETERS
 
-### -Force
-Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the IotHub.```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -KeyName
-KeyName
+Name of the key.
 
 ```yaml
 Type: String
@@ -54,12 +41,12 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub.
 
 ```yaml
 Type: String
@@ -74,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of hte resource group.
 
 ```yaml
 Type: String
