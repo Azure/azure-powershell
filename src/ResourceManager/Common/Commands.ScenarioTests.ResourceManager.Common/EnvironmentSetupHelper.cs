@@ -218,7 +218,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     testAccount = new AzureAccount()
                     {
-                        Id = currentEnvironment.UserName,
+                        // In playback, use fixed upn
+                        // Some http records have upn in url
+                        Id = HttpMockServer.Mode == HttpRecorderMode.Record ? currentEnvironment.UserName: "abc",
                         Type = AzureAccount.AccountType.User,
                         Properties = new Dictionary<AzureAccount.Property, string>
                     {

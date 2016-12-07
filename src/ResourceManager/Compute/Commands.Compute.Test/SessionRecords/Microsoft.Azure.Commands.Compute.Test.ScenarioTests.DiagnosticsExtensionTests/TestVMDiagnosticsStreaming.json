@@ -3841,6 +3841,82 @@
       "StatusCode": 200
     },
     {
+      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/users?$filter=userPrincipalName%20eq%20'abc'",
+      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny91c2Vycz8kZmlsdGVyPXVzZXJQcmluY2lwYWxOYW1lJTIwZXElMjAnYWJjJw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d33d9b8c-a03f-40e4-9da0-c0ae82280447"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.User\",\r\n      \"objectType\": \"User\",\r\n      \"objectId\": \"49560a5f-e074-4a3c-a79d-a812a6d5d934\",\r\n      \"deletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"addIns\": [],\r\n      \"alternativeNames\": [],\r\n      \"appDisplayName\": \"attest\",\r\n      \"appId\": \"e11421b0-65d6-4d37-b4bc-bd786c8e4962\",\r\n      \"appOwnerTenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"appRoleAssignmentRequired\": false,\r\n      \"appRoles\": [],\r\n      \"displayName\": \"attest\",\r\n      \"errorUrl\": null,\r\n      \"homepage\": \"https://attest.com\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access attest on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access attest\",\r\n          \"id\": \"5e176e44-4e37-49b3-a6b5-8d9618454255\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access attest on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access attest\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"passwordCredentials\": [],\r\n      \"preferredTokenSigningKeyThumbprint\": null,\r\n      \"publisherName\": \"Microsoft\",\r\n      \"replyUrls\": [\r\n        \"https://attest.com\"\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://attest.com/attestuser\",\r\n        \"abc\"\r\n      ],\r\n      \"servicePrincipalType\": \"Application\",\r\n      \"tags\": [\r\n        \"WindowsAzureActiveDirectoryIntegratedApp\"\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1364"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "MOHjhj9RqbXQLcxDqp/VijT6GN49oFOKiBe7k0H4GTE="
+        ],
+        "request-id": [
+          "e7ae2faa-48ba-4f62-bfba-4fba6d6e7266"
+        ],
+        "client-request-id": [
+          "936f242a-1aa1-4e1d-81fd-693bd789bfe8"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6"
+        ],
+        "ocp-aad-session-key": [
+          "39fiYqHCxUyi45hcSBCJbsZh9IYZnwNk1-bjnyiH7JdH9tsvsxZfwysveXF2bFvau0Cv_FYPue_U996p__EslHaSEG07t5269g-CzTxXaM2iqtptOPd8htQqXnz1vB09.ExDz4-W-kk5-FCMIcrQcfGzJslt_Hk_1CCfWA3NhnDg"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "1207645"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Mon, 05 Dec 2016 21:21:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
       "RequestUri": "/subscriptions/b3701996-8220-448f-8e5e-5796facd4d84/resourceGroups/crptestps2213/providers/Microsoft.KeyVault/vaults?api-version=2015-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM3MDE5OTYtODIyMC00NDhmLThlNWUtNTc5NmZhY2Q0ZDg0L3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczIyMTMvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHM/YXBpLXZlcnNpb249MjAxNS0wNi0wMQ==",
       "RequestMethod": "GET",
