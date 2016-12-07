@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute
           Position = 9,
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "Hour of the day (0-23) when the Sql Server Full Backup should start")]
-        [ValidateRange(0,23)]
+        [ValidateRange(0, 23)]
         public int FullBackupStartHour
         {
             get;
