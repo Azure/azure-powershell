@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             ConfirmAction(MyInvocation.InvocationName,
                 EndpointName,                
-                () => CdnManagementClient.Endpoints.PurgeContent(EndpointName, ProfileName, ResourceGroupName, PurgeContent));
+                () => CdnManagementClient.Endpoints.PurgeContent(ResourceGroupName, ProfileName, EndpointName, PurgeContent));
 
             WriteVerbose(Resources.Success);
 

@@ -277,6 +277,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot set threat detection policy without a storage account name..
+        /// </summary>
+        internal static string NoStorageAccountWhenConfiguringThreatDetectionPolicy {
+            get {
+                return ResourceManager.GetString("NoStorageAccountWhenConfiguringThreatDetectionPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
         /// </summary>
         internal static string PdoTitle {

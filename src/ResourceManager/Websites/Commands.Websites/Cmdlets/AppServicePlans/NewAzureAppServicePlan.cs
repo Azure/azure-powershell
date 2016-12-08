@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
+        [ValidateNotNullOrEmpty]
+        public bool PerSiteScaling { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrWhiteSpace(Tier))
@@ -79,7 +83,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Capacity = capacity
             };
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku, AseName, aseResourceGroupName), true);
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku, AseName, aseResourceGroupName, PerSiteScaling), true);
         }
     }
 }

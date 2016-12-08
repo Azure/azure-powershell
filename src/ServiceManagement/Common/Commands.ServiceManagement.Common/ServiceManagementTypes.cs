@@ -129,6 +129,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public const string HotfixGA = "HotfixGA";
     }
 
+    public static class VirtualNetworkGatewayConnectionType
+    {
+        public const string ExpressRoute = "ExpressRoute";
+        public const string IPsec = "IPsec";
+        public const string Vnet2Vnet = "Vnet2Vnet";
+        public const string VPNClient = "VPNClient";
+    }
+
+    /// <summary>
+    /// Represents the type of a virtual network gateway connection.
+    /// </summary>
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public enum GatewayConnectionType
+    {
+        [EnumMember]
+        ExpressRoute = 0,
+
+        [EnumMember]
+        IPsec = 1,
+
+        [EnumMember]
+        Vnet2Vnet = 2,
+
+        [EnumMember]
+        VPNClient = 3,
+    }
+
     #endregion
 
     #region Mergable

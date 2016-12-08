@@ -22,10 +22,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string ExtensionDefaultName = "ChefClient";
         protected const string LinuxExtensionName = "LinuxChefClient";
         protected const string PrivateConfigurationTemplate = "{{\"validation_key\":\"{0}\"}}";
-        protected const string ClientRbTemplate = "\"client_rb\":\"{0}\"";
-        protected const string BootstrapVersionTemplate = "\"bootstrap_version\":\"{0}\"";
-        protected const string BootStrapOptionsTemplate = "\"bootstrap_options\":{0}";
-        protected const string RunListTemplate = "\"runlist\": \"\\\"{0}\\\"\"";
+        protected const string ClientRbTemplate = "client_rb";
+        protected const string BootstrapVersionTemplate = "bootstrap_version";
+        protected const string BootStrapOptionsTemplate = "bootstrap_options";
+        protected const string JsonAttributeTemplate = "custom_json_attr";
+        protected const string ChefServiceIntervalTemplate = "chef_service_interval";
+        protected const string RunListTemplate = "runlist";
 
         public VirtualMachineChefExtensionCmdletBase()
         {

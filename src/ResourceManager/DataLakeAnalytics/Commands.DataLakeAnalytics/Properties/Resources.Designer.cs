@@ -115,6 +115,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid empty catalog path. A catalog path is required unless listing databases and must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName.
+        /// </summary>
+        internal static string EmptyCatalogPath {
+            get {
+                return ResourceManager.GetString("EmptyCatalogPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find account: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it..
         /// </summary>
         internal static string FailedToDiscoverResourceGroup {
@@ -178,6 +187,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos; ....
+        /// </summary>
+        internal static string NewDataLakeCatalogCredential {
+            get {
+                return ResourceManager.GetString("NewDataLakeCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A port was not specified for host &apos;{0}&apos;. The default port will be used..
         /// </summary>
         internal static string NoPortSpecified {
@@ -210,6 +228,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemoveDataLakeAnalyticsCatalogCredential {
             get {
                 return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics catalog credential &apos;{0}&apos;  and ALL resources dependent on it....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogCredentialCascade {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogCredentialCascade", resourceCulture);
             }
         }
         
@@ -268,6 +295,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog credential &apos;{0}&apos; and ALL resources dependent on it?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogCredentialCascade {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogCredentialCascade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog secret &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsCatalogSecret {
@@ -300,6 +336,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string ScriptFilePathDoesNotExist {
             get {
                 return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeCatalogCredential {
+            get {
+                return ResourceManager.GetString("SetDataLakeCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos;?.
+        /// </summary>
+        internal static string SettingDataLakeCatalogCredential {
+            get {
+                return ResourceManager.GetString("SettingDataLakeCatalogCredential", resourceCulture);
             }
         }
         

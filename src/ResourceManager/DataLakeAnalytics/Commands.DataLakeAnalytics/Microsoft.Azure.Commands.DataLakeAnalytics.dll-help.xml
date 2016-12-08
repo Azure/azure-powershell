@@ -33,33 +33,12 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Default</maml:name>
-				<maml:description>
-					<maml:para>Indicates that the data source is the new default data source for the Data Lake Analytics account.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -92,20 +71,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -132,18 +97,6 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-			<maml:name>Default</maml:name>
-			<maml:description>
-				<maml:para>Indicates that the data source is the new default data source for the Data Lake Analytics account.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>ResourceGroupName</maml:name>
@@ -181,29 +134,17 @@
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+			<maml:name>Default</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates that the data source is the new default data source for the Data Lake Analytics account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
 			<dev:type>
-				<maml:name>actionpreference</maml:name>
+				<maml:name>switchparameter</maml:name>
 				<maml:uri/>
 			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
+			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -330,20 +271,6 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmDataLakeAnalyticsAccount</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmDataLakeAnalyticsAccount</maml:name>
@@ -353,20 +280,6 @@
 					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -384,20 +297,6 @@
 					<maml:para>Specifies the name of the Data Lake Analytics account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -425,30 +324,6 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
@@ -563,20 +438,6 @@ The acceptable values for this parameter are:</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CatalogPathInstance</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -623,30 +484,6 @@ The acceptable values for this parameter are:</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -790,20 +627,6 @@ The acceptable values for this parameter are:</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmDataLakeAnalyticsDataSource</maml:name>
@@ -828,20 +651,6 @@ The acceptable values for this parameter are:</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmDataLakeAnalyticsDataSource</maml:name>
@@ -865,20 +674,6 @@ The acceptable values for this parameter are:</maml:para>
 					<maml:para>Optionally,</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -927,30 +722,6 @@ The acceptable values for this parameter are:</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1042,7 +813,9 @@ The acceptable values for this parameter are:</maml:para>
 	<command:details>
 		<command:name>Get-AzureRmDataLakeAnalyticsJob</command:name>
 		<maml:description>
-			<maml:para>Retrieves information about a specified Data Lake Analytics job or a list of jobs.</maml:para>
+			<maml:para>Retrieves information about a specified Data Lake Analytics job or a list of jobs.
+When listing jobs, details such as script contents and error messages are omitted.
+Provide a job ID in order to fetch a specific job’s details, such as script contents, error messages, etc.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1052,7 +825,9 @@ The acceptable values for this parameter are:</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDataLakeAnalyticsJob cmdlet gets information about an Azure Data Lake Analytics job. If no job is specified, this cmdlet gets a list of jobs.</maml:para>
+		<maml:para>The Get-AzureRmDataLakeAnalyticsJob cmdlet gets information about an Azure Data Lake Analytics job. If no job is specified, this cmdlet gets a list of jobs.
+When listing jobs, details such as script contents and error messages are omitted.
+Provide a job ID in order to fetch a specific job’s details, such as script contents, error messages, etc.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1123,20 +898,6 @@ The acceptable values for this parameter are:</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">JobResult[]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmDataLakeAnalyticsJob</maml:name>
@@ -1164,20 +925,6 @@ The acceptable values for this parameter are:</maml:para>
 -- All</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeAnalyticsEnums+ExtendedJobData</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1310,30 +1057,6 @@ The acceptable values for this parameter are:</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -1509,19 +1232,26 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaxDegreeOfParallelism</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The optional maximum supported degree of parallelism for this account. If none is specified, defaults to 30</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaxJobCount</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The optional maximum supported jobs running under the account at the same time. If none is specified, defaults to 3</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>QueryStoreRetention</maml:name>
+				<maml:description>
+					<maml:para>The optional number of days that job metadata is retained. If none specified, the default is 30 days.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1587,26 +1317,38 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>MaxDegreeOfParallelism</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The optional maximum supported degree of parallelism for this account. If none is specified, defaults to 30</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
-				<maml:name>actionpreference</maml:name>
+				<maml:name>Nullable`1[Int32]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>MaxJobCount</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The optional maximum supported jobs running under the account at the same time. If none is specified, defaults to 3</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
-				<maml:name>string</maml:name>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>QueryStoreRetention</maml:name>
+			<maml:description>
+				<maml:para>The optional number of days that job metadata is retained. If none specified, the default is 30 days.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1701,6 +1443,333 @@ Only East US 2 is supported at this time.</maml:para>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>New-AzureRmDataLakeAnalyticsCatalogCredential</command:name>
+		<maml:description>
+			<maml:para>Creates a new Azure Data Lake Analytics catalog credential.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmDataLakeAnalyticsCatalogCredential</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The New-AzureRmDataLakeAnalyticsCatalogCredential cmdlet creates a new credential to use in an Azure Data Lake Analytics catalog for connecting to external data sources.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmDataLakeAnalyticsCatalogCredential</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Account</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>DatabaseName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the database that holds the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>CredentialName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name and password of the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the user name and corresponding password of the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Uri</maml:name>
+				<maml:description>
+					<maml:para>Specifies the full Uniform Resource Identifier (URI) of the external data source this credential can connect to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmDataLakeAnalyticsCatalogCredential</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Account</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>DatabaseName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the database that holds the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>CredentialName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name and password of the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the user name and corresponding password of the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>DatabaseHost</maml:name>
+				<maml:description>
+					<maml:para>Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>Port</maml:name>
+				<maml:description>
+					<maml:para>Specifies the port number used to connect to the specified DatabaseHost using this credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>Account</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>DatabaseName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the database that holds the credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>CredentialName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name and password of the credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Credential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the user name and corresponding password of the credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Uri</maml:name>
+			<maml:description>
+				<maml:para>Specifies the full Uniform Resource Identifier (URI) of the external data source this credential can connect to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			<dev:type>
+				<maml:name>Uri</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>DatabaseHost</maml:name>
+			<maml:description>
+				<maml:para>Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>Port</maml:name>
+			<maml:description>
+				<maml:para>Specifies the port number used to connect to the specified DatabaseHost using this credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a credential for a catalog specifying host and port  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; New-AzureRmDataLakeAnalyticsCatalogCredential -AccountName &quot;ContosoAdlAccount&quot; `
+                  -DatabaseName &quot;databaseName&quot; `
+                  -CredentialName &quot;exampleDbCred&quot; `
+                  -Credential (Get-Credential) `
+                  -DatabaseHost &quot;example.contoso.com&quot; -Port 8080</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates the specified credential for the specified account, database, host and port using https protocol.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Create a credential for a catalog specifying full URI  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; New-AzureRmDataLakeAnalyticsCatalogCredential -AccountName &quot;ContosoAdlAccount&quot; `
+                  -DatabaseName &quot;databaseName&quot; `
+                  -CredentialName &quot;exampleDbCred&quot; `
+                  -Credential (Get-Credential) `
+                  -Uri &quot;http://httpExample.contoso.com:8080&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates the specified credential for the specified account, database and external data source URI.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>New-AzureRmDataLakeAnalyticsCatalogSecret</command:name>
 		<maml:description>
 			<maml:para>Creates a new Azure Data Lake Analytics catalog secret.</maml:para>
@@ -1753,20 +1822,6 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>New-AzureRmDataLakeAnalyticsCatalogSecret</maml:name>
@@ -1797,20 +1852,6 @@ Only East US 2 is supported at this time.</maml:para>
 					<maml:para>Specifies the Uniform Resource Identifier (URI) of the secret.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1899,30 +1940,6 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
 			<maml:description>
@@ -2007,7 +2024,7 @@ Only East US 2 is supported at this time.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Example 1: Create the secret for a catalog specifying full URI  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 2: Create the secret for a catalog specifying full URI  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -2085,23 +2102,9 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>Indicates that the cmdlet does not wait for the operation to complete. Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+					<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -2159,7 +2162,7 @@ Only East US 2 is supported at this time.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>Indicates that the cmdlet does not wait for the operation to complete. Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+				<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2188,30 +2191,6 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2287,6 +2266,262 @@ Only East US 2 is supported at this time.</maml:para>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Remove-AzureRmDataLakeAnalyticsCatalogCredential</command:name>
+		<maml:description>
+			<maml:para>Deletes an Azure Data Lake Analytics credential.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureRmDataLakeAnalyticsCatalogCredential</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Remove-AzureRmDataLakeAnalyticsCatalogCredential cmdlet deletes an Azure Data Lake Analytics catalog credential.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureRmDataLakeAnalyticsCatalogCredential</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Account</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>DatabaseName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the database that holds the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Password</maml:name>
+				<maml:description>
+					<maml:para>The password for the credential. This is required if the caller is not the owner of the account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Recurse</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this delete operation should go through and also delete and drop all resources dependent on this credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>Account</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>DatabaseName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the database that holds the credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Password</maml:name>
+			<maml:description>
+				<maml:para>The password for the credential. This is required if the caller is not the owner of the account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Recurse</maml:name>
+			<maml:description>
+				<maml:para>Indicates that this delete operation should go through and also delete and drop all resources dependent on this credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>System.Boolean</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove a credential  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName &quot;ContosoAdla&quot; `
+                      -DatabaseName &quot;DatabaseName&quot; `
+                      -Name &quot;CredName&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command removes the specified Data Lake Analytics catalog credential.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Remove-AzureRmDataLakeAnalyticsCatalogSecret</command:name>
 		<maml:description>
 			<maml:para>Deletes an Azure Data Lake Analytics secret.</maml:para>
@@ -2335,23 +2570,9 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>Indicates that this cmdlet does not wait for the operation to complete. Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+					<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -2421,7 +2642,7 @@ Only East US 2 is supported at this time.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>Indicates that this cmdlet does not wait for the operation to complete. Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+				<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2450,30 +2671,6 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2609,14 +2806,14 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -2626,20 +2823,6 @@ Only East US 2 is supported at this time.</maml:para>
 					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -2675,14 +2858,14 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -2692,20 +2875,6 @@ Only East US 2 is supported at this time.</maml:para>
 					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -2751,7 +2920,7 @@ Only East US 2 is supported at this time.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2763,7 +2932,7 @@ Only East US 2 is supported at this time.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2816,30 +2985,6 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2977,39 +3122,39 @@ Only East US 2 is supported at this time.</maml:para>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>DefaultDataLakeStore</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the Data Lake Store account to set as the default data source.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Tags</maml:name>
 				<maml:description>
 					<maml:para>Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaxDegreeOfParallelism</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The optional maximum supported degree of parallelism to update the account with.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaxJobCount</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The optional maximum supported jobs running under the account at the same time to set.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>QueryStoreRetention</maml:name>
+				<maml:description>
+					<maml:para>The optional number of days that job metadata is retained to set in the account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3027,18 +3172,6 @@ Only East US 2 is supported at this time.</maml:para>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>DefaultDataLakeStore</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the Data Lake Store account to set as the default data source.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Tags</maml:name>
 			<maml:description>
 				<maml:para>Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.</maml:para>
@@ -3050,7 +3183,7 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
@@ -3062,22 +3195,46 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>MaxDegreeOfParallelism</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The optional maximum supported degree of parallelism to update the account with.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
-				<maml:name>actionpreference</maml:name>
+				<maml:name>Nullable`1[Int32]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>MaxJobCount</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The optional maximum supported jobs running under the account at the same time to set.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>QueryStoreRetention</maml:name>
+			<maml:description>
+				<maml:para>The optional number of days that job metadata is retained to set in the account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+			<maml:name>DefaultDataLakeStore</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the Data Lake Store account to set as the default data source.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
@@ -3179,6 +3336,336 @@ Only East US 2 is supported at this time.</maml:para>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Set-AzureRmDataLakeAnalyticsCatalogCredential</command:name>
+		<maml:description>
+			<maml:para>Modifies an Azure Data Lake Analytics catalog credential password.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmDataLakeAnalyticsCatalogCredential</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Set-AzureRmDataLakeAnalyticsCatalogCredential cmdlet modifies a credential password associated with an Azure Data Lake Analytics catalog.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmDataLakeAnalyticsCatalogCredential</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Account</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>DatabaseName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the database holding the secret.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>CredentialName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the credential to modify</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name and current password of the credential to modify.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>NewPassword</maml:name>
+				<maml:description>
+					<maml:para>Specifies the new password for the credential</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Uri</maml:name>
+				<maml:description>
+					<maml:para>Specifies the full Uniform Resource Identifier (URI) of the external data source this credential can connect to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmDataLakeAnalyticsCatalogCredential</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Account</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>DatabaseName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the database holding the secret.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>CredentialName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the credential to modify</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name and current password of the credential to modify.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>NewPassword</maml:name>
+				<maml:description>
+					<maml:para>Specifies the new password for the credential</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>DatabaseHost</maml:name>
+				<maml:description>
+					<maml:para>Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>Port</maml:name>
+				<maml:description>
+					<maml:para>Specifies the port number used to connect to the specified DatabaseHost using this credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>Account</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>DatabaseName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the database holding the secret.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>CredentialName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the credential to modify</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Credential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name and current password of the credential to modify.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>NewPassword</maml:name>
+			<maml:description>
+				<maml:para>Specifies the new password for the credential</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Uri</maml:name>
+			<maml:description>
+				<maml:para>Specifies the full Uniform Resource Identifier (URI) of the external data source this credential can connect to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			<dev:type>
+				<maml:name>Uri</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>DatabaseHost</maml:name>
+			<maml:description>
+				<maml:para>Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>Port</maml:name>
+			<maml:description>
+				<maml:para>Specifies the port number used to connect to the specified DatabaseHost using this credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Exampl1: Modify a credential&apos;s password associated with an account  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureRmDataLakeAnalyticsCatalogSecret -AccountName &quot;ContosoAdlAccount&quot; `
+                  -DatabaseName &quot;databaseName&quot; `
+                  -CredentialName &quot;credName&quot; `
+                  -Credential (Get-Credential) `
+                  -NewPassword (Get-Credential) `
+                  -Host &quot;example.contoso.com&quot; -Port 8080</dev:code>
+			<dev:remarks>
+				<maml:para>This command sets the credential password to the password specified in NewPassword.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Set-AzureRmDataLakeAnalyticsCatalogSecret</command:name>
 		<maml:description>
 			<maml:para>Modifies an Azure Data Lake Analytics catalog secret.</maml:para>
@@ -3231,20 +3718,6 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureRmDataLakeAnalyticsCatalogSecret</maml:name>
@@ -3275,20 +3748,6 @@ Only East US 2 is supported at this time.</maml:para>
 					<maml:para>Specifies the Uniform Resource Identifier (URI) for the secret.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3376,30 +3835,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -3524,51 +3959,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>DataLakeStore</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the Azure Data Lake Store account to update.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Default</maml:name>
-				<maml:description>
-					<maml:para>Indicates that the data source becomes the default data source for the Data Lake Analytics account.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Set-AzureRmDataLakeAnalyticsDataSource</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>Account</maml:name>
-				<maml:description>
-					<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>Blob</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of the Azure Blob Storage account to update.</maml:para>
@@ -3589,20 +3979,6 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3617,42 +3993,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>DataLakeStore</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the Azure Data Lake Store account to update.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-			<maml:name>Default</maml:name>
-			<maml:description>
-				<maml:para>Indicates that the data source becomes the default data source for the Data Lake Analytics account.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>Blob</maml:name>
@@ -3678,22 +4018,22 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
-				<maml:name>actionpreference</maml:name>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
+			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+			<maml:name>DataLakeStore</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Specifies the name of the Azure Data Lake Store account to update.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
@@ -3701,6 +4041,18 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+			<maml:name>Default</maml:name>
+			<maml:description>
+				<maml:para>Indicates that the data source becomes the default data source for the Data Lake Analytics account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
+			<dev:type>
+				<maml:name>switchparameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -3856,20 +4208,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
@@ -3957,30 +4295,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>false</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -4157,20 +4471,6 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Submit-AzureRmDataLakeAnalyticsJob</maml:name>
@@ -4232,20 +4532,6 @@ Only East US 2 is supported at this time.</maml:para>
 					<maml:para>Specifies the priority of the job. If not specified, the priority is 1000. A lower the number indicates a higher job priority.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -4360,42 +4646,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>Type</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">jobtype</command:parameterValue>
-			<dev:type>
-				<maml:name>jobtype</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -4529,20 +4779,6 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4569,30 +4805,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
@@ -4714,20 +4926,6 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CatalogPathInstance</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4773,30 +4971,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -4935,20 +5109,6 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4999,30 +5159,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -5118,545 +5254,6 @@ Only East US 2 is supported at this time.</maml:para>
 			<maml:linkText>Submit-AzureRmDataLakeAnalyticsJob</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>New-AzureRmDataLakeAnalyticsCatalogCredential</command:name>
-		<maml:description>
-			<maml:para>Creates a new Azure Data Lake Analytics catalog credential.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb></command:verb>
-		<command:noun></command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The New-AzureRmDataLakeAnalyticsCatalogCredential cmdlet creates a new credential to use in an Azure Data Lake Analytics catalog for connecting to external data sources.</maml:para>
-	</maml:description>
-	<command:syntax>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
-			<maml:name>Account</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
-			<maml:name>DatabaseName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the database that holds the credential.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-			<maml:name>CredentialName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name and password of the credential.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="3">
-			<maml:name>Credential</maml:name>
-			<maml:description>
-				<maml:para>Specifies the user name and corresponding password of the credential.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
-			<dev:type>
-				<maml:name>pscredential</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
-			<maml:name>DatabaseHost</maml:name>
-			<maml:description>
-				<maml:para>Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="5">
-			<maml:name>Port</maml:name>
-			<maml:description>
-				<maml:para>Specifies the port number used to connect to the specified DatabaseHost using this credential.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">int32</command:parameterValue>
-			<dev:type>
-				<maml:name>int32</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
-			<maml:name>Uri</maml:name>
-			<maml:description>
-				<maml:para>Specifies the full Uniform Resource Identifier (URI) of the external data source this credential can connect to.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">uri</command:parameterValue>
-			<dev:type>
-				<maml:name>uri</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name>Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential</maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Create a credential for a catalog specifying host and port  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt; New-AzureRmDataLakeAnalyticsCatalogCredential -AccountName &quot;ContosoAdlAccount&quot; `
-                  -DatabaseName &quot;databaseName&quot; `
-                  -CredentialName &quot;exampleDbCred&quot; `
-                  -Credential (Get-Credential) `
-                  -DatabaseHost &quot;example.contoso.com&quot; -Port 8080</dev:code>
-			<dev:remarks>
-				<maml:para>This command creates the specified credential for the specified account, database, host and port using https protocol.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Create a credential for a catalog specifying full URI  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt; New-AzureRmDataLakeAnalyticsCatalogCredential -AccountName &quot;ContosoAdlAccount&quot; `
-                  -DatabaseName &quot;databaseName&quot; `
-                  -CredentialName &quot;exampleDbCred&quot; `
-                  -Credential (Get-Credential) `
-                  -Uri &quot;http://httpExample.contoso.com:8080&quot;</dev:code>
-			<dev:remarks>
-				<maml:para>This command creates the specified credential for the specified account, database and external data source URI.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>Remove-AzureRmDataLakeAnalyticsCatalogCredential</command:name>
-		<maml:description>
-			<maml:para>Deletes an Azure Data Lake Analytics credential.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb></command:verb>
-		<command:noun></command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The Remove-AzureRmDataLakeAnalyticsCatalogCredential cmdlet deletes an Azure Data Lake Analytics catalog credential.</maml:para>
-	</maml:description>
-	<command:syntax>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
-			<maml:name>Account</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
-			<maml:name>DatabaseName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the database that holds the credential.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the credential.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
-			<maml:name>PassThru</maml:name>
-			<maml:description>
-				<maml:para>Indicates that this cmdlet does not wait for the operation to complete. Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>WhatIf</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name>System.Boolean</maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Remove a credential  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt; Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName &quot;ContosoAdla&quot; `
-                      -DatabaseName &quot;DatabaseName&quot; `
-                      -Name &quot;CredName&quot;</dev:code>
-			<dev:remarks>
-				<maml:para>This command removes the specified Data Lake Analytics catalog credential.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>Set-AzureRmDataLakeAnalyticsCatalogCredential</command:name>
-		<maml:description>
-			<maml:para>Modifies an Azure Data Lake Analytics catalog credential password.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb></command:verb>
-		<command:noun></command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The Set-AzureRmDataLakeAnalyticsCatalogCredential cmdlet modifies a credential password associated with an Azure Data Lake Analytics catalog.</maml:para>
-	</maml:description>
-	<command:syntax>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
-			<maml:name>Account</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Data Lake Analytics account name.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
-			<maml:name>DatabaseName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the database holding the secret.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
-			<maml:name>CredentialName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the credential to modify</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-			<maml:name>Credential</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name and current password of the credential to modify.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
-			<dev:type>
-				<maml:name>pscredential</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="3">
-			<maml:name>NewPassword</maml:name>
-			<maml:description>
-				<maml:para>Specifies the new password for the credential</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">pscredential</command:parameterValue>
-			<dev:type>
-				<maml:name>pscredential</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
-			<maml:name>DatabaseHost</maml:name>
-			<maml:description>
-				<maml:para>Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="5">
-			<maml:name>Port</maml:name>
-			<maml:description>
-				<maml:para>Specifies the port number used to connect to the specified DatabaseHost using this credential.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">int32</command:parameterValue>
-			<dev:type>
-				<maml:name>int32</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
-			<maml:name>Uri</maml:name>
-			<maml:description>
-				<maml:para>Specifies the full Uniform Resource Identifier (URI) of the external data source this credential can connect to.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">uri</command:parameterValue>
-			<dev:type>
-				<maml:name>uri</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name>Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential</maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Exampl1: Modify a credential&apos;s password associated with an account  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt; Set-AzureRmDataLakeAnalyticsCatalogSecret -AccountName &quot;ContosoAdlAccount&quot; `
-                  -DatabaseName &quot;databaseName&quot; `
-                  -CredentialName &quot;credName&quot; `
-                  -Credential (Get-Credential) `
-                  -NewPassword (Get-Credential) `
-                  -Host &quot;example.contoso.com&quot; -Port 8080</dev:code>
-			<dev:remarks>
-				<maml:para>This command sets the credential password to the password specified in NewPassword.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
 	</maml:relatedLinks>
 </command:command>
 </helpItems>

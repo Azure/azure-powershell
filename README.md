@@ -72,7 +72,7 @@ For detail descriptions and examples of the cmdlets, type
 You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-powershell/releases)
 
 ### PowerShell Gallery
-1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://www.powershellgallery.com/GettingStarted?section=Get%20Started)
+1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_gettingstarted)
 2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
 3. Run ```Install-AzureRm```
 4. To install RDFE cmdlets, run ```Install-Module Azure```
@@ -80,7 +80,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 ### Source Code
 
 1. Download the source code from GitHub repo
-2. Follow the [Microsoft Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide)
+2. Follow the [Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide)
 
 ### Supported PowerShell Versions
 

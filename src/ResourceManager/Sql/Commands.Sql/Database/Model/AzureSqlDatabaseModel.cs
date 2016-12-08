@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Model
 {
@@ -123,6 +124,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string CreateMode { get; set; }
 
         /// <summary>
+        /// Gets or sets the read scale option of the database (Disabled/Enabled).
+        /// </summary>
+        public DatabaseReadScale? ReadScale { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -139,6 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         {
             Guid id = Guid.Empty;
             DatabaseEdition edition = DatabaseEdition.None;
+            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
@@ -148,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             MaxSizeBytes = database.Properties.MaxSizeBytes;
             DatabaseName = database.Name;
             Status = database.Properties.Status;
-            Tags = database.Tags as Dictionary<string, string>;
+            Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
             ElasticPoolName = database.Properties.ElasticPoolName;
             Location = database.Location;
             ResourceId = database.Id;
@@ -166,6 +173,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
             RequestedServiceObjectiveId = id;
+
+            Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
+            ReadScale = readScale;
         }
     }
 }

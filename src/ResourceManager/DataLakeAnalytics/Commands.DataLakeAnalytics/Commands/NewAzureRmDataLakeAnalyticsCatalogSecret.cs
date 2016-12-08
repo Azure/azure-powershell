@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
     [Alias("New-AdlCatalogSecret")]
+    [Obsolete("Catalog secrets are being deprecated in a future release. Please use New-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
     public class NewAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "Specify full URI";
@@ -71,8 +72,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", DatabaseHost, Port));
 
-            WriteObject(DataLakeAnalyticsClient.CreateSecret(Account, DatabaseName, Secret.UserName,
-                Secret.GetNetworkCredential().Password, toUse.AbsoluteUri));
+            DataLakeAnalyticsClient.CreateSecret(Account, DatabaseName, Secret.UserName,
+                Secret.GetNetworkCredential().Password, toUse.AbsoluteUri);
         }
     }
 }

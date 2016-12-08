@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("New-AdlStore")]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
@@ -56,6 +56,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "Indicates what type of encryption to provision the account with, if any.")]
+        [ValidateNotNull]
+        public EncryptionConfigType? Encryption { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, this is the key vault the user wishes to use")]
+        [ValidateNotNull]
+        public string KeyVaultId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, this is the key name in the key vault the user wishes to use")]
+        [ValidateNotNull]
+        public string KeyName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 8, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, this is the key version of the key the user wishes to use")]
+        [ValidateNotNull]
+        public string KeyVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -84,7 +104,47 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 }
             }
 
-            WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags));
+            // validation of encryption parameters
+            if (Encryption != null)
+            {
+                var identity = new EncryptionIdentity();
+                var config = new EncryptionConfig
+                {
+                    Type = Encryption.Value,
+                };
+
+                if (Encryption.Value == EncryptionConfigType.UserManaged)
+                {
+                    if (string.IsNullOrEmpty(KeyVaultId) ||
+                    string.IsNullOrEmpty(KeyName) ||
+                    string.IsNullOrEmpty(KeyVersion))
+                    {
+                        throw new PSArgumentException(Resources.MissingKeyVaultParams);
+                    }
+
+                    config.KeyVaultMetaInfo = new KeyVaultMetaInfo
+                    {
+                        KeyVaultResourceId = KeyVaultId,
+                        EncryptionKeyName = KeyName,
+                        EncryptionKeyVersion = KeyVersion
+                    };
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(KeyVaultId) ||
+                    !string.IsNullOrEmpty(KeyName) ||
+                    !string.IsNullOrEmpty(KeyVersion))
+                    {
+                        WriteWarning(Resources.IgnoredKeyVaultParams);
+                    }
+                }
+
+                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags, identity, config)));
+            }
+            else
+            {
+                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags)));
+            }
         }
     }
 }

@@ -28,19 +28,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #region ServiceClient to PS convertors
 
         /// <summary>
-        /// This function returns either job object or job details object based on 
-        /// what ServiceClient object contains.
-        /// To elaborate, if ServiceClient job's ExtendedInfo is filled then this function will
-        /// return a job details object. Otherwise it will return a job object.
-        /// </summary>
-        /// <param name="ServiceClientJob"></param>
-        /// <returns></returns>
-        public static CmdletModel.JobBase GetPSJob(JobResponse serviceClientJob)
-        {
-            return GetPSJob(serviceClientJob.Item);
-        }
-
-        /// <summary>
         /// Helper function to convert ps backup job model from service response.
         /// </summary>
         public static CmdletModel.JobBase GetPSJob(JobResource serviceClientJob)
@@ -63,17 +50,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Helper function to convert ps backup job list model from service response.
         /// </summary>
-        public static void AddServiceClientJobsToPSList(JobListResponse serviceClientJobs, List<CmdletModel.JobBase> psJobs, ref int jobsCount)
+        public static void AddServiceClientJobsToPSList(
+            List<JobResource> serviceClientJobs,
+            List<CmdletModel.JobBase> psJobs,
+            ref int jobsCount)
         {
-            if (serviceClientJobs.ItemList != null && serviceClientJobs.ItemList.Value != null)
+            if (serviceClientJobs != null)
             {
-                foreach (var job in serviceClientJobs.ItemList.Value)
+                foreach (var job in serviceClientJobs)
                 {
                     CmdletModel.JobBase convertedJob = GetPSJob(job);
                     if (convertedJob != null)
                     {
                         jobsCount++;
                         psJobs.Add(convertedJob);
+                    }
+                    else
+                    {
+                        Logger.Instance.WriteDebug(
+                            "Ignoring some of the unexpected job while conversion");
                     }
                 }
             }
@@ -100,15 +95,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
-            response.StartTime = vmJob.StartTime;
+            DateTime startTime = DateTime.MinValue;
+            if (vmJob.StartTime.HasValue)
+            {
+                response.StartTime = (DateTime)vmJob.StartTime;
+            }
+            else
+            {
+                throw new ArgumentNullException("Job Start Time is null");
+            }
             response.EndTime = vmJob.EndTime;
-            response.Duration = vmJob.Duration;
+            response.Duration =
+                vmJob.Duration.HasValue ? (TimeSpan)vmJob.Duration : default(TimeSpan);
             response.Status = vmJob.Status;
             response.VmVersion = vmJob.VirtualMachineVersion;
             response.WorkloadName = vmJob.EntityFriendlyName;
             response.ActivityId = vmJob.ActivityId;
             response.BackupManagementType = CmdletModel.EnumUtils.GetEnum<CmdletModel.BackupManagementType>(
-                GetPSBackupManagementType(vmJob.BackupManagementType));
+                GetPSBackupManagementType(vmJob.BackupManagementType.ToString()));
             response.Operation = vmJob.Operation;
 
             if (vmJob.ErrorDetails != null)
@@ -159,7 +163,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         private static CmdletModel.AzureVmJobErrorInfo GetPSAzureVmErrorInfo(AzureIaaSVMErrorInfo serviceClientError)
         {
             CmdletModel.AzureVmJobErrorInfo psErrorInfo = new CmdletModel.AzureVmJobErrorInfo();
-            psErrorInfo.ErrorCode = serviceClientError.ErrorCode;
+            psErrorInfo.ErrorCode = serviceClientError.ErrorCode ?? default(int);
             psErrorInfo.ErrorMessage = serviceClientError.ErrorString;
             if (serviceClientError.Recommendations != null)
             {
@@ -189,12 +193,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Helper function to get job type from ps backup management type.
         /// </summary>
-        public static string GetJobTypeForService(CmdletModel.BackupManagementType mgmtType)
+        public static BackupManagementType GetJobTypeForService(
+            CmdletModel.BackupManagementType mgmtType)
         {
             switch (mgmtType)
             {
                 case CmdletModel.BackupManagementType.AzureVM:
-                    return BackupManagementType.AzureIaasVM.ToString();
+                    return BackupManagementType.AzureIaasVM;
                 default:
                     throw new Exception("Invalid BackupManagementType provided: " + mgmtType);
             }
@@ -214,7 +219,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 throw new Exception("Invalid JobType provided: " + jobType);
             }
         }
-                    
+
         #endregion
     }
 }

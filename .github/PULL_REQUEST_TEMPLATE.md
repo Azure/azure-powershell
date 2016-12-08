@@ -12,7 +12,7 @@ If applicable, reference the bug/issue that this pull request fixes here.
 This checklist is used to make sure that common guidelines for a pull request are followed. You can find a more complete discussion of PowerShell cmdlet best practices [here](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx).
 
 - [ ] **I have read the [contribution guidelines](https://github.com/Azure/azure-powershell/blob/dev/CONTRIBUTING.md).**
-- [ ] **If changes were made to any cmdlet, the XML help was regenerated using the [platyPSHelp module](https://github.com/Azure/azure-powershell/blob/dev/documentation/platyps-help.md).**
+- [ ] **If changes were made to any cmdlet, the XML help was regenerated using the [platyPSHelp module](https://github.com/Azure/azure-powershell/blob/dev/documentation/platyPSHelp-documentation.md).**
 - [ ] **If any large changes are made to a service, they are reflected in the respective [change log](https://github.com/Azure/azure-powershell/blob/dev/CONTRIBUTING.md#updating-the-change-log).**
 
 ### [General Guidelines](https://github.com/Azure/azure-powershell/blob/dev/CONTRIBUTING.md#general-guidelines)
