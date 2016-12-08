@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 output.AppendLine();
                 output.AddSpacesInFront(indentationTabs).AppendLine("Cooldown  : " + scaleAction.Cooldown);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Direction : " + scaleAction.Direction);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Type      : " + ScaleAction.Type);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Type      : " + scaleAction.Type);
                 output.AddSpacesInFront(indentationTabs).Append("Value     : " + scaleAction.Value);
             }
 
