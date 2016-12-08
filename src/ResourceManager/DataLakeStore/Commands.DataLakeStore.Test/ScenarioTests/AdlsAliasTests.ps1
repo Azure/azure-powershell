@@ -334,9 +334,9 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $content.length $result.Length
 		# set and validate expiration for a file
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
-		$timeToUse = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("absoluteTime", [DateTimeOffset]::Now.AddSeconds(120))
+		[DateTimeOffset]$timeToUse = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("absoluteTime", [DateTimeOffset]::UtcNow.AddSeconds(120))
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath -Expiration $timeToUse
-		Assert-AreEqual $timeToUse $result.Expiration
+		Assert-AreEqual $timeToUse.UtcTicks $result.Expiration.UtcTicks
 		# set it back to "never expire"
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value

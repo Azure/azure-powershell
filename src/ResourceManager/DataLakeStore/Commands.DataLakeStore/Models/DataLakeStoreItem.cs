@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             try
             {
-                this.LastWriteTime = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds((long)this.ModificationTime).ToLocalTime();
+                this.LastWriteTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds((long)this.ModificationTime).ToLocalTime();
             }
             catch(ArgumentOutOfRangeException)
             {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 try
                 {
-                    this.Expiration = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds((long)this.ExpirationTime.GetValueOrDefault()).ToLocalTime();
+                    this.Expiration = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds((long)this.ExpirationTime.GetValueOrDefault()).ToLocalTime();
                 }
                 catch (ArgumentOutOfRangeException)
                 {
