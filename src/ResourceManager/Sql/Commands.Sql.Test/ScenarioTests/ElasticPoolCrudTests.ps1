@@ -171,10 +171,9 @@ function Test-GetElasticPoolMetric
     Assert-NotNull $ep1
     
     # Get pool metrics with all values
-    # Commenting this section of the test becuase the GetAzureRmMetric has been replaced and must be called using -MetricNames <list of names> as parameter to enabled all the other parameters
-    #$metrics = $ep1 | Get-AzureRmMetric -TimeGrain "0:5:0" -StartTime "2015-04-22T16:00:00Z" -EndTime "2015-04-22T17:00:00Z"
-    #Assert-NotNull $metrics
-    #Assert-True { $metrics.Count -gt 0 }
+    $metrics = $ep1 | Get-AzureRmMetric -TimeGrain "0:5:0" -StartTime "2015-04-22T16:00:00Z" -EndTime "2015-04-22T17:00:00Z"
+    Assert-NotNull $metrics
+    Assert-True { $metrics.Count -gt 0 }
 }
 
 
