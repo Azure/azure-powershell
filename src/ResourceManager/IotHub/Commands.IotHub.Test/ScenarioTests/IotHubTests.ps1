@@ -102,7 +102,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Add Key
-	Add-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -PrimaryKey 4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk= -SecondaryKey 4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk= -Rights RegistryRead
+	Add-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -PrimaryKey primarykey -SecondaryKey secondarykey -Rights RegistryRead
 
 	# Get Keys
 	$keys = Get-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 

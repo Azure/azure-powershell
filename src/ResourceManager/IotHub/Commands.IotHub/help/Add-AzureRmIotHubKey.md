@@ -23,7 +23,7 @@ Creates a Key for the provided IotHub. KeyNames are not unique and need to be ma
 
 ### Example 1 Add a Key to an IotHub
 ```
-PS C:\> Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -SecondaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -Rights RegistryRead
+PS C:\> Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "primarykey" -SecondaryKey "secondarykey" -Rights RegistryRead
 ```
 
 Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissions.
