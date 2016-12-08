@@ -1232,21 +1232,21 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>MaxDegreeOfParallelism</maml:name>
 				<maml:description>
 					<maml:para>The optional maximum supported degree of parallelism for this account. If none is specified, defaults to 30</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>MaxJobCount</maml:name>
 				<maml:description>
 					<maml:para>The optional maximum supported jobs running under the account at the same time. If none is specified, defaults to 3</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>QueryStoreRetention</maml:name>
 				<maml:description>
 					<maml:para>The optional number of days that job metadata is retained. If none specified, the default is 30 days.</maml:para>
@@ -1317,7 +1317,7 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>MaxDegreeOfParallelism</maml:name>
 			<maml:description>
 				<maml:para>The optional maximum supported degree of parallelism for this account. If none is specified, defaults to 30</maml:para>
@@ -1329,7 +1329,7 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>MaxJobCount</maml:name>
 			<maml:description>
 				<maml:para>The optional maximum supported jobs running under the account at the same time. If none is specified, defaults to 3</maml:para>
@@ -1341,7 +1341,7 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>QueryStoreRetention</maml:name>
 			<maml:description>
 				<maml:para>The optional number of days that job metadata is retained. If none specified, the default is 30 days.</maml:para>
@@ -2311,10 +2311,24 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Recurse</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this delete operation should go through and also delete and drop all resources dependent on this credential.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -2383,10 +2397,34 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Recurse</maml:name>
+			<maml:description>
+				<maml:para>Indicates that this delete operation should go through and also delete and drop all resources dependent on this credential.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>Returns true upon successful completion of the operation, otherwise this command has no return value.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2415,18 +2453,6 @@ Only East US 2 is supported at this time.</maml:para>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3102,33 +3128,33 @@ Only East US 2 is supported at this time.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>MaxDegreeOfParallelism</maml:name>
 				<maml:description>
 					<maml:para>The optional maximum supported degree of parallelism to update the account with.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>MaxJobCount</maml:name>
 				<maml:description>
 					<maml:para>The optional maximum supported jobs running under the account at the same time to set.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>QueryStoreRetention</maml:name>
 				<maml:description>
 					<maml:para>The optional number of days that job metadata is retained to set in the account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3157,7 +3183,19 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>MaxDegreeOfParallelism</maml:name>
 			<maml:description>
 				<maml:para>The optional maximum supported degree of parallelism to update the account with.</maml:para>
@@ -3169,7 +3207,7 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>MaxJobCount</maml:name>
 			<maml:description>
 				<maml:para>The optional maximum supported jobs running under the account at the same time to set.</maml:para>
@@ -3181,7 +3219,7 @@ Only East US 2 is supported at this time.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>QueryStoreRetention</maml:name>
 			<maml:description>
 				<maml:para>The optional number of days that job metadata is retained to set in the account.</maml:para>
@@ -3192,18 +3230,6 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the resource group name of the Data Lake Analytics account.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>DefaultDataLakeStore</maml:name>
