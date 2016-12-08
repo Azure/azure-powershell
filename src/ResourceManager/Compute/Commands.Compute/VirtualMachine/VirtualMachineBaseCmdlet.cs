@@ -117,7 +117,12 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (elem.Count != 0)
                         {
-                            max = Math.Max(max, depth * 2 + property.Name.Length + 4);
+                            max = expand
+                                ? Math.Max(max, depth * 2 + property.Name.Length + 4)
+                                : Math.Max(max, depth * 2 + property.Name.Length);
+
+                            var elementName = new List<string>();
+
                             for (int i = 0; i < elem.Count; i++)
                             {
                                 Type propType = elem[i].GetType();
@@ -135,9 +140,14 @@ namespace Microsoft.Azure.Commands.Compute
                                     }
                                     else
                                     {
-                                        tupleList.Add(MakeTuple(property.Name + "[" + i + "]", GetChildProperties((Object)elem[i]), depth));
+                                        elementName.Add(GetChildProperties((Object)elem[i], true));
                                     }
                                 }
+                            }
+
+                            if (!expand)
+                            {
+                                tupleList.Add(MakeTuple(property.Name, "{" + string.Join(", ", elementName) + "}", depth));
                             }
                         }
                     }
@@ -178,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute
             return max;
         }
 
-        private static string GetChildProperties(Object obj)
+        private static string GetChildProperties(Object obj, bool getOnlyName = false)
         {
             var objType = obj.GetType();
             var propertySet = new List<PropertyInfo>();
@@ -202,11 +212,23 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (childObject != null)
                 {
-                    propertyList.Add(property.Name);
+                    if (getOnlyName)
+                    {
+                        if (property.Name.Equals("Name"))
+                        {
+                            return childObject.ToString();
+                        }
+                    }
+                    else
+                    {
+                        propertyList.Add(property.Name);
+                    }
                 }
             }
 
-            return "{" + string.Join(", ", propertyList) + "}";
+            return (getOnlyName)
+                ? " "
+                : "{" + string.Join(", ", propertyList) + "}";
         }
 
         private static Tuple<string, string, int> MakeTuple(string key, string value, int depth)
