@@ -227,3 +227,47 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ShouldContinueVerbWithoutForc
     }
 }
 #endregion
+
+#region CmdletWithUnapprovedVerb
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithApprovedVerb
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has an approved verb in its name.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "SampleCmdlet")]
+    public class CmdletWithApprovedVerb : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleCmdlet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithUnapprovedVerb
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has an approved verb in its name.
+    /// </summary>
+    [Cmdlet("Prepare", "SampleCmdlet")]
+    public class CmdletWithUnapprovedVerb : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Prepare-SampleCmdlet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+#endregion
