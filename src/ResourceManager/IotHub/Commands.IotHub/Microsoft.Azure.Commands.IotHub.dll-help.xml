@@ -340,7 +340,7 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1 Add a Key to an IotHub</maml:title>
-<dev:code>PS C:\&gt; Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -SecondaryKey "4GT/3sQXHYLDVOG5c8GQCpxIAw+OQtE5RxpdFC6O5Jk=" -Rights RegistryRead</dev:code>
+<dev:code>PS C:\&gt; Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "primarykey" -SecondaryKey "secondarykey" -Rights RegistryRead</dev:code>
 <dev:remarks><maml:para>Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissions.
 </maml:para>
 <maml:para></maml:para>
