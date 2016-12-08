@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         public PSCredential Password { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Indicates that this delete operation should go through and also delete and drop all resources dependent on this credential")]
         [ValidateNotNull]
