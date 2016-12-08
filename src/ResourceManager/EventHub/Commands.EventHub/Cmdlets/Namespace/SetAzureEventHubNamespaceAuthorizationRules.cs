@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(Mandatory = true,
             Position = 2,
-            ParameterSetName = SASRuleParameterSetName,
             HelpMessage = "EventHub NameSpace AuthorizationRule Object.")]
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes AuthRuleObj { get; set; }

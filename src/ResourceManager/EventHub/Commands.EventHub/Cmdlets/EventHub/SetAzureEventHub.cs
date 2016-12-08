@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           ParameterSetName = EventHubParameterSetName,
            HelpMessage = "EventHub object.")]
         [ValidateNotNullOrEmpty]
         public EventHubAttributes EventHubObj { get; set; }

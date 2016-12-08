@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(Mandatory = true,
             Position = 3,
-            ParameterSetName = RegenerateKeySetName,
             HelpMessage = "Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.")]
         [ValidateSet(RegeneKeys.PrimaryKey,
             RegeneKeys.SecondaryKey,
