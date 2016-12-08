@@ -1425,14 +1425,8 @@
                         <Component Id="cmpE8882F4395006099566B21CF86176666" Guid="*">
                             <File Id="filCCA9DDA286BAE690774FAA2B86D1065C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.IotHub\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
-                        <Component Id="cmp1F7C6259AC750E2F83BB487A6711A82D" Guid="*">
-                            <File Id="filF6088163B1699267AF0B2969CC50F3F9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.IotHub\MSSharedLibKey.snk" />
-                        </Component>
                         <Component Id="cmpB1CD14B4C7D4BD71D820606900089681" Guid="*">
                             <File Id="fil41CD3B4B683419526E6C17ECD9CCA694" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.IotHub\Newtonsoft.Json.dll" />
-                        </Component>
-                        <Component Id="cmp35B0B55E1E9EA9B34A9911C7B193F341" Guid="*">
-                            <File Id="fil53D48EE868DE9577BE11E699A069D944" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.IotHub\ResourceManagerStartup.ps1" />
                         </Component>
                     </Directory>
                     <Directory Id="dirA5BF4C5FC88CC5FD4E43A0FA840806C7" Name="AzureRM.KeyVault">
@@ -6051,9 +6045,7 @@
             <ComponentRef Id="cmp34F1F991C47614267C6CCECB4F2F10BB" />
             <ComponentRef Id="cmp23612602759A96AFDD9DD8C6C6E932E9" />
             <ComponentRef Id="cmpE8882F4395006099566B21CF86176666" />
-            <ComponentRef Id="cmp1F7C6259AC750E2F83BB487A6711A82D" />
             <ComponentRef Id="cmpB1CD14B4C7D4BD71D820606900089681" />
-            <ComponentRef Id="cmp35B0B55E1E9EA9B34A9911C7B193F341" />
             <ComponentRef Id="cmpAB04FC1EEE889CA90013762F64086BFF" />
             <ComponentRef Id="cmp4714276292444ADF7D34F509F31C8102" />
             <ComponentRef Id="cmp007494D6DDD084F46271414EDBAE4A28" />
