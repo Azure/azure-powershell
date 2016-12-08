@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(StorageAccountInfo), typeof(DataLakeStoreAccountInfo), typeof(IEnumerable<AdlDataSource>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(PSStorageAccountInfo), typeof(PSDataLakeStoreAccountInfo), typeof(IEnumerable<AdlDataSource>))]
     [Alias("Get-AdlAnalyticsDataSource")]
     public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         {
             if (ParameterSetName.Equals(BlobParameterSetName, StringComparison.InvariantCultureIgnoreCase))
             {
-                WriteObject(DataLakeAnalyticsClient.GetStorageAccount(ResourceGroupName, Account, Blob));
+                WriteObject(new PSStorageAccountInfo(DataLakeAnalyticsClient.GetStorageAccount(ResourceGroupName, Account, Blob)));
             }
             else if ((ParameterSetName.Equals(DataLakeParameterSetName, StringComparison.InvariantCultureIgnoreCase)))
             {
-                WriteObject(DataLakeAnalyticsClient.GetDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore));
+                WriteObject(new PSDataLakeStoreAccountInfo(DataLakeAnalyticsClient.GetDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore)));
             }
             else
             {

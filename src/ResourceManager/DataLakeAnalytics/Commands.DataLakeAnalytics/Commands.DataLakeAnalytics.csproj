@@ -45,9 +45,9 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.DataLake.Analytics, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.DataLake.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.0.12.6-preview\lib\net45\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.1.0.1-preview\lib\net45\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -138,6 +138,12 @@
     <Compile Include="Commands\NewAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsAccount.cs" />
+    <Compile Include="Models\PSDataLakeStoreAccountInfo.cs" />
+    <Compile Include="Models\PSStorageAccountInfo.cs" />
+    <Compile Include="Models\PSStorageAccountInfoProperties.cs" />
+    <Compile Include="Models\PSDataLakeStoreAccountInfoProperties.cs" />
+    <Compile Include="Models\PSDataLakeAnalyticsAccountProperties.cs" />
+    <Compile Include="Models\PSDataLakeAnalyticsAccount.cs" />
     <Compile Include="Models\ObsoleteUSqlCredential.cs" />
     <Compile Include="Models\AdlDataSource.cs" />
     <Compile Include="Models\CatalogPathInstance.cs" />
