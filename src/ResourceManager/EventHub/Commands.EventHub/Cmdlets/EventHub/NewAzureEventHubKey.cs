@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public string AuthorizationRuleName { get; set; }        
 
         [Parameter(Mandatory = true,
-            ParameterSetName = RegenerateKeySetName,
             HelpMessage = "Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.")]
         [ValidateSet(RegeneKeys.PrimaryKey,
             RegeneKeys.SecondaryKey,

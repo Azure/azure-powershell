@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         
         [Parameter(Mandatory = true,
             Position = 3,
-            ParameterSetName = SASRuleParameterSetName,
             HelpMessage = "EventHub AuthorizationRule Object.")]
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes AuthRuleObj { get; set; }
