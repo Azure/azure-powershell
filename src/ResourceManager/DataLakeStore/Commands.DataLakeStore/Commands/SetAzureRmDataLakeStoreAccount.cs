@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Set-AdlStore")]
     public class SetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
@@ -44,24 +44,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public Hashtable Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            HelpMessage = "Indicates what type of encryption to provision the account with, if any.")]
+            HelpMessage = "Optionally enable/disable the existing trusted ID providers.")]
         [ValidateNotNull]
-        public EncryptionConfigType? Encryption { get; set; }
+        public TrustedIdProviderState? TrustedIdProviderState { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            HelpMessage = "If the encryption type is User assigned, this is the key vault the user wishes to use")]
+            HelpMessage = "Optionally enable/disable existing firewall rules.")]
         [ValidateNotNull]
-        public string KeyVaultId { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "If the encryption type is User assigned, this is the key name in the key vault the user wishes to use")]
-        [ValidateNotNull]
-        public string KeyName { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "If the encryption type is User assigned, this is the key version of the key the user wishes to use")]
-        [ValidateNotNull]
-        public string KeyVersion { get; set; }
+        public FirewallState? FirewallState { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
@@ -75,7 +65,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
             if (string.IsNullOrEmpty(DefaultGroup))
             {
-                DefaultGroup = currentAccount.Properties.DefaultGroup;
+                DefaultGroup = currentAccount.DefaultGroup;
             }
 
             if (Tags == null)
@@ -83,50 +73,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Tags = TagsConversionHelper.CreateTagHashtable(currentAccount.Tags);
             }
 
-            // validation of encryption parameters
-            if (Encryption != null)
+            if (!TrustedIdProviderState.HasValue)
             {
-                var identity = new EncryptionIdentity
-                {
-                    Type = EncryptionIdentityType.SystemAssigned,
-                };
-                var config = new EncryptionConfig
-                {
-                    Type = Encryption.Value,
-                };
-
-                if (Encryption.Value == EncryptionConfigType.UserManaged)
-                {
-                    if (string.IsNullOrEmpty(KeyVaultId) ||
-                    string.IsNullOrEmpty(KeyName) ||
-                    string.IsNullOrEmpty(KeyVersion))
-                    {
-                        throw new PSArgumentException(Resources.MissingKeyVaultParams);
-                    }
-
-                    config.KeyVaultMetaInfo = new KeyVaultMetaInfo
-                    {
-                        KeyVaultResourceId = KeyVaultId,
-                        EncryptionKeyName = KeyName,
-                        EncryptionKeyVersion = KeyVersion
-                    };
-                }
-                else
-                {
-                    if (!string.IsNullOrEmpty(KeyVaultId) ||
-                    !string.IsNullOrEmpty(KeyName) ||
-                    !string.IsNullOrEmpty(KeyVersion))
-                    {
-                        WriteWarning(Resources.IgnoredKeyVaultParams);
-                    }
-                }
-
-                WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, location, Tags, identity, config));
+                TrustedIdProviderState = currentAccount.TrustedIdProviderState;
             }
-            else
+
+            if (!FirewallState.HasValue)
             {
-                WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, location, Tags));
+                FirewallState = currentAccount.FirewallState;
             }
+
+            WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.UpdateAccount(ResourceGroupName, Name, DefaultGroup, TrustedIdProviderState.GetValueOrDefault(), FirewallState.GetValueOrDefault(), Tags)));
         }
     }
 }
