@@ -106,7 +106,8 @@ if ($scope -eq 'All' -or $scope -eq 'AzureRM') {
             Write-Host "Updated $module module"
         }
     }
-} elseif ($scope -eq 'AzureStack' -or $scope -eq 'All') {
+}
+if ($scope -eq 'AzureStack' -or $scope -eq 'All') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.AzureStackAdmin"
     if (Test-Path $modulePath) {
         Write-Host "Updating AzureRM.AzureStackAdmin module from $modulePath"
@@ -123,7 +124,7 @@ if ($scope -eq 'All' -or $scope -eq 'AzureRM') {
     } else {
         Write-Error "Can not find module with name $scope to publish"
     }
-} elseif ($scope -ne 'AzureRM' -and $scope -ne 'AzureStack') {
+} elseif ($scope -ne 'AzureRM' -and $scope -ne 'ServiceManagement') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Updating $scope module from $modulePath"
@@ -142,7 +143,7 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     Write-Host "Updated Azure module"
 } 
 
-if ($scope -eq 'AzureStack') {
+if (($scope -eq 'AzureStack') -or ($scope -eq 'All')) {
     # Update AzureStack module    
     $modulePath = "$PSScriptRoot\AzureStack"
     Write-Host "Updating AzureStack module from $modulePath"
