@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.VaultSecretGroup),
+        ProfileNouns.VaultSecretGroup,
+        SupportsShouldProcess = true),
     OutputType(
         typeof(PSVirtualMachine))]
     public class RemoveAzureVMSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -46,30 +47,33 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            var osProfile = this.VM.OSProfile;
-
-            if (osProfile != null && osProfile.Secrets != null)
+            if (this.ShouldProcess("SourceVault", VerbsCommon.Remove))
             {
-                var secrets = osProfile.Secrets.ToList();
-                var comp = StringComparison.OrdinalIgnoreCase;
+                var osProfile = this.VM.OSProfile;
 
-                if (this.SourceVaultId == null)
+                if (osProfile != null && osProfile.Secrets != null)
                 {
-                    secrets.Clear();
-                }
-                else
-                {
-                    foreach (var id in this.SourceVaultId)
+                    var secrets = osProfile.Secrets.ToList();
+                    var comp = StringComparison.OrdinalIgnoreCase;
+
+                    if (this.SourceVaultId == null)
                     {
-                        secrets.RemoveAll(d => string.Equals(d.SourceVault.Id, id, comp));
+                        secrets.Clear();
                     }
+                    else
+                    {
+                        foreach (var id in this.SourceVaultId)
+                        {
+                            secrets.RemoveAll(d => string.Equals(d.SourceVault.Id, id, comp));
+                        }
+                    }
+                    osProfile.Secrets = secrets;
                 }
-                osProfile.Secrets = secrets;
+
+                this.VM.OSProfile = osProfile;
+
+                WriteObject(this.VM);
             }
-
-            this.VM.OSProfile = osProfile;
-
-            WriteObject(this.VM);
         }
     }
 }

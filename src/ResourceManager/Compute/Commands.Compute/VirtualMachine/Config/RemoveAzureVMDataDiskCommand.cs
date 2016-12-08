@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.DataDisk),
+        ProfileNouns.DataDisk,
+        SupportsShouldProcess = true),
     OutputType(
         typeof(PSVirtualMachine))]
     public class RemoveAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -47,30 +48,33 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VM.StorageProfile;
-
-            if (storageProfile != null && storageProfile.DataDisks != null)
+            if (this.ShouldProcess("DataDisk", VerbsCommon.Remove))
             {
-                var disks = storageProfile.DataDisks.ToList();
-                var comp = StringComparison.OrdinalIgnoreCase;
+                var storageProfile = this.VM.StorageProfile;
 
-                if (DataDiskNames == null)
+                if (storageProfile != null && storageProfile.DataDisks != null)
                 {
-                    disks.Clear();
-                }
-                else
-                {
-                    foreach (var diskName in DataDiskNames)
+                    var disks = storageProfile.DataDisks.ToList();
+                    var comp = StringComparison.OrdinalIgnoreCase;
+
+                    if (DataDiskNames == null)
                     {
-                        disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                        disks.Clear();
                     }
+                    else
+                    {
+                        foreach (var diskName in DataDiskNames)
+                        {
+                            disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                        }
+                    }
+                    storageProfile.DataDisks = disks;
                 }
-                storageProfile.DataDisks = disks;
+
+                this.VM.StorageProfile = storageProfile;
+
+                WriteObject(this.VM);
             }
-
-            this.VM.StorageProfile = storageProfile;
-
-            WriteObject(this.VM);
         }
     }
 }
