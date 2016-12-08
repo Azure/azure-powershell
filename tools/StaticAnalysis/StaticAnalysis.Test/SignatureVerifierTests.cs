@@ -50,7 +50,7 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
 
-            Assert.True(testReport.ProblemIdList.Count == 1);
+            Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ActionIndicatesShouldProcess)).SingleOrDefault<int>().Equals(SignatureProblemId.ActionIndicatesShouldProcess));
         }
 
@@ -64,7 +64,7 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Add-AddVerbWithSupportsShouldProcessParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.True(testReport.ProblemIdList.Count == 0);
+            Assert.Equal(0, testReport.ProblemIdList.Count);
             //Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ActionIndicatesShouldProcess)).SingleOrDefault<int>().Equals(SignatureProblemId.ActionIndicatesShouldProcess));
         }
         #endregion
@@ -84,7 +84,7 @@ namespace StaticAnalysis.Test
 
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.True(testReport.ProblemIdList.Count == 1);
+            Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ForceWithoutShouldProcessAttribute)).SingleOrDefault<int>().Equals(SignatureProblemId.ForceWithoutShouldProcessAttribute));
         }
 
@@ -98,7 +98,7 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ForceParameterWithSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.True(testReport.ProblemIdList.Count == 0);
+            Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
         #endregion
@@ -114,7 +114,7 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ConfirmImpactWithSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.True(testReport.ProblemIdList.Count == 0);
+            Assert.Equal(0, testReport.ProblemIdList.Count);
         }
         
         [Fact]
@@ -127,7 +127,7 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ConfirmImpactWithoutSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.True(testReport.ProblemIdList.Count == 2);
+            Assert.Equal(2, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ConfirmLeveleWithNoShouldProcess)).SingleOrDefault<int>().Equals(SignatureProblemId.ConfirmLeveleWithNoShouldProcess));
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ConfirmLevelChange)).SingleOrDefault<int>().Equals(SignatureProblemId.ConfirmLevelChange));
         }
@@ -144,7 +144,7 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Copy-ShouldContinueVerbWithForceSwitch", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.True(testReport.ProblemIdList.Count == 0);
+            Assert.Equal(0, testReport.ProblemIdList.Count);
         }
                 
         [Fact]
@@ -157,9 +157,38 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Export-ShouldContinueVerbWithoutForceSwitch", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.True(testReport.ProblemIdList.Count == 2);
+            Assert.Equal(2, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.CmdletWithDestructiveVerbNoForce)).SingleOrDefault<int>().Equals(SignatureProblemId.CmdletWithDestructiveVerbNoForce));
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ActionIndicatesShouldProcess)).SingleOrDefault<int>().Equals(SignatureProblemId.ActionIndicatesShouldProcess));
+        }
+        #endregion
+
+        #region CmdletWithUnapprovedVerb
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CmdletWithApprovedVerb()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-SampleCmdlet", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CmdletWithUnapprovedVerb()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Prepare-SampleCmdlet", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.CmdletWithUnapprovedVerb)).SingleOrDefault<int>().Equals(SignatureProblemId.CmdletWithUnapprovedVerb));
         }
         #endregion
     }

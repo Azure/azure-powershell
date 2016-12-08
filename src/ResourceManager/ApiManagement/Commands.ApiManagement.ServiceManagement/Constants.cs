@@ -61,5 +61,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         public const string ApiManagementTenantSyncState = "AzureRmApiManagementTenantSyncState";
 
         public const string ApiManagementTenantAccess = "AzureRmApiManagementTenantAccess";
+
+        public const string ApiManagementIdentityProvider = "AzureRmApiManagementIdentityProvider";
     }
 }

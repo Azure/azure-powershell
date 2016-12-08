@@ -26,6 +26,8 @@ using Xunit.Abstractions;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Diagnostics;
+using System;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -290,6 +292,43 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Environment);
             Assert.Equal("AzureUSGovernment", AzureRmProfileProvider.Instance.Profile.Context.Environment.Name);
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void LoginWithCredentialParameterAndMSA()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Example of environment variable: TEST_AZURE_CREDENTIALS=<subscription-id-value>;<email@domain.com>;<email-password>"
+            string credsEnvironmentVariable = Environment.GetEnvironmentVariable("TEST_AZURE_CREDENTIALS");
+            string[] creds = credsEnvironmentVariable.Split(';');
+
+            string userName = creds[1];
+            string password = creds[2];
+
+            var securePassword = new SecureString();
+            Array.ForEach(password.ToCharArray(), securePassword.AppendChar);
+
+            cmdlt.Credential = new PSCredential(userName, securePassword);
+
+            // Act
+            try
+            {
+                cmdlt.InvokeBeginProcessing();
+                cmdlt.ExecuteCmdlet();
+                cmdlt.InvokeEndProcessing();
+            }
+            catch (AadAuthenticationFailedException ex)
+            {
+                Assert.NotNull(ex);
+                Assert.Equal("-Credential parameter can only be used with Organization ID credentials. " +
+                             "For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&clcid=0x409 " +
+                             "for more information about the difference between an organizational account and a Microsoft account.",
+                             ex.Message);
+            }            
         }
 
         [Fact]
