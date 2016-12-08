@@ -126,10 +126,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
             }
 
-            if (enableNonSslPort.HasValue)
-            {
-                parameters.EnableNonSslPort = enableNonSslPort.Value;
-            }
+            parameters.EnableNonSslPort = enableNonSslPort;
 
             if (tenantSettings != null)
             {
@@ -139,12 +136,9 @@ namespace Microsoft.Azure.Commands.RedisCache
                     parameters.TenantSettings.Add(key.ToString(), tenantSettings[key].ToString());
                 }
             }
-
-            if (shardCount.HasValue)
-            {
-                parameters.ShardCount = shardCount.Value;
-            }
-
+            
+            parameters.ShardCount = shardCount;
+            
             RedisResource response = _client.Redis.BeginUpdate(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
             return response;
         }

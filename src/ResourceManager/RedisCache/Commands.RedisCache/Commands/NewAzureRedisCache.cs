@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             var redisResource = CacheClient.CreateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, SubnetId, StaticIP);
             var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
-            WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource,redisAccessKeys,ResourceGroupName));
+            WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
         }
     }
 }
