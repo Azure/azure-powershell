@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the WindowSize of the rule condition
         /// </summary>
-        public TimeSpan WindowsSize { get; set; }
+        public TimeSpan? WindowsSize { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSThresholdRuleCondition class
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSThresholdRuleCondition(ThresholdRuleCondition ruleCondition)
         {
             this.DataSource = ruleCondition.DataSource as RuleMetricDataSource;
-            this.Operator = ruleCondition.OperatorProperty ?? ConditionOperator.GreaterThan;
+            this.Operator = ruleCondition.OperatorProperty;
             this.Threshold = ruleCondition.Threshold;
             this.TimeAggregation = ruleCondition.TimeAggregation;
-            this.WindowsSize = (TimeSpan)ruleCondition.WindowSize;
+            this.WindowsSize = ruleCondition.WindowSize;
         }
 
         /// <summary>
