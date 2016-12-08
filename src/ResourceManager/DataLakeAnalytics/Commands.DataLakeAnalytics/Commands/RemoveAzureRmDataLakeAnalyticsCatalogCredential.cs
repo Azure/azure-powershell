@@ -45,22 +45,58 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         public PSCredential Password { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage =
+                "Indicates that this delete operation should go through and also delete and drop all resources dependent on this credential")]
+        [ValidateNotNull]
+        public SwitchParameter Recurse { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                string.Format(Resources.RemoveDataLakeAnalyticsCatalogCredential, Name),
-                Name,
-                () =>
-                {
-                    DataLakeAnalyticsClient.DeleteCredential(Account, DatabaseName, Name, Password != null ? Password.GetNetworkCredential().Password : null);
-                    if (PassThru)
+            if (!Recurse)
+            {
+                ConfirmAction(
+                    string.Format(Resources.RemoveDataLakeAnalyticsCatalogCredential, Name),
+                    Name,
+                    () =>
                     {
-                        WriteObject(true);
-                    }
-                });
+                        DataLakeAnalyticsClient.DeleteCredential(
+                            Account,
+                            DatabaseName,
+                            Name,
+                            Password != null ? Password.GetNetworkCredential().Password : null);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
+            }
+            else // in the recursive case there are other objects deleted, so the user must take action
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingDataLakeAnalyticsCatalogCredentialCascade, Name),
+                    string.Format(Resources.RemoveDataLakeAnalyticsCatalogCredentialCascade, Name),
+                    Name,
+                    () =>
+                    {
+                        DataLakeAnalyticsClient.DeleteCredential(
+                            Account,
+                            DatabaseName,
+                            Name, Password != null ? Password.GetNetworkCredential().Password : null,
+                            Recurse);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
+            }
         }
     }
 }
