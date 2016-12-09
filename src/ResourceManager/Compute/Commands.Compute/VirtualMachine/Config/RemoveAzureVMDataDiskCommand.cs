@@ -40,8 +40,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("Name")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskName)]
         [ValidateNotNullOrEmpty]
         public string[] DataDiskNames { get; set; }
@@ -50,6 +51,8 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.ShouldProcess("DataDisk", VerbsCommon.Remove))
             {
+                WriteWarning("Breaking change notice: In upcoming release, DataDiskNames parameter will no longer support pipeline.  This parameter will be optional.  All data disks will be removed from a given VM object if a user does not give this parameter.");
+
                 var storageProfile = this.VM.StorageProfile;
 
                 if (storageProfile != null && storageProfile.DataDisks != null)

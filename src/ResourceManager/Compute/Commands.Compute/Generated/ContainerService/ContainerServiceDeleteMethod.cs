@@ -104,11 +104,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "ContainerServiceDelete";
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove)
-                && (this.dynamicParameters["Force"].IsSet ||
-                    this.ShouldContinue("This cmdlet will remove the specified resource. Do you want to continue?",
-                                        "Remove-AzureRmContainerService operation")))
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove))
             {
+                WriteWarning("Breaking change notice:'Force' parameter will be added in upcoming release.");
                 base.ProcessRecord();
             }
         }
@@ -143,18 +141,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Name", pContainerServiceName);
-
-            var pForce = new RuntimeDefinedParameter();
-            pForce.Name = "Force";
-            pForce.ParameterType = typeof(SwitchParameter);
-            pForce.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = false
-            });
-            pForce.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Force", pForce);
 
             return dynamicParameters;
         }

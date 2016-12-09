@@ -70,7 +70,8 @@ function Test-ContainerService
         $output = $cslist | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
 
-        $st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force;
+        #$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force;
+		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
     }
     finally
     {
@@ -144,7 +145,8 @@ function Test-ContainerServiceUpdate
             -Count 2 `
         | Update-AzureRmContainerService;
 
-        $st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService -Force;
+        #$st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService -Force;
+		$st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService;
     }
     finally
     {

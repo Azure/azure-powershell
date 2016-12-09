@@ -91,6 +91,36 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the storage profile.
         public StorageProfile StorageProfile { get; set; }
 
+        [JsonIgnore]
+        public string[] DataDiskNames
+        {
+            get
+            {
+                if (this.StorageProfile == null || this.StorageProfile.DataDisks == null) return null;
+                var listStr = new List<string>();
+                foreach (var item in StorageProfile.DataDisks)
+                {
+                    listStr.Add(item.Name);
+                }
+                return listStr.ToArray();
+            }
+        }
+
+        [JsonIgnore]
+        public string[] NetworkInterfaceIDs
+        {
+            get
+            {
+                if (this.NetworkProfile == null || this.NetworkProfile.NetworkInterfaces == null) return null;
+                var listStr = new List<string>();
+                foreach (var item in NetworkProfile.NetworkInterfaces)
+                {
+                   listStr.Add(item.Id);
+                }
+                return listStr.ToArray();
+            }
+        }
+
         public DisplayHintType DisplayHint { get; set; }
 
     }
