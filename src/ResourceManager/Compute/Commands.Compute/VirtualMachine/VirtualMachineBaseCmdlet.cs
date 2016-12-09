@@ -129,7 +129,14 @@ namespace Microsoft.Azure.Commands.Compute
 
                                 if (propType.IsSerializable)
                                 {
-                                    tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
+                                    if (expand)
+                                    {
+                                        tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
+                                    }
+                                    else
+                                    {
+                                        elementName.Add(elem[i].ToString());
+                                    }
                                 }
                                 else
                                 {
