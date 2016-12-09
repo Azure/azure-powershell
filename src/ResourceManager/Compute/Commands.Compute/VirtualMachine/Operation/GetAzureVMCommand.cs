@@ -68,9 +68,18 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public Uri NextLink { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public DisplayHintType DisplayHint { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            WriteWarning("Breaking change notice: In upcoming releaese, top level properties, DataDiskNames and NetworkInterfaceIDs, will be removed from VM object because they are also in StorageProfile and NetworkProfile, respectively.");
 
             ExecuteClientAction(() =>
             {
@@ -105,6 +114,7 @@ namespace Microsoft.Azure.Commands.Compute
                                     var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
                                     psItem.PowerState = psstate.Statuses[1].DisplayStatus;
                                 }
+                                psItem.DisplayHint = this.DisplayHint;
                                 psResultListStatus.Add(psItem);
                             }
                         }
@@ -152,6 +162,7 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             psResult = Mapper.Map(result.Body, psResult);
                         }
+                        psResult.DisplayHint = this.DisplayHint;
                         WriteObject(psResult);
                     }
                 }
@@ -175,7 +186,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 var psstate = state.ToPSVirtualMachineInstanceView(this.ResourceGroupName, psItem.Name);
                                 psItem.PowerState = psstate.Statuses[1].DisplayStatus;
                             }
-
+                            psItem.DisplayHint = this.DisplayHint;
                             psResultListStatus.Add(psItem);
                         }
                     }
