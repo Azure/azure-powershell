@@ -110,11 +110,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             }
 
             var cluster = result.FirstOrDefault();
-            var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, ConfigurationKey.CoreSite);
+            var coreSiteConfiguration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, ConfigurationKey.CoreSite);
+            var clusterIdentityConfiguration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, ConfigurationKey.ClusterIdentity);
 
             var DefaultStorageAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
-                                    configuration,
-                                    cluster.Properties.ClusterVersion);
+                                                cluster.Properties.ClusterVersion,
+                                                coreSiteConfiguration,
+                                                clusterIdentityConfiguration
+                                         );
 
             if (DefaultStorageAccount == null)
             {
