@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+* Add Remove-AzureRmVMSecret cmdlet.
+
+* Add DisplayHint property to VM object to enable Compact and Expand display modes.
+
+* Add DisplayHint parameter to Get-AzureRmVM to choose display mode of VM object.
+
 * Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
     - JsonAttribute : A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}'
 
