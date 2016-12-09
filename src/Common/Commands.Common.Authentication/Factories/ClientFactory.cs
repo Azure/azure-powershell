@@ -77,12 +77,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             var constructor = typeof(TClient).GetConstructor(types.ToArray());
 
+            TClient client;
             if (constructor == null)
             {
-                throw new InvalidOperationException(string.Format(Resources.InvalidManagementClientType, typeof(TClient).Name));
+                try
+                {
+                    // Constructor might use base type for parameter
+                    // Use Activator.CreateInstance to find best matching constructor
+                    client = Activator.CreateInstance(typeof(TClient), parameters) as TClient;
+                }
+                catch (Exception)
+                {
+                    throw new InvalidOperationException(string.Format(Resources.InvalidManagementClientType, typeof(TClient).Name));
+                }
             }
-
-            TClient client = (TClient)constructor.Invoke(parameters);
+            else
+            {
+                client = (TClient)constructor.Invoke(parameters);
+            }
 
             foreach (ProductInfoHeaderValue userAgent in UserAgents)
             {

@@ -16,9 +16,11 @@ using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -192,6 +194,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             Debug.Assert(currentEnvironment != null);
             environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
+            environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] = currentEnvironment.Endpoints.ServiceManagementUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.Gallery] = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
@@ -209,14 +212,40 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 AzureRmProfileProvider.Instance.Profile.Environments[testEnvironmentName] = environment;
             }
 
+            var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
             if (currentEnvironment.SubscriptionId != null)
             {
+                if (string.IsNullOrEmpty(currentEnvironment.ServicePrincipal))
+                {
+                    testAccount = new AzureAccount()
+                    {
+                        Id = currentEnvironment.UserName,
+                        Type = AzureAccount.AccountType.User,
+                        Properties = new Dictionary<AzureAccount.Property, string>
+                    {
+                        {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
+                    }
+                    };
+                }
+                else
+                {
+                    testAccount = new AzureAccount()
+                    {
+                        Id = currentEnvironment.ServicePrincipal,
+                        Type = AzureAccount.AccountType.ServicePrincipal,
+                        Properties = new Dictionary<AzureAccount.Property, string>
+                    {
+                        {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
+                    }
+                    };
+                }
+
                 testSubscription = new AzureSubscription()
                 {
                     Id = new Guid(currentEnvironment.SubscriptionId),
                     Name = testSubscriptionName,
                     Environment = testEnvironmentName,
-                    Account = currentEnvironment.UserName,
+                    Account = testAccount.Id,
                     Properties = new Dictionary<AzureSubscription.Property, string>
                     {
                         {AzureSubscription.Property.Default, "True"},
@@ -227,21 +256,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                 };
 
-                testAccount = new AzureAccount()
-                {
-                    Id = currentEnvironment.UserName,
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
-                    }
-                };
 
                 ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
                 ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
                 ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
 
-                var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
                     Guid tenant;
@@ -252,28 +271,45 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
+
+            // In playback, use fixed account id
+            // Some http records have account id in the url.
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                testAccount.Id = "abc";
+                testAccount.Type = AzureAccount.AccountType.User;
+                testTenant.Id = new Guid("12341234-1234-1234-1234-123412341234");
+            }
         }
 
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
-            if(environment.AuthorizationContext.Certificate != null)
+            string password;
+            if (environment.AuthorizationContext.Certificate != null)
             {
                 AzureSession.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
-            else if(environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            else if (environment.ServicePrincipal != null && (environment.RawParameters.TryGetValue("ServicePrincipalSecret", out password) || environment.RawParameters.TryGetValue("Password", out password)))
             {
-                var httpMessage = new HttpRequestMessage();
-                environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]
-                    .ProcessHttpRequestAsync(httpMessage, CancellationToken.None)
-                    .ConfigureAwait(false)
-                    .GetAwaiter()
-                    .GetResult();
-
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(
-                    environment.UserName,
-                    httpMessage.Headers.Authorization.Parameter);
+                AzureSession.AuthenticationFactory = new MockServicePrincipalAuthenticationFactory(environment.ServicePrincipal, password.ConvertToSecureString(), GetAccessToken(environment.AuthorizationContext));
             }
+            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            {
+                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(environment.UserName, GetAccessToken(environment.AuthorizationContext));
+            }
+        }
+
+        private string GetAccessToken(AuthorizationContext context)
+        {
+            var httpMessage = new HttpRequestMessage();
+            context.TokenCredentials[TokenAudience.Management]
+                      .ProcessHttpRequestAsync(httpMessage, CancellationToken.None)
+                      .ConfigureAwait(false)
+                      .GetAwaiter()
+                      .GetResult();
+
+            return httpMessage.Headers.Authorization.Parameter;
         }
 
         public void SetupModules(AzureModule mode, params string[] modules)

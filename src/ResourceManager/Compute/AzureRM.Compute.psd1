@@ -137,7 +137,13 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Get-AzureRmVMDiskEncryptionStatus', 
                'Remove-AzureRmVMDiskEncryptionExtension', 
                'Set-AzureRmVMDiskEncryptionExtension', 
-               'Set-AzureRmVMBackupExtension'
+               'Set-AzureRmVMBackupExtension',
+               'Add-AzureRmVmDiagnosticsStreaming',
+               'Remove-AzureRmVmDiagnosticsStreaming',
+               'Start-AzureRmVmDiagnosticsStreaming',
+               'Add-AzureRmVmssDiagnosticsStreaming',
+               'Remove-AzureRmVmssDiagnosticsStreaming',
+               'Start-AzureRmVmssDiagnosticsStreaming'
 
 # Variables to export from this module
 # VariablesToExport = @()

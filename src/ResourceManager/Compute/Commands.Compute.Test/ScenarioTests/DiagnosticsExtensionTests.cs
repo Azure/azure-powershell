@@ -12,13 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Extension.Diagnostics;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class DiagnosticsExtensionTests
     {
+        // To make the name is identical between Record/Playback, use a fixed name provider when running test.
+        private string MockGenerateKeyVaultName(string resourceGroupName, string prefix, Predicate<string> predicate)
+        {
+            return resourceGroupName + "azuretools";
+        }
+
         public DiagnosticsExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
@@ -57,6 +65,24 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVmssDiagnosticsExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VmssDiagnosticsExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDiagnosticsStreaming()
+        {
+            EtwStreamingHelper.CustomGenerateKeyVaultName = MockGenerateKeyVaultName;
+            ComputeTestController.NewInstance.RunPsTest("Test-VMDiagnosticsStreaming");
+            EtwStreamingHelper.CustomGenerateKeyVaultName = null;
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVmssDiagnosticsStreaming()
+        {
+            EtwStreamingHelper.CustomGenerateKeyVaultName = MockGenerateKeyVaultName;
+            ComputeTestController.NewInstance.RunPsTest("Test-VmssDiagnosticsStreaming");
+            EtwStreamingHelper.CustomGenerateKeyVaultName = null;
         }
     }
 }
