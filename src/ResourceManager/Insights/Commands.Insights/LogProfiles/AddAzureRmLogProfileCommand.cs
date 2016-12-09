@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         /// <summary>
         /// Gets or sets the storage account parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account id")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account id")]
         [ValidateNotNullOrEmpty]
         public string StorageAccountId { get; set; }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new LogProfileCreateOrUpdateParameters();
+            var putParameters = new LogProfileResource(location: string.Empty, locations: this.Locations);
 
             if (this.Categories == null)
             {
@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
             }
 
             putParameters.Categories = this.Categories;
-            putParameters.Locations = this.Locations;
             putParameters.RetentionPolicy = new RetentionPolicy
             {
                 Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,

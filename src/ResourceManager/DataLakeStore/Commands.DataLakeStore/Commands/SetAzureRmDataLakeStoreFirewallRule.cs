@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 throw new PSInvalidOperationException(string.Format(Resources.FirewallRuleNotFound, Name));
             }
 
-            var endIp = EndIpAddress ?? rule.Properties.EndIpAddress;
-            var startIp = StartIpAddress ?? rule.Properties.StartIpAddress;
+            var endIp = EndIpAddress ?? rule.EndIpAddress;
+            var startIp = StartIpAddress ?? rule.StartIpAddress;
             ConfirmAction(
                 string.Format(Resources.SetDataLakeFirewallRule, Name),
                 Name,
