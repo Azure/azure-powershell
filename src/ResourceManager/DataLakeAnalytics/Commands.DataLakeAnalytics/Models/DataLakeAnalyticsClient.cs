@@ -476,12 +476,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 });
         }
 
-        public void DeleteCredential(string accountName, string databaseName, string credentialName, string password = null)
+        public void DeleteCredential(string accountName, string databaseName, string credentialName, string password = null, bool cascade = false)
         {
             _catalogClient.Catalog.DeleteCredential(accountName,
                 databaseName,
                 credentialName,
-                string.IsNullOrEmpty(password) ? null : new DataLakeAnalyticsCatalogCredentialDeleteParameters(password));
+                string.IsNullOrEmpty(password) ? null : new DataLakeAnalyticsCatalogCredentialDeleteParameters(password),
+                cascade);
         }
         
 
