@@ -20,16 +20,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    /// <summary>
-    /// Setup the network interface.
-    /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.NetworkInterface,
+        ProfileNouns.VaultSecretGroup,
         SupportsShouldProcess = true),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class RemoveAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class RemoveAzureVMSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -41,43 +38,39 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("Id", "NicIds")]
+        [Alias("Id")]
         [Parameter(
-            Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMNetworkInterfaceID)]
+            HelpMessage = "The ID for Source Vault")]
         [ValidateNotNullOrEmpty]
-        public string[] NetworkInterfaceIDs { get; set; }
+        public string [] SourceVaultId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess("NetworkInterface", VerbsCommon.Remove))
+            if (this.ShouldProcess("SourceVault", VerbsCommon.Remove))
             {
-                WriteWarning("Breaking change notice: In upcoming release, NetworkInterfaceIDs will no longer support pipeline.  This parameter will be optional.  All network interfaces will be removed from a given VM object if a user does not give this parameter.");
+                var osProfile = this.VM.OSProfile;
 
-                var networkProfile = this.VM.NetworkProfile;
+                if (osProfile != null && osProfile.Secrets != null)
+                {
+                    var secrets = osProfile.Secrets.ToList();
+                    var comp = StringComparison.OrdinalIgnoreCase;
 
-                if (NetworkInterfaceIDs == null)
-                {
-                    networkProfile.NetworkInterfaces.Clear();
-                }
-                else
-                {
-                    foreach (var id in this.NetworkInterfaceIDs)
+                    if (this.SourceVaultId == null)
                     {
-                        if (networkProfile != null &&
-                            networkProfile.NetworkInterfaces != null &&
-                            networkProfile.NetworkInterfaces.Any(nic =>
-                                string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase)))
+                        secrets.Clear();
+                    }
+                    else
+                    {
+                        foreach (var id in this.SourceVaultId)
                         {
-                            var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase));
-                            networkProfile.NetworkInterfaces.Remove(nicReference);
+                            secrets.RemoveAll(d => string.Equals(d.SourceVault.Id, id, comp));
                         }
                     }
+                    osProfile.Secrets = secrets;
                 }
 
-                this.VM.NetworkProfile = networkProfile;
+                this.VM.OSProfile = osProfile;
 
                 WriteObject(this.VM);
             }

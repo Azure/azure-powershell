@@ -286,6 +286,7 @@
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\AzureDiskEncryptionStatusContext.cs" />
+    <Compile Include="Models\DisplayHintType.cs" />
     <Compile Include="Models\PSAzureOperationResponse.cs" />
     <Compile Include="Models\PSComputeLongRunningOperation.cs" />
     <Compile Include="Models\PSOperation.cs" />
@@ -334,6 +335,7 @@
     <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
+    <Compile Include="VirtualMachine\Config\RemoveAzureVMSecretCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMBootDiagnosticsCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMPlan.cs" />
