@@ -69,7 +69,7 @@ PowerShellVersion = '5.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzureRmProfile', 'Use-AzureRmProfile', 'Install-AzureRmProfile', 'Uninstall-AzureRmProfile', 'Get-AzureRmModule', 'Set-BootstrapRepo'
+FunctionsToExport = 'Get-AzureRmProfile', 'Use-AzureRmProfile', 'Install-AzureRmProfile', 'Uninstall-AzureRmProfile', 'Get-AzureRmModule', 'Update-AzureRmProfile', 'Set-BootstrapRepo'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
