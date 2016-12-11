@@ -30,3 +30,14 @@
     - Remove-AzureRmLogProfile
 * Add new parameter to Set-AzureRmDiagnosticSetting
     - Parameter WorkspaceId is the OMS workspace Id
+
+## Version 2.3.1
+* Parameter now accepts two more values in New-AzureRmAutoscaleRule
+    - Parameter ScaleType now accepts the previous ChangeCount (default) plus two more values PercentChangeCount, and ExactCount
+    - Add a warning message about this parameter accepting two more values
+
+* Add parameter became optional in Add-AzureRmLogProfile
+    - Parameter StorageAccountId is now optional
+    
+* Minor changes to the output classes to expose more properties
+    - Before the user could see the properties because they were printed, but not access them programatically because they were protected for instance.

@@ -142,6 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                     RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
                     ElasticPoolName = model.ElasticPoolName,
                     RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
+                    ReadScale = model.ReadScale.ToString(),
                 }
             });
 

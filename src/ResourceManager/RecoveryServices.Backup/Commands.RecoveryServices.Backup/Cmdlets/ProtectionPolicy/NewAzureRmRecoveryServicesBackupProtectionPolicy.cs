@@ -13,16 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -58,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Retention policy object associated with the policy to be created
         /// </summary>
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy, 
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public RetentionPolicyBase RetentionPolicy { get; set; }
@@ -66,56 +63,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Schedule policy object assoicated with the policy to be created
         /// </summary>
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy, 
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {
-           ExecutionBlock(() =>
-           {
-               base.ExecuteCmdlet();
+            ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
 
-               WriteDebug(string.Format("Input params - Name:{0}, WorkloadType:{1}, " +
-                          "BackupManagementType: {2}, " +
-                          "RetentionPolicy:{3}, SchedulePolicy:{4}",
-                          Name, WorkloadType.ToString(),
-                          BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
-                          RetentionPolicy == null ? "NULL" : RetentionPolicy.ToString(),
-                          SchedulePolicy == null ? "NULL" : SchedulePolicy.ToString()));
+                WriteDebug(string.Format("Input params - Name:{0}, WorkloadType:{1}, " +
+                           "BackupManagementType: {2}, " +
+                           "RetentionPolicy:{3}, SchedulePolicy:{4}",
+                           Name, WorkloadType.ToString(),
+                           BackupManagementType.HasValue ? BackupManagementType.ToString() : "NULL",
+                           RetentionPolicy == null ? "NULL" : RetentionPolicy.ToString(),
+                           SchedulePolicy == null ? "NULL" : SchedulePolicy.ToString()));
 
                // validate policy name
                PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
                // Validate if policy already exists               
                if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, ServiceClientAdapter) != null)
-               {
-                   throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
-               }
+                {
+                    throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
+                }
 
-               PsBackupProviderManager providerManager = 
-                   new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-               {  
+                PsBackupProviderManager providerManager =
+                    new PsBackupProviderManager(new Dictionary<Enum, object>()
+                {
                    {PolicyParams.PolicyName, Name},
-                   {PolicyParams.WorkloadType, WorkloadType},                   
+                   {PolicyParams.WorkloadType, WorkloadType},
                    {PolicyParams.RetentionPolicy, RetentionPolicy},
-                   {PolicyParams.SchedulePolicy, SchedulePolicy},                
-               }, ServiceClientAdapter);
+                   {PolicyParams.SchedulePolicy, SchedulePolicy},
+                }, ServiceClientAdapter);
 
-               IPsBackupProvider psBackupProvider = 
-                   providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
-               psBackupProvider.CreatePolicy();
+                IPsBackupProvider psBackupProvider =
+                    providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                psBackupProvider.CreatePolicy();
 
-               WriteDebug("Successfully created policy, now fetching it from service: " + Name);
+                WriteDebug("Successfully created policy, now fetching it from service: " + Name);
 
                // now get the created policy and return
-               ServiceClientModel.ProtectionPolicyResponse policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                                           Name,
-                                                                           ServiceClientAdapter);
+               ServiceClientModel.ProtectionPolicyResource policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                                            Name,
+                                                                            ServiceClientAdapter);
                // now convert service Policy to PSObject
-               WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
-           });
+               WriteObject(ConversionHelpers.GetPolicyModel(policy));
+            });
         }
     }
 }

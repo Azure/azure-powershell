@@ -13,27 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Net;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Hyak.Common;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure;
+using SystemNet = System.Net;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
-{   
+{
     /// <summary>
     /// Class hosting helper methods for policy related cmdlets.
     /// </summary>
-    public class PolicyCmdletHelpers 
+    public class PolicyCmdletHelpers
     {
         public static Regex policyNameRgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
 
@@ -43,12 +35,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <param name="policyName">Name of the policy</param>
         public static void ValidateProtectionPolicyName(string policyName)
         {
-            if(string.IsNullOrEmpty(policyName))
+            if (string.IsNullOrEmpty(policyName))
             {
                 throw new ArgumentException(Resources.PolicyNameIsEmptyOrNull);
             }
 
-            if (policyName.Length < PolicyConstants.MinPolicyNameLength || 
+            if (policyName.Length < PolicyConstants.MinPolicyNameLength ||
                 policyName.Length > PolicyConstants.MaxPolicyNameLength)
             {
                 throw new ArgumentException(Resources.ProtectionPolicyNameLengthException);
@@ -66,13 +58,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <param name="policyName">Name of the policy to be fetched</param>
         /// <param name="serviceClientAdapter">Service client adapter with which to make calls</param>
         /// <returns></returns>
-        public static ProtectionPolicyResponse GetProtectionPolicyByName(string policyName,
+        public static ProtectionPolicyResource GetProtectionPolicyByName(string policyName,
                                                  ServiceClientAdapter serviceClientAdapter)
         {
-            ProtectionPolicyResponse response = null;
+            ProtectionPolicyResource response = null;
 
             try
-            {                
+            {
                 response = serviceClientAdapter.GetProtectionPolicy(policyName);
                 Logger.Instance.WriteDebug("Successfully fetched policy from service: " + policyName);
             }
@@ -84,7 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     var cloudEx = exception.InnerException as CloudException;
                     if (cloudEx.Response != null)
                     {
-                        if (cloudEx.Response.StatusCode != HttpStatusCode.NotFound)
+                        if (cloudEx.Response.StatusCode != SystemNet.HttpStatusCode.NotFound)
                         {
                             Logger.Instance.WriteDebug("CloudException Response statusCode: " +
                                                         cloudEx.Response.StatusCode);

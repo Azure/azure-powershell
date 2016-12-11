@@ -274,20 +274,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FileSystemCmdletProviderEncoding</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -346,30 +332,6 @@
 			<command:parameterValue required="true" variableLength="false">FileSystemCmdletProviderEncoding</command:parameterValue>
 			<dev:type>
 				<maml:name>FileSystemCmdletProviderEncoding</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -708,20 +670,6 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -858,30 +806,6 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
 			<maml:description>
@@ -1002,20 +926,6 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmDataLakeStoreAccount</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmDataLakeStoreAccount</maml:name>
@@ -1025,20 +935,6 @@
 					<maml:para>Specifies the name of the resource group that contains the Data Lake Store account to get.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -1056,20 +952,6 @@
 					<maml:para>Specifies the name of the account to get.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1097,30 +979,6 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
@@ -1232,20 +1090,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1272,30 +1116,6 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -1574,20 +1394,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1614,30 +1420,6 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -1938,20 +1720,6 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -2075,30 +1843,6 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
 			<maml:description>
@@ -2212,20 +1956,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStoreEnums+Owner</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2264,30 +1994,6 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -2399,20 +2105,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2436,30 +2128,6 @@
 			<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
 			<dev:type>
 				<maml:name>DataLakeStorePathInstance</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2779,20 +2447,6 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -2937,30 +2591,6 @@
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3114,20 +2744,6 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -3212,30 +2828,6 @@
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3385,20 +2977,6 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -3483,30 +3061,6 @@
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3666,44 +3220,30 @@
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 				<maml:name>Encryption</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates what type of encryption to provision the account with, if any.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[EncryptionConfigType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 				<maml:name>KeyVaultId</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If the encryption type is User assigned, this is the key vault the user wishes to use</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>KeyName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If the encryption type is User assigned, this is the key name in the key vault the user wishes to use</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 				<maml:name>KeyVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If the encryption type is User assigned, this is the key version of the key the user wishes to use</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3772,7 +3312,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 			<maml:name>Encryption</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates what type of encryption to provision the account with, if any.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[EncryptionConfigType]</command:parameterValue>
 			<dev:type>
@@ -3784,7 +3324,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 			<maml:name>KeyVaultId</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If the encryption type is User assigned, this is the key vault the user wishes to use</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3796,7 +3336,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 			<maml:name>KeyName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If the encryption type is User assigned, this is the key name in the key vault the user wishes to use</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3808,35 +3348,11 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 			<maml:name>KeyVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If the encryption type is User assigned, this is the key version of the key the user wishes to use</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3991,20 +3507,6 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -4124,30 +3626,6 @@
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4293,23 +3771,9 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+					<maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -4367,7 +3831,7 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+				<maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -4396,30 +3860,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4767,23 +4207,9 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+					<maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -4865,7 +4291,7 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.</maml:para>
+				<maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -4894,30 +4320,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5067,20 +4469,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -5165,30 +4553,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5315,20 +4679,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<command:parameterValue required="true" variableLength="true">DataLakeStoreItemAce[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -5383,20 +4733,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 					<maml:para>Indicates that this operation removes the default ACE from the specified ACL.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -5514,30 +4850,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -5866,32 +5178,18 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Encryption</maml:name>
+				<maml:name>TrustedIdProviderState</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Optionally enable or disable the existing trusted ID providers.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Nullable`1[EncryptionConfigType]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[TrustedIdProviderState]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>KeyVaultId</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>FirewallState</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Optionally enable or disable existing firewall rules.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-				<maml:name>KeyName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
-				<maml:name>KeyVersion</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[FirewallState]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>ResourceGroupName</maml:name>
@@ -5899,20 +5197,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 					<maml:para>Specifies the name of the resource group that contains the Data Lake Store account to modify.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -5954,49 +5238,25 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Encryption</maml:name>
+			<maml:name>TrustedIdProviderState</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Optionally enable or disable the existing trusted ID providers.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Nullable`1[EncryptionConfigType]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[TrustedIdProviderState]</command:parameterValue>
 			<dev:type>
-				<maml:name>Nullable`1[EncryptionConfigType]</maml:name>
+				<maml:name>Nullable`1[TrustedIdProviderState]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>KeyVaultId</maml:name>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>FirewallState</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Optionally enable or disable existing firewall rules.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[FirewallState]</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-			<maml:name>KeyName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
-			<maml:name>KeyVersion</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>Nullable`1[FirewallState]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6012,30 +5272,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
@@ -6371,20 +5607,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<command:parameterValue required="true" variableLength="true">DataLakeStoreItemAce[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -6457,30 +5679,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6608,20 +5806,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				<command:parameterValue required="true" variableLength="true">DataLakeStoreItemAce[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -6691,20 +5875,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 					<maml:para>Indicates that this operation modifies the default ACE from the specified ACL.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -6843,30 +6013,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
 			<maml:description>
@@ -6946,6 +6092,208 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Set-AzureRmDataLakeStoreItemExpiry</command:name>
+		<maml:description>
+			<maml:para>Sets or removes the expire time for a file in an Azure Data Lake Store account.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmDataLakeStoreItemExpiry</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Set-AzureRmDataLakeStoreItemExpiry cmdlet sets or removes the expire time for a file in an Azure Data Lake Store account.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmDataLakeStoreItemExpiry</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Account</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Data Lake Store account name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Path</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Data Lake Store path of the file item for which to set or remove expiry.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Expiration</maml:name>
+				<maml:description>
+					<maml:para>The absolute expiration time for the specified file. If no value or set to MaxValue, the file will never expire.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTimeOffset]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>Account</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Data Lake Store account name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Path</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Data Lake Store path of the file item for which to set or remove expiry.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
+			<dev:type>
+				<maml:name>DataLakeStorePathInstance</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Expiration</maml:name>
+			<maml:description>
+				<maml:para>The absolute expiration time for the specified file. If no value or set to MaxValue, the file will never expire.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[DateTimeOffset]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[DateTimeOffset]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Alias: Set-AdlStoreItemExpiry</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Set the expiration time for a file  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureRmDataLakeStoreItemExpiry -AccountName &quot;ContosoADL&quot; -Path /myfile.txt -Expiration [DateTimeOffset]::Now.AddHours(2)</dev:code>
+			<dev:remarks>
+				<maml:para>Sets expiration on the file myfile.txt in account ContosoADL to be two hours from now. This will cause the file to expire (be marked for delete) in two hours.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Remove the expiration on a file  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureRmDataLakeStoreItemExpiry -AccountName &quot;ContosoADL&quot; -Path /myfile.txt</dev:code>
+			<dev:remarks>
+				<maml:para>Removes any expiration that was previously set on file &#39;myfile.txt&#39; in account &#39;ContosoADL&#39;. This means the file will not automatically expire (be marked for delete) and will need to be manually deleted or set to expire again.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmDataLakeStoreItem</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Set-AzureRmDataLakeStoreItemOwner</command:name>
 		<maml:description>
 			<maml:para>Modifies the owner of a file or folder in Data Lake Store.</maml:para>
@@ -6990,20 +6338,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 					<maml:para>Specifies the object ID of the Azure Active Directory user, group, or service principal to use as the owner.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -7090,30 +6424,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7236,20 +6546,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
 					<maml:para />
@@ -7334,30 +6630,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 			<command:parameterValue required="true" variableLength="false">int32</command:parameterValue>
 			<dev:type>
 				<maml:name>int32</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7653,20 +6925,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -7693,30 +6951,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
@@ -7838,20 +7072,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStoreEnums+PathType</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -7893,30 +7113,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
@@ -8057,30 +7253,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
-			<dev:type>
-				<maml:name>actionpreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>AccountName</maml:name>
