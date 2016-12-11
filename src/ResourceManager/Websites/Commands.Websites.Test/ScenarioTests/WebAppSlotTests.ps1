@@ -81,7 +81,7 @@ function Test-GetWebAppSlot
 		Assert-True { $slotNames -contains $appWithSlotName1 }
 		Assert-True { $slotNames -contains $appWithSlotName2 }
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname1 -Force
@@ -89,7 +89,7 @@ function Test-GetWebAppSlot
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -159,14 +159,14 @@ function Test-GetWebAppSlotMetrics
 			Assert-True { $actualMetricNames -contains $i}
 		}
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -242,14 +242,14 @@ function Test-StartStopRestartWebAppSlot
 		Assert-AreEqual "Running" $slot.State
 		$ping = PingWebApp $slot
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -294,14 +294,14 @@ function Test-CloneWebAppToSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -363,7 +363,7 @@ function Test-CloneWebAppSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName2 $slot2.Name
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
@@ -374,7 +374,7 @@ function Test-CloneWebAppSlot
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -420,14 +420,14 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $appWithSlotName $slot1.Name
 		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -481,12 +481,12 @@ function Test-CreateNewWebAppSlotOnAse
 		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
 
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
-    }
+	}
 }
 
 <#
@@ -506,6 +506,7 @@ function Test-SetWebAppSlot
 	$tier2 = "Standard"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
+	$numberOfWorkers = 2
 
 	try
 	{
@@ -552,7 +553,7 @@ function Test-SetWebAppSlot
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
-		$slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings
+		$slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
@@ -568,8 +569,10 @@ function Test-SetWebAppSlot
 		{
 			Assert-True { $connectionStrings.Keys -contains $connStringInfo.Name }
 		}
+
+		Assert-AreEqual $numberOfWorkers $slot.SiteConfig.NumberOfWorkers
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
@@ -577,7 +580,7 @@ function Test-SetWebAppSlot
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName1 -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName2 -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -625,13 +628,13 @@ function Test-RemoveWebAppSlot
 
 		Assert-False { $slotNames -contains $appname }
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -695,14 +698,14 @@ function Test-WebAppSlotPublishingProfile
 		# Assert
 		Assert-True { $fileZillaProfile.Name -eq $appWithSlotName3 }
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname  -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#

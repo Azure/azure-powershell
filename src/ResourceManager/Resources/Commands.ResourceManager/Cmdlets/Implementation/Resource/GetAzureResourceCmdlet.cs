@@ -309,6 +309,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             var odataQuery = QueryFilterBuilder.CreateFilter(
+                subscriptionId: null,
+                resourceGroup: null,
                 resourceType: null,
                 resourceName: null,
                 tagName: null,
@@ -339,6 +341,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 extensionResourceName: this.ExtensionResourceName);
 
             var odataQuery = QueryFilterBuilder.CreateFilter(
+                subscriptionId: null,
+                resourceGroup: null,
                 resourceType: null,
                 resourceName: null,
                 tagName: null,
@@ -362,7 +366,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
-                    subscriptionIds: null,
+                    subscriptionId: null,
                     resourceGroup: this.ResourceGroupName,
                     resourceType: this.ResourceType,
                     resourceName: this.ResourceName,
@@ -387,6 +391,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
+                    subscriptionId: null,
+                    resourceGroup: null,
                     resourceType: this.ResourceType,
                     resourceName: this.ResourceName,
                     tagName: null,
@@ -412,6 +418,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
+                    subscriptionId: null,
+                    resourceGroup: null,
                     resourceType: this.ResourceType,
                     resourceName: this.ResourceName,
                     tagName: null,

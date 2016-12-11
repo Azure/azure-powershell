@@ -14,12 +14,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -74,13 +73,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
+        /// Gets list of enum type S equivalents given the corresponding list of enums of type T. 
+        /// </summary>
+        /// <typeparam name="T">Type of the enum whose list should be converted to list of strings.</typeparam>
+        /// <param name="enumListT">List of enums.</param>
+        /// <returns>List of enums converted.</returns>
+        public static List<S> EnumListConverter<T, S>(IList<T> enumListT)
+        {
+            if (enumListT == null || enumListT.Count == 0)
+            {
+                return null;
+            }
+            var enumListS = new List<S>();
+
+            foreach (T enumT in enumListT)
+            {
+                enumListS.Add(enumT.ToString().ToEnum<S>());
+            }
+
+            return enumListS;
+        }
+
+        /// <summary>
         /// Helper function to parse resource id which in format of "[\{Key}\{value}]*"
         /// </summary>
         /// <param name="id">Id of the resource</param>
         /// <returns>dictionary of UriEnum as key and value as value of corresponding URI enum</returns>
         public static Dictionary<CmdletModel.UriEnums, string> ParseUri(string id)
         {
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict = 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict =
                 new Dictionary<CmdletModel.UriEnums, string>();
             if (!string.IsNullOrEmpty(id))
             {
@@ -94,15 +115,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 while (match.Success)
                 {
                     string[] keyValuePair = match.Value.Split(
-                        new string[] { uriPattern }, 
+                        new string[] { uriPattern },
                         StringSplitOptions.RemoveEmptyEntries
                         );
                     CmdletModel.UriEnums key;
                     CmdletModel.UriEnums value;
                     if (keyValuePair.Length == 2)
                     {
-                        if (Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[0], true, out key) &&
-                            !Enum.TryParse<CmdletModel.UriEnums>(keyValuePair[1], true, out value))
+                        if (Enum.TryParse(keyValuePair[0], true, out key) &&
+                            !Enum.TryParse(keyValuePair[1], true, out value))
                         {
                             keyValuePairDict.Add(key, keyValuePair[1]);
                         }
@@ -120,7 +141,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetContainerUri(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -145,7 +166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetProtectedItemUri(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -170,7 +191,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetProtectableItemUri(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -195,7 +216,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetPolicyNameFromPolicyId(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -233,7 +254,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static string GetResourceGroupNameFromId(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
             string id)
         {
             string resourceGroupName = string.Empty;
@@ -252,7 +273,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static string GetVaultNameFromId(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
             string id)
         {
             string vaultName = string.Empty;
@@ -268,6 +289,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return vaultName;
+        }
+
+        /// <summary>
+        /// Retrieves all the pages returned by a paginated API.
+        /// </summary>
+        /// <typeparam name="T">Type of the object returned by the paginated API</typeparam>
+        /// <param name="listResources">Delegate representing the paginated API</param>
+        /// <param name="listNext">Delegate representing the call to retrieve the next page</param>
+        /// <returns>List of objects returned by the API</returns>
+        public static List<T> GetPagedList<T>(
+            Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
+            where T : ServiceClientModel.Resource
+        {
+            var resources = new List<T>();
+            string nextLink = null;
+
+            var pagedResources = listResources();
+
+            foreach (var pagedResource in pagedResources)
+            {
+                resources.Add(pagedResource);
+            }
+
+            nextLink = pagedResources.NextPageLink;
+
+            while (!string.IsNullOrEmpty(nextLink))
+            {
+                pagedResources = listNext(nextLink);
+                nextLink = pagedResources.NextPageLink;
+
+                foreach (var pagedResource in pagedResources)
+                {
+                    resources.Add(pagedResource);
+                }
+            }
+
+            return resources;
         }
     }
 }

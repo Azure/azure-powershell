@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public DataLakeStoreFirewallRule(FirewallRule baseRule)
         {
             Name = baseRule.Name;
-            StartIpAddress = baseRule.Properties.StartIpAddress;
-            EndIpAddress = baseRule.Properties.EndIpAddress;
+            StartIpAddress = baseRule.StartIpAddress;
+            EndIpAddress = baseRule.EndIpAddress;
         }
     }
 }

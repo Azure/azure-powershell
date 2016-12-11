@@ -36,7 +36,7 @@
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Sku</maml:name>
 				<maml:description>
-					<maml:para>Tier of the deployment region. Valid values are Developer, Standard and Premium. Default value is Developer.</maml:para>
+					<maml:para>Tier of the deployment region. Valid and Default value is Premium.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementSku]</command:parameterValue>
 			</command:parameter>

@@ -86,6 +86,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string ElasticPoolName { get; set; }
 
         /// <summary>
+        /// Gets or sets the read scale option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)")]
+        [ValidateNotNullOrEmpty]
+        public DatabaseReadScale ReadScale { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
@@ -152,6 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
+                ReadScale =ReadScale,
             });
             return newEntity;
         }
