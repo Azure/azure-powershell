@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.0
 * Adds commandlets for the Azure IoT Hub 
     - Add-AzureRmIotHubEventHubConsumerGroup
         - Adds an Event Hub consumer group for an existing Azure IoT hub.
