@@ -19,8 +19,8 @@
 -->
 ## Current Release
 * Added the skuTier parameter to set the sky for namespace
-  - New-AzureRmNotificationHubsNamespace
-  - Set-AzureRmNotificationHubsNamespace
+    - New-AzureRmNotificationHubsNamespace
+    - Set-AzureRmNotificationHubsNamespace
 
 ## Version 2.3.0
 * New cmdlets

@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Introduction of deprecation warning for nested properties for all ARM resources. Nested properties will be removed in a future release and all properties will be moved one level up.
+* Removed the ability to set encryption in Set-AzureRMDataLakeStoreAccount (never was supported)
+* Added ability to enable/disable firewall rules and the trusted id providers during Set-AzureRMDataLakeStoreAccount
+* Added a new cmdlet: Set-AzureRMDataLakeStoreItemExpiry, which allows the user to set or remove the expiration for files (not folders) in their ADLS account.
+* Small fix for friendly date properties to pivot off UTC time instead of local time, ensuring standard time reporting.
 
 ## Version 3.1.0
 * Improvements to import and export data cmdlets
