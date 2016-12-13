@@ -23,6 +23,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHubs.Test", "Commands.EventHub.Test\Commands.EventHubs.Test.csproj", "{13E031E4-8A43-4B87-9D72-D70180C31C11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHub", "Commands.EventHub\Commands.EventHub.csproj", "{80A92297-7C92-456B-8EE7-9FB6CE30149D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {142D7B0B-388A-4CEB-A228-7F6D423C5C2E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
