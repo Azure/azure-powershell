@@ -87,6 +87,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public JobResult[] Result { get; set; }
 
+        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true,
+            Mandatory = false, HelpMessage = "An optional value which indicates the number of jobs to return. Default value is 500")]
+        [ValidateNotNullOrEmpty]
+
+        public int? Top { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (JobId != null && JobId != Guid.Empty)
@@ -123,8 +129,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             else
             {
                 var filter = new List<string>();
+                // always order by most recently submitted.
                 if (!string.IsNullOrEmpty(Submitter))
                 {
+                    // TODO: replace with the wildcard substitution.
                     filter.Add(string.Format("submitter eq '{0}'", Submitter));
                 }
 
@@ -144,6 +152,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
                 if (!string.IsNullOrEmpty(Name))
                 {
+                    // TODO: replace with the wildcard substitution.
                     filter.Add(string.Format("name eq '{0}'", Name));
                 }
 
@@ -163,9 +172,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
                 var filterString = string.Join(" and ", filter.ToArray());
 
-                // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
+                // List the jobs with the given filters
                 var list = DataLakeAnalyticsClient.ListJobs(Account,
-                    string.IsNullOrEmpty(filterString) ? null : filterString, null, null);
+                    string.IsNullOrEmpty(filterString) ? null : filterString, Top, null, "submitTime desc");
                 WriteObject(list, true);
             }
         }

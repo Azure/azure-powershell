@@ -244,9 +244,6 @@
   <data name="RemovingDataLakeStoreTrustedProvider" xml:space="preserve">
     <value>Are you sure you want to remove the Data Lake Store trusted identity provider: '{0}'?</value>
   </data>
-  <data name="ScriptFilePathDoesNotExist" xml:space="preserve">
-    <value>The script file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
-  </data>
   <data name="ServerFileAlreadyExists" xml:space="preserve">
     <value>The destination path '{0}' already exists in the system. To overwrite this location, use the -Force parameter.</value>
   </data>
