@@ -19,4 +19,5 @@
 -->
 ## Current Release
 * Migrated from Hyak based Azure SDK to Swagger based Azure SDK
+
 ## Version 2.3.0
