@@ -439,15 +439,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
-        /// </summary>
-        internal static string ScriptFilePathDoesNotExist {
-            get {
-                return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The destination path &apos;{0}&apos; already exists in the system. To overwrite this location, use the -Force parameter..
         /// </summary>
         internal static string ServerFileAlreadyExists {

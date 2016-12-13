@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             try
             {
                 // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
-                ServiceClientTracing.IsEnabled = false;
+                // ServiceClientTracing.IsEnabled = false;
                 FileType ignoredType;
                 if (!overwrite && (!isDownload && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType) || (isDownload && File.Exists(destinationPath))))
                 {
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             try
             {
                 // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
-                ServiceClientTracing.IsEnabled = false;
+                // ServiceClientTracing.IsEnabled = false;
                 ServicePointManager.DefaultConnectionLimit =
                     Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
                         ServicePointManager.DefaultConnectionLimit);
