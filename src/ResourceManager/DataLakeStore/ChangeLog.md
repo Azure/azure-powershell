@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.2.0
 * Introduction of deprecation warning for nested properties for all ARM resources. Nested properties will be removed in a future release and all properties will be moved one level up.
 * Removed the ability to set encryption in Set-AzureRMDataLakeStoreAccount (never was supported)
 * Added ability to enable/disable firewall rules and the trusted id providers during Set-AzureRMDataLakeStoreAccount

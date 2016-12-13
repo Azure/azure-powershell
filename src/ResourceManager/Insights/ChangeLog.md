@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.4.0
 * Parameter now accepts two more values in New-AzureRmAutoscaleRule
     - Parameter ScaleType now accepts the previous ChangeCount (default) plus two more values PercentChangeCount, and ExactCount
     - Add a warning message about this parameter accepting two more values

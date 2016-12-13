@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.4.0
 * Added storage properties to cmdlets for Azure SQL threat detection policy management at database and server level 
     - StorageAccountName
     - RetentionInDays

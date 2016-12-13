@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.2.0
 * Added new cmdlets to manage external Identity Provider Configurations
     - New-AzureRmApiManagementIdentityProvider
     - Set-AzureRmApiManagementIdentityProvider
