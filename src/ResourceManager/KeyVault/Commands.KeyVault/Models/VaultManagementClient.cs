@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 updatedPolicies.Select(a => new AccessPolicyEntry()
                         {
                             TenantId = a.TenantId,
-                            ObjectId = a.ObjectId,
+                            ObjectId = Guid.Parse(a.ObjectId),
                             ApplicationId = a.ApplicationId,
                             Permissions = new Permissions
                             {

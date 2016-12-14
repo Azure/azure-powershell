@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSVaultAccessPolicy
     {
-        public PSVaultAccessPolicy(Guid tenantId, Guid objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates)
+        public PSVaultAccessPolicy(Guid tenantId, string objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates)
         {
             TenantId = tenantId;
             ObjectId = objectId;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public PSVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, ActiveDirectoryClient adClient)
         {
-            ObjectId = s.ObjectId;
+            ObjectId = s.ObjectId.ToString();
             DisplayName = ModelExtensions.GetDisplayNameForADObject(s.ObjectId, adClient);
             ApplicationId = s.ApplicationId;
             TenantId = s.TenantId;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string TenantName { get; private set; }
 
-        public Guid ObjectId { get; private set; }
+        public string ObjectId { get; private set; }
 
         public Guid? ApplicationId { get; private set; }
         public string DisplayName { get; private set; }
