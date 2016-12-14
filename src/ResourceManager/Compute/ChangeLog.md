@@ -19,15 +19,14 @@
 -->
 ## Current Release
 
+## Version 2.4.0
 * Add Remove-AzureRmVMSecret cmdlet.
-
-* Add DisplayHint property to VM object to enable Compact and Expand display modes.
-
-* Add DisplayHint parameter to Get-AzureRmVM to choose display mode of VM object.
-
+* Based on user feedback (https://github.com/Azure/azure-powershell/issues/1384), we've added a DisplayHint property to VM object to enable Compact and Expand display modes. This is similar to `Get -Date - DisplayHint Date` cmdlet. By default, the return of `Get-AzureRmVm -ResourceGroupName <rg-name> -Name <vm-name>` will be compact. You can expand the output using `-DisplayHint Expand` parameter.
+* UPCOMING BREAKING CHANGE Notification: We've added a warning about removing ` DataDiskNames` and ` NetworkInterfaceIDs` properties from the returned VM object from `Get-AzureRmVm -ResourceGroupName <rg-name> -Name <vm-name` cmdlet. Please update your scripts to access these properties in the following way:
+    - `$vm.StorageProfile.DataDisks`
+    - `$vm.NetworkProfile.NetworkInterfaces`
 * Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
     - JsonAttribute : A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}'
-
     - ChefServiceInterval : Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field. e.g. -ChefServiceInterval 45
 
 ## Version 2.3.0
