@@ -157,6 +157,14 @@
     <value>Are you sure you want to remove Group "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="IdentityProviderRemoveDescription" xml:space="preserve">
+    <value>Removing Identity Provider configuration for "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="IdentityProviderRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Identity Provider "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="LoggerRemoveDescription" xml:space="preserve">
     <value>Removing Logger "{0}"</value>
     <comment>Process workflow</comment>

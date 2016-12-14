@@ -16,9 +16,10 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Profile
 {
     public enum PSSkuName
     {
-        StandardVerizon,
-        PremiumVerizon,
-        CustomVerizon,
-        StandardAkamai
+        Standard_Verizon,
+        Premium_Verizon,
+        Custom_Verizon,
+        Standard_Akamai,
+        Standard_ChinaCdn
     }
 }

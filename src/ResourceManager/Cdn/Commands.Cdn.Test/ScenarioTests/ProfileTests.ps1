@@ -21,7 +21,7 @@ function Test-ProfileCrud
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
@@ -69,7 +69,7 @@ function Test-ProfileDeleteWithEndpoints
     $endpointName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Akamai"
     
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku 
 
@@ -92,7 +92,7 @@ function Test-ProfileDeleteAndSsoWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
@@ -119,7 +119,7 @@ function Test-ProfilePipeline
     $profileName2 = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile1 = New-AzureRmCdnProfile -ProfileName $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 

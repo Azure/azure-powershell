@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private readonly List<Guid> subscriptionIds = new List<Guid>();
 
         /// <summary>
-        /// Gets or sets the resource name parameter.
+        /// Gets or sets the resource name for query as contains.
         /// </summary>
         [Alias("Name")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
@@ -66,6 +66,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
         [ValidateNotNullOrEmpty]
         public string ResourceNameContains { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource name for query as equals.
+        /// </summary>
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name for a full match. e.g. if your resource name is testResource, you can specify testResource.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name for a full match. e.g. if your resource name is testResource, you can specify testResource.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name for a full match. e.g. if your resource name is testResource, you can specify testResource.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceNameEquals { get; set; }
 
         /// <summary>
         /// Gets or sets the resource type parameter.
@@ -118,13 +127,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string TagValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group name.
+        /// Gets or sets the resource group name for query as contains.
         /// </summary>
         [Alias("ResourceGroupName")]
         [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name substring.")]
         [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name substring.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupNameContains { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource group name for query as equals.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name for a full match.")]
+        [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name for a full match.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupNameEquals { get; set; }
 
         /// <summary>
         /// Gets or sets the expand properties property.
@@ -254,8 +271,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 extensionResourceName: null);
 
             var odataQuery = QueryFilterBuilder.CreateFilter(
+                subscriptionId: null,
+                resourceGroup: this.ResourceGroupNameEquals,
                 resourceType: null,
-                resourceName: null,
+                resourceName: this.ResourceNameEquals,
                 tagName: this.TagName,
                 tagValue: this.TagValue,
                 filter: this.ODataQuery,
@@ -279,10 +298,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
-                    subscriptionIds: new Guid[] { this.SubscriptionId.Value },
-                    resourceGroup: null,
+                    subscriptionId: this.SubscriptionId.HasValue ? this.SubscriptionId.Value.ToString() : null,
+                    resourceGroup: this.ResourceGroupNameEquals,
                     resourceType: this.ResourceType,
-                    resourceName: null,
+                    resourceName: this.ResourceNameEquals,
                     tagName: this.TagName,
                     tagValue: this.TagValue,
                     filter: this.ODataQuery,
@@ -306,8 +325,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
+                    subscriptionId: null,
+                    resourceGroup: this.ResourceGroupNameEquals,
                     resourceType: this.ResourceType,
-                    resourceName: null,
+                    resourceName: this.ResourceNameEquals,
                     tagName: this.TagName,
                     tagValue: this.TagValue,
                     filter: this.ODataQuery,
@@ -333,8 +354,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
+                    subscriptionId: null,
+                    resourceGroup: null,
                     resourceType: this.ResourceType,
-                    resourceName: null,
+                    resourceName: this.ResourceNameEquals,
                     tagName: this.TagName,
                     tagValue: this.TagValue,
                     filter: this.ODataQuery,
@@ -429,7 +452,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsSubscriptionLevelResourceTypeCollectionGet()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains == null &&
+                !this.ResourceGroupNameAvailable() &&
                 (this.ResourceType != null || this.ExtensionResourceType != null);
         }
 
@@ -439,7 +462,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsResourceGroupLevelResourceTypeCollectionGet()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains != null &&
+                this.ResourceGroupNameAvailable() &&
                 (this.ResourceType != null || this.ExtensionResourceType != null);
         }
 
@@ -450,7 +473,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsTenantLevelResourceTypeCollectionGet()
         {
             return this.SubscriptionId == null &&
-                this.ResourceGroupNameContains == null &&
+                !this.ResourceGroupNameAvailable() &&
                 (this.ResourceType != null || this.ExtensionResourceType != null);
         }
 
@@ -460,7 +483,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsSubscriptionLevelQuery()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains == null;
+                !this.ResourceGroupNameAvailable();
         }
 
         /// <summary>
@@ -469,11 +492,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsResourceGroupLevelQuery()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains != null &&
+                this.ResourceGroupNameAvailable() &&
                 (this.TagName != null ||
                 this.TagValue != null ||
                 this.ResourceType != null ||
                 this.ExtensionResourceType != null);
+        }
+
+        /// <summary>
+        /// Returns true if resource group name is availabe in parameters.
+        /// </summary>
+        private bool ResourceGroupNameAvailable()
+        {
+            return this.ResourceGroupNameContains != null || this.ResourceGroupNameEquals != null;
         }
     }
 }

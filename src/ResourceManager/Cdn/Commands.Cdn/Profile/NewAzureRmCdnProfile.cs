@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Cdn.Models;
 using SdkSku = Microsoft.Azure.Management.Cdn.Models.Sku;
 using SdkSkuName = Microsoft.Azure.Management.Cdn.Models.SkuName;
 using System.Linq;
@@ -71,10 +70,10 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         public override void ExecuteCmdlet()
         {
 
-            var existingProfile = CdnManagementClient.Profiles.ListBySubscriptionId().Select(p => p.ToPsProfile())
+            var existingProfile = CdnManagementClient.Profiles.List()
+                .Select(p => p.ToPsProfile())
                 .Where(p => p.Name.ToLower() == ProfileName.ToLower())
-                .Where(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower())
-                .FirstOrDefault();
+                .FirstOrDefault(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower());
 
             if (existingProfile != null)
             {
@@ -90,12 +89,16 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         private void NewProfile()
         {
             var cdnProfile = CdnManagementClient.Profiles.Create(
+                ResourceGroupName,
                 ProfileName,
-                new ProfileCreateParameters(
+                new Management.Cdn.Models.Profile(
                     Location,
-                    new SdkSku(Sku.CastEnum<PSSkuName, SdkSkuName>()),
-                    Tags.ToDictionaryTags()),
-                ResourceGroupName);
+                    new SdkSku(Sku.ToString()),
+                    id: null,
+                    name: null,
+                    type: null,
+                    tags: Tags.ToDictionaryTags())
+                );
 
             WriteObject(cdnProfile.ToPsProfile());
         }

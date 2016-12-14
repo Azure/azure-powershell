@@ -151,6 +151,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Identity Provider configuration for &quot;{0}&quot;..
+        /// </summary>
+        internal static string IdentityProviderRemoveDescription {
+            get {
+                return ResourceManager.GetString("IdentityProviderRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Identity Provider &quot;{0}&quot;?.
+        /// </summary>
+        internal static string IdentityProviderRemoveWarning {
+            get {
+                return ResourceManager.GetString("IdentityProviderRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Logger &quot;{0}&quot;.
         /// </summary>
         internal static string LoggerRemoveDescription {

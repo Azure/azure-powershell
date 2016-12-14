@@ -133,6 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
             {
                 Location = model.Location,
+                Tags = model.Tags,
                 Properties = new DatabaseCreateOrUpdateProperties()
                 {
                     Collation = model.CollationName,
@@ -141,6 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                     RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
                     ElasticPoolName = model.ElasticPoolName,
                     RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
+                    ReadScale = model.ReadScale.ToString(),
                 }
             });
 

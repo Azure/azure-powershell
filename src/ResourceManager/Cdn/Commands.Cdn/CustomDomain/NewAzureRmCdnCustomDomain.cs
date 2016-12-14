@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                 EndpointName = CdnEndpoint.Name;
             }
 
-            var existingCustomDomain = CdnManagementClient.CustomDomains.ListByEndpoint(EndpointName, ProfileName, ResourceGroupName)
-                .Where(cd => cd.Name.ToLower() == CustomDomainName.ToLower())
-                .FirstOrDefault();
+            var existingCustomDomain = CdnManagementClient.CustomDomains
+                .ListByEndpoint(ResourceGroupName, ProfileName, EndpointName)
+                .FirstOrDefault(cd => cd.Name.ToLower() == CustomDomainName.ToLower());
 
             if (existingCustomDomain != null)
             {
@@ -88,10 +88,10 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         private void NewCustomDomain()
         {
             var customDomain = CdnManagementClient.CustomDomains.Create(
-                CustomDomainName,
-                EndpointName,
-                ProfileName,
                 ResourceGroupName,
+                ProfileName,
+                EndpointName,
+                CustomDomainName,
                 HostName);
 
             WriteVerbose(Resources.Success);

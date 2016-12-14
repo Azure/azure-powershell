@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(DataLakeAnalyticsAccount))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
     [Alias("Set-AdlAnalyticsAccount")]
     public class SetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
@@ -30,35 +30,38 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
             HelpMessage =
-                "Name of the new Data Lake account to set as the default storage for this DataLakeAnalytics account.")]
-        [ValidateNotNullOrEmpty]
-        public string DefaultDataLakeStore { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
-            HelpMessage =
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The maximum supported degree of parallelism for this account.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int? MaxDegreeOfParallelism { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The maximum supported jobs running under the account at the same time.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int? MaxJobCount { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The number of days that job metadata is retained.")]
+        [ValidateNotNull]
+        [ValidateRange(1, 180)]
+        public int? QueryStoreRetention { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreAccountInfo defaultAccount = null;
-            if (!string.IsNullOrEmpty(DefaultDataLakeStore))
-            {
-                defaultAccount = new DataLakeStoreAccountInfo
-                {
-                    Name = DefaultDataLakeStore
-                };
-            }
-
-            WriteObject(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, null, defaultAccount,
-                    null, null, Tags));
+            WriteObject(new PSDataLakeAnalyticsAccount(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, null, null,
+                    null, null, Tags, MaxDegreeOfParallelism, MaxJobCount, QueryStoreRetention)));
         }
     }
 }

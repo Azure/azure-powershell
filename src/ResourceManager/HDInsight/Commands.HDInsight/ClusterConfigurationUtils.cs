@@ -43,24 +43,56 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         }
 
         public static AzureHDInsightDefaultStorageAccount GetDefaultStorageAccountDetails(
-            IDictionary<string, string> configuration,
-            string version)
+            string version,
+            IDictionary<string, string> coreSiteConfiguration,
+            IDictionary<string, string> clusterIdentityConfiguration = null)
         {
             string key = version.Equals("2.1") ? Constants.ClusterConfiguration.DefaultStorageAccountNameKeyOld
                 : Constants.ClusterConfiguration.DefaultStorageAccountNameKey;
 
-            string accountAndContainerStr;
+            string defaultFSUrl;
+            const string AdlPrefix = "adl://";
+            const string WasbPrefix = "wasb://";
 
-            if (configuration.TryGetValue(key, out accountAndContainerStr))
+            if (coreSiteConfiguration.TryGetValue(key, out defaultFSUrl))
             {
-                string[] accountAndContainer = accountAndContainerStr.Substring("wasb://".Length).Split('@');
-
-                return new AzureHDInsightDefaultStorageAccount
+                if (defaultFSUrl.StartsWith(AdlPrefix))
                 {
-                    StorageContainerName = accountAndContainer[0],
-                    StorageAccountName = accountAndContainer[1],
-                    StorageAccountKey = configuration[Constants.ClusterConfiguration.StorageAccountKeyPrefix + accountAndContainer[1]]
-                };
+                    string appId, tenantId, certContents, certPassword, resourceUri, storageRootPath;
+                    clusterIdentityConfiguration = clusterIdentityConfiguration ?? new Dictionary<string, string> { };
+                    clusterIdentityConfiguration.TryGetValue("clusterIdentity.applicationId", out appId);
+                    clusterIdentityConfiguration.TryGetValue("clusterIdentity.aadTenantId", out tenantId);
+                    clusterIdentityConfiguration.TryGetValue("clusterIdentity.certificate", out certContents);
+                    clusterIdentityConfiguration.TryGetValue("clusterIdentity.certificatePassword", out certPassword);
+                    clusterIdentityConfiguration.TryGetValue("clusterIdentity.resourceUri", out resourceUri);
+                    storageRootPath = coreSiteConfiguration.Single(k => k.Key.StartsWith("dfs.adls.") && k.Key.EndsWith(".mountpoint")).Value;
+
+                    return new AzureHDInsightDataLakeDefaultStorageAccount
+                    (
+                        storageAccountName: coreSiteConfiguration.Single(k => k.Key.StartsWith("dfs.adls.") && k.Key.EndsWith(".hostname")).Value,
+                        storageRootPath: storageRootPath,
+                        applicationId: appId,
+                        tenantId: tenantId,
+                        certificateContents: Convert.FromBase64String(certContents ?? ""),
+                        certificatePassword: certPassword,
+                        resourceUri: resourceUri
+                    );
+                }
+                else if (defaultFSUrl.StartsWith(WasbPrefix))
+                {
+                    string[] accountAndContainer = defaultFSUrl.Substring(WasbPrefix.Length).Split('@');
+
+                    return new AzureHDInsightWASBDefaultStorageAccount
+                    (
+                        storageContainerName: accountAndContainer[0],
+                        storageAccountName: accountAndContainer[1],
+                        storageAccountKey: coreSiteConfiguration[Constants.ClusterConfiguration.StorageAccountKeyPrefix + accountAndContainer[1]]
+                    );
+                }
+                else
+                {
+                    return null;
+                }
             }
 
             return null;

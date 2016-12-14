@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 SqlAdministratorPassword = this.SqlAdministratorPassword,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
             });
