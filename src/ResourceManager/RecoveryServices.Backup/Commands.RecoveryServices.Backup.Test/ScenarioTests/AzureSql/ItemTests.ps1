@@ -15,7 +15,7 @@
 function Test-GetAzureSqlItemScenario
 {
 	# 1. Get the vault
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
@@ -24,26 +24,26 @@ function Test-GetAzureSqlItemScenario
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
-		-Name "Sql;testRG;ContosoServer";
-	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
+		-Name "Sql;sqlpaasrg;sqlpaasserver";
+	Assert-AreEqual $namedContainer.Name "Sql;sqlpaasrg;sqlpaasserver";
 
 	# VAR-1: Get all items for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
 		-Container $namedContainer -WorkloadType "AzureSQLDatabase";
-	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+	Assert-AreEqual $item.Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 
 	# VAR-2: Get named item for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
 		-Container $namedContainer `
 		-WorkloadType "AzureSQLDatabase" `
-		-Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
-	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+		-Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
+	Assert-AreEqual $item.Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 }
 
 function Test-DisableAzureSqlProtectionScenario
 {
 	#1. Get the vault
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
@@ -52,15 +52,15 @@ function Test-DisableAzureSqlProtectionScenario
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
-		-Name "Sql;testRG;ContosoServer";
-	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
+		-Name "Sql;sqlpaasrg;sqlpaasserver";
+	Assert-AreEqual $namedContainer.Name "Sql;sqlpaasrg;sqlpaasserver";
 
 	# 4. Get named item for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
 		-Container $namedContainer `
 		-WorkloadType "AzureSQLDatabase" `
-		-Name "dsName;5b11e11c29b54a038fec648667cf16cc";
-	Assert-AreEqual $item.Name "dsName;5b11e11c29b54a038fec648667cf16cc";
+		-Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
+	Assert-AreEqual $item.Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 
 	$job = Disable-AzureRmRecoveryServicesBackupProtection `
 		-Item $item -RemoveRecoveryPoints -Force;
@@ -69,7 +69,7 @@ function Test-DisableAzureSqlProtectionScenario
 function Test-GetAzureSqlRecoveryPointsScenario
 {
 	#Set vault context
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "sqlpaasrg" -Name "sqlpaasrn";
 	
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
@@ -78,15 +78,15 @@ function Test-GetAzureSqlRecoveryPointsScenario
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
-		-Name "Sql;testRG;ContosoServer";
-	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
+		-Name "Sql;sqlpaasrg;sqlpaasserver";
+	Assert-AreEqual $namedContainer.Name "Sql;sqlpaasrg;sqlpaasserver";
 
 	# Get named item for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
 		-Container $namedContainer `
 		-WorkloadType "AzureSQLDatabase" `
-		-Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
-	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+		-Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
+	Assert-AreEqual $item.Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 
 	$fixedStartDate = Get-Date -Date "2016-06-13 16:30:00Z"
 	$startDate = $fixedStartDate.ToUniversalTime()

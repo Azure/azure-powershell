@@ -32,8 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [ValidateNotNullOrEmpty]
         public string GatewayConnectionName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "Gateway connection type: Ipsec/Dedicated/VpnClient/Vnet2Vnet")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Gateway connection type.")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet(ServiceManagement.Model.VirtualNetworkGatewayConnectionType.ExpressRoute, ServiceManagement.Model.VirtualNetworkGatewayConnectionType.IPsec, ServiceManagement.Model.VirtualNetworkGatewayConnectionType.Vnet2Vnet, ServiceManagement.Model.VirtualNetworkGatewayConnectionType.VPNClient, IgnoreCase = true)]
         public string GatewayConnectionType { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Routing Weight.")]
@@ -52,7 +53,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateVirtualNetworkGatewayConnection(ConnectedEntityId, GatewayConnectionName, GatewayConnectionType, RoutingWeight, SharedKey, Guid.Parse(VirtualNetworkGatewayId), string.IsNullOrEmpty(EnableBgp)?false:bool.Parse(EnableBgp)));
+            var gatewayConnectionType = (ServiceManagement.Model.GatewayConnectionType)Enum.Parse(typeof(ServiceManagement.Model.GatewayConnectionType), this.GatewayConnectionType, true);
+            WriteObject(Client.CreateVirtualNetworkGatewayConnection(ConnectedEntityId, GatewayConnectionName, gatewayConnectionType.ToString(), RoutingWeight, SharedKey, Guid.Parse(VirtualNetworkGatewayId), string.IsNullOrEmpty(EnableBgp)?false:bool.Parse(EnableBgp)));
         }
     }
 }

@@ -13,15 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Net;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web.Script.Serialization;
-using System.Xml;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.RecoveryServices;

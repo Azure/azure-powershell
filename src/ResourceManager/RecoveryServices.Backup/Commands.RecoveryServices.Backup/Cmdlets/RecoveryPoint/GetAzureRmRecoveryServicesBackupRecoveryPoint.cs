@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -39,8 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Start time of Time range for which recovery point needs to be fetched
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, 
-            ValueFromPipeline = false, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.StartDate)]        
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet,
+            ValueFromPipeline = false, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.StartDate)]
         [ValidateNotNullOrEmpty]
         public DateTime? StartDate { get; set; }
 
@@ -48,11 +45,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// End time of Time range for which recovery points need to be fetched
         /// </summary>
         [Parameter(
-            Mandatory = false, 
-            ParameterSetName = DateTimeFilterParameterSet, 
-            ValueFromPipeline = false, 
-            Position = 1, 
-            HelpMessage = ParamHelpMsgs.RecoveryPoint.EndDate)]        
+            Mandatory = false,
+            ParameterSetName = DateTimeFilterParameterSet,
+            ValueFromPipeline = false,
+            Position = 1,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.EndDate)]
         [ValidateNotNullOrEmpty]
         public DateTime? EndDate { get; set; }
 
@@ -60,22 +57,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Protected Item object for which recovery points need to be fetched
         /// </summary>
         [Parameter(
-            Mandatory = true, 
-            ParameterSetName = DateTimeFilterParameterSet, 
-            ValueFromPipeline = true, 
-            Position = 2, 
+            Mandatory = true,
+            ParameterSetName = DateTimeFilterParameterSet,
+            ValueFromPipeline = true,
+            Position = 2,
             HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
         [Parameter(
-            Mandatory = true, 
-            ParameterSetName = RecoveryPointIdParameterSet, 
-            ValueFromPipeline = true, 
-            Position = 0, 
+            Mandatory = true,
+            ParameterSetName = RecoveryPointIdParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
             HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             ParameterSetName = NoFilterParameterSet,
-            ValueFromPipeline = true, 
-            Position = 0, 
+            ValueFromPipeline = true,
+            Position = 0,
             HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
@@ -83,16 +80,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Recovery point Id for which detail is needed
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, 
+        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet,
             ValueFromPipeline = false, Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
         public string RecoveryPointId { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             ParameterSetName = RecoveryPointIdParameterSet,
-            ValueFromPipeline = false, 
-            Position = 2, 
+            ValueFromPipeline = false,
+            Position = 2,
             HelpMessage = ParamHelpMsgs.RecoveryPoint.KeyFileDownloadLocation)]
         [ValidateNotNullOrEmpty]
         public string KeyFileDownloadLocation { get; set; }
@@ -107,12 +104,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 // initialize values to default
                 DateTime rangeEnd = DateTime.UtcNow;
                 DateTime rangeStart = rangeEnd.AddDays(-30);
-                
-                Dictionary<System.Enum, object> parameter = new Dictionary<System.Enum, object>();
+
+                Dictionary<Enum, object> parameter = new Dictionary<Enum, object>();
                 parameter.Add(RecoveryPointParams.Item, Item);
 
-                if (this.ParameterSetName == DateTimeFilterParameterSet ||
-                    this.ParameterSetName == NoFilterParameterSet)
+                if (ParameterSetName == DateTimeFilterParameterSet ||
+                    ParameterSetName == NoFilterParameterSet)
                 {
                     // if both start and end date are given by user
                     if (StartDate.HasValue && EndDate.HasValue)
@@ -134,12 +131,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
 
                     //User want list of RPs between given time range
-                    WriteDebug(String.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
+                    WriteDebug(string.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
                         "StartDate = {0} EndDate = {1}, Item.Name = {2}, Item.ContainerName = {3}",
                         rangeStart, rangeEnd, Item.Name, Item.ContainerName));
                     if (rangeStart >= rangeEnd)
                     {
-                        throw new ArgumentException(Resources.RecoveryPointEndDateShouldBeGreater); 
+                        throw new ArgumentException(Resources.RecoveryPointEndDateShouldBeGreater);
                     }
 
                     if (rangeStart.Kind != DateTimeKind.Utc || rangeEnd.Kind != DateTimeKind.Utc)
@@ -147,30 +144,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(Resources.GetRPErrorInputDatesShouldBeInUTC);
                     }
 
+                    if (rangeStart > DateTime.UtcNow)
+                    {
+                        throw new ArgumentException(
+                            Resources.GetRPErrorStartTimeShouldBeLessThanUTCNow);
+                    }
+
                     parameter.Add(RecoveryPointParams.StartDate, rangeStart);
                     parameter.Add(RecoveryPointParams.EndDate, rangeEnd);
-                    PsBackupProviderManager providerManager = 
+                    PsBackupProviderManager providerManager =
                         new PsBackupProviderManager(parameter, ServiceClientAdapter);
-                    IPsBackupProvider psBackupProvider = 
+                    IPsBackupProvider psBackupProvider =
                         providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     var rpList = psBackupProvider.ListRecoveryPoints();
 
-                    WriteDebug(String.Format("RPCount in Response = {0}", rpList.Count));
+                    WriteDebug(string.Format("RPCount in Response = {0}", rpList.Count));
                     WriteObject(rpList, enumerateCollection: true);
                 }
-                else if (this.ParameterSetName == RecoveryPointIdParameterSet)
+                else if (ParameterSetName == RecoveryPointIdParameterSet)
                 {
                     //User want details of a particular recovery point
-                    WriteDebug(String.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
+                    WriteDebug(string.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
                         "StartDate = {0} EndDate = {1}, RPId = {2}, KeyFileDownloadLocation = {3}",
                         StartDate, EndDate, RecoveryPointId, KeyFileDownloadLocation));
 
                     parameter.Add(RecoveryPointParams.RecoveryPointId, RecoveryPointId);
                     parameter.Add(
                         RecoveryPointParams.KeyFileDownloadLocation, KeyFileDownloadLocation);
-                    PsBackupProviderManager providerManager = 
+                    PsBackupProviderManager providerManager =
                         new PsBackupProviderManager(parameter, ServiceClientAdapter);
-                    IPsBackupProvider psBackupProvider = 
+                    IPsBackupProvider psBackupProvider =
                         providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     WriteObject(psBackupProvider.GetRecoveryPointDetails());
                 }
