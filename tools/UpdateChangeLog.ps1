@@ -174,6 +174,11 @@ function UpdateARMLogs([string]$PathToServices)
         if ($serviceName -eq "AzureBackup") { $serviceName = "Backup" }
         if ($serviceName -eq "AzureBatch") { $serviceName = "Batch" }
 
+        if (!(Test-Path "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"))
+        {
+            continue
+        }
+
         # Get the psd1 file
         $Module = Get-Item -Path "$PathToRepo\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.$serviceName\AzureRM.$serviceName.psd1"
 
