@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.4.0
 * Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
     - Users can now use ResourceNameEquals and ResourceGroupNameEquals with Find-AzureRmResource
 
