@@ -235,8 +235,13 @@ if ([string]::IsNullOrEmpty($buildConfig))
 
 if ([string]::IsNullOrEmpty($repositoryLocation))
 {
+    Write-Verbose "No repository location was provided, setting it to default"  
     Write-Verbose "Setting repository location to 'https://dtlgalleryint.cloudapp.net/api/v2'"  
     $repositoryLocation = "https://dtlgalleryint.cloudapp.net/api/v2"
+}
+else
+{
+    Write-Verbose "Setting repository location to '$repositoryLocation'"  
 }
 
 if ([string]::IsNullOrEmpty($scope))
@@ -256,10 +261,15 @@ Write-Host "Publishing $scope package(and its dependencies)"
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
 $repo = Get-PSRepository | where { $_.SourceLocation -eq $repositoryLocation }
-if ($repo -ne $null) {
+if ($repo -ne $null) 
+{
     $repoName = $repo.Name
-} else {
+    Write-Verbose "Existing PS Repository detected: $repo.Name"
+} 
+else 
+{
     $repoName = $(New-Guid).ToString()
+    Write-Verbose "Setting up new PS Repository to: -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted"
     Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted
 }
 
@@ -267,9 +277,12 @@ $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
 if ($publishToLocal)
 {
+    Write-Verbose "Publish to local is set to: $publishToLocal"
 	$tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
 }
+
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
+Write-Verbose "Setting up TEMP PS Repository to: -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet"
 Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 
 try {
@@ -299,4 +312,5 @@ try {
 finally 
 {
 	Unregister-PSRepository -Name $tempRepoName
+    Unregister-PSRepository -Name $repoName
 }

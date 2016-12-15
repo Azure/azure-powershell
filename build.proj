@@ -132,6 +132,7 @@
       Encoding="Unicode"/>
 
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
+	<Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>  
 
     <!-- Restore packages -->
     <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch)" 
