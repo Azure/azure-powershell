@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Compute
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "Hour of the day (0-23) when the Sql Server Full Backup should start")]
         [ValidateRange(0, 23)]
-        public int FullBackupStartHour
+        public int? FullBackupStartHour
         {
             get;
             set;
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Compute
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "Sql Server Full Backup window in hours")]
         [ValidateRange(1, 23)]
-        public int FullBackupWindowInHours
+        public int? FullBackupWindowInHours
         {
             get;
             set;
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Compute
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "Sql Server Log Backup frequency, once every 1-60 minutes")]
         [ValidateRange(1, 60)]
-        public int LogBackupFrequencyInMinutes
+        public int? LogBackupFrequencyInMinutes
         {
             get;
             set;
@@ -225,7 +225,10 @@ namespace Microsoft.Azure.Commands.Compute
             autoBackupSettings.BackupScheduleType = BackupScheduleType;
 
             // Set other Backup schedule settings only if BackUpSchedule type is Manual.
-            if (!string.IsNullOrEmpty(BackupScheduleType) && string.Equals(BackupScheduleType, ValidateSetValues.Manual, StringComparison.InvariantCultureIgnoreCase)) {
+            if (!string.IsNullOrEmpty(BackupScheduleType) && string.Equals(BackupScheduleType, ValidateSetValues.Manual, StringComparison.InvariantCultureIgnoreCase)) 
+            {
+                ValidateBackupScheduleSettings();
+
                 autoBackupSettings.FullBackupFrequency = FullBackupFrequency;
                 autoBackupSettings.FullBackupStartTime = FullBackupStartHour;
                 autoBackupSettings.FullBackupWindowHours = FullBackupWindowInHours;
@@ -286,6 +289,32 @@ namespace Microsoft.Azure.Commands.Compute
             finally
             {
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+            }
+        }
+        
+        /// <summary>
+        /// Validates Backup schedule settings when schedule type is Manual.
+        /// </summary>
+        private void ValidateBackupScheduleSettings()
+        {
+            if (FullBackupFrequency == null)
+            {
+                throw new Exception("FullBackupFrequency cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (FullBackupStartHour == null)
+            {
+                throw new Exception("FullBackupStartTime cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (FullBackupWindowInHours == null)
+            {
+                throw new Exception("FullBackupStartHour cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (LogBackupFrequencyInMinutes == null || LogBackupFrequencyInMinutes % 5 != 0)
+            {
+                throw new Exception("LogBackupFrequencyInMinutes cannot be null or should be multiple of 5 when BackupScheduleType is set to Manual");
             }
         }
     }

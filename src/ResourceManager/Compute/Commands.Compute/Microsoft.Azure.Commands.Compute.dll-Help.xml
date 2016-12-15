@@ -1776,7 +1776,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2037,7 +2038,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2383,7 +2385,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2526,7 +2529,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2676,7 +2680,8 @@ PS C:\&gt; Add-AzureRmVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId $V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -3478,19 +3483,12 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>LocalPath</maml:name>
 				<maml:description>
 					<maml:para>Specifies the local full path where this cmdlet stores the .rdp file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-				<maml:name>Launch</maml:name>
-				<maml:description>
-					<maml:para>Indicates that this cmdlet launches Remote Desktop after it gets the .rdp file.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -3509,12 +3507,19 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>LocalPath</maml:name>
 				<maml:description>
 					<maml:para>Specifies the local full path where this cmdlet stores the .rdp file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>Launch</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this cmdlet launches Remote Desktop after it gets the .rdp file.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3543,7 +3548,7 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>LocalPath</maml:name>
 			<maml:description>
 				<maml:para>Specifies the local full path where this cmdlet stores the .rdp file.</maml:para>
@@ -3664,13 +3669,6 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the virtual machine to get.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>Status</maml:name>
 				<maml:description>
@@ -3685,6 +3683,13 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of a resource group.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the virtual machine to get.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -9229,6 +9234,1017 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>New-AzureRmVMSqlServerAutoBackupConfig</command:name>
+		<maml:description>
+			<maml:para>Creates a configuration object for SQL Server automatic backup.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmVMSqlServerAutoBackupConfig</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The New-AzureRmVMSqlServerAutoBackupConfig cmdlet creates a configuration object for SQL Server automatic backup.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmVMSqlServerAutoBackupConfig</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group of the virtual machine.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Enable</maml:name>
+				<maml:description>
+					<maml:para>Indicates that automated backup for the SQL Server virtual machine is enabled. If you specify this parameter, automated backup sets a backup schedule for all current and new databases. This updates your Managed Backup settings to follow this schedule.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>RetentionPeriodInDays</maml:name>
+				<maml:description>
+					<maml:para>Specifies the number of days to retain a backup.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>EnableEncryption</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this cmdlet enables encryption.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+				<maml:name>CertificatePassword</maml:name>
+				<maml:description>
+					<maml:para>Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>StorageUri</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Uniform Resource Identifier (URI) of the blob storage account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>StorageKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the storage key of the blob storage account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+				<maml:name>BackupSystemDbs</maml:name>
+				<maml:description>
+					<maml:para>Specifies whether system databases should be added to backup. Valid only for SQL Server 2016 VMs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+				<maml:name>BackupScheduleType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the type of backup schedule, Manual or Automated. If manual, user needs to set the backup schedule settings. Valid only for SQL Server 2016 VMs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
+				<maml:name>FullBackupFrequency</maml:name>
+				<maml:description>
+					<maml:para>Specifies the frequency of full backup, daily or weekly. Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
+				<maml:name>FullBackupStartHour</maml:name>
+				<maml:description>
+					<maml:para>Specifies the hour of the day (0-23) when backup should be started. Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+				<maml:name>FullBackupWindowInHours</maml:name>
+				<maml:description>
+					<maml:para>Specifies the backup window (1-23). Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="11">
+				<maml:name>LogBackupFrequencyInMinutes</maml:name>
+				<maml:description>
+					<maml:para>Specifies the frequency of log backup in minutes (1-60). Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmVMSqlServerAutoBackupConfig</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group of the virtual machine.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Enable</maml:name>
+				<maml:description>
+					<maml:para>Indicates that automated backup for the SQL Server virtual machine is enabled. If you specify this parameter, automated backup sets a backup schedule for all current and new databases. This updates your Managed Backup settings to follow this schedule.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>RetentionPeriodInDays</maml:name>
+				<maml:description>
+					<maml:para>Specifies the number of days to retain a backup.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>EnableEncryption</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this cmdlet enables encryption.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+				<maml:name>CertificatePassword</maml:name>
+				<maml:description>
+					<maml:para>Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>StorageContext</maml:name>
+				<maml:description>
+					<maml:para>Specifies the storage account that will be used to store backups. To obtain an AzureStorageContext object, use the New-AzureStorageContext cmdlet. The default is the storage account that is associated with the SQL Server virtual machine.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>StorageUri</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Uniform Resource Identifier (URI) of the blob storage account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>StorageKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the storage key of the blob storage account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+				<maml:name>BackupSystemDbs</maml:name>
+				<maml:description>
+					<maml:para>Specifies whether system databases should be added to backup. Valid only for SQL Server 2016 VMs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+				<maml:name>BackupScheduleType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the type of backup schedule, Manual or Automated. If manual, user needs to set the backup schedule settings. Valid only for SQL Server 2016 VMs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
+				<maml:name>FullBackupFrequency</maml:name>
+				<maml:description>
+					<maml:para>Specifies the frequency of full backup, daily or weekly. Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
+				<maml:name>FullBackupStartHour</maml:name>
+				<maml:description>
+					<maml:para>Specifies the hour of the day (0-23) when backup should be started. Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+				<maml:name>FullBackupWindowInHours</maml:name>
+				<maml:description>
+					<maml:para>Specifies the backup window (1-23). Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="11">
+				<maml:name>LogBackupFrequencyInMinutes</maml:name>
+				<maml:description>
+					<maml:para>Specifies the frequency of log backup in minutes (1-60). Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the resource group of the virtual machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Enable</maml:name>
+			<maml:description>
+				<maml:para>Indicates that automated backup for the SQL Server virtual machine is enabled. If you specify this parameter, automated backup sets a backup schedule for all current and new databases. This updates your Managed Backup settings to follow this schedule.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>RetentionPeriodInDays</maml:name>
+			<maml:description>
+				<maml:para>Specifies the number of days to retain a backup.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>EnableEncryption</maml:name>
+			<maml:description>
+				<maml:para>Indicates that this cmdlet enables encryption.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+			<maml:name>CertificatePassword</maml:name>
+			<maml:description>
+				<maml:para>Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			<dev:type>
+				<maml:name>SecureString</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>StorageUri</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Uniform Resource Identifier (URI) of the blob storage account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+			<dev:type>
+				<maml:name>Uri</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>StorageKey</maml:name>
+			<maml:description>
+				<maml:para>Specifies the storage key of the blob storage account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			<dev:type>
+				<maml:name>SecureString</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+			<maml:name>BackupSystemDbs</maml:name>
+			<maml:description>
+				<maml:para>Specifies whether system databases should be added to backup. Valid only for SQL Server 2016 VMs.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+			<maml:name>BackupScheduleType</maml:name>
+			<maml:description>
+				<maml:para>Specifies the type of backup schedule, Manual or Automated. If manual, user needs to set the backup schedule settings. Valid only for SQL Server 2016 VMs.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
+			<maml:name>FullBackupFrequency</maml:name>
+			<maml:description>
+				<maml:para>Specifies the frequency of full backup, daily or weekly. Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
+			<maml:name>FullBackupStartHour</maml:name>
+			<maml:description>
+				<maml:para>Specifies the hour of the day (0-23) when backup should be started. Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+			<maml:name>FullBackupWindowInHours</maml:name>
+			<maml:description>
+				<maml:para>Specifies the backup window (1-23). Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="11">
+			<maml:name>LogBackupFrequencyInMinutes</maml:name>
+			<maml:description>
+				<maml:para>Specifies the frequency of log backup in minutes (1-60). Valid only for SQL Server 2016 VMs, when BackupScheduleType is manual.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>StorageContext</maml:name>
+			<maml:description>
+				<maml:para>Specifies the storage account that will be used to store backups. To obtain an AzureStorageContext object, use the New-AzureStorageContext cmdlet. The default is the storage account that is associated with the SQL Server virtual machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureStorageContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create an automatic backup configuration using storage URI and account key  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;$AutoBackupConfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri &quot;\\contoso\StorageGeneral&quot; -StorageKey &quot;&lt; Storage Key for ContosoGeneral &gt;&quot;
+Enable                : True
+EnableEncryption      : False
+RetentionPeriodInDays : 10</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates an automatic backup configuration object by specifying storage URI and account key. Automatic backup is enabled and automatic backups are kept for 10 days. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Create an automatic backup configuration using storage context  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;$StorageContext = New-AzureStorageContext -StorageAccountName &quot;ContosoGeneral&quot; -StorageAccountKey &quot;&lt; Storage Key for ContosoGeneral &gt;&quot;
+PS C:\&gt; $AutoBackupConfig = New-AzureRmVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10
+Enable                : True
+EnableEncryption      : False
+RetentionPeriodInDays : 10</dev:code>
+			<dev:remarks>
+				<maml:para>The first command creates a storage context, and then stores it in the $StorageContext variable. For more information, see New-AzureStorageContext.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 3: Create an automatic backup configuration using storage context with encryption and password  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;$StorageContext = New-AzureRmVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $CertificatePassword
+Enable                : True
+EnableEncryption      : True
+RetentionPeriodInDays : 10</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates and stores an automatic backup configuration object. The command specifies the storage context created in a previous example. The command enables encryption with password. The password was previously stored as a secure string in the $CertificatePassword variable. To create a secure string, use the ConvertTo-SecureString cmdlet.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 4: Create an automatic backup configuration with manual backup schedule  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$storageUrl = &apos;https://stocrptestps9662.blob.core.windows.net/&apos;
+$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
+$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Manual -FullBackupFrequency Daily -FullBackupStartHour 10 -FullBackupWindowInHours 10 -LogBackupFrequencyInMinutes 10 -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates and stores an automatic backup configuration object. The command specifies manual backup schedule with associated settings like FullBackupFrequency, FullBackupStartHour, FullBackupWindowInHours and LogBackupFrequencyInMinutes.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>Enable                : True
+EnableEncryption      : False
+RetentionPeriod       : 10
+StorageUrl            : https://stocrptestps9662.blob.core.windows.net/
+StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg==
+Password              :
+BackupSystemDbs       : True
+BackupScheduleType    : Manual
+FullBackupFrequency   : Daily
+FullBackupStartTime   : 10
+FullBackupWindowHours : 10
+LogBackupFrequency    : 10</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 5: Create an automatic backup configuration with automated backup schedule  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$storageUrl = &apos;https://stocrptestps9662.blob.core.windows.net/&apos;
+$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
+$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Automated -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates and stores an automatic backup configuration object. The command specifies automated backup schedule.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>Enable                : True
+EnableEncryption      : False
+RetentionPeriod       : 10
+StorageUrl            : https://stocrptestps9662.blob.core.windows.net/
+StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg==
+Password              :
+BackupSystemDbs       : True
+BackupScheduleType    : Automated
+FullBackupFrequency   : 
+FullBackupStartTime   : 
+FullBackupWindowHours : 
+LogBackupFrequency    : </maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmVMSqlServerAutoPatchingConfig</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVMSqlServerExtension</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureRmVMSqlServerAutoPatchingConfig</command:name>
+		<maml:description>
+			<maml:para>Creates a configuration object for automatic patching on a virtual machine.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmVMSqlServerAutoPatchingConfig</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The New-AzureRmVMSqlServerAutoPatchingConfig cmdlet creates a configuration object for automatic patching on a virtual machine.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmVMSqlServerAutoPatchingConfig</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Enable</maml:name>
+				<maml:description>
+					<maml:para>Indicates that automated patching for the virtual machine is enabled. If you enable automated patching the cmdlet puts Windows Update into interactive mode. If you disable automated patching, Windows Update settings do not change.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DayOfWeek</maml:name>
+				<maml:description>
+					<maml:para>Specifies the day of the week when updates should be installed.</maml:para>
+					<maml:para>The acceptable values for this parameter are:</maml:para>
+					<maml:para>-- Sunday
+-- Monday
+-- Tuesday
+-- Wednesday
+-- Thursday
+-- Friday
+-- Saturday
+-- Everyday</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>MaintenanceWindowStartingHour</maml:name>
+				<maml:description>
+					<maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start to install.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>MaintenanceWindowDuration</maml:name>
+				<maml:description>
+					<maml:para>Specifies the duration, in minutes, of the maintenance window. Automated patching avoids performing an action that can affect a virtual machine availability outside that window. Specify a multiple of 30 minutes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PatchCategory</maml:name>
+				<maml:description>
+					<maml:para>Specifies whether important updates should be included.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Enable</maml:name>
+			<maml:description>
+				<maml:para>Indicates that automated patching for the virtual machine is enabled. If you enable automated patching the cmdlet puts Windows Update into interactive mode. If you disable automated patching, Windows Update settings do not change.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DayOfWeek</maml:name>
+			<maml:description>
+				<maml:para>Specifies the day of the week when updates should be installed.</maml:para>
+				<maml:para>The acceptable values for this parameter are:</maml:para>
+				<maml:para>-- Sunday
+-- Monday
+-- Tuesday
+-- Wednesday
+-- Thursday
+-- Friday
+-- Saturday
+-- Everyday</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>MaintenanceWindowStartingHour</maml:name>
+			<maml:description>
+				<maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start to install.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>MaintenanceWindowDuration</maml:name>
+			<maml:description>
+				<maml:para>Specifies the duration, in minutes, of the maintenance window. Automated patching avoids performing an action that can affect a virtual machine availability outside that window. Specify a multiple of 30 minutes.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PatchCategory</maml:name>
+			<maml:description>
+				<maml:para>Specifies whether important updates should be included.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>AutoPatchingSettings</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+This cmdlet returns object contains settings for automated patching.</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a configuration object to configure automatic patching  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;$AutoPatchingConfig = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek &quot;Thursday&quot; -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory &quot;Important&quot;
+Enable                        : True
+DayOfWeek                     : Thursday
+MaintenanceWindowStartingHour : 11
+MaintenanceWindowDuration     : 120
+PatchCategory                 : Important</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates configuration object for patching. The command specifies the day of the week and defines the maintenance window. This configuration enables patching that uses these values. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>New-AzureRmVMSqlServerAutoBackupConfig</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVMSqlServerExtension</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureRmVMSqlServerKeyVaultCredentialConfig</command:name>
+		<maml:description>
+			<maml:para>Creates a configuration object for azure key vault credential for a virtual machine.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmVMSqlServerKeyVaultCredentialConfig</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The New-AzureRmVMSqlServerKeyVaultCredentialConfig cmdlet creates a configuration object for azure key vault credential for a virtual machine.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmVMSqlServerKeyVaultCredentialConfig</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Enable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>CredentialName</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AzureKeyVaultUrl</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ServicePrincipalName</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ServicePrincipalSecret</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Enable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>CredentialName</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AzureKeyVaultUrl</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ServicePrincipalName</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ServicePrincipalSecret</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			<dev:type>
+				<maml:name>SecureString</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>false</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>false</dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>New-AzureRmVmss</command:name>
 		<maml:description>
 			<maml:para>Creates a VMSS.</maml:para>
@@ -10163,7 +11179,8 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -14530,7 +15547,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName &quot;ResourceGroup11&quot; -Name
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -15106,7 +16124,8 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -15853,10 +16872,9 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Redeploy</maml:name>
+				<maml:name>Generalized</maml:name>
 				<maml:description>
-					<maml:para>Indicates that this cmdlet manually redeploys the virtual machine to a different Azure host to fix any problems. </maml:para>
-					<maml:para>If you redeploy a virtual machine, it restarts, which results in the loss of ephemeral drive data.</maml:para>
+					<maml:para>Indicates that this cmdlet marks a virtual machine as generalized.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -15878,9 +16896,10 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Generalized</maml:name>
+				<maml:name>Redeploy</maml:name>
 				<maml:description>
-					<maml:para>Indicates that this cmdlet marks a virtual machine as generalized.</maml:para>
+					<maml:para>Indicates that this cmdlet manually redeploys the virtual machine to a different Azure host to fix any problems. </maml:para>
+					<maml:para>If you redeploy a virtual machine, it restarts, which results in the loss of ephemeral drive data.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -16711,28 +17730,35 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DisableWAD</maml:name>
 				<maml:description>
 					<maml:para>Indicates that this cmdlet does not enable Azure Diagnostics for the virtual machine.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>EnableWAD</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>WADStorageAccountName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of the storage account that this cmdlet uses to configure the LinuxDiagnostics or IaaSDiagnostics extension. If the virtual machine does not use a standard storage account, you must specify a value for this parameter.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>OSType</maml:name>
 				<maml:description>
 					<maml:para>Specifies the type of the operating system of the operating system disk. If the operating system disk does not have a type, you must specify this parameter. The acceptable values for this parameter are: Windows and Linux.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
 				<maml:name>SkipStorage</maml:name>
 				<maml:description>
 					<maml:para>Indicates that this cmdlet skips configuration of storage.</maml:para>
@@ -16766,7 +17792,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>DisableWAD</maml:name>
 			<maml:description>
 				<maml:para>Indicates that this cmdlet does not enable Azure Diagnostics for the virtual machine.</maml:para>
@@ -16778,7 +17804,19 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>EnableWAD</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>WADStorageAccountName</maml:name>
 			<maml:description>
 				<maml:para>Specifies the name of the storage account that this cmdlet uses to configure the LinuxDiagnostics or IaaSDiagnostics extension. If the virtual machine does not use a standard storage account, you must specify a value for this parameter.</maml:para>
@@ -16790,7 +17828,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>OSType</maml:name>
 			<maml:description>
 				<maml:para>Specifies the type of the operating system of the operating system disk. If the operating system disk does not have a type, you must specify this parameter. The acceptable values for this parameter are: Windows and Linux.</maml:para>
@@ -16802,7 +17840,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
 			<maml:name>SkipStorage</maml:name>
 			<maml:description>
 				<maml:para>Indicates that this cmdlet skips configuration of storage.</maml:para>
@@ -23551,7 +24589,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName &quot;Service02&quot; -Name &quot;VirtualM
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -24058,7 +25097,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName &quot;Service02&quot; -Name &quot;VirtualM
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -25652,7 +26692,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName &quot;Service02&quot; -Name &quot;VirtualM
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>This cmdlet does not generate any output.</maml:para>
+				<maml:para>
+This cmdlet does not generate any output.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -25691,577 +26732,6 @@ PS C:\&gt; Get-AzureRmVM -ServiceName &quot;Service02&quot; -Name &quot;VirtualM
 			<maml:linkText>Update-AzureRmVmss</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>New-AzureRmVMSqlServerAutoBackupConfig</command:name>
-		<maml:description>
-			<maml:para>Creates a configuration object for SQL Server automatic backup.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb></command:verb>
-		<command:noun></command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The New-AzureRmVMSqlServerAutoBackupConfig cmdlet creates a configuration object for SQL Server automatic backup.</maml:para>
-	</maml:description>
-	<command:syntax>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
-			<maml:name>CertificatePassword</maml:name>
-			<maml:description>
-				<maml:para>Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">securestring</command:parameterValue>
-			<dev:type>
-				<maml:name>securestring</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-			<maml:name>Enable</maml:name>
-			<maml:description>
-				<maml:para>Indicates that automated backup for the SQL Server virtual machine is enabled. If you specify this parameter, automated backup sets a backup schedule for all current and new databases. This updates your Managed Backup settings to follow this schedule.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="4">
-			<maml:name>EnableEncryption</maml:name>
-			<maml:description>
-				<maml:para>Indicates that this cmdlet enables encryption.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the resource group of the virtual machine.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="3">
-			<maml:name>RetentionPeriodInDays</maml:name>
-			<maml:description>
-				<maml:para>Specifies the number of days to retain a backup.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">int32</command:parameterValue>
-			<dev:type>
-				<maml:name>int32</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="6">
-			<maml:name>StorageContext</maml:name>
-			<maml:description>
-				<maml:para>Specifies the storage account that will be used to store backups. To obtain an AzureStorageContext object, use the New-AzureStorageContext cmdlet. The default is the storage account that is associated with the SQL Server virtual machine.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azurestoragecontext</command:parameterValue>
-			<dev:type>
-				<maml:name>azurestoragecontext</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="6">
-			<maml:name>StorageKey</maml:name>
-			<maml:description>
-				<maml:para>Specifies the storage key of the blob storage account.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">securestring</command:parameterValue>
-			<dev:type>
-				<maml:name>securestring</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="5">
-			<maml:name>StorageUri</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Uniform Resource Identifier (URI) of the blob storage account.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">uri</command:parameterValue>
-			<dev:type>
-				<maml:name>uri</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Create an automatic backup configuration using storage URI and account key  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;$AutoBackupConfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri &quot;\\contoso\StorageGeneral&quot; -StorageKey &quot;&lt; Storage Key for ContosoGeneral &gt;&quot;
-Enable                : True
-EnableEncryption      : False
-RetentionPeriodInDays : 10</dev:code>
-			<dev:remarks>
-				<maml:para>This command creates an automatic backup configuration object by specifying storage URI and account key. Automatic backup is enabled and automatic backups are kept for 10 days. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Example 2: Create an automatic backup configuration using storage context  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;$StorageContext = New-AzureStorageContext -StorageAccountName &quot;ContosoGeneral&quot; -StorageAccountKey &quot;&lt; Storage Key for ContosoGeneral &gt;&quot;
-PS C:\&gt; $AutoBackupConfig = New-AzureRmVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10
-Enable                : True
-EnableEncryption      : False
-RetentionPeriodInDays : 10</dev:code>
-			<dev:remarks>
-				<maml:para>The first command creates a storage context, and then stores it in the $StorageContext variable. For more information, see New-AzureStorageContext.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Example 3: Create an automatic backup configuration using storage context with encryption and password  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;$StorageContext = New-AzureRmVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $CertificatePassword
-Enable                : True
-EnableEncryption      : True
-RetentionPeriodInDays : 10</dev:code>
-			<dev:remarks>
-				<maml:para>This command creates and stores an automatic backup configuration object. The command specifies the storage context created in a previous example. The command enables encryption with password. The password was previously stored as a secure string in the $CertificatePassword variable. To create a secure string, use the ConvertTo-SecureString cmdlet.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>New-AzureRmVMSqlServerAutoPatchingConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Set-AzureRmVMSqlServerExtension</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>New-AzureRmVMSqlServerAutoPatchingConfig</command:name>
-		<maml:description>
-			<maml:para>Creates a configuration object for automatic patching on a virtual machine.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb></command:verb>
-		<command:noun></command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The New-AzureRmVMSqlServerAutoPatchingConfig cmdlet creates a configuration object for automatic patching on a virtual machine.</maml:para>
-	</maml:description>
-	<command:syntax>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>DayOfWeek</maml:name>
-			<maml:description>
-				<maml:para>Specifies the day of the week when updates should be installed.</maml:para>
-				<maml:para>The acceptable values for this parameter are:</maml:para>
-				<maml:para>-- Sunday
--- Monday
--- Tuesday
--- Wednesday
--- Thursday
--- Friday
--- Saturday
--- Everyday</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Enable</maml:name>
-			<maml:description>
-				<maml:para>Indicates that automated patching for the virtual machine is enabled. If you enable automated patching the cmdlet puts Windows Update into interactive mode. If you disable automated patching, Windows Update settings do not change.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>MaintenanceWindowDuration</maml:name>
-			<maml:description>
-				<maml:para>Specifies the duration, in minutes, of the maintenance window. Automated patching avoids performing an action that can affect a virtual machine availability outside that window. Specify a multiple of 30 minutes.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">int32</command:parameterValue>
-			<dev:type>
-				<maml:name>int32</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>MaintenanceWindowStartingHour</maml:name>
-			<maml:description>
-				<maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start to install.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">int32</command:parameterValue>
-			<dev:type>
-				<maml:name>int32</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>PatchCategory</maml:name>
-			<maml:description>
-				<maml:para>Specifies whether important updates should be included.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name>AutoPatchingSettings</maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>This cmdlet returns object contains settings for automated patching.</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Create a configuration object to configure automatic patching  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;$AutoPatchingConfig = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek &quot;Thursday&quot; -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory &quot;Important&quot;
-Enable                        : True
-DayOfWeek                     : Thursday
-MaintenanceWindowStartingHour : 11
-MaintenanceWindowDuration     : 120
-PatchCategory                 : Important</dev:code>
-			<dev:remarks>
-				<maml:para>This command creates configuration object for patching. The command specifies the day of the week and defines the maintenance window. This configuration enables patching that uses these values. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>New-AzureRmVMSqlServerAutoBackupConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Set-AzureRmVMSqlServerExtension</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>New-AzureRmVMSqlServerKeyVaultCredentialConfig</command:name>
-		<maml:description>
-			<maml:para>Creates a configuration object for azure key vault credential for a virtual machine.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb></command:verb>
-		<command:noun></command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The New-AzureRmVMSqlServerKeyVaultCredentialConfig cmdlet creates a configuration object for azure key vault credential for a virtual machine.</maml:para>
-	</maml:description>
-	<command:syntax>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>AzureKeyVaultUrl</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>CredentialName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>Enable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>ServicePrincipalName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>ServicePrincipalSecret</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">securestring</command:parameterValue>
-			<dev:type>
-				<maml:name>securestring</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>false</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>WhatIf</maml:name>
-			<maml:description>
-				<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>false</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;</dev:code>
-			<dev:remarks>
-				<maml:para />
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
 	</maml:relatedLinks>
 </command:command>
 </helpItems>
