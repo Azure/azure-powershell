@@ -21,18 +21,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'"> 
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.IotHub</OutputPath> 
-    <DefineConstants>TRACE;SIGN</DefineConstants> 
-    <Optimize>true</Optimize> 
-    <DebugType>pdbonly</DebugType> 
-    <PlatformTarget>AnyCPU</PlatformTarget> 
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors> 
-    <SignAssembly>true</SignAssembly> 
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile> 
-    <DelaySign>true</DelaySign> 
-    <Prefer32Bit>false</Prefer32Bit> 
-  </PropertyGroup> 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.IotHub</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
@@ -105,7 +105,6 @@
     <Compile Include="Models\PSAccessRights.cs" />
     <Compile Include="Models\PSCapabilities.cs" />
     <Compile Include="Models\PSCloudToDeviceProperties.cs" />
-    <Compile Include="Models\PSDiagnosticCategory.cs" />
     <Compile Include="Models\PSEventHubInputProperties.cs" />
     <Compile Include="Models\PSEventHubProperties.cs" />
     <Compile Include="Models\PSExportDevicesRequest.cs" />
@@ -126,7 +125,6 @@
     <Compile Include="Models\PSIotHubSkuTier.cs" />
     <Compile Include="Models\PSIotHubJobStatus.cs" />
     <Compile Include="Models\PSMessagingEndpointProperties.cs" />
-    <Compile Include="Models\PSOperationMonitoringLevel.cs" />
     <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
     <Compile Include="Models\PSSBAccessRights.cs" />
     <Compile Include="Models\PSSharedAccessAuthorizationRule.cs" />
