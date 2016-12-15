@@ -1098,3 +1098,38 @@ function Test-ServerAuditingTypeMigration
 		Remove-TestEnvironment $testSuffix
 	}
 }
+
+<#
+.SYNOPSIS
+Tests that Get Server and Database Auditing on UK passes
+#>
+function Test-GetServerAndDatabaseAuditingInUkRegion
+{
+	# Setup
+	$testSuffix = 684412
+	Create-TestEnvironment $testSuffix "UK South"
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix 
+
+	try
+	{                              
+		# Test
+		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+                                
+        # Assert
+        Assert-AreEqual $policy.AuditState "Disabled"
+        Assert-AreEqual $policy.RetentionInDays 0
+                                
+        # Test
+        $policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+                                
+        # Assert
+        Assert-AreEqual $policy.AuditState "Disabled"
+        Assert-AreEqual $policy.RetentionInDays 0
+
+    }
+    finally
+    {
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+    }
+}
