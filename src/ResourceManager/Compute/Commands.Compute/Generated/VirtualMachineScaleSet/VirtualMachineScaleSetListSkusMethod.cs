@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Get", "AzureRmVmssSku", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVmssSku", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class GetAzureRmVmssSku : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }

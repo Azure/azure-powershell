@@ -85,6 +85,7 @@
       <XUnitTests Include=".\src\ResourceManager\Dns\Commands.Dns.Test\bin\Debug\Microsoft.Azure.Commands.Dns.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\HDInsight\Commands.HDInsight.Test\bin\Debug\Commands.HDInsight.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\IotHub\Commands.IotHub.Test\bin\Debug\Microsoft.Azure.Commands.IotHub.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
@@ -106,6 +107,8 @@
       <XUnitTests Include=".\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll"/>
       <XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
+	  <XUnitTests Include=".\src\ResourceManager\ServiceBus\Commands.ServiceBus.Test\bin\Debug\Microsoft.Azure.Commands.ServiceBus.Test.dll"/>
+	  <XUnitTests Include=".\src\ResourceManager\EventHub\Commands.EventHub.Test\bin\Debug\Microsoft.Azure.Commands.EventHubs.Test.dll"/>
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
@@ -526,4 +529,3 @@
 
 
 </Project>
-
