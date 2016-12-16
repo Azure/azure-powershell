@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Management.Automation;
+using static Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -57,9 +58,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public Hashtable Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "Indicates what type of encryption to provision the account with, if any.")]
+            HelpMessage = "Indicates what type of encryption to provision the account with. By default, encryption is ServiceManaged. If no encryption is desired, it must be explicitly set to 'None'")]
         [ValidateNotNull]
-        public EncryptionConfigType? Encryption { get; set; }
+        public EncryptionType? Encryption { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage = "If the encryption type is User assigned, this is the key vault the user wishes to use")]
@@ -108,12 +109,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             if (Encryption != null)
             {
                 var identity = new EncryptionIdentity();
-                var config = new EncryptionConfig
-                {
-                    Type = Encryption.Value,
-                };
+                var config = new EncryptionConfig();
 
-                if (Encryption.Value == EncryptionConfigType.UserManaged)
+                if (Encryption.Value == EncryptionType.UserManaged)
                 {
                     if (string.IsNullOrEmpty(KeyVaultId) ||
                     string.IsNullOrEmpty(KeyName) ||
@@ -122,6 +120,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         throw new PSArgumentException(Resources.MissingKeyVaultParams);
                     }
 
+                    config.Type = EncryptionConfigType.UserManaged;
                     config.KeyVaultMetaInfo = new KeyVaultMetaInfo
                     {
                         KeyVaultResourceId = KeyVaultId,
@@ -129,7 +128,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         EncryptionKeyVersion = KeyVersion
                     };
                 }
-                else
+                else if (Encryption.Value == EncryptionType.ServiceManaged)
                 {
                     if (!string.IsNullOrEmpty(KeyVaultId) ||
                     !string.IsNullOrEmpty(KeyName) ||
@@ -137,12 +136,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     {
                         WriteWarning(Resources.IgnoredKeyVaultParams);
                     }
+                    config.Type = EncryptionConfigType.ServiceManaged;
                 }
 
-                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags, identity, config)));
+                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags, identity, config, encryptionType: Encryption)));
             }
             else
             {
+                WriteWarning(Resources.DefaultingEncryptionType);
                 WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags)));
             }
         }

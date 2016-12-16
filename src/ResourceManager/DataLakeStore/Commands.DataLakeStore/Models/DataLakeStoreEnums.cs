@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             UTF8
         }
 
+        public enum EncryptionType
+        {
+            UserManaged = 0,
+            ServiceManaged = 1,
+            None = 2
+        }
+
         public enum Owner
         {
             User,

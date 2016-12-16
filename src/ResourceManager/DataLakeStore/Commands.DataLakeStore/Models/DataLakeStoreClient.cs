@@ -23,6 +23,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using static Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -58,7 +59,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             EncryptionIdentity identity = null, 
             EncryptionConfig config = null, 
             IList<TrustedIdProvider> trustedProviders = null,
-            IList<FirewallRule> firewallRules = null)
+            IList<FirewallRule> firewallRules = null,
+            EncryptionType? encryptionType = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -94,6 +96,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 parameters.FirewallRules = firewallRules;
                 parameters.FirewallState = FirewallState.Enabled;
+            }
+
+            // if the encryptionType is explicitly 'None' then do not set encryption
+            if(encryptionType.HasValue && encryptionType.Value == EncryptionType.None)
+            {
+                parameters.EncryptionState = EncryptionState.Disabled;
+                parameters.Identity = null;
+                parameters.EncryptionConfig = null;
             }
 
             return  _client.Account.Create(resourceGroupName, accountName, parameters);
