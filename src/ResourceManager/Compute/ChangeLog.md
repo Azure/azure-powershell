@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
+* New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
 
 ## Version 2.4.0
 * Add Remove-AzureRmVMSecret cmdlet.
