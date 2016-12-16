@@ -160,6 +160,8 @@
         <string>ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\SessionRecords\\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\\VaultCRUDTests.json</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\InvalidProfile.PublishSettings</string>
         <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\RdfeTestDummy.publishsettings</string>
+        <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\client.rb</string>
+        <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\tstorgnztn-validator.pem</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\Azure.publishsettings</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile3.PublishSettings</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfileChina.PublishSettings</string>

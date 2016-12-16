@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
                     value: "Microsoft Resources"),
                 authorization: new SenderAuthorization(
                     action: "PUT",
-                    condition: "",
                     role: "Sender",
                     scope: "None"),
                 caller: Caller,
@@ -117,12 +116,12 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             return new AzureOperationResponse<LogProfileResource>()
             {
-                Body = new LogProfileResource(location: "East US", id: "MyLogProfileId")
+                Body = new LogProfileResource(location: "East US", id: "MyLogProfileId", locations: new string[] { "EastUs" })
+
                 {
                     Categories = new List<string>() { "cat2" },
                     ServiceBusRuleId = "myBusId",
                     StorageAccountId = "myStorageAccId",
-                    Locations = new string[] { "EastUs" },
                     Name = Utilities.Name,
                     RetentionPolicy = new RetentionPolicy(enabled: true, days: 10),
                     Tags = null

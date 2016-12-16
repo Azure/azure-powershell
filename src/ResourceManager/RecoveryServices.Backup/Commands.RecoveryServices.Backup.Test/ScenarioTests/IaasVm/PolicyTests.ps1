@@ -12,9 +12,9 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$resourceGroupName = "labRG1";
-$resourceName = "pstestrsvault";
-$policyName = "pwtest1";
+$resourceGroupName = "RecoveryServicesBackupTestRg";
+$resourceName = "PsTestRsVault";
+$policyName = "PsTestPolicy";
 
 function Test-PolicyScenario
 {
