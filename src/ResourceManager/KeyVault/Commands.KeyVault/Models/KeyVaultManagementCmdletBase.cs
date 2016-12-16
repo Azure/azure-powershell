@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         // exist in that resource group, we would end up having the Key Vault service decrypt the vault for us.
         // This is a heavy operation and not required here.
         //
-        // An alternate implementation that checks for the vault name globally would be to construct a vault 
+        // An alternate implementation that checks for the vault name globally would be to construct a vault
         // URL with the given name and attempt checking DNS entries for it.
         protected bool VaultExistsInCurrentSubscription(string name)
         {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return DefaultContext.Tenant.Id;
         }
 
-        protected Guid GetCurrentUsersObjectId()
+        protected string GetCurrentUsersObjectId()
         {
             if (DefaultContext.Subscription == null)
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.InvalidSelectedSubscription);
@@ -180,15 +180,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             return GetObjectId(
                     upn: DefaultContext.Account.Id,
-                    objectId: Guid.Empty,
+                    objectId: string.Empty,
                     spn: null
                     );
         }
 
-        protected Guid GetObjectId(Guid objectId, string upn, string spn)
+        protected string GetObjectId(string objectId, string upn, string spn)
         {
-            Guid objId = Guid.Empty;
-            string objectFilter = objectId.ToString();
+            var objId = string.Empty;
+            var objectFilter = objectId ?? string.Empty;
 
             if (!string.IsNullOrWhiteSpace(upn))
             {
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         u.UserPrincipalName.Equals(upn) || u.Mail.Equals(upn) || u.OtherMails.Any(m => m.Equals(upn))).
                         ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
                 if (user != null)
-                    objId = Guid.Parse(user.ObjectId);
+                    objId = user.ObjectId;
             }
             else if (!string.IsNullOrWhiteSpace(spn))
             {
@@ -206,20 +206,44 @@ namespace Microsoft.Azure.Commands.KeyVault
                     s.ServicePrincipalNames.Any(n => n.Equals(spn)))
                     .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
                 if (servicePrincipal != null)
-                    objId = Guid.Parse(servicePrincipal.ObjectId);
+                    objId = servicePrincipal.ObjectId;
             }
-            else if (objectId != Guid.Empty)
+            else if (!string.IsNullOrWhiteSpace(objectId))
             {
-                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objectId.ToString() }, new string[] { }).GetAwaiter().GetResult();
+                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult();
                 if (objectCollection.Any())
                     objId = objectId;
             }
 
-            if (objId != Guid.Empty)
+            if (!string.IsNullOrWhiteSpace(objId))
                 return objId;
 
             throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, objectFilter,
                 (_dataServiceCredential != null) ? _dataServiceCredential.TenantId : string.Empty));
+        }
+
+        /// <summary>
+        /// Determines whether or not the given object ID has valid syntax.
+        /// This does not validate whether or not the object ID is actually present in the Graph DB.
+        /// </summary>
+        /// <param name="objectId">The object ID whose syntax is to be validated.</param>
+        /// <returns>True iff the given object ID has valid syntax.</returns>
+        protected bool IsValidObjectIdSyntax(string objectId)
+        {
+            if (string.IsNullOrWhiteSpace(objectId))
+            {
+                return false;
+            }
+
+            // In ADFS, object IDs have no additional syntax restrictions.
+            if (DefaultProfile.Context.Environment.OnPremise)
+            {
+                return true;
+            }
+
+            // In AAD, object IDs must be parsable as Guids.
+            Guid dummyValue;
+            return Guid.TryParse(objectId, out dummyValue);
         }
 
         protected readonly string[] DefaultPermissionsToKeys =
