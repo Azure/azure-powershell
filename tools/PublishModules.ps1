@@ -101,7 +101,7 @@ function Make-StrictModuleDependencies
 
 	  if ($newModules.Count -gt 0)
 	  {
-        Update-ModuleManifest -Path $Path -RequiredModules $newModules
+        Update-ModuleManifest -Path $Path -RequiredModules $newModules -LicenseUri "http://aka.ms/azps-license"
       }
     
   }
@@ -143,6 +143,36 @@ function Remove-ModuleDependencies
 
 }
 
+function Update-NugetPackage
+{
+	[CmdletBinding()]
+	param(
+	    [string]$BasePath,
+	    [string]$ModuleName,
+		[string]$DirPath,
+		[string]$NugetExe
+	)
+
+	PROCESS
+	{
+        $regex = New-Object -Type System.Text.RegularExpressions.Regex -ArgumentList  "([0-9\.]+)nupkg$"
+		$regex2 = "<requireLicenseAcceptance>false</requireLicenseAcceptance>"
+		
+		$relDir = Join-Path $DirPath -ChildPath "_rels"
+		$contentPath = Join-Path $DirPath -ChildPath '`[Content_Types`].xml'
+		$packPath = Join-Path $DirPath -ChildPath "package"
+		$modulePath = Join-Path $DirPath -ChildPath ($ModuleName + ".nuspec")
+		Remove-Item -Recurse -Path $relDir -Force
+		Remove-Item -Recurse -Path $packPath -Force
+		Remove-Item -Path $contentPath -Force
+		$content = (Get-Content -Path $modulePath) -join "`r`n"
+		$content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+		$content | Out-File -FilePath $modulePath -Force
+		&$NugetExe pack $modulePath -OutputDirectory $BasePath
+	}
+}
+
+
 function Change-RMModule 
 {
 	[CmdletBinding()]
@@ -160,7 +190,8 @@ function Change-RMModule
 		$moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
 		$manifest = Make-StrictModuleDependencies $moduleSourcePath
 		$manifest = Test-ModuleManifest -Path $moduleSourcePath
-		$toss = Publish-Module -Path $Path -Repository $TempRepo
+		$toss = Publish-Module -Path $Path -Repository $TempRepo -LicenseUri "http://aka.ms/azps-license"
+        #'$nugetExe pack'
 	    Write-Output "Changing to directory for module modifications $TempRepoPath"
 		pushd $TempRepoPath
 		try
@@ -183,11 +214,9 @@ function Change-RMModule
 		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
           Remove-ModuleDependencies -Path $unzippedManifest
           
-		  Remove-Item -Path $zipPath -Force
-		  Write-Output "Compressing $zipPath"
-		  Compress-Archive (Join-Path -Path $dirPath -ChildPath "*") -DestinationPath $zipPath
-		  Write-Output "Renaming package $zipPath to zip archive $nupkgPath"
-		  ren $zipPath $nupkgPath
+		  Remove-Item -Path $zipPath -Force		  
+          Write-Output "Repackaging $dirPath"
+		  Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
 	    }
 		finally 
 		{
@@ -270,7 +299,7 @@ else
 {
     $repoName = $(New-Guid).ToString()
     Write-Verbose "Setting up new PS Repository to: -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted"
-    Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted
+    Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation\package -InstallationPolicy Trusted
 }
 
 $publishToLocal = test-path $repositoryLocation
