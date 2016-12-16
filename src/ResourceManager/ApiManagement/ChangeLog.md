@@ -18,12 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added new cmdlets to manage external Identity Provider Configurations
-	- New-AzureRmApiManagementIdentityProvider
-	- Set-AzureRmApiManagementIdentityProvider
-	- Get-AzureRmApiManagementIdentityProvider
-	- Remove-AzureRmApiManagementIdentityProvider
 
+## Version 3.2.0
+* Added new cmdlets to manage external Identity Provider Configurations
+    - New-AzureRmApiManagementIdentityProvider
+    - Set-AzureRmApiManagementIdentityProvider
+    - Get-AzureRmApiManagementIdentityProvider
+    - Remove-AzureRmApiManagementIdentityProvider
 * Updated the client to use .net client 3.2.0 AzureRm.ApiManagement which has RBAC support
 * Updated cmdlet Import-AzureRmApiManagementApi to allow importing an Wsdl type API as either Soap Pass Through (ApiType = Http) or Soap To Rest (ApiType = Soap). Default is Soap Pass Through.
 * Fixed Issue https://github.com/Azure/azure-powershell/issues/3217
