@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None.
+        /// </summary>
+        internal static string DefaultingEncryptionType {
+            get {
+                return ResourceManager.GetString("DefaultingEncryptionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download file data.
         /// </summary>
         internal static string DownloadFileDataMessage {

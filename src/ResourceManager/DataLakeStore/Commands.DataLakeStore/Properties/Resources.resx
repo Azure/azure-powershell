@@ -132,6 +132,9 @@
   <data name="DefaultAclWord" xml:space="preserve">
     <value>"default "</value>
   </data>
+  <data name="DefaultingEncryptionType" xml:space="preserve">
+    <value>No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None</value>
+  </data>
   <data name="DownloadFileDataMessage" xml:space="preserve">
     <value>Download file data</value>
   </data>
