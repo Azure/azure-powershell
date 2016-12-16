@@ -24,6 +24,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
@@ -193,9 +194,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (!string.IsNullOrWhiteSpace(upn))
             {
                 objectFilter = upn;
-                var user = ActiveDirectoryClient.Users.Where(u =>
-                        u.UserPrincipalName.Equals(upn) || u.Mail.Equals(upn) || u.OtherMails.Any(m => m.Equals(upn))).
-                        ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
+                var user = ActiveDirectoryClient.Users.Where(FilterByUpn(upn)).ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
                 if (user != null)
                     objId = user.ObjectId;
             }
@@ -203,7 +202,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 objectFilter = spn;
                 var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
-                    s.ServicePrincipalNames.Any(n => n.Equals(spn)))
+                    s.ServicePrincipalNames.Any(n => n.Equals(spn, StringComparison.OrdinalIgnoreCase)))
                     .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
                 if (servicePrincipal != null)
                     objId = servicePrincipal.ObjectId;
@@ -244,6 +243,19 @@ namespace Microsoft.Azure.Commands.KeyVault
             // In AAD, object IDs must be parsable as Guids.
             Guid dummyValue;
             return Guid.TryParse(objectId, out dummyValue);
+        }
+
+        private Expression<Func<IUser, bool>> FilterByUpn(string upn)
+        {
+            // In ADFS, Graph cannot handle this particular combination of filters.
+            if (!DefaultProfile.Context.Environment.OnPremise)
+            {
+                return u => u.UserPrincipalName.Equals(upn, StringComparison.OrdinalIgnoreCase) ||
+                    u.Mail.Equals(upn, StringComparison.OrdinalIgnoreCase) ||
+                    u.OtherMails.Any(m => m.Equals(upn, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return u => u.UserPrincipalName.Equals(upn, StringComparison.OrdinalIgnoreCase);
         }
 
         protected readonly string[] DefaultPermissionsToKeys =
