@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);
                 }
 
-                var userObjectId = Guid.Empty;
+                var userObjectId = string.Empty;
                 AccessPolicyEntry accessPolicy = null;
 
                 try
@@ -114,12 +114,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
                     WriteWarning(ex.Message);
                 }
-                if (userObjectId != Guid.Empty)
+                if (!string.IsNullOrWhiteSpace(userObjectId))
                 {
                     accessPolicy = new AccessPolicyEntry()
                     {
                         TenantId = GetTenantId(),
-                        ObjectId = userObjectId,
+                        ObjectId = Guid.Parse(userObjectId),
                         Permissions = new Permissions
                         {
                             Keys = DefaultPermissionsToKeys,

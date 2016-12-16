@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
         [ValidateNotNullOrEmpty()]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         /// <summary>
         /// Id of the application to which a user delegate to
@@ -208,11 +208,16 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, VaultName, ResourceGroupName));
                 }
 
+                if (!IsValidObectIdSyntaxIfNotEmpty(this.ObjectId))
+                {
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidObjecIdSyntax);
+                }
+
                 // Update vault policies
                 PSKeyVaultModels.PSVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
-                if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
+                if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || !string.IsNullOrWhiteSpace(this.ObjectId))
                 {
-                    Guid objId = this.ObjectId;
+                    var objId = this.ObjectId;
                     if (!this.BypassObjectIdValidation.IsPresent)
                     {
                         objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
@@ -271,9 +276,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private bool MatchVaultAccessPolicyIdentity(PSKeyVaultModels.PSVaultAccessPolicy ap, Guid objectId, Guid? applicationId)
+        private bool MatchVaultAccessPolicyIdentity(PSKeyVaultModels.PSVaultAccessPolicy ap, string objectId, Guid? applicationId)
         {
-            return ap.ApplicationId == applicationId && ap.ObjectId == objectId;
+            return ap.ApplicationId == applicationId && string.Equals(ap.ObjectId, objectId, StringComparison.OrdinalIgnoreCase);
         }
 
         private bool IsMeaningfulPermissionSet(string[] perms)

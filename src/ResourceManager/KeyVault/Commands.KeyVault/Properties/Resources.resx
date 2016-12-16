@@ -147,6 +147,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="InvalidApplicationId" xml:space="preserve">
     <value>Invalid application Id.</value>
   </data>
+  <data name="InvalidObjecIdSyntax" xml:space="preserve">
+    <value>Cannot parse ObjectId into Guid.</value>
+  </data>  
   <data name="InvalidAzureEnvironment" xml:space="preserve">
     <value>Invalid AzureEnvironment.</value>
   </data>

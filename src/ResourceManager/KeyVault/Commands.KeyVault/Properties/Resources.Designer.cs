@@ -316,6 +316,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot parse ObjectId into Guid..
+        /// </summary>
+        internal static string InvalidObjecIdSyntax {
+            get {
+                return ResourceManager.GetString("InvalidObjecIdSyntax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid secret attributes.
         /// </summary>
         internal static string InvalidSecretAttributes {

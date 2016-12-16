@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return DefaultContext.Tenant.Id;
         }
 
-        protected Guid GetCurrentUsersObjectId()
+        protected string GetCurrentUsersObjectId()
         {
             if (DefaultContext.Subscription == null)
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.InvalidSelectedSubscription);
@@ -180,15 +180,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             return GetObjectId(
                     upn: DefaultContext.Account.Id,
-                    objectId: Guid.Empty,
+                    objectId: string.Empty,
                     spn: null
                     );
         }
 
-        protected Guid GetObjectId(Guid objectId, string upn, string spn)
+        protected string GetObjectId(string objectId, string upn, string spn)
         {
-            Guid objId = Guid.Empty;
-            string objectFilter = objectId.ToString();
+            var objId = string.Empty;
+            string objectFilter = objectId ?? string.Empty;
 
             if (!string.IsNullOrWhiteSpace(upn))
             {
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         u.UserPrincipalName.Equals(upn) || u.Mail.Equals(upn) || u.OtherMails.Any(m => m.Equals(upn))).
                         ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
                 if (user != null)
-                    objId = Guid.Parse(user.ObjectId);
+                    objId = user.ObjectId;
             }
             else if (!string.IsNullOrWhiteSpace(spn))
             {
@@ -206,20 +206,31 @@ namespace Microsoft.Azure.Commands.KeyVault
                     s.ServicePrincipalNames.Any(n => n.Equals(spn)))
                     .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
                 if (servicePrincipal != null)
-                    objId = Guid.Parse(servicePrincipal.ObjectId);
+                    objId = servicePrincipal.ObjectId;
             }
-            else if (objectId != Guid.Empty)
+            else if (!string.IsNullOrWhiteSpace(objectId))
             {
-                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objectId.ToString() }, new string[] { }).GetAwaiter().GetResult();
+                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult();
                 if (objectCollection.Any())
                     objId = objectId;
             }
 
-            if (objId != Guid.Empty)
+            if (!string.IsNullOrWhiteSpace(objId))
                 return objId;
 
             throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, objectFilter,
                 (_dataServiceCredential != null) ? _dataServiceCredential.TenantId : string.Empty));
+        }
+
+        protected bool IsValidObectIdSyntaxIfNotEmpty(string objectId)
+        {
+            // Enforcing Guid syntax in ObjectId for AAD authority
+            if (!string.IsNullOrWhiteSpace(objectId) && !DefaultProfile.Context.Environment.OnPremise)
+            {
+                Guid dontcare;
+                return Guid.TryParse(objectId, out dontcare);
+            }
+            return true;
         }
 
         protected readonly string[] DefaultPermissionsToKeys =

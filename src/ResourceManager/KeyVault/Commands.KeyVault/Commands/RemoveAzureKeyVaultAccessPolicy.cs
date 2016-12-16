@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
         [ValidateNotNullOrEmpty()]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         /// <summary>
         /// Id of the application to which a user delegate to
@@ -153,11 +153,16 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidApplicationId);
 
+                if (!IsValidObectIdSyntaxIfNotEmpty(this.ObjectId))
+                {
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidObjecIdSyntax);
+                }
+
                 // Update vault policies
                 var updatedPolicies = existingVault.AccessPolicies;
-                if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
+                if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || !string.IsNullOrWhiteSpace(this.ObjectId))
                 {
-                    if (ObjectId == Guid.Empty)
+                    if (string.IsNullOrWhiteSpace(this.ObjectId))
                     {
                         ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
                     }
@@ -175,12 +180,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(updatedVault);
             }
         }
-        private bool ShallBeRemoved(PSKeyVaultModels.PSVaultAccessPolicy ap, Guid objectId, Guid? applicationId)
+        private bool ShallBeRemoved(PSKeyVaultModels.PSVaultAccessPolicy ap, string objectId, Guid? applicationId)
         {
             // If both object id and application id are specified, remove the compound identity policy only.                    
             // If only object id is specified, remove all policies refer to the object id including the compound identity policies.                                
-            return applicationId.HasValue ? (ap.ApplicationId == applicationId && ap.ObjectId == objectId) :
-                (ap.ObjectId == objectId);
+            return applicationId.HasValue ? (ap.ApplicationId == applicationId && string.Equals(ap.ObjectId, objectId, StringComparison.OrdinalIgnoreCase)) :
+                (string.Equals(ap.ObjectId, objectId, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
