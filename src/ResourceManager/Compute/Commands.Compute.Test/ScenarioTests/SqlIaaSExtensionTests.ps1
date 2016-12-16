@@ -89,7 +89,8 @@ function Test-SetAzureRmVMSqlServerAKVExtension
 
         # 3) Verifies settings are correct given input
 
-        Assert-AreEqual $extension.KeyVaultCredentialSettings.CredentialName "CredentialTesting";
+        Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials.Count 1;
+		Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials[0].CredentialName "CredentialTesting"
 
         # 4) Update extension values
 
@@ -98,8 +99,9 @@ function Test-SetAzureRmVMSqlServerAKVExtension
 
         # 5) Verify changes
         $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
-
-        Assert-AreEqual $extension.KeyVaultCredentialSettings.CredentialName "CredentialTest"
+		
+        Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials.Count 2;
+		Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials[1].CredentialName "CredentialTest"
 
         # 6) Test with correct Name and Version
 
