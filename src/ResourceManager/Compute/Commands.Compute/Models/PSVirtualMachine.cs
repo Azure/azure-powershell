@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the property of 'Id'
         public string Id { get; set; }
 
+        // Gets the property of 'VmId'
+        public string VmId { get; set; }
+
         // Gets or sets the property of 'Name'
         public string Name { get; set; }
 
@@ -112,10 +115,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 var listStr = new List<string>();
                 foreach (var item in NetworkProfile.NetworkInterfaces)
                 {
-                    listStr.Add(item.Id);
+                   listStr.Add(item.Id);
                 }
                 return listStr.ToArray();
             }
         }
+
+        public DisplayHintType DisplayHint { get; set; }
+
     }
 }

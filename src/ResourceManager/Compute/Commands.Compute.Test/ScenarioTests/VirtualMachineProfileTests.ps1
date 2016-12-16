@@ -130,6 +130,30 @@ function Test-VirtualMachineProfile
     $certUrl2 =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
     $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
 
+    Assert-AreEqual 2 $p.OSProfile.Secrets.Count;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
+    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
+    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
+    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateStore $certStore2;
+    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateUrl $certUrl2;
+    Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.Id $referenceUri2;
+    Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateStore $certStore;
+    Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateUrl $certUrl;
+
+    $p = Remove-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri;
+    Assert-AreEqual 1 $p.OSProfile.Secrets.Count;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri2;
+    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
+    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
+
+    $p = Remove-AzureRmVMSecret -VM $p;
+    Assert-AreEqual 0 $p.OSProfile.Secrets.Count;
+
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
+
     $aucSetting = "AutoLogon";
     $aucContent = "<UserAccounts><AdministratorPassword><Value>" + $password + "</Value><PlainText>true</PlainText></AdministratorPassword></UserAccounts>";
     $p = Add-AzureRmVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
