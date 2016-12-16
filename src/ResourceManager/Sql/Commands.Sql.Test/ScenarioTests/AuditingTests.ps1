@@ -1115,17 +1115,16 @@ function Test-GetServerAndDatabaseAuditingInUkRegion
 		# Test
 		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
                                 
-        # Assert
-        Assert-AreEqual $policy.AuditState "Disabled"
-        Assert-AreEqual $policy.RetentionInDays 0
+		# Assert
+		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.RetentionInDays 0
                                 
-        # Test
-        $policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		# Test
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
                                 
-        # Assert
-        Assert-AreEqual $policy.AuditState "Disabled"
-        Assert-AreEqual $policy.RetentionInDays 0
-
+		# Assert
+		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.RetentionInDays 0
     }
     finally
     {
