@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.4.0
+* Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
+    - Users can now use ResourceNameEquals and ResourceGroupNameEquals with Find-AzureRmResource
+
 ## Version 3.3.0
 * Lookup of AAD group by Id now uses GetObjectsByObjectId AAD Graph call instead of Groups/<id>
     - This will enable Groups lookup in CSP scenario

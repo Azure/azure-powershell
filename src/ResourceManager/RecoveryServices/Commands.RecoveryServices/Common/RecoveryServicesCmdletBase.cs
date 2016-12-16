@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
 using Hyak.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Newtonsoft.Json;
 using System.Text;

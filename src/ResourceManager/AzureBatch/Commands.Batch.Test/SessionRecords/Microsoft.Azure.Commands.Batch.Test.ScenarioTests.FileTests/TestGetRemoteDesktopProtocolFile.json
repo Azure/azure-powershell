@@ -1,0 +1,158 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/pools/testPool/nodes?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDEuMy4x",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "560d66de-d01b-4983-842d-faea1083da0d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Tue, 22 Nov 2016 23:01:53 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
+          "AzurePowershell/v3.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-1695681911_1-20161122t193202z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n      \"lastBootTime\": \"2016-11-22T22:31:38.6346188Z\",\r\n      \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n      \"ipAddress\": \"10.238.48.9\",\r\n      \"affinityId\": \"TVM:tvm-1695681911_1-20161122t193202z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 1,\r\n      \"totalTasksSucceeded\": 1,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n        \"endTime\": \"2016-11-22T22:31:40.8235693Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-1695681911_2-20161122t193202z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_2-20161122t193202z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-11-22T22:50:50.5840663Z\",\r\n      \"lastBootTime\": \"2016-11-22T22:50:48.1265657Z\",\r\n      \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n      \"ipAddress\": \"10.238.36.71\",\r\n      \"affinityId\": \"TVM:tvm-1695681911_2-20161122t193202z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-11-22T22:50:50.5840663Z\",\r\n        \"endTime\": \"2016-11-22T22:50:50.8221393Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-1695681911_3-20161122t193202z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_3-20161122t193202z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-11-22T19:36:51.0013378Z\",\r\n      \"lastBootTime\": \"2016-11-22T19:36:48.21721Z\",\r\n      \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n      \"ipAddress\": \"10.238.10.43\",\r\n      \"affinityId\": \"TVM:tvm-1695681911_3-20161122t193202z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-11-22T19:36:51.0013378Z\",\r\n        \"endTime\": \"2016-11-22T19:36:51.2363447Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "e7f8e71d-460c-4b8a-ab66-5684b69dc487"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Tue, 22 Nov 2016 23:01:53 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0xNjk1NjgxOTExXzEtMjAxNjExMjJ0MTkzMjAyej9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "a372f190-4338-40b3-aead-64086bc9ff37"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Tue, 22 Nov 2016 23:01:54 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
+          "AzurePowershell/v3.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-1695681911_1-20161122t193202z\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n  \"lastBootTime\": \"2016-11-22T22:31:38.6346188Z\",\r\n  \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n  \"ipAddress\": \"10.238.48.9\",\r\n  \"affinityId\": \"TVM:tvm-1695681911_1-20161122t193202z\",\r\n  \"vmSize\": \"small\",\r\n  \"totalTasksRun\": 1,\r\n  \"totalTasksSucceeded\": 1,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": false\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n    \"endTime\": \"2016-11-22T22:31:40.8235693Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "a547ab01-b0b3-48de-9583-3c6de0518bea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Tue, 22 Nov 2016 23:01:54 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z/rdp?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0xNjk1NjgxOTExXzEtMjAxNjExMjJ0MTkzMjAyei9yZHA/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "bf45d333-abfe-431c-b68d-3dc5ca83d000"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Tue, 22 Nov 2016 23:01:54 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
+          "AzurePowershell/v3.1.0"
+        ]
+      },
+      "ResponseBody": "full address:s:104.209.208.76\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/octet-stream"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "fc642b12-f820-4502-b68d-c50651379f64"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Tue, 22 Nov 2016 23:01:54 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
+    "AZURE_BATCH_ACCOUNT": "jstesteastus2",
+    "AZURE_BATCH_ENDPOINT": "https://jstesteastus2.eastus2.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "default-eastus"
+  }
+}
