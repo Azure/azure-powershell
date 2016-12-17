@@ -189,7 +189,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
                     ex = new AadAuthenticationFailedWithoutPopupException(message, adalEx);
                 }
-                else if (adalEx.ErrorCode == AdalError.MissingFederationMetadataUrl)
+                else if (adalEx.ErrorCode == AdalError.MissingFederationMetadataUrl ||
+                         adalEx.ErrorCode == AdalError.FederatedServiceReturnedError)
                 {
                     ex = new AadAuthenticationFailedException(Resources.CredentialOrganizationIdMessage, adalEx);
                 }

@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified path does not exist or is not a file. Please ensure the path points to a file and it exists. Path supplied: {0}.
+        /// </summary>
+        internal static string InvalidExpiryPath {
+            get {
+                return ResourceManager.GetString("InvalidExpiryPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The path &apos;{0}&apos; either does not exist or is not accessible. Please check the path and permission..
         /// </summary>
         internal static string InvalidExportPathType {
@@ -489,6 +498,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string SetDataLakeTrustedIdProvider {
             get {
                 return ResourceManager.GetString("SetDataLakeTrustedIdProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the Expiry of file at path: &apos;{0}&apos; to: {1} ....
+        /// </summary>
+        internal static string SetFileExpiry {
+            get {
+                return ResourceManager.GetString("SetFileExpiry", resourceCulture);
             }
         }
         

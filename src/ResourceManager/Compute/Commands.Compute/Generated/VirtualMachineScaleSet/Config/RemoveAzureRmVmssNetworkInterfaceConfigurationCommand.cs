@@ -42,8 +42,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = true,
             Position = 1,
+            ParameterSetName = "NameParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = "IdParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        public string Id { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -69,7 +77,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             var vNetworkInterfaceConfigurations = this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations.First
                 (e =>
-                    (e.Name == this.Name)
+                    (this.Name != null && e.Name == this.Name)
+                    || (this.Id != null && e.Id == this.Id)
                 );
 
             if (vNetworkInterfaceConfigurations != null)

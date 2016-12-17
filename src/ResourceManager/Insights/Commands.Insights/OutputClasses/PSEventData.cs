@@ -147,7 +147,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 ? new PSEventDataAuthorization
                 {
                     Action = eventData.Authorization.Action,
-                    Condition = eventData.Authorization.Condition,
                     Role = eventData.Authorization.Role,
                     Scope = eventData.Authorization.Scope
                 }
