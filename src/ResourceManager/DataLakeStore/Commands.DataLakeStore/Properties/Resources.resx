@@ -159,6 +159,9 @@
   <data name="InvalidEncoding" xml:space="preserve">
     <value>Invalid encoding selected. 'Byte' encoding can only be used with byte content. Use text encoding instead.</value>
   </data>
+  <data name="InvalidExpiryPath" xml:space="preserve">
+    <value>The specified path does not exist or is not a file. Please ensure the path points to a file and it exists. Path supplied: {0}</value>
+  </data>
   <data name="InvalidExportPathType" xml:space="preserve">
     <value>The path '{0}' either does not exist or is not accessible. Please check the path and permission.</value>
   </data>
@@ -261,6 +264,9 @@
   </data>
   <data name="SetDataLakeTrustedIdProvider" xml:space="preserve">
     <value>Setting the Data Lake Store trusted identity provider: '{0}' ...</value>
+  </data>
+  <data name="SetFileExpiry" xml:space="preserve">
+    <value>Setting the Expiry of file at path: '{0}' to: {1} ...</value>
   </data>
   <data name="SettingDataLakeStoreItemAcl" xml:space="preserve">
     <value>The entry or entries you provided may already exist in the item's ACL. Are you sure you want to overwrite the existing entry or entries at item path '{0}'?</value>
