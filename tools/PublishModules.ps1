@@ -101,7 +101,7 @@ function Make-StrictModuleDependencies
 
 	  if ($newModules.Count -gt 0)
 	  {
-        Update-ModuleManifest -Path $Path -RequiredModules $newModules -LicenseUri "http://aka.ms/azps-license"
+        Update-ModuleManifest -Path $Path -RequiredModules $newModules
       }
     
   }
@@ -190,8 +190,7 @@ function Change-RMModule
 		$moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
 		$manifest = Make-StrictModuleDependencies $moduleSourcePath
 		$manifest = Test-ModuleManifest -Path $moduleSourcePath
-		$toss = Publish-Module -Path $Path -Repository $TempRepo -LicenseUri "http://aka.ms/azps-license"
-        #'$nugetExe pack'
+		$toss = Publish-Module -Path $Path -Repository $TempRepo
 	    Write-Output "Changing to directory for module modifications $TempRepoPath"
 		pushd $TempRepoPath
 		try
@@ -264,13 +263,13 @@ if ([string]::IsNullOrEmpty($buildConfig))
 
 if ([string]::IsNullOrEmpty($repositoryLocation))
 {
-    Write-Verbose "No repository location was provided, setting it to default"  
-    Write-Verbose "Setting repository location to 'https://dtlgalleryint.cloudapp.net/api/v2'"  
+    Write-Output "No repository location was provided, setting it to default"  
+    Write-Output "Setting repository location to 'https://dtlgalleryint.cloudapp.net/api/v2'"  
     $repositoryLocation = "https://dtlgalleryint.cloudapp.net/api/v2"
 }
 else
 {
-    Write-Verbose "Setting repository location to '$repositoryLocation'"  
+    Write-Output "Setting repository location to '$repositoryLocation'"  
 }
 
 if ([string]::IsNullOrEmpty($scope))
@@ -293,12 +292,12 @@ $repo = Get-PSRepository | where { $_.SourceLocation -eq $repositoryLocation }
 if ($repo -ne $null) 
 {
     $repoName = $repo.Name
-    Write-Verbose "Existing PS Repository detected: $repo.Name"
+    Write-Output "Existing PS Repository detected: $repo.Name"
 } 
 else 
 {
     $repoName = $(New-Guid).ToString()
-    Write-Verbose "Setting up new PS Repository to: -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted"
+    Write-Output "Setting up new PS Repository to: -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted"
     Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation\package -InstallationPolicy Trusted
 }
 
@@ -306,12 +305,12 @@ $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
 if ($publishToLocal)
 {
-    Write-Verbose "Publish to local is set to: $publishToLocal"
+    Write-Output "Publish to local is set to: $publishToLocal"
 	$tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
 }
 
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
-Write-Verbose "Setting up TEMP PS Repository to: -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet"
+Write-Output "Setting up TEMP PS Repository to: -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet"
 Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 
 try {
@@ -340,6 +339,16 @@ try {
 }
 finally 
 {
-	Unregister-PSRepository -Name $tempRepoName
-    Unregister-PSRepository -Name $repoName
+	if($tempRepoName -ne $null)
+	{
+		Write-Output "Unregistering Repository: $tempRepoName"
+		Get-PSRepository -Name $tempRepoName | Unregister-PSRepository
+	}
+	
+	if($repoName -ne $null)
+	{
+		Write-Output "Unregistering Repository: $repoName"
+		Get-PSRepository -Name $repoName | Unregister-PSRepository
+	}
+    
 }
