@@ -100,7 +100,7 @@
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec 
-        Command="$(MSBuildProjectDirectory)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -parallel none -maxthreads 0 -trait &quot;AcceptanceType=CheckIn&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
+        Command="$(LibrarySourceFolder)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -parallel none -maxthreads 0 -trait &quot;AcceptanceType=CheckIn&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
         Timeout="$(TestTimeout)" ContinueOnError="false" Condition=" @(XUnitTests) != '' "/>
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
@@ -109,7 +109,7 @@
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec 
-        Command="$(MSBuildProjectDirectory)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -notrait &quot;RunType=LiveOnly&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
+        Command="$(LibrarySourceFolder)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -notrait &quot;RunType=LiveOnly&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
         Timeout="$(TestTimeout)" ContinueOnError="false"/>
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
