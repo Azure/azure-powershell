@@ -14,22 +14,20 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : TestsBase
+    public partial class ContainerTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestGetContainerScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetContainerScenario");
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.IaasVm, "Test-GetContainerScenario");
         }
     }
 }

@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("New-AdlStore")]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
@@ -107,10 +107,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             // validation of encryption parameters
             if (Encryption != null)
             {
-                var identity = new EncryptionIdentity
-                {
-                    Type = EncryptionIdentityType.SystemAssigned,
-                };
+                var identity = new EncryptionIdentity();
                 var config = new EncryptionConfig
                 {
                     Type = Encryption.Value,
@@ -142,11 +139,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     }
                 }
 
-                WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags, identity, config));
+                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags, identity, config)));
             }
             else
             {
-                WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags));
+                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags)));
             }
         }
     }
