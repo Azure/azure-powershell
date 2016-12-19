@@ -124,6 +124,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string CreateMode { get; set; }
 
         /// <summary>
+        /// Gets or sets the read scale option of the database (Disabled/Enabled).
+        /// </summary>
+        public DatabaseReadScale? ReadScale { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -140,6 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         {
             Guid id = Guid.Empty;
             DatabaseEdition edition = DatabaseEdition.None;
+            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
@@ -167,6 +173,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
             RequestedServiceObjectiveId = id;
+
+            Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
+            ReadScale = readScale;
         }
     }
 }

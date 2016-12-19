@@ -1452,7 +1452,7 @@ true/false</maml:para>
 	<command:details>
 		<command:name>Get-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Gets all or specific certificates.</maml:para>
+			<maml:para>Gets API Management certificates configured for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1462,7 +1462,7 @@ true/false</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Gets all or specific certificates.</maml:para>
+		<maml:para>The Get-AzureRmApiManagementCertificate cmdlet gets all Azure API Management certificates or certificates that you specify which are configured for Authentication with the Backend.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1657,7 +1657,7 @@ true/false</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Get all certificates  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -1677,7 +1677,7 @@ true/false</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 2: Get a certificate by its ID  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -4069,6 +4069,13 @@ true/false</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ApiType</maml:name>
+				<maml:description>
+					<maml:para>This parameter is optional with a default value of Http. The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementApiType]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -4134,6 +4141,13 @@ true/false</maml:para>
 					<maml:para>Local name of WSDL Endpoint (port) to be imported. Must only when importing a WSDL Api.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ApiType</maml:name>
+				<maml:description>
+					<maml:para>This parameter is optional with a default value of Http. The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementApiType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -4272,6 +4286,18 @@ true/false</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ApiType</maml:name>
+			<maml:description>
+				<maml:para>This parameter is optional with a default value of Http. The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementApiType]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[PsApiManagementApiType]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Http</dev:defaultValue>
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -4375,6 +4401,26 @@ Imported API</maml:para>
 			<dev:code>Import-AzureRmApiManagementApi –Context $apimContext –SpecificationFormat &apos;Wsdl&apos; –SpecificationPath &apos;C:\contoso\specifications\weather.wsdl&apos; –Path &apos;apis&apos; -WsdlServiceName &apos;Weather&apos; -WsdlEndpointName &apos;WeatherSoap&apos;</dev:code>
 			<dev:remarks>
 				<maml:para>Import Wsdl Api</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 5  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Import-AzureRmApiManagementApi –Context $apimContext –SpecificationFormat &apos;Wsdl&apos; –SpecificationPath &apos;C:\contoso\specifications\weather.wsdl&apos; –Path &apos;apis&apos; -WsdlServiceName &apos;Weather&apos; -WsdlEndpointName &apos;WeatherSoap&apos; -ApiType Soap</dev:code>
+			<dev:remarks>
+				<maml:para />
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -5204,7 +5250,7 @@ Imported API</maml:para>
 	<command:details>
 		<command:name>New-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Creates new certificate.</maml:para>
+			<maml:para>Creates an API Management certificate for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -5214,7 +5260,7 @@ Imported API</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Creates new certificate.</maml:para>
+		<maml:para>The New-AzureRmApiManagementCertificate cmdlet creates an Azure API Management certificate which can be configured for authentication with backend.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5428,7 +5474,7 @@ Imported API</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Create and upload a certificate  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -7644,7 +7690,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 	<command:details>
 		<command:name>Remove-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Deletes existing certificate.</maml:para>
+			<maml:para>Removes an API Management certificate configured for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -7654,7 +7700,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Deletes existing certificate.</maml:para>
+		<maml:para>The Remove-AzureRmApiManagementCertificate cmdlet removes an Azure API Management certificate.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10656,7 +10702,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 	<command:details>
 		<command:name>Set-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Sets certificate data.</maml:para>
+			<maml:para>Modifies an API Management certificate which is configured for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10666,7 +10712,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Sets certificate data.</maml:para>
+		<maml:para>The Set-AzureRmApiManagementCertificate cmdlet modifies an Azure API Management certificate which is configured for authentication with backend.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -12905,7 +12951,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>LoggerId</maml:name>
 				<maml:description>
 					<maml:para>Identifier of a logger. If specified will try to find logger by the identifier. This parameter is optional.</maml:para>
@@ -12965,7 +13011,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>LoggerId</maml:name>
 			<maml:description>
 				<maml:para>Identifier of a logger. If specified will try to find logger by the identifier. This parameter is optional.</maml:para>
@@ -15034,7 +15080,7 @@ Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Tags $ta
 		</command:returnValue>
 		<command:returnValue>
 			<dev:type>
-				<maml:name>Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger.PsApiManagementOpenIdConnectProvider</maml:name>
+				<maml:name>Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider</maml:name>
 				<maml:uri />
 				<maml:description/>
 			</dev:type>
@@ -16946,6 +16992,934 @@ OpenId Connect Provider.</maml:para>
 				</command:commandLine>
 			</command:commandLines>
 		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Get-AzureRmApiManagementIdentityProvider</command:name>
+		<maml:description>
+			<maml:para>Get the identity provider configuration details.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureRmApiManagementIdentityProvider</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Get the identity provider configuration details.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmApiManagementIdentityProvider</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmApiManagementIdentityProvider</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Type</maml:name>
+				<maml:description>
+					<maml:para>Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Context</maml:name>
+			<maml:description>
+				<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Type</maml:name>
+			<maml:description>
+				<maml:para>Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementIdentityProviderType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>IList&lt;Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider&gt;</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider</maml:name>
+				<maml:uri />
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Get-AzureRmApiManagementIdentityProvider -Context $context</dev:code>
+			<dev:remarks>
+				<maml:para>Get all the identity provider Configuration on the service.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Get-AzureRmApiManagementIdentityProvider -Context $context -Type Aad</dev:code>
+			<dev:remarks>
+				<maml:para>Gets the Identity Provider Configuration of Azure Active Directory.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureRmApiManagementIdentityProvider</command:name>
+		<maml:description>
+			<maml:para>Creates a new Identity Provider configuration.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureRmApiManagementIdentityProvider</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Creates a new Identity Provider configuration.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmApiManagementIdentityProvider</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Type</maml:name>
+				<maml:description>
+					<maml:para>Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ClientId</maml:name>
+				<maml:description>
+					<maml:para>Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ClientSecret</maml:name>
+				<maml:description>
+					<maml:para>Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AllowedTenants</maml:name>
+				<maml:description>
+					<maml:para>List of allowed Azure Active Directory Tenants</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Context</maml:name>
+			<maml:description>
+				<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Type</maml:name>
+			<maml:description>
+				<maml:para>Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementIdentityProviderType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ClientId</maml:name>
+			<maml:description>
+				<maml:para>Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ClientSecret</maml:name>
+			<maml:description>
+				<maml:para>Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AllowedTenants</maml:name>
+			<maml:description>
+				<maml:para>List of allowed Azure Active Directory Tenants</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>New-AzureRmApiManagementIdentityProvider -Context $apimContext -Type &apos;Facebook&apos; -ClientId &apos;sdfsfwerwerw&apos; -ClientSecret &apos;sdgsdfgfst43tewfewrf&apos;</dev:code>
+			<dev:remarks>
+				<maml:para>Create an Identity Provider for Developer Portal of Type Facebook</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Remove-AzureRmApiManagementIdentityProvider</command:name>
+		<maml:description>
+			<maml:para>Removes an existing Identity Provider Configuration.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureRmApiManagementIdentityProvider</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Removes an existing Identity Provider Configuration.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureRmApiManagementIdentityProvider</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Type</maml:name>
+				<maml:description>
+					<maml:para>Identifier of an existing Identity Provider. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Context</maml:name>
+			<maml:description>
+				<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Type</maml:name>
+			<maml:description>
+				<maml:para>Identifier of an existing Identity Provider. This parameter is required.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementIdentityProviderType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>bool</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Remove-AzureRmApiManagementIdentityProvider -Context $apimContext -Type &apos;Facebook&apos; -PassThru</dev:code>
+			<dev:remarks>
+				<maml:para>Deletes configuration related to Facebook Identity provider configuration.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Set-AzureRmApiManagementIdentityProvider</command:name>
+		<maml:description>
+			<maml:para>Updates the Configuration of an existing Identity Provider.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmApiManagementIdentityProvider</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Updates the Configuration of an existing Identity Provider.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmApiManagementIdentityProvider</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Type</maml:name>
+				<maml:description>
+					<maml:para>Identifier of an existing Identity Provider. This parameter is required.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ClientId</maml:name>
+				<maml:description>
+					<maml:para>Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ClientSecret</maml:name>
+				<maml:description>
+					<maml:para>Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AllowedTenants</maml:name>
+				<maml:description>
+					<maml:para>List of allowed Azure Active Directory Tenants.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Context</maml:name>
+			<maml:description>
+				<maml:para>Instance of PsApiManagementContext. This parameter is required.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Type</maml:name>
+			<maml:description>
+				<maml:para>Identifier of an existing Identity Provider. This parameter is required.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementIdentityProviderType</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementIdentityProviderType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ClientId</maml:name>
+			<maml:description>
+				<maml:para>Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ClientSecret</maml:name>
+			<maml:description>
+				<maml:para>Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AllowedTenants</maml:name>
+			<maml:description>
+				<maml:para>List of allowed Azure Active Directory Tenants.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider</maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>

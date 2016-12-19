@@ -12,14 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$resourceGroupName = "labRG1";
-$resourceName = "pstestrsvault";
+<#
+.SYNOPSIS
+Test Recovery Services Backup Vault
+#>
+
+$resourceGroupName = "RecoveryServicesBackupTestRg";
+$resourceName = "PsTestRsVault";
 $defaultPolicyName = "DefaultPolicy";
 # Create VM instead of taking these as parameters
-$vmResourceGroupName = "arpittestresourcegroup";
-$vmName = "arpittestencvm1";
-$vmStorageAccountName = "mkheranirmrestore";
-$vmStorageAccountResourceGroup = "mkheranirmrestore";
+$vmResourceGroupName = "pstestrg";
+$vmName = "pstestv2vm1";
+$vmStorageAccountName = "pstestrg4762";
+$vmStorageAccountResourceGroup = "pstestrg";
 $vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
 
 function Test-GetContainerScenario

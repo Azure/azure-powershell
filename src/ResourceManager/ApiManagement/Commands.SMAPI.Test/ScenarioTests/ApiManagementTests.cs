@@ -122,6 +122,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportWsdlToCreateSoapToRest()
+        {
+            RunPowerShellTest("Api-ImportWsdlToCreateSoapToRestApi");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void OperationsCrudTest()
         {
             RunPowerShellTest("Operations-CrudTest");
@@ -199,6 +206,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void IdentityProviderCrudTest()
+        {
+            RunPowerShellTest("IdentityProvider-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TenantGitConfigurationCrudTest()
         {
             RunPowerShellTest("TenantGitConfiguration-CrudTest");
@@ -210,6 +224,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         {
             RunPowerShellTest("TenantAccessConfiguration-CrudTest");
         }
+
 
         private void RunPowerShellTest(params string[] scripts)
         {

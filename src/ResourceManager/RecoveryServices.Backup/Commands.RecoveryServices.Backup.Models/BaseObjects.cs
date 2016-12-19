@@ -14,8 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public ContainerContext(string backupManagementType)
             : base(backupManagementType)
         {
-            
+
         }
     }
 
@@ -103,8 +103,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Name { get; set; }
 
         public ContainerBase(ServiceClientModel.ProtectionContainerResource protectionContainer)
-            : base(ConversionUtils.GetPsContainerType(((ServiceClientModel.ProtectionContainer)protectionContainer.Properties).ContainerType),
-                   ((ServiceClientModel.ProtectionContainer)protectionContainer.Properties).BackupManagementType)
+            : base(ConversionUtils.GetPsContainerType(
+                        protectionContainer.Properties.ContainerType.ToString()),
+                   protectionContainer.Properties.BackupManagementType.ToString())
         {
             Name = IdUtils.GetNameFromUri(protectionContainer.Name);
         }
@@ -120,9 +121,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Name { get; set; }
 
-        public BackupEngineBase(ServiceClientModel.BackupEngineResource backupEngine)
-            : base(((ServiceClientModel.BackupEngineBase)backupEngine.Properties).BackupEngineType,
-                   ((ServiceClientModel.BackupEngineBase)backupEngine.Properties).BackupManagementType)
+        public BackupEngineBase(ServiceClientModel.BackupEngineBaseResource backupEngine)
+            : base((backupEngine.Properties.GetType().Name),
+                   backupEngine.Properties.BackupManagementType.ToString())
         {
             Name = backupEngine.Name;
         }
@@ -151,9 +152,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public ItemContext(ServiceClientModel.ProtectedItem protectedItem,
             string containerName, ContainerType containerType)
-            : base(containerType, protectedItem.BackupManagementType)
+            : base(containerType, protectedItem.BackupManagementType.Value.ToString())
         {
-            WorkloadType = ConversionUtils.GetPsWorkloadType(protectedItem.WorkloadType);
+            WorkloadType = ConversionUtils.GetPsWorkloadType(
+                protectedItem.WorkloadType.ToString());
             ContainerName = containerName;
         }
     }
@@ -185,9 +187,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public ItemBase(ServiceClientModel.ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType)
-            : base((ServiceClientModel.ProtectedItem)protectedItemResource.Properties, containerName, containerType)
+            : base(protectedItemResource.Properties, containerName, containerType)
         {
-            ServiceClientModel.ProtectedItem protectedItem = (ServiceClientModel.ProtectedItem)protectedItemResource.Properties;
+            ServiceClientModel.ProtectedItem protectedItem = protectedItemResource.Properties;
             Name = protectedItemResource.Name;
             Id = protectedItemResource.Id;
             LatestRecoveryPoint = protectedItem.LastRecoveryPoint;
@@ -207,8 +209,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class RecoveryPointBase : ItemContext
     {
-        private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
-
         /// <summary>
         /// ID of the recovery point
         /// </summary>
@@ -270,14 +270,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// Base class for backup rentention policy.
     /// </summary>
     public class RetentionPolicyBase : ObjectBase
-    {      
+    {
     }
 
     /// <summary>
     /// Base class for backup schedule policy.
     /// </summary>
     public class SchedulePolicyBase : ObjectBase
-    {      
+    {
     }
 
     /// <summary>
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Time taken by this job to run
         /// </summary>
-        public TimeSpan Duration { get; set; }       
+        public TimeSpan Duration { get; set; }
     }
 
     /// <summary>
