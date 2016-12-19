@@ -69,7 +69,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '2.4.0';
                @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.0.1'; }, 
                @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '1.0.0'; }, 
+               @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.11.2'; }, 
