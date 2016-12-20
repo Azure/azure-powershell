@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", DatabaseHost, Port));
 
-            WriteObject(DataLakeAnalyticsClient.CreateSecret(Account, DatabaseName, Secret.UserName,
-                Secret.GetNetworkCredential().Password, toUse.AbsoluteUri));
+            DataLakeAnalyticsClient.CreateSecret(Account, DatabaseName, Secret.UserName,
+                Secret.GetNetworkCredential().Password, toUse.AbsoluteUri);
         }
     }
 }

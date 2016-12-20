@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Rest.Azure.AzureOperationResponse<LogProfileResource> response;
         private string logProfileName;
-        private LogProfileCreateOrUpdateParameters createOrUpdatePrms;
+        private LogProfileResource createOrUpdatePrms;
 
         public AddAzureRmLogProfileTests(ITestOutputHelper output)
         {
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
 
             response = Utilities.InitializeLogProfileResponse();
 
-            insightsLogProfileOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<LogProfileCreateOrUpdateParameters>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+            insightsLogProfileOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<LogProfileResource>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<Rest.Azure.AzureOperationResponse<LogProfileResource>>(response))
-                .Callback((string logProfileName, LogProfileCreateOrUpdateParameters createOrUpdateParams, Dictionary<string, List<string>> headers, CancellationToken t) =>
+                .Callback((string logProfileName, LogProfileResource createOrUpdateParams, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     this.logProfileName = logProfileName;
                     createOrUpdatePrms = createOrUpdateParams;
@@ -65,7 +65,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddLogProfileCommandParametersProcessing()
         {
-            // Null actions
+            // With mandatory arguments only
+            cmdlet.Name = Utilities.Name;
+            cmdlet.Locations = new List<string>() { "East US" };
+            cmdlet.ExecuteCmdlet();
+            
+            Assert.Equal(Utilities.Name, this.logProfileName);
+            
+            // With all arguments
             cmdlet.Name = Utilities.Name;
             cmdlet.Locations = new List<string>() {"East US"};
             cmdlet.RetentionInDays = 10;

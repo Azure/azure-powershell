@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourcegroups/onesdk3281?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzhiNTk4ZmMtZTU3YS00MjNmLWIyZTctZGMwZGRiNjMxZjFmL3Jlc291cmNlZ3JvdXBzL29uZXNkazMyODE/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk4792?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazQ3OTI/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7279bc10-a17d-4849-a0af-b45671324f08"
+          "a3db9200-ff07-4606-b14f-2fe411a9cf54"
         ],
         "accept-language": [
           "en-US"
@@ -34,16 +34,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14992"
         ],
         "x-ms-request-id": [
-          "9d1521ad-0ae0-4795-991e-bb4f93f82102"
+          "abd64a6e-e99a-4dde-9150-382991122c4a"
         ],
         "x-ms-correlation-request-id": [
-          "9d1521ad-0ae0-4795-991e-bb4f93f82102"
+          "abd64a6e-e99a-4dde-9150-382991122c4a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160916T010644Z:9d1521ad-0ae0-4795-991e-bb4f93f82102"
+          "CENTRALUS:20161207T011449Z:abd64a6e-e99a-4dde-9150-382991122c4a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,14 +52,14 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 16 Sep 2016 01:06:44 GMT"
+          "Wed, 07 Dec 2016 01:14:48 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourcegroups/onesdk3281?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzhiNTk4ZmMtZTU3YS00MjNmLWIyZTctZGMwZGRiNjMxZjFmL3Jlc291cmNlZ3JvdXBzL29uZXNkazMyODE/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk4792?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazQ3OTI/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -70,7 +70,7 @@
           "29"
         ],
         "x-ms-client-request-id": [
-          "5bbdc363-bf17-4faf-9605-961b2f110e1a"
+          "5d75becc-91c7-4379-b27c-4f86252acc6f"
         ],
         "accept-language": [
           "en-US"
@@ -79,7 +79,7 @@
           "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281\",\r\n  \"name\": \"onesdk3281\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792\",\r\n  \"name\": \"onesdk4792\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "173"
@@ -97,13 +97,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "de52506a-f401-4535-ab6c-a9861e268673"
+          "9702fad6-daa1-4111-bda0-3b6eeb11765a"
         ],
         "x-ms-correlation-request-id": [
-          "de52506a-f401-4535-ab6c-a9861e268673"
+          "9702fad6-daa1-4111-bda0-3b6eeb11765a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160916T010645Z:de52506a-f401-4535-ab6c-a9861e268673"
+          "CENTRALUS:20161207T011450Z:9702fad6-daa1-4111-bda0-3b6eeb11765a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -112,14 +112,14 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 16 Sep 2016 01:06:45 GMT"
+          "Wed, 07 Dec 2016 01:14:49 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/testname?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzhiNTk4ZmMtZTU3YS00MjNmLWIyZTctZGMwZGRiNjMxZjFmL3Jlc291cmNlR3JvdXBzL29uZXNkazMyODEvcHJvdmlkZXJzL1Byb3ZpZGVycy5UZXN0L3N0YXRlZnVsUmVzb3VyY2VzL3Rlc3RuYW1lP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/testname?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlR3JvdXBzL29uZXNkazQ3OTIvcHJvdmlkZXJzL1Byb3ZpZGVycy5UZXN0L3N0YXRlZnVsUmVzb3VyY2VzL3Rlc3RuYW1lP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -130,7 +130,8 @@
           "155"
         ],
         "User-Agent": [
-          "AzurePowershell/v2.1.0.0"
+          "AzurePowershell/v3.1.0.0",
+          "PSVersion/v5.1.14393.206"
         ],
         "ParameterSetName": [
           "Resource that resides at the subscription level."
@@ -139,7 +140,7 @@
           "New-AzureRmResource"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/testname\",\r\n  \"name\": \"testname\",\r\n  \"type\": \"Providers.Test/statefulResources\",\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"key\": \"value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/testname\",\r\n  \"name\": \"testname\",\r\n  \"type\": \"Providers.Test/statefulResources\",\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"key\": \"value\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "297"
@@ -154,16 +155,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:f8450da9-c63b-4738-8cb1-36a845240240"
+          "westus:56703b49-ea0e-4637-925a-0390e5c494c7"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "934a31e0-d2d1-4d57-9ed7-8973a5250ac5"
+          "9fa79ae6-c8f7-481d-b2e2-f6fe72b0c039"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160916T010647Z:934a31e0-d2d1-4d57-9ed7-8973a5250ac5"
+          "CENTRALUS:20161207T011452Z:9fa79ae6-c8f7-481d-b2e2-f6fe72b0c039"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -172,19 +173,20 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 16 Sep 2016 01:06:47 GMT"
+          "Wed, 07 Dec 2016 01:14:51 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/resources?$filter=subscriptionId%20EQ%20'38b598fc-e57a-423f-b2e7-dc0ddb631f1f'%20AND%20substringof('test',%20name)%20AND%20substringof('onesdk3281',%20resourceGroup)&api-version=2016-09-01",
-      "EncodedRequestUri": "L3Jlc291cmNlcz8kZmlsdGVyPXN1YnNjcmlwdGlvbklkJTIwRVElMjAnMzhiNTk4ZmMtZTU3YS00MjNmLWIyZTctZGMwZGRiNjMxZjFmJyUyMEFORCUyMHN1YnN0cmluZ29mKCd0ZXN0JywlMjBuYW1lKSUyMEFORCUyMHN1YnN0cmluZ29mKCdvbmVzZGszMjgxJywlMjByZXNvdXJjZUdyb3VwKSZhcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/resources?$filter=subscriptionId%20EQ%20'fb3a3d6b-44c8-44f5-88c9-b20917c9b96b'%20AND%20substringof('onesdk4792',%20resourceGroup)%20AND%20substringof('test',%20name)&api-version=2016-09-01",
+      "EncodedRequestUri": "L3Jlc291cmNlcz8kZmlsdGVyPXN1YnNjcmlwdGlvbklkJTIwRVElMjAnZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiJyUyMEFORCUyMHN1YnN0cmluZ29mKCdvbmVzZGs0NzkyJywlMjByZXNvdXJjZUdyb3VwKSUyMEFORCUyMHN1YnN0cmluZ29mKCd0ZXN0JywlMjBuYW1lKSZhcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v2.1.0.0"
+          "AzurePowershell/v3.1.0.0",
+          "PSVersion/v5.1.14393.206"
         ],
         "ParameterSetName": [
           "Lists the resources based on the specified scope."
@@ -193,7 +195,7 @@
           "Find-AzureRmResource"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/testname\",\r\n      \"name\": \"testname\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/testname\",\r\n      \"name\": \"testname\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "279"
@@ -208,16 +210,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14997"
+          "14992"
         ],
         "x-ms-request-id": [
-          "aee00664-9332-462e-b06d-3ca67ca3c662"
+          "a0b753f7-04d8-4739-9ef4-f440fd07e49b"
         ],
         "x-ms-correlation-request-id": [
-          "aee00664-9332-462e-b06d-3ca67ca3c662"
+          "a0b753f7-04d8-4739-9ef4-f440fd07e49b"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160916T010648Z:aee00664-9332-462e-b06d-3ca67ca3c662"
+          "CENTRALUS:20161207T011453Z:a0b753f7-04d8-4739-9ef4-f440fd07e49b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -226,19 +228,20 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 16 Sep 2016 01:06:48 GMT"
+          "Wed, 07 Dec 2016 01:14:52 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/resources?$filter=subscriptionId%20EQ%20'38b598fc-e57a-423f-b2e7-dc0ddb631f1f'%20AND%20substringof('test',%20name)%20AND%20substringof('onesdk3281',%20resourceGroup)&api-version=2016-09-01",
-      "EncodedRequestUri": "L3Jlc291cmNlcz8kZmlsdGVyPXN1YnNjcmlwdGlvbklkJTIwRVElMjAnMzhiNTk4ZmMtZTU3YS00MjNmLWIyZTctZGMwZGRiNjMxZjFmJyUyMEFORCUyMHN1YnN0cmluZ29mKCd0ZXN0JywlMjBuYW1lKSUyMEFORCUyMHN1YnN0cmluZ29mKCdvbmVzZGszMjgxJywlMjByZXNvdXJjZUdyb3VwKSZhcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/resources?$filter=subscriptionId%20EQ%20'fb3a3d6b-44c8-44f5-88c9-b20917c9b96b'%20AND%20substringof('onesdk4792',%20resourceGroup)%20AND%20substringof('test',%20name)&api-version=2016-09-01",
+      "EncodedRequestUri": "L3Jlc291cmNlcz8kZmlsdGVyPXN1YnNjcmlwdGlvbklkJTIwRVElMjAnZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiJyUyMEFORCUyMHN1YnN0cmluZ29mKCdvbmVzZGs0NzkyJywlMjByZXNvdXJjZUdyb3VwKSUyMEFORCUyMHN1YnN0cmluZ29mKCd0ZXN0JywlMjBuYW1lKSZhcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v2.1.0.0"
+          "AzurePowershell/v3.1.0.0",
+          "PSVersion/v5.1.14393.206"
         ],
         "ParameterSetName": [
           "Lists the resources based on the specified scope."
@@ -247,7 +250,7 @@
           "Find-AzureRmResource"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/test2name\",\r\n      \"name\": \"test2name\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/testname\",\r\n      \"name\": \"testname\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/test2name\",\r\n      \"name\": \"test2name\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/testname\",\r\n      \"name\": \"testname\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "549"
@@ -262,16 +265,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14996"
+          "14993"
         ],
         "x-ms-request-id": [
-          "a8588a94-64d8-4516-a3e7-a62a18e540c9"
+          "794e2609-f5bf-45c8-a5b8-5e712f3975f2"
         ],
         "x-ms-correlation-request-id": [
-          "a8588a94-64d8-4516-a3e7-a62a18e540c9"
+          "794e2609-f5bf-45c8-a5b8-5e712f3975f2"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160916T010652Z:a8588a94-64d8-4516-a3e7-a62a18e540c9"
+          "CENTRALUS:20161207T011455Z:794e2609-f5bf-45c8-a5b8-5e712f3975f2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -280,19 +283,20 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 16 Sep 2016 01:06:51 GMT"
+          "Wed, 07 Dec 2016 01:14:55 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resources?$filter=resourceType%20EQ%20'Providers.Test/statefulResources'%20AND%20substringof('onesdk3281',%20resourceGroup)&api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzhiNTk4ZmMtZTU3YS00MjNmLWIyZTctZGMwZGRiNjMxZjFmL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMEVRJTIwJ1Byb3ZpZGVycy5UZXN0L3N0YXRlZnVsUmVzb3VyY2VzJyUyMEFORCUyMHN1YnN0cmluZ29mKCdvbmVzZGszMjgxJywlMjByZXNvdXJjZUdyb3VwKSZhcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resources?$filter=resourceType%20EQ%20'Providers.Test/statefulResources'%20AND%20substringof('onesdk4792',%20resourceGroup)&api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMEVRJTIwJ1Byb3ZpZGVycy5UZXN0L3N0YXRlZnVsUmVzb3VyY2VzJyUyMEFORCUyMHN1YnN0cmluZ29mKCdvbmVzZGs0NzkyJywlMjByZXNvdXJjZUdyb3VwKSZhcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v2.1.0.0"
+          "AzurePowershell/v3.1.0.0",
+          "PSVersion/v5.1.14393.206"
         ],
         "ParameterSetName": [
           "Lists the resources based on the specified scope."
@@ -301,7 +305,7 @@
           "Find-AzureRmResource"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/testname\",\r\n      \"name\": \"testname\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/testname\",\r\n      \"name\": \"testname\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "279"
@@ -316,16 +320,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14994"
         ],
         "x-ms-request-id": [
-          "d036e5b3-96eb-4955-be35-c027f8efbbc6"
+          "f7d6e851-e9a0-4582-aa58-4b06666a3de1"
         ],
         "x-ms-correlation-request-id": [
-          "d036e5b3-96eb-4955-be35-c027f8efbbc6"
+          "f7d6e851-e9a0-4582-aa58-4b06666a3de1"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160916T010649Z:d036e5b3-96eb-4955-be35-c027f8efbbc6"
+          "CENTRALUS:20161207T011453Z:f7d6e851-e9a0-4582-aa58-4b06666a3de1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -334,14 +338,14 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 16 Sep 2016 01:06:49 GMT"
+          "Wed, 07 Dec 2016 01:14:53 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/test2name?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzhiNTk4ZmMtZTU3YS00MjNmLWIyZTctZGMwZGRiNjMxZjFmL3Jlc291cmNlR3JvdXBzL29uZXNkazMyODEvcHJvdmlkZXJzL1Byb3ZpZGVycy5UZXN0L3N0YXRlZnVsUmVzb3VyY2VzL3Rlc3QybmFtZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/test2name?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlR3JvdXBzL29uZXNkazQ3OTIvcHJvdmlkZXJzL1Byb3ZpZGVycy5UZXN0L3N0YXRlZnVsUmVzb3VyY2VzL3Rlc3QybmFtZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -352,7 +356,8 @@
           "155"
         ],
         "User-Agent": [
-          "AzurePowershell/v2.1.0.0"
+          "AzurePowershell/v3.1.0.0",
+          "PSVersion/v5.1.14393.206"
         ],
         "ParameterSetName": [
           "Resource that resides at the subscription level."
@@ -361,7 +366,7 @@
           "New-AzureRmResource"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourceGroups/onesdk3281/providers/Providers.Test/statefulResources/test2name\",\r\n  \"name\": \"test2name\",\r\n  \"type\": \"Providers.Test/statefulResources\",\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"key\": \"value\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/test2name\",\r\n  \"name\": \"test2name\",\r\n  \"type\": \"Providers.Test/statefulResources\",\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"key\": \"value\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "299"
@@ -376,16 +381,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:0076414a-d588-404c-a812-69551a7e2235"
+          "westus:0f47bb4e-2ef0-498a-a263-2631e32f88d1"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "ed3f15e6-aa26-46d3-a8da-2cbb70161bdb"
+          "a698a14c-21c7-4c0b-a4be-a9b2e8264d71"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160916T010651Z:ed3f15e6-aa26-46d3-a8da-2cbb70161bdb"
+          "CENTRALUS:20161207T011455Z:a698a14c-21c7-4c0b-a4be-a9b2e8264d71"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -394,19 +399,74 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 16 Sep 2016 01:06:50 GMT"
+          "Wed, 07 Dec 2016 01:14:54 GMT"
         ]
       },
       "StatusCode": 201
+    },
+    {
+      "RequestUri": "/resources?$filter=subscriptionId%20EQ%20'fb3a3d6b-44c8-44f5-88c9-b20917c9b96b'%20AND%20resourceGroup%20EQ%20'onesdk4792'%20AND%20name%20EQ%20'testname'&api-version=2016-09-01",
+      "EncodedRequestUri": "L3Jlc291cmNlcz8kZmlsdGVyPXN1YnNjcmlwdGlvbklkJTIwRVElMjAnZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiJyUyMEFORCUyMHJlc291cmNlR3JvdXAlMjBFUSUyMCdvbmVzZGs0NzkyJyUyMEFORCUyMG5hbWUlMjBFUSUyMCd0ZXN0bmFtZScmYXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v3.1.0.0",
+          "PSVersion/v5.1.14393.206"
+        ],
+        "ParameterSetName": [
+          "Lists the resources based on the specified scope."
+        ],
+        "CommandName": [
+          "Find-AzureRmResource"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk4792/providers/Providers.Test/statefulResources/testname\",\r\n      \"name\": \"testname\",\r\n      \"type\": \"Providers.Test/statefulResources\",\r\n      \"sku\": {\r\n        \"name\": \"A0\"\r\n      },\r\n      \"location\": \"westus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testval\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "279"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14991"
+        ],
+        "x-ms-request-id": [
+          "8aaf0ed8-23c8-4dc2-b1c7-d8d07c127a1a"
+        ],
+        "x-ms-correlation-request-id": [
+          "8aaf0ed8-23c8-4dc2-b1c7-d8d07c127a1a"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161207T011455Z:8aaf0ed8-23c8-4dc2-b1c7-d8d07c127a1a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 07 Dec 2016 01:14:55 GMT"
+        ]
+      },
+      "StatusCode": 200
     }
   ],
   "Names": {
     "Test-FindAResource": [
-      "onesdk3281"
+      "onesdk4792"
     ]
   },
   "Variables": {
-    "SubscriptionId": "38b598fc-e57a-423f-b2e7-dc0ddb631f1f",
+    "SubscriptionId": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b",
     "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "Domain": "microsoft.com"
   }

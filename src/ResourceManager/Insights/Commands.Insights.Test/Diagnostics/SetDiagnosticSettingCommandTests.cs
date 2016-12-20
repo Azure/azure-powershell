@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private const string resourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private const string storageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount";
         private string calledResourceId;
-        ServiceDiagnosticSettingsCreateOrUpdateParameters calledPutParameters;
+        ServiceDiagnosticSettingsResource calledPutParameters;
 
         public SetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
@@ -92,9 +92,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                 Body = request
             };
 
-            insightsDiagnosticsOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ServiceDiagnosticSettingsCreateOrUpdateParameters>(), It.IsAny<Dictionary<string,List<string>>>(), It.IsAny<CancellationToken>()))
+            insightsDiagnosticsOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ServiceDiagnosticSettingsResource>(), It.IsAny<Dictionary<string,List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<Rest.Azure.AzureOperationResponse<ServiceDiagnosticSettingsResource>>(response))
-                .Callback((string resourceId, ServiceDiagnosticSettingsCreateOrUpdateParameters putParameters, Dictionary<string,List<string>> headers) =>
+                .Callback((string resourceId, ServiceDiagnosticSettingsResource putParameters, Dictionary<string,List<string>> headers) =>
                 {
                     this.calledResourceId = resourceId;
                     this.calledPutParameters = putParameters;
