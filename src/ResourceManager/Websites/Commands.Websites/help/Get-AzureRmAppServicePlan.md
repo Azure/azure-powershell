@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmAppServicePlan
 
 ## SYNOPSIS
-Gets an Azure App Service plan in the specified resource group or location.
+Gets an Azure App Service plan in the specified resource group.
 
 ## SYNTAX
 

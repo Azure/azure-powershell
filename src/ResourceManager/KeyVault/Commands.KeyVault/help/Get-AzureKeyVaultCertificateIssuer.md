@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 5F856280-C561-47B5-AA96-27E34C86D604
 online version: 
 schema: 2.0.0
 ---
@@ -22,7 +23,7 @@ Get-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [<Comm
 ```
 
 ## DESCRIPTION
-The Get-AzureKeyVaultCertificateIssuer cmdlet gets a specified certificate issuer or all certificate issuers for a key vault in Azure Key Vault.
+The **Get-AzureKeyVaultCertificateIssuer** cmdlet gets a specified certificate issuer or all certificate issuers for a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
@@ -83,9 +84,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureKeyVaultCertificateIssuer]()
+[Remove-AzureKeyVaultCertificateIssuer](./Remove-AzureKeyVaultCertificateIssuer.md)
 
-[Remove-AzureKeyVaultCertificateIssuer]()
+[Set-AzureKeyVaultCertificateIssuer](./Set-AzureKeyVaultCertificateIssuer.md)
 
 [Set-AzureKeyVaultCertificateIssuer]()
 

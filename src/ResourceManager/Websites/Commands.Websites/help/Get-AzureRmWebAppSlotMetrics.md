@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+ms.assetid: 3BCEADF3-15DC-4033-A94A-4C8B4F5E7340
 online version: 
 schema: 2.0.0
 ---
@@ -7,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmWebAppSlotMetrics
 
 ## SYNOPSIS
+Gets metrics for an Azure Web App slot.
 
 ## SYNTAX
 
@@ -180,3 +182,8 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[Get-AzureRMAppServicePlanMetrics](./Get-AzureRmAppServicePlanMetrics.md)
+
+[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+
+[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)

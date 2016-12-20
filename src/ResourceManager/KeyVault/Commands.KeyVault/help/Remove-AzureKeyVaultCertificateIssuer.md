@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: FC14F6BF-BD8F-45E0-9CAA-A937E5E56288
 online version: 
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Remove-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-F
 ```
 
 ## DESCRIPTION
-The Remove-AzureKeyVaultCertificateIssuer cmdlet deletes a certificate issuer from a key vault.
+The **Remove-AzureKeyVaultCertificateIssuer** cmdlet deletes a certificate issuer from a key vault.
 
 ## EXAMPLES
 
@@ -92,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -134,9 +135,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureKeyVaultCertificateIssuer]()
+[Get-AzureKeyVaultCertificateIssuer](./Get-AzureKeyVaultCertificateIssuer.md)
 
-[Get-AzureKeyVaultCertificateIssuer]()
+[Set-AzureKeyVaultCertificateIssuer](./Set-AzureKeyVaultCertificateIssuer.md)
 
 [Set-AzureKeyVaultCertificateIssuer]()
 

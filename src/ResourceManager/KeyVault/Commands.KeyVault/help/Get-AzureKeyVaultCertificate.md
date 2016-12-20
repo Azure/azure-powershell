@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 363FA51E-D075-4800-A4BE-BFF63FD25C90
 online version: 
 schema: 2.0.0
 ---
@@ -27,7 +28,7 @@ Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVer
 ```
 
 ## DESCRIPTION
-The Get-AzureKeyVaultCertificate cmdlet gets the specified certificate or the versions of a certificate from a key vault in Azure Key Vault.
+The **Get-AzureKeyVaultCertificate** cmdlet gets the specified certificate or the versions of a certificate from a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
@@ -135,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificate]()
+[Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)
 
-[Import-AzureKeyVaultCertificate]()
+[Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
 
