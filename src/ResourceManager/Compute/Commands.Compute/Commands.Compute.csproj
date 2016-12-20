@@ -273,9 +273,6 @@
     <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoTelemetrySettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerConfiguration.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerKeyVaultCredential.cs" />
-    <Compile Include="Extension\SqlServer\NewAzureRmVMSqlServerAutoBackupConfig.cs" />
-    <Compile Include="Extension\SqlServer\NewAzureRmVMSqlServerAutoPatchingConfig.cs" />
-    <Compile Include="Extension\SqlServer\NewAzureRmVMSqlServerKeyVaultCredentialConfig.cs" />
     <Compile Include="Extension\SqlServer\PrivateKeyVaultCredentialSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerPrivateSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerPublicSettings.cs" />

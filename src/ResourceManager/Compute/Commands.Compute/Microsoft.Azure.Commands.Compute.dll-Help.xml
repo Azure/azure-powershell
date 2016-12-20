@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <helpItems schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -116,6 +116,8 @@
 <dev:code>PS C:\&gt;Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"</dev:code>
 <dev:remarks><maml:para>This command adds a container service agent pool profile to the local container service object.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -259,24 +261,32 @@
 <dev:code>PS C:\&gt;Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"</dev:code>
 <dev:remarks><maml:para>This command adds a .vhd file to a storage account.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a VHD file and overwrite the destination</maml:title>
 <dev:code>PS C:\&gt;Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite</dev:code>
 <dev:remarks><maml:para>This command adds a .vhd file to a storage account. The command overwrites an existing file.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Add a VHD file and specify the number of threads</maml:title>
 <dev:code>PS C:\&gt;Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32</dev:code>
 <dev:remarks><maml:para>This command adds a .vhd file to a storage account. The command specifies the number of threads to use to upload the file.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Add a VHD file and specify the SAS URI</maml:title>
 <dev:code>PS C:\&gt;Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01 -09T22%3A15%3A49Z&amp;amp;se=2013-01-09T23%3A10%3A49Z&amp;amp;sr=b&amp;amp;sp=w&amp;amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveO SIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd"</dev:code>
 <dev:remarks><maml:para>This command adds a .vhd file to a storage account and specifies the SAS URI.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -387,6 +397,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMAdditionalUnattendContent -VM $Virtual
 </maml:para>
 <maml:para>The final command adds the content stored in $AucContent to the unattend.xml file.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -612,6 +624,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'Da
 </maml:para>
 <maml:para>The final three commands each adds a data disk to the virtual machine stored in $VirtualMachine. The command specifies the name and location for the disk, and other properties of the disk. The URI of each disk is stored in $DataDiskVhdUri01, $DataDiskVhdUri02, and $DataDiskVhdUri03.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a data disk to an existing virtual machine</maml:title>
@@ -624,6 +638,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 </maml:para>
 <maml:para>The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Add a data disk to a new virtual machine from a generalized user image</maml:title>
@@ -637,6 +653,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureVMDataDisk -VM $VirtualMachine -Name "disk
 </maml:para>
 <maml:para>The final commands adds a data disk to the virtual machine stored in $VirtualMachine. The command specifies the name and location for the disk and other properties of the disk.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Add data disks to a new virtual machine from a specialized user image</maml:title>
@@ -649,6 +667,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureVMDataDisk -VM $VirtualMachine -Name "dd1"
 </maml:para>
 <maml:para>The final command add a data disk to the virtual machine stored in $VirtualMachine. The command specifies the name and location for the disk, and other properties of the disk.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -773,6 +793,8 @@ PS C:\&gt; Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id "/subscriptions
 </maml:para>
 <maml:para>The second command adds a network interface to the virtual machine stored in $VirtualMachine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a network interface to an existing virtual machine</maml:title>
@@ -785,6 +807,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 </maml:para>
 <maml:para>The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -926,6 +950,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
 </maml:para>
 <maml:para>The seventh command adds a secret to the virtual machine stored in $VirtualMachine. The SourceVaultId parameter specifies the Key Vault. The command specifies the name of the certificate store and the URL of the certificate. You can run the Add-AzureRmVMSecret repeatedly to add secrets for other certificates.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1063,6 +1089,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
 <dev:code>PS C:\&gt;Add-AzureRmVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting</dev:code>
 <dev:remarks><maml:para>This command adds information to the unattended Windows Setup answer file.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1297,6 +1325,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
 <dev:code>PS C:\&gt;Add-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -SettingFilePath $publicConfigPath -ProtectedSettingFilePath $privateConfigPath -Name $extName -TypeHandlerVersion $typeVersion -AutoUpgradeMinorVersion $True -Force</dev:code>
 <dev:remarks><maml:para>This command adds a diagnostics extension to the VMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1501,6 +1531,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
 <dev:code>PS C:\&gt;Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True</dev:code>
 <dev:remarks><maml:para>This command adds an extension to the VMMS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1603,6 +1635,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 </maml:para>
 <maml:para>The second command adds the public key to the location on VirtualMachine07 that the Path parameter specifies.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1735,6 +1769,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 <dev:code>PS C:\&gt;Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg</dev:code>
 <dev:remarks><maml:para>This command adds a network interface configuration to the VMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1831,6 +1867,8 @@ PS C:\&gt; $VMSS = New-AzureRmVmssConfig
 PS C:\&gt; Add-AzureRmVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId $Vault.ResourceId -VaultCertificate $CertConfig</dev:code>
 <dev:remarks><maml:para>This example adds a secret to the VMSS. The first command uses the Get-AzureRmKeyVault cmdlet to get a vault secret from the vault named ContosoVault and stores the result in the variable named $Vault. The second command uses the New-AzureRmVmssVaultCertificateConfig cmdlet to create a Key Vault certificate configuration using the specified certificate URL from the certificate store named Certificates and stores the results in the variable named $CertConfig. The third command uses the New-AzureRmVmssConfig cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS. The fourth command adds a secret to the VMSS using the vault secret using the key resource ID and the vault certificate stored in the $Vault and $CertConfig variables.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1930,6 +1968,8 @@ PS C:\&gt; Add-AzureRmVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "M
 </maml:para>
 <maml:para>The first command uses the New-AzureRmVmssConfig cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS. The second command adds an SSH key with the specified key data and stores the key at the specified path on the virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2034,6 +2074,8 @@ PS C:\&gt; Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol 
 </maml:para>
 <maml:para>The first command uses the New-AzureRmVmssConfig cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS. The second command adds an HTTP protocol WinRM listener with the certificate at the specified URL to the VMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2257,6 +2299,8 @@ PS C:\&gt; Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol 
 <dev:code>PS C:\&gt;Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group001" -VMName "VM002"</dev:code>
 <dev:remarks><maml:para>This command disables encryption for volumes of type all for the virtual machine named VM002 that belongs to the resource group named Group001. Since the VolumeType parameter is not specified, the cmdlet sets the value to All.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Disable encryption for data volumes on a Windows virtual machine</maml:title>
@@ -2265,6 +2309,8 @@ PS C:\&gt; $VMName = "VM004";
 PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName "VM004" -VolumeType "Data"</dev:code>
 <dev:remarks><maml:para>This command disables encryption for volumes of type data for the virtual machine named VM004 that belongs to the resource group named Group002.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2340,12 +2386,16 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"</dev:code>
 <dev:remarks><maml:para>This command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get all availability sets</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11"</dev:code>
 <dev:remarks><maml:para>This command gets all the availability sets in the resource group named ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2418,6 +2468,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"</dev:code>
 <dev:remarks><maml:para>This command gets a container service named CSResourceGroup17.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2557,6 +2609,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmRemoteDesktopFile -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -LocalPath "D:\RemoteDesktopFile07.rdp"</dev:code>
 <dev:remarks><maml:para>This command gets the Remote Desktop file for the virtual machine named VirtualMachine07. The command stores the result in the file named D:\RemoteDesktopFile07.rdp.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2717,24 +2771,32 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"</dev:code>
 <dev:remarks><maml:para>This command gets the model view and instance view properties of the virtual machine named VirtualMachine07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get instance view properties</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status</dev:code>
 <dev:remarks><maml:para>This command gets properties of the virtual machine named VirtualMachine07. This command specifies the Status parameter. Therefore, the command gets only the instance view properties.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get properties for all virtual machines in a resource group</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVM -ResourceGroupName "ResourceGroup11"</dev:code>
 <dev:remarks><maml:para>This command gets properties for all the virtual machines in the resource group named ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Get all virtual machines in your subscription</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVM</dev:code>
 <dev:remarks><maml:para>This command gets all the virtual machines in your subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2854,12 +2916,16 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;$VMAccessExtension = Get-AzureRmVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest"</dev:code>
 <dev:remarks><maml:para>This command gets the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get the instance view of the VMAccess extension</maml:title>
 <dev:code>PS C:\&gt;$VMAccessExtension = Get-AzureRmVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Status</dev:code>
 <dev:remarks><maml:para>This command gets the instance view of the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2970,6 +3036,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3092,6 +3160,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"</dev:code>
 <dev:remarks><maml:para>This command gets information for the AEM extension for the virtual machine named contoso-server.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3248,6 +3318,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07" -Windows -LocalPath "C:\Contoso\BootDiagnostics"</dev:code>
 <dev:remarks><maml:para>This command gets boot diagnostics data for the virtual machine named ContosoVM07. This virtual machine runs the Windows operating system. The command stores the data in specified local path.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3423,12 +3495,16 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows</dev:code>
 <dev:remarks><maml:para>This command gets the Chef extension from a Windows virtual machine named WindowsVM001 that belongs to the resource group named ResourceGroup001.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get the details of Chef extension for a Linux virtual machine</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -Linux</dev:code>
 <dev:remarks><maml:para>This command gets the Chef extension from a Linux virtual machine named LinuxVM001 that belongs to the resource group named ResourceGroup002.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3536,12 +3612,16 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;$VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript"</dev:code>
 <dev:remarks><maml:para>This command gets the custom script extension named ContosoCustomScript for the virtual machine named VirtualMachine07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get the instance view of a custom script extension</maml:title>
 <dev:code>PS C:\&gt;$VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript" -Status</dev:code>
 <dev:remarks><maml:para>This command gets the instance view of the custom script extension named ContosoCustomScript for the virtual machine named VirtualMachine07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3652,6 +3732,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22"</dev:code>
 <dev:remarks><maml:para>This command gets the diagnostics extension applied to the virtual machine named ContosoVM22.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3744,6 +3826,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"</dev:code>
 <dev:remarks><maml:para>This command gets the encryption status of the virtual machine named VM001.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3857,6 +3941,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"</dev:code>
 <dev:remarks><maml:para>This command gets the settings of extension named DSC on the virtual machine named VM07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3947,6 +4033,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4051,12 +4139,16 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension"</dev:code>
 <dev:remarks><maml:para>This command gets properties for the extension named CustomScriptExtension on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get instance view of an extension</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Status</dev:code>
 <dev:remarks><maml:para>This command gets the instance view for the extension named CustomScriptExtension on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4183,6 +4275,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMExtensionImage -Location "Central US" -PublisherName "Fabrikam" -Type "FabrikamEndpointProtection"</dev:code>
 <dev:remarks><maml:para>This command gets all the versions of the extension image for the specified location, publisher, and type.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4258,6 +4352,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"</dev:code>
 <dev:remarks><maml:para>This command gets the extension image type for the specified publisher and location.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4440,6 +4536,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMImage -Location "Central US" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "15.04-DAILY"</dev:code>
 <dev:remarks><maml:para>This command gets all the versions of VMImage that match the specified values.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4518,6 +4616,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMImageOffer -Location "Central US" -PublisherName "Fabrikam"</dev:code>
 <dev:remarks><maml:para>This command gets the offer types for the specified publisher in the Central US region.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4578,6 +4678,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMImagePublisher -Location "Central US"</dev:code>
 <dev:remarks><maml:para>This command gets the publishers of VMImage instances for the Central US region within your Azure profile.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4674,6 +4776,8 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMImageSku -Location "Central US" -PublisherName "Fabrikam" -Offer "LinuxServer"</dev:code>
 <dev:remarks><maml:para>This command gets the SKUs for the specified publisher and offer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4801,18 +4905,24 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <dev:code>PS C:\&gt;Get-AzureRmVMSize -Location "Central US"</dev:code>
 <dev:remarks><maml:para>This command gets the available sizes for virtual machines in the specified location.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get sizes for an availability set</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"</dev:code>
 <dev:remarks><maml:para>This command gets available sizes for virtual machines that you can deploy in the availability set named AvailabilitySet17.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get sizes for an existing virtual machine</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"</dev:code>
 <dev:remarks><maml:para>This command gets available sizes for the existing virtual machine named VirtualMachine12. You can resize this virtual machine to the sizes that this command gets.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4907,6 +5017,8 @@ AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings</dev:code>
 <dev:remarks><maml:para>This command gets the settings of the SQL Server extension on a virtual machine named ContosoVM07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get the settings by using the pipeline</maml:title>
@@ -4922,6 +5034,8 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 </maml:para>
 <maml:para>The current command gets the settings of the SQL Server IaaS Agent on that virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get the settings of specific SQL Server version</maml:title>
@@ -4935,6 +5049,8 @@ AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings</dev:code>
 <dev:remarks><maml:para>This command gets the settings of version 1.0 of the SQL Server extension on a virtual machine named ContosoVM07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5063,6 +5179,8 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 <dev:code>PS C:\&gt;Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"</dev:code>
 <dev:remarks><maml:para>This command gets the properties of the VMSS named VMSS001 that belongs to the resource group named Group001. Since the command does not specify the InstanceView switch parameter, the cmdlet gets the model view of the virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5156,6 +5274,8 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 <dev:code>PS C:\&gt;Get-AzureRmVmssSku -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"</dev:code>
 <dev:remarks><maml:para>This command gets all the available SKUs from the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5305,18 +5425,24 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 <dev:code>PS C:\&gt;Get-AzureRmVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"</dev:code>
 <dev:remarks><maml:para>This command gets the properties of the VMSS virtual machine named VMSS001 that belongs to the resource group named Group001. Since the command does not specify the InstanceView switch parameter, the cmdlet gets the model view of the virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get the model view properties of a VMSS virtual machine</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID</dev:code>
 <dev:remarks><maml:para>This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002. The command gets the instance ID stored in the variable $ID for which to get the model view.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get the instance view properties of a VMSS virtual machine</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID</dev:code>
 <dev:remarks><maml:para>This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002. Since the command specifies the InstanceView switch parameter, the cmdlet gets the instance view of the virtual machine. The command gets the instance ID stored in the variable $ID for which to get the instance view.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5371,6 +5497,8 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 <dev:code>PS C:\&gt;Get-AzureRmVMUsage -Location "Central US"</dev:code>
 <dev:remarks><maml:para>This command gets the virtual machine core count usage for the location Central US.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5494,6 +5622,8 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 <dev:code>PS C:\&gt;New-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"</dev:code>
 <dev:remarks><maml:para>This command creates an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5624,6 +5754,8 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 </maml:para>
 <maml:para>The final command creates a container service for the container stored in $Container. The service is named csResourceGroup17.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5868,6 +6000,8 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 </maml:para>
 <maml:para>Specify the object in $Container for the ContainerService parameter of New-AzureRmContainerService.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6107,6 +6241,8 @@ $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -Vhd
 New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine</dev:code>
 <dev:remarks><maml:para>This example script shows how to create a virtual machine. This script uses several other cmdlets.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create a virtual machine from a custom user image</maml:title>
@@ -6161,6 +6297,8 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM 
 </maml:para>
 <maml:para>This script assumes that you are already logged into your Azure account. You can confirm your login status by using the Get-AzureSubscription cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6284,6 +6422,8 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMS
 </maml:para>
 <maml:para>The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable. The command assigns a name and size to the virtual machine. The virtual machine belongs to the availability set stored in $AvailabilitySet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6297,740 +6437,6 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMS
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Get-AzureRmAvailabilitySet</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-</command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>New-AzureRmVMSqlServerAutoBackupConfig</command:name>
-<command:verb>New</command:verb>
-<command:noun>AzureRmVMSqlServerAutoBackupConfig</command:noun>
-<maml:description><maml:para>Creates a configuration object for SQL Server automatic backup.
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>The New-AzureRmVMSqlServerAutoBackupConfig cmdlet creates a configuration object for SQL Server automatic backup.
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>New-AzureRmVMSqlServerAutoBackupConfig</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Enable</maml:name>
-<maml:Description><maml:para>Enable Automatic Backup.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="10" aliases="none"><maml:name>FullBackupWindowInHours</maml:name>
-<maml:Description><maml:para>Sql Server Full Backup window in hours
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="11" aliases="none"><maml:name>LogBackupFrequencyInMinutes</maml:name>
-<maml:Description><maml:para>Sql Server Log Backup frequency, once every 1-60 minutes
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>RetentionPeriodInDays</maml:name>
-<maml:Description><maml:para>Backup Retention period in days.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EnableEncryption</maml:name>
-<maml:Description><maml:para>Enable Backup Encryption.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>CertificatePassword</maml:name>
-<maml:Description><maml:para>Certificate password.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>StorageUri</maml:name>
-<maml:Description><maml:para>The storage uri
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
-<dev:type><maml:name>Uri</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>StorageContext</maml:name>
-<maml:Description><maml:para>The storage connection context
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
-<dev:type><maml:name>AzureStorageContext</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>StorageKey</maml:name>
-<maml:Description><maml:para>The storage access key
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>BackupSystemDbs</maml:name>
-<maml:Description><maml:para>Backup system databases
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>BackupScheduleType</maml:name>
-<maml:Description><maml:para>Backup schedule type, manual or automated
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Manual</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Automated</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>FullBackupFrequency</maml:name>
-<maml:Description><maml:para>Sql Server Full Backup frequency, daily or weekly
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Daily</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Weekly</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>FullBackupStartHour</maml:name>
-<maml:Description><maml:para>Hour of the day (0-23) when the Sql Server Full Backup should start
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>BackupScheduleType</maml:name>
-<maml:Description><maml:para>Backup schedule type, manual or automated
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>BackupSystemDbs</maml:name>
-<maml:Description><maml:para>Backup system databases
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>CertificatePassword</maml:name>
-<maml:Description><maml:para>Certificate password.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Enable</maml:name>
-<maml:Description><maml:para>Enable Automatic Backup.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>EnableEncryption</maml:name>
-<maml:Description><maml:para>Enable Backup Encryption.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>FullBackupFrequency</maml:name>
-<maml:Description><maml:para>Sql Server Full Backup frequency, daily or weekly
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>FullBackupStartHour</maml:name>
-<maml:Description><maml:para>Hour of the day (0-23) when the Sql Server Full Backup should start
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="10" aliases="none"><maml:name>FullBackupWindowInHours</maml:name>
-<maml:Description><maml:para>Sql Server Full Backup window in hours
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="11" aliases="none"><maml:name>LogBackupFrequencyInMinutes</maml:name>
-<maml:Description><maml:para>Sql Server Log Backup frequency, once every 1-60 minutes
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>RetentionPeriodInDays</maml:name>
-<maml:Description><maml:para>Backup Retention period in days.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>StorageContext</maml:name>
-<maml:Description><maml:para>The storage connection context
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
-<dev:type><maml:name>AzureStorageContext</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>StorageKey</maml:name>
-<maml:Description><maml:para>The storage access key
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>StorageUri</maml:name>
-<maml:Description><maml:para>The storage uri
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
-<dev:type><maml:name>Uri</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:parameters>
-<command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
-</dev:type>
-<maml:description><maml:para>System.Management.Automation.SwitchParameter System.Int32 Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext System.Uri System.Security.SecureString System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-</maml:para>
-</maml:description>
-</command:inputType>
-</command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Compute.AutoBackupSettings</maml:name>
-</dev:type>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:returnValue>
-</command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1: Create an automatic backup configuration using storage URI and account key</maml:title>
-<dev:code>PS C:\&gt;$AutoBackupConfig = New-AzureVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri "\\contoso\StorageGeneral" -StorageKey "&lt; Storage Key for ContosoGeneral &gt;"
-Enable                : True
-EnableEncryption      : False
-RetentionPeriodInDays : 10</dev:code>
-<dev:remarks><maml:para>This command creates an automatic backup configuration object by specifying storage URI and account key. Automatic backup is enabled and automatic backups are kept for 10 days. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.
-</maml:para>
-</dev:remarks>
-</command:example>
-<command:example><maml:title>Example 2: Create an automatic backup configuration using storage context</maml:title>
-<dev:code>PS C:\&gt;$StorageContext = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "&lt; Storage Key for ContosoGeneral &gt;"
-PS C:\&gt; $AutoBackupConfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10
-Enable                : True
-EnableEncryption      : False
-RetentionPeriodInDays : 10</dev:code>
-<dev:remarks><maml:para>The first command creates a storage context, and then stores it in the $StorageContext variable. For more information, see New-AzureStorageContext.
-</maml:para>
-<maml:para>The second command creates an automatic backup configuration object by specifying the storage context in $StorageContext. Automatic backup is enabled and automatic backups are kept for 10 days.
-</maml:para>
-</dev:remarks>
-</command:example>
-<command:example><maml:title>Example 3: Create an automatic backup configuration using storage context with encryption and password</maml:title>
-<dev:code>PS C:\&gt;$StorageContext = New-AzureVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $CertificatePassword
-Enable                : True
-EnableEncryption      : True
-RetentionPeriodInDays : 10</dev:code>
-<dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies the storage context created in a previous example. The command enables encryption with password. The password was previously stored as a secure string in the $CertificatePass
-</maml:para>
-</dev:remarks>
-</command:example>
-<command:example><maml:title>Example 4: Create an automatic backup configuration with manual backup schedule</maml:title>
-<dev:code>$storageUrl = 'https://stocrptestps9662.blob.core.windows.net/'
-$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
-$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Manual -FullBackupFrequency Daily -FullBackupStartHour 10 -FullBackupWindowInHours 10 -LogBackupFrequencyInMinutes 10 -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
-<dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies manual backup schedule with associated settings like FullBackupFrequency, FullBackupStartHour, FullBackupWindowInHours and LogBackupFrequencyInMinutes.
-</maml:para>
-<maml:para>Enable                : True EnableEncryption      : False RetentionPeriod       : 10 StorageUrl            : https://stocrptestps9662.blob.core.windows.net/ StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== Password              : BackupSystemDbs       : True BackupScheduleType    : Manual FullBackupFrequency   : Daily FullBackupStartTime   : 10
-</maml:para>
-</dev:remarks>
-</command:example>
-<command:example><maml:title>Example 5: Create an automatic backup configuration with automated backup schedule</maml:title>
-<dev:code>$storageUrl = 'https://stocrptestps9662.blob.core.windows.net/'
-$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
-$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Automated -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
-<dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies automated backup schedule.
-</maml:para>
-<maml:para>Enable                : True EnableEncryption      : False RetentionPeriod       : 10 StorageUrl            : https://stocrptestps9662.blob.core.windows.net/ StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== Password              : BackupSystemDbs       : True BackupScheduleType    : Automated FullBackupFrequency   :  FullBackupStartTime   :
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>New-AzureRmVMSqlServerAutoPatchingConfig</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-<maml:navigationLink><maml:linkText>Set-AzureRmVMSqlServerExtension</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-</command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>New-AzureRmVMSqlServerAutoPatchingConfig</command:name>
-<command:verb>New</command:verb>
-<command:noun>AzureRmVMSqlServerAutoPatchingConfig</command:noun>
-<maml:description><maml:para>Creates a configuration object for automatic patching on a virtual machine.
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>The New-AzureRmVMSqlServerAutoPatchingConfig cmdlet creates a configuration object for automatic patching on a virtual machine.
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>New-AzureRmVMSqlServerAutoPatchingConfig</maml:name>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DayOfWeek</maml:name>
-<maml:Description><maml:para>Specifies the day of the week when updates should be installed.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>-- Sunday
-</maml:para>
-<maml:para>-- Monday
-</maml:para>
-<maml:para>-- Tuesday
-</maml:para>
-<maml:para>-- Wednesday
-</maml:para>
-<maml:para>-- Thursday
-</maml:para>
-<maml:para>-- Friday
-</maml:para>
-<maml:para>-- Saturday
-</maml:para>
-<maml:para>-- Everyday
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Sunday</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Monday</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Tuesday</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Wednesday</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Thursday</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Friday</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Saturday</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Everyday</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Enable</maml:name>
-<maml:Description><maml:para>Indicates that automated patching for the virtual machine is enabled. If you enable automated patching the cmdlet puts Windows Update into interactive mode. If you disable automated patching, Windows Update settings do not change.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaintenanceWindowDuration</maml:name>
-<maml:Description><maml:para>Specifies the duration, in minutes, of the maintenance window. Automated patching avoids performing an action that can affect a virtual machine availability outside that window. Specify a multiple of 30 minutes.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaintenanceWindowStartingHour</maml:name>
-<maml:Description><maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start to install.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PatchCategory</maml:name>
-<maml:Description><maml:para>Specifies whether important updates should be included.
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Important</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DayOfWeek</maml:name>
-<maml:Description><maml:para>Specifies the day of the week when updates should be installed.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>-- Sunday
-</maml:para>
-<maml:para>-- Monday
-</maml:para>
-<maml:para>-- Tuesday
-</maml:para>
-<maml:para>-- Wednesday
-</maml:para>
-<maml:para>-- Thursday
-</maml:para>
-<maml:para>-- Friday
-</maml:para>
-<maml:para>-- Saturday
-</maml:para>
-<maml:para>-- Everyday
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Enable</maml:name>
-<maml:Description><maml:para>Indicates that automated patching for the virtual machine is enabled. If you enable automated patching the cmdlet puts Windows Update into interactive mode. If you disable automated patching, Windows Update settings do not change.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaintenanceWindowDuration</maml:name>
-<maml:Description><maml:para>Specifies the duration, in minutes, of the maintenance window. Automated patching avoids performing an action that can affect a virtual machine availability outside that window. Specify a multiple of 30 minutes.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaintenanceWindowStartingHour</maml:name>
-<maml:Description><maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start to install.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>PatchCategory</maml:name>
-<maml:Description><maml:para>
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false"></command:parameterValue>
-<dev:type><maml:name></maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PatchCategory</maml:name>
-<maml:Description><maml:para>Specifies whether important updates should be included.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:parameters>
-<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
-</dev:type>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:inputType>
-</command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Compute.AutoPatchingSettings</maml:name>
-</dev:type>
-<maml:description><maml:para>This cmdlet returns object contains settings for automated patching.
-</maml:para>
-</maml:description>
-</command:returnValue>
-</command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1: Create a configuration object to configure automatic patching</maml:title>
-<dev:code>PS C:\&gt;$AutoPatchingConfig = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"</dev:code>
-<dev:remarks><maml:para>This command creates configuration object for patching. The command specifies the day of the week and defines the maintenance window. This configuration enables patching that uses these values. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.
-</maml:para>
-<maml:para>Enable                        : True DayOfWeek                     : Thursday MaintenanceWindowStartingHour : 11 MaintenanceWindowDuration     : 120 PatchCategory                 : Important
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>New-AzureVMSqlServerAutoBackupConfig</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-<maml:navigationLink><maml:linkText>Set-AzureRmVMSqlServerExtension</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-</command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>New-AzureRmVMSqlServerKeyVaultCredentialConfig</command:name>
-<command:verb>New</command:verb>
-<command:noun>AzureRmVMSqlServerKeyVaultCredentialConfig</command:noun>
-<maml:description><maml:para>Creates a configuration object for azure key vault credential for a virtual machine.
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>Creates a configuration object for azure key vault credential for a virtual machine.
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>New-AzureRmVMSqlServerKeyVaultCredentialConfig</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AzureKeyVaultUrl</maml:name>
-<maml:Description><maml:para>Azure Key Vault service URL
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CredentialName</maml:name>
-<maml:Description><maml:para>SQL Server credential name to create.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Enable</maml:name>
-<maml:Description><maml:para>Enable Key Vault Credential.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServicePrincipalName</maml:name>
-<maml:Description><maml:para>Principal user client identifier.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServicePrincipalSecret</maml:name>
-<maml:Description><maml:para>Principal user client secret.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AzureKeyVaultUrl</maml:name>
-<maml:Description><maml:para>Azure Key Vault service URL
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CredentialName</maml:name>
-<maml:Description><maml:para>SQL Server credential name to create.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Enable</maml:name>
-<maml:Description><maml:para>Enable Key Vault Credential.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServicePrincipalName</maml:name>
-<maml:Description><maml:para>Principal user client identifier.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServicePrincipalSecret</maml:name>
-<maml:Description><maml:para>Principal user client secret.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-</command:parameters>
-<command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
-</dev:type>
-<maml:description><maml:para>System.Management.Automation.SwitchParameter System.Security.SecureString
-</maml:para>
-</maml:description>
-</command:inputType>
-</command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Compute.KeyVaultCredentialSettings</maml:name>
-</dev:type>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:returnValue>
-</command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code>PS C:\&gt;</dev:code>
-<dev:remarks><maml:para>
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>New-AzureRmVMSqlServerAutoPatchingConfig</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-<maml:navigationLink><maml:linkText>New-AzureRmVMSqlServerAutoPatchingConfig</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-<maml:navigationLink><maml:linkText>New-AzureRmVMSqlServerAutoBackupConfig</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -7232,6 +6638,8 @@ $VMSS = New-AzureRmVmssConfig -Location $LOC -SkuCapacity 2 -SkuName "Standard_A
 New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;</dev:code>
 <dev:remarks><maml:para>The following complex example creates a VMSS. The first command creates a resource group with the specified name and location. The second command uses the New-AzureRmStorageAccount cmdlet to create a storage account. The third command then uses the Get-AzureRmStorageAccount cmdlet to get the storage account created in the second command and stores the result in the $STOAccount variable. The fifth command uses the New-AzureRmVirtualNetworkSubnetConfig cmdlet to create a subnet and stores the result in the variable named $SubNet. The sixth command uses the New-AzureRmVirtualNetwork cmdlet to create a virtual network and stores the result in the variable named $VNet. The seventh command uses the Get-AzureRmVirtualNetwork to get information about the virtual network created in the sixth command and stores the information in the variable named $VNet. The eighth and ninth command uses the New-AzureRmPublicIpAddress and Get- AzureRmPublicIpAddress to create and get information from that public IP address. The commands store the information in the variable named $PubIP. The tenth command uses the New- AzureRmLoadBalancerFrontendIpConfig cmdlet to create a frontend load balancer and stores the result in the variable named $Frontend. The eleventh command uses the New-AzureRmLoadBalancerBackendAddressPoolConfig to create a backend address pool configuration and stores the result in the variable named $BackendAddressPool. The twelfth command uses the New-AzureRmLoadBalancerProbeConfig to create a probe and stores the probe information in the variable named $Probe. The thirteenth command uses the New-AzureRmLoadBalancerInboundNatPoolConfig cmdlet to create a load balancer inbound network address translation (NAT) pool configuration. The fourteenth command uses the New-AzureRmLoadBalancerRuleConfig to create a load balancer rule configuration and stores the result in the variable named $LBRule. The fifteenth command uses the New-AzureRmLoadBalancer cmdlet to create a load balancer and stores the result in the variable named $ActualLb. The sixteenth command uses the Get-AzureRmLoadBalancer to get information about the load balancer that was created in the fifteenth command and stores the information in the variable named $ExpectedLb. The seventeenth command uses the New-AzureRmVmssIPConfig cmdlet to create a VMSS IP configuration and stores the information in the variable named $IPCfg. The eighteenth command uses the New-AzureRmVmssConfig cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS. The nineteenth command uses the New-AzureRmVmss cmdlet to create the VMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7528,6 +6936,8 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;</dev:code>
 <dev:remarks><maml:para>This example creates a VMSS configuration object. The first command uses the New-AzureRmVmssConfig cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS. The second command uses the New-AzureRmVmss cmdlet to create a VMSS that uses the VMSS configuration object created in the first command.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7681,12 +7091,16 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <dev:code>PS C:\&gt;$IPConfiguration = New-AzureRmVmssIPConfig -Name "ContosoVmssInterface02" -SubnetId $SubnetId</dev:code>
 <dev:remarks><maml:para>This command creates an IP configuration object named ContosoVmssInterface02. The command uses a previously defined subnet ID stored in $SubnetId. The command stores the configuration settings in the $IPConfiguration variable for later use with Add-AzureRmVmssNetworkInterfaceConfiguration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create an IP configuration object that includes NAT pool settings</maml:title>
 <dev:code>PS C:\&gt;$IPConfiguration = New-AzureRmVmssIPConfig -Name "ContosoVmssInterface03" -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id -SubnetId $SubnetId</dev:code>
 <dev:remarks><maml:para>This command creates an IP configuration object named ContosoVmssInterface03, and then stores it in the $IPConfiguration variable for later use. The command uses a previously defined subnet ID stored in $SubnetId. The command stores the configuration settings in the $IPConfiguration variable for later use. The command specifies values for the LoadBalancerInboundNatPoolsId and LoadBalancerBackendAddressPoolsId parameters.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7770,6 +7184,8 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <dev:code>PS C:\&gt;New-AzureRmVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "MyCerts"</dev:code>
 <dev:remarks><maml:para>This command creates a Key Vault certificate configuration that uses the certificate store named MyCerts located at the specified certificate URL.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7782,7 +7198,7 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <command:details><command:name>New-AzureVMSqlServerAutoBackupConfig</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureVMSqlServerAutoBackupConfig</command:noun>
-<maml:description><maml:para>(OBSOLETE. See New-AzureRmVMSqlServerAutoBackupConfig) Creates a configuration object for SQL Server automatic backup.
+<maml:description><maml:para>Creates a configuration object for SQL Server automatic backup. (Alias: New-AzureRmVMSqlServerAutoBackupConfig)
 </maml:para>
 </maml:description>
 </command:details>
@@ -7860,9 +7276,80 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupScheduleType</maml:name>
+<maml:Description><maml:para>Backup schedule type, manual or automated
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupSystemDbs</maml:name>
+<maml:Description><maml:para>Backup system databases
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupFrequency</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup frequency, daily or weekly
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupStartHour</maml:name>
+<maml:Description><maml:para>Hour of the day (0-23) when the Sql Server Full Backup should start
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupWindowInHours</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup window in hours
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>LogBackupFrequencyInMinutes</maml:name>
+<maml:Description><maml:para>Sql Server Log Backup frequency, once every 1-60 minutes
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>CertificatePassword</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupScheduleType</maml:name>
+<maml:Description><maml:para>Backup schedule type, manual or automated
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupSystemDbs</maml:name>
+<maml:Description><maml:para>Backup system databases
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>CertificatePassword</maml:name>
 <maml:Description><maml:para>Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.
 </maml:para>
 </maml:Description>
@@ -7888,6 +7375,42 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupFrequency</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup frequency, daily or weekly
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupStartHour</maml:name>
+<maml:Description><maml:para>Hour of the day (0-23) when the Sql Server Full Backup should start
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupWindowInHours</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup window in hours
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>LogBackupFrequencyInMinutes</maml:name>
+<maml:Description><maml:para>Sql Server Log Backup frequency, once every 1-60 minutes
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Specifies the name of the resource group of the virtual machine.
@@ -7954,6 +7477,8 @@ EnableEncryption      : False
 RetentionPeriodInDays : 10</dev:code>
 <dev:remarks><maml:para>This command creates an automatic backup configuration object by specifying storage URI and account key. Automatic backup is enabled and automatic backups are kept for 10 days. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create an automatic backup configuration using storage context</maml:title>
@@ -7966,6 +7491,8 @@ RetentionPeriodInDays : 10</dev:code>
 </maml:para>
 <maml:para>The second command creates an automatic backup configuration object by specifying the storage context in $StorageContext. Automatic backup is enabled and automatic backups are kept for 10 days.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Create an automatic backup configuration using storage context with encryption and password</maml:title>
@@ -7975,6 +7502,32 @@ EnableEncryption      : True
 RetentionPeriodInDays : 10</dev:code>
 <dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies the storage context created in a previous example. The command enables encryption with password. The password was previously stored as a secure string in the $CertificatePassword variable. To create a secure string, use the ConvertTo-SecureString cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 4: Create an automatic backup configuration with manual backup schedule</maml:title>
+<dev:code>$storageUrl = 'https://stocrptestps9662.blob.core.windows.net/'
+$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
+$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Manual -FullBackupFrequency Daily -FullBackupStartHour 10 -FullBackupWindowInHours 10 -LogBackupFrequencyInMinutes 10 -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
+<dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies manual backup schedule with associated settings like FullBackupFrequency, FullBackupStartHour, FullBackupWindowInHours and LogBackupFrequencyInMinutes.
+</maml:para>
+<maml:para>Enable                : True EnableEncryption      : False RetentionPeriod       : 10 StorageUrl            : https://stocrptestps9662.blob.core.windows.net/ StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== Password              : BackupSystemDbs       : True BackupScheduleType    : Manual FullBackupFrequency   : Daily FullBackupStartTime   : 10
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 5: Create an automatic backup configuration with automated backup schedule</maml:title>
+<dev:code>$storageUrl = 'https://stocrptestps9662.blob.core.windows.net/'
+$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
+$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Automated -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
+<dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies automated backup schedule.
+</maml:para>
+<maml:para>Enable                : True EnableEncryption      : False RetentionPeriod       : 10 StorageUrl            : https://stocrptestps9662.blob.core.windows.net/ StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== Password              : BackupSystemDbs       : True BackupScheduleType    : Automated FullBackupFrequency   :  FullBackupStartTime   :
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7990,7 +7543,7 @@ RetentionPeriodInDays : 10</dev:code>
 <command:details><command:name>New-AzureVMSqlServerAutoPatchingConfig</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureVMSqlServerAutoPatchingConfig</command:noun>
-<maml:description><maml:para>Creates a configuration object for automatic patching on a virtual machine.
+<maml:description><maml:para>Creates a configuration object for automatic patching on a virtual machine. (Alias: New-AzureRmVMSqlServerAutoPatchingConfig)
 </maml:para>
 </maml:description>
 </command:details>
@@ -8156,6 +7709,8 @@ MaintenanceWindowDuration     : 120
 PatchCategory                 : Important</dev:code>
 <dev:remarks><maml:para>This command creates configuration object for patching. The command specifies the day of the week and defines the maintenance window. This configuration enables patching that uses these values. The command stores the result in the $AutoBackupConfig variable. You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8171,7 +7726,7 @@ PatchCategory                 : Important</dev:code>
 <command:details><command:name>New-AzureVMSqlServerKeyVaultCredentialConfig</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureVMSqlServerKeyVaultCredentialConfig</command:noun>
-<maml:description><maml:para>Creates a configuration object for AKV settings for SQL Server on a virtual machine.
+<maml:description><maml:para>Creates a configuration object for AKV settings for SQL Server on a virtual machine. (Alias: New-AzureRmVMSqlServerKeyVaultCredentialConfig)
 </maml:para>
 </maml:description>
 </command:details>
@@ -8339,6 +7894,8 @@ PatchCategory                 : Important</dev:code>
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8642,30 +8199,40 @@ PatchCategory                 : Important</dev:code>
 <dev:code>PS C:\&gt;Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1"</dev:code>
 <dev:remarks><maml:para>This command creates a .zip package for the given script and any dependent resource modules and uploads it to Azure storage.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create a .zip package and store it to a local file</maml:title>
 <dev:code>PS C:\&gt;Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1" -OutputArchivePath ".\MyConfiguration.ps1.zip"</dev:code>
 <dev:remarks><maml:para>This command creates a .zip package for the given script and any dependent resource modules and stores it in the local file that is named .\MyConfiguration.ps1.zip.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Add configuration to the archive and then upload it to storage</maml:title>
 <dev:code>PS C:\&gt;Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -SkipDependencyDetection</dev:code>
 <dev:remarks><maml:para>This command adds configuration named Sample.ps1 to the configuration archive to upload to Azure storage and skips dependent resource modules.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Add configuration and configuration data to the archive and then upload it to storage</maml:title>
 <dev:code>PS C:\&gt;Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -ConfigurationDataPath "C:\SampleData.psd1"</dev:code>
 <dev:remarks><maml:para>This command adds configuration named Sample.ps1 and configuration data named SampleData.psd1 to the configuration archive to upload to Azure storage.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 5: Add configuration, configuration data, and additional content to the archive and then upload it to storage</maml:title>
 <dev:code>PS C:\&gt;Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPath @("C:\ContentDir1", "C:\File.txt") -ConfigurationDataPath "C:\SampleData.psd1"</dev:code>
 <dev:remarks><maml:para>This command adds configuration named Sample.ps1, configuration data SampleData.psd1, and additional content to configuration archive to upload to Azure storage.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8792,6 +8359,8 @@ PatchCategory                 : Important</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureRmAvailabilitySet -Name "AvailabilitySet03" -ResourceGroupName "ResourceGroup11"</dev:code>
 <dev:remarks><maml:para>This command removes an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8898,6 +8467,8 @@ PatchCategory                 : Important</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"</dev:code>
 <dev:remarks><maml:para>This command removes the container service named CSResourceGroup17.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8976,6 +8547,8 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 </maml:para>
 <maml:para>The second command removes the profile named AgentPool01 from the container service in $Container.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9152,6 +8725,8 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <dev:code>PS C:\&gt;Remove-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"</dev:code>
 <dev:remarks><maml:para>This command removes the virtual machine named VirtualMachine07 in the resource group ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9305,6 +8880,8 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9416,6 +8993,8 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <dev:code>PS C:\&gt;Remove-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"</dev:code>
 <dev:remarks><maml:para>This command removes the AEM extension for the virtual machine named contoso-server.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9509,6 +9088,8 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9706,12 +9287,16 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <dev:code>PS C:\&gt;Remove-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows</dev:code>
 <dev:remarks><maml:para>This command removes a Chef extension from a Windows based virtual machine named WindowsVM001 that belongs to the resource group named ResourceGroup001.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Remove a Chef extension from a Linux virtual machine</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -Linux</dev:code>
 <dev:remarks><maml:para>This command removes a Chef extension from a Linux based virtual machine named LinuxVM001 that belongs to the resource group named ResourceGroup002.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9853,6 +9438,8 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9965,6 +9552,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 </maml:para>
 <maml:para>The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10055,6 +9644,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt;Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" | Update-AzureRmVM</dev:code>
 <dev:remarks><maml:para>This command removes the Diagnostics extension from a virtual machine named ContosoVM22. The command passes the result to the Update-AzureRmVM cmdlet by using the pipeline operator. That command updates the virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10199,12 +9790,16 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt;Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM"</dev:code>
 <dev:remarks><maml:para>This command removes the extension with default name AzureDiskEncryption for a virtual machine that runs the Windows operating system or AzureDiskEncryptionForLinux for Linux based virtual machine named MyTestVM.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Remove a specific disk encryption extension from a virtual machine.</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM" -Name "MyDiskEncryptionExtension"</dev:code>
 <dev:remarks><maml:para>This command removes the encryption extension named MyDiskEncryptionExtension from the virtual machine named MyTestVM.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10329,6 +9924,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt;Remove-AzureRmVMDscExtension -ResouceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"</dev:code>
 <dev:remarks><maml:para>This command removes the extension named DSC on virtual machine named VM07.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10470,6 +10067,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt;Remove-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"</dev:code>
 <dev:remarks><maml:para>This command removes the extension named ContosoTest from the virtual machine named VirtualMachine22 in ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10576,6 +10175,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10691,6 +10292,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt; Get-AzureRmVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzureRmVM | Update-AzureRmVM</dev:code>
 <dev:remarks><maml:para>Removes all secrets from a virtual machine "vm1" in resource group "rg1" and update the VM
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10775,6 +10378,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt;Remove-AzureRMVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" -Name "SqlIaaSAgent"</dev:code>
 <dev:remarks><maml:para>This command removes a SQL Server extension from the virtual machine named ContosoVM22.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10899,12 +10504,16 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt;Remove-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMScaleSet001"</dev:code>
 <dev:remarks><maml:para>This command removes the VMSS named VMScaleSet001 that belongs to the resource group named Group001.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Remove a virtual machine from within a VMSS</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureRmVmss -ResourceGroupName "Group002" -VMScaleSetName "VMScaleSet002" -InstanceId "3";</dev:code>
 <dev:remarks><maml:para>This command removes the virtual machine with instance ID 3 from the VMSS named VMScaleSet002 that belongs to the resource group named Group002.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11068,6 +10677,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code>PS C:\&gt;Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -Name $extName</dev:code>
 <dev:remarks><maml:para>This command removes diagnostics extension from the VMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11175,6 +10786,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11276,6 +10889,8 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 </maml:para>
 <maml:para>The second command removes the network interface configuration named ContosoVmssInterface02 from the set in $VMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11377,6 +10992,8 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 <dev:code>PS C:\&gt;Restart-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"</dev:code>
 <dev:remarks><maml:para>This command restarts the virtual machine named VirtualMachine07 in ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11485,12 +11102,16 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 <dev:code>PS C:\&gt;Restart-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001";</dev:code>
 <dev:remarks><maml:para>This command restarts the VMSS named VMSS001 that belongs to the resource group named Group001.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Restart a specific virtual machine within the VMSS</maml:title>
 <dev:code>PS C:\&gt;Restart-AzureRmVmss -ResourceGroupName "Group004" -VMScaleSetName "VMSS001" -InstanceId "1"</dev:code>
 <dev:remarks><maml:para>This command restarts a virtual machine that has the instance ID of 1 in the VMSS named VMSS001 that belongs to the resource group named Group001.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11688,24 +11309,32 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 <dev:code>PS C:\&gt;Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"</dev:code>
 <dev:remarks><maml:para>This command downloads a .vhd file, and stores it in the local path C:\vhd\Win7Image.vhd.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Download an image and overwrite the local file</maml:title>
 <dev:code>PS C:\&gt;Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite</dev:code>
 <dev:remarks><maml:para>This command downloads a .vhd file, and stores it in the local path. The command includes the Overwrite parameter. Therefore, if C:\vhd\Win7Image.vhd already exists, this command replaces it.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Download an image by using a specified number of threads</maml:title>
 <dev:code>PS C:\&gt;Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32</dev:code>
 <dev:remarks><maml:para>This command downloads a .vhd file, and stores it in the local path. The command specifies a value of 32 for the NumberOfThreads parameter. Therefore, the cmdlet uses 32 threads for this action.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Download an image and specify the storage key</maml:title>
 <dev:code>PS C:\&gt;Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw=="</dev:code>
 <dev:remarks><maml:para>This command downloads a .vhd file and specifies the storage key.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11933,6 +11562,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 </maml:para>
 <maml:para>The second command captures a virtual machine named VirtualMachine07 as a VMImage. The Output property returns a JSON template.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12139,6 +11770,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 <dev:code>PS C:\&gt;Set-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized</dev:code>
 <dev:remarks><maml:para>This command marks the virtual machine named VirtualMachine07 as generalized.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12371,6 +12004,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 <dev:code>PS C:\&gt;Set-AzureRmVMAccessExtension -ResourceGroupName "ResrouceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "2.0" -UserName "PFuller" -Password "Password"</dev:code>
 <dev:remarks><maml:para>This command adds a VMAccess extension for the virtual machine named VirtualMachine07 in ResrouceGroup11. The command specifies the name and type handler version for VMAccess.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12665,6 +12300,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12821,6 +12458,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 <dev:code>PS C:\&gt;Set-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server" -WADStorageAccountName "stdstorage"</dev:code>
 <dev:remarks><maml:para>This command configures the virtual machine named contoso-server to use the AEM extension. The command specifies the storage account named stdstorage.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12932,6 +12571,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13125,6 +12766,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 <dev:code>PS C:\&gt;Set-AzureVMBGInfoExtension -ResrouceGroupName "ContosoRG" -VMName "ContosoVM" -Name "ExtensionName" -TypeHandlerVersion "2.1" -Location "West Europe"</dev:code>
 <dev:remarks><maml:para>This command adds the BGInfo extension to virtual machine named ContosoVM. The command specifies the resource group and location of the virtual machine. The command specifies the name and version of the extension.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13257,6 +12900,8 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 </maml:para>
 <maml:para>The second command enables boot diagnostics for the virtual machine in $VM. Diagnostics data is stored in the specified account.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13811,18 +13456,24 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <dev:code>PS C:\&gt;Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Windows</dev:code>
 <dev:remarks><maml:para>This command adds a Chef extension to a Windows virtual machine named WindowsVM001. When the virtual machine starts, Chef bootstraps the virtual machine to run Apache.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a Chef extension to a Linux virtual machine</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Linux</dev:code>
 <dev:remarks><maml:para>This command adds a Chef extension to a Linux virtual machine named LinuxVM001. When the virtual machine starts, Chef bootstraps the virtual machine to run Apache.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Add a Chef extension to a Windows virtual machine with bootstrap options and -JsonAttribute option</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup003" -VMName "WindowsVM002" -ValidationPem C:\my-org-validator.pem -ClientRb C:\client.rb -BootstrapOptions '{"chef_node_name":"your_node_name","chef_server_url":"https://api.opscode.com/organizations/some-org", "validation_client_name":"some-org-validator"}' -JsonAttribute '{"custom_attribute":"value"}' -RunList "Apache" -Windows</dev:code>
 <dev:remarks><maml:para>This command adds the Chef extension to a Windows virtual machine named WindowsVM002. When the virtual machine starts, Chef bootstraps the virtual machine to run Apache. After bootstrapping, the virtual machine refers to the BootstrapOptions specified in JSON format.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14291,6 +13942,8 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <dev:code>PS C:\&gt;Set-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "1.1" -StorageAccountName "Contoso" -StorageAccountKey &lt;StorageKey&gt; -FileName "ContosoScript.exe" -ContainerName "Scripts"</dev:code>
 <dev:remarks><maml:para>This command adds a custom script to the virtual machine named VirtualMachine07. The script file is contososcript.exe.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14479,6 +14132,8 @@ PS C:\&gt; Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite |
 </maml:para>
 <maml:para>The second command modifies the caching mode for the data disk named DataDisk01 on the virtual machine in $VM. The command passes the result to the Update-AzureRmVM cmdlet, which implements your changes. A change to the cashing mode causes the virtual machine to restart.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14713,18 +14368,24 @@ PS C:\&gt; Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite |
 <dev:code>PS C:\&gt;Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup01" -VMName "VirtualMachine02" -DiagnosticsConfigurationPath "diagnostics_publicconfig.xml"</dev:code>
 <dev:remarks><maml:para>This command uses a diagnostics configuration file to enable diagnostics. The file diagnostics_publicconfig.xml contains the public XML configuration for the diagnostics extension including the name of the storage account to which diagnostics data will be sent. The diagnostics storage account must be in the same subscription as the virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Enable diagnostics using a storage account name</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup1" -VMName "VirtualMachine2" -DiagnosticsConfigurationPath diagnostics_publicconfig.xml -StorageAccountName "MyStorageAccount"</dev:code>
 <dev:remarks><maml:para>This command uses the storage account name to enable diagnostics. If the diagnostics configuration does not specify a storage account name or if you want to override the diagnostics storage account name specified in the configuration file, use the StorageAccountName parameter. The diagnostics storage account must be in the same subscription as the virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Enable diagnostics using storage account name and key</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup01" -VMName "VirtualMachine02" -DiagnosticsConfigurationPath "diagnostics_publicconfig.xml" -StorageAccountName "MyStorageAccount" -StorageAccountKey $storage_key</dev:code>
 <dev:remarks><maml:para>This command uses the storage account name and key to enable diagnostics. If the diagnostics storage account is in a different subscription than the virtual machine then enable sending diagnostics data to that storage account by explicitly specifying its name and key.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -15275,6 +14936,8 @@ PS C:\&gt; $KeyVaultResourceId = $KeyVault.ResourceId;
 PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId ;</dev:code>
 <dev:remarks><maml:para>This example enables encryption using Azure AD client ID, and client secret.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Enable encryption using Azure AD client ID and client certification thumbprint</maml:title>
@@ -15320,6 +14983,8 @@ PS C:\&gt; Update-AzureRmVM -VM $VM -ResourceGroupName $RGName
 PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId ;</dev:code>
 <dev:remarks><maml:para>This example enables encryption using Azure AD client ID and client certification thumbprints.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Enable encryption using Azure AD client ID, client secret, and wrap disk encryption key by using key encryption key</maml:title>
@@ -15340,6 +15005,8 @@ PS C:\&gt; $KeyEncryptionKeyUrl = $KEK.Key.kid;
 PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;</dev:code>
 <dev:remarks><maml:para>This example enables encryption using Azure AD client ID, client secret, and wrap disk encryption key by using the key encryption key.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Enable encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryptionkey by using key encryption key</maml:title>
@@ -15386,6 +15053,8 @@ PS C:\&gt; Update-AzureRmVM -VM $VM -ResourceGroupName $RGName
 PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId ;</dev:code>
 <dev:remarks><maml:para>This example enables encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryption key by using key encryption key.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -15771,18 +15440,24 @@ PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMNa
 <dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "1.10" -Location "West US"</dev:code>
 <dev:remarks><maml:para>This command sets the DSC extension on the virtual machine named VM07 to download Sample.ps1.zip from the storage account named Stg and the default container. The command invokes the configuration named ConfigName. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Set a DSC extension with configuration data</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM13" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName "WindowsPowerShellDSC" -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US"</dev:code>
 <dev:remarks><maml:para>This command sets the extension on the virtual machine named VM13 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command the configuration named ConfigName and specifies configuration data and arguments. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Set a DSC extension with configuration data that has auto update</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM22" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US" -AutoUpdate</dev:code>
 <dev:remarks><maml:para>This command sets the extension on the virtual machine named VM22 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command invokes the configuration named ConfigName and specifies configuration data and arguments. This command also enables auto update of extension handler to the latest version. The Sample.ps1.zip was previously uploaded by using Publish-AzureRmVMDscConfiguration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16197,6 +15872,8 @@ PS C:\&gt; Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location
 </maml:para>
 <maml:para>The final command modifies an extension of the virtual machine named VirtualMachine22 in ResourceGroup11 according to the contents of $Settings and $ProtectedSettings. The command specifies other required information that includes the publisher and the extension type.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Modify settings by using strings</maml:title>
@@ -16207,6 +15884,8 @@ PS C:\&gt; Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location
 </maml:para>
 <maml:para>The final command modifies an extension of the virtual machine named VirtualMachine22 in ResourceGroup11 according to the contents of $SettingsString and $ProtectedSettingsString. The command specifies other required information that includes the publisher and the extension type.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16605,6 +16284,8 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 </maml:para>
 <maml:para>The final command sets operating system properties for the virtual machine stored in $VirtualMachine. The command uses the credentials stored in $Credential. The command uses variables assigned in previous commands for some parameters.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17222,6 +16903,8 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "osDi
 PS C:&gt; New-AzureRmVM -VM $VirtualMachine -ResouceGroupName "ResourceGroup11"</dev:code>
 <dev:remarks><maml:para>The first command gets the availability set named AvailablitySet13 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable. The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable. The command assigns a name and size to the virtual machine. The virtual machine belongs to the availability set stored in $AvailabilitySet. The final command sets the properties on the virtual machine in $VirtualMachine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Sets properties on a virtual machine from generalized user image</maml:title>
@@ -17232,6 +16915,8 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "osDi
 PS C:&gt; New-AzureRmVM -VM $VirtualMachine -ResouceGroupName "ResourceGroup11"</dev:code>
 <dev:remarks><maml:para>The first command gets the availability set named AvailablitySet13 in the resource group named ResourceGroup11 and stores that object in the $AvailabilitySet variable. The second command creates a virtual machine object and stores it in the $VirtualMachine variable. The command assigns a name and size to the virtual machine. The virtual machine belongs to the availability set stored in $AvailabilitySet. The final command sets the properties on the virtual machine in $VirtualMachine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Sets properties on a virtual machine from specialized user image</maml:title>
@@ -17241,6 +16926,8 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "osDi
 PS C:&gt; New-AzureRmVM -VM $VirtualMachine -ResouceGroupName "ResourceGroup11"</dev:code>
 <dev:remarks><maml:para>The first command gets the availability set named AvailablitySet13 in the resource group named ResourceGroup11 and stores that object in the $AvailabilitySet variable. The second command creates a virtual machine object and stores it in the $VirtualMachine variable. The command assigns a name and size to the virtual machine. The virtual machine belongs to the availability set stored in $AvailabilitySet. The final command sets the properties on the virtual machine in $VirtualMachine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Set the disk encryption settings on a virtual machine operating system disk</maml:title>
@@ -17249,6 +16936,8 @@ PS C:&gt; $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "OsDis
 PS C:&gt; New-AzureRmVM -VM $VirtualMachine -ResouceGroupName " ResourceGroup11"</dev:code>
 <dev:remarks><maml:para>This example sets the disk encryption settings on a virtual machine operating system disk.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17380,6 +17069,8 @@ PS C:&gt; New-AzureRmVM -VM $VirtualMachine -ResouceGroupName " ResourceGroup11"
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17518,6 +17209,8 @@ PS C:\&gt; Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "Microsof
 </maml:para>
 <maml:para>The final command sets values for publisher name, offer, SKU, and version. The Get-AzureRmVMImagePublisher, Get-AzureRmVMImageOffer, Get-AzureRmVMImageSku, and Get-AzureRmVMImage cmdlets can discover these settings.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17715,6 +17408,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:para>
 <maml:para>The current cmdlet sets the automatic patching settings in $AutoPatchingConfig for the virtual machine. The command passes the virtual machine to the Update-AzureRmVM cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Set automatic backup settings on a virtual machine</maml:title>
@@ -17726,18 +17421,24 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:para>
 <maml:para>The current cmdlet sets the automatic backup settings in $AutoBackupConfig for the virtual machine. The command passes the virtual machine to the Update-AzureRmVM cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Disable a SQL Server extension on a virtual machine</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Disable</dev:code>
 <dev:remarks><maml:para>This command gets a virtual machine named VirtualMachine08 on Service03, and then passes it to the current cmdlet. The command disables SQL Server virtual machine extension on that virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Uninstall a SQL Server extension on a specific virtual machine</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Uninstall</dev:code>
 <dev:remarks><maml:para>This command gets a virtual machine named VirtualMachine08 on Service03, and then passes it to the current cmdlet. The command uninstalls a SQL Server virtual machine extension on that virtual machine.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17845,6 +17546,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Set-AzureRmVmss -Reimage -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"</dev:code>
 <dev:remarks><maml:para>This command reimages the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18136,6 +17839,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Set-AzureRmVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword</dev:code>
 <dev:remarks><maml:para>This command sets operating system profile properties for the virtual machines that belong to the VMSS named ContosoVMSS. The command sets the computer name prefix for all the virtual machine instances in the VMSS to Test and supplies the administrator username and password.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18431,6 +18136,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
             -ImageReferencePublisher $ImgRef.PublisherName -VhdContainer $VhdContainer</dev:code>
 <dev:remarks><maml:para>This command sets the storage profile properties for the VMSS named ContosoVMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18544,6 +18251,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18642,6 +18351,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Start-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"</dev:code>
 <dev:remarks><maml:para>This command starts the virtual machine named VirtualMachine07 in ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18750,12 +18461,16 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"-InstanceId "0", "1"</dev:code>
 <dev:remarks><maml:para>This command starts a specific set of virtual machines specified by the instance ID string array that belong to the VMSS named ContosoVMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Start all virtual machines within the VMSS</maml:title>
 <dev:code>PS C:\&gt;Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"</dev:code>
 <dev:remarks><maml:para>This command starts all virtual machines that belong to the VMSS named ContosoVMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18972,6 +18687,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Stop-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"</dev:code>
 <dev:remarks><maml:para>This command stops the virtual machine named VirtualMachine07 in ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19130,12 +18847,16 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Stop-AzureRmVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"</dev:code>
 <dev:remarks><maml:para>This command stops all virtual machines that belong to the VMSS named ContosoVMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Stop a specific set of virtual machines within the VMSS</maml:title>
 <dev:code>PS C:\&gt;Stop-AzureRmVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS" -InstanceId "3","5"</dev:code>
 <dev:remarks><maml:para>This command stops a specific set of virtual machines specified by the instance ID string array that belong to the VMSS named ContosoVMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19276,6 +18997,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Test-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"</dev:code>
 <dev:remarks><maml:para>This command checks the configuration of the AEM extension for the virtual machine named contoso-server.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19409,6 +19132,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:para>
 <maml:para>The current cmdlet updates the container service to reflect the changes that were made in this command.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19596,6 +19321,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine</dev:code>
 <dev:remarks><maml:para>This command updates the virtual machine named VirtualMachine07 in ResourceGroup11. The command updates it by using another virtual machine object, stored in the $VirtualMachine variable. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19735,6 +19462,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet "LocalVMSS"</dev:code>
 <dev:remarks><maml:para>This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19880,6 +19609,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 <dev:code>PS C:\&gt;Update-AzureRmVmssInstance -ResourceGroupName "Group011" -VMScaleSetName "VMScaleSet001" -InstanceId "0"</dev:code>
 <dev:remarks><maml:para>This command starts an upgrade of the VMSS named VMScaleSet001 that has the instance ID of 0.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
