@@ -141,3 +141,25 @@ function Test-ProfilePipeline
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
+
+<#
+.SYNOPSIS
+Full Profile ge resource usage excercis
+#>
+function Test-ProfileGetResourceUsages
+{
+    $profileName = getAssetName
+    $endpointName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $profileLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+    
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
+
+    $profileResourceUsage = Get-AzureRmCdnProfileResourceUsage -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-True {$profileResourceUsage.Count -eq 1}
+	Assert-True {$profileResourceUsage[0].CurrentValue -eq 0}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
