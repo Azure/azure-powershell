@@ -7047,7 +7047,7 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>WorkspaceId</maml:name>
 				<maml:description>
-					<maml:para>The Id of the workspace</maml:para>
+					<maml:para>The resource Id of the Log Analytics workspace to send logs/metrics to.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -7162,7 +7162,7 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>WorkspaceId</maml:name>
 			<maml:description>
-				<maml:para>The Id of the workspace</maml:para>
+				<maml:para>The resource Id of the Log Analytics workspace to send logs/metrics to.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -7311,6 +7311,26 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $true -Categories Category1,Category2 -Timegrains PT1M</dev:code>
 			<dev:remarks>
 				<maml:para>This will enable only Category1, Category2 and timegrain PT1M. All timegrains and other categories will remain the same.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Enabling logs and metrics to go to a Log Analytics workspace  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; --WorkspaceId $workspaceResourceId -Enable $true</dev:code>
+			<dev:remarks>
+				<maml:para>This will enable all logs and metrics for the resource to be sent to a Log Analytics workspace. You can get the resource Id for a workspace using (Get-AzureRmOperationalInsightsWorkspace).ResourceId .</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
