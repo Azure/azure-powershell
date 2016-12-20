@@ -22,6 +22,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        public IDictionary<string, string> OperationMonitoringEvents;
     }
 }
