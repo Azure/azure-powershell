@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 3BD243C7-A40E-4061-93FF-DDE7DECAD0A7
 online version: http://go.microsoft.com/fwlink/?LinkId=822861
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Set-AzureKeyVaultCertificateAttribute [-VaultName] <String> [-Name] <String> [[-
 ```
 
 ## DESCRIPTION
-The Set-AzureKeyVaultCertificateAttribute cmdlet modifies the editable attributes of a certificate.
+The **Set-AzureKeyVaultCertificateAttribute** cmdlet modifies the editable attributes of a certificate.
 
 ## EXAMPLES
 
@@ -159,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing certificate tags.
+Specifies a hash table that contains certificate tags.
 If not specified, the existing tags of the sertificate remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
@@ -202,5 +203,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificate]()
+[Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)
 

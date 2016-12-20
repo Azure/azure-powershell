@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 34985F06-4D8D-463B-B113-972666D18485
 online version: 
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-Force] 
 ```
 
 ## DESCRIPTION
-The Remove-AzureKeyVaultCertificate cmdlet removes a certificate from a key vault.
+The **Remove-AzureKeyVaultCertificate** cmdlet removes a certificate from a key vault.
 
 ## EXAMPLES
 
@@ -34,7 +35,7 @@ Updated     : 2/8/2016 11:29:33 PM
 ```
 
 This command removes the certificate named SelfSigned01 from the key vault named ContosoKV01.
-This command specifies the Force parameter.
+This command specifies the *Force* parameter.
 Therefore, the cmdlet does not prompt you for confirmation.
 
 ## PARAMETERS
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -147,9 +148,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificate]()
+[Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)
 
-[Get-AzureKeyVaultCertificate]()
+[Get-AzureKeyVaultCertificate](./Get-AzureKeyVaultCertificate.md)
 
-[Import-AzureKeyVaultCertificate]()
+[Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 775AB0E8-EC3C-4F96-8AF8-51C1DFEEF082
 online version: 
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ New-AzureKeyVaultCertificateAdministratorDetails [-FirstName <String>] [-LastNam
 ```
 
 ## DESCRIPTION
-The New-AzureKeyVaultCertificateAdministratorDetails cmdlet creates an in-memory certificate administrator details object.
+The **New-AzureKeyVaultCertificateAdministratorDetails** cmdlet creates an in-memory certificate administrator details object.
 
 ## EXAMPLES
 
@@ -134,5 +135,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureKeyVaultCertificateOrganizationDetails]()
+[New-AzureKeyVaultCertificateOrganizationDetails](./New-AzureKeyVaultCertificateOrganizationDetails.md)
 

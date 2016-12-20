@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 9FC72DE9-46BB-4CB5-9880-F53756DBE012
 online version: http://go.microsoft.com/fwlink/?LinkId=690303
 schema: 2.0.0
 ---
@@ -18,7 +19,7 @@ Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <S
 ```
 
 ## DESCRIPTION
-The Set-AzureKeyVaultSecret cmdlet creates or updates a secret in a key vault in Azure Key Vault.
+The **Set-AzureKeyVaultSecret** cmdlet creates or updates a secret in a key vault in Azure Key Vault.
 If the secret does not exist, this cmdlet creates it.
 If the secret already exists, this cmdlet creates a new version of that secret.
 
@@ -30,8 +31,8 @@ PS C:\>$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
 ```
 
-The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable.
-For more information, type Get-Help ConvertTo-SecureString.
+The first command converts a string into a secure string by using the **ConvertTo-SecureString** cmdlet, and then stores that string in the $Secret variable.
+For more information, type `Get-Help ConvertTo-SecureString`.
 
 The second command modifies value of the secret named ITSecret in the key vault named Contoso.
 The secret value becomes the value stored in $Secret.
@@ -46,8 +47,8 @@ PS C:\> $ContentType = 'txt'
 PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable $False -Tags $Tags
 ```
 
-The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable.
-For more information, type Get-Help ConvertTo-SecureString.
+The first command converts a string into a secure string by using the **ConvertTo-SecureString** cmdlet, and then stores that string in the $Secret variable.
+For more information, type `Get-Help ConvertTo-SecureString`.
 
 The next commands define custom attributes for the expiry date, tags, and context type, and store the attributes in variables.
 
@@ -87,10 +88,10 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time, as a DateTime object, for the secret that this cmdlet updates.
+Specifies the expiration time, as a **DateTime** object, for the secret that this cmdlet updates.
 This parameter uses Coordinated Universal Time (UTC).
-To obtain a DateTime object, use the Get-Date cmdlet.
-For more information, type Get-Help Get-Date.
+To obtain a **DateTime** object, use the **Get-Date** cmdlet.
+For more information, type `Get-Help Get-Date`.
 
 ```yaml
 Type: DateTime
@@ -121,9 +122,9 @@ Accept wildcard characters: False
 ```
 
 ### -NotBefore
-Specifies the time, as a DateTime object, before which the secret cannot be used.
+Specifies the time, as a **DateTime** object, before which the secret cannot be used.
 This parameter uses UTC.
-To obtain a DateTime object, use the Get-Date cmdlet.
+To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 
 ```yaml
 Type: DateTime
@@ -138,9 +139,9 @@ Accept wildcard characters: False
 ```
 
 ### -SecretValue
-Specifies the value for the secret as a SecureString object.
-To obtain a SecureString object, use the ConvertTo-SecureString cmdlet.
-For more information, type Get-Help ConvertTo-SecureString.
+Specifies the value for the secret as a **SecureString** object.
+To obtain a **SecureString** object, use the **ConvertTo-SecureString** cmdlet.
+For more information, type `Get-Help ConvertTo-SecureString`.
 
 ```yaml
 Type: SecureString
@@ -186,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing secret tags.
+Specifies a hash table that contains certificate tags.
 
 ```yaml
 Type: Hashtable
@@ -231,7 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultSecret]()
+[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
 
-[Remove-AzureKeyVaultSecret]()
+[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
 

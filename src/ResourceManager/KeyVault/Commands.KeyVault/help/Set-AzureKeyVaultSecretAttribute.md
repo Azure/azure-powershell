@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: E2A45461-6B41-42FF-A874-A4CEFC867A33
 online version: http://go.microsoft.com/fwlink/?LinkId=690305
 schema: 2.0.0
 ---
@@ -18,7 +19,7 @@ Set-AzureKeyVaultSecretAttribute [-VaultName] <String> [-Name] <String> [[-Versi
 ```
 
 ## DESCRIPTION
-The Set-AzureKeyVaultSecretAttribute cmdlet updates editable attributes of a secret in a key vault.
+The **Set-AzureKeyVaultSecretAttribute** cmdlet updates editable attributes of a secret in a key vault.
 
 ## EXAMPLES
 
@@ -53,8 +54,8 @@ The first command stores the string value Contoso in the $Vault variable.
 
 The second command stores the string value IT in the $Prefix variable.
 
-The third command uses the Get-AzureKeyVaultSecret cmdlet to get the secrets in the specified key vault, and then passes those secrets to the Where-Object cmdlet.
-The Where-Object cmdlet filters the secrets for names that begin with the characters IT.
+The third command uses the Get-AzureKeyVaultSecret cmdlet to get the secrets in the specified key vault, and then passes those secrets to the **Where-Object** cmdlet.
+The **Where-Object** cmdlet filters the secrets for names that begin with the characters IT.
 The command pipes the secrets that match the filter to the Set-AzureKeyVaultSecretAttribute cmdlet, which disables them.
 
 ### Example 4: Set the ContentType for all versions of a secret
@@ -65,7 +66,7 @@ PS C:\> $ContentType = 'xml'
 PS C:\> Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Set-AzureKeyVaultSecretAttribute -ContentType $ContentType
 ```
 
-The first three commands define string variables to use for the VaultName, Name, and ContentType parameters.
+The first three commands define string variables to use for the *VaultName*, *Name*, and *ContentType* parameters.
 The fourth command uses the Get-AzureKeyVaultKey cmdlet to get the specified keys, and pipes the keys to the Set-AzureKeyVaultSecretAttribute cmdlet to set their content type to XML.
 
 ## PARAMETERS
@@ -215,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing secret tags.
+Specifies a hash table that contains certificate tags.
 If not specified, the existing tags of the secret remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
@@ -262,9 +263,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultKey]()
+[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
-[Get-AzureKeyVaultSecret]()
+[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
 
-[Remove-AzureKeyVaultSecret]()
+[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 3B042D79-658F-41F0-BD4D-9955F2E71CA1
 online version: 
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Stop-AzureKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String> [-
 ```
 
 ## DESCRIPTION
-The Stop-AzureKeyVaultCertificateOperation cmdlet cancels a certificate operation in the Azure Key Vault service.
+The **Stop-AzureKeyVaultCertificateOperation** cmdlet cancels a certificate operation in the Azure Key Vault service.
 
 ## EXAMPLES
 
@@ -86,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -130,7 +131,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateOperation]()
+[Get-AzureKeyVaultCertificateOperation](./Get-AzureKeyVaultCertificateOperation.md)
 
-[Remove-AzureKeyVaultCertificateOperation]()
+[Remove-AzureKeyVaultCertificateOperation](./Remove-AzureKeyVaultCertificateOperation.md)
 
