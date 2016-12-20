@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -27,12 +28,13 @@ namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Helper cmdlet to construct instance of AutoBackup settings class
-    /// NOTE: This cmdlet is here for backward compatibility, don't make any further edits to this. See the new one : NewAzureRmVMSqlServerAutoBackupConfigCommand
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
         AzureVMSqlServerAutoBackupConfigNoun,
         DefaultParameterSetName = StorageUriParamSetName),
+    Alias(
+        VerbsCommon.New + "-" + ProfileNouns.VirtualMachineSqlServerAutoBackupConfig),
     OutputType(
         typeof(AutoBackupSettings))]
     public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
@@ -118,6 +120,77 @@ namespace Microsoft.Azure.Commands.Compute
             set;
         }
 
+        [Parameter(
+          Mandatory = false,
+          Position = 6,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Backup system databases")]
+        public SwitchParameter BackupSystemDbs
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          Position = 7,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Backup schedule type, manual or automated")]
+        [ValidateSet(ValidateSetValues.Manual, ValidateSetValues.Automated, IgnoreCase = true)]
+        public string BackupScheduleType
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          Position = 8,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Full Backup frequency, daily or weekly")]
+        [ValidateSet(ValidateSetValues.Daily, ValidateSetValues.Weekly, IgnoreCase = true)]
+        public string FullBackupFrequency
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          Position = 9,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Hour of the day (0-23) when the Sql Server Full Backup should start")]
+        [ValidateRange(0, 23)]
+        public int? FullBackupStartHour
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          Position = 10,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Full Backup window in hours")]
+        [ValidateRange(1, 23)]
+        public int? FullBackupWindowInHours
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
+          Mandatory = false,
+          Position = 11,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sql Server Log Backup frequency, once every 1-60 minutes")]
+        [ValidateRange(1, 60)]
+        public int? LogBackupFrequencyInMinutes
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Initialzies a new instance of the <see cref="NewAzureVMSqlServerAutoBackupConfigCommand"/> class.
         /// </summary>
@@ -151,6 +224,20 @@ namespace Microsoft.Azure.Commands.Compute
 
             // Check if certificate password was set
             autoBackupSettings.Password = (CertificatePassword == null) ? null : ConvertToUnsecureString(CertificatePassword);
+
+            autoBackupSettings.BackupSystemDbs = BackupSystemDbs.IsPresent ? BackupSystemDbs.ToBool() : false;
+            autoBackupSettings.BackupScheduleType = BackupScheduleType;
+
+            // Set other Backup schedule settings only if BackUpSchedule type is Manual.
+            if (!string.IsNullOrEmpty(BackupScheduleType) && string.Equals(BackupScheduleType, ValidateSetValues.Manual, StringComparison.InvariantCultureIgnoreCase))
+            {
+                ValidateBackupScheduleSettings();
+
+                autoBackupSettings.FullBackupFrequency = FullBackupFrequency;
+                autoBackupSettings.FullBackupStartTime = FullBackupStartHour;
+                autoBackupSettings.FullBackupWindowHours = FullBackupWindowInHours;
+                autoBackupSettings.LogBackupFrequency = LogBackupFrequencyInMinutes;
+            }
 
             WriteObject(autoBackupSettings);
         }
@@ -206,6 +293,32 @@ namespace Microsoft.Azure.Commands.Compute
             finally
             {
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+            }
+        }
+
+        /// <summary>
+        /// Validates Backup schedule settings when schedule type is Manual.
+        /// </summary>
+        private void ValidateBackupScheduleSettings()
+        {
+            if (FullBackupFrequency == null)
+            {
+                throw new Exception("FullBackupFrequency cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (FullBackupStartHour == null)
+            {
+                throw new Exception("FullBackupStartTime cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (FullBackupWindowInHours == null)
+            {
+                throw new Exception("FullBackupStartHour cannot be null when BackupScheduleType is set to Manual");
+            }
+
+            if (LogBackupFrequencyInMinutes == null || LogBackupFrequencyInMinutes % 5 != 0)
+            {
+                throw new Exception("LogBackupFrequencyInMinutes cannot be null or should be multiple of 5 when BackupScheduleType is set to Manual");
             }
         }
     }

@@ -92,9 +92,6 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'New-AzureVMSqlServerAutoBackupConfig', 
                'New-AzureVMSqlServerAutoPatchingConfig', 
                'New-AzureVMSqlServerKeyVaultCredentialConfig', 
-               'New-AzureRmVMSqlServerAutoBackupConfig', 
-               'New-AzureRmVMSqlServerAutoPatchingConfig', 
-               'New-AzureRmVMSqlServerKeyVaultCredentialConfig', 
                'Remove-AzureRmVMSqlServerExtension', 
                'Set-AzureRmVMSqlServerExtension', 'Get-AzureRmVMImage', 
                'Get-AzureRmVMAccessExtension', 'Remove-AzureRmVMAccessExtension', 
@@ -147,7 +144,10 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @(
+               'New-AzureRmVMSqlServerAutoBackupConfig', 
+               'New-AzureRmVMSqlServerAutoPatchingConfig', 
+               'New-AzureRmVMSqlServerKeyVaultCredentialConfig')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

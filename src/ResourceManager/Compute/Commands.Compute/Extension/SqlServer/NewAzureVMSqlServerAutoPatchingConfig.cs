@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Helper cmdlet to construct instance of AutoPatching settings class
-    /// NOTE: This cmdlet is here for backward compatibility, don't make any further edits to this. See the new one : NewAzureRmVMSqlServerAutoPatchingConfigCommand
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
          AzureVMSqlServerAutoPatchingConfigNoun),
+    Alias(
+        VerbsCommon.New + "-" + ProfileNouns.VirtualMachineSqlServerAutoPatchingConfig),
      OutputType(
          typeof(AutoPatchingSettings))]
     public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet

@@ -17,17 +17,19 @@ using System.Security;
 using System.Security.Permissions;
 using System;
 using System.Runtime.InteropServices;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Helper cmdlet to construct instance of SQL Credential AKV based settings class
-    /// NOTE: This cmdlet is here for backward compatibility, don't make any further edits to this. See the new one : NewAzureRmVMSqlServerKeyVaultCredentialConfigCommand
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
          AzureVMSqlServerKeyVaultCredentialConfigNoun,
          SupportsShouldProcess = true),
+    Alias(
+        VerbsCommon.New + "-" + ProfileNouns.VirtualMachineSqlServerKeyVaultCredentialConfig),
      OutputType(
          typeof(KeyVaultCredentialSettings))]
     public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
