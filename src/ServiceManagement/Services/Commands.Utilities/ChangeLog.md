@@ -27,6 +27,8 @@
 	- FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
 	- FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
 	- LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+* Updated Set-AzureVMChefExtension cmdlet to add following new options :
+    - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'auto' or e.g. -Daemon 'service'."
 
 ## Version 3.3.0
 * Updated Set-AzureVMChefExtension cmdlet to add following new options :

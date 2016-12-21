@@ -105,6 +105,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public string BootstrapVersion { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Configures the chef-client service for unattended execution. The node platform should be Windows." +
+                          "Options: 'auto' or 'service'." +
+                          "auto - Currently prevents the chef-client service from being configured as a service." +
+                          "service - Configures the chef-client to run automatically in the background as a service.")]
+        [ValidateNotNullOrEmpty]
+        public string Daemon { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
@@ -176,6 +185,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
             bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
             string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
+            bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -246,6 +256,11 @@ validation_client_name 	'{1}'
             if (!IsChefServiceIntervalEmpty)
             {
                 hashTable.Add(ChefServiceIntervalTemplate, this.ChefServiceInterval);
+            }
+
+            if (!IsDaemonEmpty)
+            {
+                hashTable.Add(DaemonTemplate, this.Daemon);
             }
 
             this.PublicConfiguration = JsonConvert.SerializeObject(hashTable);
