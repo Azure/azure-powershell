@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 0729687C-3104-4136-A80D-16BAEBD6B76C
 online version: 
 schema: 2.0.0
 ---
@@ -16,7 +17,7 @@ Get-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [<Comm
 ```
 
 ## DESCRIPTION
-The Get-AzureKeyVaultCertificatePolicy cmdlet gets the policy for a certificate in a key vault in Azure Key Vault.
+The **Get-AzureKeyVaultCertificatePolicy** cmdlet gets the policy for a certificate in a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
@@ -88,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureKeyVaultCertificatePolicy]()
+[New-AzureKeyVaultCertificatePolicy](./New-AzureKeyVaultCertificatePolicy.md)
 
-[Set-AzureKeyVaultCertificatePolicy]()
+[Set-AzureKeyVaultCertificatePolicy](./Set-AzureKeyVaultCertificatePolicy.md)
 

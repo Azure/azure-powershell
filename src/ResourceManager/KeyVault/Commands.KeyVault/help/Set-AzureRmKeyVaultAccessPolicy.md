@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 636FAD5B-8C39-4E5C-8978-6845C6B89BC0
 online version: http://go.microsoft.com/fwlink/?LinkId=690163
 schema: 2.0.0
 ---
@@ -41,20 +42,20 @@ Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <Str
 ```
 
 ## DESCRIPTION
-The Set-AzureRmKeyVaultAccessPolicy cmdlet grants or modifies existing permissions for a user, application, or security group to perform the specified operations with a key vault.
+The **Set-AzureRmKeyVaultAccessPolicy** cmdlet grants or modifies existing permissions for a user, application, or security group to perform the specified operations with a key vault.
 It does not modify the permissions that other users, applications, or security groups have on the key vault.
 
 If you are setting permissions for a security group, this operation affects only users in that security group.
 
 The following directories must all be the same Azure directory: 
--- The default directory of the Azure subscription in which the key vault resides. 
--- The Azure directory that contains the user or application group that you are granting permissions to.
+- The default directory of the Azure subscription in which the key vault resides.
+- The Azure directory that contains the user or application group that you are granting permissions to.
 
 Examples of scenarios when these conditions are not met and this cmdlet will not work are: 
 
--- Authorizing a user from a different organization to manage your key vault.
+- Authorizing a user from a different organization to manage your key vault.
 Each organization has its own directory. 
--- Your Azure account has multiple directories.
+- Your Azure account has multiple directories.
 If you register an application in a directory other than the default directory, you cannot authorize that application to use your key vault.
 The application must be in the default directory.
 
@@ -73,11 +74,11 @@ The first command grants permissions for a user in your Azure Active Directory, 
 
 The second command modifies the permissions that were granted to PattiFuller@contoso.com in the first command, to now allow getting secrets in addition to setting and deleting them.
 The permissions to key operations remain unchanged after this command.
-The PassThru parameter results in the updated object being returned by the cmdlet.
+The *PassThru* parameter results in the updated object being returned by the cmdlet.
 
 The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations.
 The permissions to secret operations remain unchanged after this command.
-The PassThru parameter results in the updated object being returned by the cmdlet.
+The *PassThru* parameter results in the updated object being returned by the cmdlet.
 
 ### Example 2: Grant permissions for an application service principal to read and write secrets
 ```
@@ -85,9 +86,9 @@ PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrinc
 ```
 
 This command grants permissions for an application for a key vault named Contoso03Vault.
-The ServicePrincipalName parameter specifies the application.
+The *ServicePrincipalName* parameter specifies the application.
 The application must be registered in your Azure Active Directory.
-The value of the ServicePrincipalName parameter must be either the service principal name of the application or the application ID GUID.
+The value of the *ServicePrincipalName* parameter must be either the service principal name of the application or the application ID GUID.
 This example specifies the service principal name http://payroll.contoso.com, and the command grants the application permissions to read and write secrets.
 
 ### Example 3: Grant permissions for an application using its object ID
@@ -124,14 +125,22 @@ group3                                                        da07a6be-2c1e-4e42
 ```
 
 The first command uses the Get-AzureRmADGroup cmdlet to get all Active Directory groups.
-From the output, you see 3 groups returned, named group1, group2, and group3.
+From the output, you see 3 groups returned, named **group1**, **group2**, and **group3**.
 Multiple groups can have the same name but always have a unique ObjectId.
 When more than one group that has the same name is returned, use the ObjectId in the output to identify the one you want to use.
 
-You then use the output of this command with Set-AzureRmKeyVaultAccessPolicy to grant permissions to group2 for your key vault, named myownvault.
+You then use the output of this command with Set-AzureRmKeyVaultAccessPolicy to grant permissions to group2 for your key vault, named **myownvault**.
 This example enumerates the groups named 'group2' inline in the same command line.
 There may be multiple groups in the returned list that are named 'group2'.
 This example picks the first one, indicated by index \[0\] in the returned list.
+
+### Example 7: Grant Azure Information Protection access to the customer-managed tenant key (BYOK)
+```
+PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,encrypt,unwrapkey,wrapkey,verify,sign,get
+```
+
+This command authorizes Azure Information Protection to use a customer-managed key (the bring your own key, or "BYOK" scenario) as the Azure Information Protection tenant key.
+When you run this command, specify your own vault name but you must specify the *ServicePrincipalName* parameter with the GUID **00000012-0000-0000-c000-000000000000** and specify all the permissions in the example.
 
 ## PARAMETERS
 
@@ -262,21 +271,21 @@ Accept wildcard characters: False
 Specifies an array of key operation permissions to grant to a user or service principal.
 The acceptable values for this parameter are:
 
--- Decrypt
--- Encrypt
--- UnwrapKey
--- WrapKey
--- Verify 
--- Sign
--- Get
--- List
--- Update
--- Create
--- Import
--- Delete 
--- Backup 
--- Restore
--- All
+- Decrypt
+- Encrypt
+- UnwrapKey
+- WrapKey
+- Verify
+- Sign
+- Get
+- List
+- Update
+- Create
+- Import
+- Delete
+- Backup
+- Restore
+- All
 
 ```yaml
 Type: String[]
@@ -295,11 +304,11 @@ Accept wildcard characters: False
 Specifies an array of secret operation permissions to grant to a user or service principal.
 The acceptable values for this parameter are:
 
--- Get
--- List
--- Set
--- Delete 
--- All
+- Get
+- List
+- Set
+- Delete
+- All
 
 ```yaml
 Type: String[]
@@ -424,7 +433,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmKeyVault]()
+[Get-AzureRmKeyVault](./Get-AzureRmKeyVault.md)
 
-[Remove-AzureRmKeyVaultAccessPolicy]()
+[Remove-AzureRmKeyVaultAccessPolicy](./Remove-AzureRmKeyVaultAccessPolicy.md)
 
