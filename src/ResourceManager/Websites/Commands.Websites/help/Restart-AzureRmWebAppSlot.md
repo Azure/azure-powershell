@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+ms.assetid: 645E74D2-640D-494F-9798-4375FE6A0AF2
 online version: 
 schema: 2.0.0
 ---
@@ -103,3 +104,16 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)
+
+[New-AzureRMWebAppSlot](./New-AzureRMWebAppSlot.md)
+
+[Remove-AzureRMWebAppSlot](./Remove-AzureRMWebAppSlot.md)
+
+[Set-AzureRMWebAppSlot](./Set-AzureRMWebAppSlot.md)
+
+[Start-AzureRMWebAppSlot](./Start-AzureRMWebAppSlot.md)
+
+[Stop-AzureRMWebAppSlot](./Stop-AzureRMWebAppSlot.md)
+
+[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)

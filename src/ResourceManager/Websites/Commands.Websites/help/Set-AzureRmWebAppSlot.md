@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+ms.assetid: FA868206-D8B0-4868-A1D1-D3F96BF3ADCC
 online version: 
 schema: 2.0.0
 ---
@@ -7,6 +8,7 @@ schema: 2.0.0
 # Set-AzureRmWebAppSlot
 
 ## SYNOPSIS
+Modifies an Azure Web App slot.
 
 ## SYNTAX
 
@@ -340,3 +342,16 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)
+
+[New-AzureRMWebAppSlot](./New-AzureRMWebAppSlot.md)
+
+[Remove-AzureRMWebAppSlot](./Remove-AzureRMWebAppSlot.md)
+
+[Restart-AzureRMWebAppSlot](./Restart-AzureRMWebAppSlot.md)
+
+[Start-AzureRMWebAppSlot](./Start-AzureRMWebAppSlot.md)
+
+[Stop-AzureRMWebAppSlot](./Stop-AzureRMWebAppSlot.md)
+
+[Get-AzureRmAppServicePlan](./Get-AzureRmAppServicePlan.md)

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+ms.assetid: 86E0D477-DD32-49BD-82E7-1CF191E4F612
 online version: 
 schema: 2.0.0
 ---
@@ -7,6 +8,7 @@ schema: 2.0.0
 # Stop-AzureRmWebAppSlot
 
 ## SYNOPSIS
+Stops an Azure Web App slot.
 
 ## SYNTAX
 
