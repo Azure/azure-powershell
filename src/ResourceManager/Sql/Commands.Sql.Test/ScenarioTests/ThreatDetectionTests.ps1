@@ -21,8 +21,8 @@ function Test-ThreatDetectionGetDefualtPolicy
 {
 	# Setup
 	$testSuffix = 4006
-	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	Create-ThreatDetectionTestEnvironment $testSuffix
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -59,13 +59,12 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 {
 	# Setup
 	$testSuffix = 6002
-	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	Create-ThreatDetectionTestEnvironment $testSuffix
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
 	{
 		# Test
-        Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
         Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount
         $policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
@@ -126,120 +125,14 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 
 <#
 .SYNOPSIS
-Tests that when turning off auditing or marking it as "use server default" , threat detection is disabled
-#>
-function Test-DisablingThreatDetection
-{
-	# Setup
-	$testSuffix = 7079
-	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
-
-	try
-	{
-		# 1. Test
-        Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-
-
-        # 2. Test
-        Remove-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
-		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-
-        # Assert
-		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
-
-
-        # 3. Test - that no exception is thrown
-        Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-        Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-     }
-	finally
-	{
-		# Cleanup
-		Remove-ThreatDetectionTestEnvironment $testSuffix
-	}
-}
-
-<#
-.SYNOPSIS
-Tests sending invalid arguments in database's threat detection
-#>
-function Test-InvalidArgumentsThreatDetection
-{
-	# Setup5
-	$testSuffix = 8027
-	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
-
-	try
-	{
-         # turning on threat detection without storage account
-
-         Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
-
-		 #  Check that NotificationRecipientsEmails are in correct format 
-		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "kokogmail.com"} 
-
-         #  Check that EmailAdmins is not False and NotificationRecipientsEmails is not empty 
-         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -StorageAccountName $params.storageAccount} 
-         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -NotificationRecipientsEmails "" -StorageAccountName $params.storageAccount} 
-
-         #  Check that ExcludedDetectionType doesn't hold None and any other type 
-         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $true -ExcludedDetectionType "None", "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount} 
-	}
-	finally
-	{
-		# Cleanup
-		Remove-ThreatDetectionTestEnvironment $testSuffix
-	}
-}
-
-<#
-.SYNOPSIS
-Tests that thread detection doesn't work on 2.0 servers
-#>
-function Test-ThreatDetectionOnV2Server
-{
-	# Setup
-	$testSuffix = 5017
-	Create-TestEnvironment $testSuffix "West Europe" "2.0" #Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
-
-	try
-	{
-         Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount} 
-		 Assert-Throws {Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount} 
-
-		 Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		 Assert-Throws {Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount} 
-		 Assert-Throws {Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount} 
-	}
-	finally
-	{
-		# Cleanup
-		Remove-ThreatDetectionTestEnvironment $testSuffix
-	}
-}
-
-<#
-.SYNOPSIS
 Tests that when modifying the properties of a server's threat detection policy , they are later fetched properly
 #>
 function Test-ThreatDetectionServerUpdatePolicy
 {
 	# Setup
 	$testSuffix = 6027
-	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	Create-ThreatDetectionTestEnvironment $testSuffix
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -301,3 +194,77 @@ function Test-ThreatDetectionServerUpdatePolicy
 	}
 }
 
+<#
+.SYNOPSIS
+Tests that when turning off auditing or marking it as "use server default" , threat detection is disabled
+#>
+function Test-DisablingThreatDetection
+{
+	# Setup
+	$testSuffix = 7079
+	Create-ThreatDetectionTestEnvironment $testSuffix
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# 1. Test
+		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+
+
+        # 2. Test
+        Remove-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+
+        # Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
+
+
+        # 3. Test - that no exception is thrown
+        Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+        Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+     }
+	finally
+	{
+		# Cleanup
+		Remove-ThreatDetectionTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests sending invalid arguments in database's threat detection
+#>
+function Test-InvalidArgumentsThreatDetection
+{
+	# Setup
+	$testSuffix = 8027
+	Create-ThreatDetectionTestEnvironment $testSuffix
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+
+	try
+	{
+         # turning on threat detection without storage account
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
+
+		 #  Check that NotificationRecipientsEmails are in correct format 
+		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "kokogmail.com"} 
+
+         #  Check that EmailAdmins is not False and NotificationRecipientsEmails is not empty 
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -StorageAccountName $params.storageAccount} 
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -NotificationRecipientsEmails "" -StorageAccountName $params.storageAccount} 
+
+         #  Check that ExcludedDetectionType doesn't hold None and any other type 
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $true -ExcludedDetectionType "None", "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount} 
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ThreatDetectionTestEnvironment $testSuffix
+	}
+}
