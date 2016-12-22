@@ -452,8 +452,8 @@ function Test-EndpointResourceUsage
     $endpointResourceUsage = Get-AzureRmCdnEndpointResourceUsage -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-True {$endpointResourceUsage.Count -eq 2}
-	Assert-True {$endpointResourceUsage[0].CurrentValue -eq 0}
-	Assert-True {$endpointResourceUsage[1].CurrentValue -eq 0}
+    Assert-True {$endpointResourceUsage[0].CurrentValue -eq 0}
+    Assert-True {$endpointResourceUsage[1].CurrentValue -eq 0}
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

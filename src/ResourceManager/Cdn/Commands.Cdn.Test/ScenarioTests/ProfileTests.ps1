@@ -159,7 +159,7 @@ function Test-ProfileGetResourceUsages
     $profileResourceUsage = Get-AzureRmCdnProfileResourceUsage -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-True {$profileResourceUsage.Count -eq 1}
-	Assert-True {$profileResourceUsage[0].CurrentValue -eq 0}
+    Assert-True {$profileResourceUsage[0].CurrentValue -eq 0}
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
