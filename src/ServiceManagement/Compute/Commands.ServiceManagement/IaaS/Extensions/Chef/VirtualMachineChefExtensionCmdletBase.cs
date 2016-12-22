@@ -29,6 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string ChefServiceIntervalTemplate = "chef_service_interval";
         protected const string RunListTemplate = "runlist";
         protected const string DaemonTemplate = "daemon";
+        protected const string SecretTemplate = "encrypted_data_bag_secret";
 
         public VirtualMachineChefExtensionCmdletBase()
         {
