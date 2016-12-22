@@ -82,7 +82,7 @@ CmdletsToExport = 'Get-AzureRmCdnProfile', 'Get-AzureRmCdnProfileSsoUrl',
                'Start-AzureRmCdnEndpoint', 'Stop-AzureRmCdnEndpoint', 
                'Test-AzureRmCdnCustomDomain', 'Get-AzureRmCdnCustomDomain', 
                'New-AzureRmCdnCustomDomain', 'Remove-AzureRmCdnCustomDomain',
-        	   'Get-AzureRmCdnProfileResourceUsage', 'Get-AzureRmCdnEndpointResourceUsage',
+               'Get-AzureRmCdnProfileResourceUsage', 'Get-AzureRmCdnEndpointResourceUsage',
                'Get-AzureRmCdnSubscriptionResourceUsage', 'Get-AzureRmCdnEdgeNodes'
 
 # Variables to export from this module
