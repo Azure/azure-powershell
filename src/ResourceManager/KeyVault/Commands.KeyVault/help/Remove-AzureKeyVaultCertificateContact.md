@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 35FAA57F-B2BD-4E43-8238-12F7A8269E4D
 online version: 
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Remove-AzureKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <St
 ```
 
 ## DESCRIPTION
-The Remove-AzureKeyVaultCertificateContact cmdlet deletes a contact that is registered for certificate notifications from a key vault.
+The **Remove-AzureKeyVaultCertificateContact** cmdlet deletes a contact that is registered for certificate notifications from a key vault.
 
 ## EXAMPLES
 
@@ -118,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificateContact]()
+[Add-AzureKeyVaultCertificateContact](./Add-AzureKeyVaultCertificateContact.md)
 
-[Get-AzureKeyVaultCertificateContact]()
+[Get-AzureKeyVaultCertificateContact](./Get-AzureKeyVaultCertificateContact.md)
 

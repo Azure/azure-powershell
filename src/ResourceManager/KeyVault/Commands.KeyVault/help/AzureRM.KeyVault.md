@@ -1,115 +1,116 @@
 ---
 Module Name: AzureRM.KeyVault
-Module Guid: fa236c1f-6464-4d6a-a48d-db47c0e7923d
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Module Guid: D48CF693-4125-4D2D-8790-1514F44CE325
+Download Help Link: http://go.microsoft.com/fwlink/?linkid=390762
+Help Version: 4.0.0.0
 Locale: en-US
+ms.assetid: 9D720291-A837-43D5-8EC1-9DD7FF432B34
 ---
 
 # AzureRM.KeyVault Module
 ## Description
-{{Manually Enter Description Here}}
+This topic displays help topics for the Azure Key Vault Cmdlets.
 
 ## AzureRM.KeyVault Cmdlets
 ### [Add-AzureKeyVaultCertificate](Add-AzureKeyVaultCertificate.md)
-{{Manually Enter Add-AzureKeyVaultCertificate Description Here}}
+Adds a certificate to a key vault.
 
 ### [Add-AzureKeyVaultCertificateContact](Add-AzureKeyVaultCertificateContact.md)
-{{Manually Enter Add-AzureKeyVaultCertificateContact Description Here}}
+Adds a contact for certificate notifications.
 
 ### [Add-AzureKeyVaultKey](Add-AzureKeyVaultKey.md)
-{{Manually Enter Add-AzureKeyVaultKey Description Here}}
+Creates a key in a key vault or imports a key into a key vault.
 
 ### [Backup-AzureKeyVaultKey](Backup-AzureKeyVaultKey.md)
-{{Manually Enter Backup-AzureKeyVaultKey Description Here}}
+Backs up a key in a key vault.
 
 ### [Get-AzureKeyVaultCertificate](Get-AzureKeyVaultCertificate.md)
-{{Manually Enter Get-AzureKeyVaultCertificate Description Here}}
+Gets a certificate from a key vault.
 
 ### [Get-AzureKeyVaultCertificateContact](Get-AzureKeyVaultCertificateContact.md)
-{{Manually Enter Get-AzureKeyVaultCertificateContact Description Here}}
+Gets contacts that are registered for certificate notifications for a key vault.
 
 ### [Get-AzureKeyVaultCertificateIssuer](Get-AzureKeyVaultCertificateIssuer.md)
-{{Manually Enter Get-AzureKeyVaultCertificateIssuer Description Here}}
+Gets a certificate issuer for a key vault.
 
 ### [Get-AzureKeyVaultCertificateOperation](Get-AzureKeyVaultCertificateOperation.md)
-{{Manually Enter Get-AzureKeyVaultCertificateOperation Description Here}}
+Gets the status of a certificate operation.
 
 ### [Get-AzureKeyVaultCertificatePolicy](Get-AzureKeyVaultCertificatePolicy.md)
-{{Manually Enter Get-AzureKeyVaultCertificatePolicy Description Here}}
+Gets the policy for a certificate in a key vault.
 
 ### [Get-AzureKeyVaultKey](Get-AzureKeyVaultKey.md)
-{{Manually Enter Get-AzureKeyVaultKey Description Here}}
+Gets Key Vault keys.
 
 ### [Get-AzureKeyVaultSecret](Get-AzureKeyVaultSecret.md)
-{{Manually Enter Get-AzureKeyVaultSecret Description Here}}
+Gets the secrets in a key vault.
 
 ### [Get-AzureRmKeyVault](Get-AzureRmKeyVault.md)
-{{Manually Enter Get-AzureRmKeyVault Description Here}}
+Gets key vaults.
 
 ### [Import-AzureKeyVaultCertificate](Import-AzureKeyVaultCertificate.md)
-{{Manually Enter Import-AzureKeyVaultCertificate Description Here}}
+Imports a certificate to a key vault.
 
 ### [New-AzureKeyVaultCertificateAdministratorDetails](New-AzureKeyVaultCertificateAdministratorDetails.md)
-{{Manually Enter New-AzureKeyVaultCertificateAdministratorDetails Description Here}}
+Creates an in-memory certificate administrator details object.
 
 ### [New-AzureKeyVaultCertificateOrganizationDetails](New-AzureKeyVaultCertificateOrganizationDetails.md)
-{{Manually Enter New-AzureKeyVaultCertificateOrganizationDetails Description Here}}
+Creates an in-memory certificate organization details object.
 
 ### [New-AzureKeyVaultCertificatePolicy](New-AzureKeyVaultCertificatePolicy.md)
-{{Manually Enter New-AzureKeyVaultCertificatePolicy Description Here}}
+Creates an in-memory certificate policy object.
 
 ### [New-AzureRmKeyVault](New-AzureRmKeyVault.md)
-{{Manually Enter New-AzureRmKeyVault Description Here}}
+Creates a key vault.
 
 ### [Remove-AzureKeyVaultCertificate](Remove-AzureKeyVaultCertificate.md)
-{{Manually Enter Remove-AzureKeyVaultCertificate Description Here}}
+Removes a certificate from a key vault.
 
 ### [Remove-AzureKeyVaultCertificateContact](Remove-AzureKeyVaultCertificateContact.md)
-{{Manually Enter Remove-AzureKeyVaultCertificateContact Description Here}}
+Deletes a contact that is registered for certificate notifications from a key vault.
 
 ### [Remove-AzureKeyVaultCertificateIssuer](Remove-AzureKeyVaultCertificateIssuer.md)
-{{Manually Enter Remove-AzureKeyVaultCertificateIssuer Description Here}}
+Deletes a certificate issuer from a key vault.
 
 ### [Remove-AzureKeyVaultCertificateOperation](Remove-AzureKeyVaultCertificateOperation.md)
-{{Manually Enter Remove-AzureKeyVaultCertificateOperation Description Here}}
+Deletes a certificate operation from a key vault.
 
 ### [Remove-AzureKeyVaultKey](Remove-AzureKeyVaultKey.md)
-{{Manually Enter Remove-AzureKeyVaultKey Description Here}}
+Deletes a key in a key vault.
 
 ### [Remove-AzureKeyVaultSecret](Remove-AzureKeyVaultSecret.md)
-{{Manually Enter Remove-AzureKeyVaultSecret Description Here}}
+Deletes a secret in a key vault.
 
 ### [Remove-AzureRmKeyVault](Remove-AzureRmKeyVault.md)
-{{Manually Enter Remove-AzureRmKeyVault Description Here}}
+Deletes a key vault.
 
 ### [Remove-AzureRmKeyVaultAccessPolicy](Remove-AzureRmKeyVaultAccessPolicy.md)
-{{Manually Enter Remove-AzureRmKeyVaultAccessPolicy Description Here}}
+Removes all permissions for a user or application from a key vault.
 
 ### [Restore-AzureKeyVaultKey](Restore-AzureKeyVaultKey.md)
-{{Manually Enter Restore-AzureKeyVaultKey Description Here}}
+Creates a key in a key vault from a backed-up key.
 
 ### [Set-AzureKeyVaultCertificateAttribute](Set-AzureKeyVaultCertificateAttribute.md)
-{{Manually Enter Set-AzureKeyVaultCertificateAttribute Description Here}}
+Modifies editable attributes of a certificate.
 
 ### [Set-AzureKeyVaultCertificateIssuer](Set-AzureKeyVaultCertificateIssuer.md)
-{{Manually Enter Set-AzureKeyVaultCertificateIssuer Description Here}}
+Updates a certificate issuer in a key vault.
 
 ### [Set-AzureKeyVaultCertificatePolicy](Set-AzureKeyVaultCertificatePolicy.md)
-{{Manually Enter Set-AzureKeyVaultCertificatePolicy Description Here}}
+Creates or updates the policy for a certificate in a key vault.
 
 ### [Set-AzureKeyVaultKeyAttribute](Set-AzureKeyVaultKeyAttribute.md)
-{{Manually Enter Set-AzureKeyVaultKeyAttribute Description Here}}
+Updates the attributes of a key in a key vault.
 
 ### [Set-AzureKeyVaultSecret](Set-AzureKeyVaultSecret.md)
-{{Manually Enter Set-AzureKeyVaultSecret Description Here}}
+Creates or updates a secret in a key vault.
 
 ### [Set-AzureKeyVaultSecretAttribute](Set-AzureKeyVaultSecretAttribute.md)
-{{Manually Enter Set-AzureKeyVaultSecretAttribute Description Here}}
+Updates attributes of a secret in a key vault.
 
 ### [Set-AzureRmKeyVaultAccessPolicy](Set-AzureRmKeyVaultAccessPolicy.md)
-{{Manually Enter Set-AzureRmKeyVaultAccessPolicy Description Here}}
+Grants or modifies existing permissions for a user, application, or security group to perform operations with a key vault.
 
 ### [Stop-AzureKeyVaultCertificateOperation](Stop-AzureKeyVaultCertificateOperation.md)
-{{Manually Enter Stop-AzureKeyVaultCertificateOperation Description Here}}
+Cancels a certificate operation in key vault.
 

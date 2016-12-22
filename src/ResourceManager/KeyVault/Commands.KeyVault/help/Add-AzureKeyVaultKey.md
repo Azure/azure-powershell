@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
 online version: http://go.microsoft.com/fwlink/?LinkId=690295
 schema: 2.0.0
 ---
@@ -26,14 +27,14 @@ Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String
 ```
 
 ## DESCRIPTION
-The Add-AzureKeyVaultKey cmdlet creates a key in a key vault in Azure Key Vault, or imports a key into a key vault.
+The **Add-AzureKeyVaultKey** cmdlet creates a key in a key vault in Azure Key Vault, or imports a key into a key vault.
 Use this cmdlet to add keys by using any of the following methods:
 
--- Create a key in a hardware security module (HSM) in the Key Vault service. 
--- Create a key in software in the Key Vault service. 
--- Import a key from your own hardware security module (HSM) to HSMs in the Key Vault service. 
--- Import a key from a .pfx file on your computer. 
--- Import a key from a .pfx file on your computer to hardware security modules (HSMs) in the Key Vault service. 
+- Create a key in a hardware security module (HSM) in the Key Vault service.
+- Create a key in software in the Key Vault service.
+- Import a key from your own hardware security module (HSM) to HSMs in the Key Vault service.
+- Import a key from a .pfx file on your computer.
+- Import a key from a .pfx file on your computer to hardware security modules (HSMs) in the Key Vault service.
 
 For any of these operations, you can provide key attributes or accept default settings. 
 
@@ -74,27 +75,27 @@ PS C:\> Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITHsmNonDefault' -Desti
 
 The first command stores the values decrypt and verify in the $KeyOperations variable.
 
-The second command creates a DateTime object, defined in UTC, by using the Get-Date cmdlet.
+The second command creates a **DateTime** object, defined in UTC, by using the **Get-Date** cmdlet.
 That object specifies a time two years in the future.
 The command stores that date in the $Expires variable.
-For more information, type Get-Help Get-Date.
+For more information, type `Get-Help Get-Date`.
 
-The third command creates a DateTime object by using the Get-Date cmdlet.
+The third command creates a **DateTime** object by using the **Get-Date** cmdlet.
 That object specifies current UTC time.
 The command stores that date in the $NotBefore variable.
 
 The final command creates a key named ITHsmNonDefault that is an HSM-protected key.
 The command specifies values for allowed key operations stored $KeyOperations.
-The command specifies times for the Expires and NotBefore parameters created in the previous commands, and tags for high severity and IT.
+The command specifies times for the *Expires* and *NotBefore* parameters created in the previous commands, and tags for high severity and IT.
 The new key is disabled.
-You can enable it by using the Set-AzureKeyVaultKey cmdlet.
+You can enable it by using the **Set-AzureKeyVaultKey** cmdlet.
 
 ### Example 4: Import an HSM-protected key
 ```
 PS C:\>Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
 ```
 
-This command imports the key named ITByok from the location that the KeyFilePath parameter specifies.
+This command imports the key named ITByok from the location that the *KeyFilePath* parameter specifies.
 The imported key is an HSM-protected key.
 
 To import a key from your own hardware security module, you must first generate a BYOK package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset.
@@ -106,8 +107,8 @@ PS C:\>$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
 ```
 
-The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Password variable.
-For more information, type Get-Help ConvertTo-SecureString.
+The first command converts a string into a secure string by using the **ConvertTo-SecureString** cmdlet, and then stores that string in the $Password variable.
+For more information, type `Get-Help ConvertTo-SecureString`.
 
 The second command creates a software password in the Contoso key vault.
 The command specifies the location for the key and the password stored in $Password.
@@ -120,9 +121,9 @@ PS C:\> $Tags = @{ 'Severity' = 'high'; 'Accounting' = null }
 PS C:\> Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tags $Tags
 ```
 
-The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Password variable.
+The first command converts a string into a secure string by using the **ConvertTo-SecureString** cmdlet, and then stores that string in the $Password variable.
 
-The second command creates a DateTime object by using the Get-Date cmdlet, and then stores that object in the $Expires variable.
+The second command creates a **DateTime** object by using the **Get-Date** cmdlet, and then stores that object in the $Expires variable.
 
 The third command creates the $tags variable to set tags for high severity and IT.
 
@@ -139,12 +140,12 @@ Note: To use HSM as your destination, you must have a key vault that supports HS
 For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
 
 This parameter is required when you create a new key.
-If you import a key by using the KeyFilePath parameter, this parameter is optional: 
+If you import a key by using the *KeyFilePath* parameter, this parameter is optional:
 
--- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key.
+- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key.
 The cmdlet cannot import that key as software-protected key.
  
--- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
+- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 
 ```yaml
 Type: String
@@ -190,10 +191,10 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds.
+Specifies the expiration time, as a **DateTime** object, for the key that this cmdlet adds.
 This parameter uses Coordinated Universal Time (UTC).
-To obtain a DateTime object, use the Get-Date cmdlet.
-For more information, type Get-Help Get-Date.
+To obtain a **DateTime** object, use the **Get-Date** cmdlet.
+For more information, type `Get-Help Get-Date`.
 If you do not specify this parameter, the key does not expire.
 
 ```yaml
@@ -209,9 +210,9 @@ Accept wildcard characters: False
 ```
 
 ### -KeyFilePassword
-Specifies a password for the imported file as a SecureString object.
-To obtain a SecureString object, use the ConvertTo-SecureString cmdlet.
-For more information, type Get-Help ConvertTo-SecureString.
+Specifies a password for the imported file as a **SecureString** object.
+To obtain a **SecureString** object, use the **ConvertTo-SecureString** cmdlet.
+For more information, type `Get-Help ConvertTo-SecureString`.
 You must specify this password to import a file with a .pfx file name extension.
 
 ```yaml
@@ -230,12 +231,12 @@ Accept wildcard characters: False
 Specifies the path of a local file that contains key material that this cmdlet imports.
 The valid file name extensions are .byok and .pfx. 
 
--- If the file is a .byok file, the key is automatically protected by HSMs after the import and you cannot override this default.
+- If the file is a .byok file, the key is automatically protected by HSMs after the import and you cannot override this default.
  
--- If the file is a .pfx file, the key is automatically protected by software after the import.
-To override this default, set the Destination parameter to HSM so that the key is HSM-protected.
+- If the file is a .pfx file, the key is automatically protected by software after the import.
+To override this default, set the *Destination* parameter to HSM so that the key is HSM-protected.
 
-When you specify this parameter, the Destination parameter is optional.
+When you specify this parameter, the *Destination* parameter is optional.
 
 ```yaml
 Type: String
@@ -255,14 +256,14 @@ If you do not specify this parameter, all operations can be performed.
 
 The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key (JWK) specification (http://go.microsoft.com/fwlink/?LinkID=613300&clcid=0x409): 
 
--- Encrypt 
--- Decrypt 
--- Wrap 
--- Unwrap 
--- Sign 
--- Verify
--- Backup
--- Restore
+- Encrypt
+- Decrypt
+- Wrap
+- Unwrap
+- Sign
+- Verify
+- Backup
+- Restore
 
 ```yaml
 Type: String[]
@@ -294,9 +295,9 @@ Accept wildcard characters: False
 ```
 
 ### -NotBefore
-Specifies the time, as a DateTime object, before which the key cannot be used.
+Specifies the time, as a **DateTime** object, before which the key cannot be used.
 This parameter uses UTC.
-To obtain a DateTime object, use the Get-Date cmdlet.
+To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 If you do not specify this parameter, the key can be used immediately.
 
 ```yaml
@@ -343,7 +344,18 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing key tags.
+Specifies a hash table that contains certificate tags.
+
+To use HSM as your destination, you must have a key vault that supports HSMs.
+For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
+
+This parameter is required when you create a new key.
+If you import a key by using the *KeyFilePath* parameter, this parameter is optional:
+
+- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key.
+The cmdlet cannot import that key as software-protected key.
+
+- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 
 ```yaml
 Type: Hashtable
@@ -388,11 +400,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Backup-AzureKeyVaultKey]()
+[Backup-AzureKeyVaultKey](./Backup-AzureKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey]()
+[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey]()
+[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
 
-[Set-AzureKeyVaultKeyAttribute]()
+[Set-AzureKeyVaultKeyAttribute](./Set-AzureKeyVaultKeyAttribute.md)
 

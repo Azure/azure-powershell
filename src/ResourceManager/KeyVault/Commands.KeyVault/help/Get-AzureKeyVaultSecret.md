@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 8C9B33EE-10DE-4803-B76D-FE9FC2AC3372
 online version: http://go.microsoft.com/fwlink/?LinkId=690298
 schema: 2.0.0
 ---
@@ -27,7 +28,7 @@ Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions
 ```
 
 ## DESCRIPTION
-The Get-AzureKeyVaultSecret cmdlet gets secrets in a key vault.
+The **Get-AzureKeyVaultSecret** cmdlet gets secrets in a key vault.
 This cmdlet gets a specific secret or all the secrets in a key vault.
 
 ## EXAMPLES
@@ -73,9 +74,9 @@ These commands get the current version of a secret named ITSecret, and then disp
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a secret.
 The current version of a secret is the first one on the list.
-If you specify this parameter you must also specify the Name and VaultName parameters.
+If you specify this parameter you must also specify the *Name* and *VaultName* parameters.
 
-If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the secret with the specified Name.
+If you do not specify the *IncludeVersions* parameter, this cmdlet gets the current version of the secret with the specified *Name*.
 
 ```yaml
 Type: SwitchParameter
@@ -151,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultSecret]()
+[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
 
-[Set-AzureKeyVaultSecret]()
+[Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
 

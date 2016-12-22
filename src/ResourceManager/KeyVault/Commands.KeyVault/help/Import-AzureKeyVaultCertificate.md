@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
 online version: 
 schema: 2.0.0
 ---
@@ -37,12 +38,12 @@ Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The Import-AzureKeyVaultCertificate cmdlet imports a certificate into a key vault.
+The **Import-AzureKeyVaultCertificate** cmdlet imports a certificate into a key vault.
 
 You can create the certificate to import by using one of the following methods: 
 
--- Use the Add-AzureKeyVaultCertificate cmdlet to create a certificate signing request and submit it to a certificate authority.
--- Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
+- Use the New-AzureKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
+- Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 
 ## EXAMPLES
 
@@ -190,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing certificate tags.
+Specifies a hash table that contains certificate tags.
 
 ```yaml
 Type: Hashtable
@@ -233,5 +234,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultCertificate]()
+[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
 
