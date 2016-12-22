@@ -119,14 +119,25 @@ function Test-VirtualMachine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
+
+        # VM Expand output
         $a = $vm1 | Out-String;
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
+        Assert-True {$a.Contains("Sku");}
+
+        # VM Compact output
+        $vm1.DisplayHint = "Compact";
+        $a = $vm1 | Out-String;
+        Assert-False {$a.Contains("Sku");}
+
+        # Table format output
         $a = $vm1 | Format-Table | Out-String;
         Write-Verbose("Get-AzureRmVM | Format-Table output:");
         Write-Verbose($a);
 
+        Assert-NotNull $vm1.VmId;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -178,6 +189,15 @@ function Test-VirtualMachine
         Write-Verbose($a);
         Assert-True{$a.Contains("NIC");}
         Assert-AreNotEqual $vms $null;
+
+        # VM Compact output
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-False {$a.Contains("Sku");}
+
+        # VM Expand output
+        $vms[0].DisplayHint = "Expand";
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-True {$a.Contains("Sku");}
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;
@@ -1644,12 +1664,32 @@ function Test-VirtualMachineTags
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
 
-        #Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.RequestId;
         Assert-NotNull $vm.StatusCode;
 
         # Assert
         Assert-AreEqual "testval1" $vm.Tags["test1"];
         Assert-AreEqual "testval2" $vm.Tags["test2"];
+
+        # Update VM
+        $vm = $vm | Update-AzureRmVM;
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
+        Assert-AreEqual "testval1" $vm.Tags["test1"];
+        Assert-AreEqual "testval2" $vm.Tags["test2"];
+
+        # Update VM with new Tags
+        $new_tags = @{test1 = "testval3"; test2 = "testval4" };
+        $st = $vm | Update-AzureRmVM -Tags $new_tags;
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
+        Assert-AreEqual "testval3" $vm.Tags["test1"];
+        Assert-AreEqual "testval4" $vm.Tags["test2"];
+
     }
     finally
     {
@@ -2778,6 +2818,15 @@ function Test-VirtualMachineGetStatus
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("PowerState");}
+
+        # VM Compact output
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-False{$a.Contains("Sku");};
+
+        # VM Expand output
+        $vms[0].DisplayHint = "Expand"
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-True{$a.Contains("Sku");};
 
         # Remove
         Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;

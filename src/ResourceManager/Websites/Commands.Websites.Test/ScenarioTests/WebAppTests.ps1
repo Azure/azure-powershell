@@ -80,14 +80,14 @@ function Test-GetWebApp
 		Assert-True { $result.Count -ge 2 }
 
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname2 -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -148,13 +148,13 @@ function Test-GetWebAppMetrics
 			Assert-True { $actualMetricNames -contains $i}
 		}
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -221,13 +221,13 @@ function Test-StartStopRestartWebApp
 		Assert-AreEqual "Running" $webApp.State
 		$ping = PingWebApp $webApp
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -285,7 +285,7 @@ function Test-CloneNewWebApp
 		# Assert
 		Assert-AreEqual $destAppName $webapp2.Name
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
@@ -294,7 +294,7 @@ function Test-CloneNewWebApp
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -387,7 +387,7 @@ function Test-CloneNewWebAppAndDeploymentSlots
 		Assert-AreEqual $appWithSlotName $slot2.Name
 		Assert-AreEqual $serverFarm2.Id $slot2.ServerFarmId
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot1name -Force
@@ -400,7 +400,7 @@ function Test-CloneNewWebAppAndDeploymentSlots
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -459,7 +459,7 @@ function Test-CloneNewWebAppWithTrafficManager
 		# Assert
 		Assert-AreEqual $destWebAppName $result.Name
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
@@ -468,7 +468,7 @@ function Test-CloneNewWebAppWithTrafficManager
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destWebAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destAppServicePlanName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -505,13 +505,13 @@ function Test-CreateNewWebApp
 		Assert-AreEqual $wname $result.Name
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -547,11 +547,11 @@ function Test-CreateNewWebAppOnAse
 		Assert-AreEqual $wname $result.Name
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
-    }
+	}
 }
 
 <#
@@ -570,6 +570,7 @@ function Test-SetWebApp
 	$tier2 = "Standard"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
+	$capacity = 2
 
 	try
 	{
@@ -608,7 +609,7 @@ function Test-SetWebApp
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
-		$webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -ConnectionStrings $connectionStrings
+		$webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -ConnectionStrings $connectionStrings -NumberofWorkers $capacity
 
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
@@ -624,15 +625,18 @@ function Test-SetWebApp
 		{
 			Assert-True { $connectionStrings.Keys -contains $connStringInfo.Name }
 		}
+
+		Assert-AreEqual $capacity $webApp.SiteConfig.NumberOfWorkers
+
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName1 -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName2 -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -671,12 +675,12 @@ function Test-RemoveWebApp
 
 		Assert-False { $webappNames -contains $appName }
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 <#
@@ -729,11 +733,11 @@ function Test-WebAppPublishingProfile
 		# Assert
 		Assert-True { $fileZillaProfile.Name -eq $appName }
 	}
-    finally
+	finally
 	{
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+	}
 }

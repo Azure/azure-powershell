@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 2.4.0
+* Removal of unsupported parameters in Add and Set-AzureRMDataLakeAnalyticsDataSource (default for data lake store)
+* Removed unsupported parameter in Set-AzureRMDataLakeAnalyticsAccount (default data lake store)
+* Introduction of deprecation warning for nested properties for all ARM resources. Nested properties will be removed in a future release and all properties will be moved one level up.
+* Added the ability to set MaxDegreeOfParallelism, MaxJobCount and QueryStoreRetention in New and Set-AzureRMDataLakeAnalyticsAccount
+* Removed invalid return value from New-AzureRMDataLakeAnalyticsCatalogSecret
+
 ## Version 2.3.0
 * Addition of Catalog CRUD cmdlets:
     - The following cmdlets are replacing Secret CRUD cmdlets. In the next release Secret CRUD cmdlets will be removed.

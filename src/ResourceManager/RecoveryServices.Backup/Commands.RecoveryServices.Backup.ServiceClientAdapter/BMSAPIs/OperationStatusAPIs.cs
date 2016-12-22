@@ -12,48 +12,73 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using RestAzureNS = Microsoft.Rest.Azure;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
     public partial class ServiceClientAdapter
     {
         /// <summary>
-        /// Gets result of the refresh container operation using the operation tracking URL
+        /// Gets result of a generic operation on the protected item using the operation ID
         /// </summary>
-        /// <param name="operationResultLink">Operation tracking URL</param>
-        /// <returns>Job response returned by the service</returns>
-        public BaseRecoveryServicesJobResponse GetRefreshContainerOperationResultByURL(
-                string operationResultLink)
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns>Operation status response returned by the service</returns>
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
+            GetProtectedItemOperationStatus(string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.Containers.GetRefreshOperationResultByURLAsync(
-                                     operationResultLink,
-                                     BmsAdapter.CmdletCancellationToken).Result;
+            return BmsAdapter.Client.BackupOperationStatuses.GetWithHttpMessagesAsync(
+                resourceName, resourceGroupName, operationId).Result;
         }
 
         /// <summary>
-        /// Gets result of a generic operation on the protected item using the operation tracking URL
+        /// Gets result of a generic operation on the protection policy using the operation ID
         /// </summary>
-        /// <param name="operationResultLink">Operation tracking URL</param>
-        /// <returns>Operation status response returned by the service</returns>
-        public BackUpOperationStatusResponse GetProtectedItemOperationStatusByURL(
-                string operationResultLink)
+        /// <param name="policyName">Name of the policy associated with the operation</param>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
+            GetProtectionPolicyOperationStatus(string policyName, string operationId)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.GetOperationStatusByURLAsync(
-                                     operationResultLink,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+            return BmsAdapter.Client.ProtectionPolicyOperationStatuses.GetWithHttpMessagesAsync(
+                resourceName, resourceGroupName, policyName, operationId).Result;
+        }
+
+        /// <summary>
+        /// Gets result of the refresh operation on the protection container using the operation ID
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse GetRefreshContainerOperationResult(
+                string operationId)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
+            return BmsAdapter.Client.ProtectionContainerRefreshOperationResults
+                .GetWithHttpMessagesAsync(
+                    resourceName, resourceGroupName, AzureFabricName, operationId).Result;
+        }
+
+        /// <summary>
+        /// Gets result of the cancel operation on the job using the operation ID
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse GetCancelJobOperationResult(
+                string operationId)
+        {
+            string resourceName = BmsAdapter.GetResourceName();
+            string resourceGroupName = BmsAdapter.GetResourceGroupName();
+
+            return BmsAdapter.Client.JobOperationResults.GetWithHttpMessagesAsync(
+                resourceName, resourceGroupName, AzureFabricName, operationId).Result;
         }
     }
 }

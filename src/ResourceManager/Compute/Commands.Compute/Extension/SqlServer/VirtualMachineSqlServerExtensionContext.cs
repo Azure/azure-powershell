@@ -55,5 +55,10 @@ namespace Microsoft.Azure.Commands.Compute
         /// Key Vault Credential settings
         /// </summary>
         public KeyVaultCredentialSettings KeyVaultCredentialSettings;
+
+        /// <summary>
+        /// Auto Telemetry settings
+        /// </summary>
+        public AutoTelemetrySettings AutoTelemetrySettings;
     }
 }

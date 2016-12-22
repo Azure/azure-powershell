@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
@@ -33,6 +34,22 @@ namespace Microsoft.Azure.Commands.Compute
     public class GetAzureVMSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
+        protected const string SqlConfigurationSubStatusCode = "ComponentStatus/SQL Configuration/succeeded";
+
+        // These maps are needed due to mismatch in the values while we set/get these parameters.
+        protected static readonly Dictionary<string, string> AutoBackupScheduleTypeMap =
+            new Dictionary<string, string>() 
+            {
+                { "NOTSET" , null },
+                { "SYSTEM" , "Automated" },
+                { "CUSTOM" , "Manual" }
+            };
+        protected static readonly Dictionary<string, string> AutoPatchingCategoryMap =
+            new Dictionary<string, string>() 
+            {
+                { "WindowsMandatoryUpdates" , "Important" },
+            };
+
 
         [Parameter(
            Mandatory = true,
@@ -102,11 +119,29 @@ namespace Microsoft.Azure.Commands.Compute
         {
             SqlServerPublicSettings extensionPublicSettings = null;
             VirtualMachineSqlServerExtensionContext context = null;
+            
+            // Extract sql configuration information from one of the sub statuses
+            if (extension.SubStatuses == null
+                || extension.SubStatuses.FirstOrDefault(s =>
+                    s.Code.Equals(SqlConfigurationSubStatusCode, StringComparison.InvariantCultureIgnoreCase)) == null)
+            {
+                ThrowTerminatingError(
+                   new ErrorRecord(
+                       new Exception(
+                           String.Format(
+                               CultureInfo.CurrentUICulture,
+                               Properties.Resources.AzureVMSqlServerSqlConfigurationNotFound,
+                               extension.SubStatuses)),
+                   string.Empty,
+                   ErrorCategory.ParserError,
+                   null));
+            }
 
+            string sqlConfiguration = extension.SubStatuses.First(s => s.Code.Equals(SqlConfigurationSubStatusCode, StringComparison.InvariantCultureIgnoreCase)).Message;
+            
             try
             {
-                extensionPublicSettings = string.IsNullOrEmpty(extension.PublicSettings) ? null
-                                  : JsonConvert.DeserializeObject<SqlServerPublicSettings>(extension.PublicSettings);
+                AzureVMSqlServerConfiguration settings = JsonConvert.DeserializeObject<AzureVMSqlServerConfiguration>(sqlConfiguration);
 
                 // #$ISSUE- extension.Statuses is always null, follow up with Azure team
                 context = new VirtualMachineSqlServerExtensionContext
@@ -122,12 +157,38 @@ namespace Microsoft.Azure.Commands.Compute
                     PublicSettings = JsonConvert.SerializeObject(extensionPublicSettings),
                     ProtectedSettings = extension.ProtectedSettings,
                     ProvisioningState = extension.ProvisioningState,
-                    AutoBackupSettings = extensionPublicSettings.AutoBackupSettings,
-                    AutoPatchingSettings = extensionPublicSettings.AutoPatchingSettings,
-                    KeyVaultCredentialSettings = extensionPublicSettings.KeyVaultCredentialSettings,
+                    AutoBackupSettings = settings.AutoBackup == null ? null : new AutoBackupSettings()
+                    {
+                        Enable = settings.AutoBackup.Enable,
+                        EnableEncryption = settings.AutoBackup.EnableEncryption,
+                        RetentionPeriod = settings.AutoBackup.RetentionPeriod,
+                        StorageUrl = settings.AutoBackup.StorageAccountUrl,
+                        BackupSystemDbs = settings.AutoBackup.BackupSystemDbs,
+                        BackupScheduleType = string.IsNullOrEmpty(settings.AutoBackup.BackupScheduleType) ? null : AutoBackupScheduleTypeMap[settings.AutoBackup.BackupScheduleType],
+                        FullBackupFrequency = settings.AutoBackup.FullBackupFrequency,
+                        FullBackupStartTime = settings.AutoBackup.FullBackupStartTime,
+                        FullBackupWindowHours = settings.AutoBackup.FullBackupWindowHours,
+                        LogBackupFrequency = settings.AutoBackup.LogBackupFrequency
+                    },
+                    AutoPatchingSettings = settings.AutoPatching == null ? null : new AutoPatchingSettings()
+                    {
+                        Enable = settings.AutoPatching.Enable,
+                        DayOfWeek = settings.AutoPatching.DayOfWeek,
+                        MaintenanceWindowDuration = settings.AutoPatching.MaintenanceWindowDuration,
+                        MaintenanceWindowStartingHour = settings.AutoPatching.MaintenanceWindowStartingHour,
+                        PatchCategory = string.IsNullOrEmpty(settings.AutoPatching.PatchCategory) ? null : AutoPatchingCategoryMap[settings.AutoPatching.PatchCategory]
+                    },
+                    KeyVaultCredentialSettings = settings.AzureKeyVault == null ? null : new KeyVaultCredentialSettings()
+                    {
+                        Enable = settings.AzureKeyVault.Enable,
+                        Credentials = settings.AzureKeyVault.CredentialsList
+                    },
+                    AutoTelemetrySettings = settings.AutoTelemetryReport == null ? null : new AutoTelemetrySettings()
+                    {
+                        Region = settings.AutoTelemetryReport.Location,
+                    },
                     Statuses = extension.Statuses
                 };
-
             }
             catch (JsonException e)
             {
@@ -136,8 +197,8 @@ namespace Microsoft.Azure.Commands.Compute
                         new JsonException(
                             String.Format(
                                 CultureInfo.CurrentUICulture,
-                                Properties.Resources.AzureVMSqlServerWrongSettingsFormat,
-                                extension.PublicSettings),
+                                Properties.Resources.AzureVMSqlServerWrongConfigFormat,
+                                sqlConfiguration),
                             e),
                         string.Empty,
                         ErrorCategory.ParserError,
