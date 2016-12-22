@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+
 online version: http://go.microsoft.com/fwlink/?LinkId=690300
 schema: 2.0.0
 ---
@@ -18,7 +19,7 @@ Remove-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Force] [-Pas
 
 ## DESCRIPTION
 The Remove-AzureKeyVaultSecret cmdlet deletes a secret in a key vault.
-This cmdlet has a value of high for the ConfirmImpact property.
+This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ## EXAMPLES
 
@@ -35,7 +36,7 @@ PS C:\>Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -Fo
 ```
 
 This command removes the secret named FinanceSecret from the key vault named Contoso.
-The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.
+The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
 ## PARAMETERS
 
@@ -71,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a Microsoft.Azure.Commands.KeyVault.Models.Secret object.
+Indicates that this cmdlet returns a **Microsoft.Azure.Commands.KeyVault.Models.Secret** object.
 By default, this cmdlet does not generate any output.
 
 ```yaml
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -144,13 +145,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.Secret
-This cmdlet returns a value only if you specify the PassThru parameter.
+This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultSecret]()
+[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
 
-[Set-AzureKeyVaultSecret]()
+[Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+ms.assetid: 4166119F-D26A-45A1-B040-D7B2459833D6
 online version: 
 schema: 2.0.0
 ---
@@ -7,6 +8,7 @@ schema: 2.0.0
 # Set-AzureRmWebApp
 
 ## SYNOPSIS
+Modifies an Azure Web App.
 
 ## SYNTAX
 
@@ -336,3 +338,14 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+
+[New-AzureRmWebApp](./New-AzureRmWebApp.md)
+
+[Remove-AzureRmWebApp](./Remove-AzureRmWebApp.md)
+
+[Restart-AzureRmWebApp](./Restart-AzureRmWebApp.md)
+
+[Start-AzureRmWebApp](./Start-AzureRmWebApp.md)
+
+[Stop-AzureRmWebApp](./Stop-AzureRmWebApp.md)

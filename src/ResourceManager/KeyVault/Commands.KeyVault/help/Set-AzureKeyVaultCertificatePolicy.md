@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 28BC1B99-946C-4A8D-9581-4D5CC0BCEF8B
 online version: 
 schema: 2.0.0
 ---
@@ -31,7 +32,7 @@ Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The Set-AzureKeyVaultCertificatePolicy cmdlet creates or updates the policy for a certificate in a key vault.
+The **Set-AzureKeyVaultCertificatePolicy** cmdlet creates or updates the policy for a certificate in a key vault.
 
 ## EXAMPLES
 
@@ -168,8 +169,8 @@ Accept wildcard characters: False
 Specifies the key type of the key that backs the certificate.
 The acceptable values for this parameter are:
 
--- RSA 
--- RSA-HSM
+- RSA
+- RSA-HSM
 
 ```yaml
 Type: String
@@ -185,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyUsage
-@{Text=}
+Specifies the key usages in the certificate.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -279,8 +280,8 @@ Accept wildcard characters: False
 Specifies the content type of the new key vault secret.
 The acceptable values for this parameter are:
 
--- application/x-pkcs12
--- application/x-pem-file
+- application/x-pkcs12
+- application/x-pem-file
 
 ```yaml
 Type: String
@@ -399,7 +400,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificatePolicy]()
+[Get-AzureKeyVaultCertificatePolicy](./Get-AzureKeyVaultCertificatePolicy.md)
 
-[New-AzureKeyVaultCertificatePolicy]()
+[New-AzureKeyVaultCertificatePolicy](./New-AzureKeyVaultCertificatePolicy.md)
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-help.xml
+ms.assetid: 89299823-3382-402D-9458-519466748051
 online version: 
 schema: 2.0.0
 ---
@@ -18,7 +19,7 @@ Add-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The Add-AzureKeyVaultCertificate cmdlet starts the process of enrolling for a certificate in a key vault in Azure Key Vault.
+The **Add-AzureKeyVaultCertificate** cmdlet starts the process of enrolling for a certificate in a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
@@ -75,7 +76,7 @@ Updated     : 2/8/2016 11:21:45 PM
 
 The first command uses the New-AzureKeyVaultCertificatePolicy cmdlet to create a certificate policy, and then stores it in the $Policy variable.
 
-The second command uses Add-AzureKeyVaultCertificate to start the process to create a certificate.
+The second command uses **Add-AzureKeyVaultCertificate** to start the process to create a certificate.
 
 The third command uses the Get-AzureKeyVaultCertificateOperation cmdlet to poll the operation to verify that it's complete.
 
@@ -84,7 +85,7 @@ The final command uses the Get-AzureKeyVaultCertificate cmdlet to get the certif
 ## PARAMETERS
 
 ### -CertificatePolicy
-Specifies a KeyVaultCertificatePolicy object.
+Specifies a **KeyVaultCertificatePolicy** object.
 
 ```yaml
 Type: KeyVaultCertificatePolicy
@@ -144,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing certificate tags.
+Specifies a hash table that contains certificate tags.
 
 ```yaml
 Type: Hashtable
@@ -185,9 +186,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificate]()
+[Get-AzureKeyVaultCertificate](./Get-AzureKeyVaultCertificate.md)
 
-[Import-AzureKeyVaultCertificate]()
+[Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
 
-[Remove-AzureKeyVaultCertificate]()
+[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+ms.assetid: B2FDB54F-0318-4037-BC1D-6113E77DDE7E
 online version: 
 schema: 2.0.0
 ---
@@ -7,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmWebAppSlotPublishingProfile
 
 ## SYNOPSIS
+Gets an Azure Web App slot publishing profile.
 
 ## SYNTAX
 
@@ -134,3 +136,8 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[Reset-AzureRMWebAppSlotPublishingProfile](./Reset-AzureRmWebAppSlotPublishingProfile.md)
+
+[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)
+
+[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)

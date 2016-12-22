@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 2659C06A-AE5B-4F7B-B9EF-069A74E12560
 online version: 
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Remove-AzureKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
-The Remove-AzureKeyVaultCertificateOperation cmdlet deletes a certificate operation from a key vault.
+The **Remove-AzureKeyVaultCertificateOperation** cmdlet deletes a certificate operation from a key vault.
 
 ## EXAMPLES
 
@@ -92,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -134,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateOperation]()
+[Get-AzureKeyVaultCertificateOperation](./Get-AzureKeyVaultCertificateOperation.md)
 
-[Stop-AzureKeyVaultCertificateOperation]()
+[Stop-AzureKeyVaultCertificateOperation](./Stop-AzureKeyVaultCertificateOperation.md)
 
