@@ -548,32 +548,6 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Enable</Label>
-                <PropertyName>Enable</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>EnableEncryption</Label>
-                <PropertyName>EnableEncryption</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>RetentionPeriodInDays</Label>
-                <PropertyName>RetentionPeriod</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
       <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.VirtualMachineSqlServerExtensionContext</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.VirtualMachineSqlServerExtensionContext</TypeName>
