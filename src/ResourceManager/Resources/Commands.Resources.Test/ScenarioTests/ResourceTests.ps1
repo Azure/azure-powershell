@@ -354,6 +354,10 @@ function Test-FindAResource
 	New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
 	Assert-AreEqual 2 @($expected).Count
+
+	$expected = Find-AzureRmResource -ResourceGroupNameEquals $rgname -ResourceNameEquals $rname
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 }
 
 <#

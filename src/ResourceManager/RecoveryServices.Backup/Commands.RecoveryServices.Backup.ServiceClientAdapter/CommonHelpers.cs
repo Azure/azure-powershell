@@ -17,6 +17,9 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
+    /// <summary>
+    /// Some common helpers useful for the service client adapter layer
+    /// </summary>
     public class CommonHelpers
     {
         /// <summary>
@@ -30,6 +33,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
             return date.ToUniversalTime().ToString("yyyy-MM-dd hh:mm:ss tt", dateFormat);
+        }
+
+        /// <summary>
+        /// Backend service expects date time to be serialized 
+        /// in the format: yyyy-MM-dd hh:mm:ss tt and en-US culture.
+        /// In order to support user experiences from other time zones and cultures,
+        /// this utility converts the date time into the correct date time format and culture.
+        /// </summary>
+        /// <param name="date">Input time</param>
+        /// <returns>Output time in UTC as a DateTime object</returns>
+        public static DateTime GetDateTimeForService(DateTime date)
+        {
+            DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
+            string sDate = GetDateTimeStringForService(date);
+            return DateTime.ParseExact(sDate, "yyyy-MM-dd hh:mm:ss tt", dateFormat);
         }
     }
 }
