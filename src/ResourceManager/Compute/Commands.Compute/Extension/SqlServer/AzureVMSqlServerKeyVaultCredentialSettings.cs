@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute
         /// <value>
         /// The azure key vault URL for Credential Management.
         /// </value>
-        [JsonIgnoreAttribute()]
+        [JsonIgnore]
         public string AzureKeyVaultUrl { get; set; }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
         /// <value>
         /// The name of the service principal to access the Azure Key Vault.
         /// </value>
-        [JsonIgnoreAttribute()]
+        [JsonIgnore]
         public string ServicePrincipalName { get; set; }
 
         /// <summary>
@@ -61,7 +61,16 @@ namespace Microsoft.Azure.Commands.Compute
         /// <value>
         /// The service principal secret to access the Azure Key Vault.
         /// </value>
-        [JsonIgnoreAttribute()]
+        [JsonIgnore]
         public string ServicePrincipalSecret { get; set; }
+
+        /// <summary>
+        /// Gets the credentials
+        /// </summary>
+        /// <value>
+        /// The list of existing credentials for AKV.
+        /// </value>
+        [JsonIgnore]
+        public List<AzureVMSqlServerKeyVaultCredential> Credentials { get; set; }
     }
 }

@@ -15,33 +15,18 @@
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
-    /// SQL Server Extension's public settings
+    /// AKV Credential
     /// </summary>
-    public class SqlServerPublicSettings
+    public class AzureVMSqlServerKeyVaultCredential
     {
         /// <summary>
-        /// Auto patching settings
+        /// Name of the credential
         /// </summary>
-        public AutoPatchingSettings AutoPatchingSettings { get; set; }
+        public string CredentialName { get; set; }
 
         /// <summary>
-        /// Auto-backup settings
+        /// Key vault that this credential provides access to.
         /// </summary>
-        public AutoBackupSettings AutoBackupSettings { get; set; }
-
-        /// <summary>
-        /// AkV settings
-        /// </summary>
-        public KeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
-
-        /// <summary>
-        /// Auto-telemetry settings
-        /// </summary>
-        public AutoTelemetrySettings AutoTelemetrySettings { get; set; }
-    
-        /// <summary>
-        /// Deployment token, esp. to differentiate between two successive similar config updates.
-        /// </summary>
-        public int? DeploymentToken { get; set; }       
+        public string KeyVaultName { get; set; }
     }
 }

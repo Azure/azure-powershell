@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -22,6 +23,8 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
          VerbsCommon.New,
          AzureVMSqlServerAutoPatchingConfigNoun),
+    Alias(
+        VerbsCommon.New + "-" + ProfileNouns.VirtualMachineSqlServerAutoPatchingConfig),
      OutputType(
          typeof(AutoPatchingSettings))]
     public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet
