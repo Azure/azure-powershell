@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string JsonAttributeTemplate = "custom_json_attr";
         private string ChefServiceIntervalTemplate = "chef_service_interval";
         private string RunListTemplate = "runlist";
+        private string DaemonTemplate = "daemon";
 
         [Parameter(
             Mandatory = true,
@@ -113,6 +114,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             HelpMessage = "Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.")]
         [ValidateNotNullOrEmpty]
         public string ChefServiceInterval { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Configures the chef-client service for unattended execution. The node platform should be Windows." +
+                          "Options: 'none' or 'service'." +
+                          "none - Currently prevents the chef-client service from being configured as a service." +
+                          "service - Configures the chef-client to run automatically in the background as a service.")]
+        [ValidateNotNullOrEmpty]
+        public string Daemon { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -228,6 +238,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
                     bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
+                    bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
 
                     //Cases handled:
                     // 1. When clientRb given by user and:
@@ -298,6 +309,11 @@ validation_client_name 	'{1}'
                     if (!IsChefServiceIntervalEmpty)
                     {
                         hashTable.Add(ChefServiceIntervalTemplate, ChefServiceInterval);
+                    }
+
+                    if (this.Windows.IsPresent && !IsDaemonEmpty)
+                    {
+                        hashTable.Add(DaemonTemplate, this.Daemon);
                     }
 
                     this.publicConfiguration = hashTable;
@@ -403,6 +419,14 @@ validation_client_name 	'{1}'
             {
                 throw new ArgumentException(
                     "Required -ClientRb or -ChefServerUrl and -ValidationClientName options.");
+            }
+
+            bool IsDaemonValueInvalid = Array.IndexOf(new String[2] {"none", "service"}, this.Daemon) == -1;
+            // Validation against the invalid use of Daemon option.
+            if (IsDaemonValueInvalid || this.Linux.IsPresent)
+            {
+                throw new ArgumentException(
+                    "Invalid use of -Daemon option.");
             }
         }
 
