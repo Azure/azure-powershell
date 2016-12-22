@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated Set-AzureVMChefExtension cmdlet to add following new options :
+    - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'auto' or e.g. -Daemon 'service'."
+    - Secret: The encryption key used to encrypt and decrypt the data bag item values.
+    - SecretFile: The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 
 ## Version 3.3.0
 * Updated Set-AzureVMChefExtension cmdlet to add following new options :
