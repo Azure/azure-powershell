@@ -177,6 +177,8 @@
     <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
     <Compile Include="IaaS\Extensions\Diagnostics\WADPrivateConfigSchema.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerConfiguration.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerKeyVaultCredential.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicAutoBackupSettings.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicKeyVaultCredentialSettings.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPrivateKeyVaultCredentialSettings.cs" />

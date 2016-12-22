@@ -39,6 +39,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public KeyVaultCredentialSettings KeyVaultCredentialSettings;
 
         /// <summary>
+        /// Auto Telemetry settings
+        /// </summary>
+        public AutoTelemetrySettings AutoTelemetrySettings;
+
+        /// <summary>
         /// Status messages reported by extension
         /// </summary>
         public List<string> StatusMessages;
