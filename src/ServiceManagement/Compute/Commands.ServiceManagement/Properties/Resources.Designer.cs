@@ -251,7 +251,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find sql server configuration info in substatuses. Updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
+        ///   Looks up a localized string similar to Cannot find sql server configuration info in substatuses. If you have just installed the extension, you may see this till the installation process finishes. Otherwise, updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
         ///{0}.
         /// </summary>
         public static string AzureVMSqlServerSqlConfigurationNotFound {
