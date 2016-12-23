@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string ChefServiceIntervalTemplate = "chef_service_interval";
         private string RunListTemplate = "runlist";
         private string DaemonTemplate = "daemon";
+        private string SecretTemplate = "encrypted_data_bag_secret";
 
         [Parameter(
             Mandatory = true,
@@ -123,6 +124,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                           "service - Configures the chef-client to run automatically in the background as a service.")]
         [ValidateNotNullOrEmpty]
         public string Daemon { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The encryption key used to encrypt and decrypt the data bag item values.")]
+        [ValidateNotNullOrEmpty]
+        public string Secret { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.")]
+        [ValidateNotNullOrEmpty]
+        public string SecretFile { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -330,6 +343,12 @@ validation_client_name 	'{1}'
                 if (this.privateConfiguration == null)
                 {
                     var hashTable = new Hashtable();
+
+                    if (!string.IsNullOrEmpty(this.SecretFile))
+                        hashTable.Add(SecretTemplate, File.ReadAllText(this.SecretFile).TrimEnd('\r', '\n'));
+                    else if (!string.IsNullOrEmpty(this.Secret))
+                        hashTable.Add(SecretTemplate, this.Secret);
+
                     hashTable.Add(PrivateConfigurationTemplate, File.ReadAllText(this.ValidationPem).TrimEnd('\r', '\n'));
                     this.privateConfiguration = hashTable;
                 }
@@ -427,6 +446,12 @@ validation_client_name 	'{1}'
             {
                 throw new ArgumentException(
                     "Invalid use of -Daemon option.");
+            }
+
+            if (!string.IsNullOrEmpty(this.SecretFile) && !File.Exists(this.SecretFile))
+            {
+                throw new FileNotFoundException(
+                    "File specified in -SecretFile option does not exist.");
             }
         }
 

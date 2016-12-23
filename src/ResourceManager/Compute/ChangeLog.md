@@ -29,6 +29,10 @@
 	- FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
 	- LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
 * New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
+* Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
+  - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'none' or e.g. -Daemon 'service'."
+  - Secret: The encryption key used to encrypt and decrypt the data bag item values.
+  - SecretFile: The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 
 ## Version 2.4.0
 * Add Remove-AzureRmVMSecret cmdlet.
