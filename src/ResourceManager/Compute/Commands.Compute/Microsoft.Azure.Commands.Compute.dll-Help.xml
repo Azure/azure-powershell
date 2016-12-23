@@ -12868,6 +12868,24 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Secret</maml:name>
+<maml:Description><maml:para>The encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretFile</maml:name>
+<maml:Description><maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ClientRb</maml:name>
 <maml:Description><maml:para>Specifies the full path of the Chef client.rb.
 </maml:para>
@@ -13038,6 +13056,36 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Daemon</maml:name>
+<maml:Description><maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Options: 'none' or 'service'
+  none - Currently prevents the chef-client service from being configured as a service.
+  service - Configures the chef-client to run automatically in the background as a service.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Secret</maml:name>
+<maml:Description><maml:para>The encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretFile</maml:name>
+<maml:Description><maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ClientRb</maml:name>
 <maml:Description><maml:para>Specifies the full path of the Chef client.rb.
 </maml:para>
@@ -13156,6 +13204,36 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ChefServiceInterval</maml:name>
 <maml:Description><maml:para>Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Daemon</maml:name>
+<maml:Description><maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Options: 'none' or 'service'
+  none - Currently prevents the chef-client service from being configured as a service.
+  service - Configures the chef-client to run automatically in the background as a service.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Secret</maml:name>
+<maml:Description><maml:para>The encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretFile</maml:name>
+<maml:Description><maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>

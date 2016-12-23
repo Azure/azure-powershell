@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+  - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'none' or e.g. -Daemon 'service'."
+  - Secret: The encryption key used to encrypt and decrypt the data bag item values.
+  - SecretFile: The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 
 ## Version 2.4.0
 * Add Remove-AzureRmVMSecret cmdlet.
