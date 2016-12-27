@@ -293,6 +293,7 @@ validation_client_name 	'{1}'
             bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
+            bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
             // Validate ClientRb or ChefServerUrl and ValidationClientName should exist.
             if (IsClientRbEmpty && (IsChefServerUrlEmpty || IsValidationClientNameEmpty))
             {
@@ -300,12 +301,15 @@ validation_client_name 	'{1}'
                     "Required -ClientRb or -ChefServerUrl and -ValidationClientName options.");
             }
 
-            bool IsDaemonValueInvalid = Array.IndexOf(new String[2] {"none", "service"}, this.Daemon) == -1;
-            // Validation against the invalid use of Daemon option.
-            if (IsDaemonValueInvalid || this.Linux.IsPresent)
+            if (!IsDaemonEmpty)
             {
-                throw new ArgumentException(
-                    "Invalid use of -Daemon option.");
+                bool IsDaemonValueInvalid = Array.IndexOf(new String[2] {"none", "service"}, this.Daemon) == -1;
+                // Validation against the invalid use of Daemon option.
+                if (IsDaemonValueInvalid || this.Linux.IsPresent)
+                {
+                    throw new ArgumentException(
+                        "Invalid use of -Daemon option.");
+                }
             }
 
             if (!string.IsNullOrEmpty(this.SecretFile) && !File.Exists(this.SecretFile))
