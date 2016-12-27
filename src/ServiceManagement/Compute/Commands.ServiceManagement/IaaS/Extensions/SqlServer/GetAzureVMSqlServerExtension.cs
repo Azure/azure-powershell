@@ -128,8 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     {
                         if (null != status.FormattedMessage)
                         {
-                            string formattedMessage = status.FormattedMessage.Message;
-                            statusMessageList.Add(formattedMessage);
+                            statusMessageList.Add(status.FormattedMessage.Message);
                         }
                     }
                     context.StatusMessages = statusMessageList;
