@@ -84,12 +84,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 {
                     Enable  = this.AutoBackupSettings.Enable,
                     EnableEncryption = this.AutoBackupSettings.EnableEncryption,
-                    RetentionPeriod = this.AutoBackupSettings.RetentionPeriod,                       
-                    BackupSystemDbs = this.AutoBackupSettings.BackupSystemDbs,                       
-                    BackupScheduleType = this.AutoBackupSettings.BackupScheduleType,                       
-                    FullBackupFrequency = this.AutoBackupSettings.FullBackupFrequency,                       
-                    FullBackupStartTime = this.AutoBackupSettings.FullBackupStartTime,                       
-                    FullBackupWindowHours = this.AutoBackupSettings.FullBackupWindowHours,                       
+                    RetentionPeriod = this.AutoBackupSettings.RetentionPeriod,
+                    BackupSystemDbs = this.AutoBackupSettings.BackupSystemDbs,
+                    BackupScheduleType = this.AutoBackupSettings.BackupScheduleType,
+                    FullBackupFrequency = this.AutoBackupSettings.FullBackupFrequency,
+                    FullBackupStartTime = this.AutoBackupSettings.FullBackupStartTime,
+                    FullBackupWindowHours = this.AutoBackupSettings.FullBackupWindowHours,
                     LogBackupFrequency = this.AutoBackupSettings.LogBackupFrequency
                 };
             }
