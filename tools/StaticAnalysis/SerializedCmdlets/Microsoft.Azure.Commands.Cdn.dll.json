@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -127,7 +127,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSSsoUri",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SsoUriValue": "System.String"
             },
@@ -174,7 +174,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -249,7 +249,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -291,7 +291,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -346,7 +346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSSkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -434,7 +434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "PSSkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -551,7 +551,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -694,7 +694,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -821,7 +821,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -848,7 +848,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -878,7 +878,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -920,7 +920,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointName": "System.String",
               "HostName": "System.String",
@@ -1005,7 +1005,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -1156,7 +1156,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -1229,7 +1229,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointName": "System.String",
               "HostName": "System.String",
@@ -1258,7 +1258,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointName": "System.String",
               "HostName": "System.String",
@@ -1290,7 +1290,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
                   "Name": "PSOrigin",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointName": "System.String",
                     "HostName": "System.String",
@@ -1334,7 +1334,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSCheckNameAvailabilityOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Message": "System.String",
               "NameAvailable": "System.Boolean",
@@ -1407,7 +1407,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -1487,7 +1487,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -1607,7 +1607,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -1728,7 +1728,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -1902,7 +1902,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -2040,7 +2040,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -2120,7 +2120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -2248,7 +2248,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2338,7 +2338,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSGeoFilter[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
             "GenericTypeArguments": []
@@ -2518,7 +2518,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2644,7 +2644,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
                   "GenericTypeArguments": []
@@ -2895,7 +2895,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3021,7 +3021,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
                   "GenericTypeArguments": []
@@ -3066,7 +3066,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -3242,7 +3242,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3368,7 +3368,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
                   "GenericTypeArguments": []
@@ -3479,7 +3479,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -3653,7 +3653,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -3850,7 +3850,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4024,7 +4024,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4162,7 +4162,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4200,7 +4200,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4241,7 +4241,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4353,7 +4353,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4493,7 +4493,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4650,7 +4650,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4790,7 +4790,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -4888,7 +4888,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSValidateCustomDomainOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomDomainValidated": "System.Boolean",
               "Message": "System.String",
@@ -4951,7 +4951,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -5091,7 +5091,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -5189,7 +5189,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointName": "System.String",
               "HostName": "System.String",
@@ -5273,7 +5273,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -5424,7 +5424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -5497,7 +5497,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointName": "System.String",
               "HostName": "System.String",
@@ -5595,7 +5595,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContentTypesToCompress": "System.String[]",
               "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -5786,7 +5786,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContentTypesToCompress": "System.String[]",
                     "GeoFilters": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
@@ -5952,7 +5952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointName": "System.String",
               "HostName": "System.String",
@@ -6102,7 +6102,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointName": "System.String",
                     "HostName": "System.String",
@@ -6293,7 +6293,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
       "Name": "PSProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6301,7 +6301,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "PSProfileResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6309,7 +6309,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "PSSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName"
       },
@@ -6319,7 +6319,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "PSSkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6345,7 +6345,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
       "Name": "PSOriginResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6361,7 +6361,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]": {
       "Namespace": "System.Collections.Generic",
       "Name": "ICollection",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6371,7 +6371,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "PSGeoFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Action": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction",
         "CountryCodes": "System.String[]",
@@ -6383,7 +6383,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "PSGeoFilterAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6391,7 +6391,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin]": {
       "Namespace": "System.Collections.Generic",
       "Name": "ICollection",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6401,7 +6401,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "PSDeepCreatedOrigin",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "HostName": "System.String",
         "HttpPort": "System.Nullable`1[System.Int32]",
@@ -6414,7 +6414,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "PSQueryStringCachingBehavior",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6422,7 +6422,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "PSEndpointResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6430,7 +6430,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
       "Name": "PSCustomDomainResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState, Microsoft.Azure.Commands.Cdn, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState, Microsoft.Azure.Commands.Cdn, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []

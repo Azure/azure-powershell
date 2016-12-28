@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Callback": "System.Object",
               "Cluster": "System.String",
@@ -235,7 +235,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightSqoopJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSqoopJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSqoopJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.IList`1[System.String]",
               "Command": "System.String",
@@ -448,7 +448,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Callback": "System.Object",
               "Cluster": "System.String",
@@ -703,7 +703,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightStreamingMapReduceJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightStreamingMapReduceJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightStreamingMapReduceJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.IList`1[System.String]",
               "CommandEnvironment": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1089,7 +1089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightMapReduceJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMapReduceJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMapReduceJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.IList`1[System.String]",
               "ClassName": "System.String",
@@ -1405,7 +1405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightPigJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightPigJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightPigJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.IList`1[System.String]",
               "File": "System.String",
@@ -1616,7 +1616,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightHiveJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightHiveJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightHiveJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.IList`1[System.String]",
               "Defines": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2049,7 +2049,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Job",
             "Name": "JobDisplayOutputType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Job.JobDisplayOutputType, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Job.JobDisplayOutputType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2211,7 +2211,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Job",
                   "Name": "JobDisplayOutputType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Job.JobDisplayOutputType, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Job.JobDisplayOutputType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2793,7 +2793,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Callback": "System.Object",
               "Cluster": "System.String",
@@ -2980,7 +2980,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Callback": "System.Object",
               "Cluster": "System.String",
@@ -3023,7 +3023,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.IList`1[System.String]",
               "Files": "System.Collections.Generic.IList`1[System.String]",
@@ -3097,7 +3097,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightJobDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJobDefinition, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Arguments": "System.Collections.Generic.IList`1[System.String]",
                     "Files": "System.Collections.Generic.IList`1[System.String]",
@@ -3175,7 +3175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3188,6 +3188,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -3212,7 +3213,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3225,6 +3226,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -3280,7 +3282,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3293,6 +3295,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -3372,7 +3375,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightSecurityProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterUsersGroupDNs": "System.String[]",
               "Domain": "System.String",
@@ -3395,7 +3398,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3408,6 +3411,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -3505,7 +3509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3518,6 +3522,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -3657,7 +3662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3670,6 +3675,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -3694,7 +3700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3707,6 +3713,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -3749,6 +3756,22 @@
           },
           "ValidateSet": [],
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageAccountType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -3762,7 +3785,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3775,6 +3798,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -3830,8 +3854,30 @@
                 "ValidateSet": [],
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageAccountType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             }
@@ -3854,7 +3900,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3867,6 +3913,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -3891,7 +3938,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3904,6 +3951,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -3959,7 +4007,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -3972,6 +4020,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -4051,7 +4100,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4064,6 +4113,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -4088,7 +4138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4101,6 +4151,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -4122,7 +4173,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "ClusterNodeType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4184,7 +4235,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4197,6 +4248,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -4224,7 +4276,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "ClusterNodeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4316,7 +4368,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4329,6 +4381,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -4353,7 +4406,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4366,6 +4419,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -4387,7 +4441,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightMetastoreType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastoreType, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastoreType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4449,7 +4503,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4462,6 +4516,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -4489,7 +4544,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastoreType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastoreType, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastoreType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4581,7 +4636,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4594,6 +4649,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -4618,7 +4674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4631,6 +4687,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -4840,7 +4897,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4853,6 +4910,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -5152,7 +5210,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "CapabilitiesResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.CapabilitiesResponse, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.CapabilitiesResponse, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureAsyncOperation": "System.String",
               "Features": "System.Collections.Generic.IList`1[System.String]",
@@ -5336,7 +5394,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "HttpConnectivitySettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HttpConnectivitySettings, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HttpConnectivitySettings, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPassword": "System.String",
               "HttpUserEnabled": "System.Boolean",
@@ -5616,7 +5674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "HttpConnectivitySettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HttpConnectivitySettings, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HttpConnectivitySettings, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPassword": "System.String",
               "HttpUserEnabled": "System.Boolean",
@@ -5759,7 +5817,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -5772,6 +5830,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -5819,12 +5878,26 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "DefaultStorageAccountType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
+            "Name": "StorageType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "OozieMetastore",
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightMetastore",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Credential": "System.Management.Automation.PSCredential",
               "DatabaseName": "System.String",
@@ -5842,7 +5915,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightMetastore",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Credential": "System.Management.Automation.PSCredential",
               "DatabaseName": "System.String",
@@ -5916,7 +5989,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "Tier",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6041,12 +6114,32 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DefaultStorageAccountType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
+                  "Name": "StorageType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "OozieMetastore",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -6070,7 +6163,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -6174,7 +6267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "Tier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6306,7 +6399,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "ClusterGetResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterGetResponse, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterGetResponse, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Cluster": "Microsoft.Azure.Management.HDInsight.Models.Cluster",
               "RequestId": "System.String",
@@ -6413,7 +6506,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "Cluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Cluster, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Cluster, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ETag": "System.String",
               "Id": "System.String",
@@ -6558,7 +6651,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6697,7 +6790,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionDetail, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionDetail, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7114,7 +7207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
             "Name": "AzureHDInsightRuntimeScriptActionOperationResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionOperationResource, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionOperationResource, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationName": "System.String",
               "ErrorMessage": "System.String",
@@ -7181,7 +7274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
             "Name": "RuntimeScriptActionClusterNodeType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType[], Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType[], Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType",
             "GenericTypeArguments": []
@@ -7317,7 +7410,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
                   "Name": "RuntimeScriptActionClusterNodeType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType[], Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType[], Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType",
                   "GenericTypeArguments": []
@@ -7429,7 +7522,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7534,7 +7627,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalStorageAccounts": "System.Collections.Generic.List`1[System.String]",
               "ClusterState": "System.String",
@@ -7545,6 +7638,7 @@
               "CoresUsed": "System.Int32",
               "DefaultStorageAccount": "System.String",
               "DefaultStorageContainer": "System.String",
+              "DefaultStorageRootPath": "System.String",
               "Error": "System.String",
               "HttpEndpoint": "System.String",
               "Id": "System.String",
@@ -7662,12 +7756,28 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "DefaultStorageAccountType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Config",
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -7680,6 +7790,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -7701,7 +7812,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightMetastore",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Credential": "System.Management.Automation.PSCredential",
               "DatabaseName": "System.String",
@@ -7719,7 +7830,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightMetastore",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Credential": "System.Management.Automation.PSCredential",
               "DatabaseName": "System.String",
@@ -7771,7 +7882,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "Dictionary",
-            "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7784,6 +7895,20 @@
         },
         {
           "Name": "DefaultStorageContainer",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultStorageRootPath",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -7917,7 +8042,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "OSType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7931,7 +8056,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
             "Name": "Tier",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8071,7 +8196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightSecurityProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterUsersGroupDNs": "System.String[]",
               "Domain": "System.String",
@@ -8232,12 +8357,34 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DefaultStorageAccountType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Config",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -8250,6 +8397,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -8277,7 +8425,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -8301,7 +8449,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -8371,7 +8519,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "Dictionary",
-                  "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -8390,6 +8538,26 @@
             {
               "ParameterMetadata": {
                 "Name": "DefaultStorageContainer",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultStorageRootPath",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -8577,7 +8745,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "OSType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8597,7 +8765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "Tier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8757,7 +8925,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightSecurityProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterUsersGroupDNs": "System.String[]",
                     "Domain": "System.String",
@@ -8943,12 +9111,34 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DefaultStorageAccountType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Config",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -8961,6 +9151,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -8988,7 +9179,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -9012,7 +9203,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -9082,7 +9273,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "Dictionary",
-                  "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -9101,6 +9292,26 @@
             {
               "ParameterMetadata": {
                 "Name": "DefaultStorageContainer",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultStorageRootPath",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -9288,7 +9499,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "OSType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -9308,7 +9519,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "Tier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -9468,7 +9679,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightSecurityProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterUsersGroupDNs": "System.String[]",
                     "Domain": "System.String",
@@ -9654,12 +9865,34 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DefaultStorageAccountType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Config",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -9672,6 +9905,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -9699,7 +9933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -9723,7 +9957,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightMetastore",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Credential": "System.Management.Automation.PSCredential",
                     "DatabaseName": "System.String",
@@ -9793,7 +10027,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "Dictionary",
-                  "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -9812,6 +10046,26 @@
             {
               "ParameterMetadata": {
                 "Name": "DefaultStorageContainer",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultStorageRootPath",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -9999,7 +10253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "OSType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10019,7 +10273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
                   "Name": "Tier",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10179,7 +10433,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightSecurityProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterUsersGroupDNs": "System.String[]",
                     "Domain": "System.String",
@@ -10217,7 +10471,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -10230,6 +10484,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -10254,7 +10509,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
             "Name": "AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AADTenantId": "System.Guid",
               "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -10267,6 +10522,7 @@
               "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
               "DefaultStorageAccountKey": "System.String",
               "DefaultStorageAccountName": "System.String",
+              "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
               "HeadNodeSize": "System.String",
               "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
               "ObjectId": "System.Guid",
@@ -10364,7 +10620,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -10377,6 +10633,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -10489,7 +10746,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -10502,6 +10759,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -10614,7 +10872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
                   "Name": "AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AADTenantId": "System.Guid",
                     "AdditionalStorageAccounts": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -10627,6 +10885,7 @@
                     "Configurations": "System.Collections.Generic.Dictionary`2[System.String,System.Collections.Hashtable]",
                     "DefaultStorageAccountKey": "System.String",
                     "DefaultStorageAccountName": "System.String",
+                    "DefaultStorageAccountType": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType",
                     "HeadNodeSize": "System.String",
                     "HiveMetastore": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore",
                     "ObjectId": "System.Guid",
@@ -10895,7 +11154,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.Tier": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "Tier",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Tier, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -10919,10 +11178,18 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType": {
+      "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
+      "Name": "StorageType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore": {
       "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
       "Name": "AzureHDInsightMetastore",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Credential": "System.Management.Automation.PSCredential",
         "DatabaseName": "System.String",
@@ -10942,7 +11209,7 @@
     "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]": {
       "Namespace": "System.Collections.Generic",
       "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35],[System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10953,7 +11220,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "ClusterNodeType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -10961,7 +11228,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10971,7 +11238,7 @@
     "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction": {
       "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
       "Name": "AzureHDInsightScriptAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ActionName": "System.String",
         "Parameters": "System.String",
@@ -10991,7 +11258,7 @@
     "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile": {
       "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
       "Name": "AzureHDInsightSecurityProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ClusterUsersGroupDNs": "System.String[]",
         "Domain": "System.String",
@@ -11013,7 +11280,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.QuotaCapability": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "QuotaCapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.QuotaCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.QuotaCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RegionalQuotas": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.RegionalQuotaCapability]"
       },
@@ -11023,7 +11290,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.RegionalQuotaCapability]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.RegionalQuotaCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.RegionalQuotaCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11033,7 +11300,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.RegionalQuotaCapability": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "RegionalQuotaCapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.RegionalQuotaCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.RegionalQuotaCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CoresAvailable": "System.Int64",
         "CoresUsed": "System.Int64",
@@ -11045,7 +11312,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.HDInsight.Models.RegionsCapability]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.HDInsight.Models.RegionsCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.HDInsight.Models.RegionsCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11056,7 +11323,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.RegionsCapability": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "RegionsCapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.RegionsCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.RegionsCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AvailableRegions": "System.Collections.Generic.IList`1[System.String]"
       },
@@ -11074,7 +11341,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.HDInsight.Models.VersionsCapability]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.HDInsight.Models.VersionsCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.HDInsight.Models.VersionsCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11085,7 +11352,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.VersionsCapability": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "VersionsCapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VersionsCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VersionsCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AvailableVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.VersionSpec]"
       },
@@ -11095,7 +11362,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.VersionSpec]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.VersionSpec, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.VersionSpec, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11105,7 +11372,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.VersionSpec": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "VersionSpec",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VersionSpec, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VersionSpec, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ComponentVerions": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "DisplayName": "System.String",
@@ -11118,7 +11385,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.VmSizeCompatibilityFilter]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.VmSizeCompatibilityFilter, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.VmSizeCompatibilityFilter, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11128,7 +11395,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.VmSizeCompatibilityFilter": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "VmSizeCompatibilityFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VmSizeCompatibilityFilter, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VmSizeCompatibilityFilter, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClusterFlavors": "System.Collections.Generic.IList`1[System.String]",
         "ClusterVersions": "System.Collections.Generic.IList`1[System.String]",
@@ -11143,7 +11410,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.HDInsight.Models.VmSizesCapability]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.HDInsight.Models.VmSizesCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.HDInsight.Models.VmSizesCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11154,7 +11421,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.VmSizesCapability": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "VmSizesCapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VmSizesCapability, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VmSizesCapability, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AvailableVmSizes": "System.Collections.Generic.IList`1[System.String]"
       },
@@ -11164,7 +11431,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.Cluster": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "Cluster",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Cluster, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Cluster, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ETag": "System.String",
         "Id": "System.String",
@@ -11180,7 +11447,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.ClusterGetProperties": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "ClusterGetProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterGetProperties, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterGetProperties, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClusterDefinition": "Microsoft.Azure.Management.HDInsight.Models.ClusterDefinition",
         "ClusterState": "System.String",
@@ -11201,7 +11468,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.ClusterDefinition": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "ClusterDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterDefinition, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ClusterDefinition, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "BlueprintUri": "System.Uri",
         "ClusterType": "System.String",
@@ -11214,7 +11481,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.ComputeProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "ComputeProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ComputeProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ComputeProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Roles": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.Role]"
       },
@@ -11224,7 +11491,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.Role]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.Role, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.Role, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11234,7 +11501,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.Role": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "Role",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Role, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.Role, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "HardwareProfile": "Microsoft.Azure.Management.HDInsight.Models.HardwareProfile",
         "Name": "System.String",
@@ -11249,7 +11516,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.HardwareProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "HardwareProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HardwareProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HardwareProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "VmSize": "System.String"
       },
@@ -11259,7 +11526,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.OsProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "OsProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OsProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OsProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "LinuxOperatingSystemProfile": "Microsoft.Azure.Management.HDInsight.Models.LinuxOperatingSystemProfile",
         "WindowsOperatingSystemProfile": "Microsoft.Azure.Management.HDInsight.Models.WindowsOperatingSystemProfile"
@@ -11270,7 +11537,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.LinuxOperatingSystemProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "LinuxOperatingSystemProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.LinuxOperatingSystemProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.LinuxOperatingSystemProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Password": "System.String",
         "SshProfile": "Microsoft.Azure.Management.HDInsight.Models.SshProfile",
@@ -11282,7 +11549,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.SshProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "SshProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.SshProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.SshProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SshPublicKeys": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.SshPublicKey]"
       },
@@ -11292,7 +11559,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.SshPublicKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.SshPublicKey, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.SshPublicKey, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11302,7 +11569,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.SshPublicKey": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "SshPublicKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.SshPublicKey, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.SshPublicKey, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CertificateData": "System.String"
       },
@@ -11312,7 +11579,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.WindowsOperatingSystemProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "WindowsOperatingSystemProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.WindowsOperatingSystemProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.WindowsOperatingSystemProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RdpSettings": "Microsoft.Azure.Management.HDInsight.Models.RdpSettings"
       },
@@ -11322,7 +11589,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.RdpSettings": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "RdpSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.RdpSettings, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.RdpSettings, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ExpiryDate": "System.DateTime",
         "Password": "System.String",
@@ -11342,7 +11609,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.ScriptAction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.ScriptAction, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.ScriptAction, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11352,7 +11619,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.ScriptAction": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "ScriptAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ScriptAction, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ScriptAction, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Parameters": "System.String",
@@ -11364,7 +11631,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.VirtualNetworkProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "VirtualNetworkProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VirtualNetworkProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.VirtualNetworkProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "SubnetName": "System.String"
@@ -11375,7 +11642,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.ConnectivityEndpoint]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.ConnectivityEndpoint, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.ConnectivityEndpoint, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11385,7 +11652,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.ConnectivityEndpoint": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "ConnectivityEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ConnectivityEndpoint, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ConnectivityEndpoint, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Location": "System.String",
         "Name": "System.String",
@@ -11398,7 +11665,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HDInsight.Models.ErrorInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.ErrorInfo, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HDInsight.Models.ErrorInfo, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11408,7 +11675,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.ErrorInfo": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "ErrorInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ErrorInfo, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.ErrorInfo, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Code": "System.String",
         "Message": "System.String"
@@ -11419,7 +11686,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.OSType": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "OSType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.OSType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11427,7 +11694,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.HDInsightClusterProvisioningState": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "HDInsightClusterProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HDInsightClusterProvisioningState, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.HDInsightClusterProvisioningState, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11435,7 +11702,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.QuotaInfo": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "QuotaInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.QuotaInfo, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.QuotaInfo, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CoresUsed": "System.Int32"
       },
@@ -11445,7 +11712,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.SecurityProfile": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "SecurityProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.SecurityProfile, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.SecurityProfile, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClusterUsersGroupDNs": "System.Collections.Generic.IList`1[System.String]",
         "DirectoryType": "Microsoft.Azure.Management.HDInsight.Models.DirectoryType",
@@ -11461,7 +11728,7 @@
     "Microsoft.Azure.Management.HDInsight.Models.DirectoryType": {
       "Namespace": "Microsoft.Azure.Management.HDInsight.Models",
       "Name": "DirectoryType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.DirectoryType, Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HDInsight.Models.DirectoryType, Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11469,7 +11736,7 @@
     "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptAction": {
       "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
       "Name": "AzureHDInsightRuntimeScriptAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptAction, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplicationName": "System.String",
         "Name": "System.String",
@@ -11483,7 +11750,7 @@
     "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionDetail": {
       "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
       "Name": "AzureHDInsightRuntimeScriptActionDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionDetail, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightRuntimeScriptActionDetail, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplicationName": "System.String",
         "DebugInformation": "System.String",
@@ -11514,7 +11781,7 @@
     "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType": {
       "Namespace": "Microsoft.Azure.Commands.HDInsight.Models.Management",
       "Name": "RuntimeScriptActionClusterNodeType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11522,7 +11789,7 @@
     "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster": {
       "Namespace": "Microsoft.Azure.Commands.HDInsight.Models",
       "Name": "AzureHDInsightCluster",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster, Microsoft.Azure.Commands.HDInsight, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster, Microsoft.Azure.Commands.HDInsight, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdditionalStorageAccounts": "System.Collections.Generic.List`1[System.String]",
         "ClusterState": "System.String",
@@ -11533,6 +11800,7 @@
         "CoresUsed": "System.Int32",
         "DefaultStorageAccount": "System.String",
         "DefaultStorageContainer": "System.String",
+        "DefaultStorageRootPath": "System.String",
         "Error": "System.String",
         "HttpEndpoint": "System.String",
         "Id": "System.String",
