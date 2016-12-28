@@ -167,10 +167,16 @@
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Dns.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.EventHub.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.HDInsight.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Insights.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.IotHub.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.KeyVault.dll.json">
@@ -225,6 +231,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServerManagement.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServiceBus.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.SiteRecovery.dll.json">
