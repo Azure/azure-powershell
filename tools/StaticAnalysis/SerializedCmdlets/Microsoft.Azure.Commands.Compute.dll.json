@@ -6520,8 +6520,14 @@
             "Name": "AutoBackupSettings",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Compute.AutoBackupSettings, Microsoft.Azure.Commands.Compute, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "BackupScheduleType": "System.String",
+              "BackupSystemDbs": "System.Nullable`1[System.Boolean]",
               "Enable": "System.Boolean",
               "EnableEncryption": "System.Boolean",
+              "FullBackupFrequency": "System.String",
+              "FullBackupStartTime": "System.Nullable`1[System.Int32]",
+              "FullBackupWindowHours": "System.Nullable`1[System.Int32]",
+              "LogBackupFrequency": "System.Nullable`1[System.Int32]",
               "Password": "System.String",
               "RetentionPeriod": "System.Int32",
               "StorageAccessKey": "System.String",
@@ -6658,6 +6664,102 @@
           },
           "ValidateSet": [],
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "BackupSystemDbs",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "BackupScheduleType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [
+            "Manual",
+            "Automated"
+          ],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FullBackupFrequency",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [
+            "Daily",
+            "Weekly"
+          ],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FullBackupStartHour",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FullBackupWindowInHours",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LogBackupFrequencyInMinutes",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -6801,6 +6903,138 @@
               },
               "Mandatory": false,
               "Position": 5,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BackupSystemDbs",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BackupScheduleType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [
+                  "Manual",
+                  "Automated"
+                ],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullBackupFrequency",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [
+                  "Daily",
+                  "Weekly"
+                ],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullBackupStartHour",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullBackupWindowInHours",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LogBackupFrequencyInMinutes",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             }
@@ -6979,11 +7213,145 @@
               "Position": 5,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BackupSystemDbs",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BackupScheduleType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [
+                  "Manual",
+                  "Automated"
+                ],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullBackupFrequency",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [
+                  "Daily",
+                  "Weekly"
+                ],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullBackupStartHour",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullBackupWindowInHours",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LogBackupFrequencyInMinutes",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             }
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "New-AzureRmVMSqlServerAutoBackupConfig"
+      ]
     },
     {
       "VerbName": "New",
@@ -7216,7 +7584,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "New-AzureRmVMSqlServerAutoPatchingConfig"
+      ]
     },
     {
       "VerbName": "New",
@@ -7236,6 +7606,7 @@
             "Properties": {
               "AzureKeyVaultUrl": "System.String",
               "CredentialName": "System.String",
+              "Credentials": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential]",
               "Enable": "System.Boolean",
               "ResourceGroupName": "System.String",
               "ServicePrincipalName": "System.String",
@@ -7462,7 +7833,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "New-AzureRmVMSqlServerKeyVaultCredentialConfig"
+      ]
     },
     {
       "VerbName": "Remove",
@@ -7730,8 +8103,14 @@
             "Name": "AutoBackupSettings",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Compute.AutoBackupSettings, Microsoft.Azure.Commands.Compute, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "BackupScheduleType": "System.String",
+              "BackupSystemDbs": "System.Nullable`1[System.Boolean]",
               "Enable": "System.Boolean",
               "EnableEncryption": "System.Boolean",
+              "FullBackupFrequency": "System.String",
+              "FullBackupStartTime": "System.Nullable`1[System.Int32]",
+              "FullBackupWindowHours": "System.Nullable`1[System.Int32]",
+              "LogBackupFrequency": "System.Nullable`1[System.Int32]",
               "Password": "System.String",
               "RetentionPeriod": "System.Int32",
               "StorageAccessKey": "System.String",
@@ -7753,6 +8132,7 @@
             "Properties": {
               "AzureKeyVaultUrl": "System.String",
               "CredentialName": "System.String",
+              "Credentials": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential]",
               "Enable": "System.Boolean",
               "ResourceGroupName": "System.String",
               "ServicePrincipalName": "System.String",
@@ -7900,8 +8280,14 @@
                   "Name": "AutoBackupSettings",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Compute.AutoBackupSettings, Microsoft.Azure.Commands.Compute, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "BackupScheduleType": "System.String",
+                    "BackupSystemDbs": "System.Nullable`1[System.Boolean]",
                     "Enable": "System.Boolean",
                     "EnableEncryption": "System.Boolean",
+                    "FullBackupFrequency": "System.String",
+                    "FullBackupStartTime": "System.Nullable`1[System.Int32]",
+                    "FullBackupWindowHours": "System.Nullable`1[System.Int32]",
+                    "LogBackupFrequency": "System.Nullable`1[System.Int32]",
                     "Password": "System.String",
                     "RetentionPeriod": "System.Int32",
                     "StorageAccessKey": "System.String",
@@ -7929,6 +8315,7 @@
                   "Properties": {
                     "AzureKeyVaultUrl": "System.String",
                     "CredentialName": "System.String",
+                    "Credentials": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential]",
                     "Enable": "System.Boolean",
                     "ResourceGroupName": "System.String",
                     "ServicePrincipalName": "System.String",
@@ -32403,6 +32790,27 @@
         "KeyName": "System.String",
         "SASSignature": "System.String",
         "SASToken": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "List",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential, Microsoft.Azure.Commands.Compute, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential"
+      ]
+    },
+    "Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential": {
+      "Namespace": "Microsoft.Azure.Commands.Compute",
+      "Name": "AzureVMSqlServerKeyVaultCredential",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Compute.AzureVMSqlServerKeyVaultCredential, Microsoft.Azure.Commands.Compute, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "CredentialName": "System.String",
+        "KeyVaultName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

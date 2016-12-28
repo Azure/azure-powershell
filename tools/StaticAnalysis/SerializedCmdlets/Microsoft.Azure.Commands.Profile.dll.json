@@ -1716,14 +1716,18 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Profile.Models",
+            "Name": "PSAzureSubscription",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CurrentStorageAccountName": "System.String",
+              "State": "System.String",
+              "SubscriptionId": "System.String",
+              "SubscriptionName": "System.String",
+              "TenantId": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription"
-            ]
+            "GenericTypeArguments": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3888,20 +3892,6 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription": {
-      "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-      "Name": "PSAzureSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "CurrentStorageAccountName": "System.String",
-        "State": "System.String",
-        "SubscriptionId": "System.String",
-        "SubscriptionName": "System.String",
-        "TenantId": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "Microsoft.Azure.Commands.Profile.Models.PSAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Models",
       "Name": "PSAzureContext",
@@ -3963,6 +3953,20 @@
         "SqlDatabaseDnsSuffix": "System.String",
         "StorageEndpointSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription": {
+      "Namespace": "Microsoft.Azure.Commands.Profile.Models",
+      "Name": "PSAzureSubscription",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "CurrentStorageAccountName": "System.String",
+        "State": "System.String",
+        "SubscriptionId": "System.String",
+        "SubscriptionName": "System.String",
+        "TenantId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
