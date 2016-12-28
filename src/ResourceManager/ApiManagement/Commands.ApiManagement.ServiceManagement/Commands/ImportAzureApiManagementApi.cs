@@ -81,17 +81,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             " Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl. Default value is $null.")]
         public String WsdlEndpointName { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "This parameter is optional with a default value of Http. " +
+                          "The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.")]
+        public PsApiManagementApiType? ApiType { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             ApiId = ApiId ?? Guid.NewGuid().ToString("N");
 
             if (ParameterSetName.Equals(FromLocalFile))
             {
-                Client.ApiImportFromFile(Context, ApiId, SpecificationFormat, SpecificationPath, Path, WsdlServiceName, WsdlEndpointName);
+                Client.ApiImportFromFile(Context, ApiId, SpecificationFormat, SpecificationPath, Path, WsdlServiceName, WsdlEndpointName, ApiType);
             }
             else if (ParameterSetName.Equals(FromUrl))
             {
-                Client.ApiImportFromUrl(Context, ApiId, SpecificationFormat, SpecificationUrl, Path, WsdlServiceName, WsdlEndpointName);
+                Client.ApiImportFromUrl(Context, ApiId, SpecificationFormat, SpecificationUrl, Path, WsdlServiceName, WsdlEndpointName, ApiType);
             }
             else
             {

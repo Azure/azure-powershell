@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Properties = new VaultProperties
                     {
                         Sku = new Sku
-                        {                            
+                        {
                             Name = parameters.SkuName,
                         },
                         EnabledForDeployment = parameters.EnabledForDeployment,

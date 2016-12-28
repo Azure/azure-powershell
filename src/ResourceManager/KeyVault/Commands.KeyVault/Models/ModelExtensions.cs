@@ -83,28 +83,28 @@ namespace Microsoft.Azure.Commands.KeyVault
             return str;
         }
 
-        public static string GetDisplayNameForADObject(Guid? id, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient)
         {
             string displayName = "";
             string upnOrSpn = "";
 
-            if (adClient == null || !id.HasValue || id.Value == Guid.Empty)
+            if (adClient == null || string.IsNullOrWhiteSpace(objectId))
                 return displayName;
 
             try
             {
-                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { id.ToString() }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
+                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
                 if (obj != null)
                 {
                     if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var user = adClient.Users.GetByObjectId(id.ToString()).ExecuteAsync().GetAwaiter().GetResult();
+                        var user = adClient.Users.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
                         displayName = user.DisplayName;
                         upnOrSpn = user.UserPrincipalName;
                     }
                     else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(id.ToString()).ExecuteAsync().GetAwaiter().GetResult();
+                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
                         displayName = servicePrincipal.AppDisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }
