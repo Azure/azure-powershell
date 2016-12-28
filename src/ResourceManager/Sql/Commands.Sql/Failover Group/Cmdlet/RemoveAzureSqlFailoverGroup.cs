@@ -1,0 +1,114 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
+{
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlFailoverGroup",
+        SupportsShouldProcess = true)]
+    public class RemoveAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
+    {
+        /// <summary>
+        /// Gets or sets the name of the FailoverGroup to remove.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "The name of the Azure SQL Failover Group to remove.")]
+        [ValidateNotNullOrEmpty]
+        public string FailoverGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the partner resource group name for Azure SQL Failover Group
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the partner server name for Azure SQL Failover Group
+        /// </summary>
+        [Parameter(Mandatory = true,
+            HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerServerName { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of rule removal confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Get the entities from the service
+        /// </summary>
+        /// <returns>The list of entities</returns>
+        protected override IEnumerable<AzureSqlFailoverGroupModel> GetEntity()
+        {
+            return new List<AzureSqlFailoverGroupModel>() {
+                ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName),
+            };
+        }
+
+        /// <summary>
+        /// No user input to apply to model
+        /// </summary>
+        /// <param name="model">Model retrieved from service</param>
+        /// <returns>The model that was passed in</returns>
+        protected override IEnumerable<AzureSqlFailoverGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlFailoverGroupModel> model)
+        {
+            List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
+            newEntity.Add(new AzureSqlFailoverGroupModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
+                PartnerServerName = PartnerServerName,
+            });
+            return newEntity;
+        }
+
+        /// <summary>
+        /// No changes to persist to server
+        /// </summary>
+        /// <param name="entity">The output of apply user input to model</param>
+        /// <returns>The input entity</returns>
+        protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
+        {
+            ModelAdapter.RemoveFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName);
+            return entity;
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (!Force.IsPresent && !ShouldProcess(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseFailoverGroupDescription, this.FailoverGroupName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupNameExists, this.FailoverGroupName, this.ServerName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            base.ExecuteCmdlet();
+        }
+    }
+}
