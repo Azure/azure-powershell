@@ -5734,8 +5734,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Guid",
-            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6065,8 +6065,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Guid",
-                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6398,8 +6398,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Guid",
-            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7010,8 +7010,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Guid",
-                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10872,7 +10872,7 @@
         "ApplicationId": "System.Nullable`1[System.Guid]",
         "ApplicationIdDisplayName": "System.String",
         "DisplayName": "System.String",
-        "ObjectId": "System.Guid",
+        "ObjectId": "System.String",
         "PermissionsToCertificates": "System.Collections.Generic.List`1[System.String]",
         "PermissionsToCertificatesStr": "System.String",
         "PermissionsToKeys": "System.Collections.Generic.List`1[System.String]",
@@ -10950,7 +10950,7 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Management.KeyVault.Models.AccessPolicyEntry, Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ApplicationId": "System.Nullable`1[System.Guid]",
-        "ObjectId": "System.Guid",
+        "ObjectId": "System.String",
         "Permissions": "Microsoft.Azure.Management.KeyVault.Models.Permissions",
         "TenantId": "System.Guid"
       },
