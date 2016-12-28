@@ -214,7 +214,6 @@ function Test-DisablingThreatDetection
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
 
-
         # 2. Test
         Remove-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
 		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
@@ -222,13 +221,12 @@ function Test-DisablingThreatDetection
         # Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 
-
         # 3. Test - that no exception is thrown
         Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
         Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
         Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
 		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-     }
+    }
 	finally
 	{
 		# Cleanup
