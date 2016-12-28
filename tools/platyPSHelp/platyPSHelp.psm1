@@ -491,7 +491,7 @@ function Validate-ServiceMarkdownHelp
                             $fileErrors += "-- No examples found"
                         }
                     }
-                    "*{*}*"
+                    "*@{Text=}*"
                     {
                         # This case occurs when there is no description provided for a parameter
                         $parameter = $content[$idx-1].Substring(5)

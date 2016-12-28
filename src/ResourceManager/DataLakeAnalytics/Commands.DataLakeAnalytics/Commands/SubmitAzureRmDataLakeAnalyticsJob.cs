@@ -213,14 +213,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
 
             var jobInfo = new JobInformation
-            {
-                JobId = DataLakeAnalyticsClient.JobIdQueue.Count == 0 ? Guid.NewGuid() : DataLakeAnalyticsClient.JobIdQueue.Dequeue(),
-                Name = Name,
-                Properties = properties,
-                Type = jobType,
-                DegreeOfParallelism = DegreeOfParallelism,
-                Priority = Priority
-            };
+            (
+                jobId: DataLakeAnalyticsClient.JobIdQueue.Count == 0 ? Guid.NewGuid() : DataLakeAnalyticsClient.JobIdQueue.Dequeue(),
+                name: Name,
+                properties: properties,
+                type: jobType,
+                degreeOfParallelism: DegreeOfParallelism,
+                priority: Priority
+            );
 
             WriteObject(CompileOnly
                 ? DataLakeAnalyticsClient.BuildJob(Account, jobInfo)

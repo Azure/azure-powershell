@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.DataDisk),
+        ProfileNouns.DataDisk,
+        SupportsShouldProcess = true),
     OutputType(
         typeof(PSVirtualMachine))]
     public class RemoveAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -48,22 +49,35 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VM.StorageProfile;
-
-            if (storageProfile != null && storageProfile.DataDisks != null)
+            if (this.ShouldProcess("DataDisk", VerbsCommon.Remove))
             {
-                var disks = storageProfile.DataDisks.ToList();
-                var comp = StringComparison.OrdinalIgnoreCase;
-                foreach (var diskName in DataDiskNames)
+                WriteWarning("Breaking change notice: In upcoming release, DataDiskNames parameter will no longer support pipeline.  This parameter will be optional.  All data disks will be removed from a given VM object if a user does not give this parameter.");
+
+                var storageProfile = this.VM.StorageProfile;
+
+                if (storageProfile != null && storageProfile.DataDisks != null)
                 {
-                    disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                    var disks = storageProfile.DataDisks.ToList();
+                    var comp = StringComparison.OrdinalIgnoreCase;
+
+                    if (DataDiskNames == null)
+                    {
+                        disks.Clear();
+                    }
+                    else
+                    {
+                        foreach (var diskName in DataDiskNames)
+                        {
+                            disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                        }
+                    }
+                    storageProfile.DataDisks = disks;
                 }
-                storageProfile.DataDisks = disks;
+
+                this.VM.StorageProfile = storageProfile;
+
+                WriteObject(this.VM);
             }
-
-            this.VM.StorageProfile = storageProfile;
-
-            WriteObject(this.VM);
         }
     }
 }

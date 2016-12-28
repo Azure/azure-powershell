@@ -242,11 +242,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ServerAuditingTypeMigration");
         }
 
-        [Fact (Skip = "Waiting backend validation")]
+        [Fact(Skip = "Waiting backend validation")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetServerAndDatabaseAuditingInUkRegion()
+        {
+            RunPowerShellTest("Test-GetServerAndDatabaseAuditingInUkRegion");
         }
     }
 }
