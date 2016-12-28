@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "ASRVaultBackupProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ASRVaultBackupProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ASRVaultBackupProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupStorageRedundancy": "System.String"
             },
@@ -33,7 +33,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ID": "System.String",
               "Location": "System.String",
@@ -61,7 +61,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -101,7 +101,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -206,7 +206,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "VaultSettingsFilePath",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.VaultSettingsFilePath, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.VaultSettingsFilePath, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FilePath": "System.String"
             },
@@ -225,7 +225,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ID": "System.String",
               "Location": "System.String",
@@ -323,7 +323,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -436,7 +436,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -509,7 +509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -582,7 +582,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -768,7 +768,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ID": "System.String",
               "Location": "System.String",
@@ -796,7 +796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -839,7 +839,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ID": "System.String",
               "Location": "System.String",
@@ -861,7 +861,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -883,7 +883,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -911,7 +911,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -948,7 +948,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ID": "System.String",
               "Location": "System.String",
@@ -976,7 +976,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ID": "System.String",
                     "Location": "System.String",
@@ -1119,7 +1119,7 @@
     "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "ARSVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ProvisioningState": "System.String"
       },
@@ -1129,7 +1129,7 @@
     "Microsoft.Azure.Commands.RecoveryServices.ARSVault": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "ARSVault",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ID": "System.String",
         "Location": "System.String",
@@ -1145,7 +1145,7 @@
     "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "AzureRmRecoveryServicesBackupStorageRedundancyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
