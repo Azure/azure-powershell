@@ -12,7 +12,7 @@
     <RootNamespace>StaticAnalysis.Test</RootNamespace>
     <AssemblyName>StaticAnalysis.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-	  <RestorePackages>true</RestorePackages>
+    <RestorePackages>true</RestorePackages>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>ba98ab34</NuGetPackageImportStamp>
     <TestCmdletModuleAssemblyName>TestCmdletsModule</TestCmdletModuleAssemblyName>
@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(AfterBuild)' != 'true'">
+    <Compile Include="BreakingChangeAnalyzerTests.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="MatchingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +81,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(AfterBuild)' == 'true' OR '$(BuildingInsideVisualStudio)' == 'true'">
     <Compile Include="TestCmdlets\SignatureVerifier_Cmdlet.cs" />
+    <Compile Include="TestCmdlets\BreakingChangeAnalyzer_Cmdlet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
