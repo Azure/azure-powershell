@@ -598,7 +598,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             NameUtil.ValidateContainerName(destContainer.Name);
             NameUtil.ValidateBlobName(destBlobName);
 
-            await this.StartCopyFromUri(taskId, destChannel, uri, destContainer.GetBlockBlobReference(destBlobName));
+            CloudBlob sourceBlob = new CloudBlob(uri);
+            BlobType destBlobType = BlobType.BlockBlob;
+            try
+            {
+                await sourceBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+
+                //When the source Uri is a file Uri, will get BlobType.Unspecified, and should use block blob in destination
+                if (sourceBlob.BlobType != BlobType.Unspecified)
+                    destBlobType = sourceBlob.BlobType;
+            }
+            catch (StorageException)
+            {
+                //use block blob by default
+                destBlobType = BlobType.BlockBlob;
+            }
+            CloudBlob destBlob = GetDestBlob(destChannel, destContainer.Name, destBlobName, destBlobType);
+
+            await this.StartCopyFromUri(taskId, destChannel, uri, destBlob);
         }
 
         /// <summary>
