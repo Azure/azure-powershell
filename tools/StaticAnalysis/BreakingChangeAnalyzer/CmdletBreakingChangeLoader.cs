@@ -107,18 +107,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                         foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
                         {
-                            ParameterSetMetadata parameterSetMetadata = new ParameterSetMetadata()
-                            {
-                                Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
-                            };
+                            var parameterSetMetadata = cmdletMetadata.ParameterSets.FirstOrDefault(s => s.Name.Equals(parameterSet.ParameterSetName));
 
-                            foreach (var set in cmdletMetadata.ParameterSets)
+                            if (parameterSetMetadata == null)
                             {
-                                if (set.Name.Equals(parameterSet.ParameterSetName))
+                                parameterSetMetadata = new ParameterSetMetadata()
                                 {
-                                    parameterSetMetadata = set;
-                                    break;
-                                }
+                                    Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
+                                };
                             }
 
                             Parameter param = new Parameter
