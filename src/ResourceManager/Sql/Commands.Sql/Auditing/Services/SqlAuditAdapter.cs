@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             DatabaseAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId, out policy);
             var dbPolicyModel = ModelizeDatabaseAuditPolicy(policy);
-
+            dbPolicyModel.AuditType = AuditType.Table;
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;
             dbPolicyModel.DatabaseName = databaseName;
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             BlobAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId, out policy);
             var dbPolicyModel = ModelizeDatabaseAuditPolicy(policy);
-
+            dbPolicyModel.AuditType = AuditType.Blob;
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;
             dbPolicyModel.DatabaseName = databaseName;
@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             ServerAuditingPolicy policy;
             Communicator.GetServerAuditingPolicy(resourceGroup, serverName, requestId, out policy);
             var serverPolicyModel = ModelizeServerAuditPolicy(policy);
+            serverPolicyModel.AuditType = AuditType.Table;
             serverPolicyModel.ResourceGroupName = resourceGroup;
             serverPolicyModel.ServerName = serverName;
 
@@ -164,6 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             BlobAuditingPolicy policy;
             Communicator.GetServerAuditingPolicy(resourceGroup, serverName, requestId, out policy);
             var serverPolicyModel = ModelizeServerAuditPolicy(policy);
+            serverPolicyModel.AuditType = AuditType.Blob;
             serverPolicyModel.ResourceGroupName = resourceGroup;
             serverPolicyModel.ServerName = serverName;
 
@@ -429,7 +431,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var properties = new BlobAuditingProperties();
             updateParameters.Properties = properties;
             properties.State = model.AuditState.ToString();
-            if (!IgnoreStorage)
+            if (!IgnoreStorage && (model.AuditState == AuditStateType.Enabled))
             {
                 properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
                 properties.StorageAccountAccessKey = ExtractStorageAccountKey(model.StorageAccountName);
