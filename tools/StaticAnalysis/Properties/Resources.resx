@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddedValidateNotNullOrEmptyDescription" xml:space="preserve">
+    <value>The ValidateNotNullOrEmpty attribute has been added to parameter '{0}' for cmdlet '{1}'.</value>
+  </data>
+  <data name="AddedValidateNotNullOrEmptyRemediation" xml:space="preserve">
+    <value>Remove the ValidateNotNullOrEmpty attribute from parameter '{0}'.</value>
+  </data>
+  <data name="AddedValidateSetDescription" xml:space="preserve">
+    <value>A validate set has been added for parameter '{0}' for cmdlet '{1}'.</value>
+  </data>
+  <data name="AddedValidateSetRemediation" xml:space="preserve">
+    <value>Remove the validate set from parameter '{0}'.</value>
+  </data>
+  <data name="ChangeDefaultParameterDescription" xml:space="preserve">
+    <value>The parameter set '{0}' for cmdlet '{1}' is no longer the default parameter set.</value>
+  </data>
+  <data name="ChangeDefaultParameterRemediation" xml:space="preserve">
+    <value>Change the default parameter for cmdlet '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedElementTypeDescription" xml:space="preserve">
+    <value>The element type for property '{0}' has been changed from '{1}' to '{2}'.</value>
+  </data>
+  <data name="ChangedElementTypeRemediation" xml:space="preserve">
+    <value>Change the element type for property '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedGenericTypeArgumentDescription" xml:space="preserve">
+    <value>The generic type argument for property '{0}' has been changed from '{1}' to '{2}'.</value>
+  </data>
+  <data name="ChangedGenericTypeArgumentRemediation" xml:space="preserve">
+    <value>Change the generic type argument for property '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedGenericTypeDescription" xml:space="preserve">
+    <value>The generic type for property '{0}' has been changed from '{1}' to '{2}'. </value>
+  </data>
+  <data name="ChangedGenericTypeRemediation" xml:space="preserve">
+    <value>Change the generic type for property '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedOutputElementTypeDescription" xml:space="preserve">
+    <value>The element type for the output has been changed from '{0}' to '{1}'.</value>
+  </data>
+  <data name="ChangedOutputElementTypeRemediation" xml:space="preserve">
+    <value>Change the element type for the output back to '{0}'.</value>
+  </data>
+  <data name="ChangedOutputGenericTypeArgumentDescription" xml:space="preserve">
+    <value>The generic type argument for the output has been changed from '{0}' to '{1}'.</value>
+  </data>
+  <data name="ChangedOutputGenericTypeArgumentRemediation" xml:space="preserve">
+    <value>Change the generic type argument for the output back to '{0}'.</value>
+  </data>
+  <data name="ChangedOutputGenericTypeDescription" xml:space="preserve">
+    <value>The generic type for the output has been changed from '{0}' to '{1}'.</value>
+  </data>
+  <data name="ChangedOutputGenericTypeRemediation" xml:space="preserve">
+    <value>Change the generic type for the output back to '{0}'.</value>
+  </data>
+  <data name="ChangedOutputTypeDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer has output type '{1}'.</value>
+  </data>
+  <data name="ChangedOutputTypeRemediation" xml:space="preserve">
+    <value>Make cmdlet '{0}' return type '{1}'.</value>
+  </data>
+  <data name="ChangedParameterElementTypeDescription" xml:space="preserve">
+    <value>The element type for parameter '{0}' has been changed from '{1}' to '{2}'.</value>
+  </data>
+  <data name="ChangedParameterElementTypeRemediation" xml:space="preserve">
+    <value>Change the element type for parameter '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedParameterGenericTypeArgumentDescription" xml:space="preserve">
+    <value>The generic type argument for parameter '{0}' has been changed from '{1}' to '{2}'.</value>
+  </data>
+  <data name="ChangedParameterGenericTypeArgumentRemediation" xml:space="preserve">
+    <value>Change the generic type argument for parameter '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedParameterGenericTypeDescription" xml:space="preserve">
+    <value>The generic type for parameter '{0}' has been changed from '{1}' to '{2}'.</value>
+  </data>
+  <data name="ChangedParameterGenericTypeRemediation" xml:space="preserve">
+    <value>Change the generic type for parameter '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedParameterTypeDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer supports the type '{1}' for parameter '{2}'.</value>
+  </data>
+  <data name="ChangedParameterTypeRemediation" xml:space="preserve">
+    <value>Change the type for parameter '{0}' back to '{1}'.</value>
+  </data>
+  <data name="ChangedPropertyTypeDescription" xml:space="preserve">
+    <value>The type of property '{0}' of type '{1}' has changed from '{2}' to '{3}'.</value>
+  </data>
+  <data name="ChangedPropertyTypeRemediation" xml:space="preserve">
+    <value>Change the type of property '{0}' back to '{1}'.</value>
+  </data>
+  <data name="DifferentGenericTypeArgumentSizeDescription" xml:space="preserve">
+    <value>The number of arguments for generic type '{0}' for property '{1}' has been changed from '{2}' to '{3}'.</value>
+  </data>
+  <data name="DifferentGenericTypeArgumentSizeRemediation" xml:space="preserve">
+    <value>Change the number of arguments for generic type '{0}' back to '{1}'.</value>
+  </data>
+  <data name="DifferentOutputGenericTypeArgumentSizeDescription" xml:space="preserve">
+    <value>The number of arguments for generic type '{0}' for the output has been changed from '{1}' to '{2}'.</value>
+  </data>
+  <data name="DifferentOutputGenericTypeArgumentSizeRemediation" xml:space="preserve">
+    <value>Change the number of arguments for generic type '{0}' back to '{1}'.</value>
+  </data>
+  <data name="DifferentParameterGenericTypeArgumentSizeDescription" xml:space="preserve">
+    <value>The number of arguments for generic type '{0}' for parameter '{1}' has been changed from '{2}' to '{3}'.</value>
+  </data>
+  <data name="DifferentParameterGenericTypeArgumentSizeRemediation" xml:space="preserve">
+    <value>Change the number of arguments for generic type '{0}' back to '{1}'.</value>
+  </data>
+  <data name="MandatoryParameterDescription" xml:space="preserve">
+    <value>The parameter '{0}' is no longer optional for the parameter set '{1}' for cmdlet '{2}'.</value>
+  </data>
+  <data name="MandatoryParameterRemediation" xml:space="preserve">
+    <value>Make '{0}' optional for the parameter set '{1}'.</value>
+  </data>
+  <data name="PositionChangeDescription" xml:space="preserve">
+    <value>The position of parameter '{0}' has changed for parameter set '{1}' for cmdlet '{2}'.</value>
+  </data>
+  <data name="PositionChangeRemediation" xml:space="preserve">
+    <value>Revert the position change made to parameter '{0}' for parameter set '{1}'.</value>
+  </data>
+  <data name="RemovedCmdletAliasDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer supports the alias '{1}'.</value>
+  </data>
+  <data name="RemovedCmdletAliasRemediation" xml:space="preserve">
+    <value>Add the alias '{0} back to the cmdlet '{1}'.</value>
+  </data>
+  <data name="RemovedCmdletDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' has been removed and no alias was found for the original cmdlet name.</value>
+  </data>
+  <data name="RemovedCmdletRemediation" xml:space="preserve">
+    <value>Add the cmdlet '{0}' back to the module, or add an alias to the original cmdlet name.</value>
+  </data>
+  <data name="RemovedPagingDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer implements SupportsPaging.</value>
+  </data>
+  <data name="RemovedPagingRemediation" xml:space="preserve">
+    <value>Make sure the cmdlet '{0}' implements SupportsPaging.</value>
+  </data>
+  <data name="RemovedParameterAliasDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer supports the alias '{1}' for parameter '{2}'.</value>
+  </data>
+  <data name="RemovedParameterAliasRemediation" xml:space="preserve">
+    <value>Add the alias '{0}' back to parameter '{1}'.</value>
+  </data>
+  <data name="RemovedParameterDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer supports the parameter '{1}' and no alias was found for the original parameter name.</value>
+  </data>
+  <data name="RemovedParameterFromParameterSetDescription" xml:space="preserve">
+    <value>The parameter '{0}' in cmdlet '{1}' is no longer in the parameter set '{2}'.</value>
+  </data>
+  <data name="RemovedParameterFromParameterSetRemediation" xml:space="preserve">
+    <value>Add parameter '{0}' back to the parameter set '{1}'.</value>
+  </data>
+  <data name="RemovedParameterRemediation" xml:space="preserve">
+    <value>Add the parameter '{0}' back to the cmdlet '{1}', or add an alias to the original parameter name.</value>
+  </data>
+  <data name="RemovedParameterSetDescription" xml:space="preserve">
+    <value>The parameter set '{0}' for cmdlet '{1}' has been removed.</value>
+  </data>
+  <data name="RemovedParameterSetRemediation" xml:space="preserve">
+    <value>Add parameter set '{0}' back to cmdlet '{1}'.</value>
+  </data>
+  <data name="RemovedPropertyDescription" xml:space="preserve">
+    <value>The property '{0}' of type '{1}' has been removed.</value>
+  </data>
+  <data name="RemovedPropertyRemediation" xml:space="preserve">
+    <value>Add the property '{0}' back to type '{1}'.</value>
+  </data>
+  <data name="RemovedShouldProcessDescription" xml:space="preserve">
+    <value>The cmdlet '{0}' no longer implements SupportsShouldProcess.</value>
+  </data>
+  <data name="RemovedShouldProcessRemediation" xml:space="preserve">
+    <value>Make sure the cmdlet '{0}' implements SupportsShouldProcess.</value>
+  </data>
+  <data name="RemovedValidateSetValueDescription" xml:space="preserve">
+    <value>The validation set for parameter '{0}' for cmdlet '{1}' no longer contains the value '{2}'.</value>
+  </data>
+  <data name="RemovedValidateSetValueRemediation" xml:space="preserve">
+    <value>Add '{0}' back to the validation set for '{1}'.</value>
+  </data>
+  <data name="RemovedValueFromPipelineByPropertyNameDescription" xml:space="preserve">
+    <value>The parameter '{0}' in parameter set '{1}' for cmdlet '{2}' no longer has the attribute 'ValueFromPipelineByPropertyName'.</value>
+  </data>
+  <data name="RemovedValueFromPipelineByPropertyNameRemediation" xml:space="preserve">
+    <value>Add the attribute 'ValueFromPipelineByPropertyName' back to parameter '{0}' in parameter set '{1}'.</value>
+  </data>
+  <data name="RemovedValueFromPipelineDescription" xml:space="preserve">
+    <value>The parameter '{0}' in parameter set '{1}' for cmdlet '{2}' no longer has the attribute 'ValueFromPipeline'.</value>
+  </data>
+  <data name="RemovedValueFromPipelineRemediation" xml:space="preserve">
+    <value>Add the attribute 'ValueFromPipeline' back to parameter '{0}' in parameter set '{1}'.</value>
+  </data>
+</root>
