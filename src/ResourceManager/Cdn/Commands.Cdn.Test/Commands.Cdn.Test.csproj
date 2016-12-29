@@ -204,6 +204,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.SubscriptionTests\TestSubscriptionGetResourceUsage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.SubscriptionTests\TestSubscriptionEdgeNode.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
