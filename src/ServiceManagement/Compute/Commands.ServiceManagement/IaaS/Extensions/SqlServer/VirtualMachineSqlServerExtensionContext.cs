@@ -52,5 +52,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// Resource extension substatus list
         /// </summary>
         public IList<NSM.ResourceExtensionSubStatus> SubStatusList { get; set; }
+
+        /// <summary>
+        /// Extension status
+        /// </summary>
+        public string ExtensionStatus { get; set; }
     }
 }
