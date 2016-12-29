@@ -561,6 +561,10 @@
                 <PropertyName>ExtensionName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ExtensionStatus</Label>
+                <PropertyName>ExtensionStatus</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Publisher</Label>
                 <PropertyName>Publisher</PropertyName>
               </ListItem>
@@ -587,6 +591,10 @@
               <ListItem>
                 <Label>KeyVaultCredentialSettings</Label>
                 <PropertyName>KeyVaultCredentialSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AutoTelemetrySettings</Label>
+                <PropertyName>AutoTelemetrySettings</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -121,6 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 if (null != res.ExtensionSettingStatus)
                 {
                     context.SubStatusList = res.ExtensionSettingStatus.SubStatusList;
+                    context.ExtensionStatus = res.Status;
 
                     // Gather status messages because
                     // #$ISSUE- extension.Statuses is always null, follow up with Azure team
