@@ -18,11 +18,11 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
-    public class ProfileTests
+    public class SubscriptionTests
     {
         private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
 
-        public ProfileTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
@@ -30,37 +30,16 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestProfileCrud()
+        public void TestSubscriptionGetResourceUsage()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileCrud");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SubscriptionGetResourceUsage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestProfileCrudWithPiping()
+        public void TestSubscriptionEdgeNode()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDeleteAndSsoWithPiping");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestProfilePipeline()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfilePipeline");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestProfileDeleteWithEndpoints()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDeleteWithEndpoints");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestProfileGetResourceUsage()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetResourceUsages");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SubscriptionEdgeNode");
         }
     }
 }
