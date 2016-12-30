@@ -57,7 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.2.0.0\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.3.0.0-preview\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -147,6 +147,9 @@
     <None Include="ScenarioTests\ProfileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\SubscriptionTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.CustomDomainTests\TestCustomDomainGetRemoveWithRunningEndpoint.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -192,6 +195,18 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.ProfileTests\TestProfilePipeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.ProfileTests\TestProfileGetResourceUsage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.EndpointTests\TestEndpointResourceUsage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.SubscriptionTests\TestSubscriptionGetResourceUsage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.SubscriptionTests\TestSubscriptionEdgeNode.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
@@ -228,6 +243,7 @@
     <Compile Include="ScenarioTests\EndpointTests.cs" />
     <Compile Include="ScenarioTests\OriginTests.cs" />
     <Compile Include="ScenarioTests\ProfileTests.cs" />
+    <Compile Include="ScenarioTests\SubscriptionTests.cs" />
     <Compile Include="ScenarioTests\TestController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
