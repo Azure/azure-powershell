@@ -39,26 +39,12 @@ EventType          : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Succe
 AuditState         : New
 RetentionInDays    : 0
 TableIdentifier    : Server01Database01
+AuditType          : Table
 ```
 
 This command gets the auditing policy of database Database01 located in Server01 in resource group ResourceGroup01.
 
 ## PARAMETERS
-
-### -ServerName
-Specifies the name of the server where the database is located.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 Specifies the name of the database.
@@ -70,21 +56,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group to which the database is assigned.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -126,6 +97,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group to which the database is assigned.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server where the database is located.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
