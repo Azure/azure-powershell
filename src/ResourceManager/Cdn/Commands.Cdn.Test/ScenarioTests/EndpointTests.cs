@@ -69,5 +69,12 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointGeoFilters");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointResourceUsage()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointResourceUsage");
+        }
     }
 }
