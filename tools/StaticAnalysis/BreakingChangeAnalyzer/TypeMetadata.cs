@@ -38,6 +38,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             return new TypeMetadata(typeToProcess);
         }
 
+        public TypeMetadata()
+        {
+            
+        }
+
         public TypeMetadata(Type inputType)
         {
             Namespace = inputType.Namespace;

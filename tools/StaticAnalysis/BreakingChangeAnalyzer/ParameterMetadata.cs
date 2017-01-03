@@ -47,6 +47,18 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public List<string> ValidateSet { get { return _validateSet; } }
 
         /// <summary>
+        /// If the parameter implements ValidateRange, specifies the minimum value
+        /// in the range; otherwise, the value is null
+        /// </summary>
+        public int? ValidateRangeMin { get; set; }
+
+        /// <summary>
+        /// If the parameter implements ValidateRange, specifies the maximum value
+        /// in the range; otherwise, the value is null
+        /// </summary>
+        public int? ValidateRangeMax { get; set; }
+
+        /// <summary>
         /// Specifies if the parameter has the ValidateNotNullOrEmpty attribute
         /// </summary>
         public bool ValidateNotNullOrEmpty { get; set; }
