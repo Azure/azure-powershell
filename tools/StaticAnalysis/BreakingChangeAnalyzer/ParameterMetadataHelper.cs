@@ -222,6 +222,65 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         }
 
         /// <summary>
+        /// Check if the parameter gained a validation range for values, or if the
+        /// existing validation range for values excludes values previously accepted.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet whose parameter metadata is currently being checked.</param>
+        /// <param name="oldParameter">The parameter metadata from the old (serialized) assembly.</param>
+        /// <param name="newParameter">The parameter metadata from new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of the issues found.</param>
+        private void CheckParameterValidateRange(
+            CmdletBreakingChangeMetadata cmdlet,
+            ParameterMetadata oldParameter,
+            ParameterMetadata newParameter,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            if (newParameter.ValidateRangeMin != null && newParameter.ValidateRangeMax != null)
+            {
+                // If the old parameter had no validation range, but the new parameter does, log an issue
+                if (oldParameter.ValidateRangeMin == null && oldParameter.ValidateRangeMax == null)
+                {
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: cmdlet,
+                        severity: 0,
+                        problemId: ProblemIds.BreakingChangeProblemId.AddedValidateRange ,
+                        description: string.Format(Properties.Resources.AddedValidateRangeDescription,
+                            oldParameter.Name, cmdlet.Name),
+                        remediation: string.Format(Properties.Resources.AddedValidateRangeRemediation,
+                            oldParameter.Name));
+                }
+                else
+                {
+                    // If the minimum value of the range has increased, log an issue
+                    if (oldParameter.ValidateRangeMin < newParameter.ValidateRangeMin)
+                    {
+                        issueLogger.LogBreakingChangeIssue(
+                            cmdlet: cmdlet,
+                            severity: 0,
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMinimum,
+                            description: string.Format(Properties.Resources.ChangedValidateRangeMinimumDescription,
+                                oldParameter.Name, oldParameter.ValidateRangeMin, newParameter.ValidateRangeMin),
+                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMinimumRemediation,
+                                oldParameter.Name, oldParameter.ValidateRangeMin));
+                    }
+
+                    // If the maximum value of the range has decreased, log an issue
+                    if (oldParameter.ValidateRangeMax > newParameter.ValidateRangeMax)
+                    {
+                        issueLogger.LogBreakingChangeIssue(
+                            cmdlet: cmdlet,
+                            severity: 0,
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMaximum,
+                            description: string.Format(Properties.Resources.ChangedValidateRangeMaximumDescription,
+                                oldParameter.Name, oldParameter.ValidateRangeMax, newParameter.ValidateRangeMax),
+                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMaximumRemediation,
+                                oldParameter.Name, oldParameter.ValidateRangeMax));
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Check if the parameter now supports the ValidateNotNullOrEmpty attribute
         /// </summary>
         /// <param name="cmdlet">The cmdlet whose parameter metadata is currently being checked.</param>

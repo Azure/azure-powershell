@@ -101,6 +101,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             parameterData.ValidateSet.AddRange(validateSet.ValidValues);
                         }
 
+                        if (parameter.HasAttribute<ValidateRangeAttribute>())
+                        {
+                            var validateRange = parameter.GetAttribute<ValidateRangeAttribute>();
+                            parameterData.ValidateRangeMin = (int)validateRange.MinRange;
+                            parameterData.ValidateRangeMax = (int)validateRange.MaxRange;
+                        }
+
                         parameterData.ValidateNotNullOrEmpty = parameter.HasAttribute<ValidateNotNullOrEmptyAttribute>();                
 
                         cmdletMetadata.Parameters.Add(parameterData);
