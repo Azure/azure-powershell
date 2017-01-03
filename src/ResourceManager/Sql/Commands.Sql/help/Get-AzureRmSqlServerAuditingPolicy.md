@@ -25,21 +25,35 @@ This cmdlet returns a policy that is used by the Azure SQL databases that are bo
 
 ## EXAMPLES
 
-### Example 1: Get the auditing policy of an Azure SQL server
+### Example 1: Get the auditing policy of an Azure SQL server with Table auditing defined on it
 ```
 PS C:\>Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
-ResourceGroupName  : resourcegroup01
-ServerName         : server01
-StorageAccountName : 
-StorageKeyType     : Primary
-EventType          : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure...} 
-AuditState         : New
-RetentionInDays    : 0
-TableIdentifier    : Server01
-AuditType          : Table
+EventType              : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure...} 
+TableIdentifier        : MyAuditTableName
+FullAuditLogsTableName : SQLDBAuditLogsMyAuditTableName
+ResourceGroupName      : resourcegroup01
+ServerName             : server01
+AuditType              : Table
+AuditState             : Enabled
+StorageAccountName     : mystorage
+StorageKeyType         : Primary
+RetentionInDays        : 0
 ```
 
-This command gets the auditing policy of the server Server01 in resource group ResourceGroup01.
+### Example 2: Get the auditing policy of an Azure SQL server with Blob auditing defined on it
+```
+PS C:\>Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
+AuditActionGroup       : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                          BATCH_COMPLETED_GROUP, ...} 
+ResourceGroupName      : resourcegroup01
+ServerName             : server01
+AuditType              : Blob
+AuditState             : Enabled
+StorageAccountName     : mystorage
+StorageKeyType         : Primary
+RetentionInDays        : 0
+```
+
 
 ## PARAMETERS
 
