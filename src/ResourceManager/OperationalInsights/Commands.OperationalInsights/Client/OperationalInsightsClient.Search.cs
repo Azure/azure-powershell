@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 parameters.Highlight.Pre = psParameters.Highlight.Pre;
                 parameters.Highlight.Post = psParameters.Highlight.Post;
             }
-
-            parameters.Top = psParameters.Top.GetValueOrDefault(10);
+            
+            parameters.Top = psParameters.Top == 0 ? 10 : psParameters.Top;
             parameters.Query = psParameters.Query;
             parameters.Start = psParameters.Start;
             parameters.End = psParameters.End.GetValueOrDefault(DateTime.UtcNow);

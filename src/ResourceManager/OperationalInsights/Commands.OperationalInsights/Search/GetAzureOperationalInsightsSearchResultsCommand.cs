@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The maximum number of results to be returned, limited to 5000.")]
-        public long? Top { get; set; }
+        public long Top { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The pre highlight search parameter.")]
