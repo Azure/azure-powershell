@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSSearchGetSearchResultsParameters : OperationalInsightsParametersBase
     {
-        public long Top { get; set; }
+        public long? Top { get; set; }
         public long Skip { get; set; }
         public PSHighlight Highlight { get; set; }
         public bool IncludeArchive { get; set; }

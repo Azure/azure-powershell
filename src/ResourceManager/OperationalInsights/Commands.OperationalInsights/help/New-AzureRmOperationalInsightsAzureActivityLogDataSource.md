@@ -17,6 +17,7 @@ Collect Azure Activity log from given subscription.
 New-AzureRmOperationalInsightsAzureActivityLogDataSource [-ResourceGroupName] <String>
  [-WorkspaceName] <String> [-Name] <String> [-SubscriptionId] <String> [-BackfillStartTime <DateTimeOffset>]
  [-Force] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
@@ -24,6 +25,7 @@ New-AzureRmOperationalInsightsAzureActivityLogDataSource [-ResourceGroupName] <S
 New-AzureRmOperationalInsightsAzureActivityLogDataSource [-Workspace] <PSWorkspace> [-Name] <String>
  [-SubscriptionId] <String> [-BackfillStartTime <DateTimeOffset>] [-Force]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +43,6 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -SubscriptionId
-
-
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -56,8 +56,6 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
-
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -71,8 +69,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
-
 ```yaml
 Type: String
 Parameter Sets: ByWorkspaceName
@@ -86,8 +82,6 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-
-
 ```yaml
 Type: String
 Parameter Sets: ByWorkspaceName
@@ -101,8 +95,6 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-
-
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -155,8 +147,6 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-
-
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -185,8 +175,6 @@ Accept wildcard characters: False
 ```
 
 ### -Workspace
-
-
 ```yaml
 Type: PSWorkspace
 Parameter Sets: ByWorkspaceObject
@@ -213,6 +201,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

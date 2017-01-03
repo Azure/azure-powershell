@@ -222,7 +222,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchSetAndRemoveSavedSearches.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.StorageInsightTests\TestStorageInsightCreateFailsWithoutWorkspace.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.StorageInsightTests\TestStorageInsightCreateFailsNoWs.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.StorageInsightTests\TestStorageInsightCreateUpdateDelete.json">
