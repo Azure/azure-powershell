@@ -22,7 +22,6 @@ Get-AzureRmSqlDatabaseThreatDetectionPolicy [-ServerName] <String> [-DatabaseNam
 The **Get-AzureRmSqlDatabaseThreatDetectionPolicy** cmdlet gets the threat detection policy of an Azure SQL database.
 To use this cmdlet, specify the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database for which this cmdlet gets the policy.
 
-This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
 
@@ -32,31 +31,18 @@ PS C:\>Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName "ResourceG
 DatabaseName                 : Database01
 ResourceGroupName            : ResourceGroup11
 ServerName                   : Server01
-ThreatDetectionState         : Disabled
-NotificationRecipientsEmails : 
-EmailAdmins                  : False
+ThreatDetectionState         : Enabled
+NotificationRecipientsEmails : admin@myCompany.com
+StorageAccountName           : mystorage
+EmailAdmins                  : True
 ExcludedDetectionTypes       : {}
+RetentionInDays              : 0
 ```
 
 This command gets the threat detection policy for a database named Database01.
 The database is located on the server named Server01, which is assigned to the resource group ResourceGroup11.
 
 ## PARAMETERS
-
-### -ServerName
-Specifies the name of a server.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 Specifies the name of a database.
@@ -68,21 +54,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group to which the server is assigned.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -124,6 +95,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group to which the server is assigned.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of a server.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

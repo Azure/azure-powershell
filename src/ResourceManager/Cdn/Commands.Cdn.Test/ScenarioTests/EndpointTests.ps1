@@ -429,3 +429,31 @@ function Test-EndpointGeoFilters
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
+
+<#
+.SYNOPSIS
+Endpoint resource usage exercise
+#>
+function Test-EndpointResourceUsage
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName1 = getAssetName
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
+
+    $endpointResourceUsage = Get-AzureRmCdnEndpointResourceUsage -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-True {$endpointResourceUsage.Count -eq 2}
+    Assert-True {$endpointResourceUsage[0].CurrentValue -eq 0}
+    Assert-True {$endpointResourceUsage[1].CurrentValue -eq 0}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
