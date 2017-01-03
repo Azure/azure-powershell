@@ -25,52 +25,37 @@ This cmdlet returns a policy that is used by the Azure SQL databases that are bo
 
 ## EXAMPLES
 
-### Example 1: Get the auditing policy of an Azure SQL server
+### Example 1: Get the auditing policy of an Azure SQL server with Table auditing defined on it
 ```
 PS C:\>Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
-ResourceGroupName  : resourcegroup01
-ServerName         : server01
-StorageAccountName : 
-StorageKeyType     : Primary
-EventType          : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure...} 
-AuditState         : New
-RetentionInDays    : 0
-TableIdentifier    : Server01
+EventType              : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure...} 
+TableIdentifier        : MyAuditTableName
+FullAuditLogsTableName : SQLDBAuditLogsMyAuditTableName
+ResourceGroupName      : resourcegroup01
+ServerName             : server01
+AuditType              : Table
+AuditState             : Enabled
+StorageAccountName     : mystorage
+StorageKeyType         : Primary
+RetentionInDays        : 0
 ```
 
-This command gets the auditing policy of the server Server01 in resource group ResourceGroup01.
+### Example 2: Get the auditing policy of an Azure SQL server with Blob auditing defined on it
+```
+PS C:\>Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
+AuditActionGroup       : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                          BATCH_COMPLETED_GROUP, ...} 
+ResourceGroupName      : resourcegroup01
+ServerName             : server01
+AuditType              : Blob
+AuditState             : Enabled
+StorageAccountName     : mystorage
+StorageKeyType         : Primary
+RetentionInDays        : 0
+```
+
 
 ## PARAMETERS
-
-### -ServerName
-Specifies the name of the Azure SQL server for which this cmdlet gets the auditing policy.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group to which the Azure SQL server is assigned.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
@@ -108,6 +93,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group to which the Azure SQL server is assigned.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the Azure SQL server for which this cmdlet gets the auditing policy.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

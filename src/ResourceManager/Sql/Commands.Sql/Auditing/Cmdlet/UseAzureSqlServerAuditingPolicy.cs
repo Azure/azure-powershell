@@ -44,17 +44,39 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override AuditingPolicyModel ApplyUserInputToModel(AuditingPolicyModel baseModel)
         {
             base.ApplyUserInputToModel(baseModel);
-            if (AuditType == AuditType.Table)
-            {
-                DatabaseAuditingPolicyModel model = baseModel as DatabaseAuditingPolicyModel;
-                if (model.AuditState == AuditStateType.New)
-                {
-                    model.AuditState = AuditStateType.Enabled;
-                }
-                model.UseServerDefault = UseServerDefaultOptions.Enabled;
-                model.StorageAccountName = GetStorageAccountName();
-            }
+            AuditType = AuditType.Table;
+            ApplyUserInputToTableAuditingModel(baseModel as DatabaseAuditingPolicyModel);
             return baseModel;
+        }
+
+        private void ApplyUserInputToBlobAuditingModel(DatabaseBlobAuditingPolicyModel model)
+        {
+            model.AuditState = AuditStateType.Disabled;
+        }
+
+        private void ApplyUserInputToTableAuditingModel(DatabaseAuditingPolicyModel model)
+        {
+            if (model.AuditState == AuditStateType.New)
+            {
+                model.AuditState = AuditStateType.Enabled;
+            }
+            model.UseServerDefault = UseServerDefaultOptions.Enabled;
+            model.StorageAccountName = GetStorageAccountName();
+        }
+
+        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
+        {
+            base.PersistChanges(model);
+            Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
+            swapAuditType();
+            var otherAuditingTypePolicyModel = GetEntity();
+            if ((otherAuditingTypePolicyModel != null) && (otherAuditingTypePolicyModel.AuditType == AuditType.Blob))
+            {
+                ApplyUserInputToBlobAuditingModel(otherAuditingTypePolicyModel as DatabaseBlobAuditingPolicyModel);
+                base.PersistChanges(otherAuditingTypePolicyModel);
+            }
+            swapAuditType();
+            return model;
         }
 
         /// <summary>

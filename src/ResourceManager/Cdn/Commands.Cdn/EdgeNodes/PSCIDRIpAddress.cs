@@ -12,11 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
+namespace Microsoft.Azure.Commands.Cdn.EdgeNodes
 {
-    public enum AuditType
+    public class PSCIDRIpAddress
     {
-        Table,
-        Blob
+        /// <summary>
+        /// The base ip address
+        /// </summary>
+        public string BaseIpAddress { get; set; }
+
+        /// <summary>
+        /// The prefix length
+        /// </summary>
+        public int PrefixLength { get; set; }
     }
 }

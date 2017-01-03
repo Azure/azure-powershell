@@ -151,6 +151,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         private static bool ModelizeThreatDetectionEmailAdmins(string emailAccountAdminsState)
         {
+            if (string.IsNullOrEmpty(emailAccountAdminsState))
+            {
+                return false;
+            }
+
             return emailAccountAdminsState.Equals(ThreatDetectionStateType.Enabled.ToString(), StringComparison.InvariantCulture);
         }
 
