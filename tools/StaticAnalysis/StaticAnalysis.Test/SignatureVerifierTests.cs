@@ -220,5 +220,47 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.CmdletWithPluralNoun)).SingleOrDefault<int>().Equals(SignatureProblemId.CmdletWithPluralNoun));
         }
         #endregion
+
+        #region ParameterWithPluralNoun
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParameterWithSingularNoun()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-SampleFoo", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParameterWithPluralNoun()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-SampleBar", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ParameterWithPluralNoun)).SingleOrDefault<int>().Equals(SignatureProblemId.ParameterWithPluralNoun));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CmdletAndParameterWithSingularNounInList()
+        {
+            cmdletSignatureVerifier.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Get-SampleValue", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
+            Assert.Equal(0, testReport.ProblemIdList.Count);
+        }
+        #endregion
     }
 }
