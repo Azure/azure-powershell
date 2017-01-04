@@ -18,7 +18,7 @@ Set-AzureKeyVaultKeyAttribute [-VaultName] <String> [-Name] <String> [[-Version]
 ```
 
 ## DESCRIPTION
-The Set-AzureKeyVaultKeyAttribute cmdlet updates the editable attributes of a key in a key vault.
+The **Set-AzureKeyVaultKeyAttribute** cmdlet updates the editable attributes of a key in a key vault.
 
 ## EXAMPLES
 
@@ -29,10 +29,10 @@ PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = null}
 PS C:\> Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tags $Tags -PassThru
 ```
 
-The first command creates a DateTime object by using the Get-Date cmdlet.
+The first command creates a **DateTime** object by using the **Get-Date** cmdlet.
 That object specifies a time two years in the future.
 The command stores that date in the $Expires variable.
-For more information, type Get-Help Get-Date.
+For more information, type `Get-Help Get-Date`.
 
 The second command creates a variable to store tag values of high severity and Accounting.
 
@@ -67,10 +67,10 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates.
+Specifies the expiration time, as a **DateTime** object, for the key that this cmdlet updates.
 This parameter uses Coordinated Universal Time (UTC).
-To obtain a DateTime object, use the Get-Date cmdlet.
-For more information, type Get-Help Get-Date.
+To obtain a **DateTime** object, use the **Get-Date** cmdlet.
+For more information, type `Get-Help Get-Date`.
 
 ```yaml
 Type: DateTime
@@ -91,14 +91,14 @@ If you do not specify this parameter, all operations can be performed.
 The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key specification.
 These values (case-sensitive) are: 
 
--- encrypt 
--- decrypt 
--- wrap 
--- unwrap 
--- sign 
--- verify
--- backup
--- restore
+- encrypt
+- decrypt
+- wrap
+- unwrap
+- sign
+- verify
+- backup
+- restore
 
 ```yaml
 Type: String[]
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 ```
 
 ### -NotBefore
-Specifies the time, as a DateTime object, before which the key cannot be used.
+Specifies the time, as a **DateTime** object, before which the key cannot be used.
 This parameter uses UTC.
-To obtain a DateTime object, use the Get-Date cmdlet.
+To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 
 ```yaml
 Type: DateTime
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable represents key tags.
+Specifies a hash table that contains certificate tags.
 If not specified, the existings tags of the key remain unchanged.
 
 ```yaml
@@ -255,9 +255,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey]()
+[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey]()
+[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey]()
+[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
 

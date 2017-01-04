@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
 online version: http://go.microsoft.com/fwlink/?LinkID=690161
 schema: 2.0.0
 ---
@@ -27,7 +28,7 @@ Get-AzureRmKeyVault [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmKeyVault cmdlet gets information about the key vaults in a subscription.
+The **Get-AzureRmKeyVault** cmdlet gets information about the key vaults in a subscription.
 You can view all key vaults instances in a subscription, or filter your results by a resource group or a particular key vault.
 
 Note that although specifying the resource group is optional for this cmdlet when you get a single key vault, you should do so for better performance.
@@ -126,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmKeyVault]()
+[New-AzureRmKeyVault](./New-AzureRmKeyVault.md)
 
-[Remove-AzureRmKeyVault]()
+[Remove-AzureRmKeyVault](./Remove-AzureRmKeyVault.md)
 

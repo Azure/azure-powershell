@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 2D3021B3-12C5-4797-8BF2-800E3CEAC56C
 online version: 
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Add-AzureKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <Strin
 ```
 
 ## DESCRIPTION
-The Add-AzureKeyVaultCertificateContact cmdlet adds a contact for a key vault for certificate notifications in Azure Key Vault.
+The **Add-AzureKeyVaultCertificateContact** cmdlet adds a contact for a key vault for certificate notifications in Azure Key Vault.
 The contact receives updates about events such as certificate close to expiry, certificate renewed, and so on.
 These events are determined by the certificate policy.
 
@@ -28,7 +29,7 @@ These events are determined by the certificate policy.
 PS C:\>Add-AzureKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
 ```
 
-This command adds Patti Fuller as a certificate contact for the ContosoKV01 key vault and returns the KeyVaultCertificateContact object.
+This command adds Patti Fuller as a certificate contact for the ContosoKV01 key vault and returns the **KeyVaultCertificateContact** object.
 
 ## PARAMETERS
 
@@ -122,7 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateContact]()
+[Get-AzureKeyVaultCertificateContact](./Get-AzureKeyVaultCertificateContact.md)
 
-[Remove-AzureKeyVaultCertificateContact]()
+[Remove-AzureKeyVaultCertificateContact](./Remove-AzureKeyVaultCertificateContact.md)
 

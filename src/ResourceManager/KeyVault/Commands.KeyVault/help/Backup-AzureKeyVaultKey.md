@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: A82392AA-B12B-443E-8704-7CF5A9F8ED58
 online version: http://go.microsoft.com/fwlink/?LinkId=690296
 schema: 2.0.0
 ---
@@ -17,17 +18,17 @@ Backup-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-OutputFile] <S
 ```
 
 ## DESCRIPTION
-The Backup-AzureKeyVaultKey cmdlet backs up a specified key in a key vault by downloading it and storing it in a file.
+The **Backup-AzureKeyVaultKey** cmdlet backs up a specified key in a key vault by downloading it and storing it in a file.
 If there are multiple versions of the key, all versions are included in the backup.
 Because the downloaded content is encrypted, it cannot be used outside of Azure Key Vault.
 You can restore a backed-up key to any key vault in the subscription that it was backed up from.
 
 Typical reasons to use this cmdlet are: 
 
--- You want to escrow a copy of your key, so that you have an offline copy in case you accidentally delete your key in your key vault.
+- You want to escrow a copy of your key, so that you have an offline copy in case you accidentally delete your key in your key vault.
  
--- You created a key using Key Vault and now want to clone the key into a different Azure region, so that you can use it from all instances of your distributed application.
-Use the Backup-AzureKeyVaultKey cmdlet to retrieve the key in encrypted format and then use the Restore-AzureKeyVaultKey cmdlet and specify a key vault in the second region.
+- You created a key using Key Vault and now want to clone the key into a different Azure region, so that you can use it from all instances of your distributed application.
+Use the **Backup-AzureKeyVaultKey** cmdlet to retrieve the key in encrypted format and then use the Restore-AzureKeyVaultKey cmdlet and specify a key vault in the second region.
 
 ## EXAMPLES
 
@@ -136,11 +137,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey]()
+[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey]()
+[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey]()
+[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
 
-[Restore-AzureKeyVaultKey]()
+[Restore-AzureKeyVaultKey](./Restore-AzureKeyVaultKey.md)
 
