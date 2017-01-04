@@ -387,97 +387,88 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             CancellationToken cmdletCancellationToken, int threadCount = 10, bool overwrite = false, bool resume = false,
             bool isBinary = false, bool isDownload = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
         {
-            var previousTracing = ServiceClientTracing.IsEnabled;
+            // Service client tracing is enabled, however issue: https://github.com/Azure/azure-powershell/issues/2499 is not yet resolved, so debug functionality can still potentially affect performance negatively.
+            FileType ignoredType;
+            if (!overwrite && (!isDownload && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType) || (isDownload && File.Exists(destinationPath))))
+            {
+                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));
+            }
+
+            if (threadCount < 1)
+            {
+                threadCount = 10; // 10 is the default per our documentation.
+            }
+
+            // Progress bar indicator.
+            var description = string.Format("Copying {0} File: {1} {2} Location: {3} for account: {4}",
+                isDownload ? "Data Lake Store" : "Local",
+                sourcePath,
+                isDownload ? "to local" : "to Data Lake Store",
+                destinationPath, accountName);
+            var progress = new ProgressRecord(
+                uniqueActivityIdGenerator.Next(0, 10000000),
+                string.Format("{0} Data Lake Store Store", isDownload ? "Download from" : "Upload to"),
+                description)
+            {
+                PercentComplete = 0
+            };
+
+            if (parentProgress != null)
+            {
+                progress.ParentActivityId = parentProgress.ActivityId;
+            }
+
+            // On update from the Data Lake store uploader, capture the progress.
+            var progressTracker = new System.Progress<UploadProgress>();
+            progressTracker.ProgressChanged += (s, e) =>
+            {
+                lock (ConsoleOutputLock)
+                {
+                    var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                    // powershell defect protection. If, through some defect in
+                    // our progress tracking, the number is outside of 0 - 100,
+                    // powershell will crash if it is set to that value. Instead
+                    // just keep the value unchanged in that case.
+                    if (toSet < 0 || toSet > 100)
+                    {
+                        progress.PercentComplete = progress.PercentComplete;
+                    }
+                    else
+                    {
+                        progress.PercentComplete = toSet;
+                    }
+                }
+            };
+
+            var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
+                isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isDownload: isDownload);
+            var uploader = new DataLakeStoreUploader(uploadParameters,
+                new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
+                cmdletCancellationToken,
+                progressTracker);
+
+            var previousExpect100 = ServicePointManager.Expect100Continue;
             try
             {
-                // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
-                // ServiceClientTracing.IsEnabled = false;
-                FileType ignoredType;
-                if (!overwrite && (!isDownload && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType) || (isDownload && File.Exists(destinationPath))))
-                {
-                    throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));
-                }
+                ServicePointManager.Expect100Continue = false;
 
-                if (threadCount < 1)
+                // Execute the uploader.
+                var uploadTask = Task.Run(() =>
                 {
-                    threadCount = 10; // 10 is the default per our documentation.
-                }
+                    cmdletCancellationToken.ThrowIfCancellationRequested();
+                    uploader.Execute();
+                    cmdletCancellationToken.ThrowIfCancellationRequested();
+                }, cmdletCancellationToken);
 
-                // Progress bar indicator.
-                var description = string.Format("Copying {0} File: {1} {2} Location: {3} for account: {4}",
-                    isDownload ? "Data Lake Store" : "Local",
-                    sourcePath,
-                    isDownload ? "to local" : "to Data Lake Store",
-                    destinationPath, accountName);
-                var progress = new ProgressRecord(
-                    uniqueActivityIdGenerator.Next(0, 10000000),
-                    string.Format("{0} Data Lake Store Store", isDownload ? "Download from" : "Upload to"),
-                    description)
-                {
-                    PercentComplete = 0
-                };
-
-                if (parentProgress != null)
-                {
-                    progress.ParentActivityId = parentProgress.ActivityId;
-                }
-
-                // On update from the Data Lake store uploader, capture the progress.
-                var progressTracker = new System.Progress<UploadProgress>();
-                progressTracker.ProgressChanged += (s, e) =>
-                {
-                    lock (ConsoleOutputLock)
-                    {
-                        var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
-                        // powershell defect protection. If, through some defect in
-                        // our progress tracking, the number is outside of 0 - 100,
-                        // powershell will crash if it is set to that value. Instead
-                        // just keep the value unchanged in that case.
-                        if (toSet < 0 || toSet > 100)
-                        {
-                            progress.PercentComplete = progress.PercentComplete;
-                        }
-                        else
-                        {
-                            progress.PercentComplete = toSet;
-                        }
-                    }
-                };
-
-                var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
-                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isDownload: isDownload);
-                var uploader = new DataLakeStoreUploader(uploadParameters,
-                    new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
-                    cmdletCancellationToken,
-                    progressTracker);
-
-                var previousExpect100 = ServicePointManager.Expect100Continue;
-                try
-                {
-                    ServicePointManager.Expect100Continue = false;
-
-                    // Execute the uploader.
-                    var uploadTask = Task.Run(() =>
-                    {
-                        cmdletCancellationToken.ThrowIfCancellationRequested();
-                        uploader.Execute();
-                        cmdletCancellationToken.ThrowIfCancellationRequested();
-                    }, cmdletCancellationToken);
-
-                    TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
-                }
-                catch (Exception e)
-                {
-                    throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
-                }
-                finally
-                {
-                    ServicePointManager.Expect100Continue = previousExpect100;
-                }
+                TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+            }
+            catch (Exception e)
+            {
+                throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
             }
             finally
             {
-                ServiceClientTracing.IsEnabled = previousTracing;
+                ServicePointManager.Expect100Continue = previousExpect100;
             }
         }
 
@@ -514,11 +505,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
             var previousExpect100 = ServicePointManager.Expect100Continue;
-            var previousTracing = ServiceClientTracing.IsEnabled;
             try
             {
-                // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
-                // ServiceClientTracing.IsEnabled = false;
+                // Service client tracing is enabled, however issue: https://github.com/Azure/azure-powershell/issues/2499 is not yet resolved, so debug functionality can still potentially affect performance negatively.
                 ServicePointManager.DefaultConnectionLimit =
                     Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
                         ServicePointManager.DefaultConnectionLimit);
@@ -581,7 +570,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             finally
             {
-                ServiceClientTracing.IsEnabled = previousTracing;
                 ServicePointManager.DefaultConnectionLimit = previousDefaultConnectionLimit;
                 ServicePointManager.Expect100Continue = previousExpect100;
             }
