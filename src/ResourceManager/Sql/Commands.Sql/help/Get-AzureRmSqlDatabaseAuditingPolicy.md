@@ -22,43 +22,43 @@ Get-AzureRmSqlDatabaseAuditingPolicy [-ServerName] <String> [-DatabaseName] <Str
 The **Get-AzureRmSqlDatabaseAuditingPolicy** cmdlet gets the auditing policy of an Azure SQL Database.
 To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 
-This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
 
-### Example 1: Get the auditing policy of an Azure SQL database
+### Example 1: Get the auditing policy of an Azure SQL database with Table auditing defined on it
 ```
 PS C:\>Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
-DatabaseName       : database01
-UseServerDefault   : Disabled
-ResourceGroupName  : resourcegroup01
-ServerName         : server01
-StorageAccountName : 
-StorageKeyType     : Primary
-EventType          : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure...} 
-AuditState         : New
-RetentionInDays    : 0
-TableIdentifier    : Server01Database01
+DatabaseName           : database01
+UseServerDefault       : Disabled
+EventType              : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure...} 
+TableIdentifier        : MyAuditTableName
+FullAuditLogsTableName : SQLDBAuditLogsMyAuditTableName
+ResourceGroupName      : resourcegroup01
+ServerName             : server01
+AuditType              : Table
+AuditState             : Enabled
+StorageAccountName     : mystorage
+StorageKeyType         : Primary
+RetentionInDays        : 0
 ```
 
-This command gets the auditing policy of database Database01 located in Server01 in resource group ResourceGroup01.
+### Example 2: Get the auditing policy of an Azure SQL database with Blob auditing defined on it
+```
+PS C:\>Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+DatabaseName           : database01
+AuditAction            : {}
+AuditActionGroup       : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                          BATCH_COMPLETED_GROUP, ...} 
+ResourceGroupName      : resourcegroup01
+ServerName             : server01
+AuditType              : Blob
+AuditState             : Enabled
+StorageAccountName     : mystorage
+StorageKeyType         : Primary
+RetentionInDays        : 0
+```
 
 ## PARAMETERS
-
-### -ServerName
-Specifies the name of the server where the database is located.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 Specifies the name of the database.
@@ -70,21 +70,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group to which the database is assigned.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -126,6 +111,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group to which the database is assigned.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server where the database is located.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
