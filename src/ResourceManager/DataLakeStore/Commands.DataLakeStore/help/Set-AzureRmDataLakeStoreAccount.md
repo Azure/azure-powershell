@@ -14,9 +14,8 @@ Modifies a Data Lake Store account.
 
 ```
 Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tags] <Hashtable>]
- [[-Encryption] <EncryptionConfigType>] [[-KeyVaultId] <String>] [[-KeyName] <String>] [[-KeyVersion] <String>]
- [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [[-TrustedIdProviderState] <TrustedIdProviderState>] [[-FirewallState] <FirewallState>]
+ [[-ResourceGroupName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +32,35 @@ This command adds the specified tag to the Data Lake Store account named Contoso
 
 ## PARAMETERS
 
+### -DefaultGroup
+Specifies the ID of an AzureActive Directory group.
+This group is the default group for files and folders that you create.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FirewallState
+Optionally enable or disable existing firewall rules.```yaml
+Type: FirewallState
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a Data Lake Store account.
 
@@ -48,9 +76,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultGroup
-Specifies the ID of an AzureActive Directory group.
-This group is the default group for files and folders that you create.
+### -ResourceGroupName
+Specifies the name of the resource group that contains the Data Lake Store account to modify.
 
 ```yaml
 Type: String
@@ -58,7 +85,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,11 +107,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Encryption
-
-
-```yaml
-Type: EncryptionConfigType
+### -TrustedIdProviderState
+Optionally enable or disable the existing trusted ID providers.```yaml
+Type: TrustedIdProviderState
 Parameter Sets: (All)
 Aliases: 
 
@@ -92,105 +117,6 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -KeyVaultId
-
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -KeyName
-
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -KeyVersion
-
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that contains the Data Lake Store account to modify.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -200,6 +126,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSDataLakeStoreAccount
+The updated account details.
 
 ## NOTES
 
