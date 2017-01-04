@@ -295,7 +295,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>Returns true on success.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -436,9 +442,9 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>DataLakeStoreTrustedIdProvider</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The added Trusted Identity Provider.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -649,7 +655,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>The path where the file or folder was downloaded to.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -749,7 +761,19 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSDataLakeStoreAccount</maml:name>
+</dev:type>
+<maml:description><maml:para>The specific Data Lake Store account asked for.
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>List&lt;PSDataLakeStoreAccount&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>A list of Data Lake Store accounts in the resource group or subscription specified.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -829,7 +853,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>IEnumerable&lt;DataLakeStoreItem&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>The list of Data Lake Store files and folders under the specified path.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -915,15 +945,15 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>DataLakeStoreFirewallRule</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The specified firewall rule to retrieve
 </maml:para>
 </maml:description>
 </command:returnValue>
-<command:returnValue><dev:type><maml:name>System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]</maml:name>
+<command:returnValue><dev:type><maml:name>IList&lt;DataLakeStoreFirewallRule&gt;</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The list of firewall rules in the specified account.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -1003,7 +1033,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>DataLakeStoreItem</maml:name>
+</dev:type>
+<maml:description><maml:para>The file or folder at the path specified.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -1095,14 +1131,20 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>IEnumerable&lt;DataLakeStoreItemAce&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>The list of ACL entries for the specified folder or file.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Get the ACL for a folder</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmDataLakeStoreItemAclEntry -AccountName 'ContosoADL' -Path '/'</dev:code>
+<dev:remarks><maml:para>This command gets the ACL for the root directory of the specified Data Lake Store account
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1318,7 +1360,19 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>byte[]</maml:name>
+</dev:type>
+<maml:description><maml:para>The byte stream representation of the file contents retrieved.
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>The string representation (in the specified encoding) of the file contents retrieved.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -1404,7 +1458,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>The owner of the specified item.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -1475,9 +1535,9 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemPermissionInstance</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The string representation of the ownership octal
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -1570,15 +1630,15 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>DataLakeStoreTrustedIdProvider</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The details of the specified trusted identity provider.
 </maml:para>
 </maml:description>
 </command:returnValue>
-<command:returnValue><dev:type><maml:name>System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]</maml:name>
+<command:returnValue><dev:type><maml:name>IList&lt;DataLakeStoreTrustedIdProvider&gt;</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The list of trusted identity providers in the specified account.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -1814,7 +1874,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>The full path in the Data Lake Store account to the uploaded file or folder.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -1972,7 +2038,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>The full path to the resulting file from the joined files.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2127,7 +2199,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>The full path to the moved file or folder.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2343,7 +2421,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSDataLakeStoreAccount</maml:name>
+</dev:type>
+<maml:description><maml:para>The created account details.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2571,7 +2655,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>The full path to the created file or folder.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2728,7 +2818,13 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns true upon successful completion.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2877,9 +2973,9 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>System.Boolean</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>If PassThru is specified, returns true upon successful completion.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -3053,7 +3149,13 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns the result of the operation.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3207,7 +3309,13 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns true upon successful completion.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>* Alias: Remove-AdlStoreAcl
 </maml:para>
 </maml:alert>
@@ -3441,7 +3549,13 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns true upon successful completion.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3581,9 +3695,9 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>System.Boolean</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>If PassThru is specified, returns true upon successful completion.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -3727,7 +3841,13 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSDataLakeStoreAccount</maml:name>
+</dev:type>
+<maml:description><maml:para>The updated account details.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3895,9 +4015,9 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>DataLakeStoreFirewallRule</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The details of the updated firewall rule.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -4021,7 +4141,13 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>IEnumerable&lt;DataLakeStoreItemAce&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, will return the resulting list of ACL entries.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -4299,7 +4425,13 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>IEnumerable&lt;DataLakeStoreItemAce&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, will return the resulting list of ACL entries.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -4358,7 +4490,7 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -4366,7 +4498,7 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -4403,7 +4535,7 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -4412,7 +4544,7 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -4422,9 +4554,9 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>DataLakeStoreItem</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The updated file with a new expiration time.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -4577,7 +4709,13 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>string</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns the updated owner.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -4700,9 +4838,9 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>System.Boolean</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>Returns true upon successfully updating the permission.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -4847,9 +4985,9 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>DataLakeStoreTrustedIdProvider</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>The updated trusted identity provider.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -4921,7 +5059,13 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>True or false indicating the existence of the specified account.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -5031,7 +5175,13 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>True or false indicating the existence of the specified file or folder.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
