@@ -362,10 +362,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="DataDiskNotAssignedForVM" xml:space="preserve">
     <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it.</value>
   </data>
-  <data name="AzureVMSqlServerWrongSettingsFormat" xml:space="preserve">
-    <value>Cannot deserialize settings string from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+  <data name="AzureVMSqlServerWrongConfigFormat" xml:space="preserve">
+    <value>Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
 {0}</value>
-    <comment>{0} settings json string</comment>
+    <comment>{0} sql configuration string</comment>
   </data>
   <data name="PublishVMDscExtensionAdditionalContentPathNotExist" xml:space="preserve">
     <value>Path '{0}' not found.</value>
@@ -550,5 +550,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   </data>
   <data name="RemoveVmssDiagnosticsExtensionAction" xml:space="preserve">
     <value>Remove diagnostics extension from the VM scale set</value>
+  </data>
+  <data name="AzureVMSqlServerSqlConfigurationNotFound" xml:space="preserve">
+    <value>Cannot find sql server configuration info in substatuses. Updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
+{0}</value>
+    <comment>{0} = substatuses string</comment>
   </data>
 </root>

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the OMS workspace Id
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The OMS workspace Id")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource Id of the Log Analytics workspace to send logs/metrics to")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceId { get; set; }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new ServiceDiagnosticSettingsCreateOrUpdateParameters();
+            var putParameters = new ServiceDiagnosticSettingsResource(location: string.Empty);
 
             ServiceDiagnosticSettingsResource getResponse = this.InsightsManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 

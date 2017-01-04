@@ -17,53 +17,64 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DataMaskingTests : SqlTestsBase
     {
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlCSMClient = GetSqlClient();
+            var storageClient = GetStorageClient();
+            var storageV2Client = GetStorageV2Client();
+            var resourcesClient = GetResourcesClient();
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
+        }
+
         public DataMaskingTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingPrivilegedUsersChanges()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedUsersChanges");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingBasicRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingBasicRuleLifecycle");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingNumberRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingNumberRuleLifecycle");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingTextRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
         }
 
-        [Fact(Skip = "Waiting for database structure validation")]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationWithoutPolicy()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationWithoutPolicy");

@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
   
 # ID used to uniquely identify this module  
 GUID = 'acace26c-1775-4100-85c0-20c4d71eaa21'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.3.0' })
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.4.0' })
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  

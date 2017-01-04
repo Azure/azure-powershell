@@ -42,13 +42,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             var tablePolicy = base.GetEntity();
             AuditType = AuditType.Blob;
             var blobPolicy = base.GetEntity();
-            if (tablePolicy.AuditState == AuditStateType.Enabled && blobPolicy.AuditState == AuditStateType.Disabled)
+
+            // If the user has blob auditing on on the resource we return that policy no mateer what is his table auditing policy
+            if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
             {
-                AuditType = AuditType.Table;
+                return blobPolicy;
+            }
+            else
+            {
                 return tablePolicy;
             }
-            AuditType = AuditType.Blob;
-            return blobPolicy;
         }
     }
 }
