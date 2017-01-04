@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 7A929BA8-02D9-4BBE-AFF3-B8781F8DDAD9
 online version: http://go.microsoft.com/fwlink/?LinkId=690162
 schema: 2.0.0
 ---
@@ -17,7 +18,7 @@ Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [-F
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmKeyVault cmdlet deletes the specified key vault.
+The **Remove-AzureRmKeyVault** cmdlet deletes the specified key vault.
 It also deletes all keys and secrets contained in that instance.
 
 Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
@@ -88,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -130,7 +131,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmKeyVault]()
+[Get-AzureRmKeyVault](./Get-AzureRmKeyVault.md)
 
-[New-AzureRmKeyVault]()
-
+[New-AzureRmKeyVault](./New-AzureRmKeyVault.md)

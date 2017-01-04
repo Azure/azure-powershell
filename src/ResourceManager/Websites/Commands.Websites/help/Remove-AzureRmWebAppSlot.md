@@ -151,3 +151,16 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)
+
+[New-AzureRMWebAppSlot](./New-AzureRMWebAppSlot.md)
+
+[Restart-AzureRMWebAppSlot](./Restart-AzureRMWebAppSlot.md)
+
+[Set-AzureRMWebAppSlot](./Set-AzureRMWebAppSlot.md)
+
+[Start-AzureRMWebAppSlot](./Start-AzureRMWebAppSlot.md)
+
+[Stop-AzureRMWebAppSlot](./Stop-AzureRMWebAppSlot.md)
+
+[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)

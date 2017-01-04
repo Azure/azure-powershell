@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 200C68A3-A79C-4517-8E5D-8128F6C73A5C
 online version: 
 schema: 2.0.0
 ---
@@ -16,7 +17,7 @@ Get-AzureKeyVaultCertificateContact [-VaultName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureKeyVaultCertificateContact cmdlet gets contacts that are registered for certificate notifications for a key vault in Azure Key Vault.
+The **Get-AzureKeyVaultCertificateContact** cmdlet gets contacts that are registered for certificate notifications for a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
@@ -57,7 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificateContact]()
+[Add-AzureKeyVaultCertificateContact](./Add-AzureKeyVaultCertificateContact.md)
 
-[Remove-AzureKeyVaultCertificateContact]()
+[Remove-AzureKeyVaultCertificateContact](./Remove-AzureKeyVaultCertificateContact.md)
 

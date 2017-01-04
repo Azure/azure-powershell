@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
+	- BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+	- BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it's manual, schedule settings need to be specified.
+	- FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+	- FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+	- FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+	- LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+* New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
 
 ## Version 2.4.0
 * Add Remove-AzureRmVMSecret cmdlet.

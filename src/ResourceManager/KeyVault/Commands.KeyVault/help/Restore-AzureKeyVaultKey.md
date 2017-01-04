@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: C4E7ACDF-22FB-4D49-93B3-69E787B7E0CD
 online version: http://go.microsoft.com/fwlink/?LinkId=690301
 schema: 2.0.0
 ---
@@ -16,7 +17,7 @@ Restore-AzureKeyVaultKey [-VaultName] <String> [-InputFile] <String> [-WhatIf] [
 ```
 
 ## DESCRIPTION
-The Restore-AzureKeyVaultKey cmdlet creates a key in the specified key vault.
+The **Restore-AzureKeyVaultKey** cmdlet creates a key in the specified key vault.
 This key is a replica of the backed-up key in the input file and has the same name as the original key.
 If the key vault already has a key by the same name, this cmdlet fails instead of overwriting the original key.
 If the backup contains multiple versions of a key, all versions are restored.
@@ -108,11 +109,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey]()
+[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
 
-[Backup-AzureKeyVaultKey]()
+[Backup-AzureKeyVaultKey](./Backup-AzureKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey]()
+[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey]()
+[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
 

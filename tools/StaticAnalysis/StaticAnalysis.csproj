@@ -10,7 +10,7 @@
     <RootNamespace>StaticAnalysis</RootNamespace>
     <AssemblyName>StaticAnalysis</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-	<RestorePackages>true</RestorePackages>
+    <RestorePackages>true</RestorePackages>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,6 +41,10 @@
       <HintPath>..\..\src\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\src\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -53,6 +57,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisReport.cs" />
+    <Compile Include="BreakingChangeAnalyzer\BreakingChangeAnalyzer.cs" />
+    <Compile Include="BreakingChangeAnalyzer\BreakingChangeIssue.cs" />
+    <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeLoader.cs" />
+    <Compile Include="BreakingChangeAnalyzer\CmdletBreakingChangeMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\CmdletMetadataHelper.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ModuleMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\OutputMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ParameterMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ParameterMetadataHelper.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadataHelper.cs" />
+    <Compile Include="BreakingChangeAnalyzer\TypeMetadata.cs" />
+    <Compile Include="BreakingChangeAnalyzer\TypeMetadataHelper.cs" />
     <Compile Include="Loggers\AnalysisLogger.cs" />
     <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="EnvironmentHelpers.cs" />
@@ -80,6 +97,11 @@
     <Compile Include="ProblemIds.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SignatureVerifier\CmdletSignatureLoader.cs" />
     <Compile Include="SignatureVerifier\CmdletSignatureMetadata.cs" />
     <Compile Include="SignatureVerifier\OutputMetadata.cs" />
@@ -109,7 +131,146 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.AnalysisServices.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ApiManagement.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.AzureBackup.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Batch.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Cdn.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Compute.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DataFactories.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DataLakeAnalytics.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DataLakeStore.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.DevTestLabs.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Dns.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.EventHub.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.HDInsight.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Insights.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.IotHub.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.KeyVault.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.LogicApp.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.MachineLearning.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Management.CognitiveServices.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Management.Storage.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Media.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Network.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.NotificationHubs.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.OperationalInsights.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Profile.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RecoveryServices.ARM.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RecoveryServices.Backup.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RedisCache.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ResourceManager.Automation.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Resources.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Scheduler.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServerManagement.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServiceBus.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.SiteRecovery.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Sql.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.StreamAnalytics.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Tags.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.TrafficManager.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.UsageAggregates.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Websites.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.WindowsAzure.Commands.Storage.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\TestCmdletsModule.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.  

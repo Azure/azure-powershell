@@ -1,5 +1,6 @@
 ---
-external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xm
+ms.assetid: 817BF177-519F-47BA-86CF-4591FB402E2Dl
 online version: http://go.microsoft.com/fwlink/?LinkId=690299
 schema: 2.0.0
 ---
@@ -18,7 +19,7 @@ Remove-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassTh
 
 ## DESCRIPTION
 The Remove-AzureKeyVaultKey cmdlet deletes a key in a key vault.
-This cmdlet has a value of high for the ConfirmImpact property.
+This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ## EXAMPLES
 
@@ -35,15 +36,15 @@ PS C:\>Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force -C
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso.
-The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.
+The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
 ### Example 3: Remove keys by using the pipeline operator
 ```
 PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzureKeyVaultKey
 ```
 
-This command gets all the keys in the key vault named Contoso, and passes them to the Where-Object cmdlet by using the pipeline operator.
-That cmdlet passes the keys that have a value of $False for the Enabled attribute to the current cmdlet.
+This command gets all the keys in the key vault named Contoso, and passes them to the **Where-Object** cmdlet by using the pipeline operator.
+That cmdlet passes the keys that have a value of $False for the **Enabled** attribute to the current cmdlet.
 That cmdlet removes those keys.
 
 ## PARAMETERS
@@ -80,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a Microsoft.Azure.Commands.KeyVault.Models.KeyBundle object.
+Indicates that this cmdlet returns a **Microsoft.Azure.Commands.KeyVault.Models.KeyBundle** object.
 By default, this cmdlet does not generate any output.
 
 ```yaml
@@ -112,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -153,15 +154,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
-This cmdlet returns a value only if you specify the PassThru parameter.
+This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey]()
+[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey]()
+[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
-[Set-AzureKeyVaultKeyAttribute]()
+[Set-AzureKeyVaultKeyAttribute](./Set-AzureKeyVaultKeyAttribute.md)
 
