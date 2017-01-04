@@ -146,11 +146,40 @@ namespace StaticAnalysis.SignatureVerifier
         {
             "Access",
             "Address",
+            "Anonymous",
             "Diagnostics",
+            "Express",
+            "Https",
+            "InBytes",
+            "InDays",
+            "InHours",
+            "InMinutes",
+            "InMonths",
+            "InSeconds",
+            "Loss",
+            "Mbps",
+            "Process",
+            "Progress",
+            "SaveAs",
             "Statistics",
             "Status",
+            "Success",
             "Vmss"
         };
+
+        public List<ParameterMetadata> GetParametersWithPluralNoun()
+        {
+            List<ParameterMetadata> pluralParameters = new List<ParameterMetadata>();
+            foreach (var parameter in _parameters)
+            {
+                if (parameter.Name.EndsWith("s") && SingularNouns.Find(n => parameter.Name.EndsWith(n)) == null)
+                {
+                    pluralParameters.Add(parameter);
+                }
+            }
+
+            return pluralParameters;
+        }
 
         #endregion
 
