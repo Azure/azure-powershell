@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 4C40DAC9-5C0B-4AFD-9BDB-D407E0B9F701
 online version: http://go.microsoft.com/fwlink/?LinkId=690160
 schema: 2.0.0
 ---
@@ -18,10 +19,10 @@ New-AzureRmKeyVault [-VaultName] <String> [-ResourceGroupName] <String> [-Locati
 ```
 
 ## DESCRIPTION
-The New-AzureRmKeyVault cmdlet creates a key vault in the specified resource group.
+The **New-AzureRmKeyVault** cmdlet creates a key vault in the specified resource group.
 This cmdlet also grants permissions to the currently logged on user to add, remove, or list keys and secrets in the key vault.
 
-Note: If you see the error The subscription is not registered to use namespace 'Microsoft.KeyVault' when you try to create your new key vault, run Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault" and then rerun your New-AzureRmKeyVault command.
+Note: If you see the error **The subscription is not registered to use namespace 'Microsoft.KeyVault'** when you try to create your new key vault, run **Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"** and then rerun your **New-AzureRmKeyVault** command.
 For more information, see Register-AzureRmResourceProvider.
 
 ## EXAMPLES
@@ -33,7 +34,7 @@ PS C:\>New-AzureRmKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group
 
 This command creates a key vault named Contoso03Vault, in the Azure region East US.
 The command adds the key vault to the resource group named Group14.
-Because the command does not specify a value for the SKU parameter, it creates a Standard key vault.
+Because the command does not specify a value for the *SKU* parameter, it creates a Standard key vault.
 
 ### Example 2: Create a Premium key vault
 ```
@@ -41,7 +42,7 @@ PS C:\>New-AzureRmKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group
 ```
 
 This command creates a key vault, just like the previous example.
-However, it specifies a value of Premium for the SKU parameter to create a Premium key vault.
+However, it specifies a value of Premium for the *SKU* parameter to create a Premium key vault.
 
 ## PARAMETERS
 
@@ -92,8 +93,8 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the Azure region in which to create the key vault.
-Use the command Get-AzureLocation to see your choices.
-For more information, type Get-Help Get-AzureLocation.
+Use the command Get-AzureLocation (https://msdn.microsoft.com/ library/azure/mt589064.aspx) to see your choices.
+For more information, type `Get-Help Get-AzureLocation`.
 
 ```yaml
 Type: String
@@ -216,7 +217,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmKeyVault]()
+[Get-AzureRmKeyVault](./Get-AzureRmKeyVault.md)
 
-[Remove-AzureRmKeyVault]()
+[Remove-AzureRmKeyVault](./Remove-AzureRmKeyVault.md)
 

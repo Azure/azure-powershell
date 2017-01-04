@@ -226,6 +226,9 @@
     <None Include="Resources\DiagnosticsExtension\Files\diagnostics.wadcfgx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\SqlIaaSExtension\SqlIaaSExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\DscExtension\DscExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -361,6 +364,9 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestNewAzureVMWithBYOL.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.SqlIaaSExtensionTests\TestGetAzureVMSqlIaaSExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddAzureTrafficManagerEndpoint.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -432,6 +438,7 @@
     <Compile Include="CredentialTests\CredentialTestHelper.cs" />
     <Compile Include="ChefExtension\ChefExtensionTests.cs" />
     <Compile Include="DiagnosticsExtension\DiagnosticsExtensionTests.cs" />
+    <Compile Include="SqlIaaSExtensionTests\SqlIaaSExtensionTests.cs" />
     <Compile Include="DscExtension\DscExtensionTests.cs" />
     <Compile Include="MediaServicesTests\MediaServicesTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

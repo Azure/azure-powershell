@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
 online version: http://go.microsoft.com/fwlink/?LinkId=690297
 schema: 2.0.0
 ---
@@ -27,8 +28,8 @@ Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions] [
 ```
 
 ## DESCRIPTION
-The Get-AzureKeyVaultKey cmdlet gets  Azure Key Vault keys.
-This cmdlet gets a specific Microsoft.Azure.Commands.KeyVault.Models.KeyBundle or a list of all KeyBundle objects in a key vault or by version.
+The **Get-AzureKeyVaultKey** cmdlet gets Azure Key Vault keys.
+This cmdlet gets a specific **Microsoft.Azure.Commands.KeyVault.Models.KeyBundle** or a list of all **KeyBundle** objects in a key vault or by version.
 
 ## EXAMPLES
 
@@ -66,9 +67,9 @@ After running this command, you can inspect various properties of the key by nav
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a key.
 The current version of a key is the first one on the list.
-If you specify this parameter you must also specify the Name and VaultName parameters.
+If you specify this parameter you must also specify the *Name* and *VaultName* parameters.
 
-If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the key with the specified Name.
+If you do not specify the *IncludeVersions* parameter, this cmdlet gets the current version of the key with the specified *Name*.
 
 ```yaml
 Type: SwitchParameter
@@ -144,9 +145,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey]()
+[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey]()
+[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
 
-[Set-AzureKeyVaultKeyAttribute]()
+[Set-AzureKeyVaultKeyAttribute](./Set-AzureKeyVaultKeyAttribute.md)
 

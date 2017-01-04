@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added new return parameter "AuditType" to Get-AzureRmSqlDatabaseAuditingPolicy and Get-AzureRmSqlServerAuditingPolicy returned object
+    - This parameter value indicates the returned auditing policy type - Table or Blob.
 
 ## Version 2.4.0
 * Added storage properties to cmdlets for Azure SQL threat detection policy management at database and server level 
