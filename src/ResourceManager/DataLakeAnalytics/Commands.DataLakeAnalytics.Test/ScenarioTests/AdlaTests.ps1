@@ -782,6 +782,15 @@ function Test-DataLakeAnalyticsCatalog
 		# Verify that trying to get the credential fails
 		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
 
+		# recreate the credential to drop with recursive parameters to ensure that it still works.
+		New-AzureRMDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
+
+		# Remove the credential with recurse
+		Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName -Recurse -Force
+		
+		# Verify that trying to get the credential fails
+		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
+
 		# delete the secret
 		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
 

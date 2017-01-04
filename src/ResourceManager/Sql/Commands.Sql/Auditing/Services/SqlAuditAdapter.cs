@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             DatabaseAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId, out policy);
             var dbPolicyModel = ModelizeDatabaseAuditPolicy(policy);
-
+            dbPolicyModel.AuditType = AuditType.Table;
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;
             dbPolicyModel.DatabaseName = databaseName;
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             BlobAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId, out policy);
             var dbPolicyModel = ModelizeDatabaseAuditPolicy(policy);
-
+            dbPolicyModel.AuditType = AuditType.Blob;
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;
             dbPolicyModel.DatabaseName = databaseName;
@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             ServerAuditingPolicy policy;
             Communicator.GetServerAuditingPolicy(resourceGroup, serverName, requestId, out policy);
             var serverPolicyModel = ModelizeServerAuditPolicy(policy);
+            serverPolicyModel.AuditType = AuditType.Table;
             serverPolicyModel.ResourceGroupName = resourceGroup;
             serverPolicyModel.ServerName = serverName;
 
@@ -164,6 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             BlobAuditingPolicy policy;
             Communicator.GetServerAuditingPolicy(resourceGroup, serverName, requestId, out policy);
             var serverPolicyModel = ModelizeServerAuditPolicy(policy);
+            serverPolicyModel.AuditType = AuditType.Blob;
             serverPolicyModel.ResourceGroupName = resourceGroup;
             serverPolicyModel.ServerName = serverName;
 
@@ -302,16 +304,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         private static void ModelizeEventTypesInfo(BaseTableAuditingPolicyModel model, string eventTypesToAudit)
         {
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
-            if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Failure) != -1) events.Add(AuditEventType.ParameterizedSQL_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Success) != -1) events.Add(AuditEventType.StoredProcedure_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Failure) != -1) events.Add(AuditEventType.StoredProcedure_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Success) != -1) events.Add(AuditEventType.Login_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Failure) != -1) events.Add(AuditEventType.Login_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Success) != -1) events.Add(AuditEventType.TransactionManagement_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
+            if (eventTypesToAudit != null)
+            {
+                if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Failure) != -1) events.Add(AuditEventType.ParameterizedSQL_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Success) != -1) events.Add(AuditEventType.StoredProcedure_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Failure) != -1) events.Add(AuditEventType.StoredProcedure_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Success) != -1) events.Add(AuditEventType.Login_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Failure) != -1) events.Add(AuditEventType.Login_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Success) != -1) events.Add(AuditEventType.TransactionManagement_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
+            }
+
             model.EventType = events.ToArray();
         }
 
@@ -425,7 +431,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var properties = new BlobAuditingProperties();
             updateParameters.Properties = properties;
             properties.State = model.AuditState.ToString();
-            if (!IgnoreStorage)
+            if (!IgnoreStorage && (model.AuditState == AuditStateType.Enabled))
             {
                 properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
                 properties.StorageAccountAccessKey = ExtractStorageAccountKey(model.StorageAccountName);

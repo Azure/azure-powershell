@@ -151,6 +151,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         private static bool ModelizeThreatDetectionEmailAdmins(string emailAccountAdminsState)
         {
+            if (string.IsNullOrEmpty(emailAccountAdminsState))
+            {
+                return false;
+            }
+
             return emailAccountAdminsState.Equals(ThreatDetectionStateType.Enabled.ToString(), StringComparison.InvariantCulture);
         }
 
@@ -265,6 +270,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 
         private void PopulateStoragePropertiesInPolicy(BaseThreatDetectionPolicyModel model, BaseSecurityAlertPolicyProperties properties, string storageEndpointSuffix)
         {
+            if (string.IsNullOrEmpty(model.StorageAccountName)) // can happen if the user didn't provide account name for a policy that lacked it 
+            {
+                throw new Exception(string.Format(Properties.Resources.NoStorageAccountWhenConfiguringThreatDetectionPolicy));
+            }
+
             properties.StorageEndpoint = string.Format("https://{0}.blob.{1}", model.StorageAccountName, storageEndpointSuffix);
             properties.StorageAccountAccessKey =  AzureCommunicator.GetStorageKeys(model.StorageAccountName)[StorageKeyKind.Primary];
         }
