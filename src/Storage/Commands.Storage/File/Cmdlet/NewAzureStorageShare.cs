@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             var share = this.Channel.GetShareReference(this.Name);
             this.RunTask(async taskId =>
             {
-                await this.Channel.CreateShareAsync(share, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                await this.Channel.CreateShareAsync(share, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 this.OutputStream.WriteObject(taskId, share);
             });
         }
