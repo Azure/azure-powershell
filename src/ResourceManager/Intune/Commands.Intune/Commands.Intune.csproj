@@ -70,7 +70,7 @@
     <Reference Include="Microsoft.Bcl.Build.Tasks">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Rest.ClientRuntime">
       <SpecificVersion>True</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
