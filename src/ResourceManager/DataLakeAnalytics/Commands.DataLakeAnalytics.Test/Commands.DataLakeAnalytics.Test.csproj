@@ -85,13 +85,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.6068.31305-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
