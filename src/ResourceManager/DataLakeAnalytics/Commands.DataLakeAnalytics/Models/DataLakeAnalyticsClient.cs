@@ -404,10 +404,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 });
         }
 
-        public USqlSecret UpdateSecret(string accountName, string databaseName,
+        public void UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
-            return _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
+            _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
                 {
                     Password = password,

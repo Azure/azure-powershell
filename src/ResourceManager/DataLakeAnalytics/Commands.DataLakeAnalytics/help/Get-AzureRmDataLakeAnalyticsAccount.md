@@ -14,20 +14,17 @@ Gets information about a Data Lake Analytics account.
 
 ### All In Subscription (Default)
 ```
-Get-AzureRmDataLakeAnalyticsAccount [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [<CommonParameters>]
 ```
 
 ### All In Resource Group
 ```
-Get-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ### Specific Account
 ```
-Get-AzureRmDataLakeAnalyticsAccount [[-ResourceGroupName] <String>] [-Name] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsAccount [[-ResourceGroupName] <String>] [-Name] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +40,21 @@ PS C:\>Get-AzureRmDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
 This command gets information about the account named ContosoAdlAccount.
 
 ## PARAMETERS
+
+### -Name
+Specifies the name of the Data Lake Analytics account.
+
+```yaml
+Type: String
+Parameter Sets: Specific Account
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the resource group name of the Data Lake Analytics account.
@@ -71,66 +83,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the Data Lake Analytics account.
-
-```yaml
-Type: String
-Parameter Sets: Specific Account
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### PSDataLakeAnalyticsAccount
+The specified account details.
+
+### List<PSDataLakeAnalyticsAccount>
+The list of accounts in the specified resource group or subscription.
 
 ## NOTES
 
