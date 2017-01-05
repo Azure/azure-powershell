@@ -556,5 +556,56 @@ namespace StaticAnalysis.Test
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AddValidateRange()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-AddedValidateRange", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.AddedValidateRange))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.AddedValidateRange));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ChangeValidateRangeMinimum()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangedValidateRangeMinimum", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedValidateRangeMinimum))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedValidateRangeMinimum));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ChangeValidateRangeMaximum()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangedValidateRangeMaximum", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum));
+        }
     }
 }
