@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<DataLakeAnalyticsAccount>), typeof(PSDataLakeAnalyticsAccount))]
+     OutputType(typeof(List<PSDataLakeAnalyticsAccount>), typeof(PSDataLakeAnalyticsAccount))]
     [Alias("Get-AdlAnalyticsAccount")]
     public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {

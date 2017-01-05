@@ -12,17 +12,16 @@ Creates a Data Lake Analytics catalog secret.
 
 ## SYNTAX
 
-### Specify host name and port
-```
-New-AzureRmDataLakeAnalyticsCatalogSecret [-Account] <String> [-DatabaseName] <String> [-Secret] <PSCredential>
- [-Uri] <Uri> [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### Specify full URI
 ```
 New-AzureRmDataLakeAnalyticsCatalogSecret [-Account] <String> [-DatabaseName] <String> [-Secret] <PSCredential>
- [-DatabaseHost] <String> [-Port] <Int32> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-DatabaseHost] <String> [-Port] <Int32> [<CommonParameters>]
+```
+
+### Specify host name and port
+```
+New-AzureRmDataLakeAnalyticsCatalogSecret [-Account] <String> [-DatabaseName] <String> [-Secret] <PSCredential>
+ [-Uri] <Uri> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,36 +53,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DatabaseName
-Specifies the name of the database that holds the secret.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Secret
-Specifies the name and password of the secret.
-
-```yaml
-Type: PSCredential
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DatabaseHost
 Specifies the host name for the database the secret is associated with in the format 'mydatabase.contoso.com'.
 
@@ -94,6 +63,21 @@ Aliases: Host
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+Specifies the name of the database that holds the secret.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -114,6 +98,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Secret
+Specifies the name and password of the secret.
+
+```yaml
+Type: PSCredential
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Uri
 Specifies the Uniform Resource Identifier (URI) of the secret.
 
@@ -129,51 +128,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### None
 
 ## NOTES
 
