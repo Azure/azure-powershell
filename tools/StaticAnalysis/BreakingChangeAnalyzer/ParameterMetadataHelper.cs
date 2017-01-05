@@ -85,6 +85,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     CheckForRemovedParameterAlias(cmdlet, oldParameter, newParameter, issueLogger);
                     CheckParameterValidationSets(cmdlet, oldParameter, newParameter, issueLogger);
                     CheckForValidateNotNullOrEmpty(cmdlet, oldParameter, newParameter, issueLogger);
+                    CheckParameterValidateRange(cmdlet, oldParameter, newParameter, issueLogger);
                 }
                 // If the parameter cannot be found, log an issue
                 else
