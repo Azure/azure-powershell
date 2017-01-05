@@ -1,11 +1,11 @@
 ﻿$tagName = "testtag"
 $tagValue = "testvalue"
-$KeyVaultResourceType = "Microsoft.KeyVault/vaults";
-$KeyVaultApiVersion = "2015-06-01";
+$KeyVaultResourceType = "Microsoft.KeyVault/vaults"
+$KeyVaultApiVersion = "2015-06-01"
 
 #------------------------------New-AzureRmKeyVault--------------------------------------
 function Test_CreateNewVault
-{    
+{
     Test-CreateNewVault $global:resourceGroupName $global:location $tagName $tagValue
 }
 
@@ -16,7 +16,7 @@ function Test_CreateNewPremiumVaultEnabledForDeployment
 
 function Test_RecreateVaultFails
 {
-    Test-RecreateVaultFails $global:precreatedVaultName $global:resourceGroupName $global:location
+    Test-RecreateVaultFails $global:testVault $global:resourceGroupName $global:location
 }
 
 function Test_CreateVaultInUnknownResGrpFails
@@ -35,17 +35,17 @@ function Test_CreateVaultPositionalParams
 
 function Test_GetVaultByNameAndResourceGroup
 {
-    Test-GetVaultByNameAndResourceGroup $global:precreatedVaultName $global:resourceGroupName
+    Test-GetVaultByNameAndResourceGroup $global:testVault $global:resourceGroupName
 }
 
 function Test_GetVaultByNameAndResourceGroupPositionalParams
 {
-    Test-GetVaultByNameAndResourceGroupPositionalParams $global:precreatedVaultName $global:resourceGroupName
+    Test-GetVaultByNameAndResourceGroupPositionalParams $global:testVault $global:resourceGroupName
 }
 
 function Test_GetVaultByName
 {
-    Test-GetVaultByName $global:precreatedVaultName
+    Test-GetVaultByName $global:testVault
 }
 
 function Test_GetUnknownVaultFails
@@ -55,7 +55,7 @@ function Test_GetUnknownVaultFails
 
 function Test_GetVaultFromUnknownResourceGroupFails
 {
-    Test-GetVaultFromUnknownResourceGroupFails $global:precreatedVaultName
+    Test-GetVaultFromUnknownResourceGroupFails $global:testVault
 }
 
 function Test_ListVaultsByResourceGroup
@@ -97,19 +97,20 @@ function Test_DeleteUnknownVaultFails
 #------------------------------Set-AzureRmKeyVaultAccessPolicy--------------------------
 function Test_SetRemoveAccessPolicyByUPN
 {
-    $user = (Get-AzureRmContext).Account.Id 
+    $user = (Get-AzureRmContext).Account.Id
     Reset-PreCreatedVault
-    Test-SetRemoveAccessPolicyByUPN $global:precreatedVaultName $global:resourceGroupName $user
+    Test-SetRemoveAccessPolicyByUPN $global:testVault $global:resourceGroupName $user
 }
 
 function Test_SetRemoveAccessPolicyBySPN
-{     
+{
     Reset-PreCreatedVault
 
     $sp = 'testapp'
 
-    #Create an app and service principal
-    if (-not $global:noADCmdLetMode) {
+    # Create an app and service principal.
+    if (-not $global:noADCmdLetMode)
+    {
         $appName = [Guid]::NewGuid().ToString("N")
         $uri = 'http://localhost:8080/'+$appName
         $app = New-AzureRmADApplication -DisplayName $appName -HomePage 'http://contoso.com' -IdentifierUris $uri -Password $appName
@@ -118,29 +119,28 @@ function Test_SetRemoveAccessPolicyBySPN
 
     try
     {
-        Test-SetRemoveAccessPolicyBySPN $global:precreatedVaultName $global:resourceGroupName $uri
+        Test-SetRemoveAccessPolicyBySPN $global:testVault $global:resourceGroupName $uri
     }
     finally
     {
-        if (-not $global:noADCmdLetMode) {        
+        if (-not $global:noADCmdLetMode)
+        {
             Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
         }
     }
-
 }
 
 function Test_SetRemoveAccessPolicyByObjectId
 {
     Reset-PreCreatedVault
-    Test-SetRemoveAccessPolicyByObjectId $global:precreatedVaultName $global:resourceGroupName $global:objectId
+    Test-SetRemoveAccessPolicyByObjectId $global:testVault $global:resourceGroupName $global:objectId
 }
-
 
 function Test_SetRemoveAccessPolicyByCompoundId
 {
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
-    Test-SetRemoveAccessPolicyByCompoundId $global:precreatedVaultName $global:resourceGroupName $appId $global:objectId
+    Test-SetRemoveAccessPolicyByCompoundId $global:testVault $global:resourceGroupName $appId $global:objectId
 }
 
 function Test_RemoveAccessPolicyWithCompoundIdPolicies
@@ -148,51 +148,51 @@ function Test_RemoveAccessPolicyWithCompoundIdPolicies
     $appId1 = [System.Guid]::NewGuid()
     $appId2 = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
-    Test-RemoveAccessPolicyWithCompoundIdPolicies $global:precreatedVaultName $global:resourceGroupName $appId1 $appId2 $global:objectId
+    Test-RemoveAccessPolicyWithCompoundIdPolicies $global:testVault $global:resourceGroupName $appId1 $appId2 $global:objectId
 }
 
 function Test_SetCompoundIdAccessPolicy
-{ 
+{
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
-    Test-SetCompoundIdAccessPolicy $global:precreatedVaultName $global:resourceGroupName $appId $global:objectId
+    Test-SetCompoundIdAccessPolicy $global:testVault $global:resourceGroupName $appId $global:objectId
 }
 
 function Test_ModifyAccessPolicy
 {
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicy $global:precreatedVaultName $global:resourceGroupName $global:objectId
+    Test-ModifyAccessPolicy $global:testVault $global:resourceGroupName $global:objectId
 }
 
 function Test_ModifyAccessPolicyEnabledForDeployment
 {
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyEnabledForDeployment $global:precreatedVaultName $global:resourceGroupName
+    Test-ModifyAccessPolicyEnabledForDeployment $global:testVault $global:resourceGroupName
 }
 
 function Test_ModifyAccessPolicyEnabledForTemplateDeployment
 {
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyEnabledForTemplateDeployment $global:precreatedVaultName $global:resourceGroupName
+    Test-ModifyAccessPolicyEnabledForTemplateDeployment $global:testVault $global:resourceGroupName
 }
 
 function Test_ModifyAccessPolicyEnabledForDiskEncryption
 {
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyEnabledForDiskEncryption $global:precreatedVaultName $global:resourceGroupName
+    Test-ModifyAccessPolicyEnabledForDiskEncryption $global:testVault $global:resourceGroupName
 }
 
 function Test_ModifyAccessPolicyNegativeCases
 {
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyNegativeCases $global:precreatedVaultName $global:resourceGroupName $user $global:objectId
+    Test-ModifyAccessPolicyNegativeCases $global:testVault $global:resourceGroupName $user $global:objectId
 }
 
 
 function Test_RemoveNonExistentAccessPolicyDoesNotThrow
 {
     Reset-PreCreatedVault
-    Test-RemoveNonExistentAccessPolicyDoesNotThrow $global:precreatedVaultName $global:resourceGroupName $global:objectId
+    Test-RemoveNonExistentAccessPolicyDoesNotThrow $global:testVault $global:resourceGroupName $global:objectId
 }
 #-------------------------------------------------------------------------------------
 
@@ -209,7 +209,10 @@ function Test_CreateDeleteVaultWithPiping
 #------------------------------------------Helper-------------------------------------
 <#
 .SYNOPSIS
-Get test vault name
+Get the test vault name.
+
+.PARAMETER suffix
+The suffix to be used for the test vault name.
 #>
 function Get-VaultName([string]$suffix)
 {
@@ -223,7 +226,10 @@ function Get-VaultName([string]$suffix)
 
 <#
 .SYNOPSIS
-Get test vault name
+Get the resource group name.
+
+.PARAMETER suffix
+The suffix to be used for the resource group name.
 #>
 function Get-ResourceGroupName([string]$suffix)
 {
@@ -231,115 +237,169 @@ function Get-ResourceGroupName([string]$suffix)
     {
         $suffix = Get-Date -UFormat %m%d%H%M%S
     }
-    
+
     return 'pshtrg-' + $global:testns + '-' + $suffix
 }
 
 <#
 .SYNOPSIS
-Set up for control plane test
+Reset the pre-created vault to the default state for the control plane tests.
 #>
-function Initialize-VaultTest
-{    
-    $suffix = Get-Date -UFormat %m%d%H%M%S
-    if($global:resourceGroupName -eq "")
+function Reset-PreCreatedVault
+{
+    $tenantId = (Get-AzureRmContext).Tenant.TenantId
+    $sku = "premium"
+    if ($global:standardVaultOnly)
     {
-        #create a resource group
+        $sku = "standard"
+    }
+    $vaultProperties = @{
+        "enabledForDeployment" = $false
+        "tenantId" = $tenantId
+        "sku" = @{
+            "family" = "A"
+            "name" = $sku
+        }
+        "accessPolicies" = @()
+    }
+
+    Set-AzureRmResource -ApiVersion $KeyVaultApiVersion `
+                    -ResourceType $KeyVaultResourceType `
+                    -ResourceName $global:testVault `
+                    -ResourceGroupName $global:resourceGroupName `
+                    -PropertyObject $vaultProperties  `
+                    -Tag  @{$tagName = $tagValue} `
+                    -Force -Confirm:$false
+}
+
+<#
+.SYNOPSIS
+Initialize the temporary state required to run all tests, if necessary.
+#>
+function Initialize-TemporaryState
+{
+    $suffix = Get-Date -UFormat %m%d%H%M%S
+    if ($global:resourceGroupName -eq "")
+    {
+        # Create a resource group.
         $rg = Get-ResourceGroupName $suffix
         New-AzureRmResourceGroup -Name $rg -Location $global:location -Force
-        
+
         $global:resourceGroupName = $rg
+        Write-Host "Successfully initialized the temporary resource group $global:resourceGroupName."
     }
-    if($global:precreatedVaultName -ne "" -and $global:precreatedVaultName -ne $null)
+    else
     {
-        Write-Host "Skipping vault creation for control plane tests since vault: $global:precreatedVaultName is already provided."
-        return;
+        Write-Host "Skipping resource group creation since the resource group $global:resourceGroupName is already provided."
     }
-    #create a vault using ARM    
+    
+    if ($global:testVault -ne "" -and $global:testVault -ne $null)
+    {
+        Write-Host "Skipping vault creation since the vault $global:testVault is already provided."
+        return
+    }
+
+    # Create a vault using ARM.
     $vaultName = Get-VaultName $suffix
     $tenantId = (Get-AzureRmContext).Tenant.TenantId
-    $tagName = "testtag"
-    $tagValue = "testvalue"
     $sku = "premium"
-    if($global:standardVaultOnly)
+    if ($global:standardVaultOnly)
     {
         $sku = "standard"
     }
     $vaultId = @{
-        "ResourceType" = $KeyVaultResourceType;
-        "ApiVersion" = $KeyVaultApiVersion;
-        "ResourceGroupName" = $global:resourceGroupName;
-        "Name" = $vaultName;
+        "ResourceType" = $KeyVaultResourceType
+        "ApiVersion" = $KeyVaultApiVersion
+        "ResourceGroupName" = $global:resourceGroupName
+        "Name" = $vaultName
     }
-
     $vaultProperties = @{
-        "enabledForDeployment" = $false;
-        "tenantId" = $tenantId;
-
+        "enabledForDeployment" = $false
+        "tenantId" = $tenantId
         "sku" = @{
-            "family" = "A";
-            "name" = $sku;
+            "family" = "A"
+            "name" = $sku
         }
-        "accessPolicies" = @();
-    }    
+        "accessPolicies" = @(
+            @{
+                "tenantId" = $tenantId
+                "objectId" = $objectId
+                "applicationId" = ""
+                "permissions" = @{
+                    "keys" = @("all")
+                    "secrets" = @("all")
+                    "certificates" = @("all")
+                }
+            }
+        )
+    }
     $keyVault = New-AzureRmResource @vaultId `
                 -PropertyObject $vaultProperties `
                 -Location $global:location `
-                -Tag  @{Name = $tagName; Value = $tagValue} `
-                -Force `
-                -Confirm:$false
-    if($keyVault)
+                -Tag @{$tagName = $tagValue} `
+                -Force -Confirm:$false
+    if ($keyVault)
     {
-        $global:precreatedVaultName = $vaultName
+        $global:testVault = $vaultName
+        Write-Host "Successfully initialized the temporary vault $global:testVault."
+        Write-Host "Sleeping for 10 seconds to wait for DNS propagation..."
+        Start-Sleep -Seconds 10
+        Write-Host "DNS propagation should have finished by now. Continuing."
     }
     else
     {
-        Throw "Key Vault $VaultName was not created successfully. Initialization for vault tests failed."
+        # Clean up before throwing.
+        Remove-ResourceGroup
+        Throw "Failed to initialize the temporary vault $VaultName."
     }
 }
 
 <#
 .SYNOPSIS
-Reset the pre-created vault to default state for control plane test
+Retrieve the current vault as a resource of type System.Management.Automation.PSCustomObject.
 #>
-function Reset-PreCreatedVault
-{ 
-    $tagName = "testtag"
-    $tagValue = "testvalue"
-    $tenantId = (Get-AzureRmContext).Tenant.TenantId
-    $sku = "premium"
-    if($global:standardVaultOnly)
-    {
-        $sku = "standard"
-    }
-    $vaultProperties = @{
-        "enabledForDeployment" = $false;
-        "tenantId" = $tenantId;
-
-        "sku" = @{
-            "family" = "A";
-            "name" = $sku;
-        }
-        "accessPolicies" = @();
-    } 
-
-    Set-AzureRmResource -ApiVersion $KeyVaultApiVersion `
-                    -ResourceType $KeyVaultResourceType `
-                    -ResourceName $global:precreatedVaultName `
-                    -ResourceGroupName $global:resourceGroupName `
-                    -PropertyObject $vaultProperties  `
-                    -Tag  @{Name = $tagName; Value = $tagValue} `
-                    -Force `
-                    -Confirm:$false
-}
-
-<#
-.SYNOPSIS
-Removes the resource group under which all resources for vault tests were created
-#>
-function Cleanup-VaultTest
+function Get-VaultResource
 {
-    Remove-AzureRmResourceGroup -Name $global:resourceGroupname -Force -Confirm:$false
-    $global:resourceGroupname = ''
+    return Get-AzureRmResource -ResourceType $KeyVaultResourceType `
+                               -ResourceGroupName $global:resourceGroupName `
+                               -ResourceName $global:testVault
+}
+
+<#
+.SYNOPSIS
+Restore the current vault resource.
+
+.PARAMETER oldVaultResource
+The old vault resource to be restored.
+#>
+function Restore-VaultResource($oldVaultResource)
+{
+    Write-Host "Restoring the vault resource $global:testVault..."
+
+    $oldVaultResource | Set-AzureRmResource -Force
+}
+
+<#
+.SYNOPSIS
+Remove the resource group under which all resources for vault tests were created.
+
+.PARAMETER $tempResourceGroup
+True if the resource group was temporary (and not provided).
+
+.PARAMETER $tempVault
+True if the vault was temporary (and not provided).
+#>
+function Cleanup-TemporaryState([bool]$tempResourceGroup, [bool]$tempVault)
+{
+    if ($tempResourceGroup)
+    {
+        Write-Host "Deleting the temporary resource group. This can take a few minutes..."
+        Remove-AzureRmResourceGroup -Name $global:resourceGroupname -Force -Confirm:$false
+    }
+    elseif ($tempVault)
+    {
+        Write-Host "Deleting the temporary vault. This can take a minute or so..."
+        Remove-AzureRmKeyVault -VaultName $global:testVault -Force -Confirm:$false
+    }
 }
 #-------------------------------------------------------------------------------------
