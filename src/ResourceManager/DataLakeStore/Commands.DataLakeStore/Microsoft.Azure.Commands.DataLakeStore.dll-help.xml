@@ -750,7 +750,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Specifies the name of the resource group that contains the Data Lake Store account to get.
 </maml:para>
 </maml:Description>
@@ -2302,8 +2302,8 @@
 <maml:Description><maml:para>
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">EncryptionConfigType</command:parameterValue>
-<dev:type><maml:name>EncryptionConfigType</maml:name>
+<command:parameterValue required="true" variableLength="false">EncryptionType</command:parameterValue>
+<dev:type><maml:name>EncryptionType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2334,6 +2334,15 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>DefaultGroup</maml:name>
@@ -2349,8 +2358,8 @@
 <maml:Description><maml:para>
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">EncryptionConfigType</command:parameterValue>
-<dev:type><maml:name>EncryptionConfigType</maml:name>
+<command:parameterValue required="true" variableLength="false">EncryptionType</command:parameterValue>
+<dev:type><maml:name>EncryptionType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2416,6 +2425,15 @@
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 <dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -3235,6 +3253,14 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -3273,6 +3299,15 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Force</maml:name>
 <maml:Description><maml:para>Forces the command to run without asking for user confirmation.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -3404,6 +3439,14 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -3448,6 +3491,14 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <dev:type><maml:name>DataLakeStoreItemAce[]</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
@@ -3519,6 +3570,15 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <dev:type><maml:name>Guid</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates a boolean response should be returned indicating the result of the delete operation.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Path</maml:name>
 <maml:Description><maml:para>Specifies the Data Lake Store path of the item from which to remove an ACE, starting with the root directory (/).
@@ -3783,6 +3843,15 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DefaultGroup</maml:name>
@@ -3827,6 +3896,15 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 <dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -4076,6 +4154,14 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates the resulting ACL should be returned.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -4111,6 +4197,15 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <dev:type><maml:name>DataLakeStoreItemAce[]</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates the resulting ACL should be returned.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Path</maml:name>
 <maml:Description><maml:para>Specifies the Data Lake Store path of the file or folder, starting with the root directory (/).
@@ -4255,6 +4350,14 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates the resulting ACL should be returned.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -4299,6 +4402,14 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <dev:type><maml:name>DataLakeStoreItemAce[]</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates the resulting ACL should be returned.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
@@ -4370,6 +4481,15 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <dev:type><maml:name>Guid</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates the resulting ACL should be returned.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Path</maml:name>
 <maml:Description><maml:para>Specifies the Data Lake Store path of the item for which to modify an ACE, starting with the root directory (/).
@@ -4635,6 +4755,14 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates the resulting updated owner should be returned.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -4670,6 +4798,15 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyF
 <dev:type><maml:name>Guid</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PassThru</maml:name>
+<maml:Description><maml:para>Indicates the resulting updated owner should be returned.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Path</maml:name>
 <maml:Description><maml:para>Specifies the Data Lake Store path of the item to modify, starting with the root directory (/).
