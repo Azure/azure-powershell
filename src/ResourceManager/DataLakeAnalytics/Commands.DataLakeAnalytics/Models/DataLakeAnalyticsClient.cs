@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             Hashtable customTags = null,
             int? maxDegreeOfParallelism = 0,
             int? maxJobCount = 0,
-            int? queryStoreRetention = 0)
+            int? queryStoreRetention = 0,
+            PricingTierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -142,6 +143,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 parameters.QueryStoreRetention = queryStoreRetention;
             }
 
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
+
             var accountExists = false;
             try
             {
@@ -162,7 +168,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     MaxDegreeOfParallelism = parameters.MaxDegreeOfParallelism,
                     MaxJobCount = parameters.MaxJobCount,
                     QueryStoreRetention = parameters.QueryStoreRetention,
-                    Tags = parameters.Tags
+                    Tags = parameters.Tags,
+                    NewTier = parameters.NewTier
                 })
                 : _accountClient.Account.Create(resourceGroupName, accountName, parameters);
         }

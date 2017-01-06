@@ -43,7 +43,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 baseAccount.TrustedIdProviders,
                 baseAccount.LastModifiedTime,
                 baseAccount.Endpoint,
-                baseAccount.DefaultGroup
+                baseAccount.DefaultGroup,
+                baseAccount.NewTier,
+                baseAccount.CurrentTier
                 )
         {
             Properties = new PSDataLakeStoreAccountProperties(baseAccount);

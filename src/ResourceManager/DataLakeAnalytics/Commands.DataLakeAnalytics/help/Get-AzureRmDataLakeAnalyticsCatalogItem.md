@@ -68,6 +68,8 @@ The acceptable values for this parameter are:
 - Procedure
 - Secret
 - Credential
+- Types
+- TablePartition
 
 ```yaml
 Type: CatalogItemType

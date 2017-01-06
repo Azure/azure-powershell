@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.")]
+        [ValidateNotNull]
+        public PricingTierType? Tier { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
@@ -83,7 +88,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 FirewallState = currentAccount.FirewallState;
             }
 
-            WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.UpdateAccount(ResourceGroupName, Name, DefaultGroup, TrustedIdProviderState.GetValueOrDefault(), FirewallState.GetValueOrDefault(), Tags)));
+            WriteObject(
+                new PSDataLakeStoreAccount(
+                    DataLakeStoreClient.UpdateAccount(
+                        ResourceGroupName,
+                        Name,
+                        DefaultGroup,
+                        TrustedIdProviderState.GetValueOrDefault(),
+                        FirewallState.GetValueOrDefault(),
+                        Tags,
+                        tier: Tier)));
         }
     }
 }

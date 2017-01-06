@@ -1,6 +1,6 @@
 ﻿<#
 .SYNOPSIS
-Tests DataLakeStore Account Lifecycle (Create, Update, Get, List, Delete).
+Tests DataLakeStore Account trusted identity provider Lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-DataLakeStoreTrustedIdProvider
 {
@@ -74,6 +74,10 @@ function Test-DataLakeStoreTrustedIdProvider
 	}
 }
 
+<#
+.SYNOPSIS
+Tests DataLakeStore Account firewall rules Lifecycle (Create, Update, Get, List, Delete).
+#>
 function Test-DataLakeStoreFirewall
 {
     param
@@ -146,6 +150,66 @@ function Test-DataLakeStoreFirewall
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
+
+<#
+.SYNOPSIS
+Tests DataLakeStore Account Commitment tiers (in Create and Update).
+#>
+function Test-DataLakeStoreAccountTiers
+{
+    param
+	(
+		$location = "West US"
+	)
+	
+	try
+	{
+		# Creating Account
+		$resourceGroupName = Get-ResourceGroupName
+		$accountName = Get-DataLakeStoreAccountName
+		$secondAccountName = Get-DataLakeStoreAccountName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeStoreAccount -Name $accountName}
+
+		# Test 1: create without a tier specified verify that it defaults to "consumption"
+		$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+		Assert-AreEqual "Consumption" $accountCreated.CurrentTier
+		Assert-AreEqual "Consumption" $accountCreated.NewTier
+
+		# Test 2: update this account to use a different tier
+		$accountUpdated = Set-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tier Commitment1TB
+
+		Assert-AreEqual "Consumption" $accountUpdated.CurrentTier
+		Assert-AreEqual "Commitment1TB" $accountUpdated.NewTier
+
+		# Test 3: create a new account with a specific tier.
+		$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Location $location -Tier Commitment1TB
+		
+		Assert-AreEqual "Commitment1TB" $accountCreated.CurrentTier
+		Assert-AreEqual "Commitment1TB" $accountCreated.NewTier
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
+Tests DataLakeStore Account Lifecycle (Create, Update, Get, List, Delete).
+#>
 function Test-DataLakeStoreAccount
 {
     param
@@ -262,6 +326,10 @@ function Test-DataLakeStoreAccount
 	}
 }
 
+<#
+.SYNOPSIS
+Tests DataLakeStore filesystem operations (Create, append, get, delete, read, etc.).
+#>
 function Test-DataLakeStoreFileSystem
 {
 	param
@@ -428,6 +496,10 @@ function Test-DataLakeStoreFileSystem
 	}
 }
 
+<#
+.SYNOPSIS
+Tests DataLakeStore filesystem permissions operations (Create, Update, Get, List, Delete).
+#>
 function Test-DataLakeStoreFileSystemPermissions
 {
 	param
