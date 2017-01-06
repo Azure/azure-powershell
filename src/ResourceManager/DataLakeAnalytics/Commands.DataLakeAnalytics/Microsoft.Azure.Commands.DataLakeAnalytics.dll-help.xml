@@ -1002,8 +1002,8 @@
 <maml:Description><maml:para>The desired commitment tier for this account to use.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
-<dev:type><maml:name>PricingTierType</maml:name>
+<command:parameterValue required="true" variableLength="false">TierType</command:parameterValue>
+<dev:type><maml:name>TierType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -1085,8 +1085,8 @@
 <maml:Description><maml:para>The desired commitment tier for this account to use.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
-<dev:type><maml:name>PricingTierType</maml:name>
+<command:parameterValue required="true" variableLength="false">TierType</command:parameterValue>
+<dev:type><maml:name>TierType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2398,8 +2398,8 @@
 <maml:Description><maml:para>The desired commitment tier for this account to use.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
-<dev:type><maml:name>PricingTierType</maml:name>
+<command:parameterValue required="true" variableLength="false">TierType</command:parameterValue>
+<dev:type><maml:name>TierType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2463,8 +2463,8 @@
 <maml:Description><maml:para>The desired commitment tier for this account to use.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
-<dev:type><maml:name>PricingTierType</maml:name>
+<command:parameterValue required="true" variableLength="false">TierType</command:parameterValue>
+<dev:type><maml:name>TierType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>

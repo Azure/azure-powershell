@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             IList<TrustedIdProvider> trustedProviders = null,
             IList<FirewallRule> firewallRules = null,
             EncryptionType? encryptionType = null,
-            PricingTierType? tier = null)
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             TrustedIdProviderState providerState,
             FirewallState firewallState,
             Hashtable customTags = null,
-            PricingTierType? tier = null)
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
