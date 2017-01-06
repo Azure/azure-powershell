@@ -18,7 +18,6 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Management.Automation;
-using static Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage = "Indicates what type of encryption to provision the account with. By default, encryption is ServiceManaged. If no encryption is desired, it must be explicitly set to 'None'")]
         [ValidateNotNull]
-        public EncryptionType? Encryption { get; set; }
+        public DataLakeStoreEnums.EncryptionType? Encryption { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
             HelpMessage = "If the encryption type is User assigned, this is the key vault the user wishes to use")]
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 var identity = new EncryptionIdentity();
                 var config = new EncryptionConfig();
 
-                if (Encryption.Value == EncryptionType.UserManaged)
+                if (Encryption.Value == DataLakeStoreEnums.EncryptionType.UserManaged)
                 {
                     if (string.IsNullOrEmpty(KeyVaultId) ||
                     string.IsNullOrEmpty(KeyName) ||
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         EncryptionKeyVersion = KeyVersion
                     };
                 }
-                else if (Encryption.Value == EncryptionType.ServiceManaged)
+                else if (Encryption.Value == DataLakeStoreEnums.EncryptionType.ServiceManaged)
                 {
                     if (!string.IsNullOrEmpty(KeyVaultId) ||
                     !string.IsNullOrEmpty(KeyName) ||
