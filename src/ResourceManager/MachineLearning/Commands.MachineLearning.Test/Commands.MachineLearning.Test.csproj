@@ -59,7 +59,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.6-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
+    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.1.0.0\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
       <Name>Microsoft.Azure.Management.MachineLearning</Name>
       <Private>True</Private>
     </Reference>
