@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             EncryptionConfig config = null, 
             IList<TrustedIdProvider> trustedProviders = null,
             IList<FirewallRule> firewallRules = null,
-            EncryptionType? encryptionType = null)
+            EncryptionType? encryptionType = null,
+            PricingTierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -106,6 +107,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.EncryptionConfig = null;
             }
 
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
+
             return  _client.Account.Create(resourceGroupName, accountName, parameters);
         }
 
@@ -115,7 +121,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string defaultGroup,
             TrustedIdProviderState providerState,
             FirewallState firewallState,
-            Hashtable customTags = null)
+            Hashtable customTags = null,
+            PricingTierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -131,6 +138,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 TrustedIdProviderState = providerState,
                 FirewallState = firewallState
             };
+
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
 
             return _client.Account.Update(resourceGroupName, accountName, parameters);
         }

@@ -169,6 +169,60 @@ function Test-DataLakeAnalyticsAccount
 
 <#
 .SYNOPSIS
+Tests DataLakeAnalytics Account commitment tier (Create, Update, Get).
+#>
+function Test-DataLakeAnalyticsAccountTiers
+{
+    param
+	(
+		$resourceGroupName = (Get-ResourceGroupName),
+		$accountName = (Get-DataLakeAnalyticsAccountName),
+		$dataLakeAccountName = (Get-DataLakeStoreAccountName),
+		$location = "West US"
+	)
+
+    try
+	{
+		# Creating Account and initial setup
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AdlAnalyticsAccount -Name $accountName}
+
+		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+
+		# Test 1: create account with no pricing tier and validate default
+		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+    
+		Assert-AreEqual "Consumption" $accountCreated.CurrentTier
+		Assert-AreEqual "Consumption" $accountCreated.NewTier
+
+		# Test 2: update this account to have a new pricing tier
+		$accountUpdated = Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tier Commitment100AUHours
+
+		Assert-AreEqual "Consumption" $accountUpdated.CurrentTier
+		Assert-AreEqual "Commitment100AUHours" $accountUpdated.NewTier
+
+		# Test 3: Create a new account with a tier specified
+		$secondAccountName = (Get-DataLakeAnalyticsAccountName)
+		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Location $location -DefaultDataLakeStore $dataLakeAccountName -Tier Commitment100AUHours
+		Assert-AreEqual "Commitment100AUHours" $accountCreated.CurrentTier
+		Assert-AreEqual "Commitment100AUHours" $accountCreated.NewTier
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeAnalytics Job Lifecycle (Submit, Get, List, Cancel and Get Debug data).
 #>
 function Test-DataLakeAnalyticsJob

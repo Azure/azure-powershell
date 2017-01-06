@@ -77,6 +77,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public string KeyVersion { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.")]
+        [ValidateNotNull]
+        public PricingTierType? Tier { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -139,12 +144,31 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     config.Type = EncryptionConfigType.ServiceManaged;
                 }
 
-                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags, identity, config, encryptionType: Encryption)));
+                WriteObject(
+                    new PSDataLakeStoreAccount(
+                        DataLakeStoreClient.CreateAccount(
+                            ResourceGroupName,
+                            Name,
+                            DefaultGroup,
+                            Location,
+                            Tags,
+                            identity,
+                            config,
+                            encryptionType: Encryption,
+                            tier: Tier)));
             }
             else
             {
                 WriteWarning(Resources.DefaultingEncryptionType);
-                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.CreateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags)));
+                WriteObject(
+                    new PSDataLakeStoreAccount(
+                        DataLakeStoreClient.CreateAccount(
+                            ResourceGroupName,
+                            Name,
+                            DefaultGroup,
+                            Location,
+                            Tags,
+                            tier: Tier)));
             }
         }
     }
