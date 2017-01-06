@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     /// Helper class that converts <see cref="ErrorResponseMessageException"/> 
     /// objects into <see cref="ErrorRecord"/>
     /// </summary>
+    [Serializable]
     public class ErrorResponseMessageException : Exception
     {
         /// <summary>

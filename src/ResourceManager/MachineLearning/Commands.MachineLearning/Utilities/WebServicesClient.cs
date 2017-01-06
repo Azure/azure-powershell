@@ -76,9 +76,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         public WebService GetAzureMlWebService(
                             string resourceGroupName,
-                            string webServiceName)
+                            string webServiceName,
+                            string region)
         {
-            return this.apiClient.WebServices.Get(resourceGroupName, webServiceName);
+            return this.apiClient.WebServices.Get(resourceGroupName, webServiceName, region);
         }
 
         public WebServiceKeys GetAzureMlWebServiceKeys(
