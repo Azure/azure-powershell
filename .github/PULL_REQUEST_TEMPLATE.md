@@ -26,7 +26,7 @@ This checklist is used to make sure that common guidelines for a pull request ar
 
 ### [Cmdlet Signature Guidelines](https://github.com/Azure/azure-powershell/blob/dev/CONTRIBUTING.md#cmdlet-signature-guidelines)
 - [ ] New cmdlets that make changes or have side effects should implement `ShouldProcess` and have `SupportShouldProcess=true` specified in the cmdlet attribute. You can find more information on `ShouldProcess` [here](https://gist.github.com/markcowl/338e16fe5c8bbf195aff9f8af0db585d#what-is-the-change).
-- [ ] Cmdlet specifies `OutputType` attribute if any output is produced - if the cmdlet produces no output, it should implement a `PassThrough` parameter.
+- [ ] Cmdlet specifies `OutputType` attribute if any output is produced - if the cmdlet produces no output, it should implement a `PassThru` parameter.
 
 ### [Cmdlet Parameter Guidelines](https://github.com/Azure/azure-powershell/blob/dev/CONTRIBUTING.md#cmdlet-parameter-guidelines)
 - [ ] Parameter types should not expose types from the management library - complex parameter types should be defined in the module.
