@@ -23,7 +23,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using static Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             EncryptionConfig config = null, 
             IList<TrustedIdProvider> trustedProviders = null,
             IList<FirewallRule> firewallRules = null,
-            EncryptionType? encryptionType = null,
+            DataLakeStoreEnums.EncryptionType? encryptionType = null,
             TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             // if the encryptionType is explicitly 'None' then do not set encryption
-            if(encryptionType.HasValue && encryptionType.Value == EncryptionType.None)
+            if(encryptionType.HasValue && encryptionType.Value == DataLakeStoreEnums.EncryptionType.None)
             {
                 parameters.EncryptionState = EncryptionState.Disabled;
                 parameters.Identity = null;
