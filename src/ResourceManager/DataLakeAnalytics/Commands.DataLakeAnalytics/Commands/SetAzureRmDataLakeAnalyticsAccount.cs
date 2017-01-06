@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The desired commitment tier for this account to use.")]
         [ValidateNotNull]
-        public PricingTierType? Tier { get; set; }
+        public TierType? Tier { get; set; }
 
         public override void ExecuteCmdlet()
         {

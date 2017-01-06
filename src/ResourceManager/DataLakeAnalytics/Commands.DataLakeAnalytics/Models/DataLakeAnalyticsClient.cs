@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             int? maxDegreeOfParallelism = 0,
             int? maxJobCount = 0,
             int? queryStoreRetention = 0,
-            PricingTierType? tier = null)
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
