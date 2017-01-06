@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Database\Model\DatabaseReadScale.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />
@@ -91,7 +92,6 @@
     <Compile Include="Advisor\Service\AzureSqlElasticPoolAdvisorCommunicator.cs" />
     <Compile Include="Advisor\Service\AzureSqlServerAdvisorCommunicator.cs" />
     <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorCommunicator.cs" />
-    <Compile Include="Auditing\Cmdlet\AuditType.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\BaseBlobAuditingPolicyModel.cs" />
@@ -368,9 +368,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.51.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.51.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.50.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -402,7 +402,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

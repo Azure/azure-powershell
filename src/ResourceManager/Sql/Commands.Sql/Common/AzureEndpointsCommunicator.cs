@@ -85,8 +85,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             SqlManagementClient client = GetCurrentSqlClient("none");
 
-            string url = "https://management.azure.com";
-            url = url + "/subscriptions/" + (client.Credentials.SubscriptionId != null ? client.Credentials.SubscriptionId.Trim() : "");
+            string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement).ToString();
+            if (!url.EndsWith("/"))
+            {
+                url = url + "/";
+            }
+
+            url = url + "subscriptions/" + (client.Credentials.SubscriptionId != null ? client.Credentials.SubscriptionId.Trim() : "");
             url = url + "/resourceGroups/" + resourceGroupName;
             url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
             url = url + "/listKeys?api-version=2014-06-01";

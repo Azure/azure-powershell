@@ -23,195 +23,70 @@ function Test-GetNonExistingBatchAccount
 
 <#
 .SYNOPSIS
-Tests creating new Batch account.
+Tests Batch account scenarios
 #>
-function Test-CreatesNewBatchAccount
+function Test-BatchAccountEndToEnd
 {
     # Setup
-    $account = Get-BatchAccountName
+    $accountName = Get-BatchAccountName
     $resourceGroup = Get-ResourceGroupName
-    $location = Get-BatchAccountProviderLocation
-    $tagName = "testtag"
-    $tagValue = "testval"
 
     try 
     {
+        $location = Get-BatchAccountProviderLocation
+        $tagName = "tag1"
+        $tagValue = "tagValue1"
+
+        # Create a Batch account
         New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+        $createdAccount = New-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue}
 
-        # Test
-        $actual = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue} 
-        $expected = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
+        # Verify the properties match expectations
+        Assert-AreEqual $accountName $createdAccount.AccountName
+        Assert-AreEqual $resourceGroup $createdAccount.ResourceGroupName	
+        Assert-AreEqual $location $createdAccount.Location
+        Assert-AreEqual 1 $createdAccount.Tags.Count
+        Assert-AreEqual $tagValue $createdAccount.Tags[$tagName]
+        Assert-True { $createdAccount.CoreQuota -gt 0 }
+        Assert-True { $createdAccount.PoolQuota -gt 0 }
+        Assert-True { $createdAccount.ActiveJobAndJobScheduleQuota -gt 0 }
 
-        # Assert
-        Assert-AreEqual $expected.AccountName $actual.AccountName
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
-        Assert-AreEqual $expected.Location $actual.Location
-        Assert-AreEqual $expected.Tags[$tagName] $actual.Tags[$tagName]
-        Assert-True { $actual.CoreQuota -gt 0 }
-        Assert-True { $actual.PoolQuota -gt 0 }
-        Assert-True { $actual.ActiveJobAndJobScheduleQuota -gt 0 }
+        # Update the Batch account
+        $newTagName = "tag2"
+        $newTagValue = "tagValue2"
+        Set-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Tag @{$newTagName = $newTagValue}
+
+        # Get the account and verify the tags were updated
+        $updatedAccount = Get-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup
+
+        Assert-AreEqual $accountName $updatedAccount.AccountName
+        Assert-AreEqual 1 $updatedAccount.Tags.Count
+        Assert-AreEqual $newTagValue $updatedAccount.Tags[$newTagName]
+
+        # Get the account keys
+        $accountWithKeys = Get-AzureRmBatchAccountKeys -Name $accountName -ResourceGroupName $resourceGroup
+        Assert-NotNull $accountWithKeys.PrimaryAccountKey
+        Assert-NotNull $accountWithKeys.SecondaryAccountKey
+
+        # Regenerate the primary key
+        $updatedKey = New-AzureRmBatchAccountKey -Name $accountName -ResourceGroupName $resourceGroup -KeyType Primary
+        Assert-NotNull $updatedKey.PrimaryAccountKey
+        Assert-AreNotEqual $accountWithKeys.PrimaryAccountKey $updatedKey.PrimaryAccountKey
+        Assert-AreEqual $accountWithKeys.SecondaryAccountKey $updatedKey.SecondaryAccountKey
     }
     finally
     {
-        # Cleanup
-        Clean-BatchAccountAndResourceGroup $account $resourceGroup
-    }
-}
-
-<#
-.SYNOPSIS
-Tests updating existing Batch account
-#>
-function Test-UpdatesExistingBatchAccount
-{
-    # Setup
-    $account = Get-BatchAccountName
-    $resourceGroup = Get-ResourceGroupName
-    $location = Get-BatchAccountProviderLocation
-
-    $tagName1 = "testtag1"
-    $tagValue1 = "testval1"
-    $tagName2 = "testtag2"
-    $tagValue2 = "testval2"
-
-    try 
-    {
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-
-        #Test
-        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location  -Tag @{$tagName1 = $tagValue1} 
-        Assert-AreEqual 1 $new.Tags.Count
-
-        # Update Tag
-        $actual = Set-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Tag @{$tagName2 = $tagValue2} 
-        $expected = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
-
-        # Assert
-        Assert-AreEqual $expected.AccountName $actual.AccountName
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
-        Assert-AreEqual $expected.Location $actual.Location
-        Assert-AreEqual 1 $expected.Tags.Count
-        Assert-AreEqual $tagValue2 $expected.Tags[$tagName2]
-        Assert-AreEqual $expected.Tags[$tagName2] $actual.Tags[$tagName2]
-
-    }
-    finally
-    {
-        # Cleanup
-        Clean-BatchAccountAndResourceGroup $account $resourceGroup
-    }
-}
-
-<#
-.SYNOPSIS
-Tests getting Batch accounts under resource groups
-#>
-function Test-GetBatchAccountsUnderResourceGroups
-{
-    # Setup
-    $resourceGroup1 = Get-ResourceGroupName
-    $resourceGroup2 = Get-ResourceGroupName
-    $account = Get-BatchAccountName
-    $location = Get-BatchAccountProviderLocation
-
-    try 
-    {
-        New-AzureRmResourceGroup -Name $resourceGroup1 -Location $location
-        New-AzureRmResourceGroup -Name $resourceGroup2 -Location $location
-        New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup1 -Location $location 
-
-        # Test
-        $resourceGroup1Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup1
-		$resourceGroup2Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup2
-
-        # Assert
-        Assert-AreEqual 1 $resourceGroup1Accounts.Count
-        Assert-AreEqual $null $resourceGroup2Accounts
-    }
-    finally
-    {
-        # Cleanup
-        Clean-BatchAccountAndResourceGroup $account $resourceGroup1
-		Clean-ResourceGroup $resourceGroup2
-    }
-}
-
-
-<#
-.SYNOPSIS
-Tests creating a new Batch account and deleting it via piping.
-#>
-function Test-CreateAndRemoveBatchAccountViaPiping
-{
-    # Setup
-    $account1 = Get-BatchAccountName
-    $account2 = Get-BatchAccountName
-    $resourceGroup = Get-ResourceGroupName
-    $location1 = Get-BatchAccountProviderLocation
-    $location2 = Get-BatchAccountProviderLocation 4 
-
-    try
-    {
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $location1
-
-        # Test
-        New-AzureRmBatchAccount -Name $account1 -ResourceGroupName $resourceGroup -Location $location1
-        New-AzureRmBatchAccount -Name $account2 -ResourceGroupName $resourceGroup -Location $location2
-        Get-AzureRmBatchAccount | where {$_.AccountName -eq $account1 -or $_.AccountName -eq $account2} | Remove-AzureRmBatchAccount -Force
-
-        # Assert
-        Assert-Throws { Get-AzureRmBatchAccount -Name $account1 } 
-        Assert-Throws { Get-AzureRmBatchAccount -Name $account2 } 
-    }
-    finally
-    {
-        Clean-ResourceGroup $resourceGroup
-    }
-}
-
-<#
-.SYNOPSIS
-Tests getting/setting Batch account keys
-#>
-function Test-BatchAccountKeys
-{
-    # Setup
-    $account = Get-BatchAccountName
-    $resourceGroup = Get-ResourceGroupName
-    $location = Get-BatchAccountProviderLocation
-    $tagName = "testtag"
-    $tagValue = "testval"
-
-    try 
-    {
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-
-        # Test
-        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue} 
-        $originalKeys =  Get-AzureRmBatchAccountKeys -Name $account -ResourceGroupName $resourceGroup
-        $originalPrimaryKey = $originalKeys.PrimaryAccountKey
-        $originalSecondaryKey = $originalKeys.SecondaryAccountKey
-        $newPrimary = New-AzureRmBatchAccountKey -Name $account -ResourceGroupName $resourceGroup -KeyType Primary
-        $newSecondary = New-AzureRmBatchAccountKey -Name $account -ResourceGroupName $resourceGroup -KeyType Secondary
-        $finalKeys = Get-AzureRmBatchAccountKeys -Name $account -ResourceGroupName $resourceGroup
-        $getAccountResult = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
-
-        # Assert
-        Assert-AreEqual $null $new.PrimaryAccountKey
-        Assert-AreEqual $null $new.SecondaryAccountKey
-        Assert-AreEqual $originalSecondaryKey $newPrimary.SecondaryAccountKey 
-        Assert-AreEqual $newPrimary.PrimaryAccountKey $newSecondary.PrimaryAccountKey
-        Assert-AreEqual $newPrimary.PrimaryAccountKey $finalKeys.PrimaryAccountKey
-        Assert-AreEqual $newSecondary.SecondaryAccountKey $finalKeys.SecondaryAccountKey
-        Assert-AreNotEqual $originalPrimaryKey $newPrimary.PrimaryAccountKey
-        Assert-AreNotEqual $originalSecondaryKey $newSecondary.SecondaryAccountKey
-        Assert-AreEqual $null $getAccountResult.PrimaryAccountKey
-        Assert-AreEqual $null $getAccountResult.SecondaryAccountKey
-    }
-    finally
-    {
-        # Cleanup
-        Clean-BatchAccountAndResourceGroup $account $resourceGroup
+        try
+        {
+            # Delete the account
+            Remove-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
+            $errorMessage = "The Resource 'Microsoft.Batch/batchAccounts/$accountName' under resource group '$resourceGroup' was not found."
+            Assert-Throws { Get-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup } $errorMessage
+        }
+        finally
+        {
+            Remove-AzureRmResourceGroup $resourceGroup
+        }
     }
 }
 
@@ -221,15 +96,15 @@ Tests getting a list of Batch node agent skus
 #>
 function Test-GetBatchNodeAgentSkus
 {
-	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-	# Get the node agent skus
-	$nodeAgentSkus = Get-AzureBatchNodeAgentSku -BatchContext $context
+    # Get the node agent skus
+    $nodeAgentSkus = Get-AzureBatchNodeAgentSku -BatchContext $context
 
-	foreach($nodeAgentSku in $nodeAgentSkus)
+    foreach($nodeAgentSku in $nodeAgentSkus)
     {
         Assert-True { $nodeAgentSku.Id.StartsWith("batch.node") }
-		Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
-		Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
+        Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
+        Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
     }
 }

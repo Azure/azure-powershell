@@ -38,6 +38,7 @@ using SdkOrigin = Microsoft.Azure.Management.Cdn.Models.Origin;
 using SdkCustomDomain = Microsoft.Azure.Management.Cdn.Models.CustomDomain;
 using SdkGeoFilter = Microsoft.Azure.Management.Cdn.Models.GeoFilter;
 using SdkGeoFilterAction = Microsoft.Azure.Management.Cdn.Models.GeoFilterActions;
+using Microsoft.Azure.Commands.Cdn.EdgeNodes;
 
 namespace Microsoft.Azure.Commands.Cdn.Helpers
 {
@@ -248,6 +249,46 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Message = output.Message,
                 NameAvailable = output.NameAvailable.Value,
                 Reason = output.Reason
+            };
+        }
+
+        public static PSEdgeNode ToPsEdgeNode(this EdgeNode edgeNode)
+        {
+            return new PSEdgeNode
+            {
+                IpAddressGroups = edgeNode.IpAddressGroups.Select(i => i.ToPsIpAddressGroup()).ToList()
+            };
+        }
+
+        public static PSIpAddressGroup ToPsIpAddressGroup(this IpAddressGroup ipAddressGroup)
+        {
+            return new PSIpAddressGroup
+            {
+                DeliveryRegion = ipAddressGroup.DeliveryRegion,
+                Ipv4Addresses = ipAddressGroup.Ipv4Addresses.Select(i => i.ToPsCIDIRIpAddress()).ToList(),
+                Ipv6Addresses = ipAddressGroup.Ipv6Addresses.Select(i => i.ToPsCIDIRIpAddress()).ToList()
+            };
+        }
+
+        public static PSCIDRIpAddress ToPsCIDIRIpAddress(this CidrIpAddress cidrIpAddress)
+        {
+            return new PSCIDRIpAddress
+            {
+                BaseIpAddress = cidrIpAddress.BaseIpAddress,
+                PrefixLength = cidrIpAddress.PrefixLength.Value
+            };
+        }
+
+
+        public static PSResourceUsage ToPsResourceUsage(this ResourceUsage resourceUsage)
+        {
+
+            return new PSResourceUsage
+            {
+                ResourceType = resourceUsage.ResourceType,
+                Unit = resourceUsage.Unit,
+                CurrentValue = resourceUsage.CurrentValue.Value,
+                Limit = resourceUsage.Limit.Value
             };
         }
     }

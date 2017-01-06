@@ -116,7 +116,31 @@ namespace StaticAnalysis.SignatureVerifier
             VerbsSecurity.Unblock
         };
         #endregion
-        
+
+        #region ApprovedVerbs
+        private static List<string> ApprovedVerbs;
+
+        private static List<string> GetApprovedVerbs()
+        {
+            if (ApprovedVerbs == null)
+            {
+                ApprovedVerbs = new List<string>();
+
+                PowerShell powershell = PowerShell.Create();
+                powershell.AddCommand("Get-Verb");
+
+                var cmdletResult = powershell.Invoke();
+
+                foreach (PSObject result in cmdletResult)
+                {
+                    ApprovedVerbs.Add(result.Members["Verb"].Value.ToString());
+                }
+            }
+
+            return ApprovedVerbs;
+        }
+        #endregion
+
         /// <summary>
         /// The name of the assembly containing cmdlet
         /// </summary>
@@ -151,6 +175,14 @@ namespace StaticAnalysis.SignatureVerifier
         public bool IsShouldContinueVerb
         {
             get { return VerbName != null && ShouldContinueVerbs.Contains(VerbName); }
+        }
+
+        /// <summary>
+        /// True if the cmdlet has an approved verb
+        /// </summary>
+        public bool IsApprovedVerb
+        {
+            get { return VerbName != null && GetApprovedVerbs().Contains(VerbName); }
         }
 
         /// <summary>

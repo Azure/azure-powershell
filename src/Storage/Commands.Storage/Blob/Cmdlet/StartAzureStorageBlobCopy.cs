@@ -492,7 +492,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob);
+                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -516,7 +516,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             bool destExist = true;
             try
             {
-                await destBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                await destBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -532,7 +532,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
-                string copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                string copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }
@@ -540,7 +540,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private async Task StartCopyFromFile(long taskId, IStorageBlobManagement destChannel, CloudFile srcFile, CloudBlockBlob destBlob)
         {
-            await this.StartCopyFromUri(taskId, destChannel, srcFile.GenerateUriWithCredentials(), destBlob);
+            await this.StartCopyFromUri(taskId, destChannel, srcFile.GenerateUriWithCredentials(), destBlob).ConfigureAwait(false);
         }
 
         private CloudBlob GetDestBlob(IStorageBlobManagement destChannel, string destContainerName, string destBlobName, BlobType blobType)
@@ -583,7 +583,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             NameUtil.ValidateContainerName(destBlob.Container.Name);
             NameUtil.ValidateBlobName(destBlob.Name);
 
-            await this.StartCopyFromBlob(taskId, destChannel, sourceBlob, destBlob);
+            await this.StartCopyFromBlob(taskId, destChannel, sourceBlob, destBlob).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -598,7 +598,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             NameUtil.ValidateContainerName(destContainer.Name);
             NameUtil.ValidateBlobName(destBlobName);
 
-            await this.StartCopyFromUri(taskId, destChannel, uri, destContainer.GetBlockBlobReference(destBlobName));
+            CloudBlob sourceBlob = new CloudBlob(uri);
+            BlobType destBlobType = BlobType.BlockBlob;
+            try
+            {
+                await sourceBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+
+                //When the source Uri is a file Uri, will get BlobType.Unspecified, and should use block blob in destination
+                if (sourceBlob.BlobType != BlobType.Unspecified)
+                    destBlobType = sourceBlob.BlobType;
+            }
+            catch (StorageException)
+            {
+                //use block blob by default
+                destBlobType = BlobType.BlockBlob;
+            }
+            CloudBlob destBlob = GetDestBlob(destChannel, destContainer.Name, destBlobName, destBlobType);
+
+            await this.StartCopyFromUri(taskId, destChannel, uri, destBlob);
         }
 
         /// <summary>
