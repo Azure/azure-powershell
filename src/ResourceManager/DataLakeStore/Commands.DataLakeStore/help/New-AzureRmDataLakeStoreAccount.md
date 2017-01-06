@@ -14,8 +14,8 @@ Creates a new Data Lake Store account.
 
 ```
 New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [[-Encryption] <EncryptionConfigType>]
- [[-KeyVaultId] <String>] [[-KeyName] <String>] [[-KeyVersion] <String>] [<CommonParameters>]
+ [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [[-Encryption] <EncryptionType>] [[-KeyVaultId] <String>]
+ [[-KeyName] <String>] [[-KeyVersion] <String>] [-Tier <PricingTierType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 
 ### -Encryption
 ```yaml
-Type: EncryptionConfigType
+Type: EncryptionType
 Parameter Sets: (All)
 Aliases: 
 
@@ -158,6 +158,19 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tier
+The desired commitment tier for this account to use.```yaml
+Type: PricingTierType
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

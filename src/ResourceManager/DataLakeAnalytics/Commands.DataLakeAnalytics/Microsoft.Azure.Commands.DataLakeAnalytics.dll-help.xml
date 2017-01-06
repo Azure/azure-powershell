@@ -127,7 +127,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -212,7 +218,19 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSDataLakeAnalyticsAccount</maml:name>
+</dev:type>
+<maml:description><maml:para>The specified account details.
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>List&lt;PSDataLakeAnalyticsAccount&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>The list of accounts in the specified resource group or subscription.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -286,6 +304,10 @@
 </maml:para>
 <maml:para>- Credential
 </maml:para>
+<maml:para>- Types
+</maml:para>
+<maml:para>- TablePartition
+</maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">CatalogItemType</command:parameterValue>
 <dev:type><maml:name>CatalogItemType</maml:name>
@@ -337,6 +359,10 @@
 </maml:para>
 <maml:para>- Credential
 </maml:para>
+<maml:para>- Types
+</maml:para>
+<maml:para>- TablePartition
+</maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">CatalogItemType</command:parameterValue>
 <dev:type><maml:name>CatalogItemType</maml:name>
@@ -354,7 +380,19 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>CatalogItem</maml:name>
+</dev:type>
+<maml:description><maml:para>The specified catalog item.
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>List&lt;CatalogItem&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>The list of the specified catalog items underneath their corresponding container.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -489,7 +527,25 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSStorageAccountInfo</maml:name>
+</dev:type>
+<maml:description><maml:para>The specified Azure Storage account details.
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>PSDataLakeStoreAccountInfo</maml:name>
+</dev:type>
+<maml:description><maml:para>The specified Data Lake Store account details
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>List&lt;AdlDataSource&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>The list of both Azure Storage accounts and Data Lake Store accounts in the specified Data Lake Analytics account.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -813,7 +869,19 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>JobInformation</maml:name>
+</dev:type>
+<maml:description><maml:para>The specified job information details
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>List&lt;JobInformation&gt;</maml:name>
+</dev:type>
+<maml:description><maml:para>The list of jobs in the specified Data Lake Analytics account.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -930,6 +998,15 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>DefaultDataLakeStore</maml:name>
@@ -1004,9 +1081,24 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSDataLakeAnalyticsAccount</maml:name>
+</dev:type>
+<maml:description><maml:para>The details of the newly created account.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -1264,7 +1356,7 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
 </dev:type>
 <maml:description><maml:para>
 </maml:para>
@@ -1275,7 +1367,7 @@
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>--------------------------  Example 1: Create a credential for a catalog specifying host and port  --------------------------</maml:title>
+<command:examples><command:example><maml:title>Example 1: Create a credential for a catalog specifying host and port</maml:title>
 <dev:code>PS C:\&gt; New-AzureRmDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
                   -CredentialName "exampleDbCred" `
@@ -1287,7 +1379,7 @@
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>--------------------------  Example 1: Create a credential for a catalog specifying full URI  --------------------------</maml:title>
+<command:example><maml:title>Example 2: Create a credential for a catalog specifying full URI</maml:title>
 <dev:code>PS C:\&gt; New-AzureRmDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
                   -CredentialName "exampleDbCred" `
@@ -1455,7 +1547,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -1597,7 +1695,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns true upon completion of the operation.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -1798,9 +1902,9 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>System.Boolean</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>If PassThru is specified, returns true upon completion of the operation.
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -1809,7 +1913,7 @@
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>--------------------------  Example 1: Remove a credential  --------------------------</maml:title>
+<command:examples><command:example><maml:title>Example 1: Remove a credential</maml:title>
 <dev:code>PS C:\&gt; Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdla" `
                       -DatabaseName "DatabaseName" `
                       -Name "CredName"</dev:code>
@@ -1960,7 +2064,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns true upon completion of the operation.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2190,7 +2300,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns true upon completion of the operation.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2278,6 +2394,15 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>MaxDegreeOfParallelism</maml:name>
@@ -2334,9 +2459,24 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PricingTierType</command:parameterValue>
+<dev:type><maml:name>PricingTierType</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSDataLakeAnalyticsAccount</maml:name>
+</dev:type>
+<maml:description><maml:para>The updated account details.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2621,7 +2761,7 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
 </dev:type>
 <maml:description><maml:para>
 </maml:para>
@@ -2632,7 +2772,7 @@
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>--------------------------  Exampl1: Modify a credential's password associated with an account  --------------------------</maml:title>
+<command:examples><command:example><maml:title>Example 1: Modify a credential's password associated with an account</maml:title>
 <dev:code>PS C:\&gt; Set-AzureRmDataLakeAnalyticsCatalogSecret -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
                   -CredentialName "credName" `
@@ -2801,7 +2941,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -2911,7 +3057,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3053,7 +3205,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>If PassThru is specified, returns true upon completion of the operation.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3337,7 +3495,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>JobInformation</maml:name>
+</dev:type>
+<maml:description><maml:para>The initial job details for the submitted job.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3414,7 +3578,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>True or false indicating whether the account exists or not.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3561,7 +3731,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>bool</maml:name>
+</dev:type>
+<maml:description><maml:para>True or false indicating if the specified catalog item exists or not.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -3668,7 +3844,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>JobInformation</maml:name>
+</dev:type>
+<maml:description><maml:para>The final job details for the completed job.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
