@@ -14,8 +14,8 @@ Modifies a Data Lake Analytics account.
 
 ```
 Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-Tags] <Hashtable>] [[-ResourceGroupName] <String>]
- [-MaxDegreeOfParallelism <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>]
- [-Tier <PricingTierType>] [<CommonParameters>]
+ [-MaxDegreeOfParallelism <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 
 ### -Tier
 The desired commitment tier for this account to use.```yaml
-Type: PricingTierType
+Type: TierType
 Parameter Sets: (All)
 Aliases: 
 
