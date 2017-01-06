@@ -15,7 +15,7 @@ Creates a Data Lake Analytics account.
 ```
 New-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [-DefaultDataLakeStore] <String> [[-Tags] <Hashtable>] [-MaxDegreeOfParallelism <Int32>]
- [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <PricingTierType>] [<CommonParameters>]
+ [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 
 ### -Tier
 The desired commitment tier for this account to use.```yaml
-Type: PricingTierType
+Type: TierType
 Parameter Sets: (All)
 Aliases: 
 

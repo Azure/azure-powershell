@@ -15,7 +15,7 @@ Modifies a Data Lake Store account.
 ```
 Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tags] <Hashtable>]
  [[-TrustedIdProviderState] <TrustedIdProviderState>] [[-FirewallState] <FirewallState>]
- [[-ResourceGroupName] <String>] [-Tier <PricingTierType>] [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [-Tier <TierType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 
 ### -Tier
 The desired commitment tier for this account to use.```yaml
-Type: PricingTierType
+Type: TierType
 Parameter Sets: (All)
 Aliases: 
 
