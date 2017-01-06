@@ -2,9 +2,11 @@ Import-Module -Name AzureRM.Bootstrapper
 $global:testProfileMap = "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"Profile2`": { `"Module1`": [`"2.0`"], `"Module2`": [`"2.0`"] }}" 
 
 Describe "Get-ProfileCachePath" {
-    Context "Gets the correct profile cache path" {
-        It "Should return proper path" {
-            Get-ProfileCachePath | Should Match "(.*)ProfileCache$"
+    InModuleScope AzureRM.Bootstrapper {
+        Context "Gets the correct profile cache path" {
+            It "Should return proper path" {
+                Get-ProfileCachePath | Should Match "(.*)ProfileCache$"
+            }
         }
     }
 }
@@ -418,9 +420,9 @@ Describe "Update-AzureRmProfile" {
             $result = Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
 
             It "Removes old version and updates new version" {
-                $result[0] | Should Be 'Installing module'
-                $result[1] | Should Be 'Importing module'
-                $result[2] | Should Be 'Uninstalling Profile...'
+                $result[0] | Should Be 'Uninstalling Profile...'
+                $result[1] | Should Be 'Installing module'
+                $result[2] | Should Be 'Importing module'
                 Assert-VerifiableMocks
             }
         }
