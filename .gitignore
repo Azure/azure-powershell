@@ -201,3 +201,4 @@ FakesAssemblies/
 /tools/*.dll
 *.GhostDoc.xml
 pingme.txt
+tools/LocalFeed/
