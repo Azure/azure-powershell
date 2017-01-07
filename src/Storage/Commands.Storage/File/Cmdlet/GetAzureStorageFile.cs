@@ -84,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         item => this.OutputStream.WriteObject(taskId, item),
                         this.RequestOptions,
                         this.OperationContext,
-                        this.CmdletCancellationToken);
+                        this.CmdletCancellationToken).ConfigureAwait(false);
                 });
             }
             else
@@ -102,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             null,
                             this.RequestOptions,
                             this.OperationContext,
-                            this.CmdletCancellationToken);
+                            this.CmdletCancellationToken).ConfigureAwait(false);
                     }
                     catch (StorageException se)
                     {
@@ -129,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         null,
                         this.RequestOptions,
                         this.OperationContext,
-                        this.CmdletCancellationToken);
+                        this.CmdletCancellationToken).ConfigureAwait(false);
 
                     this.OutputStream.WriteObject(taskId, targetFile);
                 });

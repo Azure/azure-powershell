@@ -364,7 +364,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             bool destExist = true;
             try
             {
-                await destFile.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                await destFile.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -378,7 +378,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (!destExist || checkOverwrite())
             {
-                string copyId = await startCopy();
+                string copyId = await startCopy().ConfigureAwait(false);
 
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
                 this.OutputStream.WriteObject(taskId, destFile);
