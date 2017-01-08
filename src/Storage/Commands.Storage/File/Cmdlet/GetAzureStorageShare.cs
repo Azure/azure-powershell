@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     case Constants.SpecificParameterSetName:
                         NamingUtil.ValidateShareName(this.Name, false);
                         var share = this.Channel.GetShareReference(this.Name);
-                        await this.Channel.FetchShareAttributesAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                        await this.Channel.FetchShareAttributesAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                         this.OutputStream.WriteObject(taskId, share);
 
                         break;
@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             item => this.OutputStream.WriteObject(taskId, item),
                             this.RequestOptions,
                             this.OperationContext,
-                            this.CmdletCancellationToken);
+                            this.CmdletCancellationToken).ConfigureAwait(false);
 
                         break;
 

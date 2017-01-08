@@ -450,7 +450,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             try
             {
                 CloudBlob blob = container.GetBlobReference(blobName);
-                await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken);
+                await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken).ConfigureAwait(false);
 
                 return Util.GetCorrespondingTypeBlobReference(blob);
             }
