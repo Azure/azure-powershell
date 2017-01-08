@@ -268,6 +268,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot set blob auditing policy without audit action groups..
+        /// </summary>
+        internal static string NoAuditActionGroupsConfiguringBlobAuditingPolicy {
+            get {
+                return ResourceManager.GetString("NoAuditActionGroupsConfiguringBlobAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot set auditing policy without a storage account name..
         /// </summary>
         internal static string NoStorageAccountWhenConfiguringAuditingPolicy {
