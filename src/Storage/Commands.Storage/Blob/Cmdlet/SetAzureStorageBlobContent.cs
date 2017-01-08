@@ -203,13 +203,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         this.CmdletCancellationToken);
                 },
                 data.Record,
-                this.OutputStream);
+                this.OutputStream).ConfigureAwait(false);
 
             if (this.BlobProperties != null || this.BlobMetadata != null)
             {
                 await TaskEx.WhenAll(
                     this.SetBlobProperties(localChannel, blob, this.BlobProperties),
-                    this.SetBlobMeta(localChannel, blob, this.BlobMetadata));
+                    this.SetBlobMeta(localChannel, blob, this.BlobMetadata)).ConfigureAwait(false);
             }
 
             try
@@ -219,7 +219,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     AccessCondition.GenerateEmptyCondition(),
                     this.RequestOptions,
                     this.OperationContext,
-                    this.CmdletCancellationToken);
+                    this.CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (StorageException e)
             {
@@ -370,7 +370,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             AccessCondition accessCondition = null;
             StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
-            await Channel.SetBlobPropertiesAsync(blob, accessCondition, requestOptions, OperationContext, CmdletCancellationToken);
+            await Channel.SetBlobPropertiesAsync(blob, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             AccessCondition accessCondition = null;
             StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
-            await Channel.SetBlobMetadataAsync(blob, accessCondition, requestOptions, OperationContext, CmdletCancellationToken);
+            await Channel.SetBlobMetadataAsync(blob, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

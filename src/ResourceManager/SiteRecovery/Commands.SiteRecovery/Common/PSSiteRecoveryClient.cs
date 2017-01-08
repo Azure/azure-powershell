@@ -312,6 +312,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>Site Recovery Management client</returns>
         private SiteRecoveryManagementClient GetSiteRecoveryClient()
         {
+            if (string.IsNullOrEmpty(asrVaultCreds.ResourceName) ||
+                string.IsNullOrEmpty(asrVaultCreds.ResourceGroupName))
+            {
+                throw new InvalidOperationException(Properties.Resources.MissingVaultSettings);
+            }
+            
             SiteRecoveryManagementClient siteRecoveryClient =
                 AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(
                 asrVaultCreds.ResourceName,
