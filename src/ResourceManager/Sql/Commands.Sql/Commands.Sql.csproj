@@ -92,7 +92,6 @@
     <Compile Include="Advisor\Service\AzureSqlElasticPoolAdvisorCommunicator.cs" />
     <Compile Include="Advisor\Service\AzureSqlServerAdvisorCommunicator.cs" />
     <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorCommunicator.cs" />
-    <Compile Include="Auditing\Cmdlet\AuditType.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\BaseBlobAuditingPolicyModel.cs" />

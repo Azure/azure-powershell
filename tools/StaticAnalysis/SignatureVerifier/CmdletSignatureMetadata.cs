@@ -118,9 +118,9 @@ namespace StaticAnalysis.SignatureVerifier
         #endregion
 
         #region ApprovedVerbs
-        private List<string> ApprovedVerbs;
+        private static List<string> ApprovedVerbs;
 
-        private List<string> GetApprovedVerbs()
+        private static List<string> GetApprovedVerbs()
         {
             if (ApprovedVerbs == null)
             {
