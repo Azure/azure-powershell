@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 password = Credential.Password;
             }
 
-#pragma warning disable 0618
             if (ShouldProcess(string.Format(Resources.LoginTarget, AsEnvironment.Name), "log in"))
             {
                 var currentProfile = AsAzureClientSession.Instance.Profile;
@@ -116,7 +115,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
                 WriteObject(asAzureProfile);
             }
-#pragma warning restore 0618
         }
 
         public void OnImport()
