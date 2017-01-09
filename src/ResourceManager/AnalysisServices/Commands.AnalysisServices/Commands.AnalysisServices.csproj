@@ -117,6 +117,9 @@
       <Link>AzureRM.AnalysisServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Microsoft.Azure.Commands.AnalysisServices.dll-help.xml">
+       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
