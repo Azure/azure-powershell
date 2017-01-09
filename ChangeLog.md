@@ -1,4 +1,37 @@
-﻿## 2016.12.14 - Version 3.3.0
+﻿## 2017.01.18 - Version 3.4.0
+* Storage
+    * Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
+        - Start-AzureStorageBlobCopy
+    * Fix hang issue when running some storage cmdlets from event  
+        - Get-AzureStorageBlob
+        - Get-AzureStorageBlobContent
+        - Get-AzureStorageBlobCopyState
+		- Get-AzureStorageContainer
+		- Get-AzureStorageContainerStoredAccessPolicy
+		- New-AzureStorageContainer
+		- Remove-AzureStorageBlob
+		- Remove-AzureStorageContainer
+		- Set-AzureStorageBlobContent
+		- Set-AzureStorageContainerAcl
+		- Start-AzureStorageBlobCopy
+		- Stop-AzureStorageBlobCopy
+		- Get-AzureStorageFile
+		- Get-AzureStorageFileContent
+		- Get-AzureStorageFileCopyState
+		- Get-AzureStorageShare
+		- Get-AzureStorageShareStoredAccessPolicy
+		- New-AzureStorageDirectory
+		- New-AzureStorageShare
+		- Remove-AzureStorageDirectory
+		- Remove-AzureStorageFile
+		- Remove-AzureStorageShare
+		- Set-AzureStorageFileContent
+		- Start-AzureStorageFileCopy
+		- Stop-AzureStorageFileCopy
+		- Get-AzureStorageQueueStoredAccessPolicy
+		- Get-AzureStorageTableStoredAccessPolicy
+
+## 2016.12.14 - Version 3.3.0
 * ApiManagement
     * Added new cmdlets to manage external Identity Provider Configurations
         - New-AzureRmApiManagementIdentityProvider
