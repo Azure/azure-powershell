@@ -12,7 +12,7 @@
 
   
 # Version number of this module.  
-ModuleVersion = '1.2.7'  
+ModuleVersion = '1.2.8'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -60,7 +60,7 @@ RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="1.0.4.2"},
   @{ModuleName="AzureRM.Dns"; RequiredVersion="1.0.4.2"},
   @{ModuleName="AzureRM.HDInsight"; RequiredVersion="1.0.5.2"},
   @{ModuleName="AzureRM.Insights"; RequiredVersion="1.0.4.2"},
-  @{ModuleName="AzureRM.KeyVault"; RequiredVersion="1.1.3.2"},
+  @{ModuleName="AzureRM.KeyVault"; RequiredVersion="1.1.3.3"},
   @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.4.2"},
   @{ModuleName="AzureRM.NotificationHubs"; RequiredVersion="1.0.4.2"},
   @{ModuleName="AzureRM.OperationalInsights"; RequiredVersion="1.0.4.2"},

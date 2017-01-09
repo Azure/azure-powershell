@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 
-  <?define productName="Microsoft Azure PowerShell for Azure Stack TP2 Update 1 - November 2016" ?>
+  <?define productName="Microsoft Azure PowerShell for Azure Stack TP2 Update 2" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="1.2.7" ?>
+  <?define version="1.2.8" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
