@@ -17,6 +17,9 @@
                         <Component Id="cmp6108BA66E02AF03106520F7A2C289BC7" Guid="*">
                             <File Id="fil5BB6CCFE42A464236D5EB72623754357" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.dll" />
                         </Component>
+                        <Component Id="cmp0E077802E445D50411F71866C69A9EB9" Guid="*">
+                            <File Id="fil2768C0B9EE4DDA305A933359E4482119" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.dll-help.xml" />
+                        </Component>
                         <Component Id="cmp1CEE4E00D234A8D8B553DA9595E61904" Guid="*">
                             <File Id="filDB780EC7C19CC2ABD7AE02C2BB50698E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.Common.Authentication.dll" />
                         </Component>
