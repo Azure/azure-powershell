@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemOwner", SupportsShouldProcess = true),
-        OutputType(typeof(string))]
+        OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemOwner")]
     public class SetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
     {
@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             var currentAcl = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
             string group;
             string user;
