@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true),
-        OutputType(typeof(IEnumerable<DataLakeStoreItemAce>))]
+        OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                  ? DataLakeStoreItemAce.GetAclSpec(Acl)
                  : string.Format("{0}{1}:{2}:{3}", Default ? "default:" : string.Empty, AceType, Id,

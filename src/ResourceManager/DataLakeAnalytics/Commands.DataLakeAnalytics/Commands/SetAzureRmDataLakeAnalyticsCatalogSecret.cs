@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogSecret")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
     [Alias("Set-AdlCatalogSecret")]
     [Obsolete("Catalog secrets are being deprecated in a future release. Please use Set-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
     public class SetAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             if (Uri != null && Uri.Port <= 0)
             {
                 WriteWarning(string.Format(Resources.NoPortSpecified, Uri));

@@ -153,6 +153,9 @@
   <data name="IgnoredKeyVaultParams" xml:space="preserve">
     <value>User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored.</value>
   </data>
+  <data name="IncorrectOutputTypeWarning" xml:space="preserve">
+    <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
+  </data>
   <data name="InvalidAce" xml:space="preserve">
     <value>Invalid ACE returned. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}</value>
   </data>
