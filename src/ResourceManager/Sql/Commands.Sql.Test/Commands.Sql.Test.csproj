@@ -486,7 +486,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestBlobAuditingOnServer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestBlobAuditingWithEventTypes.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestBlobAuditingWithEventTypes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestDatatabaseAuditingTypeMigration.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
