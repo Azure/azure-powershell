@@ -547,6 +547,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error creating FileStream for diagnostic trace file \&quot;{0}\&quot; - No diagnostics will be captured. Failed with Error:\r\n{1}.
+        /// </summary>
+        internal static string TraceStreamFailure {
+            get {
+                return ResourceManager.GetString("TraceStreamFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the &quot;Resume&quot; option. If the error persists, please contact Microsoft support..
         /// </summary>
         internal static string UploadFailedMessage {

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.Rest;
 using System.IO;
 using System.Management.Automation;
 
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         // default number of threads
         private int numThreadsPerFile = 10;
         private int fileCount = 5;
+        private LogLevel logLevel = LogLevel.None;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -82,49 +84,84 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is none, and specifying -Debug overwrites this value and sets it to Debug.")]
+        public LogLevel DiagnosticLogLevel
+        {
+            get { return logLevel; }
+            set { logLevel = value; }
+        }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally specifies the path for the diagnostic log to record events to during the file or folder import. If logging is enabled, the default is in %LOCALAPPDATA%\\ADLDataTransfer.")]
+        [ValidateNotNullOrEmpty]
+        public string DiagnosticLogPath { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
+            string diagnosticPath = string.Empty;
+            if (!string.IsNullOrEmpty(DiagnosticLogPath))
+            {
+                diagnosticPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+            }
+
+            // Setting -Debug overwrites LogLevel to debug.
+            if (MyInvocation.BoundParameters.ContainsKey("Debug") && (bool)MyInvocation.BoundParameters["Debug"])
+            {
+                // TODO: Decide if we don't support outputting to the debug stream as well (since it is synchronous).
+                DiagnosticLogLevel = LogLevel.Debug;
+            }
+
             ConfirmAction(
                 Resources.UploadFileMessage,
                 Destination.TransformedPath,
                 () =>
                 {
-                    if (Directory.Exists(powerShellSourcePath))
+                    var logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
+                    ServiceClientTracing.AddTracingInterceptor(logger.SdkTracingInterceptor);
+                    try
                     {
-                        DataLakeStoreFileSystemClient.CopyDirectory(
-                            Destination.TransformedPath,
-                            Account,
-                            powerShellSourcePath,
-                            CmdletCancellationToken,
-                            ConcurrentFileCount,
-                            PerFileThreadCount,
-                            Recurse,
-                            Force,
-                            Resume, ForceBinary, ForceBinary, cmdletRunningRequest: this);
-                    }
-                    else if (File.Exists(powerShellSourcePath))
-                    {
-                        DataLakeStoreFileSystemClient.CopyFile(
-                            Destination.TransformedPath,
-                            Account,
-                            powerShellSourcePath,
-                            CmdletCancellationToken,
-                            PerFileThreadCount,
-                            Force,
-                            Resume,
-                            ForceBinary,
-                            cmdletRunningRequest: this);
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
-                    }
+                        if (Directory.Exists(powerShellSourcePath))
+                        {
+                            DataLakeStoreFileSystemClient.CopyDirectory(
+                                Destination.TransformedPath,
+                                Account,
+                                powerShellSourcePath,
+                                CmdletCancellationToken,
+                                ConcurrentFileCount,
+                                PerFileThreadCount,
+                                Recurse,
+                                Force,
+                                Resume, ForceBinary, ForceBinary, cmdletRunningRequest: this);
+                        }
+                        else if (File.Exists(powerShellSourcePath))
+                        {
+                            DataLakeStoreFileSystemClient.CopyFile(
+                                Destination.TransformedPath,
+                                Account,
+                                powerShellSourcePath,
+                                CmdletCancellationToken,
+                                PerFileThreadCount,
+                                Force,
+                                Resume,
+                                ForceBinary,
+                                cmdletRunningRequest: this);
+                        }
+                        else
+                        {
+                            throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
+                        }
 
-                    // only attempt to write output if this cmdlet hasn't been cancelled.
-                    if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
+                        // only attempt to write output if this cmdlet hasn't been cancelled.
+                        if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
+                        {
+                            WriteObject(Destination.OriginalPath);
+                        }
+                    }
+                    finally
                     {
-                        WriteObject(Destination.OriginalPath);
+                        ServiceClientTracing.RemoveTracingInterceptor(logger.SdkTracingInterceptor);
                     }
                 });
         }

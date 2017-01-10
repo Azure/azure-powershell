@@ -161,6 +161,8 @@
     <Compile Include="Models\DataLakeStoreEnums.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemClient.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemCmdletBase.cs" />
+    <Compile Include="Models\DataLakeStoreTracingInterceptor.cs" />
+    <Compile Include="Models\DataLakeStoreTraceLogger.cs" />
     <Compile Include="Models\PSDataLakeStoreAccountProperties.cs" />
     <Compile Include="Models\PSDataLakeStoreAccount.cs" />
     <Compile Include="Models\DataLakeStoreTrustedIdProvider.cs" />
