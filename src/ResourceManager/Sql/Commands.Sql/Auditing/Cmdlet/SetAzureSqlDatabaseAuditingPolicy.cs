@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string StorageAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the storage account to use.
+        /// Gets or sets the type of the storage key.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the storage key")]
         [ValidateSet(SecurityConstants.Primary, SecurityConstants.Secondary, IgnoreCase = false)]
@@ -120,9 +120,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.RetentionInDays = RetentionInDays;
             }
+
             if (StorageAccountName != null)
             {
                 model.StorageAccountName = StorageAccountName;
+            }
+
+            if (!string.IsNullOrEmpty(StorageKeyType))
+            // the user enter a key type - we use it (and running over the previously defined key type)
+            {
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary)
+                    ? StorageKeyKind.Primary
+                    : StorageKeyKind.Secondary;
             }
 
             if (AuditActionGroup != null &&  AuditActionGroup.Length != 0)
@@ -135,6 +144,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditAction = AuditAction;
             }
 
+            EventType = Util.ProcessAuditEvents(EventType);
+
+            if (EventType != null) // the user provided event types to audit
+            {
+                throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
+            }
         }
 
         private void ApplyUserInputToTableAuditingModel(DatabaseAuditingPolicyModel model)
@@ -179,6 +194,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.TableIdentifier = TableIdentifier;
             }
+
+            if (AuditAction != null) 
+            {
+                throw new Exception(string.Format(Properties.Resources.AuditActionsConfiguringIrrelevantForTableAuditingPolicy));
+            }
+
+            if (AuditActionGroup != null) 
+            {
+                throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
+            }
+
         }
 
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
@@ -187,7 +213,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.IgnoreStorage = true;            
             Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
             swapAuditType();
-            var otherAuditingTypePolicyModel = GetEntity();
+            var otherAuditingTypePolicyModel = base.GetEntity();
             if (otherAuditingTypePolicyModel != null)
             {
                 otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
@@ -195,6 +221,28 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             }
             swapAuditType();
             return model;
+        }
+
+        protected override AuditingPolicyModel GetEntity()
+        {
+            if (AuditType == AuditType.NotSet)
+            {
+                AuditType = AuditType.Blob;
+                var blobPolicy = base.GetEntity();
+
+                // If the user has blob auditing on on the resource we return that policy no mateer what is his table auditing policy
+                if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
+                {
+                    return blobPolicy;
+                }
+                //The user don't have blob auditing policy on - set audit type as default
+                AuditType = AuditType.Table;
+                var tablePolicy = base.GetEntity();
+                return tablePolicy;
+            }
+            //The user has selected specific audit type
+            var policy = base.GetEntity();
+            return policy;
         }
     }
 }

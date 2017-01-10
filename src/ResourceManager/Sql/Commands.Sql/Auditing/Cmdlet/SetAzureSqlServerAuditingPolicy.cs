@@ -151,6 +151,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.TableIdentifier = TableIdentifier;
             }
+
+            if (AuditActionGroup != null)
+            {
+                throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
+            }
         }
 
         private void ApplyUserInputToBlobAuditingModel(ServerBlobAuditingPolicyModel model)
@@ -160,15 +165,52 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.RetentionInDays = RetentionInDays;
             }
+
             if (StorageAccountName != null)
             {
                 model.StorageAccountName = StorageAccountName;
+            }
+
+            if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
+            {
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
             if (AuditActionGroup != null && AuditActionGroup.Length != 0)
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
+
+            if (EventType != null) // the user provided event types to audit
+            {
+                throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
+            }
+        }
+
+        /// <summary>
+        /// Provides the model element that this cmdlet operates on
+        /// </summary>
+        /// <returns>A model object</returns>
+        protected override AuditingPolicyModel GetEntity()
+        {
+            if (AuditType == AuditType.NotSet)
+            {
+                AuditType = AuditType.Blob;
+                var blobPolicy = base.GetEntity();
+
+                // If the user has blob auditing on on the resource we return that policy no mateer what is his table auditing policy
+                if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
+                {
+                    return blobPolicy;
+                }
+                //The user don't have blob auditing policy on - set audit type as default
+                AuditType = AuditType.Table;
+                var tablePolicy = base.GetEntity();
+                return tablePolicy;
+            }
+            //The user has selected specific audit type
+            var policy = base.GetEntity();
+            return policy;
         }
 
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
@@ -177,7 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.IgnoreStorage = true;
             Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
             swapAuditType();
-            var otherAuditingTypePolicyModel = GetEntity();
+            var otherAuditingTypePolicyModel = base.GetEntity();
             if (otherAuditingTypePolicyModel != null)
             {
                 otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;

@@ -40,6 +40,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <returns>A model object</returns>
         protected override AuditingPolicyModel GetEntity()
         {
+            if (AuditType == AuditType.NotSet)
+            {
+                AuditType = AuditType.Table;
+            }
             if (AuditType == AuditType.Table)
             {
                 ServerAuditingPolicyModel model;

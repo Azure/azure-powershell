@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// <summary>
     /// The possible value of auditing type
     /// </summary>
-    public enum AuditType { Table, Blob };
+    public enum AuditType { NotSet, Table, Blob };
 
     /// <summary>
     /// The base class that defines the core properties of an auditing policy

@@ -88,6 +88,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot set audit action groups for Table auditing..
+        /// </summary>
+        internal static string AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy {
+            get {
+                return ResourceManager.GetString("AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot set audit actions for Table auditing..
+        /// </summary>
+        internal static string AuditActionsConfiguringIrrelevantForTableAuditingPolicy {
+            get {
+                return ResourceManager.GetString("AuditActionsConfiguringIrrelevantForTableAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing..
         /// </summary>
         internal static string AuditingIsTurnedOff {
@@ -187,6 +205,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot set event type for Blob auditing..
+        /// </summary>
+        internal static string EventTypeConfiguringIrrelevantForBlobAuditingPolicy {
+            get {
+                return ResourceManager.GetString("EventTypeConfiguringIrrelevantForBlobAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -264,15 +291,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NewDataMaskingRuleIdAlreadyExistError {
             get {
                 return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot set blob auditing policy without audit action groups..
-        /// </summary>
-        internal static string NoAuditActionGroupsConfiguringBlobAuditingPolicy {
-            get {
-                return ResourceManager.GetString("NoAuditActionGroupsConfiguringBlobAuditingPolicy", resourceCulture);
             }
         }
         

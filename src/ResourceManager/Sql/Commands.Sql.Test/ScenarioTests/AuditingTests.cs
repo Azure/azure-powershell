@@ -248,5 +248,40 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-GetServerAndDatabaseAuditingInUkRegion");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobAuditingDatabaseUpdatePolicyWithAuditActionGroups()
+        {
+            RunPowerShellTest("Test-BlobAuditingDatabaseUpdatePolicyWithAuditActionGroups");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAuditingWithAuditActionsAndAuditActionGroups()
+        {
+            RunPowerShellTest("Test-AuditingWithAuditActionsAndAuditActionGroups");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobAuditingWithEventTypes()
+        {
+            RunPowerShellTest("Test-BlobAuditingWithEventTypes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateBlobAuditingOnDatabaseWithNoAuditType()
+        {
+            RunPowerShellTest("Test-UpdateBlobAuditingOnDatabaseWithNoAuditType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateBlobAuditingOnServerWithNoAuditType()
+        {
+            RunPowerShellTest("Test-UpdateBlobAuditingOnServerWithNoAuditType");
+        }
     }
 }

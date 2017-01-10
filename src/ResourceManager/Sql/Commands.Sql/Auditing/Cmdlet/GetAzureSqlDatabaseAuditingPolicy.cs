@@ -38,20 +38,24 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <returns>A model object</returns>
         protected override AuditingPolicyModel GetEntity()
         {
-            AuditType = AuditType.Table;
-            var tablePolicy = base.GetEntity();
-            AuditType = AuditType.Blob;
-            var blobPolicy = base.GetEntity();
+            if (AuditType == AuditType.NotSet)
+            {
+                AuditType = AuditType.Blob;
+                var blobPolicy = base.GetEntity();
 
-            // If the user has blob auditing on on the resource we return that policy no mateer what is his table auditing policy
-            if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
-            {
-                return blobPolicy;
-            }
-            else
-            {
+                // If the user has blob auditing on on the resource we return that policy no mateer what is his table auditing policy
+                if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
+                {
+                    return blobPolicy;
+                }
+                //The user don't have blob auditing policy on
+                AuditType = AuditType.Table;
+                var tablePolicy = base.GetEntity();
                 return tablePolicy;
             }
+            //The user has selected specific audit type
+            var policy = base.GetEntity();
+            return policy;
         }
     }
 }
