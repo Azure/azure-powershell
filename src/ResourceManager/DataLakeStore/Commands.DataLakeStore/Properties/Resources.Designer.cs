@@ -115,6 +115,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified path: {0} already exists as a directory. Please specify a path (including file name) of a new file to create or an existing file to append to..
+        /// </summary>
+        internal static string DiagnosticDirectoryAlreadyExists {
+            get {
+                return ResourceManager.GetString("DiagnosticDirectoryAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download file data.
         /// </summary>
         internal static string DownloadFileDataMessage {

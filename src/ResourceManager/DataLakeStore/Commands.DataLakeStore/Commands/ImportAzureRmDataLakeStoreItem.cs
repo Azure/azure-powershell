@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using System.IO;
 using System.Management.Automation;
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             }
 
             // Setting -Debug overwrites LogLevel to debug.
-            if (MyInvocation.BoundParameters.ContainsKey("Debug") && (bool)MyInvocation.BoundParameters["Debug"])
+            if (MyInvocation.BoundParameters.ContainsKey("Debug") && (SwitchParameter)MyInvocation.BoundParameters["Debug"])
             {
                 // TODO: Decide if we don't support outputting to the debug stream as well (since it is synchronous).
                 DiagnosticLogLevel = LogLevel.Debug;
@@ -119,14 +120,25 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 () =>
                 {
                     DataLakeStoreTraceLogger logger = null;
-                    if (DiagnosticLogLevel != LogLevel.None)
-                    {
-                        logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
-                        ServiceClientTracing.AddTracingInterceptor(logger.SdkTracingInterceptor);
-                    }
-                    
+                    var originalLevel = AdalTrace.TraceSource.Switch.Level;
+                    var originalLegacyLevel = AdalTrace.LegacyTraceSwitch.Level;
                     try
                     {
+                        if (DiagnosticLogLevel != LogLevel.None)
+                        {
+                            logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
+                            if (logger.SdkTracingInterceptor != null)
+                            {
+                                ServiceClientTracing.AddTracingInterceptor(logger.SdkTracingInterceptor);
+                            }
+
+                            if (DiagnosticLogLevel != LogLevel.Debug)
+                            {
+                                AdalTrace.TraceSource.Switch.Level = System.Diagnostics.SourceLevels.Warning;
+                                AdalTrace.LegacyTraceSwitch.Level = System.Diagnostics.TraceLevel.Warning;
+                            }
+                        }
+
                         if (Directory.Exists(powerShellSourcePath))
                         {
                             DataLakeStoreFileSystemClient.CopyDirectory(
@@ -168,8 +180,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     {
                         if (logger != null)
                         {
-                            ServiceClientTracing.RemoveTracingInterceptor(logger.SdkTracingInterceptor);
+                            if (logger.SdkTracingInterceptor != null)
+                            {
+                                ServiceClientTracing.RemoveTracingInterceptor(logger.SdkTracingInterceptor);
+                            }
+
+                            // dispose and free the logger.
+                            logger.Dispose();
+                            logger = null;
                         }
+
+                        AdalTrace.TraceSource.Switch.Level = originalLevel;
+                        AdalTrace.LegacyTraceSwitch.Level = originalLegacyLevel;
                     }
                 });
         }

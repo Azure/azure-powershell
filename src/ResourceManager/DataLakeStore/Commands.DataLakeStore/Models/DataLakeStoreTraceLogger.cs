@@ -17,6 +17,7 @@
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Rest;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -34,32 +35,46 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         None = 3
     }
 
-    public class DataLakeStoreTraceLogger
+    public class DataLakeStoreTraceLogger : IDisposable
     {
-        private const string MessagePrefixFormat = "ActivityId: [{0}] {1:yyyy-MM-dd HH:mm:ss.ffffff} T{2} {3}";
+        private const string MessagePrefixFormat = "ADLDataTransfer - ActivityId: [{0}] {1:yyyy-MM-dd HH:mm:ss.ffffff} T{2} {3}";
 
-        public string LogFilePath { get; set; }
+        internal string LogFilePath { get; set; }
 
-        public LogLevel LogLevel { get; set; }
+        internal LogLevel LogLevel { get; set; }
+
+        internal FileStream TraceStream { get; set; }
+
+        internal TextWriterTraceListener TextListener { get; set; }
+
+        private bool PreviousAutoFlush { get; set; }
 
         public readonly IServiceClientTracingInterceptor SdkTracingInterceptor;
 
         public DataLakeStoreTraceLogger(Cmdlet commandToLog, string logFilePath = null, LogLevel logLevel = LogLevel.Information)
         {
             LogFilePath = logFilePath;
-            LogLevel = LogLevel;
+            LogLevel = logLevel;
             if (string.IsNullOrEmpty(LogFilePath))
             {
                 LogFilePath = string.Format(@"{0}\ADLDataTransfer\ADLDataTransfer_{1}.log",
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     DateTime.Now.ToString("MM-dd-yyyy.HH.mm"));
             }
+            else if(Directory.Exists(LogFilePath)) // the user passed in a directory instead of a file
+            {
+                commandToLog.WriteWarning(string.Format(Resources.DiagnosticDirectoryAlreadyExists, LogFilePath));
+                return;
+            }
 
-            FileStream traceStream = null;
+
+            // always create the directory, since it is a no-op if the path exists
+            Directory.CreateDirectory(Path.GetDirectoryName(LogFilePath));
+
 
             try
             {
-                traceStream = new FileStream(LogFilePath, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+                TraceStream = new FileStream(LogFilePath, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
             }
             catch (Exception ex)
             {
@@ -67,11 +82,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 return;
             }
 
-            var defaultListener = new TextWriterTraceListener(traceStream);
+            TextListener = new TextWriterTraceListener(TraceStream);
             Trace.CorrelationManager.ActivityId = Guid.NewGuid();
-            Trace.Listeners.Add(defaultListener);
-            Trace.AutoFlush = true;
+            PreviousAutoFlush = Trace.AutoFlush;
 
+            Trace.Listeners.Add(TextListener);
+            Trace.AutoFlush = true;
             SdkTracingInterceptor = new DataLakeStoreTracingInterceptor(this);
         }
 
@@ -101,7 +117,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public string BuildMessage(string logType, string message, params object[] args)
         {
-            string messagePrefix = String.Format(MessagePrefixFormat,
+            string messagePrefix = string.Format(MessagePrefixFormat,
                                Trace.CorrelationManager.ActivityId, DateTime.UtcNow, Thread.CurrentThread.ManagedThreadId, logType);
             var fullMessage = new StringBuilder();
             fullMessage.Append(messagePrefix);
@@ -120,6 +136,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public void Flush()
         {
             Trace.Flush();
+        }
+
+        public void Dispose()
+        {
+            if (TextListener != null)
+            {
+                if (Trace.Listeners.Contains(TextListener))
+                {
+                    Trace.Listeners.Remove(TextListener);
+                }
+
+                TextListener.Dispose();
+            }
+
+            if(TraceStream != null)
+            {
+                TraceStream.Dispose();
+            }
+
+            Trace.AutoFlush = PreviousAutoFlush;
         }
     }
 }
