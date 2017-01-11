@@ -31,7 +31,7 @@ You can retrieve the results of the search from the Value property of the return
 
 ### Example 1: Get search results using a query
 ```
-PS C:\>Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" $top -Query "Type=Event"
+PS C:\>Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Query "Type=Event" -Top 100
 ```
 
 This command gets all search results by using a query.
@@ -66,7 +66,7 @@ $reqId = $reqIdParts[$reqIdParts.Count -1]
 
 # Poll if pending
 while($response.Metadata.Status -eq "Pending" -and $error.Count -eq 0) {
-    $response = Get-AzureRmOperationalInsightsSearchResults -WorkspaceName $wrkspace -ResourceGroupName $resGroup -Query $query -Id $reqId -Top 15000
+    $response = Get-AzureRmOperationalInsightsSearchResults -WorkspaceName $wrkspace -ResourceGroupName $resGroup -Id $reqId
     $elapsedTime = $(get-date) - $script:StartTime
     Write-Host "Elapsed: " $elapsedTime "Status: " $response.Metadata.Status
 }
@@ -80,7 +80,7 @@ This script starts a search and waits until it completes before displaying the r
 ## PARAMETERS
 
 ### -ResourceGroupName
-Specifies a resource group name.
+The name of the resource group that contains the workspace.
 
 ```yaml
 Type: String
@@ -110,6 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -Top
+The maximum number of results to be returned, limited to 5000.
+
 ```yaml
 Type: Int64
 Parameter Sets: (All)
@@ -117,7 +119,7 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
+Default value: 10
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -149,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -Query
-Specifies the query name.
+The search query that will be executed.
 
 ```yaml
 Type: String
@@ -164,6 +166,8 @@ Accept wildcard characters: False
 ```
 
 ### -Start
+Start of the queried time range.
+
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
@@ -177,6 +181,8 @@ Accept wildcard characters: False
 ```
 
 ### -End
+End of the queried time range.
+
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
@@ -190,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Specifies a search ID.
+If an id is given, the search results for that id will be retrieved using the original query parameters.
 
 ```yaml
 Type: String

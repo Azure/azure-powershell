@@ -362,7 +362,7 @@
     }
   ],
   "Names": {
-    "Test-StorageInsightCreateFailsWithoutWorkspace": [
+    "Test-StorageInsightCreateFailsNoWs": [
       "onesdk4327",
       "onesdk2618",
       "onesdk7042",

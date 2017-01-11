@@ -162,4 +162,7 @@
   <data name="InvalidResourceGroupName" xml:space="preserve">
     <value>ResourceGroupName should not contain '/'. Name should be the plain, short name of the resource group, e.g. 'myResourceGroup'. (Not an Azure resource identifier.)</value>
   </data>
+  <data name="PatchScheduleNotFound" xml:space="preserve">
+    <value>There are no patch schedules found for redis cache '{0}'.</value>
+  </data>
 </root>
