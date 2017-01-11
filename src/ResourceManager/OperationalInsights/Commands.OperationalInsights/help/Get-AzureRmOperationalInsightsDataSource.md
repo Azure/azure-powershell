@@ -12,7 +12,13 @@ Gets data sources.
 
 ## SYNTAX
 
-### ByWorkspaceObjectByName  (Default)
+### ByWorkspaceNameByKind (Default)
+```
+Get-AzureRmOperationalInsightsDataSource [[-ResourceGroupName] <String>] [[-WorkspaceName] <String>]
+ -Kind <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### ByWorkspaceObjectByName
 ```
 Get-AzureRmOperationalInsightsDataSource [-Workspace] <PSWorkspace> [-Name <String>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
@@ -22,12 +28,6 @@ Get-AzureRmOperationalInsightsDataSource [-Workspace] <PSWorkspace> [-Name <Stri
 ```
 Get-AzureRmOperationalInsightsDataSource [[-Workspace] <PSWorkspace>] [-Kind <String>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### ByWorkspaceNameByKind
-```
-Get-AzureRmOperationalInsightsDataSource [[-ResourceGroupName] <String>] [[-WorkspaceName] <String>]
- -Kind <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### ByWorkspaceNameByName
@@ -89,30 +89,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Workspace
-Specifies a workspace in which this cmdlet operates.
+### -Kind
+Specifies the kind of data sources to get.
+The acceptable values for this parameter are:
+
+- AzureActivityLog 
+- CustomLog 
+- LinuxPerformanceObject 
+- LinuxSyslog 
+- WindowsEvent 
+- WindowsPerformanceCounter
 
 ```yaml
-Type: PSWorkspace
-Parameter Sets: ByWorkspaceObjectByName
+Type: String
+Parameter Sets: ByWorkspaceNameByKind
 Aliases: 
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSWorkspace
+Type: String
 Parameter Sets: ByWorkspaceObjectByKind
 Aliases: 
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -134,41 +142,6 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ByWorkspaceNameByName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-Specifies the kind of data sources to get.
-The acceptable values for this parameter are:
-
-- AzureActivityLog 
-- CustomLog 
-- LinuxPerformanceObject 
-- LinuxSyslog 
-- WindowsEvent 
-- WindowsPerformanceCounter
-
-```yaml
-Type: String
-Parameter Sets: ByWorkspaceObjectByKind
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ByWorkspaceNameByKind
 Aliases: 
 
 Required: True
@@ -202,6 +175,33 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Workspace
+Specifies a workspace in which this cmdlet operates.
+
+```yaml
+Type: PSWorkspace
+Parameter Sets: ByWorkspaceObjectByName
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSWorkspace
+Parameter Sets: ByWorkspaceObjectByKind
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

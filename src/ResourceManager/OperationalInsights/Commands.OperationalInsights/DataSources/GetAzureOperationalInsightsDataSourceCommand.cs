@@ -20,7 +20,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.DataSource, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(List<PSDataSource>), typeof(PSDataSource))]
+    [Cmdlet(VerbsCommon.Get, Constants.DataSource, DefaultParameterSetName = ByWorkspaceNameByKind), OutputType(typeof(List<PSDataSource>), typeof(PSDataSource))]
     public class GetAzureOperationalInsightsDataSourceCommand : OperationalInsightsBaseCmdlet
     {
         const string ByWorkspaceObjectByName = "ByWorkspaceObjectByName";
