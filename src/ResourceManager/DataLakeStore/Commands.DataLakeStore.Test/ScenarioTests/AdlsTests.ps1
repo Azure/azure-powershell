@@ -240,18 +240,18 @@ function Test-DataLakeStoreAccount
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
 				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
 				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
 				Assert-True {$accountGet[0].Identity -ne $null}
-				Assert-True {$accountGet[0].Properties.EncryptionConfig -ne $null}
+				Assert-True {$accountGet[0].EncryptionConfig -ne $null}
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
@@ -312,6 +312,18 @@ function Test-DataLakeStoreAccount
 		}
 		Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
+		# Test creation of a new account without specifying encryption and ensure it is still ServiceManaged.
+		$secondAccountName = Get-DataLakeStoreAccountName
+		$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Location $location
+		Assert-True {$accountCreated.EncryptionConfig -ne $null}
+		Assert-AreEqual "ServiceManaged" $accountCreated.EncryptionConfig.Type
+
+		# Create an account with no encryption explicitly.
+		$thirdAccountName = Get-DataLakeStoreAccountName
+		$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $thirdAccountName -Location $location -DisableEncryption
+		Assert-True {[string]::IsNullOrEmpty(($accountCreated.EncryptionConfig.Type))}
+		Assert-AreEqual "Disabled" $accountCreated.EncryptionState
+
 		# Delete Data Lake account
 		Assert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
@@ -322,10 +334,11 @@ function Test-DataLakeStoreAccount
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
 		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $thirdAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
-
 <#
 .SYNOPSIS
 Tests DataLakeStore filesystem operations (Create, append, get, delete, read, etc.).

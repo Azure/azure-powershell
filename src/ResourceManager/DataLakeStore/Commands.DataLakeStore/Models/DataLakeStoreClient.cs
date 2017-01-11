@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             EncryptionConfig config = null, 
             IList<TrustedIdProvider> trustedProviders = null,
             IList<FirewallRule> firewallRules = null,
-            DataLakeStoreEnums.EncryptionType? encryptionType = null,
+            EncryptionConfigType? encryptionType = null,
             TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.FirewallState = FirewallState.Enabled;
             }
 
-            // if the encryptionType is explicitly 'None' then do not set encryption
-            if(encryptionType.HasValue && encryptionType.Value == DataLakeStoreEnums.EncryptionType.None)
+            // if there is no encryption value, then it was not set by the cmdlet which means encryption was explicitly disabled.
+            if(!encryptionType.HasValue)
             {
                 parameters.EncryptionState = EncryptionState.Disabled;
                 parameters.Identity = null;
