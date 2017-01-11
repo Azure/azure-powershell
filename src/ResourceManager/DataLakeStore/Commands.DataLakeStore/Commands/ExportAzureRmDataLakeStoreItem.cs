@@ -20,6 +20,8 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.Rest;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -30,6 +32,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         // default number of threads
         private int numThreadsPerFile = 10;
         private int fileCount = 5;
+        private LogLevel logLevel = LogLevel.None;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -78,11 +81,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is none, and specifying -Debug overwrites this value and sets it to Debug.")]
+        public LogLevel DiagnosticLogLevel
+        {
+            get { return logLevel; }
+            set { logLevel = value; }
+        }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally specifies the path for the diagnostic log to record events to during the file or folder import. If logging is enabled, the default is in %LOCALAPPDATA%\\ADLDataTransfer.")]
+        [ValidateNotNullOrEmpty]
+        public string DiagnosticLogPath { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // We will let this throw itself if the path they give us is invalid
             // TODO: perhaps in the future catch this and throw a cmdlet specific exception
             var powerShellReadyPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
+            string diagnosticPath = string.Empty;
+            if (!string.IsNullOrEmpty(DiagnosticLogPath))
+            {
+                diagnosticPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+            }
 
             FileType type;
             ConfirmAction(
@@ -95,20 +116,59 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
                     }
 
-                    if (type == FileType.FILE)
+                    DataLakeStoreTraceLogger logger = null;
+                    var originalLevel = AdalTrace.TraceSource.Switch.Level;
+                    var originalLegacyLevel = AdalTrace.LegacyTraceSwitch.Level;
+                    try
                     {
-                        DataLakeStoreFileSystemClient.CopyFile(powerShellReadyPath, Account, Path.TransformedPath, CmdletCancellationToken,
-                            isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount, resume: Resume);
-                    }
-                    else
-                    {
-                        DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
-                            CmdletCancellationToken,
-                            isDownload: true, overwrite: Force, cmdletRunningRequest: this,
-                            perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse, resume: Resume);
-                    }
+                        if (DiagnosticLogLevel != LogLevel.None)
+                        {
+                            logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
+                            if (logger.SdkTracingInterceptor != null)
+                            {
+                                ServiceClientTracing.AddTracingInterceptor(logger.SdkTracingInterceptor);
+                            }
 
-                    WriteObject(powerShellReadyPath);
+                            // only log all ADAL messages when the level is debug.
+                            // In all other cases only log Warning and above.
+                            if (DiagnosticLogLevel != LogLevel.Debug)
+                            {
+                                AdalTrace.TraceSource.Switch.Level = System.Diagnostics.SourceLevels.Warning;
+                                AdalTrace.LegacyTraceSwitch.Level = System.Diagnostics.TraceLevel.Warning;
+                            }
+                        }
+                        if (type == FileType.FILE)
+                        {
+                            DataLakeStoreFileSystemClient.CopyFile(powerShellReadyPath, Account, Path.TransformedPath, CmdletCancellationToken,
+                                isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount, resume: Resume);
+                        }
+                        else
+                        {
+                            DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
+                                CmdletCancellationToken,
+                                isDownload: true, overwrite: Force, cmdletRunningRequest: this,
+                                perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse, resume: Resume);
+                        }
+
+                        WriteObject(powerShellReadyPath);
+                    }
+                    finally
+                    {
+                        if (logger != null)
+                        {
+                            if (logger.SdkTracingInterceptor != null)
+                            {
+                                ServiceClientTracing.RemoveTracingInterceptor(logger.SdkTracingInterceptor);
+                            }
+
+                            // dispose and free the logger.
+                            logger.Dispose();
+                            logger = null;
+                        }
+
+                        AdalTrace.TraceSource.Switch.Level = originalLevel;
+                        AdalTrace.LegacyTraceSwitch.Level = originalLegacyLevel;
+                    }
                 });
         }
     }
