@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.Sql.dll","Microsoft.Azure.Commands.Sql.Auditing.Cmdlet.RemoveSqlDatabaseAuditing","Remove-AzureRmSqlDatabaseAuditing","0","1010","The cmdlet 'Remove-AzureRmSqlDatabaseAuditing' no longer supports the alias 'Remove-AzureRmSqlDatabaseAuditing'.","Add the alias 'Remove-AzureRmSqlDatabaseAuditing back to the cmdlet 'Remove-AzureRmSqlDatabaseAuditing'."
