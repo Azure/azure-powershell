@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
 using PSModels = Microsoft.Azure.Commands.KeyVault.Models;
-using ResourceManagement = Microsoft.Azure.Management.Resources.Models;
-using ResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.ActiveDirectory.GraphClient;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -33,20 +30,20 @@ namespace Microsoft.Azure.Commands.KeyVault
             StringBuilder sb = new StringBuilder();
 
             if (policies != null && policies.Any())
-            {                
+            {
                 string rowFormat = "{0, -40}  {1, -40}  {2, -40} {3, -40} {4, -40}\r\n";
                 sb.AppendLine();
                 sb.AppendFormat(rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets");
-                sb.AppendFormat(rowFormat, 
-                    GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="), 
+                sb.AppendFormat(rowFormat,
+                    GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="),
                     GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Application ID".Length, "="), 
-                    GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="), 
+                    GeneralUtilities.GenerateSeparator("Application ID".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="),
                     GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="));
 
-                foreach(var policy in policies)
+                foreach (var policy in policies)
                 {
-                    sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName, 
+                    sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName,
                         TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40));
                 }
 
@@ -64,12 +61,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                 sb.AppendLine();
                 foreach(var policy in policies)
                 {                    
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Tenant ID", policy.TenantName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Object ID", policy.ObjectId);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Display Name", policy.DisplayName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Tenant ID", policy.TenantName);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Object ID", policy.ObjectId);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Display Name", policy.DisplayName);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
                     sb.AppendLine();
                 }
             }
@@ -81,32 +78,32 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 return string.Concat(str.Substring(0, maxLen - 3), "...");
             }
-            
+
             return str;
         }
 
-        public static string GetDisplayNameForADObject(Guid id, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient)
         {
             string displayName = "";
             string upnOrSpn = "";
 
-            if (adClient == null || id == Guid.Empty)
+            if (adClient == null || string.IsNullOrWhiteSpace(objectId))
                 return displayName;
 
             try
             {
-                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { id.ToString() }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
+                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
                 if (obj != null)
                 {
                     if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var user = adClient.Users.GetByObjectId(id.ToString()).ExecuteAsync().GetAwaiter().GetResult();
+                        var user = adClient.Users.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
                         displayName = user.DisplayName;
                         upnOrSpn = user.UserPrincipalName;
                     }
                     else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(id.ToString()).ExecuteAsync().GetAwaiter().GetResult();
+                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
                         displayName = servicePrincipal.AppDisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }
