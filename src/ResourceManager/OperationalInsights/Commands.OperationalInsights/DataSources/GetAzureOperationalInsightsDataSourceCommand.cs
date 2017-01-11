@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         HelpMessage = "The data source name.")]
         [Parameter(ParameterSetName = ByWorkspaceObjectByKind)]
         [ValidateSet(
-            PSDataSourceKinds.AzureAuditLog,
             PSDataSourceKinds.AzureActivityLog,
             PSDataSourceKinds.CustomLog,
             PSDataSourceKinds.LinuxPerformanceObject,

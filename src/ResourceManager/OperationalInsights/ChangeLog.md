@@ -19,6 +19,9 @@
 -->
 ## Current Release
 * Get-AzureRmOperationalInsightsSearchResults no longer requires the Top parameter to retrieve results
+* AzureAuditLog is nolonger a kind for Get-AzureRmOperationalInsightsDataSource.
+    - Use AzureActivityLog instead.
+    - All existing datasource has been migrated over to AzureActivityLog.
 
 ## Version 2.4.0
 
