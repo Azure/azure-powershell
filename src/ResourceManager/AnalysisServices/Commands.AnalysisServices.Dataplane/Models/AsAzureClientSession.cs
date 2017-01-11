@@ -34,11 +34,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>()
             {
-             { "asazure-int.windows.net", new AsAzureAuthInfo()
-             {
-                 AuthorityUrl = "https://login.windows-ppe.net" ,
-                 DefaultResourceUriSuffix = "*.asazure-int.windows.net"
-             }},
              { "asazure.windows.net", new AsAzureAuthInfo()
              {
                  AuthorityUrl = "https://login.windows.net" ,

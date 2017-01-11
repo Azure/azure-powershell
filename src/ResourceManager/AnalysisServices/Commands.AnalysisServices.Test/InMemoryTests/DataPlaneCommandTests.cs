@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 {
     public class DataPlaneCommandTests : AsTestsBase
     {
-        private const string testAsAzureEnvironment = "westcentralus.asazure-int.windows.net";
+        private const string testAsAzureEnvironment = "westcentralus.asazure.windows.net";
 
         private const string testServer = "testserver";
 

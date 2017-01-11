@@ -119,7 +119,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public void OnImport()
         {
-            // Nothing to do on assembly initialize
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "AnalysisServicesDataplaneStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This will throw exception for tests, ignore.
+            }
         }
     }
 }
