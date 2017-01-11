@@ -99,7 +99,7 @@ function Test-StorageInsightCreateUpdateDelete
 .SYNOPSIS
 Validate that storage insight creation fails without a valid parent workspace
 #>
-function Test-StorageInsightCreateFailsWithoutWorkspace
+function Test-StorageInsightCreateFailsNoWs
 {
     $wsname = Get-ResourceName
     $siname = Get-ResourceName

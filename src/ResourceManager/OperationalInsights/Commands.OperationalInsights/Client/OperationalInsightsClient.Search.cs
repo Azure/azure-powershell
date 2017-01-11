@@ -62,16 +62,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual PSSearchGetSearchResultsResponse GetSearchResults(string resourceGroupName, string workspaceName, PSSearchGetSearchResultsParameters psParameters)
         {
             SearchGetSearchResultsParameters parameters = new SearchGetSearchResultsParameters();
-            parameters.Top = psParameters.Top;
+            
             if (psParameters.Highlight != null)
             {
                 parameters.Highlight = new Highlight();
                 parameters.Highlight.Pre = psParameters.Highlight.Pre;
                 parameters.Highlight.Post = psParameters.Highlight.Post;
             }
+            
+            parameters.Top = psParameters.Top == 0 ? 10 : psParameters.Top;
             parameters.Query = psParameters.Query;
             parameters.Start = psParameters.Start;
-            parameters.End = psParameters.End;
+            parameters.End = psParameters.End.GetValueOrDefault(DateTime.UtcNow);
 
             SearchGetSearchResultsResponse response = OperationalInsightsManagementClient.Search.GetSearchResults(resourceGroupName, workspaceName, parameters);
             PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
