@@ -26,10 +26,10 @@ function Get-KeyVault([bool] $haspermission=$true)
     if ($global:testVault -ne "" -and $haspermission)
     {
         return $global:testVault
-    }   
+    }
     elseif ($haspermission)
     {
-        return 'azkmspsprodeus'    
+        return 'azkmspsprodeus'
     }
     else
     {
@@ -59,7 +59,7 @@ function Get-SecretName([string]$suffix)
 <#
 .SYNOPSIS
 Get key file path to be imported
-The name convention of a key file is $filesuffixtest.$filesuffix 
+The name convention of a key file is $filesuffixtest.$filesuffix
 #>
 function Get-ImportKeyFile([string]$filesuffix, [bool] $exists=$true)
 {
@@ -73,8 +73,8 @@ function Get-ImportKeyFile([string]$filesuffix, [bool] $exists=$true)
     }
 
     if ($global:testEnv -eq 'BVT')
-    {       
-        return Join-Path $invocationPath "bvtdata\$file"        
+    {
+        return Join-Path $invocationPath "bvtdata\$file"
     }
     else
     {
@@ -98,8 +98,8 @@ function Get-ImportKeyFile1024([string]$filesuffix, [bool] $exists=$true)
     }
 
     if ($global:testEnv -eq 'BVT')
-    {       
-        return Join-Path $invocationPath "bvtdata\$file"        
+    {
+        return Join-Path $invocationPath "bvtdata\$file"
     }
     else
     {
@@ -112,8 +112,21 @@ function Get-ImportKeyFile1024([string]$filesuffix, [bool] $exists=$true)
 Remove log file under a folder
 #>
 function Cleanup-Log([string]$rootfolder)
-{    
-    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse | where {$_.mode -match "a"} | Remove-Item -Force     
+{
+    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse | where {$_.mode -match "a"} | Remove-Item -Force
+}
+
+<#
+.SYNOPSIS
+Remove log files under the given folder.
+#>
+function Cleanup-LogFiles([string]$rootfolder)
+{
+    Write-Host "Cleaning up log files from $rootfolder..."
+
+    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse |
+        where {$_.mode -match "a"} |
+        Remove-Item -Force
 }
 
 <#
@@ -121,7 +134,7 @@ function Cleanup-Log([string]$rootfolder)
 Remove log file under a folder
 #>
 function Move-Log([string]$rootfolder)
-{    
+{
     $logfolder = Join-Path $rootfolder ("$global:testEnv"+"$global:testns"+"log")
     if (Test-Path $logfolder)
     {
@@ -175,13 +188,13 @@ function Cleanup-SingleKeyTest
             Write-Debug "Removing key with name $_ in vault $keyVault"
             $catch = Remove-AzureKeyVaultKey $keyVault $_ -Force -Confirm:$false
          }
-         catch 
+         catch
          {
          }
       }
     }
 
-    $global:createdKeys.Clear()    
+    $global:createdKeys.Clear()
 }
 
 <#
@@ -199,13 +212,13 @@ function Cleanup-SingleSecretTest
             Write-Debug "Removing secret with name $_ in vault $keyVault"
             $catch = Remove-AzureKeyVaultSecret $keyVault $_ -Force -Confirm:$false
          }
-         catch 
+         catch
          {
          }
       }
     }
 
-    $global:createdSecrets.Clear()    
+    $global:createdSecrets.Clear()
 }
 
 <#
@@ -213,44 +226,44 @@ function Cleanup-SingleSecretTest
 Run a key test, with cleanup.
 #>
 function Run-KeyTest ([ScriptBlock] $test, [string] $testName)
-{   
-   try 
+{
+   try
    {
      Run-Test $test $testName *>> "$testName.debug_log"
    }
-   finally 
+   finally
    {
      Cleanup-SingleKeyTest *>> "$testName.debug_log"
    }
 }
 
 function Run-SecretTest ([ScriptBlock] $test, [string] $testName)
-{   
-   try 
+{
+   try
    {
      Run-Test $test $testName *>> "$testName.debug_log"
    }
-   finally 
+   finally
    {
      Cleanup-SingleSecretTest *>> "$testName.debug_log"
    }
 }
 
 function Run-VaultTest ([ScriptBlock] $test, [string] $testName)
-{   
-   try 
+{
+   try
    {
      Run-Test $test $testName *>> "$testName.debug_log"
    }
-   finally 
+   finally
    {
-     
+
    }
 }
 
 function Write-FileReport
 {
-    $fileName = "$global:testEnv"+"$global:testns"+"Summary.debug_log"	
+    $fileName = "$global:testEnv"+"$global:testns"+"Summary.debug_log"
     Get-TestRunReport *>> $fileName
 }
 
@@ -264,11 +277,11 @@ function Get-TestRunReport
     Write-Output "End Time=$global:endTime"
     $elapsed=$global:endTime - $global:startTime
     Write-Output "Elapsed=$elapsed"
-   
+
     Write-Output "Passed TEST`tExecutionTime"
     $global:passedTests | % { $extime=$global:times[$_]; Write-Output $_`t$extime }
     Write-Output "Failed TEST lists"
-    $global:failedTests | % { $extime=$global:times[$_]; Write-Output $_`t$extime }	
+    $global:failedTests | % { $extime=$global:times[$_]; Write-Output $_`t$extime }
 }
 
 function Write-ConsoleReport
@@ -293,20 +306,20 @@ function Write-ConsoleReport
     Write-Host
     Write-Host -ForegroundColor Green "Start Time: $global:startTime"
     Write-Host -ForegroundColor Green "End Time: $global:endTime"
-    Write-Host -ForegroundColor Green "Elapsed: "($global:endTime - $global:startTime).ToString()	
+    Write-Host -ForegroundColor Green "Elapsed: "($global:endTime - $global:startTime).ToString()
 }
 
 function Equal-DateTime($left, $right)
-{   
+{
     if ($left -eq $null -and $right -eq $null)
-    {        
+    {
         return $true
     }
     if ($left -eq $null -or $right -eq $null)
     {
         return $false
     }
-    
+
     return (($left - $right).Duration() -le $delta)
 }
 
@@ -315,16 +328,16 @@ function Equal-Hashtable($left, $right)
     if ((EmptyOrNullHashtable $left) -and (-Not (EmptyOrNullHashtable $right)))
     {
         return $false
-    }  
+    }
     if ((EmptyOrNullHashtable $right) -and (-Not (EmptyOrNullHashtable $left)))
     {
         return $false
-    } 
+    }
     if ($right.Count -ne $left.Count)
     {
         return $false
     }
-    
+
     return $true
 }
 
@@ -334,9 +347,9 @@ function EmptyOrNullHashtable($hashtable)
 }
 
 function Equal-OperationList($left, $right)
-{   
+{
     if ($left -eq $null -and $right -eq $null)
-    {        
+    {
         return $true
     }
     if ($left -eq $null -or $right -eq $null)
@@ -345,6 +358,6 @@ function Equal-OperationList($left, $right)
     }
 
     $diff = Compare-Object -ReferenceObject $left -DifferenceObject $right -PassThru
-    
+
     return (-not $diff)
 }
