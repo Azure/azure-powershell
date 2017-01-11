@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            WriteWarning("Breaking change notice: In upcoming releaese, top level properties, DataDiskNames and NetworkInterfaceIDs, will be removed from VM object because they are also in StorageProfile and NetworkProfile, respectively.");
+            WriteWarning("Breaking change notice: In upcoming release, top level properties, DataDiskNames and NetworkInterfaceIDs, will be removed from VM object because they are also in StorageProfile and NetworkProfile, respectively.");
 
             ExecuteClientAction(() =>
             {
