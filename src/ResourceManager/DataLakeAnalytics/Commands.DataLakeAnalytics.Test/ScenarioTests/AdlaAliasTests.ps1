@@ -38,7 +38,7 @@ function Test-DataLakeAnalyticsAccount
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -47,7 +47,7 @@ function Test-DataLakeAnalyticsAccount
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics account is not in succeeded state even after 30 min."
 		}
@@ -111,7 +111,7 @@ function Test-DataLakeAnalyticsAccount
 
 		# get the account and ensure that it contains two data lake stores
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-AreEqual 2 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
+		Assert-AreEqual 2 $testStoreAdd.DataLakeStoreAccounts.Count
 
 		# get the specific data source added
 		$adlsAccountInfo = Get-AdlAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
@@ -126,14 +126,14 @@ function Test-DataLakeAnalyticsAccount
 
 		# get the account and ensure that it contains one data lake store
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-AreEqual 1 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
+		Assert-AreEqual 1 $testStoreAdd.DataLakeStoreAccounts.Count
 
 		# add a blob account to the analytics account
 		Add-AdlAnalyticsDataSource -Account $accountName -Blob $blobAccountName -AccessKey $blobAccountKey
 
 		# get the account and ensure that it contains one blob account
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-AreEqual 1 $testStoreAdd.Properties.StorageAccounts.Count
+		Assert-AreEqual 1 $testStoreAdd.StorageAccounts.Count
 
 		# get the specific data source added
 		$blobAccountInfo = Get-AdlAnalyticsDataSource -Account $accountName -Blob $blobAccountName
@@ -148,7 +148,7 @@ function Test-DataLakeAnalyticsAccount
 
 		# get the account and ensure that it contains no azure storage accounts
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-True {$testStoreAdd.Properties.StorageAccounts -eq $null -or $testStoreAdd.Properties.StorageAccounts.Count -eq 0} "Remove blob storage reported success but failed to remove the account."
+		Assert-True {$testStoreAdd.StorageAccounts -eq $null -or $testStoreAdd.StorageAccounts.Count -eq 0} "Remove blob storage reported success but failed to remove the account."
 
 		# Delete dataLakeAnalytics account
 		Assert-True {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
@@ -240,7 +240,7 @@ function Test-DataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-		$nowTime = $accountCreated.Properties.CreationTime
+		$nowTime = $accountCreated.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -250,7 +250,7 @@ function Test-DataLakeAnalyticsJob
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -259,7 +259,7 @@ function Test-DataLakeAnalyticsJob
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
@@ -342,7 +342,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -351,7 +351,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
@@ -405,7 +405,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-		$nowTime = $accountCreated.Properties.CreationTime
+		$nowTime = $accountCreated.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -415,7 +415,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -424,7 +424,7 @@ function Test-NegativeDataLakeAnalyticsJob
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
@@ -495,7 +495,7 @@ function Test-DataLakeAnalyticsCatalog
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -504,7 +504,7 @@ function Test-DataLakeAnalyticsCatalog
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
