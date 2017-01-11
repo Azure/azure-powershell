@@ -103,11 +103,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '2016.11.11 - Version 1.2.7
-* AzureStackAdmin
-    * The Add-AzureRmResourceProviderRegistration changes for accepting the return code of 202 Accepted for the PUT manifest call
-        - Fix the issue of ProvisioningState and ExtensionName not getting populated with correct values
-        - Fix the issue of missing dependency dll Microsoft.Azure.Common.NetFramework.dll'
+        ReleaseNotes = '2017.01.11 version 1.2.8
+* AzureRM.Keyvault module
+	* Relaxing data type of ObjectId from Guid to string in Access Policy Entry for a Vault. These changes are required to Support ADFS Identity System.
+	* Set-AzureRmKeyVaultAccessPolicy cmdlet has an optional parameter BypassObjectIdValidation for supporting ADFS scenarios'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

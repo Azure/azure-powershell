@@ -1,3 +1,14 @@
+## 2017.01.11 version 1.2.8
+* AzureRM.Keyvault module
+	* Relaxing data type of ObjectId from Guid to string in Access Policy Entry for a Vault. These changes are required to Support ADFS Identity System.
+	* Set-AzureRmKeyVaultAccessPolicy cmdlet has an optional parameter BypassObjectIdValidation for supporting ADFS scenarios
+
+## 2017.01.04 version 1.2.7
+* AzureStackAdmin module
+    * The Add-AzureRmResourceProviderRegistration changes for accepting the return code of 202 Accepted for the PUT manifest call
+        - Fix the issue of ProvisioningState and ExtensionName not getting populated with correct values
+        - Fix the issue of missing dependency dll Microsoft.Azure.Common.NetFramework.dll'
+
 ## 2016.09.08 version 1.2.6
 * Side-by-side execution in PowerShell 5 using the following command in a new PowerShell session:```Import-Module -Name AzureRM -RequiredVersion 1.2.6```
 * AzureStackAdmin Cmdlets
