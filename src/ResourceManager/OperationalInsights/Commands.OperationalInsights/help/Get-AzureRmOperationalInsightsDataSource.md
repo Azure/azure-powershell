@@ -12,13 +12,7 @@ Gets data sources.
 
 ## SYNTAX
 
-### ByWorkspaceName (Default)
-```
-Get-AzureRmOperationalInsightsDataSource [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### ByWorkspaceObjectByName
+### ByWorkspaceObjectByName  (Default)
 ```
 Get-AzureRmOperationalInsightsDataSource [-Workspace] <PSWorkspace> [-Name <String>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
@@ -153,7 +147,7 @@ Accept wildcard characters: False
 Specifies the kind of data sources to get.
 The acceptable values for this parameter are:
 
-- AzureAuditLog 
+- AzureActivityLog 
 - CustomLog 
 - LinuxPerformanceObject 
 - LinuxSyslog 
