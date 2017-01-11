@@ -118,8 +118,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Destination.TransformedPath,
                 () =>
                 {
-                    var logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
-                    ServiceClientTracing.AddTracingInterceptor(logger.SdkTracingInterceptor);
+                    DataLakeStoreTraceLogger logger = null;
+                    if (DiagnosticLogLevel != LogLevel.None)
+                    {
+                        logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
+                        ServiceClientTracing.AddTracingInterceptor(logger.SdkTracingInterceptor);
+                    }
+                    
                     try
                     {
                         if (Directory.Exists(powerShellSourcePath))
@@ -161,7 +166,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     }
                     finally
                     {
-                        ServiceClientTracing.RemoveTracingInterceptor(logger.SdkTracingInterceptor);
+                        if (logger != null)
+                        {
+                            ServiceClientTracing.RemoveTracingInterceptor(logger.SdkTracingInterceptor);
+                        }
                     }
                 });
         }
