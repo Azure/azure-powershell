@@ -180,6 +180,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AzureAuditLog datasource has been deprecated, all your existing AzureAuditLog datasource has been migrated to AzureActivityLog..
+        /// </summary>
+        internal static string DeprecateAzureAuditLogDataSource {
+            get {
+                return ResourceManager.GetString("DeprecateAzureAuditLogDataSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HTTP Status Code: {0}
         ///Error Code: {1}
         ///Error Message: {2}

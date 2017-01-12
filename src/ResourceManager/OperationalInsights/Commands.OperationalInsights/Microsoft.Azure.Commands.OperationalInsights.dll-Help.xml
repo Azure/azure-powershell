@@ -1910,7 +1910,7 @@
 <command:details><command:name>Get-AzureRmOperationalInsightsDataSource</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmOperationalInsightsDataSource</command:noun>
-<maml:description><maml:para>Gets data sources.
+<maml:description><maml:para>Get datasources under Azure Log Analytics workspace.
 </maml:para>
 </maml:description>
 </command:details>

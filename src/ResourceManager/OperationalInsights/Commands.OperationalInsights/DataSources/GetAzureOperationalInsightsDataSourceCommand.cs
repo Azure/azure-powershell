@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         HelpMessage = "The data source name.")]
         [Parameter(ParameterSetName = ByWorkspaceObjectByKind)]
         [ValidateSet(
+            PSDataSourceKinds.AzureAuditLog,
             PSDataSourceKinds.AzureActivityLog,
             PSDataSourceKinds.CustomLog,
             PSDataSourceKinds.LinuxPerformanceObject,
@@ -99,6 +100,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             }
 
             if (ParameterSetName == ByWorkspaceObjectByKind || ParameterSetName == ByWorkspaceNameByKind) {
+                if (Kind == PSDataSourceKinds.AzureAuditLog)
+                {
+                    WriteWarning(Properties.Resources.DeprecateAzureAuditLogDataSource);
+                    return;
+                }
                 WriteObject(OperationalInsightsClient.FilterPSDataSources(ResourceGroupName, WorkspaceName, Kind), true);
                 return;
             }
