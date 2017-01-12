@@ -48,8 +48,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public Guid Id { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates the resulting updated owner should be returned."
+            )]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             var currentAcl = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
             string group;
             string user;
@@ -68,7 +75,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 string.Format(Resources.SetDataLakeStoreItemOwner, Path.OriginalPath),
                 Path.OriginalPath,
                 () =>
-                    DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group));
+                {
+                    DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group);
+                    if(PassThru)
+                    {
+                        var aclObject = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
+                        WriteObject(Type == DataLakeStoreEnums.Owner.Group ? aclObject.Group : aclObject.Owner);
+                    }
+                });
         }
     }
 }
