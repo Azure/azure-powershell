@@ -1,33 +1,41 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-ms.assetid: 6ACE045E-67AD-40FE-86E4-450AF522F174
 online version: 
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataLakeStoreItemPermission
+# Set-AzureRmDataLakeStoreItemExpiry
 
 ## SYNOPSIS
-Modifies the permission octal of a file or folder in Data Lake Store.
+Sets or removes the expire time for a file in an Azure Data Lake Store account.
 
 ## SYNTAX
 
 ```
-Set-AzureRmDataLakeStoreItemPermission [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Permission] <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
+ [[-Expiration] <DateTimeOffset>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataLakeStoreItemPermission** cmdlet modifies the permission octal of a file or folder in Data Lake Store.
+The **Set-AzureRmDataLakeStoreItemExpiry** cmdlet sets or removes the expire time for a file in an Azure Data Lake Store account.
 
 ## EXAMPLES
 
-### Example 1: Set the permission octal for an item
+### Example 1: Set the expiration time for a file
 ```
-PS C:\>Set-AzureRmDataLakeStoreItemPermission -AccountName "ContosoADL" -Path "/file.txt" -Permission 0770
+PS C:\> Set-AzureRmDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt -Expiration [DateTimeOffset]::Now.AddHours(2)
 ```
 
-This command sets the permission octal for a file to 0770, which translates to clearing the sticky bit, setting read/write/execute permissions for the owner of the file, setting read/write/execute permissions for the owning group of the file, and clearing read/write/execute permissions for other.
+Sets expiration on the file myfile.txt in account ContosoADL to be two hours from now.
+This will cause the file to expire (be marked for delete) in two hours.
+
+### Example 2: Remove the expiration on a file
+```
+PS C:\> Set-AzureRmDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt
+```
+
+Removes any expiration that was previously set on file 'myfile.txt' in account 'ContosoADL'.
+This means the file will not automatically expire (be marked for delete) and will need to be manually deleted or set to expire again.
 
 ## PARAMETERS
 
@@ -46,8 +54,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Expiration
+The absolute expiration time for the specified file.
+If no value or set to MaxValue, the file will never expire.
+
+```yaml
+Type: DateTimeOffset
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Path
-Specifies the Data Lake Store path of the file or folder, starting with the root directory (/).
+Specifies the Data Lake Store path of the file item for which to set or remove expiry.
 
 ```yaml
 Type: DataLakeStorePathInstance
@@ -56,22 +80,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Permission
-The permissions to set for the file or folder, expressed as an octal (e.g.
-'777')
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -87,7 +95,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -103,7 +111,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -115,14 +123,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### bool
-Returns true upon successfully updating the permission.
+### DataLakeStoreItem
+The updated file with a new expiration time.
 
 ## NOTES
-* Alias: Set-AdlStoreItemPermission
+Alias: Set-AdlStoreItemExpiry
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreItemPermission](./Get-AzureRmDataLakeStoreItemPermission.md)
-
+[Get-AzureRmDataLakeStoreItem]()
 

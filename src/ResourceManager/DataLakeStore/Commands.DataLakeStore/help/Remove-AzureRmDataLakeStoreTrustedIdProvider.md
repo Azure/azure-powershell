@@ -14,17 +14,15 @@ Removes the specified trusted identity provider in the specified Data Lake Store
 
 ```
 Remove-AzureRmDataLakeStoreTrustedIdProvider [-Account] <String> [[-Name] <String>] [-PassThru]
- [[-ResourceGroupName] <String>] [-WhatIf] [-Confirm]
+ [[-ResourceGroupName] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataLakeStoreTrustedIdProvider cmdlet removes the specified trusted identity provider in the specified Data Lake Store.
+The **Remove-AzureRmDataLakeStoreTrustedIdProvider** cmdlet removes the specified trusted identity provider in the specified Data Lake Store.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Remove a trusted identity provider.  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 1: Remove a trusted identity provider.
 ```
 PS C:\> Remove-AzureRmDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
 ```
@@ -93,21 +91,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -123,11 +106,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
 
-### System.Boolean
+### bool
+If PassThru is specified, returns true upon successful completion.
 
 ## NOTES
 

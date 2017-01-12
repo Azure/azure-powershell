@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage =
-                "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
+                "Indicates a boolean response should be returned indicating the result of the delete operation."
             )]
         public SwitchParameter Force { get; set; }
 
