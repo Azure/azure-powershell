@@ -158,6 +158,9 @@ Are you sure you want to continue?</value>
   <data name="DataSourceWindowsEventNoEventTypeSelected" xml:space="preserve">
     <value>Please at least select one type of event to collect by using -CollectErrors -CollectWarnings -CollectInformation</value>
   </data>
+  <data name="DeprecateAzureAuditLogDataSource" xml:space="preserve">
+    <value>AzureAuditLog datasource has been deprecated, all your existing AzureAuditLog datasource has been migrated to AzureActivityLog.</value>
+  </data>
   <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
     <value>HTTP Status Code: {0}
 Error Code: {1}

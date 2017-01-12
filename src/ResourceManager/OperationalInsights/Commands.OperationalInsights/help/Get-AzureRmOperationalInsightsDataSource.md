@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmOperationalInsightsDataSource
 
 ## SYNOPSIS
-Gets data sources.
+Get datasources under Azure Log Analytics workspace.
 
 ## SYNTAX
 

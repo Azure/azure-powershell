@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
     }
 
     public class PSDataSourceKinds {
+        public const string AzureAuditLog = "AzureAuditLog";
         public const string AzureActivityLog = "AzureActivityLog";
         public const string IISLogs = "IISLogs";
         public const string WindowsEvent = "WindowsEvent";
