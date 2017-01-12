@@ -82,14 +82,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
-                "Indicates the resulting ACL should be returned.",
-            ParameterSetName = BaseParameterSetName
-            )]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage =
-                "Indicates the resulting ACL should be returned.",
-            ParameterSetName = SpecificAceParameterSetName
-            )]
+                "Indicates the resulting ACL should be returned.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

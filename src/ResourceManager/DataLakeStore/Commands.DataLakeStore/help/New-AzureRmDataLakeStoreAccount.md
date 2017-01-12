@@ -12,10 +12,18 @@ Creates a new Data Lake Store account.
 
 ## SYNTAX
 
+### User or System assigned encryption (Default)
 ```
 New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [[-Encryption] <EncryptionType>] [[-KeyVaultId] <String>]
- [[-KeyName] <String>] [[-KeyVersion] <String>] [-Tier <TierType>] [<CommonParameters>]
+ [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [[-Encryption] <EncryptionConfigType>]
+ [[-KeyVaultId] <String>] [[-KeyName] <String>] [[-KeyVersion] <String>] [-Tier <TierType>]
+ [<CommonParameters>]
+```
+
+### Disable Encryption
+```
+New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [-DisableEncryption] [-Tier <TierType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,10 +55,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableEncryption
+Indicates that the account will not have any form of encryption applied to it.```yaml
+Type: SwitchParameter
+Parameter Sets: Disable Encryption
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Encryption
 ```yaml
-Type: EncryptionType
-Parameter Sets: (All)
+Type: EncryptionConfigType
+Parameter Sets: User or System assigned encryption
 Aliases: 
 
 Required: False
@@ -63,7 +84,7 @@ Accept wildcard characters: False
 ### -KeyName
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: User or System assigned encryption
 Aliases: 
 
 Required: False
@@ -76,7 +97,7 @@ Accept wildcard characters: False
 ### -KeyVaultId
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: User or System assigned encryption
 Aliases: 
 
 Required: False
@@ -89,7 +110,7 @@ Accept wildcard characters: False
 ### -KeyVersion
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: User or System assigned encryption
 Aliases: 
 
 Required: False
