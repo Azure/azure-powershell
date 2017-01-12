@@ -26,3 +26,12 @@
 -->
 
 # Upcoming Breaking Changes
+## 
+Default parameter set for Get-AzureRmOperationalInsightsDataSource will be deprecated and change to ByWorkspaceNameByKind.
+```powershell
+# Old (which does nothing)
+Get-AzureRmOperationalInsightsDataSource 
+
+# New
+Get-AzureRmOperationalInsightsDataSource -ResourceGroupName "resourceGroupA" -WorkspaceName "LogAnalyticsWorkspace" -Kind AzureActivityLog
+```

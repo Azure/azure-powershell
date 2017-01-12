@@ -193,6 +193,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This parameter set will be deprecated in next release, and default parameter set will change to ByWorkspaceNameByKind..
+        /// </summary>
+        internal static string GetWorkspaceDataSourceParameterSetWarning {
+            get {
+                return ResourceManager.GetString("GetWorkspaceDataSourceParameterSetWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource group name cannot be null..
         /// </summary>
         internal static string ResourceGroupNameCannotBeEmpty {
