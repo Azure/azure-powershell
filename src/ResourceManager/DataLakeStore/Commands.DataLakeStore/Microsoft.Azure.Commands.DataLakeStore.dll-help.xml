@@ -545,6 +545,24 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogLevel</maml:name>
+<maml:Description><maml:para>Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
+<dev:type><maml:name>LogLevel</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
+<maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -583,6 +601,24 @@
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>Destination</maml:name>
 <maml:Description><maml:para>Specifies the local file path to which to download the file.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogLevel</maml:name>
+<maml:Description><maml:para>Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
+<dev:type><maml:name>LogLevel</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
+<maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1755,6 +1791,24 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogLevel</maml:name>
+<maml:Description><maml:para>Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
+<dev:type><maml:name>LogLevel</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
+<maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
@@ -1797,6 +1851,24 @@
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
 <dev:type><maml:name>DataLakeStorePathInstance</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogLevel</maml:name>
+<maml:Description><maml:para>Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
+<dev:type><maml:name>LogLevel</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
+<maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2298,12 +2370,78 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DisableEncryption</maml:name>
+<maml:Description><maml:para>Indicates that the account will not have any form of encryption applied to it.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>The desired commitment tier for this account to use.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">TierType</command:parameterValue>
+<dev:type><maml:name>TierType</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>New-AzureRmDataLakeStoreAccount</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of the resource group that contains the account.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the account to create.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>Location</maml:name>
+<maml:Description><maml:para>Specifies the location to use for the account. The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- East US 2
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>DefaultGroup</maml:name>
+<maml:Description><maml:para>Specifies the object ID of the AzureActive Directory group to use as the default group owner for new files and folders.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Tags</maml:name>
+<maml:Description><maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>Encryption</maml:name>
 <maml:Description><maml:para>
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">EncryptionType</command:parameterValue>
-<dev:type><maml:name>EncryptionType</maml:name>
+<command:parameterValue required="true" variableLength="false">EncryptionConfigType</command:parameterValue>
+<dev:type><maml:name>EncryptionConfigType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2354,12 +2492,21 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DisableEncryption</maml:name>
+<maml:Description><maml:para>Indicates that the account will not have any form of encryption applied to it.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>Encryption</maml:name>
 <maml:Description><maml:para>
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">EncryptionType</command:parameterValue>
-<dev:type><maml:name>EncryptionType</maml:name>
+<command:parameterValue required="true" variableLength="false">EncryptionConfigType</command:parameterValue>
+<dev:type><maml:name>EncryptionConfigType</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>

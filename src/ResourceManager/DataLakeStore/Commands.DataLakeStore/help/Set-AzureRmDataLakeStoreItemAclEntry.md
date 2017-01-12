@@ -12,7 +12,7 @@ Modifies an entry in the ACL of a file or folder in Data Lake Store.
 
 ## SYNTAX
 
-### Set ACL Entries using ACL object
+### Set ACL Entries using ACL object (Default)
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]

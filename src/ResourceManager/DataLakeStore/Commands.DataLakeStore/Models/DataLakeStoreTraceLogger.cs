@@ -15,9 +15,9 @@
 // 
 
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -49,31 +49,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         private bool PreviousAutoFlush { get; set; }
 
+        private SourceLevels PreviousAdalSourceLevel { get; set; }
+
+        private TraceLevel PreviousAdalTraceLevel { get; set; }
+
         public readonly IServiceClientTracingInterceptor SdkTracingInterceptor;
 
         public DataLakeStoreTraceLogger(Cmdlet commandToLog, string logFilePath = null, LogLevel logLevel = LogLevel.Information)
         {
             LogFilePath = logFilePath;
             LogLevel = logLevel;
-            if (string.IsNullOrEmpty(LogFilePath))
-            {
-                LogFilePath = string.Format(@"{0}\ADLDataTransfer\ADLDataTransfer_{1}.log",
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    DateTime.Now.ToString("MM-dd-yyyy.HH.mm"));
-            }
-            else if(Directory.Exists(LogFilePath)) // the user passed in a directory instead of a file
+            if(Directory.Exists(LogFilePath)) // the user passed in a directory instead of a file
             {
                 commandToLog.WriteWarning(string.Format(Resources.DiagnosticDirectoryAlreadyExists, LogFilePath));
                 return;
             }
 
-
-            // always create the directory, since it is a no-op if the path exists
-            Directory.CreateDirectory(Path.GetDirectoryName(LogFilePath));
-
-
             try
             {
+                // always create the directory, since it is a no-op if the path exists
+                // we also do not do heavy validation here, since any exception will be caught and reported back as a warning.
+                Directory.CreateDirectory(Path.GetDirectoryName(LogFilePath));
                 TraceStream = new FileStream(LogFilePath, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
             }
             catch (Exception ex)
@@ -89,6 +85,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             Trace.Listeners.Add(TextListener);
             Trace.AutoFlush = true;
             SdkTracingInterceptor = new DataLakeStoreTracingInterceptor(this);
+
+            PreviousAdalSourceLevel = AdalTrace.TraceSource.Switch.Level;
+            PreviousAdalTraceLevel = AdalTrace.LegacyTraceSwitch.Level;
+
+            // Ignore ADAL trace logs if debug logging isn't selected.
+            if (LogLevel != LogLevel.Debug)
+            {
+                AdalTrace.TraceSource.Switch.Level = SourceLevels.Warning;
+                AdalTrace.LegacyTraceSwitch.Level = TraceLevel.Warning;
+            }
+
+            if (SdkTracingInterceptor != null)
+            {
+                ServiceClientTracing.AddTracingInterceptor(SdkTracingInterceptor);
+            }
         }
 
         public void LogInformation(string message, params object[] args)
@@ -140,6 +151,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void Dispose()
         {
+            if (SdkTracingInterceptor != null)
+            {
+                ServiceClientTracing.RemoveTracingInterceptor(SdkTracingInterceptor);
+            }
+
             if (TextListener != null)
             {
                 if (Trace.Listeners.Contains(TextListener))
@@ -156,6 +172,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             Trace.AutoFlush = PreviousAutoFlush;
+            AdalTrace.TraceSource.Switch.Level = PreviousAdalSourceLevel;
+            AdalTrace.LegacyTraceSwitch.Level = PreviousAdalTraceLevel;
         }
     }
 }
