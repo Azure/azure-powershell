@@ -552,7 +552,7 @@
 <command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
 <dev:type><maml:name>LogLevel</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue>Error</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
 <maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
@@ -615,7 +615,7 @@
 <command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
 <dev:type><maml:name>LogLevel</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue>Error</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
 <maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
@@ -1798,7 +1798,7 @@
 <command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
 <dev:type><maml:name>LogLevel</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue>Error</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
 <maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
@@ -1861,7 +1861,7 @@
 <command:parameterValue required="true" variableLength="false">LogLevel</command:parameterValue>
 <dev:type><maml:name>LogLevel</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue>Error</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DiagnosticLogPath</maml:name>
 <maml:Description><maml:para>Specifies the path for the diagnostic log to record events to during the file or folder import.
