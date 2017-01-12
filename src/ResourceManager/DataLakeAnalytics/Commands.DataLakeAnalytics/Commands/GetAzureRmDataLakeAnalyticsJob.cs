@@ -90,7 +90,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true,
             Mandatory = false, HelpMessage = "An optional value which indicates the number of jobs to return. Default value is 500")]
         [ValidateNotNullOrEmpty]
-
         public int? Top { get; set; }
 
         public override void ExecuteCmdlet()

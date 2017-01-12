@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 });
         }
 
-        public void UpdateSecret(string accountName, string databaseName,
+        public USqlSecret UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
             _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
@@ -420,6 +420,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     Password = password,
                     Uri = hostUri
                 });
+
+            // TODO: Remove this during the next breaking change release.
+            return null;
         }
 
         public void DeleteSecret(string accountName, string databaseName, string secretName)
