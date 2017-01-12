@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update Get-AdlJob to support Top parameter
+* Update Get-AdlJob to return the list of jobs in order by most recently submitted
+* Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
+* Update New-AdlAnalyticsAccount and Set-AdlAnalyticsAccount to support commitment tier options for the service.
+* Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.
 
 ## Version 2.4.0
 * Removal of unsupported parameters in Add and Set-AzureRMDataLakeAnalyticsDataSource (default for data lake store)
