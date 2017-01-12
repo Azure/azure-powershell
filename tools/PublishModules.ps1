@@ -61,7 +61,7 @@ function Get-TargetModules
               $targets += $module.FullName
             }
           }
-		  $targets += "$resourceManagerRootFolder\Azure.AnalysisServices" 
+	  $targets += "$resourceManagerRootFolder\Azure.AnalysisServices" 
 		  
         } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage")) {
           $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
