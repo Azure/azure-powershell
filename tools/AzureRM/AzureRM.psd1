@@ -54,6 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.0.2'}, 
+               @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.0.1'}, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '3.2.0'; }, 
                @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '2.4.0'; }, 
