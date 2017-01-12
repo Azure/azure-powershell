@@ -2264,10 +2264,17 @@
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
-</maml:para>
+<command:examples>
+<command:example><maml:title>1: Get specific datasource</maml:title>
+<dev:code>PS C:\&gt;Get-AzureRmOperationalInsightsDataSource -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Name "applicationLogCollection"</dev:code>
+<dev:remarks><maml:para>this command get a datasource named applicationLogCollection in ContosoWorkspace</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>2: List datasource for a given kind.</maml:title>
+<dev:code>PS C:\&gt;Get-AzureRmOperationalInsightsDataSource -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Kind "WindowsEvent"</dev:code>
+<dev:remarks><maml:para>this command get all WindowsEvent datasource in ContosoWorkspace</maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
@@ -2403,7 +2410,7 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get Intelligence Packs</maml:title>
-<dev:code>PS C:\&gt;Get-AzureOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"</dev:code>
+<dev:code>PS C:\&gt;Get-AzureRmOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"</dev:code>
 <dev:remarks><maml:para>This command gets the available Intelligence Packs.
 </maml:para>
 <maml:para></maml:para>
@@ -3768,7 +3775,7 @@ PS C:\&gt;Get-AzureRmOperationalInsightsStorageInsight -Workspace $Workspace -Na
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get management groups by using the pipeline</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Get-AzureOperationalInsightsWorkspaceManagementGroups</dev:code>
+<dev:code>PS C:\&gt;Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Get-AzureRmOperationalInsightsWorkspaceManagementGroups</dev:code>
 <dev:remarks><maml:para>This command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then passes the workspace to the current cmdlet, which gets the management groups for that workspace.
 </maml:para>
 <maml:para></maml:para>
@@ -4060,7 +4067,7 @@ PS C:\&gt;Get-AzureRmOperationalInsightsStorageInsight -Workspace $Workspace -Na
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get usage data using the pipeline</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Get-AzureOperationalInsightsWorkspaceUsage</dev:code>
+<dev:code>PS C:\&gt;Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Get-AzureRmOperationalInsightsWorkspaceUsage</dev:code>
 <dev:remarks><maml:para>This command gets the workspace named MyWorkSpace using the Get-AzureRmOperationalInsightsWorkspace cmdlet, and then passes the workspace to the current cmdlet. The command gets the usage details for that workspace.
 </maml:para>
 <maml:para></maml:para>
