@@ -35,3 +35,12 @@ Get-AzureRmOperationalInsightsDataSource
 # New
 Get-AzureRmOperationalInsightsDataSource -ResourceGroupName "resourceGroupA" -WorkspaceName "LogAnalyticsWorkspace" -Kind AzureActivityLog
 ```
+
+AzureAuditLog will be removed from parameter Kind for Get-AzureRmOperationalInsightsDataSource, you should switch to AzureActivityLog.
+```powershell
+# Old
+Get-AzureRmOperationalInsightsDataSource -ResourceGroupName "resourceGroupA" -WorkspaceName "LogAnalyticsWorkspace" -Kind AzureAuditLog
+
+# New
+Get-AzureRmOperationalInsightsDataSource -ResourceGroupName "resourceGroupA" -WorkspaceName "LogAnalyticsWorkspace" -Kind AzureActivityLog
+```
