@@ -472,7 +472,18 @@ function Uninstall-AzureRmProfile
 
   PROCESS {
     $ProfileMap = (Get-AzProfile)
-    Uninstall-ProfileHelper -PMap $ProfileMap @PSBoundParameters
+    $Profile = $PSBoundParameters.Profile
+    $profilesInstalled = Get-ProfilesInstalled -ProfileMap $ProfileMap
+
+    # Return if the profile specified is not installed.
+    if ($Profile -notin $profilesInstalled)
+    {
+      return
+    }
+
+    # Get the dependencyIndex @{"Module.Version": @(Profile)}
+    $dependencyIndex = Test-Dependencies
+    Uninstall-ProfileHelper -PMap $ProfileMap -pInstalled $profilesInstalled -dependencyIndex $dependencyIndex @PSBoundParameters
   }
 }
 
@@ -503,6 +514,12 @@ function Update-AzureRmProfile
 
     foreach ($ProfileMapHash in $ProfileMapHashes)
     {
+      # We have already handled the target; so do not process for symlink "ProfileMap.Json"
+      if ($ProfileMapHash.Name -eq "ProfileMap.json")
+      {
+        continue
+      }
+
       $previousProfileMap = Get-Content -Raw -Path (Join-Path $profilecache $ProfileMapHash) |  ConvertFrom-json
       $PreviousProfiles = ($previousProfileMap | Get-Member -MemberType NoteProperty).Name
       $profilesInstalled = Get-ProfilesInstalled -ProfileMap $previousProfileMap
@@ -521,12 +538,12 @@ function Update-AzureRmProfile
         if ($PreviousProfile -in $profilesInstalled.Keys)
         {
           # Uninstall the previous profile
-          $removeHash = (Uninstall-ProfileHelper -PMap $previousProfileMap -profilesInstalled $profilesInstalled -dependencyIndex $dependencyIndex $PSBoundParameters.RemovePreviousVersions )
+          $removeHash = (Uninstall-ProfileHelper -Profile $PreviousProfile -PMap $previousProfileMap -pInstalled $profilesInstalled -dependencyIndex $dependencyIndex $PSBoundParameters.RemovePreviousVersions )
         }
       }
 
-      # Delete hash file if profile uninstall was not denied; Do not remove the symlink or latest profilemap hash
-      if (($removeHash -ne $false) -and ($ProfileMapHash.Name -ne "ProfileMap.json") -and ($ProfileMapHash.FullName -ne $latestProfileMapHash))
+      # Delete hash file if profile uninstall was not denied; Do not remove the latest profilemap hash
+      if (($removeHash -ne $false) -and ($ProfileMapHash.FullName -ne $latestProfileMapHash))
       {
         Remove-ProfileMapFile -ProfileMapPath (Join-Path $profilecache $ProfileMapHash)
       }
@@ -541,7 +558,7 @@ function Update-AzureRmProfile
 function Uninstall-ProfileHelper
 {
   [CmdletBinding(SupportsShouldProcess = $true)]
-	param([PSObject]$PMap, [array]$profilesInstalled, [hashtable]$dependencyIndex)
+	param([PSObject]$PMap, [array]$pInstalled, [hashtable]$dependencyIndex)
   DynamicParam
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
@@ -556,66 +573,67 @@ function Uninstall-ProfileHelper
     $Remove = $PSBoundParameters.RemovePreviousVersions
     $Profile = $PSBoundParameters.Profile
     $modules = ($PMap.$Profile | Get-Member -MemberType NoteProperty).Name
-     
-    foreach ($module in $modules)
+    if ($PSCmdlet.ShouldProcess("$Profile", "Uninstall Profile")) 
     {
-      # Check if the profiles associated with the module version are installed.
-      $profilesAssociated = @()
-      $versionList = $PMap.$Profile.$module
-      foreach ($version in $versionList)
+      if (($Force -or $Remove -or $PSCmdlet.ShouldContinue("Uninstall Profile $Profile", "Removing Modules for profile $Profile")))
       {
-        foreach ($profileInDepIndex in $dependencyIndex[$module + $version])
+        foreach ($module in $modules)
         {
-          if ($profileInDepIndex -in $profilesInstalled.Keys)
+          # Check if the profiles associated with the module version are installed.
+          $profilesAssociated = @()
+          $versionList = $PMap.$Profile.$module
+          foreach ($version in $versionList)
           {
-            $profilesAssociated += $profileInDepIndex
+            foreach ($profileInDepIndex in $dependencyIndex[$module + $version])
+            {
+              if ($profileInDepIndex -in $pInstalled.Keys)
+              {
+                $profilesAssociated += $profileInDepIndex
+              }
+            }
           }
-        }
-      }
       
-      # If more than one profile is installed for the same version of the module, do not uninstall.
-      if ($profilesAssociated.Count -ge 2)
-      {
-        continue
-      }
+          # If more than one profile is installed for the same version of the module, do not uninstall; skip if none installed
+          if ($profilesAssociated.Count -ne 1)
+          {
+            continue
+          }
 
-      # Ask to uninstall. If denied, do not delete the hash
-      $versionList = $PMap.$Profile.$module
-      foreach ($version in $versionList)
-      {
-        Do
-        {
-          $moduleInstalled = Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} 
-          if ($PSCmdlet.ShouldProcess("$module version $version", "Remove module"))
+          # Ask to uninstall. If denied, do not delete the hash
+          foreach ($version in $versionList)
           {
-            if (($moduleInstalled -ne $null) -and ($Force -or $Remove -or $PSCmdlet.ShouldContinue("Remove module $module version $version", "Removing Modules for profile $Profile")))
+            Do
             {
-              Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
-              try 
+              $moduleInstalled = Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} 
+              if ($moduleInstalled -ne $null) 
               {
-                Uninstall-Module -Name $module -RequiredVersion $version -Force -ErrorAction Stop
-              }
-              catch
-              {
-                break
+                Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
+                try 
+                {
+                  Uninstall-Module -Name $module -RequiredVersion $version -Force -ErrorAction Stop
+                }
+                catch
+                {
+                  break
+                }
               }
             }
-            else
-            {
-              if ($version -ne $null)
-              {
-                $removeHash = $false
-              }
-              break
-            }
-          }
-          else
-          {
-            break
-          }
+            While($moduleInstalled -ne $null);
+          } 
         }
-        While($version -ne $null);
-      } 
+      }
+      else
+      {
+        if ($moduleInstalled -ne $null)
+        {
+          $removeHash = $false
+        }
+        break
+      }
+    }
+    else
+    {
+      break
     }
     return $removeHash
   }
