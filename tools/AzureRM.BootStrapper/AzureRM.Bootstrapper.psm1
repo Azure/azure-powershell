@@ -32,23 +32,8 @@ function Get-RestResponse
     $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
     $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
     
-  	Throw "Http Status Code: $($HttpStatusCode) `nHttp Status Description: $($HttpStatusDescription)"
+    Throw "Http Status Code: $($HttpStatusCode) `nHttp Status Description: $($HttpStatusDescription)"
   }
-}
-
-# Save old ProfileMap
-function Rename-PreviousProfileMap
-{
-  [string]$ProfileCache = Get-ProfileCachePath
-  [string]$filePath = "$ProfileCache\ProfileMap.json";
-
-  [string]$directory = [System.IO.Path]::GetDirectoryName($filePath);
-  [string]$strippedFileName = [System.IO.Path]::GetFileNameWithoutExtension($filePath);
-  [string]$extension = [System.IO.Path]::GetExtension($filePath);
-  [string]$newFileName = $strippedFileName + [DateTime]::Now.ToString("yyyyMMdd-HHmmss") + $extension;
-  [string]$newFilePath = [System.IO.Path]::Combine($directory, $newFileName);
-
-  Copy-Item -LiteralPath $filePath -Destination $newFilePath;
 }
 
 # Get-ProfileMap from Azure Endpoint
@@ -68,13 +53,14 @@ function Get-AzureProfileMap
   # Get Hash value for $OnlineProfileMap
   $OnlineProfileMapHash = (Get-FileHashProfileMap $OnlineProfileMap).Hash
 
-  # If profilemap.json exists, compare online hash and cached hash; if not different, return current $profilemap.
+  # If profilemap.json exists, compare online hash and cached hash; if not different, don't replace cache.
   if (Test-Path "$ProfileCache\ProfileMap.json")
   {
-    $ProfileMap = Get-Content -Raw -Path "$ProfileCache\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json
-    if ((Get-FileHashProfileMap $ProfileMap).Hash -eq $OnlineProfileMapHash)
+    [string]$ProfilePath = (Get-ChildItem "$ProfileCache\ProfileMap.json").Target
+    [string]$ProfileMapHash = [System.IO.Path]::GetFileNameWithoutExtension($ProfilePath)
+    if ($ProfileMapHash -eq $OnlineProfileMapHash)
     {
-      return $ProfileMap
+      return $OnlineProfileMap
     }
   }
 
@@ -86,7 +72,7 @@ function Get-AzureProfileMap
   # No edit symlink cmd available. So delete it and create a new one with the same name.
   if (Test-Path "$ProfileCache\ProfileMap.json")
   {
-    Remove-Item "$ProfileCache\ProfileMap.json"
+    RemoveWithRetry -Path "$ProfileCache\ProfileMap.json" -Force
   }
 
   # create/Update symlink
@@ -173,7 +159,6 @@ function Get-ProfilesInstalled
       foreach ($version in $versionList)
       {
         if ((Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version}) -ne $null)
-      # if ((Get-AzureRmModule -Profile $key -Module $module) -ne $null)
         {
           if ($result.ContainsKey($key))
           {
@@ -187,6 +172,7 @@ function Get-ProfilesInstalled
       }
     }
 
+    # If not all the modules from a profile are installed, add it to $IncompleteProfiles
     if(($result.$key.Count -gt 0) -and ($result.$key.Count -ne ($ProfileMap.$key | Get-Member -MemberType NoteProperty).Count))
     {
       $result.Remove($key)
@@ -210,14 +196,12 @@ function Install-ModuleHelper
   Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo
 }
 
-# Check if the module version is part of any other profile
+# Create a hash table for module dependency wrt profiles @{'Module.Version' = @(profile)} across all profilemaps cached.
 function Test-Dependencies
 {
-  # param([string] $Module, [version] $version)
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapFiles = Get-ChildItem $ProfileCache
   $dependencyIndex = @{} 
-  $profilesInstalled = Get-ProfilesInst
   foreach($ProfileMapPath in $ProfileMapFiles)
   {
     $ProfileMap = Get-Content -Raw -Path (Join-Path $ProfileCache $ProfileMapPath) |  ConvertFrom-json
@@ -225,7 +209,7 @@ function Test-Dependencies
     foreach ($profile in $Profiles)
     {
       foreach ($Module in ($ProfileMap.$profile | Get-Member -MemberType NoteProperty).Name)
-      { # version list
+      {
         $versionList = $ProfileMap.$Profile.$Module
         foreach ($version in $versionList)
         {
@@ -249,6 +233,7 @@ function Test-Dependencies
 # Gets hash value for profilemap
 function Get-FileHashProfileMap
 {
+  param([PSObject]$profilemap)
   <#
   https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.utility/Get-FileHash
   http://stackoverflow.com/questions/8047064/convert-string-to-system-io-stream
@@ -425,6 +410,7 @@ function Use-AzureRmProfile
     $Profile = $PSBoundParameters.Profile
     if ($PSCmdlet.ShouldProcess($Profile, "Loading modules for profile in the current scope"))
     {
+      Write-Host "Loading Profile $Profile"
       foreach ($Module in ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name)
       {
         $version = Get-AzureRmModule -Profile $Profile -Module $Module
@@ -434,7 +420,6 @@ function Use-AzureRmProfile
           $IsConfirmed = $true
           Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap
         }
-        Write-Host "Loading Profile $Profile, $Module Module version $version"
         Import-Module -Name $Module -RequiredVersion $version -Global
       }
     }
@@ -465,10 +450,6 @@ function Install-AzureRmProfile
       if ($version -eq $null) 
       {
         Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap
-      }
-      else 
-      {
-        Write-Host "Module $Module Version $version is already installed."
       }
     }
   }
@@ -518,29 +499,34 @@ function Update-AzureRmProfile
 
     $ProfileCache = Get-ProfileCachePath
     $ProfileMapHashes = Get-ChildItem $ProfileCache 
-    
+    $latestProfileMapHash = (Get-ChildItem "$ProfileCache\ProfileMap.json").Target
+
     foreach ($ProfileMapHash in $ProfileMapHashes)
     {
       $previousProfileMap = Get-Content -Raw -Path (Join-Path $profilecache $ProfileMapHash) |  ConvertFrom-json
       $PreviousProfiles = ($previousProfileMap | Get-Member -MemberType NoteProperty).Name
       $profilesInstalled = Get-ProfilesInstalled -ProfileMap $previousProfileMap
+
+      # Get the dependencyIndex @{"Module.Version": @(Profile)}
+      $dependencyIndex = Test-Dependencies
+
       foreach($PreviousProfile in $PreviousProfiles)
       {
-        # Do not remove the current installed profile
-        if ($PreviousProfile -eq $profile)
+        # Do not remove the current installed profile or if its latest or if its a greater version
+        if (($PreviousProfile -eq $profile) -or ($PreviousProfile -eq 'Latest') -or ($PreviousProfile -gt $profile))
         {
           continue
         }
         
-        if ($PreviousProfile -in $profilesInstalled)
+        if ($PreviousProfile -in $profilesInstalled.Keys)
         {
           # Uninstall the previous profile
-          $removeHash = (Uninstall-ProfileHelper -PMap $previousProfileMap -profilesInstalled $profilesInstalled $PSBoundParameters.RemovePreviousVersions )
+          $removeHash = (Uninstall-ProfileHelper -PMap $previousProfileMap -profilesInstalled $profilesInstalled -dependencyIndex $dependencyIndex $PSBoundParameters.RemovePreviousVersions )
         }
       }
 
-      # Delete hash file if profile uninstall was not denied
-      if ($removeHash -ne $false) 
+      # Delete hash file if profile uninstall was not denied; Do not remove the symlink or latest profilemap hash
+      if (($removeHash -ne $false) -and ($ProfileMapHash.Name -ne "ProfileMap.json") -and ($ProfileMapHash.FullName -ne $latestProfileMapHash))
       {
         Remove-ProfileMapFile -ProfileMapPath (Join-Path $profilecache $ProfileMapHash)
       }
@@ -555,7 +541,7 @@ function Update-AzureRmProfile
 function Uninstall-ProfileHelper
 {
   [CmdletBinding(SupportsShouldProcess = $true)]
-	param([PSObject]$PMap, [array]$profilesInstalled)
+	param([PSObject]$PMap, [array]$profilesInstalled, [hashtable]$dependencyIndex)
   DynamicParam
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
@@ -571,28 +557,24 @@ function Uninstall-ProfileHelper
     $Profile = $PSBoundParameters.Profile
     $modules = ($PMap.$Profile | Get-Member -MemberType NoteProperty).Name
      
-    $profilesToRemove = @()
-
-    # Get the dependencyIndex @{"Module.Version": @(Profile)}
-    $dependencyIndex = Test-Dependencies
-
     foreach ($module in $modules)
     {
       # Check if the profiles associated with the module version are installed.
+      $profilesAssociated = @()
       $versionList = $PMap.$Profile.$module
       foreach ($version in $versionList)
       {
         foreach ($profileInDepIndex in $dependencyIndex[$module + $version])
         {
-          if ($profileInDepIndex -in $profilesInstalled)
+          if ($profileInDepIndex -in $profilesInstalled.Keys)
           {
-            $profilesToRemove += $profileInDepIndex
+            $profilesAssociated += $profileInDepIndex
           }
         }
       }
       
       # If more than one profile is installed for the same version of the module, do not uninstall.
-      if ($profilesToRemove.Count -ge 2)
+      if ($profilesAssociated.Count -ge 2)
       {
         continue
       }
@@ -648,9 +630,33 @@ function Remove-ProfileMapFile
 
   if (Test-Path -Path $ProfileMapPath)
   {
-    # Add retry logic
-    Remove-Item -Path $ProfileMapPath -Force
+    RemoveWithRetry -Path $ProfileMapPath -Force
   }
+}
+
+function RemoveWithRetry
+{
+    param ([string]$Path)
+    
+    # $args.ErrorAction = "Stop"
+    $retries = 3
+    $secondsDelay = 2
+    $retrycount = 0
+    $completedSuccessfully = $false
+
+    while (-not $completedSuccessfully) {
+        try {
+            Remove-Item @PSBoundParameters -ErrorAction Stop
+            $completedSuccessfully = $true
+        } catch {
+            if ($retrycount -ge $retries) {
+                throw
+            } else {
+                Start-Sleep $secondsDelay
+                $retrycount++
+            }
+        }
+    }
 }
 
 function Set-BootstrapRepo
