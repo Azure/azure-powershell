@@ -115,6 +115,7 @@
     <Compile Include="Cmdlets\WebServices\ImportWebServiceDefinition.cs" />
     <Compile Include="Cmdlets\MachineLearningCmdletBase.cs" />
     <Compile Include="Cmdlets\CommitmentPlans\NewAzureMLCommitmentPlan.cs" />
+    <Compile Include="Cmdlets\WebServices\NewAzureMLWebServiceRegionalProperties.cs" />
     <Compile Include="Cmdlets\WebServices\RemoveAzureMLWebService.cs" />
     <Compile Include="Cmdlets\WebServices\GetAzureMLWebService.cs" />
     <Compile Include="Cmdlets\WebServices\NewAzureMLWebService.cs" />
@@ -163,6 +164,7 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

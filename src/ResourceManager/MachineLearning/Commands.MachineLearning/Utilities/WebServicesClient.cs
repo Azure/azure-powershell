@@ -129,5 +129,14 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                 NextLink = paginatedResponse.Body.NextPageLink
             };
         }
+
+        public void CreateRegionalProperties(
+                        string resourceGroupName,
+                        string webServiceName,
+                        string region
+                        )
+        {
+            this.apiClient.WebServices.CreateRegionalWebServiceProperties(resourceGroupName, webServiceName, region);
+        }
     }
 }
