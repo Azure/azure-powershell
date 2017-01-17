@@ -21,6 +21,6 @@
 * Added two new dataplane APIs in a separate module Azure.AnalysisServices.psd1
     - This introduces two new APIs that enable customers to login to Azure Analysis Services servers and issue a restart command.
 
-## Version 3.2.0
+## Version 0.0.2
 * Fixed bug in Get-AzureRMAnalysisServicesServer
     - When this command was run against some resources, it would fail with a null reference exception.

@@ -18,13 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support Tag as parameters for Find-AzureRmResource
+    - Users can now use Tag parameter with Find-AzureRmResource
+    - Fixed the issue where illegal combinations of TagName, TagValue with other search parameters was allowed in Find-AzureRmResource and would result in users getting exception from the service by disallowing such combinations. 
 
 ## Version 3.4.0
 * Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
     - Users can now use ResourceNameEquals and ResourceGroupNameEquals with Find-AzureRmResource
-* Support Tag as parameters for Find-AzureRmResource
-    - Users can now use Tag parameter with Find-AzureRmResource
-    - Fixed the issue where illegal combinations of TagName, TagValue with other search parameters was allowed in Find-AzureRmResource and would result in users getting exception from the service by disallowing such combinations. 
 
 ## Version 3.3.0
 * Lookup of AAD group by Id now uses GetObjectsByObjectId AAD Graph call instead of Groups/<id>

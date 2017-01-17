@@ -19,6 +19,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add SkuCapacity parameter to Set-AzureRmServiceBusNamespace
+    - User will be able to update the SkuCapacity(Messaging units in case of a premium namespace) of the SeriveBus NameSpace
+
+* Future Breaking Change Notification: We've added a warning about removing property 'ResourceGroupName' from the returned NamespceAttributes from cmdlets New-AzureRmServiceBusNamespace, Get-AzureRmServiceBusNamespace and Set-AzureRmServiceBusNamespace
+    -The call remains the same, but the returned values NameSpace object will not have the ResourceGroupName property  
 
 ## Version 0.0.1
 
