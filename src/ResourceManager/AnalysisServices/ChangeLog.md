@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.0.3
 * Added two new dataplane APIs in a separate module Azure.AnalysisServices.psd1
     - This introduces two new APIs that enable customers to login to Azure Analysis Services servers and issue a restart command.
 

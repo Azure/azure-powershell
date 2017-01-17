@@ -149,7 +149,37 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
+    - Start-AzureStorageBlobCopy
+* Fix hang issue when running cmdlets from WPF/Winform context  
+    - Get-AzureStorageBlob
+    - Get-AzureStorageBlobContent
+    - Get-AzureStorageBlobCopyState
+    - Get-AzureStorageContainer
+    - Get-AzureStorageContainerStoredAccessPolicy
+    - New-AzureStorageContainer
+    - Remove-AzureStorageBlob
+    - Remove-AzureStorageContainer
+    - Set-AzureStorageBlobContent
+    - Set-AzureStorageContainerAcl
+    - Start-AzureStorageBlobCopy
+    - Stop-AzureStorageBlobCopy
+    - Get-AzureStorageFile
+    - Get-AzureStorageFileContent
+    - Get-AzureStorageFileCopyState
+    - Get-AzureStorageShare
+    - Get-AzureStorageShareStoredAccessPolicy
+    - New-AzureStorageDirectory
+    - New-AzureStorageShare
+    - Remove-AzureStorageDirectory
+    - Remove-AzureStorageFile
+    - Remove-AzureStorageShare
+    - Set-AzureStorageFileContent
+    - Start-AzureStorageFileCopy
+    - Stop-AzureStorageFileCopy
+    - Get-AzureStorageQueueStoredAccessPolicy
+    - Get-AzureStorageTableStoredAccessPolicy
+'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
