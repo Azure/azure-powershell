@@ -52,7 +52,7 @@ function Get-AzureProfileMap
   $OnlineProfileMap = Get-RestResponse  
 
   # Get Hash value for $OnlineProfileMap
-  $OnlineProfileMapHash = (Get-FileHashProfileMap $OnlineProfileMap).Hash
+  $OnlineProfileMapHash = (Get-FileHashProfileMap $OnlineProfileMap)
 
   # If profilemap.json exists, compare online hash and cached hash; if not different, don't replace cache.
   if (Test-Path "$ProfileCache\ProfileMap.json")
@@ -131,7 +131,7 @@ function Get-AzProfile
 # Lists the profiles available for install from gallery
 function Get-ProfilesAvailable
 {
-  param([PSCustomObject] $ProfileMap)
+  param([parameter(Mandatory = $true)] [PSCustomObject] $ProfileMap)
   $ProfileList = ""
   foreach ($Profile in $ProfileMap) 
   {
@@ -148,7 +148,7 @@ function Get-ProfilesAvailable
 # Lists the profiles that are installed on the machine
 function Get-ProfilesInstalled
 {
-  param([PSCustomObject] $ProfileMap, [REF]$IncompleteProfiles)
+  param([parameter(Mandatory = $true)] [PSCustomObject] $ProfileMap, [REF]$IncompleteProfiles)
   $result = @{}
   $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
 
@@ -238,7 +238,8 @@ function Get-FileHashProfileMap
   $mapstr = Get-ProfilesAvailable $profilemap
   $bytearr = [System.Text.Encoding]::UTF8.GetBytes($mapstr)
   $stream = [System.Io.MemoryStream]::New($bytearr)
-  Get-FileHash -InputStream $stream -Algorithm MD5
+  $ProfileMapHash = (Get-FileHash -InputStream $stream -Algorithm MD5)
+  return $ProfileMapHash.Hash
 }
 
 # Function to remove Previous profile map
@@ -285,7 +286,7 @@ function RemoveWithRetry
   }
 }
 
-# Help function to uninstall a profil
+# Help function to uninstall a profile
 function Uninstall-ProfileHelper
 {
   [CmdletBinding(SupportsShouldProcess = $true)]
@@ -491,17 +492,19 @@ function Get-AzureRmProfile
     {
       # Just display profiles installed on the machine
       $IncompleteProfiles = @()
-      $result = Get-ProfilesInstalled -ProfileMap $ProfileMap ([REF]$IncompleteProfiles)
-      foreach ($key in $result.Keys)
+      $profilesInstalled = Get-ProfilesInstalled -ProfileMap $ProfileMap ([REF]$IncompleteProfiles)
+      $Output = @()
+      foreach ($key in $profilesInstalled.Keys)
       {
-        Write-Host "Profile : $key"
-        Write-Host "-----------------"
-        $result.$key | Format-Table -HideTableHeaders 
+        $Output += "Profile : $key"
+        $Output += "-----------------"
+        $Output += ($profilesInstalled.$key | Format-Table -HideTableHeaders | Out-String)
       }
-      if ($IncompleteProfiles -ne $null)
+      if ($IncompleteProfiles.Count -gt 0)
       {
         Write-Warning "Some modules from profile(s) $IncompleteProfiles were not installed. Use Install-AzureRmProfile to install missing modules."
       }
+      $Output
     }
   }
 }
