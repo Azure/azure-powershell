@@ -100,8 +100,15 @@ function Test-VirtualMachineScaleSet
             | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
             | Remove-AzureRmVmssExtension -Name $extname `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
-            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' `
-            | New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
+            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2'
+
+        # Validate Remove Network profile
+        Assert-AreEqual 'test' $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
+        Assert-AreEqual $true $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
+        Assert-AreEqual $subnetId `
+            $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
+
+        $vmss = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         Assert-AreEqual $loc $vmss.Location;
         Assert-AreEqual 2 $vmss.Sku.Capacity;
@@ -206,6 +213,8 @@ function Test-VirtualMachineScaleSet
         $st = $vmssResult | Restart-AzureRmVmss -InstanceId $instanceListParam;
 
         # Remove
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
+        #$st = $vmssResult | Remove-AzureRmVmss -Force;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
         $st = $vmssResult | Remove-AzureRmVmss;
     }
@@ -332,6 +341,8 @@ function Test-VirtualMachineScaleSetReimageUpdate
             "Conflict";
 
         # Remove
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     }
@@ -431,13 +442,14 @@ function Test-VirtualMachineScaleSetLB
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $ipCfg.LoadBalancerBackendAddressPools[0].Id;
         Assert-AreEqual $subnetId $ipCfg.Subnet.Id;
 
+        $settingString = ‘{ “AntimalwareEnabled”: true}’;
         $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
+            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true -Setting $settingString `
             | Remove-AzureRmVmssExtension -Name $extname `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
             | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' `
@@ -528,6 +540,7 @@ function Test-VirtualMachineScaleSetLB
             Assert-True { $output.Contains("PlatformUpdateDomain") };
         }
 
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     }
     finally

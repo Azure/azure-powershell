@@ -199,7 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     long internalTaskId = monitorRequest.Item1;
                     CloudFile file = monitorRequest.Item2;
                     //Just use the last file management channel since the following operation is context insensitive
-                    await Channel.FetchFileAttributesAsync(file, accessCondition, requestOptions, context, CmdletCancellationToken);
+                    await Channel.FetchFileAttributesAsync(file, accessCondition, requestOptions, context, CmdletCancellationToken).ConfigureAwait(false);
                     bool taskDone = false;
 
                     if (file.CopyState == null)

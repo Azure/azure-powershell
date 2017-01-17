@@ -795,4 +795,12 @@
   <data name="MigrateResourceShoudlProcessTarget" xml:space="preserve">
     <value>Are you should you want to perform migrate action: {0} on resource {1}</value>
   </data>
+  <data name="AzureVMSqlServerSqlConfigurationNotFound" xml:space="preserve">
+    <value>Cannot find sql server configuration info in substatuses. If you have just installed the extension, you may see this till the installation process finishes. Otherwise, updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
+{0}</value>
+  </data>
+  <data name="AzureVMSqlServerWrongConfigFormat" xml:space="preserve">
+    <value>Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+{0}</value>
+  </data>
 </root>

@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Update", "AzureRmVmssInstance", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, "AzureRmVmssInstance", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class UpdateAzureRmVmssInstance : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }

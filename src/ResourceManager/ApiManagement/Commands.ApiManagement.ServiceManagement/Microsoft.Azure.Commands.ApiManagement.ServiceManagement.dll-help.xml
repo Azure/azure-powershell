@@ -1452,7 +1452,7 @@ true/false</maml:para>
 	<command:details>
 		<command:name>Get-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Gets all or specific certificates.</maml:para>
+			<maml:para>Gets API Management certificates configured for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1462,7 +1462,7 @@ true/false</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Gets all or specific certificates.</maml:para>
+		<maml:para>The Get-AzureRmApiManagementCertificate cmdlet gets all Azure API Management certificates or certificates that you specify which are configured for Authentication with the Backend.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1657,7 +1657,7 @@ true/false</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Get all certificates  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -1677,7 +1677,7 @@ true/false</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 2: Get a certificate by its ID  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -5250,7 +5250,7 @@ Imported API</maml:para>
 	<command:details>
 		<command:name>New-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Creates new certificate.</maml:para>
+			<maml:para>Creates an API Management certificate for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -5260,7 +5260,7 @@ Imported API</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Creates new certificate.</maml:para>
+		<maml:para>The New-AzureRmApiManagementCertificate cmdlet creates an Azure API Management certificate which can be configured for authentication with backend.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5474,7 +5474,7 @@ Imported API</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Create and upload a certificate  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -7690,7 +7690,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 	<command:details>
 		<command:name>Remove-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Deletes existing certificate.</maml:para>
+			<maml:para>Removes an API Management certificate configured for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -7700,7 +7700,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Deletes existing certificate.</maml:para>
+		<maml:para>The Remove-AzureRmApiManagementCertificate cmdlet removes an Azure API Management certificate.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10702,7 +10702,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 	<command:details>
 		<command:name>Set-AzureRmApiManagementCertificate</command:name>
 		<maml:description>
-			<maml:para>Sets certificate data.</maml:para>
+			<maml:para>Modifies an API Management certificate which is configured for authentication with backend.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10712,7 +10712,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Sets certificate data.</maml:para>
+		<maml:para>The Set-AzureRmApiManagementCertificate cmdlet modifies an Azure API Management certificate which is configured for authentication with backend.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -12951,7 +12951,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>LoggerId</maml:name>
 				<maml:description>
 					<maml:para>Identifier of a logger. If specified will try to find logger by the identifier. This parameter is optional.</maml:para>
@@ -13011,7 +13011,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>LoggerId</maml:name>
 			<maml:description>
 				<maml:para>Identifier of a logger. If specified will try to find logger by the identifier. This parameter is optional.</maml:para>
@@ -17047,7 +17047,7 @@ OpenId Connect Provider.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PsApiManagementContext</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Type</maml:name>
 				<maml:description>
 					<maml:para>Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.</maml:para>
@@ -17107,7 +17107,7 @@ OpenId Connect Provider.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Type</maml:name>
 			<maml:description>
 				<maml:para>Identifier of a Identity Provider. If specified will try to find identity provider configuration by the identifier. This parameter is optional.</maml:para>
