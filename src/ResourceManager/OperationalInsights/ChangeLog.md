@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Get-AzureRmOperationalInsightsSearchResults no longer requires the Top parameter to retrieve results
+
+## Version 2.4.0
 
 ## Version 2.3.0
 * Add new parameter to cmdlet New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource

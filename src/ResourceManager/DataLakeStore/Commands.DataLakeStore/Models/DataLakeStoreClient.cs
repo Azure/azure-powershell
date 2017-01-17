@@ -58,7 +58,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             EncryptionIdentity identity = null, 
             EncryptionConfig config = null, 
             IList<TrustedIdProvider> trustedProviders = null,
-            IList<FirewallRule> firewallRules = null)
+            IList<FirewallRule> firewallRules = null,
+            EncryptionConfigType? encryptionType = null,
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -96,6 +98,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.FirewallState = FirewallState.Enabled;
             }
 
+            // if there is no encryption value, then it was not set by the cmdlet which means encryption was explicitly disabled.
+            if(!encryptionType.HasValue)
+            {
+                parameters.EncryptionState = EncryptionState.Disabled;
+                parameters.Identity = null;
+                parameters.EncryptionConfig = null;
+            }
+
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
+
             return  _client.Account.Create(resourceGroupName, accountName, parameters);
         }
 
@@ -105,7 +120,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string defaultGroup,
             TrustedIdProviderState providerState,
             FirewallState firewallState,
-            Hashtable customTags = null)
+            Hashtable customTags = null,
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -121,6 +137,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 TrustedIdProviderState = providerState,
                 FirewallState = firewallState
             };
+
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
 
             return _client.Account.Update(resourceGroupName, accountName, parameters);
         }
