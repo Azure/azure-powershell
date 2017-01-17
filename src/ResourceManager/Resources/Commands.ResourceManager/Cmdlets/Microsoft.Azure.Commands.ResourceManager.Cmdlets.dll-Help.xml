@@ -10169,7 +10169,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Invoke-AzureRmResourceAction -ResourceGroupName myGroup -ResourceType Microsoft.Web/sites/config/list -ResourceName mySite/appsettings -Action list -ApiVersion 2015-08-01 -Force</dev:code>
+			<dev:code>Invoke-AzureRmResourceAction -ResourceGroupName myGroup -ResourceType Microsoft.Web/sites/config -ResourceName mySite/appsettings -Action list -ApiVersion 2015-08-01 -Force</dev:code>
 			<dev:remarks>
 				<maml:para>Invokes the list action on website config</maml:para>
 				<maml:para />
