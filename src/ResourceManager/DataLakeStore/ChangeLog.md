@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.3.0
 * Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
 * Update New-AdlStore and Set-AdlStore to support commitment tier options for the service.
 * Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.

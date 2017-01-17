@@ -565,7 +565,14 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* New parameters in New-AzureVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
+     - BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+     - BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it''s manual, schedule settings need to be specified.
+     - FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+     - FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+     - FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+     - LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
