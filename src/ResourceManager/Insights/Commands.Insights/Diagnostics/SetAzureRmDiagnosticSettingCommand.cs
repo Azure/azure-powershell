@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,6 +19,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Xml;
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -41,6 +41,27 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the switch for storage parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable storage")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DisableStorage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the switch for eventhub parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable service bus")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DisableServiceBus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the switch for workspace parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable workspace")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DisableWorkspace { get; set; }
+
+        /// <summary>
         /// Gets or sets the storage account parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account id")]
@@ -57,9 +78,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the enable parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics should be enabled or disabled")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics should be enabled or disabled")]
         [ValidateNotNullOrEmpty]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets the categories parameter of the cmdlet
@@ -99,105 +120,198 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new ServiceDiagnosticSettingsResource(location: string.Empty);
+            if (!DisableStorage &&
+                !DisableServiceBus &&
+                !DisableWorkspace &&
+                string.IsNullOrWhiteSpace(this.StorageAccountId) &&
+                string.IsNullOrWhiteSpace(this.ServiceBusRuleId) &&
+                string.IsNullOrWhiteSpace(this.WorkspaceId) &&
+                !this.Enabled.HasValue)
+            {
+                throw new ArgumentException("No operation is specified");
+            }
 
             ServiceDiagnosticSettingsResource getResponse = this.InsightsManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 
             ServiceDiagnosticSettingsResource properties = getResponse;
 
-            if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
-            {
-                properties.StorageAccountId = this.StorageAccountId;
-            }
+            SetStorage(properties);
 
-            if (!string.IsNullOrWhiteSpace(this.ServiceBusRuleId))
-            {
-                properties.ServiceBusRuleId = this.ServiceBusRuleId;
-            }
+            SetServiceBus(properties);
 
-            if (!string.IsNullOrWhiteSpace(this.WorkspaceId))
-            {
-                properties.WorkspaceId = this.WorkspaceId;
-            }
+            SetWorkspace(properties);
 
             if (this.Categories == null && this.Timegrains == null)
             {
-                foreach (var log in properties.Logs)
-                {
-                    log.Enabled = this.Enabled;
-                }
-
-                foreach (var metric in properties.Metrics)
-                {
-                    metric.Enabled = this.Enabled;
-                }
+                SetAllCategoriesAndTimegrains(properties);
             }
             else
             {
                 if (this.Categories != null)
                 {
-                    foreach (string category in this.Categories)
-                    {
-                        LogSettings logSettings = properties.Logs.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
-
-                        if (logSettings == null)
-                        {
-                            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Log category '{0}' is not available", category));
-                        }
-
-                        logSettings.Enabled = this.Enabled;
-                    }
+                    SetSelectedCategories(properties);
                 }
 
                 if (this.Timegrains != null)
                 {
-                    foreach (string timegrainString in this.Timegrains)
-                    {
-                        TimeSpan timegrain = XmlConvert.ToTimeSpan(timegrainString);
-                        MetricSettings metricSettings = properties.Metrics.FirstOrDefault(x => TimeSpan.Equals(x.TimeGrain, timegrain));
-
-                        if (metricSettings == null)
-                        {
-                            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric timegrain '{0}' is not available", timegrainString));
-                        }
-                        metricSettings.Enabled = this.Enabled;
-                    }
+                    SetSelectedTimegrains(properties);
                 }
             }
 
             if (this.RetentionEnabled.HasValue)
             {
-                var retentionPolicy = new RetentionPolicy
-                {
-                    Enabled = this.RetentionEnabled.Value,
-                    Days = this.RetentionInDays.Value
-                };
-
-                if (properties.Logs != null)
-                {
-                    foreach (LogSettings logSettings in properties.Logs)
-                    {
-                        logSettings.RetentionPolicy = retentionPolicy;
-                    }
-                }
-
-                if (properties.Metrics != null)
-                {
-                    foreach (MetricSettings metricSettings in properties.Metrics)
-                    {
-                        metricSettings.RetentionPolicy = retentionPolicy;
-                    }
-                }
+                SetRetention(properties);
             }
 
+            var putParameters = CopySettings(properties);
+
+            ServiceDiagnosticSettingsResource result = this.InsightsManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+            WriteObject(result);
+        }
+
+        private static ServiceDiagnosticSettingsResource CopySettings(ServiceDiagnosticSettingsResource properties)
+        {
+            var putParameters = new ServiceDiagnosticSettingsResource(location: string.Empty);
             putParameters.Logs = properties.Logs;
             putParameters.Metrics = properties.Metrics;
             putParameters.ServiceBusRuleId = properties.ServiceBusRuleId;
             putParameters.StorageAccountId = properties.StorageAccountId;
             putParameters.WorkspaceId = properties.WorkspaceId;
+            return putParameters;
+        }
 
-            ServiceDiagnosticSettingsResource result = this.InsightsManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
-            WriteObject(result);
+        private void SetRetention(ServiceDiagnosticSettingsResource properties)
+        {
+            var retentionPolicy = new RetentionPolicy
+            {
+                Enabled = this.RetentionEnabled.Value,
+                Days = this.RetentionInDays.Value
+            };
+
+            if (properties.Logs != null)
+            {
+                foreach (LogSettings logSettings in properties.Logs)
+                {
+                    logSettings.RetentionPolicy = retentionPolicy;
+                }
+            }
+
+            if (properties.Metrics != null)
+            {
+                foreach (MetricSettings metricSettings in properties.Metrics)
+                {
+                    metricSettings.RetentionPolicy = retentionPolicy;
+                }
+            }
+        }
+
+        private void SetSelectedTimegrains(ServiceDiagnosticSettingsResource properties)
+        {
+            if (!this.Enabled.HasValue)
+            {
+                throw new ArgumentException("Parameter 'Enabled' is required by 'Timegrains' parameter.");
+            }
+
+            foreach (string timegrainString in this.Timegrains)
+            {
+                TimeSpan timegrain = XmlConvert.ToTimeSpan(timegrainString);
+                MetricSettings metricSettings = properties.Metrics.FirstOrDefault(x => TimeSpan.Equals(x.TimeGrain, timegrain));
+
+                if (metricSettings == null)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric timegrain '{0}' is not available", timegrainString));
+                }
+                metricSettings.Enabled = this.Enabled.Value;
+            }
+        }
+
+        private void SetSelectedCategories(ServiceDiagnosticSettingsResource properties)
+        {
+            if (!this.Enabled.HasValue)
+            {
+                throw new ArgumentException("Parameter 'Enabled' is required by 'Categories' parameter.");
+            }
+
+            foreach (string category in this.Categories)
+            {
+                LogSettings logSettings = properties.Logs.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+
+                if (logSettings == null)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Log category '{0}' is not available", category));
+                }
+
+                logSettings.Enabled = this.Enabled.Value;
+            }
+        }
+
+        private void SetAllCategoriesAndTimegrains(ServiceDiagnosticSettingsResource properties)
+        {
+            if (!this.Enabled.HasValue)
+            {
+                return;
+            }
+
+            foreach (var log in properties.Logs)
+            {
+                log.Enabled = this.Enabled.Value;
+            }
+
+            foreach (var metric in properties.Metrics)
+            {
+                metric.Enabled = this.Enabled.Value;
+            }
+        }
+
+        private void SetWorkspace(ServiceDiagnosticSettingsResource properties)
+        {
+            if (!string.IsNullOrWhiteSpace(this.WorkspaceId))
+            {
+                if (this.DisableWorkspace)
+                {
+                    throw new ArgumentException("WorkspaceId and DisableWorkspace cannot be both present.");
+                }
+
+                properties.WorkspaceId = this.WorkspaceId;
+            }
+            else if (this.DisableWorkspace)
+            {
+                properties.WorkspaceId = null;
+            }
+        }
+
+        private void SetServiceBus(ServiceDiagnosticSettingsResource properties)
+        {
+            if (!string.IsNullOrWhiteSpace(this.ServiceBusRuleId))
+            {
+                if (this.DisableServiceBus)
+                {
+                    throw new ArgumentException("ServiceBusId and DisableServiceBus cannot be both present.");
+                }
+
+                properties.ServiceBusRuleId = this.ServiceBusRuleId;
+            }
+            else if (this.DisableServiceBus)
+            {
+                properties.ServiceBusRuleId = null;
+            }
+        }
+
+        private void SetStorage(ServiceDiagnosticSettingsResource properties)
+        {
+            if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
+            {
+                if (this.DisableStorage)
+                {
+                    throw new ArgumentException("StorageAccountId and DisableStorage cannot be both present.");
+                }
+
+                properties.StorageAccountId = this.StorageAccountId;
+            }
+            else if (this.DisableStorage)
+            {
+                properties.StorageAccountId = null;
+            }
         }
     }
 }
