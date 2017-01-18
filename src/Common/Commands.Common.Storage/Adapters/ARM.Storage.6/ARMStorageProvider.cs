@@ -12,30 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
+namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    [Cmdlet(VerbsCommon.Get, StorageUsageNounStr), OutputType(typeof(PSUsage))]
-    public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
+    public class ARMStorageProvider : IStorageServiceProvider
     {
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
+        IStorageManagementClient _client;
 
-            foreach (var usage in this.StorageClient.Usage.List())
-            {
-                WriteObject(new PSUsage()
-                {
-                    LocalizedName = usage.Name.LocalizedValue,
-                    Name = usage.Name.Value,
-                    Unit = usage.Unit,
-                    CurrentValue = usage.CurrentValue,
-                    Limit = usage.Limit
-                });
-            }
+        public ARMStorageProvider(IStorageManagementClient client)
+        {
+            _client = client;
+        }
+        public IStorageService GetStorageService(string name, string resourceGroupName)
+        {
+            var account = _client.StorageAccounts.GetProperties(resourceGroupName, name);
+            var keys = _client.StorageAccounts.ListKeys(resourceGroupName, name);
+            return new ARMStorageService(account, keys.Keys[0].Value,
+                keys.Keys[1].Value);
         }
     }
 }

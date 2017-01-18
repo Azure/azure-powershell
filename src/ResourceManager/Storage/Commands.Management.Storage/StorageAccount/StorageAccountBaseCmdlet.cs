@@ -61,9 +61,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
         }
+
+        [Flags]
         public enum EncryptionSupportServiceEnum
         {
-            Blob = 1
+            None = 0,
+            Blob = 1,
+            File = 2
         }
 
         public IStorageManagementClient StorageClient
@@ -103,14 +107,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return returnSkuName;
         }
 
-        protected static Kind? ParseAccountKind(string accountKind)
+        protected static Kind ParseAccountKind(string accountKind)
         {
             Kind returnKind;
-            if (accountKind == null)
-            {
-                return null;
-            }
-            else if (!Enum.TryParse<Kind>(accountKind, true, out returnKind))
+            if (!Enum.TryParse<Kind>(accountKind, true, out returnKind))
             {
                 throw new ArgumentOutOfRangeException("Kind");
             }
@@ -128,11 +128,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected static Encryption ParseEncryption(EncryptionSupportServiceEnum? EnableService, EncryptionSupportServiceEnum? DisableService = null)
         {
+            //When EnableService and DisableService both don't have value, return null
+            if ((EnableService == EncryptionSupportServiceEnum.None || EnableService == null) &&
+                (DisableService == EncryptionSupportServiceEnum.None || DisableService == null))
+            {
+                return null;
+            }
+
             //DisableService and EnableService should not have overlap
             if (DisableService != null && EnableService != null)
             {
-                if ((DisableService & EnableService) != 0)
-                    throw new ArgumentOutOfRangeException("EnableEncryptionService, DisableEncryptionService", String.Format("EnableEncryptionService and DisableEncryptionService should no have overlap Service: {0}", DisableService & EnableService));
+                if ((DisableService & EnableService) != 0 || (DisableService & EnableService) != EncryptionSupportServiceEnum.None)
+                    throw new ArgumentOutOfRangeException("EnableEncryptionService, DisableEncryptionService", String.Format("EnableEncryptionService and DisableEncryptionService should not have overlap Service: {0}", DisableService & EnableService));
             }
 
             Encryption accountEncryption = new Encryption();
@@ -142,11 +149,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 accountEncryption.Services.Blob = new EncryptionService();
                 accountEncryption.Services.Blob.Enabled = true;
             }
+            if (EnableService != null && (EnableService & EncryptionSupportServiceEnum.File) == EncryptionSupportServiceEnum.File)
+            {
+                accountEncryption.Services.File = new EncryptionService();
+                accountEncryption.Services.File.Enabled = true;
+            }
             if (DisableService != null && (DisableService & EncryptionSupportServiceEnum.Blob) == EncryptionSupportServiceEnum.Blob)
             {
                 accountEncryption.Services.Blob = new EncryptionService();
                 accountEncryption.Services.Blob.Enabled = false;
             }
+            if (DisableService != null && (DisableService & EncryptionSupportServiceEnum.File) == EncryptionSupportServiceEnum.File)
+            {
+                accountEncryption.Services.File = new EncryptionService();
+                accountEncryption.Services.File.Enabled = false;
+            }
+
             return accountEncryption;
         }
 
