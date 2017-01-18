@@ -16,14 +16,14 @@ Modifies an Azure Data Lake Analytics catalog credential password.
 ```
 Set-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
  [-CredentialName] <String> [-Credential] <PSCredential> [-NewPassword] <PSCredential> [-Uri] <Uri> [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Specify full URI
 ```
 Set-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
  [-CredentialName] <String> [-Credential] <PSCredential> [-NewPassword] <PSCredential> [-DatabaseHost] <String>
- [-Port] <Int32> [-WhatIf] [-Confirm]
+ [-Port] <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,9 +31,7 @@ The Set-AzureRmDataLakeAnalyticsCatalogCredential cmdlet modifies a credential p
 
 ## EXAMPLES
 
-### --------------------------  Exampl1: Modify a credential's password associated with an account  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 1: Modify a credential's password associated with an account
 ```
 PS C:\> Set-AzureRmDataLakeAnalyticsCatalogSecret -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
@@ -62,16 +60,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DatabaseName
-Specifies the name of the database holding the secret.
+### -Credential
+Specifies the name and current password of the credential to modify.
 
 ```yaml
-Type: String
+Type: PSCredential
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,16 +90,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Credential
-Specifies the name and current password of the credential to modify.
+### -DatabaseHost
+Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.
 
 ```yaml
-Type: PSCredential
+Type: String
+Parameter Sets: Specify full URI
+Aliases: 
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+Specifies the name of the database holding the secret.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -122,6 +135,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Port
+Specifies the port number used to connect to the specified DatabaseHost using this credential.
+
+```yaml
+Type: Int32
+Parameter Sets: Specify full URI
+Aliases: 
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Uri
 Specifies the full Uniform Resource Identifier (URI) of the external data source this credential can connect to.
 
@@ -134,21 +162,6 @@ Required: True
 Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WhatIf
-
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -167,41 +180,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseHost
-Specifies the host name of the external data source the credential can connect to in the format mydatabase.contoso.com.
-
+### -WhatIf
 ```yaml
-Type: String
-Parameter Sets: Specify full URI
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
-Required: True
-Position: 4
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Port
-Specifies the port number used to connect to the specified DatabaseHost using this credential.
-
-```yaml
-Type: Int32
-Parameter Sets: Specify full URI
-Aliases: 
-
-Required: True
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential
+### None
 
 ## NOTES
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix Get-AzureRmVM with -Status issue: Get-AzureRmVM throws an exception when Get-AzureRmVM lists multiple VMs and some of the VMs are deleted during Get-AzureRmVM is performed.
 * New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
 	- BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
 	- BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it's manual, schedule settings need to be specified.

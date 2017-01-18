@@ -14,7 +14,7 @@ Deletes an Azure Data Lake Analytics credential.
 
 ```
 Remove-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String> [-Name] <String>
- [[-Password] <PSCredential>] [-PassThru] [-WhatIf] [-Confirm]
+ [[-Password] <PSCredential>] [-Recurse] [-PassThru] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,9 +22,7 @@ The Remove-AzureRmDataLakeAnalyticsCatalogCredential cmdlet deletes an Azure Dat
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Remove a credential  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 1: Remove a credential
 ```
 PS C:\> Remove-AzureRmDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdla" `
                       -DatabaseName "DatabaseName" `
@@ -65,6 +63,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Force
+Forces the command to run without asking for user confirmation.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the credential.
 
@@ -75,22 +86,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Password
-The password for the credential.
-This is required if the caller is not the owner of the account.
-
-```yaml
-Type: PSCredential
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -113,18 +108,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-
+### -Password
+The password for the credential.
+This is required if the caller is not the owner of the account.
 
 ```yaml
-Type: SwitchParameter
+Type: PSCredential
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Recurse
+Indicates that this delete operation should go through and also delete and drop all resources dependent on this credential.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -143,11 +152,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
 
-### System.Boolean
+### bool
+If PassThru is specified, returns true upon completion of the operation.
 
 ## NOTES
 

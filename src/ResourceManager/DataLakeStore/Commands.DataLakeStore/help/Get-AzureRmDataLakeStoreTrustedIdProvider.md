@@ -15,27 +15,23 @@ If no provider is specified, then lists all providers for the account.
 
 ```
 Get-AzureRmDataLakeStoreTrustedIdProvider [-Account] <String> [[-Name] <String>]
- [[-ResourceGroupName] <String>]
+ [[-ResourceGroupName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataLakeStoreTrustedIdProvider cmdlet gets the specified trusted identity provider in the specified Data Lake Store.
+The **Get-AzureRmDataLakeStoreTrustedIdProvider** cmdlet gets the specified trusted identity provider in the specified Data Lake Store.
 If no provider is specified, then lists all providers for the account.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Get a specific trusted identity provider  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 1: Get a specific trusted identity provider
 ```
 PS C:\> Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
 ```
 
 Returns the provider named "MyProvider" from account "ContosoADL"
 
-### --------------------------  Example 2: List all providers in an account  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 2: List all providers in an account
 ```
 PS C:\> Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName "ContosoADL"
 ```
@@ -89,13 +85,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider
+### DataLakeStoreTrustedIdProvider
+The details of the specified trusted identity provider.
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### IList<DataLakeStoreTrustedIdProvider>
+The list of trusted identity providers in the specified account.
 
 ## NOTES
 

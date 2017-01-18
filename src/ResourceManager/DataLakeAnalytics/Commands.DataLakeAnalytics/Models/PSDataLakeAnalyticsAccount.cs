@@ -46,7 +46,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 baseAccount.StorageAccounts,
                 baseAccount.CreationTime,
                 baseAccount.LastModifiedTime,
-                baseAccount.Endpoint)
+                baseAccount.Endpoint,
+                baseAccount.NewTier,
+                baseAccount.CurrentTier)
         {
             Properties = new PSDataLakeAnalyticsAccountProperties(baseAccount);
         }
