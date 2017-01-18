@@ -22,10 +22,12 @@ The **Get-AzureRmDataLakeStoreItemAclEntry** cmdlet gets an entry (ACE) in the a
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Get the ACL for a folder
+```
+PS C:\> Get-AzureRmDataLakeStoreItemAclEntry -AccountName 'ContosoADL' -Path '/'
 ```
 
-```
+This command gets the ACL for the root directory of the specified Data Lake Store account
 
 ## PARAMETERS
 
@@ -65,6 +67,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### IEnumerable<DataLakeStoreItemAce>
+The list of ACL entries for the specified folder or file.
 
 ## NOTES
 

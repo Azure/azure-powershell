@@ -15,6 +15,7 @@ If no firewall rule is specified, then lists all firewall rules for the account.
 
 ```
 Get-AzureRmDataLakeStoreFirewallRule [-Account] <String> [[-Name] <String>] [[-ResourceGroupName] <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,18 +24,14 @@ If no firewall rule is specified, then lists all firewall rules for the account.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Retrieve a specific firewall rule  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 1: Retrieve a specific firewall rule
 ```
 PS C:\> Get-AzureRmDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyFirewallRule
 ```
 
 Returns the firewall rule named "MyFirewallRule" from account "ContosoADL"
 
-### --------------------------  Example 2: List all firewall rules in an account  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 2: List all firewall rules in an account
 ```
 PS C:\> Get-AzureRmDataLakeStoreFirewallRule -AccountName "ContosoADL"
 ```
@@ -88,13 +85,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule
+### DataLakeStoreFirewallRule
+The specified firewall rule to retrieve
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule, Microsoft.Azure.Management.DataLake.Store, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### IList<DataLakeStoreFirewallRule>
+The list of firewall rules in the specified account.
 
 ## NOTES
 
