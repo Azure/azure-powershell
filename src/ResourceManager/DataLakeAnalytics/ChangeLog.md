@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.5.0
 * Update Get-AdlJob to support Top parameter
 * Update Get-AdlJob to return the list of jobs in order by most recently submitted
 * Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
