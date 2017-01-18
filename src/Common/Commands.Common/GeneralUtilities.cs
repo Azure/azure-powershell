@@ -38,6 +38,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         private static List<string> AuthorizationHeaderNames = new List<string>() { "Authorization" };
 
+        // this is only used to determine cutoff for streams (not xml or json).
+        private const int StreamCutOffSize = 10 * 1024; //10KB
+
         private static bool TryFindCertificatesInStore(string thumbprint,
             System.Security.Cryptography.X509Certificates.StoreLocation location, out X509Certificate2Collection certificates)
         {
@@ -318,7 +321,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             else
             {
-                return content;
+                return content.Length <= GeneralUtilities.StreamCutOffSize ? 
+                    content : 
+                    content.Substring(0, StreamCutOffSize) + "\r\nDATA TRUNCATED DUE TO SIZE\r\n";
             }
         }
 

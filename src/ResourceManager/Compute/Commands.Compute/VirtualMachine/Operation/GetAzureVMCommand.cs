@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListVirtualMachineInResourceGroupParamSet = "ListVirtualMachineInResourceGroupParamSet";
         protected const string ListAllVirtualMachinesParamSet = "ListAllVirtualMachinesParamSet";
         protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
+        private const string InfoNotAvailable = "Info Not Available";
 
         [Parameter(
            Mandatory = true,
@@ -101,23 +102,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     while (vmListResult != null)
                     {
-                        if (vmListResult.Body != null)
-                        {
-                            foreach (var item in vmListResult.Body)
-                            {
-                                var psItem = Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
-                                psItem = Mapper.Map(item, psItem);
-                                if (this.Status.IsPresent)
-                                {
-                                    // Call additional Get InstanceView of each VM to get the power states of all VM.
-                                    var state = this.VirtualMachineClient.Get(psItem.ResourceGroupName, psItem.Name, InstanceViewExpand);
-                                    var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
-                                    psItem.PowerState = psstate.Statuses[1].DisplayStatus;
-                                }
-                                psItem.DisplayHint = this.DisplayHint;
-                                psResultListStatus.Add(psItem);
-                            }
-                        }
+                        psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
 
                         if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
                         {
@@ -171,25 +156,9 @@ namespace Microsoft.Azure.Commands.Compute
                     AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
                     vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
                             .GetAwaiter().GetResult();
-                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
-                    if (vmListResult.Body != null)
-                    {
-                        foreach (var item in vmListResult.Body)
-                        {
-                            var psItem = Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
-                            psItem = Mapper.Map(item, psItem);
 
-                            if (this.Status.IsPresent)
-                            {
-                                // Call additional Get InstanceView of each VM to get the power states of all VM.
-                                var state = this.VirtualMachineClient.Get(this.ResourceGroupName, psItem.Name, InstanceViewExpand);
-                                var psstate = state.ToPSVirtualMachineInstanceView(this.ResourceGroupName, psItem.Name);
-                                psItem.PowerState = psstate.Statuses[1].DisplayStatus;
-                            }
-                            psItem.DisplayHint = this.DisplayHint;
-                            psResultListStatus.Add(psItem);
-                        }
-                    }
+                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
+                    psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
 
                     if (this.Status.IsPresent)
                     {
@@ -207,6 +176,54 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
             });
+        }
+
+        private List<PSVirtualMachineListStatus> GetPowerstate(
+            AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
+            List<PSVirtualMachineListStatus> psResultListStatus)
+        {
+            if (vmListResult.Body != null)
+            {
+                foreach (var item in vmListResult.Body)
+                {
+                    var psItem = Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                    psItem = Mapper.Map(item, psItem);
+                    if (this.Status.IsPresent)
+                    {
+                        VirtualMachine state = null;
+                        try
+                        {
+                            // Call additional Get InstanceView of each VM to get the power states of all VM.
+                            state = this.VirtualMachineClient.Get(psItem.ResourceGroupName, psItem.Name, InstanceViewExpand);
+                        }
+                        catch
+                        {
+                            // Swallow any exception during getting instance view information.
+                        }
+
+                        if (state == null)
+                        {
+                            psItem.PowerState = InfoNotAvailable;
+                        }
+                        else
+                        {
+                            var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
+                            if (psstate != null && psstate.Statuses != null && psstate.Statuses.Count > 1)
+                            {
+                                psItem.PowerState = psstate.Statuses[1].DisplayStatus;
+                            }
+                            else
+                            {
+                                psItem.PowerState = InfoNotAvailable;
+                            }
+                        }
+                    }
+                    psItem.DisplayHint = this.DisplayHint;
+                    psResultListStatus.Add(psItem);
+                }
+            }
+
+            return psResultListStatus;
         }
     }
 }

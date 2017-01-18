@@ -38,5 +38,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             NewInstance.RunPsTest(string.Format("Test-NegativeAnalysisServicesServer -location '{0}'", AsTestsBase.resourceGroupLocation));
         }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerRestart()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerRestart");
+        }
     }
 }

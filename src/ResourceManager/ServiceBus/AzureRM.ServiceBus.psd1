@@ -65,6 +65,9 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.4.0'; }
 # Format files (.ps1xml) to be loaded when importing this module
 # FormatsToProcess = @()
 
+# Format files (.ps1xml) to be loaded when importing this module
+FormatsToProcess = '.\Microsoft.Azure.Commands.ServiceBus.format.ps1xml'
+
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.ServiceBus.dll')
 

@@ -228,4 +228,7 @@
   <data name="RemovingDataLakeAnalyticsCatalogCredentialCascade" xml:space="preserve">
     <value>Are you sure you want to remove Data Lake Analytics catalog credential '{0}' and ALL resources dependent on it?</value>
   </data>
+  <data name="IncorrectOutputTypeWarning" xml:space="preserve">
+    <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
+  </data>
 </root>
