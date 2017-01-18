@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Stop-AdlJob")]
     public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
     {

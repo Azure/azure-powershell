@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateRange(1, 180)]
         public int? QueryStoreRetention { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.")]
+        [ValidateNotNull]
+        public TierType? Tier { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -105,8 +110,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Name = DefaultDataLakeStore
             };
 
-            WriteObject(new PSDataLakeAnalyticsAccount(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, Location, defaultStorage,
-                customTags: Tags, maxDegreeOfParallelism: MaxDegreeOfParallelism, maxJobCount: MaxJobCount, queryStoreRetention: QueryStoreRetention)));
+            WriteObject(
+                new PSDataLakeAnalyticsAccount(
+                    DataLakeAnalyticsClient.CreateOrUpdateAccount(
+                        ResourceGroupName,
+                        Name,
+                        Location,
+                        defaultStorage,
+                        customTags: Tags,
+                        maxDegreeOfParallelism: MaxDegreeOfParallelism,
+                        maxJobCount: MaxJobCount,
+                        queryStoreRetention: QueryStoreRetention,
+                        tier: Tier)));
         }
     }
 }

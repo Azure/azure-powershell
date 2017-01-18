@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
     /// <summary>
-    /// Represents the properties of a Namespace of type NotificationHub
+    /// Represents the properties of a Namespace of type ServiceBus
     /// </summary>
     public class NamespaceAttributes 
     {
@@ -32,29 +32,34 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         {
             if (evResource != null)
             {
-                Sku = evResource.Sku;
+                Sku = new Sku { Capacity = evResource.Sku.Capacity,
+                                Name = evResource.Sku.Name,
+                                Tier = evResource.Sku.Tier};
+                if(evResource.ProvisioningState != null)
                 ProvisioningState = evResource.ProvisioningState;
+                if(evResource.Status.HasValue)
                 Status = (Microsoft.Azure.Commands.ServiceBus.Models.NamespaceState)evResource.Status;
+                if(evResource.CreatedAt.HasValue)
                 CreatedAt = evResource.CreatedAt;
+                if(evResource.UpdatedAt.HasValue)
                 UpdatedAt = evResource.UpdatedAt;
+                if(evResource.ServiceBusEndpoint != null)
                 ServiceBusEndpoint = evResource.ServiceBusEndpoint;                
+                if(evResource.Enabled.HasValue)
                 Enabled = evResource.Enabled;
+                if(evResource.Location != null)
                 Location = evResource.Location;
+                if(evResource.Name != null)
                 Name = evResource.Name;
+                if(evResource.Id != null)
                 Id = evResource.Id;
-                Location = evResource.Location;
             }
         }
 
         /// <summary>
         /// Gets or sets the name of the resource group the Namespace is in
         /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource group the Namespace is in
-        /// </summary>
-        public string ResourceGroupName { get; set; }
+        public string Name { get; set; }       
 
         /// <summary>
         /// Gets or sets the Id of the Namespace
@@ -102,5 +107,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Specifies whether this instance is enabled.
         /// </summary>
         public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group the Namespace is in
+        /// </summary>
+        [ObsoleteAttribute("ResourceGroupName property is obsolete.", false)]
+        public string ResourceGroupName { get; set; }
     }
 }

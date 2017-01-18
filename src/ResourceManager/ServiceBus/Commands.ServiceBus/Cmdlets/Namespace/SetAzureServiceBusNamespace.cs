@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
-    /// 'Set-AzureRmEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
+    /// 'Set-AzureRmServiceBusNamespace' Cmdlet updates the specified ServiceBus Namespace
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ServiceBusNamespaceVerb  , SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
     public class SetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// EventHub Namespace Location.
+        /// ServiceBus Namespace Location.
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public string Location { get; set; }
 
         /// <summary>
-        /// EventHub Namespace Name.
+        /// ServiceBus Namespace Name.
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             HelpMessage = "ServiceBus Namespace Name.")]
         [ValidateNotNullOrEmpty]
         public string NamespaceName { get; set; }
-
 
         /// <summary>
         /// Namespace Sku Name.
@@ -71,6 +70,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
           SKU.Premium,
           IgnoreCase = true)]
         public string SkuName { get; set; }
+
+        /// <summary>
+        /// Namespace Sku Capacity.
+        /// </summary>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Namespace Sku Capacity.")]        
+        public int? SkuCapacity { get; set; }
 
         /// <summary>
         /// Hashtables which represents resource Tags.
@@ -91,7 +99,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 
             if (ShouldProcess(target: NamespaceName, action: string.Format("Update Namespace:{0} of the ResorceGroup:{1}", NamespaceName, ResourceGroupName)))
             {
-                WriteObject(Client.UpdateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, tagDictionary));
+                WriteObject(Client.UpdateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, tagDictionary));
             }
         }
     }
