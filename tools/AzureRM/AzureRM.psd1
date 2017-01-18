@@ -85,7 +85,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '2.5.0';
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '3.5.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.11.3'; }, 
                @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '2.5.0'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.1.0'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.0.2'; }, 
                @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '3.4.0'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '2.5.0'; }, 
                @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '2.5.0'; }, 
