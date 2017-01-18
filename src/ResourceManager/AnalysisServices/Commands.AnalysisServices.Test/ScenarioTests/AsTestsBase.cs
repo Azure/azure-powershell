@@ -32,6 +32,10 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
+using Microsoft.Rest.Azure.Authentication;
+using Microsoft.Rest;
+using System.Threading.Tasks;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 {
@@ -143,9 +147,25 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
+           
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
-            AnalysisServicesManagementClient = GetAnalysisServicesManagementClient(context);
+
+            ActiveDirectoryServiceSettings aadServiceSettings = new ActiveDirectoryServiceSettings()
+            {
+                AuthenticationEndpoint = new Uri("https://login.windows-ppe.net/" + "52acb0e9-da96-4810-ab3a-91a2589b0f49"),
+                TokenAudience = new Uri("https://management.core.windows.net")
+            };
+
+            var credentials = new UserCredential("aztest0@aspaas.ccsctp.net", "Pa$$word3");
+            var authenticationContext = new AuthenticationContext("https://login.windows-ppe.net/" + "52acb0e9-da96-4810-ab3a-91a2589b0f49",
+                    aadServiceSettings.ValidateAuthority);
+
+            //    var authResult = authenticationContext.AcquireTokenAsync(aadServiceSettings.TokenAudience.ToString(),
+            //          "1950a258-227b-4e31-a9cf-717495945fc2", credentials).Result;
+            //throw new Exception(authResult.AccessToken);
+
+                AnalysisServicesManagementClient = GetAnalysisServicesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             NewResourceManagementClient = GetNewResourceManagementClient(context);
@@ -165,8 +185,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         }
 
         private ResourceManagementClient GetResourceManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+        {   
+                return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
         private SubscriptionClient GetSubscriptionClient()
@@ -183,7 +203,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 
         private AnalysisServicesManagementClient GetAnalysisServicesManagementClient(MockContext context)
         {
-            return context.GetServiceClient<AnalysisServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<AnalysisServicesManagementClient>();
         }
         
         private GalleryClient GetGalleryClient()
