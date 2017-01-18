@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             Hashtable customTags = null,
             int? maxDegreeOfParallelism = 0,
             int? maxJobCount = 0,
-            int? queryStoreRetention = 0)
+            int? queryStoreRetention = 0,
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -142,6 +143,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 parameters.QueryStoreRetention = queryStoreRetention;
             }
 
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
+
             var accountExists = false;
             try
             {
@@ -162,7 +168,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     MaxDegreeOfParallelism = parameters.MaxDegreeOfParallelism,
                     MaxJobCount = parameters.MaxJobCount,
                     QueryStoreRetention = parameters.QueryStoreRetention,
-                    Tags = parameters.Tags
+                    Tags = parameters.Tags,
+                    NewTier = parameters.NewTier
                 })
                 : _accountClient.Account.Create(resourceGroupName, accountName, parameters);
         }
@@ -407,12 +414,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public USqlSecret UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
-            return _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
+            _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
                 {
                     Password = password,
                     Uri = hostUri
                 });
+
+            // TODO: Remove this during the next breaking change release.
+            return null;
         }
 
         public void DeleteSecret(string accountName, string databaseName, string secretName)
@@ -961,13 +971,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         }
 
         public List<JobInformation> ListJobs(string accountName, string filter, int? top,
-            int? skip)
+            int? skip, string orderBy)
         {
             var parameters = new ODataQuery<JobInformation>
             {
                 Filter = filter,
                 Top = top,
-                Skip = skip
+                Skip = skip,
+                OrderBy = orderBy
             };
 
             var jobList = new List<JobInformation>();
@@ -983,6 +994,39 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return jobList;
         }
 
+        #endregion
+
+        #region internal helpers
+        internal string GetWildcardFilterString(string propertyName, string value)
+        {
+            if (!value.Contains("*"))
+            {
+                // no wildcards, return an equal
+                return string.Format("{0} eq '{1}'", propertyName, value);
+            }
+
+            var subStrings = value.Split('*');
+            if(subStrings.Length != 2)
+            {
+                throw new InvalidOperationException("Exactly one wildcard ('*') character is supported for expansion. Please remove extra wildcards and try again");
+            }
+
+            if(string.IsNullOrEmpty(subStrings[0]))
+            {
+                // only ends with required
+                return string.Format("endswith({0},'{1}')", propertyName, subStrings[1]);
+            }
+
+            if(string.IsNullOrEmpty(subStrings[1]))
+            {
+                // only starts with
+                return string.Format("startswith({0},'{1}')", propertyName, subStrings[0]);
+            }
+
+
+            // default case requires both
+            return string.Format("startswith({0},'{1}') and endswith({0},'{2}')", propertyName, subStrings[0], subStrings[1]);
+        }
         #endregion
 
         #region private helpers

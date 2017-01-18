@@ -10,27 +10,25 @@
   <Cmdlets>
     <CmdletObject verb="Get" noun="AzureRmCdnCustomDomain">
       <Name>Get-AzureRmCdnCustomDomain</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnCustomDomain [-CustomDomainName &lt;String&gt;] -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureRmCdnCustomDomain [-CustomDomainName &lt;String&gt;] -CdnEndpoint &lt;PSEndpoint&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets an Azure CDN custom domain or a collection of custom domains.</Synopsis>
         <Description>Get an Azure CDN custom domain and all the related settings. If the CustomDomainName parameter is omitted, the cmdlet returns a collection of custom domains that match the specified parameters.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType>A Custom Domain object.</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="CustomDomainName EndpointName ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CustomDomainName CdnEndpoint Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmCdnCustomDomain [-CustomDomainName &lt;String&gt;] -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmCdnCustomDomain [-CustomDomainName &lt;String&gt;] -CdnEndpoint &lt;PSEndpoint&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CustomDomainName</Name>
@@ -72,31 +70,6 @@
           <Description>The name of the resource group that the custom domain belongs to.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnEndpoint</Name>
           <Attributes>
@@ -110,32 +83,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmCdnEndpoint">
       <Name>Get-AzureRmCdnEndpoint</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnEndpoint [-EndpointName &lt;String&gt;] -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureRmCdnEndpoint [-EndpointName &lt;String&gt;] -CdnProfile &lt;PSProfile&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Get an Azure CDN endpoint or a collection of endpoints.</Synopsis>
         <Description>Gets an Azure CDN endpoint and all its configuration.  If the EndpointName parameter is omitted, returns a collection of endpoints matching the specified parameters.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType>An Endpoint object.</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="EndpointName CdnProfile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmCdnEndpoint [-EndpointName &lt;String&gt;] -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmCdnEndpoint [-EndpointName &lt;String&gt;] -CdnProfile &lt;PSProfile&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -167,31 +138,6 @@
           <Description>The name of the resource group that the endpoint belongs to.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSProfile" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnProfile</Name>
           <Attributes>
@@ -205,30 +151,28 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmCdnEndpointNameAvailability">
       <Name>Get-AzureRmCdnEndpointNameAvailability</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnEndpointNameAvailability -EndpointName &lt;String&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Checks if a proposed CDN endpoint name is available.</Synopsis>
         <Description>Checks if a proposed CDN endpoint name is available.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="EndpointName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmCdnEndpointNameAvailability -EndpointName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -240,60 +184,33 @@
           <Description>The proposed name of the endpoint to check.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmCdnOrigin">
       <Name>Get-AzureRmCdnOrigin</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnOrigin [-OriginName &lt;String&gt;] -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureRmCdnOrigin [-OriginName &lt;String&gt;] -CdnEndpoint &lt;PSEndpoint&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets an Azure CDN origin.</Synopsis>
         <Description>Gets an Azure CDN origin and all its configuration.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType>An origin object.</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="OriginName EndpointName ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="OriginName CdnEndpoint Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmCdnOrigin [-OriginName &lt;String&gt;] -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmCdnOrigin [-OriginName &lt;String&gt;] -CdnEndpoint &lt;PSEndpoint&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>OriginName</Name>
@@ -335,31 +252,6 @@
           <Description>The name of the resource group that the origin belongs to.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnEndpoint</Name>
           <Attributes>
@@ -373,32 +265,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmCdnProfile">
       <Name>Get-AzureRmCdnProfile</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnProfile [-ProfileName &lt;String&gt;] [-ResourceGroupName &lt;String&gt;]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets an Azure CDN profile.</Synopsis>
         <Description>Gets an Azure CDN profile and all related information.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType>A Profile object.</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmCdnProfile [-ProfileName &lt;String&gt;] [-ResourceGroupName &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ProfileName</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -408,7 +298,7 @@
           <Description>The name of the profile.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ResourceGroupName</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -418,60 +308,33 @@
           <Description>The name of the resource group to which the profile belongs.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Get" noun="AzureRmCdnProfileSsoUrl">
       <Name>Get-AzureRmCdnProfileSsoUrl</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnProfileSsoUrl -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureRmCdnProfileSsoUrl -CdnProfile &lt;PSProfile&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Gets a SSO URL for an Azure CDN profile.</Synopsis>
         <Description>Gets the single sign-on URL for an Azure CDN Profile. This URL allows users to log into the supplementary portal and use extra functionalities of Azure CDN.  This applies only to Azure CDN from Verizon profiles.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType>A url object.</ReturnType>
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnProfile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Get-AzureRmCdnProfileSsoUrl -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmCdnProfileSsoUrl -CdnProfile &lt;PSProfile&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>ProfileName</Name>
@@ -493,31 +356,6 @@
           <Description>The resource group name.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSProfile" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnProfile</Name>
           <Attributes>
@@ -531,32 +369,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="New" noun="AzureRmCdnCustomDomain">
       <Name>New-AzureRmCdnCustomDomain</Name>
+      <Syntax>
+        <string>New-AzureRmCdnCustomDomain -HostName &lt;String&gt; -CustomDomainName &lt;String&gt; -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-WhatIf] [-Confirm]</string>
+        <string>New-AzureRmCdnCustomDomain -HostName &lt;String&gt; -CustomDomainName &lt;String&gt; -CdnEndpoint &lt;PSEndpoint&gt; [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Creates a custom domain.</Synopsis>
         <Description>Creates a custom domain for a CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="HostName CustomDomainName EndpointName ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="HostName CustomDomainName CdnEndpoint Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="HostName CustomDomainName EndpointName ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="HostName CustomDomainName CdnEndpoint Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>New-AzureRmCdnCustomDomain -HostName &lt;String&gt; -CustomDomainName &lt;String&gt; -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>New-AzureRmCdnCustomDomain -HostName &lt;String&gt; -CustomDomainName &lt;String&gt; -CdnEndpoint &lt;PSEndpoint&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>HostName</Name>
@@ -608,31 +444,6 @@
           <Description>The resource group name.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnEndpoint</Name>
           <Attributes>
@@ -643,35 +454,57 @@
           <Description>The CDN endpoint object to which the custom domain will be added.</Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="New" noun="AzureRmCdnEndpoint">
       <Name>New-AzureRmCdnEndpoint</Name>
+      <Syntax>
+        <string>New-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -Location &lt;String&gt; [-OriginHostHeader &lt;String&gt;] [-OriginPath &lt;String&gt;] [-ContentTypesToCompress &lt;String[]&gt;] [-IsCompressionEnabled &lt;Nullable`1[Boolean]&gt;] [-IsHttpAllowed &lt;Nullable`1[Boolean]&gt;] [-IsHttpsAllowed &lt;Nullable`1[Boolean]&gt;] [-QueryStringCachingBehavior &lt;Nullable`1[PSQueryStringCachingBehavior]&gt;] -OriginName &lt;String&gt; -OriginHostName &lt;String&gt; [-HttpPort &lt;Nullable`1[Int32]&gt;] [-HttpsPort &lt;Nullable`1[Int32]&gt;] [-OptimizationType &lt;String&gt;] [-GeoFilters &lt;PSGeoFilter[]&gt;] [-Tags &lt;Hashtable&gt;] [-WhatIf] [-Confirm]</string>
+        <string>New-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -CdnProfile &lt;PSProfile&gt; [-OriginHostHeader &lt;String&gt;] [-OriginPath &lt;String&gt;] [-ContentTypesToCompress &lt;String[]&gt;] [-IsCompressionEnabled &lt;Nullable`1[Boolean]&gt;] [-IsHttpAllowed &lt;Nullable`1[Boolean]&gt;] [-IsHttpsAllowed &lt;Nullable`1[Boolean]&gt;] [-QueryStringCachingBehavior &lt;Nullable`1[PSQueryStringCachingBehavior]&gt;] -OriginName &lt;String&gt; -OriginHostName &lt;String&gt; [-HttpPort &lt;Nullable`1[Int32]&gt;] [-HttpsPort &lt;Nullable`1[Int32]&gt;] [-OptimizationType &lt;String&gt;] [-GeoFilters &lt;PSGeoFilter[]&gt;] [-Tags &lt;Hashtable&gt;] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Creates a CDN endpoint.</Synopsis>
         <Description>Creates a CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName Location OriginHostHeader OriginPath ContentTypesToCompress IsCompressionEnabled IsHttpAllowed IsHttpsAllowed QueryStringCachingBehavior OriginName OriginHostName HttpPort HttpsPort Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="EndpointName CdnProfile Location OriginHostHeader OriginPath ContentTypesToCompress IsCompressionEnabled IsHttpAllowed IsHttpsAllowed QueryStringCachingBehavior OriginName OriginHostName HttpPort HttpsPort Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName Location OriginHostHeader OriginPath ContentTypesToCompress IsCompressionEnabled IsHttpAllowed IsHttpsAllowed QueryStringCachingBehavior OriginName OriginHostName HttpPort HttpsPort OptimizationType GeoFilters Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="EndpointName CdnProfile OriginHostHeader OriginPath ContentTypesToCompress IsCompressionEnabled IsHttpAllowed IsHttpsAllowed QueryStringCachingBehavior OriginName OriginHostName HttpPort HttpsPort OptimizationType GeoFilters Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>New-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -Location &lt;String&gt; [-OriginHostHeader &lt;String&gt;] [-OriginPath &lt;String&gt;] [-ContentTypesToCompress &lt;String[]&gt;] [-IsCompressionEnabled &lt;Nullable`1[Boolean]&gt;] [-IsHttpAllowed &lt;Nullable`1[Boolean]&gt;] [-IsHttpsAllowed &lt;Nullable`1[Boolean]&gt;] [-QueryStringCachingBehavior &lt;Nullable`1[PSQueryStringCachingBehavior]&gt;] -OriginName &lt;String&gt; -OriginHostName &lt;String&gt; [-HttpPort &lt;Nullable`1[Int32]&gt;] [-HttpsPort &lt;Nullable`1[Int32]&gt;] [-Tags &lt;Hashtable&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>New-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -CdnProfile &lt;PSProfile&gt; -Location &lt;String&gt; [-OriginHostHeader &lt;String&gt;] [-OriginPath &lt;String&gt;] [-ContentTypesToCompress &lt;String[]&gt;] [-IsCompressionEnabled &lt;Nullable`1[Boolean]&gt;] [-IsHttpAllowed &lt;Nullable`1[Boolean]&gt;] [-IsHttpsAllowed &lt;Nullable`1[Boolean]&gt;] [-QueryStringCachingBehavior &lt;Nullable`1[PSQueryStringCachingBehavior]&gt;] -OriginName &lt;String&gt; -OriginHostName &lt;String&gt; [-HttpPort &lt;Nullable`1[Int32]&gt;] [-HttpsPort &lt;Nullable`1[Int32]&gt;] [-Tags &lt;Hashtable&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -821,31 +654,6 @@
           <Description>The tags associated with this resource.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSProfile" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnProfile</Name>
           <Attributes>
@@ -856,35 +664,75 @@
           <Description>The CDN profile object to which the endpoint will be added.</Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>OptimizationType</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PSGeoFilter[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>GeoFilters</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="New" noun="AzureRmCdnProfile">
       <Name>New-AzureRmCdnProfile</Name>
+      <Syntax>
+        <string>New-AzureRmCdnProfile -ProfileName &lt;String&gt; -Location &lt;String&gt; -Sku &lt;PSSkuName&gt; -ResourceGroupName &lt;String&gt; [-Tags &lt;Hashtable&gt;] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Creates a CDN profile.</Synopsis>
         <Description>Creates a CDN profile.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ProfileName Location Sku ResourceGroupName Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ProfileName Location Sku ResourceGroupName Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>New-AzureRmCdnProfile -ProfileName &lt;String&gt; -Location &lt;String&gt; -Sku &lt;PSSkuName&gt; -ResourceGroupName &lt;String&gt; [-Tags &lt;Hashtable&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
-        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ProfileName</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -913,7 +761,7 @@
           <Description>SKU (Azure CDN product) of the profile.  Valid values are StandardVerizon, StandardAkamai, and PremiumVerizon.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ResourceGroupName</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -931,27 +779,26 @@
           <Description>Tags associated with this profile</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -959,32 +806,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Publish" noun="AzureRmCdnEndpointContent">
       <Name>Publish-AzureRmCdnEndpointContent</Name>
+      <Syntax>
+        <string>Publish-AzureRmCdnEndpointContent -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -LoadContent &lt;String[]&gt; [-PassThru]</string>
+        <string>Publish-AzureRmCdnEndpointContent -CdnEndpoint &lt;PSEndpoint&gt; -LoadContent &lt;String[]&gt; [-PassThru]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Pre-loads endpoint content.</Synopsis>
         <Description>Pre-loads content from an origin on the CDN edge servers.  Only valid for Azure CDN from Verizon endpoints.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName LoadContent PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint LoadContent PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Publish-AzureRmCdnEndpointContent -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -LoadContent &lt;String[]&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Publish-AzureRmCdnEndpointContent -CdnEndpoint &lt;PSEndpoint&gt; -LoadContent &lt;String[]&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -1035,31 +880,6 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnEndpoint</Name>
           <Attributes>
@@ -1073,32 +893,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Remove" noun="AzureRmCdnCustomDomain">
       <Name>Remove-AzureRmCdnCustomDomain</Name>
+      <Syntax>
+        <string>Remove-AzureRmCdnCustomDomain -CustomDomainName &lt;String&gt; -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+        <string>Remove-AzureRmCdnCustomDomain -CdnCustomDomain &lt;PSCustomDomain&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Removes a custom domain.</Synopsis>
         <Description>Removes a custom domain from a CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="CustomDomainName EndpointName ProfileName ResourceGroupName PassThru Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
-        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnCustomDomain PassThru Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="CustomDomainName EndpointName ProfileName ResourceGroupName PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnCustomDomain PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Remove-AzureRmCdnCustomDomain -CustomDomainName &lt;String&gt; -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-        <string>Remove-AzureRmCdnCustomDomain -CdnCustomDomain &lt;PSCustomDomain&gt; [-PassThru] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CustomDomainName</Name>
@@ -1150,44 +968,10 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Force</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Forces completion without interactive confirmation.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>WhatIf</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>wi</string>
@@ -1198,8 +982,8 @@
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>cf</string>
@@ -1220,32 +1004,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Remove" noun="AzureRmCdnEndpoint">
       <Name>Remove-AzureRmCdnEndpoint</Name>
+      <Syntax>
+        <string>Remove-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-Force] [-WhatIf] [-Confirm]</string>
+        <string>Remove-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-PassThru] [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Removes a CDN endpoint.</Synopsis>
         <Description>Removes an Azure CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName PassThru Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint PassThru Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Remove-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-        <string>Remove-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-PassThru] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -1295,36 +1077,11 @@
           <Description>Forces completion without interactive confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>WhatIf</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>wi</string>
@@ -1335,8 +1092,8 @@
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>cf</string>
@@ -1357,32 +1114,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Remove" noun="AzureRmCdnProfile">
       <Name>Remove-AzureRmCdnProfile</Name>
+      <Syntax>
+        <string>Remove-AzureRmCdnProfile -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-Force] [-WhatIf] [-Confirm]</string>
+        <string>Remove-AzureRmCdnProfile -CdnProfile &lt;PSProfile&gt; [-PassThru] [-Force] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Removes a CDN profile.</Synopsis>
         <Description>Removes an Azure CDN profile.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="ProfileName ResourceGroupName PassThru Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnProfile PassThru Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Remove-AzureRmCdnProfile -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-        <string>Remove-AzureRmCdnProfile -CdnProfile &lt;PSProfile&gt; [-PassThru] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>ProfileName</Name>
@@ -1422,36 +1177,11 @@
           <Description>Forces completion without interactive confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>WhatIf</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>wi</string>
@@ -1462,8 +1192,8 @@
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>cf</string>
@@ -1484,30 +1214,28 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Set" noun="AzureRmCdnEndpoint">
       <Name>Set-AzureRmCdnEndpoint</Name>
+      <Syntax>
+        <string>Set-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Updates a CDN endpoint.</Synopsis>
         <Description>Updates an Azure CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Object" Params="CdnEndpoint Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="CdnEndpoint Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnEndpoint</Name>
@@ -1519,27 +1247,26 @@
           <Description>The endpoint object to update.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1547,30 +1274,28 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Set" noun="AzureRmCdnOrigin">
       <Name>Set-AzureRmCdnOrigin</Name>
+      <Syntax>
+        <string>Set-AzureRmCdnOrigin -CdnOrigin &lt;PSOrigin&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Updates a CDN origin.</Synopsis>
         <Description>Updates an Azure CDN origin.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Object" Params="CdnOrigin Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="CdnOrigin Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmCdnOrigin -CdnOrigin &lt;PSOrigin&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="PSOrigin" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnOrigin</Name>
@@ -1582,58 +1307,31 @@
           <Description>The origin object to update.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Set" noun="AzureRmCdnProfile">
       <Name>Set-AzureRmCdnProfile</Name>
+      <Syntax>
+        <string>Set-AzureRmCdnProfile -CdnProfile &lt;PSProfile&gt; [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Updates a CDN profile.</Synopsis>
         <Description>Updates an Azure CDN profile.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="CdnProfile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="CdnProfile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Set-AzureRmCdnProfile -CdnProfile &lt;PSProfile&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="PSProfile" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnProfile</Name>
@@ -1645,27 +1343,26 @@
           <Description>The profile object to be updated.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
-            <string>infa</string>
+            <string>wi</string>
           </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
-            <string>iv</string>
+            <string>cf</string>
           </Aliases>
           <Description />
           <DefaultValue />
@@ -1673,32 +1370,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Start" noun="AzureRmCdnEndpoint">
       <Name>Start-AzureRmCdnEndpoint</Name>
+      <Syntax>
+        <string>Start-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+        <string>Start-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Starts a CDN endpoint.</Synopsis>
         <Description>Starts an Azure CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Start-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Start-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -1736,31 +1431,6 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
           <Description />
           <DefaultValue />
         </ParameterDescription>
@@ -1774,35 +1444,57 @@
           <Description>The endpoint object to start.</Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Stop" noun="AzureRmCdnEndpoint">
       <Name>Stop-AzureRmCdnEndpoint</Name>
+      <Syntax>
+        <string>Stop-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+        <string>Stop-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Stops a CDN endpoint.</Synopsis>
         <Description>Stops an Azure CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Stop-AzureRmCdnEndpoint -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-        <string>Stop-AzureRmCdnEndpoint -CdnEndpoint &lt;PSEndpoint&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -1843,36 +1535,11 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>WhatIf</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>wi</string>
@@ -1883,8 +1550,8 @@
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Confirm</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>cf</string>
@@ -1902,42 +1569,33 @@
           <Description>The endpoint object to stop.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="switchparameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Force</Name>
-          <Attributes />
-          <Aliases />
-          <Description>Forces completion without interactive confirmation.</Description>
-          <DefaultValue />
-        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Test" noun="AzureRmCdnCustomDomain">
       <Name>Test-AzureRmCdnCustomDomain</Name>
+      <Syntax>
+        <string>Test-AzureRmCdnCustomDomain -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -CustomDomainHostName &lt;String&gt;</string>
+        <string>Test-AzureRmCdnCustomDomain -CdnEndpoint &lt;PSEndpoint&gt; -CustomDomainHostName &lt;String&gt;</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Validates a custom domain.</Synopsis>
         <Description>Validates a CNAME mapping to verify a custom domain can be added to an endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
         <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName CustomDomainHostName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint CustomDomainHostName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
-      <Syntax>
-        <string>Test-AzureRmCdnCustomDomain -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -CustomDomainHostName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Test-AzureRmCdnCustomDomain -CdnEndpoint &lt;PSEndpoint&gt; -CustomDomainHostName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -1979,31 +1637,6 @@
           <Description>The host name of the custom domain to be verified.</Description>
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnEndpoint</Name>
           <Attributes>
@@ -2017,32 +1650,30 @@
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
     <CmdletObject verb="Unpublish" noun="AzureRmCdnEndpointContent">
       <Name>Unpublish-AzureRmCdnEndpointContent</Name>
+      <Syntax>
+        <string>Unpublish-AzureRmCdnEndpointContent -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -PurgeContent &lt;String[]&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+        <string>Unpublish-AzureRmCdnEndpointContent -CdnEndpoint &lt;PSEndpoint&gt; -PurgeContent &lt;String[]&gt; [-PassThru] [-WhatIf] [-Confirm]</string>
+      </Syntax>
       <GeneralHelp>
         <Synopsis>Purges a CDN endpoint.</Synopsis>
         <Description>Purges content from a CDN endpoint.</Description>
         <Notes />
         <InputType />
         <InputUrl />
-        <InputTypeDescription>
-</InputTypeDescription>
+        <InputTypeDescription />
         <ReturnType />
         <ReturnUrl />
-        <ReturnTypeDescription>
-</ReturnTypeDescription>
+        <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName PurgeContent PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint PurgeContent PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName PurgeContent PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnEndpoint PurgeContent PassThru Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
-      <Syntax>
-        <string>Unpublish-AzureRmCdnEndpointContent -EndpointName &lt;String&gt; -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt; -PurgeContent &lt;String[]&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Unpublish-AzureRmCdnEndpointContent -CdnEndpoint &lt;PSEndpoint&gt; -PurgeContent &lt;String[]&gt; [-PassThru] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-      </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>EndpointName</Name>
@@ -2093,31 +1724,6 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationAction</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>infa</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>InformationVariable</Name>
-          <Attributes>
-            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases>
-            <string>iv</string>
-          </Aliases>
-          <Description />
-          <DefaultValue />
-        </ParameterDescription>
         <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>CdnEndpoint</Name>
           <Attributes>
@@ -2128,10 +1734,210 @@
           <Description>The endpoint object to purge.</Description>
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>WhatIf</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>wi</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Confirm</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>cf</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples />
       <RelatedLinks />
-      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmCdnEdgeNodes">
+      <Name>Get-AzureRmCdnEdgeNodes</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnEdgeNodes</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis>Gets an Azure CDN edge nodes.</Synopsis>
+        <Description>Gets white listed Azure CDN Ip addresses.</Description>
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters />
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmCdnEndpointResourceUsage">
+      <Name>Get-AzureRmCdnEndpointResourceUsage</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnEndpointResourceUsage [-EndpointName &lt;String&gt;] -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureRmCdnEndpointResourceUsage [-EndpointName &lt;String&gt;] -CdnEndpoint &lt;PSEndpoint&gt;</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis>Gets resource usages under a specific CDN endpoint.</Synopsis>
+        <Description>Gets resource usages under a specific CDN endpoint such as count and limit of custom domain and geo filters.</Description>
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="EndpointName ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="EndpointName CdnEndpoint Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>EndpointName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>ProfileName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PSEndpoint" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>CdnEndpoint</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmCdnProfileResourceUsage">
+      <Name>Get-AzureRmCdnProfileResourceUsage</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnProfileResourceUsage -ProfileName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureRmCdnProfileResourceUsage -CdnProfile &lt;PSProfile&gt;</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis>Gets resource usages under a specific CDN profile.</Synopsis>
+        <Description>Gets resource usages under a specific CDN profile such as count and limit of endpoints.</Description>
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Parameter Set for fields parameters" Params="ProfileName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Parameter Set for object parameters" Params="CdnProfile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>ProfileName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="PSProfile" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="true" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>CdnProfile</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmCdnSubscriptionResourceUsage">
+      <Name>Get-AzureRmCdnSubscriptionResourceUsage</Name>
+      <Syntax>
+        <string>Get-AzureRmCdnSubscriptionResourceUsage</string>
+      </Syntax>
+      <GeneralHelp>
+        <Synopsis>Gets CDN related resource usages under a specific Azure subscription.</Synopsis>
+        <Description>Gets CDN related resource usages under a specific Azure subscription such as count and limit of CDN profile.</Description>
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Parameters />
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w10="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
   </Cmdlets>

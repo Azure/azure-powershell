@@ -146,7 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
 
             if (!skipCheckExists && container.ServiceClient.Credentials.IsSharedKey
-                && !await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken))
+                && !await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
             {
                 throw new ArgumentException(String.Format(Resources.ContainerNotFound, containerName));
             }
@@ -170,7 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (String.IsNullOrEmpty(blobName) || WildcardPattern.ContainsWildcardCharacters(blobName))
             {
-                container = await GetCloudBlobContainerByName(localChannel, containerName);
+                container = await GetCloudBlobContainerByName(localChannel, containerName).ConfigureAwait(false);
                 prefix = NameUtil.GetNonWildcardPrefix(blobName);
                 WildcardOptions options = WildcardOptions.IgnoreCase | WildcardOptions.Compiled;
                 WildcardPattern wildcard = null;
@@ -181,18 +181,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
 
                 Func<CloudBlob, bool> blobFilter = (blob) => wildcard == null || wildcard.IsMatch(blob.Name);
-                await ListBlobsByPrefix(taskId, localChannel, containerName, prefix, blobFilter);
+                await ListBlobsByPrefix(taskId, localChannel, containerName, prefix, blobFilter).ConfigureAwait(false);
             }
             else
             {
-                container = await GetCloudBlobContainerByName(localChannel, containerName, true);
+                container = await GetCloudBlobContainerByName(localChannel, containerName, true).ConfigureAwait(false);
 
                 if (!NameUtil.IsValidBlobName(blobName))
                 {
                     throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
                 }
 
-                CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition, requestOptions, OperationContext, CmdletCancellationToken);
+                CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
                 if (null == blob)
                 {
@@ -213,7 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>An enumerable collection of IListBlobItem</returns>
         internal async Task ListBlobsByPrefix(long taskId, IStorageBlobManagement localChannel, string containerName, string prefix, Func<CloudBlob, bool> blobFilter = null)
         {
-            CloudBlobContainer container = await GetCloudBlobContainerByName(localChannel, containerName);
+            CloudBlobContainer container = await GetCloudBlobContainerByName(localChannel, containerName).ConfigureAwait(false);
 
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = true;
@@ -230,7 +230,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 requestCount = Math.Min(listCount, MaxListCount);
                 realListCount = 0;
                 BlobResultSegment blobResult = await localChannel.ListBlobsSegmentedAsync(container, prefix, useFlatBlobListing,
-                    details, requestCount, continuationToken, requestOptions, OperationContext, CmdletCancellationToken);
+                    details, requestCount, continuationToken, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
                 foreach (IListBlobItem blobItem in blobResult.Results)
                 {

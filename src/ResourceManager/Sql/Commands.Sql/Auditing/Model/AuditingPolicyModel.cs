@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     public enum AuditStateType { Enabled, Disabled, New };
 
     /// <summary>
+    /// The possible value of auditing type
+    /// </summary>
+    public enum AuditType { Table, Blob };
+
+    /// <summary>
     /// The base class that defines the core properties of an auditing policy
     /// </summary>
     public abstract class AuditingPolicyModel
@@ -38,6 +43,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the server name
         /// </summary>
         public string ServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the audit type
+        /// </summary>
+        public AuditType AuditType { get; set; }
 
         /// <summary>
         /// Gets or sets the audit state

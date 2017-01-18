@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             this.GetTransferContext(progressRecord, localFile.Length),
                             this.CmdletCancellationToken),
                         progressRecord,
-                        this.OutputStream);
+                        this.OutputStream).ConfigureAwait(false);
 
 
                     if (this.PassThru)
@@ -153,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             try
             {
-                directoryExists = await this.Channel.DirectoryExistsAsync(directory, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                directoryExists = await this.Channel.DirectoryExistsAsync(directory, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (StorageException e)
             {

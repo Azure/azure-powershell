@@ -15,11 +15,12 @@
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
         OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
@@ -79,8 +80,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be set.")]
         public SwitchParameter Default { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates the resulting ACL should be returned.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                  ? DataLakeStoreItemAce.GetAclSpec(Acl)
                  : string.Format("{0}{1}:{2}:{3}", Default ? "default:" : string.Empty, AceType, Id,
@@ -90,8 +97,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
                 Path.OriginalPath,
                 () =>
+                {
                     DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
-                        aclSpec));
+                        aclSpec);
+
+                    if (PassThru)
+                    {
+                        var toReturn = new List<DataLakeStoreItemAce>(
+                            DataLakeStoreItemAce.GetAclFromStatus(
+                                DataLakeStoreFileSystemClient.GetAclStatus(
+                                    Path.TransformedPath,
+                                    Account)));
+
+                        WriteObject(toReturn);
+                    }
+                });
         }
     }
 }
