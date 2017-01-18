@@ -16,14 +16,13 @@ Gets a Data Lake Analytics job.
 ```
 Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submitter] <String>]
  [[-SubmittedAfter] <DateTimeOffset>] [[-SubmittedBefore] <DateTimeOffset>] [[-State] <JobState[]>]
- [[-Result] <JobResult[]>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [[-Result] <JobResult[]>] [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### Specific JobInformation
 ```
 Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [-JobId] <Guid> [[-Include] <ExtendedJobData>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +62,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Include
+Specifies options that indicate the type of additional information to retrieve about the job.
+The acceptable values for this parameter are:
+
+- None
+- DebugInfo
+- Statistics
+- All
+
+```yaml
+Type: ExtendedJobData
+Parameter Sets: Specific JobInformation
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -JobId
+Specifies the ID of the job to get.
+
+```yaml
+Type: Guid
+Parameter Sets: Specific JobInformation
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies a name to use to filter the job list results.
 The acceptable values for this parameter are:
@@ -84,17 +119,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Submitter
-Specifies the email address of a user.
-Use this parameter to filter the job list results to jobs submitted by a specified user.
+### -Result
+Specifies a result filter for the job results.
+The acceptable values for this parameter are:
+
+- None
+- Cancelled
+- Failed
+- Succeeded
 
 ```yaml
-Type: String
+Type: JobResult[]
 Parameter Sets: All In Resource Group and Account
 Aliases: 
 
 Required: False
-Position: 2
+Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -State
+Specifies a state filter for the job results.
+The acceptable values for this parameter are:
+
+- Accepted
+- New
+- Compiling
+- Scheduling
+- Queued
+- Starting
+- Paused
+- Running
+- Ended
+
+```yaml
+Type: JobState[]
+Parameter Sets: All In Resource Group and Account
+Aliases: 
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -132,80 +198,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -State
-Specifies a state filter for the job results.
-The acceptable values for this parameter are:
-
-- Accepted
-- New
-- Compiling
-- Scheduling
-- Queued
-- Starting
-- Paused
-- Running
-- Ended
+### -Submitter
+Specifies the email address of a user.
+Use this parameter to filter the job list results to jobs submitted by a specified user.
 
 ```yaml
-Type: JobState[]
+Type: String
 Parameter Sets: All In Resource Group and Account
-Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Result
-Specifies a result filter for the job results.
-The acceptable values for this parameter are:
-
-- None
-- Cancelled
-- Failed
-- Succeeded
-
-```yaml
-Type: JobResult[]
-Parameter Sets: All In Resource Group and Account
-Aliases: 
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -JobId
-Specifies the ID of the job to get.
-
-```yaml
-Type: Guid
-Parameter Sets: Specific JobInformation
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Include
-Specifies options that indicate the type of additional information to retrieve about the job.
-The acceptable values for this parameter are:
-
-- None
-- DebugInfo
-- Statistics
-- All
-
-```yaml
-Type: ExtendedJobData
-Parameter Sets: Specific JobInformation
 Aliases: 
 
 Required: False
@@ -215,42 +214,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+### -Top
+An optional value which indicates the number of jobs to return. Default value is 500```yaml
+Type: Int32
+Parameter Sets: All In Resource Group and Account
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -260,6 +233,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### JobInformation
+The specified job information details
+
+### List<JobInformation>
+The list of jobs in the specified Data Lake Analytics account.
 
 ## NOTES
 

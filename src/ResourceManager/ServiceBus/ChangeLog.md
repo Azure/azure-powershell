@@ -6,6 +6,7 @@
     ## Current Release
     * Overview of change #1
         - Additional information about change #1
+        - Added ServiceBus NameSpace, Queue, Topic and Subscription cmdlets #1
     * Overview of change #2
         - Additional information about change #2
         - Additional information about change #2
@@ -20,72 +21,106 @@
 ## Current Release
 
 ## Version 0.0.1
-* Adds cmdlets for Azure Service Bus
-    - New-AzureRmServiceBusNamespace
-        - Adds a new Service Bus namespace in the existing resource group.
-    - Get-AzureRmServiceBusNamespace
-        - Gets a namespace or list of namespaces in the existing resource group.
-    - Set-AzureRmServiceBusNamespace
-        - Updates properties of an existing Service Bus namespace.
-    - Remove-AzureRmServiceBusNamespace
-        - Deletes an existing Service Bus namespace.
-    - New-AzureRmServiceBusNamespaceAuthorizationRule
-        - Adds a new authorization rule to an existing Service Bus namespace.
-    - Get-AzureRmServiceBusNamespaceAuthorizationRule
-        - Gets an authorization rule or list of authorization rules for the existing Service Bus namespace.
-    - Set-AzureRmServiceBusNamespaceAuthorizationRule
-        - Updates properties of an existing authorization rule in a Service Bus namespace.
-    - New-AzureRmServiceBusNamespaceKey
-        - Generates a new primary or secondary key for an authorization rule in an existing Service Bus namespace.
-    - Get-AzureRmServiceBusNamespaceKey
-        - Gets the primary or secondary key for an authorization rule in an existing Service Bus namespace.
-    - Remove-AzureRmServiceBusNamespaceAuthorizationRule
-        - Deletes an existing authorization rule in a Service Bus namespace.
-    - New-AzureRmServiceBusQueue
-        - Adds a new queue to an existing Service Bus namespace.
-    - Get-AzureRmServiceBusQueue
-        - Gets an existing queue or list of queues in an existing Service Bus namespace.
-    - Set-AzureRmServiceBusQueue
-        - Updates properties of an existing queue in a Service Bus namespace. 
-    - Remove-AzureRmServiceBusQueue
-        - Deletes an existing queue in a Service Bus namespace.
-    - New-AzureRmServiceBusQueueAuthorizationRule
-        - Adds a new authorization rule to an existing queue in a Service Bus namespace. 
-    - Get-AzureRmServiceBusQueueAuthorizationRule
-        - Gets the authorization rule or list of authorization rules in a queue. 
-    - Set-AzureRmServiceBusQueueAuthorizationRule
-        - Updates an authorization rule in a queue.
-    - New-AzureRmServiceBusQueueKey
-        - Generates a new primary or secondary key for an authorization rule in an existing Service Bus queue.
-    - Get-AzureRmServiceBusQueueKey
-        - Gets the primary or secondary key for an authorization rule in an existing Service Bus queue.
-    - Remove-AzureRmServiceBusQueueAuthorizationRule
-        - Deletes an existing authorization rule in a Service Bus queue.
-    - New-AzureRmServiceBusTopic
-       - Adds a new topic to an existing Service Bus namespace.
-    - Get-AzureRmServiceBusTopic
-       - Gets an existing topic or list of topics in an existing Service Bus namespace. 
-    - Set-AzureRmServiceBusTopic
-       - Updates the properties of an existing topic in a Service Bus namespace.
-    - Remove-AzureRmServiceBusTopic
-       - Deletes an existing topic in a Service Bus namespace. 
-    - New-AzureRmServiceBusTopicAuthorizationRule
-       - Adds a new authorization rule to an existing topic in a Service Bus namespace.
-    - Get-AzureRmServiceBusTopicAuthorizationRule
-       - Gets an authorization rule or list of authorization rules in the topic. 
-    - Set-AzureRmServiceBusTopicAuthorizationRule
-       - Updates an authorization rule in a topic.
-    - New-AzureRmServiceBusTopicKey
-       - Generates a new primary or secondary key for an authorization rule in an existing Service Bus topic.
-    - Get-AzureRmServiceBusTopicKey
-       - Gets the primary or secondary key for an authorization rule in an existing Service Bus topic.
-    - Remove-AzureRmServiceBusTopicAuthorizationRule
-       - Deletes an existing authorization rule in a Service Bus topic.
-    - New-AzureRmServiceBusSubscription
-       - Adds a new subscription to an existing Service Bus topic. 
-    - Get-AzureRmServiceBusSubscription
-        - Gets an existing subscription or list of subscriptions in an existing Service Bus topic.
-    - Set-AzureRmServiceBusSubscription
-        - Updates the properties of an existing subscription in a Service Bus topic. 
-    - Remove-AzureRmServiceBusSubscription
-        - Deletes an existing subscription in a Service Bus topic.
+
+* Adds commandlets for the Azure ServiceBus
+ - New-AzureRmServiceBusNamespace
+   - Adds a New ServiceBus NameSpace in the existing Resource Group.
+
+ - Get-AzureRmServiceBusNamespace
+   - Gets NameSpace/list of NameSpaces of existing Resource Group.
+
+ - Set-AzureRmServiceBusNamespace
+   - Updates properties of existing Servicebus NameSpace.
+
+ - Remove-AzureRmServiceBusNamespace
+   - Deletes the existing ServiceBus NameSpace.
+
+ - New-AzureRmServiceBusNamespaceAuthorizationRule
+   - Adds a new AuthorizationRule to the existing ServiceBus NameSpace.
+
+ - Get-AzureRmServiceBusNamespaceAuthorizationRule
+   - Gets AuthorizationRule / List of AuthorizationRules for the existing ServiceBus NameSpace.
+
+ - Set-AzureRmServiceBusNamespaceAuthorizationRule
+   - Updates properties of existing AuthorizationRule of Servicebus NameSpace.
+
+ - New-AzureRmServiceBusNamespaceKey
+   - Generates a new Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace.
+
+ - Get-AzureRmServiceBusNamespaceKey
+   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace.
+   
+ - Remove-AzureRmServiceBusNamespaceAuthorizationRule
+   - Deletes the existing AuthorizationRule of ServiceBus NameSpace.
+
+ - New-AzureRmServiceBusQueue
+   - Adds a new Queue to the existing ServiceBus NameSpace.
+
+ - Get-AzureRmServiceBusQueue
+   - Gets existing Queue/ List of Queues of the existing ServiceBus NameSpace.
+
+ - Set-AzureRmServiceBusQueue
+   - Updates properties of existing Queue of ServiceBus NameSpace.
+
+ - Remove-AzureRmServiceBusQueue
+   - Deletes existing Queue of ServiceBus NameSpace.
+
+ - New-AzureRmServiceBusQueueAuthorizationRule
+   - Adds a new AuthorizationRule to the existing Queue of ServiceBus NameSpace.
+
+ - Get-AzureRmServiceBusQueueAuthorizationRule
+   - Gets the AuthorizationRule / List of AuthorizationRules of the Queue 
+   
+ - Set-AzureRmServiceBusQueueAuthorizationRule
+   - Updates the AuthorizationRule of the Queue.
+
+ - New-AzureRmServiceBusQueueKey
+   - Generates a new Primary/Secondary Key for AuthorizationRule of existing ServiceBus Queue.
+
+ - Get-AzureRmServiceBusQueueKey
+   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus Queue.
+
+ - Remove-AzureRmServiceBusQueueAuthorizationRule
+   - Deletes the existing AuthorizationRule of ServiceBus Queue.
+
+ - New-AzureRmServiceBusTopic
+   - Adds a new Topic to the existing ServiceBus NameSpace.
+
+ - Get-AzureRmServiceBusTopic
+   - Gets existing Topic/ List of Topics of the existing ServiceBus NameSpace.
+
+ - Set-AzureRmServiceBusTopic
+   - Updates properties of existing Topic of ServiceBus NameSpace.
+
+ - Remove-AzureRmServiceBusTopic
+   - Deletes existing Topic of ServiceBus NameSpace.
+
+ - New-AzureRmServiceBusTopicAuthorizationRule
+   - Adds a new AuthorizationRule to the existing Topic of ServiceBus NameSpace.
+
+ - Get-AzureRmServiceBusTopicAuthorizationRule
+   - Gets the AuthorizationRule / List of AuthorizationRules of the Topic.
+   
+ - Set-AzureRmServiceBusTopicAuthorizationRule
+   - Updates the AuthorizationRule of the Topic.
+
+ - New-AzureRmServiceBusTopicKey
+   - Generates a new Primary/Secondary Key for AuthorizationRule of existing ServiceBus Topic.
+
+ - Get-AzureRmServiceBusTopicKey
+   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus Topic.
+
+ - Remove-AzureRmServiceBusTopicAuthorizationRule
+   - Deletes the existing AuthorizationRule of ServiceBus Topic.
+   
+ - New-AzureRmServiceBusSubscription
+   - Adds a new Subscription to the existing ServiceBus Topic.
+
+ - Get-AzureRmServiceBusSubscription
+   - Gets existing Subscription/ List of Subscriptions of the existing ServiceBus Topic.
+
+ - Set-AzureRmServiceBusSubscription
+   - Updates properties of existing Subscription of ServiceBus Topic.
+
+ - Remove-AzureRmServiceBusSubscription
+   - Deletes existing Subscription of ServiceBus Topic.
