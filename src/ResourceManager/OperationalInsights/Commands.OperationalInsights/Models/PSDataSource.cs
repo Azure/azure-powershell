@@ -79,9 +79,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.ResourceId = dataSource.Id;
             this.Kind = dataSource.Kind;
             switch(this.Kind){
-                case PSDataSourceKinds.AzureAuditLog:
-                    this.Properties = JsonConvert.DeserializeObject<PSAzureAuditLogDataSourceProperties>(dataSource.Properties);
-                    break;
                 case PSDataSourceKinds.AzureActivityLog:
                     this.Properties = JsonConvert.DeserializeObject<PSAzureActivityLogDataSourceProperties>(dataSource.Properties);
                     break;

@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             permissions.PublicAccess = accesslevel;
 
-            bool created = await localChannel.CreateContainerIfNotExistsAsync(container, permissions.PublicAccess, requestOptions, OperationContext, CmdletCancellationToken);
+            bool created = await localChannel.CreateContainerIfNotExistsAsync(container, permissions.PublicAccess, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
             if (!created)
             {

@@ -2117,13 +2117,15 @@ PS C:\&gt; Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol 
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>VolumeType</maml:name>
-<maml:Description><maml:para>Specifies the type of virtual machine volumes to perform the encryption operation. For Windows virtual machines, valid values are: 
+<maml:Description><maml:para>Specifies the type of virtual machine volumes to perform the encryption operation. For Windows virtual machines, valid values are:
 </maml:para>
 <maml:para>-- All
 </maml:para>
 <maml:para>-- OS
 </maml:para>
 <maml:para>-- Data.
+</maml:para>
+<maml:para>
 </maml:para>
 <maml:para>If you do not specify a value for this parameter, the default value is All. Disable encryption is not currently supported for Linux.
 </maml:para>
@@ -2244,13 +2246,15 @@ PS C:\&gt; Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol 
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>VolumeType</maml:name>
-<maml:Description><maml:para>Specifies the type of virtual machine volumes to perform the encryption operation. For Windows virtual machines, valid values are: 
+<maml:Description><maml:para>Specifies the type of virtual machine volumes to perform the encryption operation. For Windows virtual machines, valid values are:
 </maml:para>
 <maml:para>-- All
 </maml:para>
 <maml:para>-- OS
 </maml:para>
 <maml:para>-- Data.
+</maml:para>
+<maml:para>
 </maml:para>
 <maml:para>If you do not specify a value for this parameter, the default value is All. Disable encryption is not currently supported for Linux.
 </maml:para>
@@ -6059,7 +6063,7 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LicenseType</maml:name>
 <maml:Description><maml:para>Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises. This value is used only for images that contain the Windows Server operating system. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Windows_Client 
+<maml:para>-- Windows_Client
 </maml:para>
 <maml:para>-- Windows_Server
 </maml:para>
@@ -6112,7 +6116,7 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>LicenseType</maml:name>
 <maml:Description><maml:para>Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises. This value is used only for images that contain the Windows Server operating system. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Windows_Client 
+<maml:para>-- Windows_Client
 </maml:para>
 <maml:para>-- Windows_Server
 </maml:para>
@@ -7194,7 +7198,7 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <command:details><command:name>New-AzureVMSqlServerAutoBackupConfig</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureVMSqlServerAutoBackupConfig</command:noun>
-<maml:description><maml:para>Creates a configuration object for SQL Server automatic backup.
+<maml:description><maml:para>Creates a configuration object for SQL Server automatic backup. (Alias: New-AzureRmVMSqlServerAutoBackupConfig)
 </maml:para>
 </maml:description>
 </command:details>
@@ -7272,9 +7276,80 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupScheduleType</maml:name>
+<maml:Description><maml:para>Backup schedule type, manual or automated
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupSystemDbs</maml:name>
+<maml:Description><maml:para>Backup system databases
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupFrequency</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup frequency, daily or weekly
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupStartHour</maml:name>
+<maml:Description><maml:para>Hour of the day (0-23) when the Sql Server Full Backup should start
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupWindowInHours</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup window in hours
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>LogBackupFrequencyInMinutes</maml:name>
+<maml:Description><maml:para>Sql Server Log Backup frequency, once every 1-60 minutes
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>CertificatePassword</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupScheduleType</maml:name>
+<maml:Description><maml:para>Backup schedule type, manual or automated
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BackupSystemDbs</maml:name>
+<maml:Description><maml:para>Backup system databases
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>CertificatePassword</maml:name>
 <maml:Description><maml:para>Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.
 </maml:para>
 </maml:Description>
@@ -7300,6 +7375,42 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupFrequency</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup frequency, daily or weekly
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupStartHour</maml:name>
+<maml:Description><maml:para>Hour of the day (0-23) when the Sql Server Full Backup should start
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FullBackupWindowInHours</maml:name>
+<maml:Description><maml:para>Sql Server Full Backup window in hours
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>LogBackupFrequencyInMinutes</maml:name>
+<maml:Description><maml:para>Sql Server Log Backup frequency, once every 1-60 minutes
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Specifies the name of the resource group of the virtual machine.
@@ -7348,7 +7459,13 @@ New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleS
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>AutoBackupSettings</maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet returns object contains settings for automated backup.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -7389,6 +7506,30 @@ RetentionPeriodInDays : 10</dev:code>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
+<command:example><maml:title>Example 4: Create an automatic backup configuration with manual backup schedule</maml:title>
+<dev:code>$storageUrl = 'https://stocrptestps9662.blob.core.windows.net/'
+$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
+$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Manual -FullBackupFrequency Daily -FullBackupStartHour 10 -FullBackupWindowInHours 10 -LogBackupFrequencyInMinutes 10 -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
+<dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies manual backup schedule with associated settings like FullBackupFrequency, FullBackupStartHour, FullBackupWindowInHours and LogBackupFrequencyInMinutes.
+</maml:para>
+<maml:para>Enable                : True EnableEncryption      : False RetentionPeriod       : 10 StorageUrl            : https://stocrptestps9662.blob.core.windows.net/ StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== Password              : BackupSystemDbs       : True BackupScheduleType    : Manual FullBackupFrequency   : Daily FullBackupStartTime   : 10
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 5: Create an automatic backup configuration with automated backup schedule</maml:title>
+<dev:code>$storageUrl = 'https://stocrptestps9662.blob.core.windows.net/'
+$storageKey = ConvertTo-SecureString -String CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyibyg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== -AsPlainText -Force
+$backupConfig=New-AzureRmVMSqlServerAutoBackupConfig -Enable -ResourceGroupName crptestps9662 -BackupSystemDbs -BackupScheduleType Automated -RetentionPeriodInDays 10 -StorageUri $storageUrl -StorageKey $storageKey</dev:code>
+<dev:remarks><maml:para>This command creates and stores an automatic backup configuration object. The command specifies automated backup schedule.
+</maml:para>
+<maml:para>Enable                : True EnableEncryption      : False RetentionPeriod       : 10 StorageUrl            : https://stocrptestps9662.blob.core.windows.net/ StorageAccessKey      : CDbJ5eqkPiR+mfmlHFRMVNtLyUMNn8asHs3ulyFeSUyi/byg0JCofVh5/8hX4qE8GHoHtnQmIeAzwBTHC2hlvg== Password              : BackupSystemDbs       : True BackupScheduleType    : Automated FullBackupFrequency   :  FullBackupStartTime   :
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
 </command:examples>
 <command:relatedLinks><maml:navigationLink><maml:linkText>New-AzureVMSqlServerAutoPatchingConfig</maml:linkText>
 <maml:uri></maml:uri>
@@ -7402,7 +7543,7 @@ RetentionPeriodInDays : 10</dev:code>
 <command:details><command:name>New-AzureVMSqlServerAutoPatchingConfig</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureVMSqlServerAutoPatchingConfig</command:noun>
-<maml:description><maml:para>Creates a configuration object for automatic patching on a virtual machine.
+<maml:description><maml:para>Creates a configuration object for automatic patching on a virtual machine. (Alias: New-AzureRmVMSqlServerAutoPatchingConfig)
 </maml:para>
 </maml:description>
 </command:details>
@@ -7585,11 +7726,11 @@ PatchCategory                 : Important</dev:code>
 <command:details><command:name>New-AzureVMSqlServerKeyVaultCredentialConfig</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureVMSqlServerKeyVaultCredentialConfig</command:noun>
-<maml:description><maml:para>
+<maml:description><maml:para>Creates a configuration object for AKV settings for SQL Server on a virtual machine. (Alias: New-AzureRmVMSqlServerKeyVaultCredentialConfig)
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>
+<maml:description><maml:para>The New-AzureVMSqlServerKeyVaultCredentialConfig cmdlet creates a configuration object for adding Key Vault credentials to SQL Server on a virtual machine.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureVMSqlServerKeyVaultCredentialConfig</maml:name>
@@ -7738,7 +7879,13 @@ PatchCategory                 : Important</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>KeyVaultCredentialSettings</maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet returns object contains settings for adding Key Vault credentials.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -11231,7 +11378,7 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>DestinationContainerName</maml:name>
 <maml:Description><maml:para>Specifies the name of a container inside the "system" container that you want to hold your images.
 </maml:para>
-<maml:para>If the container doesn't exist, it is created for you. The virtual hard disks (VHDs) that constitute the VMImage reside in the container that this parameter specifies. If the VHDs are spread across multiple storage accounts, this cmdlet creates one container that has this name in each storage account. The URL of the saved image is similar to: 
+<maml:para>If the container doesn't exist, it is created for you. The virtual hard disks (VHDs) that constitute the VMImage reside in the container that this parameter specifies. If the VHDs are spread across multiple storage accounts, this cmdlet creates one container that has this name in each storage account. The URL of the saved image is similar to:
 </maml:para>
 <maml:para>https://&lt;storageAccountName&gt;.blob.core.windows.net/system/Microsoft.Compute/Images/&lt;imagesContainer&gt;/&lt;vhdPrefix-osDisk&gt;.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd.
 </maml:para>
@@ -11292,7 +11439,7 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>DestinationContainerName</maml:name>
 <maml:Description><maml:para>Specifies the name of a container inside the "system" container that you want to hold your images.
 </maml:para>
-<maml:para>If the container doesn't exist, it is created for you. The virtual hard disks (VHDs) that constitute the VMImage reside in the container that this parameter specifies. If the VHDs are spread across multiple storage accounts, this cmdlet creates one container that has this name in each storage account. The URL of the saved image is similar to: 
+<maml:para>If the container doesn't exist, it is created for you. The virtual hard disks (VHDs) that constitute the VMImage reside in the container that this parameter specifies. If the VHDs are spread across multiple storage accounts, this cmdlet creates one container that has this name in each storage account. The URL of the saved image is similar to:
 </maml:para>
 <maml:para>https://&lt;storageAccountName&gt;.blob.core.windows.net/system/Microsoft.Compute/Images/&lt;imagesContainer&gt;/&lt;vhdPrefix-osDisk&gt;.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd.
 </maml:para>
@@ -11335,7 +11482,7 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>DestinationContainerName</maml:name>
 <maml:Description><maml:para>Specifies the name of a container inside the "system" container that you want to hold your images.
 </maml:para>
-<maml:para>If the container doesn't exist, it is created for you. The virtual hard disks (VHDs) that constitute the VMImage reside in the container that this parameter specifies. If the VHDs are spread across multiple storage accounts, this cmdlet creates one container that has this name in each storage account. The URL of the saved image is similar to: 
+<maml:para>If the container doesn't exist, it is created for you. The virtual hard disks (VHDs) that constitute the VMImage reside in the container that this parameter specifies. If the VHDs are spread across multiple storage accounts, this cmdlet creates one container that has this name in each storage account. The URL of the saved image is similar to:
 </maml:para>
 <maml:para>https://&lt;storageAccountName&gt;.blob.core.windows.net/system/Microsoft.Compute/Images/&lt;imagesContainer&gt;/&lt;vhdPrefix-osDisk&gt;.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd.
 </maml:para>
@@ -16212,7 +16359,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Caching</maml:name>
-<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are: 
+<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are:
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -16240,7 +16387,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>CreateOption</maml:name>
-<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are: 
+<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are:
 </maml:para>
 <maml:para>-- Attach. Specify this option to create a virtual machine from a specialized disk. When you specify this option, do not specify the SourceImageUri parameter. Instead, use the Set-AzureRmVMSourceImage cmdlet. You must also use the use the Windows or Linux parameters to tell the azure2 platform the type of the operating system on the VHD. The VhdUri parameter is enough to tell the azure2 platform the location of the disk to attach.  -- FromImage. Specify this option to create a virtual machine from a platform image or a generalized user image. In the case of a generalized user image, you also need to specify the SourceImageUri parameter and either the Windows or Linux parameters to tell the Azure platform the location and type of the operating system disk VHD instead of using the Set-AzureRmVMSourceImage cmdlet. In the case of a platform image, the VhdUri parameter is sufficient.  -- Empty.
 </maml:para>
@@ -16341,7 +16488,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Caching</maml:name>
-<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are: 
+<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are:
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -16369,7 +16516,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>CreateOption</maml:name>
-<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are: 
+<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are:
 </maml:para>
 <maml:para>-- Attach. Specify this option to create a virtual machine from a specialized disk. When you specify this option, do not specify the SourceImageUri parameter. Instead, use the Set-AzureRmVMSourceImage cmdlet. You must also use the use the Windows or Linux parameters to tell the azure2 platform the type of the operating system on the VHD. The VhdUri parameter is enough to tell the azure2 platform the location of the disk to attach.  -- FromImage. Specify this option to create a virtual machine from a platform image or a generalized user image. In the case of a generalized user image, you also need to specify the SourceImageUri parameter and either the Windows or Linux parameters to tell the Azure platform the location and type of the operating system disk VHD instead of using the Set-AzureRmVMSourceImage cmdlet. In the case of a platform image, the VhdUri parameter is sufficient.  -- Empty.
 </maml:para>
@@ -16452,7 +16599,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Caching</maml:name>
-<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are: 
+<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are:
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -16480,7 +16627,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>CreateOption</maml:name>
-<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are: 
+<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are:
 </maml:para>
 <maml:para>-- Attach. Specify this option to create a virtual machine from a specialized disk. When you specify this option, do not specify the SourceImageUri parameter. Instead, use the Set-AzureRmVMSourceImage cmdlet. You must also use the use the Windows or Linux parameters to tell the azure2 platform the type of the operating system on the VHD. The VhdUri parameter is enough to tell the azure2 platform the location of the disk to attach.  -- FromImage. Specify this option to create a virtual machine from a platform image or a generalized user image. In the case of a generalized user image, you also need to specify the SourceImageUri parameter and either the Windows or Linux parameters to tell the Azure platform the location and type of the operating system disk VHD instead of using the Set-AzureRmVMSourceImage cmdlet. In the case of a platform image, the VhdUri parameter is sufficient.  -- Empty.
 </maml:para>
@@ -16545,7 +16692,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Caching</maml:name>
-<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are: 
+<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are:
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -16573,7 +16720,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>CreateOption</maml:name>
-<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are: 
+<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are:
 </maml:para>
 <maml:para>-- Attach. Specify this option to create a virtual machine from a specialized disk. When you specify this option, do not specify the SourceImageUri parameter. Instead, use the Set-AzureRmVMSourceImage cmdlet. You must also use the use the Windows or Linux parameters to tell the azure2 platform the type of the operating system on the VHD. The VhdUri parameter is enough to tell the azure2 platform the location of the disk to attach.  -- FromImage. Specify this option to create a virtual machine from a platform image or a generalized user image. In the case of a generalized user image, you also need to specify the SourceImageUri parameter and either the Windows or Linux parameters to tell the Azure platform the location and type of the operating system disk VHD instead of using the Set-AzureRmVMSourceImage cmdlet. In the case of a platform image, the VhdUri parameter is sufficient.  -- Empty.
 </maml:para>
@@ -16607,7 +16754,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Caching</maml:name>
-<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are: 
+<maml:Description><maml:para>Specifies the caching mode of the operating system disk. Valid values are:
 </maml:para>
 <maml:para>-- ReadOnly
 </maml:para>
@@ -16626,7 +16773,7 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>CreateOption</maml:name>
-<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are: 
+<maml:Description><maml:para>Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk. Valid values are:
 </maml:para>
 <maml:para>-- Attach. Specify this option to create a virtual machine from a specialized disk. When you specify this option, do not specify the SourceImageUri parameter. Instead, use the Set-AzureRmVMSourceImage cmdlet. You must also use the use the Windows or Linux parameters to tell the azure2 platform the type of the operating system on the VHD. The VhdUri parameter is enough to tell the azure2 platform the location of the disk to attach.  -- FromImage. Specify this option to create a virtual machine from a platform image or a generalized user image. In the case of a generalized user image, you also need to specify the SourceImageUri parameter and either the Windows or Linux parameters to tell the Azure platform the location and type of the operating system disk VHD instead of using the Set-AzureRmVMSourceImage cmdlet. In the case of a platform image, the VhdUri parameter is sufficient.  -- Empty.
 </maml:para>
@@ -17822,9 +17969,11 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:para>
 <maml:para>The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Attach : This value is used when you are using a specialized disk to create the VMSS virtual machine. 
+<maml:para>-- Attach : This value is used when you are using a specialized disk to create the VMSS virtual machine.
 </maml:para>
 <maml:para>-- FromImage : This value is used when you are using an image to create the VMSS virtual machine.
+</maml:para>
+<maml:para>
 </maml:para>
 <maml:para>If you are using a platform image, you will also use the imageReference parameter.
 </maml:para>
@@ -17927,9 +18076,11 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:para>
 <maml:para>The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Attach : This value is used when you are using a specialized disk to create the VMSS virtual machine. 
+<maml:para>-- Attach : This value is used when you are using a specialized disk to create the VMSS virtual machine.
 </maml:para>
 <maml:para>-- FromImage : This value is used when you are using an image to create the VMSS virtual machine.
+</maml:para>
+<maml:para>
 </maml:para>
 <maml:para>If you are using a platform image, you will also use the imageReference parameter.
 </maml:para>

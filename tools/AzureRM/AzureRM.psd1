@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.
-ModuleVersion = '3.3.0'
+ModuleVersion = '3.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,48 +51,49 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.0.2'}, 
-               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '3.2.0'; }, 
-               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.4.2'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '3.2.0'; }, 
-               @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.0.1'; }, 
-               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.11.2'; }, 
-               @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.3.2'; }, 
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '3.3.0'; }, 
-               @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '3.4.0'; }, 
-               @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.11.2'; }, 
-               @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.0.1'; }, 
-               @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '3.3.0'; }, 
-               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '2.4.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.0.3'}, 
+               @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.0.1'}, 
+               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '3.3.0'; }, 
+               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.4.3'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '3.3.0'; }, 
+               @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.0.2'; }, 
+               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '1.1.0'; }, 
+               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.11.3'; }, 
+               @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.3.3'; }, 
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '3.5.0'; }, 
+               @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.11.3'; }, 
+               @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.0.2'; }, 
+               @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '3.4.0'; }, 
+               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '2.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -148,102 +149,89 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '2016.12.14 - Version 3.3.0
-* ApiManagement
-    * Added new cmdlets to manage external Identity Provider Configurations
-        - New-AzureRmApiManagementIdentityProvider
-        - Set-AzureRmApiManagementIdentityProvider
-        - Get-AzureRmApiManagementIdentityProvider
-        - Remove-AzureRmApiManagementIdentityProvider
-    * Updated the client to use .net client 3.2.0 AzureRm.ApiManagement which has RBAC support
-    * Updated cmdlet Import-AzureRmApiManagementApi to allow importing an Wsdl type API as either Soap Pass Through (ApiType = Http) or Soap To Rest (ApiType = Soap). Default is Soap Pass Through.
-    * Fixed Issue https://github.com/Azure/azure-powershell/issues/3217
+        ReleaseNotes = '## 2017.01.18 - Version 3.4.0
+* AnalysisServices
+    * Added two new dataplane APIs in a separate module Azure.AnalysisServices.psd1
+        - This introduces two new APIs that enable customers to login to Azure Analysis Services servers and issue a restart command.
 * Compute
-    * Add Remove-AzureRmVMSecret cmdlet.
-    * Based on user feedback (https://github.com/Azure/azure-powershell/issues/1384), we''ve added a DisplayHint property to VM object to enable Compact and Expand display modes. This is similar to `Get -Date - DisplayHint Date` cmdlet. By default, the return of `Get-AzureRmVm -ResourceGroupName <rg-name> -Name <vm-name>` will be compact. You can expand the output using `-DisplayHint Expand` parameter.
-    * UPCOMING BREAKING CHANGE Notification: We''ve added a warning about removing ` DataDiskNames` and ` NetworkInterfaceIDs` properties from the returned VM object from `Get-AzureRmVm -ResourceGroupName <rg-name> -Name <vm-name` cmdlet. Please update your scripts to access these properties in the following way:
-        - `$vm.StorageProfile.DataDisks`
-        - `$vm.NetworkProfile.NetworkInterfaces`
-    * Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
-        - JsonAttribute : A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute ''{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}''
-        - ChefServiceInterval : Specifies the frequency (in minutes) at which the chef-service runs. If in case you don''t want the chef-service to be installed on the Azure VM then set value as 0 in this field. e.g. -ChefServiceInterval 45
+    * Fix Get-AzureRmVM with -Status issue: Get-AzureRmVM throws an exception when Get-AzureRmVM lists multiple VMs and some of the VMs are deleted during Get-AzureRmVM is performed.
+    * New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
+      - BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+      - BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it''s manual, schedule settings need to be specified.
+      - FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+      - FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+      - FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+      - LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+    * New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
 * DataLakeAnalytics
-    * Removal of unsupported parameters in Add and Set-AzureRMDataLakeAnalyticsDataSource (default for data lake store)
-    * Removed unsupported parameter in Set-AzureRMDataLakeAnalyticsAccount (default data lake store)
-    * Introduction of deprecation warning for nested properties for all ARM resources. Nested properties will be removed in a future release and all properties will be moved one level up.
-    * Added the ability to set MaxDegreeOfParallelism, MaxJobCount and QueryStoreRetention in New and Set-AzureRMDataLakeAnalyticsAccount
-    * Removed invalid return value from New-AzureRMDataLakeAnalyticsCatalogSecret
+    * Update Get-AdlJob to support Top parameter
+    * Update Get-AdlJob to return the list of jobs in order by most recently submitted
+    * Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
+    * Update New-AdlAnalyticsAccount and Set-AdlAnalyticsAccount to support commitment tier options for the service.
+    * Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.
 * DataLakeStore
-    * Introduction of deprecation warning for nested properties for all ARM resources. Nested properties will be removed in a future release and all properties will be moved one level up.
-    * Removed the ability to set encryption in Set-AzureRMDataLakeStoreAccount (never was supported)
-    * Added ability to enable/disable firewall rules and the trusted id providers during Set-AzureRMDataLakeStoreAccount
-    * Added a new cmdlet: Set-AzureRMDataLakeStoreItemExpiry, which allows the user to set or remove the expiration for files (not folders) in their ADLS account.
-    * Small fix for friendly date properties to pivot off UTC time instead of local time, ensuring standard time reporting.
-* EventHub
-    * Adds commandlets for the Azure EventHub
-* Insights
-    * Parameter now accepts two more values in New-AzureRmAutoscaleRule
-        - Parameter ScaleType now accepts the previous ChangeCount (default) plus two more values PercentChangeCount, and ExactCount
-        - Add a warning message about this parameter accepting two more values
-    * Add parameter became optional in Add-AzureRmLogProfile
-        - Parameter StorageAccountId is now optional
-    * Minor changes to the output classes to expose more properties
-        - Before the user could see the properties because they were printed, but not access them programatically because they were protected for instance.
-* IotHub
-    * Adds commandlets for the Azure IoT Hub 
-* MachineLearning
-    * Serialization and deserialization improvements for all cmdlets
-* NotificationHubs
-    * Added the skuTier parameter to set the sky for namespace
-        - New-AzureRmNotificationHubsNamespace
-        - Set-AzureRmNotificationHubsNamespace
-* RecoveryServices.Backup
-    * Migrated from Hyak based Azure SDK to Swagger based Azure SDK
+    * Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
+    * Update New-AdlStore and Set-AdlStore to support commitment tier options for the service.
+    * Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.
+    * Add Diagnostic logging support to Import-AdlStoreItem and Export-AdlStoreItem. This can be enabled through the following parameters:
+        * -Debug, enables full diagnostic logging as well as debug logging to the PowerShell console. Most verbose options
+        * -DiagnosticLogLevel, allows finer control of the output than debug. If used with debug, this is ignored and debug logging is used.
+        * -DiagnosticLogPath, optionally specify the file to write diagnostic logs to. By default it is written to a file under %LOCALAPPDATA%\AdlDataTransfer
+    * Added support to New-AdlStore to explicitly opt-out of account encryption. To do so, create the account with the -DisableEncryption flag.
+* OperationalInsights
+    * Get-AzureRmOperationalInsightsSearchResults no longer requires the Top parameter to retrieve results
 * Resources
-    * Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
-        - Users can now use ResourceNameEquals and ResourceGroupNameEquals with Find-AzureRmResource
+    * Support Tag as parameters for Find-AzureRmResource
+        - Users can now use Tag parameter with Find-AzureRmResource
+        - Fixed the issue where illegal combinations of TagName, TagValue with other search parameters was allowed in Find-AzureRmResource and would result in users getting exception from the service by disallowing such combinations. 
 * ServiceBus
-    * Adds commandlets for the Azure ServiceBus
+    * Add SkuCapacity parameter to Set-AzureRmServiceBusNamespace
+        - User will be able to update the SkuCapacity(Messaging units in case of a premium namespace) of the SeriveBus NameSpace
+    
+    * Future Breaking Change Notification: We''ve added a warning about removing property ''ResourceGroupName'' from the returned NamespceAttributes from cmdlets New-AzureRmServiceBusNamespace, Get-AzureRmServiceBusNamespace and Set-AzureRmServiceBusNamespace
+        -The call remains the same, but the returned values NameSpace object will not have the ResourceGroupName property  
 * Sql
-    * Added storage properties to cmdlets for Azure SQL threat detection policy management at database and server level 
-        - StorageAccountName
-        - RetentionInDays
-    * Removed the unsupported param "AuditAction" from Set-AzureSqlDatabaseServerAuditingPolicy
-    * Added new param "AuditAction" to Set-AzureSqlDatabaseAuditingPolicy
-    * Fix for showing on GET and persisting Tags on SET (if not given) for Database, Server and Elastic Pool 
-        - If Tags is used in command it will save tags, if not it will not wipe out tags on resource.
-    * Fix for showing on GET and persisting Tags on SET (if not given) for Database, Server and Elastic Pool 
-        - If Tags is used in command it will save tags, if not it will not wipe out tags on resource.
-    * Changes for "New-AzureRmSqlDatabase", "Set-AzureRmSqlDatabase" and "Get-AzureRmSqlDatabase" cmdlets
-        - Adding a new parameter called "ReadScale" for the 3 cmdlets above.
-        - The "ReadScale" parameter has 2 possibl values: "Enabled" or "Disabled" to indicate whether the ReadScale option is turned on for the database.
-    * Functionality of ReadScale Feature.
-        - ReadScale is a new feature in SQL Database, which allows the user to enabled/disable routing read-only requests to Geo-secondary Premium databases.
-        - This feature allows the customer to scale up/down their read-only workload flexibly, and unlocked more DTUs for the premium database.
-        - To configure ReadScale, user simply specify "ReadScale" paramter with "Enabled/Disabled" at database creation with New-AzureRmSqlDatabase cmdlet, 
-* Websites
-    * Add: PerSiteScaling option on cmdlets New-AzureRmAppservicePlan and Set-AzureRmAppServicePlan
-    * Add: NumberOfWorkers option on cmdlets Set-AzureRmWebApp and Set-AzureRmWebAppSlot
-    * Add: Help documentation using platyPS
+    * Added new return parameter "AuditType" to Get-AzureRmSqlDatabaseAuditingPolicy and Get-AzureRmSqlServerAuditingPolicy returned object
+        - This parameter value indicates the returned auditing policy type - Table or Blob.
 * ServiceManagement
-    * Updated Set-AzureVMChefExtension cmdlet to add following new options :
-        - JsonAttribute : A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute ''{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}''
-        - ChefServiceInterval : Specifies the frequency (in minutes) at which the chef-service runs. If in case you don''t want the chef-service to be installed on the Azure VM then set value as 0 in this field. e.g. -ChefServiceInterval 45
-    * Updated New-AzureVirtualNetworkGatewayConnection cmdlet to add validation on acceptable input parameter:GatewayConnectionType values sets and it can be case insensitive:
-        - GatewayConnectionType : Added validation to accept only set of values:- ''ExpressRoute''/''IPsec''/''Vnet2Vnet''/''VPNClient'' and acceptable set of values can be passed in any casing.
-    * Updating Managed Cache warning message which notifies customer about service deprecation on the following cmdlets :
-        - Get-AzureManagedCache
-        - Get-AzureManagedCacheAccessKey
-        - Get-AzureManagedCacheLocation
-        - Get-AzureManagedCacheNamedCache
-        - New-AzureManagedCache
-        - New-AzureManagedCacheAccessKey
-        - New-AzureManagedCacheNamedCache
-        - Remove-AzureManagedCache
-        - Remove-AzureManagedCacheNamedCache
-        - Set-AzureManagedCache
-        - Set-AzureManagedCacheNamedCache
-    * For more information about Managed Cache service deprecation, see http://go.microsoft.com/fwlink/?LinkID=717458'
+    * New parameters in New-AzureVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
+      - BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+      - BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it''s manual, schedule settings need to be specified.
+      - FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+      - FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+      - FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+      - LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+* Storage
+    * Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
+        - Start-AzureStorageBlobCopy
+    * Fix hang issue when running cmdlets from WPF/Winform context  
+        - Get-AzureStorageBlob
+        - Get-AzureStorageBlobContent
+        - Get-AzureStorageBlobCopyState
+        - Get-AzureStorageContainer
+        - Get-AzureStorageContainerStoredAccessPolicy
+        - New-AzureStorageContainer
+        - Remove-AzureStorageBlob
+        - Remove-AzureStorageContainer
+        - Set-AzureStorageBlobContent
+        - Set-AzureStorageContainerAcl
+        - Start-AzureStorageBlobCopy
+        - Stop-AzureStorageBlobCopy
+        - Get-AzureStorageFile
+        - Get-AzureStorageFileContent
+        - Get-AzureStorageFileCopyState
+        - Get-AzureStorageShare
+        - Get-AzureStorageShareStoredAccessPolicy
+        - New-AzureStorageDirectory
+        - New-AzureStorageShare
+        - Remove-AzureStorageDirectory
+        - Remove-AzureStorageFile
+        - Remove-AzureStorageShare
+        - Set-AzureStorageFileContent
+        - Start-AzureStorageFileCopy
+        - Stop-AzureStorageFileCopy
+        - Get-AzureStorageQueueStoredAccessPolicy
+        - Get-AzureStorageTableStoredAccessPolicy '
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

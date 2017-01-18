@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else
             {
+                WriteWarning(Resources.IncorrectOutputTypeWarning);
                 // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
                 WriteObject(DataLakeAnalyticsClient.ListAccounts(ResourceGroupName, null, null, null)
                     .Select(element => new PSDataLakeAnalyticsAccount(element))

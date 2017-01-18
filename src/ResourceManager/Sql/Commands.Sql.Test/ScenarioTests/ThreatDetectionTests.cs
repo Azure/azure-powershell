@@ -42,21 +42,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionGetDefualtPolicy()
         {
             RunPowerShellTest("Test-ThreatDetectionGetDefualtPolicy");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionDatabaseUpdatePolicy()
         {
             RunPowerShellTest("Test-ThreatDetectionDatabaseUpdatePolicy");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionServerUpdatePolicy()
         {
             RunPowerShellTest("Test-ThreatDetectionServerUpdatePolicy");
@@ -64,24 +64,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisablingThreatDetection()
         {
             RunPowerShellTest("Test-DisablingThreatDetection");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvalidArgumentsThreatDetection()
         {
             RunPowerShellTest("Test-InvalidArgumentsThreatDetection");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
-        public void ThreatDetectionOnV2Server()
-        {
-            RunPowerShellTest("Test-ThreatDetectionOnV2Server");
         }
     }
 }
