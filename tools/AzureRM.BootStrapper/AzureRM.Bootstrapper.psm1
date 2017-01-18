@@ -286,15 +286,56 @@ function RemoveWithRetry
   }
 }
 
+# Checks if the profiles associated with the module version are installed.
+function Test-ProfilesInstalled
+{
+  param([String]$Module, [String]$Profile, [PSObject]$PMap, [array]$pInstalled, [hashtable]$dependencyIndex)
+  $profilesAssociated = @()
+  $versionList = $PMap.$Profile.$Module
+  foreach ($version in $versionList)
+  {
+    foreach ($profileInDepIndex in $dependencyIndex[$Module + $version])
+    {
+      if ($profileInDepIndex -in $pInstalled.Keys)
+      {
+        $profilesAssociated += $profileInDepIndex
+      }
+    }
+  }
+  return $profilesAssociated
+}
+
+# Function to uninstall module
+function Uninstall-ModuleHelper
+{
+  param([String]$Module, [System.Version]$version)
+  Do
+  {
+    $moduleInstalled = Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} 
+    if ($moduleInstalled -ne $null) 
+    {
+      Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
+      try 
+      {
+        Uninstall-Module -Name $module -RequiredVersion $version -Force -ErrorAction Stop
+      }
+      catch
+      {
+        break
+      }
+    }
+  }
+  While($moduleInstalled -ne $null);        
+}
+
 # Help function to uninstall a profile
 function Uninstall-ProfileHelper
 {
   [CmdletBinding(SupportsShouldProcess = $true)]
-	param([PSObject]$PMap, [array]$pInstalled, [hashtable]$dependencyIndex)
+  param([String]$Profile, [PSObject]$PMap, [array]$pInstalled, [hashtable]$dependencyIndex)
   DynamicParam
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
-    Add-ProfileParam $params
     Add-ForceParam $params
     return $params
   }
@@ -303,6 +344,7 @@ function Uninstall-ProfileHelper
     $Force = $PSBoundParameters.Force
     $Profile = $PSBoundParameters.Profile
     $modules = ($PMap.$Profile | Get-Member -MemberType NoteProperty).Name
+    
     if ($PSCmdlet.ShouldProcess("$Profile", "Uninstall Profile")) 
     {
       if (($Force -or $PSCmdlet.ShouldContinue("Uninstall Profile $Profile", "Removing Modules for profile $Profile")))
@@ -310,18 +352,7 @@ function Uninstall-ProfileHelper
         foreach ($module in $modules)
         {
           # Check if the profiles associated with the module version are installed.
-          $profilesAssociated = @()
-          $versionList = $PMap.$Profile.$module
-          foreach ($version in $versionList)
-          {
-            foreach ($profileInDepIndex in $dependencyIndex[$module + $version])
-            {
-              if ($profileInDepIndex -in $pInstalled.Keys)
-              {
-                $profilesAssociated += $profileInDepIndex
-              }
-            }
-          }
+          $profilesAssociated = Test-ProfilesInstalled -Module $module -Profile $Profile -PMap $PMap -pInstalled $pInstalled -dependencyIndex $dependencyIndex
       
           # If more than one profile is installed for the same version of the module, do not uninstall; skip if none installed
           if ($profilesAssociated.Count -ne 1)
@@ -330,25 +361,10 @@ function Uninstall-ProfileHelper
           }
 
           # Uninstall module
+          $versionList = $PMap.$Profile.$module
           foreach ($version in $versionList)
           {
-            Do
-            {
-              $moduleInstalled = Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} 
-              if ($moduleInstalled -ne $null) 
-              {
-                Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
-                try 
-                {
-                  Uninstall-Module -Name $module -RequiredVersion $version -Force -ErrorAction Stop
-                }
-                catch
-                {
-                  break
-                }
-              }
-            }
-            While($moduleInstalled -ne $null);
+            Uninstall-ModuleHelper -Module $module -version $version
           } 
         }
       }
