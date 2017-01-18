@@ -38,8 +38,8 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Analysis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Analysis.1.0.1-preview\lib\net45\Microsoft.Azure.Management.Analysis.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Analysis, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\Commands.AnalysisServices.Test\bin\Debug\Microsoft.Azure.Management.Analysis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -100,11 +100,11 @@
     <Compile Include="Commands\SetAzureRmAnalysisServicesServer.cs" />
     <Compile Include="Commands\TestAzureRmAnalysisServicesServer.cs" />
     <Compile Include="Commands\NewAzureRmAnalysisServicesServer.cs" />
-    <Compile Include="Models\AnalysisServicesClient.cs" />
-    <Compile Include="Models\AnalysisServicesCmdletBase.cs" />
-    <Compile Include="Models\AzureAnalysisServicesServer.cs" />
-    <Compile Include="Models\ServerSku.cs" />
-    <Compile Include="Models\StringOrByteArrayInstance.cs" />
+    <Compile Include="Commands\Models\AnalysisServicesClient.cs" />
+    <Compile Include="Commands\Models\AnalysisServicesCmdletBase.cs" />
+    <Compile Include="Commands\Models\AzureAnalysisServicesServer.cs" />
+    <Compile Include="Commands\Models\ServerSku.cs" />
+    <Compile Include="Commands\Models\StringOrByteArrayInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>

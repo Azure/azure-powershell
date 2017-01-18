@@ -10,7 +10,7 @@ function Test-AnalysisServicesServer
 	)
 	
 	try
-	{
+	{  
 		# Creating server
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
@@ -21,12 +21,20 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+
+		Write-Output $serverCreated.ServerFullName
+		Write-Output $resourceGroupName
+		Write-Output $serverName
+
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
-		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("*$serverName*")}
+		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
 	
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
+
 		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverGetItem.State -like "Succeeded"}
+		
 		Assert-AreEqual $serverName $serverGetItem.Name
 		Assert-AreEqual $location $serverGetItem.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
@@ -36,7 +44,7 @@ function Test-AnalysisServicesServer
 		Assert-True {Test-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
 		# Test it without specifying a resource group
 		Assert-True {Test-AzureRmAnalysisServicesServer -Name $serverName}
-
+		
 		# Updating server
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tag $tagsToUpdate -PassThru
@@ -55,7 +63,7 @@ function Test-AnalysisServicesServer
 		# List all servers in resource group
 		[array]$serversInResourceGroup = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName
 		Assert-True {$serversInResourceGroup.Count -ge 1}
-    
+
 		$found = 0
 		for ($i = 0; $i -lt $serversInResourceGroup.Count; $i++)
 		{
@@ -95,13 +103,15 @@ function Test-AnalysisServicesServer
 		Suspend-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
+		Assert-True {$serverGetItem.State -like "Paused"}
 		Assert-True {$serverGetItem.ProvisioningState -like "Paused"}
 
 		# Resume Analysis Servicesserver
 		Resume-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
-		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+	    Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverGetItem.State -like "Succeeded"}
 		
 		# Delete Analysis Servicesserver
 		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
@@ -124,6 +134,7 @@ Tests Analysis Services server lifecycle  Failure scenarios (Create, Update, Get
 #>
 function Test-NegativeAnalysisServicesServer
 {
+
     param
 	(
 		$location = "West US",
