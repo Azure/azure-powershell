@@ -126,7 +126,9 @@ namespace Microsoft.Azure.Commands.Profile
                     newEnvironment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = ResourceManagerEndpoint;
                     newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = ManagementPortalUrl;
                     newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = StorageEndpoint;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = ActiveDirectoryEndpoint;
+                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] =
+                        ActiveDirectoryEndpoint != null && !ActiveDirectoryEndpoint.EndsWith("/")
+                            ? ActiveDirectoryEndpoint + "/" : ActiveDirectoryEndpoint;
                     newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] =
                         ActiveDirectoryServiceEndpointResourceId;
                     newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = GalleryEndpoint;
