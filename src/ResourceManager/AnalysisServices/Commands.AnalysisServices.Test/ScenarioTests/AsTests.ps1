@@ -27,8 +27,8 @@ function Test-AnalysisServicesServer
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
 
-		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
-		Assert-True {$serverGetItem.State -like "Succeeded"}
+        Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+        Assert-True {$serverGetItem.State -like "Succeeded"}
 		
 		Assert-AreEqual $serverName $serverGetItem.Name
 		Assert-AreEqual $location $serverGetItem.Location
