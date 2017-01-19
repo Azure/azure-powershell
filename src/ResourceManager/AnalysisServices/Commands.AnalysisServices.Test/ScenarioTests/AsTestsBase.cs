@@ -32,10 +32,6 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
-using Microsoft.Rest.Azure.Authentication;
-using Microsoft.Rest;
-using System.Threading.Tasks;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 {
@@ -188,7 +184,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 
         private AnalysisServicesManagementClient GetAnalysisServicesManagementClient(MockContext context)
         {
-            return context.GetServiceClient<AnalysisServicesManagementClient>();
+            return context.GetServiceClient<AnalysisServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
         
         private GalleryClient GetGalleryClient()
