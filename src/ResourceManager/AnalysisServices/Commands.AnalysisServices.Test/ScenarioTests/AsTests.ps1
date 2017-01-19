@@ -98,6 +98,7 @@ function Test-AnalysisServicesServer
 		Suspend-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
+		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState
 		Assert-True {$serverGetItem.State -like "Paused"}
 		Assert-True {$serverGetItem.ProvisioningState -like "Paused"}
 
