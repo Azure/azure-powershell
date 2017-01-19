@@ -21,11 +21,6 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
-
-		Write-Output $serverCreated.ServerFullName
-		Write-Output $resourceGroupName
-		Write-Output $serverName
-
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
 	
@@ -111,7 +106,7 @@ function Test-AnalysisServicesServer
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
 	    Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
-		Assert-True {$serverGetItem.State -like "Succeeded"}
+        Assert-True {$serverGetItem.State -like "Succeeded"}
 		
 		# Delete Analysis Servicesserver
 		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
@@ -204,6 +199,7 @@ function Test-AnalysisServicesServerRestart
 
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverCreated.State -like "Succeeded"}
 
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"

@@ -362,23 +362,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                     powershell.AddScript(scripts[i]);
                 }
-                string ss = "";
                 try
                 {
                     powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
-                    
-                    foreach(var t in output)
-                    {
-                        ss += t.ToString() + "\n";
-                    }
-
-                
                     if (powershell.Streams.Error.Count > 0)
                     {
-                       
                         throw new RuntimeException(
-                            "FK" + powershell.Streams.Error[1] + 
                             "Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
                     }
 
@@ -386,18 +376,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 catch (Exception psException)
                 {
-              
-
-                    throw new RuntimeException(
-                           "FK1\n" + psException +
-                           "\nTest failed due to a non-empty error stream, check the error stream in the test log for more details.");
-
                     powershell.LogPowerShellException(psException, TracingInterceptor);
                     throw;
                 }
                 finally
                 {
-                    Console.Out.WriteLine(powershell.Streams.ToString());
                     powershell.LogPowerShellResults(output, TracingInterceptor);
                     powershell.Streams.Error.Clear();
                 }
