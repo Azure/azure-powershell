@@ -166,8 +166,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         }
 
         private ResourceManagementClient GetResourceManagementClient()
-        {   
-                return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+        {
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
         private SubscriptionClient GetSubscriptionClient()
