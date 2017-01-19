@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added State property in additional to ProvisioningState
+    - This introduces new property used outside of provisioing.
+
+## Version 3.3.0
 * Added two new dataplane APIs in a separate module Azure.AnalysisServices.psd1
     - This introduces two new APIs that enable customers to login to Azure Analysis Services servers and issue a restart command.
 
