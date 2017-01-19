@@ -143,7 +143,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-           
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             AnalysisServicesManagementClient = GetAnalysisServicesManagementClient(context);
