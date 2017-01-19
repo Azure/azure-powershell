@@ -214,13 +214,7 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestAnalysisServicesServer - Copy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestAnalysisServicesServer.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestNegativeAnalysisServicesServer - Copy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestNegativeAnalysisServicesServer.json">

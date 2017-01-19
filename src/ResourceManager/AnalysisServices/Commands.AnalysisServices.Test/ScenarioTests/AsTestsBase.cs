@@ -150,22 +150,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
            
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
-
-            ActiveDirectoryServiceSettings aadServiceSettings = new ActiveDirectoryServiceSettings()
-            {
-                AuthenticationEndpoint = new Uri("https://login.windows-ppe.net/" + "52acb0e9-da96-4810-ab3a-91a2589b0f49"),
-                TokenAudience = new Uri("https://management.core.windows.net")
-            };
-
-            var credentials = new UserCredential("aztest0@aspaas.ccsctp.net", "Pa$$word3");
-            var authenticationContext = new AuthenticationContext("https://login.windows-ppe.net/" + "52acb0e9-da96-4810-ab3a-91a2589b0f49",
-                    aadServiceSettings.ValidateAuthority);
-
-            //    var authResult = authenticationContext.AcquireTokenAsync(aadServiceSettings.TokenAudience.ToString(),
-            //          "1950a258-227b-4e31-a9cf-717495945fc2", credentials).Result;
-            //throw new Exception(authResult.AccessToken);
-
-                AnalysisServicesManagementClient = GetAnalysisServicesManagementClient(context);
+            AnalysisServicesManagementClient = GetAnalysisServicesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             NewResourceManagementClient = GetNewResourceManagementClient(context);
