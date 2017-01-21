@@ -346,7 +346,8 @@ Describe "Test-ProfilesInstalled" {
     InModuleScope AzureRm.Bootstrapper {
         $pInstalled = @{'Profile1'= @{'Module1' = @('1.0') ;'Module2'= @('1.0')}}
         $dependencyIndex = @{'Module11.0'= @('Profile1'); 'Module22.0'= @('Profile2')}
-
+        Mock Test-Dependencies -Verifiable { $dependencyIndex }
+        Mock Get-AllProfilesInstalled -Verifiable { @('Profile1') }
         Context "Profile associated with Module version is installed" {
             It "Should return ProfilesAssociated" {
                 $Result = (Test-ProfilesInstalled -Module 'Module1' -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) -pInstalled $pInstalled -dependencyIndex $dependencyIndex)
@@ -434,6 +435,36 @@ Describe "Uninstall-ProfileHelper" {
                 Assert-MockCalled Uninstall-ModuleHelper -Exactly 0
             }
         }
+    }
+}
+
+Describe "Invoke-UninstallModule" {
+    InModuleScope AzureRM.Bootstrapper {
+        Context "Module not associated with any other profile"
+        {
+            Mock Test-ProfilesInstalled -Verifiable { 'profile1'}
+            Mock Uninstall-ModuleHelper -Verifiable {}
+            It "Should Call Uninstall module helper" {
+                Invoke-UninstallModule -PMap ($global:testProfileMap | ConvertFrom-Json) -Profile 'profile1' -module 'module1'
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Module associated with more than one profile" {
+            Mock Test-ProfilesInstalled -Verifiable { @('Profile1', 'Profile2')}
+            Mock Uninstall-ModuleHelper -Verifiable {}
+            It "Should not invoke Uninstall module helper" {
+                Invoke-UninstallModule -PMap ($global:testProfileMap | ConvertFrom-Json) -Profile 'profile1' -module 'module1'
+                Assert-MockCalled Uninstall-ModuleHelper -Exactly 0
+                Assert-VerifiableMocks
+            }
+        }
+    }
+}
+
+Describe "Remove-PreviousVersions" {
+    InModuleScope AzureRM.Bootstrapper {
+        
     }
 }
 
@@ -633,7 +664,6 @@ Describe "Install-AzureRmProfile" {
 Describe "Uninstall-AzureRmProfile" {
     InModuleScope AzureRM.Bootstrapper {
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
-        Mock Test-Dependencies -Verifiable {}
         Mock Uninstall-ProfileHelper -Verifiable {}
         Context "Profile is installed" {
             Mock Get-ProfilesInstalled -Verifiable { @{'Profile1'= @{'Module1' = @('1.0') ;'Module2'= @('1.0')}}}
@@ -648,7 +678,6 @@ Describe "Uninstall-AzureRmProfile" {
             It "Should not call Uninstall-ProfileHelper" {
                 Uninstall-AzureRmProfile -Profile 'Profile1' -Force
                 Assert-MockCalled Uninstall-ProfileHelper -Exactly 0
-                Assert-MockCalled Test-Dependencies -Exactly 0
                 Assert-VerifiableMocks
             }
         }

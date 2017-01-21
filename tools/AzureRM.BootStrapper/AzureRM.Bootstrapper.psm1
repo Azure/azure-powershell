@@ -2,6 +2,7 @@ $RollUpModule = "AzureRM"
 $PSProfileMapEndpoint = "https://profile.azureedge.net/powershell/ProfileMap.json"
 $PSModule = $ExecutionContext.SessionState.Module
 $script:BootStrapRepo = "BootStrap"
+$AllProfilesInstalled = New-Object System.Collections.ArrayList
 $RepoLocation = "https://www.powershellgallery.com/api/v2/"
 $existingRepos = Get-PSRepository | Where-Object {$_.SourceLocation -eq $RepoLocation}
 if ($existingRepos -eq $null)
@@ -59,7 +60,7 @@ function Get-AzureProfileMap
   {
     [string]$ProfilePath = (Get-ChildItem "$ProfileCache\ProfileMap.json").Target
     [string]$ProfileMapHash = [System.IO.Path]::GetFileNameWithoutExtension($ProfilePath)
-    if ($ProfileMapHash -eq $OnlineProfileMapHash)
+    if (($ProfileMapHash -eq $OnlineProfileMapHash) -and (Test-Path $ProfilePath))
     {
       return $OnlineProfileMap
     }
@@ -294,8 +295,11 @@ function Test-ProfilesInstalled
   # Get the dependencyIndex @{"Module.Version": @(Profile)}: This is to skip uninstalling modules that are part of other profiles.
   $dependencyIndex = Test-Dependencies
 
-  # Get-Profiles installed across all hashes.
-  $AllProfilesInstalled = Get-AllProfilesInstalled
+  # Get-Profiles installed across all hashes. Do this once and update it every time a profile is uninstalled.
+  if($AllProfilesInstalled.Count -eq 0)
+  {
+    $AllProfilesInstalled = Get-AllProfilesInstalled
+  }
 
   # Profiles associated with the particular module version - installed?
   $profilesAssociated = @()
@@ -349,6 +353,11 @@ function Uninstall-ProfileHelper
     {
       Invoke-UninstallModule -PMap $PMap -Profile $Profile -Module $module
     }
+    # Remove this profile from $AllProfilesInstalled
+    if ($Profile -in $AllProfilesInstalled)
+    {
+      $AllProfilesInstalled.Remove($Profile)
+    }
   }
 }
 
@@ -360,7 +369,7 @@ function Invoke-UninstallModule
   $profilesAssociated = Test-ProfilesInstalled -Module $Module -Profile $Profile -PMap $PMap
       
   # If more than one profile is installed for the same version of the module, do not uninstall; skip if none installed
-  if ($profilesAssociated.Count -ne 1)
+  if (($profilesAssociated.Count -ne 1) -and ($profilesAssociated -ne $Profile))
   {
     continue
   }
@@ -379,11 +388,26 @@ function Remove-PreviousVersions
   param([String]$Profile, [PSObject]$PreviousMap, [PSObject]$LatestMap)
   $PreviousProfiles = ($PreviousMap | Get-Member -MemberType NoteProperty).Name
   $LatestProfiles = ($LatestMap | Get-Member -MemberType NoteProperty).Name
-  if($Profile -in $PreviousProfiles)
+  
+  # If the profile was not in $PreviousProfiles, return
+  if($Profile -notin $PreviousProfiles)
   {
-    foreach ($module in ($PreviousMap.$Profile | Get-Member -MemberType NoteProperty).Name)
+    return
+  }
+    
+  foreach ($module in ($PreviousMap.$Profile | Get-Member -MemberType NoteProperty).Name)
+  {
+    # If the latest version is same as the previous version, do not uninstall.
+    if (($PreviousMap.$Profile.$module | Out-String) -eq ($LatestMap.$Profile.$module | Out-String))
     {
-      if (($PreviousMap.$Profile.$module | Out-String) -ne ($LatestMap.$Profile.$module | Out-String))
+      continue
+    }
+      
+    # Is that module installed? If not return
+    $versionList = $PreviousMap.$Profile.$module
+    foreach ($version in $versionList)
+    {
+      if ((Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} ) -ne $null)
       {
         # Modules are different. Uninstall previous version.
         Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module
@@ -395,18 +419,23 @@ function Remove-PreviousVersions
 # Gets profiles installed from all the profilemaps from cache
 function Get-AllProfilesInstalled
 {
-  $AllProfilesInstalled = @()
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapHashes = Get-ChildItem $ProfileCache 
   foreach ($ProfileMapHash in $ProfileMapHashes)
   {
+    # Skip the symlink. Target is already handled.
+    if ($ProfileMapHash -eq 'ProfileMap.json')
+    {
+      continue
+    }
+
     $ProfileMap = Get-Content -Raw -Path (Join-Path $profilecache $ProfileMapHash) |  ConvertFrom-json
     $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $ProfileMap)
-    foreach ($key in $profilesInstalled)
+    foreach ($key in $profilesInstalled.Keys)
     {
       if ($key -notin $AllProfilesInstalled)
       {
-        $AllProfilesInstalled += $key
+        $AllProfilesInstalled.Add($key) | Out-Null
       }
     }
   }
@@ -424,7 +453,7 @@ function Update-ProfileHelper
 
   # Find the latest ProfileMap 
   $latestProfileMapHash = (Get-ChildItem "$ProfileCache\ProfileMap.json").Target
-  $LatestProfileMap = Get-Content -Raw -Path latestProfileMapHash |  ConvertFrom-json
+  $LatestProfileMap = Get-Content -Raw -Path $latestProfileMapHash |  ConvertFrom-json
   $AllProfiles = (Get-ProfilesInstalled -ProfileMap $LatestProfileMap)
 
   foreach ($ProfileMapHash in $ProfileMapHashes)
@@ -437,26 +466,28 @@ function Update-ProfileHelper
 
     # Compare previous & latest map for the update profile. Uninstall previous if they are different
     $previousProfileMap = Get-Content -Raw -Path (Join-Path $profilecache $ProfileMapHash) |  ConvertFrom-json
-    $LatestProfileMap = Get-Content -Raw -Path $latestProfileMapHash |  ConvertFrom-json
     Remove-PreviousVersions -Profile $Profile -PreviousMap $previousProfileMap -LatestMap $LatestProfileMap
 
     # Get the installed profiles from the previous map
-    $profilesInstalled = Get-ProfilesInstalled -ProfileMap $previousProfileMap
-
+    $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $previousProfileMap)
     foreach ($PreviousProfile in $profilesInstalled.Keys)
     {
       # Is it part of the latest hash? If the module versions are different, it would have been uninstalled if prev versions were removed.
-      if ($PreviousProfile -in $AllProfiles)
+      if ($PreviousProfile -in $AllProfiles.Keys)
       {
         continue
       }
       else {
         # do not delete hash; go to next hash
-        break
+        $deleteHash = $false
       }
     }
+
     # If none were installed, remove the hash
-    Remove-ProfileMapFile -ProfileMapPath (Join-Path $profilecache $ProfileMapHash)
+    if ($deleteHash -ne $false)
+    {
+      Remove-ProfileMapFile -ProfileMapPath (Join-Path $profilecache $ProfileMapHash)
+    }
   }
 }
 
@@ -692,6 +723,7 @@ function Uninstall-AzureRmProfile
   PROCESS {
     $ProfileMap = (Get-AzProfile)
     $Profile = $PSBoundParameters.Profile
+    $Force = $PSBoundParameters.Force
     $profilesInstalled = Get-ProfilesInstalled -ProfileMap $ProfileMap
 
     # Return if the profile specified is not installed.
@@ -702,7 +734,7 @@ function Uninstall-AzureRmProfile
 
     if ($PSCmdlet.ShouldProcess("$Profile", "Uninstall Profile")) 
     {
-      if (($Force -or $PSCmdlet.ShouldContinue("Uninstall Profile $Profile", "Removing Modules for profile $Profile")))
+      if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Uninstall Profile $Profile", "Removing Modules for profile $Profile")))
       {
         Uninstall-ProfileHelper -PMap $ProfileMap @PSBoundParameters
       }
