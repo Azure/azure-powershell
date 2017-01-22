@@ -1,5 +1,5 @@
 $RollUpModule = "AzureRM"
-$PSProfileMapEndpoint = "https://profile.azureedge.net/powershell/ProfileMap.json"
+$PSProfileMapEndpoint = "https://azureprofile.azureedge.net/powershell/profilemap.json"
 $PSModule = $ExecutionContext.SessionState.Module
 $script:BootStrapRepo = "BootStrap"
 $AllProfilesInstalled = New-Object System.Collections.ArrayList
@@ -78,6 +78,7 @@ function Get-AzureProfileMap
   }
 
   # create/Update symlink
+  # New-Item -ItemType SymbolicLink -Name $ProfileCache\ProfileMap.json -Target $CacheFilePath  
   Invoke-Expression -Command "cmd /c mklink $ProfileCache\ProfileMap.json $CacheFilePath"
   return $OnlineProfileMap
 }
@@ -420,11 +421,15 @@ function Remove-PreviousVersions
 function Get-AllProfilesInstalled
 {
   $ProfileCache = Get-ProfileCachePath
+  if (-not (Test-Path $ProfileCache))
+  {
+    return
+  }
   $ProfileMapHashes = Get-ChildItem $ProfileCache 
   foreach ($ProfileMapHash in $ProfileMapHashes)
   {
     # Skip the symlink. Target is already handled.
-    if ($ProfileMapHash -eq 'ProfileMap.json')
+    if ($ProfileMapHash.Name -eq 'ProfileMap.json')
     {
       continue
     }

@@ -1,4 +1,4 @@
-Import-Module C:\github\viananth\azure-powershell\tools\azurerm.bootstrapper\AzureRM.Bootstrapper.psm1
+Import-Module AzureRM.Bootstrapper
 $global:testProfileMap = "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
 
 Describe "Get-ProfileCachePath" {
@@ -53,7 +53,11 @@ Describe "Get-AzureProfileMap" {
             Mock Test-Path -Verifiable { $true }
             Mock Get-RestResponse -Verifiable { return ($testProfileMap | ConvertFrom-Json) }
             Mock New-Item {}
-            Invoke-Expression -Command "cmd /c mklink mocksymlink.json MockedHash.json"
+            if (-not (Test-Path '.\mocksymlink.json'))
+            {
+                Invoke-Expression -Command "cmd /c mklink mocksymlink.json MockedHash.json"
+            }
+
             $symlinkInfo = Get-ChildItem mocksymlink.json
             Mock Get-ChildItem -Verifiable { return $symlinkInfo }
             It "Returns Correct ProfileMap" {
@@ -440,8 +444,7 @@ Describe "Uninstall-ProfileHelper" {
 
 Describe "Invoke-UninstallModule" {
     InModuleScope AzureRM.Bootstrapper {
-        Context "Module not associated with any other profile"
-        {
+        Context "Module not associated with any other profile" {
             Mock Test-ProfilesInstalled -Verifiable { 'profile1'}
             Mock Uninstall-ModuleHelper -Verifiable {}
             It "Should Call Uninstall module helper" {
@@ -464,7 +467,171 @@ Describe "Invoke-UninstallModule" {
 
 Describe "Remove-PreviousVersions" {
     InModuleScope AzureRM.Bootstrapper {
+        Context "Previous versions are installed" {
+            $PreveiousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "0.1" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            Mock Get-Module -Verifiable { $moduleObj}
+            Mock Invoke-UninstallModule -Verifiable {}
+            It "Should call Invoke-UninstallModule" {
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Previous versions are not installed" {
+            $PreveiousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            Mock Get-Module -Verifiable {}
+            Mock Invoke-UninstallModule {}
+            It "Should not call Invoke-UninstallModule" {
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Assert-VerifiableMocks
+                Assert-MockCalled Invoke-UninstallModule -Exactly 0
+            }
+        }
+
+        Context "No previous versions" {
+            $PreveiousMap =  "{`"Profile0`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile3`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            Mock Get-Module -Verifiable {}
+            Mock Invoke-UninstallModule -Verifiable {}
+            It "Should not call Invoke-UninstallModule" {
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Assert-MockCalled Get-Module -Exactly 0
+                Assert-MockCalled Invoke-UninstallModule -Exactly 0
+            }
+        }
+
+        Context "Previous version is same as the latest version" {
+            $PreveiousMap =  "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            Mock Get-Module -Verifiable {}
+            Mock Invoke-UninstallModule -Verifiable {}
+            It "Should not call Invoke-UninstallModule" {
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Assert-MockCalled Get-Module -Exactly 0
+                Assert-MockCalled Invoke-UninstallModule -Exactly 0
+            }
+        }
+
+    }
+}
+
+Describe "Get-AllProfilesInstalled" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Get-ProfileCachePath -Verifiable { '.\MockPath'}
+        Mock Get-Content -Verifiable { $global:testProfileMap }
+        Context "Profile Maps are available from cache" {
+            Mock Test-Path -Verifiable { $true }
+            Mock Get-ChildItem -Verifiable { @('ProfileMap.json', 'MockHash.json')}
+            Mock Get-ProfilesInstalled -Verifiable { @{'Profile1'= @{'Module1'= '1.0'}}}
+            It "Should return profiles Installed" {
+                Get-AllProfilesInstalled | Should Be 'Profile1'
+                Assert-MockCalled Get-Content -Exactly 1
+                Assert-MockCalled Get-ProfilesInstalled -exactly 1
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Profiles are not installed" {
+            Mock Test-Path -Verifiable { $true }
+            Mock Get-ChildItem -Verifiable { @('ProfileMap.json', 'MockHash.json')}
+            Mock Get-ProfilesInstalled -Verifiable {}
+            
+            It "Should return empty" {
+                $AllProfilesInstalled = @()
+                $result = (Get-AllProfilesInstalled)
+                $result.Count | Should Be 0
+                Assert-MockCalled Get-Content -Exactly 1
+                Assert-MockCalled Get-ProfilesInstalled -exactly 1
+                Assert-VerifiableMocks
+            }      
+        }
         
+        Context "Cache is empty" {
+            Mock Test-Path -Verifiable { $false }
+            Mock Get-Content {}
+            Mock Get-ProfilesInstalled {}
+            It "Should return empty" {
+                $result = (Get-AllProfilesInstalled)
+                $result.Count | Should Be 0
+                Assert-MockCalled Get-Content -Exactly 0
+                Assert-MockCalled Get-ProfilesInstalled -exactly 0
+                Assert-VerifiableMocks
+            }
+        }
+    }
+}
+
+Describe "Update-ProfileHelper" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Get-ProfileCachePath -Verifiable { '.\MockPath'}
+        Mock Get-Content -Verifiable { $global:testProfileMap } -ParameterFilter { $Path -eq 'MockedHash.json'}
+        $profilemapFileInfo = New-Object -TypeName  psobject
+        $profilemapFileInfo | Add-Member NoteProperty 'Name' -Value 'ProfileMap.json'
+        Mock Get-ChildItem -Verifiable { @($profilemapFileInfo, 'MockHash.json')} -ParameterFilter { $Path -eq '.\MockPath'}
+        Invoke-Expression -Command "cmd /c mklink mocksymlink.json MockedHash.json"
+        $symlinkInfo = Get-ChildItem mocksymlink.json
+        Mock Get-ChildItem -Verifiable { return $symlinkInfo } -ParameterFilter { $Path -eq '.\MockPath\ProfileMap.json' }
+        Mock Remove-PreviousVersions -Verifiable {}
+        Mock Remove-ProfileMapFile {}
+
+        Context "Previous Profile versions are available and they are installed" {
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            Mock Get-Content -Verifiable { $PreviousMap }
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return @{'Profile1'= @{'Module1'= '1.0'}}
+                }
+                else {
+                    return @{'Profile2' = @{ 'Module2' = '0.1'}}
+                }
+            }   
+
+            Mock -CommandName Get-ProfilesInstalled -MockWith $mockTestPath
+            
+            It "Should not remove previous profile map" {
+                Update-ProfileHelper -profile 'Profile1'
+                Assert-MockCalled Remove-ProfileMapFile -Exactly 0
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Previous profile versions are available but they are not installed" {
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            Mock Get-Content -Verifiable { $PreviousMap }
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return @{'Profile1'= @{'Module1'= '1.0'}}
+                }
+                else {
+                    return @{}
+                }
+            }   
+
+            Mock -CommandName Get-ProfilesInstalled -MockWith $mockTestPath
+            It "Should remove the previous profile map" {
+                Update-ProfileHelper -profile 'Profile1'
+                Assert-MockCalled Remove-ProfileMapFile -Times 1
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Previous profile versions are same as latest profile versions" {
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            Mock Get-Content -Verifiable { $PreviousMap }
+            Mock Get-ProfilesInstalled -Verifiable {@{'Profile1'= @{'Module1'= '1.0'}}}
+            It "Should remove the previous profile map" {
+                Update-ProfileHelper -profile 'Profile1'
+                Assert-MockCalled Remove-ProfileMapFile -Times 1
+                Assert-VerifiableMocks
+            }
+        }
     }
 }
 
@@ -695,72 +862,22 @@ Describe "Uninstall-AzureRmProfile" {
         }
     }
 }
-<#
+
 Describe "Update-AzureRmProfile" {
     InModuleScope AzureRM.Bootstrapper {
+        # Arrange
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Get-AzProfile -Verifiable -ParameterFilter { $Update.IsPresent } { ($global:testProfileMap | ConvertFrom-Json) }
-        
-        Context "Profile is installed" {
-            # Arrange
-            $RollupModule = 'Module1'
-            Mock Get-AzureRmModule -Verifiable { "2.0"} -ParameterFilter {$Profile -eq "Profile2" -and $Module -eq "Module1"}
-            Mock Get-AzureRmProfile -Verifiable { 'Profile2' }
-            Mock Install-Module {}
-            Mock Import-Module -Verifiable {'Importing module'}
-            Mock Uninstall-AzureRmProfile {}
+        Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($RemovePreviousVersions.IsPresent) -and ($Force.IsPresent)}
+        Mock Update-ProfileHelper -Verifiable {}
+    
+        # Act
+        Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
 
-            # Act
-            $result = Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
-
-            # Assert
-            It "Updates and imports modules" {
-                $result | Should Be 'Importing module'
-                Assert-VerifiableMocks
-                Assert-MockCalled Install-Module -Exactly 0
-                Assert-MockCalled Uninstall-AzureRmProfile -Exactly 0
-            }
-        }
-
-        Context "Profile is not installed" {
-            # Arrange
-            Mock Get-AzureRmProfile -Verifiable {}
-            $RollupModule = 'Module1'
-            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile2" -and $Module -eq "Module1"}
-            Mock Install-Module -Verifiable {'Installing module'}
-            Mock Import-Module -Verifiable {'Importing module'}
-            Mock Uninstall-AzureRmProfile {}
-
-            # Act
-            $result = Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
-
-            It "Should download and import modules" {
-                $result[0] | Should Be 'Installing module'
-                $result[1] | Should Be 'Importing module'
-                Assert-VerifiableMocks
-                Assert-MockCalled Uninstall-AzureRmProfile -Exactly 0
-            }
-        }
-
-        Context "Old version (Profile1) was detected" {
-            # Arrange
-            Mock Uninstall-AzureRmProfile -Verifiable { "Uninstalling Profile..." }
-            Mock Get-AzureRmProfile -Verifiable { @('Profile1', 'Profile2') }
-            $RollupModule = 'Module1'
-            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile2" -and $Module -eq "Module1"}
-            Mock Install-Module -Verifiable {'Installing module'}
-            Mock Import-Module -Verifiable {'Importing module'}
-
-            # Act
-            $result = Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
-
-            It "Removes old version and updates new version" {
-                $result[0] | Should Be 'Uninstalling Profile...'
-                $result[1] | Should Be 'Installing module'
-                $result[2] | Should Be 'Importing module'
-                Assert-VerifiableMocks
-            }
+        # Assert
+        It "Updates and Removes previous versions" {
+            Assert-VerifiableMocks
         }
     }
 }
-#>
+
