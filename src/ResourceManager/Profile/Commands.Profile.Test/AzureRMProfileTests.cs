@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var getAsyncResponses = new Queue<Func<GetSubscriptionResult>>();
+            var getAsyncResponses = new Queue<Func<AzureOperationResponse<Subscription>>>();
             getAsyncResponses.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var getAsyncResponses = new Queue<Func<GetSubscriptionResult>>();
+            var getAsyncResponses = new Queue<Func<AzureOperationResponse<Subscription>>>();
             getAsyncResponses.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
@@ -218,26 +218,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var listAsyncResponses = new Queue<Func<SubscriptionListResult>>();
+            var listAsyncResponses = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
             listAsyncResponses.Enqueue(() =>
             {
-                var sub1 = new Subscription
+                var sub1 = new Subscription(
+                    id: DefaultSubscription.ToString(),
+                    subscriptionId: DefaultSubscription.ToString(),
+                    tenantId: null,
+                    displayName: DefaultSubscriptionName,
+                    state: SubscriptionState.Enabled,
+                    subscriptionPolicies: null,
+                    authorizationSource: null);
+                var sub2 = new Subscription(
+                    id: subscriptionInSecondTenant,
+                    subscriptionId: subscriptionInSecondTenant,
+                    tenantId: null,
+                    displayName: MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
+                    state: SubscriptionState.Enabled,
+                    subscriptionPolicies: null,
+                    authorizationSource: null);
+                return new AzureOperationResponse<IPage<Subscription>>
                 {
-                    Id = DefaultSubscription.ToString(),
-                    SubscriptionId = DefaultSubscription.ToString(),
-                    DisplayName = DefaultSubscriptionName,
-                    State = "enabled"
-                };
-                var sub2 = new Subscription
-                {
-                    Id = subscriptionInSecondTenant,
-                    SubscriptionId = subscriptionInSecondTenant,
-                    DisplayName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
-                    State = "enabled"
-                };
-                return new SubscriptionListResult
-                {
-                    Subscriptions = new List<Subscription> { sub1, sub2 }
+                    Body = (IPage<Subscription>) new List<Subscription> { sub1, sub2 }
                 };
             });
             MockSubscriptionClientFactory.SetListAsyncResponses(listAsyncResponses);
