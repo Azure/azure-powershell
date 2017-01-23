@@ -127,8 +127,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             }
 
             if (!string.IsNullOrEmpty(StorageKeyType))
-            // the user enter a key type - we use it (and running over the previously defined key type)
             {
+                // the user enter a key type - we use it (and override the previously defined key type)
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary)
                     ? StorageKeyKind.Primary
                     : StorageKeyKind.Secondary;
@@ -144,9 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditAction = AuditAction;
             }
 
-            EventType = Util.ProcessAuditEvents(EventType);
-
-            if (EventType != null) // the user provided event types to audit
+            if (EventType != null) // Event types are relevant only for Table auditing
             {
                 throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
             }
@@ -163,8 +161,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 ModelAdapter.ClearStorageDetailsCache();
             }
             if (!string.IsNullOrEmpty(StorageKeyType))
-            // the user enter a key type - we use it (and running over the previously defined key type)
             {
+                // the user enter a key type - we use it (and override the previously defined key type)
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary)
                     ? StorageKeyKind.Primary
                     : StorageKeyKind.Secondary;
@@ -172,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             EventType = Util.ProcessAuditEvents(EventType);
 
-            if (EventType != null) // the user provided event types to audit
+            if (EventType != null) // the user provided Table auditing event types
             {
                 model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }
@@ -195,12 +193,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.TableIdentifier = TableIdentifier;
             }
 
-            if (AuditAction != null) 
+            if (AuditAction != null) // Audit Actions are relevant only for Blob auditing
             {
                 throw new Exception(string.Format(Properties.Resources.AuditActionsConfiguringIrrelevantForTableAuditingPolicy));
             }
 
-            if (AuditActionGroup != null) 
+            if (AuditActionGroup != null) // Audit Action Groups are relevant only for Blob auditing
             {
                 throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
             }
@@ -213,7 +211,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.IgnoreStorage = true;            
             Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
             swapAuditType();
-            var otherAuditingTypePolicyModel = base.GetEntity();
+            var otherAuditingTypePolicyModel = GetEntity();
             if (otherAuditingTypePolicyModel != null)
             {
                 otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
@@ -221,28 +219,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             }
             swapAuditType();
             return model;
-        }
-
-        protected override AuditingPolicyModel GetEntity()
-        {
-            if (AuditType == AuditType.NotSet)
-            {
-                AuditType = AuditType.Blob;
-                var blobPolicy = base.GetEntity();
-
-                // If the user has blob auditing on on the resource we return that policy no mateer what is his table auditing policy
-                if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
-                {
-                    return blobPolicy;
-                }
-                //The user don't have blob auditing policy on - set audit type as default
-                AuditType = AuditType.Table;
-                var tablePolicy = base.GetEntity();
-                return tablePolicy;
-            }
-            //The user has selected specific audit type
-            var policy = base.GetEntity();
-            return policy;
         }
     }
 }

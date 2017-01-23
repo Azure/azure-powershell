@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot set audit action groups for Table auditing..
+        ///   Looks up a localized string similar to The AuditActionGroup parameter is only supported for AuditType &apos;Blob&apos;. Use the AuditEvent parameter instead..
         /// </summary>
         internal static string AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy {
             get {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot set audit actions for Table auditing..
+        ///   Looks up a localized string similar to The AuditAction parameter is only supported for AuditType &apos;Blob&apos;. Use the AuditEvent parameter instead..
         /// </summary>
         internal static string AuditActionsConfiguringIrrelevantForTableAuditingPolicy {
             get {
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot set event type for Blob auditing..
+        ///   Looks up a localized string similar to The AuditEvent parameter is only supported for AuditType &apos;Table&apos;. Use the AuditActionGroups or AuditAction parameter instead..
         /// </summary>
         internal static string EventTypeConfiguringIrrelevantForBlobAuditingPolicy {
             get {

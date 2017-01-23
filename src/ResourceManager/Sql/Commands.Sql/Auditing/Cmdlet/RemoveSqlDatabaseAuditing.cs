@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -56,10 +57,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             ModelAdapter.IgnoreStorage = true;
             base.PersistChanges(model);
-            AuditType = AuditType.Blob;
-            var blobModel = GetEntity();
-            blobModel.AuditState = AuditStateType.Disabled;
-            base.PersistChanges(blobModel);
+            Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
+            swapAuditType();
+            var otherAuditingTypePolicyModel = GetEntity();
+            if (otherAuditingTypePolicyModel != null)
+            {
+                otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
+                base.PersistChanges(otherAuditingTypePolicyModel);
+            }
             return null;
         }
     }

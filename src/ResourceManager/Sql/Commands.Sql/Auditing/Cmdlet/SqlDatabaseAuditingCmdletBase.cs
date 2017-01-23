@@ -35,31 +35,24 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             if (AuditType == AuditType.NotSet)
             {
-                AuditType = AuditType.Table;
-            }
-            if (AuditType == AuditType.Table)
-            {
-                DatabaseAuditingPolicyModel model;
-                try
-                {                  
-                    ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out model);
-                    return model;
-                }
-                catch
+                AuditType = AuditType.Blob;
+                var blobPolicy = GetEntityUtility();
+
+                // If the user has blob auditing on on the resource we return that policy no matter what is his table auditing policy
+                if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
                 {
-                    return null;
+                    return blobPolicy;
                 }
+
+                // The user don't have blob auditing policy on
+                AuditType = AuditType.Table;
+                var tablePolicy = GetEntityUtility();
+                return tablePolicy;
             }
-            DatabaseBlobAuditingPolicyModel blobModel;
-            try
-            {
-                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out blobModel);
-            }
-            catch
-            {
-                return null;
-            }
-            return blobModel;
+
+            // The user has selected specific audit type
+            var policy = GetEntityUtility();
+            return policy;
         }
 
         /// <summary>
@@ -90,6 +83,34 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                     DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
             }
             return null;
+        }
+
+
+        private AuditingPolicyModel GetEntityUtility()
+        {
+            if (AuditType == AuditType.Table)
+            {
+                DatabaseAuditingPolicyModel model;
+                try
+                {
+                    ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out model);
+                    return model;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            DatabaseBlobAuditingPolicyModel blobModel;
+            try
+            {
+                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out blobModel);
+            }
+            catch
+            {
+                return null;
+            }
+            return blobModel;
         }
     }
 }

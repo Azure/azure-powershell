@@ -175,13 +175,13 @@
     <value>Cannot set auditing policy without a storage account name.</value>
   </data>
   <data name="AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy" xml:space="preserve">
-    <value>Cannot set audit action groups for Table auditing.</value>
+    <value>The AuditActionGroup parameter is only supported for AuditType 'Blob'. Use the AuditEvent parameter instead.</value>
   </data>
   <data name="AuditActionsConfiguringIrrelevantForTableAuditingPolicy" xml:space="preserve">
-    <value>Cannot set audit actions for Table auditing.</value>
+    <value>The AuditAction parameter is only supported for AuditType 'Blob'. Use the AuditEvent parameter instead.</value>
   </data>
   <data name="EventTypeConfiguringIrrelevantForBlobAuditingPolicy" xml:space="preserve">
-    <value>Cannot set event type for Blob auditing.</value>
+    <value>The AuditEvent parameter is only supported for AuditType 'Table'. Use the AuditActionGroups or AuditAction parameter instead.</value>
   </data>
   <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
     <value>Cannot set threat detection policy without a storage account name.</value>
