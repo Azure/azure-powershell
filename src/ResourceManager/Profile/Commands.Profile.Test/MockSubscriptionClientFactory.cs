@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Subscriptions.Models;
+using Microsoft.Azure.Internal.Subscriptions;
+using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Rest.Azure;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         private IList<string> _tenants;
         private Queue<List<string>> _subscriptions;
         private HashSet<string> _subscriptionSet;
-        private static Queue<Func<GetSubscriptionResult>> _getAsyncQueue;
-        private static Queue<Func<SubscriptionListResult>> _listAsyncQueue;
+        private static Queue<Func<AzureOperationResponse<Subscription>>> _getAsyncQueue;
+        private static Queue<Func<AzureOperationResponse<IPage<Subscription>>>> _listAsyncQueue;
 
         public MockSubscriptionClientFactory(List<string> tenants, Queue<List<string>> subscriptions)
         {
@@ -52,114 +53,118 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             return "Sub-" + id;
         }
 
-        public static void SetGetAsyncResponses(Queue<Func<GetSubscriptionResult>> responses)
+        public static void SetGetAsyncResponses(Queue<Func<AzureOperationResponse<Subscription>>> responses)
         {
             _getAsyncQueue = responses;
         }
-        public static void SetListAsyncResponses(Queue<Func<SubscriptionListResult>> responses)
+        public static void SetListAsyncResponses(Queue<Func<AzureOperationResponse<IPage<Subscription>>>> responses)
         {
             _listAsyncQueue = responses;
         }
 
         public SubscriptionClient GetSubscriptionClient()
         {
-            var tenantMock = new Mock<ITenantOperations>();
-            tenantMock.Setup(t => t.ListAsync(It.IsAny<CancellationToken>()))
+            var tenantMock = new Mock<ITenantsOperations>();
+            tenantMock.Setup(t => t.ListWithHttpMessagesAsync(null, It.IsAny<CancellationToken>()))
                 .Returns(
-                    (CancellationToken token) =>
-                        Task.FromResult(new TenantListResult()
+                    (Dictionary<string, List<string>> ch, CancellationToken token) =>
                         {
-                            StatusCode = HttpStatusCode.OK,
-                            RequestId = Guid.NewGuid().ToString(),
-                            TenantIds = _tenants.Select((k) => new TenantIdDescription() { Id = k, TenantId = k }).ToList()
-                        }));
-            var subscriptionMock = new Mock<ISubscriptionOperations>();
+                            var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k));
+                            IPage<TenantIdDescription> page = new Page<TenantIdDescription>();
+                            page.Concat(tenants);
+
+                            AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>
+                            {
+                                Body = page
+                            };
+
+                            return Task.FromResult(r);
+                        }
+                );
+            var subscriptionMock = new Mock<ISubscriptionsOperations>();
             subscriptionMock.Setup(
-                s => s.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).Returns(
-                    (string subId, CancellationToken token) =>
+                s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>())).Returns(
+                    (string subId, Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
                         if (_getAsyncQueue != null && _getAsyncQueue.Any())
                         {
                             return Task.FromResult(_getAsyncQueue.Dequeue().Invoke());
                         }
-                        GetSubscriptionResult result = new GetSubscriptionResult
+                        AzureOperationResponse<Subscription> result = new AzureOperationResponse<Subscription>
                         {
                             RequestId = Guid.NewGuid().ToString(),
-                            StatusCode = HttpStatusCode.NotFound
                         };
                         if (_subscriptionSet.Contains(subId))
                         {
-                            result.StatusCode = HttpStatusCode.OK;
-                            result.Subscription =
-                                new Subscription
-                                {
-                                    DisplayName = GetSubscriptionNameFromId(subId),
-                                    Id = subId,
-                                    State = "Active",
-                                    SubscriptionId = subId
-                                };
-
+                            result.Body =
+                                new Subscription(
+                                    id: subId,
+                                    subscriptionId: subId,
+                                    tenantId: null,
+                                    displayName: GetSubscriptionNameFromId(subId),
+                                    state: SubscriptionState.Enabled,
+                                    subscriptionPolicies: null,
+                                    authorizationSource: null);
                         }
 
                         return Task.FromResult(result);
                     });
             subscriptionMock.Setup(
-                (s) => s.ListAsync(It.IsAny<CancellationToken>())).Returns(
-                    (CancellationToken token) =>
+                (s) => s.ListWithHttpMessagesAsync(null, It.IsAny<CancellationToken>())).Returns(
+                    (Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
                         if (_listAsyncQueue != null && _listAsyncQueue.Any())
                         {
                             return Task.FromResult(_listAsyncQueue.Dequeue().Invoke());
                         }
 
-                        SubscriptionListResult result = null;
+                        AzureOperationResponse<IPage<Subscription>> result = null;
                         if (_subscriptions.Count > 0)
                         {
                             var subscriptionList = _subscriptions.Dequeue();
-                            result = new SubscriptionListResult
+                            result = new AzureOperationResponse<IPage<Subscription>>
                             {
-                                StatusCode = HttpStatusCode.OK,
                                 RequestId = Guid.NewGuid().ToString(),
-                                NextLink = "LinkToNextPage",
-                                Subscriptions =
+                                Body = (IPage<Subscription>)
                                     new List<Subscription>(
                                         subscriptionList.Select(
                                             sub =>
-                                                new Subscription
-                                                {
-                                                    DisplayName = GetSubscriptionNameFromId(sub),
-                                                    Id = sub,
-                                                    State = "enabled",
-                                                    SubscriptionId = sub
-                                                }))
+                                                new Subscription(
+                                                    id: sub,
+                                                    subscriptionId: sub,
+                                                    tenantId: null,
+                                                    displayName: GetSubscriptionNameFromId(sub),
+                                                    state: SubscriptionState.Enabled,
+                                                    subscriptionPolicies: null,
+                                                    authorizationSource: null)))
                             };
                         }
 
                         return Task.FromResult(result);
                     });
             subscriptionMock.Setup(
-                (s) => s.ListNextAsync("LinkToNextPage", It.IsAny<CancellationToken>())).Returns(
-                    (string nextLink, CancellationToken token) =>
+                (s) => s.ListNextWithHttpMessagesAsync("LinkToNextPage", null, It.IsAny<CancellationToken>())).Returns(
+                    (string nextLink, Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
-                        SubscriptionListResult result = null;
+                        AzureOperationResponse<IPage<Subscription>> result = null;
                         if (_subscriptions.Count > 0)
                         {
                             var subscriptionList = _subscriptions.Dequeue();
-                            result = new SubscriptionListResult
+                            result = new AzureOperationResponse<IPage<Subscription>>
                             {
-                                StatusCode = HttpStatusCode.OK,
                                 RequestId = Guid.NewGuid().ToString(),
-                                Subscriptions =
+                                Body = (IPage<Subscription>)
                                     new List<Subscription>(
                                         subscriptionList.Select(
                                             sub =>
-                                                new Subscription
-                                                {
-                                                    DisplayName = nextLink,
-                                                    Id = sub,
-                                                    State = "Disabled",
-                                                    SubscriptionId = sub
-                                                }))
+                                                new Subscription(
+                                                id: sub,
+                                                subscriptionId: sub,
+                                                tenantId: null,
+                                                displayName: GetSubscriptionNameFromId(sub),
+                                                state: SubscriptionState.Enabled,
+                                                subscriptionPolicies: null,
+                                                authorizationSource: null)))
                             };
                         }
                         return Task.FromResult(result);
