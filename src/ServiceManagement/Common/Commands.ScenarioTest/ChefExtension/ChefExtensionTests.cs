@@ -35,7 +35,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestSetAzureVMChefExtensionAdvancedOptions()
         {
             this.RunPowerShellTest("Test-SetAzureVMChefExtensionAdvancedOptions");
