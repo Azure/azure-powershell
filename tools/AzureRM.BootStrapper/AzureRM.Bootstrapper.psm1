@@ -78,8 +78,8 @@ function Get-AzureProfileMap
   }
 
   # create/Update symlink
-  # New-Item -ItemType SymbolicLink -Name $ProfileCache\ProfileMap.json -Target $CacheFilePath  
-  Invoke-Expression -Command "cmd /c mklink $ProfileCache\ProfileMap.json $CacheFilePath"
+  New-Item -ItemType SymbolicLink -Name "$ProfileCache\ProfileMap.json" -Target $CacheFilePath  
+  # Invoke-Expression -Command "cmd /c mklink $ProfileCache\ProfileMap.json $CacheFilePath"
   return $OnlineProfileMap
 }
 
@@ -296,12 +296,6 @@ function Test-ProfilesInstalled
   # Get the dependencyIndex @{"Module.Version": @(Profile)}: This is to skip uninstalling modules that are part of other profiles.
   $dependencyIndex = Test-Dependencies
 
-  # Get-Profiles installed across all hashes. Do this once and update it every time a profile is uninstalled.
-  if($AllProfilesInstalled.Count -eq 0)
-  {
-    $AllProfilesInstalled = Get-AllProfilesInstalled
-  }
-
   # Profiles associated with the particular module version - installed?
   $profilesAssociated = @()
   $versionList = $PMap.$Profile.$Module
@@ -355,7 +349,7 @@ function Uninstall-ProfileHelper
       Invoke-UninstallModule -PMap $PMap -Profile $Profile -Module $module
     }
     # Remove this profile from $AllProfilesInstalled
-    if ($Profile -in $AllProfilesInstalled)
+    if (($AllProfilesInstalled.Count -ne 0) -and ($Profile -in $AllProfilesInstalled))
     {
       $AllProfilesInstalled.Remove($Profile)
     }
@@ -369,8 +363,8 @@ function Invoke-UninstallModule
   # Check if the profiles associated with the module version are installed.
   $profilesAssociated = Test-ProfilesInstalled -Module $Module -Profile $Profile -PMap $PMap
       
-  # If more than one profile is installed for the same version of the module, do not uninstall; skip if none installed
-  if (($profilesAssociated.Count -ne 1) -and ($profilesAssociated -ne $Profile))
+  # If more than one profile is installed for the same version of the module, do not uninstall
+  if (($profilesAssociated.Count -gt 1) -and ($profilesAssociated -ne $Profile))
   {
     continue
   }
@@ -396,6 +390,9 @@ function Remove-PreviousVersions
     return
   }
     
+  # Get-Profiles installed across all hashes. Do this once and update it every time a profile is installed/uninstalled.
+  $AllProfilesInstalled = Get-AllProfilesInstalled
+
   foreach ($module in ($PreviousMap.$Profile | Get-Member -MemberType NoteProperty).Name)
   {
     # If the latest version is same as the previous version, do not uninstall.
@@ -463,6 +460,9 @@ function Update-ProfileHelper
 
   foreach ($ProfileMapHash in $ProfileMapHashes)
   {
+    # Set flag to delete hash
+    $deleteHash = $true
+    
     # Do not process the latest hash; we don't want to remove the latest hash
     if (($ProfileMapHash.Name -eq "ProfileMap.json") -or ($ProfileMapHash.Name -eq ([System.IO.Path]::GetFileName($latestProfileMapHash))))
     {
@@ -477,8 +477,8 @@ function Update-ProfileHelper
     $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $previousProfileMap)
     foreach ($PreviousProfile in $profilesInstalled.Keys)
     {
-      # Is it part of the latest hash? If the module versions are different, it would have been uninstalled if prev versions were removed.
-      if ($PreviousProfile -in $AllProfiles.Keys)
+      # Is it the updated profile? 
+      if ($PreviousProfile -eq $Profile)
       {
         continue
       }
@@ -677,6 +677,11 @@ function Use-AzureRmProfile
         }
         Import-Module -Name $Module -RequiredVersion $version -Global
       }
+      # Add this profile to $AllProfilesInstalled
+      if ($Profile -notin $AllProfilesInstalled)
+      {
+        $AllProfilesInstalled.Add($Profile) | Out-Null
+      }
     }
   }
 }
@@ -706,6 +711,12 @@ function Install-AzureRmProfile
       {
         Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap
       }
+    }
+
+    # Add this profile to $AllProfilesInstalled
+    if ($Profile -notin $AllProfilesInstalled)
+    {
+      $AllProfilesInstalled.Add($Profile) | Out-Null
     }
   }
 }

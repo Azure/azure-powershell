@@ -1,20 +1,24 @@
-Import-Module -Name AzureRM.Bootstrapper
+# Import-Module -Name AzureRM.Bootstrapper
+Import-Module C:\github\viananth\azure-powershell\tools\azurerm.bootstrapper\AzureRM.Bootstrapper.psm1 
 $RollupModule = 'AzureRM'
+$ProfileMap = (Get-AzProfile)
+$ProfileCachePath = (Join-Path $Env:LocalAppData -ChildPath 'Microsoft\AzurePowerShell\ProfileCache')
 
+# Helper function to uninstall all profiles
 function Remove-InstalledProfile { 
-    $installedProfiles = Get-AzureRmProfile
-    if ($installedProfiles -ne $null)
+    $installedProfiles = Get-ProfilesInstalled -ProfileMap $ProfileMap
+    if ($installedProfiles.Keys -ne $null)
     {
-        foreach ($profile in $installedProfiles)
+        foreach ($profile in $installedProfiles.Keys)
         {
             Write-Host "Removing profile $profile"
             Uninstall-AzureRmProfile -Profile $profile -Force -ErrorAction Stop
         }
         
-        $profiles = (Get-AzureRmProfile)
-        if ($profiles -ne $null)
+        $profiles = (Get-ProfilesInstalled -ProfileMap $ProfileMap)
+        if ($profiles.Count -ne 0)
         {
-            Throw "Uninstallation was not successful: Profile(s) $profiles were not uninstalled correctly."
+            Throw "Uninstallation was not successful: Profile(s) $(@($profiles.Keys) -join ',') were not uninstalled correctly."
         }
     }
 }
@@ -22,11 +26,11 @@ function Remove-InstalledProfile {
 Describe "A machine with no profile installed can install profile" {
     # Using Install-AzureRmProfile
     Context "New Profile Install - Latest" {
-        # Launch the test in a new powershell session
         # Arrange
         # Uninstall previously installed profiles
         Remove-InstalledProfile       
 
+        # Launch the test in a new powershell session
         # Create a new PS session
         $session = New-PSSession
 
@@ -36,16 +40,17 @@ Describe "A machine with no profile installed can install profile" {
 
         # Assert 
         It "Should return Latest Profile" {
-            Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } | Should Be 'Latest'
+            $result = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
+            $result[0].Contains('Latest') | Should Be $true
         }
 
         # Clean up
-        Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile 'Latest' -Force }
+        # Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile 'Latest' -Force }
         Remove-PSSession -Session $session
     } 
 
     # Using Use-AzureRmProfile
-    Context "New Profile Install - 2016-09" {
+    Context "New Profile Install - 2016-04-consistent" {
         # Arrange
         # Uninstall previously installed profiles
         Remove-InstalledProfile
@@ -54,30 +59,29 @@ Describe "A machine with no profile installed can install profile" {
         $session = New-PSSession
 
         # Act
-        # Install profile '2016-09'
-        Invoke-Command -Session $session -ScriptBlock { Use-AzureRmProfile -Profile '2016-09' -Force }
+        # Install profile '2016-04-consistent'
+        Invoke-Command -Session $session -ScriptBlock { Use-AzureRmProfile -Profile '2016-04-consistent' -Force }
 
         # Assert
-        It "Should return 2016-09" {
-            Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } | Should Be '2016-09'
+        It "Should return 2016-04-consistent" {
+            $result = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
+            $result[0].Contains('2016-04-consistent') | Should Be $true
         }
 
         # Clean up
-        # Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile '2016-09' -Force -ea SilentlyContinue }
         Remove-PSSession -Session $session
     }
-
 }
 
 Describe "Add: A Machine with a Profile installed can install latest profile" {
-    Context "Profile 2016-09 already installed" {
+    Context "Profile 2016-04-consistent already installed" {
         # Arrange
         # Create a new PS session
         $session = New-PSSession
 
-        # Ensure 2016-09 is installed
+        # Ensure 2016-09-consistent is installed
         $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
-        $profilesInstalled | Should Be '2016-09'
+        $profilesInstalled[0].Contains('2016-04-consistent') | Should Be $true
 
         # Act
         # Install profile 'Latest'
@@ -85,10 +89,9 @@ Describe "Add: A Machine with a Profile installed can install latest profile" {
         $result = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
 
         # Assert
-        It "Should return 2016-09 & Latest" {
-            $result.Length | Should Be 2
-            $result.Contains('2016-09') | Should Be $true 
-            $result.Contains('Latest') | Should Be $true
+        It "Should return 2016-09-consistent & Latest" {
+            ($result -like "*latest*") -ne $null | Should Be $true 
+            ($result -like "*2016-04-consistent*") -ne $null | Should Be $true
         }
 
         # Clean up
@@ -106,7 +109,7 @@ Describe "Attempting to use already installed profile will import the modules to
 
             # Ensure profile Latest is installed
             $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
-            $profilesInstalled.Contains('Latest') | Should Be $true
+            ($profilesInstalled -like "*latest*") -ne $null | Should Be $true
 
             # Act
             Invoke-Command -Session $session -ScriptBlock { Use-AzureRmProfile -Profile 'Latest' }
@@ -139,26 +142,28 @@ Describe "Attempting to use already installed profile will import the modules to
 Describe "User can update their machine to a latest profile" {
     InModuleScope AzureRM.Bootstrapper {
         # Using Use-AzureRmProfile
-        Context "Profile 2016-09 is installed" {
+        Context "Profile 2016-09-consistent is installed: Use-AzureRmProfile" {
             # Should refresh profile map from Azure end point and update modules.
             # Arrange
             # Create a new PS session
             $session = New-PSSession
 
-            # Check if '2016-09' is installed
+            # Check if '2016-04-consistent' is installed
             $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
-            $profilesInstalled | Should Be '2016-09'
+            ($profilesInstalled -like "*2016-04-consistent*") -ne $null | Should Be $true
 
+            # Remove ProfileMap.Json for testing if it updates from online.
+            Remove-Item -Path ("$ProfileCachePath\ProfileMap.json") -Force
+            
             # Act
             Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile -Update }
             Invoke-Command -Session $session -ScriptBlock { Use-AzureRmProfile -Profile 'Latest' -Force }
     
             # Assert
-            It "Should return 2016-09 & Latest" {
+            It "Should return 2016-04-consistent & Latest" {
                 $result = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
-                $result.Length | Should Be 2
-                $result.Contains('2016-09') | Should Be $true 
-                $result.Contains('Latest') | Should Be $true
+                ($result -like "*latest*") -ne $null | Should Be $true 
+                ($result -like "*2016-04-consistent*") -ne $null | Should Be $true
             }
 
             It "Latest version of modules are imported" {
@@ -181,7 +186,7 @@ Describe "User can update their machine to a latest profile" {
         
             It "Last Write Time should be less than 5 minutes" {
                 # Get LastWriteTime for ProfileMap
-                $lastWriteTime = (Get-Item -Path (Join-Path $Env:LocalAppData -ChildPath 'Microsoft\AzurePowerShell\ProfileCache\ProfileMap.json')).LastWriteTime
+                $lastWriteTime = (Get-Item -Path ("$ProfileCachePath\ProfileMap.json")).LastWriteTime
                 (((Get-Date) - $lastWriteTime).TotalMinutes -lt 5) | Should Be $true
             }
 
@@ -189,8 +194,8 @@ Describe "User can update their machine to a latest profile" {
             Remove-PSSession -Session $session
         }
     
-        # Using Update-AzureRmProfile
-        Context "Profile 2016-08 is installed" {
+        # Using Update-AzureRmProfile; Previous Versions do not exist
+        Context "Profile 2016-04-consistent is installed: Update-AzureRmProfile" {
             # Arrange
             # Remove existing profiles
             Remove-InstalledProfile
@@ -198,20 +203,23 @@ Describe "User can update their machine to a latest profile" {
             # Create a new PS session
             $session = New-PSSession
 
-            # Install profile 2016-08
-            Install-AzureRmProfile -Profile '2016-08'
+            # Install profile 2016-04-consistent
+            Install-AzureRmProfile -Profile '2016-04-consistent'
 
-            # Ensure profile 2016-08 is installed
-            Get-AzureRmProfile | Should Be '2016-08'
+            # Ensure profile 2016-04-consistent is installed
+            $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
+            ($profilesInstalled -like "*2016-04-consistent*") -ne $null | Should Be $true
 
             # Act
             # Update to profile 'Latest'
             Invoke-Command -Session $session -ScriptBlock { Update-AzureRmProfile -Profile 'Latest' -Force -RemovePreviousVersions }
 
             # Assert
-            # Returns only Latest, because 2016-08 was removed with -RemovePreviousVersions flag
-            It "Should return only 'Latest'" {
-                Get-AzureRmProfile | Should Be 'Latest'
+            # Returns 2016-04-consistent & Latest
+            It "Should Return 2016-04-consistent & Latest" {
+                $result = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
+                ($result -like "*latest*") -ne $null | Should Be $true 
+                ($result -like "*2016-04-consistent*") -ne $null | Should Be $true
             }
 
             It "Latest version of modules are imported" {
@@ -234,6 +242,76 @@ Describe "User can update their machine to a latest profile" {
 
             Remove-PSSession -Session $session
         }
+        
+        # Using Update-AzureRmProfile; Previous Versions exist
+        Context "Profile 2016-04-consistent is installed: Update-AzureRmProfile with PreviousVerisons" {
+            # Arrange
+            # Remove existing profiles
+            Remove-InstalledProfile
+ 
+            # Create a new PS session
+            $session = New-PSSession
+
+            # Install profile 2016-04-consistent
+            Install-AzureRmProfile -Profile '2016-04-consistent'
+
+            # Ensure profile 2016-04-consistent is installed
+            $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
+            ($profilesInstalled -like "*2016-04-consistent*") -ne $null | Should Be $true
+
+            # Add a version of old profilemap with older versions of 'latest' profile to cache
+            $testProfileMap = "{`"Latest`": { `"AzureRM`": [`"3.3.0`"], `"AzureRM.Storage`": [`"2.4.0`"], `"Azure.Storage`": [`"2.4.0`"], `"AzureRM.Profile`": [`"2.4.0`"] }}" 
+            $testProfileMap | Out-File -FilePath "$ProfileCachePath\TestHash.json" -Force
+
+            # Install the modules from that profilemap
+            $testProfileMap = ($testProfileMap | ConvertFrom-Json)
+            
+            foreach ($Module in ($testProfileMap.'Latest' | Get-Member -MemberType NoteProperty).Name)
+            {
+                $oldVersion = $testProfileMap.'Latest'.$Module
+                Install-Module $Module -RequiredVersion $oldVersion[0] -ErrorAction Stop 
+            }
+
+            # Act
+            # Invoke Update-AzureRmProfile 'latest' with -RemovePreviousVersions
+            Invoke-Command -Session $session -ScriptBlock { Update-AzureRmProfile -Profile 'Latest' -Force -RemovePreviousVersions }
+
+
+            # Assert
+            # Check if new versions of 'latest' are installed
+            $latestVersion = $ProfileMap.'Latest'.$RollupModule
+
+            It "Should return latest module versions" {
+                # Get-module script block
+                $getModule = {
+                    Param($RollupModule)
+                    Get-AzureRmModule -Profile 'Latest' -Module $RollupModule 
+                }
+            
+                $version = Invoke-Command -Session $session -ScriptBlock $getModule -ArgumentList $RollupModule
+                $version | Should Be $latestVersion
+            }
+
+            # Check if old versions of 'latest' are uninstalled
+            It "Should return null for old versions" {
+                # Get-module script block
+                $getModule = {
+                    Param($RollupModule)
+                    Get-Module -Name $RollupModule -ListAvailable
+                }
+
+                $modules = Invoke-Command -Session $session -ScriptBlock $getModule -ArgumentList $RollupModule
+                foreach ($module in $modules)
+                {
+                    $module.Version -eq $oldVersion | Should Be $false
+                }
+            }
+
+            # Check if the old profilemap was removed
+            It "Should return false for old profile map in cache" {
+                (Test-Path "$ProfileCachePath\TestHash.json") | Should Be $false
+            }
+        }
     }
 }
 
@@ -247,7 +325,7 @@ Describe "User can uninstall a profile" {
 
             # Check if 'Latest' is installed
             $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
-            $profilesInstalled.Contains('Latest') | Should Be $true
+            ($profilesInstalled -like "*latest*") -ne $null | Should Be $true
 
             # Get the version of the Latest profile
             $ProfileMap = Get-AzProfile
@@ -273,8 +351,14 @@ Describe "User can uninstall a profile" {
                     Param($RollupModule)
                     Get-Module -Name $RollupModule -ListAvailable
                 }
-                $result = Invoke-Command -Session $session -ScriptBlock $getModule -ArgumentList $RollupModule
-                $result.Version -eq $latestVersion | Should Be $false
+                $results = Invoke-Command -Session $session -ScriptBlock $getModule -ArgumentList $RollupModule
+                
+                # Result won't be null because profile 2016-04-consistent is installed.
+                foreach ($result in $results)
+                {
+                    $result.Version -eq $latestVersion | Should Be $false
+                }
+                    
             }
 
             # Cleanup
@@ -287,8 +371,8 @@ Describe "Install Two named profiles and selecting each" {
     InModuleScope AzureRM.Bootstrapper {
         # Get the version of the respective profile
         $ProfileMap = Get-AzProfile
-        $Version1 = $ProfileMap.'2016-08'.$RollupModule
-        $Version2 = $ProfileMap.'2016-04'.$RollupModule
+        $Version1 = $ProfileMap.'Latest'.$RollupModule
+        $Version2 = $ProfileMap.'2016-04-consistent'.$RollupModule
 
         Context "Install Two Profiles" {
             # Arrange
@@ -300,15 +384,17 @@ Describe "Install Two named profiles and selecting each" {
 
             # Act
             # Install Profile: 2016-08 
-            Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-08' } 
+            Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile 'Latest' } 
 
             # Install Profile: 2016-04
-            Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-04' } 
+            Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-04-consistent' } 
 
             # Assert 
-            It "Should return Profiles 2016-08 & 2016-04" {
-                Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } | Should Be @('2016-08', '2016-04')
-            }
+            It "Should return Profiles Latest & 2016-04-consistent" {
+            $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
+            ($profilesInstalled -like "*2016-04-consistent*") -ne $null | Should Be $true
+            ($profilesInstalled -like "*latest*") -ne $null | Should Be $true
+           }
 
             # Clean up
             Remove-PSSession -Session $session        
@@ -322,8 +408,8 @@ Describe "Install Two named profiles and selecting each" {
 
             # Act
             # Use-AzureRmProfile will import the respective versions of modules in the session
-            Invoke-Command -Session $session1 -ScriptBlock { Use-AzureRmProfile -Profile '2016-08' }
-            Invoke-Command -Session $session2 -ScriptBlock { Use-AzureRmProfile -Profile '2016-04' } 
+            Invoke-Command -Session $session1 -ScriptBlock { Use-AzureRmProfile -Profile 'Latest' }
+            Invoke-Command -Session $session2 -ScriptBlock { Use-AzureRmProfile -Profile '2016-04-consistent' } 
  
             $getModule = {
                 Param($RollupModule)
@@ -335,8 +421,9 @@ Describe "Install Two named profiles and selecting each" {
             $module2 = Invoke-Command -Session $session2 -ScriptBlock $getModule -ArgumentList $RollupModule
 
             # Assert
-            It "Should return 2016-08 & 2016-04" {
-                $result | Should Be  @('2016-08', '2016-04')
+            It "Should return Latest & 2016-04-consistent" {
+                ($result -like "*latest*") -ne $null | Should Be $true 
+                ($result -like "*2016-04-consistent*") -ne $null | Should Be $true
             }
 
             It "Respective versions of modules are imported" {
@@ -362,9 +449,15 @@ Describe "Install Two named profiles and selecting each" {
                 }
 
                 $result1 = Invoke-Command -Session $session1 -ScriptBlock $getModuleList  -ArgumentList $RollupModule
-                $result1.Version -eq $Version1 | Should Be $false
+                foreach ($result in $result1)
+                {
+                    $result.Version -eq $Version1 | Should Be $false
+                }
                 $result2 = Invoke-Command -Session $session2 -ScriptBlock $getModuleList  -ArgumentList $RollupModule
-                $result2.Version -eq $Version2 | Should Be $false
+                foreach ($result in $result2)
+                {
+                    $result.Version -eq $Version2 | Should Be $false
+                }
             }
 
             # Cleanup
@@ -411,13 +504,13 @@ Describe "Invalid Cases" {
         $session = New-PSSession
 
         # Ensure profile 2016-09 is installed
-        Install-AzureRmProfile -Profile '2016-09'
+        Install-AzureRmProfile -Profile '2016-04-consistent'
         $installedProfile = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
-        $installedProfile.contains('2016-09') | Should Be $true
-
+        ($installedProfile -like "*2016-04-consistent*") -ne $null | Should Be $true
+        
         # Act
-        # Install profile '2016-09'
-        $result = Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-09' } 
+        # Install profile '2016-04-consistent'
+        $result = Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-04-consistent' } 
 
         # Get modules imported into the session
         $getModuleList = {
@@ -440,13 +533,13 @@ Describe "Invalid Cases" {
         # Create a new PS session
         $session = New-PSSession
 
-        # Ensure profile 2015-05 is not installed
+        # Ensure profile latest is not installed
         $installedProfile = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
-        $installedProfile.contains('2015-05') | Should Be $false
+        ($installedProfile -like "*latest*") | Should Be $null
 
         # Act
-        # Uninstall profile '2015-05'
-        $result = Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile '2015-05' -Force} 
+        # Uninstall profile 'latest'
+        $result = Invoke-Command -Session $session -ScriptBlock { Uninstall-AzureRmProfile -Profile 'latest' -Force} 
 
         It "Doesn't uninstall/throw" {
             $result | Should Be $null
@@ -490,7 +583,7 @@ Describe "Failure Recovery: Attempt to install profile recovers from error" {
 
             It "Last Write time should not be less than 3 mins" {
                 # Get LastWriteTime for ProfileMap
-                $lastWriteTime = (Get-Item -Path (Join-Path $Env:LocalAppData -ChildPath 'Microsoft\AzurePowerShell\ProfileCache\ProfileMap.json')).LastWriteTime
+                $lastWriteTime = (Get-Item -Path ("$ProfileCachePath\ProfileMap.json")).LastWriteTime
                 (((Get-Date) - $lastWriteTime).TotalMinutes -gt 3) | Should Be $true
                 Assert-VerifiableMocks
             }
@@ -500,6 +593,9 @@ Describe "Failure Recovery: Attempt to install profile recovers from error" {
             # Arrange
             # Create a new PS session
             $session = New-PSSession
+
+            # Remove ProfileMap.json to test if it is updated from online
+            Remove-Item -Path ("$ProfileCachePath\ProfileMap.json") -Force
 
             # Act
             # Update ProfileMap
@@ -527,7 +623,7 @@ Describe "Failure Recovery: Attempt to install profile recovers from error" {
 
             It "Last Write time should be less than 5 mins" {
                 # Get LastWriteTime for ProfileMap
-                $lastWriteTime = (Get-Item -Path (Join-Path $Env:LocalAppData -ChildPath 'Microsoft\AzurePowerShell\ProfileCache\ProfileMap.json')).LastWriteTime
+                $lastWriteTime = (Get-Item -Path ("$ProfileCachePath\ProfileMap.json")).LastWriteTime
                 (((Get-Date) - $lastWriteTime).TotalMinutes -lt 5) | Should Be $true
             }
 
