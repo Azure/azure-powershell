@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Returns the description of specified authorization rule description for the given topic.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Get-AzureRmServiceBusTopicAuthorizationRule ** cmdlet gets the description of specified authorizationrule of the given ServiceBus Topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_example1 -AuthorizationRuleName SBTopicAuthoRule1
 ```
 
-{{ Add example description here }}
+Returns the description of specified authorization rule description for the given topic.
 
 ## PARAMETERS
 
@@ -95,11 +95,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-TopicName : System.String
+-AuthorizationRuleName : System.String
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.0.1.0, Culture=neutral, PublicKeyToken=null]]
+
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_example1/authorizati
+           onRules/SBTopicAuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : SBTopicAuthoRule1
+Location : West US
+Tags     : 
+Rights   : {Listen, Send}
+
 
 ## NOTES
 

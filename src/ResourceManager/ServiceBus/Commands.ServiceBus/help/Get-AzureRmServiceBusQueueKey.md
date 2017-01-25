@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusQueueKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the primary and secondary connection strings for the given ServiceBus Queue.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmServiceBusQueueKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Get-AzureRmServiceBusQueueKey ** cmdlet returns the primary and secondary connection strings for the given servicebus queue. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmServiceBusQueueKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
 ```
 
-{{ Add example description here }}
+primary and secondary connection strings are returned for the given ServiceBus Queue.
 
 ## PARAMETERS
 
@@ -95,11 +95,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-QueueName : System.String
+-AuthorizationRuleName : System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes
+
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=g6DJcu86tcYnKiLUZ2rSsxZUK0AfDmzfIr/VVpaYH2c=;EntityPath=SB-Queue_e
+                            xampl1
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=;EntityPath=SB-Queue_e
+                            xampl1
+PrimaryKey                : g6DJcu86tcYnKiLUZ2rSsxZUK0AfDmzfIr/VVpaYH2c=
+SecondaryKey              : 7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=
+KeyName                   : SBAuthoRule1
 
 ## NOTES
 

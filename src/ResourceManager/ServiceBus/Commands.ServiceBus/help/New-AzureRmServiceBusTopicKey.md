@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusTopicKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the primary or secondary connection strings for the ServiceBus Topic.
 
 ## SYNTAX
 
@@ -17,16 +17,24 @@ New-AzureRmServiceBusTopicKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** New-AzureRmServiceBusTopicKey ** cmdlet RegenerateKeys a new  primary or secondary connection strings for the provided ServiceBus Topic and AuthorizationRule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -RegenerateKeys PrimaryKey
 ```
 
-{{ Add example description here }}
+Regenerates the primary connection strings for the namespace.
+
+### Example 2
+```
+PS C:\> New-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -RegenerateKeys SecondaryKey
+```
+
+Regenerates the Secondary connection strings for the namespace.
+
 
 ## PARAMETERS
 
@@ -142,11 +150,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-AuthorizationRuleName : System.String
+-TopicName : System.String
+-RegenerateKeys : System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes
+
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=Yc+gDnGOLNMTR1RFZXtzhy9BxBp+6/ZMNCsKcQNE7Z0=;EntityPath=SB-Topi
+                            c_exampl1
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M=;EntityPath=SB-Topi
+                            c_exampl1
+PrimaryKey                : Yc+gDnGOLNMTR1RFZXtzhy9BxBp+6/ZMNCsKcQNE7Z0=
+SecondaryKey              : E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M=
+KeyName                   : SBTopicAuthoRule1
 
 ## NOTES
 

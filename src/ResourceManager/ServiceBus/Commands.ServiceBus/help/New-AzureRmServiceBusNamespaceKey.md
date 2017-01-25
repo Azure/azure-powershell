@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespaceKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the primary or secondary connection strings for the namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmServiceBusNamespaceKey [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** New-AzureRmServiceBusNamespace ** cmdlet RegenerateKeys a new  primary or secondary connection strings for the provided Namespace and AuthorizationRule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusNamespaceKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1 -RegenerateKeys PrimaryKey
 ```
 
-{{ Add example description here }}
+Regenerates the primary or secondary connection strings for the namespace.
 
 ## PARAMETERS
 
@@ -127,11 +127,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-AuthorizationRuleName : System.String
+-RegenerateKeys : System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys
+
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=HBLpbY6aEDir3cJnsqrXV8eicVe8glQUzH79r+TAsxQ=
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4=
+PrimaryKey                : HBLpbY6aEDir3cJnsqrXV8eicVe8glQUzH79r+TAsxQ=
+SecondaryKey              : 0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4=
+KeyName                   : AuthoRule1
 
 ## NOTES
 

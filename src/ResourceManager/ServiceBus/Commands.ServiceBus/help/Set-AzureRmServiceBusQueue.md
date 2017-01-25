@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+updates a  description for ServiceBus Queue of the provided ServiceBus Namespace
 
 ## SYNTAX
 
@@ -17,16 +17,22 @@ Set-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Set-AzureRmServiceBusQueue ** cmdlet updates a new description for ServiceBus Queue of the provided ServiceBus Namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+
+PS C:\> $QueueObj = Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
+
+PS C:\> $QueueObj.DeadLetteringOnMessageExpiration = $True
+PS C:\> $QueueObj.SupportOrdering = $True
+
+PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj
 ```
 
-{{ Add example description here }}
+updates the given Queue with new description of provided Namespace
 
 ## PARAMETERS
 
@@ -126,12 +132,42 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-QueueName : System.String
+
+-QueueObj : Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+
+Name                                : SB-Queue_exampl1
+Location                            : West US
+LockDuration                        : 
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+EntityAvailabilityStatus            : 
+CreatedAt                           : 1/20/2017 2:51:34 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+IsAnonymousAccessible               : False
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 6:16:18 PM
 
 ## NOTES
 

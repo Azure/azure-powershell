@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusQueueAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the AuthorizationRule of Queue from the provided Servicebus Namespace
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmServiceBusQueueAuthorizationRule [-ResourceGroup] <String> [-Names
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Remove-AzureRmServiceBusQueueAuthorizationRule ** cmdlet removes the AuthorizationRule of Queue from the given ServiceBus Namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
 ```
 
-{{ Add example description here }}
+Removes the AuthorizationRule 'SBAuthoRule1' of Queue 'SB-Queue_exampl1' from the Namespace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -126,7 +126,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-QueueName : System.String
+
+-AuthorizationRuleName : System.String
 
 ## OUTPUTS
 

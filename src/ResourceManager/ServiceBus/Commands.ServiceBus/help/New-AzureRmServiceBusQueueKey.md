@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusQueueKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the primary or secondary connection strings for the ServiceBus Queue.
 
 ## SYNTAX
 
@@ -17,16 +17,23 @@ New-AzureRmServiceBusQueueKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** New-AzureRmServiceBusQueueKey ** cmdlet RegenerateKeys a new  primary or secondary connection strings for the provided ServiceBus Queue and AuthorizationRule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusQueueKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -RegenerateKeys PrimaryKey
 ```
 
-{{ Add example description here }}
+Regenerates the primary connection strings for the namespace.
+
+### Example 2
+```
+PS C:\> New-AzureRmServiceBusQueueKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -RegenerateKeys SecondaryKey
+```
+
+Regenerates the Secondary connection strings for the namespace.
 
 ## PARAMETERS
 
@@ -142,11 +149,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-AuthorizationRuleName : System.String
+-QueueName : System.String
+-RegenerateKeys : System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys
+
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=SBHradYbsbzJHj1swJUDXkCRw7Tco/FGvGMYQ3Xekf0=;EntityPath=SB-Queue_exa
+                            mpl1
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=;EntityPath=SB-Queue_exa
+                            mpl1
+PrimaryKey                : SBHradYbsbzJHj1swJUDXkCRw7Tco/FGvGMYQ3Xekf0=
+SecondaryKey              : 7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=
+KeyName                   : SBAuthoRule1
 
 ## NOTES
 

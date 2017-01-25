@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+updates given AuthorizationRule description for the provided ServiceBus Topic
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Set-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Set-AzureRmServiceBusTopicAuthorizationRule ** cmdlet updates new description for specified AuthorizationRule of the provided ServiceBus Topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $authRuleObj = Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
+
+PS C:\> $authRuleObj.Rights.Add("Manage")
+
+PS C:\> Set-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthRuleObj $authRuleObj
 ```
 
-{{ Add example description here }}
+Adding 'Manage' to Accessright of AuthorizationRule 'SBTopicAuthoRule1' of Topic 'SB-Topic_exampl1'
 
 ## PARAMETERS
 
@@ -159,12 +163,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes System.String\[\]
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-TopicName : System.String
+-AuthRuleObj : Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_exampl1/authorization
+           Rules/SBTopicAuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : SBTopicAuthoRule1
+Location : West US
+Tags     : 
+Rights   : {Listen, Send, Manage}
 
 ## NOTES
 

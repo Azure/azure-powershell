@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusNamespaceKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the primary and secondary connection strings for the namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmServiceBusNamespaceKey [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Get-AzureRmServiceBusNamespaceKey ** cmdlet returns the primary and secondary connection strings for the given namespace. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmServiceBusNamespaceKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Primary and Secondary Connection string to the given namespace
 
 ## PARAMETERS
 
@@ -80,11 +80,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-AuthorizationRuleName : System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys
+
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=qg0UZch987+8/R0AiDZ5rJvxA9ZqVZfgAFBNevoxhY8=
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4=
+PrimaryKey                : qg0UZch987+8/R0AiDZ5rJvxA9ZqVZfgAFBNevoxhY8=
+SecondaryKey              : 0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4=
+KeyName                   : AuthoRule1
 
 ## NOTES
 

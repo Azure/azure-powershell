@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+updates given AuthorizationRule description for the provided ServiceBus Namespace
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Set-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Set-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet updates new description for specified AuthorizationRule of the provided ServiceBus NameSpace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $authRuleObj = Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1
+
+PS C:\> $authRuleObj.Rights.Remove("Manage")
+
+PS C:\> Set-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthRuleObj $authRuleObj
 ```
 
-{{ Add example description here }}
+Removing 'Manage' from Accessrights of AuthorizationRule 'AuthoRule1' of NameSpace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -145,11 +149,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes System.String\[\]
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-AuthRuleObj : Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/AuthorizationRules/AuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : AuthoRule1
+Location : 
+Tags     : 
+Rights   : {Listen, Send}
 
 ## NOTES
 

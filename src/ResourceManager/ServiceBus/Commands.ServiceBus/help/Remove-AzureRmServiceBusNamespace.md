@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the NameSpace from the provided ResourceGroup 
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmServiceBusNamespace [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Remove-AzureRmServiceBusNamespace ** cmdlet removes the NameSpace from the given ResourceGroup
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
-{{ Add example description here }}
+Removes the ServiceBus NameSpace 'SB-Example1' from the provided resourcegroup 'Default-ServiceBus-WestUS'
 
 ## PARAMETERS
 
@@ -96,7 +96,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
 
 ## OUTPUTS
 

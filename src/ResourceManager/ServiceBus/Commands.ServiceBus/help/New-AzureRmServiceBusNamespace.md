@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new ServiceBus NameSpace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** New-AzureRmServiceBusNamespace ** cmdlet create a new ServiceBus NameSpace, Once created, this namespace's resource manifest is immutable. This operation is idempotent.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
 ```
 
-{{ Add example description here }}
+Creates a new Servicebus namespace within the provided ResourceGroup.
 
 ## PARAMETERS
 
@@ -142,12 +142,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Collections.Hashtable
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-Location : System.String
+
+-SkuName : System.String
+
+-Tag : System.Collections.Hashtable
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+
+Name               : SB-Example2
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example2
+Location           : West US
+Sku                : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState  : Succeeded
+Status             : Active
+CreatedAt          : 1/20/2017 2:07:33 AM
+UpdatedAt          : 1/20/2017 2:07:56 AM
+ServiceBusEndpoint : https://SB-Example2.servicebus.windows.net:443/
+Enabled            : True
+
 
 ## NOTES
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the Description of a specified AuthorizationRule for a given namespace. 
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Get-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet gets the description of specified authorizationrule of the given namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Returns the specified AuthorizationRule description for a given namespace.
 
 ## PARAMETERS
 
@@ -80,11 +80,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-AuthorizationRuleName : System.String
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.0.1.0, Culture=neutral, PublicKeyToken=null]]
+
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/AuthorizationRules/AuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : AuthoRule1
+Location : 
+Tags     : 
+Rights   : {Listen, Send}
+
 
 ## NOTES
 

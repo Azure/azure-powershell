@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusTopicKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the primary and secondary connection strings for the topic.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmServiceBusTopicKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Get-AzureRmServiceBusTopicKey ** cmdlet returns the primary and secondary connection strings for the given servicebus Topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
 ```
 
-{{ Add example description here }}
+primary and secondary connection strings are returned for the given ServiceBus Topic.
 
 ## PARAMETERS
 
@@ -95,11 +95,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-TopicName : System.String
+-AuthorizationRuleName : System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=ygibmzxcI+Tz3JJDOF5bOFuJYmyHKu+UzgIgoCDDjsk=;EntityPath=SB-To
+                            pic_exampl1
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M=;EntityPath=SB-To
+                            pic_exampl1
+PrimaryKey                : ygibmzxcI+Tz3JJDOF5bOFuJYmyHKu+UzgIgoCDDjsk=
+SecondaryKey              : E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M=
+KeyName                   : SBTopicAuthoRule1
 
 ## NOTES
 
