@@ -22,6 +22,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -65,17 +66,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public SubscriptionClient GetSubscriptionClient()
         {
             var tenantMock = new Mock<ITenantsOperations>();
-            tenantMock.Setup(t => t.ListWithHttpMessagesAsync(null, It.IsAny<CancellationToken>()))
+            tenantMock.Setup(t => t.ListWithHttpMessagesAsync(It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(
                     (Dictionary<string, List<string>> ch, CancellationToken token) =>
                         {
                             var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k));
-                            IPage<TenantIdDescription> page = new Page<TenantIdDescription>();
-                            page.Concat(tenants);
+                            var mockPage = new MockPage<TenantIdDescription>(tenants.ToList());
 
                             AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>
                             {
-                                Body = page
+                                Body = mockPage
                             };
 
                             return Task.FromResult(r);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 );
             var subscriptionMock = new Mock<ISubscriptionsOperations>();
             subscriptionMock.Setup(
-                s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>())).Returns(
+                s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>())).Returns(
                     (string subId, Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
                         if (_getAsyncQueue != null && _getAsyncQueue.Any())
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         }
                         AzureOperationResponse<Subscription> result = new AzureOperationResponse<Subscription>
                         {
-                            RequestId = Guid.NewGuid().ToString(),
+                            RequestId = Guid.NewGuid().ToString()
                         };
                         if (_subscriptionSet.Contains(subId))
                         {
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                             result = new AzureOperationResponse<IPage<Subscription>>
                             {
                                 RequestId = Guid.NewGuid().ToString(),
-                                Body = (IPage<Subscription>)
+                                Body = new MockPage<Subscription>(
                                     new List<Subscription>(
                                         subscriptionList.Select(
                                             sub =>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                     displayName: GetSubscriptionNameFromId(sub),
                                                     state: SubscriptionState.Enabled,
                                                     subscriptionPolicies: null,
-                                                    authorizationSource: null)))
+                                                    authorizationSource: null))), "LinkToNextPage")
                             };
                         }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                             result = new AzureOperationResponse<IPage<Subscription>>
                             {
                                 RequestId = Guid.NewGuid().ToString(),
-                                Body = (IPage<Subscription>)
+                                Body = new MockPage<Subscription>(
                                     new List<Subscription>(
                                         subscriptionList.Select(
                                             sub =>
@@ -161,10 +161,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                 id: sub,
                                                 subscriptionId: sub,
                                                 tenantId: null,
-                                                displayName: GetSubscriptionNameFromId(sub),
-                                                state: SubscriptionState.Enabled,
+                                                displayName: nextLink,
+                                                state: SubscriptionState.Disabled,
                                                 subscriptionPolicies: null,
-                                                authorizationSource: null)))
+                                                authorizationSource: null))))
                             };
                         }
                         return Task.FromResult(result);
@@ -173,6 +173,45 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             client.SetupGet(c => c.Subscriptions).Returns(subscriptionMock.Object);
             client.SetupGet(c => c.Tenants).Returns(tenantMock.Object);
             return client.Object;
+        }
+
+        private class MockPage<T> : IPage<T>
+        {
+            public MockPage(IList<T> Items)
+            {
+                this.Items = Items;
+            }
+
+            public MockPage(IList<T> Items, string NextPageLink)
+            {
+                this.Items = Items;
+                this.NextPageLink = NextPageLink;
+            }
+
+            /// <summary>
+            /// Gets the link to the next page.
+            /// </summary>
+            public string NextPageLink { get; private set; }
+            
+            public IList<T> Items { get; set; }
+
+            /// <summary>
+            /// Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+            public IEnumerator<T> GetEnumerator()
+            {
+                return (Items == null) ? Enumerable.Empty<T>().GetEnumerator() : Items.GetEnumerator();
+            }
+
+            /// <summary>
+            /// Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
         }
     }
 

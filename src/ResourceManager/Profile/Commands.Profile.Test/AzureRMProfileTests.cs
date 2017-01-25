@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     authorizationSource: null);
                 return new AzureOperationResponse<IPage<Subscription>>
                 {
-                    Body = (IPage<Subscription>) new List<Subscription> { sub1, sub2 }
+                    Body = new MockPage<Subscription>(new List<Subscription> { sub1, sub2 })
                 };
             });
             MockSubscriptionClientFactory.SetListAsyncResponses(listAsyncResponses);
@@ -398,7 +398,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             string randomSubscriptionId = Guid.NewGuid().ToString();
             var firstList = new List<string> { randomSubscriptionId };
             var secondList = firstList;
-            var client = SetupTestEnvironment(tenants, firstList, secondList);
+            var thirdList = secondList;
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
             Assert.Equal(1, subResults.Count);
             AzureSubscription subValue;
@@ -423,7 +424,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string>();
-            var client = SetupTestEnvironment(tenants, subscriptions, subscriptions);
+            var client = SetupTestEnvironment(tenants, subscriptions, subscriptions, subscriptions);
             Assert.Equal(0, client.ListSubscriptions().Count());
             AzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
@@ -493,6 +494,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
             Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
             Assert.Equal("LinkToNextPage", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).SubscriptionName);
+        }
+
+        private class MockPage<T> : IPage<T>
+        {
+            public MockPage(IList<T> Items)
+            {
+                this.Items = Items;
+            }
+
+            /// <summary>
+            /// Gets the link to the next page.
+            /// </summary>
+            public string NextPageLink { get; private set; }
+
+            public IList<T> Items { get; set; }
+
+            /// <summary>
+            /// Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+            public IEnumerator<T> GetEnumerator()
+            {
+                return (Items == null) ? Enumerable.Empty<T>().GetEnumerator() : Items.GetEnumerator();
+            }
+
+            /// <summary>
+            /// Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
         }
     }
 }
