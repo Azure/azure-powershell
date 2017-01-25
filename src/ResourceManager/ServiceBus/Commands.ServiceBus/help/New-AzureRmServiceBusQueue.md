@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new ServiceBus Queue for the provided ServiceBus Namespace
 
 ## SYNTAX
 
@@ -22,16 +22,16 @@ New-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** New-AzureRmServiceBusQueue ** cmdlet create a new ServiceBus Queue for the provided ServiceBus Namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -EnablePartitioning $True
 ```
 
-{{ Add example description here }}
+creartes new ServicBus Queue 'SB-Queue_exampl1' in provided ServiceBus Namespace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -355,9 +355,44 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
 
+
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-QueueName : System.String
+
+-EnablePartitioning : System.Boolean?
+
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+
+Name                                : SB-Queue_exampl1
+Location                            : West US
+LockDuration                        : 
+AccessedAt                          : 
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+EntityAvailabilityStatus            : 
+CreatedAt                           : 1/20/2017 2:51:36 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+IsAnonymousAccessible               : False
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : 
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 2:51:37 AM
 
 ## NOTES
 

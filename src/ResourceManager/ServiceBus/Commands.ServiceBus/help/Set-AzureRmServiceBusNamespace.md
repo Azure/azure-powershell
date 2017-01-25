@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the description of existing ServiceBus Namespace
 
 ## SYNTAX
 
@@ -17,21 +17,21 @@ Set-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Set-AzureRmServiceBusNamespace ** cmdlet updates the description for the specified ServiceBus namespace within the ResourceGroup
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 10 -Tag @{Tag2="Tag2Value"}
 ```
 
-{{ Add example description here }}
+updates the ServiceBus Namespace with new description
 
 ## PARAMETERS
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+updates the ServiceBus Namespace with the provided information. 
 
 ```yaml
 Type: SwitchParameter
@@ -142,12 +142,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Collections.Hashtable
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-Location : System.String
+
+-SkuName : System.String
+
+-Tag : System.Collections.Hashtable
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+
+Name               : SB-Example1
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Location           : West US
+Sku                : Name : Standard , Capacity : 10 , Tier : Standard
+ProvisioningState  : Succeeded
+Status             : 
+CreatedAt          : 
+UpdatedAt          : 
+ServiceBusEndpoint : 
+Enabled            : False
 
 ## NOTES
 

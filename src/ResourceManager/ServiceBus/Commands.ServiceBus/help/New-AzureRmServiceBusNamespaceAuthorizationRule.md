@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new AuthorizationRule for given ServiceBus Namespace
 
 ## SYNTAX
 
@@ -17,16 +17,17 @@ New-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** New-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet create a new AuthorizationRule for the provided ServiceBus NameSpace.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1 -Rights @("Listen","Send")
 ```
 
-{{ Add example description here }}
+Creates 'AuthoRule1' with 'Listen and Send' rights for Namespace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -128,12 +129,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.String\[\]
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-AuthorizationRuleName : System.String
+-Rights : System.String []
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/AuthorizationRules/AuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : AuthoRule1
+Location : 
+Tags     : 
+Rights   : {Listen, Send}
 ## NOTES
 
 ## RELATED LINKS

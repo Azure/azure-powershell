@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusQueueAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+updates given AuthorizationRule description for the provided ServiceBus Queue
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Set-AzureRmServiceBusQueueAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Set-AzureRmServiceBusQueueAuthorizationRule ** cmdlet updates new description for specified AuthorizationRule of the provided ServiceBus Queue.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $authRuleObj = Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
+
+PS C:\> $authRuleObj.Rights.Add("Manage")
+
+PS C:\> Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthRuleObj $authRuleObj
 ```
 
-{{ Add example description here }}
+Adding 'Manage' to Accessright of AuthorizationRule 'SBAuthoRule1' of Queue 'SB-Queue_exampl1'
 
 ## PARAMETERS
 
@@ -160,7 +164,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes System.String\[\]
+-ResourceGroup : System.String
+-NamespaceName : System.String
+-QueueName : System.String
+-AuthRuleObj : Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
 ## OUTPUTS
 

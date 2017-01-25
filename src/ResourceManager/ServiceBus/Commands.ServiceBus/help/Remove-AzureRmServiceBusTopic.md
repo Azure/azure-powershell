@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the Topic from the provided Servicebus Namespace
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Remove-AzureRmServiceBusTopic ** cmdlet removes the Topic from the given ServiceBus Namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
-{{ Add example description here }}
+The above Commands removes 'SB-Topic_exampl1' Topic from the Namspace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -111,7 +111,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-TopicName : System.String
 
 ## OUTPUTS
 

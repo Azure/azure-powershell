@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the AuthorizationRule of Topic from the provided Servicebus Namespace
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Names
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Remove-AzureRmServiceBusTopicAuthorizationRule ** cmdlet removes the AuthorizationRule of Topic from the given ServiceBus Namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
 ```
 
-{{ Add example description here }}
+Removes the AuthorizationRule 'SBTopicAuthoRule1' of Topic 'SB-Topic_exampl1' from the Namespace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -126,7 +126,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-TopicName : System.String
+
+-AuthorizationRuleName : System.String
 
 ## OUTPUTS
 

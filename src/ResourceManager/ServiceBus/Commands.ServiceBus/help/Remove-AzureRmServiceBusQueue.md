@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the Queue from the provided Servicebus Namespace
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** Remove-AzureRmServiceBusQueue ** cmdlet removes the Queue from the given ServiceBus Namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
 ```
 
-{{ Add example description here }}
+The above Commands removes 'SB-Queue_exampl1' from the Namspace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -112,6 +112,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-QueueName : System.String
+
 
 ## OUTPUTS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new ServiceBus Topic for the provided ServiceBus Namespace
 
 ## SYNTAX
 
@@ -22,16 +22,16 @@ New-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The ** New-AzureRmServiceBusTopic ** cmdlet create a new ServiceBus Topic for the provided ServiceBus Namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -EnablePartitioning $True
 ```
 
-{{ Add example description here }}
+Creates new ServicBus Topic 'SB-Topic_exampl1' in provided ServiceBus Namespace 'SB-Example1'
 
 ## PARAMETERS
 
@@ -341,9 +341,45 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
 
+-ResourceGroup : System.String
+
+-NamespaceName : System.String
+
+-TopicName : System.String
+
+-EnablePartitioning : System.Boolean?
+
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
+
+Name                                : SB-Topic_exampl1
+Location                            : West US
+Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
+                                      B-Topic_exampl1
+Type                                : Microsoft.ServiceBus/Topic
+AccessedAt                          : 
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+EntityAvailabilityStatus            : 
+CreatedAt                           : 1/20/2017 3:16:42 AM
+CountDetails                        : 
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+EnableExpress                       : False
+EnablePartitioning                  : True
+EnableSubscriptionPartitioning      : False
+FilteringMessagesBeforePublishing   : False
+IsAnonymousAccessible               : False
+IsExpress                           : False
+MaxSizeInMegabytes                  : 16384
+RequiresDuplicateDetection          : False
+SizeInBytes                         : 0
+Status                              : Active
+SubscriptionCount                   : 
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 3:16:43 AM
 
 ## NOTES
 
