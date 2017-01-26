@@ -45418,6 +45418,45 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>Daemon</maml:name>
+<maml:description>
+<maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
+Options: 'none' or 'service'.
+none - Currently prevents the chef-client service from being configured as a service.
+service - Configures the chef-client to run automatically in the background as a service.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type>
+<maml:name>String</maml:name>
+<maml:uri/>
+</dev:type>
+<dev:defaultValue>none</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>Secret</maml:name>
+<maml:description>
+<maml:para>The encryption key used to encrypt and decrypt the data bag item values.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type>
+<maml:name>String</maml:name>
+<maml:uri/>
+</dev:type>
+<dev:defaultValue>none</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>SecretFile</maml:name>
+<maml:description>
+<maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type>
+<maml:name>String</maml:name>
+<maml:uri/>
+</dev:type>
+<dev:defaultValue>none</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>RunList</maml:name>
 <maml:Description><maml:para>Specifies the Chef node run list.
 </maml:para>
@@ -45558,6 +45597,20 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>Secret</maml:name>
+<maml:description>
+<maml:para>The encryption key used to encrypt and decrypt the data bag item values.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+</command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>SecretFile</maml:name>
+<maml:description>
+<maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>RunList</maml:name>
 <maml:Description><maml:para>Specifies the Chef node run list.
 </maml:para>
@@ -45697,6 +45750,30 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>Daemon</maml:name>
+<maml:description>
+<maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
+Options: 'none' or 'service'.
+none - Currently prevents the chef-client service from being configured as a service.
+service - Configures the chef-client to run automatically in the background as a service.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+</command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>Secret</maml:name>
+<maml:description>
+<maml:para>The encryption key used to encrypt and decrypt the data bag item values.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+</command:parameter>
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+<maml:name>SecretFile</maml:name>
+<maml:description>
+<maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.</maml:para>
+</maml:description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>RunList</maml:name>
 <maml:Description><maml:para>Specifies the Chef node run list.
