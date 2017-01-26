@@ -220,6 +220,8 @@
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
+	  <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psd1" />
+	  <ScriptsToSign Include="$(LibraryRoot)setup\Setup\*.ps1" />
     </ItemGroup>
     
     <Message Importance="high" Text="$(LibrarySourceFolder)\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
