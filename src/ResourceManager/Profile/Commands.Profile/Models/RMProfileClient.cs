@@ -496,9 +496,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             out AzureSubscription subscription,
             out AzureTenant tenant)
         {
-            using (var subscriptionClient = AzureSession.ClientFactory.CreateArmClient<SubscriptionClient>(
-                _profile.Context,
-                AzureEnvironment.Endpoint.ResourceManager))
+            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
+                        environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                        new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                        AzureSession.ClientFactory.GetCustomHandlers()))
             {
                 Subscription subscriptionFromServer = null;
 
@@ -597,9 +598,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 SubscriptionClient subscriptionClient = null;
                 try
                 {
-                    subscriptionClient = AzureSession.ClientFactory.CreateArmClient<SubscriptionClient>(
-                        _profile.Context,
-                        AzureEnvironment.Endpoint.ResourceManager);
+                    subscriptionClient = AzureSession.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
+                        environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                        new TokenCredentials(commonTenantToken.AccessToken) as ServiceClientCredentials,
+                        AzureSession.ClientFactory.GetCustomHandlers());
                     //TODO: Fix subscription client to not require subscriptionId
                     result = account.MergeTenants(subscriptionClient.Tenants.List(), commonTenantToken);
                 }
@@ -673,9 +675,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             try
             {
-                subscriptionClient = AzureSession.ClientFactory.CreateArmClient<SubscriptionClient>(
-                    _profile.Context,
-                    AzureEnvironment.Endpoint.ResourceManager);
+                subscriptionClient = AzureSession.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
+                        environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                        new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                        AzureSession.ClientFactory.GetCustomHandlers());
 
                 IPage<Subscription> subscriptions = null;
                 if (listNextLink == null)
