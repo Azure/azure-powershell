@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "azurepowershell", "azurepowershell.wixproj", "{36D6E303-E057-4963-A093-C7AAE0FD92B3}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -8,6 +8,10 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "azurepowershell", "azurepow
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setup", "Setup\Setup.csproj", "{EA5BD11B-10B3-433D-A250-92AE76669D8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerShellSetup.Test", "PowerShellSetup.Test\PowerShellSetup.Test.csproj", "{C5676461-8BB7-4F2A-AC5B-6AA4CD148440}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{51172F7E-B49B-48F5-B32F-9AE9C30992A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +27,15 @@ Global
 		{EA5BD11B-10B3-433D-A250-92AE76669D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA5BD11B-10B3-433D-A250-92AE76669D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA5BD11B-10B3-433D-A250-92AE76669D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5676461-8BB7-4F2A-AC5B-6AA4CD148440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5676461-8BB7-4F2A-AC5B-6AA4CD148440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5676461-8BB7-4F2A-AC5B-6AA4CD148440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5676461-8BB7-4F2A-AC5B-6AA4CD148440}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5676461-8BB7-4F2A-AC5B-6AA4CD148440} = {51172F7E-B49B-48F5-B32F-9AE9C30992A7}
 	EndGlobalSection
 EndGlobal
