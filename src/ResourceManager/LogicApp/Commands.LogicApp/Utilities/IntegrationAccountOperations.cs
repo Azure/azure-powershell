@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>The integration account callback URL object</returns>
         public CallbackUrl GetIntegrationAccountCallbackUrl(string resourceGroupName, string integrationAccountName, ListCallbackUrlParameters callbackUrl)
         {
-            return this.LogicManagementClient.IntegrationAccounts.ListCallbackUrl(resourceGroupName, integrationAccountName, callbackUrl.NotAfter);
+            return this.LogicManagementClient.IntegrationAccounts.ListCallbackUrl(resourceGroupName, integrationAccountName, callbackUrl);
         }
         
         /// <summary>
@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                return this.LogicManagementClient.IntegrationAccounts.ListBySubscription();
+                return this.LogicManagementClient.IntegrationAccounts.ListBySubscription(top: 1000);
             }
             else
             {
-                return this.LogicManagementClient.IntegrationAccounts.ListByResourceGroup(resourceGroupName);                
+                return this.LogicManagementClient.IntegrationAccounts.ListByResourceGroup(resourceGroupName, top: 1000);
             }
         }
 

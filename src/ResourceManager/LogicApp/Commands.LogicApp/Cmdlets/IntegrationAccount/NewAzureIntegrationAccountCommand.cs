@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     Location = this.Location,
                     Sku = new IntegrationAccountSku
                     {
-                        Name = (SkuName) Enum.Parse(typeof (SkuName), this.Sku)
+                        Name = (IntegrationAccountSkuName) Enum.Parse(typeof (IntegrationAccountSkuName), this.Sku)
                     },
                     Properties = new JObject()
 

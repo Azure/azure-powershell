@@ -34,37 +34,54 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "PrivateKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "PublicKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "PrivateKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "PublicKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account certificate name.",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "PrivateKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "PublicKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The integration account certificate key name.",
+        [Parameter(Mandatory = false, HelpMessage = "The integration account certificate key name.",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "PrivateKey",Mandatory = true)]
+        [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The integration account certificate key version.",
+        [Parameter(Mandatory = false, HelpMessage = "The integration account certificate key version.",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "PrivateKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string KeyVersion { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The integration account certificate key vault ID.",
+        [Parameter(Mandatory = false, HelpMessage = "The integration account certificate key vault ID.",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "PrivateKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string KeyVaultId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account certificate file path",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "PublicKey", Mandatory = true)]
+        [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string PublicCertificateFilePath { get; set; }
 
@@ -102,21 +119,28 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 }
             }
 
+            KeyVaultKeyReference keyref = null;
+
+            if (!string.IsNullOrEmpty(this.KeyName) && !string.IsNullOrEmpty(this.KeyVersion) && !string.IsNullOrEmpty(this.KeyVaultId))
+            {
+                keyref = new KeyVaultKeyReference
+                {
+                    KeyName = this.KeyName,
+                    KeyVersion = this.KeyVersion,
+                    KeyVault = new KeyVaultKeyReferenceKeyVault()
+                    {
+                        Id = this.KeyVaultId
+                    }
+                };
+            }
+
             this.WriteObject(
                 IntegrationAccountClient.CreateIntegrationAccountCertificate(this.ResourceGroupName,
                     integrationAccount.Name,
                     this.CertificateName, new IntegrationAccountCertificate
                     {
                         Name = this.CertificateName,
-                        Key = new KeyVaultKeyReference
-                        {
-                            KeyName = this.KeyName,
-                            KeyVersion = this.KeyVersion,
-                            KeyVault = new KeyVaultKeyReferenceKeyVault()
-                            {
-                                Id = this.KeyVaultId
-                            }
-                        },
+                        Key = keyref,
                         Metadata = this.Metadata,
                         PublicCertificate = certificate
                     }

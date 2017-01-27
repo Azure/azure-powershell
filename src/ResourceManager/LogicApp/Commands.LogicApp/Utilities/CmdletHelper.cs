@@ -148,18 +148,29 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>List of business identity.</returns>
         internal static IList<BusinessIdentity> ConvertToBusinessIdentityList(object businessIdentityObject)
         {
-            IList<BusinessIdentity> identities = null;
-            if (businessIdentityObject is Hashtable)
-            {
-                var collection = businessIdentityObject as Hashtable;
-                identities = new List<BusinessIdentity>();
+            IList<BusinessIdentity> identities = new List<BusinessIdentity>();
 
-                foreach (var key in collection.Keys)
+            if (businessIdentityObject is Array)
+            {
+                var arr = businessIdentityObject as Object[];
+                if (arr[0] is Array)
+                {
+                    foreach (var item in arr)
+                    {
+                        var arrItem = item as Object[];
+                        identities.Add(new BusinessIdentity()
+                        {
+                            Qualifier = arrItem[0].ToString(),
+                            Value = arrItem[1].ToString()
+                        });
+                    }
+                }
+                else
                 {
                     identities.Add(new BusinessIdentity()
                     {
-                        Qualifier = key.ToString(),
-                        Value = collection[key].ToString()
+                        Qualifier = arr[0].ToString(),
+                        Value = arr[1].ToString(),
                     });
                 }
             }
@@ -176,7 +187,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             try
             {
-                return JObject.Parse(metadata.ToString());                
+                return JObject.Parse(metadata.ToString());
             }
             catch 
             {

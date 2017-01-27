@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Either {0} business Identity qualifier or qualifier value is not specified..
+        /// </summary>
+        internal static string QualifierWithValueNotSpecified {
+            get {
+                return ResourceManager.GetString("QualifierWithValueNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing {0} {1}..
         /// </summary>
         internal static string RemoveResourceMessage {

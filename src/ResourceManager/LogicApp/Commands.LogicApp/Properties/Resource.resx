@@ -141,6 +141,9 @@
   <data name="ParameterNeedsToBeSpecified" xml:space="preserve">
     <value>{0} needs to be specified.</value>
   </data>
+  <data name="QualifierWithValueNotSpecified" xml:space="preserve">
+    <value>Either {0} business Identity qualifier or qualifier value is not specified.</value>
+  </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Removing {0} {1}.</value>
   </data>

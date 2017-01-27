@@ -68,10 +68,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string GuestIdentityQualifier { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = "The integration account agreement guest identity qualifier value.",
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string GuestIdentityQualifierValue { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "The integration account agreement host identity qualifier.",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string HostIdentityQualifier { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The integration account agreement host identity qualifier value.",
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string HostIdentityQualifierValue { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account agreement content.",
             ValueFromPipelineByPropertyName = false)]
@@ -110,7 +120,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.GuestPartner);
 
             var hostIdentity =
-                hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(s => s.Qualifier == this.HostIdentityQualifier);
+                hostPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
+                    s => s.Qualifier == this.HostIdentityQualifier && s.Value == this.HostIdentityQualifierValue);
 
             if (hostIdentity == null)
             {
@@ -120,7 +131,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var guestIdentity =
                 guestPartner.Content.B2b.BusinessIdentities.FirstOrDefault(
-                    s => s.Qualifier == this.GuestIdentityQualifier);
+                    s => s.Qualifier == this.GuestIdentityQualifier && s.Value == this.GuestIdentityQualifierValue);
 
             if (guestIdentity == null)
             {

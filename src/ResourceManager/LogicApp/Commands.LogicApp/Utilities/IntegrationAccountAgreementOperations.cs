@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Management.Automation;
     using System.Globalization;
     using Microsoft.Rest.Azure;
+    using System.Collections.Generic;
 
     /// <summary>
     /// LogicApp client partial class for integration account agreement operations.
@@ -99,9 +100,26 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">The integration account agreement resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <returns>List of integration account agreements.</returns>
-        public IPage<IntegrationAccountAgreement> ListIntegrationAccountAgreements(string resourceGroupName, string integrationAccountName)
+        public IList<IntegrationAccountAgreement> ListIntegrationAccountAgreements(string resourceGroupName, string integrationAccountName)
         {
-            return this.LogicManagementClient.IntegrationAccountAgreements.List(resourceGroupName, integrationAccountName);
+            var compositeList = new List<IntegrationAccountAgreement>();
+            var firstPage = this.LogicManagementClient.IntegrationAccountAgreements.List(resourceGroupName, integrationAccountName);
+
+            if (firstPage != null)
+            {
+                compositeList.AddRange(firstPage);
+            }
+
+            if (!string.IsNullOrEmpty(firstPage.NextPageLink))
+            {
+                var page = firstPage;
+                while (!string.IsNullOrEmpty(page.NextPageLink))
+                {
+                    page = this.LogicManagementClient.IntegrationAccountAgreements.ListNext(page.NextPageLink);
+                    compositeList.AddRange(page);
+                }
+            }
+            return compositeList;
         }
 
         /// <summary>

@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>List of integration account certificates.</returns>
         public IPage<IntegrationAccountCertificate> ListIntegrationAccountCertificates(string resourceGroupName, string integrationAccountName)
         {
-            return this.LogicManagementClient.IntegrationAccountCertificates.List(resourceGroupName, integrationAccountName);
+            return this.LogicManagementClient.IntegrationAccountCertificates.List(resourceGroupName, integrationAccountName, top: 1000);
         }
 
         /// <summary>

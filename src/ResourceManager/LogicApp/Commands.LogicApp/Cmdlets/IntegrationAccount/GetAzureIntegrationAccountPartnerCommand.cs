@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.PartnerName))
             {
-                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountPartner(this.ResourceGroupName,this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountPartners(this.ResourceGroupName,this.Name), true);
             }
             else
             {

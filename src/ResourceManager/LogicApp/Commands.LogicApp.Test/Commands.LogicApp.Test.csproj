@@ -63,8 +63,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Logic">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.1.0.0\lib\net45\Microsoft.Azure.Management.Logic.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.1.0.1\lib\net45\Microsoft.Azure.Management.Logic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.WebSites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -103,9 +104,9 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.5.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.5.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -240,6 +241,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountAgreementTests\TestGetIntegrationAccountAgreement.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountAgreementTests\TestListIntegrationAccountAgreement.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountAgreementTests\TestRemoveIntegrationAccountAgreement.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -247,6 +251,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountCertificateTests\TestCreateIntegrationAccountCertificate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountCertificateTests\TestCreateIntegrationAccountCertificatePrivateKey.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountCertificateTests\TestCreateIntegrationAccountCertificatePublicKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountCertificateTests\TestGetIntegrationAccountCertificate.json">
@@ -264,6 +274,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountMapTests\TestGetIntegrationAccountMap.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountMapTests\TestListIntegrationAccountMap.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountMapTests\TestRemoveIntegrationAccountMap.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -276,6 +289,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountPartnerTests\TestGetIntegrationAccountPartner.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountPartnerTests\TestListIntegrationAccountPartner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountPartnerTests\TestRemoveIntegrationAccountPartner.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -286,6 +302,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountSchemaTests\TestGetIntegrationAccountSchema.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountSchemaTests\TestListIntegrationAccountSchema.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountSchemaTests\TestRemoveIntegrationAccountSchema.json">

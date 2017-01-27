@@ -122,3 +122,31 @@ function Test-UpdateIntegrationAccountMap
 	
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
 }
+
+<#
+.SYNOPSIS
+Test Get-AzureRmIntegrationAccountMap command : Paging test
+#>
+function Test-ListIntegrationAccountMap
+{
+	$mapFilePath = "$TestOutputRoot\Resources\SampleXsltMap.xsl"
+	$mapContent = [IO.File]::ReadAllText($mapFilePath)
+
+	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$integrationAccountName = getAssetname
+
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
+
+	$val=0
+	while($val -ne 1)
+	{
+		$val++ ;
+		$integrationAccountMapName = getAssetname
+		New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
+	}
+
+	$result =  Get-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	Assert-True { $result.Count -eq 1 }
+
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+}

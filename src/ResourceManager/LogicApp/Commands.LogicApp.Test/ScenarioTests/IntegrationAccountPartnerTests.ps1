@@ -28,8 +28,16 @@ function Test-CreateIntegrationAccountPartner
 	$integrationAccountPartnerName = getAssetname	
 	$integrationAccountPartnerName1 = getAssetname	
 
-	$businessIdentities = @{"ZZ" = "AA"; "XX" = "GG" }
-	$businessIdentities1 = @{"CC" = "FF"}
+	$businessIdentities = @(
+             ("01","Test1"),
+             ("02","Test2"),
+             ("As2Identity","Test3"),
+             ("As2Identity","Test4")
+            )
+
+	$businessIdentities1 = @(
+             ("As2Identity","Test4")
+            )
 
 	$integrationAccountPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -PartnerType "B2B" -BusinessIdentities $businessIdentities
 	Assert-AreEqual $integrationAccountPartnerName $integrationAccountPartner.Name
@@ -54,7 +62,11 @@ function Test-GetIntegrationAccountPartner
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
 	$integrationAccountPartnerName = getAssetname	
-	$businessIdentities = @{"ZZ" = "AA"; "XX" = "GG" }
+
+	$businessIdentities = @(
+             ("ZZ","AA"),
+             ("XX","GG")
+            )
 
 	$integrationAccountPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -PartnerType "B2B" -BusinessIdentities $businessIdentities
 	Assert-AreEqual $integrationAccountPartnerName $integrationAccountPartner.Name
@@ -70,6 +82,36 @@ function Test-GetIntegrationAccountPartner
 
 <#
 .SYNOPSIS
+Test Get-AzureRmIntegrationAccountPartner command : Paging test
+#>
+function Test-ListIntegrationAccountPartner
+{
+	#Create App resource group
+
+	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$integrationAccountName = getAssetname
+
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
+
+	$businessIdentities = @(("ZZ","AA"),("XX","GG"))
+
+	$val=0
+	while($val -ne 1)
+	{
+		$val++ ;
+		$integrationAccountPartnerName = getAssetname
+		New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -PartnerType "B2B" -BusinessIdentities $businessIdentities
+	}
+
+	$result =  Get-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	Assert-True { $result.Count -eq 1 }
+
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+}
+
+
+<#
+.SYNOPSIS
 Test Remove-AzureRmIntegrationAccountPartner command
 #>
 function Test-RemoveIntegrationAccountPartner
@@ -82,7 +124,10 @@ function Test-RemoveIntegrationAccountPartner
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
 	$integrationAccountPartnerName = getAssetname	
-	$businessIdentities = @{"ZZ" = "AA"; "XX" = "GG" }
+	$businessIdentities = @(
+             ("ZZ","AA"),
+             ("XX","GG")
+            )
 
 	$integrationAccountPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -PartnerType "B2B" -BusinessIdentities $businessIdentities
 	Assert-AreEqual $integrationAccountPartnerName $integrationAccountPartner.Name
@@ -103,11 +148,17 @@ function Test-UpdateIntegrationAccountPartner
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname	
 	
-	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName	
 
 	$integrationAccountPartnerName = getAssetname	
-	$businessIdentities = @{"ZZ" = "AA"; "XX" = "GG" }
-	$businessIdentities1 = @{"CC" = "VV"}
+	$businessIdentities = @(
+             ("ZZ","AA"),
+             ("SS","FF")
+            )
+
+	$businessIdentities1 = @(
+             ("CC","VV")
+            )
 
 	$integrationAccountPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -BusinessIdentities $businessIdentities
 	Assert-AreEqual $integrationAccountPartnerName $integrationAccountPartner.Name
