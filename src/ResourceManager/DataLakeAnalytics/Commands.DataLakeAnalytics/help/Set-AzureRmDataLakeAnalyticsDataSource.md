@@ -12,18 +12,9 @@ Modifies the details of a data source of a Data Lake Analytics account.
 
 ## SYNTAX
 
-### Set a Blob storage account
 ```
 Set-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [-AccessKey] <String>
- [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
-```
-
-### Set a Data Lake storage account
-```
-Set-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String> [-Default]
- [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +31,21 @@ This command changes the access key stored for an Azure Blob Storage data source
 
 ## PARAMETERS
 
+### -AccessKey
+Specifies the new access key of the Azure Blob Storage data source.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Account
 Specifies the Data Lake Analytics account name.
 
@@ -55,31 +61,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DataLakeStore
-Specifies the name of the Data Lake Store account to modify.
+### -Blob
+Specifies the name of the Azure Blob Storage data source.
 
 ```yaml
 Type: String
-Parameter Sets: Set a Data Lake storage account
-Aliases: 
+Parameter Sets: (All)
+Aliases: AzureBlob
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Default
-Indicates that the data source becomes the default data source for the Data Lake Analytics account.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Set a Data Lake storage account
-Aliases: 
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -100,81 +91,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Blob
-Specifies the name of the Azure Blob Storage data source.
-
-```yaml
-Type: String
-Parameter Sets: Set a Blob storage account
-Aliases: AzureBlob
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AccessKey
-Specifies the new access key of the Azure Blob Storage data source.
-
-```yaml
-Type: String
-Parameter Sets: Set a Blob storage account
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### None
 
 ## NOTES
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
     public class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
     {
-        public RedisCacheAttributesWithAccessKeys(RedisResourceWithAccessKey cache, string resourceGroupName)
+        public RedisCacheAttributesWithAccessKeys(RedisResource cache, RedisAccessKeys accessKeys, string resourceGroupName)
         {
             Id = cache.Id;
             Location = cache.Location;
@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
             Sku = cache.Sku.Name;
 
-            PrimaryKey = cache.AccessKeys.PrimaryKey;
-            SecondaryKey = cache.AccessKeys.SecondaryKey;
+            PrimaryKey = accessKeys.PrimaryKey;
+            SecondaryKey = accessKeys.SecondaryKey;
             ResourceGroupName = resourceGroupName;
 
             SubnetId = cache.SubnetId;

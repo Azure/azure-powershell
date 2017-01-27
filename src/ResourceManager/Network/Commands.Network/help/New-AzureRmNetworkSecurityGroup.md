@@ -24,10 +24,30 @@ The **New-AzureRmNetworkSecurityGroup** cmdlet creates an Azure network security
 
 ## EXAMPLES
 
-### 1:
+### 1: Create a new network securtiy group
 ```
+ New-AzureRmNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus"
+    
+```
+This command ceates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus".
 
+### 2: Create a detailed network security group
 ```
+$rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" 
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix 
+    Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+    
+$rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" 
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix 
+    Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
+    
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name 
+    "NSG-FrontEnd" -SecurityRules $rule1,$rule2
+```
+Step:1 Create a security rule allowing access from the Internet to port 3389.
+Step:2 Create a security rule allowing access from the Internet to port 80.
+Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.
+    
 
 ## PARAMETERS
 

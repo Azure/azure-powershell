@@ -19,6 +19,10 @@
 -->
 ## Current Release 
 
+## Version 3.4.0
+
+## Version 3.3.0
+
 ## Version 3.2.0
 * Get-AzureRmVirtualNetworkGatewayConnection
     - Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.

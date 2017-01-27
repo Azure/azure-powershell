@@ -13,8 +13,8 @@ Modifies a Data Lake Analytics account.
 ## SYNTAX
 
 ```
-Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-DefaultDataLakeStore] <String>] [[-Tags] <Hashtable>]
- [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-Tags] <Hashtable>] [[-ResourceGroupName] <String>]
+ [-MaxDegreeOfParallelism <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
  [<CommonParameters>]
 ```
 
@@ -32,6 +32,32 @@ This command changes the default data source and the Tags property of the accoun
 
 ## PARAMETERS
 
+### -MaxDegreeOfParallelism
+The optional maximum supported degree of parallelism to update the account with.```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxJobCount
+The optional maximum supported jobs running under the account at the same time to set.```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the Data Lake Analytics account name.
 
@@ -47,31 +73,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultDataLakeStore
-Specifies the name of the Data Lake Store account to set as the default data source.
-
-```yaml
-Type: String
+### -QueryStoreRetention
+The optional number of days that job metadata is retained to set in the account.```yaml
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tags
-Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -86,48 +95,37 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Tags
+Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.
 
 ```yaml
-Type: ActionPreference
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
+### -Tier
+The desired commitment tier for this account to use.```yaml
+Type: TierType
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -137,6 +135,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSDataLakeAnalyticsAccount
+The updated account details.
 
 ## NOTES
 

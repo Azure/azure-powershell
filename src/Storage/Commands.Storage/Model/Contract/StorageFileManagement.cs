@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             FileContinuationToken continuationToken = null;
             do
             {
-                var segment = await directory.ListFilesAndDirectoriesSegmentedAsync(null, continuationToken, options, operationContext, token);
+                var segment = await directory.ListFilesAndDirectoriesSegmentedAsync(null, continuationToken, options, operationContext, token).ConfigureAwait(false);
                 foreach (var item in segment.Results)
                 {
                     enumerationAction(item);
@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             FileContinuationToken continuationToken = null;
             do
             {
-                var segment = await this.Client.ListSharesSegmentedAsync(prefix, detailsIncluded, null, continuationToken, options, operationContext, token);
+                var segment = await this.Client.ListSharesSegmentedAsync(prefix, detailsIncluded, null, continuationToken, options, operationContext, token).ConfigureAwait(false);
                 foreach (var item in segment.Results)
                 {
                     enumerationAction(item);

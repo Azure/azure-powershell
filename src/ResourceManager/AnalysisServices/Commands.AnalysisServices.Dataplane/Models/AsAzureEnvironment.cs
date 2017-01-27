@@ -12,27 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
-using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
-
-    public class PSAzureAuditLogDataSourceProperties: PSDataSourcePropertiesBase
+    [Serializable]
+    public class AsAzureEnvironment
     {
-        [JsonIgnore]
-        public override string Kind { get { return PSDataSourceKinds.AzureAuditLog; } }
+        public AsAzureEnvironment(string Name)
+        {
+            this.Name = Name;
+            this.Endpoints = new Hashtable();
+        }
 
-        /// <summary>
-        /// Id of the azure subscription, which you want audit log to be collect from.
-        /// </summary>
-        [JsonProperty(PropertyName="linkedResourceId")]
-        [JsonConverter(typeof(AuditLogConverter))]
-        public string SubscriptionId { get; set; }
+        public string Name { get; set; }
+
+        public Hashtable Endpoints { get; set; }
+
+        public enum AsRolloutEndpoints
+        {
+            AdAuthorityBaseUrl,
+            RestartEndpointFormat
+        }
     }
 }
