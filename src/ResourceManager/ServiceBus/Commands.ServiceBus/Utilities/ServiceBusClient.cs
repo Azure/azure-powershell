@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         }
 
 
-        public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags)
+        public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
         {
 
             var parameter = new NamespaceCreateOrUpdateParameters()
@@ -111,11 +111,22 @@ namespace Microsoft.Azure.Commands.Servicebus
                 parameter.Tags = new Dictionary<string, string>(tags);
             }
 
+            Sku tempSku = new Sku();
+
+
+
             if (skuName != null)
             {
-                parameter.Sku.Name = skuName;
-                parameter.Sku.Tier = skuName;
+                tempSku.Name = skuName;
+                tempSku.Tier = skuName;
             }
+
+            if (skuCapacity != null)
+            {
+                tempSku.Capacity = skuCapacity;
+            }
+
+            parameter.Sku = tempSku;
 
             NamespaceResource response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new NamespaceAttributes(response);

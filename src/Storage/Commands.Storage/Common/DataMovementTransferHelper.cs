@@ -13,7 +13,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             try
             {
-                await doTransfer();
+                await doTransfer().ConfigureAwait(false);
 
                 if (record != null)
                 {

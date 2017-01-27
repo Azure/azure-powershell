@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             this.MethodName = "VirtualMachineScaleSetDeleteInstances";
             if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove))
             {
-                WriteWarning("Breaking change notice:'Force' parameter will be added in upcoming next release.");
+                WriteWarning("Breaking change notice:'Force' parameter will be added in upcoming release.");
                 base.ProcessRecord();
             }
         }

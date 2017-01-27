@@ -69,6 +69,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ByWorkspaceName)
+            {
+                WriteWarning(Properties.Resources.GetWorkspaceDataSourceParameterSetWarning);
+                return;
+            }
             if (ParameterSetName == ByWorkspaceObjectByName || ParameterSetName == ByWorkspaceObjectByKind)
             {
                 ResourceGroupName = Workspace.ResourceGroupName;
@@ -95,6 +100,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             }
 
             if (ParameterSetName == ByWorkspaceObjectByKind || ParameterSetName == ByWorkspaceNameByKind) {
+                if (Kind == PSDataSourceKinds.AzureAuditLog)
+                {
+                    WriteWarning(Properties.Resources.DeprecateAzureAuditLogDataSource);
+                    return;
+                }
                 WriteObject(OperationalInsightsClient.FilterPSDataSources(ResourceGroupName, WorkspaceName, Kind), true);
                 return;
             }

@@ -16,6 +16,7 @@ using System;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -45,14 +46,36 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "This cmdlet is not to be used for setting the owner or owning group.")]
         public DataLakeStoreItemAce[] Acl { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates the resulting ACL should be returned."
+            )]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             ConfirmAction(
                 string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
                 Path.OriginalPath,
                 () =>
-                    DataLakeStoreFileSystemClient.SetAcl(Path.TransformedPath, Account,
-                        DataLakeStoreItemAce.GetAclSpec(Acl)));
+                    {
+                        DataLakeStoreFileSystemClient.SetAcl(
+                            Path.TransformedPath,
+                            Account,
+                            DataLakeStoreItemAce.GetAclSpec(Acl));
+
+                        if (PassThru)
+                        {
+                            var toReturn = new List<DataLakeStoreItemAce>(
+                                DataLakeStoreItemAce.GetAclFromStatus(
+                                    DataLakeStoreFileSystemClient.GetAclStatus(
+                                        Path.TransformedPath, 
+                                        Account)));
+
+                            WriteObject(toReturn);
+                        }
+                    });
         }
     }
 }

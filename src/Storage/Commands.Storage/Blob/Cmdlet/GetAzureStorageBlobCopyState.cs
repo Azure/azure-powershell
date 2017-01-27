@@ -273,7 +273,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     long internalTaskId = monitorRequest.Item1;
                     CloudBlob blob = monitorRequest.Item2;
                     //Just use the last blob management channel since the following operation is context insensitive
-                    await Channel.FetchBlobAttributesAsync(blob, accessCondition, requestOptions, context, CmdletCancellationToken);
+                    await Channel.FetchBlobAttributesAsync(blob, accessCondition, requestOptions, context, CmdletCancellationToken).ConfigureAwait(false);
                     bool taskDone = false;
 
                     if (blob.CopyState == null)
