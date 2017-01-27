@@ -291,19 +291,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         public IEnumerable<AzureSubscription> GetSubscriptions(string tenantId)
-        {
-            IEnumerable<AzureSubscription> subscriptionList = new List<AzureSubscription>();
-            string listNextLink = null;
+        {            
             if (string.IsNullOrWhiteSpace(tenantId))
             {
-                subscriptionList = ListSubscriptions();
+                return ListSubscriptions();
             }
             else
             {
-                subscriptionList = ListSubscriptions(tenantId, ref listNextLink);
-            }
+                List<AzureSubscription> subscriptionList = new List<AzureSubscription>();
+                string listNextLink = null;
+                do
+                {
+                    subscriptionList.AddRange(ListSubscriptions(tenantId, ref listNextLink));
+                } while (listNextLink != null);
 
-            return subscriptionList;
+                return subscriptionList;
+            }
         }
 
         public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
@@ -405,10 +408,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 try
                 {
-                    subscriptions.AddRange(
+                    do
+                    {
+                        subscriptions.AddRange(
                         ListSubscriptions(
                             (tenant.Id == Guid.Empty) ? tenant.Domain : tenant.Id.ToString(),
                             ref listNextLink));
+                    } while (listNextLink != null);
                 }
                 catch (AadAuthenticationException)
                 {
