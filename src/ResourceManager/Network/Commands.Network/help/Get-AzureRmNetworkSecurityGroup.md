@@ -29,10 +29,11 @@ The **Get-AzureRmNetworkSecurityGroup** cmdlet gets an Azure network security gr
 
 ## EXAMPLES
 
-### 1:
+### 1: Retrieve an existing network security group
 ```
-
+   Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"
 ```
+This command returns contents of Azure network security group "nsg1" in resource group "rg1"
 
 ## PARAMETERS
 
