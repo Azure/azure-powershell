@@ -20,9 +20,6 @@
                         <Component Id="cmp3D4D3ED62EC04253175A0CC32F5CDCFB" Guid="*">
                             <File Id="fil07E218E1C042D354D3F06B551BD35320" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll" />
                         </Component>
-                        <Component Id="cmp2D76AEF7ADD8BB52869C0A72C570A577" Guid="*">
-                            <File Id="fil69FEC8992F9EA3EF67B7A26A6E25294E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-help.xml" />
-                        </Component>
                         <Component Id="cmp77C2C0E18078411F290C907132148F88" Guid="*">
                             <File Id="filC0F6EF52D956957E512FBCCAA8DC3A2D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.AnalysisServices\Microsoft.Azure.Commands.Common.Authentication.dll" />
                         </Component>
@@ -5805,7 +5802,6 @@
             <ComponentRef Id="cmp53002CE3F1D5F8C74FA6A0D73067CAAF" />
             <ComponentRef Id="cmp0F2525C14C247FD0A34EB3E38F5462D5" />
             <ComponentRef Id="cmp3D4D3ED62EC04253175A0CC32F5CDCFB" />
-            <ComponentRef Id="cmp2D76AEF7ADD8BB52869C0A72C570A577" />
             <ComponentRef Id="cmp77C2C0E18078411F290C907132148F88" />
             <ComponentRef Id="cmpC1A1AD0B739E95A41E3A3AB9B3AF4EB1" />
             <ComponentRef Id="cmp19755716B3B62BB43E2BC9350DD7105D" />
