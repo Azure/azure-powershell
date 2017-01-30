@@ -37,10 +37,40 @@ The **New-AzureRmNetworkInterfaceIpConfig** cmdlet creates an Azure network inte
 
 ## EXAMPLES
 
-### 1:
+### 1: Create an IP configuration with a public IP address for a network interface
+```
+$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+$PIP1 = Get-AzureRmPublicIPAddress -Name "PIP1" -ResourceGroupName "RG1"
+
+$IPConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name "IPConfig-1" -Subnet $Subnet -PublicIpAddress $PIP1
+    -Primary
+
+ $nic = New-AzureRmNetworkInterface -Name $NicName -ResourceGroupName myrg -Location westus
+    -IpConfiguration $IpConfig1
 ```
 
+The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were
+    previously created. These are stored in $vnet and $Subnet respectively. The third command gets a previously
+    created public IP address called PIP1. The forth command creates a new IP configuration called "IPConfig-1" as the
+    primary IP configuration with a public IP address associated with it.
+    The last command then creates a network interface called mynic1 using this IP configuration.
+
+### 2: Create an IP configuration with a private IP address
 ```
+$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+
+$IPConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name "IP-Config2" -Subnet $Subnet -PrivateIpAddress
+    10.0.0.5
+
+$nic = New-AzureRmNetworkInterface -Name mynic1 -ResourceGroupName myrg -Location westus -IpConfiguration
+    $IpConfig2
+```
+The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were
+    previously created. These are stored in $vnet and $Subnet respectively.  The third command creates a new IP
+    configuration called "IPConfig-2" with a private IP address 10.0.0.5 associated with it.
+    The last command then creates a network interface called mynic1 using this IP configuration.
 
 ## PARAMETERS
 
