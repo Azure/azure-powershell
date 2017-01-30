@@ -15281,6 +15281,28 @@ PS C:\&gt; Get-AzureRmLoadBalancerRuleConfig -Name &quot;MyLBrulename&quot; -Loa
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Get an IP configuration of a network interface  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $nic1 = Get-AzureRmNetworkInterface -Name mynic -ResourceGroupName $myrg
+
+PS C:\&gt; Get-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1</dev:code>
+			<dev:remarks>
+				<maml:para>The first command gets an existing network interface called mynic and stores it in the variable $nic1. The second command gets the IP configuration called ipconfig1 of this network interface.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -27738,6 +27760,61 @@ New-AzureRmNetworkInterface -Name NetworkInterface1 -ResourceGroupName ResourceG
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Create an IP configuration with a public IP address for a network interface  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+PS C:\&gt; $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+PS C:\&gt; $PIP1 = Get-AzureRmPublicIPAddress -Name &quot;PIP1&quot; -ResourceGroupName &quot;RG1&quot;
+
+PS C:\&gt; $IPConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name &quot;IPConfig-1&quot; -Subnet $Subnet -PublicIpAddress $PIP1 -Primary
+
+PS C:\&gt; $nic = New-AzureRmNetworkInterface -Name $NicName -ResourceGroupName myrg -Location westus -IpConfiguration $IpConfig1
+</dev:code>
+			<dev:remarks>
+				<maml:para>The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were previously created. These are stored in $vnet and $Subnet respectively. The third command gets a previously created public IP address called PIP1. The forth command creates a new IP configuration called &quot;IPConfig-1&quot; as the primary IP configuration with a public IP address associated with it.
+The last command then creates a network interface called mynic1 using this IP configuration.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2 Create an IP configuration with a private IP address  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+PS C:\&gt; $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+
+
+PS C:\&gt; $IPConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name &quot;IP-Config2&quot; -Subnet $Subnet -PrivateIpAddress 10.0.0.5
+
+PS C:\&gt; $nic = New-AzureRmNetworkInterface -Name mynic1 -ResourceGroupName myrg -Location westus -IpConfiguration $IpConfig2</dev:code>
+			<dev:remarks>
+				<maml:para>The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were previously created. These are stored in $vnet and $Subnet respectively.  The third command creates a new IP configuration called &quot;IPConfig-2&quot; with a private IP address 10.0.0.5 associated with it.
+The last command then creates a network interface called mynic1 using this IP configuration.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -35729,13 +35806,15 @@ InboundNatPools          : []</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  1: Delete an inbound NAT rule from an Azure load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $loadbalancer = Get-AzureRmLoadBalancer -Name mylb -ResourceGroupName myrg
+
+PS C:\&gt; Remove-AzureRmLoadBalancerInboundNatPoolConfig -Name &quot;myinboundnatrule&quot; -LoadBalancer $loadbalancer</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command loads an already existing load balancer called &quot;mylb&quot; and stores it in the variable $load balancer. The second command removes the inbound NAT rule associated with this load balancer.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -36807,6 +36886,28 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name  &quot;MyLBruleName&quot; -
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Delete an IP configuration from a network interface  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $nic = Get-AzureRmNetworkInterface -Name mynic -ResourceGroupName myrg
+
+PS C:\&gt; Remove-AzureRmNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic</dev:code>
+			<dev:remarks>
+				<maml:para>The first command gets a network interface called mynic and stores it in the variable $nic. The second command removes the IP configuration called IPConfig-1 associated with this network interface.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -47807,6 +47908,36 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic</dev:code>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Changing the IP address of an IP configuration  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+PS C:\&gt; $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+
+PS C:\&gt; $nic = Get-AzureRmNetworkInterface -Name nic1 -ResourceGroupName myrg
+
+PS C:\&gt; $nic | Set-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -Primary
+
+PS C:\&gt; $nic | Set-AzureRmNetworkInterface
+
+
+</dev:code>
+			<dev:remarks>
+				<maml:para>The first two commands get a virtual network called myvnet and a subnet called mysubnet and store it in the variables $vnet and $subnet respectively. The third command gets the network interface nic1 associated with the IP configuration that needs to be updated. The third command sets the private IP address of the primary IP configuration ipconfig1 to 10.0.0.11. Finally, the last command updates the network interface ensuring the changes have been made successfully.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
