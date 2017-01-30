@@ -22,6 +22,8 @@ This repository contains a set of PowerShell cmdlets for developers and administ
   * App Service (Websites)
   * SQL Database
   * KeyVault
+  * Data Lake Store
+  * Data Lake Analytics
   * Operational Insights
   * Automation
   * Batch

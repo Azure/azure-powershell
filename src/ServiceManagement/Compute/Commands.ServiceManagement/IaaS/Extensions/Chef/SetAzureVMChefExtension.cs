@@ -105,6 +105,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public string BootstrapVersion { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Configures the chef-client service for unattended execution. The node platform should be Windows." +
+                          "Options: 'none' or 'service'." +
+                          "none - Currently prevents the chef-client service from being configured as a service." +
+                          "service - Configures the chef-client to run automatically in the background as a service.")]
+        [ValidateNotNullOrEmpty]
+        public string Daemon { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The encryption key used to encrypt and decrypt the data bag item values.")]
+        [ValidateNotNullOrEmpty]
+        public string Secret { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.")]
+        [ValidateNotNullOrEmpty]
+        public string SecretFile { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
@@ -161,8 +182,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         private void SetPrivateConfig()
         {
-            this.PrivateConfiguration = string.Format(PrivateConfigurationTemplate,
+            var hashTable = new Hashtable();
+
+            if (!string.IsNullOrEmpty(this.SecretFile))
+                hashTable.Add(SecretTemplate, File.ReadAllText(this.SecretFile).TrimEnd('\r', '\n'));
+            else if (!string.IsNullOrEmpty(this.Secret))
+                hashTable.Add(SecretTemplate, this.Secret);
+
+            hashTable.Add(PrivateConfigurationTemplate,
                 File.ReadAllText(this.ValidationPem).TrimEnd('\r', '\n'));
+
+            this.PrivateConfiguration = JsonConvert.SerializeObject(hashTable);
         }
 
         private void SetPublicConfig()
@@ -176,6 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
             bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
             string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
+            bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -248,6 +279,11 @@ validation_client_name 	'{1}'
                 hashTable.Add(ChefServiceIntervalTemplate, this.ChefServiceInterval);
             }
 
+            if (this.Windows.IsPresent && !IsDaemonEmpty)
+            {
+                hashTable.Add(DaemonTemplate, this.Daemon);
+            }
+
             this.PublicConfiguration = JsonConvert.SerializeObject(hashTable);
         }
 
@@ -257,11 +293,29 @@ validation_client_name 	'{1}'
             bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
+            bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
             // Validate ClientRb or ChefServerUrl and ValidationClientName should exist.
             if (IsClientRbEmpty && (IsChefServerUrlEmpty || IsValidationClientNameEmpty))
             {
                 throw new ArgumentException(
                     "Required -ClientRb or -ChefServerUrl and -ValidationClientName options.");
+            }
+
+            if (!IsDaemonEmpty)
+            {
+                bool IsDaemonValueInvalid = Array.IndexOf(new String[2] {"none", "service"}, this.Daemon) == -1;
+                // Validation against the invalid use of Daemon option.
+                if (IsDaemonValueInvalid || this.Linux.IsPresent)
+                {
+                    throw new ArgumentException(
+                        "Invalid use of -Daemon option.");
+                }
+            }
+
+            if (!string.IsNullOrEmpty(this.SecretFile) && !File.Exists(this.SecretFile))
+            {
+                throw new FileNotFoundException(
+                    "File specified in -SecretFile option does not exist.");
             }
         }
 
