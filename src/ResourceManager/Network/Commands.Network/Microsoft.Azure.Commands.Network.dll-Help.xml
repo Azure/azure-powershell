@@ -35812,7 +35812,7 @@ InboundNatPools          : []</maml:para>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $loadbalancer = Get-AzureRmLoadBalancer -Name mylb -ResourceGroupName myrg
 
-PS C:\&gt; Remove-AzureRmLoadBalancerInboundNatPoolConfig -Name &quot;myinboundnatrule&quot; -LoadBalancer $loadbalancer</dev:code>
+PS C:\&gt; Remove-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;myinboundnatrule&quot; -LoadBalancer $loadbalancer</dev:code>
 			<dev:remarks>
 				<maml:para>The first command loads an already existing load balancer called &quot;mylb&quot; and stores it in the variable $load balancer. The second command removes the inbound NAT rule associated with this load balancer.</maml:para>
 				<maml:para />
