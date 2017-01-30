@@ -6,6 +6,7 @@
     <TestSettings>.\src\Local.testsettings</TestSettings>
     <TestSettings_x64>.\src\Local.x64.testsettings</TestSettings_x64>
     <ScenarioTestDebug>.\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll</ScenarioTestDebug>
+	<SetupTestDebug>.\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll</SetupTestDebug>
     <CommonTestDebug>.\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
     <BackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll</BackupTestDebug>
 	<RecoveryServicesBackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll</RecoveryServicesBackupTestDebug>
@@ -71,6 +72,7 @@
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'all' ">
       <XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
+	  <XUnitTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
