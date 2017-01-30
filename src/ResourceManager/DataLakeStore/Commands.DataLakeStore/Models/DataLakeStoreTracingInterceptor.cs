@@ -57,11 +57,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             var message = "{0}, invocationId={1}";
             if (response.IsSuccessStatusCode)
             {
-                Logger.LogDebug(string.Format(message, response.ToLogMessage(), invocationId));
+                Logger.LogDebug(message, response.ToLogMessage(), invocationId);
             }
             else
             {
-                Logger.LogError(string.Format(message, response.ToLogMessage(true), invocationId));
+                Logger.LogError(message, response.ToLogMessage(true), invocationId);
             }
         }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             else
             {
-                Logger.LogError(string.Format("ADLS exception occured: {0}, with message: {1}, invocationId={1}"), adlException.Body.RemoteException, adlException.Body.RemoteException.Message, invocationId);
+                Logger.LogError("ADLS exception occured: {0}, with message: {1}, invocationId={2}", adlException.Body.RemoteException, adlException.Body.RemoteException.Message, invocationId);
             }
         }
 
