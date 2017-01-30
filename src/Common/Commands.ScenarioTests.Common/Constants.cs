@@ -22,6 +22,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string All = "All";
 
+        public const string SignedBuild = "SignedBuild";
+
         public const string Automation = "Automation";
 
         public const string ServiceBus = "ServiceBus";

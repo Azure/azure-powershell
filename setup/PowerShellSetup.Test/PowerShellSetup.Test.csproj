@@ -140,32 +140,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <!--
-    <ProjectReference Include="..\..\src\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
-      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Commands.Common.Authentication</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\ResourceManager\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj">
-      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
-      <Name>Commands.Profile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
-      <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
-      <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
-    </ProjectReference>
-        <ProjectReference Include="..\azurepowershell.wixproj">
-      <Project>{36d6e303-e057-4963-a093-c7aae0fd92b3}</Project>
-      <Name>AzurePowerShell.SetupWixProject</Name>
-    </ProjectReference>
-    -->
     <ProjectReference Include="..\..\src\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
@@ -178,8 +152,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MsiLayoutTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -203,7 +175,7 @@
     <ItemGroup>
       <WixProjFile Include="..\azurepowershell.wixproj" />
     </ItemGroup>
-    <MSBuild Projects="@(WixProject)" Targets="Build" Properties="Configuration=$(Configuration);Platform=x86" ContinueOnError="false" >
+    <MSBuild Projects="@(WixProject)" Targets="Build" Properties="Configuration=$(Configuration);Platform=x86" ContinueOnError="false">
       <Output TaskParameter="TargetOutputs" ItemName="WixProjOutput" />
     </MSBuild>
     <Copy SourceFiles="@(WixProjOutput)" DestinationFolder="$(OutputPath)" ContinueOnError="false" SkipUnchangedFiles="false" />

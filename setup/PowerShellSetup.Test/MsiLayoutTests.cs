@@ -1,58 +1,56 @@
 ﻿namespace PowerShellSetup.Tests
 {
-    using Microsoft.Azure.Test;
-    //using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    using Microsoft.Azure.Management.Resources;
-    using System.Diagnostics;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
-    using System.Reflection;
-    using System.IO;
     using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
     using System.Linq;
     using System.Management.Automation;
+    using System.Reflection;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+    using Xunit.Abstractions;
 
-    //using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
     /// <summary>
-    /// Launch Package Manager Console and execute: Update-Pacakge -reinstall
-    /// This will add all the required references to the test project
-    /// 
-    /// Project References to be added
-    ///     1) src\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj
-    ///     2) src\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj
-    ///     3) src\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj
-    ///     
+    /// Set of tests to run against signed MSI
+    /// These set of tests are especially for scenario like:
+    ///     1) Layout errors, things getting copied to the wrong location
+    ///     2) Checking if files in the MSI including the MSI are signed
+    ///     3) 
     /// 
     /// </summary>
     public class MsiLayoutTests
     {
-        string procOutput = string.Empty;
-        string procErr = string.Empty;
+        string _procOutput;
+        string _procErr;
+        ITestOutputHelper xunitTestOutput;
 
-        public MsiLayoutTests()
+        public MsiLayoutTests(ITestOutputHelper testOutput)
         {
-            procOutput = string.Empty;
-            procErr = string.Empty;
+            _procOutput = string.Empty;
+            _procErr = string.Empty;
+            xunitTestOutput = testOutput;
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.SignedBuild, Category.BVT)]
         public void VerifyMsiExecExists()
         {
             ProcessStartInfo psi = GetInitializedPSI();
+            psi.FileName = "Msiexec.exe";
             psi.Arguments = "/qr /x:1234";
 
-            ExecuteShellCmd(psi, out procOutput, out procErr);
-            Assert.NotEmpty(procOutput);
+            ExecuteShellCmd(psi, out _procOutput, out _procErr);
+            Assert.NotEmpty(_procOutput);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.SignedBuild, Category.BVT)]
         public void VerifyFilesAreSigned()
         {
+            List<string> expectedSignatureAlgos = new List<string>() { "sha1RSA", "sha2RSA" };
             var testLoc = new Uri(Assembly.GetExecutingAssembly().CodeBase);
             var codebasePath = Uri.UnescapeDataString(testLoc.AbsolutePath);
             var dirPath = Path.GetDirectoryName(codebasePath);
@@ -61,16 +59,22 @@
             Assert.True(File.Exists(msiFullPath));
 
             ProcessStartInfo psi = GetInitializedPSI();
-            
+            psi.FileName = "Msiexec.exe";
             psi.Arguments = string.Format("/a {0} /qn TargetDir={1}", msiFullPath, msiContentsDirPath);
-            ExecuteShellCmd(psi, out procOutput, out procErr);
-            Assert.True(string.IsNullOrEmpty(procErr));
+
+            ExecuteShellCmd(psi, out _procOutput, out _procErr);
+            Assert.True(string.IsNullOrEmpty(_procErr));
 
             IEnumerable<string>msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*", SearchOption.AllDirectories);
             Assert.NotNull(msiFiles);
             List<string> msiFileList = msiFiles.ToList<string>();
             Assert.True(msiFileList.Count > 0);
-            List<string> unsignedFiles = GetUnsignedFiles(msiFileList);
+            List<string> unsignedFiles = GetUnsignedFiles(msiFileList, expectedSignatureAlgos);
+
+            foreach(string unsigFile in unsignedFiles)
+            {
+                xunitTestOutput.WriteLine(unsigFile);
+            }
 
             Assert.True(unsignedFiles.Count == 0);
         }
@@ -104,11 +108,10 @@
             psi.RedirectStandardOutput = true;
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
-            psi.FileName = "Msiexec.exe";
             return psi;
         }
 
-        private List<string> GetUnsignedFiles(List<string> signedFiles)
+        private List<string> GetUnsignedFiles(List<string> signedFiles, List<string>expectedAlgorithmList)
         {
             List<string> unsignedFiles = new List<string>();
 
@@ -130,9 +133,22 @@
                         {
                             Signature s = (Signature)result.BaseObject;
                             isSigned = s.Status.Equals(SignatureStatus.Valid);
-                            if (isSigned == false)
+                            string unsignedFileStatusFormat = "Signed by {0} algorithm ::: {1}";
+                            string unsignFileStatus = string.Empty;
+                            if (isSigned == true)
                             {
-                                unsignedFiles.Add(providedFilePath);
+                                string friendlyAlgorithmName = s.SignerCertificate.SignatureAlgorithm.FriendlyName;
+                                string match = expectedAlgorithmList.Find((pn) => pn.Equals(friendlyAlgorithmName, System.StringComparison.OrdinalIgnoreCase));
+                                if (string.IsNullOrEmpty(match))
+                                {
+                                    unsignFileStatus = string.Format(unsignedFileStatusFormat, friendlyAlgorithmName, calculatedFullPath);
+                                    unsignedFiles.Add(unsignFileStatus);
+                                }
+                            }
+                            else
+                            {
+                                unsignFileStatus = string.Format(unsignedFileStatusFormat, "NOT SIGNED", calculatedFullPath);
+                                unsignedFiles.Add(unsignFileStatus);
                             }
                         }
                     }

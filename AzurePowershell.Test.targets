@@ -50,7 +50,6 @@
     <TestTimeout Condition=" '$(TestTimeout)' == '' ">100000000</TestTimeout>
   </PropertyGroup>
   
-
   <Target Name="InvokeMSTest">
     <!--Remove existing test result; otherwise mstest will error-->
     <Delete Files="$(_testResult)"/>
@@ -71,7 +70,7 @@
       <AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'all' ">
-      <XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
+      <XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>	  
 	  <XUnitTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
@@ -119,6 +118,9 @@
     <ItemGroup Condition=" '$(scope)' != 'all' and '$(scope)' != 'ServiceManagement' and '$(scope)' != 'AzureStorage' ">
       <XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
     </ItemGroup>
+	<ItemGroup Condition=" '$(RunTestsOnSignedBits)' == 'true' ">
+		
+	</ItemGroup>
   </Target>
   
   <Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
@@ -150,6 +152,19 @@
         ParallelizeTestCollections="false"
         ParallelizeAssemblies="true"
         ExcludeTraits="RunType=LiveOnly"
+        Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
+        MaxParallelThreads="10"
+        DiagnosticMessages="false"
+        ContinueOnError="false" 
+        Condition=" @(XUnitTests) != '' "/>
+		
+	<xunit 
+        Assemblies="@(XUnitTests)" 
+        AppDomains="true"
+        ShadowCopy="false"
+        ParallelizeTestCollections="false"
+        ParallelizeAssemblies="true"
+        IncludeTraits="SignedBuild=BVT"
         Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
         MaxParallelThreads="10"
         DiagnosticMessages="false"
@@ -198,13 +213,12 @@
        IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
-
-   <Target Name="TestRemoteApp">
+  <Target Name="TestRemoteApp">
      <Xunit.Runner.MSBuild.xunit Assemblies="$(RemoteAppTestDebug)" Html="$(TestOutputDirectory)\RemoteAppTestDebug.xunit.dll.html" Verbose="false"
        IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
-   <Target Name="TestWebsites">
+  <Target Name="TestWebsites">
      <Xunit.Runner.MSBuild.xunit Assemblies="$(WebsitesTestDebug)" Html="$(TestOutputDirectory)\WebsitesTestDebug.xunit.dll.html" Verbose="false"
        IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
@@ -214,7 +228,7 @@
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
-   <Target Name="TestScheduler">
+  <Target Name="TestScheduler">
     <Xunit.Runner.MSBuild.xunit Assemblies="$(SchedulerTestDebug)" Html="$(TestOutputDirectory)\SchedulerTestDebug.xunit.dll.html" Verbose="false"
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>

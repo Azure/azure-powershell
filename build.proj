@@ -43,6 +43,7 @@
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
     <Scope Condition=" $(Scope) == '' " >all</Scope>
+	<RunTestsOnSignedBits>false</RunTestsOnSignedBits>
   </PropertyGroup>
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln;"
@@ -280,6 +281,8 @@
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1"
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
+	<!--Setting it to true incase if we ever decide to have tests for signed bits and not necessarily for signed MSI -->
+	<RunTestsOnSignedBits>true</RunTestsOnSignedBits>
   </Target>
 
   <Target Name="CodeSignInstaller">
@@ -310,6 +313,7 @@
 
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
+	<RunTestsOnSignedBits>true</RunTestsOnSignedBits>
   </Target>
 
   <!-- Run Dependecy Analyzer -->
