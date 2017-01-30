@@ -281,8 +281,10 @@
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1"
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
-	<!--Setting it to true incase if we ever decide to have tests for signed bits and not necessarily for signed MSI -->
-	<RunTestsOnSignedBits>true</RunTestsOnSignedBits>
+	<PropertyGroup>
+		<!--Setting it to true incase if we ever decide to have tests for signed bits and not necessarily for signed MSI -->
+		<RunTestsOnSignedBits>true</RunTestsOnSignedBits>
+	</PropertyGroup>
   </Target>
 
   <Target Name="CodeSignInstaller">
@@ -313,7 +315,10 @@
 
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
-	<RunTestsOnSignedBits>true</RunTestsOnSignedBits>
+	<PropertyGroup>
+		<!--Setting it to true incase if we ever decide to have tests for signed bits and not necessarily for signed MSI -->
+		<RunTestsOnSignedBits>true</RunTestsOnSignedBits>
+	</PropertyGroup>
   </Target>
 
   <!-- Run Dependecy Analyzer -->
