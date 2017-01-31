@@ -16,42 +16,63 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.PowerShell.Commands;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), 
         OutputType(typeof(byte[]), typeof(string))]
     [Alias("Get-AdlStoreItemContent")]
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
+        internal const string BaseParameterSetName = "Preview file content";
+        internal const string RowParameterSetName = "Preview file rows";
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, ParameterSetName = BaseParameterSetName, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, ParameterSetName = RowParameterSetName, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = BaseParameterSetName, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account that should be read from. Can only be a file " +
+                          "in the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = RowParameterSetName, Mandatory = true,
             HelpMessage = "The path in the specified Data Lake account that should be read from. Can only be a file " +
                           "in the format '/folder/file.txt', " +
                           "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ParameterSetName = RowParameterSetName, Mandatory = false,
+            HelpMessage =
+                "The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned."
+            )]
+        public long Head { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = RowParameterSetName, Mandatory = false,
+            HelpMessage = "The number of rows (new line delimited) from the end of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.")]
+        public long Tail { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ParameterSetName = BaseParameterSetName, Mandatory = false,
             HelpMessage =
                 "Where in the file to begin reading from. This value is specified in bytes from the beginning of the file."
             )]
         public long Offset { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = BaseParameterSetName, Mandatory = false,
             HelpMessage = "The number of bytes to read from the file.")]
         public long Length { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, ParameterSetName = BaseParameterSetName, Mandatory = false,
+            HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, ParameterSetName = RowParameterSetName, Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
         public FileSystemCmdletProviderEncoding Encoding
         {
@@ -59,43 +80,69 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             set { _encoding = value; }
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, ParameterSetName = BaseParameterSetName, Mandatory = false,
             HelpMessage = "If the length parameter is not specified or is less than or equal to zero, force returns all content of the file, otherwise it does nothing.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                Resources.DownloadFileDataMessage,
-                Path.TransformedPath,
-                () =>
-                {
-                    byte[] byteArray;
-                    if (Length <= 0)
+            if (this.ParameterSetName.Equals(BaseParameterSetName, StringComparison.OrdinalIgnoreCase))
+            {
+                ConfirmAction(
+                    Resources.DownloadFileDataMessage,
+                    Path.TransformedPath,
+                    () =>
                     {
-                        Length = (long)DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
-                        if (Length > 1 * 1024 * 1024 && !Force)
+                        byte[] byteArray;
+                        if (Length <= 0)
+                        {
+                            Length = (long)DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
+                            if (Length > 1 * 1024 * 1024 && !Force)
                         // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
                         {
-                            throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1 * 1024 * 1024, Length));
+                                throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1 * 1024 * 1024, Length));
+                            }
                         }
-                    }
 
-                    using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length, Offset,
-                        CmdletCancellationToken, this)))
-                    {
-                        byteArray = memStream.ToArray();
-                    }
+                        using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length, Offset,
+                            CmdletCancellationToken, this)))
+                        {
+                            byteArray = memStream.ToArray();
+                        }
 
-                    if (UsingByteEncoding(Encoding))
-                    {
-                        WriteObject(byteArray);
-                    }
-                    else
-                    {
-                        WriteObject(BytesToString(byteArray, Encoding));
-                    }
-                });
+                        if (UsingByteEncoding(Encoding))
+                        {
+                            WriteObject(byteArray);
+                        }
+                        else
+                        {
+                            WriteObject(BytesToString(byteArray, Encoding));
+                        }
+                    });
+            }
+            else
+            {
+                if(Head > 0 && Tail > 0)
+                {
+                    throw new InvalidOperationException(string.Format("-Head and -Tail are mutually exclusive and must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}. Value of Tail: {1}", Head, Tail));
+                }
+
+                if (Head < 1 && Tail < 1)
+                {
+                    throw new InvalidOperationException(string.Format("-Head and -Tail are mutually exclusive and must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}. Value of Tail: {1}", Head, Tail));
+                }
+
+                List<string> toReturn = new List<string>();
+                var encoding = GetEncoding(Encoding);
+                if (Head > 0)
+                {
+                    WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, encoding), true);
+                }
+                else
+                {
+                    WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, encoding, reverse:true));
+                }
+            }
         }
     }
 }
