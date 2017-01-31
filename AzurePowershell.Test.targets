@@ -169,7 +169,7 @@
         MaxParallelThreads="10"
         DiagnosticMessages="false"
         ContinueOnError="false" 
-        Condition=" @(XUnitTests) != '' "/>
+        Condition=" @(XUnitTests) != '' AND '$(RunTestsOnSignedBits)' == 'true' "/>
   </Target>
   
   <Target Name="TimeoutErrorHandler">
