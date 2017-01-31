@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         internal const string DiagnosticParameterSetName = "Include diagnostic logging";
 
         // default number of threads
-        private int numThreadsPerFile = 10;
-        private int fileCount = 5;
+        private int numThreadsPerFile = -1;
+        private int fileCount = -1;
         private LogLevel logLevel = LogLevel.Error;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter ForceBinary { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file. Default is 10",
+            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file. Default is 10",
+            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount
         {
@@ -108,10 +108,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload. Default is 5",
+            HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload. Default is 5",
+            HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int ConcurrentFileCount
         {
