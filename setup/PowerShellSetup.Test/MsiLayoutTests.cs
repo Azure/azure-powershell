@@ -21,17 +21,20 @@
     ///     3) 
     /// 
     /// </summary>
-    public class MsiLayoutTests
+    public class MsiLayoutTests: MsiTestBase
     {
+        const string MSI_NAME = "AzurePowerShell.msi";
+        const string MSI_EXTRACT_DIR_NAME = "msiContents";
         string _procOutput;
         string _procErr;
-        ITestOutputHelper xunitTestOutput;
 
-        public MsiLayoutTests(ITestOutputHelper testOutput)
+        //ITestOutputHelper xunitTestOutput;
+
+        public MsiLayoutTests(ITestOutputHelper testOutput) : base(testOutput)
         {
             _procOutput = string.Empty;
             _procErr = string.Empty;
-            xunitTestOutput = testOutput;
+            //xunitTestOutput = testOutput;
         }
 
         [Fact]
@@ -42,7 +45,7 @@
             psi.FileName = "Msiexec.exe";
             psi.Arguments = "/qr /x:1234";
 
-            ExecuteShellCmd(psi, out _procOutput, out _procErr);
+            this.ExecuteShellCmd(psi, out _procOutput, out _procErr);
             Assert.NotEmpty(_procOutput);
         }
 
@@ -51,21 +54,19 @@
         public void VerifyFilesAreSigned()
         {
             List<string> expectedSignatureAlgos = new List<string>() { "sha1RSA", "sha2RSA" };
-            var testLoc = new Uri(Assembly.GetExecutingAssembly().CodeBase);
-            var codebasePath = Uri.UnescapeDataString(testLoc.AbsolutePath);
-            var dirPath = Path.GetDirectoryName(codebasePath);
-            string msiFullPath = Path.Combine(dirPath, "AzurePowerShell.msi");
-            string msiContentsDirPath = Path.Combine(dirPath, "msiContents");
-            Assert.True(File.Exists(msiFullPath));
-
-            ProcessStartInfo psi = GetInitializedPSI();
-            psi.FileName = "Msiexec.exe";
-            psi.Arguments = string.Format("/a {0} /qn TargetDir={1}", msiFullPath, msiContentsDirPath);
-
-            ExecuteShellCmd(psi, out _procOutput, out _procErr);
+            //var testLoc = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+            //var codebasePath = Uri.UnescapeDataString(testLoc.AbsolutePath);
+            //var dirPath = Path.GetDirectoryName(codebasePath);
+            //string msiFullPath = Path.Combine(dirPath, "AzurePowerShell.msi");
+            //string msiFullPath = GetMsiDirectory();
+            //string msiContentsDirPath = Path.Combine(dirPath, MSI_EXTRACT_DIR_NAME);
+            //Assert.True(File.Exists(msiFullPath));
+            
+            string msiContentsDir = this.ExtractMsiContents(out _procErr);
+            Assert.True(Directory.Exists(msiContentsDir));
             Assert.True(string.IsNullOrEmpty(_procErr));
 
-            IEnumerable<string>msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*", SearchOption.AllDirectories);
+            IEnumerable<string>msiFiles = Directory.EnumerateFiles(msiContentsDir, "*", SearchOption.AllDirectories);
             Assert.NotNull(msiFiles);
             List<string> msiFileList = msiFiles.ToList<string>();
             Assert.True(msiFileList.Count > 0);
@@ -73,43 +74,43 @@
 
             foreach(string unsigFile in unsignedFiles)
             {
-                xunitTestOutput.WriteLine(unsigFile);
+                TestLog.WriteLine(unsigFile);
             }
 
             Assert.True(unsignedFiles.Count == 0);
         }
 
-        private void ExecuteShellCmd(ProcessStartInfo psi, out string procOutput, out string procErr)
-        {
-            procOutput = string.Empty;
-            procErr = string.Empty;
-            Process proc = Process.Start(psi);
+        //private void ExecuteShellCmd(ProcessStartInfo psi, out string procOutput, out string procErr)
+        //{
+        //    procOutput = string.Empty;
+        //    procErr = string.Empty;
+        //    Process proc = Process.Start(psi);
             
-            while (!proc.StandardOutput.EndOfStream)
-            {
-                procOutput = proc.StandardOutput.ReadToEnd();
-                procOutput = procOutput.Replace("\0", string.Empty);
-            }
+        //    while (!proc.StandardOutput.EndOfStream)
+        //    {
+        //        procOutput = proc.StandardOutput.ReadToEnd();
+        //        procOutput = procOutput.Replace("\0", string.Empty);
+        //    }
 
-            while (!proc.StandardError.EndOfStream)
-            {
-                procErr = proc.StandardError.ReadToEnd();
-                procErr = procErr.Replace("\0", string.Empty);
-            }
+        //    while (!proc.StandardError.EndOfStream)
+        //    {
+        //        procErr = proc.StandardError.ReadToEnd();
+        //        procErr = procErr.Replace("\0", string.Empty);
+        //    }
 
-            proc.WaitForExit(5000);
-        }
+        //    proc.WaitForExit(5000);
+        //}
 
-        private ProcessStartInfo GetInitializedPSI()
-        {
-            ProcessStartInfo psi = new ProcessStartInfo();
-            psi.RedirectStandardError = true;
-            psi.RedirectStandardInput = true;
-            psi.RedirectStandardOutput = true;
-            psi.UseShellExecute = false;
-            psi.CreateNoWindow = true;
-            return psi;
-        }
+        //private ProcessStartInfo GetInitializedPSI()
+        //{
+        //    ProcessStartInfo psi = new ProcessStartInfo();
+        //    psi.RedirectStandardError = true;
+        //    psi.RedirectStandardInput = true;
+        //    psi.RedirectStandardOutput = true;
+        //    psi.UseShellExecute = false;
+        //    psi.CreateNoWindow = true;
+        //    return psi;
+        //}
 
         private List<string> GetUnsignedFiles(List<string> signedFiles, List<string>expectedAlgorithmList)
         {
@@ -156,6 +157,17 @@
             });
 
             return unsignedFiles;
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VerifyNoJavaScriptFiles()
+        {
+            string procErr = string.Empty;
+            string msiContentsDirPath = ExtractMsiContents(out procErr);
+            IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.js", SearchOption.AllDirectories);
+
+            Assert.True(msiFiles.Count<string>() == 0);
         }
     }
 }
