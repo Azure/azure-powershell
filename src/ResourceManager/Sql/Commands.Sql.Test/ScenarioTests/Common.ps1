@@ -116,7 +116,14 @@ Creates the test environment needed to perform the Sql auditing tests
 function Create-ClassicTestEnvironmentWithParams ($params, $location, $serverVersion)
 {
 	Create-BasicTestEnvironmentWithParams $params $location $serverVersion
-	New-AzureRmResource -ResourceName $params.storageAccount -ResourceGroupName $params.rgname -ResourceType "Microsoft.ClassicStorage/StorageAccounts" -Location $location -Properties @{ AccountType = "Standard_GRS" } -ApiVersion "2014-06-01" -Force
+	try
+	{
+		New-AzureRmResource -ResourceName $params.storageAccount -ResourceGroupName $params.rgname -ResourceType "Microsoft.ClassicStorage/StorageAccounts" -Location $location -Properties @{ AccountType = "Standard_GRS" } -ApiVersion "2014-06-01" -Force
+	}
+	catch
+	{
+		# We catch the exceptions not to fail the tests in playback mode
+	}
 }
 
 <#

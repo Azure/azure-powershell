@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
      
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AuditingUpdatePolicyWithClassicStorage()
+        public void TestAuditingUpdatePolicyWithClassicStorage()
         {
             RunPowerShellTest("Test-AuditingUpdatePolicyWithClassicStorage");
         }

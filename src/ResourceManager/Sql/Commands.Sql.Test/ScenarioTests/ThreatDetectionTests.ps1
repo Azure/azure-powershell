@@ -21,7 +21,7 @@ function Test-ThreatDetectionUpdatePolicyWithClassicStorage
 	# Setup
 	$testSuffix = 4996
 	Create-ThreatDetectionClassicTestEnvironment $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try 
 	{
