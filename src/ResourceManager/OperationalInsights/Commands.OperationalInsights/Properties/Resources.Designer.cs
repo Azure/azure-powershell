@@ -180,6 +180,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AzureAuditLog datasource has been deprecated, all your existing AzureAuditLog datasource has been migrated to AzureActivityLog..
+        /// </summary>
+        internal static string DeprecateAzureAuditLogDataSource {
+            get {
+                return ResourceManager.GetString("DeprecateAzureAuditLogDataSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HTTP Status Code: {0}
         ///Error Code: {1}
         ///Error Message: {2}
@@ -189,6 +198,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         internal static string FormattedCloudExceptionMessageTemplate {
             get {
                 return ResourceManager.GetString("FormattedCloudExceptionMessageTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This parameter set will be deprecated in next release, and default parameter set will change to ByWorkspaceNameByKind..
+        /// </summary>
+        internal static string GetWorkspaceDataSourceParameterSetWarning {
+            get {
+                return ResourceManager.GetString("GetWorkspaceDataSourceParameterSetWarning", resourceCulture);
             }
         }
         

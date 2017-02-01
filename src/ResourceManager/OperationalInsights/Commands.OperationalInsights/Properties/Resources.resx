@@ -158,12 +158,18 @@ Are you sure you want to continue?</value>
   <data name="DataSourceWindowsEventNoEventTypeSelected" xml:space="preserve">
     <value>Please at least select one type of event to collect by using -CollectErrors -CollectWarnings -CollectInformation</value>
   </data>
+  <data name="DeprecateAzureAuditLogDataSource" xml:space="preserve">
+    <value>AzureAuditLog datasource has been deprecated, all your existing AzureAuditLog datasource has been migrated to AzureActivityLog.</value>
+  </data>
   <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
     <value>HTTP Status Code: {0}
 Error Code: {1}
 Error Message: {2}
 Request Id: {3}
 Timestamp (Utc):{4}</value>
+  </data>
+  <data name="GetWorkspaceDataSourceParameterSetWarning" xml:space="preserve">
+    <value>This parameter set will be deprecated in next release, and default parameter set will change to ByWorkspaceNameByKind.</value>
   </data>
   <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
     <value>Resource group name cannot be null.</value>
