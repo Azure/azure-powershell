@@ -32,7 +32,6 @@ function Test-AuditingUpdatePolicyWithClassicStorage
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 		Assert-AreEqual $policy.AuditState "Enabled"  
-		Assert-AreEqual $policy.UseServerDefault "Disabled"
 
 		# Test - Table server Auditing
 		Set-AzureRmSqlServerAuditingPolicy -AuditType Table -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
@@ -50,7 +49,6 @@ function Test-AuditingUpdatePolicyWithClassicStorage
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 		Assert-AreEqual $policy.AuditState "Enabled"  
-		Assert-AreEqual $policy.UseServerDefault "Disabled"
 
 		# Test - Blob server Auditing
 		Set-AzureRmSqlServerAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
