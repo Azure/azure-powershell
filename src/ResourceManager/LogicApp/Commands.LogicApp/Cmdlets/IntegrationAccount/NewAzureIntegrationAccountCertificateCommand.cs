@@ -139,7 +139,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     integrationAccount.Name,
                     this.CertificateName, new IntegrationAccountCertificate
                     {
-                        Name = this.CertificateName,
                         Key = keyref,
                         Metadata = this.Metadata,
                         PublicCertificate = certificate

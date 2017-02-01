@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 new IntegrationAccountMap
                 {
                     ContentType = this.ContentType,
-                    Name = this.MapName,
                     Content = this.MapDefinition,
                     MapType = (MapType) Enum.Parse(typeof (MapType), this.MapType),
                     Metadata = this.Metadata

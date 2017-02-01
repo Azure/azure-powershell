@@ -95,7 +95,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.PartnerName,
                     new IntegrationAccountPartner
                     {
-                        Name = this.PartnerName,
                         PartnerType = (PartnerType) Enum.Parse(typeof (PartnerType), this.PartnerType),
                         Content = new PartnerContent
                         {

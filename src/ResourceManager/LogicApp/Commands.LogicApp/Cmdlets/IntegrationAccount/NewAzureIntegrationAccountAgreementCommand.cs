@@ -150,7 +150,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.AgreementName,
                     new IntegrationAccountAgreement
                     {
-                        Name = this.AgreementName,
                         AgreementType = (AgreementType) Enum.Parse(typeof (AgreementType), this.AgreementType),
                         HostIdentity = hostIdentity,
                         GuestIdentity = guestIdentity,
