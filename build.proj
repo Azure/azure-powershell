@@ -187,7 +187,7 @@
       Properties="Configuration=Debug;Platform=Any CPU"
       ContinueOnError="false" />
 
-    <CallTarget Targets="DependencyAnalysis" />
+    <!-- <CallTarget Targets="DependencyAnalysis" /> -->
 
     <CallTarget Targets="CodeSignInstaller"
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
