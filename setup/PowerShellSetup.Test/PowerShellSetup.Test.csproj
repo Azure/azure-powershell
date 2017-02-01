@@ -175,20 +175,21 @@
   <Target Name="BuildWixProject">
     <ItemGroup>
       <WixProjFile Include="..\azurepowershell.wixproj" />
+      <MsiOutputDir Include="$(ProjectDir)..\build\$(Configuration)\AzurePowerShell.msi" />
     </ItemGroup>
-    <MSBuild Projects="@(WixProject)" Targets="Build" Properties="Configuration=$(Configuration);Platform=x86" ContinueOnError="false">
+    <!--<MSBuild Projects="@(WixProject)" Targets="Build" Properties="Configuration=$(Configuration);Platform=x86" ContinueOnError="false">
       <Output TaskParameter="TargetOutputs" ItemName="WixProjOutput" />
-    </MSBuild>
-    <Copy SourceFiles="@(WixProjOutput)" DestinationFolder="$(OutputPath)" ContinueOnError="false" SkipUnchangedFiles="false" />
+    </MSBuild>-->
+    <Copy SourceFiles="@(MsiOutputDir)" DestinationFolder="$(OutputPath)" ContinueOnError="false" SkipUnchangedFiles="false" />
   </Target>
   <Target Name="BuildCustomActionProject">
-    <ItemGroup>
+    <!--<ItemGroup>
       <SetupProjFile Include="..\Setup\Setup.csproj" />
     </ItemGroup>
     <MSBuild Projects="@(SetupProject)" Targets="Build" Properties="Configuration=$(Configuration);Platform=AnyCPU" ContinueOnError="false">
       <Output TaskParameter="TargetOutputs" ItemName="SetupProjOutput" />
     </MSBuild>
-    <Copy SourceFiles="@(SetupProjOutput)" DestinationFolder="$(OutputPath)" ContinueOnError="false" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="@(SetupProjOutput)" DestinationFolder="$(OutputPath)" ContinueOnError="false" SkipUnchangedFiles="false" />-->
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

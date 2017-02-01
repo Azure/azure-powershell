@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setup", "Setup\Setup.csproj", "{EA5BD11B-10B3-433D-A250-92AE76669D8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerShellSetup.Test", "PowerShellSetup.Test\PowerShellSetup.Test.csproj", "{C5676461-8BB7-4F2A-AC5B-6AA4CD148440}"
+	ProjectSection(ProjectDependencies) = postProject
+		{36D6E303-E057-4963-A093-C7AAE0FD92B3} = {36D6E303-E057-4963-A093-C7AAE0FD92B3}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{51172F7E-B49B-48F5-B32F-9AE9C30992A7}"
 EndProject
