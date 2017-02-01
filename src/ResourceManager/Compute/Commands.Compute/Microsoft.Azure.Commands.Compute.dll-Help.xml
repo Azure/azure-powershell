@@ -15305,7 +15305,7 @@ PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMNa
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>WmfVersion</maml:name>
-<maml:Description><maml:para>Specifies the version of the Windows Management Framework (WMF) to install on the VM. The DSC Azure Extension depends on DSC features that are only available in the WMF updates. This parameter specifies which version of the update to install on the VM. The possible values are "4.0", "5.0", "5.1" and latest. A value of "4.0" will install WMF 4.0 Update packages (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 2012 R2, or (https://support.microsoft.com/en-us/kb/3109118) on Windows Server 2008 R2 and on other versions of Windos if newer version is not already installed. A value of "5.0" will install the latest release of WMF 5.0 (https://www.microsoft.com/en-us/download/details.aspx?id=54616). A value of "latest" will install the latest WMF, currently WMF 5.1. The default value is "latest".
+<maml:Description><maml:para>Specifies the version of the Windows Management Framework (WMF) to install on the VM. The DSC Azure Extension depends on DSC features that are only available in the WMF updates. This parameter specifies which version of the update to install on the VM. The possible values are "4.0", "5.0", "5.1" and latest. A value of "latest" will install the latest WMF, currently WMF 5.1. The default value is "latest".
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">4.0</command:parameterValue>
@@ -15515,24 +15515,24 @@ PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMNa
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Set a DSC extension</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "2.21" -Location "West US"</dev:code>
-<dev:remarks><maml:para>This command sets the DSC extension on the virtual machine named VM07 to download Sample.ps1.zip from the storage account named Stg and the default container. The command invokes the configuration named ConfigName. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration.
+<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "X.Y" -Location "West US"</dev:code>
+<dev:remarks><maml:para>This command sets the DSC extension based on the version parameter X.Y (Major.Minor), on the virtual machine named VM07 to download Sample.ps1.zip from the storage account named Stg and the default container. The command invokes the configuration named ConfigName. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration. 
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Set a DSC extension with configuration data</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM13" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName "WindowsPowerShellDSC" -ConfigurationData "SampleData.psd1" -Version "2.21" -Location "West US"</dev:code>
-<dev:remarks><maml:para>This command sets the extension on the virtual machine named VM13 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command the configuration named ConfigName and specifies configuration data and arguments. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration.
+<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM13" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName "WindowsPowerShellDSC" -ConfigurationData "SampleData.psd1" -Version "X.Y" -Location "West US"</dev:code>
+<dev:remarks><maml:para>This command sets the extension based on the version parameter X.Y (Major.Minor), on the virtual machine named VM13 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command the configuration named ConfigName and specifies configuration data and arguments. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Set a DSC extension with configuration data that has auto update</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM22" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData "SampleData.psd1" -Version "2.21" -Location "West US" -AutoUpdate</dev:code>
-<dev:remarks><maml:para>This command sets the extension on the virtual machine named VM22 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command invokes the configuration named ConfigName and specifies configuration data and arguments. This command also enables auto update of extension handler to the latest version. The Sample.ps1.zip was previously uploaded by using Publish-AzureRmVMDscConfiguration.
+<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM22" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData "SampleData.psd1" -Version "X.Y" -Location "West US" -AutoUpdate</dev:code>
+<dev:remarks><maml:para>This command sets the extension based on the version parameter X.Y (Major.Minor), on the virtual machine named VM22 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command invokes the configuration named ConfigName and specifies configuration data and arguments. This command also enables auto update of extension handler to the latest version. The Sample.ps1.zip was previously uploaded by using Publish-AzureRmVMDscConfiguration.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
