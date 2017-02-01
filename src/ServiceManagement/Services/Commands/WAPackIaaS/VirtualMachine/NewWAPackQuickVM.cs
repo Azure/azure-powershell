@@ -56,6 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
 
             var newVirtualMachine = new Utilities.WAPackIaaS.DataContract.VirtualMachine()
             {
+                ComputerName = Name,
                 Name = Name,
                 VMTemplateId = Template.ID,
                 LocalAdminUserName = VMCredential.UserName,
