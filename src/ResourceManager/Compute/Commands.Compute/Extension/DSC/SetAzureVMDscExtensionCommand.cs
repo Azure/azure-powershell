@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         ///
         /// The DSC Azure Extension depends on DSC features that are only available in 
         /// the WMF updates. This parameter specifies which version of the update to 
-        /// install on the VM. The possible values are "4.0","5.0" ,"5.1PP" and "latest".  
+        /// install on the VM. The possible values are "4.0","5.0" ,"5.1" and "latest".  
         /// 
         /// A value of "4.0" will install WMF 4.0 Update packages 
         /// (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1", "latest" })]
+        [ValidateSetAttribute(new[] {"4.0", "5.0", "5.1", "5.1PP", "latest"})]
         public string WmfVersion { get; set; }
 
         /// <summary>
@@ -240,6 +240,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         //Private Methods
         private void ValidateParameters()
         {
+            if ("5.1PP".Equals(WmfVersion))
+            {
+                this.ThrowInvalidArgumentError(Microsoft.Azure.Commands.Compute.Properties.Resources.WMFVersionNotSupported, WmfVersion);
+            }
+
             if (string.IsNullOrEmpty(ArchiveBlobName))
             {
                 if (ConfigurationName != null || ConfigurationArgument != null

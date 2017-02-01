@@ -2087,5 +2087,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
                 return ResourceManager.GetString("WinRMCertificateDoesNotHaveExportablePrivateKey", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WMF Version {0} is not supported anymore. .
+        /// </summary>
+        public static string WMFVersionNotSupported {
+            get {
+                return ResourceManager.GetString("WMFVersionNotSupported", resourceCulture);
+            }
+        }
     }
 }
