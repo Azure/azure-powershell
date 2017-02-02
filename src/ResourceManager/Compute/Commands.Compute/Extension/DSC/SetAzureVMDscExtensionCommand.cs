@@ -232,6 +232,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         {
             base.ExecuteCmdlet();
 
+            if ("5.1PP".Equals(WmfVersion))
+            {
+                WriteWarning(string.Format(
+                   CultureInfo.CurrentUICulture,
+                   Microsoft.Azure.Commands.Compute.Properties.Resources.WMFVersionNotSupported,
+                   WmfVersion));
+
+                return;
+            }
+
             ValidateParameters();
 
             CreateConfiguration();
@@ -240,11 +250,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         //Private Methods
         private void ValidateParameters()
         {
-            if ("5.1PP".Equals(WmfVersion))
-            {
-                this.ThrowInvalidArgumentError(Microsoft.Azure.Commands.Compute.Properties.Resources.WMFVersionNotSupported, WmfVersion);
-            }
-
             if (string.IsNullOrEmpty(ArchiveBlobName))
             {
                 if (ConfigurationName != null || ConfigurationArgument != null

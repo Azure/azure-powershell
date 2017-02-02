@@ -1203,7 +1203,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WMF Version {0} is not supported anymore. .
+        ///   Looks up a localized string similar to Breaking change notice: In upcoming release WMF Version {0} will be removed from Set-AzureRmVMDscExtension cmdlet as it is not supported anymore..
         /// </summary>
         public static string WMFVersionNotSupported {
             get {

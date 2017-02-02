@@ -640,7 +640,7 @@
     <value>Cannot find configuration data file: {0}</value>
   </data>
   <data name="WMFVersionNotSupported" xml:space="preserve">
-    <value>WMF Version {0} is not supported anymore. </value>
+    <value>Breaking change notice: In upcoming release WMF Version {0} will be removed from Set-AzureVMDscExtension cmdlet as it is not supported anymore.</value>
   </data>
   <data name="AzureVMDscConfigurationDataFileShouldNotIncludePath" xml:space="preserve">
     <value>The -ConfigurationArchive parameter must no include a path</value>
