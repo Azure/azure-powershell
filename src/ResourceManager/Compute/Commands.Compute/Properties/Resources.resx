@@ -218,6 +218,9 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
 The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <comment>0 = path to the configuration file</comment>
   </data>
+  <data name="WMFVersionNotSupported" xml:space="preserve">
+    <value>Breaking change notice: In upcoming release WMF Version {0} will be removed from Set-AzureRmVMDscExtension cmdlet as it is not supported anymore.</value>
+  </data>
   <data name="AzureVMDscNullArchiveNoConfiguragionParameters" xml:space="preserve">
     <value>If the ConfigurationArchive argument is null, then the ConfigurationName, ConfigurationArgument, and ConfigurationDataPath parameters must not be specified </value>
   </data>
