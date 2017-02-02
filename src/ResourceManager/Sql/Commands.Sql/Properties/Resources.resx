@@ -181,7 +181,7 @@
     <value>The AuditAction parameter is only supported for AuditType 'Blob'. Use the AuditEvent parameter instead.</value>
   </data>
   <data name="EventTypeConfiguringIrrelevantForBlobAuditingPolicy" xml:space="preserve">
-    <value>The AuditEvent parameter is only supported for AuditType 'Table'. Use the AuditActionGroups or AuditAction parameter instead.</value>
+    <value>The AuditEvent parameter is only supported for AuditType 'Table'. Use the AuditActionGroup or AuditAction parameter instead.</value>
   </data>
   <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
     <value>Cannot set threat detection policy without a storage account name.</value>

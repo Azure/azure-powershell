@@ -61,7 +61,7 @@ if (Test-Path -Path ${env:\ProgramFiles(x86)} ) {
 
 
 if (Test-Path -Path "$env:ADXSDKProgramFiles\Microsoft Visual Studio 12.0") {
-    $vsVersion="12.0"
+    $vsVersion="14.0"
 } else {
     $vsVersion="11.0"
 }

@@ -70,6 +70,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             model.StorageAccountName = GetStorageAccountName();
         }
 
+        /// <summary>
+        /// If the user has table and blob auditing policies, the change will be applied for both.  
+        /// </summary>
+        /// <param name="model">A model object</param>
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
         {
             base.PersistChanges(model);

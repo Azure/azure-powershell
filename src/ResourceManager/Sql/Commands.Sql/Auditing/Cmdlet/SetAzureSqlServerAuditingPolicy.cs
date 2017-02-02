@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.TableIdentifier = TableIdentifier;
             }
 
-            if (AuditActionGroup != null)
+            if (AuditActionGroup != null) //AuditActionGroup is relevant only for blob auditing
             {
                 throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
             }
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (EventType != null) // the user provided event types to audit
+            if (EventType != null) // EventType is relevant only for table auditing
             {
                 throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
             }
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.IgnoreStorage = true;
             Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
             swapAuditType();
-            var otherAuditingTypePolicyModel = base.GetEntity();
+            var otherAuditingTypePolicyModel = GetEntity();
             if (otherAuditingTypePolicyModel != null)
             {
                 otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;

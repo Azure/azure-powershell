@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (AuditType == AuditType.NotSet)
             {
                 AuditType = AuditType.Blob;
-                var blobPolicy = GetEntityUtility();
+                var blobPolicy = GetEntityHelper();
 
                 // If the user has blob auditing on on the resource we return that policy no matter what is his table auditing policy
                 if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
                 // The user don't have blob auditing policy on
                 AuditType = AuditType.Table;
-                var tablePolicy = GetEntityUtility();
+                var tablePolicy = GetEntityHelper();
                 return tablePolicy;
             }
 
             // The user has selected specific audit type
-            var policy = GetEntityUtility();
+            var policy = GetEntityHelper();
             return policy;
         }
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return null;
         }
 
-        private AuditingPolicyModel GetEntityUtility()
+        private AuditingPolicyModel GetEntityHelper()
         {
             if (AuditType == AuditType.Table)
             {

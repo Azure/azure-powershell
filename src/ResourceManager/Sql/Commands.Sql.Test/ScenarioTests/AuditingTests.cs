@@ -258,9 +258,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAuditingWithAuditActionsAndAuditActionGroups()
+        public void TestTableAuditingWithAuditActionsAndAuditActionGroups()
         {
-            RunPowerShellTest("Test-AuditingWithAuditActionsAndAuditActionGroups");
+            RunPowerShellTest("Test-TableAuditingWithAuditActionsAndAuditActionGroups");
         }
     }
 }

@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The AuditEvent parameter is only supported for AuditType &apos;Table&apos;. Use the AuditActionGroups or AuditAction parameter instead..
+        ///   Looks up a localized string similar to The AuditEvent parameter is only supported for AuditType &apos;Table&apos;. Use the AuditActionGroup or AuditAction parameter instead..
         /// </summary>
         internal static string EventTypeConfiguringIrrelevantForBlobAuditingPolicy {
             get {
