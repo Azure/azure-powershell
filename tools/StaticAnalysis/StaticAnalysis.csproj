@@ -114,6 +114,9 @@
     <None Include="Exceptions\AssemblyVersionConflict.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Exceptions\BreakingChangeIssues.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Exceptions\ExtraAssemblies.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

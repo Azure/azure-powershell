@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
+        /// </summary>
+        internal static string IncorrectOutputTypeWarning {
+            get {
+                return ResourceManager.GetString("IncorrectOutputTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid catalog path: &apos;{0}&apos;. A catalog path must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName.
         /// </summary>
         internal static string InvalidCatalogPath {

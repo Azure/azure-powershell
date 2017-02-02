@@ -31,7 +31,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.Id = response.Id;
                 this.Metadata = new PSSearchMetadata(response.Metadata);
                 this.Value = response.Value;
-                this.Error = new PSSearchError(response.Error);
+
+                if (response.Error != null)
+                {
+                    this.Error = new PSSearchError(response.Error);
+                }
             }
         }
         public string Id { get; set; }

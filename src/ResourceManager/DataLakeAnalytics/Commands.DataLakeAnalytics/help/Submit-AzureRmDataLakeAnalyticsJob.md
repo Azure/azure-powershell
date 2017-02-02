@@ -12,20 +12,18 @@ Submits a job.
 
 ## SYNTAX
 
-### Submit SQL-IP Job
-```
-Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
-```
-
 ### Submit job with script path for SQL-IP
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [[-Priority] <Int32>] [<CommonParameters>]
+```
+
+### Submit SQL-IP Job
+```
+Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Priority] <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,51 +50,6 @@ Aliases: AccountName
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the job name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ScriptPath
-Specifies the local file path to the script to run.
-
-```yaml
-Type: String
-Parameter Sets: Submit job with script path for SQL-IP
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Runtime
-Specifies the runtime version of the job.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -152,6 +105,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the job name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Priority
 Specifies the priority of the job.
 If not specified, the priority is 1000.
@@ -164,6 +132,21 @@ Aliases:
 
 Required: False
 Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Runtime
+Specifies the runtime version of the job.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -184,42 +167,18 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ScriptPath
+Specifies the local file path to the script to run.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: Submit job with script path for SQL-IP
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -229,6 +188,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### JobInformation
+The initial job details for the submitted job.
 
 ## NOTES
 

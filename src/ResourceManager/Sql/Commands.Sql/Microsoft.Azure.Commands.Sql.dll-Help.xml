@@ -11971,10 +11971,10 @@ Tags              :</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Create a new Azure SQL Database server</maml:title>
-<dev:code>PS C:\&gt;New-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "Server01" -ServerVersion "12.0"
+<dev:code>PS C:\&gt;New-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential)
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
-Location                 : Australia East
+Location                 : Central US
 SqlAdministratorLogin    : adminLogin
 SqlAdministratorPassword : 
 ServerVersion            : 12.0

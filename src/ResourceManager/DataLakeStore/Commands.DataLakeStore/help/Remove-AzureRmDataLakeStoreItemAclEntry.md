@@ -15,15 +15,13 @@ Removes an entry from the ACL of a file or folder in Data Lake Store.
 ### Remove ACL Entries using ACL object (Default)
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Remove specific ACE
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,67 +53,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Path
-Specifies the Data Lake Store path of the item from which to remove an ACE, starting with the root directory (/).
-
-```yaml
-Type: DataLakeStorePathInstance
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Acl
-Specifies the ACL object that contains the entries to be removed.
-
-```yaml
-Type: DataLakeStoreItemAce[]
-Parameter Sets: Remove ACL Entries using ACL object
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AceType
 Specifies the type of ACE to remove.
 The acceptable values for this parameter are:
@@ -137,18 +74,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the object ID of the AzureActive Directory user, group, or service principal for which to remove an ACE.
+### -Acl
+Specifies the ACL object that contains the entries to be removed.
 
 ```yaml
-Type: Guid
-Parameter Sets: Remove specific ACE
+Type: DataLakeStoreItemAce[]
+Parameter Sets: Remove ACL Entries using ACL object
 Aliases: 
 
-Required: False
-Position: 3
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -167,41 +104,76 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Id
+Specifies the object ID of the AzureActive Directory user, group, or service principal for which to remove an ACE.
 
 ```yaml
-Type: ActionPreference
+Type: Guid
+Parameter Sets: Remove specific ACE
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Indicates a boolean response should be returned indicating the result of the delete operation.```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Path
+Specifies the Data Lake Store path of the item from which to remove an ACE, starting with the root directory (/).
+
+```yaml
+Type: DataLakeStorePathInstance
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: iv
+Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,6 +184,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### bool
+If PassThru is specified, returns true upon successful completion.
 
 ## NOTES
 
