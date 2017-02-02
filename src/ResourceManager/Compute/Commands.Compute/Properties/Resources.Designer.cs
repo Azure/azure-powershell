@@ -1201,5 +1201,14 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WMF Version {0} is not supported anymore. .
+        /// </summary>
+        public static string WMFVersionNotSupported {
+            get {
+                return ResourceManager.GetString("WMFVersionNotSupported", resourceCulture);
+            }
+        }
     }
 }
