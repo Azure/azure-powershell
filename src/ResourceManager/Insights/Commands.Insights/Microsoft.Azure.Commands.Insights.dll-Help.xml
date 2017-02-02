@@ -7002,21 +7002,21 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DisableStorage</maml:name>
           <maml:description>
             <maml:para>Disable storage in the diagnostic settings.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DisableServiceBus</maml:name>
           <maml:description>
             <maml:para>Disable service bus in the diagnostic settings.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DisableWorkspace</maml:name>
           <maml:description>
             <maml:para>Disable workspace in the diagnostic settings.</maml:para>
