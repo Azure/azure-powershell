@@ -138,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         ///
         /// The DSC Azure Extension depends on DSC features that are only available in 
         /// the WMF updates. This parameter specifies which version of the update to 
-        /// install on the VM. The possible values are "4.0","5.0" ,"5.1PP" and "latest".  
+        /// install on the VM. The possible values are "4.0","5.0" ,"5.1" and "latest".  
         /// 
         /// A value of "4.0" will install WMF 4.0 Update packages 
         /// (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 
@@ -149,15 +149,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// A value of "5.0" will install the latest release of WMF 5.0 
         /// (https://www.microsoft.com/en-us/download/details.aspx?id=50395).
         /// 
-        /// A value of "5.1PP" will install the WMF 5.1 preview
-        /// (https://www.microsoft.com/en-us/download/details.aspx?id=53347).
+        /// A value of "5.1" will install the WMF 5.1
+        /// (https://www.microsoft.com/en-us/download/details.aspx?id=54616).
         /// 
-        /// A value of "latest" will install the latest WMF, currently WMF 5.0
+        /// A value of "latest" will install the latest WMF, currently WMF 5.1
         /// 
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1PP", "latest" })]
+        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1", "5.1PP", "latest" })]
         public string WmfVersion { get; set; }
 
         /// <summary>
@@ -225,6 +225,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             //
             // Validate parameters
             //
+            if ("5.1PP".Equals(WmfVersion))
+            {
+                this.ThrowInvalidArgumentError(Resources.WMFVersionNotSupported, WmfVersion);
+            }
+
             if (string.IsNullOrEmpty(ConfigurationArchive))
             {
                 if (ConfigurationName != null || ConfigurationArgument != null
