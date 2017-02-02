@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-Create a new ServiceBus NameSpace.
+Create a new Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusNamespace ** cmdlet create a new ServiceBus NameSpace, Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The ** New-AzureRmServiceBusNamespace ** cmdlet create a new ServiceBus NameSpac
 PS C:\> New-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
 ```
 
-Creates a new Servicebus namespace within the provided ResourceGroup.
+Creates a new Service Bus namespace within the specified resource group.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-ServiceBus Namespace Location.
+The Service Bus namespace location.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-ServiceBus Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The resource group name.
 
 ```yaml
 Type: String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Namespace Sku Name.
+The Service Bus namespace SKU name.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tags.
+Hashtable that represents resource tags.
 
 ```yaml
 Type: Hashtable
@@ -122,8 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter

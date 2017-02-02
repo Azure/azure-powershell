@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-Gets the Description of a specified AuthorizationRule for a given namespace. 
+Gets a description of the specified authorization rule for a given namespace. 
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet gets the description of specified authorizationrule of the given namespace.
+The **Get-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet gets the description of the specified authorization rule in the given namespace.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Get-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet gets the descri
 PS C:\> Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1
 ```
 
-Returns the specified AuthorizationRule description for a given namespace.
+Returns the specified authorization rule description for a specified namespace.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-ServiceBus Namespace AuthorizationRule Name.
+The Service Bus namespace authorization rule name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-ServiceBus Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

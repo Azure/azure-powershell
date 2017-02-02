@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusQueueAuthorizationRule
 
 ## SYNOPSIS
-updates given AuthorizationRule description for the provided ServiceBus Queue
+Updates the specified authorization rule description for the given Service Bus queue.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzureRmServiceBusQueueAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-The ** Set-AzureRmServiceBusQueueAuthorizationRule ** cmdlet updates new description for specified AuthorizationRule of the provided ServiceBus Queue.
+The **Set-AzureRmServiceBusQueueAuthorizationRule** cmdlet updates the description for the specified authorization rule of the given Service Bus queue.
 
 ## EXAMPLES
 
@@ -31,12 +31,12 @@ PS C:\> $authRuleObj.Rights.Add("Manage")
 PS C:\> Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthRuleObj $authRuleObj
 ```
 
-Adding 'Manage' to Accessright of AuthorizationRule 'SBAuthoRule1' of Queue 'SB-Queue_exampl1'
+Adds **Manage** to the access rights of the authorization rule `SBAuthoRule1` of the queue `SB-Queue_exampl1`.
 
 ## PARAMETERS
 
 ### -AuthRuleObj
-ServiceBus Queue AuthorizationRule Object.
+The Service Bus queue authorization rule object.
 
 ```yaml
 Type: SharedAccessAuthorizationRuleAttributes
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-AuthorizationRule Name - Required if 'AuthruleObj' not specified.
+The authorization rule name. Required if **-AuthruleObj** is not specified.
 
 ```yaml
 Type: String
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The Service Bus queue name.
 
 ```yaml
 Type: String
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -126,9 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Required if 'AuthruleObj' not specified.
-Rights - e.g. 
-@("Listen","Send","Manage")
+The rights; for example 
+@("Listen","Send","Manage"). Required if 'AuthruleObj' not specified.
 
 ```yaml
 Type: String[]

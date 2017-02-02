@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-Returns the description of specified authorization rule description for the given topic.
+Returns the description of the specified authorization rule description for the given topic.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusTopicAuthorizationRule ** cmdlet gets the description of specified authorizationrule of the given ServiceBus Topic.
+The **Get-AzureRmServiceBusTopicAuthorizationRule** cmdlet gets the description of the specified authorization rule on the given Service Bus topic.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Get-AzureRmServiceBusTopicAuthorizationRule ** cmdlet gets the descriptio
 PS C:\> Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_example1 -AuthorizationRuleName SBTopicAuthoRule1
 ```
 
-Returns the description of specified authorization rule description for the given topic.
+Returns the description of the specified authorization rule for the given topic.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Topic AuthorizationRule Name.
+The topic authorization rule name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-Creates a new AuthorizationRule for given ServiceBus Namespace
+Creates a new authorization rule for the specified Service Bus namespace
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet create a new AuthorizationRule for the provided ServiceBus NameSpace.
+The **New-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet creates a new authorization rule for the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -27,12 +27,12 @@ The ** New-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet create a new Au
 PS C:\> New-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1 -Rights @("Listen","Send")
 ```
 
-Creates 'AuthoRule1' with 'Listen and Send' rights for Namespace 'SB-Example1'
+Creates `AuthoRule1` with **Listen** and **Send** rights for the namespace `SB-Example1`.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-AuthorizationRule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-ServiceBus Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights, e.g. 
+The Rights; for example, 
 @("Listen","Send","Manage")
 
 ```yaml

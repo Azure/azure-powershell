@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-Removes the AuthorizationRule of Servicebus Namespace from the provided ResourceGroup
+Removes the authorization rule of a Service Bus namespace from the specified resource group.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-N
 ```
 
 ## DESCRIPTION
-The ** Remove-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet removes the AuthorizationRule of ServiceBus Namespace for the provided ResourceGroup
+The **Remove-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet removes the authorization rule of a Service Bus namespace for the specified resource group.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Remove-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet removes the 
 PS C:\> Remove-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1
 ```
 
-Removes the AuthorizationRule 'SBAuthoRule1' of Namespace 'SB-Example1' from the provided ResourceGroup
+Removes the authorization rule `SBAuthoRule1` of namespace `SB-Example1` from the specified resource group.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Namespace AuthorizationRule Name.
+The namespace authorization rule name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
