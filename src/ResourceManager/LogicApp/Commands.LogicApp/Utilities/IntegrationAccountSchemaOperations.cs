@@ -100,26 +100,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <returns>List of integration account schemas.</returns>
-        public IList<IntegrationAccountSchema> ListIntegrationAccountSchemas(string resourceGroupName, string integrationAccountName)
+        public IPage<IntegrationAccountSchema> ListIntegrationAccountSchemas(string resourceGroupName, string integrationAccountName)
         {
-            var compositeList = new List<IntegrationAccountSchema>();
-            var firstPage = this.LogicManagementClient.IntegrationAccountSchemas.List(resourceGroupName, integrationAccountName);
-
-            if (firstPage != null)
-            {
-                compositeList.AddRange(firstPage);
-            }
-
-            if (!string.IsNullOrEmpty(firstPage.NextPageLink))
-            {
-                var page = firstPage;
-                while (!string.IsNullOrEmpty(page.NextPageLink))
-                {
-                    page = this.LogicManagementClient.IntegrationAccountSchemas.ListNext(page.NextPageLink);
-                    compositeList.AddRange(page);
-                }
-            }
-            return compositeList;
+            return this.LogicManagementClient.IntegrationAccountSchemas.List(resourceGroupName, integrationAccountName,"$filter=schemaType eq 'Xml'&$top=1000");
         }
 
         /// <summary>

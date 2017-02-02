@@ -100,26 +100,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <returns>List of integration account partners.</returns>
-        public IList<IntegrationAccountPartner> ListIntegrationAccountPartners(string resourceGroupName, string integrationAccountName)
+        public IPage<IntegrationAccountPartner> ListIntegrationAccountPartners(string resourceGroupName, string integrationAccountName)
         {
-            var compositeList = new List<IntegrationAccountPartner>();
-            var firstPage = this.LogicManagementClient.IntegrationAccountPartners.List(resourceGroupName, integrationAccountName);
-
-            if (firstPage != null)
-            {
-                compositeList.AddRange(firstPage);
-            }
-
-            if (!string.IsNullOrEmpty(firstPage.NextPageLink))
-            {
-                var page = firstPage;
-                while (!string.IsNullOrEmpty(page.NextPageLink))
-                {
-                    page = this.LogicManagementClient.IntegrationAccountPartners.ListNext(page.NextPageLink);
-                    compositeList.AddRange(page);
-                }
-            }
-            return compositeList;
+            return this.LogicManagementClient.IntegrationAccountPartners.List(resourceGroupName, integrationAccountName, "$filter=partnerType eq 'B2B'&$top=1000");
         }
 
         /// <summary>
