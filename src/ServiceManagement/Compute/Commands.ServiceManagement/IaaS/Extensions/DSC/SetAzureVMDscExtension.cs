@@ -197,6 +197,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
             publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
 
+            if ("5.1PP".Equals(WmfVersion))
+            {
+                WriteWarning(string.Format(
+                    CultureInfo.CurrentUICulture,
+                    Resources.WMFVersionNotSupported,
+                    WmfVersion));
+
+                return;
+            }
+
             ValidateParameters();
 
             CreateConfiguration();
@@ -225,11 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             //
             // Validate parameters
             //
-            if ("5.1PP".Equals(WmfVersion))
-            {
-                this.ThrowInvalidArgumentError(Resources.WMFVersionNotSupported, WmfVersion);
-            }
-
+            
             if (string.IsNullOrEmpty(ConfigurationArchive))
             {
                 if (ConfigurationName != null || ConfigurationArgument != null
