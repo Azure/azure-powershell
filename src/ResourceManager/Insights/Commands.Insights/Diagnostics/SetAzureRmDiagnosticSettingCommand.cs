@@ -43,21 +43,21 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the switch for storage parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable storage")]
+        [Parameter(Mandatory = false, HelpMessage = "Disable storage")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisableStorage { get; set; }
 
         /// <summary>
         /// Gets or sets the switch for eventhub parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable service bus")]
+        [Parameter(Mandatory = false, HelpMessage = "Disable service bus")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisableServiceBus { get; set; }
 
         /// <summary>
         /// Gets or sets the switch for workspace parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable workspace")]
+        [Parameter(Mandatory = false, HelpMessage = "Disable workspace")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisableWorkspace { get; set; }
 

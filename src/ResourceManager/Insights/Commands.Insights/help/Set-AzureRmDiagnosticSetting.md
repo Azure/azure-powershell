@@ -89,6 +89,51 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableStorage
+Disable storage in the diagnostic settings.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableServiceBus
+Disable service bus in the diagnostic settings.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableWorkspace
+Disable workspace in the diagnostic settings.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageAccountId
 Specifies the ID of the Storage account in which to save the data.
 
