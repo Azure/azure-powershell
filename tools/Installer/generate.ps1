@@ -25,6 +25,14 @@ if ([string]::IsNullOrEmpty($buildConfig))
 	$buildConfig = 'Release'
 }
 
+#if((Test-Path -Path $env:AzurePSRoot) -eq $false)
+if($env:AzurePSRoot -eq $null)
+{
+    $env:AzurePSRoot="..\..\"
+}
+
+Write-Host $env:AzurePSRoot
+
 Write-Verbose "Build configuration is set to $buildConfig"
 
 $output = Join-Path $env:AzurePSRoot "src\Package\$buildConfig"

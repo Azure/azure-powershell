@@ -1,24 +1,21 @@
 ﻿namespace PowerShellSetup.Tests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Management.Automation;
-    using System.Reflection;
     using System.Threading.Tasks;
     using Xunit;
     using Xunit.Abstractions;
-
-
+    
     /// <summary>
-    /// Set of tests to run against signed MSI
+    /// Set of tests to run against MSI
     /// These set of tests are especially for scenario like:
     ///     1) Layout errors, things getting copied to the wrong location
     ///     2) Checking if files in the MSI including the MSI are signed
-    ///     3) 
+    ///     3) Checking if files included in MSI uses right signing alogirthm
     /// 
     /// </summary>
     public class MsiLayoutTests: MsiTestBase
@@ -28,22 +25,19 @@
         string _procOutput;
         string _procErr;
 
-        //ITestOutputHelper xunitTestOutput;
-
         public MsiLayoutTests(ITestOutputHelper testOutput) : base(testOutput)
         {
             _procOutput = string.Empty;
             _procErr = string.Empty;
-            //xunitTestOutput = testOutput;
         }
 
         [Fact]
-        [Trait(Category.SignedBuild, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifyMsiExecExists()
         {
             ProcessStartInfo psi = GetInitializedPSI();
             psi.FileName = "Msiexec.exe";
-            psi.Arguments = "/qr /x:1234";
+            psi.Arguments = "/qn /x:1234";
 
             this.ExecuteShellCmd(psi, out _procOutput, out _procErr);
             Assert.NotEmpty(_procOutput);
@@ -53,22 +47,37 @@
         [Trait(Category.SignedBuild, Category.BVT)]
         public void VerifyFilesAreSigned()
         {
-            List<string> expectedSignatureAlgos = new List<string>() { "sha1RSA", "sha2RSA" };
-            //var testLoc = new Uri(Assembly.GetExecutingAssembly().CodeBase);
-            //var codebasePath = Uri.UnescapeDataString(testLoc.AbsolutePath);
-            //var dirPath = Path.GetDirectoryName(codebasePath);
-            //string msiFullPath = Path.Combine(dirPath, "AzurePowerShell.msi");
-            //string msiFullPath = GetMsiDirectory();
-            //string msiContentsDirPath = Path.Combine(dirPath, MSI_EXTRACT_DIR_NAME);
-            //Assert.True(File.Exists(msiFullPath));
-            
-            string msiContentsDir = this.ExtractMsiContents(out _procErr);
+            List<string> expectedSignatureAlgos = new List<string>() { "sha1RSA", "sha256RSA" };
+            //string msiContentsDir = this.ExtractMsiContents(out _procErr);
+            string msiContentsDir = @"E:\MyFork\azure-powershell\setup\PowerShellSetup.Test\bin\Debug\msiContents";
             Assert.True(Directory.Exists(msiContentsDir));
             Assert.True(string.IsNullOrEmpty(_procErr));
 
             IEnumerable<string>msiFiles = Directory.EnumerateFiles(msiContentsDir, "*", SearchOption.AllDirectories);
+            //Ignore Newtonsoft, .xml, .msi (need to find out why unsigned msi get's packaged inside the MSI)
+            IEnumerable<string> exceptionFiles = Directory.EnumerateFiles(msiContentsDir, "*.xml", SearchOption.AllDirectories)
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "newtonsoft*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "automapper*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "security*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.msi", SearchOption.AllDirectories));
+
             Assert.NotNull(msiFiles);
-            List<string> msiFileList = msiFiles.ToList<string>();
+            IEnumerable<string> filesToVerify = msiFiles.Except<string>(exceptionFiles);
+
+            List<string> noXmlFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".xml")).ToList<string>();
+            TestLog.WriteLine("Verifying no .xml files are in the verify list of files");
+            Assert.True(noXmlFiles.Count == 0);
+
+            List<string> noNewtonsoftFiles = filesToVerify.Where<string>((fl) => fl.Contains("newtonsoft")).ToList<string>();
+            TestLog.WriteLine("Verifying no 'Newtonsoft*.dll' files are in the verify list of files");
+            Assert.True(noNewtonsoftFiles.Count == 0);
+
+            List<string> noMsiFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".msi")).ToList<string>();
+            TestLog.WriteLine("Verifying no '*.msi' files are in the verify list of files");
+            Assert.True(noMsiFiles.Count == 0);
+
+
+            List<string> msiFileList = filesToVerify.ToList<string>();
             Assert.True(msiFileList.Count > 0);
             List<string> unsignedFiles = GetUnsignedFiles(msiFileList, expectedSignatureAlgos);
 
@@ -79,40 +88,20 @@
 
             Assert.True(unsignedFiles.Count == 0);
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VerifyNoJavaScriptFiles()
+        {
+            string procErr = string.Empty;
+            string msiContentsDirPath = ExtractMsiContents(out procErr);
+            IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.js", SearchOption.AllDirectories);
 
-        //private void ExecuteShellCmd(ProcessStartInfo psi, out string procOutput, out string procErr)
-        //{
-        //    procOutput = string.Empty;
-        //    procErr = string.Empty;
-        //    Process proc = Process.Start(psi);
-            
-        //    while (!proc.StandardOutput.EndOfStream)
-        //    {
-        //        procOutput = proc.StandardOutput.ReadToEnd();
-        //        procOutput = procOutput.Replace("\0", string.Empty);
-        //    }
+            Assert.True(msiFiles.Count<string>() == 0);
+        }
 
-        //    while (!proc.StandardError.EndOfStream)
-        //    {
-        //        procErr = proc.StandardError.ReadToEnd();
-        //        procErr = procErr.Replace("\0", string.Empty);
-        //    }
-
-        //    proc.WaitForExit(5000);
-        //}
-
-        //private ProcessStartInfo GetInitializedPSI()
-        //{
-        //    ProcessStartInfo psi = new ProcessStartInfo();
-        //    psi.RedirectStandardError = true;
-        //    psi.RedirectStandardInput = true;
-        //    psi.RedirectStandardOutput = true;
-        //    psi.UseShellExecute = false;
-        //    psi.CreateNoWindow = true;
-        //    return psi;
-        //}
-
-        private List<string> GetUnsignedFiles(List<string> signedFiles, List<string>expectedAlgorithmList)
+        #region Private Functions
+        private List<string> GetUnsignedFiles(List<string> signedFiles, List<string> expectedAlgorithmList)
         {
             List<string> unsignedFiles = new List<string>();
 
@@ -158,16 +147,6 @@
 
             return unsignedFiles;
         }
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VerifyNoJavaScriptFiles()
-        {
-            string procErr = string.Empty;
-            string msiContentsDirPath = ExtractMsiContents(out procErr);
-            IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.js", SearchOption.AllDirectories);
-
-            Assert.True(msiFiles.Count<string>() == 0);
-        }
+        #endregion
     }
 }

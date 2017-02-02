@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit.Abstractions;
-
-namespace PowerShellSetup.Tests
+﻿namespace PowerShellSetup.Tests
 {
+    using System;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Reflection;
+    using Xunit.Abstractions;
+
     public class MsiTestBase
     {
         const string MSI_NAME = "AzurePowerShell.msi";
