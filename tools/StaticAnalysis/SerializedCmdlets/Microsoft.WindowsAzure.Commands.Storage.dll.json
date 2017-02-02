@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageTable",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloudTable": "Microsoft.WindowsAzure.Storage.Table.CloudTable",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -67,7 +67,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -121,7 +121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -177,7 +177,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -213,7 +213,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -458,7 +458,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -706,7 +706,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -979,7 +979,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1252,7 +1252,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1389,7 +1389,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1527,7 +1527,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1570,7 +1570,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageTable",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloudTable": "Microsoft.WindowsAzure.Storage.Table.CloudTable",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1609,7 +1609,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1663,7 +1663,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1768,7 +1768,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1862,7 +1862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -1967,7 +1967,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2061,7 +2061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2156,7 +2156,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2230,7 +2230,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2395,7 +2395,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2573,7 +2573,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2616,7 +2616,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageQueue",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApproximateMessageCount": "System.Nullable`1[System.Int32]",
               "CloudQueue": "Microsoft.WindowsAzure.Storage.Queue.CloudQueue",
@@ -2671,7 +2671,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2725,7 +2725,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2781,7 +2781,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2817,7 +2817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2860,7 +2860,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageQueue",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApproximateMessageCount": "System.Nullable`1[System.Int32]",
               "CloudQueue": "Microsoft.WindowsAzure.Storage.Queue.CloudQueue",
@@ -2901,7 +2901,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2955,7 +2955,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3060,7 +3060,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3154,7 +3154,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3249,7 +3249,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3323,7 +3323,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3504,7 +3504,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3664,7 +3664,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3849,7 +3849,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4034,7 +4034,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4171,7 +4171,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4309,7 +4309,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4414,7 +4414,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4508,7 +4508,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4673,7 +4673,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4851,7 +4851,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -4969,7 +4969,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -5068,7 +5068,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -5683,7 +5683,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -5822,7 +5822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -6774,7 +6774,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -6893,7 +6893,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -7267,7 +7267,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -7366,7 +7366,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -7488,7 +7488,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -7720,7 +7720,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -7822,7 +7822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -8117,7 +8117,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -8216,7 +8216,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -8849,7 +8849,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -8940,7 +8940,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -9142,7 +9142,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -9745,7 +9745,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -9915,7 +9915,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -10182,7 +10182,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -10342,7 +10342,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -10527,7 +10527,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -10712,7 +10712,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -10849,7 +10849,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -10951,7 +10951,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -11388,7 +11388,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -11507,7 +11507,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -12120,7 +12120,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -12239,7 +12239,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -12926,7 +12926,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -13025,7 +13025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -13485,7 +13485,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -13587,7 +13587,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -13966,7 +13966,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -14065,7 +14065,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -14844,7 +14844,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -14946,7 +14946,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -15406,7 +15406,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -15508,7 +15508,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -16165,7 +16165,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -16190,7 +16190,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -16365,7 +16365,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -16396,7 +16396,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -16605,7 +16605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -16805,7 +16805,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -17170,7 +17170,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -17201,7 +17201,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -17410,7 +17410,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -17604,7 +17604,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -17941,7 +17941,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -18389,7 +18389,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -18508,7 +18508,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19032,7 +19032,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19209,7 +19209,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19252,7 +19252,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel",
             "Name": "PSCorsRule",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AllowedHeaders": "System.String[]",
               "AllowedMethods": "System.String[]",
@@ -19275,7 +19275,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "StorageServiceType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19289,7 +19289,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel",
             "Name": "PSCorsRule[]",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[], Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[], Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule",
             "GenericTypeArguments": []
@@ -19317,7 +19317,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19396,7 +19396,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "StorageServiceType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -19416,7 +19416,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel",
                   "Name": "PSCorsRule[]",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[], Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[], Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule",
                   "GenericTypeArguments": []
@@ -19456,7 +19456,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19565,7 +19565,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel",
             "Name": "PSCorsRule",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AllowedHeaders": "System.String[]",
               "AllowedMethods": "System.String[]",
@@ -19588,7 +19588,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "StorageServiceType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19602,7 +19602,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19681,7 +19681,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "StorageServiceType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -19701,7 +19701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19831,7 +19831,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "StorageServiceType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19845,7 +19845,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19876,7 +19876,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "StorageServiceType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -19896,7 +19896,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -19960,7 +19960,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "StorageServiceType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19974,7 +19974,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "ServiceMetricsType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19988,7 +19988,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20019,7 +20019,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "StorageServiceType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20039,7 +20039,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "ServiceMetricsType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20059,7 +20059,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20105,7 +20105,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "StorageServiceType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20119,7 +20119,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20198,7 +20198,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "StorageServiceType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20218,7 +20218,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20348,7 +20348,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "StorageServiceType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20422,7 +20422,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20453,7 +20453,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "StorageServiceType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20557,7 +20557,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20621,7 +20621,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "StorageServiceType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20635,7 +20635,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
             "Name": "ServiceMetricsType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20711,7 +20711,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20742,7 +20742,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "StorageServiceType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20762,7 +20762,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Common",
                   "Name": "ServiceMetricsType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20868,7 +20868,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -20911,7 +20911,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -21648,7 +21648,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloudBlobContainer": "Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -21720,7 +21720,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -21864,7 +21864,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -22113,7 +22113,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -22290,7 +22290,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -22499,7 +22499,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -22701,7 +22701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -22863,7 +22863,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -22972,7 +22972,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageBlob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobType": "Microsoft.WindowsAzure.Storage.Blob.BlobType",
               "ContentType": "System.String",
@@ -23156,7 +23156,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -23381,7 +23381,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -23636,7 +23636,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -23882,7 +23882,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -24068,7 +24068,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -24177,7 +24177,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageBlob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobType": "Microsoft.WindowsAzure.Storage.Blob.BlobType",
               "ContentType": "System.String",
@@ -24282,7 +24282,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -24449,7 +24449,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -24639,7 +24639,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -24809,7 +24809,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -24918,7 +24918,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageBlob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobType": "Microsoft.WindowsAzure.Storage.Blob.BlobType",
               "ContentType": "System.String",
@@ -25070,7 +25070,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -25249,7 +25249,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -25460,7 +25460,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -25664,7 +25664,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -25828,7 +25828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -25937,7 +25937,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageBlob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobType": "Microsoft.WindowsAzure.Storage.Blob.BlobType",
               "ContentType": "System.String",
@@ -26059,7 +26059,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -26196,7 +26196,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -26365,7 +26365,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -26527,7 +26527,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -26649,7 +26649,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -26758,7 +26758,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloudBlobContainer": "Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -26847,7 +26847,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -26994,7 +26994,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -27161,7 +27161,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -27308,7 +27308,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -27469,7 +27469,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -27591,7 +27591,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -27881,7 +27881,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -28076,7 +28076,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -28276,7 +28276,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -28478,7 +28478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -28680,7 +28680,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -28822,7 +28822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -28865,7 +28865,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloudBlobContainer": "Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -28925,7 +28925,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -29051,7 +29051,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -29298,7 +29298,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -29458,7 +29458,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -29643,7 +29643,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -29828,7 +29828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -29965,7 +29965,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -30151,7 +30151,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -30322,7 +30322,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -30464,7 +30464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -30635,7 +30635,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -30777,7 +30777,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -31008,7 +31008,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -31234,7 +31234,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -31343,7 +31343,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageBlob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobType": "Microsoft.WindowsAzure.Storage.Blob.BlobType",
               "ContentType": "System.String",
@@ -31629,7 +31629,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -31654,7 +31654,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -31829,7 +31829,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -31860,7 +31860,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32062,7 +32062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32093,7 +32093,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32304,7 +32304,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32335,7 +32335,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32539,7 +32539,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32570,7 +32570,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32774,7 +32774,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -32805,7 +32805,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33016,7 +33016,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33047,7 +33047,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33260,7 +33260,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33291,7 +33291,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33487,7 +33487,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33518,7 +33518,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33712,7 +33712,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33743,7 +33743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33929,7 +33929,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -33960,7 +33960,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -34082,7 +34082,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -34211,7 +34211,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel",
             "Name": "AzureStorageBlob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobType": "Microsoft.WindowsAzure.Storage.Blob.BlobType",
               "ContentType": "System.String",
@@ -34347,7 +34347,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -34504,7 +34504,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -34693,7 +34693,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -34875,7 +34875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -35017,7 +35017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -35470,7 +35470,7 @@
     "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext": {
       "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
       "Name": "AzureStorageContext",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BlobEndPoint": "System.String",
         "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -35951,7 +35951,7 @@
     "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule": {
       "Namespace": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel",
       "Name": "PSCorsRule",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule, Microsoft.WindowsAzure.Commands.Storage, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule, Microsoft.WindowsAzure.Commands.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AllowedHeaders": "System.String[]",
         "AllowedMethods": "System.String[]",

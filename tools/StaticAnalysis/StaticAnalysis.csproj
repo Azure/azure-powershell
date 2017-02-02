@@ -134,6 +134,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.AnalysisServices.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -225,6 +228,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ResourceManager.Automation.dll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Resources.dll.json">
