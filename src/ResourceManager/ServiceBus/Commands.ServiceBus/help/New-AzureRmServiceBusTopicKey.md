@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusTopicKey
 
 ## SYNOPSIS
-Regenerates the primary or secondary connection strings for the ServiceBus Topic.
+Regenerates the primary or secondary connection strings for the Service Bus topic.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzureRmServiceBusTopicKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusTopicKey ** cmdlet RegenerateKeys a new  primary or secondary connection strings for the provided ServiceBus Topic and AuthorizationRule.
+The **New-AzureRmServiceBusTopicKey** cmdlet regenerates a new  primary or secondary connection string for the specified Service Bus topic and authorization rule.
 
 ## EXAMPLES
 
@@ -26,20 +26,20 @@ The ** New-AzureRmServiceBusTopicKey ** cmdlet RegenerateKeys a new  primary or 
 PS C:\> New-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -RegenerateKeys PrimaryKey
 ```
 
-Regenerates the primary connection strings for the namespace.
+Regenerates the primary connection string for the namespace.
 
 ### Example 2
 ```
 PS C:\> New-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -RegenerateKeys SecondaryKey
 ```
 
-Regenerates the Secondary connection strings for the namespace.
+Regenerates the secondary connection string for the namespace.
 
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Authorization Rule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegenerateKeys
-Regenerate Keys - PrimaryKey/SecondaryKey.
+Specifies whether to regenerate the primary or secondary keys.
 
 ```yaml
 Type: String
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-Creates a new AuthorizationRule for given ServiceBus Topic
+Creates a new authorization rule for the specified Service Bus topic.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusTopicAuthorizationRule ** cmdlet create a new AuthorizationRule for the provided ServiceBus Topic.
+The **New-AzureRmServiceBusTopicAuthorizationRule** cmdlet creates a new authorization rule for the specified Service Bus topic.
 
 ## EXAMPLES
 
@@ -27,12 +27,12 @@ The ** New-AzureRmServiceBusTopicAuthorizationRule ** cmdlet create a new Author
 PS C:\> New-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -Rights @("Listen","Send")
 ```
 
-Creates 'SBTopicAuthoRule1' with 'Listen and Send' rights for Topic 'SB-Topic_exampl1'
+Creates `SBTopicAuthoRule1` with **Listen and Send** rights for the topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-AuthorizationRule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights, e.g. 
+The rights; for example, 
 @("Listen","Send","Manage")
 
 ```yaml
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

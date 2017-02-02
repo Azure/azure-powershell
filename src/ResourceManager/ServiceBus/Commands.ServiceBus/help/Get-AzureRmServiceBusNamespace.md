@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-Gets a description for the specified ServiceBus namespace within the ResourceGroup
+Gets a description for the specified Service Bus namespace within the resource group.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Get-AzureRmServiceBusNamespace [[-ResourceGroup] <String>] [[-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusNamespace ** cmdlet gets a description for the specified ServiceBus namespace within the ResourceGroup
+The **Get-AzureRmServiceBusNamespace** cmdlet gets a description for the specified Service Bus namespace within the resource group.
 
 ## EXAMPLES
 
@@ -25,12 +25,12 @@ The ** Get-AzureRmServiceBusNamespace ** cmdlet gets a description for the speci
 PS C:\> Get-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
-Returns the Description of the specified ServiceBus Namespace
+Returns a description of the specified Service Bus namespace.
 
 ## PARAMETERS
 
 ### -NamespaceName
-Namespace Name.
+Namespace name.
 
 ```yaml
 Type: String
@@ -45,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

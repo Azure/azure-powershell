@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusSubscription
 
 ## SYNOPSIS
-Removes the Subscription of Topic from the provided Servicebus Namespace
+Removes the subscription to a topic from the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] 
 ```
 
 ## DESCRIPTION
-The ** Remove-AzureRmServiceBusSubscription ** cmdlet removes the Subscription of Topic from the given ServiceBus Namespace
+The **Remove-AzureRmServiceBusSubscription** cmdlet removes the subscription to a topic from the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The ** Remove-AzureRmServiceBusSubscription ** cmdlet removes the Subscription o
 PS C:\> Remove-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
-Removes the Subscription 'SB-TopicSubscription-Example1' of Topic 'SB-Topic_exampl1' for the provided ServiceBus Namespace 'SB-Example1'
+Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` for the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionName
-Subscription Name.
+The subscription name.
 
 ```yaml
 Type: String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

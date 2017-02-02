@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-updates a  description for ServiceBus Topic of the provided ServiceBus Namespace
+Updates the description of a Service Bus topic in the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Set-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-The ** Set-AzureRmServiceBusTopic ** cmdlet updates a new description for ServiceBus Topic of the provided ServiceBus Namespace.
+The **Set-AzureRmServiceBusTopic** cmdlet updates a description object for a Service Bus topic in the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -30,7 +30,7 @@ PS C:\> $topicObj.EnableExpress = $True
 PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj
 ```
 
-updates the given Topic with new description of provided Namespace. updates the EnableExpress = True. 
+Updates the specified topic with a new description in the specified namespace, and updates the **EnableExpress**  property to **true**. 
 
 ## PARAMETERS
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicObj
-ServiceBus Topic definition.
+The Service Bus topic definition.
 
 ```yaml
 Type: TopicAttributes

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusQueueKey
 
 ## SYNOPSIS
-Regenerates the primary or secondary connection strings for the ServiceBus Queue.
+Regenerates the primary or secondary connection strings for the Service Bus queue.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzureRmServiceBusQueueKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusQueueKey ** cmdlet RegenerateKeys a new  primary or secondary connection strings for the provided ServiceBus Queue and AuthorizationRule.
+The **New-AzureRmServiceBusQueueKey** cmdlet regenerates new primary or secondary connection strings for the specified Service Bus queue and authorization rule.
 
 ## EXAMPLES
 
@@ -26,19 +26,19 @@ The ** New-AzureRmServiceBusQueueKey ** cmdlet RegenerateKeys a new  primary or 
 PS C:\> New-AzureRmServiceBusQueueKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -RegenerateKeys PrimaryKey
 ```
 
-Regenerates the primary connection strings for the namespace.
+Regenerates the primary connection string for the namespace.
 
 ### Example 2
 ```
 PS C:\> New-AzureRmServiceBusQueueKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -RegenerateKeys SecondaryKey
 ```
 
-Regenerates the Secondary connection strings for the namespace.
+Regenerates the secondary connection string for the namespace.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Authorization Rule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-ServiceBus Name.
+The Service Bus queue name.
 
 ```yaml
 Type: String
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegenerateKeys
-Regenerate Keys - PrimaryKey/SecondaryKey.
+Specifies whether to regenerate the primary or secondary keys.
 
 ```yaml
 Type: String
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

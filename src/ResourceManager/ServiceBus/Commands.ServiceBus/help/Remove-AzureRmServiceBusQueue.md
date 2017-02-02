@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-Removes the Queue from the provided Servicebus Namespace
+Removes the queue from the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The ** Remove-AzureRmServiceBusQueue ** cmdlet removes the Queue from the given ServiceBus Namespace
+The **Remove-AzureRmServiceBusQueue** cmdlet removes the queue from the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The ** Remove-AzureRmServiceBusQueue ** cmdlet removes the Queue from the given 
 PS C:\> Remove-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
 ```
 
-The above Commands removes 'SB-Queue_exampl1' from the Namspace 'SB-Example1'
+Removes `SB-Queue_exampl1` from the namespace `SB-Example1`.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The Service Bus queue name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
