@@ -142,15 +142,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
--ResourceGroup : System.String
+###-ResourceGroup
+ System.String
 
--NamespaceName : System.String
+###-NamespaceName
+ System.String
 
--Location : System.String
+###-Location
+ System.String
 
--SkuName : System.String
+###-SkuName
+ System.String
 
--Tag : System.Collections.Hashtable
+###-Tag
+ System.Collections.Hashtable
 
 ## OUTPUTS
 

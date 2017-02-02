@@ -131,15 +131,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+###-ResourceGroup
+ System.String
 
--ResourceGroup : System.String
+###-NamespaceName
+ System.String
 
--NamespaceName : System.String
+###-TopicName
+ System.String
 
--TopicName : System.String
-
--SubscriptionObj : Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
+###-SubscriptionObj
+ Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
 
 ## OUTPUTS
 

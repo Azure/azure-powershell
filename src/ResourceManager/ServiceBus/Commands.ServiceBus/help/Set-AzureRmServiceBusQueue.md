@@ -132,13 +132,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
--ResourceGroup : System.String
+###-ResourceGroup
+ System.String
 
--NamespaceName : System.String
+###-NamespaceName
+ System.String
 
--QueueName : System.String
+###-QueueName
+ System.String
 
--QueueObj : Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+###-QueueObj
+ Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
 
 ## OUTPUTS
 

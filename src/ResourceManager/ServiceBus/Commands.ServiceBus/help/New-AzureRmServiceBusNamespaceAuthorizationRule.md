@@ -128,11 +128,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
--ResourceGroup : System.String
--NamespaceName : System.String
--AuthorizationRuleName : System.String
--Rights : System.String []
+###-ResourceGroup
+ System.String
+ 
+###-NamespaceName
+ System.String
+ 
+###-AuthorizationRuleName
+ System.String
+ 
+###-Rights
+ System.String []
 
 
 ## OUTPUTS

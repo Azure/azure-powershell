@@ -338,13 +338,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
 
--ResourceGroup : System.String
+###-ResourceGroup
+ System.String
 
--NamespaceName : System.String
+###-NamespaceName
+ System.String
 
--TopicName : System.String
+###-TopicName
+ System.String
 
--EnablePartitioning : System.Boolean?
+###-EnablePartitioning
+ System.Boolean?
 
 
 ## OUTPUTS

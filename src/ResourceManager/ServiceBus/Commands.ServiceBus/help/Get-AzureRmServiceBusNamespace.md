@@ -64,8 +64,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
--ResourceGroup System.String
--NamespaceName System.String
+###-ResourceGroup 
+System.String
+
+###-NamespaceName 
+ System.String
 
 ## OUTPUTS
 
