@@ -49,19 +49,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(NamespaceName))
             {
                 // Get a namespace
-                var attributes = Client.GetNamespace(ResourceGroup, NamespaceName);
+                NamespaceAttributes attributes = Client.GetNamespace(ResourceGroup, NamespaceName);
                 WriteObject(attributes);
             }
             else if (!string.IsNullOrEmpty(ResourceGroup) && string.IsNullOrEmpty(NamespaceName))
             {
                 // List all namespaces in given resource group 
-                var namespaceList = Client.ListNamespaces(ResourceGroup);
+                IEnumerable<NamespaceAttributes> namespaceList = Client.ListNamespaces(ResourceGroup);
                 WriteObject(namespaceList.ToList(), true);
             }
             else
             {
                 // List all namespaces in the given subscription
-                var namespaceList = Client.ListAllNamespaces();
+                IEnumerable<NamespaceAttributes> namespaceList = Client.ListAllNamespaces();
                 WriteObject(namespaceList.ToList(), true);
             }
         }

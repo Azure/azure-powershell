@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace StaticAnalysis.Test
 {
@@ -15,8 +16,9 @@ namespace StaticAnalysis.Test
         string _testCmdletDirPath, _exceptionsDirPath;
         BreakingChangeAnalyzer.BreakingChangeAnalyzer cmdletBreakingChangeAnalyzer;
         AnalysisLogger analysisLogger;
+        ITestOutputHelper xunitOutput;
 
-        public BreakingChangeAnalyzerTests()
+        public BreakingChangeAnalyzerTests(ITestOutputHelper testOutput)
         {
             _testCmdletDirPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
             _exceptionsDirPath = Path.Combine(_testCmdletDirPath, "Exceptions");
@@ -24,6 +26,8 @@ namespace StaticAnalysis.Test
             analysisLogger = new AnalysisLogger(_testCmdletDirPath, _exceptionsDirPath);
             cmdletBreakingChangeAnalyzer = new StaticAnalysis.BreakingChangeAnalyzer.BreakingChangeAnalyzer();
             cmdletBreakingChangeAnalyzer.Logger = analysisLogger;
+
+            xunitOutput = testOutput;
         }
 
         [Fact]
@@ -36,6 +40,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-RemoveCmdlet", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-RemoveCmdlet\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedCmdlet)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedCmdlet));
@@ -52,6 +65,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-RemoveCmdletAlias\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedCmdletAlias)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedCmdletAlias));
         }
@@ -67,6 +89,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-AddAliasForChangedCmdlet\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
@@ -80,6 +111,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-RemoveSupportsShouldProcess", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-RemoveSupportsShouldProcess\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedShouldProcess)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedShouldProcess));
@@ -96,6 +136,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-RemoveSupportsPaging\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedPaging)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedPaging));
         }
@@ -110,6 +159,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-RemoveParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-RemoveParameter\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameter)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameter));
@@ -126,6 +184,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-RemoveParameterAlias\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterAlias)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterAlias));
         }
@@ -141,6 +208,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-AddAliasForChangedParameter\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
@@ -154,6 +230,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-MakeParameterRequired", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-MakeParameterRequired\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.MandatoryParameter)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.MandatoryParameter));
@@ -169,6 +254,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterOrder", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-ChangeParameterOrder\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(3, testReport.ProblemIdList.Count);
             foreach (var problemId in testReport.ProblemIdList)
@@ -188,6 +282,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeValidateSet\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(2, testReport.ProblemIdList.Count);
             foreach (var problemId in testReport.ProblemIdList)
             {
@@ -206,6 +309,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-AddValidateSet\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.AddedValidateSet)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.AddedValidateSet));
         }
@@ -220,6 +332,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ChangeOutputType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-ChangeOutputType\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputType));
@@ -236,6 +357,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeParameterType\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterType));
         }
@@ -250,6 +380,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-RemoveValueFromPipeline", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-RemoveValueFromPipeline\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -268,6 +407,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-RemoveValueFromPipelineByPropertyName\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ValueFromPipelineByPropertyName))
@@ -285,6 +433,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-AddParameterSet\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
@@ -299,6 +456,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-RemoveParameterFromParameterSet\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
@@ -312,6 +478,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterSetForParameter", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-ChangeParameterSetForParameter\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -330,6 +505,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeDefaultParameterSet\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangeDefaultParameter))
@@ -346,6 +530,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-AddValidateNotNullOrEmpty", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-AddValidateNotNullOrEmpty\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -364,6 +557,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangePropertyType\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedPropertyType))
@@ -380,6 +582,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-RemoveProperty", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-RemoveProperty\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -398,6 +609,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeOutputGenericTypeArgument\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputGenericTypeArgument))
@@ -414,6 +634,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-DifferentOutputGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-DifferentOutputGenericTypeArgumentSize\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -432,6 +661,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeParameterElementType\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterElementType))
@@ -448,6 +686,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ChangeParameterGenericType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-ChangeParameterGenericType\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -466,6 +713,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeParameterGenericTypeArgument\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterGenericTypeArgument))
@@ -482,6 +738,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-DifferentParameterGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-DifferentParameterGenericTypeArgumentSize\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -500,6 +765,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeElementType\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedElementType))
@@ -516,6 +790,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-ChangeGenericType", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-ChangeGenericType\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
@@ -534,6 +817,15 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
 
+            string output = "Test-ChangeGenericTypeArgument\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
+
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
@@ -550,6 +842,15 @@ namespace StaticAnalysis.Test
                 (cmdletName) => cmdletName.Equals("Test-DifferentGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
 
             AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            string output = "Test-DifferentGenericTypeArgumentSize\nProblemId Count: " + testReport.ProblemIdList.Count;
+
+            foreach (var problemId in testReport.ProblemIdList)
+            {
+                output += "\nProblemId: " + problemId;
+            }
+
+            xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList

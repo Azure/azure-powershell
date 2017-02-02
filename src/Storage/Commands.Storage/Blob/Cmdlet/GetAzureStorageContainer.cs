@@ -228,7 +228,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             try
             {
                 permissions = await localChannel.GetContainerPermissionsAsync(container, accessCondition,
-                    requestOptions, OperationContext, CmdletCancellationToken);
+                    requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (StorageException e)
             {

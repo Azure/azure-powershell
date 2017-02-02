@@ -125,7 +125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "PSScheduleEntry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DayOfWeek": "System.String",
               "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
@@ -302,7 +302,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -415,7 +415,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -466,7 +466,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "PSScheduleEntry[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
             "GenericTypeArguments": []
@@ -532,7 +532,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
                   "Name": "PSScheduleEntry[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
                   "GenericTypeArguments": []
@@ -1627,7 +1627,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "RedisCacheAttributesWithAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
               "HostName": "System.String",
@@ -2265,7 +2265,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Redis.Models",
             "Name": "RedisAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -2461,7 +2461,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Redis.Models",
             "Name": "RedisAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -2575,7 +2575,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2902,7 +2902,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "RedisCacheAttributesWithAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
               "HostName": "System.String",
@@ -3703,7 +3703,7 @@
     "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry": {
       "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
       "Name": "PSScheduleEntry",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DayOfWeek": "System.String",
         "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
@@ -3736,7 +3736,7 @@
     "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes": {
       "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
       "Name": "RedisCacheAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EnableNonSslPort": "System.Boolean",
         "HostName": "System.String",

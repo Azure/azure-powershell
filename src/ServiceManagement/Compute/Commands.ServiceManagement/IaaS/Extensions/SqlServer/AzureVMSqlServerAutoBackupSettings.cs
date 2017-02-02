@@ -50,5 +50,35 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// Password required for certification when encryption is enabled
         /// </summary>
         public string Password { get; set; }
+        
+        /// <summary>
+        /// Whether to include system databases in Backup
+        /// </summary>
+        public bool? BackupSystemDbs { get; set; }
+
+        /// <summary>
+        /// Gets the Backup Schedule Type
+        /// </summary>
+        public string BackupScheduleType { get; set; }
+
+        /// <summary>
+        /// Gets the Full Backup Frequency
+        /// </summary>
+        public string FullBackupFrequency { get; set; }
+
+        /// <summary>
+        /// Gets the Full Backup Start Time
+        /// </summary>
+        public int? FullBackupStartTime { get; set; }
+
+        /// <summary>
+        /// Gets the Full Backup Window Hours
+        /// </summary>
+        public int? FullBackupWindowHours { get; set; }
+
+        /// <summary>
+        /// Gets the Log Backup Frequency
+        /// </summary>
+        public int? LogBackupFrequency { get; set; }
     }
 }

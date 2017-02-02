@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated Set-AzureVMChefExtension cmdlet to add following new options :
+    - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'none' or e.g. -Daemon 'service'."
+    - Secret: The encryption key used to encrypt and decrypt the data bag item values.
+    - SecretFile: The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+
+## Version 3.4.0
+* New parameters in New-AzureVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
+	- BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+	- BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it's manual, schedule settings need to be specified.
+	- FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+	- FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+	- FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+	- LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
 
 ## Version 3.3.0
 * Updated Set-AzureVMChefExtension cmdlet to add following new options :

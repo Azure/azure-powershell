@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -76,7 +76,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -182,7 +182,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificatePolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CertificateType": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -260,7 +260,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -546,7 +546,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -710,7 +710,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -836,7 +836,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1488,7 +1488,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1666,7 +1666,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1681,7 +1681,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1965,7 +1965,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2040,7 +2040,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2055,7 +2055,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateIssuer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountId": "System.String",
               "ApiKey": "System.Security.SecureString",
@@ -2203,7 +2203,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -2910,7 +2910,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -3108,7 +3108,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3308,7 +3308,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateIssuer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountId": "System.String",
               "ApiKey": "System.Security.SecureString",
@@ -3505,7 +3505,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -3707,7 +3707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -3826,7 +3826,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOrganizationDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
               "Id": "System.String"
@@ -3845,7 +3845,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateIssuer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountId": "System.String",
               "ApiKey": "System.Security.SecureString",
@@ -4028,7 +4028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificateOrganizationDetails",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
                     "Id": "System.String"
@@ -4126,7 +4126,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificateIssuer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountId": "System.String",
                     "ApiKey": "System.Security.SecureString",
@@ -4234,7 +4234,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -4585,7 +4585,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -5238,7 +5238,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificatePolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CertificateType": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -5433,7 +5433,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
@@ -5463,7 +5463,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -5646,7 +5646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
@@ -6141,7 +6141,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
@@ -6869,7 +6869,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
@@ -8174,7 +8174,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -8189,7 +8189,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -8469,7 +8469,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -8484,7 +8484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
               "Id": "System.String",
@@ -8765,7 +8765,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -9401,7 +9401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -9599,7 +9599,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
               "Id": "System.String",
@@ -9798,7 +9798,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -9916,7 +9916,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -10326,7 +10326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
               "Id": "System.String",
@@ -10689,7 +10689,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
               "Id": "System.String",
@@ -11098,7 +11098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -11233,7 +11233,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateAdministratorDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EmailAddress": "System.String",
               "FirstName": "System.String",
@@ -11425,7 +11425,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOrganizationDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
               "Id": "System.String"
@@ -11461,7 +11461,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -11507,7 +11507,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "List",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -11713,7 +11713,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyVaultCertificateContact",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Email": "System.String"
       },
@@ -11723,7 +11723,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "CertificateIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Created": "System.Nullable`1[System.DateTime]",
         "Enabled": "System.Nullable`1[System.Boolean]",
@@ -11750,7 +11750,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "CertificateIssuerIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IssuerProvider": "System.String",
         "Name": "System.String"
@@ -11769,7 +11769,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyVaultCertificateOrganizationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
         "Id": "System.String"
@@ -11780,7 +11780,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11790,7 +11790,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyVaultCertificateAdministratorDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EmailAddress": "System.String",
         "FirstName": "System.String",
@@ -11803,7 +11803,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "PSVaultAccessPolicy[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[], Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[], Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy",
       "GenericTypeArguments": []
@@ -11811,7 +11811,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "PSVaultAccessPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplicationId": "System.Nullable`1[System.Guid]",
         "ApplicationIdDisplayName": "System.String",
@@ -11945,7 +11945,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "PSVaultIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Location": "System.String",
         "ResourceGroupName": "System.String",
@@ -11960,7 +11960,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Created": "System.Nullable`1[System.DateTime]",
         "Enabled": "System.Nullable`1[System.Boolean]",
@@ -11980,7 +11980,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Created": "System.Nullable`1[System.DateTime]",
         "Enabled": "System.Nullable`1[System.Boolean]",
@@ -12048,7 +12048,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "SecretIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ContentType": "System.String",
         "Created": "System.Nullable`1[System.DateTime]",
@@ -12069,7 +12069,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "SecretAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes, Microsoft.Azure.Commands.KeyVault, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ContentType": "System.String",
         "Created": "System.Nullable`1[System.DateTime]",

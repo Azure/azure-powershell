@@ -14,8 +14,7 @@ Adds content to an item in a Data Lake Store.
 
 ```
 Add-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Value] <Object>
- [[-Encoding] <FileSystemCmdletProviderEncoding>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [[-Encoding] <FileSystemCmdletProviderEncoding>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +41,34 @@ Aliases: AccountName
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Encoding
+Specifies the encoding for the item to create.
+The acceptable values for this parameter are:
+
+- Unknown
+- String
+- Unicode
+- Byte
+- BigEndianUnicode
+- UTF8
+- UTF7
+- Ascii
+- Default
+- Oem
+- BigEndianUTF32
+
+```yaml
+Type: FileSystemCmdletProviderEncoding
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -77,79 +104,15 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -Encoding
-Specifies the encoding for the item to create.
-The acceptable values for this parameter are:
-
-- Unknown
-- String
-- Unicode
-- Byte
-- BigEndianUnicode
-- UTF8
-- UTF7
-- Ascii
-- Default
-- Oem
-- BigEndianUTF32
-
-```yaml
-Type: FileSystemCmdletProviderEncoding
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### bool
+Returns true on success.
 
 ## NOTES
 
