@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-Removes the AuthorizationRule of Topic from the provided Servicebus Namespace
+Removes the authorization rule of a topic from the specified Service Bus Namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Names
 ```
 
 ## DESCRIPTION
-The ** Remove-AzureRmServiceBusTopicAuthorizationRule ** cmdlet removes the AuthorizationRule of Topic from the given ServiceBus Namespace
+The **Remove-AzureRmServiceBusTopicAuthorizationRule** cmdlet removes the authorization rule of a topic from the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Remove-AzureRmServiceBusTopicAuthorizationRule ** cmdlet removes the Auth
 PS C:\> Remove-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
 ```
 
-Removes the AuthorizationRule 'SBTopicAuthoRule1' of Topic 'SB-Topic_exampl1' from the Namespace 'SB-Example1'
+Removes the authorization rule `SBTopicAuthoRule1` of the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Topic AuthorizationRule Name.
+The topic authorization rule name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

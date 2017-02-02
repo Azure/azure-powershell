@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusSubscription
 
 ## SYNOPSIS
-Create a new Subscription for the provided ServiceBus Topic
+Create a new subscription to the specified ServiceBus topic.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusSubscription ** cmdlet create a new Subscription for the provided ServiceBus Topic.
+The **New-AzureRmServiceBusSubscription** cmdlet creates a new subscription to the specified Service Bus topic.
 
 ## EXAMPLES
 
@@ -29,13 +29,12 @@ The ** New-AzureRmServiceBusSubscription ** cmdlet create a new Subscription for
 PS C:\> New-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
-Creates	 new subscription 'SB-TopicSubscription-Example1' for the provided ServiceBus Topic 'SB-Topic_exampl1'
+Creates	a new subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted.
-The minimum duration is 5 minutes.
+Specifies the TimeSpan idle interval after which the subscription is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
 Type: String
@@ -65,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeadLetteringOnFilterEvaluationExceptions
-DeadLetteringOnFilterEvaluationExceptions - Value that indicates if a subscription has dead letter support when a message expires.
+Indicates if a subscription has dead letter support on Filter evaluation exceptions.
 
 ```yaml
 Type: Boolean
@@ -81,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeadLetteringOnMessageExpiration
-Dead Lettering On Message Expiration
+Indicates if a subscription has deadletter support when a message expires.
 
 ```yaml
 Type: Boolean
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBatchedOperations
-Enable Batched Operations - value that indicates whether server-side batched operations are enabled
+Indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: Boolean
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsReadOnly
-IsReadOnly - Value that indicates whether the entity description is read-only.
+Indicates whether the entity description is read-only
 
 ```yaml
 Type: Boolean
@@ -129,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -LockDuration
-Lock Duration
+Specifies the lock duration time span for the subscription.
 
 ```yaml
 Type: String
@@ -144,8 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxDeliveryCount
-MaxDeliveryCount - the maximum delivery count.
-A message is automatically deadlettered after this number of deliveries.
+Specifies the number of maximum deliveries. A message is automatically deadlettered after this number of deliveries.
 
 ```yaml
 Type: Int32
@@ -160,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -175,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiresSession
-RequiresSession - the value indicating if this queue requires duplicate detection.
+Specifies whether a subscription supports the concept of sessions.
 
 ```yaml
 Type: Boolean
@@ -191,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -206,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionName
-Subscription Name
+The subscription name.
 
 ```yaml
 Type: String
@@ -221,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The topic name.
 
 ```yaml
 Type: String

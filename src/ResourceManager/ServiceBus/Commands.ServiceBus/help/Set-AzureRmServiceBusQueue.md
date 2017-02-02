@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-updates a  description for ServiceBus Queue of the provided ServiceBus Namespace
+Updates the description of a Service Bus queue in the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Set-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-The ** Set-AzureRmServiceBusQueue ** cmdlet updates a new description for ServiceBus Queue of the provided ServiceBus Namespace.
+The **Set-AzureRmServiceBusQueue** cmdlet updates the description for the Service Bus queue in the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -32,7 +32,7 @@ PS C:\> $QueueObj.SupportOrdering = $True
 PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj
 ```
 
-updates the given Queue with new description of provided Namespace
+Updates the specified queue with a new description in the specified namespace.
 
 ## PARAMETERS
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The Service Bus queue name.
 
 ```yaml
 Type: String
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueObj
-ServiceBus definition.
+The Service Bus queue definition.
 
 ```yaml
 Type: QueueAttributes
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

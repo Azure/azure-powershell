@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusQueueAuthorizationRule
 
 ## SYNOPSIS
-Gets the Description of a specified AuthorizationRule for a given ServiceBus Queue. 
+Gets the description of a specified authorization rule for a given Service Bus queue. 
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmServiceBusQueueAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusQueueAuthorizationRule ** cmdlet gets the description of specified authorizationrule of the given servicebus queue.
+The **Get-AzureRmServiceBusQueueAuthorizationRule** cmdlet gets the description of a specified authorization rule on the given Service Bus queue.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Get-AzureRmServiceBusQueueAuthorizationRule ** cmdlet gets the descriptio
 PS C:\> Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
 ```
 
-Returns the specified AuthorizationRule description for a given ServiceBus Queue.
+Returns the specified authorization rule description for a given Service Bus queue.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-EventHub AuthorizationRule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The queue name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

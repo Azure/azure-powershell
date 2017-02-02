@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusTopicKey
 
 ## SYNOPSIS
-Gets the primary and secondary connection strings for the topic.
+Gets the primary and secondary connection strings for the Service Bus topic.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmServiceBusTopicKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusTopicKey ** cmdlet returns the primary and secondary connection strings for the given servicebus Topic.
+The **Get-AzureRmServiceBusTopicKey** cmdlet returns the primary and secondary connection strings for the given Service Bus topic.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Get-AzureRmServiceBusTopicKey ** cmdlet returns the primary and secondary
 PS C:\> Get-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
 ```
 
-primary and secondary connection strings are returned for the given ServiceBus Topic.
+The primary and secondary connection strings are returned for the given Service Bus topic.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Topic AuthorizationRule Name.
+The topic authorization rule name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

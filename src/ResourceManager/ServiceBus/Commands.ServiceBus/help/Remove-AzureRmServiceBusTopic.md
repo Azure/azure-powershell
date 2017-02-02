@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-Removes the Topic from the provided Servicebus Namespace
+Removes the topic from the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The ** Remove-AzureRmServiceBusTopic ** cmdlet removes the Topic from the given ServiceBus Namespace
+The **Remove-AzureRmServiceBusTopic** cmdlet removes the topic from the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The ** Remove-AzureRmServiceBusTopic ** cmdlet removes the Topic from the given 
 PS C:\> Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
-The above Commands removes 'SB-Topic_exampl1' Topic from the Namspace 'SB-Example1'
+Removes the `SB-Topic_exampl1` topic from the namespace `SB-Example1`.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String
