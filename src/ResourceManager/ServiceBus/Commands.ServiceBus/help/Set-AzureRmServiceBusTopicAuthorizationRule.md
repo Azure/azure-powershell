@@ -162,10 +162,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
--ResourceGroup : System.String
--NamespaceName : System.String
--TopicName : System.String
--AuthRuleObj : Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+###-ResourceGroup 
+ System.String
+###-NamespaceName
+ System.String
+###-TopicName
+ System.String
+###-AuthRuleObj
+ Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
 ## OUTPUTS
 
