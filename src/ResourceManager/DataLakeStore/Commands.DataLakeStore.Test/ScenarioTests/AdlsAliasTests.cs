@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsAccountTiers()
+        {
+            NewInstance.RunPsTest(string.Format("Test-DataLakeStoreAccountTiers -location '{0}'", AdlsTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFirewallRules()
         {
             NewInstance.RunPsTest(string.Format("Test-DataLakeStoreFirewall -location '{0}'", AdlsTestsBase.resourceGroupLocation));

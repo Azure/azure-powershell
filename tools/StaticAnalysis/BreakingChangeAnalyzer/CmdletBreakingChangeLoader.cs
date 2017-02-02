@@ -163,8 +163,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     results.Add(cmdletMetadata);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
             }
 
             ModuleMetadata.Cmdlets = results;

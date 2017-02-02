@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models",
             "Name": "PSResourceProviderOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Description": "System.String",
               "Operation": "System.String",
@@ -93,7 +93,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1587,7 +1587,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3545,7 +3545,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DisplayName": "System.String",
               "ObjectId": "System.Guid",
@@ -4761,7 +4761,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -5064,7 +5064,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "System.Collections.Generic.List`1[System.String]",
               "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
@@ -5105,7 +5105,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "System.Collections.Generic.List`1[System.String]",
               "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
@@ -5162,7 +5162,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Actions": "System.Collections.Generic.List`1[System.String]",
                     "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
@@ -5204,7 +5204,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "System.Collections.Generic.List`1[System.String]",
               "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
@@ -5245,7 +5245,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "System.Collections.Generic.List`1[System.String]",
               "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
@@ -5302,7 +5302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Actions": "System.Collections.Generic.List`1[System.String]",
                     "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
@@ -5689,7 +5689,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndDate": "System.String",
               "KeyId": "System.String",
@@ -5810,7 +5810,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6014,7 +6014,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6089,7 +6089,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6234,7 +6234,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6428,7 +6428,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndDate": "System.String",
               "KeyId": "System.String",
@@ -6549,7 +6549,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6786,7 +6786,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndDate": "System.String",
               "KeyId": "System.String",
@@ -7338,7 +7338,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndDate": "System.String",
               "KeyId": "System.String",
@@ -7902,7 +7902,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DisplayName": "System.String",
               "Id": "System.Guid",
@@ -8636,7 +8636,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
@@ -8743,7 +8743,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADPasswordCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential",
             "GenericTypeArguments": []
@@ -8759,7 +8759,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADKeyCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential",
             "GenericTypeArguments": []
@@ -9251,7 +9251,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
                   "Name": "PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": []
@@ -9569,7 +9569,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
                   "Name": "PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": []
@@ -9603,7 +9603,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "DisplayName": "System.String",
@@ -9811,7 +9811,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "DisplayName": "System.String",
@@ -9866,7 +9866,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADPasswordCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential",
             "GenericTypeArguments": []
@@ -9882,7 +9882,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADKeyCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential",
             "GenericTypeArguments": []
@@ -10110,7 +10110,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
                   "Name": "PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": []
@@ -10252,7 +10252,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
                   "Name": "PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": []
@@ -10421,7 +10421,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
                   "Name": "PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": []
@@ -10563,7 +10563,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
                   "Name": "PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": []
@@ -11101,7 +11101,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
@@ -11697,7 +11697,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
             "Name": "PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DisplayName": "System.String",
               "Id": "System.Guid",
@@ -12034,7 +12034,7 @@
     "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
       "Name": "PSRoleAssignment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DisplayName": "System.String",
         "ObjectId": "System.Guid",
@@ -12059,7 +12059,7 @@
     "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
       "Name": "PSRoleDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Actions": "System.Collections.Generic.List`1[System.String]",
         "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
@@ -12085,7 +12085,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
       "Name": "PSADApplication",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplicationId": "System.Guid",
         "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
@@ -12113,7 +12113,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADObject": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
       "Name": "PSADObject",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DisplayName": "System.String",
         "Id": "System.Guid",
@@ -12125,7 +12125,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADGroup": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
       "Name": "PSADGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DisplayName": "System.String",
         "Id": "System.Guid",
@@ -12148,7 +12148,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
       "Name": "PSADServicePrincipal",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplicationId": "System.Guid",
         "DisplayName": "System.String",
@@ -12170,7 +12170,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
       "Name": "PSADUser",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DisplayName": "System.String",
         "Id": "System.Guid",
@@ -12183,7 +12183,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
       "Name": "PSADPasswordCredential",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EndDate": "System.DateTime",
         "KeyId": "System.Guid",
@@ -12204,7 +12204,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory",
       "Name": "PSADKeyCredential",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential, Microsoft.Azure.Commands.Resources, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential, Microsoft.Azure.Commands.Resources, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CertValue": "System.String",
         "EndDate": "System.DateTime",

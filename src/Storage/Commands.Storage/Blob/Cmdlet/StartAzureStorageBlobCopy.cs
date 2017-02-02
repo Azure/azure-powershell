@@ -492,7 +492,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob);
+                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -516,7 +516,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             bool destExist = true;
             try
             {
-                await destBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                await destBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -532,7 +532,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
-                string copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                string copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }
@@ -540,7 +540,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private async Task StartCopyFromFile(long taskId, IStorageBlobManagement destChannel, CloudFile srcFile, CloudBlockBlob destBlob)
         {
-            await this.StartCopyFromUri(taskId, destChannel, srcFile.GenerateUriWithCredentials(), destBlob);
+            await this.StartCopyFromUri(taskId, destChannel, srcFile.GenerateUriWithCredentials(), destBlob).ConfigureAwait(false);
         }
 
         private CloudBlob GetDestBlob(IStorageBlobManagement destChannel, string destContainerName, string destBlobName, BlobType blobType)
@@ -583,7 +583,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             NameUtil.ValidateContainerName(destBlob.Container.Name);
             NameUtil.ValidateBlobName(destBlob.Name);
 
-            await this.StartCopyFromBlob(taskId, destChannel, sourceBlob, destBlob);
+            await this.StartCopyFromBlob(taskId, destChannel, sourceBlob, destBlob).ConfigureAwait(false);
         }
 
         /// <summary>
