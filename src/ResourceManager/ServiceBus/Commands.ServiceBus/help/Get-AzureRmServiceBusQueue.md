@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-Returns a description for the specified queue.
+Returns a description for the specified Service Bus queue.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusQueue ** cmdlet returns description pf the specified ServiceBus Queue
+The **Get-AzureRmServiceBusQueue** cmdlet returns a description of the specified Service Bus queue.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Get-AzureRmServiceBusQueue ** cmdlet returns description pf the specified
 PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 ```
 
-Returns the 
+Returns the description of the queue. 
 
 ## PARAMETERS
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The queue name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

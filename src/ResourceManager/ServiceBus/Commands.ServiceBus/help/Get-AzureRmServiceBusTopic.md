@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-Returns a description for the specified  servicebus Topic.
+Returns a description for the specified Service Bus topic.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusTopic ** cmdlet returns a Topic description for the specified servicebus namespace.
+The **Get-AzureRmServiceBusTopic** cmdlet returns a topic description for the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Get-AzureRmServiceBusTopic ** cmdlet returns a Topic description for the 
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
-Returns the description of the specified Topic for given ServiceBus Namespace.
+Returns the description of the specified topic for given Service Bus namespace.
 
 ## PARAMETERS
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

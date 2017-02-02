@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusSubscription
 
 ## SYNOPSIS
-updates a  Subscription description for ServiceBus Topic of the provided ServiceBus Namespace
+Updates a subscription description for a Service Bus topic in the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Set-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-The ** Set-AzureRmServiceBusSubscription ** cmdlet updates a new description of Subscription for ServiceBus Topic of the provided ServiceBus Namespace.
+The **Set-AzureRmServiceBusSubscription** cmdlet updates the description of the subscription for the Service Bus topic in the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ PS C:\> $subscriptionObj.MaxDeliveryCount = 9
 PS C:\> Set-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
 ```
 
-updates new description for given Subscription of provided Topic. The above example updates the DeadLetteringOnMessageExpiration = True and MaxDeliveryCount = 9
+Updates the description for the specified subscription to the given topic. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **MaxDeliveryCount** to 9.
 
 ## PARAMETERS
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionObj
-ServiceBus Subscription definition.
+The Service Bus subscription definition.
 
 ```yaml
 Type: SubscriptionAttributes
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusQueueAuthorizationRule
 
 ## SYNOPSIS
-Creates a new AuthorizationRule for given ServiceBus Queue
+Creates a new authorization rule for the specified Service Bus queue.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzureRmServiceBusQueueAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusQueueAuthorizationRule ** cmdlet create a new AuthorizationRule for the provided ServiceBus Queue.
+The **New-AzureRmServiceBusQueueAuthorizationRule** cmdlet creates a new authorization rule for the specified Service Bus queue.
 
 ## EXAMPLES
 
@@ -27,12 +27,12 @@ The ** New-AzureRmServiceBusQueueAuthorizationRule ** cmdlet create a new Author
 PS C:\> New-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -Rights @("Listen","Send")
 ```
 
-Creates 'SBAuthoRule1' with 'Listen and Send' rights for Queue 'SB-Queue_exampl1'
+Creates `SBAuthoRule1` with **Listen and Send** rights for the queue `SB-Queue_exampl1`.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-AuthorizationRule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The Service Bus queue name.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights, e.g. 
+Specifies the rights; for example,  
 @("Listen","Send","Manage")
 
 ```yaml

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-Updates the description of existing ServiceBus Namespace
+Updates the description of an existing Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Set-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String
 ```
 
 ## DESCRIPTION
-The ** Set-AzureRmServiceBusNamespace ** cmdlet updates the description for the specified ServiceBus namespace within the ResourceGroup
+The **Set-AzureRmServiceBusNamespace** cmdlet updates the description of the specified Service Bus namespace within the resource group.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Set-AzureRmServiceBusNamespace ** cmdlet updates the description for the 
 PS C:\> Set-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 10 -Tag @{Tag2="Tag2Value"}
 ```
 
-updates the ServiceBus Namespace with new description
+Updates the Service Bus namespace with a new description.
 
 ## PARAMETERS
 
 ### -Confirm
-updates the ServiceBus Namespace with the provided information. 
+Updates the Service Bus namespace with the specified information. 
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-ServiceBus Namespace Location.
+The Service Bus namespace location.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-ServiceBus Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The resource group name.
 
 ```yaml
 Type: String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Namespace Sku Name.
+The namespace SKU name.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tags.
+Hashtables that represent resource tags.
 
 ```yaml
 Type: Hashtable

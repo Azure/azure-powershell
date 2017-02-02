@@ -17,7 +17,7 @@ Get-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-The ** Get-AzureRmServiceBusSubscription ** cmdlet returns a subscription description for the specified topic.
+The **Get-AzureRmServiceBusSubscription** cmdlet returns a subscription description for the specified Service Bus topic.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The ** Get-AzureRmServiceBusSubscription ** cmdlet returns a subscription descri
 PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
-Returns a subscription description for the specified servicebus Topic.
+Returns a subscription description for the specified Service Bus Topic.
 
 ## PARAMETERS
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionName
-Subscription Name.
+The subscription name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The topic name.
 
 ```yaml
 Type: String

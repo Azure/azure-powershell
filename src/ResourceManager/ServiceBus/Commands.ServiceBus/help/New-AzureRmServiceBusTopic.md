@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-Create a new ServiceBus Topic for the provided ServiceBus Namespace
+Create a new Service Bus topic in  the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusTopic ** cmdlet create a new ServiceBus Topic for the provided ServiceBus Namespace.
+The **New-AzureRmServiceBusTopic** cmdlet creates a new Service Bus topic in the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -31,13 +31,12 @@ The ** New-AzureRmServiceBusTopic ** cmdlet create a new ServiceBus Topic for th
 PS C:\> New-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -EnablePartitioning $True
 ```
 
-Creates new ServicBus Topic 'SB-Topic_exampl1' in provided ServiceBus Namespace 'SB-Example1'
+Creates a new Service Bus topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted.
-The minimum duration is 5 minutes.
+Specifies the TimeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
 Type: String
@@ -52,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultMessageTimeToLive
-Default Message TimeTo Live
+Specifies the duration after which the message expires, starting from when the message is sent to Service Bus.
 
 ```yaml
 Type: String
@@ -67,8 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -DuplicateDetectionHistoryTimeWindow
-Duplicate Detection History Time Window - TimeSpan, that defines the duration of the duplicate detection history.
-The default value is 10 minutes.
+Specifies the TimeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
 
 ```yaml
 Type: String
@@ -83,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBatchedOperations
-Enable Batched Operations - value that indicates whether server-side batched operations are enabled
+Indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: Boolean
@@ -99,8 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableExpress
-EnableExpress - a value that indicates whether Express Entities are enabled.
-An express queue holds a message in memory temporarily before writing it to persistent storage.
+Indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.
 
 ```yaml
 Type: Boolean
@@ -116,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnablePartitioning
-EnablePartitioning
+Specifies whether to enable the topic to be partitioned across multiple message brokers. 
 
 ```yaml
 Type: Boolean
@@ -132,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSubscriptionPartitioning
-Enable Subscription Partitioning
+Specifies whether to enable subscription partitioning.
 
 ```yaml
 Type: Boolean
@@ -148,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -FilteringMessagesBeforePublishing
-FilteringMessagesBeforePublishing - a value that indicates whether Filtering is enabled for Messages before publishing.
+Indicates whether filtering is enabled for messages before publishing.
 
 ```yaml
 Type: Boolean
@@ -164,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsAnonymousAccessible
-IsAnonymousAccessible - a value that indicates whether the message is anonymous accessible.
+Indicates whether the message allows anonymous access.
 
 ```yaml
 Type: Boolean
@@ -180,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsExpress
-IsExpress - a value that indicates whether Topic is Express.
+Indicates whether the topic is express enabled.
 
 ```yaml
 Type: Boolean
@@ -196,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSizeInMegabytes
-MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
+The maximum size of the topic in megabytes, which is the size of memory allocated for the topic.
 
 ```yaml
 Type: Int64
@@ -211,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -226,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiresDuplicateDetection
-RequiresDuplicateDetection - a value that indicates whether the queue supports the concept of session
+Indicates whether the topic requires duplication detection.
 
 ```yaml
 Type: Boolean
@@ -242,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -257,7 +254,7 @@ Accept wildcard characters: False
 ```
 
 ### -SizeInBytes
-SizeInBytes - the size of the queue in bytes.
+Specifies the size of the topic in bytes.
 
 ```yaml
 Type: Int64
@@ -272,7 +269,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportOrdering
-SupportOrdering - the value indicating it supports ordering.
+Indicates whether the topic supports ordering.
 
 ```yaml
 Type: Boolean
@@ -288,7 +285,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String

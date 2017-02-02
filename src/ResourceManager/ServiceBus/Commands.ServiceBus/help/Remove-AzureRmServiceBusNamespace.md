@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-Removes the NameSpace from the provided ResourceGroup 
+Removes the namespace from the specified resource group. 
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmServiceBusNamespace [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-The ** Remove-AzureRmServiceBusNamespace ** cmdlet removes the NameSpace from the given ResourceGroup
+The **Remove-AzureRmServiceBusNamespace** cmdlet removes the namespace from the specified resource group.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The ** Remove-AzureRmServiceBusNamespace ** cmdlet removes the NameSpace from th
 PS C:\> Remove-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
-Removes the ServiceBus NameSpace 'SB-Example1' from the provided resourcegroup 'Default-ServiceBus-WestUS'
+Removes the Service Bus namespace `SB-Example1` from the specified resource group `Default-ServiceBus-WestUS`.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

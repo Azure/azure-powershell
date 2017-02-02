@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespaceKey
 
 ## SYNOPSIS
-Regenerates the primary or secondary connection strings for the namespace.
+Regenerates the primary or secondary connection strings for the Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzureRmServiceBusNamespaceKey [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-The ** New-AzureRmServiceBusNamespace ** cmdlet RegenerateKeys a new  primary or secondary connection strings for the provided Namespace and AuthorizationRule.
+The **New-AzureRmServiceBusNamespace** cmdlet RegenerateKeys new primary or secondary connection strings for the specified Namespace and authorization rule.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ Regenerates the primary or secondary connection strings for the namespace.
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Authorization Rule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegenerateKeys
-Regenerate Keys - PrimaryKey/SecondaryKey.
+Regenerate Keys: PrimaryKey/SecondaryKey.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String

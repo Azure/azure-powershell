@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-updates given AuthorizationRule description for the provided ServiceBus Namespace
+Updates the specified authorization rule description for the given Service Bus namespace.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-The ** Set-AzureRmServiceBusNamespaceAuthorizationRule ** cmdlet updates new description for specified AuthorizationRule of the provided ServiceBus NameSpace.
+The **Set-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet updates the description for the specified authorization rule of the given Service Bus namespace.
 
 ## EXAMPLES
 
@@ -31,12 +31,12 @@ PS C:\> $authRuleObj.Rights.Remove("Manage")
 PS C:\> Set-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthRuleObj $authRuleObj
 ```
 
-Removing 'Manage' from Accessrights of AuthorizationRule 'AuthoRule1' of NameSpace 'SB-Example1'
+Removes **Manage** from the access rights of the authorization rule `AuthoRule1` in namespace `SB-Example1`.
 
 ## PARAMETERS
 
 ### -AuthRuleObj
-ServiceBus NameSpace AuthorizationRule Object.
+The Service Bus namespace authorization rule object.
 
 ```yaml
 Type: SharedAccessAuthorizationRuleAttributes
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-AuthorizationRule Name - Required if 'AuthruleObj' not specified.
+The authorization rule name. Required if **-AuthruleObj** is not specified.
 
 ```yaml
 Type: String
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-ServiceBus Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -111,9 +111,8 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Required if 'AuthruleObj' not specified.
-Rights - e.g. 
-@("Listen","Send","Manage")
+Rights; for example
+@("Listen","Send","Manage"). Required if **AuthruleObj** is not specified.
 
 ```yaml
 Type: String[]
