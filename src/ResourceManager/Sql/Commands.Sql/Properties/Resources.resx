@@ -309,4 +309,25 @@
   <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
     <value>Cannot set threat detection policy without a storage account name.</value>
   </data>
+  <data name="FailoverGroupNameExists" xml:space="preserve">
+    <value>Failover Group with name: '{0}' already exists in server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
+  </data>
+  <data name="FailoverGroupAddDatabaseAlreadyExists" xml:space="preserve">
+    <value>Database to be added with id '{0}' already exists in Failover Group with name: '{1}'  in server '{2}'.</value>
+  </data>
+  <data name="FailoverGroupAddDatabaseNoArguments" xml:space="preserve">
+    <value>Database to be removed with id '{0}' does not exist in Failover Group with name: '{1}'  in server '{2}'.</value>
+  </data>
+  <data name="FailoverGroupRemoveDatabaseNoArguments" xml:space="preserve">
+    <value>No arguments are provided to remove databases to Failover Group with name: '{0}'  in server '{1}'.</value>
+  </data>
+  <data name="FailoverGroupRemoveDatabaseNotExists" xml:space="preserve">
+    <value>No arguments are provided to remove databases to Failover Group with name: '{0}'  in server '{1}'.</value>
+  </data>
 </root>

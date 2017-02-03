@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlFailoverGroup", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseFailoverGroup", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -63,20 +63,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string FailoverPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets the grace period without data loss for the Sql Azure Failover Group.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The grace period for failover without data loss of the failover group.")]
-        [ValidateNotNullOrEmpty]
-        public int GracePeriodWithoutDataLossMinutes { get; set; }
-
-        /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The grace period for failover with data loss of the failover group.")]
         [ValidateNotNullOrEmpty]
-        public int GracePeriodWithDataLossMinutes { get; set; }
+        public int GracePeriodWithDataLossHours { get; set; }
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of theSql Azure Failover Group.
@@ -150,8 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
                 PartnerServerName = PartnerServerName,
                 ReadWriteFailoverPolicy = FailoverPolicy,
-                FailoverGracePeriodMinutes = GracePeriodWithoutDataLossMinutes,
-                FailoverWithDataLossGracePeriodMinutes = GracePeriodWithDataLossMinutes,
+                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHours,
                 ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary
             });
             return newEntity;

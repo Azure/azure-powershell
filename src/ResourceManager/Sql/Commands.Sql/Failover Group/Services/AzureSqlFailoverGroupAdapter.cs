@@ -111,8 +111,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
-            readWriteEndpoint.FailoverGracePeriodMinutes = model.FailoverGracePeriodMinutes;
-            readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodMinutes;
+
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
+            {
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
+            }
+            else
+            {
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
+            }
 
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupCreateOrUpdateParameters()
             {
@@ -143,10 +150,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
-            readWriteEndpoint.FailoverGracePeriodMinutes = model.FailoverGracePeriodMinutes;
-            readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodMinutes;
 
-
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
+            {
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
+            }
+            else
+            {
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
+            }
+            
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,
@@ -285,8 +298,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             model.ReplicationRole = failoverGroup.Properties.ReplicationRole;
             model.ReplicationState = failoverGroup.Properties.ReplicationState;
             model.PartnerServers = failoverGroup.Properties.PartnerServers;
-            model.FailoverGracePeriodMinutes = failoverGroup.Properties.ReadWriteEndpoint.FailoverGracePeriodMinutes;
-            model.FailoverWithDataLossGracePeriodMinutes = failoverGroup.Properties.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes;
+            model.FailoverWithDataLossGracePeriodHours = failoverGroup.Properties.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes == null ?
+                                                        null : failoverGroup.Properties.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes / 60;
 
             model.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(failoverGroup.Tags), false);
             model.Location = failoverGroup.Location;;

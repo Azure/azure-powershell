@@ -85,24 +85,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         public string ReadWriteFailoverPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets the read-write endpoint failover grace period without data loss
-        /// </summary>
-        public int FailoverGracePeriodMinutes { get; set; }
-
-        /// <summary>
         /// Gets or sets the read-write endpoint failover grace period with data loss
         /// </summary>
-        public int FailoverWithDataLossGracePeriodMinutes { get; set; }
+        public int? FailoverWithDataLossGracePeriodHours { get; set; }
 
         /// <summary>
         /// Gets or sets the read-only endpoint failover policy
         /// </summary>
         public string ReadOnlyFailoverPolicy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the elastic pool to add/remove databases to the failover group
-        /// </summary>
-        public List<string> ElasticPool { get; set; }
 
         /// <summary>
         /// Gets or sets the Id of the failover group
