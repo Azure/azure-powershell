@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new Service Bus queue in the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -22,22 +22,21 @@ New-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmServiceBusQueue** cmdlet creates a new Service Bus queue in the specified Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -EnablePartitioning $True
 ```
 
-{{ Add example description here }}
+Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted.
-The minimum duration is 5 minutes.
+Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
 Type: String
@@ -67,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeadLetteringOnMessageExpiration
-Dead Lettering On Message Expiration
+Specifies whether messages are deadlettered on expiration.
 
 ```yaml
 Type: Boolean
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultMessageTimeToLive
-Default Message TimeTo Live
+Specifies the default message time-to-live (TTL).
 
 ```yaml
 Type: String
@@ -98,8 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -DuplicateDetectionHistoryTimeWindow
-Duplicate Detection History Time Window - TimeSpan, that defines the duration of the duplicate detection history.
-The default value is 10 minutes.
+Specifies the duplicate detection history time window, a [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) valuethat defines the duration of the duplicate detection history. The default value is 10 minutes.
 
 ```yaml
 Type: String
@@ -114,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBatchedOperations
-Enable Batched Operations - value that indicates whether server-side batched operations are enabled
+Specifies whether server-side batched operations are enabled.
 
 ```yaml
 Type: Boolean
@@ -130,8 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableExpress
-EnableExpress - a value that indicates whether Express Entities are enabled.
-An express queue holds a message in memory temporarily before writing it to persistent storage.
+Specifies whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.
 
 ```yaml
 Type: Boolean
@@ -147,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnablePartitioning
-EnablePartitioning
+Specifies whether EnablePartitioning is enabled.
 
 ```yaml
 Type: Boolean
@@ -163,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsAnonymousAccessible
-IsAnonymousAccessible - a value that indicates whether the message is anonymous accessible.
+Specifies whether the message is anonymously accessible.
 
 ```yaml
 Type: Boolean
@@ -179,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -LockDuration
-Lock Duration
+Specifies the lock duration.
 
 ```yaml
 Type: String
@@ -194,8 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxDeliveryCount
-MaxDeliveryCount - the maximum delivery count.
-A message is automatically deadlettered after this number of deliveries.
+Specifies the maximum delivery count. A message is automatically deadlettered after this number of deliveries.
 
 ```yaml
 Type: Int32
@@ -210,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSizeInMegabytes
-MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
+Specifies the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
 
 ```yaml
 Type: Int64
@@ -225,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -MessageCount
-MessageCount - the number of messages in the queue.
+Specifies the number of messages in the queue.
 
 ```yaml
 Type: Int64
@@ -240,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -255,7 +251,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The Service Bus queue name.
 
 ```yaml
 Type: String
@@ -270,7 +266,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiresDuplicateDetection
-RequiresDuplicateDetection - a value that indicates whether the queue supports the concept of session
+Specifies whether the queue requires duplicate detection.
 
 ```yaml
 Type: Boolean
@@ -286,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiresSession
-RequiresSession - the value indicating if this queue requires duplicate detection.
+Specifies whether this queue supports sessions.
 
 ```yaml
 Type: Boolean
@@ -302,7 +298,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -317,7 +313,7 @@ Accept wildcard characters: False
 ```
 
 ### -SizeInBytes
-SizeInBytes - the size of the queue in bytes.
+The size of the queue in bytes.
 
 ```yaml
 Type: Int64
@@ -352,12 +348,47 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
+###-ResourceGroup
+ System.String
+
+###-NamespaceName
+ System.String
+
+###-QueueName
+ System.String
+
+###-EnablePartitioning
+ System.Boolean?
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+
+Name                                : SB-Queue_exampl1
+Location                            : West US
+LockDuration                        : 
+AccessedAt                          : 
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+EntityAvailabilityStatus            : 
+CreatedAt                           : 1/20/2017 2:51:36 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+IsAnonymousAccessible               : False
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : 
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 2:51:37 AM
 
 ## NOTES
 
