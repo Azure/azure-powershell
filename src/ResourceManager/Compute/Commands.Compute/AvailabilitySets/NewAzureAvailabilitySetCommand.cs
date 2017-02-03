@@ -63,6 +63,15 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public int? PlatformFaultDomainCount { get; set; }
 
+        [Parameter(
+            Position = 5,
+            ValueFromPipelineByPropertyName = true)]
+        public string Sku { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter Managed { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -73,8 +82,22 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = this.Location,
                     PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                    PlatformFaultDomainCount = this.PlatformFaultDomainCount
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount,
+                    Managed = this.Managed.IsPresent ? (bool?) true : null
                 };
+
+                if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
+                {
+                    avSetParams.Sku = new Sku();
+                    if (this.Managed.IsPresent)
+                    {
+                        avSetParams.Sku.Name = "Aligned";
+                    }
+                    if (!string.IsNullOrEmpty(this.Sku))
+                    {
+                        avSetParams.Sku.Name = this.Sku;
+                    }
+                }
 
                 var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,

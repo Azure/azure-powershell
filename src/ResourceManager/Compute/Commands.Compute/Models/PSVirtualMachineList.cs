@@ -23,5 +23,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachineList : PSVirtualMachine
     {
+        public PSVirtualMachine ToPSVirtualMachine()
+        {
+            return AutoMapper.Mapper.Map<PSVirtualMachine>(this);
+        }
     }
 }
