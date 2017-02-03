@@ -5461,17 +5461,17 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Set-AzureRmServiceBusQueueAuthorizationRule</command:name>
+<command:details><command:name>Set-AzureRmServiceBusSubscription</command:name>
 <command:verb>Set</command:verb>
-<command:noun>AzureRmServiceBusQueueAuthorizationRule</command:noun>
-<maml:description><maml:para>Updates the specified authorization rule description for the given Service Bus queue.
+<command:noun>AzureRmServiceBusSubscription</command:noun>
+<maml:description><maml:para>Updates a subscription description for a Service Bus topic in the specified Service Bus namespace.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Set-AzureRmServiceBusQueueAuthorizationRule cmdlet updates the description for the specified authorization rule of the given Service Bus queue.
+<maml:description><maml:para>The Set-AzureRmServiceBusSubscription cmdlet updates the description of the subscription for the Service Bus topic in the specified Service Bus namespace.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Set-AzureRmServiceBusQueueAuthorizationRule</maml:name>
+<command:syntax><command:syntaxItem><maml:name>Set-AzureRmServiceBusSubscription</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroup</maml:name>
 <maml:Description><maml:para>The name of the resource group.
 </maml:para>
@@ -5490,17 +5490,8 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthRuleObj</maml:name>
-<maml:Description><maml:para>The Service Bus queue authorization rule object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>QueueName</maml:name>
-<maml:Description><maml:para>The Service Bus queue name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>TopicName</maml:name>
+<maml:Description><maml:para>The Service Bus topic name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -5508,21 +5499,12 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
-<maml:Description><maml:para>The authorization rule name. Required if -AuthruleObj is not specified.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SubscriptionObj</maml:name>
+<maml:Description><maml:para>The Service Bus subscription definition.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Rights</maml:name>
-<maml:Description><maml:para>The rights; for example  @("Listen","Send","Manage"). Required if 'AuthruleObj' not specified.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-<dev:type><maml:name>String[]</maml:name>
+<command:parameterValue required="true" variableLength="false">SubscriptionAttributes</command:parameterValue>
+<dev:type><maml:name>SubscriptionAttributes</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -5544,25 +5526,7 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthRuleObj</maml:name>
-<maml:Description><maml:para>The Service Bus queue authorization rule object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
-<maml:Description><maml:para>The authorization rule name. Required if -AuthruleObj is not specified.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
@@ -5580,15 +5544,6 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>QueueName</maml:name>
-<maml:Description><maml:para>The Service Bus queue name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroup</maml:name>
 <maml:Description><maml:para>The name of the resource group.
 </maml:para>
@@ -5598,12 +5553,21 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Rights</maml:name>
-<maml:Description><maml:para>The rights; for example  @("Listen","Send","Manage"). Required if 'AuthruleObj' not specified.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SubscriptionObj</maml:name>
+<maml:Description><maml:para>The Service Bus subscription definition.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-<dev:type><maml:name>String[]</maml:name>
+<command:parameterValue required="true" variableLength="false">SubscriptionAttributes</command:parameterValue>
+<dev:type><maml:name>SubscriptionAttributes</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>TopicName</maml:name>
+<maml:Description><maml:para>The Service Bus topic name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -5629,22 +5593,22 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </maml:para>
 </maml:description>
 </command:inputType>
-<command:inputType><dev:type><maml:name>-QueueName</maml:name>
+<command:inputType><dev:type><maml:name>-TopicName</maml:name>
 </dev:type>
 <maml:description><maml:para>System.String
 </maml:para>
 </maml:description>
 </command:inputType>
-<command:inputType><dev:type><maml:name>-AuthRuleObj</maml:name>
+<command:inputType><dev:type><maml:name>-SubscriptionObj</maml:name>
 </dev:type>
-<maml:description><maml:para>Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+<maml:description><maml:para>Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
 </maml:para>
 </maml:description>
 </command:inputType>
 </command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>Name                                      : SB-TopicSubscription-Example1 Location                                  : West US AccessedAt                                : 1/1/0001 12:00:00 AM AutoDeleteOnIdle                          : 10675199.02:48:05.4775807 CountDetails                              :  CreatedAt                                 : 1/20/2017 9:59:15 PM DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807 DeadLetteringOnFilterEvaluationExceptions : True DeadLetteringOnMessageExpiration          : True EnableBatchedOperations                   : True EntityAvailabilityStatus                  : Available IsReadOnly                                :  LockDuration                              : 00:01:00 MaxDeliveryCount                          : 9 MessageCount                              : 0 RequiresSession                           : False Status                                    : Active UpdatedAt                                 : 1/20/2017 9:59:15 PM
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -5654,12 +5618,13 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; $authRuleObj = Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
+<dev:code>PS C:\&gt; $subscriptionObj = Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 
-PS C:\&gt; $authRuleObj.Rights.Add("Manage")
+PS C:\&gt; $subscriptionObj.DeadLetteringOnMessageExpiration = $True
+PS C:\&gt; $subscriptionObj.MaxDeliveryCount = 9
 
-PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthRuleObj $authRuleObj</dev:code>
-<dev:remarks><maml:para>Adds Manage to the access rights of the authorization rule `SBAuthoRule1` of the queue `SB-Queue_exampl1`.
+PS C:\&gt; Set-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj</dev:code>
+<dev:remarks><maml:para>Updates the description for the specified subscription to the given topic. This example updates the DeadLetteringOnMessageExpiration property to true and MaxDeliveryCount to 9.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -5667,17 +5632,17 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Set-AzureRmServiceBusQueueAuthorizationRule</command:name>
+<command:details><command:name>Set-AzureRmServiceBusTopic</command:name>
 <command:verb>Set</command:verb>
-<command:noun>AzureRmServiceBusQueueAuthorizationRule</command:noun>
-<maml:description><maml:para>Updates the specified authorization rule description for the given Service Bus queue.
+<command:noun>AzureRmServiceBusTopic</command:noun>
+<maml:description><maml:para>Updates the description of a Service Bus topic in the specified Service Bus namespace.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Set-AzureRmServiceBusQueueAuthorizationRule cmdlet updates the description for the specified authorization rule of the given Service Bus queue.
+<maml:description><maml:para>The Set-AzureRmServiceBusTopic cmdlet updates a description object for a Service Bus topic in the specified Service Bus namespace.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Set-AzureRmServiceBusQueueAuthorizationRule</maml:name>
+<command:syntax><command:syntaxItem><maml:name>Set-AzureRmServiceBusTopic</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroup</maml:name>
 <maml:Description><maml:para>The name of the resource group.
 </maml:para>
@@ -5696,17 +5661,8 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthRuleObj</maml:name>
-<maml:Description><maml:para>The Service Bus queue authorization rule object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>QueueName</maml:name>
-<maml:Description><maml:para>The Service Bus queue name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>TopicName</maml:name>
+<maml:Description><maml:para>The Service Bus topic name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -5714,21 +5670,12 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
-<maml:Description><maml:para>The authorization rule name. Required if -AuthruleObj is not specified.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>TopicObj</maml:name>
+<maml:Description><maml:para>The Service Bus topic definition.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Rights</maml:name>
-<maml:Description><maml:para>The rights; for example  @("Listen","Send","Manage"). Required if 'AuthruleObj' not specified.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-<dev:type><maml:name>String[]</maml:name>
+<command:parameterValue required="true" variableLength="false">TopicAttributes</command:parameterValue>
+<dev:type><maml:name>TopicAttributes</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -5750,25 +5697,7 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthRuleObj</maml:name>
-<maml:Description><maml:para>The Service Bus queue authorization rule object.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
-<dev:type><maml:name>SharedAccessAuthorizationRuleAttributes</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>AuthorizationRuleName</maml:name>
-<maml:Description><maml:para>The authorization rule name. Required if -AuthruleObj is not specified.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
@@ -5786,15 +5715,6 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>QueueName</maml:name>
-<maml:Description><maml:para>The Service Bus queue name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroup</maml:name>
 <maml:Description><maml:para>The name of the resource group.
 </maml:para>
@@ -5804,12 +5724,21 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Rights</maml:name>
-<maml:Description><maml:para>The rights; for example  @("Listen","Send","Manage"). Required if 'AuthruleObj' not specified.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>TopicName</maml:name>
+<maml:Description><maml:para>The Service Bus topic name.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-<dev:type><maml:name>String[]</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>TopicObj</maml:name>
+<maml:Description><maml:para>The Service Bus topic definition.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">TopicAttributes</command:parameterValue>
+<dev:type><maml:name>TopicAttributes</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -5835,22 +5764,22 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </maml:para>
 </maml:description>
 </command:inputType>
-<command:inputType><dev:type><maml:name>-QueueName</maml:name>
+<command:inputType><dev:type><maml:name>-TopicName</maml:name>
 </dev:type>
 <maml:description><maml:para>System.String
 </maml:para>
 </maml:description>
 </command:inputType>
-<command:inputType><dev:type><maml:name>-AuthRuleObj</maml:name>
+<command:inputType><dev:type><maml:name>-TopicObj</maml:name>
 </dev:type>
-<maml:description><maml:para>Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+<maml:description><maml:para>Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
 </maml:para>
 </maml:description>
 </command:inputType>
 </command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>Name                                : SB-Topic_exampl1 Location                            : West US Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-                                       Topic_exampl1 Type                                : Microsoft.ServiceBus/Topic AccessedAt                          : 1/20/2017 3:18:54 AM AutoDeleteOnIdle                    : 10675199.02:48:05.4775807 EntityAvailabilityStatus            :  CreatedAt                           : 1/20/2017 3:16:41 AM CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails DefaultMessageTimeToLive            : 10675199.02:48:05.4775807 DuplicateDetectionHistoryTimeWindow :  EnableBatchedOperations             : True EnableExpress                       : True EnablePartitioning                  : True EnableSubscriptionPartitioning      : False FilteringMessagesBeforePublishing   : False IsAnonymousAccessible               : False IsExpress                           : False MaxSizeInMegabytes                  : 16384 RequiresDuplicateDetection          : False SizeInBytes                         : 0 Status                              : Active SubscriptionCount                   : 1 SupportOrdering                     : False UpdatedAt                           : 1/20/2017 7:12:16 PM
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -5860,12 +5789,12 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; $authRuleObj = Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
+<dev:code>PS C:\&gt; $topicObj = Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 
-PS C:\&gt; $authRuleObj.Rights.Add("Manage")
+PS C:\&gt; $topicObj.EnableExpress = $True
 
-PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthRuleObj $authRuleObj</dev:code>
-<dev:remarks><maml:para>Adds Manage to the access rights of the authorization rule `SBAuthoRule1` of the queue `SB-Queue_exampl1`.
+PS C:\&gt; Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj</dev:code>
+<dev:remarks><maml:para>Updates the specified topic with a new description in the specified namespace, and updates the EnableExpress property to true .
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -5873,17 +5802,17 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Set-AzureRmServiceBusQueueAuthorizationRule</command:name>
+<command:details><command:name>Set-AzureRmServiceBusTopicAuthorizationRule</command:name>
 <command:verb>Set</command:verb>
-<command:noun>AzureRmServiceBusQueueAuthorizationRule</command:noun>
-<maml:description><maml:para>Updates the specified authorization rule description for the given Service Bus queue.
+<command:noun>AzureRmServiceBusTopicAuthorizationRule</command:noun>
+<maml:description><maml:para>Updates the specified authorization rule description for the given Service Bus topic.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Set-AzureRmServiceBusQueueAuthorizationRule cmdlet updates the description for the specified authorization rule of the given Service Bus queue.
+<maml:description><maml:para>The Set-AzureRmServiceBusTopicAuthorizationRule cmdlet updates the description for the specified authorization rule of the given Service Bus topic.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Set-AzureRmServiceBusQueueAuthorizationRule</maml:name>
+<command:syntax><command:syntaxItem><maml:name>Set-AzureRmServiceBusTopicAuthorizationRule</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroup</maml:name>
 <maml:Description><maml:para>The name of the resource group.
 </maml:para>
@@ -5903,7 +5832,7 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthRuleObj</maml:name>
-<maml:Description><maml:para>The Service Bus queue authorization rule object.
+<maml:Description><maml:para>The Service Bus topic authorization rule object.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
@@ -5911,8 +5840,8 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>QueueName</maml:name>
-<maml:Description><maml:para>The Service Bus queue name.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>TopicName</maml:name>
+<maml:Description><maml:para>The Service Bus topic name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -5930,7 +5859,7 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Rights</maml:name>
-<maml:Description><maml:para>The rights; for example  @("Listen","Send","Manage"). Required if 'AuthruleObj' not specified.
+<maml:Description><maml:para>Rights; for example,  @("Listen","Send","Manage"). Required if -AuthruleObj is not specified.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -5957,7 +5886,7 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>AuthRuleObj</maml:name>
-<maml:Description><maml:para>The Service Bus queue authorization rule object.
+<maml:Description><maml:para>The Service Bus topic authorization rule object.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SharedAccessAuthorizationRuleAttributes</command:parameterValue>
@@ -5992,15 +5921,6 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>QueueName</maml:name>
-<maml:Description><maml:para>The Service Bus queue name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroup</maml:name>
 <maml:Description><maml:para>The name of the resource group.
 </maml:para>
@@ -6011,11 +5931,20 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Rights</maml:name>
-<maml:Description><maml:para>The rights; for example  @("Listen","Send","Manage"). Required if 'AuthruleObj' not specified.
+<maml:Description><maml:para>Rights; for example,  @("Listen","Send","Manage"). Required if -AuthruleObj is not specified.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
 <dev:type><maml:name>String[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>TopicName</maml:name>
+<maml:Description><maml:para>The Service Bus topic name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -6041,7 +5970,7 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </maml:para>
 </maml:description>
 </command:inputType>
-<command:inputType><dev:type><maml:name>-QueueName</maml:name>
+<command:inputType><dev:type><maml:name>-TopicName</maml:name>
 </dev:type>
 <maml:description><maml:para>System.String
 </maml:para>
@@ -6056,7 +5985,7 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description><maml:para>Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_exampl1/authorization            Rules/SBTopicAuthoRule1 Type     : Microsoft.ServiceBus/AuthorizationRules Name     : SBTopicAuthoRule1 Location : West US Tags     :  Rights   : {Listen, Send, Manage}
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -6066,12 +5995,12 @@ PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-Se
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; $authRuleObj = Get-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
+<dev:code>PS C:\&gt; $authRuleObj = Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
 
 PS C:\&gt; $authRuleObj.Rights.Add("Manage")
 
-PS C:\&gt; Set-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthRuleObj $authRuleObj</dev:code>
-<dev:remarks><maml:para>Adds Manage to the access rights of the authorization rule `SBAuthoRule1` of the queue `SB-Queue_exampl1`.
+PS C:\&gt; Set-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthRuleObj $authRuleObj</dev:code>
+<dev:remarks><maml:para>Adds Manage to the access rights of the authorization rule `SBTopicAuthoRule1` on topic `SB-Topic_exampl1`.
 </maml:para>
 </dev:remarks>
 </command:example>

@@ -140,9 +140,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
  System.String
 
 ###-TopicObj
- Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+ Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
 
 Name                                : SB-Topic_exampl1
 Location                            : West US

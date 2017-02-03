@@ -145,6 +145,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
+
 Name                                      : SB-TopicSubscription-Example1
 Location                                  : West US
 AccessedAt                                : 1/1/0001 12:00:00 AM
