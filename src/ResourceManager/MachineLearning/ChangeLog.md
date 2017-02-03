@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 0.11.3
+
+## Version 0.11.2
+* Serialization and deserialization improvements for all cmdlets
+
 ## Version 0.11.1
 * Add support for Azure Machine Learning Committment Plans
     - Get-AzureRmMLCommitmentAssociation

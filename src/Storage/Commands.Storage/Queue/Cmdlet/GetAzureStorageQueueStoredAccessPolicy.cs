@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
         internal async Task GetAzureQueueStoredAccessPolicyAsync(long taskId, IStorageQueueManagement localChannel, string queueName, string policyName)
         {
-            SharedAccessQueuePolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, queueName, policyName);
+            SharedAccessQueuePolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, queueName, policyName).ConfigureAwait(false);
 
             if (!String.IsNullOrEmpty(policyName))
             {
@@ -84,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         internal async Task<SharedAccessQueuePolicies> GetPoliciesAsync(IStorageQueueManagement localChannel, string queueName, string policyName)
         {
             CloudQueue queue = localChannel.GetQueueReference(queueName);
-            QueuePermissions queuePermissions = await localChannel.GetPermissionsAsync(queue);
+            QueuePermissions queuePermissions = await localChannel.GetPermissionsAsync(queue).ConfigureAwait(false);
             return queuePermissions.SharedAccessPolicies;
         }
 

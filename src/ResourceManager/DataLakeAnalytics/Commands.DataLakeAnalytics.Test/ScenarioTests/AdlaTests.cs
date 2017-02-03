@@ -36,6 +36,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlaAccountTiers()
+        {
+            AdlaTestsBase.NewInstance.RunPsTest(true,
+                string.Format(
+                    "Test-DataLakeAnalyticsAccountTiers -location '{0}'",
+                    AdlaTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaCatalog()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,

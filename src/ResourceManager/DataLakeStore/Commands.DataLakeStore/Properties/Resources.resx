@@ -132,6 +132,12 @@
   <data name="DefaultAclWord" xml:space="preserve">
     <value>"default "</value>
   </data>
+  <data name="DefaultingEncryptionType" xml:space="preserve">
+    <value>No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None</value>
+  </data>
+  <data name="DiagnosticDirectoryAlreadyExists" xml:space="preserve">
+    <value>The specified path: {0} already exists as a directory. Please specify a path (including file name) of a new file to create or an existing file to append to.</value>
+  </data>
   <data name="DownloadFileDataMessage" xml:space="preserve">
     <value>Download file data</value>
   </data>
@@ -150,6 +156,9 @@
   <data name="IgnoredKeyVaultParams" xml:space="preserve">
     <value>User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored.</value>
   </data>
+  <data name="IncorrectOutputTypeWarning" xml:space="preserve">
+    <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
+  </data>
   <data name="InvalidAce" xml:space="preserve">
     <value>Invalid ACE returned. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}</value>
   </data>
@@ -158,6 +167,9 @@
   </data>
   <data name="InvalidEncoding" xml:space="preserve">
     <value>Invalid encoding selected. 'Byte' encoding can only be used with byte content. Use text encoding instead.</value>
+  </data>
+  <data name="InvalidExpiryPath" xml:space="preserve">
+    <value>The specified path does not exist or is not a file. Please ensure the path points to a file and it exists. Path supplied: {0}</value>
   </data>
   <data name="InvalidExportPathType" xml:space="preserve">
     <value>The path '{0}' either does not exist or is not accessible. Please check the path and permission.</value>
@@ -241,9 +253,6 @@
   <data name="RemovingDataLakeStoreTrustedProvider" xml:space="preserve">
     <value>Are you sure you want to remove the Data Lake Store trusted identity provider: '{0}'?</value>
   </data>
-  <data name="ScriptFilePathDoesNotExist" xml:space="preserve">
-    <value>The script file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
-  </data>
   <data name="ServerFileAlreadyExists" xml:space="preserve">
     <value>The destination path '{0}' already exists in the system. To overwrite this location, use the -Force parameter.</value>
   </data>
@@ -262,6 +271,9 @@
   <data name="SetDataLakeTrustedIdProvider" xml:space="preserve">
     <value>Setting the Data Lake Store trusted identity provider: '{0}' ...</value>
   </data>
+  <data name="SetFileExpiry" xml:space="preserve">
+    <value>Setting the Expiry of file at path: '{0}' to: {1} ...</value>
+  </data>
   <data name="SettingDataLakeStoreItemAcl" xml:space="preserve">
     <value>The entry or entries you provided may already exist in the item's ACL. Are you sure you want to overwrite the existing entry or entries at item path '{0}'?</value>
   </data>
@@ -270,6 +282,9 @@
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
+  </data>
+  <data name="TraceStreamFailure" xml:space="preserve">
+    <value>Error creating FileStream for diagnostic trace file \"{0}\" - No diagnostics will be captured. Failed with Error:\r\n{1}</value>
   </data>
   <data name="UploadFailedMessage" xml:space="preserve">
     <value>Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the "Resume" option. If the error persists, please contact Microsoft support.</value>

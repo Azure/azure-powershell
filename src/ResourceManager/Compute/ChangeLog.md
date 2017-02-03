@@ -18,10 +18,30 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
+  - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'none' or e.g. -Daemon 'service'."
+  - Secret: The encryption key used to encrypt and decrypt the data bag item values.
+  - SecretFile: The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 
+## Version 2.5.0
+* Fix Get-AzureRmVM with -Status issue: Get-AzureRmVM throws an exception when Get-AzureRmVM lists multiple VMs and some of the VMs are deleted during Get-AzureRmVM is performed.
+* New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
+	- BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+	- BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it's manual, schedule settings need to be specified.
+	- FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+	- FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+	- FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+	- LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+* New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
+
+## Version 2.4.0
+* Add Remove-AzureRmVMSecret cmdlet.
+* Based on user feedback (https://github.com/Azure/azure-powershell/issues/1384), we've added a DisplayHint property to VM object to enable Compact and Expand display modes. This is similar to `Get -Date - DisplayHint Date` cmdlet. By default, the return of `Get-AzureRmVm -ResourceGroupName <rg-name> -Name <vm-name>` will be compact. You can expand the output using `-DisplayHint Expand` parameter.
+* UPCOMING BREAKING CHANGE Notification: We've added a warning about removing ` DataDiskNames` and ` NetworkInterfaceIDs` properties from the returned VM object from `Get-AzureRmVm -ResourceGroupName <rg-name> -Name <vm-name` cmdlet. Please update your scripts to access these properties in the following way:
+    - `$vm.StorageProfile.DataDisks`
+    - `$vm.NetworkProfile.NetworkInterfaces`
 * Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
     - JsonAttribute : A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}'
-
     - ChefServiceInterval : Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field. e.g. -ChefServiceInterval 45
 
 ## Version 2.3.0

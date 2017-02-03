@@ -21,7 +21,8 @@ function Test-DatabaseDataMaskingPrivilegedUsersChanges
 
 	# Setup
 	$testSuffix = 30379
-	$params = Create-DataMaskingTestEnvironment $testSuffix
+	Create-DataMaskingTestEnvironment $testSuffix
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -71,6 +72,7 @@ function Test-DatabaseDataMaskingPrivilegedUsersChanges
 	finally
 	{
 		# Cleanup
+		Remove-DataMaskingTestEnvironment $testSuffix
 	}
 }
 
@@ -83,7 +85,8 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 
 	# Setup
 	$testSuffix = 40225
-	$params = Create-DataMaskingTestEnvironment $testSuffix
+	Create-DataMaskingTestEnvironment $testSuffix
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -142,6 +145,7 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 	finally
 	{
 		# Cleanup
+		Remove-DataMaskingTestEnvironment $testSuffix
 	}
 }
 
@@ -154,7 +158,8 @@ function Test-DatabaseDataMaskingNumberRuleLifecycle
 
 	# Setup
 	$testSuffix = 51792
-	$params = Create-DataMaskingTestEnvironment $testSuffix
+	Create-DataMaskingTestEnvironment $testSuffix
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -212,6 +217,7 @@ function Test-DatabaseDataMaskingNumberRuleLifecycle
 	finally
 	{
 		# Cleanup
+		Remove-DataMaskingTestEnvironment $testSuffix
 	}
 }
 
@@ -224,7 +230,8 @@ function Test-DatabaseDataMaskingTextRuleLifecycle
 
 	# Setup
 	$testSuffix = 60222
-	$params = Create-DataMaskingTestEnvironment $testSuffix
+	Create-DataMaskingTestEnvironment $testSuffix
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -282,6 +289,7 @@ function Test-DatabaseDataMaskingTextRuleLifecycle
 	finally
 	{
 		# Cleanup
+		Remove-DataMaskingTestEnvironment $testSuffix
 	}
 }
 
@@ -294,7 +302,8 @@ function Test-DatabaseDataMaskingRuleCreationFailures
 
 	# Setup
 	$testSuffix = 70232
-	$params = Create-DataMaskingTestEnvironment $testSuffix
+	Create-DataMaskingTestEnvironment $testSuffix
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -311,6 +320,7 @@ function Test-DatabaseDataMaskingRuleCreationFailures
 	finally
 	{
 		# Cleanup
+		Remove-DataMaskingTestEnvironment $testSuffix
 	}
 }
 
@@ -322,8 +332,10 @@ function Test-DatabaseDataMaskingRuleCreationWithoutPolicy
 {
 
 	# Setup
-	$testSuffix = 457822
-	 $params = Create-DataMaskingTestEnvironment $testSuffix
+	$testSuffix = 4578221
+	Create-DataMaskingTestEnvironment $testSuffix
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
+
 	try
 	{
 		# Test
@@ -358,6 +370,7 @@ function Test-DatabaseDataMaskingRuleCreationWithoutPolicy
 	finally
 	{
 		# Cleanup
+		Remove-DataMaskingTestEnvironment $testSuffix
 	}
 }
 

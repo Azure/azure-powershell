@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     public class PremiumClusterTests : HDInsightTestBase
     {
         private NewAzureHDInsightClusterCommand cmdlet;
-        private const string StorageName = "PlaceStorageName";
+        private const string StorageName = "PlaceStorageName.blob.core.windows.net";
         private const string StorageKey = "PlaceStorageKey";
         private const int ClusterSize = 4;
 
@@ -109,8 +109,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
-                    parameters.DefaultStorageAccountName == StorageName &&
-                    parameters.DefaultStorageAccountKey == StorageKey &&
+                    parameters.DefaultStorageInfo as AzureStorageInfo != null &&
+                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountName == StorageName &&
+                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountKey == StorageKey &&
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&

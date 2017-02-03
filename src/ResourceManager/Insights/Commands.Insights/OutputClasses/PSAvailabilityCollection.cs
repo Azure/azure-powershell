@@ -18,19 +18,17 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps around a list of Dimension objects to display them with indentation
+    /// Wraps around a list of MetricAvailability objects to display them with indentation
     /// </summary>
-    public class PSAvailabilityCollection
+    public class PSAvailabilityCollection : List<MetricAvailability>
     {
-        private IList<MetricAvailability> metricAvailabilities;
-
         /// <summary>
         /// Initializes a new instance of the PSAvailabilityCollection class
         /// </summary>
         /// <param name="metricAvailabilities">The list of metric availabilities</param>
         public PSAvailabilityCollection(IList<MetricAvailability> metricAvailabilities)
         {
-            this.metricAvailabilities = metricAvailabilities;
+            this.AddRange(metricAvailabilities);
         }
 
         /// <summary>
@@ -39,7 +37,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <returns>A string representation of the list of MetricAvailability objects including indentation</returns>
         public override string ToString()
         {
-            return this.metricAvailabilities.ToString(indentationTabs: 1);
+            return this.ToString(indentationTabs: 1);
         }
     }
 }
