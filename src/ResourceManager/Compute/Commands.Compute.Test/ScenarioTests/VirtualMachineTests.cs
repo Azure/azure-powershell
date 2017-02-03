@@ -198,5 +198,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineGetStatus");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineManagedDiskConversion()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineManagedDiskConversion");
+        }
     }
 }
