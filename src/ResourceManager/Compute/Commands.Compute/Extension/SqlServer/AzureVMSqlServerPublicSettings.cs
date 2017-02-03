@@ -38,5 +38,10 @@ namespace Microsoft.Azure.Commands.Compute
         /// Auto-telemetry settings
         /// </summary>
         public AutoTelemetrySettings AutoTelemetrySettings { get; set; }
+    
+        /// <summary>
+        /// Deployment token, esp. to differentiate between two successive similar config updates.
+        /// </summary>
+        public int? DeploymentToken { get; set; }       
     }
 }

@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(DataLakeAnalyticsAccount))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
     [Alias("New-AdlAnalyticsAccount")]
     public class NewAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
@@ -53,6 +53,29 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The maximum supported degree of parallelism for this account.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int? MaxDegreeOfParallelism { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The maximum supported jobs running under the account at the same time.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int? MaxJobCount { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The number of days that job metadata is retained.")]
+        [ValidateNotNull]
+        [ValidateRange(1, 180)]
+        public int? QueryStoreRetention { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.")]
+        [ValidateNotNull]
+        public TierType? Tier { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -87,8 +110,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Name = DefaultDataLakeStore
             };
 
-            WriteObject(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, Location, defaultStorage,
-                customTags: Tags));
+            WriteObject(
+                new PSDataLakeAnalyticsAccount(
+                    DataLakeAnalyticsClient.CreateOrUpdateAccount(
+                        ResourceGroupName,
+                        Name,
+                        Location,
+                        defaultStorage,
+                        customTags: Tags,
+                        maxDegreeOfParallelism: MaxDegreeOfParallelism,
+                        maxJobCount: MaxJobCount,
+                        queryStoreRetention: QueryStoreRetention,
+                        tier: Tier)));
         }
     }
 }

@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 2.5.0
+
+## Version 2.4.0
+
 ## Version 2.3.0
 * Add support to create HDInsight Spark 2.0 cluster using new cmdlet Add-AzureRmHDInsightComponentVersion to specify the component version of Spark
 * Get-AzureRmHDInsightCluster now returns the component version in a Spark 2.0 cluster

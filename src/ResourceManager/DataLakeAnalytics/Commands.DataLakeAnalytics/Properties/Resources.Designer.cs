@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
+        /// </summary>
+        internal static string IncorrectOutputTypeWarning {
+            get {
+                return ResourceManager.GetString("IncorrectOutputTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid catalog path: &apos;{0}&apos;. A catalog path must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName.
         /// </summary>
         internal static string InvalidCatalogPath {
@@ -232,6 +241,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics catalog credential &apos;{0}&apos;  and ALL resources dependent on it....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogCredentialCascade {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogCredentialCascade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake Analytics catalog secret &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsCatalogSecret {
@@ -282,6 +300,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemovingDataLakeAnalyticsCatalogCredential {
             get {
                 return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog credential &apos;{0}&apos; and ALL resources dependent on it?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogCredentialCascade {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogCredentialCascade", resourceCulture);
             }
         }
         

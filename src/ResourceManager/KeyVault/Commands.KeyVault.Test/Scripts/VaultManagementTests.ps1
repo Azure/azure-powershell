@@ -349,6 +349,9 @@ function Initialize-TemporaryState
     {
         $global:testVault = $vaultName
         Write-Host "Successfully initialized the temporary vault $global:testVault."
+        Write-Host "Sleeping for 10 seconds to wait for DNS propagation..."
+        Start-Sleep -Seconds 10
+        Write-Host "DNS propagation should have finished by now. Continuing."
     }
     else
     {

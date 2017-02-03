@@ -75,6 +75,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed. Only named default entries can be removed this way.")]
         public SwitchParameter Default { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates a boolean response should be returned indicating the result of the delete operation."
+            )]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
@@ -84,7 +90,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ConfirmAction(
                 string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
                 Path.OriginalPath,
-                () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec); });
+                () => {
+                    DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

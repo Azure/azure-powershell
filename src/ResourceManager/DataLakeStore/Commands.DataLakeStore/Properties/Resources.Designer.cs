@@ -106,6 +106,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None.
+        /// </summary>
+        internal static string DefaultingEncryptionType {
+            get {
+                return ResourceManager.GetString("DefaultingEncryptionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified path: {0} already exists as a directory. Please specify a path (including file name) of a new file to create or an existing file to append to..
+        /// </summary>
+        internal static string DiagnosticDirectoryAlreadyExists {
+            get {
+                return ResourceManager.GetString("DiagnosticDirectoryAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download file data.
         /// </summary>
         internal static string DownloadFileDataMessage {
@@ -160,6 +178,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
+        /// </summary>
+        internal static string IncorrectOutputTypeWarning {
+            get {
+                return ResourceManager.GetString("IncorrectOutputTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid ACE returned. Expected ACE format: &apos;[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;&apos;. Actual ACE: {0}.
         /// </summary>
         internal static string InvalidAce {
@@ -183,6 +210,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string InvalidEncoding {
             get {
                 return ResourceManager.GetString("InvalidEncoding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified path does not exist or is not a file. Please ensure the path points to a file and it exists. Path supplied: {0}.
+        /// </summary>
+        internal static string InvalidExpiryPath {
+            get {
+                return ResourceManager.GetString("InvalidExpiryPath", resourceCulture);
             }
         }
         
@@ -430,15 +466,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
-        /// </summary>
-        internal static string ScriptFilePathDoesNotExist {
-            get {
-                return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The destination path &apos;{0}&apos; already exists in the system. To overwrite this location, use the -Force parameter..
         /// </summary>
         internal static string ServerFileAlreadyExists {
@@ -493,6 +520,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting the Expiry of file at path: &apos;{0}&apos; to: {1} ....
+        /// </summary>
+        internal static string SetFileExpiry {
+            get {
+                return ResourceManager.GetString("SetFileExpiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The entry or entries you provided may already exist in the item&apos;s ACL. Are you sure you want to overwrite the existing entry or entries at item path &apos;{0}&apos;?.
         /// </summary>
         internal static string SettingDataLakeStoreItemAcl {
@@ -516,6 +552,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string TaskCancelledMessage {
             get {
                 return ResourceManager.GetString("TaskCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error creating FileStream for diagnostic trace file \&quot;{0}\&quot; - No diagnostics will be captured. Failed with Error:\r\n{1}.
+        /// </summary>
+        internal static string TraceStreamFailure {
+            get {
+                return ResourceManager.GetString("TraceStreamFailure", resourceCulture);
             }
         }
         

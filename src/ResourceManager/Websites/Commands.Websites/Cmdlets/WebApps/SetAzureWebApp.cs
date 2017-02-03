@@ -90,6 +90,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The number of workers to be allocated", ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public int NumberOfWorkers { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -121,7 +125,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
                             Use32BitWorkerProcess =
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
-                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null
+                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
+                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
                         };
                     }
 

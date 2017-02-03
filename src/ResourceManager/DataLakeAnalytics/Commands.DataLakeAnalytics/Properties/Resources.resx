@@ -222,4 +222,13 @@
   <data name="EmptyCatalogPath" xml:space="preserve">
     <value>Invalid empty catalog path. A catalog path is required unless listing databases and must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName</value>
   </data>
+  <data name="RemoveDataLakeAnalyticsCatalogCredentialCascade" xml:space="preserve">
+    <value>Removing Data Lake Analytics catalog credential '{0}'  and ALL resources dependent on it...</value>
+  </data>
+  <data name="RemovingDataLakeAnalyticsCatalogCredentialCascade" xml:space="preserve">
+    <value>Are you sure you want to remove Data Lake Analytics catalog credential '{0}' and ALL resources dependent on it?</value>
+  </data>
+  <data name="IncorrectOutputTypeWarning" xml:space="preserve">
+    <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
+  </data>
 </root>

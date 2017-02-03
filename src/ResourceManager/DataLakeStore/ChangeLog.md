@@ -19,6 +19,23 @@
 -->
 ## Current Release
 
+## Version 3.3.0
+* Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
+* Update New-AdlStore and Set-AdlStore to support commitment tier options for the service.
+* Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.
+* Add Diagnostic logging support to Import-AdlStoreItem and Export-AdlStoreItem. This can be enabled through the following parameters:
+    * -Debug, enables full diagnostic logging as well as debug logging to the PowerShell console. Most verbose options
+    * -DiagnosticLogLevel, allows finer control of the output than debug. If used with debug, this is ignored and debug logging is used.
+    * -DiagnosticLogPath, optionally specify the file to write diagnostic logs to. By default it is written to a file under %LOCALAPPDATA%\AdlDataTransfer
+* Added support to New-AdlStore to explicitly opt-out of account encryption. To do so, create the account with the -DisableEncryption flag.
+
+## Version 3.2.0
+* Introduction of deprecation warning for nested properties for all ARM resources. Nested properties will be removed in a future release and all properties will be moved one level up.
+* Removed the ability to set encryption in Set-AzureRMDataLakeStoreAccount (never was supported)
+* Added ability to enable/disable firewall rules and the trusted id providers during Set-AzureRMDataLakeStoreAccount
+* Added a new cmdlet: Set-AzureRMDataLakeStoreItemExpiry, which allows the user to set or remove the expiration for files (not folders) in their ADLS account.
+* Small fix for friendly date properties to pivot off UTC time instead of local time, ensuring standard time reporting.
+
 ## Version 3.1.0
 * Improvements to import and export data cmdlets
     - Drastically increased performance for distributed download scenarios, where multiple sessions are running across many clients targeting the same ADLS account.

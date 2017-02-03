@@ -22,7 +22,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Create a new key vault. 
+    /// Create a new key vault.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmKeyVault",
         SupportsShouldProcess = true,
@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]        
+            HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
         public SkuName Sku { get; set; }
-        
+
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);
                 }
 
-                var userObjectId = Guid.Empty;
+                var userObjectId = string.Empty;
                 AccessPolicyEntry accessPolicy = null;
 
                 try
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
                     WriteWarning(ex.Message);
                 }
-                if (userObjectId != Guid.Empty)
+                if (!string.IsNullOrWhiteSpace(userObjectId))
                 {
                     accessPolicy = new AccessPolicyEntry()
                     {

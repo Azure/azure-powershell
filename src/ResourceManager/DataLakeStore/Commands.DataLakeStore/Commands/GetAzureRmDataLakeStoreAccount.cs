@@ -15,12 +15,13 @@
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<DataLakeStoreAccount>))]
+     OutputType(typeof(List<PSDataLakeStoreAccount>), typeof(PSDataLakeStoreAccount))]
     [Alias("Get-AdlStore")]
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
@@ -46,13 +47,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single account
-                WriteObject(DataLakeStoreClient.GetAccount(ResourceGroupName, Name));
+                WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.GetAccount(ResourceGroupName, Name)));
             }
             else
             {
                 // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
-                var list = DataLakeStoreClient.ListAccounts(ResourceGroupName, null, null, null);
-                WriteObject(list, true);
+                WriteObject(DataLakeStoreClient.ListAccounts(ResourceGroupName, null, null, null)
+                    .Select(element => new PSDataLakeStoreAccount(element))
+                    .ToList(), true);
             }
         }
     }

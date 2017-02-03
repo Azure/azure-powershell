@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 2.5.0
+* Get-AzureRmOperationalInsightsSearchResults no longer requires the Top parameter to retrieve results
+
+## Version 2.4.0
+
 ## Version 2.3.0
 * Add new parameter to cmdlet New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource
     - UseLegacyCollector (switch parameter) will enable collection of 32-bit legacy performance counters on 64-bit machines

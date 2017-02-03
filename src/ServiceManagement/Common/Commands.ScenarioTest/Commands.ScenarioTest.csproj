@@ -85,7 +85,7 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -220,10 +220,16 @@
     <None Include="Resources\ChefExtension\tstorgnztn-validator.pem">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\ChefExtension\encrypted_data_bag_secret">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\DiagnosticsExtension\DiagnosticsExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\DiagnosticsExtension\Files\diagnostics.wadcfgx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SqlIaaSExtension\SqlIaaSExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\DscExtension\DscExtensionTests.ps1">
@@ -278,6 +284,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtensionAdvancedOptions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DscExtensionTests\TestGetAzureVMDscExtension.json">
@@ -361,6 +370,9 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestNewAzureVMWithBYOL.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.SqlIaaSExtensionTests\TestGetAzureVMSqlIaaSExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddAzureTrafficManagerEndpoint.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -432,6 +444,7 @@
     <Compile Include="CredentialTests\CredentialTestHelper.cs" />
     <Compile Include="ChefExtension\ChefExtensionTests.cs" />
     <Compile Include="DiagnosticsExtension\DiagnosticsExtensionTests.cs" />
+    <Compile Include="SqlIaaSExtensionTests\SqlIaaSExtensionTests.cs" />
     <Compile Include="DscExtension\DscExtensionTests.cs" />
     <Compile Include="MediaServicesTests\MediaServicesTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

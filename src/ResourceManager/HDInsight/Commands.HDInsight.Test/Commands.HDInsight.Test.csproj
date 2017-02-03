@@ -50,9 +50,9 @@
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.3.0\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.HDInsight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.2.0.1\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>
@@ -93,7 +93,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -162,6 +162,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLakeStoreDefaultFilesystemTests.cs" />
     <Compile Include="HDInsightTestBase.cs" />
     <Compile Include="UnitTests\PremiumClusterTests.cs" />
     <Compile Include="UnitTests\ScriptActionTests.cs" />
@@ -170,10 +171,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Compile Include="ScenarioTests\HDInsightConfigurationTests.cs" />
-    <None Include="ScenarioTests\DataLakeStoreScenarioTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Compile Include="ScenarioTests\DataLakeStoreScenarioTests.cs" />
     <Compile Include="ScenarioTests\HDInsightScenarioTestsBase.cs" />
     <Compile Include="UnitTests\JobTests.cs" />
     <Compile Include="UnitTests\ResizeClusterTests.cs" />
@@ -214,9 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.HDInsight.Test.DataLakeStoreScenarioTests\TestDataLakeStoreClusterCreate.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
