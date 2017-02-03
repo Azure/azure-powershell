@@ -59,6 +59,7 @@
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "newtonsoft*.dll", SearchOption.AllDirectories))
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "automapper*.dll", SearchOption.AllDirectories))
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "security*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "bouncy*.dll", SearchOption.AllDirectories))
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.msi", SearchOption.AllDirectories));
 
             Assert.NotNull(msiFiles);
@@ -96,6 +97,17 @@
             string procErr = string.Empty;
             string msiContentsDirPath = ExtractMsiContents(out procErr);
             IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.js", SearchOption.AllDirectories);
+
+            Assert.True(msiFiles.Count<string>() == 0);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VerifyNoJsonFiles()
+        {
+            string procErr = string.Empty;
+            string msiContentsDirPath = ExtractMsiContents(out procErr);
+            IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.json", SearchOption.AllDirectories);
 
             Assert.True(msiFiles.Count<string>() == 0);
         }
