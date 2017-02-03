@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public Management.Sql.Models.FailoverGroup Get(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).FailoverGroup.Get(resourceGroupName, serverName, FailoverGroupName).FailoverGroup;
+            return GetCurrentSqlClient(clientRequestId).FailoverGroups.Get(resourceGroupName, serverName, FailoverGroupName).FailoverGroup;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public IList<Management.Sql.Models.FailoverGroup> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).FailoverGroup.List(resourceGroupName, serverName).FailoverGroups;
+            return GetCurrentSqlClient(clientRequestId).FailoverGroups.List(resourceGroupName, serverName).FailoverGroups;
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public Management.Sql.Models.FailoverGroup CreateOrUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupCreateOrUpdateParameters parameters)
         {
-            var resp = GetCurrentSqlClient(clientRequestId).FailoverGroup.CreateOrUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
+            var resp = GetCurrentSqlClient(clientRequestId).FailoverGroups.CreateOrUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
             return resp.FailoverGroup;
         }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public void Remove(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).FailoverGroup.Delete(resourceGroupName, serverName, FailoverGroupName);
+            GetCurrentSqlClient(clientRequestId).FailoverGroups.Delete(resourceGroupName, serverName, FailoverGroupName);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public void Failover(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).FailoverGroup.Failover(resourceGroupName, serverName, FailoverGroupName);
+            GetCurrentSqlClient(clientRequestId).FailoverGroups.Failover(resourceGroupName, serverName, FailoverGroupName);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public void ForceFailoverAllowDataLoss(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).FailoverGroup.ForceFailoverAllowDataLoss(resourceGroupName, serverName, FailoverGroupName);
+            GetCurrentSqlClient(clientRequestId).FailoverGroups.ForceFailoverAllowDataLoss(resourceGroupName, serverName, FailoverGroupName);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public Management.Sql.Models.FailoverGroup PatchUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupPatchUpdateParameters parameters)
         {
-            var resp = GetCurrentSqlClient(clientRequestId).FailoverGroup.PatchUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
+            var resp = GetCurrentSqlClient(clientRequestId).FailoverGroups.PatchUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
             return resp.FailoverGroup;
         }
 

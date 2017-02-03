@@ -23,14 +23,14 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to create a new Azure Sql Database FailoverGroup
+    /// Cmdlet to create a new Azure Sql Database Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlFailoverGroup", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseFailoverGroup", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
-        /// Gets or sets the name of the Azure SQL Database FailoverGroup
+        /// Gets or sets the name of the Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -48,20 +48,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string FailoverPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets the grace period without data loss for the Sql Azure Failover Group.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The grace period for failover without data loss of the failover group.")]
-        [ValidateNotNullOrEmpty]
-        public int GracePeriodWithoutDataLossMinutes { get; set; }
-
-        /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The grace period for failover with data loss of the failover group.")]
         [ValidateNotNullOrEmpty]
-        public int GracePeriodWithDataLossMinutes { get; set; }
+        public int GracePeriodWithDataLossHours { get; set; }
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of theSql Azure Failover Group.
@@ -115,15 +107,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 Location = location,
                 FailoverGroupName = FailoverGroupName,
                 ReadWriteFailoverPolicy = FailoverPolicy,
-                FailoverGracePeriodMinutes = GracePeriodWithoutDataLossMinutes,
-                FailoverWithDataLossGracePeriodMinutes = GracePeriodWithDataLossMinutes,
+                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHours,
                 ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary
             });
             return newEntity;
         }
 
         /// <summary>
-        /// Update the database
+        /// Update the Failover Group
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>

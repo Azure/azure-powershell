@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to add Azure Sql Databases into a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmSqlFailoverGroup", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Add, "AzureRmSqlDatabaseToFailoverGroup", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class AddAzureSqlDatabaseToFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -42,27 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// The Azure SQL Databases to be added to the secondary server
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             HelpMessage = "The Azure SQL Databases to be added to the secondary server.")]
         [ValidateNotNullOrEmpty]
-        public List<AzureSqlDatabaseModel>  databases { get; set; }
-
-        /// <summary>
-        /// The Azure SQL Elastic Pool which has the  databases to be added to the secondary server
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The list of Azure SQL Elastic Pools which have the databases to be added to the secondary server.")]
-        [ValidateNotNullOrEmpty]
-        public List<string> ElasticPool { get; set; }
-
-        /// <summary>
-        /// A swtich parameter indicating whether you want to add all the databases in the server.
-        /// </summary>
-        /// <returns></returns>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "All the databases in the secondary server that do not belong to another Failover Group will be added.")]
-        public SwitchParameter All { get; set; }
+        public List<AzureSqlDatabaseModel>  Database { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Failover Group
@@ -102,21 +85,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
 
-            if (All.IsPresent)
+           if (MyInvocation.BoundParameters.ContainsKey("Database"))
             {
-                AzureSqlFailoverGroupModel result = new AzureSqlFailoverGroupModel();
-                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(ModelAdapter.ListDatabasesOnServer(this.ResourceGroupName, this.ServerName)));
-            }
-            else if (MyInvocation.BoundParameters.ContainsKey("ElasticPool"))
-            {
-                foreach (var elasticPoolName in ElasticPool)
-                {
-                    dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(ModelAdapter.ListDatabasesOnElasticPool(this.ResourceGroupName, this.ServerName, elasticPoolName)));
-                }
-            }
-            else if (MyInvocation.BoundParameters.ContainsKey("Database"))
-            {
-                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(databases));
+                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
             }
             else
             {
@@ -134,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
 
         /// <summary>
-        /// Update the database
+        /// Update the Failover Group
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
@@ -145,6 +116,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             };
         }
 
+        /// <summary>
+        /// Helper to Convert DatabaseModels to a list of database ids the Failover Group
+        /// </summary>
+        /// <param name="models">The input as a list of database modelsl</param>
+        /// <returns>The list of database ids</returns>
         public static List<string> ConvertDatabaseModelToDatabaseHelper(ICollection<AzureSqlDatabaseModel> models)
         {
             List<string> result = new List<string>();

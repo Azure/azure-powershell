@@ -53,6 +53,17 @@
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
     <Compile Include="Database\Model\DatabaseReadScale.cs" />
+    <Compile Include="Failover Group\Cmdlet\AddAzureSqlDatabaseToFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\AzureSqlFailoverGroupCmdletBase.cs" />
+    <Compile Include="Failover Group\Cmdlet\GetAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\NewAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\RemoveAzureSqlDatabaseFromFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\RemoveAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\SetAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\Switch-AzureSqlDatabaseFailoverGroup.cs" />
+    <Compile Include="Failover Group\Model\AzureSqlFailoverGroupModel.cs" />
+    <Compile Include="Failover Group\Services\AzureSqlFailoverGroupAdapter.cs" />
+    <Compile Include="Failover Group\Services\AzureSqlFailoverGroupCommunicator.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />

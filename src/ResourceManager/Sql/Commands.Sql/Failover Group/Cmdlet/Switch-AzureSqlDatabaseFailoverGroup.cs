@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Switch, "AzureRmSqlFailoverGroup",
+    [Cmdlet(VerbsCommon.Switch, "AzureRmSqlDatabaseFailoverGroup",
         ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
     public class SwitchAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
 
         /// <summary>
-        /// No changes to persist to server
+        /// Issue the failover operation
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>

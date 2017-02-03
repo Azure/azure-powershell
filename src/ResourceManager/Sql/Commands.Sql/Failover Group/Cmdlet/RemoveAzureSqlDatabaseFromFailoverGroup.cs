@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to add Azure Sql Databases into a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlFailoverGroup", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFromFailoverGroup", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -42,27 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// The Azure SQL Databases to be added to the secondary server
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             HelpMessage = "The Azure SQL Databases to be added to the secondary server.")]
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> databases { get; set; }
-
-        /// <summary>
-        /// The Azure SQL Elastic Pool which has the  databases to be added to the secondary server
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The list of Azure SQL Elastic Pools which have the databases to be added to the secondary server.")]
-        [ValidateNotNullOrEmpty]
-        public List<string> ElasticPool { get; set; }
-
-        /// <summary>
-        /// A swtich parameter indicating whether you want to add all the databases in the server.
-        /// </summary>
-        /// <returns></returns>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "All the databases in the secondary server that do not belong to another Failover Group will be added.")]
-        public SwitchParameter All { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Failover Group
@@ -101,19 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
-            if (All.IsPresent)
-            {
-                AzureSqlFailoverGroupModel result = new AzureSqlFailoverGroupModel();
-                dbs.AddRange(AddAzureSqlDatabaseToFailoverGroup.ConvertDatabaseModelToDatabaseHelper(ModelAdapter.ListDatabasesOnServer(this.ResourceGroupName, this.ServerName)));
-            }
-            else if (MyInvocation.BoundParameters.ContainsKey("ElasticPool"))
-            {
-                foreach (var elasticPoolName in ElasticPool)
-                {
-                    dbs.AddRange(AddAzureSqlDatabaseToFailoverGroup.ConvertDatabaseModelToDatabaseHelper(ModelAdapter.ListDatabasesOnElasticPool(this.ResourceGroupName, this.ServerName, elasticPoolName)));
-                }
-            }
-            else if (MyInvocation.BoundParameters.ContainsKey("Database"))
+            if (MyInvocation.BoundParameters.ContainsKey("Database"))
             {
                 dbs.AddRange(AddAzureSqlDatabaseToFailoverGroup.ConvertDatabaseModelToDatabaseHelper(databases));
             }
@@ -133,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
 
         /// <summary>
-        /// Update the database
+        /// Update the databases of the failover group
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>

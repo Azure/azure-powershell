@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlFailoverGroup",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFailoverGroup",
         SupportsShouldProcess = true)]
     public class RemoveAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
