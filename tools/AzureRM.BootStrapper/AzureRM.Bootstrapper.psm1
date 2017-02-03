@@ -13,19 +13,73 @@ else
   $script:BootStrapRepo = $existingRepos[0].Name
 }
 
+# Check if current user is Admin to decide on cache path
+$script:IsAdmin = $false
+if ($IsWindows)
+{
+  If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+  {
+    $script:IsAdmin = $true
+  }
+}
+else {
+  # on Linux, tests run via sudo will generally report "root" for whoami
+  if ( (whoami) -match "root" ) 
+  {
+    $script:IsAdmin = $true
+  }
+}
+
 # Get profile cache path
 function Get-ProfileCachePath
 {
-  $ProfileCache = Join-Path -path $env:LOCALAPPDATA -childpath "Microsoft\AzurePowerShell\ProfileCache"
+  if ($IsWindows)
+  {
+    $ProfileCache = Join-Path -path $env:LOCALAPPDATA -childpath "Microsoft\AzurePowerShell\ProfileCache"
+    if ($script:IsAdmin)
+    {
+      $ProfileCache = Join-Path -path $env:ProgramData -ChildPath "Microsoft\AzurePowerShell\ProfileCache"
+    }
+  }
+  else
+  {
+    $ProfileCache = "$HOME/.config/Microsoft/AzurePowerShell/ProfileCache" 
+  }
   return $ProfileCache
 }
 
-# Make Rest-Call
-function Get-RestResponse
+# Function to find the latest profile map from cache
+function Get-LatestProfileMapPath
 {
-  $request = [System.Net.HttpWebRequest]::Create($PSProfileMapEndpoint)
-  $RestResponse = $request.GetResponse()
-  return $RestResponse
+  $ProfileCache = Get-ProfileCachePath
+  if (-Not (Test-Path $ProfileCache))
+  {
+    return
+  }
+
+  $ProfileMapPaths = Get-ChildItem $ProfileCache
+
+  if ($ProfileMapPaths -eq $null)
+  {
+    return
+  }
+
+  $LatestMapPath = $ProfileMapPaths[0]
+  foreach ($ProfileMapPath in $ProfileMapPaths)
+  {
+    if ($LatestMapPath.CreationTime -lt $ProfileMapPath.CreationTime)
+    {
+      $LatestMapPath = $ProfileMapPath
+    }
+  }
+  return $LatestMapPath
+}
+
+# Make Web-Call
+function Get-WebResponse
+{
+  $WebResponse =  Invoke-WebRequest -uri $PSProfileMapEndpoint
+  return $WebResponse
 }
 
 # Get-ProfileMap from Azure Endpoint
@@ -39,50 +93,38 @@ function Get-AzureProfileMap
     New-Item -ItemType Directory -Force -Path $ProfileCache | Out-Null
   }
 
-  # Get online profile data using Rest method
-  $RestResponse = Get-RestResponse  
+  # Get online profile data using Web request
+  $WebResponse = Get-WebResponse  
 
   # Get ETag value for OnlineProfileMap
-  $OnlineProfileMapETag = $RestResponse.Headers["ETag"]
+  $OnlineProfileMapETag = $WebResponse.Headers["ETag"]
 
-  # If profilemap.json exists, compare online Etag and cached Etag; if not different, don't replace cache.
-  if (Test-Path "$ProfileCache\ProfileMap.json")
+  # If profilemap json exists, compare online Etag and cached Etag; if not different, don't replace cache.
+  $LatestProfileMapPath = Get-LatestProfileMapPath
+  if ($LatestProfileMapPath -ne $null)
   {
-    $ProfileInfo = (Get-ChildItem "$ProfileCache\ProfileMap.json")
-    [string]$ProfilePath = $ProfileInfo.Target
-    [string]$ProfileMapETag = [System.IO.Path]::GetFileNameWithoutExtension($ProfilePath)
-    if (($ProfileMapETag -eq $OnlineProfileMapETag) -and (Test-Path $ProfilePath))
+    [string]$ProfileMapETag = [System.IO.Path]::GetFileNameWithoutExtension($LatestProfileMapPath)
+    if (($ProfileMapETag -eq $OnlineProfileMapETag) -and (Test-Path $LatestProfileMapPath.FullName))
     {
-      $ProfileMap = Get-Content -Raw -Path "$ProfileCache\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json 
+      $ProfileMap = Get-Content -Raw -Path $LatestProfileMapPath.FullName -ErrorAction SilentlyContinue | ConvertFrom-Json 
       return $ProfileMap
     }
   }
 
-  # If profilemap.json doesn't exist, or if online hash and cached hash are different, replace cached with online profile map
+  # If profilemap json doesn't exist, or if online hash and cached hash are different, cache online profile map
   $ChildPathName = ($OnlineProfileMapETag) + ".json"
   $CacheFilePath = (Join-Path $ProfileCache -ChildPath $ChildPathName)
-  $OnlineProfileMap = RetrieveProfileMap -RestResponse $RestResponse
+  $OnlineProfileMap = RetrieveProfileMap -WebResponse $WebResponse
   $OnlineProfileMap | ConvertTo-Json -Compress | Out-File -FilePath $CacheFilePath
    
-  # No edit symlink cmd available. So delete it and create a new one with the same name.
-  if (Test-Path "$ProfileCache\ProfileMap.json")
-  {
-    RemoveWithRetry -Path "$ProfileCache\ProfileMap.json" -Force
-  }
-
-  # create/Update symlink
-  New-Item -ItemType SymbolicLink -Path "$ProfileCache\ProfileMap.json" -Target $CacheFilePath  
   return $OnlineProfileMap
 }
 
 # Helper to retrieve profile map from http response
 function RetrieveProfileMap
 {
-  param($RestResponse)
-  $receiveStream = $RestResponse.GetResponseStream()
-  $reader = New-Object System.IO.StreamReader($receiveStream)
-  $OnlineProfileMap = $reader.ReadToEnd() 
-  $OnlineProfileMap = ($OnlineProfileMap -replace "`n|`r|`t") | ConvertFrom-Json
+  param($WebResponse)
+  $OnlineProfileMap = ($WebResponse.Content -replace "`n|`r|`t") | ConvertFrom-Json
   return $OnlineProfileMap
 }
 
@@ -109,15 +151,14 @@ function Get-AzProfile
     }
 
     # Check the cache
-    $ProfileCache = Get-ProfileCachePath
-    if(Test-Path $ProfileCache)
+    $LatestProfileMapPath = Get-LatestProfileMapPath
+    if(Test-Path $LatestProfileMapPath.FullName)
     {
-        $ProfileMap = Get-Content -Raw -Path "$ProfileCache\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json 
-       
-        if ($ProfileMap -ne $null)
-        {
-           return $ProfileMap
-        }
+      $ProfileMap = Get-Content -Raw -Path $LatestProfileMapPath.FullName -ErrorAction SilentlyContinue | ConvertFrom-Json 
+      if ($ProfileMap -ne $null)
+      {
+         return $ProfileMap
+      }
     }
      
     # If cache doesn't exist, Check embedded source
@@ -125,8 +166,8 @@ function Get-AzProfile
     $ProfileMap = Get-Content -Raw -Path "$defaults\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json
     if($ProfileMap -eq $null)
     {
-        # Cache & Embedded source empty; Return error and stop
-        throw [System.IO.FileNotFoundException] "Profile meta data does not exist. Use 'Get-AzureRmProfile -Update' to download from online source."
+      # Cache & Embedded source empty; Return error and stop
+      throw [System.IO.FileNotFoundException] "Profile meta data does not exist. Use 'Get-AzureRmProfile -Update' to download from online source."
     }
 
     return $ProfileMap
@@ -194,12 +235,19 @@ function Get-ProfilesInstalled
 # Install module from the gallery
 function Install-ModuleHelper
 {
-  param([string] $Module, [string] $Profile, [PSCustomObject] $ProfileMap)
+  param([string] $Module, [string] $Profile, [PSCustomObject] $ProfileMap, [String]$Scope)
   $versions = $ProfileMap.$Profile.$Module
   $versionEnum = $versions.GetEnumerator()
   $toss = $versionEnum.MoveNext()
   $version = $versionEnum.Current
-  Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo
+  if (-not $Scope)
+  {
+    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo
+  }
+  else
+  {
+    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo -scope $Scope
+  }
 }
 
 # Function to remove Previous profile map
@@ -296,6 +344,7 @@ function Uninstall-ModuleHelper
           }
           catch
           {
+            Write-Warning $_.Exception.Message
             break
           }
         }
@@ -439,12 +488,6 @@ function Get-AllProfilesInstalled
   $ProfileMapHashes = Get-ChildItem $ProfileCache 
   foreach ($ProfileMapHash in $ProfileMapHashes)
   {
-    # Skip the symlink. Target is already handled.
-    if ($ProfileMapHash.Name -eq 'ProfileMap.json')
-    {
-      continue
-    }
-
     $ProfileMap = Get-Content -Raw -Path (Join-Path $ProfileCache $ProfileMapHash.Name) |  ConvertFrom-json
     $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $ProfileMap)
     foreach ($Profile in $profilesInstalled.Keys)
@@ -493,8 +536,8 @@ function Update-ProfileHelper
     $ProfileMapHashes = Get-ChildItem $ProfileCache
 
     # Find the latest ProfileMap 
-    $latestProfileMapHash = (Get-ChildItem "$ProfileCache\ProfileMap.json").Target
-    $LatestProfileMap = Get-Content -Raw -Path $latestProfileMapHash |  ConvertFrom-json
+    $LatestProfileMapPath = Get-LatestProfileMapPath
+    $LatestProfileMap = Get-Content -Raw -Path $LatestProfileMapPath.FullName |  ConvertFrom-json
 
     # Get-Profiles installed across all hashes. 
     $AllProfilesInstalled = Get-AllProfilesInstalled
@@ -505,7 +548,7 @@ function Update-ProfileHelper
       $deleteHash = $true
     
       # Do not process the latest hash; we don't want to remove the latest hash
-      if (($ProfileMapHash.Name -eq "ProfileMap.json") -or ($ProfileMapHash.Name -eq ([System.IO.Path]::GetFileName($latestProfileMapHash))))
+      if ($ProfileMapHash.Name -eq $LatestProfileMapPath.Name)
       {
         continue
       }
@@ -535,6 +578,23 @@ function Update-ProfileHelper
       }
     }
   }
+}
+
+# Add Scope parameter to the cmdlet
+function Add-ScopeParam
+{
+  param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$set = "__AllParameterSets")
+  $Keys = @('CurrentUser', 'AllUsers')
+  $scopeValid = New-Object -Type System.Management.Automation.ValidateSetAttribute($Keys)
+  $scopeAttribute = New-Object -Type System.Management.Automation.ParameterAttribute
+  $scopeAttribute.ParameterSetName = 
+  $scopeAttribute.Mandatory = $false
+  $scopeAttribute.Position = 1
+  $scopeCollection = New-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
+  $scopeCollection.Add($scopeValid)
+  $scopeCollection.Add($scopeAttribute)
+  $scopeParam = New-Object -Type System.Management.Automation.RuntimeDefinedParameter("Scope", [string], $scopeCollection)
+  $params.Add("Scope", $scopeParam)
 }
 
 # Add the profile parameter to the cmdlet
@@ -694,7 +754,7 @@ function Use-AzureRmProfile
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
     Add-ForceParam $params
-    Add-RemoveParam $params
+    Add-ScopeParam $params
     return $params
   }
   PROCESS 
@@ -703,6 +763,8 @@ function Use-AzureRmProfile
     $ProfileMap = (Get-AzProfile)
     $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
+    $Scope = $PSBoundParameters.Scope
+
     if ($PSCmdlet.ShouldProcess($Profile, "Loading modules for profile in the current scope"))
     {
       Write-Host "Loading Profile $Profile"
@@ -713,8 +775,9 @@ function Use-AzureRmProfile
         {
           # Flag to track if the prompt for install module was previously accepted.
           $IsConfirmed = $true
-          Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap
+          Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap -Scope $Scope
         }
+        
         Import-Module -Name $Module -RequiredVersion $version -Global
       }
     }
@@ -732,6 +795,7 @@ function Install-AzureRmProfile
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
+    Add-ScopeParam $params
     return $params
   }
 
@@ -739,12 +803,13 @@ function Install-AzureRmProfile
     $ProfileMap = (Get-AzProfile)
     $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
+    $Scope = $PSBoundParameters.Scope
     foreach ($Module in ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name)
     {
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
       if ($version -eq $null) 
       {
-        Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap
+        Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap -Scope $Scope
       }
     }
   }
@@ -800,19 +865,26 @@ function Update-AzureRmProfile
     # Update Profile cache, if not up-to-date
     $ProfileMap = (Get-AzProfile -Update)
     $profile = $PSBoundParameters.Profile
+    $Force = $PSBoundParameters.Force
     $Remove = $PSBoundParameters.RemovePreviousVersions
     $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
 
     # Install & import the required version
-    Use-AzureRmProfile @PSBoundParameters
-
+    If ($Force.IsPresent)
+    {
+      Use-AzureRmProfile -Profile $Profile -Force
+    }
+    else {
+      Use-AzureRmProfile -Profile $Profile
+    }
+    
     # Remove previous versions of the profile?
     if ($PSCmdlet.ShouldProcess("Remove previous versions")) 
     {
       if (($Remove -or $PSCmdlet.ShouldContinue("Uninstall Previous Module Versions of the profile", "Removing previous versions of the profile")))
       {
         # Remove-PreviousVersions and clean up cache
-        Update-ProfileHelper @PSBoundParameters #-profile $profile 
+        Update-ProfileHelper @PSBoundParameters
       }
     }
   }

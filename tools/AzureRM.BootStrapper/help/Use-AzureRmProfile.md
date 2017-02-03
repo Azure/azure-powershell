@@ -74,6 +74,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Scope
+Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser.
+The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer, that is, %systemdrive%:\ProgramFiles\WindowsPowerShell\Modules.
+The CurrentUser scope lets modules be installed only to $home\Documents\WindowsPowerShell\Modules, so that the module is available only to the current user.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: CurrentUser, AllUsers
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Print the changes that would be made in executing the cmdlets, but do not make any changes.
 
