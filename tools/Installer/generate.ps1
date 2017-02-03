@@ -25,6 +25,14 @@ if ([string]::IsNullOrEmpty($buildConfig))
 	$buildConfig = 'Release'
 }
 
+#if((Test-Path -Path $env:AzurePSRoot) -eq $false)
+if($env:AzurePSRoot -eq $null)
+{
+    $env:AzurePSRoot="..\..\"
+}
+
+Write-Host $env:AzurePSRoot
+
 Write-Verbose "Build configuration is set to $buildConfig"
 
 $output = Join-Path $env:AzurePSRoot "src\Package\$buildConfig"
@@ -47,6 +55,8 @@ Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorActi
 Remove-Item -Recurse -Force $serviceManagementPath\Sql\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Storage\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\ManagedCache\Resources\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $serviceManagementPath\Networking\Resources\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $serviceManagementPath\Services\Resources\ -ErrorAction SilentlyContinue
 
 Write-Verbose "Removing generated NuGet folders from $output"
 $resourcesFolders = @("de", "es", "fr", "it", "ja", "ko", "ru", "zh-Hans", "zh-Hant")
