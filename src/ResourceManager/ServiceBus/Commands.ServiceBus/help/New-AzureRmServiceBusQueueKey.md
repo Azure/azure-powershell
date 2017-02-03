@@ -168,12 +168,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys
 
-PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=SBHradYbsbzJHj1swJUDXkCRw7Tco/FGvGMYQ3Xekf0=;EntityPath=SB-Queue_exa
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_exa
                             mpl1
-SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=;EntityPath=SB-Queue_exa
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_exa
                             mpl1
-PrimaryKey                : SBHradYbsbzJHj1swJUDXkCRw7Tco/FGvGMYQ3Xekf0=
-SecondaryKey              : 7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=
+PrimaryKey                : {PrimaryKey value}
+SecondaryKey              : {SecondaryKey value}
 KeyName                   : SBAuthoRule1
 
 ## NOTES
