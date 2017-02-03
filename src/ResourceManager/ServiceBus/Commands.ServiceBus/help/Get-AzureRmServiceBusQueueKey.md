@@ -111,12 +111,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes
 
-PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=g6DJcu86tcYnKiLUZ2rSsxZUK0AfDmzfIr/VVpaYH2c=;EntityPath=SB-Queue_e
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_e
                             xampl1
-SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=;EntityPath=SB-Queue_e
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_e
                             xampl1
-PrimaryKey                : g6DJcu86tcYnKiLUZ2rSsxZUK0AfDmzfIr/VVpaYH2c=
-SecondaryKey              : 7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=
+PrimaryKey                : {PrimaryKey value}
+SecondaryKey              : {SecondaryKey value}
 KeyName                   : SBAuthoRule1
 
 ## NOTES

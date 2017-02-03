@@ -283,7 +283,7 @@
 </command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys</maml:name>
 </dev:type>
-<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=qg0UZch987+8/R0AiDZ5rJvxA9ZqVZfgAFBNevoxhY8= SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4= PrimaryKey                : qg0UZch987+8/R0AiDZ5rJvxA9ZqVZfgAFBNevoxhY8= SecondaryKey              : 0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4= KeyName                   : AuthoRule1
+<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey value} SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey value} PrimaryKey                : {PrimaryKey value} SecondaryKey              : {SecondaryKey value} KeyName                   : AuthoRule1
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -655,7 +655,7 @@
 </command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes</maml:name>
 </dev:type>
-<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=g6DJcu86tcYnKiLUZ2rSsxZUK0AfDmzfIr/VVpaYH2c=;EntityPath=SB-Queue_e                             xampl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=;EntityPath=SB-Queue_e                             xampl1 PrimaryKey                : g6DJcu86tcYnKiLUZ2rSsxZUK0AfDmzfIr/VVpaYH2c= SecondaryKey              : 7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw= KeyName                   : SBAuthoRule1
+<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_e                             xampl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_e                             xampl1 PrimaryKey                : {PrimaryKey value} SecondaryKey              : {SecondaryKey value} KeyName                   : SBAuthoRule1
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -1159,7 +1159,7 @@
 </command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes</maml:name>
 </dev:type>
-<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=ygibmzxcI+Tz3JJDOF5bOFuJYmyHKu+UzgIgoCDDjsk=;EntityPath=SB-To                             pic_exampl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M=;EntityPath=SB-To                             pic_exampl1 PrimaryKey                : ygibmzxcI+Tz3JJDOF5bOFuJYmyHKu+UzgIgoCDDjsk= SecondaryKey              : E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M= KeyName                   : SBTopicAuthoRule1
+<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-To                             pic_exampl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-To                             pic_exampl1 PrimaryKey                : {PrimaryKey value} SecondaryKey              : {SecondaryKey value} KeyName                   : SBTopicAuthoRule1
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -1688,7 +1688,7 @@
 </command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys</maml:name>
 </dev:type>
-<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=HBLpbY6aEDir3cJnsqrXV8eicVe8glQUzH79r+TAsxQ= SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4= PrimaryKey                : HBLpbY6aEDir3cJnsqrXV8eicVe8glQUzH79r+TAsxQ= SecondaryKey              : 0Ovukkl5pzyffid7IVFPXEoXmRUXaf3hNq9dzVS89/4= KeyName                   : AuthoRule1
+<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey-value} SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey-value} PrimaryKey                : {PrimaryKey value} SecondaryKey              : {SecondaryKey value} KeyName                   : AuthoRule1
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -2506,7 +2506,7 @@
 </command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys</maml:name>
 </dev:type>
-<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=SBHradYbsbzJHj1swJUDXkCRw7Tco/FGvGMYQ3Xekf0=;EntityPath=SB-Queue_exa                             mpl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey=7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw=;EntityPath=SB-Queue_exa                             mpl1 PrimaryKey                : SBHradYbsbzJHj1swJUDXkCRw7Tco/FGvGMYQ3Xekf0= SecondaryKey              : 7JoY2k/4yc99TFlh0j5JrRMaWNhk5bJUmK0f2gcCWYw= KeyName                   : SBAuthoRule1
+<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_exa                             mpl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Queue_exa                             mpl1 PrimaryKey                : {PrimaryKey value} SecondaryKey              : {SecondaryKey value} KeyName                   : SBAuthoRule1
 </maml:para>
 </maml:description>
 </command:returnValue>
@@ -3647,7 +3647,7 @@
 </command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes</maml:name>
 </dev:type>
-<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=Yc+gDnGOLNMTR1RFZXtzhy9BxBp+6/ZMNCsKcQNE7Z0=;EntityPath=SB-Topi                             c_exampl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey=E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M=;EntityPath=SB-Topi                             c_exampl1 PrimaryKey                : Yc+gDnGOLNMTR1RFZXtzhy9BxBp+6/ZMNCsKcQNE7Z0= SecondaryKey              : E/k/LwYrPVgY0RIx/GWJfTzpvgaUBfMweJJceQcvk3M= KeyName                   : SBTopicAuthoRule1
+<maml:description><maml:para>PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Topi                             c_exampl1 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=SBTopicAuthoRule1;SharedAccessKey={SharedAccessKey-value};EntityPath=SB-Topi                             c_exampl1 PrimaryKey                : {PrimaryKey value} SecondaryKey              : {SecondaryKey value} KeyName                   : SBTopicAuthoRule1
 </maml:para>
 </maml:description>
 </command:returnValue>
