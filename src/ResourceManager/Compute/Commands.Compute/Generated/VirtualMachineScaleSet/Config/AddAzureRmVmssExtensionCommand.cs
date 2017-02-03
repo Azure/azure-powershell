@@ -81,12 +81,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public Object ProtectedSetting { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ValueFromPipelineByPropertyName = true)]
-        public string Id { get; set; }
-
         protected override void ProcessRecord()
         {
             // VirtualMachineProfile
@@ -116,7 +110,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vExtensions.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
             vExtensions.Settings = this.Setting;
             vExtensions.ProtectedSettings = this.ProtectedSetting;
-            vExtensions.Id = this.Id;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
             WriteObject(this.VirtualMachineScaleSet);
         }

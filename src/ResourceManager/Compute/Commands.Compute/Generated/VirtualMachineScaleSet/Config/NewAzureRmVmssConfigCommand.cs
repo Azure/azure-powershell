@@ -42,59 +42,89 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        public string Location { get; set; }
+        public bool? SinglePlacementGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public string SkuName { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string SkuTier { get; set; }
+        public string SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public Int64? SkuCapacity { get; set; }
+        public string SkuTier { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true)]
-        public UpgradeMode? UpgradePolicyMode { get; set; }
+        public Int64? SkuCapacity { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetOSProfile OsProfile { get; set; }
+        public string PlanName { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
+        public string PlanPublisher { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetNetworkConfiguration[] NetworkInterfaceConfiguration { get; set; }
+        public string PlanProduct { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 10,
+            ValueFromPipelineByPropertyName = true)]
+        public string PlanPromotionCode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 11,
+            ValueFromPipelineByPropertyName = true)]
+        public UpgradeMode? UpgradePolicyMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 12,
+            ValueFromPipelineByPropertyName = true)]
+        public VirtualMachineScaleSetOSProfile OsProfile { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 13,
+            ValueFromPipelineByPropertyName = true)]
+        public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 14,
+            ValueFromPipelineByPropertyName = true)]
+        public VirtualMachineScaleSetNetworkConfiguration[] NetworkInterfaceConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 15,
             ValueFromPipelineByPropertyName = true)]
         public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
@@ -102,6 +132,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             // Sku
             Microsoft.Azure.Management.Compute.Models.Sku vSku = null;
+
+            // Plan
+            Microsoft.Azure.Management.Compute.Models.Plan vPlan = null;
 
             // UpgradePolicy
             Microsoft.Azure.Management.Compute.Models.UpgradePolicy vUpgradePolicy = null;
@@ -134,6 +167,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSku = new Microsoft.Azure.Management.Compute.Models.Sku();
                 }
                 vSku.Capacity = this.SkuCapacity;
+            }
+
+            if (this.PlanName != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.Name = this.PlanName;
+            }
+
+            if (this.PlanPublisher != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.Publisher = this.PlanPublisher;
+            }
+
+            if (this.PlanProduct != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.Product = this.PlanProduct;
+            }
+
+            if (this.PlanPromotionCode != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.PromotionCode = this.PlanPromotionCode;
             }
 
             if (this.UpgradePolicyMode != null)
@@ -193,9 +262,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vVirtualMachineScaleSet = new VirtualMachineScaleSet
             {
                 Overprovision = this.Overprovision,
+                SinglePlacementGroup = this.SinglePlacementGroup,
                 Location = this.Location,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
                 Sku = vSku,
+                Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
             };

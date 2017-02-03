@@ -196,8 +196,8 @@ function Test-VirtualMachineScaleSet
             Assert-True { $output.Contains("PlatformUpdateDomain") };
         }
 
-        $st = $vmssResult | Stop-AzureRmVmss -StayProvision;
-        $st = $vmssResult | Stop-AzureRmVmss;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -Force;
+        $st = $vmssResult | Stop-AzureRmVmss -Force;
         $st = $vmssResult | Start-AzureRmVmss;
         $st = $vmssResult | Restart-AzureRmVmss;
 
@@ -207,16 +207,14 @@ function Test-VirtualMachineScaleSet
             $instanceListParam += $i.ToString();
         }
 
-        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -InstanceId $instanceListParam;
-        $st = $vmssResult | Stop-AzureRmVmss -InstanceId $instanceListParam;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -InstanceId $instanceListParam -Force;
+        $st = $vmssResult | Stop-AzureRmVmss -InstanceId $instanceListParam -Force;
         $st = $vmssResult | Start-AzureRmVmss -InstanceId $instanceListParam;
         $st = $vmssResult | Restart-AzureRmVmss -InstanceId $instanceListParam;
 
         # Remove
-        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
-        #$st = $vmssResult | Remove-AzureRmVmss -Force;
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
-        $st = $vmssResult | Remove-AzureRmVmss;
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
+        $st = $vmssResult | Remove-AzureRmVmss -Force;
     }
     finally
     {
@@ -341,10 +339,8 @@ function Test-VirtualMachineScaleSetReimageUpdate
             "Conflict";
 
         # Remove
-        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
-        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
     }
     finally
     {
@@ -540,8 +536,7 @@ function Test-VirtualMachineScaleSetLB
             Assert-True { $output.Contains("PlatformUpdateDomain") };
         }
 
-        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
     }
     finally
     {

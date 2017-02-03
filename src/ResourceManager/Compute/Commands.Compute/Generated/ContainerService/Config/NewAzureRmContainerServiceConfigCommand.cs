@@ -54,54 +54,78 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public int? MasterCount { get; set; }
+        public string CustomProfileOrchestrator { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string MasterDnsPrefix { get; set; }
+        public string ServicePrincipalProfileClientId { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public ContainerServiceAgentPoolProfile[] AgentPoolProfile { get; set; }
+        public string ServicePrincipalProfileSecret { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true)]
-        public string WindowsProfileAdminUsername { get; set; }
+        public int? MasterCount { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true)]
-        public string WindowsProfileAdminPassword { get; set; }
+        public string MasterDnsPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public string AdminUsername { get; set; }
+        public ContainerServiceAgentPoolProfile[] AgentPoolProfile { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public string[] SshPublicKey { get; set; }
+        public string WindowsProfileAdminUsername { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public bool? VmDiagnosticsEnabled { get; set; }
+        public string WindowsProfileAdminPassword { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 11,
+            ValueFromPipelineByPropertyName = true)]
+        public string AdminUsername { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 12,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] SshPublicKey { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 13,
+            ValueFromPipelineByPropertyName = true)]
+        public bool VmDiagnosticsEnabled { get; set; }
 
         protected override void ProcessRecord()
         {
             // OrchestratorProfile
             Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorProfile vOrchestratorProfile = null;
+
+            // CustomProfile
+            Microsoft.Azure.Management.Compute.Models.ContainerServiceCustomProfile vCustomProfile = null;
+
+            // ServicePrincipalProfile
+            Microsoft.Azure.Management.Compute.Models.ContainerServiceServicePrincipalProfile vServicePrincipalProfile = null;
 
             // MasterProfile
             Microsoft.Azure.Management.Compute.Models.ContainerServiceMasterProfile vMasterProfile = null;
@@ -115,13 +139,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // DiagnosticsProfile
             Microsoft.Azure.Management.Compute.Models.ContainerServiceDiagnosticsProfile vDiagnosticsProfile = null;
 
-            if (this.OrchestratorType != null)
+            if (this.OrchestratorType.HasValue)
             {
                 if (vOrchestratorProfile == null)
                 {
                     vOrchestratorProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorProfile();
                 }
-                vOrchestratorProfile.OrchestratorType = this.OrchestratorType;
+                vOrchestratorProfile.OrchestratorType = this.OrchestratorType.Value;
+            }
+
+            if (this.CustomProfileOrchestrator != null)
+            {
+                if (vCustomProfile == null)
+                {
+                    vCustomProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceCustomProfile();
+                }
+                vCustomProfile.Orchestrator = this.CustomProfileOrchestrator;
+            }
+
+            if (this.ServicePrincipalProfileClientId != null)
+            {
+                if (vServicePrincipalProfile == null)
+                {
+                    vServicePrincipalProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceServicePrincipalProfile();
+                }
+                vServicePrincipalProfile.ClientId = this.ServicePrincipalProfileClientId;
+            }
+
+            if (this.ServicePrincipalProfileSecret != null)
+            {
+                if (vServicePrincipalProfile == null)
+                {
+                    vServicePrincipalProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceServicePrincipalProfile();
+                }
+                vServicePrincipalProfile.Secret = this.ServicePrincipalProfileSecret;
             }
 
             if (this.MasterCount != null)
@@ -192,18 +243,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
-            if (this.VmDiagnosticsEnabled != null)
+            if (vDiagnosticsProfile == null)
             {
-                if (vDiagnosticsProfile == null)
-                {
-                    vDiagnosticsProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceDiagnosticsProfile();
-                }
-                if (vDiagnosticsProfile.VmDiagnostics == null)
-                {
-                    vDiagnosticsProfile.VmDiagnostics = new Microsoft.Azure.Management.Compute.Models.ContainerServiceVMDiagnostics();
-                }
-                vDiagnosticsProfile.VmDiagnostics.Enabled = this.VmDiagnosticsEnabled;
+                vDiagnosticsProfile = new Microsoft.Azure.Management.Compute.Models.ContainerServiceDiagnosticsProfile();
             }
+            if (vDiagnosticsProfile.VmDiagnostics == null)
+            {
+                vDiagnosticsProfile.VmDiagnostics = new Microsoft.Azure.Management.Compute.Models.ContainerServiceVMDiagnostics();
+            }
+
+            vDiagnosticsProfile.VmDiagnostics.Enabled = this.VmDiagnosticsEnabled;
 
 
             var vContainerService = new ContainerService
@@ -212,6 +261,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
                 AgentPoolProfiles = this.AgentPoolProfile,
                 OrchestratorProfile = vOrchestratorProfile,
+                CustomProfile = vCustomProfile,
+                ServicePrincipalProfile = vServicePrincipalProfile,
                 MasterProfile = vMasterProfile,
                 WindowsProfile = vWindowsProfile,
                 LinuxProfile = vLinuxProfile,

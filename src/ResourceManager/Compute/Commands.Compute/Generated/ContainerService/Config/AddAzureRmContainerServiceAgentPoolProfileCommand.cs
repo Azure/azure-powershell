@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public int? Count { get; set; }
+        public int Count { get; set; }
 
         [Parameter(
             Mandatory = false,

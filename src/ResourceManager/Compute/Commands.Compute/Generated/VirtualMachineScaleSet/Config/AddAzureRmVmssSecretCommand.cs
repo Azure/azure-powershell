@@ -73,10 +73,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vSecrets = new Microsoft.Azure.Management.Compute.Models.VaultSecretGroup();
 
-            // SourceVault
-            vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
-
-            vSecrets.SourceVault.Id = this.SourceVaultId;
+            if (this.SourceVaultId != null)
+            {
+                // SourceVault
+                vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                vSecrets.SourceVault.Id = this.SourceVaultId;
+            }
             vSecrets.VaultCertificates = this.VaultCertificate;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.Add(vSecrets);
             WriteObject(this.VirtualMachineScaleSet);

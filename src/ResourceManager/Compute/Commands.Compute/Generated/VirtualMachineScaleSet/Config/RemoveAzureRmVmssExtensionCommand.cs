@@ -46,13 +46,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = "IdParameterSet",
-            ValueFromPipelineByPropertyName = true)]
-        public string Id { get; set; }
-
         protected override void ProcessRecord()
         {
             // VirtualMachineProfile
@@ -78,7 +71,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vExtensions = this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.First
                 (e =>
                     (this.Name != null && e.Name == this.Name)
-                    || (this.Id != null && e.Id == this.Id)
                 );
 
             if (vExtensions != null)

@@ -1086,6 +1086,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will stop the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceStoppingConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceStoppingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different subscription..
         /// </summary>
         public static string StorageAccountNotFoundForBootDiagnostics {
@@ -1154,42 +1172,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string VirtualMachineReferencesInternalNetworkInterface {
             get {
                 return ResourceManager.GetString("VirtualMachineReferencesInternalNetworkInterface", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Virtual machine removal operation.
-        /// </summary>
-        public static string VirtualMachineRemovalCaption {
-            get {
-                return ResourceManager.GetString("VirtualMachineRemovalCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This cmdlet will remove the specified virtual machine. Do you want to continue?.
-        /// </summary>
-        public static string VirtualMachineRemovalConfirmation {
-            get {
-                return ResourceManager.GetString("VirtualMachineRemovalConfirmation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Virtual machine stopping operation.
-        /// </summary>
-        public static string VirtualMachineStoppingCaption {
-            get {
-                return ResourceManager.GetString("VirtualMachineStoppingCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This cmdlet will stop the specified virtual machine. Do you want to continue?.
-        /// </summary>
-        public static string VirtualMachineStoppingConfirmation {
-            get {
-                return ResourceManager.GetString("VirtualMachineStoppingConfirmation", resourceCulture);
             }
         }
         

@@ -138,7 +138,23 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Get-AzureRmVMDiskEncryptionStatus', 
                'Remove-AzureRmVMDiskEncryptionExtension', 
                'Set-AzureRmVMDiskEncryptionExtension', 
-               'Set-AzureRmVMBackupExtension'
+               'Set-AzureRmVMBackupExtension',
+               'New-AzureRmDisk', 'Update-AzureRmDisk', 'Get-AzureRmDisk', 'Remove-AzureRmDisk',
+               'Grant-AzureRmDiskAccess', 'Revoke-AzureRmDiskAccess',
+               'New-AzureRmDiskConfig',
+               'Set-AzureRmDiskDiskEncryptionKey', 'Set-AzureRmDiskImageReference', 'Set-AzureRmDiskKeyEncryptionKey',
+               'New-AzureRmDiskUpdateConfig',
+               'Set-AzureRmDiskUpdateDiskEncryptionKey', 'Set-AzureRmDiskUpdateImageReference', 'Set-AzureRmDiskUpdateKeyEncryptionKey',
+               'New-AzureRmSnapshot', 'Update-AzureRmSnapshot', 'Get-AzureRmSnapshot', 'Remove-AzureRmSnapshot',
+               'Grant-AzureRmSnapshotAccess', 'Revoke-AzureRmSnapshotAccess',
+               'New-AzureRmSnapshotConfig',
+               'Set-AzureRmSnapshotDiskEncryptionKey', 'Set-AzureRmSnapshotImageReference', 'Set-AzureRmSnapshotKeyEncryptionKey',
+               'New-AzureRmSnapshotUpdateConfig',
+               'Set-AzureRmSnapshotUpdateDiskEncryptionKey', 'Set-AzureRmSnapshotUpdateImageReference', 'Set-AzureRmSnapshotUpdateKeyEncryptionKey',
+               'New-AzureRmImage', 'Get-AzureRmImage', 'Remove-AzureRmImage',
+               'New-AzureRmImageConfig',
+               'Set-AzureRmImageOsDisk', 'Add-AzureRmImageDataDisk', 'Remove-AzureRmImageDataDisk',
+               'ConvertTo-AzureRmVMManagedDisk'
 
 # Variables to export from this module
 # VariablesToExport = @()
