@@ -253,7 +253,7 @@
       UnsignedFiles="@(DelaySignedAssembliesToSign)"
       DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
       BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      Certificates="72, 402"
+      Certificates="72, 401"
       SigningLogPath="$(LibraryRoot)\signing.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
