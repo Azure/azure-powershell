@@ -170,6 +170,7 @@
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\ContainerServiceTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
+    <Compile Include="ScenarioTests\ImageTests.cs" />
     <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -257,6 +258,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\DummyConfig.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ImageTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RunnerTests.csv">
@@ -359,7 +363,10 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DscExtensionTests\TestGetAzureRmVMDscExtension.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ChefExtensionTests\TestSetChefExtensionBasic.json">
+	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ChefExtensionTests\TestSetChefExtensionBasic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ImageTests\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.SqlIaaSExtensionTests\TestSqlIaaSAKVExtension.json">
