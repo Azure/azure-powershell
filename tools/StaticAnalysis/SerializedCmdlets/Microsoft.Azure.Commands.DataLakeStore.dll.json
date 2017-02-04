@@ -2145,6 +2145,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2159,6 +2161,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -2181,6 +2185,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2204,6 +2210,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -2224,6 +2232,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2244,6 +2254,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -2264,6 +2276,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2284,6 +2298,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2304,6 +2320,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2324,6 +2342,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2530,6 +2550,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2550,6 +2572,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3711,6 +3735,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -3725,6 +3751,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -3955,6 +3983,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3975,6 +4005,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -3998,6 +4030,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -4018,6 +4052,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -4038,6 +4074,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -4058,6 +4096,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -4078,6 +4118,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -4098,6 +4140,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -4118,6 +4162,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -4138,6 +4184,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -4158,6 +4206,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -4932,6 +4982,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -4996,6 +5048,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -5234,6 +5288,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -5259,6 +5315,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -5279,6 +5337,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -5315,6 +5375,8 @@
                   "Australia East",
                   "Australia Southeast"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -5335,6 +5397,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -5355,6 +5419,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -5375,6 +5441,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -5397,6 +5465,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -6250,6 +6320,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -6363,6 +6435,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -6515,6 +6589,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -6584,6 +6660,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -6746,6 +6824,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -6771,6 +6851,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -6939,6 +7021,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -7030,6 +7114,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -7192,6 +7278,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -7217,6 +7305,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -7393,6 +7483,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -7551,6 +7643,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -7655,6 +7749,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -7746,6 +7842,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -7866,6 +7964,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -7979,6 +8079,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
