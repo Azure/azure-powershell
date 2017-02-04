@@ -192,6 +192,7 @@
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
+    <Compile Include="AvailabilitySets\UpdatAzureAvailabilitySetCommand.cs" />
     <Compile Include="Common\ComputeAutoMapperProfile.cs" />
     <Compile Include="Common\ComputeClientBaseCmdlet.cs" />
     <Compile Include="Common\ComputeClient.cs" />

@@ -39,9 +39,31 @@ function Test-AvailabilitySet
 
         $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $aset;
-        Assert-AreEqual $asetName $aset.Name;
-        Assert-AreEqual $aset.PlatformUpdateDomainCount $nonDefaultUD;
-        Assert-AreEqual $aset.PlatformFaultDomainCount $nonDefaultFD;
+        Assert-AreEqual $aset.Name $asetName;
+        Assert-AreEqual $nonDefaultUD $aset.PlatformUpdateDomainCount;
+        Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
+        Assert-False {$aset.Managed};
+        Assert-AreEqual 'Classic' $aset.Sku;
+
+        $aset | Update-AzureRmAvailabilitySet -Managed;
+        $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+
+        Assert-NotNull $aset;
+        Assert-AreEqual $aset.Name $asetName;
+        Assert-AreEqual $nonDefaultUD $aset.PlatformUpdateDomainCount;
+        Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
+        Assert-True {$aset.Managed};
+        Assert-AreEqual 'Aligned' $aset.Sku;
+
+        $aset | Update-AzureRmAvailabilitySet -Sku 'Aligned';
+        $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+
+        Assert-NotNull $aset;
+        Assert-AreEqual $aset.Name $asetName;
+        Assert-AreEqual $nonDefaultUD $aset.PlatformUpdateDomainCount;
+        Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
+        Assert-True {$aset.Managed};
+        Assert-AreEqual 'Aligned' $aset.Sku;
 
         Remove-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
         

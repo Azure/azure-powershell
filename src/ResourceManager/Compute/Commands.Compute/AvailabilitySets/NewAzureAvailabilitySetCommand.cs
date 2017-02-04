@@ -52,24 +52,26 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Update Domain Count.")]
+            HelpMessage = "The Platform Update Domain Count")]
         [ValidateNotNullOrEmpty]
         public int? PlatformUpdateDomainCount { get; set; }
 
         [Parameter(
             Position = 4,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Fault Domain Count.")]
+            HelpMessage = "The Platform Fault Domain Count")]
         [ValidateNotNullOrEmpty]
         public int? PlatformFaultDomainCount { get; set; }
 
         [Parameter(
             Position = 5,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Name of Sku")]
         public string Sku { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Managed Availability Set")]
         public SwitchParameter Managed { get; set; }
 
         public override void ExecuteCmdlet()
@@ -89,13 +91,13 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
                 {
                     avSetParams.Sku = new Sku();
-                    if (this.Managed.IsPresent)
-                    {
-                        avSetParams.Sku.Name = "Aligned";
-                    }
                     if (!string.IsNullOrEmpty(this.Sku))
                     {
                         avSetParams.Sku.Name = this.Sku;
+                    }
+                    if (this.Managed.IsPresent)
+                    {
+                        avSetParams.Sku.Name = "Aligned";
                     }
                 }
 

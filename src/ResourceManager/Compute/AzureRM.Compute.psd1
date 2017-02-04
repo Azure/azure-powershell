@@ -75,7 +75,8 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet', 
-               'New-AzureRmAvailabilitySet', 'Get-AzureRmVMExtensionImageType', 
+               'New-AzureRmAvailabilitySet', 'Update-AzureRmAvailabilitySet',
+               'Get-AzureRmVMExtensionImageType',
                'Get-AzureRmVMExtensionImage', 'Get-AzureRmVMADDomainExtension', 
                'Set-AzureRmVMADDomainExtension', 'Get-AzureRmVMAEMExtension', 
                'Remove-AzureRmVMAEMExtension', 'Set-AzureRmVMAEMExtension', 
@@ -193,12 +194,12 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Fix Get-AzureRmVM with -Status issue: Get-AzureRmVM throws an exception when Get-AzureRmVM lists multiple VMs and some of the VMs are deleted during Get-AzureRmVM is performed.
 * New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
-	- BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
-	- BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it''s manual, schedule settings need to be specified.
-	- FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
-	- FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
-	- FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
-	- LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+    - BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+    - BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it''s manual, schedule settings need to be specified.
+    - FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+    - FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+    - FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+    - LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
 * New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
 '
 
