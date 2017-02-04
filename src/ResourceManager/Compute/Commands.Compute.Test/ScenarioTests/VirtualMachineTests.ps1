@@ -2956,21 +2956,21 @@ function Test-VirtualMachineManagedDiskConversion
         Assert-AreEqual $vm2.HardwareProfile.VmSize $vmsize;
         Assert-NotNull $vm2.Location;
 
-		Assert-Null  $vm2.StorageProfile.OSDisk.ManagedDisk
-		Assert-Null  $vm2.StorageProfile.DataDisks[0].ManagedDisk
-		Assert-Null  $vm2.StorageProfile.DataDisks[1].ManagedDisk
+        Assert-Null  $vm2.StorageProfile.OSDisk.ManagedDisk
+        Assert-Null  $vm2.StorageProfile.DataDisks[0].ManagedDisk
+        Assert-Null  $vm2.StorageProfile.DataDisks[1].ManagedDisk
 
-		# Deallocate the VM before conversion
+        # Deallocate the VM before conversion
         Stop-AzureRmVM -ResourceGroupName $rgname -VMName $vmname -Force
 
-		# Convert VM to managed disks
-		ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname
+        # Convert VM to managed disks
+        ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
-		Assert-NotNull  $vm2.StorageProfile.OSDisk.ManagedDisk
-		Assert-NotNull  $vm2.StorageProfile.DataDisks[0].ManagedDisk
-		Assert-NotNull  $vm2.StorageProfile.DataDisks[1].ManagedDisk
+        Assert-NotNull  $vm2.StorageProfile.OSDisk.ManagedDisk
+        Assert-NotNull  $vm2.StorageProfile.DataDisks[0].ManagedDisk
+        Assert-NotNull  $vm2.StorageProfile.DataDisks[1].ManagedDisk
 
         # Remove
         Remove-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force;
