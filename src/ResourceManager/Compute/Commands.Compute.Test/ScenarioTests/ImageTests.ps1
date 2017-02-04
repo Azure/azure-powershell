@@ -30,9 +30,9 @@ function Test-Image
             $loc = Get-ComputeVMLocation;
         }
         
-		New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
-		# Create a VM first
+        # Create a VM first
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
@@ -92,36 +92,36 @@ function Test-Image
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-		# Create Image using the VM's OS disk and data disks.
-		$imageName = 'image' + $rgname;
-		$imageConfig = New-AzureRmImageConfig -Location $loc;
-		Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
-		Add-AzureRmImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
-		Add-AzureRmImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
+        # Create Image using the VM's OS disk and data disks.
+        $imageName = 'image' + $rgname;
+        $imageConfig = New-AzureRmImageConfig -Location $loc;
+        Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
+        Add-AzureRmImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
+        Add-AzureRmImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
         $imageconfig.StorageProfile.DataDisks[0].ManagedDisk = $null;
         $imageconfig.StorageProfile.DataDisks[0].Snapshot = $null;
-		$imageconfig.StorageProfile.DataDisks[1].ManagedDisk = $null;
+        $imageconfig.StorageProfile.DataDisks[1].ManagedDisk = $null;
         $imageconfig.StorageProfile.DataDisks[1].Snapshot = $null;
-		
-		$createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
 
-		# Verify Image properties
-		Assert-NotNull $createdImage.Id;
+        $createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
+
+        # Verify Image properties
+        Assert-NotNull $createdImage.Id;
         Assert-AreEqual $imageName $createdImage.Name;
         Assert-AreEqual 2 $createdImage.StorageProfile.DataDisks.Count;
         
         Assert-AreEqual "Succeeded" $createdImage.ProvisioningState;
         Assert-AreEqual $osDiskVhdUri $createdImage.StorageProfile.OsDisk.BlobUri;
-		Assert-AreEqual $dataDiskVhdUri1 $createdImage.StorageProfile.DataDisks[0].BlobUri;
-		Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
+        Assert-AreEqual $dataDiskVhdUri1 $createdImage.StorageProfile.DataDisks[0].BlobUri;
+        Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
 
-		# List and Delete Image
-		$images = Get-AzureRmImage -ResourceGroupName $rgname;
-		Assert-AreEqual 1 $images.Count;
+        # List and Delete Image
+        $images = Get-AzureRmImage -ResourceGroupName $rgname;
+        Assert-AreEqual 1 $images.Count;
 
-		Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force;
-		$images = Get-AzureRmImage -ResourceGroupName $rgname;
-		Assert-AreEqual 0 $images.Count;
+        Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force;
+        $images = Get-AzureRmImage -ResourceGroupName $rgname;
+        Assert-AreEqual 0 $images.Count;
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;
@@ -147,9 +147,9 @@ function Test-ImageCapture
             $loc = Get-ComputeVMLocation;
         }
         
-		New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
-		# Create a VM first
+        # Create a VM first
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
@@ -209,33 +209,33 @@ function Test-ImageCapture
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-		# Get VM
+        # Get VM
         $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
-		Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force;
+        Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force;
         Set-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Generalize;
 
-		# Create Image through capture of the VM
-		$imageName = 'image' + $rgname;
-		$imageConfig = New-AzureRmImageConfig -Location $loc -SourceVirtualMachineId $vm.Id;
-		$createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
+        # Create Image through capture of the VM
+        $imageName = 'image' + $rgname;
+        $imageConfig = New-AzureRmImageConfig -Location $loc -SourceVirtualMachineId $vm.Id;
+        $createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
 
-		Assert-NotNull $createdImage.Id;
+        Assert-NotNull $createdImage.Id;
         Assert-AreEqual $imageName $createdImage.Name;
         Assert-AreEqual 2 $createdImage.StorageProfile.DataDisks.Count;
         
         Assert-AreEqual "Succeeded" $createdImage.ProvisioningState;
         Assert-AreEqual $osDiskVhdUri $createdImage.StorageProfile.OsDisk.BlobUri;
-		Assert-AreEqual $dataDiskVhdUri1 $createdImage.StorageProfile.DataDisks[0].BlobUri;
-		Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
+        Assert-AreEqual $dataDiskVhdUri1 $createdImage.StorageProfile.DataDisks[0].BlobUri;
+        Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
 
-		# List and Delete Image
-		$images = Get-AzureRmImage -ResourceGroupName $rgname;
-		Assert-AreEqual 1 $images.Count;
+        # List and Delete Image
+        $images = Get-AzureRmImage -ResourceGroupName $rgname;
+        Assert-AreEqual 1 $images.Count;
 
-		Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force;
-		$images = Get-AzureRmImage -ResourceGroupName $rgname;
-		Assert-AreEqual 0 $images.Count;
+        Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force;
+        $images = Get-AzureRmImage -ResourceGroupName $rgname;
+        Assert-AreEqual 0 $images.Count;
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;

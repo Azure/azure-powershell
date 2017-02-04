@@ -363,10 +363,10 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DscExtensionTests\TestGetAzureRmVMDscExtension.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ChefExtensionTests\TestSetChefExtensionBasic.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ChefExtensionTests\TestSetChefExtensionBasic.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ImageTests\*.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ImageTests\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.SqlIaaSExtensionTests\TestSqlIaaSAKVExtension.json">
