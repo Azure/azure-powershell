@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Returns a description for the specified Service Bus queue.
 
 ## SYNTAX
 
@@ -17,21 +17,21 @@ Get-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmServiceBusQueue** cmdlet returns a description of the specified Service Bus queue.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 ```
 
-{{ Add example description here }}
+Returns the description of the queue. 
 
 ## PARAMETERS
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The queue name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -80,11 +80,45 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+###-ResourceGroup
+ System.String
+ 
+###-NamespaceName
+ System.String
+ 
+###-QueueName
+ System.String 
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+LockDuration                        : 
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+EntityAvailabilityStatus            : 
+CreatedAt                           : 1/20/2017 2:51:35 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+IsAnonymousAccessible               : False
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 2:51:37 AM
+Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
+                                      B-Queue_example1
+Name                                : SB-Queue_example1
+Type                                : Microsoft.ServiceBus/Queues
+Location                            : West US
 
 ## NOTES
 
