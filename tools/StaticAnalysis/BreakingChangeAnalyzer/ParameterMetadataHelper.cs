@@ -178,6 +178,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             var oldValidateSet = oldParameter.ValidateSet;
             var newValidateSet = newParameter.ValidateSet;
 
+            // If there is no validate set in the new assembly, return
+            if (newValidateSet.Count == 0)
+            {
+                return;
+            }
+
             // If there was no validate set in the old assembly, but there is
             // one in the new assembly, log an issue
             if (oldValidateSet.Count == 0 && newValidateSet.Count > 0)
