@@ -104,8 +104,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         if (parameter.HasAttribute<ValidateRangeAttribute>())
                         {
                             var validateRange = parameter.GetAttribute<ValidateRangeAttribute>();
-                            parameterData.ValidateRangeMin = (int)validateRange.MinRange;
-                            parameterData.ValidateRangeMax = (int)validateRange.MaxRange;
+                            parameterData.ValidateRangeMin = Convert.ToInt64(validateRange.MinRange);
+                            parameterData.ValidateRangeMax = Convert.ToInt64(validateRange.MaxRange);
                         }
 
                         parameterData.ValidateNotNullOrEmpty = parameter.HasAttribute<ValidateNotNullOrEmptyAttribute>();                

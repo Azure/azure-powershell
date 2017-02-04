@@ -139,6 +139,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 }
                                 else
                                 {
+                                    if (!File.Exists(filePath))
+                                    {
+                                        continue;
+                                    }
+
                                     var oldModuleMetadata = DeserializeCmdlets(filePath);
 
                                     if (cmdletFilter != null)
