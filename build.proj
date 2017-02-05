@@ -172,8 +172,6 @@
       ContinueOnError="false" />
 
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
-	<CallTarget Targets="BuildSetup"/>
-	
     <MSBuild
       Projects="@(StaticAnalysis)"
       Targets="Build"
@@ -182,6 +180,7 @@
 
     <!-- <CallTarget Targets="DependencyAnalysis" /> -->
 
+	<CallTarget Targets="BuildSetup"/>
     <CallTarget Targets="CodeSignInstaller"
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
   </Target>
@@ -229,10 +228,10 @@
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
+	  <DelaySignedAssembliesToSign Include="$(LibraryRoot)\setup\PowerShellSetup.Test\**\PowerShellSetup.Test.dll" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
-	  <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psd1" />
       <ScriptsToSign Include="$(LibraryRoot)setup\Setup\*.ps1" />
     </ItemGroup>
 

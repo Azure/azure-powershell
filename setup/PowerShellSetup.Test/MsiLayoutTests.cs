@@ -1,6 +1,7 @@
 ﻿namespace PowerShellSetup.Tests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
@@ -9,7 +10,7 @@
     using System.Threading.Tasks;
     using Xunit;
     using Xunit.Abstractions;
-    
+
     /// <summary>
     /// Set of tests to run against MSI
     /// These set of tests are especially for scenario like:
@@ -48,8 +49,8 @@
         public void VerifyFilesAreSigned()
         {
             List<string> expectedSignatureAlgos = new List<string>() { "sha1RSA", "sha256RSA" };
-            //string msiContentsDir = this.ExtractMsiContents(out _procErr);
-            string msiContentsDir = @"E:\MyFork\azure-powershell\setup\PowerShellSetup.Test\bin\Debug\msiContents";
+            string msiContentsDir = this.ExtractMsiContents(out _procErr);
+            //string msiContentsDir = @"E:\MyFork\azure-powershell\setup\PowerShellSetup.Test\bin\Debug\msiContents";
             Assert.True(Directory.Exists(msiContentsDir));
             Assert.True(string.IsNullOrEmpty(_procErr));
 
@@ -60,11 +61,14 @@
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "automapper*.dll", SearchOption.AllDirectories))
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "security*.dll", SearchOption.AllDirectories))
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "bouncy*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.psd1", SearchOption.AllDirectories))
                 .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.msi", SearchOption.AllDirectories));
 
             Assert.NotNull(msiFiles);
             IEnumerable<string> filesToVerify = msiFiles.Except<string>(exceptionFiles);
 
+            // Make sure filesToVerify do not have any of the files that are either external to MS 
+            // or are not signed (which are expected not to be signed eg. psd1 files)
             List<string> noXmlFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".xml")).ToList<string>();
             TestLog.WriteLine("Verifying no .xml files are in the verify list of files");
             Assert.True(noXmlFiles.Count == 0);
@@ -77,17 +81,39 @@
             TestLog.WriteLine("Verifying no '*.msi' files are in the verify list of files");
             Assert.True(noMsiFiles.Count == 0);
 
+            List<string> noPsd1Files = filesToVerify.Where<string>((fl) => fl.EndsWith(".psd1")).ToList<string>();
+            TestLog.WriteLine("Verifying no '*.psd1' files are in the verify list of files");
+            Assert.True(noPsd1Files.Count == 0);
 
-            List<string> msiFileList = filesToVerify.ToList<string>();
-            Assert.True(msiFileList.Count > 0);
-            List<string> unsignedFiles = GetUnsignedFiles(msiFileList, expectedSignatureAlgos);
+            // Now extract each category of files and verify if they matched to the algorithm they are expected to be signed
+            IEnumerable<string> dllFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".dll")).ToList<string>();
+            IEnumerable<string> scriptFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".ps1"))
+                .Union<string>(filesToVerify.Where<string>((fl) => fl.EndsWith(".psm1")))
+                .Union<string>(filesToVerify.Where<string>((fl) => fl.EndsWith(".ps1xml")));
+            
+            Assert.Equal((dllFiles.Count() + scriptFiles.Count()), filesToVerify.Count());
 
-            foreach(string unsigFile in unsignedFiles)
+            List<string> unsignedDlls = GetUnsignedFiles(dllFiles, expectedSignatureAlgos);
+            List<string> unsignedScripts = GetUnsignedFiles(dllFiles, "sha256RSA");
+
+            List<string> unsignedMsi = GetUnsignedFiles(new List<string>() { this.GetAzurePSMsiPath() }, "sha1RSA");
+
+            TestLog.WriteLine("Verifying if DLLs are properly signed");
+            foreach (string unsigFile in unsignedDlls)
             {
                 TestLog.WriteLine(unsigFile);
             }
+            Assert.True(unsignedDlls.Count == 0);
 
-            Assert.True(unsignedFiles.Count == 0);
+            TestLog.WriteLine("Verifying if SCRIPTS are properly signed");
+            foreach (string unsigFile in unsignedScripts)
+            {
+                TestLog.WriteLine(unsigFile);
+            }
+            Assert.True(unsignedScripts.Count == 0);
+
+            TestLog.WriteLine("Verifying if MSI is properly signed");
+            Assert.True(unsignedMsi.Count == 0);
         }
         
         [Fact]
@@ -113,52 +139,125 @@
         }
 
         #region Private Functions
-        private List<string> GetUnsignedFiles(List<string> signedFiles, List<string> expectedAlgorithmList)
+        private List<string> GetUnsignedFiles(IEnumerable<string> signedFiles, string expectedAlgorithm)
         {
             List<string> unsignedFiles = new List<string>();
+            string unsignedFileStatusFormat = "File Signature '{0}' ::: {1}";
 
             Parallel.ForEach<string>(signedFiles, (providedFilePath) =>
             {
-                bool isSigned = true;
-                string fileName = Path.GetFileName(providedFilePath);
-                string calculatedFullPath = Path.GetFullPath(providedFilePath);
+                string sigAlgo = GetFileSignature(providedFilePath);
 
-                if (File.Exists(calculatedFullPath))
+                if(string.IsNullOrEmpty(sigAlgo))
                 {
-                    using (PowerShell ps = PowerShell.Create())
-                    {
-                        ps.AddCommand("Get-AuthenticodeSignature", true);
-                        ps.AddParameter("FilePath", calculatedFullPath);
-                        var cmdLetResults = ps.Invoke();
+                    unsignedFiles.Add(string.Format(unsignedFileStatusFormat, sigAlgo, providedFilePath));
+                }
+                else if(!sigAlgo.Equals(expectedAlgorithm, StringComparison.OrdinalIgnoreCase))
+                {
+                    unsignedFiles.Add(string.Format(unsignedFileStatusFormat, sigAlgo, providedFilePath));
+                }
+            });
 
-                        foreach (PSObject result in cmdLetResults)
-                        {
-                            Signature s = (Signature)result.BaseObject;
-                            isSigned = s.Status.Equals(SignatureStatus.Valid);
-                            string unsignedFileStatusFormat = "Signed by {0} algorithm ::: {1}";
-                            string unsignFileStatus = string.Empty;
-                            if (isSigned == true)
-                            {
-                                string friendlyAlgorithmName = s.SignerCertificate.SignatureAlgorithm.FriendlyName;
-                                string match = expectedAlgorithmList.Find((pn) => pn.Equals(friendlyAlgorithmName, System.StringComparison.OrdinalIgnoreCase));
-                                if (string.IsNullOrEmpty(match))
-                                {
-                                    unsignFileStatus = string.Format(unsignedFileStatusFormat, friendlyAlgorithmName, calculatedFullPath);
-                                    unsignedFiles.Add(unsignFileStatus);
-                                }
-                            }
-                            else
-                            {
-                                unsignFileStatus = string.Format(unsignedFileStatusFormat, "NOT SIGNED", calculatedFullPath);
-                                unsignedFiles.Add(unsignFileStatus);
-                            }
-                        }
+            return unsignedFiles;
+        }
+
+        private List<string> GetUnsignedFiles(IEnumerable<string> signedFiles, List<string> expectedSignatureAlgorithmList)
+        {
+            List<string> unsignedFiles = new List<string>();
+            string unsignedFileStatusFormat = "File Signature '{0}' ::: {1}";
+
+            Parallel.ForEach<string>(signedFiles, (providedFilePath) =>
+            {
+                string sigAlgo = GetFileSignature(providedFilePath);
+
+                if (string.IsNullOrEmpty(sigAlgo))
+                {
+                    unsignedFiles.Add(string.Format(unsignedFileStatusFormat, sigAlgo, providedFilePath));
+                }
+                else 
+                {
+                    string match = expectedSignatureAlgorithmList.Find((pn) => pn.Equals(sigAlgo, System.StringComparison.OrdinalIgnoreCase));
+                    if (string.IsNullOrEmpty(match))
+                    {
+                        unsignedFiles.Add(string.Format(unsignedFileStatusFormat, sigAlgo, providedFilePath));
                     }
                 }
             });
 
             return unsignedFiles;
         }
+
+        /// <summary>
+        /// Checks if a file is signed and returns the friendly alogrithm name of the file
+        /// Returns the friendly algorithm name of a file
+        /// </summary>
+        /// <param name="providedFilePath">Full file path for which Signature has to be verified</param>
+        /// <returns>Friendly Algorithm name, String.empty if not signed</returns>
+        private string GetFileSignature(string providedFilePath)
+        {
+            string friendlyAlgorithmName = string.Empty;
+            if (File.Exists(providedFilePath))
+            {
+                using (PowerShell ps = PowerShell.Create())
+                {
+                    ps.AddCommand("Get-AuthenticodeSignature", true);
+                    ps.AddParameter("FilePath", providedFilePath);
+                    var cmdLetResults = ps.Invoke();
+
+                    foreach (PSObject result in cmdLetResults)
+                    {
+                        Signature sig = (Signature)result.BaseObject;
+                        if(sig.Status.Equals(SignatureStatus.Valid))
+                        {
+                            friendlyAlgorithmName = sig.SignerCertificate.SignatureAlgorithm.FriendlyName;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            return friendlyAlgorithmName;
+        }
+
+        //private void CheckFileSignature()
+        //{
+        //    bool isSigned = true;
+        //    string fileName = Path.GetFileName(providedFilePath);
+        //    string calculatedFullPath = Path.GetFullPath(providedFilePath);
+
+        //    if (File.Exists(calculatedFullPath))
+        //    {
+        //        using (PowerShell ps = PowerShell.Create())
+        //        {
+        //            ps.AddCommand("Get-AuthenticodeSignature", true);
+        //            ps.AddParameter("FilePath", calculatedFullPath);
+        //            var cmdLetResults = ps.Invoke();
+
+        //            foreach (PSObject result in cmdLetResults)
+        //            {
+        //                Signature s = (Signature)result.BaseObject;
+        //                isSigned = s.Status.Equals(SignatureStatus.Valid);
+        //                string unsignedFileStatusFormat = "Signed by {0} algorithm ::: {1}";
+        //                string unsignFileStatus = string.Empty;
+        //                if (isSigned == true)
+        //                {
+        //                    string friendlyAlgorithmName = s.SignerCertificate.SignatureAlgorithm.FriendlyName;
+        //                    string match = expectedAlgorithmList.Find((pn) => pn.Equals(friendlyAlgorithmName, System.StringComparison.OrdinalIgnoreCase));
+        //                    if (string.IsNullOrEmpty(match))
+        //                    {
+        //                        unsignFileStatus = string.Format(unsignedFileStatusFormat, friendlyAlgorithmName, calculatedFullPath);
+        //                        unsignedFiles.Add(unsignFileStatus);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    unsignFileStatus = string.Format(unsignedFileStatusFormat, "NOT SIGNED", calculatedFullPath);
+        //                    unsignedFiles.Add(unsignFileStatus);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
         #endregion
     }
 }
