@@ -123,8 +123,12 @@
             string procErr = string.Empty;
             string msiContentsDirPath = ExtractMsiContents(out procErr);
             IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.js", SearchOption.AllDirectories);
-
-            Assert.True(msiFiles.Count<string>() == 0);
+            TestLog.WriteLine("Expecting no *.js files in MSI");
+            foreach (string unsigFile in msiFiles)
+            {
+                TestLog.WriteLine(unsigFile);
+            }
+            Assert.Equal(0, msiFiles.Count<string>());
         }
 
         [Fact]
@@ -134,8 +138,12 @@
             string procErr = string.Empty;
             string msiContentsDirPath = ExtractMsiContents(out procErr);
             IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.json", SearchOption.AllDirectories);
-
-            Assert.True(msiFiles.Count<string>() == 0);
+            TestLog.WriteLine("Expecting no *.json files in MSI");
+            foreach (string unsigFile in msiFiles)
+            {
+                TestLog.WriteLine(unsigFile);
+            }
+            Assert.Equal(0, msiFiles.Count<string>());
         }
 
         #region Private Functions
