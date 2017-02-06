@@ -59,17 +59,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pSnapshotName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("SnapshotName", pSnapshotName);
 
-            var pGrantAccessData = new RuntimeDefinedParameter();
-            pGrantAccessData.Name = "GrantAccessData";
-            pGrantAccessData.ParameterType = typeof(GrantAccessData);
-            pGrantAccessData.Attributes.Add(new ParameterAttribute
+            var pAccess = new RuntimeDefinedParameter();
+            pAccess.Name = "Access";
+            pAccess.ParameterType = typeof(AccessLevel);
+            pAccess.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
-                Mandatory = true
+                Mandatory = false
             });
-            pGrantAccessData.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("GrantAccessData", pGrantAccessData);
+            pAccess.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("Access", pAccess);
+
+            var pDurationInSecond = new RuntimeDefinedParameter();
+            pDurationInSecond.Name = "DurationInSecond";
+            pDurationInSecond.ParameterType = typeof(int);
+            pDurationInSecond.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 4,
+                Mandatory = false
+            });
+            pDurationInSecond.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("DurationInSecond", pDurationInSecond);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
@@ -77,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
+                Position = 5,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -90,7 +102,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            GrantAccessData grantAccessData = (GrantAccessData)ParseParameter(invokeMethodInputParameters[2]);
+            var grantAccessData = new GrantAccessData();
+            var pAccess = (AccessLevel) ParseParameter(invokeMethodInputParameters[2]);
+            grantAccessData.Access = pAccess;
+            var pDurationInSeconds = (int) ParseParameter(invokeMethodInputParameters[3]);
+            grantAccessData.DurationInSeconds = pDurationInSeconds;
 
             var result = SnapshotsClient.GrantAccess(resourceGroupName, snapshotName, grantAccessData);
             WriteObject(result);
@@ -154,19 +170,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pSnapshotName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("SnapshotName", pSnapshotName);
 
-            var pGrantAccessData = new RuntimeDefinedParameter();
-            pGrantAccessData.Name = "GrantAccessData";
-            pGrantAccessData.ParameterType = typeof(GrantAccessData);
-            pGrantAccessData.Attributes.Add(new ParameterAttribute
+            var pAccess = new RuntimeDefinedParameter();
+            pAccess.Name = "Access";
+            pAccess.ParameterType = typeof(AccessLevel);
+            pAccess.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = false,
-                ValueFromPipeline = false
+                Mandatory = false
             });
-            pGrantAccessData.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("GrantAccessData", pGrantAccessData);
+            pAccess.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("Access", pAccess);
+
+            var pDurationInSecond = new RuntimeDefinedParameter();
+            pDurationInSecond.Name = "DurationInSecond";
+            pDurationInSecond.ParameterType = typeof(int);
+            pDurationInSecond.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 4,
+                Mandatory = false
+            });
+            pDurationInSecond.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("DurationInSecond", pDurationInSecond);
 
             return dynamicParameters;
         }
