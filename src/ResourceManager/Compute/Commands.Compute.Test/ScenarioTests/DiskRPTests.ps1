@@ -32,30 +32,25 @@ function Test-Disk
 		$access = 'Read';
 
         # Config create test
-		$diskconfig = New-AzureRmDiskConfig -Location $loc -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreationDataCreateOption Empty;
+		$diskconfig = New-AzureRmDiskConfig -Location $loc -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty;
 		$diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig;
 		$diskconfig = Set-AzureRmDiskKeyEncryptionKey -Disk $diskconfig;
 		New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
-
+		
+		#Get disk test
 		Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
 
-		$updateconfig = New-AzureRmDiskConfig -Location $loc;
-		$updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreationDataCreateOption Empty;
-		Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
-
-		
-		$grantconfig = 
-		Grant-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -GrantAccessData $grantconfig;
-
+		#Grant access test
+		Grant-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 5;
 		Revoke-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname;
 
-		Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
+		#Config update test
+		$updateconfig = New-AzureRmDiskConfig -Location $loc;
+		$updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty;
+		Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
 		
-		#New-AzureRmDiskConfig -Location $loc -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreationDataCreateOption Empty `
-		#| Set-AzureRmDiskDiskEncryptionKey `
-		#| New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname
-
-
+		#Remove
+		Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force;
     }
     finally
     {
