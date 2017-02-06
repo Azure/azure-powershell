@@ -69,6 +69,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public int? DiskSizeGB { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true)]
+        public StorageAccountTypes? StorageAccountType { get; set; }
+
         protected override void ProcessRecord()
         {
             // VirtualMachineProfile
@@ -99,6 +105,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vDataDisks.CreateOption = this.CreateOption.Value;
             }
             vDataDisks.DiskSizeGB = this.DiskSizeGB;
+            if (this.StorageAccountType != null)
+            {
+                // ManagedDisk
+                vDataDisks.ManagedDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetManagedDiskParameters();
+                vDataDisks.ManagedDisk.StorageAccountType = this.StorageAccountType;
+            }
             this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks.Add(vDataDisks);
             WriteObject(this.VirtualMachineScaleSet);
         }

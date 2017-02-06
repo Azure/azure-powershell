@@ -59,17 +59,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pVMName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMName", pVMName);
 
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineCaptureParameter";
-            pParameters.ParameterType = typeof(VirtualMachineCaptureParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
+            var pVhdPrefix = new RuntimeDefinedParameter();
+            pVhdPrefix.Name = "VhdPrefix";
+            pVhdPrefix.ParameterType = typeof(string);
+            pVhdPrefix.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
-                Mandatory = true
+                Mandatory = false
             });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineCaptureParameter", pParameters);
+            pVhdPrefix.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("VhdPrefix", pVhdPrefix);
+
+            var pOverwriteVhd = new RuntimeDefinedParameter();
+            pOverwriteVhd.Name = "OverwriteVhd";
+            pOverwriteVhd.ParameterType = typeof(bool);
+            pOverwriteVhd.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 4,
+                Mandatory = false
+            });
+            pOverwriteVhd.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("OverwriteVhd", pOverwriteVhd);
+
+            var pDestinationContainerName = new RuntimeDefinedParameter();
+            pDestinationContainerName.Name = "DestinationContainerName";
+            pDestinationContainerName.ParameterType = typeof(string);
+            pDestinationContainerName.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 5,
+                Mandatory = false
+            });
+            pDestinationContainerName.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("DestinationContainerName", pDestinationContainerName);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
@@ -77,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
+                Position = 6,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -90,7 +114,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string vmName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            VirtualMachineCaptureParameters parameters = (VirtualMachineCaptureParameters)ParseParameter(invokeMethodInputParameters[2]);
+            var parameters = new VirtualMachineCaptureParameters();
+            var pVhdPrefix = (string) ParseParameter(invokeMethodInputParameters[2]);
+            parameters.VhdPrefix = pVhdPrefix;
+            var pOverwriteVhds = (bool) ParseParameter(invokeMethodInputParameters[3]);
+            parameters.OverwriteVhds = pOverwriteVhds;
+            var pDestinationContainerName = (string) ParseParameter(invokeMethodInputParameters[4]);
+            parameters.DestinationContainerName = pDestinationContainerName;
 
             var result = VirtualMachinesClient.Capture(resourceGroupName, vmName, parameters);
             WriteObject(result);

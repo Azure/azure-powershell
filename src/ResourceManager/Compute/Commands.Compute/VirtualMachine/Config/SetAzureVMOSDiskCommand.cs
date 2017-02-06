@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? ManagedDiskStorageAccountType { get; set; }
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -236,12 +236,12 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
                 : null,
-                ManagedDisk = (this.ManagedDiskId == null && this.ManagedDiskStorageAccountType == null)
+                ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
                               ? null
                               : new ManagedDiskParameters
                               {
                                   Id = this.ManagedDiskId,
-                                  StorageAccountType = this.ManagedDiskStorageAccountType
+                                  StorageAccountType = this.StorageAccountType
                               }
             };
 
