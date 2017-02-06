@@ -14,19 +14,14 @@ Stops the VMSS or a set of virtual machines within the VMSS.
 
 ### InvokeByDynamicParameters (Default)
 ```
-Stop-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
+Stop-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
  [<CommonParameters>]
 ```
 
 ### InvokeByDynamicParametersForFriendMethod
 ```
-Stop-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
+Stop-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
  [-StayProvisioned] [<CommonParameters>]
-```
-
-### InvokeByStaticParametersForFriendMethod
-```
-Stop-AzureRmVmss [-StayProvisioned] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,13 +46,28 @@ This command stops a specific set of virtual machines specified by the instance 
 
 ## PARAMETERS
 
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InstanceId
 Specifies, as a string array, the ID or IDs of the virtual machine instances that this cmdlet stops.
 For instance: `-InstanceId "0", "3"`.
 
 ```yaml
 Type: String[]
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -72,7 +82,7 @@ Specifies the name of the resource group of the VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -87,7 +97,7 @@ Indicates that this cmdlet deallocates all the virtual machines within the VMSS 
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod, InvokeByStaticParametersForFriendMethod
+Parameter Sets: InvokeByDynamicParametersForFriendMethod
 Aliases: 
 
 Required: True
@@ -102,7 +112,7 @@ Specifies the name of the VMSS for which this cmdlet stops the virtual machines.
 
 ```yaml
 Type: String
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: Name
 
 Required: True

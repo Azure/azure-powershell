@@ -12,14 +12,8 @@ Starts an Azure virtual machine.
 
 ## SYNTAX
 
-### ResourceGroupNameParameterSetName (Default)
 ```
-Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [<CommonParameters>]
-```
-
-### IdParameterSetName
-```
-Start-AzureRmVM [-Name] <String> [-Id] <String> [<CommonParameters>]
+Start-AzureRmVM [-ResourceGroupName] <String> -VMName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,23 +30,8 @@ This command starts the virtual machine named VirtualMachine07 in ResourceGroup1
 
 ## PARAMETERS
 
-### -Id
-Specifies the Resource ID of the virtual machine.
-
-```yaml
-Type: String
-Parameter Sets: IdParameterSetName
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the virtual machine to start.
+### -ResourceGroupName
+Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: String
@@ -60,22 +39,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of the resource group of the virtual machine.
+### -VMName
+Specifies the name of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSetName
-Aliases: 
+Parameter Sets: (All)
+Aliases: Name
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

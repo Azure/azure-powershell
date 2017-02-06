@@ -12,15 +12,9 @@ Removes a virtual machine from Azure.
 
 ## SYNTAX
 
-### ResourceGroupNameParameterSetName (Default)
 ```
-Remove-AzureRmVM [-Name] <String> [-Force] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmVM [-WhatIf] [-Confirm] [-ResourceGroupName] <String> -VMName <String> [-Force]
  [<CommonParameters>]
-```
-
-### IdParameterSetName
-```
-Remove-AzureRmVM [-Name] <String> [-Force] [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,46 +46,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the Resource ID of the virtual machine.
-
-```yaml
-Type: String
-Parameter Sets: IdParameterSetName
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the virtual machine to remove.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName, VMName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSetName
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VMName
+Specifies the name of the virtual machine.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

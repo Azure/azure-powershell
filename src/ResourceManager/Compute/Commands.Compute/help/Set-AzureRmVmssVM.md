@@ -12,8 +12,15 @@ Modifies the state of a VMSS instance.
 
 ## SYNTAX
 
+### InvokeByDynamicParameters (Default)
 ```
 Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-Reimage]
+ [<CommonParameters>]
+```
+
+### InvokeByDynamicParametersForFriendMethod
+```
+Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-ReimageAll]
  [<CommonParameters>]
 ```
 
@@ -44,11 +51,26 @@ Indicates that this cmdlet reimages the VMSS instance.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: InvokeByDynamicParameters
 Aliases: 
 
 Required: True
 Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReimageAll
+Indicates that the cmdlet reimages all the disks in the VMSS instance.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

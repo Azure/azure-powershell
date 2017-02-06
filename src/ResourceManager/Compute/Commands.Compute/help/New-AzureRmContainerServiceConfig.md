@@ -14,7 +14,8 @@ Creates a local configuration object for a container service.
 
 ```
 New-AzureRmContainerServiceConfig [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-OrchestratorType] <ContainerServiceOchestratorTypes>] [[-MasterCount] <Int32>]
+ [[-OrchestratorType] <ContainerServiceOchestratorTypes>] [-CustomProfileOrchestrator <String>]
+ [-ServicePrincipalProfileClientId <String>] [-ServicePrincipalProfileSecret <String>] [[-MasterCount] <Int32>]
  [[-MasterDnsPrefix] <String>] [[-AgentPoolProfile] <ContainerServiceAgentPoolProfile[]>]
  [[-WindowsProfileAdminUsername] <String>] [[-WindowsProfileAdminPassword] <String>]
  [[-AdminUsername] <String>] [[-SshPublicKey] <String[]>] [[-VmDiagnosticsEnabled] <Boolean>]
@@ -68,6 +69,21 @@ Aliases:
 
 Required: False
 Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CustomProfileOrchestrator
+Specifies the custom profile orchestrator.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -129,6 +145,36 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalProfileClientId
+Specifies the principal profile client ID.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalProfileSecret
+Specifies the principal profile secret.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

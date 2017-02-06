@@ -15,9 +15,10 @@ Sets the storage profile properties for the VMSS.
 ```
 Set-AzureRmVmssStorageProfile [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
  [[-ImageReferencePublisher] <String>] [[-ImageReferenceOffer] <String>] [[-ImageReferenceSku] <String>]
- [[-ImageReferenceVersion] <String>] [[-Name] <String>] [[-OsDiskCaching] <CachingTypes>]
- [[-OsDiskCreateOption] <DiskCreateOptionTypes>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
- [[-VhdContainer] <String[]>] [<CommonParameters>]
+ [[-ImageReferenceVersion] <String>] [-ImageReferenceId <String>] [[-Name] <String>]
+ [[-OsDiskCaching] <CachingTypes>] [[-OsDiskCreateOption] <DiskCreateOptionTypes>]
+ [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>] [[-VhdContainer] <String[]>]
+ [-ManagedDisk <StorageAccountTypes>] [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ This command sets the storage profile properties for the VMSS named ContosoVMSS.
 
 ## PARAMETERS
 
+### -DataDisk
+Specifies the data disk object.
+
+```yaml
+Type: VirtualMachineScaleSetDataDisk[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Image
 Specifies the blob URI for the user image.
 VMSS creates an operating system disk in the same container of the user image.
@@ -47,6 +63,21 @@ Aliases:
 
 Required: False
 Position: 10
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specifies the image reference ID.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -111,6 +142,21 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagedDisk
+Specifies the managed disk.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -13,9 +13,11 @@ Creates a VMSS configuration object.
 ## SYNTAX
 
 ```
-New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int64>] [[-UpgradePolicyMode] <UpgradeMode>]
- [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
+New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [-SinglePlacementGroup <Boolean>] [[-Location] <String>]
+ [[-Tag] <Hashtable>] [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int64>] [-PlanName <String>]
+ [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [[-UpgradePolicyMode] <UpgradeMode>] [[-OsProfile] <VirtualMachineScaleSetOSProfile>]
+ [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
  [[-Extension] <VirtualMachineScaleSetExtension[]>] [<CommonParameters>]
 ```
@@ -110,6 +112,96 @@ Aliases:
 
 Required: False
 Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Overprovision
+Indicates whether the cmdlet overprovisions the VMSS.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PlanName
+Specifies the plan name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PlanProduct
+Specifies the plan product.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PlanPromotionCode
+Specifies the plan promotion code.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PlanPublisher
+Specifies the plan publisher.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SinglePlacementGroup
+Specifies the single placement group.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -211,21 +303,6 @@ Aliases:
 
 Required: False
 Position: 7
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Overprovision
-Indicates whether the cmdlet overprovisions the VMSS.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
