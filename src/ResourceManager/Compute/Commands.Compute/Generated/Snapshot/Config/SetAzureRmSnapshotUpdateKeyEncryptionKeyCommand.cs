@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string KeyUrl { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true)]
+        public string SourceVaultId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (this.KeyUrl != null)
@@ -61,6 +67,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
                 }
                 this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
+            }
+
+            if (this.SourceVaultId != null)
+            {
+
+                // EncryptionSettings
+                if (this.SnapshotUpdate.EncryptionSettings == null)
+                {
+                    this.SnapshotUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                }
+                // KeyEncryptionKey
+                if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey == null)
+                {
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                }
+                // SourceVault
+                if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault == null)
+                {
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                }
+                this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
 
             WriteObject(this.SnapshotUpdate);

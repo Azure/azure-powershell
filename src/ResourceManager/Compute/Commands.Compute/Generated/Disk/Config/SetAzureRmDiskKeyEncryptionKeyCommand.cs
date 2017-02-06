@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string KeyUrl { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true)]
+        public string SourceVaultId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (this.KeyUrl != null)
@@ -61,6 +67,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.Disk.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
                 }
                 this.Disk.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
+            }
+
+            if (this.SourceVaultId != null)
+            {
+
+                // EncryptionSettings
+                if (this.Disk.EncryptionSettings == null)
+                {
+                    this.Disk.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                }
+                // KeyEncryptionKey
+                if (this.Disk.EncryptionSettings.KeyEncryptionKey == null)
+                {
+                    this.Disk.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                }
+                // SourceVault
+                if (this.Disk.EncryptionSettings.KeyEncryptionKey.SourceVault == null)
+                {
+                    this.Disk.EncryptionSettings.KeyEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                }
+                this.Disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
 
             WriteObject(this.Disk);
