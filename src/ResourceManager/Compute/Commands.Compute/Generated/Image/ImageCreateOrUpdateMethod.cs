@@ -153,6 +153,71 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
+            pImageName.Attributes.Add(new AliasAttribute("Name"));
+            pImageName.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("ImageName", pImageName);
+
+            var pParameters = new RuntimeDefinedParameter();
+            pParameters.Name = "Image";
+            pParameters.ParameterType = typeof(Image);
+            pParameters.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 3,
+                Mandatory = true,
+                ValueFromPipelineByPropertyName = false,
+                ValueFromPipeline = true
+            });
+            pParameters.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("Image", pParameters);
+
+            return dynamicParameters;
+        }
+    }
+
+    [Cmdlet(VerbsData.Update, "AzureRmImage", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
+    public partial class UpdateAzureRmImage : InvokeAzureComputeMethodCmdlet
+    {
+        public override string MethodName { get; set; }
+
+        protected override void ProcessRecord()
+        {
+            this.MethodName = "ImageCreateOrUpdate";
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsData.Update))
+            {
+                base.ProcessRecord();
+            }
+        }
+
+        public override object GetDynamicParameters()
+        {
+            dynamicParameters = new RuntimeDefinedParameterDictionary();
+            var pResourceGroupName = new RuntimeDefinedParameter();
+            pResourceGroupName.Name = "ResourceGroupName";
+            pResourceGroupName.ParameterType = typeof(string);
+            pResourceGroupName.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 1,
+                Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
+                ValueFromPipeline = false
+            });
+            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+
+            var pImageName = new RuntimeDefinedParameter();
+            pImageName.Name = "ImageName";
+            pImageName.ParameterType = typeof(string);
+            pImageName.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 2,
+                Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
+                ValueFromPipeline = false
+            });
+            pImageName.Attributes.Add(new AliasAttribute("Name"));
             pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 

@@ -152,7 +152,7 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Set-AzureRmSnapshotDiskEncryptionKey', 'Set-AzureRmSnapshotImageReference', 'Set-AzureRmSnapshotKeyEncryptionKey',
                'New-AzureRmSnapshotUpdateConfig',
                'Set-AzureRmSnapshotUpdateDiskEncryptionKey', 'Set-AzureRmSnapshotUpdateImageReference', 'Set-AzureRmSnapshotUpdateKeyEncryptionKey',
-               'New-AzureRmImage', 'Get-AzureRmImage', 'Remove-AzureRmImage',
+               'New-AzureRmImage', 'Update-AzureRmImage', 'Get-AzureRmImage', 'Remove-AzureRmImage',
                'New-AzureRmImageConfig',
                'Set-AzureRmImageOsDisk', 'Add-AzureRmImageDataDisk', 'Remove-AzureRmImageDataDisk',
                'ConvertTo-AzureRmVMManagedDisk'
