@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class SetAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -112,7 +112,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.MethodName = "VirtualMachineScaleSetReimageAll";
             }
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Set))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()

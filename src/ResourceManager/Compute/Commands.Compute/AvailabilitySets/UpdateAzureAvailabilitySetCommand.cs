@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Update, ProfileNouns.AvailabilitySet)]
+    [Cmdlet(VerbsData.Update, ProfileNouns.AvailabilitySet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAvailabilitySet))]
     public class UpdateAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
@@ -53,45 +53,48 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (this.ShouldProcess(AvailabilitySet.Name, VerbsData.Update))
             {
-                var avSetParams = new AvailabilitySet
-                {
-                    Location = this.AvailabilitySet.Location,
-                    PlatformUpdateDomainCount = this.AvailabilitySet.PlatformUpdateDomainCount,
-                    PlatformFaultDomainCount = this.AvailabilitySet.PlatformFaultDomainCount
-                };
+                base.ExecuteCmdlet();
 
-                if (this.ParameterSetName.Equals(ManagedParamterSetName))
+                ExecuteClientAction(() =>
                 {
-                    avSetParams.Managed = true;
-                    avSetParams.Sku = new Sku
+                    var avSetParams = new AvailabilitySet
                     {
-                        Name = "Aligned"
+                        Location = this.AvailabilitySet.Location,
+                        PlatformUpdateDomainCount = this.AvailabilitySet.PlatformUpdateDomainCount,
+                        PlatformFaultDomainCount = this.AvailabilitySet.PlatformFaultDomainCount
                     };
-                }
-                else
-                {
-                    avSetParams.Sku = new Sku
+
+                    if (this.ParameterSetName.Equals(ManagedParamterSetName))
                     {
-                        Name = this.Sku
-                    };
-                }
+                        avSetParams.Managed = true;
+                        avSetParams.Sku = new Sku
+                        {
+                            Name = "Aligned"
+                        };
+                    }
+                    else
+                    {
+                        avSetParams.Sku = new Sku
+                        {
+                            Name = this.Sku
+                        };
+                    }
 
-                var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.AvailabilitySet.ResourceGroupName,
-                    this.AvailabilitySet.Name,
-                    avSetParams).GetAwaiter().GetResult();
+                    var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.AvailabilitySet.ResourceGroupName,
+                        this.AvailabilitySet.Name,
+                        avSetParams).GetAwaiter().GetResult();
 
-                var psResult = Mapper.Map<PSAvailabilitySet>(result);
-                if (result.Body != null)
-                {
-                    psResult = Mapper.Map(result.Body, psResult);
-                }
-                WriteObject(psResult);
-            });
+                    var psResult = Mapper.Map<PSAvailabilitySet>(result);
+                    if (result.Body != null)
+                    {
+                        psResult = Mapper.Map(result.Body, psResult);
+                    }
+                    WriteObject(psResult);
+                });
+            }
         }
     }
 }

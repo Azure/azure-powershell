@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsData.ConvertTo, "AzureRmVMManagedDisk", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsData.ConvertTo, "AzureRmVMManagedDisk", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class ConvertToAzureRmVMManagedDisk : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -105,7 +105,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineConvertToManagedDisks";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsData.ConvertTo))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()

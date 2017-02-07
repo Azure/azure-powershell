@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsSecurity.Grant, "AzureRmDiskAccess", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsSecurity.Grant, "AzureRmDiskAccess", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class GrantAzureRmDiskAccess : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -135,7 +135,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "DiskGrantAccess";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsSecurity.Grant))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()

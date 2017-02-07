@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class RevokeAzureRmDiskAccess : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -105,7 +105,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "DiskRevokeAccess";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsSecurity.Revoke))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()
