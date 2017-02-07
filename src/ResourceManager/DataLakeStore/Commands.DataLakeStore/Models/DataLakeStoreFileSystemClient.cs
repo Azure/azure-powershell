@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 lock (ConsoleOutputLock)
                 {
-                    var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                    var toSet = (int)(1.0 * e.TransferredByteCount / e.TotalFileLength * 100);
                     // powershell defect protection. If, through some defect in
                     // our progress tracking, the number is outside of 0 - 100,
                     // powershell will crash if it is set to that value. Instead
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 {
                     lock (ConsoleOutputLock)
                     {
-                        var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                        var toSet = (int)(1.0 * e.TransferredByteCount / e.TotalFileLength * 100);
                         // powershell defect protection. If, through some defect in
                         // our progress tracking, the number is outside of 0 - 100,
                         // powershell will crash if it is set to that value. Instead
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                             progress.PercentComplete = toSet;
                         }
                         progress.Activity = string.Format("Copying Folder: {0}{1}. Total bytes remaining: {2}. Total files remaining: {3}",
-                            sourceFolderPath, recursive ? " recursively" : string.Empty, e.TotalFileLength - e.UploadedByteCount, e.TotalFileCount - e.UploadedFileCount);
+                            sourceFolderPath, recursive ? " recursively" : string.Empty, e.TotalFileLength - e.TransferredByteCount, e.TotalFileCount - e.TransferredFileCount);
                     }
                 };
 
