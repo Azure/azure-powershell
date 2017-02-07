@@ -41,9 +41,17 @@ function Test-Disk
         Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mockkey $diskconfig.EncryptionSettings.KeyEncryptionKey.KeyUrl;
         Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
+
+        # Image test
+        $mockimage = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+        $diskconfig = Set-AzureRmDiskImageReference -Disk $diskconfig -Id $mockimage -Lun 0;
+        Assert-AreEqual $mockimage $diskconfig.CreationData.ImageReference.Id;
+        Assert-AreEqual 0 $diskconfig.CreationData.ImageReference.Lun;
+
         $diskconfig.EncryptionSettings.Enabled = $false;
         $diskconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $diskconfig.EncryptionSettings.KeyEncryptionKey = $null;
+        $diskconfig.CreationData.ImageReference = $null;
 
         New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
 
@@ -60,7 +68,6 @@ function Test-Disk
         Revoke-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname;
 
         # Config update test
-        $updateconfig = New-AzureRmDiskConfig -Location $loc;
         $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty;
         Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
 
@@ -92,15 +99,25 @@ function Test-Snapshot
 
         # Config and create test
         $snapshotconfig = New-AzureRmSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+
+        # Encryption test
         $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $mockkey -SourceVaultId $mocksourcevault;
         $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
         Assert-AreEqual $mockkey $snapshotconfig.EncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mockkey $snapshotconfig.EncryptionSettings.KeyEncryptionKey.KeyUrl;
         Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
+
+        # Image test
+        $mockimage = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
+        $snapshotconfig = Set-AzureRmSnapshotImageReference -Snapshot $snapshotconfig -Id $mockimage -Lun 0;
+        Assert-AreEqual $mockimage $snapshotconfig.CreationData.ImageReference.Id;
+        Assert-AreEqual 0 $snapshotconfig.CreationData.ImageReference.Lun;
+
         $snapshotconfig.EncryptionSettings.Enabled = $false;
         $snapshotconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $snapshotconfig.EncryptionSettings.KeyEncryptionKey = $null;
+        $snapshotconfig.CreationData.ImageReference = $null;
         New-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
 
         # Get snapshot test
@@ -116,7 +133,6 @@ function Test-Snapshot
         Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname;
 
         # Config update test
-        $updateconfig = New-AzureRmSnapshotConfig -Location $loc;
         $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty;
         Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig;
 
