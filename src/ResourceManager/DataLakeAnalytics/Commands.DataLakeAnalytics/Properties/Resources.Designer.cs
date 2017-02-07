@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More than {0} jobs exist in the account. Specify -Top with a larger value to retrieve more jobs. Note that large values of -Top will take time to retrieve all items..
+        /// </summary>
+        internal static string MoreJobsToGetWarning {
+            get {
+                return ResourceManager.GetString("MoreJobsToGetWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos; ....
         /// </summary>
         internal static string NewDataLakeCatalogCredential {

@@ -971,27 +971,40 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         }
 
         public List<JobInformation> ListJobs(string accountName, string filter, int? top,
-            int? skip, string orderBy)
+            int? skip, string orderBy, out bool moreJobs)
         {
+            moreJobs = false;
+            // top is used to return a total number, not top per page.
+            if (!top.HasValue)
+            {
+                top = 500;
+            }
+
             var parameters = new ODataQuery<JobInformation>
             {
                 Filter = filter,
-                Top = top,
                 Skip = skip,
                 OrderBy = orderBy
             };
 
             var jobList = new List<JobInformation>();
             var response = _jobClient.Job.List(accountName, parameters);
-
+            var curCount = 0;
             jobList.AddRange(response);
-            while (!string.IsNullOrEmpty(response.NextPageLink))
+            curCount = jobList.Count();
+            while (!string.IsNullOrEmpty(response.NextPageLink) && curCount <= top.Value)
             {
                 response = ListJobsWithNextLink(response.NextPageLink);
                 jobList.AddRange(response);
+                curCount = jobList.Count();
             }
 
-            return jobList;
+            if (curCount > top.Value || !string.IsNullOrEmpty(response.NextPageLink))
+            {
+                moreJobs = true;
+            }
+
+            return jobList.GetRange(0, top.Value);
         }
 
         #endregion

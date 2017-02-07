@@ -231,4 +231,7 @@
   <data name="IncorrectOutputTypeWarning" xml:space="preserve">
     <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
   </data>
+  <data name="MoreJobsToGetWarning" xml:space="preserve">
+    <value>More than {0} jobs exist in the account. Specify -Top with a larger value to retrieve more jobs. Note that large values of -Top will take time to retrieve all items.</value>
+  </data>
 </root>
