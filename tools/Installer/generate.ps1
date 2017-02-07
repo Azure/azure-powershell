@@ -25,10 +25,9 @@ if ([string]::IsNullOrEmpty($buildConfig))
 	$buildConfig = 'Release'
 }
 
-#if((Test-Path -Path $env:AzurePSRoot) -eq $false)
 if($env:AzurePSRoot -eq $null)
 {
-    $env:AzurePSRoot="..\..\"
+    $env:AzurePSRoot="$PSScriptRoot\..\..\"
 }
 
 Write-Host $env:AzurePSRoot
@@ -50,13 +49,14 @@ Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Co
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.Intune\AzureRM.Intune.psd1 -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.RecoveryServices.Backup\AzureRM.RecoveryServices.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\Azure.AnalysisServices\ -ErrorAction SilentlyContinue
+
 Write-Verbose "Removing duplicated Resources folder"
 Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Sql\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Storage\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\ManagedCache\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Networking\Resources\ -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $serviceManagementPath\Services\Resources\ -ErrorAction SilentlyContinue
 
 Write-Verbose "Removing generated NuGet folders from $output"
 $resourcesFolders = @("de", "es", "fr", "it", "ja", "ko", "ru", "zh-Hans", "zh-Hant")

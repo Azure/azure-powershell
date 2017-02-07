@@ -1,4 +1,7 @@
-﻿namespace PowerShellSetup.Tests
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+namespace PowerShellSetup.Tests
 {
     using System;
     using System.Diagnostics;
@@ -91,14 +94,27 @@
             return msiContentsPath;
         }
 
-
         protected string GetAzurePSMsiPath()
         {
-            string msiDir = GetAzurePSMsiDirectory();
-            string msiFullPath = Path.Combine(msiDir, MSI_NAME);
+            //On CI machine, we first check the signed MSI path, if it does not exist
+            //Then we get an alternatve path of the MSI from the test output directory.
+            string msiFullPath = string.Empty;
+            string signedPath = Environment.GetEnvironmentVariable("SignedMsiDir");    //This env. variable is set during build just for test purpose
+            if(!string.IsNullOrEmpty(signedPath))
+            {
+                msiFullPath = Path.Combine(signedPath, MSI_NAME);
+            }
+            
+            if (!File.Exists(msiFullPath))
+            {
+                string msiDir = GetAzurePSMsiDirectory();
+                msiFullPath = Path.Combine(msiDir, MSI_NAME);
+            }
+
+            TestLog.WriteLine(string.Format("Msi Path to be used for testing: {0}", msiFullPath));
             return msiFullPath;
         }
-
+        
         protected string GetAzurePSMsiDirectory()
         {
             var testLoc = new Uri(Assembly.GetExecutingAssembly().CodeBase);
