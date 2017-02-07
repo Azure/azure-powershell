@@ -3,29 +3,82 @@ $global:testProfileMap = "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": 
 
 Describe "Get-ProfileCachePath" {
     InModuleScope AzureRM.Bootstrapper {
-        Context "Gets the correct profile cache path" {
-            It "Should return proper path" {
-                Get-ProfileCachePath | Should Match "(.*)ProfileCache$"
+        Context "Windows OS Admin" {
+            $IsWindows = $true
+            $Script:IsAdmin = $true
+            It "Should return ProgramData path" {
+                $result = Get-ProfileCachePath
+                $result | Should Match "(.*)ProfileCache$"
+                $result.Contains("ProgramData") | Should Be $true
+            }
+        }
+
+        Context "Windows OS Non-Admin" {
+            $IsWindows = $true
+            $Script:IsAdmin = $false
+            It "Should return LOCALAPPDATA path" {
+                $result = Get-ProfileCachePath
+                $result | Should Match "(.*)ProfileCache$"
+                $result.Contains("AppData\Local") | Should Be $true                
+            }            
+        }
+
+        Context "Linux OS Admin" {
+            $IsWindows = $false
+            It "Should return .config path" {
+                $result = Get-ProfileCachePath
+                $result | Should Match "(.*)ProfileCache$"
+                $result.Contains(".config") | Should Be $true
             }
         }
     }
 }
 
-Describe "Get-RestResponse" {
+Describe "Get-LatestProfileMapPath" {
     InModuleScope AzureRM.Bootstrapper {
-        Context "Rest call is properly made" {
-            It "Returns proper json" {
-                Mock Invoke-RestMethod -Verifiable { return ($testProfileMap | ConvertFrom-Json) }
-                Get-RestResponse | Should Be "@{profile1=; profile2=}"
-                Assert-VerifiableMocks
+        Mock Get-ProfileCachePath -Verifiable { "foo\bar" }
+        Context "ProfileCache doesn't exist" {
+            It "Should return null" {
+                Get-LatestProfileMapPath | Should be $null
             }
         }
 
-        Context "Rest call threw exception" {
-            It "Throws custom exception" {
-                Mock Invoke-RestMethod -Verifiable { throw [System.Net.WebException] }
-                { Get-RestResponse } | Should throw "Http Status Code:" 
-                Assert-VerifiableMocks
+        Context "ProfileCache is empty/no profilemaps available" {
+            Mock Test-Path -Verifiable { $true }
+            Mock Get-ChildItem -Verifiable { $null }
+            It "Should return null" {
+                Get-LatestProfileMapPath | Should be $null
+            }
+        }
+
+        Context "Two profile maps available at profile cache" {
+            Mock Test-Path -Verifiable {$true} 
+            $profilemap1 = New-Object -TypeName PSObject 
+            $profilemap1 | Add-Member NoteProperty -Name "CreationTime" -Value (New-Object -TypeName DateTime)
+            $profilemap2 = New-Object -TypeName PSObject 
+            $profilemap2 | Add-Member NoteProperty -Name "CreationTime" -Value (Get-Date)
+            Mock Get-ChildItem -Verifiable { @($profilemap1, $profilemap2)}
+            It "Should return Latest map" {
+                Get-LatestProfileMapPath | Should Be $profilemap2
+            }
+        }
+    }
+}
+
+Describe "Get-WebResponse" {
+    InModuleScope AzureRM.Bootstrapper {
+        Context "Invoke-WebRequest is properly made" {
+            It "Returns proper response" {
+                $result = Get-WebResponse
+                $result.Headers["Content-Type"] | Should Be "application/json"
+                $result.StatusCode | Should Be "200"
+            }
+        }
+
+        Context "Invoke-WebRequest threw exception" {
+            $PSProfileMapEndpoint = "http://foo.bar"
+            It "Throws exception" {
+                { Get-WebResponse } | Should throw 
             }
         }
     }
@@ -35,14 +88,17 @@ Describe "Get-AzureProfileMap" {
     InModuleScope AzureRM.Bootstrapper {
         
         Mock Get-ProfileCachePath -Verifiable { return "MockPath\ProfileCache"}
-        Mock Get-FileHashProfileMap -Verifiable { return "MockedHash" }
+        $WebResponse = New-Object -TypeName PSObject 
+        $Header = @{"Headers" = @{"ETag" = "MockETag"}}
+        $WebResponse | Add-Member $Header
+        Mock Get-WebResponse -Verifiable { return $WebResponse }
+        Mock RetrieveProfileMap -Verifiable { ($testProfileMap | ConvertFrom-Json) }
 
         Context "ProfileCachePath does not exist" {
-            Mock New-Item -Verifiable { return "Creating ProfilePath"}
-            Mock Get-RestResponse -Verifiable { return ($testProfileMap | ConvertFrom-Json) }
+            Mock New-Item -Verifiable {}
             Mock Test-Path -Verifiable { $false }
             Mock Out-File -Verifiable {}
-            Mock Invoke-Expression -Verifiable {}
+            Mock Get-LatestProfileMapPath -Verifiable {}
             It "Returns the proper ProfileMap" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks
@@ -51,15 +107,12 @@ Describe "Get-AzureProfileMap" {
 
         Context "ProfileCachePath Exists and hashes are equal" {
             Mock Test-Path -Verifiable { $true }
-            Mock Get-RestResponse -Verifiable { return ($testProfileMap | ConvertFrom-Json) }
             Mock New-Item {}
-            if (-not (Test-Path '.\mocksymlink.json'))
-            {
-                Invoke-Expression -Command "cmd /c mklink mocksymlink.json MockedHash.json"
-            }
+            $profileMapPath = New-Object -TypeName PSObject
+            $profileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
+            Mock Get-LatestProfileMapPath -Verifiable { $profileMapPath }
+            Mock Get-Content -Verifiable { return $global:testProfileMap }
 
-            $symlinkInfo = Get-ChildItem mocksymlink.json
-            Mock Get-ChildItem -Verifiable { return $symlinkInfo }
             It "Returns Correct ProfileMap" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks
@@ -67,33 +120,47 @@ Describe "Get-AzureProfileMap" {
             It "Should not call New-Item" {
                 Assert-MockCalled New-Item -Exactly 0
             }
-            # Cleanup
-            Remove-Item mocksymlink.json
         }
 
         Context "ProfileCachePath Exists and hashes are different" {
             Mock Test-Path -Verifiable { $true }
-            Mock Get-RestResponse -Verifiable { return ($testProfileMap | ConvertFrom-Json) }
             Mock New-Item {}
-            Mock RemoveWithRetry -Verifiable {}
             Mock Out-File -Verifiable {}
-            Mock Invoke-Expression -Verifiable {}
-            Mock Get-ChildItem -Verifiable { return "MockedHashDifferent.json" }
+            Mock Get-LatestProfileMapPath -Verifiable { "MockedDifferentETag.json" }
+            Mock RetrieveProfileMap -Verifiable {$global:testProfileMap | ConvertFrom-Json}
             It "Returns Correct ProfileMap" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks
             }
-            It "Should not call New-Item" {
-                Assert-MockCalled New-Item -Exactly 0
-            }
         }
 
-        Context "Invoke-RestMethod throws exception" {
-            Mock Invoke-RestMethod { throw [System.Net.WebException] }
+        Context "Get-WebResponse throws exception" {
+            Mock Get-WebResponse { throw [System.Net.WebException] }
 
             It "Throws Web Exception" {
                 { Get-AzureProfileMap } | Should throw 
             }
+        }
+    }
+}
+
+Describe "RetrieveProfileMap" {
+    InModuleScope AzureRM.Bootstrapper {
+        Context "WebResponse content has extra line breaks" {
+            $WebResponse = New-Object -TypeName PSObject
+            $WebResponse | Add-Member NoteProperty -Name "Content" -Value "{`n`"Profile1`":`t { `"Module1`": [`"1.0`"], `n`"Module2`": [`"1.0`"] }, `"Profile2`": `n{ `"Module1`": [`"2.0`", `"1.0`"],`n `r`"Module2`": `t[`"2.0`"] }}" 
+            It "Should return proper profile map" {
+                (RetrieveProfileMap -WebResponse $WebResponse) -like ($global:testProfileMap | ConvertFrom-Json) | Should Be $true
+            }
+        }
+
+        Context "WebResponse content has no extra line breaks" {
+            $WebResponse = New-Object -TypeName PSObject
+            $WebResponse | Add-Member NoteProperty -Name "Content" -Value $global:testProfileMap
+            It "Should return proper profile map" {
+                (RetrieveProfileMap -WebResponse $WebResponse) -like ($global:testProfileMap | ConvertFrom-Json) | Should Be $true
+            }
+            
         }
     }
 }
@@ -113,7 +180,9 @@ Describe Get-AzProfile {
         }
         
         Context "Gets Azure ProfileMap from Cache" {
-            Mock Get-ProfileCachePath -Verifiable { "MockPath\ProfileCache" }
+            $profileMapPath = New-Object -TypeName PSObject
+            $profileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
+            Mock Get-LatestProfileMapPath -Verifiable { $profileMapPath }
             Mock Test-Path -Verifiable { $true }
             Mock Get-Content -Verifiable { return $global:testProfileMap }
             
@@ -125,7 +194,9 @@ Describe Get-AzProfile {
 
         Context "ProfileMap is not available from cache" {
             Mock Test-Path -Verifiable { $false }
-            Mock Get-ProfileCachePath -Verifiable { "MockPath\ProfileCache" }
+            $profileMapPath = New-Object -TypeName PSObject
+            $profileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
+            Mock Get-LatestProfileMapPath -Verifiable { $profileMapPath }
             Mock Get-Content -Verifiable { return $global:testProfileMap }
 
             It "Should get ProfileMap from Embedded source" {
@@ -136,7 +207,9 @@ Describe Get-AzProfile {
 
         Context "ProfileMap is not available in cache or Embedded source" {
             Mock Test-Path -Verifiable { $false }
-            Mock Get-ProfileCachePath -Verifiable { "MockPath\ProfileCache" }
+            $profileMapPath = New-Object -TypeName PSObject
+            $profileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
+            Mock Get-LatestProfileMapPath -Verifiable { $profileMapPath }
             Mock Get-Content -Verifiable {}
 
             It "Should throw FileNotFound Exception" {
@@ -234,47 +307,20 @@ Describe "Install-ModuleHelper" {
                 Assert-MockCalled Install-Module -Exactly 1
             }
         }
-    }
-}
 
-Describe "Test-Dependencies" {
-    InModuleScope AzureRM.Bootstrapper {
-        Mock Get-ProfileCachePath -Verifiable { "MockCachePath" }
-        Mock Get-ChildItem -Verifiable { @("MockFileName")}
-        Mock Get-Content -Verifiable { $global:testProfileMap }
-        It "Should return proper dependency map" {
-            $result = Test-Dependencies 
-            $result.Count | Should Be 4
-            $result.'Module11.0'.Count | Should Be 2
-        }
-    }
-}
-
-Describe "Get-FileHashProfileMap" {
-    InModuleScope AzureRM.Bootstrapper {
-        Mock Get-ProfilesAvailable -Verifiable { "mockprofiles"}
-
-        Context "Valid Profile Map " {
-            $profilemapHash = New-Object -TypeName PSObject
-            $profilemapHash | Add-Member -MemberType NoteProperty Hash("mockhash")
-            Mock Get-FileHash -Verifiable { $profilemapHash }
-
-            It "Should return proper hash" {
-                (Get-FileHashProfileMap -ProfileMap ($global:testProfileMap | ConvertFrom-Json))| Should Be "mockhash"
-                Assert-VerifiableMocks
+        Context "Install module with scope as currentuser" {
+            Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
+            It "Should invoke Install-Module" {
+                Install-ModuleHelper -Module "Module1" -Profile "Profile1" -ProfileMap ($global:testProfileMap | ConvertFrom-Json) -scope currentuser 
+                Assert-MockCalled Install-Module -Exactly 1
             }
         }
-
-        Context "Get-FileHash throws" {
+        
+        Context "Install module with scope as AllUsers" {
+            Mock Install-Module -Verifiable { throw } -ParameterFilter { $Scope -eq "AllUsers"}
             It "Should throw" {
-                Mock Get-FileHash -Verifiable { throw }
-                { Get-FileHashProfileMap -ProfileMap ($global:testProfileMap | ConvertFrom-Json)} | Should throw
-            }
-        }
-
-        Context "Null Profile Map" {
-            It "Should throw" {
-                { Get-FileHashProfileMap -ProfileMap $null } | Should throw
+                {Install-ModuleHelper -Module "Module1" -Profile "Profile1" -ProfileMap ($global:testProfileMap | ConvertFrom-Json) -scope AllUsers } | Should Throw
+                Assert-MockCalled Install-Module -Exactly 1
             }
         }
     }
@@ -348,20 +394,19 @@ Describe "RemoveWithRetry" {
 
 Describe "Test-ProfilesInstalled" {
     InModuleScope AzureRm.Bootstrapper {
-        $pInstalled = @{'Profile1'= @{'Module1' = @('1.0') ;'Module2'= @('1.0')}}
-        $dependencyIndex = @{'Module11.0'= @('Profile1'); 'Module22.0'= @('Profile2')}
-        Mock Test-Dependencies -Verifiable { $dependencyIndex }
-        Mock Get-AllProfilesInstalled -Verifiable { @('Profile1') }
         Context "Profile associated with Module version is installed" {
+            $AllProfilesInstalled = @{'Module11.0'= @('Profile1', 'Profile2'); 'Module22.0'= @('Profile2')}
             It "Should return ProfilesAssociated" {
-                $Result = (Test-ProfilesInstalled -Module 'Module1' -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) -pInstalled $pInstalled -dependencyIndex $dependencyIndex)
-                $Result | Should Be 'Profile1'
+                $Result = (Test-ProfilesInstalled -Module 'Module1' -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) -AllProfilesInstalled $AllProfilesInstalled)
+                $Result[0] | Should Be 'Profile1'
+                $Result[1] | Should Be 'Profile2'
             }
         }
 
         Context "Profile associated with Module version is not installed" {
-            It "Should return empty array" {
-                $Result = (Test-ProfilesInstalled -Module 'Module2' -Profile 'Profile2' -PMap ($global:testProfileMap | ConvertFrom-Json) -pInstalled $pInstalled -dependencyIndex $dependencyIndex)
+                $AllProfilesInstalled = @{'Module11.0'= @('Profile1', 'Profile2')}
+                It "Should return empty array" {
+                $Result = (Test-ProfilesInstalled -Module 'Module2' -Profile 'Profile2' -PMap ($global:testProfileMap | ConvertFrom-Json) -AllProfilesInstalled $AllProfilesInstalled)
                 $Result.Count | Should Be 0
 
             }
@@ -371,8 +416,9 @@ Describe "Test-ProfilesInstalled" {
 
 Describe "Uninstall-ModuleHelper" {
     InModuleScope AzureRM.Bootstrapper {
-        Mock Remove-Module -Verifiable { "Removing module from session..." }
-        Mock Uninstall-Module -Verifiable { "Uninstalling module..." }
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+        Mock Remove-Module -Verifiable { }
+        Mock Uninstall-Module -Verifiable { }
         Context "Modules are installed" {
             # Arrange
             $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
@@ -393,10 +439,8 @@ Describe "Uninstall-ModuleHelper" {
             Mock -CommandName Get-Module -MockWith $mockTestPath
 
             It "Should call Remove-Module and Uninstall-Module" {
-                $callResult = Uninstall-ModuleHelper -Module 'Module1' -Version '1.0'
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions
                 $Script:mockCalled | Should Be 2
-                $callResult[0] | Should Be "Removing module from session..."
-                $callResult[1] | Should Be "Uninstalling module..."
                 Assert-VerifiableMocks
             } 
         }
@@ -404,7 +448,7 @@ Describe "Uninstall-ModuleHelper" {
         Context "Modules are not installed" {
             Mock Get-Module -Verifiable {}
             It "Should not call Remove-Module or Uninstall-Module" {
-                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0'
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1'
                 Assert-MockCalled Remove-Module -Exactly 0
                 Assert-MockCalled Uninstall-Module -Exactly 0
             }
@@ -414,29 +458,15 @@ Describe "Uninstall-ModuleHelper" {
 
 Describe "Uninstall-ProfileHelper" {
     InModuleScope AzureRM.Bootstrapper {
-        Mock Uninstall-ModuleHelper -Verifiable {}
+        Mock Get-AllProfilesInstalled -Verifiable {}
+        Mock Invoke-UninstallModule -Verifiable {}
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+
         Context "Profile associated with the module is installed" {
-            Mock Test-ProfilesInstalled -Verifiable { @("Profile1")}
-            It "Should call Uninstall-ModuleHelper" {
+            It "Should call Invoke-UninstallModule" {
                 Uninstall-ProfileHelper -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) -Force
                 Assert-VerifiableMocks
-            }
-        }
-
-        Context "Profile associated with the module is not installed" {
-            Mock Test-ProfilesInstalled -Verifiable { @()}
-            Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
-            It "Should not call Uninstall-ModuleHelper" {
-                Uninstall-ProfileHelper -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) -Force
-                Assert-MockCalled Uninstall-ModuleHelper -Exactly 0
-            }
-        }
-
-        Context "More than 1 profile associated with the module are installed" {
-            Mock Test-ProfilesInstalled -Verifiable { @('Profile1', 'Profile2')}
-            It "Should not call Uninstall-ModuleHelper" {
-                Uninstall-ProfileHelper -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) -Force
-                Assert-MockCalled Uninstall-ModuleHelper -Exactly 0
+                Assert-MockCalled Invoke-UninstallModule -Exactly 2
             }
         }
     }
@@ -444,6 +474,7 @@ Describe "Uninstall-ProfileHelper" {
 
 Describe "Invoke-UninstallModule" {
     InModuleScope AzureRM.Bootstrapper {
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Context "Module not associated with any other profile" {
             Mock Test-ProfilesInstalled -Verifiable { 'profile1'}
             Mock Uninstall-ModuleHelper -Verifiable {}
@@ -467,36 +498,38 @@ Describe "Invoke-UninstallModule" {
 
 Describe "Remove-PreviousVersions" {
     InModuleScope AzureRM.Bootstrapper {
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+        $AllProfilesInstalled = @{}
         Context "Previous versions are installed" {
-            $PreveiousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
             $VersionObj = New-Object -TypeName System.Version -ArgumentList "0.1" 
             $moduleObj = New-Object -TypeName PSObject 
             $moduleObj | Add-Member NoteProperty Version($VersionObj)
             Mock Get-Module -Verifiable { $moduleObj}
             Mock Invoke-UninstallModule -Verifiable {}
             It "Should call Invoke-UninstallModule" {
-                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json) 
                 Assert-VerifiableMocks
             }
         }
 
         Context "Previous versions are not installed" {
-            $PreveiousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
             Mock Get-Module -Verifiable {}
             Mock Invoke-UninstallModule {}
             It "Should not call Invoke-UninstallModule" {
-                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
                 Assert-VerifiableMocks
                 Assert-MockCalled Invoke-UninstallModule -Exactly 0
             }
         }
 
         Context "No previous versions" {
-            $PreveiousMap =  "{`"Profile0`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile3`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            $PreviousMap =  "{`"Profile0`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile3`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
             Mock Get-Module -Verifiable {}
             Mock Invoke-UninstallModule -Verifiable {}
             It "Should not call Invoke-UninstallModule" {
-                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
                 Assert-MockCalled Get-Module -Exactly 0
                 Assert-MockCalled Invoke-UninstallModule -Exactly 0
             }
@@ -512,37 +545,41 @@ Describe "Remove-PreviousVersions" {
                 Assert-MockCalled Invoke-UninstallModule -Exactly 0
             }
         }
-
     }
 }
 
 Describe "Get-AllProfilesInstalled" {
     InModuleScope AzureRM.Bootstrapper {
         Mock Get-ProfileCachePath -Verifiable { '.\MockPath'}
-        Mock Get-Content -Verifiable { $global:testProfileMap }
+        Mock Get-Content { $global:testProfileMap }
         Context "Profile Maps are available from cache" {
             Mock Test-Path -Verifiable { $true }
-            Mock Get-ChildItem -Verifiable { @('ProfileMap.json', 'MockHash.json')}
+            $ProfileMapHash = New-Object -TypeName  PSObject
+            $ProfileMapHash | Add-Member NoteProperty 'Name' -Value 'ProfileMap.json'
+            Mock Get-ChildItem -Verifiable { @($ProfileMapHash, 'MockHash.json')}
             Mock Get-ProfilesInstalled -Verifiable { @{'Profile1'= @{'Module1'= '1.0'}}}
-            It "Should return profiles Installed" {
-                Get-AllProfilesInstalled | Should Be 'Profile1'
-                Assert-MockCalled Get-Content -Exactly 1
-                Assert-MockCalled Get-ProfilesInstalled -exactly 1
+            $expectedResult = @{"Module21.0"=@('Profile1'); "Module11.0"=@('Profile1')}
+            It "Should return Modules & Profiles Installed" {
+                (Get-AllProfilesInstalled) -like $expectedResult | Should Be $true
+                Assert-MockCalled Get-Content -Exactly 2
+                Assert-MockCalled Get-ProfilesInstalled -exactly 2
                 Assert-VerifiableMocks
             }
         }
 
         Context "Profiles are not installed" {
             Mock Test-Path -Verifiable { $true }
-            Mock Get-ChildItem -Verifiable { @('ProfileMap.json', 'MockHash.json')}
+            $ProfileMapHash = New-Object -TypeName  PSObject
+            $ProfileMapHash | Add-Member NoteProperty 'Name' -Value 'ProfileMap.json'
+            Mock Get-ChildItem -Verifiable { @($ProfileMapHash, 'MockHash.json')}
             Mock Get-ProfilesInstalled -Verifiable {}
             
             It "Should return empty" {
                 $AllProfilesInstalled = @()
                 $result = (Get-AllProfilesInstalled)
                 $result.Count | Should Be 0
-                Assert-MockCalled Get-Content -Exactly 1
-                Assert-MockCalled Get-ProfilesInstalled -exactly 1
+                Assert-MockCalled Get-Content -Exactly 2
+                Assert-MockCalled Get-ProfilesInstalled -exactly 2
                 Assert-VerifiableMocks
             }      
         }
@@ -565,15 +602,17 @@ Describe "Get-AllProfilesInstalled" {
 Describe "Update-ProfileHelper" {
     InModuleScope AzureRM.Bootstrapper {
         Mock Get-ProfileCachePath -Verifiable { '.\MockPath'}
-        Mock Get-Content -Verifiable { $global:testProfileMap } -ParameterFilter { $Path -eq 'MockedHash.json'}
         $profilemapFileInfo = New-Object -TypeName  psobject
         $profilemapFileInfo | Add-Member NoteProperty 'Name' -Value 'ProfileMap.json'
-        Mock Get-ChildItem -Verifiable { @($profilemapFileInfo, 'MockHash.json')} -ParameterFilter { $Path -eq '.\MockPath'}
-        Invoke-Expression -Command "cmd /c mklink mocksymlink.json MockedHash.json"
-        $symlinkInfo = Get-ChildItem mocksymlink.json
-        Mock Get-ChildItem -Verifiable { return $symlinkInfo } -ParameterFilter { $Path -eq '.\MockPath\ProfileMap.json' }
+        Mock Get-ChildItem -Verifiable { @($profilemapFileInfo, 'MockETag.json')} -ParameterFilter { $Path -eq '.\MockPath'}
+        Mock Get-Content -Verifiable { $global:testProfileMap } -ParameterFilter { $Path -eq "C:\mock\MockETag.json"}
+        $profileMapPath = New-Object -TypeName PSObject
+        $profileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
+        Mock Get-LatestProfileMapPath -Verifiable { $profileMapPath }
+        Mock Get-AllProfilesInstalled -Verifiable {}
         Mock Remove-PreviousVersions -Verifiable {}
         Mock Remove-ProfileMapFile {}
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
 
         Context "Previous Profile versions are available and they are installed" {
             $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
@@ -592,9 +631,9 @@ Describe "Update-ProfileHelper" {
 
             Mock -CommandName Get-ProfilesInstalled -MockWith $mockTestPath
             
-            It "Should not remove previous profile map" {
+            It "Should remove previous profile map" {
                 Update-ProfileHelper -profile 'Profile1'
-                Assert-MockCalled Remove-ProfileMapFile -Exactly 0
+                Assert-MockCalled Remove-ProfileMapFile -Exactly 1
                 Assert-VerifiableMocks
             }
         }
@@ -632,6 +671,42 @@ Describe "Update-ProfileHelper" {
                 Assert-VerifiableMocks
             }
         }
+
+        Context "Previous profile versions are installed - and part of other profiles" {
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            Mock Get-Content -Verifiable { $PreviousMap }
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return @{'Profile2'= @{'Module1'= '1.0'}}
+                }
+                else {
+                    return @{'Profile2' = @{ 'Module2' = '0.1'}}
+                }
+            }   
+
+            Mock -CommandName Get-ProfilesInstalled -MockWith $mockTestPath
+            It "Should not remove previous map" {
+                Update-ProfileHelper -profile 'Profile1'
+                Assert-MockCalled Remove-ProfileMapFile -Times 0
+                Assert-VerifiableMocks
+
+            }
+        }
+    }
+}
+
+Describe "Add-ScopeParam" {
+    InModuleScope AzureRM.Bootstrapper {
+        $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+
+        It "Should return Scope parameter object" {
+            (Add-ScopeParam $params)
+            $params.ContainsKey("Scope") | Should Be $true
+            Assert-VerifiableMocks
+        }
     }
 }
 
@@ -655,6 +730,18 @@ Describe "Add-ForceParam" {
         It "Should return Force parameter object" {
             Add-ForceParam $params
             $params.ContainsKey("Force") | Should Be $true
+        }
+    }
+}
+
+Describe "Add-RemoveParam" {
+    InModuleScope AzureRM.Bootstrapper {
+        $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+
+        It "Should return RemovePreviousVersions parameter object" {
+            (Add-RemoveParam $params)
+            $params.ContainsKey("RemovePreviousVersions") | Should Be $true
+            Assert-VerifiableMocks
         }
     }
 }
@@ -798,7 +885,25 @@ Describe "Use-AzureRmProfile" {
                 { Use-AzureRmProfile -Profile $null} | Should Throw
             }
         }
-    }
+
+        Context "Invoke with Scope as CurrentUser" {
+            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
+            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
+            It "Should invoke Install-ModuleHelper with scope currentuser" {
+                (Use-AzureRmProfile -Profile 'Profile1' -Force -scope CurrentUser)
+                Assert-VerifiableMocks
+            }
+        }
+        
+        Context "Invoke with Scope as AllUsers" {
+            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
+            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
+            It "Should invoke Install-ModuleHelper with scope AllUsers" {
+                (Use-AzureRmProfile -Profile 'Profile1' -Force -scope AllUsers)
+                Assert-VerifiableMocks
+            }
+        }
+   }
 }
 
 Describe "Install-AzureRmProfile" {
@@ -825,6 +930,24 @@ Describe "Install-AzureRmProfile" {
                 { Install-AzureRmProfile -Profile $null } | Should Throw
             }
         }
+
+        Context "Invoke with Scope as CurrentUser" {
+            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
+            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
+            It "Should invoke Install-ModuleHelper with scope currentuser" {
+                (Install-AzureRmProfile -Profile 'Profile1' -scope CurrentUser)
+                Assert-VerifiableMocks
+            }
+        }
+        
+        Context "Invoke with Scope as AllUsers" {
+            Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
+            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
+            It "Should invoke Install-ModuleHelper with scope AllUsers" {
+                (Install-AzureRmProfile -Profile 'Profile1' -scope AllUsers)
+                Assert-VerifiableMocks
+            }
+        }
     }
 }
 
@@ -832,19 +955,9 @@ Describe "Uninstall-AzureRmProfile" {
     InModuleScope AzureRM.Bootstrapper {
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Uninstall-ProfileHelper -Verifiable {}
-        Context "Profile is installed" {
-            Mock Get-ProfilesInstalled -Verifiable { @{'Profile1'= @{'Module1' = @('1.0') ;'Module2'= @('1.0')}}}
-            It "Should remove and uninstall modules" {
+        Context "Valid profile name" {
+            It "Should invoke Uninstall-ProfileHelper" {
                 Uninstall-AzureRmProfile -Profile 'Profile1' -Force
-                Assert-VerifiableMocks
-            }
-        }
-
-        Context "Profile is not installed" {
-            Mock Get-ProfilesInstalled -Verifiable {}
-            It "Should not call Uninstall-ProfileHelper" {
-                Uninstall-AzureRmProfile -Profile 'Profile1' -Force
-                Assert-MockCalled Uninstall-ProfileHelper -Exactly 0
                 Assert-VerifiableMocks
             }
         }
@@ -868,7 +981,7 @@ Describe "Update-AzureRmProfile" {
         # Arrange
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Get-AzProfile -Verifiable -ParameterFilter { $Update.IsPresent } { ($global:testProfileMap | ConvertFrom-Json) }
-        Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($RemovePreviousVersions.IsPresent) -and ($Force.IsPresent)}
+        Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent)}
         Mock Update-ProfileHelper -Verifiable {}
     
         # Act

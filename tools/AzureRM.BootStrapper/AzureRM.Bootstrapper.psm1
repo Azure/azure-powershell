@@ -78,7 +78,7 @@ function Get-LatestProfileMapPath
 # Make Web-Call
 function Get-WebResponse
 {
-  $WebResponse =  Invoke-WebRequest -uri $PSProfileMapEndpoint
+  $WebResponse =  Invoke-WebRequest -uri $PSProfileMapEndpoint 
   return $WebResponse
 }
 
@@ -445,6 +445,8 @@ function Remove-PreviousVersions
   PROCESS
   {
     $Profile = $PSBoundParameters.Profile
+    $Remove = $PSBoundParameters.RemovePreviousVersions
+
     $PreviousProfiles = ($PreviousMap | Get-Member -MemberType NoteProperty).Name
     $LatestProfiles = ($LatestMap | Get-Member -MemberType NoteProperty).Name
   
@@ -466,10 +468,18 @@ function Remove-PreviousVersions
       $versionList = $PreviousMap.$Profile.$module
       foreach ($version in $versionList)
       {
-        if ((Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} ) -ne $null)
+        if ((Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} ) -eq $null)
         {
-          # Modules are different. Uninstall previous version.
-          Invoke-UninstallModule -PMap $PreviousMap -Module $module -AllProfilesInstalled $AllProfilesInstalled @PSBoundParameters
+          continue
+        }
+
+        # Modules are different. Uninstall previous version.
+        if ($Remove.IsPresent)
+        {
+          Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled -RemovePreviousVersions
+        }
+        else {
+           Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled         
         }
       }
     }
@@ -524,6 +534,7 @@ function Update-ProfileHelper
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
     Add-RemoveParam $params
+    Add-ForceParam $params
     return $params
   }
   
