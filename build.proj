@@ -59,11 +59,22 @@
   </ItemGroup>
 
   <!-- Tasks -->
-  <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <UsingTask TaskName="DebugTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-
+	<UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<UsingTask TaskName="DebugTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >  
+		<ParameterGroup>
+			<EnvName ParameterType="System.String" Required="true" />
+			<EnvValue ParameterType="System.String" Required="true" />
+		</ParameterGroup>
+		<Task>
+			<Using Namespace="System"/>
+			<Code Type="Fragment" Language="cs">  
+				<![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
+			</Code>  
+		</Task>  
+	</UsingTask> 
   <!--
   CI build related
   -->
@@ -164,27 +175,23 @@
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
+	
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-
-    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
-    <MSBuild
-      Projects="@(StaticAnalysis)"
-      Targets="Build"
-      Properties="Configuration=Debug;Platform=Any CPU"
-      ContinueOnError="false" />
-
-    <!-- <CallTarget Targets="DependencyAnalysis" /> -->
-
-	<CallTarget Targets="BuildSetup"/>
-    <CallTarget Targets="CodeSignInstaller"
+	
+    <CallTarget Targets="BuildSetup"/>
+	<CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
+	<CallTarget Targets="CodeSignInstaller"
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
+	
+	<Message Importance="high" Text="Running Static Analyser" />
+    <CallTarget targets="DependencyAnalysis" />
   </Target>
-
+  
   <!-- Do everything possible -->
   <Target
     Name="Full"
@@ -231,6 +238,7 @@
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
+	  <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.js" />
       <ScriptsToSign Include="$(LibraryRoot)setup\Setup\*.ps1" />
     </ItemGroup>
 
@@ -275,6 +283,7 @@
         ContinueOnError="false"
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 
+	<!-- We cannot verify .js files using Get-AuthenticodeSignature -->
     <VerifyAuthenticodeSignatureTask ProbingDirectory="$(PackageDirectory)\$(Configuration)"
                     FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
@@ -314,13 +323,20 @@
       Certificates="402"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>
-
-    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
+	  
+	<!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
+	<SetEnvVar EnvName="SignedMsiDir" EnvValue="$(LibraryRoot)signed" />
   </Target>
 
   <!-- Run Dependecy Analyzer -->
   <Target Name="DependencyAnalysis">
+	<MSBuild
+      Projects="@(StaticAnalysis)"
+      Targets="Build"
+      Properties="Configuration=Debug;Platform=Any CPU"
+      ContinueOnError="false" />
+	  
     <Message Importance="high" Text="Running Dependency Analysis..." />
     <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package"/>
   </Target>

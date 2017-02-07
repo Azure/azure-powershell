@@ -65,11 +65,9 @@
 			<AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
 			<AsmXUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
 			<AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
-		</ItemGroup>
-		
+		</ItemGroup>	
 		<ItemGroup Condition=" '$(scope)' == 'all' ">
-			<XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>	  
-			<XUnitTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll"/>
+			<XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
@@ -110,11 +108,6 @@
 			<XUnitTests Include=".\src\ResourceManager\EventHub\Commands.EventHub.Test\bin\Debug\Microsoft.Azure.Commands.EventHubs.Test.dll"/>
 			<XUnitTests Include="@(AsmXUnitTests)"/>
 		</ItemGroup>
-
-		<ItemGroup Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' ">
-			<XUnitTests Include=".\setup\PowerShellSetup.Test\bin\Release\PowerShellSetup.Test.dll" />
-		</ItemGroup>
-		
 		<ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
 			<XUnitTests Include="@(AsmXUnitTests)"/>
 		</ItemGroup>
@@ -139,6 +132,8 @@
 			DiagnosticMessages="false"
 			ContinueOnError="false" 
 			Condition=" @(XUnitTests) != '' "/>
+		
+		<CallTarget Targets="TestSetup" />
 	</Target>
 
 	<Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
@@ -158,18 +153,7 @@
 			ContinueOnError="false" 
 			Condition=" @(XUnitTests) != '' "/>
 		
-		<xunit 
-			Assemblies="@(XUnitTests)"
-			AppDomains="true"
-			ShadowCopy="false"
-			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
-			IncludeTraits="SignedBuild=BVT"
-			Html="$(TestOutputDirectory)\AzurePowershellSignedTestResults.html"
-			MaxParallelThreads="10"
-			DiagnosticMessages="false"
-			ContinueOnError="false"
-			Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' "/>
+		<CallTarget Targets="TestSetup" />
 	</Target>
 
 	<Target Name="TimeoutErrorHandler">
@@ -183,12 +167,18 @@
 	<Target Name="TestSetup">
 		<Message Importance="high" Text="Setup XUnit tests" />
 		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-		<ItemGroup>
-			<XUnitTests Include=".\setup\PowerShellSetup.Test\bin\$(Configuration)\PowerShellSetup.Test.dll" />
+		
+		<ItemGroup Condition=" '$(scope)' == 'all' AND '$(CodeSign)' != 'true' ">
+			<SetupDebugTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll" />
+		</ItemGroup>
+		
+		<ItemGroup Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' ">
+			<!-- We want to run setup tests related to signing that can only be run on signed bits -->
+			<SetupReleaseTests Include=".\setup\PowerShellSetup.Test\bin\Release\PowerShellSetup.Test.dll" />
 		</ItemGroup>
 		
 		<xunit 
-			Assemblies="@(XUnitTests)"
+			Assemblies="@(SetupDebugTests)"
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
@@ -202,7 +192,7 @@
 			Condition=" '$(scope)' == 'all' "/>
 			
 		<xunit 
-			Assemblies="@(XUnitTests)"
+			Assemblies="@(SetupReleaseTests)"
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
