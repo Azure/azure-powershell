@@ -22,10 +22,10 @@ The **Revoke-AzureRmDiskAccess** cmdlet revokes an access to a disk.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Revoke-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
 ```
 
-{{ Add example description here }}
+Revoke the access to the disk named 'Disk01' in the resource group named 'ResourceGroup01'
 
 ## PARAMETERS
 

@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Compute
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: 
+Help Version: 3.5.0.0
 Locale: en-US
 ---
 
@@ -344,8 +344,8 @@ Sets the image reference properties on a snapshot object.
 ### [Set-AzureRmSnapshotKeyEncryptionKey](Set-AzureRmSnapshotKeyEncryptionKey.md)
 Sets the key encryption key properties on a snapshot object.
 
-### [Set-AzureRmSnapshotUpdateDiskEncryptionKey](Set-AzureRmSnapshotUpdateDiskEncryptionKey.md)
-Sets the disk encryption key properties on a snapshot update object.
+### [Set-AzureRmSnapshotKeyEncryptionKey](Set-AzureRmSnapshotKeyEncryptionKey.md)
+Sets the key encryption key properties on a snapshot object.
 
 ### [Set-AzureRmSnapshotUpdateImageReference](Set-AzureRmSnapshotUpdateImageReference.md)
 Sets the image reference properties on a snapshot update object.
@@ -445,6 +445,9 @@ Updates the state of a container service.
 
 ### [Update-AzureRmDisk](Update-AzureRmDisk.md)
 Updates a disk.
+
+### [Update-AzureRmImage](Update-AzureRmImage.md)
+Updates an image.
 
 ### [Update-AzureRmSnapshot](Update-AzureRmSnapshot.md)
 Updates a snapshot.

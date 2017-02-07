@@ -28,10 +28,10 @@ The **Update-AzureRmAvailabilitySet** cmdlet updates an availability set.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmAvailabilitySet -ResourceGroupName 'ResourceGroup01' -Name 'AvSet01' | Update-AzureRmAvailabilitySet -Managed;
 ```
 
-{{ Add example description here }}
+This command updates the availability set named 'AvSet01' in the resource group named 'ResourceGroup01' to a managed availability set.
 
 ## PARAMETERS
 

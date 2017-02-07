@@ -23,10 +23,15 @@ The **Set-AzureRmSnapshotUpdateImageReference** cmdlet sets the image reference 
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $snapshotupdateconfig = New-AzureRmSnapshotUpdateConfig -SnapshotSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+PS C:\> $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+PS C:\> $snapshotupdateconfig = Set-AzureRmSnapshotUpdateImageReference -Snapshot $snapshotupdateconfig -Id $image -Lun 0;
+PS C:\> Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;
 ```
 
-{{ Add example description here }}
+The first command creates a local snapshot update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type.
+The second command sets the image id and the logical unit number 0 for the snapshot update object.
+The last command takes the snapshot update object and updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
 

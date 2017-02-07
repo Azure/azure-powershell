@@ -23,10 +23,10 @@ The **Grant-AzureRmDiskAccess** cmdlet grants an access to a disk.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Grant-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Access 'Read' -DurationInSecond 60;
 ```
 
-{{ Add example description here }}
+Grant 'Read' access to the disk named 'Disk01' in the resource group named 'ResourceGroup01' for 60 seconds.
 
 ## PARAMETERS
 

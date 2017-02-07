@@ -22,10 +22,15 @@ The **Set-AzureRmDiskImageReference** cmdlet sets the image reference properties
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $diskconfig = New-AzureRmDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+PS C:\> $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+PS C:\> $diskconfig = Set-AzureRmDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
+PS C:\> New-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
 ```
 
-{{ Add example description here }}
+The first command creates a local disk object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type.
+The second command sets the image id and the logical unit number 0 for the disk obejct.
+The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
 

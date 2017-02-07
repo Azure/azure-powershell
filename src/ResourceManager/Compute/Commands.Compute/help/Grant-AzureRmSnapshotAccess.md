@@ -23,10 +23,10 @@ The **Grant-AzureRmSnapshotAccess** cmdlet grants an access to a snapshot.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Grant-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Access 'Read' -DurationInSecond 60;
 ```
 
-{{ Add example description here }}
+Grant 'Read' access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01' for 60 seconds.
 
 ## PARAMETERS
 

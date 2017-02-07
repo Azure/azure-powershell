@@ -66,7 +66,7 @@ Specifies the name of an image.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: 2

@@ -2927,7 +2927,7 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ImageName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
 <maml:Description><maml:para>Specifies the name of an image.
 </maml:para>
 </maml:Description>
@@ -2956,7 +2956,7 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ImageName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
 <maml:Description><maml:para>Specifies the name of an image.
 </maml:para>
 </maml:Description>
@@ -6174,8 +6174,8 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Grant-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Access 'Read' -DurationInSecond 60;</dev:code>
+<dev:remarks><maml:para>Grant 'Read' access to the disk named 'Disk01' in the resource group named 'ResourceGroup01' for 60 seconds.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -6290,8 +6290,8 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Grant-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Access 'Read' -DurationInSecond 60;</dev:code>
+<dev:remarks><maml:para>Grant 'Read' access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01' for 60 seconds.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -7021,8 +7021,15 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskconfig = New-AzureRmDiskConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskconfig = Set-AzureRmDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk object. The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -7312,8 +7319,15 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskconfig = New-AzureRmDiskConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskconfig = Set-AzureRmDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk object. The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -7585,8 +7599,23 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskupdateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DiskUpdate $diskupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk update object. The last command takes the disk update object and updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01'.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; New-AzureRmDiskUpdateConfig -DiskSizeGB 10 | Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01';</dev:code>
+<dev:remarks><maml:para>This command updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01' to 10 GB disk size.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -7616,7 +7645,7 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ImageName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
 <maml:Description><maml:para>Specifies the name of an image.
 </maml:para>
 </maml:Description>
@@ -7661,7 +7690,7 @@ PS C:\&gt; New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ImageName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
 <maml:Description><maml:para>Specifies the name of an image.
 </maml:para>
 </maml:Description>
@@ -8009,8 +8038,15 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot object. The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -8300,8 +8336,15 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot object. The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -8573,8 +8616,23 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotupdateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotupdateconfig = Set-AzureRmSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotupdateconfig = Set-AzureRmSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot update object. The last command takes the snapshot update object and updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 | Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01';</dev:code>
+<dev:remarks><maml:para>This command updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01' to 10 GB disk size.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -11371,7 +11429,7 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ImageName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
 <maml:Description><maml:para>Specifies the name of an image.
 </maml:para>
 </maml:Description>
@@ -11415,7 +11473,7 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ImageName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
 <maml:Description><maml:para>Specifies the name of an image.
 </maml:para>
 </maml:Description>
@@ -11551,8 +11609,8 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' | Remove-AzureRmImageDataDisk -Lun 1 | Update-AzureRmImage;</dev:code>
+<dev:remarks><maml:para>This command removes the data disk of logical unit number 1 from the existing image 'Image01' in the resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -14287,8 +14345,8 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Revoke-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'</dev:code>
+<dev:remarks><maml:para>Revoke the access to the disk named 'Disk01' in the resource group named 'ResourceGroup01'
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -14367,8 +14425,8 @@ PS C:\&gt; Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleS
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Revoke-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'</dev:code>
+<dev:remarks><maml:para>Revoke the access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01'
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -14911,8 +14969,15 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskconfig = New-AzureRmDiskConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskconfig = Set-AzureRmDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk object. The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15009,8 +15074,11 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskconfig = New-AzureRmDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+PS C:\&gt; $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+PS C:\&gt; $diskconfig = Set-AzureRmDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
+PS C:\&gt; New-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local disk object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type. The second command sets the image id and the logical unit number 0 for the disk obejct. The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15107,8 +15175,15 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskconfig = New-AzureRmDiskConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskconfig = Set-AzureRmDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk object. The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15205,8 +15280,15 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskupdateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DiskUpdate $diskupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk update object. The last command takes the disk update object and updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15303,8 +15385,11 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskupdateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+PS C:\&gt; $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateImageReference -Disk $diskupdateconfig -Id $image -Lun 0;
+PS C:\&gt; Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DiskUpdate $diskupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local disk update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type. The second command sets the image id and the logical unit number 0 for the disk update object. The last command takes the disk update object and updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15401,8 +15486,15 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskupdateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DiskUpdate $diskupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk update object. The last command takes the disk update object and updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15710,8 +15802,15 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot object. The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15808,8 +15907,11 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotconfig = New-AzureRmSnapshotConfig -SnapshotSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+PS C:\&gt; $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotImageReference -Snapshot $snapshotconfig -Id $image -Lun 0;
+PS C:\&gt; New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local snapshot object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type. The second command sets the image ID and the logical unit number 0 for the snapshot obejct. The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15906,8 +16008,15 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot object. The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -15917,28 +16026,28 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Set-AzureRmSnapshotUpdateDiskEncryptionKey</command:name>
+<command:details><command:name>Set-AzureRmSnapshotKeyEncryptionKey</command:name>
 <command:verb>Set</command:verb>
-<command:noun>AzureRmSnapshotUpdateDiskEncryptionKey</command:noun>
-<maml:description><maml:para>Sets the disk encryption key properties on a snapshot update object.
+<command:noun>AzureRmSnapshotKeyEncryptionKey</command:noun>
+<maml:description><maml:para>Sets the key encryption key properties on a snapshot object.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Set-AzureRmSnapshotUpdateDiskEncryptionKey cmdlet sets the disk encryption key properties on a snapshot update object.
+<maml:description><maml:para>The Set-AzureRmSnapshotKeyEncryptionKey cmdlet sets the key encryption key properties on a snapshot object.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Set-AzureRmSnapshotUpdateDiskEncryptionKey</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none"><maml:name>SnapshotUpdate</maml:name>
-<maml:Description><maml:para>Specifies a local snapshot update object.
+<command:syntax><command:syntaxItem><maml:name>Set-AzureRmSnapshotKeyEncryptionKey</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none"><maml:name>Snapshot</maml:name>
+<maml:Description><maml:para>Specifies a local snapshot object.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">SnapshotUpdate</command:parameterValue>
-<dev:type><maml:name>SnapshotUpdate</maml:name>
+<command:parameterValue required="true" variableLength="false">Snapshot</command:parameterValue>
+<dev:type><maml:name>Snapshot</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>SecretUrl</maml:name>
-<maml:Description><maml:para>Specifies the secret Url.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>KeyUrl</maml:name>
+<maml:Description><maml:para>Specifes the key Url.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -15946,7 +16055,7 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>SourceVaultId</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SourceVaultId</maml:name>
 <maml:Description><maml:para>Specifies the source vault ID.
 </maml:para>
 </maml:Description>
@@ -15957,8 +16066,8 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>SecretUrl</maml:name>
-<maml:Description><maml:para>Specifies the secret Url.
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>KeyUrl</maml:name>
+<maml:Description><maml:para>Specifes the key Url.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -15966,16 +16075,16 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none"><maml:name>SnapshotUpdate</maml:name>
-<maml:Description><maml:para>Specifies a local snapshot update object.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none"><maml:name>Snapshot</maml:name>
+<maml:Description><maml:para>Specifies a local snapshot object.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">SnapshotUpdate</command:parameterValue>
-<dev:type><maml:name>SnapshotUpdate</maml:name>
+<command:parameterValue required="true" variableLength="false">Snapshot</command:parameterValue>
+<dev:type><maml:name>Snapshot</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>SourceVaultId</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SourceVaultId</maml:name>
 <maml:Description><maml:para>Specifies the source vault ID.
 </maml:para>
 </maml:Description>
@@ -15985,14 +16094,14 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
-<command:inputTypes><command:inputType><dev:type><maml:name>Microsoft.Azure.Management.Compute.Models.SnapshotUpdate</maml:name>
+<command:inputTypes><command:inputType><dev:type><maml:name>Microsoft.Azure.Management.Compute.Models.Snapshot</maml:name>
 </dev:type>
 <maml:description><maml:para>System.String
 </maml:para>
 </maml:description>
 </command:inputType>
 </command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.Compute.Models.SnapshotUpdate</maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Management.Compute.Models.Snapshot</maml:name>
 </dev:type>
 <maml:description><maml:para>
 </maml:para>
@@ -16004,8 +16113,15 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot object. The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -16102,8 +16218,11 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotupdateconfig = New-AzureRmSnapshotUpdateConfig -SnapshotSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+PS C:\&gt; $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+PS C:\&gt; $snapshotupdateconfig = Set-AzureRmSnapshotUpdateImageReference -Snapshot $snapshotupdateconfig -Id $image -Lun 0;
+PS C:\&gt; Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local snapshot update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type. The second command sets the image id and the logical unit number 0 for the snapshot update object. The last command takes the snapshot update object and updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -16200,8 +16319,15 @@ PS C:\&gt; New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -Resour
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotupdateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotupdateconfig = Set-AzureRmSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotupdateconfig = Set-AzureRmSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot update object. The last command takes the snapshot update object and updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -23859,8 +23985,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmAvailabilitySet -ResourceGroupName 'ResourceGroup01' -Name 'AvSet01' | Update-AzureRmAvailabilitySet -Managed;</dev:code>
+<dev:remarks><maml:para>This command updates the availability set named 'AvSet01' in the resource group named 'ResourceGroup01' to a managed availability set.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -24186,8 +24312,165 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $diskupdateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $diskupdateconfig = Set-AzureRmDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DiskUpdate $diskupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty disk update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the disk update object. The last command takes the disk update object and updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01'.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; New-AzureRmDiskUpdateConfig -DiskSizeGB 10 | Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01';</dev:code>
+<dev:remarks><maml:para>This command updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01' to 10 GB disk size.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 3</maml:title>
+<dev:code>PS C:\&gt; $disk = Get-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01';
+PS C:\&gt; $disk.DiskSizeGB = 10;
+PS C:\&gt; Update-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $disk;</dev:code>
+<dev:remarks><maml:para>These commands also update an existing disk with name 'Disk01' in resource group 'ResourceGroup01' to 10 GB disk size.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Update-AzureRmImage</command:name>
+<command:verb>Update</command:verb>
+<command:noun>AzureRmImage</command:noun>
+<maml:description><maml:para>Updates an image.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Update-AzureRmImage cmdlet updates an image.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Update-AzureRmImage</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of a resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
+<maml:Description><maml:para>Specifies the name of an image.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="3" aliases="none"><maml:name>Image</maml:name>
+<maml:Description><maml:para>Specifies a local image object.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Image</command:parameterValue>
+<dev:type><maml:name>Image</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="3" aliases="none"><maml:name>Image</maml:name>
+<maml:Description><maml:para>Specifies a local image object.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Image</command:parameterValue>
+<dev:type><maml:name>Image</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ImageName</maml:name>
+<maml:Description><maml:para>Specifies the name of an image.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of a resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
+</dev:type>
+<maml:description><maml:para>Microsoft.Azure.Management.Compute.Models.Image
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>System.Object</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' | Remove-AzureRmImageDataDisk -Lun 1 | Update-AzureRmImage;</dev:code>
+<dev:remarks><maml:para>This command removes the data disk of logical unit number 1 from the existing image 'Image01' in the resource group 'ResourceGroup01'.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -24372,8 +24655,33 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $snapshotupdateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\&gt; $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\&gt; $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\&gt; $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\&gt; $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\&gt; $snapshotupdateconfig = Set-AzureRmSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\&gt; $snapshotupdateconfig = Set-AzureRmSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\&gt; Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;</dev:code>
+<dev:remarks><maml:para>The first command creates a local empty snapshot update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings. The second and third commands set the disk encryption key and key encryption key settings for the snapshot update object. The last command takes the snapshot update object and updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 | Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01';</dev:code>
+<dev:remarks><maml:para>This command updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01' to 10 GB disk size.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 3</maml:title>
+<dev:code>PS C:\&gt; $snapshot = Get-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01';
+PS C:\&gt; $snapshot.DiskSizeGB = 10;
+PS C:\&gt; Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshot;</dev:code>
+<dev:remarks><maml:para>These commands also update an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01' to 10 GB disk size.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>

@@ -4,34 +4,43 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmSnapshotUpdateDiskEncryptionKey
+# Set-AzureRmSnapshotKeyEncryptionKey
 
 ## SYNOPSIS
-Sets the disk encryption key properties on a snapshot update object.
+Sets the key encryption key properties on a snapshot object.
 
 ## SYNTAX
 
 ```
-Set-AzureRmSnapshotUpdateDiskEncryptionKey [-SnapshotUpdate] <SnapshotUpdate> [[-SecretUrl] <String>]
- [[-SourceVaultId] <String>] [<CommonParameters>]
+Set-AzureRmSnapshotKeyEncryptionKey [-Snapshot] <Snapshot> [[-KeyUrl] <String>] [-SourceVaultId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSnapshotUpdateDiskEncryptionKey** cmdlet sets the disk encryption key properties on a snapshot update object.
+The **Set-AzureRmSnapshotKeyEncryptionKey** cmdlet sets the key encryption key properties on a snapshot object.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\> $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\> $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\> $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\> $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\> $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\> $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\> New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;
 ```
 
-{{ Add example description here }}
+The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings.
+The second and third commands set the disk encryption key and key encryption key settings for the snapshot object.
+The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
 
-### -SecretUrl
-Specifies the secret Url.
+### -KeyUrl
+Specifes the key Url.
 
 ```yaml
 Type: String
@@ -45,11 +54,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SnapshotUpdate
-Specifies a local snapshot update object.
+### -Snapshot
+Specifies a local snapshot object.
 
 ```yaml
-Type: SnapshotUpdate
+Type: Snapshot
 Parameter Sets: (All)
 Aliases: 
 
@@ -69,7 +78,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,12 +89,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
+### Microsoft.Azure.Management.Compute.Models.Snapshot
 System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
+### Microsoft.Azure.Management.Compute.Models.Snapshot
 
 ## NOTES
 

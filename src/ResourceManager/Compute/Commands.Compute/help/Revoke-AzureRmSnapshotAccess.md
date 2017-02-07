@@ -22,10 +22,10 @@ The **Revoke-AzureRmSnapshotAccess** cmdlet revokes an access to a snapshot.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Revoke-AzureRmDiskAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'
 ```
 
-{{ Add example description here }}
+Revoke the access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01'
 
 ## PARAMETERS
 

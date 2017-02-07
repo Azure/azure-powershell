@@ -23,10 +23,19 @@ The **Set-AzureRmSnapshotDiskEncryptionKey** cmdlet sets the disk encryption key
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\> $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+PS C:\> $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+PS C:\> $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+PS C:\> $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+PS C:\> $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\> $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\> New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;
 ```
 
-{{ Add example description here }}
+The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings.
+The second and third commands set the disk encryption key and key encryption key settings for the snapshot object.
+The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
 
