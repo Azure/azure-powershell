@@ -96,8 +96,12 @@ function Test-Image
         $imageName = 'image' + $rgname;
         $imageConfig = New-AzureRmImageConfig -Location $loc;
         Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
-        Add-AzureRmImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
-        Add-AzureRmImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
+        $imageConfig = Add-AzureRmImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
+        $imageConfig = Add-AzureRmImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
+        $imageConfig = Add-AzureRmImageDataDisk -Image $imageConfig -Lun 3 -BlobUri $dataDiskVhdUri2;
+        Assert-AreEqual 3 $imageConfig.StorageProfile.DataDisks.Count;
+        $imageConfig = Remove-AzureRmImageDataDisk -Image $imageConfig -Lun 3;
+        Assert-AreEqual 2 $imageConfig.StorageProfile.DataDisks.Count;
 
         $createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
 
