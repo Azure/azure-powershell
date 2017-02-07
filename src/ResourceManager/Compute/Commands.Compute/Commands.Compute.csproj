@@ -189,6 +189,7 @@
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
       <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
     </Compile>
+    <Compile Include="AvailabilitySets\RemoveAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
@@ -346,11 +347,15 @@
     <Compile Include="VirtualMachine\Operation\GetAzureVMBootDiagnosticsDataCommand.cs" />
     <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Operation\UpdateAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\RestartAzureVMCommand.cs" />
     <Compile Include="Extension\VirtualMachineExtensionBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Models\PSVirtualMachine.cs" />
     <Compile Include="VirtualMachine\Operation\NewAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\StartAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\StopAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Operation\RemoveAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Config\NewAzureVMConfigCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

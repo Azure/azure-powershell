@@ -1176,6 +1176,42 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual machine removal operation.
+        /// </summary>
+        public static string VirtualMachineRemovalCaption {
+            get {
+                return ResourceManager.GetString("VirtualMachineRemovalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified virtual machine. Do you want to continue?.
+        /// </summary>
+        public static string VirtualMachineRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("VirtualMachineRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual machine stopping operation.
+        /// </summary>
+        public static string VirtualMachineStoppingCaption {
+            get {
+                return ResourceManager.GetString("VirtualMachineStoppingCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will stop the specified virtual machine. Do you want to continue?.
+        /// </summary>
+        public static string VirtualMachineStoppingConfirmation {
+            get {
+                return ResourceManager.GetString("VirtualMachineStoppingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them..
         /// </summary>
         public static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {

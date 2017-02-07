@@ -2976,7 +2976,7 @@ function Test-VirtualMachineManagedDiskConversion
         Assert-Null  $vm2.StorageProfile.DataDisks[1].ManagedDisk
 
         # Deallocate the VM before conversion
-        Stop-AzureRmVM -ResourceGroupName $rgname -VMName $vmname -Force
+        Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force
 
         # Convert VM to managed disks
         ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname
