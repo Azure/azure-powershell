@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmDiskUpdateConfig")]
+    [Cmdlet("New", "AzureRmDiskUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(DiskUpdate))]
     public class NewAzureRmDiskUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -105,6 +105,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("DiskUpdate", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // CreationData
             Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;

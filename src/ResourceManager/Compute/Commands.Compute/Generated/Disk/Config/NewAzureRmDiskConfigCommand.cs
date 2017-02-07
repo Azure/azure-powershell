@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmDiskConfig")]
+    [Cmdlet("New", "AzureRmDiskConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Disk))]
     public class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -111,6 +111,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("Disk", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // CreationData
             Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;

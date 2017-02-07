@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmVmssStorageProfile")]
+    [Cmdlet("Set", "AzureRmVmssStorageProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class SetAzureRmVmssStorageProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -118,6 +118,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VirtualMachineScaleSetDataDisk[] DataDisk { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Set"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             if (this.ImageReferencePublisher != null)
             {

@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmImageDataDisk")]
+    [Cmdlet("Add", "AzureRmImageDataDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(Image))]
     public class AddAzureRmImageDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -76,6 +76,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ManagedDiskId { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("Image", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // StorageProfile
             if (this.Image.StorageProfile == null)

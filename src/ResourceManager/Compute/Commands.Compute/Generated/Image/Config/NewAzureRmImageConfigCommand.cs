@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmImageConfig")]
+    [Cmdlet("New", "AzureRmImageConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Image))]
     public class NewAzureRmImageConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -63,6 +63,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public ImageDataDisk[] DataDisk { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("Image", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // SourceVirtualMachine
             Microsoft.Azure.Management.Compute.Models.SubResource vSourceVirtualMachine = null;

@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmSnapshotUpdateImageReference")]
+    [Cmdlet("Set", "AzureRmSnapshotUpdateImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(SnapshotUpdate))]
     public class SetAzureRmSnapshotUpdateImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int? Lun { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("SnapshotUpdate", "Set"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             if (this.Id != null)
             {

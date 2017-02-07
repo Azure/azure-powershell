@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmDiskDiskEncryptionKey")]
+    [Cmdlet("Set", "AzureRmDiskDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(Disk))]
     public class SetAzureRmDiskDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SourceVaultId { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("Disk", "Set"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             if (this.SecretUrl != null)
             {

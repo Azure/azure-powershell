@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmContainerServiceAgentPoolProfile")]
+    [Cmdlet("Add", "AzureRmContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(ContainerService))]
     public class AddAzureRmContainerServiceAgentPoolProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -64,6 +64,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string DnsPrefix { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("ContainerService", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // AgentPoolProfiles
             if (this.ContainerService.AgentPoolProfiles == null)

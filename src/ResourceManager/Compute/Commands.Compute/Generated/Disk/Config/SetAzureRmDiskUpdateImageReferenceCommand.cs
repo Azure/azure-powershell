@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmDiskUpdateImageReference")]
+    [Cmdlet("Set", "AzureRmDiskUpdateImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(DiskUpdate))]
     public class SetAzureRmDiskUpdateImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int? Lun { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("DiskUpdate", "Set"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             if (this.Id != null)
             {

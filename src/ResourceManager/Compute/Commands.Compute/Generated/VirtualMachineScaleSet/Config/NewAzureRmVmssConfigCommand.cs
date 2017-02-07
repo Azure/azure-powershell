@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssConfig")]
+    [Cmdlet("New", "AzureRmVmssConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -129,6 +129,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // Sku
             Microsoft.Azure.Management.Compute.Models.Sku vSku = null;

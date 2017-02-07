@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmSnapshotUpdateDiskEncryptionKey")]
+    [Cmdlet("Set", "AzureRmSnapshotUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(SnapshotUpdate))]
     public class SetAzureRmSnapshotUpdateDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SourceVaultId { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("SnapshotUpdate", "Set"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             if (this.SecretUrl != null)
             {

@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmImageDataDisk")]
+    [Cmdlet("Remove", "AzureRmImageDataDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(Image))]
     public class RemoveAzureRmImageDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

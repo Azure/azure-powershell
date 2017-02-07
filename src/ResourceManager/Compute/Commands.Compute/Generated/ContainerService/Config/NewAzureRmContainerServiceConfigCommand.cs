@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmContainerServiceConfig")]
+    [Cmdlet("New", "AzureRmContainerServiceConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(ContainerService))]
     public class NewAzureRmContainerServiceConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -117,6 +117,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public bool VmDiagnosticsEnabled { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("ContainerService", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // OrchestratorProfile
             Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorProfile vOrchestratorProfile = null;

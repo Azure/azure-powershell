@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmImageOsDisk")]
+    [Cmdlet("Set", "AzureRmImageOsDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(Image))]
     public class SetAzureRmImageOsDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -82,6 +82,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ManagedDiskId { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("Image", "Set"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             if (this.OsType.HasValue)
             {

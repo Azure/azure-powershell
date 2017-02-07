@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmSnapshotConfig")]
+    [Cmdlet("New", "AzureRmSnapshotConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Snapshot))]
     public class NewAzureRmSnapshotConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -111,6 +111,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("Snapshot", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // CreationData
             Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;
