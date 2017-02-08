@@ -1906,7 +1906,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
             "Name": "AzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
               "Name": "System.String",
@@ -2073,7 +2073,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -2185,7 +2185,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -2297,7 +2297,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -2429,7 +2429,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -2561,7 +2561,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -2713,7 +2713,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -2865,7 +2865,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -2997,7 +2997,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -3129,7 +3129,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
                     "Name": "System.String",
@@ -3465,7 +3465,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
             "Name": "AzureRMProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
               "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
@@ -3503,7 +3503,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureRMProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
                     "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
@@ -3584,7 +3584,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
             "Name": "AzureRMProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
               "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
@@ -3636,7 +3636,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
                   "Name": "AzureRMProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
                     "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
@@ -3996,7 +3996,7 @@
     "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4007,7 +4007,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "Endpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4015,7 +4015,7 @@
     "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4026,7 +4026,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "AzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
         "Name": "System.String",
@@ -4039,7 +4039,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "AzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Account": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount",
         "Environment": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment",
@@ -4053,7 +4053,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "AzureAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "Properties": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property,System.String]",
@@ -4065,7 +4065,7 @@
     "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4076,7 +4076,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "Property",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4084,7 +4084,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+AccountType": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "AccountType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+AccountType, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+AccountType, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4092,7 +4092,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "AzureSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Account": "System.String",
         "Environment": "System.String",
@@ -4115,7 +4115,7 @@
     "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4126,7 +4126,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "Property",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4134,7 +4134,7 @@
     "Microsoft.Azure.Commands.Common.Authentication.Models.AzureTenant": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
       "Name": "AzureTenant",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureTenant, Microsoft.Azure.Commands.Common.Authentication, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureTenant, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Domain": "System.String",
         "Id": "System.Guid"
