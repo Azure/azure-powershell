@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var dbPolicyModel = new DatabaseAuditingPolicyModel();
             var properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
-            dbPolicyModel.UseServerDefault = properties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? SecurityConstants.UseServerDefaultOptions.Enabled : SecurityConstants.UseServerDefaultOptions.Disabled;
+            dbPolicyModel.UseServerDefault = properties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
             ModelizeStorageInfo(dbPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(dbPolicyModel, properties.EventTypesToAudit);
             ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays, properties.AuditLogsTableName, properties.FullAuditLogsTableName);
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var properties = new DatabaseAuditingPolicyProperties();
             updateParameters.Properties = properties;
             properties.AuditingState = model.AuditState.ToString();
-            properties.UseServerDefault = (model.UseServerDefault == SecurityConstants.UseServerDefaultOptions.Enabled) ? SecurityConstants.AuditingEndpoint.Enabled : SecurityConstants.AuditingEndpoint.Disabled;
+            properties.UseServerDefault = (model.UseServerDefault == UseServerDefaultOptions.Enabled) ? SecurityConstants.AuditingEndpoint.Enabled : SecurityConstants.AuditingEndpoint.Disabled;
             properties.StorageAccountName = ExtractStorageAccountName(model);
             properties.StorageAccountResourceGroupName = ExtractStorageAccountResourceGroup(properties.StorageAccountName);
             properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(properties.StorageAccountName);

@@ -117,7 +117,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         private static BaseThreatDetectionPolicyModel ModelizeThreatDetectionPolicy(BaseSecurityAlertPolicyProperties threatDetectionProperties, BaseThreatDetectionPolicyModel model)
         {  
             model.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
-            model.UseServerDefault = properties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? SecurityConstants.UseServerDefaultOptions.Enabled : SecurityConstants.UseServerDefaultOptions.Disabled;
             model.NotificationRecipientsEmails = threatDetectionProperties.EmailAddresses;
             model.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
             ModelizeStorageAccount(model, threatDetectionProperties.StorageEndpoint);

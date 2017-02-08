@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         {
             model = base.ApplyUserInputToModel(model);
             model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
-            model.UseServerDefault = UseServerDefaultOptions.Disabled;
             return model;
         }
     }

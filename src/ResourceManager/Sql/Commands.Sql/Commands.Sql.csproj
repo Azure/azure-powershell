@@ -173,7 +173,6 @@
     <Compile Include="Auditing\Cmdlet\SqlDatabaseAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Cmdlet\SqlDatabaseServerAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
-    <Compile Include="ThreatDetection\Cmdlet\UseAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Model\BaseThreatDetectionPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\ServerThreatDetectionPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel .cs" />

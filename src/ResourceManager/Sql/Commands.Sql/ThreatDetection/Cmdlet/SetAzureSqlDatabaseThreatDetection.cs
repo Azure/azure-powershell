@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             base.ApplyUserInputToModel(model);
 
             model.ThreatDetectionState = ThreatDetectionStateType.Enabled;
-            model.UseServerDefault = UseServerDefaultOptions.Disabled;
 
             if (NotificationRecipientsEmails != null)
             {
