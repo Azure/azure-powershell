@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new authorization rule for the specified Service Bus topic.
 
 ## SYNTAX
 
@@ -18,21 +18,21 @@ New-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmServiceBusTopicAuthorizationRule** cmdlet creates a new authorization rule for the specified Service Bus topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -Rights @("Listen","Send")
 ```
 
-{{ Add example description here }}
+Creates `SBTopicAuthoRule1` with **Listen and Send** rights for the topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-AuthorizationRule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights, e.g. 
+The rights; for example, 
 @("Listen","Send","Manage")
 
 ```yaml
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String
@@ -143,12 +143,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.String\[\]
+###-ResourceGroup
+ System.String
+ 
+###-NamespaceName
+ System.String
+ 
+###-TopicName
+ System.String
+ 
+###-AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_exampl1/authorizati
+           onRules/SBTopicAuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : SBTopicAuthoRule1
+Location : West US
+Tags     : 
+Rights   : {Listen, Send}
 
 ## NOTES
 
