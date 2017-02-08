@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -38,7 +38,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -152,7 +152,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -486,7 +486,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -510,7 +510,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -610,7 +610,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -882,7 +882,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -906,7 +906,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -964,7 +964,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -1051,7 +1051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -1075,7 +1075,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -1133,7 +1133,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -1220,7 +1220,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -1244,7 +1244,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -1302,7 +1302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -1389,7 +1389,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -1413,7 +1413,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -1471,7 +1471,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -1558,7 +1558,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -1582,7 +1582,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -1640,7 +1640,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -1727,7 +1727,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -1751,7 +1751,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -1809,7 +1809,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -1896,7 +1896,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -1920,7 +1920,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -1978,7 +1978,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -2065,7 +2065,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -2089,7 +2089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -2245,7 +2245,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -2757,7 +2757,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -2781,7 +2781,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -2923,7 +2923,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -3375,7 +3375,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -3399,7 +3399,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -3611,7 +3611,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -4363,7 +4363,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -4387,7 +4387,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -4445,7 +4445,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -4532,7 +4532,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -4556,7 +4556,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -4698,7 +4698,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -5150,7 +5150,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSSearchListSavedSearchResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Metadata": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
               "Value": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]"
@@ -5166,7 +5166,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSSearchGetSavedSearchResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ETag": "System.String",
               "Id": "System.String",
@@ -5311,7 +5311,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSSearchGetSearchResultsResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Error": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError",
               "Id": "System.String",
@@ -5457,7 +5457,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSSearchGetSchemaResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Metadata": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
               "Value": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]"
@@ -5567,7 +5567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSSearchGetSearchResultsResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Error": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError",
               "Id": "System.String",
@@ -5625,7 +5625,7 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
-          "ValidateNotNullOrEmpty": true
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "PreHighlight",
@@ -5775,7 +5775,7 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
-                "ValidateNotNullOrEmpty": true
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": 2,
@@ -7011,7 +7011,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7026,7 +7026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -7050,7 +7050,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -7144,7 +7144,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -7199,7 +7199,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -7410,7 +7410,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -7496,7 +7496,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -7708,7 +7708,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -7732,7 +7732,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Kind": "System.String",
               "Name": "System.String",
@@ -7759,7 +7759,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSDataSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Kind": "System.String",
                     "Name": "System.String",
@@ -7798,7 +7798,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7813,7 +7813,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Containers": "System.Collections.Generic.List`1[System.String]",
               "Name": "System.String",
@@ -7839,7 +7839,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -7911,7 +7911,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -8063,7 +8063,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Containers": "System.Collections.Generic.List`1[System.String]",
               "Name": "System.String",
@@ -8089,7 +8089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -8203,7 +8203,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -8535,7 +8535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Containers": "System.Collections.Generic.List`1[System.String]",
               "Name": "System.String",
@@ -8561,7 +8561,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -8703,7 +8703,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -9158,7 +9158,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -9244,7 +9244,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -9617,7 +9617,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -9726,7 +9726,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -9831,7 +9831,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -9861,7 +9861,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -9966,7 +9966,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspaceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimarySharedKey": "System.String",
               "SecondarySharedKey": "System.String"
@@ -10072,7 +10072,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -10087,7 +10087,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -10200,7 +10200,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -10618,7 +10618,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -10645,7 +10645,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "Location": "System.String",
@@ -10735,7 +10735,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomerId": "System.Nullable`1[System.Guid]",
                     "Location": "System.String",
@@ -11062,7 +11062,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSDataSourcePropertiesBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Kind": "System.String"
       },
@@ -11101,7 +11101,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSSearchMetadata",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AggregatedGroupingFields": "System.String",
         "AggregatedValueField": "System.String",
@@ -11145,7 +11145,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11155,7 +11155,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSCoreSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "NumberOfDocuments": "System.Int64",
         "Status": "System.String"
@@ -11194,7 +11194,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSMetadataSchema",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Version": "System.Int64"
@@ -11205,7 +11205,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11215,7 +11215,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSSearchSort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Order": "System.String"
@@ -11226,7 +11226,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11236,7 +11236,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSSavedSearchValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ETag": "System.String",
         "Id": "System.String",
@@ -11248,7 +11248,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSSavedSearchProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Category": "System.String",
         "DisplayName": "System.String",
@@ -11270,7 +11270,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSSearchError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Message": "System.String",
         "Type": "System.String"
@@ -11281,7 +11281,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11291,7 +11291,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSSchemaValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DisplayName": "System.String",
         "Facet": "System.Boolean",
@@ -11317,7 +11317,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSDataSource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Kind": "System.String",
         "Name": "System.String",
@@ -11332,7 +11332,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSStorageInsight",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Containers": "System.Collections.Generic.List`1[System.String]",
         "Name": "System.String",
@@ -11359,7 +11359,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSIntelligencePack",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Enabled": "System.Boolean",
         "Name": "System.String"
@@ -11370,7 +11370,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSManagementGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CreatedDate": "System.Nullable`1[System.DateTime]",
         "Id": "System.Nullable`1[System.Guid]",
@@ -11387,7 +11387,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AccountName": "System.String",
         "CustomerId": "System.Nullable`1[System.Guid]",
@@ -11400,7 +11400,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSUsageMetric",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CurrentValue": "System.Double",
         "Id": "System.String",
@@ -11424,7 +11424,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "PSWorkspace",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CustomerId": "System.Nullable`1[System.Guid]",
         "Location": "System.String",
