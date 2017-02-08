@@ -999,12 +999,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 curCount = jobList.Count();
             }
 
+            
             if (curCount > top.Value || !string.IsNullOrEmpty(response.NextPageLink))
             {
                 moreJobs = true;
+                
             }
 
-            return jobList.GetRange(0, top.Value);
+            // return only the jobs requested if there are fewer than top.
+            return jobList.GetRange(0, Math.Min(curCount, top.Value));
         }
 
         #endregion
