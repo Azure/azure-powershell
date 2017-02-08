@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             SqlManagementClient client = GetCurrentSqlClient("none");
 
-            string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement).ToString();
+            string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             if (!url.EndsWith("/"))
             {
                 url = url + "/";
