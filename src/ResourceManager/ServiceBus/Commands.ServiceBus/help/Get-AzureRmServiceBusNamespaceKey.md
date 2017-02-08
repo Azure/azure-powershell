@@ -80,19 +80,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
  
-###-NamespaceName
+
+### -NamespaceName
  System.String
  
-###-AuthorizationRuleName
+
+### -AuthorizationRuleName
  System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys
-
 PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey value}
 SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey value}
 PrimaryKey                : {PrimaryKey value}

@@ -111,15 +111,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
 
-###-NamespaceName
+### -NamespaceName
  System.String
 
-###-QueueName
+### -QueueName
  System.String
-
 
 ## OUTPUTS
 
