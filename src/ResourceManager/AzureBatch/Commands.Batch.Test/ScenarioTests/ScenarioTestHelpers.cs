@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         //          $targetOSVersion = "*"
         //          $configuration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
         //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+
         internal const string SharedPool = "testPool";
         internal const string SharedIaasPool = "testIaasPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             controller.ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup() { Location = location });
             BatchAccount createResponse = controller.BatchManagementClient.BatchAccount.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
-            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse);
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse, null);
             BatchAccountKeys response = controller.BatchManagementClient.BatchAccount.GetKeys(resourceGroupName, accountName);
             context.PrimaryAccountKey = response.Primary;
             context.SecondaryAccountKey = response.Secondary;

@@ -15,13 +15,16 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Properties;
+using Microsoft.Azure.Commands.Batch.Utils;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Rest;
 using System;
 using System.Collections;
 using System.Net.Http;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -32,6 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private AccountKeyType keyInUse;
         private BatchClient batchOMClient;
+        private IAzureContext azureContext;
 
         /// <summary>
         /// The account resource Id.
@@ -124,7 +128,7 @@ namespace Microsoft.Azure.Commands.Batch
             get { return this.keyInUse; }
             set
             {
-                if (value != this.keyInUse)
+                if (this.batchOMClient != null && this.HasKeys && value != this.keyInUse)
                 {
                     this.batchOMClient.Dispose();
                     this.batchOMClient = null;
@@ -133,33 +137,40 @@ namespace Microsoft.Azure.Commands.Batch
             }
         }
 
+        internal bool HasKeys
+        {
+            get { return !string.IsNullOrEmpty(PrimaryAccountKey) || !string.IsNullOrEmpty(SecondaryAccountKey);  }
+        }
+
         internal BatchClient BatchOMClient
         {
             get
             {
                 if (this.batchOMClient == null)
                 {
-                    if ((KeyInUse == AccountKeyType.Primary && string.IsNullOrEmpty(PrimaryAccountKey)) ||
-                        (KeyInUse == AccountKeyType.Secondary && string.IsNullOrEmpty(SecondaryAccountKey)))
+                    ServiceClientCredentials credentials;
+                    if (this.HasKeys)
                     {
-                        throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
+                        // Use shared key auth
+                        string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
+                        credentials = new BatchSharedKeyCredential(AccountName, key);
                     }
-                    string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
-                    BatchServiceClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
+                    else
+                    {
+                        // Use AAD auth
+                        credentials = new TokenCredentials(new BatchAadTokenProvider(this.azureContext));
+                    }
+                    BatchServiceClient restClient = CreateBatchRestClient(TaskTenantUrl, credentials);
                     this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(restClient);
                 }
                 return this.batchOMClient;
             }
         }
 
-        internal BatchAccountContext()
+        public BatchAccountContext(IAzureContext azureContext)
         {
             this.KeyInUse = AccountKeyType.Primary;
-        }
-
-        internal BatchAccountContext(string accountEndpoint) : this()
-        {
-            this.AccountEndpoint = accountEndpoint;
+            this.azureContext = azureContext;
         }
 
         /// <summary>
@@ -214,19 +225,18 @@ namespace Microsoft.Azure.Commands.Batch
         /// Create a new BAC and fill it in
         /// </summary>
         /// <param name="resource">Resource info returned by RP</param>
+        /// <param name="azureContext">The Azure Context</param>
         /// <returns>new instance of BatchAccountContext</returns>
-        internal static BatchAccountContext ConvertAccountResourceToNewAccountContext(BatchAccount resource)
+        internal static BatchAccountContext ConvertAccountResourceToNewAccountContext(BatchAccount resource, IAzureContext azureContext)
         {
-            var baContext = new BatchAccountContext();
+            var baContext = new BatchAccountContext(azureContext);
             baContext.ConvertAccountResourceToAccountContext(resource);
             return baContext;
         }
 
-        protected virtual BatchServiceClient CreateBatchRestClient(string url, string accountName, string key, DelegatingHandler handler = default(DelegatingHandler))
+        protected virtual BatchServiceClient CreateBatchRestClient(string url, ServiceClientCredentials creds, DelegatingHandler handler = default(DelegatingHandler))
         {
-            ServiceClientCredentials credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
-
-            BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), credentials) : new BatchServiceClient(new Uri(url), credentials, handler);
+            BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), creds) : new BatchServiceClient(new Uri(url), creds, handler);
 
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 

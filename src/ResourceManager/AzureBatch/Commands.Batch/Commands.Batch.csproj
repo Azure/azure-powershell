@@ -41,9 +41,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Batch, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.5.1.2\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Batch, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.6.1.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
@@ -275,6 +274,7 @@
     <Compile Include="Tasks\SetBatchTaskCommand.cs" />
     <Compile Include="Tasks\StopBatchTaskCommand.cs" />
     <Compile Include="NewApplicationPackageException.cs" />
+    <Compile Include="Utils\BatchAadTokenProvider.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="ComputeNodes\GetBatchComputeNodeCommand.cs" />

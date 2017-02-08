@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static BatchAccountContext CreateBatchContextWithKeys()
         {
             BatchAccount resource = CreateAccountResource("account", "resourceGroup");
-            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource);
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource, null);
             string dummyKey = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
             SetProperty(context, "PrimaryAccountKey", dummyKey);
             SetProperty(context, "SecondaryAccountKey", dummyKey);
@@ -259,10 +259,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders>();
-                        response.Headers = new ProxyModels.FileGetPropertiesFromTaskHeaders();
+                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>();
+                        response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders();
 
-                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders>> task = Task.FromResult(response);
+                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>> task = Task.FromResult(response);
 
                         return task;
                     };
@@ -301,10 +301,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders>();
-                        response.Headers = new ProxyModels.FileGetPropertiesFromComputeNodeHeaders();
+                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>();
+                        response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders();
 
-                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders>> task = Task.FromResult(response);
+                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>> task = Task.FromResult(response);
 
                         return task;
                     };
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudPoolUsageMetricsResponse object. Note: The lengths of all three lists must be the same.
         /// </summary>
-        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
+        public static AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> CreatePoolListUsageMetricsResponse(
             IEnumerable<string> poolIds,
             IEnumerable<DateTime> startTimes,
             IEnumerable<DateTime> endTimes)
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             }
 
             var response = new AzureOperationResponse
-                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders>()
+                <IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>()
             {
                 Response = new HttpResponseMessage(HttpStatusCode.OK),
                 Body = new MockPagedEnumerable<ProxyModels.PoolUsageMetrics>(poolUsageList)
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
+        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
             double avgCPUPercentage,
             DateTime startTime)
         {
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             };
 
             var response = new AzureOperationResponse
-                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders>()
+                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders>()
             {
                 Body = stats,
                 Response = new HttpResponseMessage(HttpStatusCode.Accepted)
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
+        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
         {
             var stats = new ProxyModels.JobStatistics()
             {
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
             };
 
             var response = new AzureOperationResponse
-                <ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders>()
+                <ProxyModels.JobStatistics, ProxyModels.JobGetAllJobsLifetimeStatisticsHeaders>()
             {
                 Body = stats,
                 Response = new HttpResponseMessage(HttpStatusCode.Accepted)
@@ -794,22 +794,22 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a NodeFileGetPropertiesFromTaskResponse object
         /// </summary>
-        public static AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders> CreateNodeFileGetPropertiesByTaskResponse()
+        public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders> CreateNodeFileGetPropertiesByTaskResponse()
         {
-            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders>();
+            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Headers = new ProxyModels.FileGetPropertiesFromTaskHeaders();
+            response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders();
             return response;
         }
 
         /// <summary>
         /// Builds a NodeFileGetPropertiesFromComputeNodeResponse object
         /// </summary>
-        public static AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders> CreateNodeFileGetPropertiesByComputeNodeResponse()
+        public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders> CreateNodeFileGetPropertiesByComputeNodeResponse()
         {
-            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders>();
+            var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Headers = new ProxyModels.FileGetPropertiesFromComputeNodeHeaders();
+            response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders();
             return response;
         }
 

@@ -275,6 +275,7 @@
     <Compile Include="Tasks\SetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\EnableBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\StopBatchTaskCommandTests.cs" />
+    <Compile Include="Utils\BatchAadTokenProviderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">

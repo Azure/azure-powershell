@@ -228,6 +228,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
+        /// Gets or sets the Azure Batch AD resource ID.
+        /// </summary>
+        public string BatchEndpointResourceId { get; set; }
+
+        /// <summary>
         /// Determine equality of two PSAzureEnvironment instances.
         /// </summary>
         /// <param name="obj">The instance to compare.</param>
@@ -253,7 +258,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && SqlDatabaseDnsSuffix == other.SqlDatabaseDnsSuffix
                        && AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix == other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
                        && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
-                       && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix;
+                       && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
+                       && BatchEndpointResourceId == other.BatchEndpointResourceId;
             }
 
             return false;
