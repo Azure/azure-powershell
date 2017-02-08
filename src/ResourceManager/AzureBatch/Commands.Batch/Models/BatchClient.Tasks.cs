@@ -91,9 +91,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             CloudTask task = new CloudTask(parameters.TaskId, parameters.CommandLine);
             task.DisplayName = parameters.DisplayName;
-#pragma warning disable CS0618
-            task.RunElevated = parameters.RunElevated;
-#pragma warning restore CS0618
+
+            if (parameters.AuthenticationTokenSettings != null)
+            {
+                task.AuthenticationTokenSettings = parameters.AuthenticationTokenSettings.omObject;
+            }
+
+            if (parameters.UserIdentity != null)
+            {
+                task.UserIdentity = parameters.UserIdentity.omObject;
+            }
+
             if (parameters.EnvironmentSettings != null)
             {
                 task.EnvironmentSettings = new List<EnvironmentSetting>();

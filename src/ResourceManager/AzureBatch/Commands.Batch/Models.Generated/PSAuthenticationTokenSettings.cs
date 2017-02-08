@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSExitOptions
+    public partial class PSAuthenticationTokenSettings
     {
         
-        internal Microsoft.Azure.Batch.ExitOptions omObject;
+        internal Microsoft.Azure.Batch.AuthenticationTokenSettings omObject;
         
-        public PSExitOptions()
+        public PSAuthenticationTokenSettings()
         {
-            this.omObject = new Microsoft.Azure.Batch.ExitOptions();
+            this.omObject = new Microsoft.Azure.Batch.AuthenticationTokenSettings();
         }
         
-        internal PSExitOptions(Microsoft.Azure.Batch.ExitOptions omObject)
+        internal PSAuthenticationTokenSettings(Microsoft.Azure.Batch.AuthenticationTokenSettings omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +48,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.DependencyAction? DependencyAction
+        public Microsoft.Azure.Batch.Common.AccessScope Access
         {
             get
             {
-                return this.omObject.DependencyAction;
+                return this.omObject.Access;
             }
             set
             {
-                this.omObject.DependencyAction = value;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.JobAction? JobAction
-        {
-            get
-            {
-                return this.omObject.JobAction;
-            }
-            set
-            {
-                this.omObject.JobAction = value;
+                this.omObject.Access = value;
             }
         }
     }

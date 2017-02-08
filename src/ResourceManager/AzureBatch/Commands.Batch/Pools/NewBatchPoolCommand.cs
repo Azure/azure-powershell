@@ -102,6 +102,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSNetworkConfiguration NetworkConfiguration { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSUserAccount[] UserAccounts { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
@@ -121,7 +125,8 @@ namespace Microsoft.Azure.Commands.Batch
                 ApplicationPackageReferences = this.ApplicationPackageReferences,
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
                 CloudServiceConfiguration = this.CloudServiceConfiguration,
-                NetworkConfiguration = this.NetworkConfiguration
+                NetworkConfiguration = this.NetworkConfiguration,
+                UserAccounts = this.UserAccounts
             };
 
             if (ShouldProcess("AzureBatchPool"))

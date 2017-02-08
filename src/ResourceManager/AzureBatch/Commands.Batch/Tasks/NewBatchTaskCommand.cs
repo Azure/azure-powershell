@@ -70,8 +70,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
-        [Obsolete("RunElevated will be removed in a future version and replaced with UserIdentity")]
-        public SwitchParameter RunElevated { get; set; }
+        public PSAuthenticationTokenSettings AuthenticationTokenSettings { get; set; }
+
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        public PSUserIdentity UserIdentity { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
@@ -119,6 +122,15 @@ namespace Microsoft.Azure.Commands.Batch
             }
             else
             {
+                if (this.RunElevated.IsPresent)
+                {
+                    WriteWarning("The RunElevated parameter is obsolete as of 02/2017 and will be removed in a future release. Use the UserIdentity parameter instead.");
+                    if (this.UserIdentity == null)
+                    {
+                        this.UserIdentity = new PSUserIdentity(new PSAutoUserSpecification(Azure.Batch.Common.AutoUserScope.Task, Azure.Batch.Common.ElevationLevel.Admin));
+                    }
+                }
+
                 NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job,
                     this.Id, this.AdditionalBehaviors)
                 {
@@ -126,9 +138,8 @@ namespace Microsoft.Azure.Commands.Batch
                     CommandLine = this.CommandLine,
                     ResourceFiles = this.ResourceFiles,
                     EnvironmentSettings = this.EnvironmentSettings,
-#pragma warning disable CS0618
-                    RunElevated = this.RunElevated.IsPresent,
-#pragma warning restore CS0618
+                    AuthenticationTokenSettings = this.AuthenticationTokenSettings,
+                    UserIdentity = this.UserIdentity,
                     AffinityInformation = this.AffinityInformation,
                     Constraints = this.Constraints,
                     MultiInstanceSettings = this.MultiInstanceSettings,

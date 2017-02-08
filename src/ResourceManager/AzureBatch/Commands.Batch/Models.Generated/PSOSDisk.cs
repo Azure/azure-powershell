@@ -29,17 +29,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSExitOptions
+    public partial class PSOSDisk
     {
         
-        internal Microsoft.Azure.Batch.ExitOptions omObject;
+        internal Microsoft.Azure.Batch.OSDisk omObject;
         
-        public PSExitOptions()
+        private IEnumerable<System.String> imageUris;
+        
+        public PSOSDisk(System.Collections.Generic.IEnumerable<string> imageUris, System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.ExitOptions();
+            this.omObject = new Microsoft.Azure.Batch.OSDisk(imageUris, caching);
         }
         
-        internal PSExitOptions(Microsoft.Azure.Batch.ExitOptions omObject)
+        internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +50,34 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.DependencyAction? DependencyAction
+        public Microsoft.Azure.Batch.Common.CachingType? Caching
         {
             get
             {
-                return this.omObject.DependencyAction;
-            }
-            set
-            {
-                this.omObject.DependencyAction = value;
+                return this.omObject.Caching;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.JobAction? JobAction
+        public IEnumerable<System.String> ImageUris
         {
             get
             {
-                return this.omObject.JobAction;
-            }
-            set
-            {
-                this.omObject.JobAction = value;
+                if (((this.imageUris == null) 
+                            && (this.omObject.ImageUris != null)))
+                {
+                    List<System.String> list;
+                    list = new List<System.String>();
+                    IEnumerator<System.String> enumerator;
+                    enumerator = this.omObject.ImageUris.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(enumerator.Current);
+                    }
+                    this.imageUris = list;
+                }
+                return this.imageUris;
             }
         }
     }
