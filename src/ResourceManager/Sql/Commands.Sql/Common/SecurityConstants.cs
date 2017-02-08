@@ -23,6 +23,11 @@ namespace Microsoft.Azure.Commands.Sql.Common
     /// </summary>
     public class SecurityConstants
     {
+        /// <summary>
+        /// The possible states in which the user server's policy property may be in
+        /// </summary>
+        public enum UseServerDefaultOptions { Enabled, Disabled }
+
         // Audit Events:
         public const string PlainSQL_Success = "PlainSQL_Success";
         public const string PlainSQL_Failure = "PlainSQL_Failure";

@@ -14,16 +14,16 @@
 
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
-    /// Disables auditing on a specific database.
+    /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),
-            OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-
-    public class AzureRmSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
+    [Cmdlet(VerbsOther.Use, "AzureRmSqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),
+        OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    public class UseAzureSqlServerAuditingPolicy : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -41,12 +41,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseThreatDetectionPolicyModel ApplyUserInputToModel(
-            DatabaseThreatDetectionPolicyModel model)
+        protected override DatabaseThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseThreatDetectionPolicyModel model)
         {
-            model = base.ApplyUserInputToModel(model);
-            model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
-            model.UseServerDefault = UseServerDefaultOptions.Disabled;
+            if (model.ThreatDetectionState == ThreatDetectionStateType.New)
+            {
+                model.ThreatDetectionState = ThreatDetectionStateType.Enabled;
+            }
+            model.UseServerDefault = SecurityConstants.UseServerDefaultOptions.Enabled;
             return model;
         }
     }

@@ -12,8 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
+
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
 {
+
+
     /// <summary>
     /// A class representing a database threat detection policy
     /// </summary>
@@ -23,5 +27,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         /// Gets or sets the database name
         /// </summary>
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the use server default property
+        /// </summary>
+        public SecurityConstants.UseServerDefaultOptions UseServerDefault { get; set; }
     }
 }
