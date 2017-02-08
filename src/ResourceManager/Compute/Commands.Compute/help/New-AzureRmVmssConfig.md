@@ -13,13 +13,13 @@ Creates a VMSS configuration object.
 ## SYNTAX
 
 ```
-New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [-SinglePlacementGroup <Boolean>] [[-Location] <String>]
- [[-Tag] <Hashtable>] [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int64>] [-PlanName <String>]
- [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [[-UpgradePolicyMode] <UpgradeMode>] [[-OsProfile] <VirtualMachineScaleSetOSProfile>]
- [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
+New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int64>] [[-UpgradePolicyMode] <UpgradeMode>]
+ [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
- [[-Extension] <VirtualMachineScaleSetExtension[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-PlanName <String>]
+ [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
