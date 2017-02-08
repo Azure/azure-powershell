@@ -485,7 +485,7 @@ function Create-StorageAccount($resourceGroupName,$storageName,$location)
 {
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
-        $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -SkuName "Standard_LRS" -Location $location 
+        $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS" 
     }
 }
 
@@ -624,7 +624,8 @@ function Test-DiagnosticOperations
 	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
 	# Create Storage Account
-	$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -SkuName "Standard_LRS" -Location $location 
+	New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $location -Type "Standard_LRS" 
+	$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName
 
 	# Creating Cache
     $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Sku Premium -Size P1
