@@ -23,7 +23,6 @@ The **Set-AzureRmServiceBusQueue** cmdlet updates the description for the Servic
 
 ### Example 1
 ```
-
 PS C:\> $QueueObj = Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
 
 PS C:\> $QueueObj.DeadLetteringOnMessageExpiration = $True
@@ -132,22 +131,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
 
-###-NamespaceName
+### -NamespaceName
  System.String
 
-###-QueueName
+### -QueueName
  System.String
 
-###-QueueObj
+### -QueueObj
  Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
-
 Name                                : SB-Queue_exampl1
 Location                            : West US
 LockDuration                        : 

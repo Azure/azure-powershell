@@ -254,23 +254,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
  
-###-NamespaceName
- System.String
- 
-###-TopicName
- System.String
- 
-###-SubscriptionName
- System.String
 
+### -NamespaceName
+ System.String
+ 
+
+### -TopicName
+ System.String
+ 
+
+### -SubscriptionName
+ System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
-
 Name                                      : SB-TopicSubscription-Example1
 Location                                  : West US
 AccessedAt                                : 1/20/2017 3:18:54 AM

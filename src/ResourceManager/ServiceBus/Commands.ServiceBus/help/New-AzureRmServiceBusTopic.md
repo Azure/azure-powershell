@@ -338,23 +338,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
 
-###-NamespaceName
+### -NamespaceName
  System.String
 
-###-TopicName
+### -TopicName
  System.String
 
-###-EnablePartitioning
+### -EnablePartitioning
  System.Boolean?
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
-
 Name                                : SB-Topic_exampl1
 Location                            : West US
 Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S

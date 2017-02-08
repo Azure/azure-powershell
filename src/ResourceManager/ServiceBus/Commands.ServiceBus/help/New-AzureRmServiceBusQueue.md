@@ -348,23 +348,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
 
-###-NamespaceName
+### -NamespaceName
  System.String
 
-###-QueueName
+### -QueueName
  System.String
 
-###-EnablePartitioning
+### -EnablePartitioning
  System.Boolean?
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
-
 Name                                : SB-Queue_exampl1
 Location                            : West US
 LockDuration                        : 
