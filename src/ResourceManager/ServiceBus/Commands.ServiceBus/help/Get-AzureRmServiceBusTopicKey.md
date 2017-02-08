@@ -26,7 +26,7 @@ The **Get-AzureRmServiceBusTopicKey** cmdlet returns the primary and secondary c
 PS C:\> Get-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
 ```
 
-The primary and secondary connection strings are returned for the given Service Bus topic.
+Returns the primary and secondary connection strings for the specified Service Bus topic.
 
 ## PARAMETERS
 

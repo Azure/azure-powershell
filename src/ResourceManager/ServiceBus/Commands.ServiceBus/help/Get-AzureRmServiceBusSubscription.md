@@ -26,7 +26,7 @@ The **Get-AzureRmServiceBusSubscription** cmdlet returns a subscription descript
 PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
-Returns a subscription description for the specified Service Bus Topic.
+Returns a subscription description for the specified Service Bus topic.
 
 ## PARAMETERS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-Create a new Service Bus queue in the specified Service Bus namespace.
+Creates a Service Bus queue in the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusQueue** cmdlet creates a new Service Bus queue in the specified Service Bus namespace.
+The **New-AzureRmServiceBusQueue** cmdlet creates a Service Bus queue in the specified Service Bus namespace.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
+Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval, after which the queue is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
 Type: String

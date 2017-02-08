@@ -17,7 +17,7 @@ New-AzureRmServiceBusNamespaceKey [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusNamespace** cmdlet RegenerateKeys new primary or secondary connection strings for the specified Namespace and authorization rule.
+The **New-AzureRmServiceBusNamespace** cmdlet generates new primary or secondary connection strings for the specified namespace and authorization rule.
 
 ## EXAMPLES
 

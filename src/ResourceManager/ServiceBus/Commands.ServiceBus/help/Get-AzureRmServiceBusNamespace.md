@@ -30,7 +30,7 @@ Returns a description of the specified Service Bus namespace.
 ## PARAMETERS
 
 ### -NamespaceName
-Namespace name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String

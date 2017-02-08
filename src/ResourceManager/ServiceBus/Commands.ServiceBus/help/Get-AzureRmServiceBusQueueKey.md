@@ -26,7 +26,7 @@ The **Get-AzureRmServiceBusQueueKey** cmdlet returns the primary and secondary c
 PS C:\> Get-AzureRmServiceBusQueueKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1
 ```
 
-The primary and secondary connection strings are returned for the given Service Bus queue.
+Returns the primary and secondary connection strings for the specified Service Bus queue.
 
 ## PARAMETERS
 

@@ -17,7 +17,7 @@ New-AzureRmServiceBusTopicKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusTopicKey** cmdlet regenerates a new  primary or secondary connection string for the specified Service Bus topic and authorization rule.
+The **New-AzureRmServiceBusTopicKey** cmdlet generates a new primary or secondary connection string for the specified Service Bus topic and authorization rule.
 
 ## EXAMPLES
 

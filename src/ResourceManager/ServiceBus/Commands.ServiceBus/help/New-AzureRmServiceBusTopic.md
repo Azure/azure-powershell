@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-Create a new Service Bus topic in  the specified Service Bus namespace.
+Creates a new Service Bus topic in  the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Creates a new Service Bus topic `SB-Topic_exampl1` in the specified Service Bus 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Specifies the TimeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
+Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
 Type: String
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -DuplicateDetectionHistoryTimeWindow
-Specifies the TimeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
+Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
 
 ```yaml
 Type: String

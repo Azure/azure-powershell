@@ -30,7 +30,7 @@ PS C:\> $topicObj.EnableExpress = $True
 PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj
 ```
 
-Updates the specified topic with a new description in the specified namespace, and updates the **EnableExpress**  property to **true**. 
+Updates the specified topic with a new description in the specified namespace. This example updates the **EnableExpress** property to **true**. 
 
 ## PARAMETERS
 

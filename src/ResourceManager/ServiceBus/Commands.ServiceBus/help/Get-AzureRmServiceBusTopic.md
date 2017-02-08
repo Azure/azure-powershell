@@ -26,7 +26,7 @@ The **Get-AzureRmServiceBusTopic** cmdlet returns a topic description for the sp
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
-Returns the description of the specified topic for given Service Bus namespace.
+Returns the description of the specified topic for the given Service Bus namespace.
 
 ## PARAMETERS
 
