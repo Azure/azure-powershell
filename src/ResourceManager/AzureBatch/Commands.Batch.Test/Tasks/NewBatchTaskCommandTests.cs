@@ -101,7 +101,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             };
             cmdlet.ResourceFiles = new Dictionary<string, string>();
             cmdlet.ResourceFiles.Add("anotherFile.txt", "https://another.blob");
-            cmdlet.RunElevated = true;
 
             TaskAddParameter requestParameters = null;
 
@@ -132,7 +131,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].FilePath, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].FilePath);
             Assert.Equal(cmdlet.ResourceFiles.Count, requestParameters.ResourceFiles.Count);
             Assert.Equal(cmdlet.ResourceFiles["anotherFile.txt"], requestParameters.ResourceFiles[0].BlobSource);
-            Assert.Equal(cmdlet.RunElevated, requestParameters.RunElevated);
         }
 
         [Fact]
@@ -198,14 +196,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
 
-            var none = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = Azure.Batch.Common.JobAction.None } };
-            var terminate = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = Azure.Batch.Common.JobAction.Terminate } };
+            var none = new PSExitOptions(new Azure.Batch.ExitOptions { JobAction = Azure.Batch.Common.JobAction.None });
+            var terminate = new PSExitOptions(new Azure.Batch.ExitOptions { JobAction = Azure.Batch.Common.JobAction.Terminate });
+            var satisfyDependency = new PSExitOptions(new Azure.Batch.ExitOptions { DependencyAction = Azure.Batch.Common.DependencyAction.Satisfy });
 
             cmdlet.ExitConditions = new PSExitConditions
             {
                 ExitCodes = new List<PSExitCodeMapping> { new PSExitCodeMapping(0, none) },
                 SchedulingError = terminate,
-                ExitCodeRanges = new List<PSExitCodeRangeMapping> { new PSExitCodeRangeMapping(1, 5, terminate) },
+                ExitCodeRanges = new List<PSExitCodeRangeMapping> { new PSExitCodeRangeMapping(1, 5, satisfyDependency) },
                 Default = none,
             };
 
@@ -216,10 +215,83 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             var exitConditions = requestParameters.ExitConditions;
             Assert.Equal(1, exitConditions.ExitCodeRanges.First().Start);
             Assert.Equal(5, exitConditions.ExitCodeRanges.First().End);
-            Assert.Equal(ProxyModels.JobAction.Terminate, exitConditions.ExitCodeRanges.First().ExitOptions.JobAction);
+            Assert.Equal(ProxyModels.DependencyAction.Satisfy, exitConditions.ExitCodeRanges.First().ExitOptions.DependencyAction);
             Assert.Equal(ProxyModels.JobAction.None, exitConditions.ExitCodes.First().ExitOptions.JobAction);
             Assert.Equal(ProxyModels.JobAction.Terminate, exitConditions.SchedulingError.JobAction);
             Assert.Equal(ProxyModels.JobAction.None, exitConditions.DefaultProperty.JobAction);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskUserIdentityGetsPassedToRequest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testTask";
+            cmdlet.JobId = "testJob";
+            cmdlet.CommandLine = "cmd /c echo hello";
+            cmdlet.UserIdentity = new PSUserIdentity(
+                new PSAutoUserSpecification(Azure.Batch.Common.AutoUserScope.Task, Azure.Batch.Common.ElevationLevel.Admin));
+
+            TaskAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                TaskAddParameter,
+                TaskAddOptions,
+                AzureOperationHeaderResponse<TaskAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.UserIdentity.AutoUser.Scope.ToString().ToLowerInvariant(), 
+                requestParameters.UserIdentity.AutoUser.Scope.ToString().ToLowerInvariant());
+            Assert.Equal(cmdlet.UserIdentity.AutoUser.ElevationLevel.ToString().ToLowerInvariant(), 
+                requestParameters.UserIdentity.AutoUser.ElevationLevel.ToString().ToLowerInvariant());
+            Assert.Null(requestParameters.UserIdentity.UserName);
+
+            // Set the user name instead and verify the request matches expectations
+            cmdlet.UserIdentity = new PSUserIdentity("user1");
+            cmdlet.ExecuteCmdlet();
+            Assert.Equal(cmdlet.UserIdentity.UserName, requestParameters.UserIdentity.UserName);
+            Assert.Null(requestParameters.UserIdentity.AutoUser);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskAuthTokenSettingsGetsPassedToRequest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testTask";
+            cmdlet.JobId = "testJob";
+            cmdlet.CommandLine = "cmd /c echo hello";
+            cmdlet.AuthenticationTokenSettings = new PSAuthenticationTokenSettings
+            {
+                Access = Azure.Batch.Common.AccessScope.Job
+            };
+
+            TaskAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                TaskAddParameter,
+                TaskAddOptions,
+                AzureOperationHeaderResponse<TaskAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.AuthenticationTokenSettings.Access.ToString().ToLowerInvariant(), 
+                requestParameters.AuthenticationTokenSettings.Access.Single().ToString().ToLowerInvariant());
         }
 
         [Fact]

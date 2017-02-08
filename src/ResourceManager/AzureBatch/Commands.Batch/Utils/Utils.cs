@@ -278,6 +278,12 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         };
                     });
 
+                spec.omObject.UserAccounts = CreateSyncedList(spec.UserAccounts,
+                    (user) =>
+                    {
+                        return new UserAccount(user.Name, user.Password, user.ElevationLevel, user.SshPrivateKey);
+                    });
+
                 if (spec.StartTask != null)
                 {
                     StartTaskSyncCollections(spec.StartTask);

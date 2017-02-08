@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskState? PreviousState
+        public Microsoft.Azure.Batch.Common.SubtaskState? PreviousState
         {
             get
             {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskState? State
+        public Microsoft.Azure.Batch.Common.SubtaskState? State
         {
             get
             {

@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSExitOptions
+    public partial class PSAutoUserSpecification
     {
         
-        internal Microsoft.Azure.Batch.ExitOptions omObject;
+        internal Microsoft.Azure.Batch.AutoUserSpecification omObject;
         
-        public PSExitOptions()
+        public PSAutoUserSpecification(System.Nullable<Microsoft.Azure.Batch.Common.AutoUserScope> scope = null, System.Nullable<Microsoft.Azure.Batch.Common.ElevationLevel> elevationLevel = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.ExitOptions();
+            this.omObject = new Microsoft.Azure.Batch.AutoUserSpecification(scope, elevationLevel);
         }
         
-        internal PSExitOptions(Microsoft.Azure.Batch.ExitOptions omObject)
+        internal PSAutoUserSpecification(Microsoft.Azure.Batch.AutoUserSpecification omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +48,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.DependencyAction? DependencyAction
+        public Microsoft.Azure.Batch.Common.ElevationLevel? ElevationLevel
         {
             get
             {
-                return this.omObject.DependencyAction;
-            }
-            set
-            {
-                this.omObject.DependencyAction = value;
+                return this.omObject.ElevationLevel;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.JobAction? JobAction
+        public Microsoft.Azure.Batch.Common.AutoUserScope? Scope
         {
             get
             {
-                return this.omObject.JobAction;
-            }
-            set
-            {
-                this.omObject.JobAction = value;
+                return this.omObject.Scope;
             }
         }
     }

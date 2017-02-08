@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskSchedulingPolicy taskSchedulingPolicy;
         
+        private IList<PSUserAccount> userAccounts;
+        
         private PSVirtualMachineConfiguration virtualMachineConfiguration;
         
         internal PSCloudPool(Microsoft.Azure.Batch.CloudPool omObject)
@@ -487,6 +489,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.Url;
+            }
+        }
+        
+        public IList<PSUserAccount> UserAccounts
+        {
+            get
+            {
+                if (((this.userAccounts == null) 
+                            && (this.omObject.UserAccounts != null)))
+                {
+                    List<PSUserAccount> list;
+                    list = new List<PSUserAccount>();
+                    IEnumerator<Microsoft.Azure.Batch.UserAccount> enumerator;
+                    enumerator = this.omObject.UserAccounts.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSUserAccount(enumerator.Current));
+                    }
+                    this.userAccounts = list;
+                }
+                return this.userAccounts;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.UserAccounts = null;
+                }
+                else
+                {
+                    this.omObject.UserAccounts = new List<Microsoft.Azure.Batch.UserAccount>();
+                }
+                this.userAccounts = value;
             }
         }
         

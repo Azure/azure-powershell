@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 CommandLine = cmdLine,
                 MultiInstanceSettings = multiInstanceSettings,
-                RunElevated = numInstances <= 1
+                UserIdentity = new PSUserIdentity(new PSAutoUserSpecification(AutoUserScope.Task, numInstances <= 1 ? ElevationLevel.Admin : ElevationLevel.NonAdmin))
             };
 
             client.CreateTask(parameters);

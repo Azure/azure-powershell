@@ -36,11 +36,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
+        private PSAuthenticationTokenSettings authenticationTokenSettings;
+        
         private PSTaskConstraints constraints;
         
         private IList<PSEnvironmentSetting> environmentSettings;
         
         private IList<PSResourceFile> resourceFiles;
+        
+        private PSUserIdentity userIdentity;
         
         public PSJobManagerTask()
         {
@@ -93,6 +97,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.ApplicationPackageReferences = new List<Microsoft.Azure.Batch.ApplicationPackageReference>();
                 }
                 this.applicationPackageReferences = value;
+            }
+        }
+        
+        public PSAuthenticationTokenSettings AuthenticationTokenSettings
+        {
+            get
+            {
+                if (((this.authenticationTokenSettings == null) 
+                            && (this.omObject.AuthenticationTokenSettings != null)))
+                {
+                    this.authenticationTokenSettings = new PSAuthenticationTokenSettings(this.omObject.AuthenticationTokenSettings);
+                }
+                return this.authenticationTokenSettings;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.AuthenticationTokenSettings = null;
+                }
+                else
+                {
+                    this.omObject.AuthenticationTokenSettings = value.omObject;
+                }
+                this.authenticationTokenSettings = value;
             }
         }
         
@@ -239,19 +268,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        [Obsolete("RunElevated will be removed in a future version and replaced with UserIdentity")]
-        public System.Boolean? RunElevated
-        {
-            get
-            {
-                return this.omObject.RunElevated;
-            }
-            set
-            {
-                this.omObject.RunElevated = value;
-            }
-        }
-        
         public System.Boolean? RunExclusive
         {
             get
@@ -261,6 +277,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.RunExclusive = value;
+            }
+        }
+        
+        public PSUserIdentity UserIdentity
+        {
+            get
+            {
+                if (((this.userIdentity == null) 
+                            && (this.omObject.UserIdentity != null)))
+                {
+                    this.userIdentity = new PSUserIdentity(this.omObject.UserIdentity);
+                }
+                return this.userIdentity;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.UserIdentity = null;
+                }
+                else
+                {
+                    this.omObject.UserIdentity = value.omObject;
+                }
+                this.userIdentity = value;
             }
         }
     }

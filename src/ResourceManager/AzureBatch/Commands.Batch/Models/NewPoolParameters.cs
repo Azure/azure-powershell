@@ -116,5 +116,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The network configuration of the pool.
         /// </summary>
         public PSNetworkConfiguration NetworkConfiguration { get; set; }
+
+        /// <summary>
+        /// The user accounts to be created on each node in the pool.
+        /// </summary>
+        public PSUserAccount[] UserAccounts { get; set; }
     }
 }
