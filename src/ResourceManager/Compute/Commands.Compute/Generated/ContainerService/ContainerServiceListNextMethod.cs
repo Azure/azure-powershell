@@ -82,36 +82,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                  new object[] { nextPageLink });
         }
     }
-
-    [Cmdlet(VerbsCommon.Get, "AzureRmContainerServiceNextList", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class GetAzureRmContainerServiceNextList : InvokeAzureComputeMethodCmdlet
-    {
-        public override string MethodName { get; set; }
-
-        protected override void ProcessRecord()
-        {
-            this.MethodName = "ContainerServiceListNext";
-            base.ProcessRecord();
-        }
-
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pNextPageLink = new RuntimeDefinedParameter();
-            pNextPageLink.Name = "NextPageLink";
-            pNextPageLink.ParameterType = typeof(string);
-            pNextPageLink.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pNextPageLink.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("NextPageLink", pNextPageLink);
-
-            return dynamicParameters;
-        }
-    }
 }
