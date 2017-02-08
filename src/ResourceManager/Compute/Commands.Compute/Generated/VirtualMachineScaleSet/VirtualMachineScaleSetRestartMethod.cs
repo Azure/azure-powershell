@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -28,7 +27,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -117,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Restart", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class RestartAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -139,6 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
@@ -152,8 +151,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
+            pVMScaleSetName.Attributes.Add(new AliasAttribute("Name"));
             pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
 
@@ -165,6 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
                 Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pInstanceIds.Attributes.Add(new AllowNullAttribute());

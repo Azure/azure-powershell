@@ -14,16 +14,20 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Cmdlet to get existing resources from ARM cache.
@@ -52,12 +56,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string MultiSubscriptionListResourcesParameterSet = "Get a resources using a multi-subscription query.";
 
         /// <summary>
+        /// The list resources by tag object parameter set.
+        /// </summary>
+        internal const string ListResourcesByTagObjectParameterSet = "Lists resources by a tag object specified as a hashset.";
+
+        /// <summary>
+        /// The list resources by tag name-value parameter set.
+        /// </summary>
+        internal const string ListResourcesByTagNameValueParameterSet = "Lists resources by a tag specified as a individual name and value parameters.";
+
+        /// <summary>
         /// Caches the current subscription ids to get all subscription ids in the pipeline.
         /// </summary>
         private readonly List<Guid> subscriptionIds = new List<Guid>();
 
         /// <summary>
-        /// Gets or sets the resource name parameter.
+        /// Gets or sets the resource name for query as contains.
         /// </summary>
         [Alias("Name")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
@@ -65,6 +79,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
         [ValidateNotNullOrEmpty]
         public string ResourceNameContains { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource name for query as equals.
+        /// </summary>
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name for a full match. e.g. if your resource name is testResource, you can specify testResource.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name for a full match. e.g. if your resource name is testResource, you can specify testResource.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name for a full match. e.g. if your resource name is testResource, you can specify testResource.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceNameEquals { get; set; }
 
         /// <summary>
         /// Gets or sets the resource type parameter.
@@ -90,6 +113,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesByTagObjectParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesByTagNameValueParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
         [ValidateNotNullOrEmpty]
         public int? Top { get; set; }
 
@@ -100,30 +125,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesByTagObjectParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag filter for the OData query. The expected format is @{tagName=$null} or @{tagName = 'tagValue'}.")]
+        public Hashtable Tag { get; set; }
+
         /// <summary>
         /// Gets or sets the tag name.
         /// </summary>
-        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
-        [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesByTagNameValueParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
         [ValidateNotNullOrEmpty]
         public string TagName { get; set; }
 
         /// <summary>
         /// Gets or sets the tag value.
         /// </summary>
-        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
-        [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesByTagNameValueParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
         [ValidateNotNullOrEmpty]
         public string TagValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group name.
+        /// Gets or sets the resource group name for query as contains.
         /// </summary>
         [Alias("ResourceGroupName")]
         [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name substring.")]
         [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name substring.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupNameContains { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource group name for query as equals.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name for a full match.")]
+        [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name for a full match.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupNameEquals { get; set; }
 
         /// <summary>
         /// Gets or sets the expand properties property.
@@ -141,6 +175,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the subscription id.
         /// </summary>
         public Guid? SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default api-version to use.
+        /// </summary>
+        public string DefaultApiVersion { get; set; }
 
         /// <summary>
         /// Collects subscription ids from the pipeline.
@@ -165,6 +204,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            this.DefaultApiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ResourcesApiVersion : this.ApiVersion;
+
             if (!this.TenantLevel)
             {
                 this.SubscriptionId = DefaultContext.Subscription.Id;
@@ -245,15 +286,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 extensionResourceType: this.ExtensionResourceType,
                 extensionResourceName: null);
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceCollectionId)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             var odataQuery = QueryFilterBuilder.CreateFilter(
+                subscriptionId: null,
+                resourceGroup: this.ResourceGroupNameEquals,
                 resourceType: null,
-                resourceName: null,
-                tagName: this.TagName,
-                tagValue: this.TagValue,
+                resourceName: this.ResourceNameEquals,
+                tagName: TagsHelper.GetTagNameFromParameters(this.Tag, this.TagName),
+                tagValue: TagsHelper.GetTagValueFromParameters(this.Tag, this.TagValue),
                 filter: this.ODataQuery,
                 resourceGroupNameContains: this.ResourceGroupNameContains,
                 nameContains: this.ResourceNameContains);
@@ -262,7 +301,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .GetResourcesClient()
                 .ListObjectColleciton<JObject>(
                     resourceCollectionId: resourceCollectionId,
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     cancellationToken: this.CancellationToken.Value,
                     odataQuery: odataQuery)
                 .ConfigureAwait(continueOnCapturedContext: false);
@@ -275,24 +314,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
-                    subscriptionIds: new Guid[] { this.SubscriptionId.Value },
-                    resourceGroup: null,
+                    subscriptionId: this.SubscriptionId.HasValue ? this.SubscriptionId.Value.ToString() : null,
+                    resourceGroup: this.ResourceGroupNameEquals,
                     resourceType: this.ResourceType,
-                    resourceName: null,
-                    tagName: this.TagName,
-                    tagValue: this.TagValue,
+                    resourceName: this.ResourceNameEquals,
+                    tagName: TagsHelper.GetTagNameFromParameters(this.Tag, this.TagName),
+                    tagValue: TagsHelper.GetTagValueFromParameters(this.Tag, this.TagValue),
                     filter: this.ODataQuery,
                     resourceGroupNameContains: this.ResourceGroupNameContains,
                     nameContains: this.ResourceNameContains);
 
-            var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             return await this
                 .GetResourcesClient()
                 .ListResources<JObject>(
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     top: this.Top,
                     filter: filterQuery,
                     cancellationToken: this.CancellationToken.Value)
@@ -306,24 +341,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
+                    subscriptionId: null,
+                    resourceGroup: this.ResourceGroupNameEquals,
                     resourceType: this.ResourceType,
-                    resourceName: null,
-                    tagName: this.TagName,
-                    tagValue: this.TagValue,
+                    resourceName: this.ResourceNameEquals,
+                    tagName: TagsHelper.GetTagNameFromParameters(this.Tag, this.TagName),
+                    tagValue: TagsHelper.GetTagValueFromParameters(this.Tag, this.TagValue),
                     filter: this.ODataQuery,
                     resourceGroupNameContains: this.ResourceGroupNameContains,
                     nameContains: this.ResourceNameContains);
-
-            var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
-                .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this
                 .GetResourcesClient()
                 .ListResources<JObject>(
                     subscriptionId: this.SubscriptionId.Value,
                     resourceGroupName: null,
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     top: this.Top,
                     filter: filterQuery,
                     cancellationToken: this.CancellationToken.Value)
@@ -337,22 +370,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
+                    subscriptionId: null,
+                    resourceGroup: null,
                     resourceType: this.ResourceType,
-                    resourceName: null,
-                    tagName: this.TagName,
-                    tagValue: this.TagValue,
+                    resourceName: this.ResourceNameEquals,
+                    tagName: TagsHelper.GetTagNameFromParameters(this.Tag, this.TagName),
+                    tagValue: TagsHelper.GetTagValueFromParameters(this.Tag, this.TagValue),
                     filter: this.ODataQuery,
                     nameContains: this.ResourceNameContains);
-
-            var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
-                .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this
                 .GetResourcesClient()
                 .ListResources<JObject>(
                     subscriptionId: this.SubscriptionId.Value,
-                    apiVersion: apiVersion,
+                    apiVersion: this.DefaultApiVersion,
                     top: this.Top,
                     filter: filterQuery,
                     cancellationToken: this.CancellationToken.Value)
@@ -437,7 +468,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsSubscriptionLevelResourceTypeCollectionGet()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains == null &&
+                !this.ResourceGroupNameAvailable() &&
                 (this.ResourceType != null || this.ExtensionResourceType != null);
         }
 
@@ -447,7 +478,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsResourceGroupLevelResourceTypeCollectionGet()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains != null &&
+                this.ResourceGroupNameAvailable() &&
                 (this.ResourceType != null || this.ExtensionResourceType != null);
         }
 
@@ -458,7 +489,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsTenantLevelResourceTypeCollectionGet()
         {
             return this.SubscriptionId == null &&
-                this.ResourceGroupNameContains == null &&
+                !this.ResourceGroupNameAvailable() &&
                 (this.ResourceType != null || this.ExtensionResourceType != null);
         }
 
@@ -468,7 +499,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsSubscriptionLevelQuery()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains == null;
+                !this.ResourceGroupNameAvailable();
         }
 
         /// <summary>
@@ -477,11 +508,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsResourceGroupLevelQuery()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupNameContains != null &&
-                (this.TagName != null ||
-                this.TagValue != null ||
+                this.ResourceGroupNameAvailable() &&
+                (TagsHelper.GetTagNameFromParameters(this.Tag, this.TagName) != null ||
+                TagsHelper.GetTagValueFromParameters(this.Tag, this.TagValue) != null ||
                 this.ResourceType != null ||
                 this.ExtensionResourceType != null);
+        }
+
+        /// <summary>
+        /// Returns true if resource group name is availabe in parameters.
+        /// </summary>
+        private bool ResourceGroupNameAvailable()
+        {
+            return this.ResourceGroupNameContains != null || this.ResourceGroupNameEquals != null;
         }
     }
 }

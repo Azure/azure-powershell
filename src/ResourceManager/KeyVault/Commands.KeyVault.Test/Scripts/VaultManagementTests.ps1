@@ -125,7 +125,7 @@ function Test_SetRemoveAccessPolicyBySPN
     {
         if (-not $global:noADCmdLetMode)
         {
-            Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
+            Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
         }
     }
 }
@@ -335,6 +335,7 @@ function Initialize-TemporaryState
                 "permissions" = @{
                     "keys" = @("all")
                     "secrets" = @("all")
+                    "certificates" = @("all")
                 }
             }
         )
@@ -348,6 +349,9 @@ function Initialize-TemporaryState
     {
         $global:testVault = $vaultName
         Write-Host "Successfully initialized the temporary vault $global:testVault."
+        Write-Host "Sleeping for 10 seconds to wait for DNS propagation..."
+        Start-Sleep -Seconds 10
+        Write-Host "DNS propagation should have finished by now. Continuing."
     }
     else
     {

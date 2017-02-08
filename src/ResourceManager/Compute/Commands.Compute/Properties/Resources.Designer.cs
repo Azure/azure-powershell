@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add diagnostics extension to the VM scale set.
+        /// </summary>
+        public static string AddVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("AddVmssDiagnosticsExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
         public static string AEMExtensionNotFound {
@@ -233,12 +242,22 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot deserialize settings string from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+        ///   Looks up a localized string similar to Cannot find sql server configuration info in substatuses. Updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
         ///{0}.
         /// </summary>
-        public static string AzureVMSqlServerWrongSettingsFormat {
+        public static string AzureVMSqlServerSqlConfigurationNotFound {
             get {
-                return ResourceManager.GetString("AzureVMSqlServerWrongSettingsFormat", resourceCulture);
+                return ResourceManager.GetString("AzureVMSqlServerSqlConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+        ///{0}.
+        /// </summary>
+        public static string AzureVMSqlServerWrongConfigFormat {
+            get {
+                return ResourceManager.GetString("AzureVMSqlServerWrongConfigFormat", resourceCulture);
             }
         }
         
@@ -268,7 +287,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
@@ -351,6 +370,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No matching diagnostics extension found..
+        /// </summary>
+        public static string DiagnosticsExtensionNotFoundForVMSS {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNotFoundForVMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically..
         /// </summary>
         public static string DiagnosticsExtensionNullStorageAccountEndpoint {
@@ -374,6 +402,33 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DiagnosticsExtensionNullStorageAccountName {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwriting existing diagnostics extension..
+        /// </summary>
+        public static string DiagnosticsExtensionOverwriting {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwriting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnostics extension overwritting operation .
+        /// </summary>
+        public static string DiagnosticsExtensionOverwrittingCaption {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will overwrite existing diagnostics extension. Do you want to continue?.
+        /// </summary>
+        public static string DiagnosticsExtensionOverwrittingConfirmation {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingConfirmation", resourceCulture);
             }
         }
         
@@ -1018,6 +1073,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string RemoveScriptExtensionAction {
             get {
                 return ResourceManager.GetString("RemoveScriptExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove diagnostics extension from the VM scale set.
+        /// </summary>
+        public static string RemoveVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveVmssDiagnosticsExtensionAction", resourceCulture);
             }
         }
         

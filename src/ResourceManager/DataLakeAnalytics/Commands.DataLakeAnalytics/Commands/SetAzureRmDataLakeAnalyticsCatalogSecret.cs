@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
     [Alias("Set-AdlCatalogSecret")]
+    [Obsolete("Catalog secrets are being deprecated in a future release. Please use Set-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
     public class SetAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "Specify full URI";
@@ -55,7 +56,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3,
             Mandatory = true, HelpMessage = "The host of the database to connect to in the format 'myhost.dns.com'.")]
-        public string Host { get; set; }
+        [Alias("Host")]
+        public string DatabaseHost { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4,
             Mandatory = true, HelpMessage = "The Port associated with the host for the database to connect to.")]
@@ -63,13 +65,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             if (Uri != null && Uri.Port <= 0)
             {
                 WriteWarning(string.Format(Resources.NoPortSpecified, Uri));
             }
 
-            var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", Host, Port));
+            var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", DatabaseHost, Port));
 
+            // TODO: Remove the WriteObject during next breaking change release, since this object
+            // is always null.
             WriteObject(DataLakeAnalyticsClient.UpdateSecret(Account, DatabaseName, Secret.UserName,
                 Secret.GetNetworkCredential().Password, toUse.AbsoluteUri));
         }

@@ -119,14 +119,25 @@ function Test-VirtualMachine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
+
+        # VM Expand output
         $a = $vm1 | Out-String;
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
+        Assert-True {$a.Contains("Sku");}
+
+        # VM Compact output
+        $vm1.DisplayHint = "Compact";
+        $a = $vm1 | Out-String;
+        Assert-False {$a.Contains("Sku");}
+
+        # Table format output
         $a = $vm1 | Format-Table | Out-String;
         Write-Verbose("Get-AzureRmVM | Format-Table output:");
         Write-Verbose($a);
 
+        Assert-NotNull $vm1.VmId;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -176,7 +187,17 @@ function Test-VirtualMachine
         $a = $vms | Out-String;
         Write-Verbose("Get-AzureRmVM (List) output:");
         Write-Verbose($a);
+        Assert-True{$a.Contains("NIC");}
         Assert-AreNotEqual $vms $null;
+
+        # VM Compact output
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-False {$a.Contains("Sku");}
+
+        # VM Expand output
+        $vms[0].DisplayHint = "Expand";
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-True {$a.Contains("Sku");}
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;
@@ -215,8 +236,10 @@ function Test-VirtualMachine
 
         $vm2 = Get-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname;
         Assert-NotNull $vm2;
-        # Assert-AreEqual $vm2.AvailabilitySetReference.Id $asetId;
-        # Assert-True { $vm2.ResourceGroupName -eq $rgname }
+        $vm2_out = $vm2 | Out-String
+        Assert-True {$vm2_out.Contains("AvailabilitySetReference")};
+        Assert-AreEqual $vm2.AvailabilitySetReference.Id $asetId;
+        Assert-True { $vm2.ResourceGroupName -eq $rgname }
         
         # Remove
         Remove-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname -Force;
@@ -1643,12 +1666,32 @@ function Test-VirtualMachineTags
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
 
-        #Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.RequestId;
         Assert-NotNull $vm.StatusCode;
 
         # Assert
         Assert-AreEqual "testval1" $vm.Tags["test1"];
         Assert-AreEqual "testval2" $vm.Tags["test2"];
+
+        # Update VM
+        $vm = $vm | Update-AzureRmVM;
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
+        Assert-AreEqual "testval1" $vm.Tags["test1"];
+        Assert-AreEqual "testval2" $vm.Tags["test2"];
+
+        # Update VM with new Tags
+        $new_tags = @{test1 = "testval3"; test2 = "testval4" };
+        $st = $vm | Update-AzureRmVM -Tags $new_tags;
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
+        Assert-AreEqual "testval3" $vm.Tags["test1"];
+        Assert-AreEqual "testval4" $vm.Tags["test2"];
+
     }
     finally
     {
@@ -2650,6 +2693,145 @@ function Test-VirtualMachineRedeploy
 
         # Remove
         Remove-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines
+#>
+function Test-VirtualMachineGetStatus
+{
+    param ($loc)
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        if ($loc -eq $null)
+        {
+            $loc = Get-ComputeVMLocation;
+        }
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_A4';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+        # NRP
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        # $p.StorageProfile.OSDisk = $null;
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
+
+        # Virtual Machine
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        # Get VM
+        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $a = $vm1 | Out-String;
+        Write-Verbose("Get-AzureRmVM output:");
+        Write-Verbose($a);
+        $a = $vm1 | Format-Table | Out-String;
+        Write-Verbose("Get-AzureRmVM | Format-Table output:");
+        Write-Verbose($a);
+
+        Assert-AreEqual $vm1.Name $vmname;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Version $imgRef.Version;
+
+        Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
+        Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
+
+        $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Status;
+        $a = $vm | Out-String;
+        Write-Verbose($a);
+        Assert-True {$a.Contains("Statuses");}
+
+        $vms = Get-AzureRmVM -ResourceGroupName $rgname -Status;
+        $a = $vms | Out-String;
+        Write-Verbose($a);
+        Assert-True {$a.Contains("PowerState");}
+
+        $vms = Get-AzureRmVM -Status;
+        $a = $vms | Out-String;
+        Write-Verbose($a);
+        Assert-True {$a.Contains("PowerState");}
+
+        # VM Compact output
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-False{$a.Contains("Sku");};
+
+        # VM Expand output
+        $vms[0].DisplayHint = "Expand"
+        $a = $vms[0] | Format-Custom | Out-String;
+        Assert-True{$a.Contains("Sku");};
+
+        # Remove
+        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
     }
     finally
     {

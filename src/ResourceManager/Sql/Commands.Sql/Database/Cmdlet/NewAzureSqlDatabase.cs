@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {
@@ -84,6 +84,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The name of the Elastic Pool to put the database in.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read scale option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)")]
+        [ValidateNotNullOrEmpty]
+        public DatabaseReadScale ReadScale { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
@@ -152,6 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
+                ReadScale =ReadScale,
             });
             return newEntity;
         }

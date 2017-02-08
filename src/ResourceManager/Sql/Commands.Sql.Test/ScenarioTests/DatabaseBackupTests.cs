@@ -69,5 +69,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGeoBackupPolicy()
+        {
+            RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
+        }
     }
 }

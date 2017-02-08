@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
                     {"tagkey1", "tagvalue1" },
                     {"tagkey2", "tagvalue2" }
                 },
+                SkuProperties = new ApiServiceSkuProperties
+                {
+                    Capacity = 3,
+                    SkuType = SkuType.Premium
+                },
                 Properties = new ApiServiceProperties
                 {
                     AdditionalRegions = new List<AdditionalRegion>()
@@ -45,8 +50,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
                             VirtualNetworkConfiguration = new VirtualNetworkConfiguration
                             {
                                 Location = "region vpn location",
-                                SubnetName = "region vpn subnet name",
-                                VnetId = Guid.NewGuid()
+                                SubnetResourceId = "region subnet resourceId"
                             }
                         }
                     },
@@ -87,17 +91,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
                     ProxyEndpoint = "http://proxy.endpoint",
                     PublisherEmail = "publisher@email.com",
                     PublisherName = "publisher name",
-                    SkuProperties = new ApiServiceSkuProperties
-                    {
-                        Capacity = 3,
-                        SkuType = SkuType.Premium
-                    },
                     StaticIPs = new[] { "192.168.0.1", "192.168.0.2" },
                     VirtualNetworkConfiguration = new VirtualNetworkConfiguration
                     {
-                        Location = "vpn location",
-                        SubnetName = "vpn subnet name",
-                        VnetId = Guid.NewGuid()
+                        Location = "region vpn location",
+                        SubnetResourceId = "region subnet resourceId"
                     }
                 }
             };
@@ -126,8 +124,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
                 Assert.Equal(resourceRegion.StaticIPs[i], resultRegion.StaticIPs[i]);
             }
             Assert.Equal(resourceRegion.VirtualNetworkConfiguration.Location, resultRegion.VirtualNetwork.Location);
-            Assert.Equal(resourceRegion.VirtualNetworkConfiguration.SubnetName, resultRegion.VirtualNetwork.SubnetName);
-            Assert.Equal(resourceRegion.VirtualNetworkConfiguration.VnetId, resultRegion.VirtualNetwork.VnetId);
+            Assert.Equal(resourceRegion.VirtualNetworkConfiguration.SubnetResourceId, resultRegion.VirtualNetwork.SubnetResourceId);
 
             var portalHostname = resource.Properties.HostnameConfigurations.Single(h => h.Type == HostnameType.Portal);
             Assert.Equal(portalHostname.Hostname, result.PortalHostnameConfiguration.Hostname);
@@ -142,14 +139,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
             Assert.Equal(proxyHostname.Certificate.Thumbprint, result.ProxyHostnameConfiguration.HostnameCertificate.Thumbprint);
 
             Assert.Equal(resource.Properties.VirtualNetworkConfiguration.Location, result.VirtualNetwork.Location);
-            Assert.Equal(resource.Properties.VirtualNetworkConfiguration.SubnetName, result.VirtualNetwork.SubnetName);
-            Assert.Equal(resource.Properties.VirtualNetworkConfiguration.VnetId, result.VirtualNetwork.VnetId);
+            Assert.Equal(resource.Properties.VirtualNetworkConfiguration.SubnetResourceId, result.VirtualNetwork.SubnetResourceId);
 
             Assert.Equal(resource.Properties.ManagementPortalEndpoint, result.PortalUrl);
             Assert.Equal(resource.Properties.ProxyEndpoint, result.RuntimeUrl);
             Assert.Equal(resource.Properties.ProvisioningState, result.ProvisioningState);
-            Assert.Equal(resource.Properties.SkuProperties.SkuType.ToString(), result.Sku.ToString());
-            Assert.Equal(resource.Properties.SkuProperties.Capacity, result.Capacity);
+            Assert.Equal(resource.SkuProperties.SkuType.ToString(), result.Sku.ToString());
+            Assert.Equal(resource.SkuProperties.Capacity, result.Capacity);
         }
     }
 }

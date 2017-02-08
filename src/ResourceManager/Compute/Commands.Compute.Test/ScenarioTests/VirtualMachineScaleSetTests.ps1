@@ -100,8 +100,15 @@ function Test-VirtualMachineScaleSet
             | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
             | Remove-AzureRmVmssExtension -Name $extname `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
-            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' `
-            | New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
+            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2'
+
+        # Validate Remove Network profile
+        Assert-AreEqual 'test' $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
+        Assert-AreEqual $true $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
+        Assert-AreEqual $subnetId `
+            $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
+
+        $vmss = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         Assert-AreEqual $loc $vmss.Location;
         Assert-AreEqual 2 $vmss.Sku.Capacity;
@@ -131,6 +138,7 @@ function Test-VirtualMachineScaleSet
 
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss');
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual $vmssName $vmssResult.Name;
         Assert-True { $vmssName -eq $vmssResult.Name };
         $output = $vmssResult | Out-String;
         Write-Verbose ($output);
@@ -142,10 +150,7 @@ function Test-VirtualMachineScaleSet
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss | Format-Table');
-        $output = $vmssList | Format-Table | Out-String;
-        Write-Verbose ($output);
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List from RG
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss List');
@@ -153,7 +158,7 @@ function Test-VirtualMachineScaleSet
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List Skus
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssSku');
@@ -170,10 +175,7 @@ function Test-VirtualMachineScaleSet
         $vmListResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $output = $vmListResult | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("StorageProfile") };
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM | Format-Table');
-        $output = $vmListResult | Format-Table | Out-String;
-        Write-Verbose ($output);
+        Assert-False { $output.Contains("StorageProfile") };
 
         # List each VM
         for ($i = 0; $i -lt 2; $i++)
@@ -189,14 +191,15 @@ function Test-VirtualMachineScaleSet
             $vmInstance = Get-AzureRmVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $i;
             Assert-NotNull $vmInstance;
             $output = $vmInstance | Out-String;
+
             Write-Verbose($output);
             Assert-True { $output.Contains("PlatformUpdateDomain") };
         }
 
-        $st = Stop-AzureRmVmss -StayProvision -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $st = Stop-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $st = Start-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $st = Restart-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision;
+        $st = $vmssResult | Stop-AzureRmVmss;
+        $st = $vmssResult | Start-AzureRmVmss;
+        $st = $vmssResult | Restart-AzureRmVmss;
 
         $instanceListParam = @();
         for ($i = 0; $i -lt 2; $i++)
@@ -204,14 +207,16 @@ function Test-VirtualMachineScaleSet
             $instanceListParam += $i.ToString();
         }
 
-        $st = Stop-AzureRmVmss -StayProvision -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
-        $st = Stop-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
-        $st = Start-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
-        $st = Restart-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $instanceListParam;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -InstanceId $instanceListParam;
+        $st = $vmssResult | Stop-AzureRmVmss -InstanceId $instanceListParam;
+        $st = $vmssResult | Start-AzureRmVmss -InstanceId $instanceListParam;
+        $st = $vmssResult | Restart-AzureRmVmss -InstanceId $instanceListParam;
 
         # Remove
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
+        #$st = $vmssResult | Remove-AzureRmVmss -Force;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $st = $vmssResult | Remove-AzureRmVmss;
     }
     finally
     {
@@ -336,6 +341,8 @@ function Test-VirtualMachineScaleSetReimageUpdate
             "Conflict";
 
         # Remove
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     }
@@ -435,13 +442,14 @@ function Test-VirtualMachineScaleSetLB
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $ipCfg.LoadBalancerBackendAddressPools[0].Id;
         Assert-AreEqual $subnetId $ipCfg.Subnet.Id;
 
+        $settingString = ‘{ “AntimalwareEnabled”: true}’;
         $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
+            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true -Setting $settingString `
             | Remove-AzureRmVmssExtension -Name $extname `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
             | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' `
@@ -491,7 +499,7 @@ function Test-VirtualMachineScaleSetLB
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List from RG
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss List');
@@ -499,7 +507,7 @@ function Test-VirtualMachineScaleSetLB
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("VirtualMachineProfile") };
+        Assert-False { $output.Contains("VirtualMachineProfile") };
 
         # List Skus
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssSku');
@@ -512,7 +520,7 @@ function Test-VirtualMachineScaleSetLB
         $vmListResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName; # -Select $null;
         $output = $vmListResult | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("StorageProfile") };
+        Assert-False { $output.Contains("StorageProfile") };
 
         # List each VM
         for ($i = 0; $i -lt 2; $i++)
@@ -532,6 +540,7 @@ function Test-VirtualMachineScaleSetLB
             Assert-True { $output.Contains("PlatformUpdateDomain") };
         }
 
+        #$st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     }
     finally

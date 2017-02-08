@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             DatabaseAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId, out policy);
             var dbPolicyModel = ModelizeDatabaseAuditPolicy(policy);
-
+            dbPolicyModel.AuditType = AuditType.Table;
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;
             dbPolicyModel.DatabaseName = databaseName;
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             BlobAuditingPolicy policy;
             Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId, out policy);
             var dbPolicyModel = ModelizeDatabaseAuditPolicy(policy);
-
+            dbPolicyModel.AuditType = AuditType.Blob;
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;
             dbPolicyModel.DatabaseName = databaseName;
@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             ServerAuditingPolicy policy;
             Communicator.GetServerAuditingPolicy(resourceGroup, serverName, requestId, out policy);
             var serverPolicyModel = ModelizeServerAuditPolicy(policy);
+            serverPolicyModel.AuditType = AuditType.Table;
             serverPolicyModel.ResourceGroupName = resourceGroup;
             serverPolicyModel.ServerName = serverName;
 
@@ -164,6 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             BlobAuditingPolicy policy;
             Communicator.GetServerAuditingPolicy(resourceGroup, serverName, requestId, out policy);
             var serverPolicyModel = ModelizeServerAuditPolicy(policy);
+            serverPolicyModel.AuditType = AuditType.Blob;
             serverPolicyModel.ResourceGroupName = resourceGroup;
             serverPolicyModel.ServerName = serverName;
 
@@ -190,16 +192,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var dbPolicyModel = new DatabaseBlobAuditingPolicyModel();
             var properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint);
-            ModelizeAuditActionsAndGroupsInfo(dbPolicyModel, properties.AuditActionsAndGroups);
+            ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
+            ModelizeAuditActionGroups(dbPolicyModel, properties.AuditActionsAndGroups);
+            ModelizeAuditActions(dbPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays);
             return dbPolicyModel;
         }
 
-        private void ModelizeAuditActionsAndGroupsInfo(BaseBlobAuditingPolicyModel dbPolicyModel, IEnumerable<string> auditActionsAndGroups)
+        private void ModelizeAuditActionGroups(BaseBlobAuditingPolicyModel policyModel, IEnumerable<string> auditActionsAndGroups)
         {
             var groups = new List<AuditActionGroups>();
-            var actions = new List<string>();
             auditActionsAndGroups.ForEach(item =>
             {
                 AuditActionGroups group;
@@ -207,13 +209,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 {
                     groups.Add(group);
                 }
-                else
+            });
+            policyModel.AuditActionGroup = groups.ToArray();
+        }
+
+        private void ModelizeAuditActions(DatabaseBlobAuditingPolicyModel policyModel, IEnumerable<string> auditActionsAndGroups)
+        {
+            var actions = new List<string>();
+            auditActionsAndGroups.ForEach(item =>
+            {
+                AuditActionGroups group;
+                if (!Enum.TryParse(item, true, out group))
                 {
                     actions.Add(item);
                 }
             });
-            dbPolicyModel.AuditActionGroup = groups.ToArray();
-            dbPolicyModel.AuditAction = actions.ToArray();
+            policyModel.AuditAction = actions.ToArray();
         }
 
         private void ModelizeRetentionInfo(BaseBlobAuditingPolicyModel model, int retentionDays)
@@ -221,7 +232,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint)
+        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint, bool isSecondary)
         {
             if (string.IsNullOrEmpty(storageEndpoint))
             {
@@ -230,6 +241,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase)? 8 : 7; // https:// or http://
             var accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
             model.StorageAccountName = storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex- accountNameStartIndex);
+            model.StorageKeyType = (isSecondary) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
         }
 
         /// <summary>
@@ -254,8 +266,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var serverPolicyModel = new ServerBlobAuditingPolicyModel();
             var properties = policy.Properties;
             serverPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint);
-            ModelizeAuditActionsAndGroupsInfo(serverPolicyModel, properties.AuditActionsAndGroups);
+            ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
+            ModelizeAuditActionGroups(serverPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays);
             return serverPolicyModel;
         }
@@ -292,16 +304,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         private static void ModelizeEventTypesInfo(BaseTableAuditingPolicyModel model, string eventTypesToAudit)
         {
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
-            if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Failure) != -1) events.Add(AuditEventType.ParameterizedSQL_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Success) != -1) events.Add(AuditEventType.StoredProcedure_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Failure) != -1) events.Add(AuditEventType.StoredProcedure_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Success) != -1) events.Add(AuditEventType.Login_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Failure) != -1) events.Add(AuditEventType.Login_Failure);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Success) != -1) events.Add(AuditEventType.TransactionManagement_Success);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
+            if (eventTypesToAudit != null)
+            {
+                if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Failure) != -1) events.Add(AuditEventType.ParameterizedSQL_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Success) != -1) events.Add(AuditEventType.StoredProcedure_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Failure) != -1) events.Add(AuditEventType.StoredProcedure_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Success) != -1) events.Add(AuditEventType.Login_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Failure) != -1) events.Add(AuditEventType.Login_Failure);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Success) != -1) events.Add(AuditEventType.TransactionManagement_Success);
+                if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
+            }
+
             model.EventType = events.ToArray();
         }
 
@@ -415,20 +431,31 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var properties = new BlobAuditingProperties();
             updateParameters.Properties = properties;
             properties.State = model.AuditState.ToString();
-            if (!IgnoreStorage)
+            if (!IgnoreStorage && (model.AuditState == AuditStateType.Enabled))
             {
                 properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
                 properties.StorageAccountAccessKey = ExtractStorageAccountKey(model.StorageAccountName);
+                properties.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
+                properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(model.StorageAccountName);
             }
             properties.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model);
-            properties.RetentionDays = (int) model.RetentionInDays;
+            if (model.RetentionInDays != null)
+            {
+                properties.RetentionDays = (int) model.RetentionInDays;
+            }
 
             return updateParameters;
         }
 
         private static IList<string> ExtractAuditActionsAndGroups(BaseBlobAuditingPolicyModel model)
         {
-            var actionsAndGroups = new List<string>(model.AuditAction);
+            var dbPolicyModel = model as DatabaseBlobAuditingPolicyModel;
+            var actionsAndGroups = new List<string>();
+            if (dbPolicyModel != null)
+            {
+                actionsAndGroups.AddRange(dbPolicyModel.AuditAction);
+            }
+            
             model.AuditActionGroup.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
             if (actionsAndGroups.Count == 0) // default audit actions and groups in case nothing was defined by the user
             {
@@ -507,13 +534,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 return null;
             }
 
-            var events = new StringBuilder();
-            model.EventType.ToList().ForEach(e => events.Append(e.ToString()).Append(","));
-            if (events.Length != 0)
+            if (model.EventType.Any(t => t == AuditEventType.None))
             {
-                events.Remove(events.Length - 1, 1); // remove trailing comma
+                if (model.EventType.Count() == 1)
+                {
+                    return string.Empty;
+                }
+                if (model.EventType.Any(t => t != AuditEventType.None))
+                {
+                    throw new Exception(Properties.Resources.InvalidEventTypeSet);
+                }
             }
-            return events.ToString();
+            return string.Join(",", model.EventType.Select(t => t.ToString()));
         }
 
         /// <summary>

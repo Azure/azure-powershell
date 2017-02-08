@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public bool? RetentionEnabled { get; set; }
 
         /// <summary>
+        /// Gets or sets the OMS workspace Id
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource Id of the Log Analytics workspace to send logs/metrics to")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the retention in days
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
@@ -91,11 +99,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new ServiceDiagnosticSettingsPutParameters();
+            var putParameters = new ServiceDiagnosticSettingsResource(location: string.Empty);
 
-            ServiceDiagnosticSettingsGetResponse getResponse = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
+            ServiceDiagnosticSettingsResource getResponse = this.InsightsManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 
-            ServiceDiagnosticSettings properties = getResponse.Properties;
+            ServiceDiagnosticSettingsResource properties = getResponse;
 
             if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
             {
@@ -105,6 +113,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             if (!string.IsNullOrWhiteSpace(this.ServiceBusRuleId))
             {
                 properties.ServiceBusRuleId = this.ServiceBusRuleId;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.WorkspaceId))
+            {
+                properties.WorkspaceId = this.WorkspaceId;
             }
 
             if (this.Categories == null && this.Timegrains == null)
@@ -177,11 +190,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
             }
 
-            putParameters.Properties = properties;
+            putParameters.Logs = properties.Logs;
+            putParameters.Metrics = properties.Metrics;
+            putParameters.ServiceBusRuleId = properties.ServiceBusRuleId;
+            putParameters.StorageAccountId = properties.StorageAccountId;
+            putParameters.WorkspaceId = properties.WorkspaceId;
 
-            this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.PutAsync(this.ResourceId, putParameters, CancellationToken.None).Wait();
-            PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(putParameters.Properties);
-            WriteObject(psResult);
+            ServiceDiagnosticSettingsResource result = this.InsightsManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+            WriteObject(result);
         }
     }
 }

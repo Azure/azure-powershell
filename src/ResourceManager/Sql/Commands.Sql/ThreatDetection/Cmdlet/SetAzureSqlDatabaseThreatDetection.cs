@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true), 
+        OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
     public class SetAzureSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
@@ -51,10 +52,22 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Gets or sets the names of the detection types to filter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to exclude")]
-        [ValidateSet(SecurityConstants.Sql_Injection,
-            SecurityConstants.Sql_Injection_Vulnerability, SecurityConstants.Access_Anomaly,
-            SecurityConstants.Usage_Anomaly, SecurityConstants.None, IgnoreCase = false)]
-        public string[] ExcludedDetectionType { get; set; }
+        public DetectionType[] ExcludedDetectionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the storage account to use.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of retention days for the audit logs table.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The number of retention days for the audit logs")]
+        [ValidateNotNullOrEmpty]
+        public uint? RetentionInDays { get; internal set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -82,57 +95,25 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
                 model.EmailAdmins = (bool)EmailAdmins;
             }
 
-            ExcludedDetectionType = Util.ProcessExcludedDetectionTypes(ExcludedDetectionType);
+            ExcludedDetectionType = BaseThreatDetectionPolicyModel.ProcessExcludedDetectionTypes(ExcludedDetectionType);
 
             if (ExcludedDetectionType != null)
             {
-                model.ExcludedDetectionTypes = ExcludedDetectionType.Select(s => SecurityConstants.ExcludedDetectionToExcludedDetectionTypes[s]).ToArray();
+                model.ExcludedDetectionTypes = BaseThreatDetectionPolicyModel.ProcessExcludedDetectionTypes(ExcludedDetectionType);
             }
 
-            ValidateInput(model);
+            if (RetentionInDays != null)
+            {
+                model.RetentionInDays = RetentionInDays;
+            }
 
+            if (StorageAccountName != null)
+            {
+                model.StorageAccountName = StorageAccountName;
+            }
+
+            model.ValidateContent();
             return model;
-        }
-
-        /// <summary>
-        /// Preforms validity checks
-        /// </summary>
-        /// <param name="model">The model</param>
-        private void ValidateInput(DatabaseThreatDetectionPolicyModel model)
-        {
-            // Validity checks:
-            // 1. Check that EmailAddresses are in correct format 
-            bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(model.NotificationRecipientsEmails);
-            if (!areEmailAddressesInCorrectFormat)
-            {
-                throw new Exception(Properties.Resources.EmailsAreNotValid);
-            }
-
-            // 2. check that EmailAdmins is not False and NotificationRecipientsEmails is not empty
-            if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmails))
-            {
-                throw new Exception(Properties.Resources.NeedToProvideEmail);
-            }
-        }
-
-        /// <summary>
-        /// Checks if email addresses are in a correct format
-        /// </summary>
-        /// <param name="emailAddresses">The email addresses</param>
-        /// <returns>Returns whether the email addresses are in a correct format</returns>
-        private bool AreEmailAddressesInCorrectFormat(string emailAddresses)
-        {
-            if (string.IsNullOrEmpty(emailAddresses))
-            {
-                return true;
-            }
-
-            string[] emailAddressesArray = emailAddresses.Split(';').Where(s => !string.IsNullOrEmpty(s)).ToArray();
-            var emailRegex =
-                new Regex(string.Format("{0}{1}",
-                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
-                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
-            return !emailAddressesArray.Any(e => !emailRegex.IsMatch(e));
         }
     }
 }

@@ -19,7 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -28,7 +28,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -97,12 +96,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && !string.IsNullOrEmpty(instanceId))
             {
                 var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId);
-                WriteObject(result);
+                var psObject = new PSVirtualMachineScaleSetVM();
+                Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
+                WriteObject(psObject);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
             {
                 var result = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName);
-                WriteObject(result);
+                var psObject = new List<PSVirtualMachineScaleSetVMList>();
+                foreach (var r in result)
+                {
+                     psObject.Add(Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
+                }
+                WriteObject(psObject);
             }
         }
 
@@ -122,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Get", "AzureRmVmssVM", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVmssVM", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class GetAzureRmVmssVM : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -151,6 +157,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
                 Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new ParameterAttribute
@@ -158,6 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 1,
                 Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
@@ -171,6 +179,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pVMScaleSetName.Attributes.Add(new ParameterAttribute
@@ -178,8 +187,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 2,
                 Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
+            pVMScaleSetName.Attributes.Add(new AliasAttribute("Name"));
             pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
 
@@ -191,6 +202,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 3,
                 Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pInstanceId.Attributes.Add(new ParameterAttribute
@@ -198,6 +210,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 3,
                 Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pInstanceId.Attributes.Add(new AllowNullAttribute());

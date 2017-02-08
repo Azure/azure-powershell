@@ -24,29 +24,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     internal class SearchCommandHelper
     {
         /// <summary>
-        /// Return true if the provided query is a list of computers, return false otherwise.
-        /// </summary>
-        public static bool IsListOfComputers(string groupQuery)
-        {
-            if (string.IsNullOrEmpty(groupQuery))
-            {
-                return false;
-            }
-
-            // First, remove white spaces from group query.
-            string query = new string(
-                groupQuery.ToCharArray().Where(c => !Char.IsWhiteSpace(c)).ToArray());
-
-            if ((query.IndexOf("|measurecount()bycomputer", StringComparison.InvariantCultureIgnoreCase) >= 0) ||
-                (query.IndexOf("|distinctcomputer", StringComparison.InvariantCultureIgnoreCase) >= 0))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// Populate and validate SavedSearch.Properties.Tags from a Hashtable of tags specified in the cmdlet.
         /// </summary>
         /// <returns></returns>
@@ -57,7 +34,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 return null;
             }
 
-            bool hasGroupTag = false;
             string groupKey = null;
             IList<Tag> tagList = new List<Tag>();
 
@@ -69,23 +45,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
                     if (key.Equals("group", System.StringComparison.InvariantCultureIgnoreCase))
                     {
-                        hasGroupTag = true;
                         groupKey = key;
                     }
                 }
                 else
                 {
                     throw new PSArgumentException("Tag value can't be null.");
-                }
-            }
-
-            // If the saved search is tagged as a group of computers, do a sanity check on the query as it should be a list of computers.
-            if (hasGroupTag &&
-                tags[groupKey].ToString().Equals("computer", StringComparison.InvariantCultureIgnoreCase))
-            {
-                if (!IsListOfComputers(query))
-                {
-                    throw new PSArgumentException("Query is not a list of computers. Please use aggregations such as: distinct Computer or measure count() by Computer.");
                 }
             }
 

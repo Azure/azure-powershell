@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 {
@@ -98,6 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, Util.GenerateTracingId(), new ElasticPoolCreateOrUpdateParameters()
             {
                 Location = model.Location,
+                Tags = model.Tags,
                 Properties = new ElasticPoolCreateOrUpdateProperties()
                 {
                     DatabaseDtuMax = model.DatabaseDtuMax,
@@ -278,7 +280,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             model.Dtu = (int)pool.Properties.Dtu;
             model.State = pool.Properties.State;
             model.StorageMB = pool.Properties.StorageMB;
-            model.Tags = pool.Tags as Dictionary<string, string>;
+            model.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(pool.Tags), false);
             model.Location = pool.Location;
 
             DatabaseEdition edition = DatabaseEdition.None;

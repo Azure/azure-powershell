@@ -21,88 +21,86 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Cdn.Models;
 using SdkSku = Microsoft.Azure.Management.Cdn.Models.Sku;
 using SdkSkuName = Microsoft.Azure.Management.Cdn.Models.SkuName;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile"), OutputType(typeof(PSProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
     public class NewAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile name.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure CDN profile name.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
         /// <summary>
         /// The location in which to create the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The location in which to create the Cdn Profile")]
+        [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN profile.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         /// <summary>
         /// The pricing sku name of the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the Azure CDN profile. Valid values are StandardVerizon, StandardAkamai, and PremiumVerizon.")]
         public PSSkuName Sku { get; set; }
 
         /// <summary>
         /// The resource group name of the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile will be created in")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile will be created in.")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// The tags to associate with the Azure Cdn Profile.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Cdn Profile")]
+            HelpMessage = "The tags to associate with the Azure CDN profile.")]
         public Hashtable Tags { get; set; }
 
 
         public override void ExecuteCmdlet()
         {
-            // NewAzureCdnProfile should not overwrite any existing profiles, so check if the profile exist first
-            // before creation.
-            try
+
+            var existingProfile = CdnManagementClient.Profiles.List()
+                .Select(p => p.ToPsProfile())
+                .Where(p => p.Name.ToLower() == ProfileName.ToLower())
+                .FirstOrDefault(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower());
+
+            if (existingProfile != null)
             {
-                CdnManagementClient.Profiles.GetWithHttpMessagesAsync(ProfileName, ResourceGroupName)
-                    .Wait();
                 throw new PSArgumentException(string.Format(Resources.Error_CreateExistingProfile, ProfileName,
                     ResourceGroupName));
             }
-            catch (AggregateException exception)
-            {
-                var errorResponseException = exception.InnerException as ErrorResponseException;
-                if (errorResponseException == null)
-                {
-                    throw;
-                }
 
-                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    var cdnProfile = CdnManagementClient.Profiles.Create(
-                        ProfileName,
-                        new ProfileCreateParameters(
-                            Location,
-                            new SdkSku(Sku.CastEnum<PSSkuName, SdkSkuName>()),
-                            Tags.ToDictionaryTags()),
-                        ResourceGroupName);
+            ConfirmAction(MyInvocation.InvocationName,
+                ProfileName,
+                NewProfile);
+        }
 
-                    WriteObject(cdnProfile.ToPsProfile());
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        private void NewProfile()
+        {
+            var cdnProfile = CdnManagementClient.Profiles.Create(
+                ResourceGroupName,
+                ProfileName,
+                new Management.Cdn.Models.Profile(
+                    Location,
+                    new SdkSku(Sku.ToString()),
+                    id: null,
+                    name: null,
+                    type: null,
+                    tags: Tags.ToDictionaryTags())
+                );
+
+            WriteObject(cdnProfile.ToPsProfile());
         }
     }
 }

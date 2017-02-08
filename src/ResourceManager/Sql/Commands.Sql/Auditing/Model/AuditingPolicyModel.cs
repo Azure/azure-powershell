@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     public enum AuditStateType { Enabled, Disabled, New };
 
     /// <summary>
+    /// The possible value of auditing type
+    /// </summary>
+    public enum AuditType { Table, Blob };
+
+    /// <summary>
     /// The base class that defines the core properties of an auditing policy
     /// </summary>
     public abstract class AuditingPolicyModel
@@ -40,9 +45,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the storage account name
+        /// Gets or sets the audit type
         /// </summary>
-        public string StorageAccountName { get; set; }
+        public AuditType AuditType { get; set; }
 
         /// <summary>
         /// Gets or sets the audit state
@@ -50,10 +55,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         public AuditStateType AuditState { get; set; }
 
         /// <summary>
+        /// Gets or sets the storage account name
+        /// </summary>
+        public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage key type
+        /// </summary>
+        public StorageKeyKind StorageKeyType { get; set; }
+
+        /// <summary>
         /// Gets or sets the retention days
         /// </summary>
         public uint? RetentionInDays { get; internal set; }
-
-        public abstract bool IsInUse();
     }
 }

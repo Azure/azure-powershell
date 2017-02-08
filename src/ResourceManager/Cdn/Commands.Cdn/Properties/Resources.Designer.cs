@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to permanently remove profile &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Profile {0} currently contains endpoints.  Are you sure you want to permanently remove profile &apos;{0}&apos;?.
         /// </summary>
         internal static string Confirm_RemoveProfile {
             get {
@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string Confirm_Title {
+            get {
+                return ResourceManager.GetString("Confirm_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is already an existing custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;, profile &apos;{2}&apos;, resource group &apos;{3}&apos;.
         /// </summary>
         internal static string Error_CreateExistingCustomDomain {
@@ -106,7 +115,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos;, resource group &apos;{2}&apos;.
+        ///   Looks up a localized string similar to There is already an existing endpoint with name &apos;{0}&apos;..
         /// </summary>
         internal static string Error_CreateExistingEndpoint {
             get {
@@ -115,7 +124,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos;.
+        ///   Looks up a localized string similar to There is already an existing profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos;..
         /// </summary>
         internal static string Error_CreateExistingProfile {
             get {
@@ -142,11 +151,29 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Origin with name &apos;{0}&apos; on endpoint &apos;{1}&apos; could not be found..
+        /// </summary>
+        internal static string Error_DeleteNonExistingOrigin {
+            get {
+                return ResourceManager.GetString("Error_DeleteNonExistingOrigin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
         /// </summary>
         internal static string Error_DeleteNonExistingProfile {
             get {
                 return ResourceManager.GetString("Error_DeleteNonExistingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
+        /// </summary>
+        internal static string Error_ProfileNotFound {
+            get {
+                return ResourceManager.GetString("Error_ProfileNotFound", resourceCulture);
             }
         }
         
@@ -178,6 +205,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing origin....
+        /// </summary>
+        internal static string Progress_RemovingOrigin {
+            get {
+                return ResourceManager.GetString("Progress_RemovingOrigin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing profile ....
         /// </summary>
         internal static string Progress_RemovingProfile {
@@ -196,7 +232,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Domain &apos;{0}&apos; was removed from endpoint &apos;{1}&apos;, profile &apos;{2}&apos; and resource group &apos;{3}&apos;..
+        ///   Looks up a localized string similar to Remove-AzureRmCdnCustomDomain on {0}..
         /// </summary>
         internal static string Success_RemoveCustomDomain {
             get {
@@ -205,7 +241,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Endpoint &apos;{0}&apos; was removed from profile &apos;{1}&apos; and resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Remove-AzureRmCdnEndpoint on {0}..
         /// </summary>
         internal static string Success_RemoveEndpoint {
             get {
@@ -214,7 +250,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile &apos;{0}&apos; was removed from resource group &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Remove-AzureRmCdnProfile on {0}..
         /// </summary>
         internal static string Success_RemoveProfile {
             get {
@@ -232,7 +268,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos; and resource group &apos;{2}&apos; has been stopped..
+        ///   Looks up a localized string similar to Stop-AzureRmCdnEndpoint on {0}..
         /// </summary>
         internal static string Success_StopEndpoint {
             get {

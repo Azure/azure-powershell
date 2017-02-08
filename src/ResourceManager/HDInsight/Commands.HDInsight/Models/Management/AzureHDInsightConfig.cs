@@ -28,12 +28,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
 
         /// <summary>
+        /// Gets or sets the StorageType for the default Azure Storage Account.
+        /// </summary>
+        public StorageType DefaultStorageAccountType { get; set; }
+
+        /// <summary>
         /// Gets or sets the StorageName for the default Azure Storage Account.
         /// </summary>
         public string DefaultStorageAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the StorageKey for the default Azure Storage Account.
+        /// Gets or sets the storage key for the default Azure Storage Account.
         /// </summary>
         public string DefaultStorageAccountKey { get; set; }
 
@@ -56,6 +61,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the flavor for a cluster.
         /// </summary>
         public string ClusterType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the component version of a service in the cluster
+        /// </summary>
+        public Dictionary<string, string> ComponentVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the cluster tier.
@@ -107,12 +117,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the security profile.
+        /// </summary>
+        /// <value>
+        /// The security profile.
+        /// </value>
+        public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Hashtable>();
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
+            ComponentVersion = new Dictionary<string, string>();
         }
     }
 }

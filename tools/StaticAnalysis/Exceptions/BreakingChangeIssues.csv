@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.Sql.dll","Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet.NewAzureSqlDatabaseImport","New-AzureRmSqlDatabaseImport","0","2020","The cmdlet 'New-AzureRmSqlDatabaseImport' no longer supports the type 'Int32' for parameter 'DatabaseMaxSizeBytes'.","Change the type for parameter 'DatabaseMaxSizeBytes' back to 'Int32'."

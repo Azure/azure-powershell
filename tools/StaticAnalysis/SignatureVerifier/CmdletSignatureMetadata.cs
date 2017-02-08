@@ -27,6 +27,7 @@ namespace StaticAnalysis.SignatureVerifier
         private IList<OutputMetadata> _outputTypes = new List<OutputMetadata>();
         private IList<ParameterMetadata> _parameters = new List<ParameterMetadata>();
 
+        #region ShouldContinueVerbs
         private static readonly List<string> ShouldContinueVerbs = new List<string>
         {
              VerbsCommon.Clear,
@@ -51,7 +52,9 @@ namespace StaticAnalysis.SignatureVerifier
              VerbsData.Update,
              VerbsCommunications.Write
       };
+        #endregion
 
+        #region ShouldProcessVerbs
         private static readonly List<string> ShouldProcessVerbs = new List<string>
         {
             VerbsCommon.Close,
@@ -112,6 +115,78 @@ namespace StaticAnalysis.SignatureVerifier
             VerbsSecurity.Revoke,
             VerbsSecurity.Unblock
         };
+        #endregion
+
+        #region ApprovedVerbs
+        private static List<string> ApprovedVerbs;
+
+        private static List<string> GetApprovedVerbs()
+        {
+            if (ApprovedVerbs == null)
+            {
+                ApprovedVerbs = new List<string>();
+
+                PowerShell powershell = PowerShell.Create();
+                powershell.AddCommand("Get-Verb");
+
+                var cmdletResult = powershell.Invoke();
+
+                foreach (PSObject result in cmdletResult)
+                {
+                    ApprovedVerbs.Add(result.Members["Verb"].Value.ToString());
+                }
+            }
+
+            return ApprovedVerbs;
+        }
+        #endregion
+
+        #region SingularNouns
+        private static readonly List<string> SingularNouns = new List<string>
+        {
+            "Access",
+            "Address",
+            "Anonymous",
+            "Diagnostics",
+            "Express",
+            "Https",
+            "InBytes",
+            "InDays",
+            "InHours",
+            "InMinutes",
+            "InMonths",
+            "InSeconds",
+            "Loss",
+            "Mbps",
+            "Process",
+            "Progress",
+            "SaveAs",
+            "Statistics",
+            "Status",
+            "Success",
+            "Vmss"
+        };
+
+        public List<ParameterMetadata> GetParametersWithPluralNoun()
+        {
+            List<ParameterMetadata> pluralParameters = new List<ParameterMetadata>();
+            foreach (var parameter in _parameters)
+            {
+                if (parameter.Name.EndsWith("s") && SingularNouns.Find(n => parameter.Name.EndsWith(n)) == null)
+                {
+                    pluralParameters.Add(parameter);
+                }
+            }
+
+            return pluralParameters;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// The name of the assembly containing cmdlet
+        /// </summary>
+        public string AssemblyName { get; set; }
 
         /// <summary>
         /// The verb portion of the cmdlet name
@@ -142,6 +217,22 @@ namespace StaticAnalysis.SignatureVerifier
         public bool IsShouldContinueVerb
         {
             get { return VerbName != null && ShouldContinueVerbs.Contains(VerbName); }
+        }
+
+        /// <summary>
+        /// True if the cmdlet has an approved verb
+        /// </summary>
+        public bool IsApprovedVerb
+        {
+            get { return VerbName != null && GetApprovedVerbs().Contains(VerbName); }
+        }
+
+        /// <summary>
+        /// True if the cmdlet has a singular noun
+        /// </summary>
+        public bool HasSingularNoun
+        {
+            get { return !NounName.EndsWith("s") || SingularNouns.Find(n => NounName.EndsWith(n)) != null; }
         }
 
         /// <summary>

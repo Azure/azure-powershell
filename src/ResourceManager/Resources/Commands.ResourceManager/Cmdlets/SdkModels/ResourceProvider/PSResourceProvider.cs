@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     using System;
+    using System.Collections;
     using System.Linq;
 
     /// <summary>
@@ -50,5 +51,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                     .ToArray();
             }
         }
+
+        /// <summary>
+        /// Gets the zone mappings for the provider.
+        /// </summary>
+        public Hashtable ZoneMappings { get; set; }
     }
 }

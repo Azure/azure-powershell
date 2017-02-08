@@ -28,35 +28,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestCreateComputeNodeUser()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string computeNodeId = null;
-            string userName = "createuser";
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-CreateComputeNodeUser '{0}' '{1}' '{2}' 0", poolId, computeNodeId, userName) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
-                },
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-
-        }
-
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateComputeNodeUserPipeline()
+        public void TestComputeNodeUserEndToEnd()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
-            string userName = "createuser2";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-CreateComputeNodeUser '{0}' '{1}' '{2}' 1", poolId, computeNodeId, userName) }; },
+                () => { return new string[] { string.Format("Test-ComputeNodeUserEndToEnd '{0}' '{1}'", poolId, computeNodeId) }; },
                 () =>
                 {
                     context = new ScenarioTestContext();
@@ -66,50 +45,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
 
-        }
-
-        [Fact]
-        public void TestUpdateComputeNodeUser()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string computeNodeId = null;
-            string userName = "updateuser";
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-UpdateComputeNodeUser '{0}' '{1}' '{2}'", poolId, computeNodeId, userName) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
-                    ScenarioTestHelpers.CreateComputeNodeUser(controller, context, poolId, computeNodeId, userName);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteComputeNodeUser(controller, context, poolId, computeNodeId, userName);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeleteComputeNodeUser()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string computeNodeId = null;
-            string userName = "deleteuser";
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteComputeNodeUser '{0}' '{1}' '{2}'", poolId, computeNodeId, userName) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
-                    ScenarioTestHelpers.CreateComputeNodeUser(controller, context, poolId, computeNodeId, userName);
-                },
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
         }
     }
 }

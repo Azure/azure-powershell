@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHubsNamespace")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHubsNamespace", SupportsShouldProcess = true)]
     public class RemoveAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -34,11 +35,25 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            // delete a namespace 
-            ExecuteLongRunningCmdletWrap(
-            () => Client.BeginDeleteNamespace(ResourceGroup, Namespace));
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Resources.DeleteNamespace_Confirm, Namespace),
+                Resources.DeleteNamespace_WhatIf,
+                Namespace,
+                () =>
+                {
+                    // delete a namespace 
+                    Client.DeleteNamespace(ResourceGroup, Namespace);
+                });
         }
     }
 }

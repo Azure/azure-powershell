@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Disables auditing on a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseAuditing"), OutputType(typeof(AuditingPolicyModel))]
-    [Alias("Remove-AzureRmSqlDatabaseAuditing")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     public class RemoveSqlDatabaseAuditing : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
@@ -42,8 +41,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="model">A model object</param>
         protected override AuditingPolicyModel ApplyUserInputToModel(AuditingPolicyModel model)
         {
-            base.ApplyUserInputToModel(model);   
+            base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Disabled;
+
+            DatabaseAuditingPolicyModel tableAuditingPolicyModel = (model as DatabaseAuditingPolicyModel);
+            if (tableAuditingPolicyModel != null)
+            {
+                tableAuditingPolicyModel.UseServerDefault = UseServerDefaultOptions.Disabled;
+            }
+
             return model;
         }
 

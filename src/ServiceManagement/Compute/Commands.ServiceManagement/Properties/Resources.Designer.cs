@@ -251,6 +251,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find sql server configuration info in substatuses. If you have just installed the extension, you may see this till the installation process finishes. Otherwise, updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
+        ///{0}.
+        /// </summary>
+        public static string AzureVMSqlServerSqlConfigurationNotFound {
+            get {
+                return ResourceManager.GetString("AzureVMSqlServerSqlConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+        ///{0}.
+        /// </summary>
+        public static string AzureVMSqlServerWrongConfigFormat {
+            get {
+                return ResourceManager.GetString("AzureVMSqlServerWrongConfigFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} - Uploading WinRMCertificate: {1}.
         /// </summary>
         public static string AzureVMUploadingWinRMCertificate {
@@ -868,6 +888,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string MediaLocationOrDefaultStorageAccountMustBeSpecified {
             get {
                 return ResourceManager.GetString("MediaLocationOrDefaultStorageAccountMustBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Performing migration action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessAction {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you should you want to perform migrate action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessTarget {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessTarget", resourceCulture);
             }
         }
         

@@ -21,22 +21,37 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("New-AdlStore")]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
+        internal const string BaseParameterSetName = "User or System assigned encryption";
+        internal const string  EncryptionDisabledParameterSetName = "Disable Encryption";
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "Name of resource group under which you want to create the account.")]
+            HelpMessage = "Name of resource group under which you want to create the account.",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "Name of resource group under which you want to create the account.",
+            ParameterSetName = EncryptionDisabledParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            HelpMessage = "Name of the account to create.")]
+            HelpMessage = "Name of the account to create.",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "Name of the account to create.",
+            ParameterSetName = EncryptionDisabledParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            HelpMessage = "Azure region where the account should be created.")]
+            HelpMessage = "Azure region where the account should be created.",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage = "Azure region where the account should be created.",
+            ParameterSetName = EncryptionDisabledParameterSetName)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US",
             "East US",
@@ -46,15 +61,62 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
-                "Name of the default group to give permissions to for freshly created files and folders in the DataLakeStore."
-            )]
+                "Name of the default group to give permissions to for freshly created files and folders in the DataLakeStore.",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage =
+                "Name of the default group to give permissions to for freshly created files and folders in the DataLakeStore.",
+            ParameterSetName = EncryptionDisabledParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string DefaultGroup { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            HelpMessage = "A string,string dictionary of tags associated with this account")]
+            HelpMessage = "A string,string dictionary of tags associated with this account",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage = "A string,string dictionary of tags associated with this account",
+            ParameterSetName = EncryptionDisabledParameterSetName)]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "Indicates what type of encryption to provision the account with. By default, encryption is ServiceManaged. If no encryption is desired, it must be explicitly set with the -DisableEncryption flag",
+            ParameterSetName = BaseParameterSetName)]
+        [ValidateNotNull]
+        public EncryptionConfigType? Encryption { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "Indicates that the account will not have any form of encryption applied to it.",
+            ParameterSetName = EncryptionDisabledParameterSetName)]
+        [ValidateNotNull]
+        public SwitchParameter DisableEncryption { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, this is the key vault the user wishes to use",
+            ParameterSetName = BaseParameterSetName)]
+        [ValidateNotNull]
+        public string KeyVaultId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, this is the key name in the key vault the user wishes to use",
+            ParameterSetName = BaseParameterSetName)]
+        [ValidateNotNull]
+        public string KeyName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 8, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, this is the key version of the key the user wishes to use",
+            ParameterSetName = BaseParameterSetName)]
+        [ValidateNotNull]
+        public string KeyVersion { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.",
+            ParameterSetName = EncryptionDisabledParameterSetName)]
+        [ValidateNotNull]
+        public TierType? Tier { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -84,7 +146,70 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 }
             }
 
-            WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags));
+            // validation of encryption parameters
+            if (ParameterSetName.Equals(BaseParameterSetName))
+            {
+                var identity = new EncryptionIdentity();
+                var config = new EncryptionConfig();
+
+                if(!Encryption.HasValue)
+                {
+                    WriteWarning(Resources.DefaultingEncryptionType);
+                    Encryption = EncryptionConfigType.ServiceManaged;
+                }
+
+                if (Encryption == EncryptionConfigType.UserManaged)
+                {
+                    if (string.IsNullOrEmpty(KeyVaultId) ||
+                    string.IsNullOrEmpty(KeyName) ||
+                    string.IsNullOrEmpty(KeyVersion))
+                    {
+                        throw new PSArgumentException(Resources.MissingKeyVaultParams);
+                    }
+
+                    config.KeyVaultMetaInfo = new KeyVaultMetaInfo
+                    {
+                        KeyVaultResourceId = KeyVaultId,
+                        EncryptionKeyName = KeyName,
+                        EncryptionKeyVersion = KeyVersion
+                    };
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(KeyVaultId) ||
+                    !string.IsNullOrEmpty(KeyName) ||
+                    !string.IsNullOrEmpty(KeyVersion))
+                    {
+                        WriteWarning(Resources.IgnoredKeyVaultParams);
+                    }
+                }
+
+                config.Type = Encryption.Value;
+                WriteObject(
+                    new PSDataLakeStoreAccount(
+                        DataLakeStoreClient.CreateAccount(
+                            ResourceGroupName,
+                            Name,
+                            DefaultGroup,
+                            Location,
+                            Tags,
+                            identity,
+                            config,
+                            encryptionType: Encryption,
+                            tier: Tier)));
+            }
+            else
+            {
+                WriteObject(
+                    new PSDataLakeStoreAccount(
+                        DataLakeStoreClient.CreateAccount(
+                            ResourceGroupName,
+                            Name,
+                            DefaultGroup,
+                            Location,
+                            Tags,
+                            tier: Tier)));
+            }
         }
     }
 }

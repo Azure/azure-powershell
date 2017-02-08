@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -28,7 +27,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -98,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Remove", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class RemoveAzureRmContainerService : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -106,7 +104,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "ContainerServiceDelete";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove))
+            {
+                WriteWarning("Breaking change notice:'Force' parameter will be added in upcoming release.");
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()
@@ -120,6 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 1,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
@@ -133,6 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
             pContainerServiceName.Attributes.Add(new AllowNullAttribute());

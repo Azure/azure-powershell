@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the WindowSize of the rule condition
         /// </summary>
-        public TimeSpan WindowSize { get; set; }
+        public TimeSpan? WindowSize { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSEventRuleCondition class

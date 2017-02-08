@@ -57,17 +57,24 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
                 Name = nsResource.Name;
                 Type = nsResource.Type;
                 Location = nsResource.Location;
-                Tags = new Dictionary<string, string>(nsResource.Tags);
-                CreatedAt = nsResource.Properties.CreatedAt;
-                Critical = nsResource.Properties.Critical;
-                Enabled = nsResource.Properties.Enabled;
-                NamespaceType = nsResource.Properties.NamespaceType;
-                ProvisioningState = nsResource.Properties.ProvisioningState;
-                Region = nsResource.Properties.Region;
-                ScaleUnit = nsResource.Properties.ScaleUnit;
-                ServiceBusEndpoint = nsResource.Properties.ServiceBusEndpoint;
-                Status = nsResource.Properties.Status;
-                SubscriptionId = nsResource.Properties.SubscriptionId;
+                if (nsResource.Tags != null && nsResource.Tags.Count > 0)
+                {
+                    Tags = new Dictionary<string, string>(nsResource.Tags);
+                }
+                CreatedAt = nsResource.CreatedAt;
+                Critical = nsResource.Critical;
+                Enabled = nsResource.Enabled;
+                NamespaceType = nsResource.NamespaceType;
+                ProvisioningState = nsResource.ProvisioningState;
+                Region = nsResource.Region;
+                ScaleUnit = nsResource.ScaleUnit;
+                if (!string.IsNullOrEmpty(nsResource.ServiceBusEndpoint))
+                {
+                    ServiceBusEndpoint = new Uri(nsResource.ServiceBusEndpoint);
+                }
+                Status = nsResource.Status;
+                SubscriptionId = nsResource.SubscriptionId;
+                SkuName = nsResource.Sku != null ? nsResource.Sku.Name : string.Empty;
             }
         }
 
@@ -104,22 +111,22 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
         /// <summary>
         /// The time the namespace was created.
         /// </summary>
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// Whether or not the namespace is set as Critical.
         /// </summary>
-        public bool Critical { get; set; }
+        public bool? Critical { get; set; }
 
         /// <summary>
         /// Whether or not the namespace is currently enabled.
         /// </summary>
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets the namespace type.
         /// </summary>
-        public NamespaceType NamespaceType { get; internal set; }
+        public NamespaceType? NamespaceType { get; internal set; }
 
         /// <summary>
         /// Gets or sets provisioning state of the Namespace.
@@ -153,5 +160,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
         /// namespace.
         /// </summary>
         public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The Sku associated with the namespace
+        /// </summary>
+        public string SkuName { get; set; }
     }
 }

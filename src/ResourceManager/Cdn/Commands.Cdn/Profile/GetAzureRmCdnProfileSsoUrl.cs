@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSsoUrl"), OutputType(typeof(PSSsoUri))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSsoUrl", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSSsoUri))]
     public class GetAzureRmCdnProfileSsoUrl : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Azure CDN profile object.")]
         [ValidateNotNullOrEmpty]
         public PSProfile CdnProfile { get; set; }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
 
-            var sso = CdnManagementClient.Profiles.GenerateSsoUri(ProfileName, ResourceGroupName);
+            var sso = CdnManagementClient.Profiles.GenerateSsoUri(ResourceGroupName, ProfileName);
             
             WriteVerbose(Resources.Success);
             WriteObject(new PSSsoUri {SsoUriValue = sso.SsoUriValue });

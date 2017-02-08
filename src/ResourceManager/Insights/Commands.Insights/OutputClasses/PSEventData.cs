@@ -147,7 +147,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 ? new PSEventDataAuthorization
                 {
                     Action = eventData.Authorization.Action,
-                    Condition = eventData.Authorization.Condition,
                     Role = eventData.Authorization.Role,
                     Scope = eventData.Authorization.Scope
                 }
@@ -156,7 +155,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Claims = new PSDictionaryElement(eventData.Claims);
             this.CorrelationId = eventData.CorrelationId;
             this.Description = eventData.Description;
-            this.EventChannels = eventData.EventChannels;
+            this.EventChannels = eventData.Channels;
             this.EventDataId = eventData.EventDataId;
             this.EventName = eventData.EventName.Value;
             this.Category = eventData.Category.Value;

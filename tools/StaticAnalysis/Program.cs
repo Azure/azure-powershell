@@ -15,6 +15,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using StaticAnalysis.CmdlineArgParsing;
+using System.Reflection;
+using System.Linq;
 
 namespace StaticAnalysis
 {
@@ -27,62 +30,72 @@ namespace StaticAnalysis
         {
             new HelpAnalyzer.HelpAnalyzer(),
             new DependencyAnalyzer.DependencyAnalyzer(),
-            new SignatureVerifier.SignatureVerifier()
+            new SignatureVerifier.SignatureVerifier(),
+            new BreakingChangeAnalyzer.BreakingChangeAnalyzer()
         };
+
         public static void Main(string[] args)
         {
-            if (args == null || args.Length < 1)
+            AnalysisLogger analysisLogger = null;
+            try
             {
-                throw new InvalidOperationException("Please pass a valid directory name as the first parameter");
-            }
+                if (args == null || args.Length < 1)
+                {
+                    throw new InvalidOperationException("Please pass a valid directory name as the first parameter");
+                }
 
-            var installDir = args[0];
-            if (!Directory.Exists(installDir))
-            {
-                throw new InvalidOperationException("You must pass a valid directory as the first parameter");
-            }
+                var installDir = args[0];
+                if (!Directory.Exists(installDir))
+                {
+                    throw new InvalidOperationException("You must pass a valid directory as the first parameter");
+                }
 
-            var directories = new List<string>
+                var directories = new List<string>
             {
                 Path.Combine(installDir, @"ResourceManager\AzureResourceManager\"),
                 Path.Combine(installDir, @"ServiceManagement\Azure\"),
                 Path.Combine(installDir, @"Storage\")
            };
 
-            var reportsDirectory = Directory.GetCurrentDirectory();
-            bool logReportsDirectoryWarning = true;
-            if (args.Length > 1 && Directory.Exists(args[1]))
-            {
-                reportsDirectory = args[1];
-                logReportsDirectoryWarning = false;
+                var reportsDirectory = Directory.GetCurrentDirectory();
+                bool logReportsDirectoryWarning = true;
+                if (args.Length > 1 && Directory.Exists(args[1]))
+                {
+                    reportsDirectory = args[1];
+                    logReportsDirectoryWarning = false;
+                }
+
+                var exceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
+                bool useExceptions = true;
+                if (args.Length > 2)
+                {
+                    bool.TryParse(args[2], out useExceptions);
+                }
+                
+                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, exceptionsDirectory) :
+                    new AnalysisLogger(reportsDirectory);
+                if (logReportsDirectoryWarning)
+                {
+                    analysisLogger.WriteWarning("No logger specified in the second parameter, writing reports to {0}",
+                        reportsDirectory);
+                }
+
+                foreach (var analyzer in Analyzers)
+                {
+                    analyzer.Logger = analysisLogger;
+                    analysisLogger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
+                    analyzer.Analyze(directories);
+                    analysisLogger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
+                }
+
+                analysisLogger.WriteReports();
+                analysisLogger.CheckForIssues(2);
             }
-
-           var exceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
-           bool useExceptions = true;
-            if (args.Length > 2)
+            catch(Exception ex)
             {
-                bool.TryParse(args[2], out useExceptions);
+                analysisLogger.WriteError(ex.ToString());
+                throw ex;
             }
-
-            var logger = useExceptions? new ConsoleLogger(reportsDirectory, exceptionsDirectory) :
-                new ConsoleLogger(reportsDirectory);
-
-            if (logReportsDirectoryWarning)
-            {
-                logger.WriteWarning("No logger specified in the second parameter, writing reports to {0}",
-                    reportsDirectory);
-            }
-
-            foreach (var analyzer in Analyzers)
-            {
-                analyzer.Logger = logger;
-                logger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
-                analyzer.Analyze(directories);
-                logger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
-            }
-
-            logger.WriteReports();
-            logger.CheckForIssues(2);
         }
     }
 }

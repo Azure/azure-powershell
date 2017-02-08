@@ -121,6 +121,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindAResourceByTag()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindAResource-ByTag");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceWithExpandProperties()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
@@ -131,6 +138,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestGetResourceWithCollection()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceWithCollection");
+        }
+
+        [Fact(Skip = "Zones are disabled for now.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageResourceWithZones()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ManageResourceWithZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveASetOfResourcesTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveASetOfResources");
         }
     }
 }

@@ -47,24 +47,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SiteRecovery.1.0.3-preview\lib\net40\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SiteRecovery.2.0.0-preview\lib\net40\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
+	<Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.7-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -117,6 +117,7 @@
     <Compile Include="Common\PSSiteRecoveryJobClient.cs" />
     <Compile Include="Common\PSSiteRecoveryProtectableItemsClient.cs" />
     <Compile Include="Common\PSSiteRecoveryRecoveryPlanClient.cs" />
+    <Compile Include="Common\PSSiteRecoveryRecoveryPointClient.cs" />
     <Compile Include="Common\PSSiteRecoveryReplicationProtectedItemsClient.cs" />
     <Compile Include="Common\PSSiteRecoveryProtectionContainerClient.cs" />
     <Compile Include="Common\PSSiteRecoveryPolicyClient.cs" />
@@ -127,21 +128,44 @@
     <Compile Include="Common\PSSiteRecoveryVaultExtendedInfoClient.cs" />
     <Compile Include="Common\PSSiteRecoveryVMClient.cs" />
     <Compile Include="Common\SiteRecoveryCmdletBase.cs" />
+    <Compile Include="Fabrics\GetAzureRmSiteRecoveryFabric.cs" />
+    <Compile Include="Fabrics\NewAzureRmSiteRecoveryFabric.cs" />
+    <Compile Include="Fabrics\RemoveAzureRmSiteRecoveryFabric.cs" />
     <Compile Include="Job\StopAzureSiteRecoveryJob.cs" />
     <Compile Include="Models\PSConstants.cs" />
     <Compile Include="Models\PSNetworkObjects.cs" />
     <Compile Include="Models\PSRecoveryPlanObjects.cs" />
-    <Compile Include="Network\GetAzureRMSiteRecoveryNetwork.cs" />
-    <Compile Include="Network\GetAzureRMSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Network\GetAzureRmSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Network\GetAzureRmSiteRecoveryNetwork.cs" />
+    <Compile Include="Policy\UpdateAzureRmSiteRecoveryPolicy.cs" />
+    <Compile Include="ProtectableItem\GetAzureRmSiteRecoveryProtectableItem.cs" />
+    <Compile Include="ProtectionContainerMapping\GetAzureRmSiteRecoveryProtectionContainerMapping.cs" />
+    <Compile Include="ProtectionContainerMapping\NewAzureRmSiteRecoveryProtectionContainerMapping.cs" />
+    <Compile Include="ProtectionContainerMapping\RemoveAzureRmSiteRecoveryProtectionContainerMapping.cs" />
+    <Compile Include="ProtectionContainer\GetAzureRmSiteRecoveryProtectionContainer.cs" />
+    <Compile Include="RecoveryPlan\EditAzureRmSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\NewAzureRmSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPoint\GetAzureRmSiteRecoveryRecoveryPoint.cs" />
+    <Compile Include="ReplicationProtectedItem\GetAzureRmSiteRecoveryReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\NewAzureRmSiteRecoveryReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\RemoveAzureRmSiteRecoveryReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\SetAzureRmSiteRecoveryReplicationProtectedItem.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmSiteRecoveryApplyRecoveryPoint.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmSiteRecoveryCommitFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmSiteRecoveryPlannedFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmSiteRecoveryTestFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmSiteRecoveryUnPlannedFailover.cs" />
+    <Compile Include="ReplicationProtectedItem\UpdateAzureRmSiteRecoveryProtectionDirection.cs" />
     <Compile Include="Server\UpdateAzureSiteRecoveryServer.cs" />
     <Compile Include="Network\NewAzureRMSiteRecoveryNetworkMapping.cs" />
     <Compile Include="Network\RemoveAzureRMSiteRecoveryNetworkMapping.cs" />
-    <Compile Include="RecoveryPlan\GetAzureSiteRecoveryRecoveryPlan.cs" />
-    <Compile Include="RecoveryPlan\NewAzureSiteRecoveryRecoveryPlan.cs" />
-    <Compile Include="RecoveryPlan\RemoveAzureSiteRecoveryRecoveryPlan.cs" />
-    <Compile Include="RecoveryPlan\EditAzureSiteRecoveryRecoveryPlan.cs" />
-    <Compile Include="RecoveryPlan\UpdateAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\GetAzureRmSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\RemoveAzureRmSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\UpdateAzureRmSiteRecoveryRecoveryPlan.cs" />
     <Compile Include="Server\RemoveAzureSiteRecoveryServer.cs" />
+    <Compile Include="RecoveryServicesProvider\GetAzureRmSiteRecoveryServicesProvider.cs" />
+    <Compile Include="RecoveryServicesProvider\RefreshAzureRmSiteRecoveryServicesProvider.cs" />
+    <Compile Include="RecoveryServicesProvider\RemoveAzureRmSiteRecoveryServicesProvider.cs" />
     <Compile Include="Site\GetAzureSiteRecoverySite.cs" />
     <Compile Include="Site\NewAzureSiteRecoverySite.cs" />
     <Compile Include="Site\RemoveAzureSiteRecoverySite.cs" />
@@ -157,23 +181,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ProtectionContainer\GetAzureSiteRecoveryProtectionContainer.cs" />
     <Compile Include="ProtectionEntity\GetAzureSiteRecoveryProtectionEntity.cs" />
     <Compile Include="ProtectionEntity\SetAzureSiteRecoveryProtectionEntity.cs" />
-    <Compile Include="ProtectionEntity\StartAzureSiteRecoveryCommitFailoverJob.cs" />
-    <Compile Include="ProtectionEntity\StartAzureSiteRecoveryPlannedFailoverJob.cs" />
-    <Compile Include="ProtectionEntity\StartAzureSiteRecoveryTestFailoverJob.cs" />
-    <Compile Include="ProtectionEntity\StartAzureSiteRecoveryUnPlannedFailoverJob.cs" />
-    <Compile Include="ProtectionEntity\UpdateAzureSiteRecoveryProtectionDirection.cs" />
     <Compile Include="Policy\RemoveAzureSiteRecoveryPolicy.cs" />
     <Compile Include="Policy\NewAzureSiteRecoveryPolicy.cs" />
     <Compile Include="Policy\GetAzureSiteRecoveryPolicy.cs" />
     <Compile Include="Policy\StartAzureSiteRecoveryPolicyAssociationJob.cs" />
     <Compile Include="Policy\StartAzureSiteRecoveryPolicyDissociationJob.cs" />
     <Compile Include="Server\GetAzureSiteRecoveryServer.cs" />
-    <Compile Include="Storage\Classification\GetAzureSiteRecoveryStorageClassification.cs" />
-    <Compile Include="Storage\Classification\GetAzureSiteRecoveryStorageClassificationMapping.cs" />
-    <Compile Include="Storage\Classification\NewAzureSiteRecoveryStorageClassificationMapping.cs" />
+    <Compile Include="Storage\Classification\GetAzureRmSiteRecoveryStorageClassification.cs" />
+    <Compile Include="Storage\Classification\GetAzureRmSiteRecoveryStorageClassificationMapping.cs" />
+    <Compile Include="Storage\Classification\NewAzureRmSiteRecoveryStorageClassificationMapping.cs" />
     <Compile Include="Storage\Classification\RemoveAzureSiteRecoveryStorageClassificationMapping.cs" />
     <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\Utilities.cs" />

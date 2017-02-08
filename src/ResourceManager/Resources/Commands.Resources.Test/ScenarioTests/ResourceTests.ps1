@@ -354,6 +354,44 @@ function Test-FindAResource
 	New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
 	Assert-AreEqual 2 @($expected).Count
+
+	$expected = Find-AzureRmResource -ResourceGroupNameEquals $rgname -ResourceNameEquals $rname
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+}
+
+<#
+.SYNOPSIS
+Tests finding a resource by tag.
+#>
+function Test-FindAResource-ByTag
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = "testname"
+	$rname2 = "test2name"
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{ScenarioTestTag = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -Tag @{ScenarioTestTag = "ScenarioTestVal"}
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	$expected = Find-AzureRmResource -Tag @{ScenarioTestTag = $null}
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	$expected = Find-AzureRmResource -TagName "ScenarioTestTag"
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	$expected = Find-AzureRmResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 }
 
 <#
@@ -400,4 +438,108 @@ function Test-GetResourceWithCollection
 
 	# Assert
 	Assert-AreEqual $resourceGet.ResourceType "Microsoft.Web/serverFarms"
+}
+
+<#
+.SYNOPSIS
+Tests managing resource with zones.
+#>
+function Test-ManageResourceWithZones
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$location = "Central US"
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+    $created = New-AzureRmResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("2") -Force
+	
+	# Assert
+	Assert-NotNull $created
+	Assert-AreEqual $created.Zones.Length 1
+	Assert-AreEqual $created.Zones[0] "2"
+
+	$resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+	
+	# Assert
+	Assert-NotNull $resourceGet
+	Assert-AreEqual $resourceGet.Zones.Length 1
+	Assert-AreEqual $resourceGet.Zones[0] "2"
+
+	$resourceSet = set-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("3") -Force
+	
+	# Assert
+	Assert-NotNull $resourceSet
+	Assert-AreEqual $resourceSet.Zones.Length 1
+	Assert-AreEqual $resourceSet.Zones[0] "3"
+
+	$resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+	
+	# Assert
+	Assert-NotNull $resourceGet
+	Assert-AreEqual $resourceGet.Zones.Length 1
+	Assert-AreEqual $resourceGet.Zones[0] "3"
+}
+
+<#
+.SYNOPSIS
+Tests removing a resource.
+#>
+function Test-RemoveAResource
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = "testname"
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname | Remove-AzureRmResource -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-Null $expected
+}
+
+<#
+.SYNOPSIS
+Tests removing a set of resources.
+#>
+function Test-RemoveASetOfResources
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = "testname"
+	$rname2 = "test2name"
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+	
+	$expected = Find-AzureRmResource -ResourceType $resourceType -ResourceGroupNameContains $rgName
+	Assert-NotNull $expected
+	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
+
+	New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-AreEqual 2 @($expected).Count
+
+	Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname | Remove-AzureRmResource -Force
+	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
+	Assert-Null $expected
 }

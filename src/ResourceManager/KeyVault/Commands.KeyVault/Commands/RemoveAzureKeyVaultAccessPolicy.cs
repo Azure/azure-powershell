@@ -20,7 +20,9 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultAccessPolicy", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultAccessPolicy",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
@@ -83,9 +85,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByObjectId,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions..")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
         [ValidateNotNullOrEmpty()]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         /// <summary>
         /// Id of the application to which a user delegate to
@@ -111,11 +113,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, edisables the retrieval of secrets from this key vault by Azure Disk Encryption.")]
+            HelpMessage = "If specified, disables the retrieval of secrets from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Mandatory = false,
            HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns the updated key vault object.")]
@@ -126,56 +128,64 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
+            if (ShouldProcess(VaultName, Properties.Resources.RemoveVaultAccessPolicy))
+            {
+                if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
                 !EnabledForTemplateDeployment.IsPresent && !EnabledForDiskEncryption.IsPresent)
-            {
-                throw new ArgumentException(PSKeyVaultProperties.Resources.VaultPermissionFlagMissing);
-            }
-
-            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-
-            // Get the vault to be updated
-            PSKeyVaultModels.PSVault existingVault = null;
-
-            if (!string.IsNullOrWhiteSpace(ResourceGroupName))
-                existingVault = KeyVaultManagementClient.GetVault(
-                                                VaultName,
-                                                ResourceGroupName);
-            if (existingVault == null)
-            {
-                throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, VaultName, ResourceGroupName));
-            }
-
-            if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)
-                throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidApplicationId);
-
-            // Update vault policies
-            var updatedPolicies = existingVault.AccessPolicies;
-            if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
-            {
-                if (ObjectId == Guid.Empty)
                 {
-                    ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.VaultPermissionFlagMissing);
                 }
-                updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, ObjectId, this.ApplicationId)).ToArray();
+
+                ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+
+                // Get the vault to be updated
+                PSKeyVaultModels.PSVault existingVault = null;
+
+                if (!string.IsNullOrWhiteSpace(ResourceGroupName))
+                    existingVault = KeyVaultManagementClient.GetVault(
+                                                    VaultName,
+                                                    ResourceGroupName);
+                if (existingVault == null)
+                {
+                    throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, VaultName, ResourceGroupName));
+                }
+
+                if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidApplicationId);
+
+                if (!string.IsNullOrWhiteSpace(this.ObjectId) && !this.IsValidObjectIdSyntax(this.ObjectId))
+                {
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidObjectIdSyntax);
+                }
+
+                // Update vault policies
+                var updatedPolicies = existingVault.AccessPolicies;
+                if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || !string.IsNullOrWhiteSpace(this.ObjectId))
+                {
+                    if (string.IsNullOrWhiteSpace(this.ObjectId))
+                    {
+                        ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                    }
+                    updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, ObjectId, this.ApplicationId)).ToArray();
+                }
+
+                // Update the vault
+                var updatedVault = KeyVaultManagementClient.UpdateVault(existingVault, updatedPolicies,
+                    EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
+                    EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
+                    EnabledForDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
+                    ActiveDirectoryClient);
+
+                if (PassThru.IsPresent)
+                    WriteObject(updatedVault);
             }
-
-            // Update the vault
-            var updatedVault = KeyVaultManagementClient.UpdateVault(existingVault, updatedPolicies,
-                EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
-                EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
-                EnabledForDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
-                ActiveDirectoryClient);
-
-            if (PassThru.IsPresent)
-                WriteObject(updatedVault);
         }
-        private bool ShallBeRemoved(PSKeyVaultModels.PSVaultAccessPolicy ap, Guid objectId, Guid? applicationId)
+        private bool ShallBeRemoved(PSKeyVaultModels.PSVaultAccessPolicy ap, string objectId, Guid? applicationId)
         {
-            // If both object id and application id are specified, remove the compound identity policy only.                    
-            // If only object id is specified, remove all policies refer to the object id including the compound identity policies.                                
-            return applicationId.HasValue ? (ap.ApplicationId == applicationId && ap.ObjectId == objectId) :
-                (ap.ObjectId == objectId);
+            // If both object id and application id are specified, remove the compound identity policy only.
+            // If only object id is specified, remove all policies refer to the object id including the compound identity policies.
+            var sameObjectId = string.Equals(ap.ObjectId, objectId, StringComparison.OrdinalIgnoreCase);
+            return applicationId.HasValue ? (ap.ApplicationId == applicationId && sameObjectId) : sameObjectId;
         }
     }
 }

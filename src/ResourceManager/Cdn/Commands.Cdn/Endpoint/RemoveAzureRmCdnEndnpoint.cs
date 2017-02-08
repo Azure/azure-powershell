@@ -20,30 +20,34 @@ using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureCdnEndpoint : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN profile name.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the Azure CDN profile")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The endpoint.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.")]
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter()]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -54,39 +58,30 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            try
-            {
-                CdnManagementClient.Endpoints.Get(EndpointName, ProfileName, ResourceGroupName);
-            }
-            catch (AggregateException exception)
-            {
-                var errorResponseException = exception.InnerException as ErrorResponseException;
-                if (errorResponseException == null)
-                {
-                    throw;
-                }
+            var existingEndpoint = CdnManagementClient.Endpoints
+                .ListByProfile(ResourceGroupName, ProfileName)
+                .FirstOrDefault(e => e.Name.ToLower() == EndpointName.ToLower());
 
-                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(string.Format(
-                        Resources.Error_DeleteNonExistingEndpoint,
-                        EndpointName,
-                        ProfileName,
-                        ResourceGroupName));
-                }
+            if(existingEndpoint == null)
+            {
+                throw new PSArgumentException(string.Format(
+                    Resources.Error_DeleteNonExistingEndpoint,
+                    EndpointName,
+                    ProfileName,
+                    ResourceGroupName));
             }
 
-            if(!ShouldProcess(string.Format(Resources.Confirm_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName)))
-            {
-                return;
-            }
-
-            CdnManagementClient.Endpoints.DeleteIfExists(EndpointName, ProfileName, ResourceGroupName);
-
+            ConfirmAction(Force,
+                string.Format(Resources.Confirm_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName),
+                this.MyInvocation.InvocationName,
+                EndpointName,
+                () => CdnManagementClient.Endpoints.Delete(ResourceGroupName, ProfileName, EndpointName));
+           
             if (PassThru)
             {
                 WriteObject(true);
             }
         }
+
     }
 }

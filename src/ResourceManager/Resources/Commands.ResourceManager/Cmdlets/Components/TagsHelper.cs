@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Helper class for tags.
@@ -51,6 +52,58 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             return tags == null
                 ? null
                 : TagsConversionHelper.CreateTagHashtable(tags);
+        }
+
+        /// <summary>
+        /// Resolves the tag name given the tagObj and tagName parameters. If both are specified then tagObj takes precedence.
+        /// </summary>
+        /// <param name="tagObjParameter">Parameter containing the tag name-value specified as a hashset.</param>
+        /// <param name="tagNameParameter">Parameter containing the tag name specified individually.</param>
+        /// <returns>The resolved tag name.</returns>
+        internal static string GetTagNameFromParameters(Hashtable tagObjParameter, string tagNameParameter)
+        {
+            PSTagValuePair tagValuePair = null;
+            if (tagObjParameter != null)
+            {
+                tagValuePair = TagsConversionHelper.Create(tagObjParameter);
+
+                if (tagValuePair == null)
+                {
+                    throw new ArgumentException(ProjectResources.InvalidTagFormat);
+                }
+            }
+
+            if (tagValuePair != null)
+            {
+                return tagValuePair.Name;
+            }
+            return tagNameParameter;
+        }
+
+        /// <summary>
+        /// Resolves the tag value given the tagObj and tagValue parameters. If both are specified then tagObj takes precedence.
+        /// </summary>
+        /// <param name="tagObjParameter">Parameter containing the tag name-value specified as a hashset.</param>
+        /// <param name="tagValueParameter">Parameter containing the tag value specified individually.</param>
+        /// <returns>The resolved tag value.</returns>
+        internal static string GetTagValueFromParameters(Hashtable tagObjParameter, string tagValueParameter)
+        {
+            PSTagValuePair tagValuePair = null;
+            if (tagObjParameter != null)
+            {
+                tagValuePair = TagsConversionHelper.Create(tagObjParameter);
+
+                if (tagValuePair == null)
+                {
+                    throw new ArgumentException(ProjectResources.InvalidTagFormat);
+                }
+            }
+
+            if (tagValuePair != null)
+            {
+                return tagValuePair.Value;
+            }
+            return tagValueParameter;
         }
     }
 }

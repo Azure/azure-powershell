@@ -12,21 +12,21 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$resourceGroupName = "labRG1";
-$resourceName = "pstestrsvault";
+$resourceGroupName = "RecoveryServicesBackupTestRg";
+$resourceName = "PsTestRsVault";
 $defaultPolicyName = "DefaultPolicy";
 # Create VM instead of taking these as parameters
-$vmResourceGroupName = "arpittestresourcegroup";
-$vmName = "arpittestencvm1";
-$vmStorageAccountName = "mkheranirmrestore";
-$vmStorageAccountResourceGroup = "mkheranirmrestore";
+$vmResourceGroupName = "pstestrg";
+$vmName = "pstestv2vm1";
+$vmStorageAccountName = "pstestrg4762";
+$vmStorageAccountResourceGroup = "pstestrg";
 $vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
 
 function Test-GetItemScenario
 {
 	# 1. Create / update and get vault
-    $vaultLocation = get_available_location;
-	$vault = New-AzureRmRecoveryServicesVault `
+    $vaultLocation = get_available_location;	
+    $vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
 	# 2. Set vault context
@@ -55,7 +55,7 @@ function Test-GetItemScenario
 			-Status Registered;
 	}
 
-	$protectionState = if ($global:container -eq $null) { "IRPending" } else { "Protected" };
+	$protectionState = "IRPending";
 	
 	# VAR-1: Get all items for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
@@ -191,7 +191,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 {
 	# 1. Create / update and get vault
     $vaultLocation = get_available_location;
-	$vault = New-AzureRmRecoveryServicesVault `
+    $vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
 	# 2. Set vault context
@@ -236,9 +236,58 @@ function Test-GetAzureVMRecoveryPointsScenario
 	$backupEndTime = $backupJob.EndTime.AddMinutes(1);
 	$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
 		-StartDate $backupStartTime -EndDate $backupEndTime -Item $item;
-
+	
 	Assert-NotNull $recoveryPoint;
 	Assert-True { $recoveryPoint.ContainerName -match $vmUniqueName };
+
+	#Action get Recovery point detail
+	$recoveryPointDetail = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-RecoveryPointId $recoveryPoint[0].RecoveryPointId -Item $item;
+	
+	Assert-NotNull $recoveryPointDetail;
+
+    #Negative test case
+    # StartDate < EndDate
+    $failed = 0
+	try
+    {
+        $recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-StartDate $backupEndTime -EndDate $backupStartTime -Item $item
+        $failed = 0
+    }
+    catch
+    {
+        $failed = 1
+    }
+    Assert-AreEqual $failed 1
+
+    # rangeStart > DateTime.UtcNow
+    try
+    {
+        $backupStartTime = (Get-Date).ToUniversalTime().AddMinutes(30)
+        $recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-StartDate $backupStartTime -Item $item
+        $failed = 0
+    }
+    catch
+    {
+        $failed = 1
+    }
+    Assert-AreEqual $failed 1
+
+    # rangeStart.Kind != DateTimeKind.Utc
+    try
+    {
+        $backupStartTime = (Get-Date).AddDays(-20)
+        $recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-StartDate $backupStartTime -Item $item
+        $failed = 0
+    }
+    catch
+    {
+        $failed = 1
+    }
+    Assert-AreEqual $failed 1
 }
 
 function Test-RestoreAzureVMRItemScenario

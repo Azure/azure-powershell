@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListVirtualMachineInResourceGroupParamSet = "ListVirtualMachineInResourceGroupParamSet";
         protected const string ListAllVirtualMachinesParamSet = "ListAllVirtualMachinesParamSet";
         protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
+        private const string InfoNotAvailable = "Info Not Available";
 
         [Parameter(
            Mandatory = true,
@@ -56,8 +57,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
-            ParameterSetName = GetVirtualMachineInResourceGroupParamSet)]
+            Position = 2)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
@@ -69,9 +69,18 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public Uri NextLink { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public DisplayHintType DisplayHint { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            WriteWarning("Breaking change notice: In upcoming release, top level properties, DataDiskNames and NetworkInterfaceIDs, will be removed from VM object because they are also in StorageProfile and NetworkProfile, respectively.");
 
             ExecuteClientAction(() =>
             {
@@ -89,19 +98,11 @@ namespace Microsoft.Azure.Commands.Compute
                         vmListResult = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
                     }
 
-                    var psResultList = new List<PSVirtualMachine>();
+                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
 
                     while (vmListResult != null)
                     {
-                        if (vmListResult.Body != null)
-                        {
-                            foreach (var item in vmListResult.Body)
-                            {
-                                var psItem = Mapper.Map<PSVirtualMachine>(item);
-                                psItem = Mapper.Map(vmListResult, psItem);
-                                psResultList.Add(psItem);
-                            }
-                        }
+                        psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
 
                         if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
                         {
@@ -114,7 +115,20 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    WriteObject(psResultList, true);
+                    if (this.Status.IsPresent)
+                    {
+                        WriteObject(psResultListStatus, true);
+                    }
+                    else
+                    {
+                        var psResultList = new List<PSVirtualMachineList>();
+                        foreach (var item in psResultListStatus)
+                        {
+                            var psItem = Mapper.Map<PSVirtualMachineList>(item);
+                            psResultList.Add(psItem);
+                        }
+                        WriteObject(psResultList, true);
+                    }
                 }
                 else if (!string.IsNullOrEmpty(this.Name))
                 {
@@ -133,6 +147,7 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             psResult = Mapper.Map(result.Body, psResult);
                         }
+                        psResult.DisplayHint = this.DisplayHint;
                         WriteObject(psResult);
                     }
                 }
@@ -141,19 +156,74 @@ namespace Microsoft.Azure.Commands.Compute
                     AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
                     vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
                             .GetAwaiter().GetResult();
-                    var psResultList = new List<PSVirtualMachine>();
-                    if (vmListResult.Body != null)
+
+                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
+                    psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                    if (this.Status.IsPresent)
                     {
-                        foreach (var item in vmListResult.Body)
+                        WriteObject(psResultListStatus, true);
+                    }
+                    else
+                    {
+                        var psResultList = new List<PSVirtualMachineList>();
+                        foreach (var item in psResultListStatus)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachine>(vmListResult);
-                            psItem = Mapper.Map(item, psItem);
+                            var psItem = Mapper.Map<PSVirtualMachineList>(item);
                             psResultList.Add(psItem);
                         }
+                        WriteObject(psResultList, true);
                     }
-                    WriteObject(psResultList, true);
                 }
             });
+        }
+
+        private List<PSVirtualMachineListStatus> GetPowerstate(
+            AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
+            List<PSVirtualMachineListStatus> psResultListStatus)
+        {
+            if (vmListResult.Body != null)
+            {
+                foreach (var item in vmListResult.Body)
+                {
+                    var psItem = Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                    psItem = Mapper.Map(item, psItem);
+                    if (this.Status.IsPresent)
+                    {
+                        VirtualMachine state = null;
+                        try
+                        {
+                            // Call additional Get InstanceView of each VM to get the power states of all VM.
+                            state = this.VirtualMachineClient.Get(psItem.ResourceGroupName, psItem.Name, InstanceViewExpand);
+                        }
+                        catch
+                        {
+                            // Swallow any exception during getting instance view information.
+                        }
+
+                        if (state == null)
+                        {
+                            psItem.PowerState = InfoNotAvailable;
+                        }
+                        else
+                        {
+                            var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
+                            if (psstate != null && psstate.Statuses != null && psstate.Statuses.Count > 1)
+                            {
+                                psItem.PowerState = psstate.Statuses[1].DisplayStatus;
+                            }
+                            else
+                            {
+                                psItem.PowerState = InfoNotAvailable;
+                            }
+                        }
+                    }
+                    psItem.DisplayHint = this.DisplayHint;
+                    psResultListStatus.Add(psItem);
+                }
+            }
+
+            return psResultListStatus;
         }
     }
 }

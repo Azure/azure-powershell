@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(ParameterSetName = ByWorkspaceObjectByKind)]
         [ValidateSet(
             PSDataSourceKinds.AzureAuditLog,
+            PSDataSourceKinds.AzureActivityLog,
             PSDataSourceKinds.CustomLog,
             PSDataSourceKinds.LinuxPerformanceObject,
             PSDataSourceKinds.LinuxSyslog,
@@ -66,6 +69,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ByWorkspaceName)
+            {
+                WriteWarning(Properties.Resources.GetWorkspaceDataSourceParameterSetWarning);
+                return;
+            }
             if (ParameterSetName == ByWorkspaceObjectByName || ParameterSetName == ByWorkspaceObjectByKind)
             {
                 ResourceGroupName = Workspace.ResourceGroupName;
@@ -73,11 +81,30 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             }
 
             if (ParameterSetName == ByWorkspaceObjectByName || ParameterSetName == ByWorkspaceNameByName) {
-                WriteObject(OperationalInsightsClient.GetDataSource(ResourceGroupName, WorkspaceName, Name), true);
+                try
+                {
+                    var dataSource = OperationalInsightsClient.GetDataSource(ResourceGroupName, WorkspaceName, Name);
+                    WriteObject(dataSource, true);
+                }
+                catch (CloudException e)
+                {
+                    // Get throws NotFound exception if workspace does not exist
+                    if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return;
+                    }
+
+                    throw;
+                }
                 return;
             }
 
             if (ParameterSetName == ByWorkspaceObjectByKind || ParameterSetName == ByWorkspaceNameByKind) {
+                if (Kind == PSDataSourceKinds.AzureAuditLog)
+                {
+                    WriteWarning(Properties.Resources.DeprecateAzureAuditLogDataSource);
+                    return;
+                }
                 WriteObject(OperationalInsightsClient.FilterPSDataSources(ResourceGroupName, WorkspaceName, Kind), true);
                 return;
             }

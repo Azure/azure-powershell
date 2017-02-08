@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    //[Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (bool))]
-    //[Alias("Remove-AdlStoreItemAcl")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), OutputType(typeof (bool))]
+    [Alias("Remove-AdlStoreItemAcl")]
     public class RemoveAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -47,40 +47,37 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "Indicates that the ACL should be removed on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates a boolean response should be returned indicating the result of the delete operation."
+            )]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeStoreItemAcl,
-                        Default ? Resources.DefaultAclWord : string.Empty, Path.OriginalPath),
-                    string.Format(Resources.RemoveDataLakeStoreItemAcl,
-                        Default ? Resources.DefaultAclWord : string.Empty, Path.OriginalPath),
-                    Path.OriginalPath,
-                    () =>
+            ConfirmAction(
+                Force,
+                string.Format(Resources.RemovingDataLakeStoreItemAcl,
+                    Default ? Resources.DefaultAclWord : string.Empty, Path.OriginalPath),
+                string.Format(Resources.RemoveDataLakeStoreItemAcl,
+                    Default ? Resources.DefaultAclWord : string.Empty, Path.OriginalPath),
+                Path.OriginalPath,
+                () =>
+                {
+                    if (Default)
                     {
-                        if (Default)
-                        {
-                            DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.TransformedPath, Account);
-                        }
-                        else
-                        {
-                            DataLakeStoreFileSystemClient.RemoveAcl(Path.TransformedPath, Account);
-                        }
-                    });
-            }
-            else
-            {
-                if (Default)
-                {
-                    DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.TransformedPath, Account);
-                }
-                else
-                {
-                    DataLakeStoreFileSystemClient.RemoveAcl(Path.TransformedPath, Account);
-                }
-            }
+                        DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.TransformedPath, Account);
+                    }
+                    else
+                    {
+                        DataLakeStoreFileSystemClient.RemoveAcl(Path.TransformedPath, Account);
+                    }
+
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

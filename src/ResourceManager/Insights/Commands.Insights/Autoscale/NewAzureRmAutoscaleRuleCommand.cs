@@ -94,9 +94,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         public ScaleDirection ScaleActionDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the scale action type
+        /// Gets or sets the scale action value
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale action type for the setting")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale type for the setting. It supports these values: ChangeCount (default), PercentChangeCount, ExactCount")]
+        [ValidateNotNullOrEmpty]
         public ScaleType ScaleActionScaleType { get; set; }
 
         /// <summary>
@@ -113,6 +114,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The parameter ScaleActionType has been extended, it receives the following values now: ChangeCount (previous only value and current default), PercentChangeCount, ExactCount. The parameter could become mandatory in future versions.");
             ScaleRule rule = this.CreateSettingRule();
             WriteObject(rule);
         }
@@ -137,7 +139,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
                 MetricName = this.MetricName,
                 MetricResourceUri = this.MetricResourceId,
-                Operator = this.Operator,
+                OperatorProperty = this.Operator,
                 Statistic = this.MetricStatistic,
                 Threshold = this.Threshold,
                 TimeAggregation = this.TimeAggregationOperator,
@@ -145,12 +147,13 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 TimeWindow = this.TimeWindow == default(TimeSpan) ? MinimumTimeWindow : this.TimeWindow,
             };
 
+            // Notice ChangeCount is (ScaleType)0, so this is the default in this version. It was the only value in the previous version.
             ScaleAction action = new ScaleAction()
             {
                 Cooldown = this.ScaleActionCooldown,
                 Direction = this.ScaleActionDirection,
-                Type = this.ScaleActionScaleType,
                 Value = this.ScaleActionValue,
+                Type = this.ScaleActionScaleType
             };
 
             return new ScaleRule()
