@@ -67,53 +67,50 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public string ImageReferenceId { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true)]
-        public string Name { get; set; }
+        public CachingTypes? OsDiskCaching { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true)]
-        public CachingTypes? OsDiskCaching { get; set; }
+        public DiskCreateOptionTypes? OsDiskCreateOption { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public DiskCreateOptionTypes? OsDiskCreateOption { get; set; }
+        public OperatingSystemTypes? OsDiskOsType { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public OperatingSystemTypes? OsDiskOsType { get; set; }
+        public string Image { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public string Image { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 11,
-            ValueFromPipelineByPropertyName = true)]
         public string[] VhdContainer { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 12,
+            ValueFromPipelineByPropertyName = true)]
+        public string ImageReferenceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Microsoft.Azure.Management.Compute.Models.StorageAccountTypes? ManagedDisk { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 13,
             ValueFromPipelineByPropertyName = true)]
         public VirtualMachineScaleSetDataDisk[] DataDisk { get; set; }
 

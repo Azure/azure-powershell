@@ -54,67 +54,64 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public string CustomProfileOrchestrator { get; set; }
+        public int? MasterCount { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string ServicePrincipalProfileClientId { get; set; }
+        public string MasterDnsPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public string ServicePrincipalProfileSecret { get; set; }
+        public ContainerServiceAgentPoolProfile[] AgentPoolProfile { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true)]
-        public int? MasterCount { get; set; }
+        public string WindowsProfileAdminUsername { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true)]
-        public string MasterDnsPrefix { get; set; }
+        public string WindowsProfileAdminPassword { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public ContainerServiceAgentPoolProfile[] AgentPoolProfile { get; set; }
+        public string AdminUsername { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public string WindowsProfileAdminUsername { get; set; }
+        public string[] SshPublicKey { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public string WindowsProfileAdminPassword { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 11,
-            ValueFromPipelineByPropertyName = true)]
-        public string AdminUsername { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 12,
-            ValueFromPipelineByPropertyName = true)]
-        public string[] SshPublicKey { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 13,
-            ValueFromPipelineByPropertyName = true)]
         public bool VmDiagnosticsEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string CustomProfileOrchestrator { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string ServicePrincipalProfileClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string ServicePrincipalProfileSecret { get; set; }
 
         protected override void ProcessRecord()
         {
