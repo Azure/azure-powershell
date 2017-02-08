@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.6.0
 * New cmdlets for Managed disk
     - Disk cmdlets: New-AzureRmDisk, Update-AzureRmDisk, Get-AzureRmDisk, Remove-AzureRmDisk,
                     Grant-AzureRmDiskAccess, Revoke-AzureRmDiskAccess,
