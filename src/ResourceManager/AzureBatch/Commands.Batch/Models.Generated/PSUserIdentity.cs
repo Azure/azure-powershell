@@ -29,17 +29,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSExitOptions
+    public partial class PSUserIdentity
     {
         
-        internal Microsoft.Azure.Batch.ExitOptions omObject;
+        internal Microsoft.Azure.Batch.UserIdentity omObject;
         
-        public PSExitOptions()
+        private PSAutoUserSpecification autoUser;
+        
+        public PSUserIdentity(string userName)
         {
-            this.omObject = new Microsoft.Azure.Batch.ExitOptions();
+            this.omObject = new Microsoft.Azure.Batch.UserIdentity(userName);
         }
         
-        internal PSExitOptions(Microsoft.Azure.Batch.ExitOptions omObject)
+        public PSUserIdentity(PSAutoUserSpecification autoUserSpecification)
+        {
+            this.omObject = new Microsoft.Azure.Batch.UserIdentity(autoUserSpecification.omObject);
+        }
+        
+        internal PSUserIdentity(Microsoft.Azure.Batch.UserIdentity omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +55,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.DependencyAction? DependencyAction
+        public PSAutoUserSpecification AutoUser
         {
             get
             {
-                return this.omObject.DependencyAction;
-            }
-            set
-            {
-                this.omObject.DependencyAction = value;
+                if (((this.autoUser == null) 
+                            && (this.omObject.AutoUser != null)))
+                {
+                    this.autoUser = new PSAutoUserSpecification(this.omObject.AutoUser);
+                }
+                return this.autoUser;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.JobAction? JobAction
+        public string UserName
         {
             get
             {
-                return this.omObject.JobAction;
-            }
-            set
-            {
-                this.omObject.JobAction = value;
+                return this.omObject.UserName;
             }
         }
     }

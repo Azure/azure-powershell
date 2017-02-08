@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSExitOptions
+    public partial class PSUserAccount
     {
         
-        internal Microsoft.Azure.Batch.ExitOptions omObject;
+        internal Microsoft.Azure.Batch.UserAccount omObject;
         
-        public PSExitOptions()
+        public PSUserAccount(string name, string password, System.Nullable<Microsoft.Azure.Batch.Common.ElevationLevel> elevationLevel = null, string sshPrivateKey = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.ExitOptions();
+            this.omObject = new Microsoft.Azure.Batch.UserAccount(name, password, elevationLevel, sshPrivateKey);
         }
         
-        internal PSExitOptions(Microsoft.Azure.Batch.ExitOptions omObject)
+        internal PSUserAccount(Microsoft.Azure.Batch.UserAccount omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +48,51 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.DependencyAction? DependencyAction
+        public Microsoft.Azure.Batch.Common.ElevationLevel? ElevationLevel
         {
             get
             {
-                return this.omObject.DependencyAction;
+                return this.omObject.ElevationLevel;
             }
             set
             {
-                this.omObject.DependencyAction = value;
+                this.omObject.ElevationLevel = value;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.JobAction? JobAction
+        public string Name
         {
             get
             {
-                return this.omObject.JobAction;
+                return this.omObject.Name;
             }
             set
             {
-                this.omObject.JobAction = value;
+                this.omObject.Name = value;
+            }
+        }
+        
+        public string Password
+        {
+            get
+            {
+                return this.omObject.Password;
+            }
+            set
+            {
+                this.omObject.Password = value;
+            }
+        }
+        
+        public string SshPrivateKey
+        {
+            get
+            {
+                return this.omObject.SshPrivateKey;
+            }
+            set
+            {
+                this.omObject.SshPrivateKey = value;
             }
         }
     }

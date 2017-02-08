@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.GetAllPoolsLifetimeStatistics));
 
-            PoolStatistics poolStatistics = poolOperations.GetAllPoolsLifetimeStatistics(additionBehaviors);
+            PoolStatistics poolStatistics = poolOperations.GetAllLifetimeStatistics(additionBehaviors);
             PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
             return psPoolStatistics;
         }
@@ -164,6 +164,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (parameters.NetworkConfiguration != null)
             {
                 pool.NetworkConfiguration = parameters.NetworkConfiguration.omObject;
+            }
+
+            if (parameters.UserAccounts != null)
+            {
+                pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);
             }
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));

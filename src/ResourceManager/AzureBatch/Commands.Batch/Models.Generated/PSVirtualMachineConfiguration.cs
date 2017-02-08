@@ -36,7 +36,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSImageReference imageReference;
         
+        private PSOSDisk oSDisk;
+        
         private PSWindowsConfiguration windowsConfiguration;
+        
+        public PSVirtualMachineConfiguration(string nodeAgentSkuId, PSImageReference imageReference = default(PSImageReference), PSOSDisk osDisk = default(PSOSDisk), PSWindowsConfiguration windowsConfiguration = default(PSWindowsConfiguration))
+        {
+            Microsoft.Azure.Batch.ImageReference imageReferenceOmObject = null;
+            if ((imageReference != null))
+            {
+                imageReferenceOmObject = imageReference.omObject;
+            }
+            Microsoft.Azure.Batch.OSDisk osDiskOmObject = null;
+            if ((osDisk != null))
+            {
+                osDiskOmObject = osDisk.omObject;
+            }
+            Microsoft.Azure.Batch.WindowsConfiguration windowsConfigurationOmObject = null;
+            if ((windowsConfiguration != null))
+            {
+                windowsConfigurationOmObject = windowsConfiguration.omObject;
+            }
+            this.omObject = new Microsoft.Azure.Batch.VirtualMachineConfiguration(nodeAgentSkuId, imageReferenceOmObject, osDiskOmObject, windowsConfigurationOmObject);
+        }
         
         public PSVirtualMachineConfiguration(PSImageReference imageReference, string nodeAgentSkuId, PSWindowsConfiguration windowsConfiguration = default(PSWindowsConfiguration))
         {
@@ -91,6 +113,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.NodeAgentSkuId = value;
+            }
+        }
+        
+        public PSOSDisk OSDisk
+        {
+            get
+            {
+                if (((this.oSDisk == null) 
+                            && (this.omObject.OSDisk != null)))
+                {
+                    this.oSDisk = new PSOSDisk(this.omObject.OSDisk);
+                }
+                return this.oSDisk;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.OSDisk = null;
+                }
+                else
+                {
+                    this.omObject.OSDisk = value.omObject;
+                }
+                this.oSDisk = value;
             }
         }
         

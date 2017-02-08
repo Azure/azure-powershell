@@ -32,9 +32,11 @@ namespace PSModelGenerator
         private static readonly Dictionary<string, string> OMtoPSClassMappings = new Dictionary<string, string>()
         {
             {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
+            {"Microsoft.Azure.Batch.AuthenticationTokenSettings", "PSAuthenticationTokenSettings"},
             {"Microsoft.Azure.Batch.AutoPoolSpecification", "PSAutoPoolSpecification"},
             {"Microsoft.Azure.Batch.AutoScaleRun", "PSAutoScaleRun"},
             {"Microsoft.Azure.Batch.AutoScaleRunError", "PSAutoScaleRunError"},
+            {"Microsoft.Azure.Batch.AutoUserSpecification", "PSAutoUserSpecification"},
             {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
             {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
             {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
@@ -75,6 +77,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
             {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
             {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
+            {"Microsoft.Azure.Batch.OSDisk", "PSOSDisk"},
             {"Microsoft.Azure.Batch.PoolInformation", "PSPoolInformation"},
             {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
             {"Microsoft.Azure.Batch.PoolStatistics", "PSPoolStatistics"},
@@ -96,6 +99,8 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.TaskSchedulingPolicy", "PSTaskSchedulingPolicy"},
             {"Microsoft.Azure.Batch.TaskStatistics", "PSTaskStatistics"},
             {"Microsoft.Azure.Batch.UsageStatistics", "PSUsageStatistics"},
+            {"Microsoft.Azure.Batch.UserAccount", "PSUserAccount"},
+            {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
             {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
             {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
         };

@@ -49,8 +49,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Batch, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.3.0.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Batch, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.4.2.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -72,11 +72,16 @@
     <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommand.cs" />
     <Compile Include="Jobs\GetBatchJobPreparationAndReleaseTaskStatusCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
+    <Compile Include="Models.Generated\PSAuthenticationTokenSettings.cs" />
+    <Compile Include="Models.Generated\PSAutoUserSpecification.cs" />
     <Compile Include="Models.Generated\PSExitCodeMapping.cs" />
     <Compile Include="Models.Generated\PSExitCodeRangeMapping.cs" />
     <Compile Include="Models.Generated\PSExitConditions.cs" />
     <Compile Include="Models.Generated\PSExitOptions.cs" />
     <Compile Include="Models.Generated\PSNetworkConfiguration.cs" />
+    <Compile Include="Models.Generated\PSOSDisk.cs" />
+    <Compile Include="Models.Generated\PSUserAccount.cs" />
+    <Compile Include="Models.Generated\PSUserIdentity.cs" />
     <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
     <Compile Include="Models\ListJobPreparationAndReleaseStatusOptions.cs" />
     <Compile Include="Models\NewBulkTaskParameters.cs" />
@@ -198,6 +203,7 @@
     <Compile Include="Models\PoolOperationParameters.cs" />
     <Compile Include="Models\PSBatchLocationQuotas.cs" />
     <Compile Include="Models\PSCloudPool.cs" />
+    <Compile Include="Models\PSNodeFile.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
     <Compile Include="Models.Generated\PSAutoPoolSpecification.cs" />
     <Compile Include="Models.Generated\PSAutoScaleRun.cs" />
