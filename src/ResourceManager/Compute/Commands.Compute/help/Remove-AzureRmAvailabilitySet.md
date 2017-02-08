@@ -13,8 +13,8 @@ Removes an availability set from Azure.
 ## SYNTAX
 
 ```
-Remove-AzureRmAvailabilitySet [-WhatIf] [-Confirm] [-ResourceGroupName] <String> -AvailabilitySetName <String>
- [-Force] [<CommonParameters>]
+Remove-AzureRmAvailabilitySet [-ResourceGroupName] <String> [-Name <String>] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,21 +31,6 @@ This command removes an availability set named AvailablitySet03 in the resource 
 
 ## PARAMETERS
 
-### -AvailabilitySetName
-Specifies the availability set name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -58,6 +43,19 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The availability set name.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName, AvailabilitySetName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

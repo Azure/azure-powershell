@@ -16,8 +16,8 @@ New-AzureRmSnapshotConfig [[-AccountType] <StorageAccountTypes>] [[-OsType] <Ope
  [[-DiskSizeGB] <Int32>] [[-Location] <String>] [[-Tag] <Hashtable>] [[-CreateOption] <DiskCreateOption>]
  [[-StorageAccountId] <String>] [[-ImageReference] <ImageDiskReference>] [[-SourceUri] <String>]
  [[-SourceResourceId] <String>] [[-EncryptionSettingsEnabled] <Boolean>]
- [[-DiskEncryptionKey] <KeyVaultAndSecretReference>] [[-KeyEncryptionKey] <KeyVaultAndKeyReference>]
- [<CommonParameters>]
+ [[-DiskEncryptionKey] <KeyVaultAndSecretReference>] [[-KeyEncryptionKey] <KeyVaultAndKeyReference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -238,6 +238,36 @@ Required: False
 Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

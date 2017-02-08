@@ -1,53 +1,66 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-ms.assetid: 8C1C12AD-5130-42E7-99BB-B13900D7A712
 online version: 
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVmssExtension
+# Remove-AzureRmVmssDataDisk
 
 ## SYNOPSIS
-Removes an extension from the VMSS.
+Removes a data disk from the VMSS.
 
 ## SYNTAX
 
 ### NameParameterSet
 ```
-Remove-AzureRmVmssExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-Name] <String> [-WhatIf]
+Remove-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-Name] <String> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### IdParameterSet
+### LunParameterSet
 ```
-Remove-AzureRmVmssExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet> -Id <String> [-WhatIf]
+Remove-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-Lun] <Int32> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVmssExtension** cmdlet removes an extension from the Virtual Machine Scale Set (VMSS).
+The **Remove-AzureRmVmssDataDisk** cmdlet removes a data disk from the Virtual Machine Scale Set (VMSS) instance.
 
 ## EXAMPLES
 
+### Example 1
+```
+PS C:\> Remove-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Name 'DataDisk1'
+```
+
+This command removes the data disk named 'DataDisk1' from the VMSS object.
+
+### Example 2
+```
+PS C:\> Remove-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 0
+```
+
+This command removes the data disk of LUN 0 from the VMSS object.
+
 ## PARAMETERS
 
-### -Id
-Specifies the ID of the extension that this cmdlet removes from the VMSS.
+### -Lun
+Specifies the logical unit number of the disk.
 
 ```yaml
-Type: String
-Parameter Sets: IdParameterSet
+Type: Int32
+Parameter Sets: LunParameterSet
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the extension that this cmdlet removes from the VMSS.
+Specifies the name of the disk.
 
 ```yaml
 Type: String
@@ -55,14 +68,14 @@ Parameter Sets: NameParameterSet
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -VirtualMachineScaleSet
-Specifies the VMSS from which to remove the extension from.
+Specify the VMSS object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -70,7 +83,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -92,7 +105,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -111,12 +125,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
+System.String
+System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Add-AzureRmVmssExtension](./Add-AzureRmVmssExtension.md)

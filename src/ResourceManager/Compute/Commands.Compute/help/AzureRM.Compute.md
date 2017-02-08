@@ -35,6 +35,9 @@ Adds a secret to a virtual machine.
 ### [Add-AzureRmVmssAdditionalUnattendContent](Add-AzureRmVmssAdditionalUnattendContent.md)
 Adds information to the unattended Windows Setup answer file.
 
+### [Add-AzureRmVmssDataDisk](Add-AzureRmVmssDataDisk.md)
+Adds a data disk to the VMSS.
+
 ### [Add-AzureRmVmssDiagnosticsExtension](Add-AzureRmVmssDiagnosticsExtension.md)
 Adds a diagnostics extension to the VMSS.
 
@@ -287,6 +290,9 @@ Removes a SQL Server extension from a virtual machine.
 ### [Remove-AzureRmVmss](Remove-AzureRmVmss.md)
 Removes the VMSS or a virtual machine that is within the VMSS.
 
+### [Remove-AzureRmVmssDataDisk](Remove-AzureRmVmssDataDisk.md)
+Removes a data disk from the VMSS.
+
 ### [Remove-AzureRmVmssDiagnosticsExtension](Remove-AzureRmVmssDiagnosticsExtension.md)
 Removes a diagnostics extension from the VMSS.
 
@@ -344,8 +350,8 @@ Sets the image reference properties on a snapshot object.
 ### [Set-AzureRmSnapshotKeyEncryptionKey](Set-AzureRmSnapshotKeyEncryptionKey.md)
 Sets the key encryption key properties on a snapshot object.
 
-### [Set-AzureRmSnapshotKeyEncryptionKey](Set-AzureRmSnapshotKeyEncryptionKey.md)
-Sets the key encryption key properties on a snapshot object.
+### [Set-AzureRmSnapshotUpdateDiskEncryptionKey](Set-AzureRmSnapshotUpdateDiskEncryptionKey.md)
+Sets the disk encryption key properties on a snapshot update object.
 
 ### [Set-AzureRmSnapshotUpdateImageReference](Set-AzureRmSnapshotUpdateImageReference.md)
 Sets the image reference properties on a snapshot update object.

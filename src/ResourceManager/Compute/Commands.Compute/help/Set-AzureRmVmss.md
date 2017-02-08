@@ -14,12 +14,14 @@ Sets specific actions on a specified VMSS.
 
 ### InvokeByDynamicParameters (Default)
 ```
-Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Reimage] [<CommonParameters>]
+Set-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Reimage]
+ [<CommonParameters>]
 ```
 
 ### InvokeByDynamicParametersForFriendMethod
 ```
-Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-ReimageAll] [<CommonParameters>]
+Set-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-ReimageAll]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +96,36 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

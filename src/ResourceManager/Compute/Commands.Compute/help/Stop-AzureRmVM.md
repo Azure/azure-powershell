@@ -12,14 +12,16 @@ Stops an Azure virtual machine.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### ResourceGroupNameParameterSetName (Default)
 ```
-Stop-AzureRmVM [-ResourceGroupName] <String> -VMName <String> [-Force] [<CommonParameters>]
+Stop-AzureRmVM -Name <String> [-Force] [-StayProvisioned] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### IdParameterSetName
 ```
-Stop-AzureRmVM [-ResourceGroupName] <String> -VMName <String> [-Force] [-StayProvisioned] [<CommonParameters>]
+Stop-AzureRmVM -Name <String> [-Force] [-StayProvisioned] -Id <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,12 +53,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The resource group name.```yaml
+Type: String
+Parameter Sets: IdParameterSetName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The virtual machine name.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
@@ -71,28 +99,43 @@ Indicates that this cmdlet uses the stay provisioned setting.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMName
-Specifies the name of the virtual machine.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: Name
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

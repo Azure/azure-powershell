@@ -12,7 +12,8 @@ Converts a virtual machine with blob-based disks to a virtual machine with manag
 ## SYNTAX
 
 ```
-ConvertTo-AzureRmVMManagedDisk [-ResourceGroupName] <String> [-VMName] <String> [<CommonParameters>]
+ConvertTo-AzureRmVMManagedDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMName] <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +58,36 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

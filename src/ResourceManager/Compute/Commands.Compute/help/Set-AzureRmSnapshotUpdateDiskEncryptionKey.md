@@ -4,43 +4,43 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmSnapshotKeyEncryptionKey
+# Set-AzureRmSnapshotUpdateDiskEncryptionKey
 
 ## SYNOPSIS
-Sets the key encryption key properties on a snapshot object.
+Sets the disk encryption key properties on a snapshot update object.
 
 ## SYNTAX
 
 ```
-Set-AzureRmSnapshotKeyEncryptionKey [-Snapshot] <Snapshot> [[-KeyUrl] <String>] [-SourceVaultId <String>]
- [<CommonParameters>]
+Set-AzureRmSnapshotUpdateDiskEncryptionKey [-SnapshotUpdate] <SnapshotUpdate> [[-SecretUrl] <String>]
+ [[-SourceVaultId] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSnapshotKeyEncryptionKey** cmdlet sets the key encryption key properties on a snapshot object.
+The **Set-AzureRmSnapshotUpdateDiskEncryptionKey** cmdlet sets the disk encryption key properties on a snapshot update object.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $snapshotconfig = New-AzureRmSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\> $snapshotupdateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 PS C:\> $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 PS C:\> $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
 PS C:\> $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
 PS C:\> $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
-PS C:\> $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
-PS C:\> $snapshotconfig = Set-AzureRmSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
-PS C:\> New-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Snapshot $snapshotconfig;
+PS C:\> $snapshotupdateconfig = Set-AzureRmSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+PS C:\> $snapshotupdateconfig = Set-AzureRmSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+PS C:\> Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;
 ```
 
-The first command creates a local empty snapshot object with size 5GB in Standard_LRS storage account type.  It also sets Windows OS type and enables encryption settings.
-The second and third commands set the disk encryption key and key encryption key settings for the snapshot object.
-The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
+The first command creates a local empty snapshot update object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type and enables encryption settings.
+The second and third commands set the disk encryption key and key encryption key settings for the snapshot update object.
+The last command takes the snapshot update object and updates an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
 
-### -KeyUrl
-Specifes the key Url.
+### -SecretUrl
+Specifes the secret Url.
 
 ```yaml
 Type: String
@@ -54,11 +54,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Snapshot
-Specifies a local snapshot object.
+### -SnapshotUpdate
+Specifies a local snapshot update object.
 
 ```yaml
-Type: Snapshot
+Type: SnapshotUpdate
 Parameter Sets: (All)
 Aliases: 
 
@@ -78,9 +78,40 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -89,12 +120,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Snapshot
+### Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
 System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Snapshot
+### Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
 
 ## NOTES
 
