@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         protected RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
 
+        protected const string PolicyParametersObjectParameterSetName = "Policy assignment with parameters via policy parameters object";
+        protected const string PolicyParametersStringParameterSetName = "Policy assignment with parameters via policy parameters string";
+
         /// <summary>
         /// Gets or sets the policy assignment name parameter.
         /// </summary>
@@ -57,19 +60,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The pollicy definition object.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         public PSObject PolicyDefinition { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy assignment policy parameter object.
+        /// Gets or sets the policy assignment policy parameters object.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The pollicy parameter object.")]
-        public Hashtable PolicyParameterObject { get; set; }
+        [Parameter(ParameterSetName = PolicyParametersObjectParameterSetName,
+            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameters object.")]
+        public Hashtable PolicyParametersObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy assignment policy parameter file or string.
+        /// Gets or sets the policy assignment policy parameters file path or policy parameters string.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The pollicy parameter file or string.")]
+        [Parameter(ParameterSetName = PolicyParametersStringParameterSetName, 
+            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameters file path or policy parameters string.")]
         [ValidateNotNullOrEmpty]
         public string PolicyParameters { get; set; }
 
@@ -133,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DisplayName = this.DisplayName ?? null,
                     PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString(),
                     Scope = this.Scope,
-                    Parameters = GetParameters()
+                    Parameters = this.GetParameters()
                 }
             };
 
@@ -142,9 +147,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         object IDynamicParameters.GetDynamicParameters()
         {
-            if (PolicyDefinition != null)
+            if (this.PolicyDefinition != null)
             {
-                var properties = PolicyDefinition.Properties["Properties"].Value as PSObject;
+                var properties = this.PolicyDefinition.Properties["Properties"].Value as PSObject;
                 if (properties != null)
                 {
                     var parameters = properties.Properties["parameters"].Value as PSObject;
@@ -164,34 +169,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 ValueFromPipelineByPropertyName = true,
                                 HelpMessage = param.Name
                             });
-                            dynamicParameters.Add(param.Name, dp);
+                            this.dynamicParameters.Add(param.Name, dp);
                         }
                     }
                 }
             }
 
-            return dynamicParameters;
+            return this.dynamicParameters;
         }
 
-        protected JObject GetParameters()
+        private JObject GetParameters()
         {
             // Load parameters from local file or literal
-            if (PolicyParameters != null)
+            if (this.PolicyParameters != null)
             {
-                string policyParameterFilePath = this.TryResolvePath(PolicyParameters);
+                string policyParameterFilePath = this.TryResolvePath(this.PolicyParameters);
                 return FileUtilities.DataStore.FileExists(policyParameterFilePath)
                     ? JObject.Parse(FileUtilities.DataStore.ReadFileAsText(policyParameterFilePath))
-                    : JObject.Parse(PolicyParameters);
+                    : JObject.Parse(this.PolicyParameters);
             }
 
             // Load from PS object
-            if (PolicyParameterObject != null)
+            JObject parameterObject = null;
+            if (this.PolicyParametersObject != null)
             {
-                var parameterObject = new JObject();
-                foreach (string paramKey in PolicyParameterObject.Keys)
+                parameterObject = new JObject();
+                foreach (string paramKey in this.PolicyParametersObject.Keys)
                 {
                     var valueObject = new JObject();
-                    valueObject.Add("value", PolicyParameterObject[paramKey].ToJToken());
+                    valueObject.Add("value", this.PolicyParametersObject[paramKey].ToJToken());
                     parameterObject.Add(paramKey, valueObject);
                 }
                 return parameterObject;
@@ -199,21 +205,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             // Load dynamic parameters
             var parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
-            if (parameters.Count() == 0)
+            if (parameters.Count() > 0)
             {
-                return null;
-            }
-            else
-            {
-                var parameterObject = new JObject();
+                parameterObject = new JObject();
                 foreach (var dp in parameters)
                 {
                     var valueObject = new JObject();
                     valueObject.Add("value", MyInvocation.BoundParameters[dp.Name].ToJToken());
                     parameterObject.Add(dp.Name, valueObject);
                 }
-                return parameterObject;
             }
+            return parameterObject;
         }
     }
 }

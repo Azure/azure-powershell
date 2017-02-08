@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             return File.Exists(parametersFilePath)
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(parametersFilePath))
-                : JToken.FromObject(this.Policy);
+                : JToken.FromObject(this.Parameters);
         }
     }
 }
