@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-Create a new Service Bus namespace.
+Creates a new Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespace. Once created, the namespace resource manifest is immutable. This operation is idempotent.
 
 ## EXAMPLES
 

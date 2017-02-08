@@ -27,7 +27,7 @@ The **New-AzureRmServiceBusTopicAuthorizationRule** cmdlet creates a new authori
 PS C:\> New-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -Rights @("Listen","Send")
 ```
 
-Creates `SBTopicAuthoRule1` with **Listen and Send** rights for the topic `SB-Topic_exampl1`.
+Creates authorization rule `SBTopicAuthoRule1` with **Listen** and **Send** rights for the topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 

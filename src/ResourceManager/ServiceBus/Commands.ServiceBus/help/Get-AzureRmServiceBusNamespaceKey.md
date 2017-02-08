@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Service Bus namespace name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String

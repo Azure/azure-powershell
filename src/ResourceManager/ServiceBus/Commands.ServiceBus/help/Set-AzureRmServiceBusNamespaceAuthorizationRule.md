@@ -18,7 +18,7 @@ Set-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet updates the description for the specified authorization rule of the given Service Bus namespace.
+The **Set-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet updates the description for the specified authorization rule in the given Service Bus namespace.
 
 ## EXAMPLES
 

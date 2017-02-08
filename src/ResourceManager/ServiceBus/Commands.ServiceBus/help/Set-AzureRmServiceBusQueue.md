@@ -32,7 +32,7 @@ PS C:\> $QueueObj.SupportOrdering = $True
 PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj
 ```
 
-Updates the specified queue with a new description in the specified namespace.
+Updates the specified queue with a new description in the specified namespace. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **SupportOrdering** to **true**.
 
 ## PARAMETERS
 

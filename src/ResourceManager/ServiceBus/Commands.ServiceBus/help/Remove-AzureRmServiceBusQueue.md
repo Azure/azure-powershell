@@ -26,7 +26,7 @@ The **Remove-AzureRmServiceBusQueue** cmdlet removes the queue from the specifie
 PS C:\> Remove-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
 ```
 
-Removes `SB-Queue_exampl1` from the namespace `SB-Example1`.
+Removes the queue `SB-Queue_exampl1` from the namespace `SB-Example1`.
 
 ## PARAMETERS
 

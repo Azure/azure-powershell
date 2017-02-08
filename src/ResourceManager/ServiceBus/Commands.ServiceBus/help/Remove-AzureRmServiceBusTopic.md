@@ -26,7 +26,7 @@ The **Remove-AzureRmServiceBusTopic** cmdlet removes the topic from the specifie
 PS C:\> Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
-Removes the `SB-Topic_exampl1` topic from the namespace `SB-Example1`.
+Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
 ## PARAMETERS
 

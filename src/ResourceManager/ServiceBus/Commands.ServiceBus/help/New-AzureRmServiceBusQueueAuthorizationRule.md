@@ -27,7 +27,7 @@ The **New-AzureRmServiceBusQueueAuthorizationRule** cmdlet creates a new authori
 PS C:\> New-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -Rights @("Listen","Send")
 ```
 
-Creates `SBAuthoRule1` with **Listen and Send** rights for the queue `SB-Queue_exampl1`.
+Creates authorization rule `SBAuthoRule1` with **Listen and Send** rights for the queue `SB-Queue_exampl1`.
 
 ## PARAMETERS
 

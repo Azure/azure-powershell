@@ -17,7 +17,7 @@ New-AzureRmServiceBusQueueKey [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusQueueKey** cmdlet regenerates new primary or secondary connection strings for the specified Service Bus queue and authorization rule.
+The **New-AzureRmServiceBusQueueKey** cmdlet regenerates the primary or secondary connection strings for the specified Service Bus queue and authorization rule.
 
 ## EXAMPLES
 
