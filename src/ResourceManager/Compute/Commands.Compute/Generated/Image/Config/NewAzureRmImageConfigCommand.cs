@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 4,
             ValueFromPipelineByPropertyName = true)]
         public ImageDataDisk[] DataDisk { get; set; }
 

@@ -59,19 +59,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 4,
             ValueFromPipelineByPropertyName = true)]
         public DiskCreateOptionTypes? CreateOption { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 5,
             ValueFromPipelineByPropertyName = true)]
         public int? DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 6,
             ValueFromPipelineByPropertyName = true)]
         public StorageAccountTypes? StorageAccountType { get; set; }
 

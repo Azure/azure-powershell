@@ -59,25 +59,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 4,
             ValueFromPipelineByPropertyName = true)]
         public CachingTypes? Caching { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 5,
             ValueFromPipelineByPropertyName = true)]
         public int? DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 6,
             ValueFromPipelineByPropertyName = true)]
         public string SnapshotId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 7,
             ValueFromPipelineByPropertyName = true)]
         public string ManagedDiskId { get; set; }
 

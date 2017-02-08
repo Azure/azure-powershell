@@ -58,55 +58,46 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 4,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 5,
             ValueFromPipelineByPropertyName = true)]
         public DiskCreateOption? CreateOption { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 6,
             ValueFromPipelineByPropertyName = true)]
         public string StorageAccountId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 7,
             ValueFromPipelineByPropertyName = true)]
         public ImageDiskReference ImageReference { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 8,
             ValueFromPipelineByPropertyName = true)]
         public string SourceUri { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 9,
             ValueFromPipelineByPropertyName = true)]
         public string SourceResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 10,
             ValueFromPipelineByPropertyName = true)]
         public bool? EncryptionSettingsEnabled { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 11,
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndSecretReference DiskEncryptionKey { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 12,
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
 
