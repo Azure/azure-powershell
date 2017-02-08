@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
 ```
 
-{{ Add example description here }}
+Creates a new Service Bus namespace within the specified resource group.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-ServiceBus Namespace Location.
+The Service Bus namespace location.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-ServiceBus Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The resource group name.
 
 ```yaml
 Type: String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Namespace Sku Name.
+The Service Bus namespace SKU name.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tags.
+Hashtable that represents resource tags.
 
 ```yaml
 Type: Hashtable
@@ -122,8 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -142,12 +141,37 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Collections.Hashtable
+###-ResourceGroup
+ System.String
+
+###-NamespaceName 
+ System.String
+
+###-Location
+ System.String
+
+###-SkuName
+ System.String
+
+###-Tag
+ System.Collections.Hashtable
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+
+Name               : SB-Example2
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example2
+Location           : West US
+Sku                : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState  : Succeeded
+Status             : Active
+CreatedAt          : 1/20/2017 2:07:33 AM
+UpdatedAt          : 1/20/2017 2:07:56 AM
+ServiceBusEndpoint : https://SB-Example2.servicebus.windows.net:443/
+Enabled            : True
+
 
 ## NOTES
 
