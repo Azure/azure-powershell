@@ -27300,7 +27300,7 @@ PS C:\&gt; New-AzureRmLoadBalancerRuleConfig -Name &quot;MyLBrule&quot; -Fronten
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureRmNetworkInterface -Name NetworkInterface1 -ResouceGroupName ResourceGroup1 -Location centralus -SubnetId &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1&quot; -IpConfigurationName IPConfiguration1 -DnsServer &quot;8.8.8.8&quot;, &quot;8.8.4.4&quot;</dev:code>
+			<dev:code>New-AzureRmNetworkInterface -Name NetworkInterface1 -ResourceGroupName ResourceGroup1 -Location centralus -SubnetId &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1&quot; -IpConfigurationName IPConfiguration1 -DnsServer &quot;8.8.8.8&quot;, &quot;8.8.4.4&quot;</dev:code>
 			<dev:remarks>
 				<maml:para>This example creates a new network interface with a dynamically assigned private IP address from Subnet1 in the virtual network VirtualNetwork1. It also assigns two DNS servers to the network interface. The IPConfiguration child resource will be created automatically using the name IPConfiguration1.</maml:para>
 				<maml:para />
