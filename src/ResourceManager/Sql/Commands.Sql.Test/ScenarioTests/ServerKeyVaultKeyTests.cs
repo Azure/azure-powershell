@@ -20,39 +20,32 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class TransparentDataEncryptionCrudTests : SqlTestsBase
+    public class ServerKeyVaultKeyTests : SqlTestsBase
     {
-        public TransparentDataEncryptionCrudTests(ITestOutputHelper output)
+        public ServerKeyVaultKeyTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseTransparentDataEncryptionUpdate()
+        public void TestServerKeyVaultKeyAdd()
         {
-            RunPowerShellTest("Test-UpdateTransparentDataEncryption");
+            RunPowerShellTest("Test-AddServerKeyVaultKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseTransparentDataEncryptionGet()
+        public void TestServerKeyVaultKeyGet()
         {
-            RunPowerShellTest("Test-GetTransparentDataEncryption");
+            RunPowerShellTest("Test-GetServerKeyVaultKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerTransparentDataEncryptionProtectorGet()
+        public void TestServerKeyVaultKeyRemove()
         {
-            RunPowerShellTest("Test-GetTransparentDataEncryptionProtector");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerTransparentDataEncryptionProtectorSet()
-        {
-            RunPowerShellTest("Test-SetTransparentDataEncryptionProtector");
+            RunPowerShellTest("Test-RemoveServerKeyVaultKey");
         }
     }
 }
