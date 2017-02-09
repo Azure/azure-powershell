@@ -44,7 +44,6 @@
     <TestTimeout Condition=" '$(TestTimeout)' == '' ">100000000</TestTimeout>
   </PropertyGroup>
   
-
   <Target Name="InvokeMSTest">
     <!--Remove existing test result; otherwise mstest will error-->
     <Delete Files="$(_testResult)"/>
@@ -66,8 +65,8 @@
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'all' ">
       <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
-      <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
+	  <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
+	  <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
@@ -99,20 +98,94 @@
   <Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-    <Exec 
+    <!--
+	<Exec 
         Command="$(LibrarySourceFolder)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -parallel none -maxthreads 0 -trait &quot;AcceptanceType=CheckIn&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
         Timeout="$(TestTimeout)" ContinueOnError="false" Condition=" @(XUnitTests) != '' "/>
+	-->
+	
+	<xunit 
+			Assemblies="@(XUnitTests)" 
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="false"
+			IncludeTraits="AcceptanceType=CheckIn"
+			Html="$(TestOutputDirectory)\AzurePSStackTestResults.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false" 
+			Condition=" @(XUnitTests) != '' "/>
+
+	<CallTarget Targets="TestSetup" />
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
   
   <Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-    <Exec 
+    <!--
+	<Exec 
         Command="$(LibrarySourceFolder)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -notrait &quot;RunType=LiveOnly&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
         Timeout="$(TestTimeout)" ContinueOnError="false"/>
+	-->
+	<xunit 
+			Assemblies="@(XUnitTests)" 
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="false"
+			ExcludeTraits="RunType=LiveOnly"
+			Html="$(TestOutputDirectory)\AzurePSStackAllTestResults.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false" 
+			Condition=" @(XUnitTests) != '' "/>
+	
+	<CallTarget Targets="TestSetup" />
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
+  
+  <Target Name="TestSetup" DependsOnTargets="DeclareXunitTests">
+		<Message Importance="high" Text="Setup XUnit tests" />
+		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+		
+		<ItemGroup Condition=" '$(scope)' == 'all' AND '$(CodeSign)' != 'true' ">
+			<SetupDebugTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll" />
+		</ItemGroup>
+		
+		<ItemGroup Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' ">
+			<!-- We want to run setup tests related to signing that can only be run on signed bits -->
+			<SetupReleaseTests Include=".\setup\PowerShellSetup.Test\bin\Release\PowerShellSetup.Test.dll" />
+		</ItemGroup>
+		
+		<xunit 
+			Assemblies="@(SetupDebugTests)"
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="false"
+			IncludeTraits="AcceptanceType=CheckIn"
+			ExcludeTraits="SignedBuild=BVT"
+			Html="$(TestOutputDirectory)\AzPsStackSetupTest.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false"
+			Condition=" '$(scope)' == 'all' "/>
+			
+		<xunit 
+			Assemblies="@(SetupReleaseTests)"
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="false"
+			IncludeTraits="SignedBuild=BVT"
+			Html="$(TestOutputDirectory)\AzPsStackSetupTestSigned.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false"
+			Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' "/>
+	</Target>
   
   <Target Name="TimeoutErrorHandler">
     <Error Text="XUnit tests in assembly &quot;%(XUnitTests.Filename).dll&quot; failed or timed out. Ensure that all tests in a project pass and collectively take less than 1 minute to run."/>
