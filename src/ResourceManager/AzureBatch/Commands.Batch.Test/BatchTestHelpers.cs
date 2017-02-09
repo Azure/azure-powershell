@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static BatchAccount CreateAccountResource(string accountName, string resourceGroupName, Hashtable tags = null, string storageId = null)
+        public static BatchAccount CreateAccountResource(string accountName, string resourceGroupName, string location = "location", 
+            Hashtable tags = null, string storageId = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
@@ -61,17 +62,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 activeJobAndJobScheduleQuota: DefaultQuotaCount,
                 accountEndpoint: endpoint,
                 id: id,
-                type: "type")
-            {
-                Location = "location",
-                ProvisioningState = ProvisioningState.Succeeded,
-                AutoStorage = new AutoStorageProperties() { StorageAccountId = storageId }
-            };
-
-            if (tags != null)
-            {
-                resource.Tags = TagsConversionHelper.CreateTagDictionary(tags, true);
-            }
+                type: "type",
+                location: location,
+                provisioningState: ProvisioningState.Succeeded,
+                autoStorage: new AutoStorageProperties() { StorageAccountId = storageId },
+                tags: tags == null ? null : TagsConversionHelper.CreateTagDictionary(tags, true));
 
             return resource;
         }

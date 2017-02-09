@@ -81,6 +81,7 @@
     <Compile Include="Models.Generated\PSOSDisk.cs" />
     <Compile Include="Models.Generated\PSUserAccount.cs" />
     <Compile Include="Models.Generated\PSUserIdentity.cs" />
+    <Compile Include="Models\AccountCreateParameters.cs" />
     <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
     <Compile Include="Models\ListJobPreparationAndReleaseStatusOptions.cs" />
     <Compile Include="Models\NewBulkTaskParameters.cs" />
