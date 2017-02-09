@@ -23,7 +23,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace name.
+<maml:Description><maml:para>The Service Bus namespace name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -34,7 +34,7 @@
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Namespace name.
+<maml:Description><maml:para>The Service Bus namespace name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -215,7 +215,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Service Bus namespace name.
+<maml:Description><maml:para>The Service Bus namespace name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -244,7 +244,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>NamespaceName</maml:name>
-<maml:Description><maml:para>Service Bus namespace name.
+<maml:Description><maml:para>The Service Bus namespace name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -666,7 +666,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmServiceBusQueueKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1</dev:code>
-<dev:remarks><maml:para>The primary and secondary connection strings are returned for the given Service Bus queue.
+<dev:remarks><maml:para>Returns the primary and secondary connection strings for the specified Service Bus queue.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -798,7 +798,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1</dev:code>
-<dev:remarks><maml:para>Returns a subscription description for the specified Service Bus Topic.
+<dev:remarks><maml:para>Returns a subscription description for the specified Service Bus topic.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -906,7 +906,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1</dev:code>
-<dev:remarks><maml:para>Returns the description of the specified topic for given Service Bus namespace.
+<dev:remarks><maml:para>Returns the description of the specified topic for the given Service Bus namespace.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -1170,7 +1170,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmServiceBusTopicKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1</dev:code>
-<dev:remarks><maml:para>The primary and secondary connection strings are returned for the given Service Bus topic.
+<dev:remarks><maml:para>Returns the primary and secondary connection strings for the specified Service Bus topic.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -1181,11 +1181,11 @@
 <command:details><command:name>New-AzureRmServiceBusNamespace</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureRmServiceBusNamespace</command:noun>
-<maml:description><maml:para>Create a new Service Bus namespace.
+<maml:description><maml:para>Creates a new Service Bus namespace.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The New-AzureRmServiceBusNamespace cmdlet creates a new Service Bus namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+<maml:description><maml:para>The New-AzureRmServiceBusNamespace cmdlet creates a new Service Bus namespace. Once created, the namespace resource manifest is immutable. This operation is idempotent.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureRmServiceBusNamespace</maml:name>
@@ -1545,7 +1545,7 @@
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The New-AzureRmServiceBusNamespace cmdlet RegenerateKeys new primary or secondary connection strings for the specified Namespace and authorization rule.
+<maml:description><maml:para>The New-AzureRmServiceBusNamespace cmdlet generates new primary or secondary connection strings for the specified namespace and authorization rule.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureRmServiceBusNamespaceKey</maml:name>
@@ -1710,11 +1710,11 @@
 <command:details><command:name>New-AzureRmServiceBusQueue</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureRmServiceBusQueue</command:noun>
-<maml:description><maml:para>Create a new Service Bus queue in the specified Service Bus namespace.
+<maml:description><maml:para>Creates a Service Bus queue in the specified Service Bus namespace.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The New-AzureRmServiceBusQueue cmdlet creates a new Service Bus queue in the specified Service Bus namespace.
+<maml:description><maml:para>The New-AzureRmServiceBusQueue cmdlet creates a Service Bus queue in the specified Service Bus namespace.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureRmServiceBusQueue</maml:name>
@@ -1746,7 +1746,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AutoDeleteOnIdle</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval, after which the queue is automatically deleted. The minimum duration is 5 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1920,7 +1920,7 @@
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AutoDeleteOnIdle</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval, after which the queue is automatically deleted. The minimum duration is 5 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2324,7 +2324,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; New-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -Rights @("Listen","Send")</dev:code>
-<dev:remarks><maml:para>Creates `SBAuthoRule1` with Listen and Send rights for the queue `SB-Queue_exampl1`.
+<dev:remarks><maml:para>Creates authorization rule `SBAuthoRule1` with Listen and Send rights for the queue `SB-Queue_exampl1`.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -2339,7 +2339,7 @@
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The New-AzureRmServiceBusQueueKey cmdlet regenerates new primary or secondary connection strings for the specified Service Bus queue and authorization rule.
+<maml:description><maml:para>The New-AzureRmServiceBusQueueKey cmdlet regenerates the primary or secondary connection strings for the specified Service Bus queue and authorization rule.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureRmServiceBusQueueKey</maml:name>
@@ -2534,7 +2534,7 @@
 <command:details><command:name>New-AzureRmServiceBusSubscription</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureRmServiceBusSubscription</command:noun>
-<maml:description><maml:para>Create a new subscription to the specified ServiceBus topic.
+<maml:description><maml:para>Creates a subscription to the specified Service Bus topic.
 </maml:para>
 </maml:description>
 </command:details>
@@ -2579,7 +2579,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AutoDeleteOnIdle</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan idle interval after which the subscription is automatically deleted. The minimum duration is 5 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval, after which the subscription is automatically deleted. The minimum duration is 5 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2684,7 +2684,7 @@
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AutoDeleteOnIdle</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan idle interval after which the subscription is automatically deleted. The minimum duration is 5 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval, after which the subscription is automatically deleted. The minimum duration is 5 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2848,7 +2848,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; New-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1</dev:code>
-<dev:remarks><maml:para>Creates	a new subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
+<dev:remarks><maml:para>Creates	the subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -2859,7 +2859,7 @@
 <command:details><command:name>New-AzureRmServiceBusTopic</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureRmServiceBusTopic</command:noun>
-<maml:description><maml:para>Create a new Service Bus topic in  the specified Service Bus namespace.
+<maml:description><maml:para>Creates a new Service Bus topic in  the specified Service Bus namespace.
 </maml:para>
 </maml:description>
 </command:details>
@@ -2895,7 +2895,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AutoDeleteOnIdle</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2913,7 +2913,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DuplicateDetectionHistoryTimeWindow</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3066,7 +3066,7 @@
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AutoDeleteOnIdle</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3084,7 +3084,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DuplicateDetectionHistoryTimeWindow</maml:name>
-<maml:Description><maml:para>Specifies the TimeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
+<maml:Description><maml:para>Specifies the TimeSpan (https://msdn.microsoft.com/library/system.timespan.aspx)structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3465,7 +3465,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; New-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1 -Rights @("Listen","Send")</dev:code>
-<dev:remarks><maml:para>Creates `SBTopicAuthoRule1` with Listen and Send rights for the topic `SB-Topic_exampl1`.
+<dev:remarks><maml:para>Creates authorization rule `SBTopicAuthoRule1` with Listen and Send rights for the topic `SB-Topic_exampl1`.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -3480,7 +3480,7 @@
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The New-AzureRmServiceBusTopicKey cmdlet regenerates a new  primary or secondary connection string for the specified Service Bus topic and authorization rule.
+<maml:description><maml:para>The New-AzureRmServiceBusTopicKey cmdlet generates a new primary or secondary connection string for the specified Service Bus topic and authorization rule.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureRmServiceBusTopicKey</maml:name>
@@ -4060,7 +4060,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Remove-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1</dev:code>
-<dev:remarks><maml:para>Removes `SB-Queue_exampl1` from the namespace `SB-Example1`.
+<dev:remarks><maml:para>Removes the queue `SB-Queue_exampl1` from the namespace `SB-Example1`.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -4392,7 +4392,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Remove-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1</dev:code>
-<dev:remarks><maml:para>Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` for the specified Service Bus namespace `SB-Example1`.
+<dev:remarks><maml:para>Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -4534,7 +4534,7 @@
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1</dev:code>
-<dev:remarks><maml:para>Removes the `SB-Topic_exampl1` topic from the namespace `SB-Example1`.
+<dev:remarks><maml:para>Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -4909,7 +4909,7 @@
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Set-AzureRmServiceBusNamespaceAuthorizationRule cmdlet updates the description for the specified authorization rule of the given Service Bus namespace.
+<maml:description><maml:para>The Set-AzureRmServiceBusNamespaceAuthorizationRule cmdlet updates the description for the specified authorization rule in the given Service Bus namespace.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Set-AzureRmServiceBusNamespaceAuthorizationRule</maml:name>
@@ -5247,7 +5247,7 @@ PS C:\&gt; $QueueObj.DeadLetteringOnMessageExpiration = $True
 PS C:\&gt; $QueueObj.SupportOrdering = $True
 
 PS C:\&gt; Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj</dev:code>
-<dev:remarks><maml:para>Updates the specified queue with a new description in the specified namespace.
+<dev:remarks><maml:para>Updates the specified queue with a new description in the specified namespace. This example updates the DeadLetteringOnMessageExpiration property to true and SupportOrdering to true .
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -5794,7 +5794,7 @@ PS C:\&gt; Set-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-W
 PS C:\&gt; $topicObj.EnableExpress = $True
 
 PS C:\&gt; Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj</dev:code>
-<dev:remarks><maml:para>Updates the specified topic with a new description in the specified namespace, and updates the EnableExpress property to true .
+<dev:remarks><maml:para>Updates the specified topic with a new description in the specified namespace. This example updates the EnableExpress property to true .
 </maml:para>
 </dev:remarks>
 </command:example>
