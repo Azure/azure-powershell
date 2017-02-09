@@ -7,31 +7,31 @@ schema: 2.0.0
 # Remove-AzureRmEventHubNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes the specified authorization rule on the given Event Hubs namespace.
 
 ## SYNTAX
 
 ```
 Remove-AzureRmEventHubNamespaceAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-AuthorizationRuleName] <String> [-WhatIf] [-Confirm]
+ [-AuthorizationRuleName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmEventHubNamespaceAuthorizationRule** cmdlet removes and deletes the specified authorization rule on the given Event Hubs namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AuthorizationRuleName MyAuthRuleName
 ```
 
-{{ Add example description here }}
+Removes the authorization rule `MyAuthRuleName` from the namespace `MyNamespaceName`.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-EventHub Namespace AuthorizationRule Name.
+The Event Hubs namespace authorization rule name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-EventHub Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -105,6 +105,9 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

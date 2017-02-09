@@ -7,27 +7,27 @@ schema: 2.0.0
 # New-AzureRmEventHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new Event Hub.
 
 ## SYNTAX
 
 ```
 New-AzureRmEventHub [-ResourceGroupName] <String> [-NamespaceName] <String> -Location <String>
  [-EventHubName] <String> [[-EventHubObj] <EventHubAttributes>] [-MessageRetentionInDays <Int64>]
- [-PartitionCount <Int64>] [-WhatIf] [-Confirm]
+ [-PartitionCount <Int64>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmEventHub** cmdlet creates a new Azure Event Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location WestUS -EventHubName MyEventHubName -MessageRetentionInDays 3 -PartitionCount 2
 ```
 
-{{ Add example description here }}
+Creates an Event Hub named `MyEventHubName` with a 3-day message retention period and two partitions, in the `WestUS` location, with resource group `MyResourceGroupName`.
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-Eventhub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubObj
-EventHub object.
+The Event Hubs object.
 
 ```yaml
 Type: EventHubAttributes
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Namespace Location.
+Namespace geographic location.
 
 ```yaml
 Type: String
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -MessageRetentionInDays
-Eventhub Message Retention In Days.
+Event Hubs message retention time in days.
 
 ```yaml
 Type: Int64
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartitionCount
-Eventhub PartitionCount.
+Number of partitions in the Event Hub.
 
 ```yaml
 Type: Int64
@@ -166,6 +166,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

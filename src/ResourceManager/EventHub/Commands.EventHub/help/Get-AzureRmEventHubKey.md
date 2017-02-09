@@ -7,31 +7,31 @@ schema: 2.0.0
 # Get-AzureRmEventHubKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the primary key details of the specified Event Hubs authorization rule.
 
 ## SYNTAX
 
 ```
 Get-AzureRmEventHubKey [-ResourceGroupName] <String> [-NamespaceName] <String> [-EventHubName] <String>
- -AuthorizationRuleName <String>
+ -AuthorizationRuleName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmEventHubKey** cmdlet returns the primary key details of the specified Event Hubs authorization rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName
 ```
 
-{{ Add example description here }}
+Gets details of the primary key for the authorization rule `MyAuthRuleName`.
 
 ## PARAMETERS
 
 ### -EventHubName
-EventHub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-EventHub AuthorizationRule Name.
+Event Hubs authorization rule name.
 
 ```yaml
 Type: String
@@ -89,6 +89,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

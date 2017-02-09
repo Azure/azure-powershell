@@ -7,26 +7,26 @@ schema: 2.0.0
 # New-AzureRmEventHubNamespaceKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new primary or secondary key for the authorization rule on the specified Event Hubs namespace.
 
 ## SYNTAX
 
 ```
 New-AzureRmEventHubNamespaceKey [-ResourceGroup] <String> [-NamespaceName] <String>
- -AuthorizationRuleName <String> [-RegenerateKeys] <String> [-WhatIf] [-Confirm]
+ -AuthorizationRuleName <String> [-RegenerateKeys] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmEventHubNamespaceKey** cmdlet regenerates the primary or secondary key for the for the given authorization rule on the specified Event Hubs namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmEventHubNameSpaceKey -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName  -AuthorizationRuleName MyAuthRuleName -RegenerateKeys PrimaryKey
 ```
 
-{{ Add example description here }}
+Regenerates the primary key for the authorization rule `MyAuthRuleName` in the Event Hubs namespace `MyNamespaceName`, with resource group `MyResourceGroupName`.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegenerateKeys
-Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.
+Key to regenerate: `PrimaryKey` or `SecondaryKey`.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-Authorization Rule Name.
+Authorization rule name.
 
 ```yaml
 Type: String
@@ -121,6 +121,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

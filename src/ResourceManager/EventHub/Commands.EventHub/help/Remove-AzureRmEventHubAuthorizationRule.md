@@ -7,26 +7,26 @@ schema: 2.0.0
 # Remove-AzureRmEventHubAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the specified Event Hub authorization rule.
 
 ## SYNTAX
 
 ```
 Remove-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-EventHubName] <String> -AuthorizationRuleName <String> [-WhatIf] [-Confirm]
+ [-EventHubName] <String> -AuthorizationRuleName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmEventHubAuthorizationRule** cmdlet removes and deletes the specified authorization rule from the given Event Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName
 ```
 
-{{ Add example description here }}
+Removes the authorization rule `MyAuthRuleName` from the Event Hub `MyEventHubName`.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-EventHub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-EventHub AuthorizationRule Name.
+The Event Hub authorization rule name.
 
 ```yaml
 Type: String
@@ -120,6 +120,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

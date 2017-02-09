@@ -7,26 +7,27 @@ schema: 2.0.0
 # Set-AzureRmEventHubConsumerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified Event Hubs consumer group.
 
 ## SYNTAX
 
 ```
 Set-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-NamespaceName] <String>
  [-EventHubName] <String> [-ConsumerGroupName] <String> [-UserMetadata <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmEventHubConsumerGroup** cmdlet updates the specified Event Hubs consumer group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName -UserMetadata "Testing"
 ```
 
-{{ Add example description here }}
+Sets the user metadata of the consumer group `MyConsumerGroupName` to "Testing."
 
 ## PARAMETERS
 
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConsumerGroupName
-ConsumerGroup Name.
+The consumer group name.
 
 ```yaml
 Type: String
@@ -61,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-EventHub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -76,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -91,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -122,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserMetadata
-User Metadata for ConsumerGroup
+User metadata for the consumer group (optional).
 
 ```yaml
 Type: String
@@ -135,6 +136,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

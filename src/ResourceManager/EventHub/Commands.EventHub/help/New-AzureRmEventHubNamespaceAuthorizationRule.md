@@ -7,26 +7,26 @@ schema: 2.0.0
 # New-AzureRmEventHubNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new authorization rule on the specified namespace.
 
 ## SYNTAX
 
 ```
 New-AzureRmEventHubNamespaceAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- -AuthorizationRuleName <String> -Rights <String[]> [-WhatIf] [-Confirm]
+ -AuthorizationRuleName <String> -Rights <String[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmEventHubNamespaceAuthorizationRule** cmdlet creates a new authorization rule on the specified Event Hubs namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AuthorizationRuleName MyAuthRuleName -Rights @("Listen","Send")
 ```
 
-{{ Add example description here }}
+Creates the authorization rule `MyAuthRuleName` with **Listen** and **Send** rights, for Event Hubs namespace `MyNamespaceName`, in resource group `MyResourceGroupName`.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-EventHub Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-AuthorizationRule Name.
+Authorization rule name.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights, e.g. 
+Rights;for example, 
 @("Listen","Send","Manage")
 
 ```yaml
@@ -121,6 +121,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
