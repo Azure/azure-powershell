@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
             string subscription = "00000000-0000-0000-0000-000000000000";
             string resourceGroup = "resourceGroup";
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
+            PoolAllocationMode allocationMode = PoolAllocationMode.UserSubscription;
+            KeyVaultReference keyVault = new KeyVaultReference(
+                string.Format("/subscriptions{0}/resourceGroups/{1}/providers/Microsoft.KeyVault/vaults/foo", subscription, resourceGroup),
+                "https://foo.vaults.azure.com");
 
             BatchAccount resource = new BatchAccount(
                 coreQuota: BatchTestHelpers.DefaultQuotaCount,
@@ -45,21 +49,25 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
                 activeJobAndJobScheduleQuota: BatchTestHelpers.DefaultQuotaCount,
                 accountEndpoint: endpoint,
                 id: id,
-                type: "type")
-            {
-                Location = "location",
-                ProvisioningState = ProvisioningState.Succeeded,
-            };
+                type: "type",
+                location: "location",
+                provisioningState: ProvisioningState.Succeeded,
+                poolAllocationMode: allocationMode,
+                keyVaultReference: keyVault);
+
             BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource, null);
 
-            Assert.Equal<string>(context.Id, resource.Id);
-            Assert.Equal<string>(context.AccountEndpoint, resource.AccountEndpoint);
-            Assert.Equal<string>(context.Location, resource.Location);
-            Assert.Equal<string>(context.State, resource.ProvisioningState.ToString());
-            Assert.Equal<string>(context.AccountName, account);
-            Assert.Equal<string>(context.TaskTenantUrl, string.Format("https://{0}", endpoint));
-            Assert.Equal<string>(context.Subscription, subscription);
-            Assert.Equal<string>(context.ResourceGroupName, resourceGroup);
+            Assert.Equal(resource.Id, context.Id);
+            Assert.Equal(resource.AccountEndpoint, context.AccountEndpoint);
+            Assert.Equal(resource.Location, context.Location);
+            Assert.Equal(resource.ProvisioningState.ToString(), context.State);
+            Assert.Equal(account, context.AccountName);
+            Assert.Equal(string.Format("https://{0}", endpoint), context.TaskTenantUrl);
+            Assert.Equal(subscription, context.Subscription);
+            Assert.Equal(resourceGroup, context.ResourceGroupName);
+            Assert.Equal(allocationMode, context.PoolAllocationMode);
+            Assert.Equal(keyVault.Id, context.KeyVaultReference.Id);
+            Assert.Equal(keyVault.Url, context.KeyVaultReference.Url);
         }
 
         [Fact]

@@ -54,8 +54,14 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 this.azureContext.Environment.SetEndpoint(AzureEnvironment.Endpoint.BatchEndpointResourceId, AzureEnvironmentConstants.BatchEndpointResourceId);
             }
 
-            IAccessToken tokenResult = AzureSession.Instance.AuthenticationFactory.Authenticate(this.azureContext.Account, this.azureContext.Environment,
-                this.azureContext.Tenant.Id.ToString(), null, ShowDialog.Auto, AzureSession.Instance.TokenCache,
+            IAccessToken tokenResult = AzureSession.Instance.AuthenticationFactory.Authenticate(
+                this.azureContext.Account,
+                this.azureContext.Environment,
+                this.azureContext.Tenant.Id.ToString(),
+                null,
+                ShowDialog.Auto,
+                null,
+                AzureSession.Instance.TokenCache,
                 AzureEnvironment.Endpoint.BatchEndpointResourceId);
 
             return tokenResult.AccessToken;

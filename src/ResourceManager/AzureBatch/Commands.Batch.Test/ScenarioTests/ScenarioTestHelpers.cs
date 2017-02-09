@@ -41,16 +41,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     /// </summary>
     public static class ScenarioTestHelpers
     {
-        // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
-        //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRmBatchAccountKeys "<Account that will be used for recorded tests>"
-        //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
-        //          $startTask.CommandLine = "cmd /c echo hello"
-        //          $osFamily = "4"
-        //          $targetOSVersion = "*"
-        //          $configuration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -StartTask $startTask -BatchContext $context
-
         internal const string SharedPool = "testPool";
         internal const string SharedIaasPool = "testIaasPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";

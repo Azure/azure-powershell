@@ -73,6 +73,9 @@ function Test-DisableEnableTerminateJob
 
     Disable-AzureBatchJob $jobId Terminate -BatchContext $context
 
+    # Sleep a bit in Record mode since the job doesn't immediately switch to Disabled.
+    Start-TestSleep 10000
+
     # Verify the job was Disabled
     $job = Get-AzureBatchJob $jobId -BatchContext $context
     Assert-AreEqual 'Disabled' $job.State
