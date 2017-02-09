@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 
@@ -41,12 +42,10 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSApplicationGatewaySslCertificate NewObject()
         {
-            X509Certificate2 cert = new X509Certificate2(CertificateFile, Password, X509KeyStorageFlags.Exportable);
-
             var sslCertificate = new PSApplicationGatewaySslCertificate();
 
             sslCertificate.Name = this.Name;
-            sslCertificate.Data = Convert.ToBase64String(cert.Export(X509ContentType.Pfx, Password));
+            sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(CertificateFile));
             sslCertificate.Password = this.Password;
             sslCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

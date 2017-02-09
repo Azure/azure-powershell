@@ -113,18 +113,17 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                     if (cmdletFiles.Any())
                     {
-                        Directory.SetCurrentDirectory(directory);
-                        foreach (var cmdletFile in cmdletFiles)
+                        foreach (var cmdletFileName in cmdletFiles)
                         {
-                            var helpFileName = Path.GetFileName(cmdletFile);
-                            var cmdletFileName = Path.GetFileName(cmdletFile);
-                            if (File.Exists(cmdletFile))
+                            var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
+                            
+                            if (File.Exists(cmdletFileFullPath))
                             {
-                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileName, "AssemblyFileName");
-                                processedHelpFiles.Add(helpFileName);
+                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileFullPath, "AssemblyFileName");
+                                processedHelpFiles.Add(cmdletFileName);
                                 var proxy = 
                                     EnvironmentHelpers.CreateProxy<CmdletBreakingChangeLoader>(directory, out _appDomain);
-                                var newModuleMetadata = proxy.GetModuleMetadata(Path.GetFullPath(cmdletFile));
+                                var newModuleMetadata = proxy.GetModuleMetadata(cmdletFileFullPath);
 
                                 string fileName = cmdletFileName + ".json";
                                 string executingPath = 
@@ -151,7 +150,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                         string output = "Before filter\nOld module cmdlet count: " + oldModuleMetadata.Cmdlets.Count +
                                                                      "\nNew module cmdlet count: " + newModuleMetadata.Cmdlets.Count;
 
-                                        output += "\nCmdlet file: " + Path.GetFullPath(cmdletFile);
+                                        output += "\nCmdlet file: " + cmdletFileFullPath;
 
                                         oldModuleMetadata.FilterCmdlets(cmdletFilter);
                                         newModuleMetadata.FilterCmdlets(cmdletFilter);
