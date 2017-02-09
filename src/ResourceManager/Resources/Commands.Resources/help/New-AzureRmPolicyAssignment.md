@@ -12,17 +12,24 @@ Creates a policy assignment.
 
 ## SYNTAX
 
+### Policy assignment without parameters
+```
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
+ [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [<CommonParameters>]
+```
+
 ### Policy assignment with parameters via policy parameter object
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- [-PolicyParameterObject <Hashtable>] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+ -PolicyParameterObject <Hashtable> [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### Policy assignment with parameters via policy parameter string
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- [-PolicyParameter <String>] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+ -PolicyParameter <String> [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -189,7 +196,7 @@ Type: String
 Parameter Sets: Policy assignment with parameters via policy parameter string
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -202,7 +209,7 @@ Type: Hashtable
 Parameter Sets: Policy assignment with parameters via policy parameter object
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

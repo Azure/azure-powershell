@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected const string PolicyParameterObjectParameterSetName = "Policy assignment with parameters via policy parameter object";
         protected const string PolicyParameterStringParameterSetName = "Policy assignment with parameters via policy parameter string";
+        protected const string ParameterlessPolicyParameterSetName = "Policy assignment without parameters";
 
         /// <summary>
         /// Gets or sets the policy assignment name parameter.
@@ -60,21 +61,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
+        [Parameter(ParameterSetName = ParameterlessPolicyParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
+        [Parameter(ParameterSetName = PolicyParameterObjectParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
+        [Parameter(ParameterSetName = PolicyParameterStringParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         public PSObject PolicyDefinition { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment policy parameter object.
         /// </summary>
         [Parameter(ParameterSetName = PolicyParameterObjectParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter object.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter object.")]
         public Hashtable PolicyParameterObject { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment policy parameter file path or policy parameter string.
         /// </summary>
         [Parameter(ParameterSetName = PolicyParameterStringParameterSetName, 
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter file path or policy parameter string.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter file path or policy parameter string.")]
         [ValidateNotNullOrEmpty]
         public string PolicyParameter { get; set; }
 
