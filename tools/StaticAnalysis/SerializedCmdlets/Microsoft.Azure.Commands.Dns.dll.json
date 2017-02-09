@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -82,7 +82,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -233,7 +233,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -322,7 +322,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -873,7 +873,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -895,7 +895,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1131,7 +1131,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1204,7 +1204,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1350,7 +1350,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1376,7 +1376,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1419,7 +1419,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1473,7 +1473,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1514,7 +1514,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1540,7 +1540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -1737,7 +1737,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1791,7 +1791,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1845,7 +1845,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1899,7 +1899,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -1973,7 +1973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2027,7 +2027,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2081,7 +2081,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2195,7 +2195,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2249,7 +2249,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2290,7 +2290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -2316,7 +2316,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -2513,7 +2513,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2567,7 +2567,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2621,7 +2621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2675,7 +2675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2749,7 +2749,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2803,7 +2803,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2857,7 +2857,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -2971,7 +2971,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3025,7 +3025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "Metadata": "System.Collections.Hashtable",
@@ -3066,7 +3066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "Metadata": "System.Collections.Hashtable",
@@ -3134,7 +3134,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -3198,7 +3198,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsRecordBase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
             "GenericTypeArguments": []
@@ -3326,7 +3326,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
                   "GenericTypeArguments": []
@@ -3511,7 +3511,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
                   "GenericTypeArguments": []
@@ -3576,7 +3576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -3684,7 +3684,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
                   "GenericTypeArguments": []
@@ -3756,7 +3756,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -3912,7 +3912,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4067,7 +4067,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4212,7 +4212,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4281,7 +4281,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4390,7 +4390,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Etag": "System.String",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4450,7 +4450,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Etag": "System.String",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -4710,7 +4710,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4720,7 +4720,7 @@
     "Microsoft.Azure.Commands.Dns.DnsRecordBase": {
       "Namespace": "Microsoft.Azure.Commands.Dns",
       "Name": "DnsRecordBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
