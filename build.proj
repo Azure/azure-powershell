@@ -108,8 +108,10 @@
   
   <PropertyGroup>
     <NuGetCommand>$(MSBuildProjectDirectory)\tools\NuGet.exe</NuGetCommand>
+	<LibraryNugetPackageFolder>$(LibrarySourceFolder)\packages</LibraryNugetPackageFolder>
     <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+	<NuGetRestorePackageSetting>-PackagesDirectory $(LibraryNugetPackageFolder)</NuGetRestorePackageSetting>
     <PowerShellCommand>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
   </PropertyGroup>
   
@@ -135,11 +137,14 @@
 	<Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>  
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) -PackagesDirectory $(LibrarySourceFolder)\packages" 
+    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" 
           ContinueOnError="false" />
 
     <!--Restore the xunit runner needed to run unit tests-->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory -PackagesDirectory $(LibrarySourceFolder)\packages" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config $(NuGetRestorePackageSetting)" />
+	
+	<Exec Command="$(NuGetCommand) restore %(SetupSln.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
+          ContinueOnError="false" />
     
     <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
@@ -153,16 +158,10 @@
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)" 
       ContinueOnError="false" />
-      
+	      
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
-    <MSBuild
-      Projects="@(SetupSln)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" 
-      Condition=" '$(Scope)' == 'all' "/>
-    
+	<CallTarget Targets="BuildSetup"/>
     <CallTarget Targets="CodeSignInstaller" 
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    
   </Target>
@@ -171,7 +170,21 @@
   <Target
     Name="Full"
     DependsOnTargets="Clean;Build;Test" />
-    
+
+		<Target Name="BuildSetup" Condition=" '$(Scope)' == 'all' ">
+		<!-- Copying shortcut to be signed -->
+		<Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\RemoveGalleryModules.ps1;$(LibrarySourceFolder)\Package\$(Configuration)\SetExecutionPolicy.ps1"
+		  DestinationFolder="$(LibraryRoot)setup\Setup\"
+		  Condition=" '$(CodeSign)' == 'true' "/>
+
+		<MSBuild
+		  Projects="@(SetupSln)"
+		  Targets="Build"
+		  Properties="Configuration=$(Configuration);Platform=Any CPU"
+		  ContinueOnError="false"
+		  Condition=" '$(Scope)' == 'all' "/>
+	</Target>
+	
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
     <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"
              Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
@@ -206,6 +219,7 @@
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
+	  <ScriptsToSign Include="$(LibraryRoot)setup\Setup\*.ps1" />
     </ItemGroup>
     
     <Message Importance="high" Text="$(LibrarySourceFolder)\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
@@ -236,7 +250,7 @@
       UnsignedFiles="@(ScriptsToSign)"
       DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
       BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      Certificates="402"
+      Certificates="400"
       SigningLogPath="$(LibraryRoot)\signing-scripts.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/> 
@@ -248,6 +262,11 @@
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
+		
+	<VerifyAuthenticodeSignatureTask ProbingDirectory="$(PackageDirectory)\$(Configuration)"
+                    FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml">
+      <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
+    </VerifyAuthenticodeSignatureTask>
         
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 

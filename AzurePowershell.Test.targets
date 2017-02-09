@@ -65,6 +65,7 @@
       <AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'all' ">
+	  <XUnitTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
       <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
@@ -99,18 +100,61 @@
   <Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-    <Exec 
+    <!--
+	<Exec 
         Command="$(LibrarySourceFolder)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -parallel none -maxthreads 0 -trait &quot;AcceptanceType=CheckIn&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
         Timeout="$(TestTimeout)" ContinueOnError="false" Condition=" @(XUnitTests) != '' "/>
+	-->
+	
+	<xunit 
+			Assemblies="@(XUnitTests)" 
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			IncludeTraits="AcceptanceType=CheckIn"
+			Html="$(TestOutputDirectory)\AzurePSStackTestResults.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false" 
+			Condition=" @(XUnitTests) != '' "/>
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
   
   <Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-    <Exec 
+    <!--
+	<Exec 
         Command="$(LibrarySourceFolder)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -notrait &quot;RunType=LiveOnly&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
         Timeout="$(TestTimeout)" ContinueOnError="false"/>
+	-->
+	<xunit 
+			Assemblies="@(XUnitTests)" 
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			ExcludeTraits="RunType=LiveOnly"
+			Html="$(TestOutputDirectory)\AzurePSStackAllTestResults.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false" 
+			Condition=" @(XUnitTests) != '' "/>
+		
+		<xunit 
+			Assemblies="@(XUnitTests)"
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			IncludeTraits="SignedBuild=BVT"
+			Html="$(TestOutputDirectory)\AzurePSStackSignedTestResults.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false"
+			Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' "/>
+			
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
   
