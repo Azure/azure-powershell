@@ -7,26 +7,26 @@ schema: 2.0.0
 # Remove-AzureRmEventHubConsumerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes the specified Event Hubs consumer group.
 
 ## SYNTAX
 
 ```
 Remove-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-EventHubName] <String> [-ConsumerGroupName] <String> [-WhatIf] [-Confirm]
+ [-EventHubName] <String> [-ConsumerGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmEventHubConsumerGroup** cmdlet removes and deletes the specified consumer group from the given Event Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName
 ```
 
-{{ Add example description here }}
+Deletes the consumer group `MyConsumerGroupName` from the Event Hub `MyEventHubName`, scoped to the `MyNamespaceName` namespace.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConsumerGroupName
-ConsumerGroup Name.
+Consumer group Name.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-EventHub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -120,6 +120,9 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

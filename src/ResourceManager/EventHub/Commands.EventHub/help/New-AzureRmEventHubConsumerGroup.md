@@ -7,26 +7,27 @@ schema: 2.0.0
 # New-AzureRmEventHubConsumerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new consumer group for the specified Event Hub.
 
 ## SYNTAX
 
 ```
 New-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-NamespaceName] <String>
  [-EventHubName] <String> [-ConsumerGroupName] <String> [-UserMetadata <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmEventHubConsumerGroup** cmdlet creates a new consumer group for the specified Event Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName
 ```
 
-{{ Add example description here }}
+Creates the consumer group `MyConsumerGroupName` in the Event Hub `MyEventHubName`, scoped to the namespace `MyNamespaceName`, with resource group `MyResourceGroupName`.
 
 ## PARAMETERS
 
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConsumerGroupName
-ConsumerGroup Name.
+Consumer group name.
 
 ```yaml
 Type: String
@@ -61,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-EventHub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -76,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -91,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -122,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserMetadata
-User Metadata for ConsumerGroup
+User metadata for the consumer group.
 
 ```yaml
 Type: String
@@ -135,6 +136,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

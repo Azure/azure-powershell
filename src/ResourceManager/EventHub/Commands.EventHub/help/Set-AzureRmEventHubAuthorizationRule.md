@@ -7,27 +7,27 @@ schema: 2.0.0
 # Set-AzureRmEventHubAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified authorization rule on an Event Hub.
 
 ## SYNTAX
 
 ```
 Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
  [-EventHubName] <String> -AuthRuleObj <SharedAccessAuthorizationRuleAttributes>
- -AuthorizationRuleName <String> [-Rights <String[]>] [-WhatIf] [-Confirm]
+ -AuthorizationRuleName <String> [-Rights <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmEventHubAuthorizationRule** cmdlet updates the specified authorization rule on the given Event Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName -Rights @("Manage")
 ```
 
-{{ Add example description here }}
+Updates the authorization rule `MyAuthRuleName` to grant **Manage** rights to the Event Hub `MyEventHubName`, scoped by the namespace `MyNamespaceName`.
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-EventHub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-AuthorizationRule Name.
+Authorization rule name.
 
 ```yaml
 Type: String
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthRuleObj
-EventHub AuthorizationRule Object.
+Event Hubs authorization rule object.
 
 ```yaml
 Type: SharedAccessAuthorizationRuleAttributes
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 
 ### -Rights
 Required if 'AuthruleObj' not specified.
-Rights - e.g. 
+Rights; for example,
 @("Listen","Send","Manage")
 
 ```yaml
@@ -153,6 +153,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

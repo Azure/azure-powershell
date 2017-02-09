@@ -7,27 +7,27 @@ schema: 2.0.0
 # Set-AzureRmEventHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified Event Hub.
 
 ## SYNTAX
 
 ```
 Set-AzureRmEventHub [-ResourceGroupName] <String> [-NamespaceName] <String> [-EventHubName] <String>
  [[-EventHubObj] <EventHubAttributes>] [-messageRetentionInDays <Int64>] [-partitionCount <Int64>] [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmEventHub** cmdlet updates the properties of the specified Event Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -EventHubObj MyCreatedEventHub -messageRetentionInDays 4 -partitionCount 2
 ```
 
-{{ Add example description here }}
+Updates the Event Hub `MyEventHubName` represented by the `MyCreatedEventHub` object, setting the message retention period to 4 days, and the number of partitions to 2.
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-Namespace Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubObj
-EventHub object.
+The Event Hubs object.
 
 ```yaml
 Type: EventHubAttributes
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -messageRetentionInDays
-Eventhub Message Retention In Days.
+Event Hub message retention period, in days.
 
 ```yaml
 Type: Int64
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -partitionCount
-Eventhub PartitionCount.
+Number of partitions on this Event Hub.
 
 ```yaml
 Type: Int64
@@ -151,6 +151,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

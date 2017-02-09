@@ -7,25 +7,26 @@ schema: 2.0.0
 # Remove-AzureRmEventHubNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the specified Event Hubs namespace.
 
 ## SYNTAX
 
 ```
 Remove-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-NamespaceName] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmEventHubNamespace** cmdlet removes and deletes the specified Event Hubs namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 
-{{ Add example description here }}
+Removes the Event Hubs namespace `MyNamespaceName` in resource group `MyResourceGroupName`.
 
 ## PARAMETERS
 
@@ -45,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-EventHub Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -60,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource group name.
 
 ```yaml
 Type: String
@@ -89,6 +90,9 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

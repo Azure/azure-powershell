@@ -7,26 +7,33 @@ schema: 2.0.0
 # New-AzureRmEventHubKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new primary or secondary key for the specified Event Hubs authorization rule.
 
 ## SYNTAX
 
 ```
 New-AzureRmEventHubKey [-ResourceGroup] <String> [-NamespaceName] <String> [-EventHubName] <String>
- -AuthorizationRuleName <String> [-RegenerateKey] <String> [-WhatIf] [-Confirm]
+ -AuthorizationRuleName <String> [-RegenerateKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmEventHubKey** cmdlet regenerates the primary or secondary SAS key for the specified Event Hubs authorization rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName -RegenerateKey PrimaryKey
 ```
 
-{{ Add example description here }}
+Regenerates the primary key for the authorization rule `MyAuthRuleName`.
+
+### Example 2
+```
+PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName -RegenerateKey SecondaryKey
+```
+
+Regenerates the secondary key for the authorization rule `MyAuthRuleName`.
 
 ## PARAMETERS
 
@@ -46,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-EventHub Name.
+The Event Hub name.
 
 ```yaml
 Type: String
@@ -61,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Event Hubs namespace name.
 
 ```yaml
 Type: String
@@ -76,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegenerateKey
-Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.
+Key to regenerate: `PrimaryKey` or `SecondaryKey`.
 
 ```yaml
 Type: String
@@ -92,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -123,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-Authorization Rule Name.
+Authorization rule name.
 
 ```yaml
 Type: String
@@ -136,6 +143,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
