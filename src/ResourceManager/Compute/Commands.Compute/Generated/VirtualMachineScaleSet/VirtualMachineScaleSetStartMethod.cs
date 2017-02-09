@@ -97,7 +97,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 instanceIds = inputArray2.ToList();
             }
 
-            VirtualMachineScaleSetsClient.Start(resourceGroupName, vmScaleSetName, instanceIds);
+            var result = VirtualMachineScaleSetsClient.Start(resourceGroupName, vmScaleSetName, instanceIds);
+            WriteObject(result);
         }
     }
 
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class StartAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -123,7 +124,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetStart";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsLifecycle.Start))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()

@@ -131,9 +131,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetDeleteInstances";
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove))
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove)
+                && (this.dynamicParameters["Force"].IsSet ||
+                    this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
+                                        "Remove-AzureRmVmss operation")))
             {
-                WriteWarning("Breaking change notice:'Force' parameter will be added in upcoming release.");
                 base.ProcessRecord();
             }
         }
@@ -183,6 +185,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
             pInstanceIds.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("InstanceId", pInstanceIds);
+
+            var pForce = new RuntimeDefinedParameter();
+            pForce.Name = "Force";
+            pForce.ParameterType = typeof(SwitchParameter);
+            pForce.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 4,
+                Mandatory = false
+            });
+            pForce.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("Force", pForce);
 
             return dynamicParameters;
         }
