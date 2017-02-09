@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssExtension")]
+    [Cmdlet("Add", "AzureRmVmssExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -81,13 +81,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public Object ProtectedSetting { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ValueFromPipelineByPropertyName = true)]
-        public string Id { get; set; }
-
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -116,7 +118,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vExtensions.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
             vExtensions.Settings = this.Setting;
             vExtensions.ProtectedSettings = this.ProtectedSetting;
-            vExtensions.Id = this.Id;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
             WriteObject(this.VirtualMachineScaleSet);
         }

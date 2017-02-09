@@ -14,12 +14,12 @@ Starts an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Start-AzureRmVM -Name <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Start-AzureRmVM [-Name] <String> [-Id] <String> [<CommonParameters>]
+Start-AzureRmVM -Name <String> -Id <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,30 +37,26 @@ This command starts the virtual machine named VirtualMachine07 in ResourceGroup1
 ## PARAMETERS
 
 ### -Id
-Specifies the Resource ID of the virtual machine.
-
-```yaml
+The resource group name.```yaml
 Type: String
 Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the virtual machine to start.
-
-```yaml
+The virtual machine name.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -78,6 +74,36 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
