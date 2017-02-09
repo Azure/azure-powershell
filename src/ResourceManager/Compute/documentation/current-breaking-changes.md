@@ -39,3 +39,24 @@
 -->
 
 ## Current Breaking Changes
+**Set-AzureVMDSCExtension**
+    - WmfVersion parameter of this cmdlet no longer supports "5.1PP". 
+
+    ```powershell
+    # Old
+    # Set-AzureVMDSCExtension -WmfVersion 5.1PP -VM $vm -ConfigurationArchive archive.ps1.zip -ConfigurationName name
+
+    # New
+    # Set-AzureVMDSCExtension -WmfVersion 5.1 -VM $vm -ConfigurationArchive archive.ps1.zip -ConfigurationName name
+    ```
+
+    **Set-AzureRmVMDSCExtension**
+    - WmfVersion parameter of this cmdlet no longer supports "5.1PP". 
+
+    ```powershell
+    # Old
+    # Set-AzureRmVMDSCExtension -ResourceGroupName "rg1" -VMName "vmname" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "X.Y" -Location "West US" -WmfVersion 5.1PP
+
+    # New
+    # Set-AzureRmVMDSCExtension -ResourceGroupName "rg1" -VMName "vmname" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "X.Y" -Location "West US" -WmfVersion 5.1
+    ```

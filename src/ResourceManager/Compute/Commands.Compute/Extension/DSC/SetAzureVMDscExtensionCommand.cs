@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] {"4.0", "5.0", "5.1", "5.1PP", "latest"})]
+        [ValidateSetAttribute(new[] {"4.0", "5.0", "5.1", "latest"})]
         public string WmfVersion { get; set; }
 
         /// <summary>
@@ -231,16 +231,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if ("5.1PP".Equals(WmfVersion))
-            {
-                WriteWarning(string.Format(
-                   CultureInfo.CurrentUICulture,
-                   Microsoft.Azure.Commands.Compute.Properties.Resources.WMFVersionNotSupported,
-                   WmfVersion));
-
-                return;
-            }
 
             ValidateParameters();
 
