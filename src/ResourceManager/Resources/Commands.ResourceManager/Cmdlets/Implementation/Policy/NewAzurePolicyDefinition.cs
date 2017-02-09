@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy parameter
+        /// Gets or sets the policy definition policy rule parameter
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.")]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
 
         /// <summary>
-        /// Gets or sets the parameters parameter
+        /// Gets or sets the policy definition parameters parameter
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.")]
         [ValidateNotNullOrEmpty]
