@@ -2087,14 +2087,5 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
                 return ResourceManager.GetString("WinRMCertificateDoesNotHaveExportablePrivateKey", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Breaking change notice: In upcoming release WMF Version {0} will be removed from Set-AzureVMDscExtension cmdlet as it is not supported anymore..
-        /// </summary>
-        public static string WMFVersionNotSupported {
-            get {
-                return ResourceManager.GetString("WMFVersionNotSupported", resourceCulture);
-            }
-        }
     }
 }

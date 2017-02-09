@@ -157,7 +157,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1", "5.1PP", "latest" })]
+        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1", "latest" })]
         public string WmfVersion { get; set; }
 
         /// <summary>
@@ -196,16 +196,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
             publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
-
-            if ("5.1PP".Equals(WmfVersion))
-            {
-                WriteWarning(string.Format(
-                    CultureInfo.CurrentUICulture,
-                    Resources.WMFVersionNotSupported,
-                    WmfVersion));
-
-                return;
-            }
 
             ValidateParameters();
 
