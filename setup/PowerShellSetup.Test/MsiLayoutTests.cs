@@ -99,6 +99,9 @@
 
             List<string> unsignedScripts = GetUnsignedFiles(scriptFiles, SHA2);
 
+            // We do this because, we sign MSI as SHA2 with SHA1 hash.
+            // Verifying msi under windows --> Rightclick --> Properties will show SHA1
+            // Verifying msi with Get-AuthenticodeSignature will return as SHA2
             List<string> unsignedMsi = GetUnsignedFiles(new List<string>() { this.GetAzurePSMsiPath() }, SHA2);
 
             TestLog.WriteLine("Verifying if DLLs are properly signed");

@@ -94,7 +94,11 @@
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' != 'all' and '$(scope)' != 'ServiceManagement' and '$(scope)' != 'AzureStorage' ">
       <XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
-    </ItemGroup>
+    </ItemGroup>	
+	<ItemGroup Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' ">
+		<!-- We want to run setup tests related to signing that can only be run on signed bits -->
+		<XUnitRelTests Include=".\setup\PowerShellSetup.Test\bin\Release\PowerShellSetup.Test.dll" />
+	</ItemGroup>
   </Target>
   
   <Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
@@ -142,18 +146,20 @@
 			ContinueOnError="false" 
 			Condition=" @(XUnitTests) != '' "/>
 		
-		<xunit 
-			Assemblies="@(XUnitTests)"
-			AppDomains="true"
-			ShadowCopy="false"
-			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
-			IncludeTraits="SignedBuild=BVT"
-			Html="$(TestOutputDirectory)\AzurePSStackSignedTestResults.html"
-			MaxParallelThreads="10"
-			DiagnosticMessages="false"
-			ContinueOnError="false"
-			Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' "/>
+	<Message Importance="high" Text="Running XUnit tests targeted for release configuration" Condition=" @(XUnitRelTests) != '' "/>
+	<Message Text="@(XUnitRelTests)" Condition=" @(XUnitRelTests) != '' "/>
+	<xunit 
+		Assemblies="@(XUnitRelTests)"
+		AppDomains="true"
+		ShadowCopy="false"
+		ParallelizeTestCollections="false"
+		ParallelizeAssemblies="true"
+		IncludeTraits="SignedBuild=BVT"
+		Html="$(TestOutputDirectory)\AzurePowershellSignedTestResults.html"
+		MaxParallelThreads="10"
+		DiagnosticMessages="false"
+		ContinueOnError="false"
+		Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' AND @(XUnitRelTests) != '' "/>
 			
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
