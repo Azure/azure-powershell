@@ -221,7 +221,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedValidateSetValue,
                         description: string.Format(Properties.Resources.RemovedValidateSetValueDescription,
-                            oldParameter.Name, oldValue, cmdlet.Name),
+                            oldParameter.Name, cmdlet.Name, oldValue),
                         remediation: string.Format(Properties.Resources.RemovedValidateSetValueRemediation,
                             oldValue, oldParameter.Name));
                 }
