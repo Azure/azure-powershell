@@ -147,28 +147,28 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                                     if (cmdletFilter != null)
                                     {
-                                        string output = "Before filter\nOld module cmdlet count: " + oldModuleMetadata.Cmdlets.Count +
-                                                                     "\nNew module cmdlet count: " + newModuleMetadata.Cmdlets.Count;
+                                        string output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
 
-                                        output += "\nCmdlet file: " + cmdletFileFullPath;
+                                        output += string.Format("\nCmdlet file: {0}", cmdletFileFullPath);
 
                                         oldModuleMetadata.FilterCmdlets(cmdletFilter);
                                         newModuleMetadata.FilterCmdlets(cmdletFilter);
 
-                                        output += "\nAfter filter\nOld module cmdlet count: " + oldModuleMetadata.Cmdlets.Count +
-                                                                "\nNew module cmdlet count: " + newModuleMetadata.Cmdlets.Count;
+                                        output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
 
                                         foreach (var cmdlet in oldModuleMetadata.Cmdlets)
                                         {
-                                            output += "\n\tOld cmdlet - " + cmdlet.Name;
+                                            output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
                                         }
 
                                         foreach (var cmdlet in newModuleMetadata.Cmdlets)
                                         {
-                                            output += "\n\tNew cmdlet - " + cmdlet.Name;
+                                            output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
                                         }
 
-                                        issueLogger.WriteMessage(output + "\n");
+                                        issueLogger.WriteMessage(output + Environment.NewLine);
                                     }
 
                                     RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);

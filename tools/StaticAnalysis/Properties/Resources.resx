@@ -148,16 +148,16 @@
     <value>Change the element type for property '{0}' back to '{1}'.</value>
   </data>
   <data name="ChangedGenericTypeArgumentDescription" xml:space="preserve">
-    <value>The generic type argument for property '{0}' has been changed from '{1}' to '{2}'.</value>
+    <value>The generic type argument for '{0}' has been changed from '{1}' to '{2}'.</value>
   </data>
   <data name="ChangedGenericTypeArgumentRemediation" xml:space="preserve">
-    <value>Change the generic type argument for property '{0}' back to '{1}'.</value>
+    <value>Change the generic type argument for '{0}' back to '{1}'.</value>
   </data>
   <data name="ChangedGenericTypeDescription" xml:space="preserve">
-    <value>The generic type for property '{0}' has been changed from '{1}' to '{2}'. </value>
+    <value>The generic type for '{0}' has been changed from '{1}' to '{2}'. </value>
   </data>
   <data name="ChangedGenericTypeRemediation" xml:space="preserve">
-    <value>Change the generic type for property '{0}' back to '{1}'.</value>
+    <value>Change the generic type for '{0}' back to '{1}'.</value>
   </data>
   <data name="ChangedOutputElementTypeDescription" xml:space="preserve">
     <value>The element type for the output has been changed from '{0}' to '{1}'.</value>
@@ -226,7 +226,7 @@
     <value>Change the minimum value of the validate range for parameter '{0}' back to at most '{1}'.</value>
   </data>
   <data name="DifferentGenericTypeArgumentSizeDescription" xml:space="preserve">
-    <value>The number of arguments for generic type '{0}' for property '{1}' has been changed from '{2}' to '{3}'.</value>
+    <value>The number of arguments for generic type '{0}' for '{1}' has been changed from '{2}' to '{3}'.</value>
   </data>
   <data name="DifferentGenericTypeArgumentSizeRemediation" xml:space="preserve">
     <value>Change the number of arguments for generic type '{0}' back to '{1}'.</value>
