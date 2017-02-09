@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy definition parameters parameter
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.")]
         [ValidateNotNullOrEmpty]
-        public string Parameters { get; set; }
+        public string Parameter { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
                     PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString()),
-                    Parameters = this.Parameters == null ? null : JObject.Parse(GetParametersObject().ToString())
+                    Parameter = this.Parameter == null ? null : JObject.Parse(GetParametersObject().ToString())
                 }
             };
 
@@ -145,11 +145,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private JToken GetParametersObject()
         {
-            string parametersFilePath = this.TryResolvePath(this.Parameters);
+            string parametersFilePath = this.TryResolvePath(this.Parameter);
 
             return File.Exists(parametersFilePath)
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(parametersFilePath))
-                : JToken.FromObject(this.Parameters);
+                : JToken.FromObject(this.Parameter);
         }
     }
 }

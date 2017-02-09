@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         protected RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
 
-        protected const string PolicyParametersObjectParameterSetName = "Policy assignment with parameters via policy parameters object";
-        protected const string PolicyParametersStringParameterSetName = "Policy assignment with parameters via policy parameters string";
+        protected const string PolicyParameterObjectParameterSetName = "Policy assignment with parameters via policy parameter object";
+        protected const string PolicyParameterStringParameterSetName = "Policy assignment with parameters via policy parameter string";
 
         /// <summary>
         /// Gets or sets the policy assignment name parameter.
@@ -64,19 +64,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public PSObject PolicyDefinition { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy assignment policy parameters object.
+        /// Gets or sets the policy assignment policy parameter object.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyParametersObjectParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameters object.")]
-        public Hashtable PolicyParametersObject { get; set; }
+        [Parameter(ParameterSetName = PolicyParameterObjectParameterSetName,
+            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter object.")]
+        public Hashtable PolicyParameterObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy assignment policy parameters file path or policy parameters string.
+        /// Gets or sets the policy assignment policy parameter file path or policy parameter string.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyParametersStringParameterSetName, 
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameters file path or policy parameters string.")]
+        [Parameter(ParameterSetName = PolicyParameterStringParameterSetName, 
+            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter file path or policy parameter string.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyParameters { get; set; }
+        public string PolicyParameter { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -181,23 +181,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private JObject GetParameters()
         {
             // Load parameters from local file or literal
-            if (this.PolicyParameters != null)
+            if (this.PolicyParameter != null)
             {
-                string policyParameterFilePath = this.TryResolvePath(this.PolicyParameters);
+                string policyParameterFilePath = this.TryResolvePath(this.PolicyParameter);
                 return FileUtilities.DataStore.FileExists(policyParameterFilePath)
                     ? JObject.Parse(FileUtilities.DataStore.ReadFileAsText(policyParameterFilePath))
-                    : JObject.Parse(this.PolicyParameters);
+                    : JObject.Parse(this.PolicyParameter);
             }
 
             // Load from PS object
             JObject parameterObject = null;
-            if (this.PolicyParametersObject != null)
+            if (this.PolicyParameterObject != null)
             {
                 parameterObject = new JObject();
-                foreach (string paramKey in this.PolicyParametersObject.Keys)
+                foreach (string paramKey in this.PolicyParameterObject.Keys)
                 {
                     var valueObject = new JObject();
-                    valueObject.Add("value", this.PolicyParametersObject[paramKey].ToJToken());
+                    valueObject.Add("value", this.PolicyParameterObject[paramKey].ToJToken());
                     parameterObject.Add(paramKey, valueObject);
                 }
                 return parameterObject;
