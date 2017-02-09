@@ -1,26 +1,29 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testPool/nodes?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDEuMy4x",
+      "RequestUri": "/pools/testPool/nodes?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDEtMDEuNC4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "560d66de-d01b-4983-842d-faea1083da0d"
+          "721cacbd-ae46-48bd-a80e-5ec3d1fa7839"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 23:01:53 GMT"
+          "Thu, 09 Feb 2017 17:08:37 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-1695681911_1-20161122t193202z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n      \"lastBootTime\": \"2016-11-22T22:31:38.6346188Z\",\r\n      \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n      \"ipAddress\": \"10.238.48.9\",\r\n      \"affinityId\": \"TVM:tvm-1695681911_1-20161122t193202z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 1,\r\n      \"totalTasksSucceeded\": 1,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n        \"endTime\": \"2016-11-22T22:31:40.8235693Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-1695681911_2-20161122t193202z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_2-20161122t193202z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-11-22T22:50:50.5840663Z\",\r\n      \"lastBootTime\": \"2016-11-22T22:50:48.1265657Z\",\r\n      \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n      \"ipAddress\": \"10.238.36.71\",\r\n      \"affinityId\": \"TVM:tvm-1695681911_2-20161122t193202z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-11-22T22:50:50.5840663Z\",\r\n        \"endTime\": \"2016-11-22T22:50:50.8221393Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-1695681911_3-20161122t193202z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_3-20161122t193202z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-11-22T19:36:51.0013378Z\",\r\n      \"lastBootTime\": \"2016-11-22T19:36:48.21721Z\",\r\n      \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n      \"ipAddress\": \"10.238.10.43\",\r\n      \"affinityId\": \"TVM:tvm-1695681911_3-20161122t193202z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-11-22T19:36:51.0013378Z\",\r\n        \"endTime\": \"2016-11-22T19:36:51.2363447Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-3491083306_2-20170208t214214z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-3491083306_2-20170208t214214z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-02-08T21:46:45.226285Z\",\r\n      \"lastBootTime\": \"2017-02-08T21:46:41.3731556Z\",\r\n      \"allocationTime\": \"2017-02-08T21:42:14.2402287Z\",\r\n      \"ipAddress\": \"100.119.4.156\",\r\n      \"affinityId\": \"TVM:tvm-3491083306_2-20170208t214214z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2017-02-08T21:46:45.226285Z\",\r\n        \"endTime\": \"2017-02-08T21:46:45.4746024Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-3491083306_3-20170208t214214z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-3491083306_3-20170208t214214z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-02-08T21:49:50.4133499Z\",\r\n      \"lastBootTime\": \"2017-02-08T21:49:46.4221675Z\",\r\n      \"allocationTime\": \"2017-02-08T21:42:14.2402287Z\",\r\n      \"ipAddress\": \"100.119.48.101\",\r\n      \"affinityId\": \"TVM:tvm-3491083306_3-20170208t214214z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 1,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2017-02-08T21:49:50.4133499Z\",\r\n        \"endTime\": \"2017-02-08T21:49:50.7259877Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-3491083306_4-20170208t235953z\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-3491083306_4-20170208t235953z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-02-09T00:03:49.878259Z\",\r\n      \"lastBootTime\": \"2017-02-09T00:03:47.5506169Z\",\r\n      \"allocationTime\": \"2017-02-08T23:59:53.6640142Z\",\r\n      \"ipAddress\": \"100.119.28.211\",\r\n      \"affinityId\": \"TVM:tvm-3491083306_4-20170208t235953z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2017-02-09T00:03:49.878259Z\",\r\n        \"endTime\": \"2017-02-09T00:03:50.0446327Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -29,7 +32,7 @@
           "chunked"
         ],
         "request-id": [
-          "e7f8e71d-460c-4b8a-ab66-5684b69dc487"
+          "c18fa0b8-b120-4c96-89e4-2460fa3e2e60"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -41,7 +44,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 23:01:53 GMT"
+          "Thu, 09 Feb 2017 17:08:37 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -50,26 +53,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0xNjk1NjgxOTExXzEtMjAxNjExMjJ0MTkzMjAyej9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestUri": "/pools/testPool/nodes/tvm-3491083306_2-20170208t214214z?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0zNDkxMDgzMzA2XzItMjAxNzAyMDh0MjE0MjE0ej9hcGktdmVyc2lvbj0yMDE3LTAxLTAxLjQuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a372f190-4338-40b3-aead-64086bc9ff37"
+          "b9fcb8b7-ff7c-4223-9ad2-0ea67de60d3b"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 23:01:54 GMT"
+          "Thu, 09 Feb 2017 17:08:38 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-1695681911_1-20161122t193202z\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n  \"lastBootTime\": \"2016-11-22T22:31:38.6346188Z\",\r\n  \"allocationTime\": \"2016-11-22T19:32:02.8155319Z\",\r\n  \"ipAddress\": \"10.238.48.9\",\r\n  \"affinityId\": \"TVM:tvm-1695681911_1-20161122t193202z\",\r\n  \"vmSize\": \"small\",\r\n  \"totalTasksRun\": 1,\r\n  \"totalTasksSucceeded\": 1,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": false\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2016-11-22T22:31:40.6345701Z\",\r\n    \"endTime\": \"2016-11-22T22:31:40.8235693Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-3491083306_2-20170208t214214z\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/testPool/nodes/tvm-3491083306_2-20170208t214214z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2017-02-08T21:46:45.226285Z\",\r\n  \"lastBootTime\": \"2017-02-08T21:46:41.3731556Z\",\r\n  \"allocationTime\": \"2017-02-08T21:42:14.2402287Z\",\r\n  \"ipAddress\": \"100.119.4.156\",\r\n  \"affinityId\": \"TVM:tvm-3491083306_2-20170208t214214z\",\r\n  \"vmSize\": \"small\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": false\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2017-02-08T21:46:45.226285Z\",\r\n    \"endTime\": \"2017-02-08T21:46:45.4746024Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -78,7 +84,7 @@
           "chunked"
         ],
         "request-id": [
-          "a547ab01-b0b3-48de-9583-3c6de0518bea"
+          "f4d55b6c-9a0c-4d54-b935-c15ed9a01fb4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -90,7 +96,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 23:01:54 GMT"
+          "Thu, 09 Feb 2017 17:08:36 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -99,26 +105,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-1695681911_1-20161122t193202z/rdp?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0xNjk1NjgxOTExXzEtMjAxNjExMjJ0MTkzMjAyei9yZHA/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestUri": "/pools/testPool/nodes/tvm-3491083306_2-20170208t214214z/rdp?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0zNDkxMDgzMzA2XzItMjAxNzAyMDh0MjE0MjE0ei9yZHA/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "bf45d333-abfe-431c-b68d-3dc5ca83d000"
+          "8614dde8-9595-4ee8-9c32-d96376f97225"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 23:01:54 GMT"
+          "Thu, 09 Feb 2017 17:08:38 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
-      "ResponseBody": "full address:s:104.209.208.76\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0",
+      "ResponseBody": "full address:s:52.225.219.238\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_2",
       "ResponseHeaders": {
         "Content-Type": [
           "application/octet-stream"
@@ -127,7 +136,7 @@
           "chunked"
         ],
         "request-id": [
-          "fc642b12-f820-4502-b68d-c50651379f64"
+          "d2672d46-408b-4c92-9aa9-5a659e819898"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -139,7 +148,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 23:01:54 GMT"
+          "Thu, 09 Feb 2017 17:08:36 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

@@ -47,7 +47,7 @@ Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context v
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-To obtain a **BatchAccountContext** object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.
+If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: BatchAccountContext

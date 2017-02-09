@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDEuMy4x",
+      "RequestUri": "/pools?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDEtMDEuNC4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"autoscalePool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicated\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
       "RequestHeaders": {
@@ -13,29 +13,32 @@
           "207"
         ],
         "client-request-id": [
-          "13a3f489-437a-4620-8123-13c5acbbb001"
+          "c87ede0e-5dc5-432f-a1ce-ad004d1d78ea"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:27 GMT"
+          "Thu, 09 Feb 2017 17:17:53 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 22 Nov 2016 19:39:26 GMT"
+          "Thu, 09 Feb 2017 17:17:53 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "773ef2a7-4e06-4aed-9bbf-8f6cc612ca93"
+          "97a3d9af-5209-4dac-ac99-6d008966c981"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,10 +53,10 @@
           "https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:27 GMT"
+          "Thu, 09 Feb 2017 17:17:53 GMT"
         ],
         "ETag": [
-          "0x8D4130F449508FF"
+          "0x8D4510F9542FEC9"
         ],
         "Location": [
           "https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool"
@@ -65,38 +68,41 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/autoscalePool?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestUri": "/pools/autoscalePool?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "063ab575-8d4d-4edb-adab-434913889334"
+          "a74074f1-d34c-4fd9-ab3c-34f3515345d4"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:28 GMT"
+          "Thu, 09 Feb 2017 17:17:53 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"autoscalePool\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool\",\r\n  \"eTag\": \"0x8D4130F449508FF\",\r\n  \"lastModified\": \"2016-11-22T19:39:26.2137599Z\",\r\n  \"creationTime\": \"2016-11-22T19:39:26.2137599Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-11-22T19:39:26.2137599Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2016-11-22T19:39:26.3524143Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"autoscalePool\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool\",\r\n  \"eTag\": \"0x8D4510F9542FEC9\",\r\n  \"lastModified\": \"2017-02-09T17:17:53.6637641Z\",\r\n  \"creationTime\": \"2017-02-09T17:17:53.6637641Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-02-09T17:17:53.6637641Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2017-02-09T17:17:53.8286549Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 22 Nov 2016 19:39:26 GMT"
+          "Thu, 09 Feb 2017 17:17:53 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "0c906124-6df1-4013-89c2-21597e7c9fce"
+          "6101aaf4-fb5f-4c9c-914d-fbb5a8584fea"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -108,10 +114,10 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:27 GMT"
+          "Thu, 09 Feb 2017 17:17:53 GMT"
         ],
         "ETag": [
-          "0x8D4130F449508FF"
+          "0x8D4510F9542FEC9"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -120,38 +126,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestUri": "/pools/autoscalePool?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "315028cf-f520-4497-8d33-63e17592be7f"
+          "9ed36bdd-087b-4b0a-90cb-1199698cca48"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:29 GMT"
+          "Thu, 09 Feb 2017 17:17:55 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"autoscalePool\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool\",\r\n  \"eTag\": \"0x8D4130F45B65B80\",\r\n  \"lastModified\": \"2016-11-22T19:39:28.1098624Z\",\r\n  \"creationTime\": \"2016-11-22T19:39:26.2137599Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-11-22T19:39:26.2137599Z\",\r\n  \"allocationState\": \"stopping\",\r\n  \"allocationStateTransitionTime\": \"2016-11-22T19:39:28.1098624Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"autoscalePool\",\r\n  \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool\",\r\n  \"eTag\": \"0x8D4510F961BF6E4\",\r\n  \"lastModified\": \"2017-02-09T17:17:55.0856932Z\",\r\n  \"creationTime\": \"2017-02-09T17:17:53.6637641Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-02-09T17:17:53.6637641Z\",\r\n  \"allocationState\": \"stopping\",\r\n  \"allocationStateTransitionTime\": \"2017-02-09T17:17:55.0856932Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 22 Nov 2016 19:39:28 GMT"
+          "Thu, 09 Feb 2017 17:17:55 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "d133febd-fd73-4f86-a7fc-66394c020596"
+          "7ae9036a-462b-4e08-b42f-ee434ff11b37"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -163,10 +172,10 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:28 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "ETag": [
-          "0x8D4130F45B65B80"
+          "0x8D4510F961BF6E4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -175,8 +184,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool/enableautoscale?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZW5hYmxlYXV0b3NjYWxlP2FwaS12ZXJzaW9uPTIwMTYtMDctMDEuMy4x",
+      "RequestUri": "/pools/autoscalePool/enableautoscale?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZW5hYmxlYXV0b3NjYWxlP2FwaS12ZXJzaW9uPTIwMTctMDEtMDEuNC4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"autoScaleFormula\": \"$TargetDedicated=0\",\r\n  \"autoScaleEvaluationInterval\": \"PT8M\"\r\n}",
       "RequestHeaders": {
@@ -187,29 +196,32 @@
           "90"
         ],
         "client-request-id": [
-          "6a2ea72b-e6c1-4815-b4dc-cebd69f7095d"
+          "c71e46c4-abc2-482b-a8e4-5715a3701969"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:28 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 22 Nov 2016 19:39:27 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "d5278bf4-b3ad-4e76-a954-f8be2bd67e7f"
+          "8ebaf33a-1486-4291-aaa8-1535d668c064"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -224,10 +236,10 @@
           "https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool/enableautoscale"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:27 GMT"
+          "Thu, 09 Feb 2017 17:17:53 GMT"
         ],
         "ETag": [
-          "0x8D4130F453E3E6B"
+          "0x8D4510F95C82108"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -236,26 +248,29 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools?api-version=2016-07-01.3.1&$filter=id%20eq%20'autoscalePool'",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDEuMy4xJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN2F1dG9zY2FsZVBvb2wlMjc=",
+      "RequestUri": "/pools?api-version=2017-01-01.4.0&$filter=id%20eq%20'autoscalePool'",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDEtMDEuNC4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN2F1dG9zY2FsZVBvb2wlMjc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "b07487c8-9bad-490d-b320-71f8b935d479"
+          "71e58d62-b06a-4b18-b17a-9b5d2991ffdb"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:29 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"autoscalePool\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool\",\r\n      \"eTag\": \"0x8D4130F453E3E6B\",\r\n      \"lastModified\": \"2016-11-22T19:39:27.3226859Z\",\r\n      \"creationTime\": \"2016-11-22T19:39:26.2137599Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2016-11-22T19:39:26.2137599Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2016-11-22T19:39:27.3226859Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicated\": 0,\r\n      \"targetDedicated\": 0,\r\n      \"enableAutoScale\": true,\r\n      \"autoScaleFormula\": \"$TargetDedicated=0\",\r\n      \"autoScaleEvaluationInterval\": \"PT8M\",\r\n      \"autoScaleRun\": {\r\n        \"timestamp\": \"2016-11-22T19:39:27.3226859Z\",\r\n        \"results\": \"$TargetDedicated=0;$NodeDeallocationOption=requeue\"\r\n      },\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"autoscalePool\",\r\n      \"url\": \"https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool\",\r\n      \"eTag\": \"0x8D4510F95C82108\",\r\n      \"lastModified\": \"2017-02-09T17:17:54.5362696Z\",\r\n      \"creationTime\": \"2017-02-09T17:17:53.6637641Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-02-09T17:17:53.6637641Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2017-02-09T17:17:54.5362696Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicated\": 0,\r\n      \"targetDedicated\": 0,\r\n      \"enableAutoScale\": true,\r\n      \"autoScaleFormula\": \"$TargetDedicated=0\",\r\n      \"autoScaleEvaluationInterval\": \"PT8M\",\r\n      \"autoScaleRun\": {\r\n        \"timestamp\": \"2017-02-09T17:17:54.5362696Z\",\r\n        \"results\": \"$TargetDedicated=0;$NodeDeallocationOption=requeue\"\r\n      },\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -264,7 +279,7 @@
           "chunked"
         ],
         "request-id": [
-          "bef3c5e2-96a8-4772-b365-b419e6abba86"
+          "6f7de4ac-7bea-418d-ae9f-c545dbd418e0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -276,7 +291,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:27 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -285,8 +300,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool/evaluateautoscale?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZXZhbHVhdGVhdXRvc2NhbGU/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestUri": "/pools/autoscalePool/evaluateautoscale?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZXZhbHVhdGVhdXRvc2NhbGU/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"autoScaleFormula\": \"$TargetDedicated=1\"\r\n}",
       "RequestHeaders": {
@@ -297,20 +312,23 @@
           "48"
         ],
         "client-request-id": [
-          "024f1cbb-94cb-41a7-871e-8c2fd5c4628f"
+          "fffa8821-231e-4ded-81b8-f69d4025082f"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:29 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\r\n  \"timestamp\": \"2016-11-22T19:39:28.5246331Z\",\r\n  \"results\": \"$TargetDedicated=1;$NodeDeallocationOption=requeue\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\r\n  \"timestamp\": \"2017-02-09T17:17:54.4418723Z\",\r\n  \"results\": \"$TargetDedicated=1;$NodeDeallocationOption=requeue\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -319,7 +337,7 @@
           "chunked"
         ],
         "request-id": [
-          "1ab68bac-6257-42bb-9a32-b4be1825a177"
+          "4e4bf693-ce79-45ce-b4cd-03a7bfbe044c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -334,7 +352,7 @@
           "https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool/evaluateautoscale"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:27 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -343,35 +361,38 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool/disableautoscale?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZGlzYWJsZWF1dG9zY2FsZT9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestUri": "/pools/autoscalePool/disableautoscale?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZGlzYWJsZWF1dG9zY2FsZT9hcGktdmVyc2lvbj0yMDE3LTAxLTAxLjQuMA==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "dc893e44-9246-4d2f-980b-f06f1f39cb28"
+          "c2b52db6-4990-460d-89d0-3c4b6b2768e2"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:29 GMT"
+          "Thu, 09 Feb 2017 17:17:55 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 22 Nov 2016 19:39:28 GMT"
+          "Thu, 09 Feb 2017 17:17:55 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "12656535-872b-4780-80dd-f46474df4b20"
+          "33c1c35a-6f28-47bf-bc9e-3efc034ba152"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -386,10 +407,10 @@
           "https://jstesteastus2.eastus2.batch.azure.com/pools/autoscalePool/disableautoscale"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:28 GMT"
+          "Thu, 09 Feb 2017 17:17:54 GMT"
         ],
         "ETag": [
-          "0x8D4130F45B65B80"
+          "0x8D4510F961BF6E4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -398,23 +419,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestUri": "/pools/autoscalePool?api-version=2017-01-01.4.0",
+      "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wMS0wMS40LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "464aa420-f53d-4dc4-8fb9-e5f3edc95a4b"
+          "7a536978-c6c3-495a-96be-ef45c6c824fd"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 22 Nov 2016 19:39:30 GMT"
+          "Thu, 09 Feb 2017 17:17:55 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.2.0",
-          "AzurePowershell/v3.1.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/6.0.0.0",
+          "AzurePowershell/v3.4.0"
         ]
       },
       "ResponseBody": "",
@@ -423,7 +447,7 @@
           "chunked"
         ],
         "request-id": [
-          "b0ad3d6c-f411-4c4e-bc7a-a2cab26d0526"
+          "5261dc7a-4f9f-4c33-8813-55d08871a243"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -435,7 +459,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 22 Nov 2016 19:39:29 GMT"
+          "Thu, 09 Feb 2017 17:17:55 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

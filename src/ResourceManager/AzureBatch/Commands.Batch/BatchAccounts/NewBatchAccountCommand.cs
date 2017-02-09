@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Management.Batch.Models;
 using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -40,13 +42,30 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string AutoStorageAccountId { get; set; }
 
+        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public PoolAllocationMode? PoolAllocationMode { get; set; }
+
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public string KeyVaultId { get; set; }
+
+        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public string KeyVaultUrl { get; set; }
+
         [Alias("Tags")]
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            BatchAccountContext context = BatchClient.CreateAccount(this.ResourceGroupName, this.AccountName, this.Location, this.Tag, this.AutoStorageAccountId);
+            AccountCreateParameters parameters = new AccountCreateParameters(this.ResourceGroupName, this.AccountName, this.Location)
+            {
+                AutoStorageAccountId = this.AutoStorageAccountId,
+                PoolAllocationMode = this.PoolAllocationMode,
+                KeyVaultId = this.KeyVaultId,
+                KeyVaultUrl = this.KeyVaultUrl,
+                Tags = this.Tag
+            };
+            BatchAccountContext context = BatchClient.CreateAccount(parameters);
             WriteObject(context);
         }
     }

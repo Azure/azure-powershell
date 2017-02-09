@@ -121,6 +121,16 @@ namespace Microsoft.Azure.Commands.Batch
         public AutoStorageProperties AutoStorageProperties { get; set; }
 
         /// <summary>
+        /// The allocation mode to use for creating pools in the Batch account.
+        /// </summary>
+        public PoolAllocationMode? PoolAllocationMode { get; private set; }
+
+        /// <summary>
+        /// A reference to the Azure key vault associated with the Batch account.
+        /// </summary>
+        public KeyVaultReference KeyVaultReference { get; private set; }
+
+        /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
         public AccountKeyType KeyInUse
@@ -194,7 +204,8 @@ namespace Microsoft.Azure.Commands.Batch
             this.CoreQuota = resource.CoreQuota;
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
-
+            this.PoolAllocationMode = resource.PoolAllocationMode;
+            
             if (resource.AutoStorage != null)
             {
                 this.AutoStorageProperties = new AutoStorageProperties()
@@ -202,6 +213,11 @@ namespace Microsoft.Azure.Commands.Batch
                     StorageAccountId = resource.AutoStorage.StorageAccountId,
                     LastKeySync = resource.AutoStorage.LastKeySync,
                 };
+            }
+
+            if (resource.KeyVaultReference != null)
+            {
+                this.KeyVaultReference = resource.KeyVaultReference;
             }
 
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
