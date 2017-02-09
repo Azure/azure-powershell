@@ -149,19 +149,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (this.PolicyDefinition != null)
             {
-                var properties = this.PolicyDefinition.Properties["Properties"].Value as PSObject;
+                var properties = this.PolicyDefinition.Properties["Properties"]?.Value as PSObject;
                 if (properties != null)
                 {
-                    var parameters = properties.Properties["parameters"].Value as PSObject;
+                    var parameters = properties.Properties["parameters"]?.Value as PSObject;
                     if (parameters != null)
                     {
                         foreach (var param in parameters.Properties)
                         {
-                            var type = (param.Value as PSObject).Properties["type"].Value.ToString();
+                            var type = Convert.ToString((param.Value as PSObject).Properties["type"]?.Value);
                             var dp = new RuntimeDefinedParameter
                             {
                                 Name = param.Name,
-                                ParameterType = type.Equals("string", StringComparison.OrdinalIgnoreCase) ? typeof(string) : typeof(object[])
+                                ParameterType = type.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(object[]) : typeof(string)
                             };
                             dp.Attributes.Add(new ParameterAttribute
                             {

@@ -12,17 +12,17 @@ Creates a policy assignment.
 
 ## SYNTAX
 
-### Policy assignment with parameters via policy parameters object
+### Policy assignment with parameters via policy parameter object
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- [-PolicyParametersObject <Hashtable>] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+ [-PolicyParameterObject <Hashtable>] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Policy assignment with parameters via policy parameters string
+### Policy assignment with parameters via policy parameter string
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- [-PolicyParameters <String>] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+ [-PolicyParameter <String>] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -183,10 +183,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicyParameters
-The policy parameters file path or policy parameters string.```yaml
+### -PolicyParameter
+The policy parameter file path or policy parameter string.```yaml
 Type: String
-Parameter Sets: Policy assignment with parameters via policy parameters string
+Parameter Sets: Policy assignment with parameters via policy parameter string
 Aliases: 
 
 Required: False
@@ -196,10 +196,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PolicyParametersObject
-The policy parameters object.```yaml
+### -PolicyParameterObject
+The policy parameter object.```yaml
 Type: Hashtable
-Parameter Sets: Policy assignment with parameters via policy parameters object
+Parameter Sets: Policy assignment with parameters via policy parameter object
 Aliases: 
 
 Required: False
