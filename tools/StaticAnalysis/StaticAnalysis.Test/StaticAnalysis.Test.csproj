@@ -78,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestCmdletsModule.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup Condition="'$(AfterBuild)' == 'true' OR '$(BuildingInsideVisualStudio)' == 'true'">
     <Compile Include="TestCmdlets\SignatureVerifier_Cmdlet.cs" />

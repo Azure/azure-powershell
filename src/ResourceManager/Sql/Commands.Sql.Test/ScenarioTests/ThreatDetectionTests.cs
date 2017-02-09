@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ThreatDetectionUpdatePolicyWithClassicStorage()
+        {
+            RunPowerShellTest("Test-ThreatDetectionUpdatePolicyWithClassicStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionGetDefualtPolicy()
         {
             RunPowerShellTest("Test-ThreatDetectionGetDefualtPolicy");
