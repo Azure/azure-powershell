@@ -51,8 +51,7 @@
             string SHA2 = "sha256RSA";
 
             List<string> expectedSignatureAlgos = new List<string>() { SHA1, SHA2 };
-            //string msiContentsDir = this.ExtractMsiContents(out _procErr);
-            string msiContentsDir = @"E:\MyFork\azure-powershell\setup\PowerShellSetup.Test\bin\Debug\msiContents";
+            string msiContentsDir = this.ExtractMsiContents(out _procErr);
             Assert.True(Directory.Exists(msiContentsDir));
             Assert.True(string.IsNullOrEmpty(_procErr));
 
