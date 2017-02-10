@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DisplayName = this.DisplayName ?? null,
                     PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString(),
                     Scope = this.Scope,
-                    Parameters = this.GetParameters()
+                    Parameter = this.GetParameters()
                 }
             };
 
