@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,32 +13,31 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.AzureStack.AzureConsistentStorage;
-using Microsoft.AzureStack.AzureConsistentStorage.Models;
+using Microsoft.Azure.Management.StorageAdmin;
 
-namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
+namespace Microsoft.Azure.Commands.AzureStack.Storage
 {
     /// <summary>
+    ///     SYNTAX
+    ///          Sync-StorageAccounts [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
+    ///             [-SkipCertificateValidation] [-TenantSubscriptionId] {string} 
     /// 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.AdminManagementServiceMetricDefinition)]
-    public sealed class GetManagementServiceMetricDefinitions : AdminMetricDefinitionCmdlet
+    [Cmdlet("Sync", Nouns.AdminStorageAccounts)]
+    public sealed class SyncStorageAccounts : AdminCmdlet
     {
         /// <summary>
-        ///     Farm Identifier
+        /// Tenant Subscription Id
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
-        public string FarmName { get; set; }
+        public string TenantSubscriptionId { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filter"></param>
-        /// <returns></returns>
-        protected override MetricDefinitionsResult GetMetricDefinitionsResult(string filter)
+        protected override void Execute()
         {
-            return Client.ManagementService.GetMetricDefinitions(ResourceGroupName, FarmName, filter);
+            var response = Client.StorageAccounts.SyncAll(TenantSubscriptionId);
+            WriteObject(response, true);
+            WriteWarning(Resources.WaitAfterArmSync);
         }
     }
 }

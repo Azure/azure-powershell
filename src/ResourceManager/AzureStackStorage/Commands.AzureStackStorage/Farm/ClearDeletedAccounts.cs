@@ -14,7 +14,6 @@
 
 
 using System.Management.Automation;
-using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {

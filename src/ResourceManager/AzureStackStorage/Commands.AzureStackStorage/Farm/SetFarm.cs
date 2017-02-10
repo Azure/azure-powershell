@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 
-using System.Globalization;
 using System.Management.Automation;
 using Microsoft.AzureStack.AzureConsistentStorage.Models;
 

@@ -43,13 +43,13 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        public DateTime StartTime { get; set; }
+        public DateTime StartTimeInUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the endtime parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        public DateTime EndTime { get; set; }
+        public DateTime EndTimeInUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the metricnames parameter of the cmdlet
@@ -77,7 +77,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// </summary>
         protected override void Execute()
         {
-            string filter = Tools.GenerateFilter(MetricNames, StartTime, EndTime, TimeGrain);
+            string filter = Tools.GenerateFilter(MetricNames, StartTimeInUtc, EndTimeInUtc, TimeGrain);
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             MetricsResult metrics = GetMetricsResult(filter);
