@@ -180,13 +180,13 @@
     <value>Starting Blob server instance '{0}'.</value>
   </data>
   <data name="StartBlobServerRoleInstanceVerboseWarning" xml:space="preserve">
-    <value>Are you sure you want to start Blob server role instance ‘{0}’.</value>
+    <value>Are you sure you want to start Blob server role instance ‘{0}’?</value>
   </data>
   <data name="StopBlobServerRoleInstanceVerboseDescription" xml:space="preserve">
     <value>Stopping Blob server instance '{0}'.</value>
   </data>
   <data name="StopBlobServerRoleInstanceVerboseWarning" xml:space="preserve">
-    <value>Are you sure you want to stop Blob server role instance ‘{0}’.</value>
+    <value>Are you sure you want to stop Blob server role instance ‘{0}’?</value>
   </data>
   <data name="TableService" xml:space="preserve">
     <value>ACS Table Service</value>
@@ -226,12 +226,6 @@
   </data>
   <data name="WaitAfterArmSync" xml:space="preserve">
     <value>Please wait a few minutes to let frontdoor finish sync job. After that storage account can be accessed by tenant user.</value>
-  </data>
-  <data name="InvalidProfile" xml:space="preserve">
-    <value>The Azure profile is invalid, Make sure that you are in the Azure context with the Add-AzureEnvironment and Add-AzureAccount cmdlets.</value>
-  </data>
-  <data name="TokenAndAdminUriRequired" xml:space="preserve">
-    <value>Both the parameters Token, AdminUri and SubscriptionId are required.</value>
   </data>
   <data name="SetFarmDescription" xml:space="preserve">
     <value>Performing the operation set ACS Farm '{0}', {1}.</value>
@@ -287,5 +281,8 @@
   </data>
   <data name="OnDemandGcWarning" xml:space="preserve">
     <value>Are you sure you want to perform the operation "clear ACS storage accounts on Farm '{0}'"?</value>
+  </data>
+  <data name="QuotaAlreadyExistsErrorMessage" xml:space="preserve">
+    <value>Specified quota resource already exists</value>
   </data>
 </root>

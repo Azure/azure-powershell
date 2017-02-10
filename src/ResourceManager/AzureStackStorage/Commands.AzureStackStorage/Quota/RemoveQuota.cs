@@ -17,6 +17,7 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.AzureStack.AzureConsistentStorage;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
@@ -45,6 +46,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         protected override void Execute()
         {
+            Name = base.ParseNameForQuota(Name);
+            QuotaGetResponse getResponse = Client.Quotas.Get(Location, Name);
             if (ShouldProcess(
                     Resources.DeleteQuotaDescription.FormatInvariantCulture(Name),
                     Resources.DeleteQuotaWarning.FormatInvariantCulture(Name),

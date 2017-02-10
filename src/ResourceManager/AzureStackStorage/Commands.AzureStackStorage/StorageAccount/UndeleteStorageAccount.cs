@@ -47,7 +47,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// Storage Account Name
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
-        public long AccountId { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
         /// Storage Account Name
@@ -64,7 +64,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Specifies the Microsoft.Resource.Admin apiVersion
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, Position = 8)]
         public string ResourceAdminApiVersion { get; set; }
 
         protected override void Execute()
@@ -77,7 +77,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                     string.Format(CultureInfo.InvariantCulture, Resources.StorageAccountAdminView, AccountId),
                     string.Format(CultureInfo.InvariantCulture, Resources.UndeleteOperation)))
             {
-                var response = Client.StorageAccounts.Undelete(ResourceGroupName, FarmName, AccountId.ToString(CultureInfo.InvariantCulture), undeleteParam);
+                var response = Client.StorageAccounts.Undelete(ResourceGroupName, FarmName, AccountId, undeleteParam);
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     throw new ApplicationException(String.Format(CultureInfo.InvariantCulture, Resources.FailedToUndeleteAccount));

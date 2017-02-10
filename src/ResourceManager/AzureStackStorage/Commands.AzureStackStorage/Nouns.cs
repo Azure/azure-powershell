@@ -102,5 +102,9 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         // quota
         public const string AdminQuota = Prefix + "Quota";
+        public const string AdminContainer                      = Prefix + "Container";
+        public const string AdminContainerMigration             = Prefix + "ContainerMigration";
+        public const string AdminContainerMigrationStatus       = Prefix + "ContainerMigrationStatus";
+        public const string AdminDestinationShareForContainer   = Prefix + "DestinationSharesForContainer";
     }
 }

@@ -71,7 +71,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// Storage Account AccountId
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 8, ParameterSetName = GetSingleAccountParamSet)]
-        public long AccountId { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
         /// Only need return summary information if not specified
@@ -86,7 +86,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             switch (ParameterSetName)
             {
                 case GetSingleAccountParamSet:
-                    filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.VersionedAccountName, AccountId.ToString(CultureInfo.InvariantCulture)));
+                    filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.VersionedAccountName, AccountId));
                     break;
                 case ListAccountsParamSet:
                     if (TenantSubscriptionId != null)
@@ -104,7 +104,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 List<StorageAccountResponse> adminViewList = new List<StorageAccountResponse>();
                 foreach (StorageAccountModel model in response.StorageAccounts)
                 {
+                    if (!string.IsNullOrEmpty(model.Name))
+                    {
                     adminViewList.Add(new StorageAccountResponse(model, FarmName));
+                    }
                 }
                 WriteObject(adminViewList, true);
             }
