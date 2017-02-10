@@ -30,7 +30,7 @@ namespace StaticAnalysis.Test
             xunitOutput = testOutput;
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveCmdlet()
         {
@@ -54,7 +54,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedCmdlet)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedCmdlet));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveCmdletAlias()
         {
@@ -78,7 +78,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedCmdletAlias)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedCmdletAlias));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAliasForChangedCmdlet()
         {
@@ -101,7 +101,7 @@ namespace StaticAnalysis.Test
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSupportsShouldProcess()
         {
@@ -125,7 +125,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedShouldProcess)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedShouldProcess));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSupportsPaging()
         {
@@ -149,7 +149,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedPaging)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedPaging));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveParameter()
         {
@@ -173,7 +173,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameter)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameter));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveParameterAlias()
         {
@@ -197,7 +197,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterAlias)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterAlias));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAliasForChangedParameter()
         {
@@ -220,7 +220,7 @@ namespace StaticAnalysis.Test
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MakeParameterRequired()
         {
@@ -244,7 +244,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.MandatoryParameter)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.MandatoryParameter));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterOrder()
         {
@@ -271,7 +271,7 @@ namespace StaticAnalysis.Test
             }
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeValidateSet()
         {
@@ -298,7 +298,7 @@ namespace StaticAnalysis.Test
             }
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddValidateSet()
         {
@@ -322,7 +322,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.AddedValidateSet)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.AddedValidateSet));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeOutputType()
         {
@@ -346,7 +346,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputType));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterType()
         {
@@ -370,7 +370,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterType));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveValueFromPipeline()
         {
@@ -396,7 +396,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ValueFromPipeline));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveValueFromPipelineByPropertyName()
         {
@@ -422,7 +422,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ValueFromPipelineByPropertyName));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddParameterSet()
         {
@@ -445,7 +445,7 @@ namespace StaticAnalysis.Test
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveParameterFromParameterSet()
         {
@@ -468,7 +468,7 @@ namespace StaticAnalysis.Test
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterSetForParameter()
         {
@@ -494,7 +494,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterFromParameterSet));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeDefaultParameterSet()
         {
@@ -520,7 +520,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangeDefaultParameter));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddValidateNotNullOrEmpty()
         {
@@ -546,7 +546,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.AddedValidateNotNullOrEmpty));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangePropertyType()
         {
@@ -572,7 +572,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedPropertyType));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveProperty()
         {
@@ -598,7 +598,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedProperty));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeOutputGenericTypeArgument()
         {
@@ -620,11 +620,11 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputGenericTypeArgument))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputGenericTypeArgument));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DifferentOutputGenericTypeArgumentSize()
         {
@@ -646,11 +646,11 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentOutputGenericTypeArgumentSize))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentOutputGenericTypeArgumentSize));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterElementType()
         {
@@ -676,7 +676,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterElementType));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterGenericType()
         {
@@ -698,11 +698,11 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterGenericType))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterGenericType));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterGenericTypeArgument()
         {
@@ -724,11 +724,11 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedParameterGenericTypeArgument))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedParameterGenericTypeArgument));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DifferentParameterGenericTypeArgumentSize()
         {
@@ -750,11 +750,11 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentParameterGenericTypeArgumentSize))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentParameterGenericTypeArgumentSize));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeElementType()
         {
@@ -780,7 +780,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedElementType));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeGenericType()
         {
@@ -806,7 +806,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeGenericTypeArgument()
         {
@@ -832,7 +832,7 @@ namespace StaticAnalysis.Test
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
         }
 
-        [Fact()]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DifferentGenericTypeArgumentSize()
         {
@@ -856,6 +856,57 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AddValidateRange()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-AddedValidateRange", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.AddedValidateRange))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.AddedValidateRange));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ChangeValidateRangeMinimum()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangedValidateRangeMinimum", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedValidateRangeMinimum))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedValidateRangeMinimum));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ChangeValidateRangeMaximum()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-ChangedValidateRangeMaximum", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum));
         }
     }
 }
