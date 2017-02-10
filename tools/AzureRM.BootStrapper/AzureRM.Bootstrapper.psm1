@@ -13,9 +13,12 @@ else
   $script:BootStrapRepo = $existingRepos[0].Name
 }
 
+# Is it Powershell Core edition?
+$Script:IsCoreEdition = ($PSVersionTable.PSEdition -eq 'Core')
+
 # Check if current user is Admin to decide on cache path
 $script:IsAdmin = $false
-if ($IsWindows)
+if ((-not $Script:IsCoreEdition) -or ($IsWindows))
 {
   If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
   {
@@ -33,18 +36,17 @@ else {
 # Get profile cache path
 function Get-ProfileCachePath
 {
-  if ($IsWindows)
+  if ((-not $Script:IsCoreEdition) -or ($IsWindows))
   {
     $ProfileCache = Join-Path -path $env:LOCALAPPDATA -childpath "Microsoft\AzurePowerShell\ProfileCache"
     if ($script:IsAdmin)
     {
       $ProfileCache = Join-Path -path $env:ProgramData -ChildPath "Microsoft\AzurePowerShell\ProfileCache"
     }
+    return $ProfileCache
   }
-  else
-  {
-    $ProfileCache = "$HOME/.config/Microsoft/AzurePowerShell/ProfileCache" 
-  }
+
+  $ProfileCache = "$HOME/.config/Microsoft/AzurePowerShell/ProfileCache" 
   return $ProfileCache
 }
 
@@ -152,7 +154,7 @@ function Get-AzProfile
 
     # Check the cache
     $LatestProfileMapPath = Get-LatestProfileMapPath
-    if(Test-Path $LatestProfileMapPath.FullName)
+    if(($LatestProfileMapPath -ne $null) -and (Test-Path $LatestProfileMapPath.FullName))
     {
       $ProfileMap = Get-Content -Raw -Path $LatestProfileMapPath.FullName -ErrorAction SilentlyContinue | ConvertFrom-Json 
       if ($ProfileMap -ne $null)
@@ -242,11 +244,11 @@ function Install-ModuleHelper
   $version = $versionEnum.Current
   if (-not $Scope)
   {
-    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo
+    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo -AllowClobber
   }
   else
   {
-    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo -scope $Scope
+    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo -scope $Scope -AllowClobber
   }
 }
 
@@ -439,6 +441,7 @@ function Remove-PreviousVersions
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
     Add-RemoveParam $params
+    Add-ModuleParam $params
     return $params
   }
   
@@ -446,6 +449,7 @@ function Remove-PreviousVersions
   {
     $Profile = $PSBoundParameters.Profile
     $Remove = $PSBoundParameters.RemovePreviousVersions
+    $Modules = $PSBoundParameters.Module
 
     $PreviousProfiles = ($PreviousMap | Get-Member -MemberType NoteProperty).Name
     $LatestProfiles = ($LatestMap | Get-Member -MemberType NoteProperty).Name
@@ -456,7 +460,12 @@ function Remove-PreviousVersions
       return
     }
 
-    foreach ($module in ($PreviousMap.$Profile | Get-Member -MemberType NoteProperty).Name)
+    if ($Modules -eq $null)
+    {
+      $Modules = ($PreviousMap.$Profile | Get-Member -MemberType NoteProperty).Name
+    }
+
+    foreach ($module in $Modules)
     {
       # If the latest version is same as the previous version, do not uninstall.
       if (($PreviousMap.$Profile.$module | Out-String) -eq ($LatestMap.$Profile.$module | Out-String))
@@ -479,7 +488,7 @@ function Remove-PreviousVersions
           Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled -RemovePreviousVersions
         }
         else {
-           Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled         
+          Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled         
         }
       }
     }
@@ -534,7 +543,7 @@ function Update-ProfileHelper
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
     Add-RemoveParam $params
-    Add-ForceParam $params
+    Add-ModuleParam $params
     return $params
   }
   
@@ -657,6 +666,31 @@ function Add-SwitchParam
   $params.Add($name, $newParam)
 }
 
+function Add-ModuleParam
+{
+  param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$name, [string] $set = "__AllParameterSets")
+  $ProfileMap = (Get-AzProfile)
+  $Profiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
+  $enum = $Profiles.GetEnumerator()
+  $toss = $enum.MoveNext()
+  $Current = $enum.Current
+  $Keys = ($($ProfileMap.$Current) | Get-Member -MemberType NoteProperty).Name
+  $moduleValid = New-Object -Type System.Management.Automation.ValidateSetAttribute($Keys)
+  $AllowNullAttribute = New-Object -Type System.Management.Automation.AllowNullAttribute
+  $AllowEmptyStringAttribute = New-Object System.Management.Automation.AllowEmptyStringAttribute
+  $moduleAttribute = New-Object -Type System.Management.Automation.ParameterAttribute
+  $moduleAttribute.ParameterSetName = 
+  $moduleAttribute.Mandatory = $false
+  $moduleAttribute.Position = 1
+  $moduleCollection = New-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
+  $moduleCollection.Add($moduleValid)
+  $moduleCollection.Add($moduleAttribute)
+  $moduleCollection.Add($AllowNullAttribute)
+  $moduleCollection.Add($AllowEmptyStringAttribute)
+  $moduleParam = New-Object -Type System.Management.Automation.RuntimeDefinedParameter("Module", [array], $moduleCollection)
+  $params.Add("Module", $moduleParam)
+}
+
 <#
 .ExternalHelp help\AzureRM.Bootstrapper-help.xml 
 #>
@@ -766,6 +800,7 @@ function Use-AzureRmProfile
     Add-ProfileParam $params
     Add-ForceParam $params
     Add-ScopeParam $params
+    Add-ModuleParam $params
     return $params
   }
   PROCESS 
@@ -775,14 +810,20 @@ function Use-AzureRmProfile
     $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
     $Scope = $PSBoundParameters.Scope
+    $Modules = $PSBoundParameters.Module
+
+    if ($Modules -eq $null)
+    {
+      $Modules = ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name
+    }
 
     if ($PSCmdlet.ShouldProcess($Profile, "Loading modules for profile in the current scope"))
     {
       Write-Host "Loading Profile $Profile"
-      foreach ($Module in ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name)
+      foreach ($Module in $Modules)
       {
         $version = Get-AzureRmModule -Profile $Profile -Module $Module
-        if (($version -eq $null) -and ($IsConfirmed -or $Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Modules for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
+        if (($version -eq $null) -and ($IsConfirmed -or $Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
         {
           # Flag to track if the prompt for install module was previously accepted.
           $IsConfirmed = $true
@@ -869,6 +910,8 @@ function Update-AzureRmProfile
     Add-ProfileParam $params
     Add-ForceParam $params
     Add-RemoveParam $params 
+    Add-ModuleParam $params
+    Add-ScopeParam $params
     return $params
   }
 
@@ -878,24 +921,24 @@ function Update-AzureRmProfile
     $profile = $PSBoundParameters.Profile
     $Force = $PSBoundParameters.Force
     $Remove = $PSBoundParameters.RemovePreviousVersions
+    $Modules = $PSBoundParameters.Module
+
     $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
+    $PSBoundParameters.Remove('RemovePreviousVersions') | Out-Null
 
     # Install & import the required version
-    If ($Force.IsPresent)
-    {
-      Use-AzureRmProfile -Profile $Profile -Force
-    }
-    else {
-      Use-AzureRmProfile -Profile $Profile
-    }
+    Use-AzureRmProfile @PSBoundParameters
     
+    $PSBoundParameters.Remove('Force') | Out-Null
+    $PSBoundParameters.Remove('Scope') | Out-Null
+
     # Remove previous versions of the profile?
     if ($PSCmdlet.ShouldProcess("Remove previous versions")) 
     {
       if (($Remove -or $PSCmdlet.ShouldContinue("Uninstall Previous Module Versions of the profile", "Removing previous versions of the profile")))
       {
         # Remove-PreviousVersions and clean up cache
-        Update-ProfileHelper @PSBoundParameters
+        Update-ProfileHelper @PSBoundParameters -RemovePreviousVersions
       }
     }
   }

@@ -11,7 +11,7 @@ Install all the latest modules associated with a particular AzureRM Profile on t
 ## SYNTAX
 
 ```
-Install-AzureRmProfile [-Profile] <String>
+Install-AzureRmProfile [-Profile] <String> [-Scope <String>]
 ```
 
 ## DESCRIPTION
