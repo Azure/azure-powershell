@@ -14,6 +14,59 @@
 
 <#
 .SYNOPSIS
+Tests setting and getting auditing policy with classic storage
+#>
+function Test-AuditingUpdatePolicyWithClassicStorage
+{
+	# Setup
+	$testSuffix = 1015636
+	Create-AuditingClassicTestEnvironment $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+
+	try 
+	{
+		# Test - Table database Auditing
+		Set-AzureRmSqlDatabaseAuditingPolicy -AuditType Table -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.AuditState "Enabled"  
+
+		# Test - Table server Auditing
+		Set-AzureRmSqlServerAuditingPolicy -AuditType Table -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.AuditState "Enabled" 
+
+
+		# Test - Blob database Auditing
+		Set-AzureRmSqlDatabaseAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.AuditState "Enabled"  
+
+		# Test - Blob server Auditing
+		Set-AzureRmSqlServerAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.AuditState "Enabled" 
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
 Tests that when setting the storage account property's value in a database's auditing policy, that value is later fetched properly
 #>
 function Test-AuditingDatabaseUpdatePolicyWithStorage
@@ -398,11 +451,21 @@ function Test-AuditingDisableDatabaseAuditing
 	{
 		# Test
 		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		
+		# Assert
+		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.UseServerDefault "Enabled"
+
+		# Test
 		Remove-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.UseServerDefault "Disabled"
 	}
 	finally
 	{
@@ -1024,6 +1087,7 @@ function Test-DatatabaseAuditingTypeMigration
 	
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.UseServerDefault "Disabled"
 		Assert-AreEqual $policy.AuditType ([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType]::Table)
 	}
 	finally

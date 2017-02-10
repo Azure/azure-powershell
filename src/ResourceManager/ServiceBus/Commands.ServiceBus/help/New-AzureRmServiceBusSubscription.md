@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusSubscription
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a subscription to the specified Service Bus topic.
 
 ## SYNTAX
 
@@ -20,22 +20,21 @@ New-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmServiceBusSubscription** cmdlet creates a new subscription to the specified Service Bus topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
-{{ Add example description here }}
+Creates	the subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted.
-The minimum duration is 5 minutes.
+Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval, after which the subscription is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
 Type: String
@@ -65,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeadLetteringOnFilterEvaluationExceptions
-DeadLetteringOnFilterEvaluationExceptions - Value that indicates if a subscription has dead letter support when a message expires.
+Indicates if a subscription has dead letter support on Filter evaluation exceptions.
 
 ```yaml
 Type: Boolean
@@ -81,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeadLetteringOnMessageExpiration
-Dead Lettering On Message Expiration
+Indicates if a subscription has deadletter support when a message expires.
 
 ```yaml
 Type: Boolean
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBatchedOperations
-Enable Batched Operations - value that indicates whether server-side batched operations are enabled
+Indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: Boolean
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsReadOnly
-IsReadOnly - Value that indicates whether the entity description is read-only.
+Indicates whether the entity description is read-only
 
 ```yaml
 Type: Boolean
@@ -129,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -LockDuration
-Lock Duration
+Specifies the lock duration time span for the subscription.
 
 ```yaml
 Type: String
@@ -144,8 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxDeliveryCount
-MaxDeliveryCount - the maximum delivery count.
-A message is automatically deadlettered after this number of deliveries.
+Specifies the number of maximum deliveries. A message is automatically deadlettered after this number of deliveries.
 
 ```yaml
 Type: Int32
@@ -160,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -175,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiresSession
-RequiresSession - the value indicating if this queue requires duplicate detection.
+Specifies whether a subscription supports the concept of sessions.
 
 ```yaml
 Type: Boolean
@@ -191,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -206,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionName
-Subscription Name
+The subscription name.
 
 ```yaml
 Type: String
@@ -221,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The topic name.
 
 ```yaml
 Type: String
@@ -256,12 +254,42 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -TopicName
+ System.String
+ 
+
+### -SubscriptionName
+ System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
+Name                                      : SB-TopicSubscription-Example1
+Location                                  : West US
+AccessedAt                                : 1/20/2017 3:18:54 AM
+AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
+CountDetails                              : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+CreatedAt                                 : 1/20/2017 3:18:52 AM
+DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
+DeadLetteringOnFilterEvaluationExceptions : True
+DeadLetteringOnMessageExpiration          : False
+EnableBatchedOperations                   : True
+EntityAvailabilityStatus                  : Available
+IsReadOnly                                : 
+LockDuration                              : 00:01:00
+MaxDeliveryCount                          : 10
+MessageCount                              : 0
+RequiresSession                           : False
+Status                                    : Active
+UpdatedAt                                 : 1/20/2017 3:18:54 AM
 
 ## NOTES
 

@@ -19,6 +19,7 @@ Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-T
  [-ChefServiceInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
  [-OrganizationName <String>] [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Secret <String>]
 ```
 
 ### Windows
@@ -28,6 +29,7 @@ Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-T
  [-ChefServiceInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
  [-OrganizationName <String>] [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Daemon <String>] [-SecretFile <String>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +39,7 @@ The **Set-AzureVMChefExtension** cmdlet adds the Chef extension to the virtual m
 
 ### Example 1: Add a Chef extension to a Windows virtual machine
 ```
-PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Windows
+PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Daemon "service" -SecretFile "C:\my_encrypted_data_bag_secret" -Windows
 ```
 
 This command adds a Chef extension to a Windows virtual machine named WindowsVM001.
@@ -45,7 +47,7 @@ When the virtual machine starts, Chef bootstraps the virtual machine to run Apac
 
 ### Example 2: Add a Chef extension to a Linux virtual machine
 ```
-PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Linux
+PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Secret "my_secret" -Linux
 ```
 
 This command adds a Chef extension to a Linux virtual machine named LinuxVM001.
@@ -305,6 +307,54 @@ Aliases: ResourceName
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Daemon
+Configures the chef-client service for unattended execution. The node platform should be Windows.
+Options: 'none' or 'service'
+none - Currently prevents the chef-client service from being configured as a service.
+service - Configures the chef-client to run automatically in the background as a service.
+
+```yaml
+Type: String
+Parameter Sets: Windows
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Secret
+The encryption key used to encrypt and decrypt the data bag item values.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecretFile
+The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
