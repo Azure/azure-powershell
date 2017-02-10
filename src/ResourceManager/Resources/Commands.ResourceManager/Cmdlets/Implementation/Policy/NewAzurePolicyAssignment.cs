@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         [Parameter(ParameterSetName = ParameterlessPolicyParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition object.")]
         [Parameter(ParameterSetName = PolicyParameterObjectParameterSetName,
