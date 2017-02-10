@@ -25,6 +25,7 @@ Describe "Get-ProfileCachePath" {
 
         Context "Linux OS Admin" {
             $IsWindows = $false
+            $Script:IsCoreEdition = $true
             It "Should return .config path" {
                 $result = Get-ProfileCachePath
                 $result | Should Match "(.*)ProfileCache$"
@@ -511,6 +512,11 @@ Describe "Remove-PreviousVersions" {
                 Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json) 
                 Assert-VerifiableMocks
             }
+
+            It "Invoke with Module parameter: Should call Invoke-UninstallModule" {
+                Remove-PreviousVersions -Profile 'Profile1' -Module 'Module1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json) 
+                Assert-VerifiableMocks                
+            }
         }
 
         Context "Previous versions are not installed" {
@@ -536,13 +542,20 @@ Describe "Remove-PreviousVersions" {
         }
 
         Context "Previous version is same as the latest version" {
-            $PreveiousMap =  "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
             Mock Get-Module -Verifiable {}
             Mock Invoke-UninstallModule -Verifiable {}
             It "Should not call Invoke-UninstallModule" {
-                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreveiousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
+                Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
                 Assert-MockCalled Get-Module -Exactly 0
                 Assert-MockCalled Invoke-UninstallModule -Exactly 0
+            }
+        }
+
+        Context "Invoke with invalid module name" {
+            $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
+            It "Should Throw" {
+                { Remove-PreviousVersions -Profile 'Profile1' -Module 'MockModule' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json) } | Should Throw
             }
         }
     }
@@ -636,6 +649,12 @@ Describe "Update-ProfileHelper" {
                 Assert-MockCalled Remove-ProfileMapFile -Exactly 1
                 Assert-VerifiableMocks
             }
+            
+            It "Invoke with -Module param: Should remove previous profile map" {
+                Update-ProfileHelper -profile 'Profile1' -Module 'Module1' -RemovePreviousVersions
+                Assert-MockCalled Remove-ProfileMapFile -Exactly 1
+                Assert-VerifiableMocks
+            }
         }
 
         Context "Previous profile versions are available but they are not installed" {
@@ -695,6 +714,12 @@ Describe "Update-ProfileHelper" {
 
             }
         }
+
+        Context "Invoke with Invalid module name" {
+            It "Should throw" {
+                { Update-ProfileHelper -Profile 'Profile1' -Module 'MockModule' -r } | Should Throw
+            }
+        }
     }
 }
 
@@ -705,7 +730,6 @@ Describe "Add-ScopeParam" {
         It "Should return Scope parameter object" {
             (Add-ScopeParam $params)
             $params.ContainsKey("Scope") | Should Be $true
-            Assert-VerifiableMocks
         }
     }
 }
@@ -741,7 +765,6 @@ Describe "Add-RemoveParam" {
         It "Should return RemovePreviousVersions parameter object" {
             (Add-RemoveParam $params)
             $params.ContainsKey("RemovePreviousVersions") | Should Be $true
-            Assert-VerifiableMocks
         }
     }
 }
@@ -755,6 +778,19 @@ Describe "Add-SwitchParam" {
             $params.ContainsKey("TestParam") | Should Be $true
         }
     }
+}
+
+Describe "Add-ModuleParam" {
+    InModuleScope AzureRM.Bootstrapper {
+        $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+        It "Should return Module parameter object" {
+            (Add-ModuleParam $params)
+            $params.ContainsKey("Module") | Should Be $true
+            Assert-VerifiableMocks
+        }
+    }
+
 }
 
 Describe "Get-AzureRmModule" {
@@ -857,6 +893,14 @@ Describe "Use-AzureRmProfile" {
                 $Result[1] | Should Be "Importing Module..."
                 Assert-VerifiableMocks
             }
+
+            It "Invoke with Module param: Should install modules" {
+                $Result = (Use-AzureRmProfile -Profile 'Profile1' -Module 'Module1' -Force)
+                $Result.Length | Should Be 2
+                $Result[0] | Should Be "Installing module..."
+                $Result[1] | Should Be "Importing Module..."
+                Assert-VerifiableMocks
+            }
         }
 
         Context "Modules are installed" {
@@ -871,6 +915,15 @@ Describe "Use-AzureRmProfile" {
                 Assert-MockCalled Install-ModuleHelper -Exactly 0
                 Assert-MockCalled Import-Module -Exactly 2
                 Assert-VerifiableMocks
+            }
+
+            It "Invoke with Module param: Should skip installing modules, imports the right version module" {
+                $Result = (Use-AzureRmProfile -Profile 'Profile1' -Module 'Module1', 'Module2' -Force) 
+                $Result.length | Should Be 2
+                $Result[0] | Should Be "Module1 1.0 Imported"
+                Assert-MockCalled Install-ModuleHelper -Exactly 0
+                Assert-VerifiableMocks
+                
             }
         }
 
@@ -903,7 +956,13 @@ Describe "Use-AzureRmProfile" {
                 Assert-VerifiableMocks
             }
         }
-   }
+
+        Context "Invoke with invalide module name" {
+            It "Should throw" {
+                { Use-AzureRmProfile -Profile 'Profile1' -Module 'MockModule'} | Should Throw
+            }            
+        }
+    }
 }
 
 Describe "Install-AzureRmProfile" {
@@ -981,16 +1040,56 @@ Describe "Update-AzureRmProfile" {
         # Arrange
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Get-AzProfile -Verifiable -ParameterFilter { $Update.IsPresent } { ($global:testProfileMap | ConvertFrom-Json) }
-        Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent)}
-        Mock Update-ProfileHelper -Verifiable {}
+        
+        Context "Proper profile with '-RemovePreviousVersions' and '-Force' params" {
+            Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent)}
+            Mock Update-ProfileHelper -Verifiable {}
     
-        # Act
-        Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
+            It "Imports profile modules and invokes Update-ProfileHelper" {
+                Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
+                Assert-VerifiableMocks
+            }
 
-        # Assert
-        It "Updates and Removes previous versions" {
-            Assert-VerifiableMocks
+            It "Invoke with Module param: Imports profile modules and invokes Update-ProfileHelper" {
+                Update-AzureRmProfile -Profile 'Profile2' -module 'Module1' -RemovePreviousVersions -Force
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Invoke with invalid profile name" {
+            It "Should throw" {
+                { Update-AzureRmProfile -Profile 'WrongProfileName'} | Should Throw
+            }
+        }
+
+        Context "Invoke with null profile name" {
+            It "Should throw" {
+                { Update-AzureRmProfile -Profile $null } | Should Throw
+            }
+        }
+
+        Context "Invoke with Scope as CurrentUser" {
+            Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent) -and {$Scope -like 'CurrentUser'}}
+            Mock Update-ProfileHelper -Verifiable {}
+            It "Should invoke Use-AzureRmProfile with scope currentuser" {
+                (Update-AzureRmProfile -Profile 'Profile1' -scope CurrentUser -Force -r)
+                Assert-VerifiableMocks
+            }
+        }
+        
+        Context "Invoke with Scope as AllUsers" {
+            Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent) -and {$Scope -like 'CurrentUser'}}
+            Mock Update-ProfileHelper -Verifiable {}
+            It "Should invoke Use-AzureRmProfile with scope AllUsers" {
+                (Update-AzureRmProfile -Profile 'Profile1' -scope AllUsers -Force -r)
+                Assert-VerifiableMocks
+            }
+        }
+            
+        Context "Invoke with invalid module name" {
+            It "Should throw" {
+                { Update-AzureRmProfile -Profile 'Profile1' -module 'MockModule' } | Should Throw
+            }
         }
     }
 }
-
