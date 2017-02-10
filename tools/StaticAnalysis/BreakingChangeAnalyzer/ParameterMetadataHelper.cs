@@ -85,6 +85,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     CheckForRemovedParameterAlias(cmdlet, oldParameter, newParameter, issueLogger);
                     CheckParameterValidationSets(cmdlet, oldParameter, newParameter, issueLogger);
                     CheckForValidateNotNullOrEmpty(cmdlet, oldParameter, newParameter, issueLogger);
+                    CheckParameterValidateRange(cmdlet, oldParameter, newParameter, issueLogger);
                 }
                 // If the parameter cannot be found, log an issue
                 else
@@ -177,6 +178,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             var oldValidateSet = oldParameter.ValidateSet;
             var newValidateSet = newParameter.ValidateSet;
 
+            // If there is no validate set in the new assembly, return
+            if (newValidateSet.Count == 0)
+            {
+                return;
+            }
+
             // If there was no validate set in the old assembly, but there is
             // one in the new assembly, log an issue
             if (oldValidateSet.Count == 0 && newValidateSet.Count > 0)
@@ -214,11 +221,70 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedValidateSetValue,
                         description: string.Format(Properties.Resources.RemovedValidateSetValueDescription,
-                            oldParameter.Name, oldValue, cmdlet.Name),
+                            oldParameter.Name, cmdlet.Name, oldValue),
                         remediation: string.Format(Properties.Resources.RemovedValidateSetValueRemediation,
                             oldValue, oldParameter.Name));
                 }
             }            
+        }
+
+        /// <summary>
+        /// Check if the parameter gained a validation range for values, or if the
+        /// existing validation range for values excludes values previously accepted.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet whose parameter metadata is currently being checked.</param>
+        /// <param name="oldParameter">The parameter metadata from the old (serialized) assembly.</param>
+        /// <param name="newParameter">The parameter metadata from new assembly.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of the issues found.</param>
+        private void CheckParameterValidateRange(
+            CmdletBreakingChangeMetadata cmdlet,
+            ParameterMetadata oldParameter,
+            ParameterMetadata newParameter,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            if (newParameter.ValidateRangeMin != null && newParameter.ValidateRangeMax != null)
+            {
+                // If the old parameter had no validation range, but the new parameter does, log an issue
+                if (oldParameter.ValidateRangeMin == null && oldParameter.ValidateRangeMax == null)
+                {
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: cmdlet,
+                        severity: 0,
+                        problemId: ProblemIds.BreakingChangeProblemId.AddedValidateRange ,
+                        description: string.Format(Properties.Resources.AddedValidateRangeDescription,
+                            oldParameter.Name, cmdlet.Name),
+                        remediation: string.Format(Properties.Resources.AddedValidateRangeRemediation,
+                            oldParameter.Name));
+                }
+                else
+                {
+                    // If the minimum value of the range has increased, log an issue
+                    if (oldParameter.ValidateRangeMin < newParameter.ValidateRangeMin)
+                    {
+                        issueLogger.LogBreakingChangeIssue(
+                            cmdlet: cmdlet,
+                            severity: 0,
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMinimum,
+                            description: string.Format(Properties.Resources.ChangedValidateRangeMinimumDescription,
+                                oldParameter.Name, oldParameter.ValidateRangeMin, newParameter.ValidateRangeMin),
+                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMinimumRemediation,
+                                oldParameter.Name, oldParameter.ValidateRangeMin));
+                    }
+
+                    // If the maximum value of the range has decreased, log an issue
+                    if (oldParameter.ValidateRangeMax > newParameter.ValidateRangeMax)
+                    {
+                        issueLogger.LogBreakingChangeIssue(
+                            cmdlet: cmdlet,
+                            severity: 0,
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMaximum,
+                            description: string.Format(Properties.Resources.ChangedValidateRangeMaximumDescription,
+                                oldParameter.Name, oldParameter.ValidateRangeMax, newParameter.ValidateRangeMax),
+                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMaximumRemediation,
+                                oldParameter.Name, oldParameter.ValidateRangeMax));
+                    }
+                }
+            }
         }
 
         /// <summary>

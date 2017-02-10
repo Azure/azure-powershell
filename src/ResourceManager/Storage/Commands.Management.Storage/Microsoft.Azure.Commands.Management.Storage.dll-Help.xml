@@ -737,7 +737,7 @@ Valid values are:
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 				<maml:name>EnableEncryptionService</maml:name>
 				<maml:description>
-					<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Only the Azure Blob Service is currently supported.</maml:para>
+					<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Azure Blob and Azure File Services are supported.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			</command:parameter>
@@ -875,7 +875,7 @@ Valid values are:
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 			<maml:name>EnableEncryptionService</maml:name>
 			<maml:description>
-				<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Only the Azure Blob Service is currently supported.</maml:para>
+				<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Azure Blob and Azure File Services are supported.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			<dev:type>
@@ -981,7 +981,7 @@ Valid values are:
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mycoolstorageaccount&quot; -Location &quot;US West&quot; -SkuName &quot;Standard_GRS&quot; –EnableEncryptionService blob -Kind &quot;BlobStorage&quot; -AccessTier &quot;hot&quot;</dev:code>
+			<dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mycoolstorageaccount&quot; -Location &quot;US West&quot; -SkuName &quot;Standard_GRS&quot; –EnableEncryptionService Blob -Kind &quot;BlobStorage&quot; -AccessTier &quot;hot&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -996,6 +996,26 @@ Valid values are:
 				</command:commandLine>
 			</command:commandLines>
 		</command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 3  --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -Location &quot;US West&quot; -SkuName &quot;Standard_GRS&quot; –EnableEncryptionService &quot;Blob,File&quot; </dev:code>
+      <dev:remarks>
+        <maml:para />
+        <maml:para />
+        <maml:para />
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1637,14 +1657,14 @@ Valid values are:
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 				<maml:name>EnableEncryptionService</maml:name>
 				<maml:description>
-					<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Only the Azure Blob Service is currently supported.</maml:para>
+					<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Azure Blob and Azure File Services are supported.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>DisableEncryptionService</maml:name>
 				<maml:description>
-					<maml:para>This will disable Storage Service Encryption on the specified Azure Storage Service. Only the Azure Blob Service is currently supported.</maml:para>
+					<maml:para>This will disable Storage Service Encryption on the specified Azure Storage Service. Azure Blob and Azure File Services are supported..</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			</command:parameter>
@@ -1776,7 +1796,7 @@ Valid values are:
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 			<maml:name>EnableEncryptionService</maml:name>
 			<maml:description>
-				<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Only the Azure Blob Service is currently supported.</maml:para>
+				<maml:para>This will enable Storage Service Encryption on the specified Azure Storage Service. Azure Blob and Azure File Services are supported.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			<dev:type>
@@ -1788,7 +1808,7 @@ Valid values are:
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 			<maml:name>DisableEncryptionService</maml:name>
 			<maml:description>
-				<maml:para>This will disable Storage Service Encryption on the specified Azure Storage Service. Only the Azure Blob Service is currently supported.</maml:para>
+				<maml:para>This will disable Storage Service Encryption on the specified Azure Storage Service. Azure Blob and Azure File Services are supported.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">[StorageAccountBaseCmdlet+EncryptionSupportServiceEnum?]</command:parameterValue>
 			<dev:type>
@@ -1907,7 +1927,7 @@ Valid values are:
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; #Set custom domain and Tags
+			<dev:code>PS C:\&gt; # Set custom domain and Tags
           Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -CustomDomainName &quot;www.domainname.com&quot; –UseSubDomain $true -Tag @{tag0=&quot;value0&quot;;tag1=&quot;value1&quot;;tag2=&quot;value2&quot;}</dev:code>
 			<dev:remarks>
 				<maml:para />
@@ -1923,27 +1943,52 @@ Valid values are:
 				</command:commandLine>
 			</command:commandLines>
 		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Enable Storage Service Encryption and set Access Tier to cool  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt; #Enable Storage Service Encryption and set Access Tier to cool
-          Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mycoolstorageaccount&quot; –EnableEncryptionService blob -AccessTier &quot;cool&quot;</dev:code>
-			<dev:remarks>
-				<maml:para />
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
+    <command:example>
+      <maml:title>--------------------------  Enable Storage Service Encryption on Blob and File Services  --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt; # Enable Blob and File Storage Services Encryption 
+        Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; –EnableEncryptionService &quot;Blob,File&quot;
+      </dev:code>
+      <dev:remarks>
+        <maml:para />
+        <maml:para />
+        <maml:para />
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>--------------------------  Set Access Tier to cool  --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt; # Set Access Tier to cool
+        Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mycoolstorageaccount&quot; -AccessTier &quot;cool&quot;
+      </dev:code>
+      <dev:remarks>
+        <maml:para />
+        <maml:para />
+        <maml:para />
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
