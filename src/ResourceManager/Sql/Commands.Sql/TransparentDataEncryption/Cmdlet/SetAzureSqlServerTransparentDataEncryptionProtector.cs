@@ -62,16 +62,17 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<Model.AzureSqlServerTransparentDataEncryptionProtectorModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerTransparentDataEncryptionProtectorModel> model)
         {
-            // Construct a new entity so we only send the relevant data to the server
-            List<Model.AzureSqlServerTransparentDataEncryptionProtectorModel> updateData = new List<Model.AzureSqlServerTransparentDataEncryptionProtectorModel>();
+            List<Model.AzureSqlServerTransparentDataEncryptionProtectorModel> newEntity = new List<Model.AzureSqlServerTransparentDataEncryptionProtectorModel>();
 
-            updateData.Add(new Model.AzureSqlServerTransparentDataEncryptionProtectorModel()
+            newEntity.Add(new Model.AzureSqlServerTransparentDataEncryptionProtectorModel()
             {
+                ResourceGroupName = this.ResourceGroupName,
+                ServerName = this.ServerName,
                 Type = this.Type,
                 ServerKeyVaultKeyName = AzureSqlServerKeyVaultKeyModel.CreateServerKeyNameFromKeyId(this.KeyId),
                 KeyId = this.KeyId
             });
-            return updateData;
+            return newEntity;
         }
 
         /// <summary>
