@@ -26,7 +26,7 @@ The **Remove-AzureRmVMDataDisk** cmdlet removes a data disk from a virtual machi
 ```
 PS C:\>$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
 PS C:\> Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "Disk3"
-PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine
+PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.

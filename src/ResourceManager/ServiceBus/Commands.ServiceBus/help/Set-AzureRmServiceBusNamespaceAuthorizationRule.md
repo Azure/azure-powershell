@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified authorization rule description for the given Service Bus namespace.
 
 ## SYNTAX
 
@@ -18,21 +18,25 @@ Set-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-Name
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet updates the description for the specified authorization rule in the given Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $authRuleObj = Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1
+
+PS C:\> $authRuleObj.Rights.Remove("Manage")
+
+PS C:\> Set-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthRuleObj $authRuleObj
 ```
 
-{{ Add example description here }}
+Removes **Manage** from the access rights of the authorization rule `AuthoRule1` in namespace `SB-Example1`.
 
 ## PARAMETERS
 
 ### -AuthRuleObj
-ServiceBus NameSpace AuthorizationRule Object.
+The Service Bus namespace authorization rule object.
 
 ```yaml
 Type: SharedAccessAuthorizationRuleAttributes
@@ -47,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationRuleName
-AuthorizationRule Name - Required if 'AuthruleObj' not specified.
+The authorization rule name. Required if **-AuthruleObj** is not specified.
 
 ```yaml
 Type: String
@@ -77,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-ServiceBus Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -92,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -107,9 +111,8 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Required if 'AuthruleObj' not specified.
-Rights - e.g. 
-@("Listen","Send","Manage")
+Rights; for example
+@("Listen","Send","Manage"). Required if **AuthruleObj** is not specified.
 
 ```yaml
 Type: String[]
@@ -144,12 +147,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes System.String\[\]
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -AuthRuleObj
+ Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/AuthorizationRules/AuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : AuthoRule1
+Location : 
+Tags     : 
+Rights   : {Listen, Send}
 
 ## NOTES
 

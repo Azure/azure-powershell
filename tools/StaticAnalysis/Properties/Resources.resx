@@ -123,6 +123,12 @@
   <data name="AddedValidateNotNullOrEmptyRemediation" xml:space="preserve">
     <value>Remove the ValidateNotNullOrEmpty attribute from parameter '{0}'.</value>
   </data>
+  <data name="AddedValidateRangeDescription" xml:space="preserve">
+    <value>A validate range has been added for parameter '{0}' for cmdlet '{1}'.</value>
+  </data>
+  <data name="AddedValidateRangeRemediation" xml:space="preserve">
+    <value>Remove the validate range from parameter '{0}'.</value>
+  </data>
   <data name="AddedValidateSetDescription" xml:space="preserve">
     <value>A validate set has been added for parameter '{0}' for cmdlet '{1}'.</value>
   </data>
@@ -142,16 +148,16 @@
     <value>Change the element type for property '{0}' back to '{1}'.</value>
   </data>
   <data name="ChangedGenericTypeArgumentDescription" xml:space="preserve">
-    <value>The generic type argument for property '{0}' has been changed from '{1}' to '{2}'.</value>
+    <value>The generic type argument for '{0}' has been changed from '{1}' to '{2}'.</value>
   </data>
   <data name="ChangedGenericTypeArgumentRemediation" xml:space="preserve">
-    <value>Change the generic type argument for property '{0}' back to '{1}'.</value>
+    <value>Change the generic type argument for '{0}' back to '{1}'.</value>
   </data>
   <data name="ChangedGenericTypeDescription" xml:space="preserve">
-    <value>The generic type for property '{0}' has been changed from '{1}' to '{2}'. </value>
+    <value>The generic type for '{0}' has been changed from '{1}' to '{2}'. </value>
   </data>
   <data name="ChangedGenericTypeRemediation" xml:space="preserve">
-    <value>Change the generic type for property '{0}' back to '{1}'.</value>
+    <value>Change the generic type for '{0}' back to '{1}'.</value>
   </data>
   <data name="ChangedOutputElementTypeDescription" xml:space="preserve">
     <value>The element type for the output has been changed from '{0}' to '{1}'.</value>
@@ -207,8 +213,20 @@
   <data name="ChangedPropertyTypeRemediation" xml:space="preserve">
     <value>Change the type of property '{0}' back to '{1}'.</value>
   </data>
+  <data name="ChangedValidateRangeMaximumDescription" xml:space="preserve">
+    <value>The maximum value of the validate range for parameter '{0}' has been reduced from '{1}' to '{2}'.</value>
+  </data>
+  <data name="ChangedValidateRangeMaximumRemediation" xml:space="preserve">
+    <value>Change the maximum value of the validate range for parameter '{0}' back to at least '{1}'.</value>
+  </data>
+  <data name="ChangedValidateRangeMinimumDescription" xml:space="preserve">
+    <value>The minimum value of the validate range for parameter '{0}' has been increased from '{1}' to '{2}'.</value>
+  </data>
+  <data name="ChangedValidateRangeMinimumRemediation" xml:space="preserve">
+    <value>Change the minimum value of the validate range for parameter '{0}' back to at most '{1}'.</value>
+  </data>
   <data name="DifferentGenericTypeArgumentSizeDescription" xml:space="preserve">
-    <value>The number of arguments for generic type '{0}' for property '{1}' has been changed from '{2}' to '{3}'.</value>
+    <value>The number of arguments for generic type '{0}' for '{1}' has been changed from '{2}' to '{3}'.</value>
   </data>
   <data name="DifferentGenericTypeArgumentSizeRemediation" xml:space="preserve">
     <value>Change the number of arguments for generic type '{0}' back to '{1}'.</value>

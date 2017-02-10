@@ -926,7 +926,7 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'Da
 <command:example><maml:title>Example 2: Add a data disk to an existing virtual machine</maml:title>
 <dev:code>PS C:\&gt;$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 PS C:\&gt; Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty
-PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine</dev:code>
+PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine</dev:code>
 <dev:remarks><maml:para>The first command gets the virtual machine named VirtualMachine07 by using the Get-AzureRmVM cmdlet. The command stores the virtual machine in the $VirtualMachine variable.
 </maml:para>
 <maml:para>The second command adds a data disk to the virtual machine stored in $VirtualMachine.
@@ -9624,7 +9624,7 @@ $ResourceGroupName = "ResourceGroup11"
 $Location = "WestEurope"
 
 ## Storage
-$StorageName = "GeneralStorage6cc"
+$StorageName = "generalstorage6cc"
 $StorageType = "Standard_GRS"
 
 ## Network
@@ -13703,7 +13703,7 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <command:examples><command:example><maml:title>Example 1: Remove a data disk from a virtual machine</maml:title>
 <dev:code>PS C:\&gt;$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
 PS C:\&gt; Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "Disk3"
-PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine</dev:code>
+PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine</dev:code>
 <dev:remarks><maml:para>The first command gets the virtual machine named VirtualMachine07 by using the Get-AzureRmVM cmdlet. The command stores the virtual machine in the $VirtualMachine variable.
 </maml:para>
 <maml:para>The second command removes the data disk named Disk3 from the virtual machine stored in $VirtualMachine.
@@ -19709,6 +19709,24 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Secret</maml:name>
+<maml:Description><maml:para>The encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretFile</maml:name>
+<maml:Description><maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ClientRb</maml:name>
 <maml:Description><maml:para>Specifies the full path of the Chef client.rb.
 </maml:para>
@@ -19881,6 +19899,36 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Daemon</maml:name>
+<maml:Description><maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Options: 'none' or 'service'
+  none - Currently prevents the chef-client service from being configured as a service.
+  service - Configures the chef-client to run automatically in the background as a service.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Secret</maml:name>
+<maml:Description><maml:para>The encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretFile</maml:name>
+<maml:Description><maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ClientRb</maml:name>
 <maml:Description><maml:para>Specifies the full path of the Chef client.rb.
 </maml:para>
@@ -20001,6 +20049,36 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ChefServiceInterval</maml:name>
 <maml:Description><maml:para>Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Daemon</maml:name>
+<maml:Description><maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Options: 'none' or 'service'
+  none - Currently prevents the chef-client service from being configured as a service.
+  service - Configures the chef-client to run automatically in the background as a service.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Secret</maml:name>
+<maml:Description><maml:para>The encryption key used to encrypt and decrypt the data bag item values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretFile</maml:name>
+<maml:Description><maml:para>The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -21939,12 +22017,12 @@ PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMNa
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>WmfVersion</maml:name>
-<maml:Description><maml:para>Specifies the WMF version.
+<maml:Description><maml:para>Specifies the version of the Windows Management Framework (WMF) to install on the VM. The DSC Azure Extension depends on DSC features that are only available in the WMF updates. This parameter specifies which version of the update to install on the VM. The possible values are "4.0", "5.0", "5.1" and latest. A value of "latest" will install the latest WMF, currently WMF 5.1. The default value is "latest".
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">4.0</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">5.0</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">5.1PP</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">5.1</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">latest</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -22153,24 +22231,24 @@ PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMNa
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Set a DSC extension</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "1.10" -Location "West US"</dev:code>
-<dev:remarks><maml:para>This command sets the DSC extension on the virtual machine named VM07 to download Sample.ps1.zip from the storage account named Stg and the default container. The command invokes the configuration named ConfigName. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration .
+<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "X.Y" -Location "West US"</dev:code>
+<dev:remarks><maml:para>This command sets the DSC extension based on the version parameter X.Y (Major.Minor), on the virtual machine named VM07 to download Sample.ps1.zip from the storage account named Stg and the default container. The command invokes the configuration named ConfigName. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration. 
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Set a DSC extension with configuration data</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM13" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName "WindowsPowerShellDSC" -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US"</dev:code>
-<dev:remarks><maml:para>This command sets the extension on the virtual machine named VM13 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command the configuration named ConfigName and specifies configuration data and arguments. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration .
+<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM13" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName "WindowsPowerShellDSC" -ConfigurationData "SampleData.psd1" -Version "X.Y" -Location "West US"</dev:code>
+<dev:remarks><maml:para>This command sets the extension based on the version parameter X.Y (Major.Minor), on the virtual machine named VM13 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command the configuration named ConfigName and specifies configuration data and arguments. The Sample.ps1.zip file was previously uploaded by using Publish-AzureRmVMDscConfiguration.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Set a DSC extension with configuration data that has auto update</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM22" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US" -AutoUpdate</dev:code>
-<dev:remarks><maml:para>This command sets the extension on the virtual machine named VM22 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command invokes the configuration named ConfigName and specifies configuration data and arguments. This command also enables auto update of extension handler to the latest version. The Sample.ps1.zip was previously uploaded by using Publish-AzureRmVMDscConfiguration .
+<dev:code>PS C:\&gt;Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM22" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData "SampleData.psd1" -Version "X.Y" -Location "West US" -AutoUpdate</dev:code>
+<dev:remarks><maml:para>This command sets the extension based on the version parameter X.Y (Major.Minor), on the virtual machine named VM22 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC. The command invokes the configuration named ConfigName and specifies configuration data and arguments. This command also enables auto update of extension handler to the latest version. The Sample.ps1.zip was previously uploaded by using Publish-AzureRmVMDscConfiguration.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
