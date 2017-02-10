@@ -40,7 +40,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
         public TypeMetadata()
         {
-
+            
         }
 
         public TypeMetadata(Type inputType)
