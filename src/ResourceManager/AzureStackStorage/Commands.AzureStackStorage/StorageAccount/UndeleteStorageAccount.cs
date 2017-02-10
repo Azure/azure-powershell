@@ -23,7 +23,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// <summary>
     ///     SYNTAX
     ///          Undo-StorageAccountDeletion [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-AccountId] {long}] [[-NewAccountName] {string}] [-TenantSubscriptionId] {string} [-Sync] {bool} [-ResourceLocation] {string}
+    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-AccountId] {string}] [[-NewAccountName] {string}] [-TenantSubscriptionId] {string} [-Sync] {bool} [-ResourceLocation] {string}
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Undo, Nouns.AdminStorageAccountDeletion, SupportsShouldProcess = true)]

@@ -31,34 +31,14 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     public sealed class GetQueueServiceMetrics : AdminMetricCmdlet
     {
         /// <summary>
-        /// Resource group name
-        /// </summary>
-
-        /// <summary>
         ///     Farm Identifier
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
         public string FarmName { get; set; }
-
-        /// <summary>
-        ///     start time
-        /// </summary>
-
-        /// <summary>
-        ///     end time
-        /// </summary>
+             
         protected override MetricsResult GetMetricsResult(string filter)
-        /// <summary>
-        ///     time grain
-        /// </summary>
-
-        /// <summary>
-        /// Array of metric names
-        /// </summary>
         {
-
-
             return Client.QueueService.GetMetrics(ResourceGroupName, FarmName, filter);
         }
     }

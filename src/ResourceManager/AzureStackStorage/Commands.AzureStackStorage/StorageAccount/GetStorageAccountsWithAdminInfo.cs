@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///     SYNTAX
     ///          Get-StorageAccountsWithAdminInfo [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
     ///             [-SkipCertificateValidation] [-FarmName] {string} [[-TenantSubscriptionId] {string}] [[-StorageAccountName] {string}] 
-    ///             [[-StorageAccountStatus] {int}] [[-AccountId] {long}] [-Summary]]
+    ///             [[-StorageAccountStatus] {int}] [[-AccountId] {string}] [-Summary]]
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminStorageAccount, DefaultParameterSetName = ListAccountsParamSet)]
@@ -104,9 +104,11 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 List<StorageAccountResponse> adminViewList = new List<StorageAccountResponse>();
                 foreach (StorageAccountModel model in response.StorageAccounts)
                 {
+                    // Ignoring Storage Accounts which are not having Name
+                    // This will happen when Storage Account is not yet created completely
                     if (!string.IsNullOrEmpty(model.Name))
                     {
-                    adminViewList.Add(new StorageAccountResponse(model, FarmName));
+                        adminViewList.Add(new StorageAccountResponse(model, FarmName));
                     }
                 }
                 WriteObject(adminViewList, true);

@@ -40,13 +40,13 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public TimeGrain TimeGrain { get; set; }
 
         /// <summary>
-        /// Gets or sets the starttime parameter of the cmdlet
+        /// Gets or sets the starttime (In UTC) parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public DateTime StartTimeInUtc { get; set; }
 
         /// <summary>
-        /// Gets or sets the endtime parameter of the cmdlet
+        /// Gets or sets the endtime (In UTC) parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public DateTime EndTimeInUtc { get; set; }
