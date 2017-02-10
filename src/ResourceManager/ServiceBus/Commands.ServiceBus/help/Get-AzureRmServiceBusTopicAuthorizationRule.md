@@ -95,22 +95,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
  
-###-NamespaceName
+
+### -NamespaceName
  System.String
  
-###-TopicName
+
+### -TopicName
  System.String
  
-###-AuthorizationRuleName
+
+### -AuthorizationRuleName
  System.String
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.0.1.0, Culture=neutral, PublicKeyToken=null]]
-
 Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_example1/authorizati
            onRules/SBTopicAuthoRule1
 Type     : Microsoft.ServiceBus/AuthorizationRules
@@ -118,7 +120,6 @@ Name     : SBTopicAuthoRule1
 Location : West US
 Tags     : 
 Rights   : {Listen, Send}
-
 
 ## NOTES
 

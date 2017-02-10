@@ -116,7 +116,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                Kind = ParseAccountKind(Kind),
                 Sku = new Sku(ParseSkuName(this.SkuName)),
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
@@ -132,6 +131,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             else if (UseSubDomain != null)
             {
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
+            }
+
+            if (Kind != null)
+            {
+                createParameters.Kind = ParseAccountKind(Kind);
             }
 
             if (this.EnableEncryptionService != null)

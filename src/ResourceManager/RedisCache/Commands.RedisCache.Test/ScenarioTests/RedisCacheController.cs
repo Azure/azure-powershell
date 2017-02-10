@@ -87,8 +87,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.RMStorageDataPlaneModule, 
-                    helper.RMStorageModule, 
+                    helper.RMStorageDataPlaneModule,
+                    "AzureRM.Storage.ps1",
                     helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"),
                     "AzureRM.Resources.ps1");
 
