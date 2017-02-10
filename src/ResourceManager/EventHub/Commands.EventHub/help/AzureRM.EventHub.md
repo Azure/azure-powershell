@@ -1,14 +1,14 @@
 ---
 Module Name: AzureRM.EventHub
 Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: None_Azure
+Help Version: 4.0.0.0
 Locale: en-US
 ---
 
 # AzureRM.EventHub Module
 ## Description
-{{Manually Enter Description Here}}
+This topic displays help for the Azure Event Hubs PowerShell resource manager cmdlets.
 
 ## AzureRM.EventHub Cmdlets
 ### [Get-AzureRmEventHub](Get-AzureRmEventHub.md)
