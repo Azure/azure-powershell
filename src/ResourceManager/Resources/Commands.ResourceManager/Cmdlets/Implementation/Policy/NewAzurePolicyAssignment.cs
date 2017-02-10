@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DisplayName = this.DisplayName ?? null,
                     PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString(),
                     Scope = this.Scope,
-                    Parameter = this.GetParameters()
+                    Parameters = this.GetParameters()
                 }
             };
 
@@ -198,32 +198,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             // Load from PS object
-            JObject parameterObject = null;
             if (this.PolicyParameterObject != null)
             {
-                parameterObject = new JObject();
-                foreach (string paramKey in this.PolicyParameterObject.Keys)
-                {
-                    var valueObject = new JObject();
-                    valueObject.Add("value", this.PolicyParameterObject[paramKey].ToJToken());
-                    parameterObject.Add(paramKey, valueObject);
-                }
-                return parameterObject;
+                return this.PolicyParameterObject.ToParameterObject();
             }
 
             // Load dynamic parameters
             var parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
             if (parameters.Count() > 0)
             {
-                parameterObject = new JObject();
-                foreach (var dp in parameters)
-                {
-                    var valueObject = new JObject();
-                    valueObject.Add("value", MyInvocation.BoundParameters[dp.Name].ToJToken());
-                    parameterObject.Add(dp.Name, valueObject);
-                }
+                return MyInvocation.BoundParameters.ToParameterObject(parameters.Select(p => p.Name));
             }
-            return parameterObject;
+
+            return null;
         }
     }
 }

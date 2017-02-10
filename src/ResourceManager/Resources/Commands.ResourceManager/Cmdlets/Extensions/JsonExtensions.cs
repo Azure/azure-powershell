@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
@@ -211,6 +212,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             result = default(TType);
             return false;
+        }
+
+        /// <summary>
+        /// Converts an <see cref="IDictionary"/> object to <see cref="JObject"/> with an extra level labeled as "value".
+        /// </summary>
+        /// <param name="dict">The <see cref="IDictionary"/> object.</param>
+        /// <param name="keys">The key set to extract from the <see cref="IDictionary"/> object. Default is all keys.</param>
+        /// <returns>The conversion result.</returns>
+        public static JObject ToParameterObject(this IDictionary dict, IEnumerable keys = null)
+        {
+            if (dict == null)
+            {
+                return null;
+            }
+            if (keys == null)
+            {
+                keys = dict.Keys;
+            }
+            var parameterObject = new JObject();
+            foreach (string paramKey in keys)
+            {
+                var valueObject = new JObject();
+                valueObject.Add("value", dict[paramKey].ToJToken());
+                parameterObject.Add(paramKey, valueObject);
+            }
+            return parameterObject;
         }
     }
 }

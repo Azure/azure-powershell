@@ -44,6 +44,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// The parameters declaration.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public JObject Parameter { get; set; }
+        public JObject Parameters { get; set; }
     }
 }
