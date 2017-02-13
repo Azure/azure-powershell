@@ -42,6 +42,13 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAllKindsOfAccounts()
+        {
+            TestController.NewInstance.RunPsTest("Test-NewAzureRmAllKindsOfCognitiveServicesAccounts");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccount()
         {
             TestController.NewInstance.RunPsTest("Test-RemoveAzureRmCognitiveServicesAccount");
