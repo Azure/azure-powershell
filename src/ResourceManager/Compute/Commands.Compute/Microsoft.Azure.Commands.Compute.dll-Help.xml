@@ -19396,8 +19396,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Update a virtual machine</maml:title>
-<dev:code>PS C:\&gt;Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine</dev:code>
-<dev:remarks><maml:para>This command updates the virtual machine named VirtualMachine07 in ResourceGroup11. The command updates it by using another virtual machine object, stored in the $VirtualMachine variable. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+<dev:code>PS C:\&gt;Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine</dev:code>
+<dev:remarks><maml:para>This command updates the virtual machine, $VirtualMachine, in ResourceGroup11. The command updates it by using the virtual machine object stored in the $VirtualMachine variable. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
