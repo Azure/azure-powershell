@@ -18,13 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.3.0
 * Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
 * Update New-AdlStore and Set-AdlStore to support commitment tier options for the service.
 * Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.
 * Add Diagnostic logging support to Import-AdlStoreItem and Export-AdlStoreItem. This can be enabled through the following parameters:
-  * -Debug, enables full diagnostic logging as well as debug logging to the PowerShell console. Most verbose options
-  * -DiagnosticLogLevel, allows finer control of the output than debug. If used with debug, this is ignored and debug logging is used.
-  * -DiagnosticLogPath, optionally specify the file to write diagnostic logs to. By default it is written to a file under %LOCALAPPDATA%\AdlDataTransfer
+    * -Debug, enables full diagnostic logging as well as debug logging to the PowerShell console. Most verbose options
+    * -DiagnosticLogLevel, allows finer control of the output than debug. If used with debug, this is ignored and debug logging is used.
+    * -DiagnosticLogPath, optionally specify the file to write diagnostic logs to. By default it is written to a file under %LOCALAPPDATA%\AdlDataTransfer
 * Added support to New-AdlStore to explicitly opt-out of account encryption. To do so, create the account with the -DisableEncryption flag.
 
 ## Version 3.2.0
