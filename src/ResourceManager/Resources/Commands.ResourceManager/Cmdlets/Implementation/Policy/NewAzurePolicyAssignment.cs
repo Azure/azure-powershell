@@ -200,14 +200,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             // Load from PS object
             if (this.PolicyParameterObject != null)
             {
-                return this.PolicyParameterObject.ToParameterObject();
+                return this.PolicyParameterObject.ToJObjectWithValue();
             }
 
             // Load dynamic parameters
             var parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
             if (parameters.Count() > 0)
             {
-                return MyInvocation.BoundParameters.ToParameterObject(parameters.Select(p => p.Name));
+                return MyInvocation.BoundParameters.ToJObjectWithValue(parameters.Select(p => p.Name));
             }
 
             return null;

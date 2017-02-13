@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="dict">The <see cref="IDictionary"/> object.</param>
         /// <param name="keys">The key set to extract from the <see cref="IDictionary"/> object. Default is all keys.</param>
         /// <returns>The conversion result.</returns>
-        public static JObject ToParameterObject(this IDictionary dict, IEnumerable keys = null)
+        public static JObject ToJObjectWithValue(this IDictionary dict, IEnumerable keys = null)
         {
             if (dict == null)
             {

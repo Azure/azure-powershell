@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString()),
-                    Parameters = this.Parameter == null ? null : JObject.Parse(GetParametersObject().ToString())
+                    PolicyRule = JObject.Parse(this.GetPolicyRuleObject().ToString()),
+                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString())
                 }
             };
 
