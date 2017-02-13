@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             this.WriteObject(
                 IntegrationAccountClient.GetIntegrationAccountCallbackUrl(this.ResourceGroupName, this.Name,
                     (NotAfter != null)
-                        ? new ListCallbackUrlParameters
+                        ? new GetCallbackUrlParameters
                         {
                             NotAfter = NotAfter
                         }
-                        : new ListCallbackUrlParameters()), true);
+                        : new GetCallbackUrlParameters()), true);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             if (!this.DoesIntegrationAccountAgreementExist(resourceGroupName, integrationAccountName, integrationAccountAgreementName))
             {
-                return this.LogicManagementClient.IntegrationAccountAgreements.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAgreementName, integrationAccountAgreement);
+                return this.LogicManagementClient.Agreements.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAgreementName, integrationAccountAgreement);
             }
             else
             {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             bool result = false;
             try
             {
-                var agreement = this.LogicManagementClient.IntegrationAccountAgreements.Get(resourceGroupName, integrationAccountName, integrationAccountAgreementName);
+                var agreement = this.LogicManagementClient.Agreements.Get(resourceGroupName, integrationAccountName, integrationAccountAgreementName);
                 result = agreement != null;
             }
             catch
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Updated integration account agreement</returns>
         public IntegrationAccountAgreement UpdateIntegrationAccountAgreement(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName, IntegrationAccountAgreement integrationAccountAgreement)
         {
-            return this.LogicManagementClient.IntegrationAccountAgreements.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAgreementName, integrationAccountAgreement);
+            return this.LogicManagementClient.Agreements.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountAgreementName, integrationAccountAgreement);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Integration account agreement object.</returns>
         public IntegrationAccountAgreement GetIntegrationAccountAgreement(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName)
         {
-            return this.LogicManagementClient.IntegrationAccountAgreements.Get(resourceGroupName, integrationAccountName, integrationAccountAgreementName);
+            return this.LogicManagementClient.Agreements.Get(resourceGroupName, integrationAccountName, integrationAccountAgreementName);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public IList<IntegrationAccountAgreement> ListIntegrationAccountAgreements(string resourceGroupName, string integrationAccountName)
         {
             var compositeList = new List<IntegrationAccountAgreement>();
-            var firstPage = this.LogicManagementClient.IntegrationAccountAgreements.List(resourceGroupName, integrationAccountName);
+            var firstPage = this.LogicManagementClient.Agreements.ListByIntegrationAccounts(resourceGroupName, integrationAccountName);
 
             if (firstPage != null)
             {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 var page = firstPage;
                 while (!string.IsNullOrEmpty(page.NextPageLink))
                 {
-                    page = this.LogicManagementClient.IntegrationAccountAgreements.ListNext(page.NextPageLink);
+                    page = this.LogicManagementClient.Agreements.ListByIntegrationAccountsNext(page.NextPageLink);
                     compositeList.AddRange(page);
                 }
             }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountAgreementName">The integration account agreement name.</param>
         public void RemoveIntegrationAccountAgreement(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName)
         {
-            this.LogicManagementClient.IntegrationAccountAgreements.Delete(resourceGroupName, integrationAccountName, integrationAccountAgreementName);
+            this.LogicManagementClient.Agreements.Delete(resourceGroupName, integrationAccountName, integrationAccountAgreementName);
         }
     }
 }
