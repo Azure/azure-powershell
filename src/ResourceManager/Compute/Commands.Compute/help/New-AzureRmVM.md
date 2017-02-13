@@ -34,7 +34,7 @@ $ResourceGroupName = "ResourceGroup11"
 $Location = "WestEurope"
 
 ## Storage
-$StorageName = "GeneralStorage6cc"
+$StorageName = "generalstorage6cc"
 $StorageType = "Standard_GRS"
 
 ## Network

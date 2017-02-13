@@ -187,19 +187,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
-                ActiveDirectoryEndpoint = "ActiveDirectoryEndpoint",
+                ActiveDirectoryEndpoint = "https://ActiveDirectoryEndpoint",
                 AdTenant = "AdTenant",
                 AzureKeyVaultDnsSuffix = "AzureKeyVaultDnsSuffix",
-                ActiveDirectoryServiceEndpointResourceId = "ActiveDirectoryServiceEndpointResourceId",
-                AzureKeyVaultServiceEndpointResourceId = "AzureKeyVaultServiceEndpointResourceId",
+                ActiveDirectoryServiceEndpointResourceId = "https://ActiveDirectoryServiceEndpointResourceId",
+                AzureKeyVaultServiceEndpointResourceId = "https://AzureKeyVaultServiceEndpointResourceId",
                 EnableAdfsAuthentication = true,
-                GalleryEndpoint = "GalleryEndpoint",
-                GraphEndpoint = "GraphEndpoint",
-                ManagementPortalUrl = "ManagementPortalUrl",
-                PublishSettingsFileUrl = "PublishSettingsFileUrl",
-                ResourceManagerEndpoint = "ResourceManagerEndpoint",
-                ServiceEndpoint = "ServiceEndpoint",
-                StorageEndpoint = "StorageEndpoint",
+                GalleryEndpoint = "https://GalleryEndpoint",
+                GraphEndpoint = "https://GraphEndpoint",
+                ManagementPortalUrl = "https://ManagementPortalUrl",
+                PublishSettingsFileUrl = "https://PublishSettingsFileUrl",
+                ResourceManagerEndpoint = "https://ResourceManagerEndpoint",
+                ServiceEndpoint = "https://ServiceEndpoint",
+                StorageEndpoint = "https://StorageEndpoint",
                 SqlDatabaseDnsSuffix = "SqlDatabaseDnsSuffix",
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
                 GraphAudience = "GaraphAudience"
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.InvokeEndProcessing();
             Assert.Equal(cmdlet.Name, actual.Name);
             Assert.Equal(cmdlet.EnableAdfsAuthentication.ToBool(), actual.EnableAdfsAuthentication);
-            Assert.Equal(cmdlet.ActiveDirectoryEndpoint, actual.ActiveDirectoryAuthority);
+            Assert.Equal(cmdlet.ActiveDirectoryEndpoint + "/", actual.ActiveDirectoryAuthority, StringComparer.OrdinalIgnoreCase);
             Assert.Equal(cmdlet.ActiveDirectoryServiceEndpointResourceId,
                 actual.ActiveDirectoryServiceEndpointResourceId);
             Assert.Equal(cmdlet.AdTenant, actual.AdTenant);

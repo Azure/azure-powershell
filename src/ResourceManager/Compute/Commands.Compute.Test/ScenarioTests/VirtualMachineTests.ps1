@@ -236,8 +236,10 @@ function Test-VirtualMachine
 
         $vm2 = Get-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname;
         Assert-NotNull $vm2;
-        # Assert-AreEqual $vm2.AvailabilitySetReference.Id $asetId;
-        # Assert-True { $vm2.ResourceGroupName -eq $rgname }
+        $vm2_out = $vm2 | Out-String
+        Assert-True {$vm2_out.Contains("AvailabilitySetReference")};
+        Assert-AreEqual $vm2.AvailabilitySetReference.Id $asetId;
+        Assert-True { $vm2.ResourceGroupName -eq $rgname }
         
         # Remove
         Remove-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname -Force;
