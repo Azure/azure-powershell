@@ -219,6 +219,47 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 
 <#
 .SYNOPSIS
+Gets the values of the parameters used in the Server Key Vault Key tests
+#>
+function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
+{
+	return @{ rgName = Get-ResourceGroupName;
+			  serverName = Get-ServerName;
+			  databaseName = Get-DatabaseName;
+			  keyId = "https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106";
+			  serverKeyName = "akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106";
+			  vaultName = "akvtdekeyvault";
+			  keyName = "key1"
+			  location = "Southeast Asia";
+			  }
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Server Key Vault Key tests
+#>
+function Create-ServerKeyVaultKeyTestEnvironment ($params)
+{
+	# Create Resource Group
+	$rg = New-AzureRmResourceGroup -Name $params.rgname -Location $params.location -Force
+
+	# Create Server
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$server = New-AzureRmSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
+	Assert-AreEqual $server.ServerName $params.serverName
+
+	# Create database
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $params.databaseName
+	Assert-AreEqual $db.DatabaseName $params.databaseName
+
+	# Return the created resource group
+	return $rg
+}
+
+<#
+.SYNOPSIS
 Gets valid resource group name
 #>
 function Get-ResourceGroupName
