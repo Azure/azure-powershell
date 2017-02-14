@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
-Create a new Service Bus namespace.
+Creates a new Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
+The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespace. Once created, the namespace resource manifest is immutable. This operation is idempotent.
 
 ## EXAMPLES
 
@@ -141,26 +141,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
 
-###-NamespaceName 
+### -NamespaceName
  System.String
 
-###-Location
+### -Location
  System.String
 
-###-SkuName
+### -SkuName
  System.String
 
-###-Tag
+### -Tag
  System.Collections.Hashtable
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
-
 Name               : SB-Example2
 Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example2
 Location           : West US
@@ -171,7 +169,6 @@ CreatedAt          : 1/20/2017 2:07:33 AM
 UpdatedAt          : 1/20/2017 2:07:56 AM
 ServiceBusEndpoint : https://SB-Example2.servicebus.windows.net:443/
 Enabled            : True
-
 
 ## NOTES
 

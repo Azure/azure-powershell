@@ -142,25 +142,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
 
-###-NamespaceName
+### -NamespaceName
  System.String
 
-###-Location
+### -Location
  System.String
 
-###-SkuName
+### -SkuName
  System.String
 
-###-Tag
+### -Tag
  System.Collections.Hashtable
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
-
 Name               : SB-Example1
 Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 Location           : West US
