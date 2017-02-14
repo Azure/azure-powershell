@@ -42,84 +42,6 @@
             this.ExecuteShellCmd(psi, out _procOutput, out _procErr);
             Assert.NotEmpty(_procOutput);
         }
-
-        [Fact]
-        [Trait("SignedBuild", "BVT")]
-        public void VerifyFilesAreSigned()
-        {
-            string SHA1 = "sha1RSA";
-            string SHA2 = "sha256RSA";
-
-            List<string> expectedSignatureAlgos = new List<string>() { SHA1, SHA2 };
-            string msiContentsDir = this.ExtractMsiContents(out _procErr);
-            Assert.True(Directory.Exists(msiContentsDir));
-            Assert.True(string.IsNullOrEmpty(_procErr));
-
-            IEnumerable<string>msiFiles = Directory.EnumerateFiles(msiContentsDir, "*", SearchOption.AllDirectories);
-            //Ignore Newtonsoft, .xml, .msi (need to find out why unsigned msi get's packaged inside the MSI)
-            IEnumerable<string> exceptionFiles = Directory.EnumerateFiles(msiContentsDir, "*.xml", SearchOption.AllDirectories)
-                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "newtonsoft*.dll", SearchOption.AllDirectories))
-                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "automapper*.dll", SearchOption.AllDirectories))
-                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "security*.dll", SearchOption.AllDirectories))
-                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "bouncy*.dll", SearchOption.AllDirectories))
-                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.psd1", SearchOption.AllDirectories))
-                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.msi", SearchOption.AllDirectories));
-
-            Assert.NotNull(msiFiles);
-            IEnumerable<string> filesToVerify = msiFiles.Except<string>(exceptionFiles);
-
-            // Make sure filesToVerify do not have any of the files that are either external to MS 
-            // or are not signed (which are expected not to be signed eg. psd1 files)
-            List<string> noXmlFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".xml")).ToList<string>();
-            TestLog.WriteLine("Verifying no .xml files are in the verify list of files");
-            Assert.True(noXmlFiles.Count == 0);
-
-            List<string> noNewtonsoftFiles = filesToVerify.Where<string>((fl) => fl.Contains("newtonsoft")).ToList<string>();
-            TestLog.WriteLine("Verifying no 'Newtonsoft*.dll' files are in the verify list of files");
-            Assert.True(noNewtonsoftFiles.Count == 0);
-
-            List<string> noMsiFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".msi")).ToList<string>();
-            TestLog.WriteLine("Verifying no '*.msi' files are in the verify list of files");
-            Assert.True(noMsiFiles.Count == 0);
-
-            List<string> noPsd1Files = filesToVerify.Where<string>((fl) => fl.EndsWith(".psd1")).ToList<string>();
-            TestLog.WriteLine("Verifying no '*.psd1' files are in the verify list of files");
-            Assert.True(noPsd1Files.Count == 0);
-
-            // Now extract each category of files and verify if they matched to the algorithm they are expected to be signed
-            IEnumerable<string> dllFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".dll")).ToList<string>();
-            IEnumerable<string> scriptFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".ps1"))
-                .Union<string>(filesToVerify.Where<string>((fl) => fl.EndsWith(".psm1")))
-                .Union<string>(filesToVerify.Where<string>((fl) => fl.EndsWith(".ps1xml")));
-            
-            Assert.Equal((dllFiles.Count() + scriptFiles.Count()), filesToVerify.Count());
-
-            List<string> unsignedDlls = GetUnsignedFiles(dllFiles, expectedSignatureAlgos);
-
-            List<string> unsignedScripts = GetUnsignedFiles(scriptFiles, SHA2);
-
-            // We do this because, we sign MSI as SHA2 with SHA1 hash.
-            // Verifying msi under windows --> Rightclick --> Properties will show SHA1
-            // Verifying msi with Get-AuthenticodeSignature will return as SHA2
-            List<string> unsignedMsi = GetUnsignedFiles(new List<string>() { this.GetAzurePSMsiPath() }, SHA2);
-
-            TestLog.WriteLine("Verifying if DLLs are properly signed");
-            foreach (string unsigFile in unsignedDlls)
-            {
-                TestLog.WriteLine(unsigFile);
-            }
-            Assert.True(unsignedDlls.Count == 0);
-
-            TestLog.WriteLine("Verifying if SCRIPTS are properly signed");
-            foreach (string unsigFile in unsignedScripts)
-            {
-                TestLog.WriteLine(unsigFile);
-            }
-            Assert.True(unsignedScripts.Count == 0);
-
-            TestLog.WriteLine("Verifying if MSI is properly signed");
-            Assert.True(unsignedMsi.Count == 0);
-        }
         
         [Fact]
         [Trait("AcceptanceType", "CheckIn")]
@@ -128,7 +50,7 @@
             string procErr = string.Empty;
             string msiContentsDirPath = ExtractMsiContents(out procErr);
             IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDirPath, "*.js", SearchOption.AllDirectories);
-            TestLog.WriteLine("Expecting no *.js files in MSI");
+            TestLog.WriteLine("Expecting no *.js files in MSI");            
             foreach (string unsigFile in msiFiles)
             {
                 TestLog.WriteLine(unsigFile);
@@ -149,6 +71,77 @@
                 TestLog.WriteLine(unsigFile);
             }
             Assert.Equal(0, msiFiles.Count<string>());
+        }
+        
+        [Fact]
+        [Trait("SignedBuild", "BVT")]
+        public void VerifyFilesAreSigned()
+        {
+            string SHA1 = "sha1RSA";
+            string SHA2 = "sha256RSA";
+
+            List<string> expectedSignatureAlgos = new List<string>() { SHA1, SHA2 };
+            string msiContentsDir = this.ExtractMsiContents(out _procErr);
+            Assert.True(Directory.Exists(msiContentsDir));
+            Assert.True(string.IsNullOrEmpty(_procErr));
+
+            IEnumerable<string> msiFiles = Directory.EnumerateFiles(msiContentsDir, "*", SearchOption.AllDirectories);
+            //Ignore Newtonsoft, .xml, .msi (need to find out why unsigned msi get's packaged inside the MSI)
+            IEnumerable<string> exceptionFiles = Directory.EnumerateFiles(msiContentsDir, "*.xml", SearchOption.AllDirectories)
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "newtonsoft*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "automapper*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "security*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "bouncy*.dll", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.psd1", SearchOption.AllDirectories))
+                .Union<string>(Directory.EnumerateFiles(msiContentsDir, "*.msi", SearchOption.AllDirectories));
+
+            Assert.NotNull(msiFiles);
+            IEnumerable<string> filesToVerify = msiFiles.Except<string>(exceptionFiles);
+
+            // Make sure filesToVerify do not have any of the files that are either external to MS 
+            // or are not signed (which are expected not to be signed eg. psd1 files)
+            List<string> noXmlFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".xml")).ToList<string>();
+            //TestLog.WriteLine("Verifying no .xml files are in the verify list of files");
+            Assert.True(noXmlFiles.Count == 0);
+
+            List<string> noNewtonsoftFiles = filesToVerify.Where<string>((fl) => fl.Contains("newtonsoft")).ToList<string>();
+            //TestLog.WriteLine("Verifying no 'Newtonsoft*.dll' files are in the verify list of files");
+            Assert.True(noNewtonsoftFiles.Count == 0);
+
+            List<string> noMsiFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".msi")).ToList<string>();
+            //TestLog.WriteLine("Verifying no '*.msi' files are in the verify list of files");
+            Assert.True(noMsiFiles.Count == 0);
+
+            List<string> noPsd1Files = filesToVerify.Where<string>((fl) => fl.EndsWith(".psd1")).ToList<string>();
+            //TestLog.WriteLine("Verifying no '*.psd1' files are in the verify list of files");
+            Assert.True(noPsd1Files.Count == 0);
+
+            // Now extract each category of files and verify if they matched to the algorithm they are expected to be signed
+            IEnumerable<string> dllFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".dll")).ToList<string>();
+            IEnumerable<string> scriptFiles = filesToVerify.Where<string>((fl) => fl.EndsWith(".ps1"))
+                .Union<string>(filesToVerify.Where<string>((fl) => fl.EndsWith(".psm1")))
+                .Union<string>(filesToVerify.Where<string>((fl) => fl.EndsWith(".ps1xml")));
+
+            TestLog.WriteLine("Verify number of dlls, script files match");
+            Assert.Equal((dllFiles.Count() + scriptFiles.Count()), filesToVerify.Count());
+
+            List<string> unsignedDlls = GetUnsignedFiles(dllFiles, expectedSignatureAlgos);
+            TestLog.WriteLine("Verifying if DLLs are properly signed");
+            unsignedDlls.ForEach((unsigDll) => TestLog.WriteLine(unsigDll));
+            Assert.Equal(unsignedDlls.Count, 0);
+
+            List<string> unsignedScripts = GetUnsignedFiles(scriptFiles, SHA2);
+            TestLog.WriteLine("Verifying if SCRIPTS are properly signed");
+            unsignedScripts.ForEach((unsigScript) => TestLog.WriteLine(unsigScript));
+            Assert.Equal(unsignedScripts.Count, 0);
+
+            // We do this because, we sign MSI as SHA2 with SHA1 hash.
+            // Verifying msi under windows --> Rightclick --> Properties will show SHA1
+            // Verifying msi with Get-AuthenticodeSignature will return as SHA2
+            List<string> unsignedMsi = GetUnsignedFiles(new List<string>() { this.GetAzurePSMsiPath() }, SHA2);
+            TestLog.WriteLine("Verifying if MSI is properly signed");
+            unsignedMsi.ForEach((unsigMsi) => TestLog.WriteLine(unsigMsi));
+            Assert.Equal(unsignedMsi.Count, 0);
         }
 
         #region Private Functions

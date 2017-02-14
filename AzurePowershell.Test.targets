@@ -155,7 +155,7 @@
 		ParallelizeTestCollections="false"
 		ParallelizeAssemblies="true"
 		IncludeTraits="SignedBuild=BVT"
-		Html="$(TestOutputDirectory)\AzurePowershellSignedTestResults.html"
+		Html="$(TestOutputDirectory)\AzurePSStackSignedTestResults.html"
 		MaxParallelThreads="10"
 		DiagnosticMessages="false"
 		ContinueOnError="false"
@@ -163,6 +163,47 @@
 			
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
+  
+  <Target Name="TestSetup" DependsOnTargets="DeclareXunitTests">
+		<Message Importance="high" Text="Setup XUnit tests" />
+		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+		
+		<ItemGroup Condition=" '$(scope)' == 'all' AND '$(CodeSign)' != 'true' ">
+			<SetupDebugTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll" />
+		</ItemGroup>
+		
+		<ItemGroup Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' ">
+			<!-- We want to run setup tests related to signing that can only be run on signed bits -->
+			<SetupRelTests Include=".\setup\PowerShellSetup.Test\bin\Release\PowerShellSetup.Test.dll" />
+		</ItemGroup>
+		
+		<xunit 
+			Assemblies="@(SetupDebugTests)"
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			IncludeTraits="AcceptanceType=CheckIn"
+			ExcludeTraits="SignedBuild=BVT"
+			Html="$(TestOutputDirectory)\AzurePSSetupTest.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false"
+			Condition=" '$(scope)' == 'all' "/>
+			
+		<xunit 
+			Assemblies="@(SetupRelTests)"
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			IncludeTraits="SignedBuild=BVT"
+			Html="$(TestOutputDirectory)\AzurePSSetupTestSigned.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false"
+			Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' "/>
+	</Target>
   
   <Target Name="TimeoutErrorHandler">
     <Error Text="XUnit tests in assembly &quot;%(XUnitTests.Filename).dll&quot; failed or timed out. Ensure that all tests in a project pass and collectively take less than 1 minute to run."/>
