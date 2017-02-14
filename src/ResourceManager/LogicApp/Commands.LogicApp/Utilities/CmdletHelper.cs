@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Logic.Models;
     using Newtonsoft.Json.Linq;
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         internal static string BuildAppServicePlanId(string planName, string resourceGroupName, string subscriptionId)
         {
             return string.Format(CultureInfo.InvariantCulture,
-                Properties.Resource.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
+                Constants.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
         }
 
         /// <summary>
@@ -152,21 +153,30 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
 
             if (businessIdentityObject is Array)
             {
-                var arr = businessIdentityObject as Object[];
-                if (arr[0] is Array)
+                var arr = businessIdentityObject as object[];
+
+                if (arr != null && arr[0] is Array)
                 {
-                    foreach (var item in arr)
+                    var validateresult = arr.Where(item => (((object[])item).Length != 2));
+
+                    if (validateresult != null && validateresult.Count() > 0)
                     {
-                        var arrItem = item as Object[];
-                        identities.Add(new BusinessIdentity()
-                        {
-                            Qualifier = arrItem[0].ToString(),
-                            Value = arrItem[1].ToString()
-                        });
+                        throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
                     }
+
+                    identities = arr.Select(item => new BusinessIdentity()
+                    {
+                        Qualifier = ((object[])item)[0].ToString(),
+                        Value = ((object[])item)[1].ToString()
+                    }).ToList();
                 }
-                else
+                else if (arr != null && arr is Array)
                 {
+                    if (arr.Count() != 2)
+                    {
+                        throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
+                    }
+
                     identities.Add(new BusinessIdentity()
                     {
                         Qualifier = arr[0].ToString(),

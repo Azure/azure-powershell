@@ -21,7 +21,7 @@ function Test-CreateIntegrationAccountPartner
 	#Create App resource group
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
