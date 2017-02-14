@@ -107,9 +107,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Configures the chef-client service for unattended execution. The node platform should be Windows." +
-                          "Options: 'none' or 'service'." +
+                          "Allowed options: 'none', 'service' and 'task'" +
                           "none - Currently prevents the chef-client service from being configured as a service." +
-                          "service - Configures the chef-client to run automatically in the background as a service.")]
+                          "service - Configures the chef-client to run automatically in the background as a service." +
+                           "task - Configures the chef-client to run automatically in the background as a secheduled task.")]
         [ValidateNotNullOrEmpty]
         public string Daemon { get; set; }
 
@@ -303,12 +304,12 @@ validation_client_name 	'{1}'
 
             if (!IsDaemonEmpty)
             {
-                bool IsDaemonValueInvalid = Array.IndexOf(new String[2] {"none", "service"}, this.Daemon) == -1;
+                bool IsDaemonValueInvalid = Array.IndexOf(new String[3] {"none", "service", "task"}, this.Daemon) == -1;
                 // Validation against the invalid use of Daemon option.
                 if (IsDaemonValueInvalid || this.Linux.IsPresent)
                 {
                     throw new ArgumentException(
-                        "Invalid use of -Daemon option.");
+                        "Invalid use of -Daemon option. It can only be used for Windows and allowed values are 'none', 'service' and 'task'");
                 }
             }
 
