@@ -149,43 +149,48 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>List of business identity.</returns>
         internal static IList<BusinessIdentity> ConvertToBusinessIdentityList(object businessIdentityObject)
         {
-            IList<BusinessIdentity> identities = new List<BusinessIdentity>();
-
-            if (businessIdentityObject is Array)
+            if (!(businessIdentityObject is Array))
             {
-                var arr = businessIdentityObject as object[];
-
-                if (arr != null && arr[0] is Array)
-                {
-                    var validateresult = arr.Where(item => (((object[])item).Length != 2));
-
-                    if (validateresult != null && validateresult.Count() > 0)
-                    {
-                        throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
-                    }
-
-                    identities = arr.Select(item => new BusinessIdentity()
-                    {
-                        Qualifier = ((object[])item)[0].ToString(),
-                        Value = ((object[])item)[1].ToString()
-                    }).ToList();
-                }
-                else if (arr != null && arr is Array)
-                {
-                    if (arr.Count() != 2)
-                    {
-                        throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
-                    }
-
-                    identities.Add(new BusinessIdentity()
-                    {
-                        Qualifier = arr[0].ToString(),
-                        Value = arr[1].ToString(),
-                    });
-                }
+                throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
             }
 
-            return identities;
+            var arr = businessIdentityObject as object[];
+
+            if (arr != null && arr[0] is Array)
+            {
+                var validateresult = arr.Where(item => (((object[])item).Length != 2));
+
+                if (validateresult != null && validateresult.Count() > 0)
+                {
+                    throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
+                }
+
+                return arr.Select(item => new BusinessIdentity()
+                {
+                    Qualifier = ((object[])item)[0].ToString(),
+                    Value = ((object[])item)[1].ToString()
+                }).ToList();
+            }
+            else if (arr != null && arr is Array)
+            {
+                if (arr.Count() != 2)
+                {
+                    throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
+                }
+
+                var identities = new List<BusinessIdentity>();
+                identities.Add(new BusinessIdentity()
+                {
+                    Qualifier = arr[0].ToString(),
+                    Value = arr[1].ToString(),
+                });
+
+                return identities;
+            }
+            else
+            {
+                throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
+            }
         }
 
         /// <summary>
