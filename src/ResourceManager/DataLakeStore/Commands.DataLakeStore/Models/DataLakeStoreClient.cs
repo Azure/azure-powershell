@@ -121,6 +121,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string defaultGroup,
             TrustedIdProviderState providerState,
             FirewallState firewallState,
+            FirewallAllowAzureIpsState azureIpState,
             Hashtable customTags = null,
             TierType? tier = null)
         {
@@ -136,7 +137,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 DefaultGroup = defaultGroup,
                 Tags = tags ?? new Dictionary<string, string>(),
                 TrustedIdProviderState = providerState,
-                FirewallState = firewallState
+                FirewallState = firewallState,
+                FirewallAllowAzureIps = azureIpState
             };
 
             if (tier.HasValue)

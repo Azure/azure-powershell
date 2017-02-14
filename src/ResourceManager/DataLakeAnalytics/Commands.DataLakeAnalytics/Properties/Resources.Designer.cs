@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding the Data Lake Analytics firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string AddDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("AddDataLakeFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} jobs do not support the inclusion of additional information. This is currently only supported for SQL-IP jobs. The -Include parameter will be ignored for this job..
         /// </summary>
         internal static string AdditionalDataNotSupported {
@@ -129,6 +138,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string FailedToDiscoverResourceGroup {
             get {
                 return ResourceManager.GetString("FailedToDiscoverResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The firewall is currently disabled for account: {0}. Updates to firewall rules will not take affect until the firewall is enabled..
+        /// </summary>
+        internal static string FirewallDisabledWarning {
+            get {
+                return ResourceManager.GetString("FirewallDisabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string FirewallRuleNotFound {
+            get {
+                return ResourceManager.GetString("FirewallRuleNotFound", resourceCulture);
             }
         }
         
@@ -286,6 +313,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsFirewallRule {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsAccount {
@@ -349,6 +385,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake Analytics firewall rule: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsFirewallRule {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
         /// </summary>
         internal static string ScriptFilePathDoesNotExist {
@@ -363,6 +408,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string SetDataLakeCatalogCredential {
             get {
                 return ResourceManager.GetString("SetDataLakeCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake Analytics firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("SetDataLakeFirewallRule", resourceCulture);
             }
         }
         

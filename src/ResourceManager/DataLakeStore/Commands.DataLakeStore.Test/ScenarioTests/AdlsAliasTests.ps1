@@ -52,6 +52,12 @@ function Test-DataLakeStoreTrustedIdProvider
 		$trustedIdName = getAssetName
 		$trustedIdEndpoint = "https://sts.windows.net/6b04908c-b91f-40ce-8024-7ee8a4fd6150"
 
+		# Test to ensure/enable trusted id provider states
+		Assert-AreEqual "Disabled" $accountCreated.TrustedIdProviderState
+
+		$accountSet = Set-AdlStore -Name $accountName -TrustedIdProviderState Enabled
+		Assert-AreEqual "Enabled" $accountSet.TrustedIdProviderState
+		
 		# Add a provider
 		Add-AdlStoreTrustedIdProvider -AccountName $accountName -Name $trustedIdName -ProviderEndpoint $trustedIdEndpoint
 
@@ -124,6 +130,15 @@ function Test-DataLakeStoreFirewall
 
 		# Test to make sure the account does exist
 		Assert-True {Test-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		# Enable the firewall state and azure IPs
+		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
+		Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
+
+		$accountSet = Set-AdlStore -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
+
+		Assert-AreEqual "Enabled" $accountSet.FirewallState 
+		Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
 
 		$firewallRuleName = getAssetName
 		$startIp = "127.0.0.1"

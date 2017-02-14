@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 baseAccount.Endpoint,
                 baseAccount.DefaultGroup,
                 baseAccount.NewTier,
-                baseAccount.CurrentTier
-                )
+                baseAccount.CurrentTier,
+                baseAccount.FirewallAllowAzureIps)
         {
             Properties = new PSDataLakeStoreAccountProperties(baseAccount);
 
