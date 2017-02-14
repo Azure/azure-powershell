@@ -631,7 +631,7 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'Da
 <command:example><maml:title>Example 2: Add a data disk to an existing virtual machine</maml:title>
 <dev:code>PS C:\&gt;$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 PS C:\&gt; Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty
-PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine</dev:code>
+PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine</dev:code>
 <dev:remarks><maml:para>The first command gets the virtual machine named VirtualMachine07 by using the Get-AzureRmVM cmdlet. The command stores the virtual machine in the $VirtualMachine variable.
 </maml:para>
 <maml:para>The second command adds a data disk to the virtual machine stored in $VirtualMachine.
@@ -9545,7 +9545,7 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <command:examples><command:example><maml:title>Example 1: Remove a data disk from a virtual machine</maml:title>
 <dev:code>PS C:\&gt;$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
 PS C:\&gt; Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "Disk3"
-PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine</dev:code>
+PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine</dev:code>
 <dev:remarks><maml:para>The first command gets the virtual machine named VirtualMachine07 by using the Get-AzureRmVM cmdlet. The command stores the virtual machine in the $VirtualMachine variable.
 </maml:para>
 <maml:para>The second command removes the data disk named Disk3 from the virtual machine stored in $VirtualMachine.
@@ -19396,8 +19396,8 @@ PS C:\&gt; Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Update a virtual machine</maml:title>
-<dev:code>PS C:\&gt;Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine</dev:code>
-<dev:remarks><maml:para>This command updates the virtual machine named VirtualMachine07 in ResourceGroup11. The command updates it by using another virtual machine object, stored in the $VirtualMachine variable. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+<dev:code>PS C:\&gt;Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine</dev:code>
+<dev:remarks><maml:para>This command updates the virtual machine, $VirtualMachine, in ResourceGroup11. The command updates it by using the virtual machine object stored in the $VirtualMachine variable. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
