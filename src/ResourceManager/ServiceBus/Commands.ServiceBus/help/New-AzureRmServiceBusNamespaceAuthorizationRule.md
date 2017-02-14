@@ -22,7 +22,6 @@ The **New-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet creates a new aut
 ## EXAMPLES
 
 ### Example 1
-
 ```
 PS C:\> New-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1 -Rights @("Listen","Send")
 ```
@@ -128,29 +127,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
  
-###-NamespaceName
- System.String
- 
-###-AuthorizationRuleName
- System.String
- 
-###-Rights
- System.String []
 
+### -NamespaceName
+ System.String
+ 
+
+### -AuthorizationRuleName
+ System.String
+ 
+
+### -Rights
+ System.String []
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
-
 Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/AuthorizationRules/AuthoRule1
 Type     : Microsoft.ServiceBus/AuthorizationRules
 Name     : AuthoRule1
 Location : 
 Tags     : 
 Rights   : {Listen, Send}
+
 ## NOTES
 
 ## RELATED LINKS

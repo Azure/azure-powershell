@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusSubscription
 
 ## SYNOPSIS
-Create a new subscription to the specified ServiceBus topic.
+Creates a subscription to the specified Service Bus topic.
 
 ## SYNTAX
 
@@ -29,12 +29,12 @@ The **New-AzureRmServiceBusSubscription** cmdlet creates a new subscription to t
 PS C:\> New-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
-Creates	a new subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
+Creates	the subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Specifies the TimeSpan idle interval after which the subscription is automatically deleted. The minimum duration is 5 minutes.
+Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval, after which the subscription is automatically deleted. The minimum duration is 5 minutes.
 
 ```yaml
 Type: String
@@ -254,23 +254,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
  
-###-NamespaceName
- System.String
- 
-###-TopicName
- System.String
- 
-###-SubscriptionName
- System.String
 
+### -NamespaceName
+ System.String
+ 
+
+### -TopicName
+ System.String
+ 
+
+### -SubscriptionName
+ System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
-
 Name                                      : SB-TopicSubscription-Example1
 Location                                  : West US
 AccessedAt                                : 1/20/2017 3:18:54 AM
