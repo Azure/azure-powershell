@@ -55,12 +55,46 @@ Describe "Get-LatestProfileMapPath" {
         Context "Two profile maps available at profile cache" {
             Mock Test-Path -Verifiable {$true} 
             $profilemap1 = New-Object -TypeName PSObject 
-            $profilemap1 | Add-Member NoteProperty -Name "CreationTime" -Value (New-Object -TypeName DateTime)
+            $profilemap1 | Add-Member NoteProperty -Name "Name" -Value '123-pmap1.json'
             $profilemap2 = New-Object -TypeName PSObject 
-            $profilemap2 | Add-Member NoteProperty -Name "CreationTime" -Value (Get-Date)
+            $profilemap2 | Add-Member NoteProperty -Name "Name" -Value '42-pmap2.json'
             Mock Get-ChildItem -Verifiable { @($profilemap1, $profilemap2)}
+            Mock Get-LargestNumber -Verifiable { 123 }
             It "Should return Latest map" {
-                Get-LatestProfileMapPath | Should Be $profilemap2
+                Get-LatestProfileMapPath | Should Be $profilemap1
+            }
+        }
+    }
+}
+
+Describe "Get-LargestNumber" {
+    InModuleScope AzureRM.BootStrapper {
+        Context "Profile cache is empty" {
+            Mock Get-ChildItem -Verifiable { }
+            It "Should return null" {
+                Get-LargestNumber | Should Be $null
+            }
+        }
+
+        Context "ProfileMaps weren't numbered" {
+            $profilemap1 = New-Object -TypeName PSObject 
+            $profilemap1 | Add-Member NoteProperty -Name "Name" -Value 'pmap1.json'
+            $profilemap2 = New-Object -TypeName PSObject 
+            $profilemap2 | Add-Member NoteProperty -Name "Name" -Value 'pmap2.json'
+            Mock Get-ChildItem -Verifiable { @($profilemap1, $profilemap2) }
+            It "Should return null" {
+                Get-LargestNumber | Should Be $null
+            }
+        }
+
+        Context "Two numbered Profiles were returned" {
+            $profilemap1 = New-Object -TypeName PSObject 
+            $profilemap1 | Add-Member NoteProperty -Name "Name" -Value '123-pmap1.json'
+            $profilemap2 = New-Object -TypeName PSObject 
+            $profilemap2 | Add-Member NoteProperty -Name "Name" -Value '456-pmap2.json'
+            Mock Get-ChildItem -Verifiable { @($profilemap1, $profilemap2) }
+            It "Should return largest number" {
+                Get-LargestNumber | Should Be 456
             }
         }
     }
@@ -100,17 +134,18 @@ Describe "Get-AzureProfileMap" {
             Mock Test-Path -Verifiable { $false }
             Mock Out-File -Verifiable {}
             Mock Get-LatestProfileMapPath -Verifiable {}
+            Mock Get-LargestNumber -Verifiable {}
             It "Returns the proper ProfileMap" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks
             }
         }
 
-        Context "ProfileCachePath Exists and hashes are equal" {
+        Context "ProfileCachePath Exists and Etags are equal" {
             Mock Test-Path -Verifiable { $true }
             Mock New-Item {}
             $profileMapPath = New-Object -TypeName PSObject
-            $profileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
+            $profileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\123-MockETag.json"
             Mock Get-LatestProfileMapPath -Verifiable { $profileMapPath }
             Mock Get-Content -Verifiable { return $global:testProfileMap }
 
@@ -123,12 +158,13 @@ Describe "Get-AzureProfileMap" {
             }
         }
 
-        Context "ProfileCachePath Exists and hashes are different" {
+        Context "ProfileCachePath Exists and ETags are different" {
             Mock Test-Path -Verifiable { $true }
             Mock New-Item {}
             Mock Out-File -Verifiable {}
-            Mock Get-LatestProfileMapPath -Verifiable { "MockedDifferentETag.json" }
+            Mock Get-LatestProfileMapPath -Verifiable { "123-MockedDifferentETag.json" }
             Mock RetrieveProfileMap -Verifiable {$global:testProfileMap | ConvertFrom-Json}
+            Mock Get-LargestNumber -Verifiable {}
             It "Returns Correct ProfileMap" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks
@@ -137,7 +173,8 @@ Describe "Get-AzureProfileMap" {
 
         Context "Get-WebResponse throws exception" {
             Mock Get-WebResponse { throw [System.Net.WebException] }
-
+            Mock New-Item {}
+            Mock Test-Path -Verifiable { $true }
             It "Throws Web Exception" {
                 { Get-AzureProfileMap } | Should throw 
             }
@@ -1091,5 +1128,11 @@ Describe "Update-AzureRmProfile" {
                 { Update-AzureRmProfile -Profile 'Profile1' -module 'MockModule' } | Should Throw
             }
         }
+
+        # Cleanup
+        if (Test-Path '.\MockPath')
+        {
+            Remove-Item -Path '.\MockPath' -Force -Recurse
+        }
     }
-}
+}#>

@@ -60,21 +60,37 @@ function Get-LatestProfileMapPath
   }
 
   $ProfileMapPaths = Get-ChildItem $ProfileCache
-
   if ($ProfileMapPaths -eq $null)
   {
     return
   }
 
-  $LatestMapPath = $ProfileMapPaths[0]
-  foreach ($ProfileMapPath in $ProfileMapPaths)
+  $LargestNumber = Get-LargestNumber -ProfileCache $ProfileCache
+  if ($LargestNumber -eq $null)
   {
-    if ($LatestMapPath.CreationTime -lt $ProfileMapPath.CreationTime)
-    {
-      $LatestMapPath = $ProfileMapPath
-    }
+    return
   }
+
+  $LatestMapPath = $ProfileMapPaths | Where-Object { $_.Name.Startswith($LargestNumber.ToString() + '-') }
   return $LatestMapPath
+}
+
+#Function to get the largest number in profile cache profile map names: This helps to find the latest map
+function Get-LargestNumber
+{
+  param($ProfileCache)
+  
+  $ProfileMapPaths = Get-ChildItem $ProfileCache
+  if ($ProfileMapPaths -eq $null)
+  {
+    return
+  }
+
+  $LargestNumber = $ProfileMapPaths | ForEach-Object { if($_.Name -match "\d+-") { $matches[0] -replace '-' } } | Measure-Object -Maximum 
+  if ($LargestNumber -ne $null)
+  {
+    return $LargestNumber.Maximum
+  }
 }
 
 # Make Web-Call
@@ -103,9 +119,9 @@ function Get-AzureProfileMap
 
   # If profilemap json exists, compare online Etag and cached Etag; if not different, don't replace cache.
   $LatestProfileMapPath = Get-LatestProfileMapPath
-  if ($LatestProfileMapPath -ne $null)
+  if (($LatestProfileMapPath -ne $null) -and ($LatestProfileMapPath -match "(\d+)-(.*.json)"))
   {
-    [string]$ProfileMapETag = [System.IO.Path]::GetFileNameWithoutExtension($LatestProfileMapPath)
+    [string]$ProfileMapETag = [System.IO.Path]::GetFileNameWithoutExtension($Matches[2])
     if (($ProfileMapETag -eq $OnlineProfileMapETag) -and (Test-Path $LatestProfileMapPath.FullName))
     {
       $ProfileMap = Get-Content -Raw -Path $LatestProfileMapPath.FullName -ErrorAction SilentlyContinue | ConvertFrom-Json 
@@ -113,8 +129,14 @@ function Get-AzureProfileMap
     }
   }
 
-  # If profilemap json doesn't exist, or if online hash and cached hash are different, cache online profile map
-  $ChildPathName = ($OnlineProfileMapETag) + ".json"
+  # If profilemap json doesn't exist, or if online ETag and cached ETag are different, cache online profile map
+  $LargestNoFromCache = Get-LargestNumber -ProfileCache $ProfileCache 
+  if ($LargestNoFromCache -eq $null)
+  {
+    $LargestNoFromCache = 0
+  }
+  
+  $ChildPathName = ($LargestNoFromCache+1).ToString() + '-' + ($OnlineProfileMapETag) + ".json"
   $CacheFilePath = (Join-Path $ProfileCache -ChildPath $ChildPathName)
   $OnlineProfileMap = RetrieveProfileMap -WebResponse $WebResponse
   $OnlineProfileMap | ConvertTo-Json -Compress | Out-File -FilePath $CacheFilePath
@@ -671,10 +693,16 @@ function Add-ModuleParam
   param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$name, [string] $set = "__AllParameterSets")
   $ProfileMap = (Get-AzProfile)
   $Profiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
-  $enum = $Profiles.GetEnumerator()
-  $toss = $enum.MoveNext()
-  $Current = $enum.Current
-  $Keys = ($($ProfileMap.$Current) | Get-Member -MemberType NoteProperty).Name
+  if ($Profiles.Count -gt 1)
+  {
+    $enum = $Profiles.GetEnumerator()
+    $toss = $enum.MoveNext()
+    $Current = $enum.Current
+    $Keys = ($($ProfileMap.$Current) | Get-Member -MemberType NoteProperty).Name
+  }
+  else {
+    $Keys = ($($ProfileMap.$Profiles[0]) | Get-Member -MemberType NoteProperty).Name
+  }
   $moduleValid = New-Object -Type System.Management.Automation.ValidateSetAttribute($Keys)
   $AllowNullAttribute = New-Object -Type System.Management.Automation.AllowNullAttribute
   $AllowEmptyStringAttribute = New-Object System.Management.Automation.AllowEmptyStringAttribute
@@ -704,10 +732,16 @@ function Get-AzureRmModule
     Add-ProfileParam $params
     $ProfileMap = (Get-AzProfile)
     $Profiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
-    $enum = $Profiles.GetEnumerator()
-    $toss = $enum.MoveNext()
-    $Current = $enum.Current
-    $Keys = ($($ProfileMap.$Current) | Get-Member -MemberType NoteProperty).Name
+    if ($Profiles.Count -gt 1)
+    {
+      $enum = $Profiles.GetEnumerator()
+      $toss = $enum.MoveNext()
+      $Current = $enum.Current
+      $Keys = ($($ProfileMap.$Current) | Get-Member -MemberType NoteProperty).Name
+    }
+    else {
+      $Keys = ($($ProfileMap.$Profiles[0]) | Get-Member -MemberType NoteProperty).Name
+    }
     $moduleValid = New-Object -Type System.Management.Automation.ValidateSetAttribute($Keys)
     $moduleAttribute = New-Object -Type System.Management.Automation.ParameterAttribute
     $moduleAttribute.ParameterSetName = 
