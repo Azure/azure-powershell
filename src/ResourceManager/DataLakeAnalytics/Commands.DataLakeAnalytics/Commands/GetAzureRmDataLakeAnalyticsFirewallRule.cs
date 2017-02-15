@@ -12,38 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.PowerShell.Commands;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.DataLakeStore
+namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AdlStoreTrustedIdProvider")]
-    public class RemoveAzureRmDataLakeStoreAccountTrustedIdProvider : DataLakeStoreCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsFirewallRule"), OutputType(typeof(DataLakeAnalyticsFirewallRule), typeof(IList<DataLakeAnalyticsFirewallRule>))]
+    [Alias("Get-AdlAnalyticsFirewallRule")]
+    public class GetAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "The Data Lake Store account to remove the trusted identity provider from")]
+            HelpMessage = "The Data Lake Analytics account to get the firewall rule from")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
-            HelpMessage = "The name of the trusted identity provider.")]
+            HelpMessage = "The name of the firewall rule.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage =
-                "Indicates a boolean response should be returned indicating the result of the delete operation"
-            )]
-        public SwitchParameter PassThru { get; set; }
-
-        [Parameter(Position = 4,
+        [Parameter(Position = 2,
             ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which want to retrieve the account.")]
         [ValidateNotNullOrEmpty]
@@ -51,17 +42,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                string.Format(Resources.RemoveDataLakeStoreTrustedProvider, Name),
-                Name,
-                () =>
-                {
-                    DataLakeStoreClient.DeleteTrustedProvider(ResourceGroupName, Account, Name, this);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
-                });
+            if (string.IsNullOrEmpty(Name))
+            {
+                WriteObject(DataLakeAnalyticsClient.ListFirewallRules(ResourceGroupName, Account)
+                    .Select(element => new DataLakeAnalyticsFirewallRule(element))
+                    .ToList(), true);
+            }
+            else
+            {
+                WriteObject(new DataLakeAnalyticsFirewallRule(DataLakeAnalyticsClient.GetFirewallRule(ResourceGroupName, Account, Name)));
+            }
         }
     }
 }

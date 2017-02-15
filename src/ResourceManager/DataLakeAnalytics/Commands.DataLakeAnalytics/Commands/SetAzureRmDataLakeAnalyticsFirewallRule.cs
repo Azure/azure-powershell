@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.PowerShell.Commands;
-using System.IO;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.DataLakeStore
+namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreFirewallRule))]
-    [Alias("Add-AdlStoreFirewallRule")]
-    public class AddAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeAnalyticsFirewallRule))]
+    [Alias("Set-AdlAnalyticsFirewallRule")]
+    public class SetAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "The Data Lake Store account to add the firewall rule to")]
+            HelpMessage = "The Data Lake Analytics account to update the firewall rule in")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
@@ -36,30 +33,38 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             HelpMessage = "The start of the valid ip range for the firewall rule")]
         [ValidateNotNullOrEmpty]
         public string StartIpAddress { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "The end of the valid ip range for the firewall rule")]
         [ValidateNotNullOrEmpty]
         public string EndIpAddress { get; set; }
 
-        [Parameter(Position = 4,
-            ValueFromPipelineByPropertyName = true, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which want to retrieve the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            // get the current firewall rule
+            var rule = DataLakeAnalyticsClient.GetFirewallRule(ResourceGroupName, Account, Name);
+            if (rule == null)
+            {
+                throw new PSInvalidOperationException(string.Format(Resources.FirewallRuleNotFound, Name));
+            }
+
+            var endIp = EndIpAddress ?? rule.EndIpAddress;
+            var startIp = StartIpAddress ?? rule.StartIpAddress;
             ConfirmAction(
-                string.Format(Resources.AddDataLakeFirewallRule, Name),
+                string.Format(Resources.SetDataLakeFirewallRule, Name),
                 Name,
                 () =>
-                    WriteObject(new DataLakeStoreFirewallRule(DataLakeStoreClient.AddOrUpdateFirewallRule(
-                        ResourceGroupName, Account, Name, StartIpAddress, EndIpAddress, this)))
+                    WriteObject(new DataLakeAnalyticsFirewallRule(DataLakeAnalyticsClient.AddOrUpdateFirewallRule(
+                        ResourceGroupName, Account, Name, startIp, endIp, this)))
             );
         }
     }
