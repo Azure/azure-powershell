@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
-                    if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup.IsPresent)
+                    if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup)
                     {
                         CreateVMBackupForLinx();
                     }
