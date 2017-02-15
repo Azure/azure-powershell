@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.
-ModuleVersion = '3.4.0'
+ModuleVersion = '3.5.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -61,7 +61,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '2.5.0';
                @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '2.5.0'; }, 
                @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '2.5.0'; }, 
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.4.3'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '2.5.0'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '2.6.0'; }, 
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '2.5.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '2.5.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '3.3.0'; }, 
@@ -149,89 +149,20 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '## 2017.01.18 - Version 3.4.0
-* AnalysisServices
-    * Added two new dataplane APIs in a separate module Azure.AnalysisServices.psd1
-        - This introduces two new APIs that enable customers to login to Azure Analysis Services servers and issue a restart command.
+        ReleaseNotes = '## 2017.02.08 - Version 3.5.0
 * Compute
-    * Fix Get-AzureRmVM with -Status issue: Get-AzureRmVM throws an exception when Get-AzureRmVM lists multiple VMs and some of the VMs are deleted during Get-AzureRmVM is performed.
-    * New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
-      - BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
-      - BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it''s manual, schedule settings need to be specified.
-      - FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
-      - FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
-      - FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
-      - LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
-    * New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
-* DataLakeAnalytics
-    * Update Get-AdlJob to support Top parameter
-    * Update Get-AdlJob to return the list of jobs in order by most recently submitted
-    * Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
-    * Update New-AdlAnalyticsAccount and Set-AdlAnalyticsAccount to support commitment tier options for the service.
-    * Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.
-* DataLakeStore
-    * Updated help for all cmdlets to include output as well as more descriptions of parameters and the inclusion of aliases.
-    * Update New-AdlStore and Set-AdlStore to support commitment tier options for the service.
-    * Added OutputType mismatch warnings to all cmdlets with incorrect OutputType attributes. These will be fixed in a future breaking change release.
-    * Add Diagnostic logging support to Import-AdlStoreItem and Export-AdlStoreItem. This can be enabled through the following parameters:
-        * -Debug, enables full diagnostic logging as well as debug logging to the PowerShell console. Most verbose options
-        * -DiagnosticLogLevel, allows finer control of the output than debug. If used with debug, this is ignored and debug logging is used.
-        * -DiagnosticLogPath, optionally specify the file to write diagnostic logs to. By default it is written to a file under %LOCALAPPDATA%\AdlDataTransfer
-    * Added support to New-AdlStore to explicitly opt-out of account encryption. To do so, create the account with the -DisableEncryption flag.
-* OperationalInsights
-    * Get-AzureRmOperationalInsightsSearchResults no longer requires the Top parameter to retrieve results
-* Resources
-    * Support Tag as parameters for Find-AzureRmResource
-        - Users can now use Tag parameter with Find-AzureRmResource
-        - Fixed the issue where illegal combinations of TagName, TagValue with other search parameters was allowed in Find-AzureRmResource and would result in users getting exception from the service by disallowing such combinations. 
-* ServiceBus
-    * Add SkuCapacity parameter to Set-AzureRmServiceBusNamespace
-        - User will be able to update the SkuCapacity(Messaging units in case of a premium namespace) of the SeriveBus NameSpace
-    
-    * Future Breaking Change Notification: We''ve added a warning about removing property ''ResourceGroupName'' from the returned NamespceAttributes from cmdlets New-AzureRmServiceBusNamespace, Get-AzureRmServiceBusNamespace and Set-AzureRmServiceBusNamespace
-        -The call remains the same, but the returned values NameSpace object will not have the ResourceGroupName property  
-* Sql
-    * Added new return parameter "AuditType" to Get-AzureRmSqlDatabaseAuditingPolicy and Get-AzureRmSqlServerAuditingPolicy returned object
-        - This parameter value indicates the returned auditing policy type - Table or Blob.
-* ServiceManagement
-    * New parameters in New-AzureVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
-      - BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
-      - BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it''s manual, schedule settings need to be specified.
-      - FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
-      - FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
-      - FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
-      - LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
-* Storage
-    * Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
-        - Start-AzureStorageBlobCopy
-    * Fix hang issue when running cmdlets from WPF/Winform context  
-        - Get-AzureStorageBlob
-        - Get-AzureStorageBlobContent
-        - Get-AzureStorageBlobCopyState
-        - Get-AzureStorageContainer
-        - Get-AzureStorageContainerStoredAccessPolicy
-        - New-AzureStorageContainer
-        - Remove-AzureStorageBlob
-        - Remove-AzureStorageContainer
-        - Set-AzureStorageBlobContent
-        - Set-AzureStorageContainerAcl
-        - Start-AzureStorageBlobCopy
-        - Stop-AzureStorageBlobCopy
-        - Get-AzureStorageFile
-        - Get-AzureStorageFileContent
-        - Get-AzureStorageFileCopyState
-        - Get-AzureStorageShare
-        - Get-AzureStorageShareStoredAccessPolicy
-        - New-AzureStorageDirectory
-        - New-AzureStorageShare
-        - Remove-AzureStorageDirectory
-        - Remove-AzureStorageFile
-        - Remove-AzureStorageShare
-        - Set-AzureStorageFileContent
-        - Start-AzureStorageFileCopy
-        - Stop-AzureStorageFileCopy
-        - Get-AzureStorageQueueStoredAccessPolicy
-        - Get-AzureStorageTableStoredAccessPolicy '
+    * New cmdlets for Managed disk
+        - Disk cmdlets: New-AzureRmDisk, Update-AzureRmDisk, Get-AzureRmDisk, Remove-AzureRmDisk,
+                        Grant-AzureRmDiskAccess, Revoke-AzureRmDiskAccess,
+                        New-AzureRmDiskConfig, Set-AzureRmDiskDiskEncryptionKey, Set-AzureRmDiskImageReference, Set-AzureRmDiskKeyEncryptionKey,
+                        New-AzureRmDiskUpdateConfig, Set-AzureRmDiskUpdateDiskEncryptionKey, Set-AzureRmDiskUpdateImageReference, Set-AzureRmDiskUpdateKeyEncryptionKey
+        - Snapshot cmdlets: New-AzureRmSnapshot, Update-AzureRmSnapshot, Get-AzureRmSnapshot, Remove-AzureRmSnapshot,
+                            Grant-AzureRmSnapshotAccess, Revoke-AzureRmSnapshotAccess,
+                            New-AzureRmSnapshotConfig, Set-AzureRmSnapshotDiskEncryptionKey, Set-AzureRmSnapshotImageReference, Set-AzureRmSnapshotKeyEncryptionKey,
+                            New-AzureRmSnapshotUpdateConfig, Set-AzureRmSnapshotUpdateDiskEncryptionKey, Set-AzureRmSnapshotUpdateImageReference, Set-AzureRmSnapshotUpdateKeyEncryptionKey
+        - Image cmdlets: New-AzureRmImage, Get-AzureRmImage, Remove-AzureRmImage,
+                         New-AzureRmImageConfig, Set-AzureRmImageOsDisk, Add-AzureRmImageDataDisk, Remove-AzureRmImageDataDisk
+        - VM cmdlet: ConvertTo-AzureRmVMManagedDisk'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
