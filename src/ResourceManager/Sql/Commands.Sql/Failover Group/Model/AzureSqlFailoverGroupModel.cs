@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// <summary>
         /// template to generate the Source Database Id
         /// </summary>
-        public static string PartnerServerIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/Servers/{2}/failoverGroups/{3}";
+        public static string PartnerServerIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/Servers/{2}";
 
         /// <summary>
         /// Gets or sets the name of the resource group
@@ -41,16 +41,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the partner resource group
-        /// </summary>
-        public string PartnerResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the partner server group
-        /// </summary>
-        public string PartnerServerName { get; set; }
-
-        /// <summary>
         /// Gets or sets the read-write endpoint
         /// </summary>
         public ReadWriteEndpoint FailoverGroupReadWriteEndpoint { get; set; }
@@ -64,6 +54,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// Gets or sets the partner servers
         /// </summary>
         public IList<FailoverGroupPartnerServer> PartnerServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the partner resource group
+        /// </summary>
+        public string PartnerResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the partner server group
+        /// </summary>
+        public string PartnerServerName { get; set; }
 
         /// <summary>
         /// Gets or sets the partner servers

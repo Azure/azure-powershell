@@ -43,9 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// The Azure SQL Databases to be added to the secondary server
         /// </summary>
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure SQL Databases to be added to the secondary server.")]
         [ValidateNotNullOrEmpty]
-        public List<AzureSqlDatabaseModel>  Database { get; set; }
+        public List<AzureSqlDatabaseModel>  DatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Failover Group
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 
            if (MyInvocation.BoundParameters.ContainsKey("Database"))
             {
-                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
+                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(DatabaseName));
             }
             else
             {
