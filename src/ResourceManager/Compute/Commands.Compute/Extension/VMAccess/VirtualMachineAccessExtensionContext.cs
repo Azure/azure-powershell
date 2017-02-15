@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public const string ExtensionDefaultVersion = "2.0";
         public const string ExtensionLinuxPublisher = "Microsoft.OSTCExtensions";
         public const string ExtensionLinuxName = "VMAccessForLinux";
-        public const string ExtensionLinuxVersion = "2.0";
+        public const string ExtensionLinuxVersion = "1.4";
 
         public string UserName { get; set; }
         public SecureString Password { get; set; }
