@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <returns>A model object</returns>
         protected override AuditingPolicyModel GetEntity()
         {
-            if (!MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditType))
+            if (AuditType == AuditType.NotSet)
             {
                 AuditType = AuditType.Blob;
                 var blobPolicy = GetEntityHelper();

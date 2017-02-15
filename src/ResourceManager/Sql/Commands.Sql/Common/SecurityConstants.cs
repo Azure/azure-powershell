@@ -34,16 +34,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string Login_Failure = "Login_Failure";
         public const string TransactionManagement_Success = "TransactionManagement_Success";
         public const string TransactionManagement_Failure = "TransactionManagement_Failure";
-
-        public const string All = "All";
-        public const string None = "None";
-
-        // Parameters Names:
-        public const string AuditType = "AuditType";
         public const string StorageKeyType = "StorageKeyType";
         public const string EventType = "EventType";
         public const string AuditActionGroup = "AuditActionGroup";
         public const string AuditAction = "AuditAction";
+
+        public const string All = "All";
+        public const string None = "None";
 
         public static readonly Dictionary<string, AuditEventType> AuditEventsToAuditEventType = new Dictionary
             <string, AuditEventType>

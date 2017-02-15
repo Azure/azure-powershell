@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         ///  Defines the set of audit action groups that would be used by the auditing settings
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit action groups")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         [Parameter(Mandatory = false)]
