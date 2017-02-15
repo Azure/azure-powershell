@@ -191,7 +191,9 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyParameter
-The policy parameter file path or policy parameter string.```yaml
+The policy parameter file path or policy parameter string.
+
+```yaml
 Type: String
 Parameter Sets: Policy assignment with parameters via policy parameter string
 Aliases: 
@@ -204,7 +206,9 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyParameterObject
-The policy parameter object.```yaml
+The policy parameter object.
+
+```yaml
 Type: Hashtable
 Parameter Sets: Policy assignment with parameters via policy parameter object
 Aliases: 
