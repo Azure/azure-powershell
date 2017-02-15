@@ -159,7 +159,15 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Set-AzureRmSqlServerTransparentDataEncryptionProtector',
                'Add-AzureRmSqlServerKeyVaultKey',
                'Get-AzureRmSqlServerKeyVaultKey',
-               'Remove-AzureRmSqlServerKeyVaultKey'
+               'Remove-AzureRmSqlServerKeyVaultKey',
+			   'New-AzureRmSqlDatabaseToFailoverGroup',
+			   'Get-AzureRmSqlDatabaseFailoverGroup',
+			   'New-AzureRmSqlDatabaseFailoverGroup',
+               'Add-AzureRmSqlDatabaseToFailoverGroup',
+			   'Remove-AzureRmSqlDatabaseFromFailoverGroup',
+			   'Remove-AzureRmSqlDatabaseFailoverGroup',
+			   'Set-AzureRmSqlDatabaseFailoverGroup',
+			   'Switch-AzureRmSqlDatabaseFailoverGroup'
                
 # Variables to export from this module
 # VariablesToExport = @()

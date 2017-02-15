@@ -15,19 +15,19 @@
 <#
 	.SYNOPSIS
 	Tests create and update a failover group
-function Test-CRUDFailoverGroup($serverVersion = "12.0", $location = "Southeast Asia")
+function Test-CRUDFailoverGroup($serverVersion = "12.0", $location = "North Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $serverVersion $location
+	$partnerServer = Create-ServerForTest $rg $serverVersion $location
 	
 	# Create with default values
 	$fgName = Get-"TestFailoverGroupCreateUpdate"
-	$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithoutDatalossMinutes 15 -GracePeriodWithDataLossMinutes 120 -AllowReadOnlyFailoverToPrimary Enabled
+	$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled
 	Assert-AreEqual $fg.FailoverGroupName $fgName
 	Assert-AreEqual $fg.FailoverPolicy Automatic
-	Assert-AreEqual $fg.GracePeriodWithoutDatalossMinutes 15
-	Assert-AreEqual $fg.GracePeriodWithDataLossMinutes 120
+	Assert-AreEqual $fg.GracePeriodWithDataLossHours 1
 	Assert-AreEqual $fg.AllowReadOnlyFailoverToPrimary Enabled
 
 	try

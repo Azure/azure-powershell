@@ -102,9 +102,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             partnerServer.Id = string.Format(
                 AzureSqlFailoverGroupModel.PartnerServerIdTemplate,
                 _subscription.Id.ToString(),
-                model.ResourceGroupName,
-                model.ServerName, 
-                model.FailoverGroupName);
+                model.PartnerResourceGroupName,
+                model.PartnerServerName);
             partnerServers.Add(partnerServer);
 
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();

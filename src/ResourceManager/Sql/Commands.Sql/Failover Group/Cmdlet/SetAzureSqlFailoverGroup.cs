@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 Location = location,
                 FailoverGroupName = FailoverGroupName,
-                ReadWriteFailoverPolicy = FailoverPolicy,
-                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHours,
-                ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary
+                ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy : model.First().FailoverGroupReadWriteEndpoint.FailoverPolicy,
+                FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHours") ? GracePeriodWithDataLossHours : model.First().FailoverWithDataLossGracePeriodHours,
+                ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : model.First().FailoverGroupReadOnlyEndpoint.FailoverPolicy,
             });
             return newEntity;
         }

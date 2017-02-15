@@ -267,6 +267,7 @@
     <Compile Include="ScenarioTests\AdvisorTests.cs" />
     <Compile Include="ScenarioTests\RecommendedElasticPoolTests.cs" />
     <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />
+	<Compile Include="ScenarioTests\FailoverGroupTests.cs" />
     <Compile Include="ScenarioTests\AuditingTests.cs" />
     <Compile Include="ScenarioTests\ServerCrudTests.cs" />
     <Compile Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.cs" />
