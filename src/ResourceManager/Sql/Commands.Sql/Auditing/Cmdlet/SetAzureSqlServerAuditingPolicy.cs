@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The audit type.")]
-        [ValidateNotNullOrEmpty]
         public override AuditType AuditType { get; set; }
 
         /// <summary>
