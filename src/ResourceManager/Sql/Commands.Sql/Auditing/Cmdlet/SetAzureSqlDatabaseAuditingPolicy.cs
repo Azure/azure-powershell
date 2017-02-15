@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageAccountName = StorageAccountName;
             }
 
-            if (MyInvocation.BoundParameters.ContainsKey("StorageKeyType"))
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType))
             {
                 // the user enter a key type - we use it (and override the previously defined key type)
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary)
@@ -137,17 +137,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                     : StorageKeyKind.Secondary;
             }
 
-            if (AuditActionGroup != null &&  AuditActionGroup.Length != 0)
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditActionGroup))
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (AuditAction != null && AuditAction.Length != 0)
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditAction))
             {
                 model.AuditAction = AuditAction;
             }
 
-            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // Event types are relevant only for Table auditing
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.EventType)) // Event types are relevant only for Table auditing
             {
                 throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
             }
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageAccountName = StorageAccountName;
                 ModelAdapter.ClearStorageDetailsCache();
             }
-            if (!string.IsNullOrEmpty(StorageKeyType))
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType))
             {
                 // the user enter a key type - we use it (and override the previously defined key type)
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary)
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             EventType = Util.ProcessAuditEvents(EventType);
 
-            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // the user provided Table auditing event types
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.EventType)) // the user provided Table auditing event types
             {
                 model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }
@@ -196,12 +196,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.TableIdentifier = TableIdentifier;
             }
 
-            if (AuditAction != null) // Audit Actions are relevant only for Blob auditing
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditAction)) // Audit Actions are relevant only for Blob auditing
             {
                 throw new Exception(string.Format(Properties.Resources.AuditActionsConfiguringIrrelevantForTableAuditingPolicy));
             }
 
-            if (AuditActionGroup != null) // Audit Action Groups are relevant only for Blob auditing
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditActionGroup)) // Audit Action Groups are relevant only for Blob auditing
             {
                 throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
             }

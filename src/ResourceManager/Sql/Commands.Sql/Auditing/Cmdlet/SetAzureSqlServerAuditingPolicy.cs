@@ -124,14 +124,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageAccountName = StorageAccountName;
                 ModelAdapter.ClearStorageDetailsCache();
             }
-            if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
             EventType = Util.ProcessAuditEvents(EventType);
 
-            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // the user provided event types to audit
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.EventType)) // the user provided event types to audit
             {
                 model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.TableIdentifier = TableIdentifier;
             }
 
-            if (MyInvocation.BoundParameters.ContainsKey("AuditActionGroups")) //AuditActionGroup is relevant only for blob auditing
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditActionGroup)) //AuditActionGroup is relevant only for blob auditing
             {
                 throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
             }
@@ -173,17 +173,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageAccountName = StorageAccountName;
             }
 
-            if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
-            if (AuditActionGroup != null && AuditActionGroup.Length != 0)
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditActionGroup))
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // EventType is relevant only for table auditing
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.EventType)) // EventType is relevant only for table auditing
             {
                 throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
             }
