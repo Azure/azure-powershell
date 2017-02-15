@@ -58,8 +58,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.IgnoreStorage = true;
             base.PersistChanges(model);
             //if another server auditing policy exists, remove it
-            Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
-            swapAuditType();
+            if (AuditType == AuditType.Blob)
+            {
+                AuditType = AuditType.Table;
+            }
+            else
+            {
+                AuditType = AuditType.Blob;
+            }
             var otherAuditingTypePolicyModel = GetEntity();
             if (otherAuditingTypePolicyModel != null)
             {

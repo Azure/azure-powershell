@@ -45,12 +45,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         ///  Defines the set of audit action groups that would be used by the auditing settings
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit action groups")]
+        [ValidateNotNullOrEmpty]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         /// <summary>
         ///  Defines the set of audit actions that would be used by the auditing settings
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit actions")]
+        [ValidateNotNullOrEmpty]
         public string[] AuditAction { get; set; }
 
         /// <summary>
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Event types to audit")]
         [ValidateSet(SecurityConstants.PlainSQL_Success, SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success, SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success, SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure, SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure, SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -126,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageAccountName = StorageAccountName;
             }
 
-            if (!string.IsNullOrEmpty(StorageKeyType))
+            if (MyInvocation.BoundParameters.ContainsKey("StorageKeyType"))
             {
                 // the user enter a key type - we use it (and override the previously defined key type)
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary)
@@ -144,7 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditAction = AuditAction;
             }
 
-            if (EventType != null) // Event types are relevant only for Table auditing
+            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // Event types are relevant only for Table auditing
             {
                 throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
             }
@@ -170,7 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             EventType = Util.ProcessAuditEvents(EventType);
 
-            if (EventType != null) // the user provided Table auditing event types
+            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // the user provided Table auditing event types
             {
                 model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }

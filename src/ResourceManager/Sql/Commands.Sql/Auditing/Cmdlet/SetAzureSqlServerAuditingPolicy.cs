@@ -34,12 +34,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The audit type.")]
+        [ValidateNotNullOrEmpty]
         public override AuditType AuditType { get; set; }
 
         /// <summary>
         ///  Defines the set of audit action groups that would be used by the auditing settings
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit action groups")]
+        [ValidateNotNullOrEmpty]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure,
             SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure,
             SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -129,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             EventType = Util.ProcessAuditEvents(EventType);
 
-            if (EventType != null) // the user provided event types to audit
+            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // the user provided event types to audit
             {
                 model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }
@@ -152,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.TableIdentifier = TableIdentifier;
             }
 
-            if (AuditActionGroup != null) //AuditActionGroup is relevant only for blob auditing
+            if (MyInvocation.BoundParameters.ContainsKey("AuditActionGroups")) //AuditActionGroup is relevant only for blob auditing
             {
                 throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
             }
@@ -181,7 +184,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (EventType != null) // EventType is relevant only for table auditing
+            if (MyInvocation.BoundParameters.ContainsKey("EventType")) // EventType is relevant only for table auditing
             {
                 throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
             }
