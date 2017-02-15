@@ -942,6 +942,14 @@ function Test-BlobAuditingOnDatabase
 		Assert-AreEqual $policy.RetentionInDays 8
 		Assert-True { $policy.StorageKeyType -eq  "Secondary"}
 
+		# Test	- Tests the option to remove all audit action and audit action groups
+		Set-AzureRmSqlDatabaseAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -AuditActionGroup @() -AuditAction @()
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+
+		# Assert
+		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.AuditActionGroup.Length 0
+		Assert-AreEqual $policy.AuditAction.Length 0
 
 		# Test
 		Remove-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName

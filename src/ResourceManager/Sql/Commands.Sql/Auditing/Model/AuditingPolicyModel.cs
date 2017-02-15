@@ -26,9 +26,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
     /// <summary>
     /// The possible values of auditing type. 
-    /// NotSet is a temporary value in order to mark that AuditType parameter was not provided at all by the user. It is only initial value, and won't be returned to the user.
     /// </summary>
-    public enum AuditType { NotSet, Table, Blob };
+    public enum AuditType { Table, Blob };
 
     /// <summary>
     /// The base class that defines the core properties of an auditing policy
