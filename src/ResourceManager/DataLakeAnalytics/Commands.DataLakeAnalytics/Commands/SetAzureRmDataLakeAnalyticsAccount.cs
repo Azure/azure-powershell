@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 FirewallState = account.FirewallState;
             }
 
-            if (FirewallState.Value == Management.DataLake.Analytics.Models.FirewallState.Disabled && AllowAzureIpState.HasValue)
+            if (AllowAzureIpState.HasValue && FirewallState.Value == Management.DataLake.Analytics.Models.FirewallState.Disabled)
             {
                 WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, Name));
             }
