@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.PowerShell.Commands;
-using System.IO;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.DataLakeStore
+namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreFirewallRule))]
-    [Alias("Add-AdlStoreFirewallRule")]
-    public class AddAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
+    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeAnalyticsFirewallRule))]
+    [Alias("Add-AdlAnalyticsFirewallRule")]
+    public class AddAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "The Data Lake Store account to add the firewall rule to")]
+            HelpMessage = "The Data Lake Analytics account to add the firewall rule to")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
@@ -46,8 +43,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string EndIpAddress { get; set; }
 
-        [Parameter(Position = 4,
-            ValueFromPipelineByPropertyName = true, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which want to retrieve the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -58,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 string.Format(Resources.AddDataLakeFirewallRule, Name),
                 Name,
                 () =>
-                    WriteObject(new DataLakeStoreFirewallRule(DataLakeStoreClient.AddOrUpdateFirewallRule(
+                    WriteObject(new DataLakeAnalyticsFirewallRule(DataLakeAnalyticsClient.AddOrUpdateFirewallRule(
                         ResourceGroupName, Account, Name, StartIpAddress, EndIpAddress, this)))
             );
         }
