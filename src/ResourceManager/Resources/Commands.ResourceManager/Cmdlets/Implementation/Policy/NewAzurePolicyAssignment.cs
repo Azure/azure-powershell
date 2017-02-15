@@ -156,29 +156,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (this.PolicyDefinition != null)
             {
-                var properties = this.PolicyDefinition.Properties["Properties"];
-                if (properties != null)
+                var parameters = this.PolicyDefinition.GetPSObjectProperty("Properties.parameters") as PSObject;
+                if (parameters != null)
                 {
-                    var parameters = (properties.Value as PSObject).Properties["parameters"];
-                    if (parameters != null)
+                    foreach (var param in parameters.Properties)
                     {
-                        foreach (var param in (parameters.Value as PSObject).Properties)
+                        var type = (param.Value as PSObject).Properties["type"];
+                        var typeString = type != null ? type.Value.ToString() : string.Empty;
+                        var description = (param.Value as PSObject).GetPSObjectProperty("metadata.description");
+                        var helpString = description != null ? description.ToString() : string.Format("The {0} policy parameter.", param.Name);
+                        var dp = new RuntimeDefinedParameter
                         {
-                            var type = (param.Value as PSObject).Properties["type"];
-                            var typeString = type != null ? type.Value.ToString() : string.Empty;
-                            var dp = new RuntimeDefinedParameter
-                            {
-                                Name = param.Name,
-                                ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(object[]) : typeof(string)
-                            };
-                            dp.Attributes.Add(new ParameterAttribute
-                            {
-                                Mandatory = false,
-                                ValueFromPipelineByPropertyName = true,
-                                HelpMessage = param.Name
-                            });
-                            this.dynamicParameters.Add(param.Name, dp);
-                        }
+                            Name = param.Name,
+                            ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(object[]) : typeof(string)
+                        };
+                        dp.Attributes.Add(new ParameterAttribute
+                        {
+                            ParameterSetName = ParameterlessPolicyParameterSetName,
+                            Mandatory = true,
+                            ValueFromPipelineByPropertyName = true,
+                            HelpMessage = helpString
+                        });
+                        this.dynamicParameters.Add(param.Name, dp);
                     }
                 }
             }
