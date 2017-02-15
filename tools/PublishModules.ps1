@@ -61,7 +61,7 @@ function Get-TargetModules
               $targets += $module.FullName
             }
           }
-        } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage")) {
+        } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage") -and ($Scope -ne "AzureStack")) {
           $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
           if (Test-Path $modulePath) {
             $targets += $modulePath      
@@ -73,6 +73,11 @@ function Get-TargetModules
         if (($Scope -eq 'All') -or ($Scope -eq 'AzureRM')) {
             # Publish AzureRM module    
             $targets += "$PSScriptRoot\AzureRM"
+        } 
+
+        if (($Scope -eq 'All') -or ($Scope -eq 'AzureStack')) {
+            # Publish AzureStack module    
+            $targets += "$PSScriptRoot\AzureStack"
         } 
 
 		Write-Output -InputObject $targets
@@ -138,6 +143,36 @@ function Remove-ModuleDependencies
 
 }
 
+function Update-NugetPackage
+{
+	[CmdletBinding()]
+	param(
+	    [string]$BasePath,
+	    [string]$ModuleName,
+		[string]$DirPath,
+		[string]$NugetExe
+	)
+
+	PROCESS
+	{
+        $regex = New-Object -Type System.Text.RegularExpressions.Regex -ArgumentList  "([0-9\.]+)nupkg$"
+		$regex2 = "<requireLicenseAcceptance>false</requireLicenseAcceptance>"
+		
+		$relDir = Join-Path $DirPath -ChildPath "_rels"
+		$contentPath = Join-Path $DirPath -ChildPath '`[Content_Types`].xml'
+		$packPath = Join-Path $DirPath -ChildPath "package"
+		$modulePath = Join-Path $DirPath -ChildPath ($ModuleName + ".nuspec")
+		Remove-Item -Recurse -Path $relDir -Force
+		Remove-Item -Recurse -Path $packPath -Force
+		Remove-Item -Path $contentPath -Force
+		$content = (Get-Content -Path $modulePath) -join "`r`n"
+		$content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+		$content | Out-File -FilePath $modulePath -Force
+		&$NugetExe pack $modulePath -OutputDirectory $BasePath
+	}
+}
+
+
 function Change-RMModule 
 {
 	[CmdletBinding()]
@@ -174,15 +209,13 @@ function Change-RMModule
 		  Write-Output "Expanding $zipPath"
 		  Expand-Archive $zipPath
 		  Write-Output "Adding PSM1 dependency to $unzippedManifest"
-		  Add-PSM1Dependency -Path $unzippedManifest
+          Add-PSM1Dependency -Path $unzippedManifest
 		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
-		  Remove-ModuleDependencies -Path $unzippedManifest
-
-		  Remove-Item -Path $zipPath -Force
-		  Write-Output "Compressing $zipPath"
-		  Compress-Archive (Join-Path -Path $dirPath -ChildPath "*") -DestinationPath $zipPath
-		  Write-Output "Renaming package $zipPath to zip archive $nupkgPath"
-		  ren $zipPath $nupkgPath
+          Remove-ModuleDependencies -Path $unzippedManifest
+          
+		  Remove-Item -Path $zipPath -Force		  
+          Write-Output "Repackaging $dirPath"
+		  Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
 	    }
 		finally 
 		{
@@ -230,8 +263,13 @@ if ([string]::IsNullOrEmpty($buildConfig))
 
 if ([string]::IsNullOrEmpty($repositoryLocation))
 {
-    Write-Verbose "Setting repository location to 'https://dtlgalleryint.cloudapp.net/api/v2'"  
+    Write-Output "No repository location was provided, setting it to default"  
+    Write-Output "Setting repository location to 'https://dtlgalleryint.cloudapp.net/api/v2'"  
     $repositoryLocation = "https://dtlgalleryint.cloudapp.net/api/v2"
+}
+else
+{
+    Write-Output "Setting repository location to '$repositoryLocation'"  
 }
 
 if ([string]::IsNullOrEmpty($scope))
@@ -251,20 +289,28 @@ Write-Host "Publishing $scope package(and its dependencies)"
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
 $repo = Get-PSRepository | where { $_.SourceLocation -eq $repositoryLocation }
-if ($repo -ne $null) {
+if ($repo -ne $null) 
+{
     $repoName = $repo.Name
-} else {
+    Write-Output "Existing PS Repository detected: $repo.Name"
+} 
+else 
+{
     $repoName = $(New-Guid).ToString()
-    Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted
+    Write-Output "Setting up new PS Repository to: -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted"
+    Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation\package -InstallationPolicy Trusted
 }
 
 $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
 if ($publishToLocal)
 {
+    Write-Output "Publish to local is set to: $publishToLocal"
 	$tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
 }
+
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
+Write-Output "Setting up TEMP PS Repository to: -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet"
 Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 
 try {
@@ -293,5 +339,16 @@ try {
 }
 finally 
 {
-	Unregister-PSRepository -Name $tempRepoName
+	if($tempRepoName -ne $null)
+	{
+		Write-Output "Unregistering Repository: $tempRepoName"
+		Get-PSRepository -Name $tempRepoName | Unregister-PSRepository
+	}
+	
+	if($repoName -ne $null)
+	{
+		Write-Output "Unregistering Repository: $repoName"
+		Get-PSRepository -Name $repoName | Unregister-PSRepository
+	}
+    
 }

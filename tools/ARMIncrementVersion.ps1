@@ -42,7 +42,7 @@ function IncrementVersion([string]$FilePath)
             
             if ($cPatch)
             {
-                $version[2] = 1 + $version[2]
+                $version[$version.Length-1] = 1 + $version[$version.Length-1]
             }
             
             $version = [String]::Join(".", $version)

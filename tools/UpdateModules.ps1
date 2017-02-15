@@ -11,6 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+param(
+    [Parameter(Mandatory = $false, Position = 0)]
+    [string] $buildConfig,
+    [Parameter(Mandatory = $false, Position = 1)]
+    [string] $scope
+)
+
 function Create-ModulePsm1
 {
   [CmdletBinding()]
@@ -24,7 +32,7 @@ function Create-ModulePsm1
 	 $manifestDir = Get-Item -Path $ModulePath
 	 $moduleName = $manifestDir.Name + ".psd1"
 	 $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
-     $module = Test-ModuleManifest -Path $manifestPath
+     $module = Test-ModuleManifest -Path $manifestPath -ErrorAction "SilentlyContinue"
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
      [string]$strict
      [string]$loose
@@ -44,13 +52,6 @@ function Create-ModulePsm1
   }
 }
 
-param(
-    [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig,
-    [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope
-)
-
 if ([string]::IsNullOrEmpty($buildConfig))
 {
     Write-Verbose "Setting build configuration to 'Release'"
@@ -67,10 +68,8 @@ Write-Host "Updating $scope package(and its dependencies)"
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
-
-
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-$publishToLocal = test-path $repositoryLocation
+$publishToLocal = $true
 $templateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
 if (($scope -eq 'All') -or $publishToLocal ) {
     # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
@@ -94,18 +93,38 @@ if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
 } 
 
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-if ($scope -eq 'All') {  
+if ($scope -eq 'All' -or $scope -eq 'AzureRM') {  
     foreach ($module in $resourceManagerModules) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
-        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
+        # And the AzureStack modules
+        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and `
+        ($module.Name -ne "AzureRM.AzureStackAdmin") -and ($module.Name -ne "AzureRM.AzureStackStorage")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
             Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
             Write-Host "Updated $module module"
         }
     }
-} elseif ($scope -ne 'AzureRM') {
+}
+if ($scope -eq 'AzureStack' -or $scope -eq 'All') {
+    $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.AzureStackAdmin"
+    if (Test-Path $modulePath) {
+        Write-Host "Updating AzureRM.AzureStackAdmin module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureRM.AzureStackAdmin module"        
+    } else {
+        Write-Error "Can not find module with name $scope to publish"
+    }
+    $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.AzureStackStorage"
+    if (Test-Path $modulePath) {
+        Write-Host "Updating AzureRM.AzureStackStorage module from $modulePath"
+        Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+        Write-Host "Updated AzureRM.AzureStackStorage module"        
+    } else {
+        Write-Error "Can not find module with name $scope to publish"
+    }
+} elseif ($scope -ne 'AzureRM' -and $scope -ne 'ServiceManagement') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Updating $scope module from $modulePath"
@@ -123,3 +142,12 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
     Write-Host "Updated Azure module"
 } 
+
+if (($scope -eq 'AzureStack') -or ($scope -eq 'All')) {
+    # Update AzureStack module    
+    $modulePath = "$PSScriptRoot\AzureStack"
+    Write-Host "Updating AzureStack module from $modulePath"
+    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+    Write-Host "Updated AzureStack module"
+} 
+

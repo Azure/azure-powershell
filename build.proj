@@ -132,13 +132,14 @@
       Encoding="Unicode"/>
 
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
+	<Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>  
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch)" 
+    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) -PackagesDirectory $(LibrarySourceFolder)\packages" 
           ContinueOnError="false" />
 
     <!--Restore the xunit runner needed to run unit tests-->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory -PackagesDirectory $(LibrarySourceFolder)\packages" />
     
     <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
@@ -194,7 +195,11 @@
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-    
+     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psd1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psm1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')"/>
+   
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
@@ -249,7 +254,10 @@
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
-  </Target>
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psd1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psm1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />  </Target>
   
   <Target Name="CodeSignInstaller">
     <PropertyGroup>
@@ -285,7 +293,7 @@
   <Target Name="Publish">
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Message Importance="high" Text="Publishing Cmdlets..." />
-    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; $(NuGetCommand) &quot;"/>
   </Target>
 
   <PropertyGroup>

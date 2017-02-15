@@ -2193,7 +2193,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:description>
             <maml:para>Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -2354,9 +2354,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <maml:description>
           <maml:para>Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>Guid</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3925,7 +3925,7 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -Secret
           <maml:description>
             <maml:para>Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -4202,9 +4202,9 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -Secret
         <maml:description>
           <maml:para>Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>Guid</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>

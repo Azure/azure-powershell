@@ -12,7 +12,7 @@
 
   
 # Version number of this module.  
-ModuleVersion = '1.2.6'  
+ModuleVersion = '1.2.8'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -48,36 +48,33 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="Azure.Storage"; RequiredVersion="1.0.4.1"}  
-  @{ModuleName="AzureRM.ApiManagement"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.Automation"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.Automation"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.AzureStackAdmin"; RequiredVersion="0.9.11"},
-  @{ModuleName="AzureRM.AzureStackStorage"; RequiredVersion="0.10.1"},
-  @{ModuleName="AzureRM.Batch"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.Compute"; RequiredVersion="1.2.2.1"},
-  @{ModuleName="AzureRM.DataFactories"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.DataLakeAnalytics"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.DataLakeStore"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.Dns"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.HDInsight"; RequiredVersion="1.0.5.1"},
-  @{ModuleName="AzureRM.Insights"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.KeyVault"; RequiredVersion="1.1.3.1"},
-  @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.NotificationHubs"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.OperationalInsights"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.RecoveryServices"; RequiredVersion="1.0.5.1"},
-  @{ModuleName="AzureRM.RedisCache"; RequiredVersion="1.1.2.1"},
-  @{ModuleName="AzureRM.Resources"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.SiteRecovery"; RequiredVersion="1.1.3.1"},
-  @{ModuleName="AzureRM.Sql"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.Storage"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.StreamAnalytics"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.Tags"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.TrafficManager"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.UsageAggregates"; RequiredVersion="1.0.4.1"},
-  @{ModuleName="AzureRM.Websites"; RequiredVersion="1.0.4.1"}) 
+RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="Azure.Storage"; RequiredVersion="1.0.4.2"}  
+  @{ModuleName="AzureRM.ApiManagement"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.Automation"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.Batch"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.Compute"; RequiredVersion="1.2.2.2"},
+  @{ModuleName="AzureRM.DataFactories"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.DataLakeAnalytics"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.DataLakeStore"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.Dns"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.HDInsight"; RequiredVersion="1.0.5.2"},
+  @{ModuleName="AzureRM.Insights"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.KeyVault"; RequiredVersion="1.1.3.3"},
+  @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.NotificationHubs"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.OperationalInsights"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.RecoveryServices"; RequiredVersion="1.0.5.2"},
+  @{ModuleName="AzureRM.RedisCache"; RequiredVersion="1.1.2.2"},
+  @{ModuleName="AzureRM.Resources"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.SiteRecovery"; RequiredVersion="1.1.3.2"},
+  @{ModuleName="AzureRM.Sql"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.Storage"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.StreamAnalytics"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.Tags"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.TrafficManager"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.UsageAggregates"; RequiredVersion="1.0.4.2"},
+  @{ModuleName="AzureRM.Websites"; RequiredVersion="1.0.4.2"}) 
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
