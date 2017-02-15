@@ -172,7 +172,9 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.```yaml
+The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
