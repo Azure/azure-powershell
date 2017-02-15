@@ -353,6 +353,13 @@
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ResourceManagerType</maml:name>
+          <maml:description>
+            <maml:para>Specifies the enumeration value of resource manager type to which the manifest is registered, valid values are Default, Admin</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ProviderLocation</maml:name>
           <maml:description>
             <maml:para>Location of the resource provider</maml:para>
@@ -869,6 +876,7 @@
             -DisplayName $adminNamespace `
             -ExtensionName &quot;SqlAdminExtension&quot; `
             -ExtensionUri &quot;https://${VmName}:13002&quot;  `
+            -ResourceManagerType Admin  `
             -ResourceTypes $adminJsonStr
           </maml:para>
           <maml:para></maml:para>
