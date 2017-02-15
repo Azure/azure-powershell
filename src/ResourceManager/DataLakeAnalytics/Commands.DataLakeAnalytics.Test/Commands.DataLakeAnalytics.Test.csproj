@@ -230,6 +230,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestAdlaCatalog.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestAdlaFirewallRules.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestAdlaJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -247,6 +250,9 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaTests\TestAdlaCatalog.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaTests\TestAdlaFirewallRules.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaTests\TestAdlaJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
