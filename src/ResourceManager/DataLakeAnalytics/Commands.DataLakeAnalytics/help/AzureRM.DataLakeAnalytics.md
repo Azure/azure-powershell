@@ -15,7 +15,7 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Data 
 Adds a data source to a Data Lake Analytics account.
 
 ### [Add-AzureRmDataLakeAnalyticsFirewallRule](Add-AzureRmDataLakeAnalyticsFirewallRule.md)
-{{Fill in the Synopsis}}
+Adds a firewall rule to a Data Lake Analytics account.
 
 ### [Get-AzureRmDataLakeAnalyticsAccount](Get-AzureRmDataLakeAnalyticsAccount.md)
 Gets information about a Data Lake Analytics account.
@@ -27,7 +27,7 @@ Gets a Data Lake Analytics catalog item or types of items.
 Gets a Data Lake Analytics data source.
 
 ### [Get-AzureRmDataLakeAnalyticsFirewallRule](Get-AzureRmDataLakeAnalyticsFirewallRule.md)
-{{Fill in the Synopsis}}
+Retrieves a firewall rule or list of firewall rules from a Data Lake Analytics account.
 
 ### [Get-AzureRmDataLakeAnalyticsJob](Get-AzureRmDataLakeAnalyticsJob.md)
 Gets a Data Lake Analytics job.
@@ -54,7 +54,7 @@ Deletes a Data Lake Analytics secret.
 Removes a data source from a Data Lake Analytics account.
 
 ### [Remove-AzureRmDataLakeAnalyticsFirewallRule](Remove-AzureRmDataLakeAnalyticsFirewallRule.md)
-{{Fill in the Synopsis}}
+Removes a firewall rule from a Data Lake Analytics account.
 
 ### [Set-AzureRmDataLakeAnalyticsAccount](Set-AzureRmDataLakeAnalyticsAccount.md)
 Modifies a Data Lake Analytics account.
@@ -69,7 +69,7 @@ Modifies a Data Lake Analytics catalog secret.
 Modifies the details of a data source of a Data Lake Analytics account.
 
 ### [Set-AzureRmDataLakeAnalyticsFirewallRule](Set-AzureRmDataLakeAnalyticsFirewallRule.md)
-{{Fill in the Synopsis}}
+Updates a firewall rule in a Data Lake Analytics account.
 
 ### [Stop-AzureRmDataLakeAnalyticsJob](Stop-AzureRmDataLakeAnalyticsJob.md)
 Cancels a job.

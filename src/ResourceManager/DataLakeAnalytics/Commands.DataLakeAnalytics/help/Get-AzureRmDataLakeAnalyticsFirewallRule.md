@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmDataLakeAnalyticsFirewallRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Retrieves a firewall rule or list of firewall rules from a Data Lake Analytics account.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmDataLakeAnalyticsFirewallRule [-Account] <String> [[-Name] <String>] 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmDataLakeAnalyticsFirewallRule** cmdlet retrieves a firewall rule or list of firewall rules from an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 

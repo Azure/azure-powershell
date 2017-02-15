@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmDataLakeAnalyticsFirewallRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a firewall rule in a Data Lake Analytics account.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Set-AzureRmDataLakeAnalyticsFirewallRule [-Account] <String> [-Name] <String> [[
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmDataLakeAnalyticsFirewallRule** cmdlet updates a firewall rule in an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 

@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         public TierType? Tier { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Optionally enable/disable existing firewall rules.")]
         [ValidateNotNull]
         public FirewallState? FirewallState { get; set; }

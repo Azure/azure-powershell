@@ -9,7 +9,7 @@
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The AzureRmDataLackAnalyticsDataSource cmdlet adds a data source to an Azure Data Lake Analytics account.
+<maml:description><maml:para>The Add-AzureRmDataLakeAnalyticsDataSource cmdlet adds a data source to an Azure Data Lake Analytics account.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Add-AzureRmDataLakeAnalyticsDataSource</maml:name>
@@ -159,11 +159,11 @@
 <command:details><command:name>Add-AzureRmDataLakeAnalyticsFirewallRule</command:name>
 <command:verb>Add</command:verb>
 <command:noun>AzureRmDataLakeAnalyticsFirewallRule</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Adds a firewall rule to a Data Lake Analytics account.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>The Add-AzureRmDataLakeAnalyticsFirewallRule cmdlet adds a firewall rule to an Azure Data Lake Analytics account.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Add-AzureRmDataLakeAnalyticsFirewallRule</maml:name>
@@ -750,11 +750,11 @@
 <command:details><command:name>Get-AzureRmDataLakeAnalyticsFirewallRule</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmDataLakeAnalyticsFirewallRule</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Retrieves a firewall rule or list of firewall rules from a Data Lake Analytics account.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>The Get-AzureRmDataLakeAnalyticsFirewallRule cmdlet retrieves a firewall rule or list of firewall rules from an Azure Data Lake Analytics account.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmDataLakeAnalyticsFirewallRule</maml:name>
@@ -2606,11 +2606,11 @@
 <command:details><command:name>Remove-AzureRmDataLakeAnalyticsFirewallRule</command:name>
 <command:verb>Remove</command:verb>
 <command:noun>AzureRmDataLakeAnalyticsFirewallRule</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Removes a firewall rule from a Data Lake Analytics account.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>The Remove-AzureRmDataLakeAnalyticsFirewallRule cmdlet removes a firewall rule from an Azure Data Lake Analytics account.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Remove-AzureRmDataLakeAnalyticsFirewallRule</maml:name>
@@ -3548,11 +3548,11 @@
 <command:details><command:name>Set-AzureRmDataLakeAnalyticsFirewallRule</command:name>
 <command:verb>Set</command:verb>
 <command:noun>AzureRmDataLakeAnalyticsFirewallRule</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Updates a firewall rule in a Data Lake Analytics account.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>The Set-AzureRmDataLakeAnalyticsFirewallRule cmdlet updates a firewall rule in an Azure Data Lake Analytics account.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Set-AzureRmDataLakeAnalyticsFirewallRule</maml:name>

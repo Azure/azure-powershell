@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-help.xml
+external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: A38D8BF6-D302-4586-B7AF-4C80B546E96F
 online version: 
 schema: 2.0.0
@@ -25,7 +25,7 @@ Add-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [-Ac
 ```
 
 ## DESCRIPTION
-The **AzureRmDataLackAnalyticsDataSource** cmdlet adds a data source to an Azure Data Lake Analytics account.
+The **Add-AzureRmDataLakeAnalyticsDataSource** cmdlet adds a data source to an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 

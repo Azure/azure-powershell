@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmDataLakeAnalyticsFirewallRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a firewall rule from a Data Lake Analytics account.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmDataLakeAnalyticsFirewallRule [-Account] <String> [[-Name] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmDataLakeAnalyticsFirewallRule** cmdlet removes a firewall rule from an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 
