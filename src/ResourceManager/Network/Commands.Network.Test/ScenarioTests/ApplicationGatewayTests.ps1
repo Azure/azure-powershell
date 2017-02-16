@@ -230,6 +230,22 @@ function Compare-AzureRmApplicationGateway($actual, $expected)
 	Assert-AreEqual $expected.SslCertificates.Count $actual.SslCertificates.Count
 	Assert-AreEqual $expected.BackendAddressPools.Count $actual.BackendAddressPools.Count
 	Assert-AreEqual $expected.BackendHttpSettingsCollection.Count $actual.BackendHttpSettingsCollection.Count
+
+	for($i = 0; $i -lt $actual.BackendHttpSettingsCollection.Count; $i++) 
+	{
+		if(!$actual.BackendHttpSettingsCollection[$i].ConnectionDraining) 
+		{
+			Assert-NotNull $expected.BackendHttpSettingsCollection[$i].ConnectionDraining
+			Assert-AreEqual $expected.BackendHttpSettingsCollection[$i].ConnectionDraining.Enabled $actual.BackendHttpSettingsCollection[$i].ConnectionDraining.Enabled
+			Assert-AreEqual $expected.BackendHttpSettingsCollection[$i].ConnectionDraining.DrainTimeoutInSec $actual.BackendHttpSettingsCollection[$i].ConnectionDraining.DrainTimeoutInSec
+
+		}
+		else 
+		{
+			Assert-Null $expected.BackendHttpSettingsCollection[$i].ConnectionDraining
+		}
+	}
+
 	Assert-AreEqual $expected.HttpListeners.Count $actual.HttpListeners.Count
 	Assert-AreEqual $expected.RequestRoutingRules.Count $actual.RequestRoutingRules.Count
 }
