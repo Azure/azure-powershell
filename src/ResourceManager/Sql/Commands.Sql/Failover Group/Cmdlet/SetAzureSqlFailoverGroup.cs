@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy without data loss for the failover group.")]
         [ValidateNotNullOrEmpty]
-        public string FailoverPolicy { get; set; }
+        public FailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy for read only endpoint of the failover group.")]
         [ValidateNotNullOrEmpty]
-        public string AllowReadOnlyFailoverToPrimary { get; set; }
+        public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Failover Group
@@ -101,9 +101,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             AzureSqlFailoverGroupModel newModel = model.First();
 
-            newModel.ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy : newModel.ReadWriteFailoverPolicy;
+            newModel.ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy.ToString() : newModel.ReadWriteFailoverPolicy;
             newModel.FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHours") ? GracePeriodWithDataLossHours : newModel.FailoverWithDataLossGracePeriodHours;
-            newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : newModel.ReadOnlyFailoverPolicy;
+            newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
             newEntity.Add(newModel);
 
             return newEntity;
