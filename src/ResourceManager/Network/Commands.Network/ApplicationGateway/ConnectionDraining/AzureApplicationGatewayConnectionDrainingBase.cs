@@ -16,20 +16,19 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayWebApplicationFirewallConfigurationBase : NetworkBaseCmdlet
+    public class AzureApplicationGatewayConnectionDrainingBase : NetworkBaseCmdlet
     {
         [Parameter(
                Mandatory = true,
-               HelpMessage = "Whether web application firewall functionality is enabled or not.")]
+               HelpMessage = "Whether connection draining is enabled or not.")]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
 
         [Parameter(
                Mandatory = true,
-               HelpMessage = "Web application firewall mode")]
-        [ValidateSet("Detection", "Prevention", IgnoreCase = true)]
+               HelpMessage = "The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.")]
         [ValidateNotNullOrEmpty]
-        public string FirewallMode { get; set; }
+        public uint DrainTimeoutInSec { get; set; }
 
         public override void ExecuteCmdlet()
         {
