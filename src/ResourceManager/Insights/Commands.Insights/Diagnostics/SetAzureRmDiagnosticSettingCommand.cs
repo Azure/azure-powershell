@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public const string StorageAccountIdParamName = "StorageAccountId";
         public const string ServiceBusRuleIdParamName = "ServiceBusRuleId";
         public const string WorkspacetIdParamName = "WorkspaceId";
-        public const string EnabledParamName = "EnabledParamName";
+        public const string EnabledParamName = "Enabled";
 
         #region Parameters declarations
 
