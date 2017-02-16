@@ -186,6 +186,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 else
                                 {
                                     tupleList.Add(MakeTuple(property.Name, GetChildProperties(childObject), depth));
+                                    max = Math.Max(max, property.Name.Length);
                                 }
                             }
                         }

@@ -106,6 +106,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None.
+        /// </summary>
+        internal static string DefaultingEncryptionType {
+            get {
+                return ResourceManager.GetString("DefaultingEncryptionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified path: {0} already exists as a directory. Please specify a path (including file name) of a new file to create or an existing file to append to..
+        /// </summary>
+        internal static string DiagnosticDirectoryAlreadyExists {
+            get {
+                return ResourceManager.GetString("DiagnosticDirectoryAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download file data.
         /// </summary>
         internal static string DownloadFileDataMessage {
@@ -142,6 +160,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The firewall is currently disabled for account: {0}. Updates to firewall rules will not take affect until the firewall is enabled..
+        /// </summary>
+        internal static string FirewallDisabledWarning {
+            get {
+                return ResourceManager.GetString("FirewallDisabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string FirewallRuleNotFound {
@@ -156,6 +183,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string IgnoredKeyVaultParams {
             get {
                 return ResourceManager.GetString("IgnoredKeyVaultParams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
+        /// </summary>
+        internal static string IncorrectOutputTypeWarning {
+            get {
+                return ResourceManager.GetString("IncorrectOutputTypeWarning", resourceCulture);
             }
         }
         
@@ -439,15 +475,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
-        /// </summary>
-        internal static string ScriptFilePathDoesNotExist {
-            get {
-                return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The destination path &apos;{0}&apos; already exists in the system. To overwrite this location, use the -Force parameter..
         /// </summary>
         internal static string ServerFileAlreadyExists {
@@ -534,6 +561,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string TaskCancelledMessage {
             get {
                 return ResourceManager.GetString("TaskCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error creating FileStream for diagnostic trace file \&quot;{0}\&quot; - No diagnostics will be captured. Failed with Error:\r\n{1}.
+        /// </summary>
+        internal static string TraceStreamFailure {
+            get {
+                return ResourceManager.GetString("TraceStreamFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The trusted identity provider is currently disabled for account: {0}. Updates to trusted identity providers will not take affect until the trusted identity provider is enabled..
+        /// </summary>
+        internal static string TrustedIdProviderDisabledWarning {
+            get {
+                return ResourceManager.GetString("TrustedIdProviderDisabledWarning", resourceCulture);
             }
         }
         

@@ -2,6 +2,204 @@
 <helpItems schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+		<command:details>
+			<command:name>Add-AzureRmSqlServerKeyVaultKey</command:name>
+			<command:verb>Add</command:verb>
+			<command:noun>AzureRmSqlServerKeyVaultKey</command:noun>
+			<maml:description>
+				<maml:para>
+					Adds a Key Vault key to a SQL server.
+				</maml:para>
+			</maml:description>
+		</command:details>
+		<maml:description>
+			<maml:para>The Add-AzureRmSqlServerKeyVaultKey cmdlet adds a Key Vault key to the provided SQL server. The server must have 'get, wrapKey, unwrapKey' permissions to the vault.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<command:syntaxItem>
+				<maml:name>Add-AzureRmSqlServerKeyVaultKey</maml:name>
+				<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+					<maml:name>ResourceGroupName</maml:name>
+					<maml:Description>
+						<maml:para>The name of the resource group</maml:para>
+					</maml:Description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+					<maml:name>ServerName</maml:name>
+					<maml:Description>
+						<maml:para>The Azure Sql Server name.</maml:para>
+					</maml:Description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+					<maml:name>KeyId</maml:name>
+					<maml:Description>
+						<maml:para>The Azure Key Vault KeyId.</maml:para>
+					</maml:Description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+					<maml:name>Confirm</maml:name>
+					<maml:Description>
+						<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					</maml:Description>
+					<dev:type>
+						<maml:name>SwitchParameter</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>False</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+					<maml:name>WhatIf</maml:name>
+					<maml:Description>
+						<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+					</maml:Description>
+					<dev:type>
+						<maml:name>SwitchParameter</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>False</dev:defaultValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+				<maml:name>KeyId</maml:name>
+				<maml:Description>
+					<maml:para>The Azure Key Vault KeyId.</maml:para>
+				</maml:Description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:Description>
+					<maml:para>The name of the resource group</maml:para>
+				</maml:Description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+				<maml:name>ServerName</maml:name>
+				<maml:Description>
+					<maml:para>The Azure Sql Server name.</maml:para>
+				</maml:Description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+				<maml:name>Confirm</maml:name>
+				<maml:Description>
+					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+				</maml:Description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+				<dev:type>
+					<maml:name>SwitchParameter</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>False</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+				<maml:name>WhatIf</maml:name>
+				<maml:Description>
+					<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+				</maml:Description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+				<dev:type>
+					<maml:name>SwitchParameter</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>False</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<command:inputType>
+				<dev:type>
+					<maml:name>System.String</maml:name>
+				</dev:type>
+				<maml:description>
+					<maml:para>
+					</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<command:returnValue>
+				<dev:type>
+					<maml:name>Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel</maml:name>
+				</dev:type>
+				<maml:description>
+					<maml:para>
+					</maml:para>
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<maml:alertSet>
+			<maml:alert>
+				<maml:para>
+				</maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<command:example>
+				<maml:title>--------------------------  Example 1: Add Key Vault key  --------------------------</maml:title>
+				<maml:introduction>
+					<maml:paragraph>PS C:\&gt;</maml:paragraph>
+				</maml:introduction>
+				<dev:code>PS C:\&gt; Add-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'</dev:code>
+				<dev:remarks>
+					<maml:para>This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL server named 'ContosoServer' in the resource group 'ContosoResourceGroup'.</maml:para>
+					<maml:para />
+					<maml:para />
+					<maml:para>ResourceGroupName : ContosoResourceGroup
+ServerName        : ContosoServer
+ServerKeyName     : contoso_contosokey_01234567890123456789012345678901
+Type              : AzureKeyVault
+Uri               : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+Thumbprint        : 1122334455667788990011223344556677889900
+CreationDate      : 1/1/2017 12:00:00 AM
+					</maml:para>
+				</dev:remarks>
+				<command:commandLines>
+					<command:commandLine>
+						<command:commandText>
+							<maml:para />
+						</command:commandText>
+					</command:commandLine>
+				</command:commandLines>
+			</command:example>
+		</command:examples>
+		<command:relatedLinks/>
+	</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmSqlCapability</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmSqlCapability</command:noun>
@@ -8133,6 +8331,225 @@ FirewallRuleName  : Rule01</dev:code>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details>
+	<command:name>Get-AzureRmSqlServerKeyVaultKey</command:name>
+	<command:verb>Get</command:verb>
+	<command:noun>AzureRmSqlServerKeyVaultKey</command:noun>
+	<maml:description>
+		<maml:para>Gets a SQL server's Key Vault keys.</maml:para>
+	</maml:description>
+</command:details>
+<maml:description>
+	<maml:para>The Get-AzureRmSqlServerKeyVaultKey cmdlet gets information about the Key Vault keys on a SQL server. You can view all keys on a server or view a specific key by providing the KeyId.</maml:para>
+</maml:description>
+<command:syntax>
+	<command:syntaxItem>
+		<maml:name>Get-AzureRmSqlServerKeyVaultKey</maml:name>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:Description>
+				<maml:para>The name of the resource group</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+			<maml:name>ServerName</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Sql Server name.</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+			<maml:name>KeyId</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Key Vault KeyId.</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+			<maml:name>Confirm</maml:name>
+			<maml:Description>
+				<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+			<maml:name>WhatIf</maml:name>
+			<maml:Description>
+				<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+	</command:syntaxItem>
+</command:syntax>
+<command:parameters>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+		<maml:name>KeyId</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Key Vault KeyId.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+		<maml:name>ResourceGroupName</maml:name>
+		<maml:Description>
+			<maml:para>The name of the resource group</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+		<maml:name>ServerName</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Sql Server name.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+		<maml:name>Confirm</maml:name>
+		<maml:Description>
+			<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+		<maml:name>WhatIf</maml:name>
+		<maml:Description>
+			<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+</command:parameters>
+<command:inputTypes>
+	<command:inputType>
+		<dev:type>
+			<maml:name>System.String</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+			</maml:para>
+		</maml:description>
+	</command:inputType>
+</command:inputTypes>
+<command:returnValues>
+	<command:returnValue>
+		<dev:type>
+			<maml:name>System.Object</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+			</maml:para>
+		</maml:description>
+	</command:returnValue>
+</command:returnValues>
+<maml:alertSet>
+	<maml:alert>
+		<maml:para>
+		</maml:para>
+	</maml:alert>
+</maml:alertSet>
+<command:examples>
+	<command:example>
+		<maml:title>--------------------------  Example 1: Get all Key Vault keys  --------------------------</maml:title>
+		<maml:introduction>
+			<maml:paragraph>PS C:\&gt;</maml:paragraph>
+		</maml:introduction>
+		<dev:code>PS C:\&gt; Get-AzureRmSqlServerKeyVaultKey -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'</dev:code>
+		<dev:remarks>
+			<maml:para>This command gets all the Key Vault keys on a SQL server.</maml:para>
+			<maml:para />
+			<maml:para />
+			<maml:para>ResourceGroupName : ContosoResourceGroup
+ServerName        : ContosoServer
+ServerKeyName     : contoso_contosokey_01234567890123456789012345678901
+Type              : AzureKeyVault
+Uri               : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+Thumbprint        : 1122334455667788990011223344556677889900
+CreationDate      : 1/1/2017 12:00:00 AM
+
+ResourceGroupName : ContosoResourceGroup
+ServerName        : ContosoServer
+ServerKeyName     : contoso_contosokey2_01234567890123456789012345678901
+Type              : AzureKeyVault
+Uri               : https://contoso.vault.azure.net/keys/contosokey2/09876543210987654321098765432109
+Thumbprint        : 0099887766554433221100998877665544332211
+CreationDate      : 1/1/2017 12:00:00 AM
+			</maml:para>
+		</dev:remarks>
+		<command:commandLines>
+			<command:commandLine>
+				<command:commandText>
+					<maml:para />
+				</command:commandText>
+			</command:commandLine>
+		</command:commandLines>
+	</command:example>
+	<command:example>
+		<maml:title>--------------------------  Example 2: Get a specific Key Vault key  --------------------------</maml:title>
+		<dev:code>PS C:\&gt; $MyServerKeyVaultKey = Get-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'</dev:code>
+		<dev:remarks>
+			<maml:para>This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901', and then stores it in the $MyServerKeyVaultKey variable. You can inspect the properties of $MyServerKeyVaultKey to get details about the key vault.</maml:para>
+			<maml:para />
+		</dev:remarks>
+		<command:commandLines>
+			<command:commandLine>
+				<command:commandText>
+					<maml:para />
+				</command:commandText>
+			</command:commandLine>
+		</command:commandLines>
+	</command:example>
+</command:examples>
+<command:relatedLinks/>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmSqlServerRecommendedAction</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmSqlServerRecommendedAction</command:noun>
@@ -8775,6 +9192,171 @@ RetentionInDays              : 0</dev:code>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details>
+	<command:name>Get-AzureRmSqlServerTransparentDataEncryptionProtector</command:name>
+	<command:verb>Get</command:verb>
+	<command:noun>AzureRmSqlServerTransparentDataEncryptionProtector</command:noun>
+	<maml:description>
+		<maml:para>Gets the Transparent Data Encryption (TDE) protector</maml:para>
+	</maml:description>
+</command:details>
+<maml:description>
+	<maml:para>The Get-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet gets information about the TDE protector.</maml:para>
+</maml:description>
+<command:syntax>
+	<command:syntaxItem>
+		<maml:name>Get-AzureRmSqlServerTransparentDataEncryptionProtector</maml:name>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:Description>
+				<maml:para>The name of the resource group</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+			<maml:name>ServerName</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Sql Server name.</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+			<maml:name>Confirm</maml:name>
+			<maml:Description>
+				<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+			<maml:name>WhatIf</maml:name>
+			<maml:Description>
+				<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+	</command:syntaxItem>
+</command:syntax>
+<command:parameters>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+		<maml:name>ResourceGroupName</maml:name>
+		<maml:Description>
+			<maml:para>The name of the resource group</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+		<maml:name>ServerName</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Sql Server name.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+		<maml:name>Confirm</maml:name>
+		<maml:Description>
+			<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+		<maml:name>WhatIf</maml:name>
+		<maml:Description>
+			<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+</command:parameters>
+<command:inputTypes>
+	<command:inputType>
+		<dev:type>
+			<maml:name>System.String</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+			</maml:para>
+		</maml:description>
+	</command:inputType>
+</command:inputTypes>
+<command:returnValues>
+	<command:returnValue>
+		<dev:type>
+			<maml:name>System.Object</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+			</maml:para>
+		</maml:description>
+	</command:returnValue>
+</command:returnValues>
+<maml:alertSet>
+	<maml:alert>
+		<maml:para>
+		</maml:para>
+	</maml:alert>
+</maml:alertSet>
+<command:examples>
+	<command:example>
+		<maml:title>--------------------------  Example 1: Get the Transparent Data Encryption (TDE) protector  --------------------------</maml:title>
+		<dev:code>PS C:\&gt; Get-AzureRmSqlServerTransparentDataEncryptionProtector -ServerName 'ContosoServer' -ResourceGroup 'ContosoResourceGroup'</dev:code>
+		<dev:remarks>
+			<maml:para>This command gets the TDE protector for the server named ContosoServer in resource group named ContosoResourceGroup.</maml:para>
+			<maml:para />
+			<maml:para />
+			<maml:para>ResourceGroupName ServerName                   Type ServerKeyVaultKeyName
+----------------- ----------                   ---- ---------------------
+ContosoResourceGroup ContosoServer ServiceManaged ServiceManaged
+			</maml:para>
+		</dev:remarks>
+		<command:commandLines>
+			<command:commandLine>
+				<command:commandText>
+					<maml:para />
+				</command:commandText>
+			</command:commandLine>
+		</command:commandLines>
+	</command:example>
+</command:examples>
+<command:relatedLinks/>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmSqlServerUpgrade</command:name>
@@ -11971,10 +12553,10 @@ Tags              :</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Create a new Azure SQL Database server</maml:title>
-<dev:code>PS C:\&gt;New-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "Server01" -ServerVersion "12.0"
+<dev:code>PS C:\&gt;New-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential)
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
-Location                 : Australia East
+Location                 : Central US
 SqlAdministratorLogin    : adminLogin
 SqlAdministratorPassword : 
 ServerVersion            : 12.0
@@ -15476,6 +16058,201 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details>
+	<command:name>Remove-AzureRmSqlServerKeyVaultKey</command:name>
+	<command:verb>Remove</command:verb>
+	<command:noun>AzureRmSqlServerKeyVaultKey</command:noun>
+	<maml:description>
+		<maml:para>Removes a Key Vault key from a SQL server.</maml:para>
+	</maml:description>
+</command:details>
+<maml:description>
+	<maml:para>The Remove-AzureRmSqlServerKeyVaultKey cmdlet removes the Key Vault key from the specified SQL server.</maml:para>
+	<maml:para>Note that the SQL server's permissions to the key's vault are not changed. To change permissions, use Set-AzureRmKeyVaultAccessPolicy.</maml:para>
+	<maml:para>Note that this cmdlet makes no changes to Key Vault. To remove a key from Key Vault, use Remove-AzureKeyVaultKey.</maml:para>
+</maml:description>
+<command:syntax>
+	<command:syntaxItem>
+		<maml:name>Remove-AzureRmSqlServerKeyVaultKey</maml:name>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:Description>
+				<maml:para>The name of the resource group</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+			<maml:name>ServerName</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Sql Server name.</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+			<maml:name>KeyId</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Key Vault KeyId.</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+			<maml:name>Confirm</maml:name>
+			<maml:Description>
+				<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+			<maml:name>WhatIf</maml:name>
+			<maml:Description>
+				<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+	</command:syntaxItem>
+</command:syntax>
+<command:parameters>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+		<maml:name>KeyId</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Key Vault KeyId.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+		<maml:name>ResourceGroupName</maml:name>
+		<maml:Description>
+			<maml:para>The name of the resource group</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+		<maml:name>ServerName</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Sql Server name.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+		<maml:name>Confirm</maml:name>
+		<maml:Description>
+			<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+		<maml:name>WhatIf</maml:name>
+		<maml:Description>
+			<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+</command:parameters>
+<command:inputTypes>
+	<command:inputType>
+		<dev:type>
+			<maml:name>System.String</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+			</maml:para>
+		</maml:description>
+	</command:inputType>
+</command:inputTypes>
+<command:returnValues>
+	<command:returnValue>
+		<dev:type>
+			<maml:name>System.Object</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+			</maml:para>
+		</maml:description>
+	</command:returnValue>
+</command:returnValues>
+<maml:alertSet>
+	<maml:alert>
+		<maml:para>
+		</maml:para>
+	</maml:alert>
+</maml:alertSet>
+<command:examples>
+	<command:example>
+		<maml:title>--------------------------  Example 1: Remove a Key Vault key  --------------------------</maml:title>
+		<dev:code>PS C:\&gt; Remove-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'</dev:code>
+		<dev:remarks>
+			<maml:para>This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' from the specified server.</maml:para>
+			<maml:para />
+			<maml:para />
+			<maml:para>ResourceGroupName : ContosoResourceGroup
+ServerName        : ContosoServer
+ServerKeyName     : contoso_contosokey_01234567890123456789012345678901
+Type              : AzureKeyVault
+Uri               : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+Thumbprint        : 1122334455667788990011223344556677889900
+CreationDate      : 1/1/2017 12:00:00 AM
+			</maml:para>
+		</dev:remarks>
+		<command:commandLines>
+			<command:commandLine>
+				<command:commandText>
+					<maml:para />
+				</command:commandText>
+			</command:commandLine>
+		</command:commandLines>
+	</command:example>
+</command:examples>
+<command:relatedLinks/>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Remove-AzureRmSqlServerThreatDetectionPolicy</command:name>
@@ -22627,6 +23404,244 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details>
+	<command:name>Set-AzureRmSqlServerTransparentDataEncryptionProtector</command:name>
+	<command:verb>Set</command:verb>
+	<command:noun>AzureRmSqlServerTransparentDataEncryptionProtector</command:noun>
+	<maml:description>
+		<maml:para>Sets the Transparent Data Encryption (TDE) protector for a SQL server.</maml:para>
+	</maml:description>
+</command:details>
+<maml:description>
+	<maml:para>The Set-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet sets the TDE protector for a SQL server. Changing the TDE protector type will rotate the protector.</maml:para>
+</maml:description>
+<command:syntax>
+	<command:syntaxItem>
+		<maml:name>Set-AzureRmSqlServerTransparentDataEncryptionProtector</maml:name>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:Description>
+				<maml:para>The name of the resource group</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+			<maml:name>ServerName</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Sql Server name.</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+			<maml:name>Type</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Sql Database TDE Protector type.</maml:para>
+			</maml:Description>
+			<command:parameterValueGroup>
+				<command:parameterValue required="false" variableLength="false">AzureKeyVault</command:parameterValue>
+				<command:parameterValue required="false" variableLength="false">ServiceManaged</command:parameterValue>
+			</command:parameterValueGroup>
+			<command:parameterValue required="true" variableLength="false">EncryptionProtectorType</command:parameterValue>
+			<dev:type>
+				<maml:name>EncryptionProtectorType</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
+			<maml:name>KeyId</maml:name>
+			<maml:Description>
+				<maml:para>The Azure Key Vault KeyId.</maml:para>
+			</maml:Description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>None</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+			<maml:name>Confirm</maml:name>
+			<maml:Description>
+				<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+			<maml:name>WhatIf</maml:name>
+			<maml:Description>
+				<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+			</maml:Description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri />
+			</dev:type>
+			<dev:defaultValue>False</dev:defaultValue>
+		</command:parameter>
+	</command:syntaxItem>
+</command:syntax>
+<command:parameters>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
+		<maml:name>KeyId</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Key Vault KeyId.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+		<maml:name>ResourceGroupName</maml:name>
+		<maml:Description>
+			<maml:para>The name of the resource group</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+		<maml:name>ServerName</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Sql Server name.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+		<dev:type>
+			<maml:name>String</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+		<maml:name>Type</maml:name>
+		<maml:Description>
+			<maml:para>The Azure Sql Database TDE protector type.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="true" variableLength="false">EncryptionProtectorType</command:parameterValue>
+		<dev:type>
+			<maml:name>EncryptionProtectorType</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>None</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+		<maml:name>Confirm</maml:name>
+		<maml:Description>
+			<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+	<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+		<maml:name>WhatIf</maml:name>
+		<maml:Description>
+			<maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+		</maml:Description>
+		<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+		<dev:type>
+			<maml:name>SwitchParameter</maml:name>
+			<maml:uri />
+		</dev:type>
+		<dev:defaultValue>False</dev:defaultValue>
+	</command:parameter>
+</command:parameters>
+<command:inputTypes>
+	<command:inputType>
+		<dev:type>
+			<maml:name>Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+				System.String
+			</maml:para>
+		</maml:description>
+	</command:inputType>
+</command:inputTypes>
+<command:returnValues>
+	<command:returnValue>
+		<dev:type>
+			<maml:name>System.Object</maml:name>
+		</dev:type>
+		<maml:description>
+			<maml:para>
+			</maml:para>
+		</maml:description>
+	</command:returnValue>
+</command:returnValues>
+<maml:alertSet>
+	<maml:alert>
+		<maml:para>
+		</maml:para>
+	</maml:alert>
+</maml:alertSet>
+<command:examples>
+	<command:example>
+		<maml:title>--------------------------  Example 1: Set the Transparent Data Encryption (TDE) protector type to ServiceManaged  --------------------------</maml:title>
+		<dev:code>PS C:\&gt; Set-AzureRmSqlServerTransparentDataEncryptionProtector -Type ServiceManaged -ServerName 'ContosoServer' -ResourceGroup 'ContosoResourceGroup'</dev:code>
+		<dev:remarks>
+			<maml:para>This command updates a server's TDE protector type to Service Managed.</maml:para>
+			<maml:para />
+			<maml:para />
+			<maml:para>ResourceGroupName ServerName                   Type ServerKeyVaultKeyName
+----------------- ----------                   ---- ---------------------
+ContosoResourceGroup ContosoServer ServiceManaged ServiceManaged
+			</maml:para>
+		</dev:remarks>
+		<command:commandLines>
+			<command:commandLine>
+				<command:commandText>
+					<maml:para />
+				</command:commandText>
+			</command:commandLine>
+		</command:commandLines>
+	</command:example>
+	<command:example>
+		<maml:title>--------------------------  Example 2: Set the Transparent Data Encryption protector type to Azure Key Vault  --------------------------</maml:title>
+		<dev:code>PS C:\&gt; Set-AzureRmSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroup 'ContosoResourceGroup'</dev:code>
+		<dev:remarks>
+			<maml:para>This command updates a server to use the Server Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.</maml:para>
+			<maml:para />
+			<maml:para />
+			<maml:para>ResourceGroupName ServerName                   Type ServerKeyVaultKeyName
+----------------- ----------                   ---- ---------------------
+ContosoResourceGroup ContosoServer AzureKeyVault contoso_contosokey_01234567890123456789012345678901
+			</maml:para>
+		</dev:remarks>
+		<command:commandLines>
+			<command:commandLine>
+				<command:commandText>
+					<maml:para />
+				</command:commandText>
+			</command:commandLine>
+		</command:commandLines>
+	</command:example>
+</command:examples>
+<command:relatedLinks/>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Set-AzureRmSqlServerThreatDetectionPolicy</command:name>

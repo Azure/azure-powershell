@@ -981,9 +981,6 @@
                         <Component Id="cmp3C96010EFA751762A76B66B811613835" Guid="*">
                             <File Id="fil509D1E7494560B2BB3462B8FAD7954CF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataLakeStore\Microsoft.Azure.Management.DataLake.Store.dll" />
                         </Component>
-                        <Component Id="cmpFECE1A517C9182672B042869C46847FC" Guid="*">
-                            <File Id="fil00C18C352C99B9BCFA42EFFACE0AEFF7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataLakeStore\Microsoft.Azure.Management.DataLake.StoreUploader.dll" />
-                        </Component>
                         <Component Id="cmp500DAF931B66664E6A3308FAC825093C" Guid="*">
                             <File Id="filB384FAE2600A5CAE72336384DBA3B581" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataLakeStore\Microsoft.Azure.Management.ResourceManager.dll" />
                         </Component>
@@ -6029,7 +6026,6 @@
             <ComponentRef Id="cmp87FB43928F7A2ECF62C0141446D21A9F" />
             <ComponentRef Id="cmpD2292657EF3D9CEAC5D4FA7DEB3E7E8E" />
             <ComponentRef Id="cmp3C96010EFA751762A76B66B811613835" />
-            <ComponentRef Id="cmpFECE1A517C9182672B042869C46847FC" />
             <ComponentRef Id="cmp500DAF931B66664E6A3308FAC825093C" />
             <ComponentRef Id="cmpFCFE1AC675F0BA7336B392A419D70042" />
             <ComponentRef Id="cmpB41201E194E7639BC9C33ADECC894426" />

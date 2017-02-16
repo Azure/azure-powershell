@@ -24,6 +24,105 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.OperationStatusResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.OperationStatusResponse</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineSize</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineSize</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Capacity</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceID</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.ResourceGroupName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Location</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Sku.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Sku.Capacity</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.InstanceId</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ProvisioningState</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineSize</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineSize</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService</TypeName>
@@ -127,6 +226,23 @@
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.AccessUri</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.AccessUri</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
     </View>
     <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet</Name>
@@ -511,6 +627,23 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineScaleSetVMInstanceView</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineScaleSetVMInstanceView</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineCaptureResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.VirtualMachineCaptureResult</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>

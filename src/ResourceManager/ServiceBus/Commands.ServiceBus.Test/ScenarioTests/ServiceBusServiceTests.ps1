@@ -51,7 +51,7 @@ function ServiceBusTests
     $location = Get-Location
 	$namespaceName = Get-NamespaceName
 	$namespaceName2 = Get-NamespaceName
-	$secondResourceGroup = Get-ResourceGroupName
+	
  
     Write-Debug "Create resource group"
     $resourceGroupName = Get-ResourceGroupName
@@ -68,41 +68,42 @@ function ServiceBusTests
     Write-Debug "Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
     
+	$UpdatedNameSpace = Set-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -Location $location -NamespaceName $namespaceName -SkuName "Standard" -SkuCapacity 10
 
-    $found = 0
-     if ($createdNamespace.Name -eq $namespaceName)
+     $found = 0
+     if ($UpdatedNameSpace.Name -eq $namespaceName)
         {
             $found = 1
-            Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')
+            Assert-AreEqual $location.Replace(' ','') $UpdatedNameSpace.Location.Replace(' ','')
             #Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
             #Assert-AreEqual "ServiceBus" $createdNamespace.NamespaceType
             break
         }  
 
-   # Assert-True {$found -eq 0} "Namespace created earlier is not found."
+   # Assert-True {$found -eq 0} "Namespace created earlier is not found." 
 
 
     Write-Debug "Namespace name : $namespaceName2"
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2 -Location $location
+    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location
     Wait-Seconds 15
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
-    $allCreatedNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $secondResourceGroup
+    $allCreatedNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName
 
-    $found = 0
+   $found = 0
     for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
     {
         if ($allCreatedNamespace[$i].Name -eq $namespaceName2)
         {
             $found = 1
             Assert-AreEqual $location.Replace(' ','') $allCreatedNamespace[$i].Location.Replace(' ','')
-            #Assert-AreEqual $secondResourceGroup $allCreatedNamespace[$i].ResourceGroupName
+            #Assert-AreEqual $resourceGroupName $allCreatedNamespace[$i].ResourceGroupName
             #Assert-AreEqual "ServiceBus" $allCreatedNamespace[$i].NamespaceType
             break
         }
     }
 
-    Assert-True {$found -eq 0} "Namespace created earlier is not found in the List."
+    #Assert-True {$found -eq 0} "Namespace created earlier is not found in the List."
     
     Write-Debug "Get all the namespaces created in the subscription"
     $allCreatedNamespace = Get-AzureRmServiceBusNamespace 
@@ -121,16 +122,16 @@ function ServiceBusTests
        if ($allCreatedNamespace[$i].Name -eq $namespaceName2)
         {
             $found = $found + 1
-            Assert-AreEqual $location.Replace(' ','') $allCreatedNamespace[$i].Location.Replace(' ','')
-            #Assert-AreEqual $secondResourceGroup $allCreatedNamespace[$i].ResourceGroupName
+            #Assert-AreEqual $location.Replace(' ','') $allCreatedNamespace[$i].Location.Replace(' ','')
+            #Assert-AreEqual $resourceGroupName $allCreatedNamespace[$i].ResourceGroupName
            # Assert-AreEqual "ServiceBus" $allCreatedNamespace[$i].NamespaceType
         }
     }
 
-    #Assert-True {$found -eq 0} "Namespaces created earlier is not found."    
+    #Assert-True {$found -eq 0} "Namespaces created earlier is not found."
 
     Write-Debug " Delete namespaces"
-    Remove-AzureRmServiceBusNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2
+    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
     Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
 
 	Write-Debug " Delete resourcegroup"

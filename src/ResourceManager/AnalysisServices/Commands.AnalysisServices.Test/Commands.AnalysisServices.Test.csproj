@@ -58,8 +58,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Analysis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Analysis.1.0.1-preview\lib\net45\Microsoft.Azure.Management.Analysis.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Analysis, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Analysis.1.0.2-preview\lib\net45\Microsoft.Azure.Management.Analysis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
@@ -174,7 +174,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InMemoryTests\AddAzureASAccountTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InMemoryTests\DataPlaneCommandTests.cs" />
     <Compile Include="ScenarioTests\AsTests.cs" />
     <Compile Include="ScenarioTests\AsTestsBase.cs" />
     <Compile Include="ScenarioTests\UrlDecodingRecordMatcher.cs" />
@@ -191,6 +193,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.AnalysisServices.Dataplane\Commands.AnalysisServices.Dataplane.csproj">
+      <Project>{4944b213-4f12-4815-b416-3ff1853adcc1}</Project>
+      <Name>Commands.AnalysisServices.Dataplane</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.AnalysisServices\Commands.AnalysisServices.csproj">
       <Project>{8aab43e6-e8f6-4f91-af8a-6a63cd78ef1e}</Project>

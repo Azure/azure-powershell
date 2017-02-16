@@ -22,6 +22,7 @@ using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Management.Automation;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
@@ -58,7 +59,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             EncryptionIdentity identity = null, 
             EncryptionConfig config = null, 
             IList<TrustedIdProvider> trustedProviders = null,
-            IList<FirewallRule> firewallRules = null)
+            IList<FirewallRule> firewallRules = null,
+            EncryptionConfigType? encryptionType = null,
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -96,6 +99,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.FirewallState = FirewallState.Enabled;
             }
 
+            // if there is no encryption value, then it was not set by the cmdlet which means encryption was explicitly disabled.
+            if(!encryptionType.HasValue)
+            {
+                parameters.EncryptionState = EncryptionState.Disabled;
+                parameters.Identity = null;
+                parameters.EncryptionConfig = null;
+            }
+
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
+
             return  _client.Account.Create(resourceGroupName, accountName, parameters);
         }
 
@@ -105,7 +121,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string defaultGroup,
             TrustedIdProviderState providerState,
             FirewallState firewallState,
-            Hashtable customTags = null)
+            FirewallAllowAzureIpsState azureIpState,
+            Hashtable customTags = null,
+            TierType? tier = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -119,8 +137,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 DefaultGroup = defaultGroup,
                 Tags = tags ?? new Dictionary<string, string>(),
                 TrustedIdProviderState = providerState,
-                FirewallState = firewallState
+                FirewallState = firewallState,
+                FirewallAllowAzureIps = azureIpState
             };
+
+            if (tier.HasValue)
+            {
+                parameters.NewTier = tier;
+            }
 
             return _client.Account.Update(resourceGroupName, accountName, parameters);
         }
@@ -168,11 +192,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             return _client.Account.Get(resourceGroupName, accountName);
         }
-        public FirewallRule AddOrUpdateFirewallRule(string resourceGroupName, string accountName, string ruleName, string startIp, string endIp)
+        public FirewallRule AddOrUpdateFirewallRule(string resourceGroupName, string accountName, string ruleName, string startIp, string endIp, Cmdlet runningCommand)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            if (_client.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
             }
 
             return _client.FirewallRules.CreateOrUpdate(
@@ -187,11 +216,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 });
         }
 
-        public void DeleteFirewallRule(string resourceGroupName, string accountName, string ruleName)
+        public void DeleteFirewallRule(string resourceGroupName, string accountName, string ruleName, Cmdlet runningCommand)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            if (_client.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
             }
 
             _client.FirewallRules.Delete(resourceGroupName, accountName, ruleName);
@@ -207,11 +241,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return _client.FirewallRules.Get(resourceGroupName, accountName, ruleName);
         }
 
-        public TrustedIdProvider AddOrUpdateTrustedProvider(string resourceGroupName, string accountName, string providerName, string providerEndpoint)
+        public TrustedIdProvider AddOrUpdateTrustedProvider(string resourceGroupName, string accountName, string providerName, string providerEndpoint, Cmdlet runningCommand)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            if (_client.Account.Get(resourceGroupName, accountName).TrustedIdProviderState == TrustedIdProviderState.Disabled)
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.TrustedIdProviderDisabledWarning, accountName));
             }
 
             return _client.TrustedIdProviders.CreateOrUpdate(
@@ -224,11 +263,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 });
         }
 
-        public void DeleteTrustedProvider(string resourceGroupName, string accountName, string providerName)
+        public void DeleteTrustedProvider(string resourceGroupName, string accountName, string providerName, Cmdlet runningCommand)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            if (_client.Account.Get(resourceGroupName, accountName).TrustedIdProviderState == TrustedIdProviderState.Disabled)
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.TrustedIdProviderDisabledWarning, accountName));
             }
 
             _client.TrustedIdProviders.Delete(resourceGroupName, accountName, providerName);

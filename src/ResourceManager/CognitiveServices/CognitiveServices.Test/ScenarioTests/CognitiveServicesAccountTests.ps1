@@ -50,6 +50,45 @@ function Test-NewAzureRmCognitiveServicesAccount
 
 <#
 .SYNOPSIS
+Test New-AzureRmCognitiveServicesAccount
+#>
+function Test-NewAzureRmAllKindsOfCognitiveServicesAccounts
+{
+	# Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+	try
+	{
+		New-AzureRmResourceGroup -Name $rgname -Location 'West US';
+		
+		# Create all known kinds of Cognitive Services accounts.
+		Test-CreateCognitiveServicesAccount $rgname 'AcademicTest' 'Academic' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'BingAutosuggestTest' 'Bing.Autosuggest' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'BingSearchTest' 'Bing.Search' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpeechTest' 'Bing.Speech' 'S0' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpellCheckTest' 'Bing.SpellCheck' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'ComputerVisionTest' 'ComputerVision' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'ContentModeratorTest' 'ContentModerator' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'EmotionTest' 'Emotion' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'FaceTest' 'Face' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'LUISTest' 'LUIS' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'RecommendationsTest' 'Recommendations' 'S1' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'SpeakerRecognitionTest' 'SpeakerRecognition' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'SpeechTest' 'Speech' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'SpeechTranslationTest' 'SpeechTranslation' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'TextAnalyticsTest' 'TextAnalytics' 'S1' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'TextTranslationTest' 'TextTranslation' 'S1' 'Global'
+		Test-CreateCognitiveServicesAccount $rgname 'WebLMTest' 'WebLM' 'S0' 'West US'
+	}
+	finally
+	{
+	    # Cleanup
+        Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 Test Remove-AzureRmCognitiveServicesAccount
 #>
 function Test-RemoveAzureRmCognitiveServicesAccount

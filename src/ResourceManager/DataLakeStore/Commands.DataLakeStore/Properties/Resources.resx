@@ -132,6 +132,12 @@
   <data name="DefaultAclWord" xml:space="preserve">
     <value>"default "</value>
   </data>
+  <data name="DefaultingEncryptionType" xml:space="preserve">
+    <value>No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None</value>
+  </data>
+  <data name="DiagnosticDirectoryAlreadyExists" xml:space="preserve">
+    <value>The specified path: {0} already exists as a directory. Please specify a path (including file name) of a new file to create or an existing file to append to.</value>
+  </data>
   <data name="DownloadFileDataMessage" xml:space="preserve">
     <value>Download file data</value>
   </data>
@@ -144,11 +150,17 @@
   <data name="FilePreviewTooLarge" xml:space="preserve">
     <value>The remaining data to preview is greater than {0} bytes. Please specify a length or use the Force parameter to preview the entire file. The length of the file that would have been previewed: {1}</value>
   </data>
+  <data name="FirewallDisabledWarning" xml:space="preserve">
+    <value>The firewall is currently disabled for account: {0}. Updates to firewall rules will not take affect until the firewall is enabled.</value>
+  </data>
   <data name="FirewallRuleNotFound" xml:space="preserve">
     <value>The specified firewall rule '{0}' does not exist.</value>
   </data>
   <data name="IgnoredKeyVaultParams" xml:space="preserve">
     <value>User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored.</value>
+  </data>
+  <data name="IncorrectOutputTypeWarning" xml:space="preserve">
+    <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
   </data>
   <data name="InvalidAce" xml:space="preserve">
     <value>Invalid ACE returned. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}</value>
@@ -244,9 +256,6 @@
   <data name="RemovingDataLakeStoreTrustedProvider" xml:space="preserve">
     <value>Are you sure you want to remove the Data Lake Store trusted identity provider: '{0}'?</value>
   </data>
-  <data name="ScriptFilePathDoesNotExist" xml:space="preserve">
-    <value>The script file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
-  </data>
   <data name="ServerFileAlreadyExists" xml:space="preserve">
     <value>The destination path '{0}' already exists in the system. To overwrite this location, use the -Force parameter.</value>
   </data>
@@ -276,6 +285,12 @@
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
+  </data>
+  <data name="TraceStreamFailure" xml:space="preserve">
+    <value>Error creating FileStream for diagnostic trace file \"{0}\" - No diagnostics will be captured. Failed with Error:\r\n{1}</value>
+  </data>
+  <data name="TrustedIdProviderDisabledWarning" xml:space="preserve">
+    <value>The trusted identity provider is currently disabled for account: {0}. Updates to trusted identity providers will not take affect until the trusted identity provider is enabled.</value>
   </data>
   <data name="UploadFailedMessage" xml:space="preserve">
     <value>Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the "Resume" option. If the error persists, please contact Microsoft support.</value>

@@ -22,10 +22,24 @@ The **Set-AzureRmVirtualNetwork** cmdlet sets the goal state for an Azure virtua
 
 ## EXAMPLES
 
-### 1:
+### 1: Creates a virtual network and removes one of its subnets
+```
+New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+    $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+
+$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24"
+
+$virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
+    TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
+
+Remove-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork
+
+$virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-```
+This example creates a virtual network with two subnets. Then it removes one subnet from 
+    the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork cmdlet 
+    is then used to write the modified virtual network state on the service side.
 
 ## PARAMETERS
 

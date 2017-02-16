@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Manifest" mclass="Module" useSupports="false">
   <Name>AzureRM.OperationalInsights</Name>
   <Version>1.0.11</Version>
@@ -949,18 +949,16 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="ByWorkspaceName" Params="Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="ByWorkspaceObjectByName" Params="Workspace Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="ByWorkspaceObjectByKind" Params="Workspace Kind Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="ByWorkspaceNameByName" Params="ResourceGroupName WorkspaceName Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
         <CommandParameterSetInfo2 Name="ByWorkspaceNameByKind" Params="ResourceGroupName WorkspaceName Kind Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureRmOperationalInsightsDataSource [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmOperationalInsightsDataSource [-Workspace] &lt;PSWorkspace&gt; [-Name &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmOperationalInsightsDataSource [-Workspace &lt;PSWorkspace&gt;] [-Kind &lt;String&gt; {AzureAuditLog | CustomLog | LinuxPerformanceObject | LinuxSyslog | WindowsEvent | WindowsPerformanceCounter} ] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmOperationalInsightsDataSource [-ResourceGroupName] &lt;String&gt; [-WorkspaceName] &lt;String&gt; [-Name] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
-        <string>Get-AzureRmOperationalInsightsDataSource [-ResourceGroupName &lt;String&gt;] [-WorkspaceName &lt;String&gt;] [-Kind] &lt;String&gt; {AzureAuditLog | CustomLog | LinuxPerformanceObject | LinuxSyslog | WindowsEvent | WindowsPerformanceCounter}  [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmOperationalInsightsDataSource [-Workspace] &lt;PSWorkspace&gt; [-Name &lt;String&gt;] </string>
+        <string>Get-AzureRmOperationalInsightsDataSource [-Workspace &lt;PSWorkspace&gt;] [-Kind &lt;String&gt; {AzureActivityLog | CustomLog | LinuxPerformanceObject | LinuxSyslog | WindowsEvent | WindowsPerformanceCounter} ]</string>
+        <string>Get-AzureRmOperationalInsightsDataSource [-ResourceGroupName] &lt;String&gt; [-WorkspaceName] &lt;String&gt; [-Name] &lt;String&gt;</string>
+        <string>Get-AzureRmOperationalInsightsDataSource [-ResourceGroupName &lt;String&gt;] [-WorkspaceName &lt;String&gt;] [-Kind] &lt;String&gt; {AzureActivityLog | CustomLog | LinuxPerformanceObject | LinuxSyslog | WindowsEvent | WindowsPerformanceCounter} </string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">

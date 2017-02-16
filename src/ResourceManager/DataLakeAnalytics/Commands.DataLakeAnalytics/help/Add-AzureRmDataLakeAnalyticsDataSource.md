@@ -12,22 +12,20 @@ Adds a data source to a Data Lake Analytics account.
 
 ## SYNTAX
 
+### Add a Data Lake storage account
+```
+Add-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String>
+ [[-ResourceGroupName] <String>] [<CommonParameters>]
+```
+
 ### Add a Blob storage account
 ```
 Add-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [-AccessKey] <String>
- [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
-```
-
-### Add a Data Lake storage account
-```
-Add-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String> [-Default]
- [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **AzureRmDataLackAnalyticsDataSource** cmdlet adds a data source to an Azure Data Lake Analytics account.
+The **Add-AzureRmDataLakeAnalyticsDataSource** cmdlet adds a data source to an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 
@@ -40,6 +38,21 @@ This command adds a Data Lake Store data source to a Data Lake Analytics account
 
 ## PARAMETERS
 
+### -AccessKey
+Specifies the access key of the Azure Blob storage account to add.
+
+```yaml
+Type: String
+Parameter Sets: Add a Blob storage account
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Account
 Specifies the Data Lake Analytics account name.
 
@@ -50,51 +63,6 @@ Aliases: AccountName
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DataLakeStore
-Specifies the name of the Azure Data Lake Store account to add.
-
-```yaml
-Type: String
-Parameter Sets: Add a Data Lake storage account
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Default
-Indicates that the data source is the new default data source for the Data Lake Analytics account.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Add a Data Lake storage account
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the resource group name of the Data Lake Analytics account.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -115,57 +83,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AccessKey
-Specifies the access key of the Azure Blob storage account to add.
+### -DataLakeStore
+Specifies the name of the Azure Data Lake Store account to add.
 
 ```yaml
 Type: String
-Parameter Sets: Add a Blob storage account
+Parameter Sets: Add a Data Lake storage account
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the resource group name of the Data Lake Analytics account.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -175,6 +119,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### None
 
 ## NOTES
 

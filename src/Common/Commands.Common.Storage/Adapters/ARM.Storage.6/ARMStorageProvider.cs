@@ -12,27 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models
+namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-
-    public class PSAzureAuditLogDataSourceProperties: PSDataSourcePropertiesBase
+    public class ARMStorageProvider : IStorageServiceProvider
     {
-        [JsonIgnore]
-        public override string Kind { get { return PSDataSourceKinds.AzureAuditLog; } }
+        IStorageManagementClient _client;
 
-        /// <summary>
-        /// Id of the azure subscription, which you want audit log to be collect from.
-        /// </summary>
-        [JsonProperty(PropertyName="linkedResourceId")]
-        [JsonConverter(typeof(AuditLogConverter))]
-        public string SubscriptionId { get; set; }
+        public ARMStorageProvider(IStorageManagementClient client)
+        {
+            _client = client;
+        }
+        public IStorageService GetStorageService(string name, string resourceGroupName)
+        {
+            var account = _client.StorageAccounts.GetProperties(resourceGroupName, name);
+            var keys = _client.StorageAccounts.ListKeys(resourceGroupName, name);
+            return new ARMStorageService(account, keys.Keys[0].Value,
+                keys.Keys[1].Value);
+        }
     }
 }

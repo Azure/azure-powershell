@@ -14,17 +14,15 @@ Removes the specified firewall rule in the specified Data Lake Store.
 
 ```
 Remove-AzureRmDataLakeStoreFirewallRule [-Account] <String> [[-Name] <String>] [-PassThru]
- [[-ResourceGroupName] <String>] [-WhatIf] [-Confirm]
+ [[-ResourceGroupName] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataLakeStoreFirewallRule cmdlet removes the specified firewall rule in the specified Data Lake Store.
+The **Remove-AzureRmDataLakeStoreFirewallRule** cmdlet removes the specified firewall rule in the specified Data Lake Store.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Remove a firewall rule from an account  --------------------------
-@{paragraph=PS C:\\\>}
-
+### Example 1: Remove a firewall rule from an account
 ```
 PS C:\> Remove-AzureRmDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyFirewallRule
 ```
@@ -93,21 +91,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -123,11 +106,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
 
-### System.Boolean
+### bool
+If PassThru is specified, returns true upon successful completion.
 
 ## NOTES
 

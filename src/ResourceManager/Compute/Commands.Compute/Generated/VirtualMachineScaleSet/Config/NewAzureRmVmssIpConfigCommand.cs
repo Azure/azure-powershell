@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssIpConfig")]
+    [Cmdlet("New", "AzureRmVmssIpConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class NewAzureRmVmssIpConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -69,6 +69,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] LoadBalancerInboundNatPoolsId { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             var vIpConfigurations = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration();
 

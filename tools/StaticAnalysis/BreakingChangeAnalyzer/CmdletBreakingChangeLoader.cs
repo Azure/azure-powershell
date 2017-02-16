@@ -101,24 +101,27 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             parameterData.ValidateSet.AddRange(validateSet.ValidValues);
                         }
 
+                        if (parameter.HasAttribute<ValidateRangeAttribute>())
+                        {
+                            var validateRange = parameter.GetAttribute<ValidateRangeAttribute>();
+                            parameterData.ValidateRangeMin = Convert.ToInt64(validateRange.MinRange);
+                            parameterData.ValidateRangeMax = Convert.ToInt64(validateRange.MaxRange);
+                        }
+
                         parameterData.ValidateNotNullOrEmpty = parameter.HasAttribute<ValidateNotNullOrEmptyAttribute>();                
 
                         cmdletMetadata.Parameters.Add(parameterData);
 
                         foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
                         {
-                            ParameterSetMetadata parameterSetMetadata = new ParameterSetMetadata()
-                            {
-                                Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
-                            };
+                            var parameterSetMetadata = cmdletMetadata.ParameterSets.FirstOrDefault(s => s.Name.Equals(parameterSet.ParameterSetName));
 
-                            foreach (var set in cmdletMetadata.ParameterSets)
+                            if (parameterSetMetadata == null)
                             {
-                                if (set.Name.Equals(parameterSet.ParameterSetName))
+                                parameterSetMetadata = new ParameterSetMetadata()
                                 {
-                                    parameterSetMetadata = set;
-                                    break;
-                                }
+                                    Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
+                                };
                             }
 
                             Parameter param = new Parameter
@@ -160,8 +163,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     results.Add(cmdletMetadata);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
             }
 
             ModuleMetadata.Cmdlets = results;

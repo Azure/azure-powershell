@@ -14,8 +14,8 @@ Creates a Data Lake Analytics account.
 
 ```
 New-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-DefaultDataLakeStore] <String> [[-Tags] <Hashtable>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultDataLakeStore] <String> [[-Tags] <Hashtable>] [-MaxDegreeOfParallelism <Int32>]
+ [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,9 +32,8 @@ This command creates a Data Lake Analytics account named ContosoAdlAccount that 
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the resource group name of the Data Lake Analytics account.
-To create a resource group, use the New-AzureRmResourceGroup cmdlet.
+### -DefaultDataLakeStore
+Specifies the name of the Data Lake Store account to set as the default data source.
 
 ```yaml
 Type: String
@@ -42,22 +41,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the Data Lake Analytics account name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -79,8 +63,34 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultDataLakeStore
-Specifies the name of the Data Lake Store account to set as the default data source.
+### -MaxDegreeOfParallelism
+The optional maximum supported degree of parallelism for this account. If none is specified, defaults to 30```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxJobCount
+The optional maximum supported jobs running under the account at the same time. If none is specified, defaults to 3```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the Data Lake Analytics account name.
 
 ```yaml
 Type: String
@@ -88,7 +98,36 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -QueryStoreRetention
+The optional number of days that job metadata is retained. If none specified, the default is 30 days.```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the resource group name of the Data Lake Analytics account.
+To create a resource group, use the New-AzureRmResourceGroup cmdlet.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -109,42 +148,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
+### -Tier
+The desired commitment tier for this account to use.```yaml
+Type: TierType
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -154,6 +167,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSDataLakeAnalyticsAccount
+The details of the newly created account.
 
 ## NOTES
 

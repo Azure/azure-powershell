@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgrade Microsoft.Azure.Management.Storage to version 6.1.0-preview
+* Add File Encryption features support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+
+## Version 2.5.0
 
 ## Version 2.4.0
 

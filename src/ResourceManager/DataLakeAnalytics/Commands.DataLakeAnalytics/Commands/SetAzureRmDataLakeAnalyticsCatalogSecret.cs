@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.IncorrectOutputTypeWarning);
             if (Uri != null && Uri.Port <= 0)
             {
                 WriteWarning(string.Format(Resources.NoPortSpecified, Uri));
@@ -72,6 +73,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", DatabaseHost, Port));
 
+            // TODO: Remove the WriteObject during next breaking change release, since this object
+            // is always null.
             WriteObject(DataLakeAnalyticsClient.UpdateSecret(Account, DatabaseName, Secret.UserName,
                 Secret.GetNetworkCredential().Password, toUse.AbsoluteUri));
         }

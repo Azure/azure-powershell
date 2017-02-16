@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 
-  <?define productName="Microsoft Azure PowerShell - December 2016" ?>
+  <?define productName="Microsoft Azure PowerShell - January 2017" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="3.3.0" ?>
+  <?define version="3.4.0" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
