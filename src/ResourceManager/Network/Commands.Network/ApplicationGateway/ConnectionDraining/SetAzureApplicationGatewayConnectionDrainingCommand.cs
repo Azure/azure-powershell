@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayConnectionDraining", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayConnectionDraining"),
         OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class SetAzureApplicationGatewayConnectionDrainingCommand : AzureApplicationGatewayConnectionDrainingBase
     {
@@ -29,18 +29,15 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess("AzureApplicationGatewayConnectionDraining", Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
+            base.ExecuteCmdlet();
+
+            this.BackendHttpSettings.ConnectionDraining = new PSApplicationGatewayConnectionDraining()
             {
-                base.ExecuteCmdlet();
+                Enabled = this.Enabled,
+                DrainTimeoutInSec = this.DrainTimeoutInSec
+            };
 
-                this.BackendHttpSettings.ConnectionDraining = new PSApplicationGatewayConnectionDraining()
-                {
-                    Enabled = this.Enabled,
-                    DrainTimeoutInSec = this.DrainTimeoutInSec
-                };
-
-                WriteObject(this.BackendHttpSettings);
-            }
+            WriteObject(this.BackendHttpSettings);
         }
     }
 }

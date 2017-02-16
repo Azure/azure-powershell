@@ -17,24 +17,21 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayConnectionDraining", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayConnectionDraining"),
         OutputType(typeof(PSApplicationGatewayConnectionDraining))]
     public class NewAzureApplicationGatewayConnectionDrainingCommand : AzureApplicationGatewayConnectionDrainingBase
     {
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess("AzureApplicationGatewayConnectionDraining", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            base.ExecuteCmdlet();
+
+            PSApplicationGatewayConnectionDraining connectionDraining = new PSApplicationGatewayConnectionDraining()
             {
-                base.ExecuteCmdlet();
+                Enabled = this.Enabled,
+                DrainTimeoutInSec = this.DrainTimeoutInSec,
+            };
 
-                PSApplicationGatewayConnectionDraining connectionDraining = new PSApplicationGatewayConnectionDraining()
-                {
-                    Enabled = this.Enabled,
-                    DrainTimeoutInSec = this.DrainTimeoutInSec,
-                };
-
-                WriteObject(connectionDraining);
-            }
+            WriteObject(connectionDraining);
         }
     }
 }
