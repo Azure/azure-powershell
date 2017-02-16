@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account certificate name.")]
         [ValidateNotNullOrEmpty]
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.CertificateName))
             {
-                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountCertificates(this.ResourceGroupName,this.IntegrationAccountName), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountCertificates(this.ResourceGroupName,this.Name), true);
             }
             else
             {
-                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName, this.IntegrationAccountName, this.CertificateName), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName, this.Name, this.CertificateName), true);
             }
         }
     }

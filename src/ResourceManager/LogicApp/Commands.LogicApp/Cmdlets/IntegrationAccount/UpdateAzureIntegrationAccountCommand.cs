@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account location.",
             ValueFromPipelineByPropertyName = true)]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (!string.IsNullOrEmpty(this.Location))
             {
@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts", this.IntegrationAccountName),
+                    "Microsoft.Logic/integrationAccounts", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts", this.IntegrationAccountName),
-                IntegrationAccountName,
+                    "Microsoft.Logic/integrationAccounts", this.Name),
+                Name,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName,
+                        IntegrationAccountClient.UpdateIntegrationAccount(this.ResourceGroupName, this.Name,
                             integrationAccount), true);
                 },
                 null);

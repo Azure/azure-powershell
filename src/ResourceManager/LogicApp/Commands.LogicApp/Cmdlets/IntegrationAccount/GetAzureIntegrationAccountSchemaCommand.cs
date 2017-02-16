@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account schema name.")]
         [ValidateNotNullOrEmpty]
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.SchemaName))
             {
-                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountSchemas(this.ResourceGroupName,this.IntegrationAccountName), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountSchemas(this.ResourceGroupName,this.Name), true);
             }
             else
             {
-                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName, this.IntegrationAccountName, this.SchemaName), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName, this.Name, this.SchemaName), true);
             }
         }
     }

@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account location.",
             ValueFromPipelineByPropertyName = true)]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
 
             this.WriteObject(
-                IntegrationAccountClient.CreateIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName, new IntegrationAccount
+                IntegrationAccountClient.CreateIntegrationAccount(this.ResourceGroupName, this.Name, new IntegrationAccount
                 {
                     Location = this.Location,
                     Sku = new IntegrationAccountSku

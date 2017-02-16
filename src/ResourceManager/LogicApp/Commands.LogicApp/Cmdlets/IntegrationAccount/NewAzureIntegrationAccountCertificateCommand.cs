@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(ParameterSetName = "PublicKey", Mandatory = true)]
         [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account certificate name.",
             ValueFromPipelineByPropertyName = true)]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             string certificate = null;
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             if (!string.IsNullOrEmpty(this.PublicCertificateFilePath))
             {

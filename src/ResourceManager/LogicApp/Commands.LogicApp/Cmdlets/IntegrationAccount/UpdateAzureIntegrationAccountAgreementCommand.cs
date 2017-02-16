@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account agreement name.",
             ValueFromPipelineByPropertyName = true)]
@@ -113,20 +113,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var integrationAccountAgreement =
                 IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName,
-                    this.IntegrationAccountName, this.AgreementName);
+                    this.Name, this.AgreementName);
 
             if (this.Metadata != null)
             {
                 integrationAccountAgreement.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var hostPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.IntegrationAccountName,
+            var hostPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
                 string.IsNullOrEmpty(this.HostPartner)
                     ? integrationAccountAgreement.HostPartner
                     : this.HostPartner);
             integrationAccountAgreement.HostPartner = hostPartner.Name;
 
-            var guestPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.IntegrationAccountName,
+            var guestPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
                 string.IsNullOrEmpty(this.GuestPartner)
                     ? integrationAccountAgreement.GuestPartner
                     : this.GuestPartner);
@@ -189,14 +189,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/agreements", this.IntegrationAccountName),
+                    "Microsoft.Logic/integrationAccounts/agreements", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/agreements", this.IntegrationAccountName),
-                IntegrationAccountName,
+                    "Microsoft.Logic/integrationAccounts/agreements", this.Name),
+                Name,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccountAgreement(this.ResourceGroupName, this.IntegrationAccountName,
+                        IntegrationAccountClient.UpdateIntegrationAccountAgreement(this.ResourceGroupName, this.Name,
                             this.AgreementName,
                             integrationAccountAgreement), true);
 

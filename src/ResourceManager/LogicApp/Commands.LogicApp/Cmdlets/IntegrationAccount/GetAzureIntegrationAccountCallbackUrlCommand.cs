@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account callback URL expiry time.")]
         [ValidateNotNullOrEmpty]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
 
             this.WriteObject(
-                IntegrationAccountClient.GetIntegrationAccountCallbackUrl(this.ResourceGroupName, this.IntegrationAccountName,
+                IntegrationAccountClient.GetIntegrationAccountCallbackUrl(this.ResourceGroupName, this.Name,
                     (NotAfter != null)
                         ? new GetCallbackUrlParameters
                         {

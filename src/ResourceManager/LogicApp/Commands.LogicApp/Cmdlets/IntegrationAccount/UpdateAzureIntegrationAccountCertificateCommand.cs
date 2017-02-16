@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string IntegrationAccountName { get; set; }
+        [Alias("IntegrationAccountName", "ResourceName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account certificate name.",
             ValueFromPipelineByPropertyName = true)]
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
             var integrationAccountCertificate =
                 IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName,
-                    this.IntegrationAccountName, this.CertificateName);
+                    this.Name, this.CertificateName);
 
             if (!string.IsNullOrEmpty(this.KeyName))
             {
@@ -133,10 +133,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/certificates", this.IntegrationAccountName),
+                    "Microsoft.Logic/integrationAccounts/certificates", this.Name),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/certificates", this.IntegrationAccountName),
-                IntegrationAccountName,
+                    "Microsoft.Logic/integrationAccounts/certificates", this.Name),
+                Name,
                 () =>
                 {
                     this.WriteObject(
