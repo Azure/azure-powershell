@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         ///  Defines the set of audit action groups that would be used by the auditing settings
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit action groups")]
-        [ValidateNotNullOrEmpty]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure,
             SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure,
             SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
         public string[] EventType { get; set; }
 
         /// <summary>
