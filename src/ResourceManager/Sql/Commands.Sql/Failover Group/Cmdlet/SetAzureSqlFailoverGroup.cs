@@ -99,17 +99,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
-            newEntity.Add(new AzureSqlFailoverGroupModel()
-            {
-                ResourceGroupName = ResourceGroupName,
-                ServerName = ServerName,
-                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
-                Location = location,
-                FailoverGroupName = FailoverGroupName,
-                ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy : model.First().FailoverGroupReadWriteEndpoint.FailoverPolicy,
-                FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHours") ? GracePeriodWithDataLossHours : model.First().FailoverWithDataLossGracePeriodHours,
-                ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : model.First().FailoverGroupReadOnlyEndpoint.FailoverPolicy,
-            });
+            AzureSqlFailoverGroupModel newModel = model.First();
+
+            newModel.ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy : newModel.ReadWriteFailoverPolicy;
+            newModel.FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHours") ? GracePeriodWithDataLossHours : newModel.FailoverWithDataLossGracePeriodHours;
+            newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : newModel.ReadOnlyFailoverPolicy;
+            newEntity.Add(newModel);
+
             return newEntity;
         }
 

@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> GetEntity()
         {
+
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName)
             };
@@ -72,8 +73,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.Failover(
                     this.ResourceGroupName,
-                    this.ResourceGroupName,
                     this.ServerName,
+                    this.FailoverGroupName,
                     this.AllowDataLoss.IsPresent)
            };
         }
