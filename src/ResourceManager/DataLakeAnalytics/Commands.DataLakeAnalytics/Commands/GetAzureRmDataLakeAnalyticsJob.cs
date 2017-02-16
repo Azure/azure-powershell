@@ -172,8 +172,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 var filterString = string.Join(" and ", filter.ToArray());
 
                 // List the jobs with the given filters
+                bool warnUser;
                 var list = DataLakeAnalyticsClient.ListJobs(Account,
-                    string.IsNullOrEmpty(filterString) ? null : filterString, Top, null, "submitTime desc");
+                    string.IsNullOrEmpty(filterString) ? null : filterString, Top, null, "submitTime desc", out warnUser);
+                if (warnUser)
+                {
+                    WriteWarning(string.Format(Resources.MoreJobsToGetWarning, Top.HasValue ? Top.Value : 500));
+                }
+
                 WriteObject(list, true);
             }
         }

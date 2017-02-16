@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// The policy assignment properties.
@@ -38,5 +39,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// </summary>
         [JsonProperty(Required = Required.Always)]
         public string PolicyDefinitionId { get; set; }
+
+        /// <summary>
+        /// The parameter values.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject Parameters { get; set; }
     }
 }

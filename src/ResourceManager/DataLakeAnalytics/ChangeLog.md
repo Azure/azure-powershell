@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Firewall Rule support to Data Lake Analytics:
+    - Add-AzureRMDataLakeAnalyticsFirewallRule
+    - Get-AzureRMDataLakeAnalyticsFirewallRule
+    - Set-AzureRMDataLakeAnalyticsFirewallRule
+    - Remove-AzureRMDataLakeAnalyticsFirewallRule
+    - Set-AzureRMDataLakeAnalyticsAccount supports enabling/disabling the firewall and allowing/blocking Azure originating IPs through the firewall
+    - Warnings will be raised if updating firewall rules when the firewall is disabled
+* Fix Get-AzureRMDataLakeAnalyticsJob functionality:
+    - Top now correctly returns the number of jobs specified. The default number of jobs to return is 500. The more jobs requested the longer the command will take.
+* Remove explicit restrictions on resource locations. If Data Lake Analytics is not supported in a region, we will surface an error from the service.
 
 ## Version 2.5.0
 * Update Get-AdlJob to support Top parameter

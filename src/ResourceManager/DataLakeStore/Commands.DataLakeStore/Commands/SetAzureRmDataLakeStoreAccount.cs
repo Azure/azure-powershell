@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public TierType? Tier { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally allow/block Azure originating IPs through the firewall.")]
+        [ValidateNotNull]
+        public FirewallAllowAzureIpsState? AllowAzureIpState { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
@@ -88,6 +93,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 FirewallState = currentAccount.FirewallState;
             }
 
+            if (AllowAzureIpState.HasValue && FirewallState.Value == Management.DataLake.Store.Models.FirewallState.Disabled)
+            {
+                WriteWarning(string.Format(Resources.FirewallDisabledWarning, Name));
+            }
+
+            if (!AllowAzureIpState.HasValue)
+            {
+                AllowAzureIpState = currentAccount.FirewallAllowAzureIps;
+            }
+
             WriteObject(
                 new PSDataLakeStoreAccount(
                     DataLakeStoreClient.UpdateAccount(
@@ -96,6 +111,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         DefaultGroup,
                         TrustedIdProviderState.GetValueOrDefault(),
                         FirewallState.GetValueOrDefault(),
+                        AllowAzureIpState.GetValueOrDefault(),
                         Tags,
                         tier: Tier)));
         }
