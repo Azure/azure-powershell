@@ -150,6 +150,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         {
             cmdlet.Categories = new List<string> { "TestCategory1"};
             cmdlet.Enabled = false;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
 
             ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
@@ -165,6 +166,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         {
             cmdlet.Timegrains = new List<string> { "PT1H" };
             cmdlet.Enabled = false;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
 
             ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
