@@ -20,6 +20,8 @@
 ## Current Release
 * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
     - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
+* Add-AzureRmEnvironment and Set-AzureRmEnvironment
+    - Add the BatchEndpointResourceId parameter, which allows you to specify the Azure Batch Active Directory resource ID to use when acquiring authentication tokens for the Batch service.
 
 ## Version 3.4.0
 * Start-Job Support for AzureRm cmdlets. 

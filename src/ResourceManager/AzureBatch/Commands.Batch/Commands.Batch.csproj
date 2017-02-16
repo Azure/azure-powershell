@@ -202,8 +202,6 @@
     <Compile Include="Models\NodeFileOperationParameters.cs" />
     <Compile Include="Models\PoolOperationParameters.cs" />
     <Compile Include="Models\PSBatchLocationQuotas.cs" />
-    <Compile Include="Models\PSCloudPool.cs" />
-    <Compile Include="Models\PSNodeFile.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
     <Compile Include="Models.Generated\PSAutoPoolSpecification.cs" />
     <Compile Include="Models.Generated\PSAutoScaleRun.cs" />
