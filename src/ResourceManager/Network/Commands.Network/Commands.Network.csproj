@@ -286,6 +286,7 @@
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
+    <Compile Include="Models\PSApplicationGatewayConnectionDraining.cs" />
     <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayWebApplicationFirewallConfiguration.cs" />
