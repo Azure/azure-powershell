@@ -255,12 +255,5 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-BlobAuditingWithAuditActionGroups");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestTableAuditingWithAuditActionsAndAuditActionGroups()
-        {
-            RunPowerShellTest("Test-TableAuditingWithAuditActionsAndAuditActionGroups");
-        }
     }
 }

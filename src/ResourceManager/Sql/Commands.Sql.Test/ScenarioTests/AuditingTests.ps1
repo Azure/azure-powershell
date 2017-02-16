@@ -1303,32 +1303,3 @@ function Test-BlobAuditingWithAuditActionGroups
 		Remove-AuditingTestEnvironment $testSuffix
 	}
 }
-
- <#
-.SYNOPSIS
-Tests that trying to configure table auditing with audit actions or action groups fails.
-#>
-function Test-TableAuditingWithAuditActionsAndAuditActionGroups
-{
-	$testSuffix = 50199
-	Create-AuditingTestEnvironment $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-
-	try
-	{
-		# Test
-		$selectAuditAction = "SELECT ON database::[$dbName] BY [public]"
-		Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditAction $selectAuditAction}
-		
-		# Test
-		Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "DATABASE_OPERATION_GROUP","DATABASE_LOGOUT_GROUP"}
-
-		# Test
-		Assert-Throws {Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "DATABASE_OPERATION_GROUP"}
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AuditingTestEnvironment $testSuffix
-	}
-}
