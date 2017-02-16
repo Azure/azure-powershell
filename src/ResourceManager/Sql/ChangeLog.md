@@ -26,6 +26,16 @@
 	- Get-AzureRmSqlServerTransparentDataEncryptionProtector : This cmdlet returns the current encryption protector for a Sql Server.
 	- Set-AzureRmSqlServerTransparentDataEncryptionProtector : This cmdlet sets the encryption protector for a Sql Server. The encryption protector can be set to a key from Azure Key Vault or a key that is managed by Azure Sql.
 
+* Adding new cmdlets for support for Azure SQL feature AutoDR:
+	-This is a new feature in Azure SQL that supports failover of multiple Azure Sql Databases to the partner server at the same time during disaster and allows automatic failover
+	- Add-AzureRmSqlDatabaseToFailoverGroup add Azure Sql Databases into a Failover Group
+	- Get-AzureRmSqlDatabaseFailoverGroup get the Failover Group entity
+	- New-AzureRmSqlDatabaseFailoverGroup creates a new Failover Group
+	- Remove-AzureRmSqlDatabaseFromFailoverGroup removes Azure Sql Databases from a Failover Group
+	- Remove-AzureRmSqlDatabaseFailoverGroup Failover Group deletes the Failover Group
+	- Set-AzureRmSqlDatabaseFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Failover Group
+	- Switch-AzureRmSqlDatabaseFailoverGroup issues the failover operation with data loss or without data loss	
+
 ## Version 2.5.0
 * Added new return parameter "AuditType" to Get-AzureRmSqlDatabaseAuditingPolicy and Get-AzureRmSqlServerAuditingPolicy returned object
     - This parameter value indicates the returned auditing policy type - Table or Blob.
