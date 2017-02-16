@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public const string StorageAccountIdParamName = "StorageAccountId";
         public const string ServiceBusRuleIdParamName = "ServiceBusRuleId";
         public const string WorkspacetIdParamName = "WorkspaceId";
+        public const string EnabledParamName = "EnabledParamName";
 
         #region Parameters declarations
 
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics should be enabled or disabled")]
         [ValidateNotNullOrEmpty]
-        public bool? Enabled { get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets the categories parameter of the cmdlet
@@ -105,6 +106,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         private bool isWorkspaceParamPresent;
 
+        private bool isEnbledParameterPresent;
+
         protected override void ProcessRecordInternal()
         {
             HashSet<string> usedParams = new HashSet<string>(this.MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
@@ -112,11 +115,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             this.isStorageParamPresent = usedParams.Contains(StorageAccountIdParamName);
             this.isServiceBusParamPresent = usedParams.Contains(ServiceBusRuleIdParamName);
             this.isWorkspaceParamPresent = usedParams.Contains(WorkspacetIdParamName);
+            this.isEnbledParameterPresent = usedParams.Contains(EnabledParamName);
 
             if (!this.isStorageParamPresent &&
                 !this.isServiceBusParamPresent &&
                 !this.isWorkspaceParamPresent &&
-                !this.Enabled.HasValue)
+                !this.isEnbledParameterPresent)
             {
                 throw new ArgumentException("No operation is specified");
             }
@@ -197,7 +201,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         private void SetSelectedTimegrains(ServiceDiagnosticSettingsResource properties)
         {
-            if (!this.Enabled.HasValue)
+            if (!this.isEnbledParameterPresent)
             {
                 throw new ArgumentException("Parameter 'Enabled' is required by 'Timegrains' parameter.");
             }
@@ -211,13 +215,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 {
                     throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric timegrain '{0}' is not available", timegrainString));
                 }
-                metricSettings.Enabled = this.Enabled.Value;
+                metricSettings.Enabled = this.Enabled;
             }
         }
 
         private void SetSelectedCategories(ServiceDiagnosticSettingsResource properties)
         {
-            if (!this.Enabled.HasValue)
+            if (!this.isEnbledParameterPresent)
             {
                 throw new ArgumentException("Parameter 'Enabled' is required by 'Categories' parameter.");
             }
@@ -231,25 +235,25 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Log category '{0}' is not available", category));
                 }
 
-                logSettings.Enabled = this.Enabled.Value;
+                logSettings.Enabled = this.Enabled;
             }
         }
 
         private void SetAllCategoriesAndTimegrains(ServiceDiagnosticSettingsResource properties)
         {
-            if (!this.Enabled.HasValue)
+            if (!this.isEnbledParameterPresent)
             {
                 return;
             }
 
             foreach (var log in properties.Logs)
             {
-                log.Enabled = this.Enabled.Value;
+                log.Enabled = this.Enabled;
             }
 
             foreach (var metric in properties.Metrics)
             {
-                metric.Enabled = this.Enabled.Value;
+                metric.Enabled = this.Enabled;
             }
         }
 
