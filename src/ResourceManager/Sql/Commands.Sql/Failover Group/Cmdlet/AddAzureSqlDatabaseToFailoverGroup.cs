@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// The name of the Azure SQL Database FailoverGroup
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Failover Group.")]
         [ValidateNotNullOrEmpty]
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// The Azure SQL Databases to be added to the secondary server
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The Azure SQL Databases to be added to the secondary server.")]
         [ValidateNotNullOrEmpty]
-        public List<AzureSqlDatabaseModel>  DatabaseName { get; set; }
+        public List<AzureSqlDatabaseModel> Databases { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Failover Group
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
 
-           if (MyInvocation.BoundParameters.ContainsKey("Database"))
+           if (MyInvocation.BoundParameters.ContainsKey("Databases") || Databases != null)
             {
-                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(DatabaseName));
+                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Databases));
             }
             else
             {
@@ -122,12 +122,19 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         /// <param name="models">The input as a list of database modelsl</param>
         /// <returns>The list of database ids</returns>
-        public static List<string> ConvertDatabaseModelToDatabaseHelper(ICollection<AzureSqlDatabaseModel> models)
+        public List<string> ConvertDatabaseModelToDatabaseHelper(ICollection<AzureSqlDatabaseModel> models)
         {
             List<string> result = new List<string>();
 
             foreach (var model in models.ToList()) {
-                result.Add(model.DatabaseId.ToString());
+                if (String.Compare(model.DatabaseName, "master", StringComparison.Ordinal) == 0)
+                {
+                    WriteWarning("Can not add master database into the failover group. This operation request will be ignored");
+                }
+                else
+                {
+                    result.Add(model.ResourceId);
+                }
             }
 
             return result;

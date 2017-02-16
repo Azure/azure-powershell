@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         internal AzureSqlFailoverGroupModel Failover(string resourceGroupName, string serverName, string failoverGroupName, bool allowDataLoss)
         {
 
-            if (allowDataLoss)
+            if (!allowDataLoss)
             {
                 Communicator.Failover(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
             }
