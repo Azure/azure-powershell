@@ -181,6 +181,10 @@
     <Compile Include="ApplicationGateway\BackendHttpSettings\NewAzureApplicationGatewayBackendHttpSettingsCommand.cs" />
     <Compile Include="ApplicationGateway\BackendHttpSettings\RemoveAzureApplicationGatewayBackendHttpSettingsCommand.cs" />
     <Compile Include="ApplicationGateway\BackendHttpSettings\SetAzureApplicationGatewayBackendHttpSettingsCommand.cs" />
+    <Compile Include="ApplicationGateway\ConnectionDraining\AzureApplicationGatewayConnectionDrainingBase.cs" />
+    <Compile Include="ApplicationGateway\ConnectionDraining\GetAzureApplicationGatewayConnectionDrainingCommand.cs" />
+    <Compile Include="ApplicationGateway\ConnectionDraining\NewAzureApplicationGatewayConnectionDrainingCommand.cs" />
+    <Compile Include="ApplicationGateway\ConnectionDraining\SetAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\AzureApplicationGatewayWebApplicationFirewallConfigurationBase.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
