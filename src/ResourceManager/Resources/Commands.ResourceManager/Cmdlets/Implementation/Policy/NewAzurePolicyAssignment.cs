@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment policy parameter object.
         /// </summary>
         [Parameter(ParameterSetName = PolicyParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy parameter object.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The policy parameter object.")]
         public Hashtable PolicyParameterObject { get; set; }
 
         /// <summary>
@@ -168,13 +168,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         var dp = new RuntimeDefinedParameter
                         {
                             Name = param.Name,
-                            ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(object[]) : typeof(string)
+                            ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(string[]) : typeof(string)
                         };
                         dp.Attributes.Add(new ParameterAttribute
                         {
                             ParameterSetName = ParameterlessPolicyParameterSetName,
                             Mandatory = true,
-                            ValueFromPipelineByPropertyName = true,
+                            ValueFromPipelineByPropertyName = false,
                             HelpMessage = helpString
                         });
                         this.dynamicParameters.Add(param.Name, dp);
