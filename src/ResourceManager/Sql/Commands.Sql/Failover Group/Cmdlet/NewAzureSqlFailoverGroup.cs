@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the Azure Sql Failover Group
+        /// Gets or sets the tag associated with the Azure Sql Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Failover Group")]
+            HelpMessage = "The tag to associate with the Azure Sql Failover Group")]
         [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
