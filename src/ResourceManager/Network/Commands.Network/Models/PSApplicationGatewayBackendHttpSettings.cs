@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
         public string CookieBasedAffinity { get; set; }
         public uint RequestTimeout { get; set; }
+        public PSApplicationGatewayConnectionDraining ConnectionDraining { get; set; }
         public PSResourceId Probe { get; set; }
         public List<PSResourceId> AuthenticationCertificates { get; set; }
         public string ProvisioningState { get; set; }

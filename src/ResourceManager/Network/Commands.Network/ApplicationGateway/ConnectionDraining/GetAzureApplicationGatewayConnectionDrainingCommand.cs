@@ -12,28 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayWebApplicationFirewallConfigurationBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayConnectionDraining"),
+        OutputType(typeof(PSApplicationGatewayConnectionDraining))]
+    public class GetAzureApplicationGatewayConnectionDrainingCommand : NetworkBaseCmdlet
     {
         [Parameter(
-               Mandatory = true,
-               HelpMessage = "Whether web application firewall functionality is enabled or not.")]
-        [ValidateNotNullOrEmpty]
-        public bool Enabled { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Web application firewall mode")]
-        [ValidateSet("Detection", "Prevention", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string FirewallMode { get; set; }
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The backend http settings")]
+        public PSApplicationGatewayBackendHttpSettings BackendHttpSettings { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            WriteObject(this.BackendHttpSettings.ConnectionDraining, true);
         }
     }
 }
