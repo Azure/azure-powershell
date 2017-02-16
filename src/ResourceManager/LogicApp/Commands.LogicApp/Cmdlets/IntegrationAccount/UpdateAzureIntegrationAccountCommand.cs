@@ -37,9 +37,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account location.",
             ValueFromPipelineByPropertyName = true)]
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
 
             if (!string.IsNullOrEmpty(this.Location))
             {
@@ -81,14 +80,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts", this.Name),
+                    "Microsoft.Logic/integrationAccounts", this.IntegrationAccountName),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts", this.Name),
-                Name,
+                    "Microsoft.Logic/integrationAccounts", this.IntegrationAccountName),
+                IntegrationAccountName,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccount(this.ResourceGroupName, this.Name,
+                        IntegrationAccountClient.UpdateIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName,
                             integrationAccount), true);
                 },
                 null);

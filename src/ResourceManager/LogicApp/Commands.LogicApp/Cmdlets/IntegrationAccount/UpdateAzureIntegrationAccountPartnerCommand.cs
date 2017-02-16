@@ -47,9 +47,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account partner name.",
             ValueFromPipelineByPropertyName = true)]
@@ -88,11 +87,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
 
             var integrationAccountPartner = IntegrationAccountClient.GetIntegrationAccountPartner(
                 this.ResourceGroupName,
-                this.Name, this.PartnerName);
+                this.IntegrationAccountName, this.PartnerName);
 
             if (!string.IsNullOrEmpty(this.PartnerType))
             {
@@ -112,10 +111,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                    "Microsoft.Logic/integrationAccounts/partners", this.IntegrationAccountName),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/partners", this.Name),
-                Name,
+                    "Microsoft.Logic/integrationAccounts/partners", this.IntegrationAccountName),
+                IntegrationAccountName,
                 () =>
                 {
                     this.WriteObject(

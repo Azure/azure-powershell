@@ -33,9 +33,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.")]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account partner name.")]
         [ValidateNotNullOrEmpty]
@@ -53,11 +52,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
             ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/integrationAccounts/partners", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/partners", this.Name),
-                Name,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/integrationAccounts/partners", this.IntegrationAccountName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/partners", this.IntegrationAccountName),
+                IntegrationAccountName,
                 () => {
-                    IntegrationAccountClient.RemoveIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName);
+                    IntegrationAccountClient.RemoveIntegrationAccountPartner(this.ResourceGroupName, this.IntegrationAccountName, this.PartnerName);
                 });
         }
     }

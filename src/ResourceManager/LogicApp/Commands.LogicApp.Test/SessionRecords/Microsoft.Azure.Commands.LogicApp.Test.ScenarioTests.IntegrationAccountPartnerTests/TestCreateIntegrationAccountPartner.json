@@ -31,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-request-id": [
-          "f7e002d5-a9a1-4181-9088-3c89b978930e"
+          "a3f6eb60-a965-4f0f-b0d0-602765556661"
         ],
         "x-ms-correlation-request-id": [
-          "f7e002d5-a9a1-4181-9088-3c89b978930e"
+          "a3f6eb60-a965-4f0f-b0d0-602765556661"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211909Z:f7e002d5-a9a1-4181-9088-3c89b978930e"
+          "WESTUS2:20170215T224015Z:a3f6eb60-a965-4f0f-b0d0-602765556661"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,19 +49,19 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:08 GMT"
+          "Wed, 15 Feb 2017 22:40:15 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "be720a11-7165-41dc-a06b-b6ae51e6c447"
+          "7fb0d85b-978e-4242-be5c-be53650ffc1f"
         ],
         "accept-language": [
           "en-US"
@@ -70,13 +70,13 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/onesdk1435' under resource group 'IntegrationAccountPsCmdletTest' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/onesdk488' under resource group 'IntegrationAccountPsCmdletTest' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "180"
+          "179"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -91,13 +91,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "cffbb5a2-73fd-4562-8bce-a0c6f6d7bd61"
+          "38c0a8f7-ca8e-48dc-8582-950eeed94105"
         ],
         "x-ms-correlation-request-id": [
-          "cffbb5a2-73fd-4562-8bce-a0c6f6d7bd61"
+          "38c0a8f7-ca8e-48dc-8582-950eeed94105"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211909Z:cffbb5a2-73fd-4562-8bce-a0c6f6d7bd61"
+          "WESTUS2:20170215T224016Z:38c0a8f7-ca8e-48dc-8582-950eeed94105"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -106,19 +106,19 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:09 GMT"
+          "Wed, 15 Feb 2017 22:40:15 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d821be01-ccb9-4e78-909a-9f186d2cf74d"
+          "b2dda3a7-694d-4036-bd60-ef3300c25ab9"
         ],
         "accept-language": [
           "en-US"
@@ -127,13 +127,13 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435\",\r\n  \"name\": \"onesdk1435\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488\",\r\n  \"name\": \"onesdk488\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "295"
+          "293"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -148,37 +148,37 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:ffefc75f-fa40-48fb-b378-ca976ec2e3c2"
+          "brazilsouth:5d08d009-c3d6-4e13-919b-b435e47fac49"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14836"
+          "14462"
         ],
         "x-ms-correlation-request-id": [
-          "27e10b38-37dc-4b4e-8917-18aac061a98d"
+          "269920f8-990f-4563-8d8e-4a84d9f13508"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211911Z:27e10b38-37dc-4b4e-8917-18aac061a98d"
+          "WESTUS2:20170215T224019Z:269920f8-990f-4563-8d8e-4a84d9f13508"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:11 GMT"
+          "Wed, 15 Feb 2017 22:40:18 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "862a22d0-b505-4d4d-a0f7-c6313376b297"
+          "cef75143-05c6-4f2a-a7f3-93b4627824b2"
         ],
         "accept-language": [
           "en-US"
@@ -187,13 +187,13 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435\",\r\n  \"name\": \"onesdk1435\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488\",\r\n  \"name\": \"onesdk488\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "295"
+          "293"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -208,32 +208,32 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:c76f2b6b-3511-4aab-8dce-32ac72bab760"
+          "brazilsouth:50d953ae-65c8-42c2-a25a-1fc834edfd30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14834"
+          "14460"
         ],
         "x-ms-correlation-request-id": [
-          "a696aa1a-a062-406b-be60-62044bf03a51"
+          "0939cb6c-e13a-43c7-8f23-92c361179512"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211912Z:a696aa1a-a062-406b-be60-62044bf03a51"
+          "WESTUS2:20170215T224020Z:0939cb6c-e13a-43c7-8f23-92c361179512"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:12 GMT"
+          "Wed, 15 Feb 2017 22:40:19 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"brazilsouth\"\r\n}",
       "RequestHeaders": {
@@ -244,7 +244,7 @@
           "96"
         ],
         "x-ms-client-request-id": [
-          "33b3ec8b-6ce1-497c-b25b-c5aed65a01ae"
+          "a031aa28-c49f-4196-9ec9-8429a6247f50"
         ],
         "accept-language": [
           "en-US"
@@ -253,13 +253,13 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435\",\r\n  \"name\": \"onesdk1435\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488\",\r\n  \"name\": \"onesdk488\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "295"
+          "293"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -271,37 +271,37 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:bb469403-4294-4648-aaa1-0e8383daeb02"
+          "brazilsouth:a3e85462-b7bf-4262-bfab-f8ccb98f9e76"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1189"
         ],
         "x-ms-correlation-request-id": [
-          "88f0185e-2d11-4b7f-af79-fb95f692e28c"
+          "73c3dfa0-8e70-425e-b0ff-23cb4ccb7c51"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211911Z:88f0185e-2d11-4b7f-af79-fb95f692e28c"
+          "WESTUS2:20170215T224019Z:73c3dfa0-8e70-425e-b0ff-23cb4ccb7c51"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:11 GMT"
+          "Wed, 15 Feb 2017 22:40:18 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435/partners/onesdk4295?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNS9wYXJ0bmVycy9vbmVzZGs0Mjk1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488/partners/onesdk9163?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4L3BhcnRuZXJzL29uZXNkazkxNjM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1da2e7fe-57c9-47e2-884d-9fc68dfff22b"
+          "67eefbc3-c5d7-4b59-958e-4cc1a7cd36d5"
         ],
         "accept-language": [
           "en-US"
@@ -310,13 +310,13 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'onesdk4295' could not be found in integration account 'onesdk1435'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'onesdk9163' could not be found in integration account 'onesdk488'.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "129"
+          "128"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -328,32 +328,32 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:28e5e7ea-26c9-49ac-bc8d-ad7f4127eb19"
+          "brazilsouth:631afbbe-0e55-4523-a043-93a5e03a6caf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14835"
+          "14461"
         ],
         "x-ms-correlation-request-id": [
-          "f12bb4f2-6cbf-49d9-94d0-da00372fc12c"
+          "2bcd9e9e-c828-4c3d-b6ba-7be71106dab8"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211911Z:f12bb4f2-6cbf-49d9-94d0-da00372fc12c"
+          "WESTUS2:20170215T224019Z:2bcd9e9e-c828-4c3d-b6ba-7be71106dab8"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:11 GMT"
+          "Wed, 15 Feb 2017 22:40:18 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435/partners/onesdk4295?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNS9wYXJ0bmVycy9vbmVzZGs0Mjk1P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488/partners/onesdk9163?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4L3BhcnRuZXJzL29uZXNkazkxNjM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"01\",\r\n            \"value\": \"Test1\"\r\n          },\r\n          {\r\n            \"qualifier\": \"02\",\r\n            \"value\": \"Test2\"\r\n          },\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test3\"\r\n          },\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test4\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -364,7 +364,7 @@
           "522"
         ],
         "x-ms-client-request-id": [
-          "1fb06aa1-a1d3-4d4f-b27d-9495c718c3e7"
+          "f14b1642-1043-437e-90ab-d962668ad1e6"
         ],
         "accept-language": [
           "en-US"
@@ -373,13 +373,13 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"01\",\r\n            \"value\": \"Test1\"\r\n          },\r\n          {\r\n            \"qualifier\": \"02\",\r\n            \"value\": \"Test2\"\r\n          },\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test3\"\r\n          },\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test4\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-02-01T21:19:12.4740671Z\",\r\n    \"changedTime\": \"2017-02-01T21:19:12.4749236Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435/partners/onesdk4295\",\r\n  \"name\": \"onesdk4295\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"01\",\r\n            \"value\": \"Test1\"\r\n          },\r\n          {\r\n            \"qualifier\": \"02\",\r\n            \"value\": \"Test2\"\r\n          },\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test3\"\r\n          },\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test4\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-02-15T22:40:20.0764404Z\",\r\n    \"changedTime\": \"2017-02-15T22:40:20.0773136Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488/partners/onesdk9163\",\r\n  \"name\": \"onesdk9163\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "583"
+          "582"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -391,37 +391,37 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:3bf50927-b1db-46af-ae72-c16242d8b13d"
+          "brazilsouth:af3a7b80-6557-4f7d-86ee-05ce6d8afd66"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1188"
         ],
         "x-ms-correlation-request-id": [
-          "f424d19f-9f42-4f14-92e7-620d5fce78db"
+          "a4a8a35a-e05a-4951-b33c-9fac987a60ce"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211912Z:f424d19f-9f42-4f14-92e7-620d5fce78db"
+          "WESTUS2:20170215T224019Z:a4a8a35a-e05a-4951-b33c-9fac987a60ce"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:11 GMT"
+          "Wed, 15 Feb 2017 22:40:19 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435/partners/onesdk4697?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNS9wYXJ0bmVycy9vbmVzZGs0Njk3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488/partners/onesdk4415?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4L3BhcnRuZXJzL29uZXNkazQ0MTU/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dcf4d160-1f16-4591-bd69-1ef785221f47"
+          "202b36c3-72e3-4518-b41e-67abd1955b7a"
         ],
         "accept-language": [
           "en-US"
@@ -430,13 +430,13 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'onesdk4697' could not be found in integration account 'onesdk1435'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PartnerNotFound\",\r\n    \"message\": \"The partner 'onesdk4415' could not be found in integration account 'onesdk488'.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "129"
+          "128"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -448,32 +448,32 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:831ea6c5-ccab-4de7-9378-bf9ff06d61d9"
+          "brazilsouth:2b340f72-9665-4f59-a663-13e89c7c5962"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14833"
+          "14459"
         ],
         "x-ms-correlation-request-id": [
-          "9662b00f-8b6b-45de-a37d-60cfc0bf55f7"
+          "ca68623d-05dd-46ea-b413-6b0423004851"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211912Z:9662b00f-8b6b-45de-a37d-60cfc0bf55f7"
+          "WESTUS2:20170215T224020Z:ca68623d-05dd-46ea-b413-6b0423004851"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:12 GMT"
+          "Wed, 15 Feb 2017 22:40:19 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435/partners/onesdk4697?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNS9wYXJ0bmVycy9vbmVzZGs0Njk3P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488/partners/onesdk4415?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4L3BhcnRuZXJzL29uZXNkazQ0MTU/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test4\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -484,7 +484,7 @@
           "246"
         ],
         "x-ms-client-request-id": [
-          "e16a51aa-5eaf-4088-ab9c-d1d6474ac8b8"
+          "707ba731-61e5-4827-ac75-5ccc1b8d403b"
         ],
         "accept-language": [
           "en-US"
@@ -493,10 +493,10 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test4\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-02-01T21:19:12.967607Z\",\r\n    \"changedTime\": \"2017-02-01T21:19:12.9679512Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435/partners/onesdk4697\",\r\n  \"name\": \"onesdk4697\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"partnerType\": \"B2B\",\r\n    \"content\": {\r\n      \"b2b\": {\r\n        \"businessIdentities\": [\r\n          {\r\n            \"qualifier\": \"As2Identity\",\r\n            \"value\": \"Test4\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-02-15T22:40:20.4831647Z\",\r\n    \"changedTime\": \"2017-02-15T22:40:20.4837089Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488/partners/onesdk4415\",\r\n  \"name\": \"onesdk4415\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/partners\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "468"
@@ -511,37 +511,37 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:53e8fcef-6640-4694-9696-36c7070cf9ac"
+          "brazilsouth:13172345-3b3b-4401-8d78-3b2e21452ae5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1187"
         ],
         "x-ms-correlation-request-id": [
-          "eb43796f-be41-4e5f-bc96-47fd071ee506"
+          "b1d9c632-5ea7-4ecb-9b88-013ddd11285f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211912Z:eb43796f-be41-4e5f-bc96-47fd071ee506"
+          "WESTUS2:20170215T224020Z:b1d9c632-5ea7-4ecb-9b88-013ddd11285f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:12 GMT"
+          "Wed, 15 Feb 2017 22:40:19 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1435?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTQzNT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk488?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNDg4P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d4a2d342-1618-4930-bf6c-727e18a6a0f5"
+          "cab51750-21c2-47e2-a115-276c776fe1b5"
         ],
         "accept-language": [
           "en-US"
@@ -550,7 +550,7 @@
           "FxVersion/4.6.1586.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/1.0.1"
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
       "ResponseBody": "",
@@ -565,25 +565,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:98ae201a-f850-4e90-8c09-cd09045648dc"
+          "brazilsouth:a40a6c21-287b-44f8-824a-7bfc4e939f3e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1186"
         ],
         "x-ms-correlation-request-id": [
-          "8077a9fa-313b-4704-97be-dc25b477ba6f"
+          "c979e0f0-b003-42ad-8a45-1fa88e299045"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170201T211914Z:8077a9fa-313b-4704-97be-dc25b477ba6f"
+          "WESTUS2:20170215T224022Z:c979e0f0-b003-42ad-8a45-1fa88e299045"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 01 Feb 2017 21:19:14 GMT"
+          "Wed, 15 Feb 2017 22:40:21 GMT"
         ]
       },
       "StatusCode": 200
@@ -591,9 +591,9 @@
   ],
   "Names": {
     "Test-CreateIntegrationAccountPartner": [
-      "onesdk1435",
-      "onesdk4295",
-      "onesdk4697"
+      "onesdk488",
+      "onesdk9163",
+      "onesdk4415"
     ]
   },
   "Variables": {

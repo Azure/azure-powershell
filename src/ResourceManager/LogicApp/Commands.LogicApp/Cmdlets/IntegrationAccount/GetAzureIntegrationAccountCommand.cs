@@ -32,9 +32,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account name.")]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         #endregion Input Parameters
 
@@ -44,13 +43,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (string.IsNullOrEmpty(this.Name))
+            if (string.IsNullOrEmpty(this.IntegrationAccountName))
             {
                 this.WriteObject(IntegrationAccountClient.ListIntegrationAccount(this.ResourceGroupName), true);
             }
             else
             {
-                this.WriteObject(IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName), true);
             }
         }
     }

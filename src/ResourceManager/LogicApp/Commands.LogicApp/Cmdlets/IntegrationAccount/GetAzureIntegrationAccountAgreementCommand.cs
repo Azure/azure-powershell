@@ -32,9 +32,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account name.")]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account agreement name.")]
         [ValidateNotNullOrEmpty]
@@ -51,11 +50,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.AgreementName))
             {
-                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountAgreements(this.ResourceGroupName,this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountAgreements(this.ResourceGroupName,this.IntegrationAccountName), true);
             }
             else
             {
-                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName, this.Name, this.AgreementName), true);
+                this.WriteObject(IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName, this.IntegrationAccountName, this.AgreementName), true);
             }
         }
     }

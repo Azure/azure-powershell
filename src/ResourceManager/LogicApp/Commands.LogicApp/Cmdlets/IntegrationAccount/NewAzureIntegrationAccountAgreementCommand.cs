@@ -38,9 +38,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account agreement name.",
             ValueFromPipelineByPropertyName = true)]
@@ -112,11 +111,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
 
-            var hostPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
+            var hostPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.IntegrationAccountName,
                 this.HostPartner);
-            var guestPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
+            var guestPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.IntegrationAccountName,
                 this.GuestPartner);
 
             var hostIdentity =

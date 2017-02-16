@@ -51,9 +51,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account map name.",
             ValueFromPipelineByPropertyName = true)]
@@ -102,10 +101,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
 
             var integrationAccountMap = IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName,
-                this.Name,
+                this.IntegrationAccountName,
                 this.MapName);
 
             if (!string.IsNullOrEmpty(this.MapFilePath))
@@ -136,14 +135,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/maps", this.Name),
+                    "Microsoft.Logic/integrationAccounts/maps", this.IntegrationAccountName),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/maps", this.Name),
-                Name,
+                    "Microsoft.Logic/integrationAccounts/maps", this.IntegrationAccountName),
+                IntegrationAccountName,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name,
+                        IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.IntegrationAccountName,
                             this.MapName,
                             integrationAccountMap), true);
                 },

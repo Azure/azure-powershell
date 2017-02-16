@@ -54,9 +54,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account schema name.",
             ValueFromPipelineByPropertyName = true)]
@@ -105,10 +104,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.IntegrationAccountName);
 
             var integrationAccountSchema = IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName,
-                this.Name,
+                this.IntegrationAccountName,
                 this.SchemaName);
 
             if (!string.IsNullOrEmpty(this.SchemaFilePath))
@@ -139,10 +138,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             ConfirmAction(Force.IsPresent,
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/schemas", this.Name),
+                    "Microsoft.Logic/integrationAccounts/schemas", this.IntegrationAccountName),
                 string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/schemas", this.Name),
-                Name,
+                    "Microsoft.Logic/integrationAccounts/schemas", this.IntegrationAccountName),
+                IntegrationAccountName,
                 () =>
                 {
                     this.WriteObject(
