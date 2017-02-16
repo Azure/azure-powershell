@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
             var httpRequest = new HttpRequest()
             {
                 Method = httpActionParams.RequestMethod,
-                Uri = httpActionParams.Uri.ToString(),
+                Uri = httpActionParams.Uri.OriginalString,
                 Authentication = this.PopulateHttpAuthentication(httpActionParams.RequestAuthentication)
             };
 

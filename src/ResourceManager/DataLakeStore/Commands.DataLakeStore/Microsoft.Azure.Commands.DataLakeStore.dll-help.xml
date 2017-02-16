@@ -3990,6 +3990,15 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AllowAzureIpState</maml:name>
+<maml:Description><maml:para>Optionally allow/block Azure originating IPs through the firewall.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">FirewallAllowAzureIpsState</command:parameterValue>
+<dev:type><maml:name>FirewallAllowAzureIpsState</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
 <maml:Description><maml:para>The desired commitment tier for this account to use.
 </maml:para>
@@ -4001,7 +4010,16 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFol
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DefaultGroup</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AllowAzureIpState</maml:name>
+<maml:Description><maml:para>Optionally allow/block Azure originating IPs through the firewall.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">FirewallAllowAzureIpsState</command:parameterValue>
+<dev:type><maml:name>FirewallAllowAzureIpsState</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DefaultGroup</maml:name>
 <maml:Description><maml:para>Specifies the ID of an AzureActive Directory group. This group is the default group for files and folders that you create.
 </maml:para>
 </maml:Description>
