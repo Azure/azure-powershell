@@ -328,42 +328,6 @@ Describe "Get-ProfilesInstalled" {
     }    
 }
 
-Describe "Install-ModuleHelper" {
-    InModuleScope AzureRM.Bootstrapper {
-        Context "Valid module and version" {
-            Mock Install-Module -Verifiable {}
-            It "Should call Install-Module" {
-                Install-ModuleHelper -Module "Module1" -Profile 'Profile1' -ProfileMap ($global:testProfileMap | ConvertFrom-Json)
-                Assert-MockCalled Install-Module -Exactly 1
-            }
-        }
-
-        Context "Invalid module or version" {
-            Mock Install-Module -Verifiable { throw }
-            It "Should throw" {
-                { Install-ModuleHelper -Module "Module1" -Profile 'Profile1' -ProfileMap ($global:testProfileMap | ConvertFrom-Json) } | Should Throw
-                Assert-MockCalled Install-Module -Exactly 1
-            }
-        }
-
-        Context "Install module with scope as currentuser" {
-            Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
-            It "Should invoke Install-Module" {
-                Install-ModuleHelper -Module "Module1" -Profile "Profile1" -ProfileMap ($global:testProfileMap | ConvertFrom-Json) -scope currentuser 
-                Assert-MockCalled Install-Module -Exactly 1
-            }
-        }
-        
-        Context "Install module with scope as AllUsers" {
-            Mock Install-Module -Verifiable { throw } -ParameterFilter { $Scope -eq "AllUsers"}
-            It "Should throw" {
-                {Install-ModuleHelper -Module "Module1" -Profile "Profile1" -ProfileMap ($global:testProfileMap | ConvertFrom-Json) -scope AllUsers } | Should Throw
-                Assert-MockCalled Install-Module -Exactly 1
-            }
-        }
-    }
-}
-
 Describe "Remove-ProfileMapFile" {
     InModuleScope AzureRM.Bootstrapper {
         Context "ProfileMapPath exists" {
@@ -524,7 +488,7 @@ Describe "Invoke-UninstallModule" {
 
         Context "Module associated with more than one profile" {
             Mock Test-ProfilesInstalled -Verifiable { @('Profile1', 'Profile2')}
-            Mock Uninstall-ModuleHelper -Verifiable {}
+            Mock Uninstall-ModuleHelper {}
             It "Should not invoke Uninstall module helper" {
                 Invoke-UninstallModule -PMap ($global:testProfileMap | ConvertFrom-Json) -Profile 'profile1' -module 'module1'
                 Assert-MockCalled Uninstall-ModuleHelper -Exactly 0
@@ -544,6 +508,7 @@ Describe "Remove-PreviousVersions" {
             $moduleObj = New-Object -TypeName PSObject 
             $moduleObj | Add-Member NoteProperty Version($VersionObj)
             Mock Get-Module -Verifiable { $moduleObj}
+            Mock Import-Module -Verifiable {}
             Mock Invoke-UninstallModule -Verifiable {}
             It "Should call Invoke-UninstallModule" {
                 Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json) 
@@ -559,6 +524,7 @@ Describe "Remove-PreviousVersions" {
         Context "Previous versions are not installed" {
             $PreviousMap =  "{`"Profile1`": { `"Module1`": [`"0.1`"], `"Module2`": [`"0.1`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
             Mock Get-Module -Verifiable {}
+            Mock Import-Module -Verifiable {}
             Mock Invoke-UninstallModule {}
             It "Should not call Invoke-UninstallModule" {
                 Remove-PreviousVersions -Profile 'Profile1' -PreviousMap ($PreviousMap|ConvertFrom-Json) -LatestMap ($global:testProfileMap|ConvertFrom-Json)
@@ -918,7 +884,7 @@ Describe "Use-AzureRmProfile" {
     InModuleScope AzureRM.Bootstrapper {
         $RollupModule = 'Module1'
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
-        Mock Install-ModuleHelper { "Installing module..."}
+        Mock Install-Module { "Installing module..."}
         Mock Import-Module -Verifiable { "Importing Module..."}
         
         Context "Modules not installed" {
@@ -949,7 +915,7 @@ Describe "Use-AzureRmProfile" {
                 $Result = (Use-AzureRmProfile -Profile 'Profile1' -Force) 
                 $Result.length | Should Be 2
                 $Result[0] | Should Be "Module1 1.0 Imported"
-                Assert-MockCalled Install-ModuleHelper -Exactly 0
+                Assert-MockCalled Install-Module -Exactly 0
                 Assert-MockCalled Import-Module -Exactly 2
                 Assert-VerifiableMocks
             }
@@ -958,7 +924,7 @@ Describe "Use-AzureRmProfile" {
                 $Result = (Use-AzureRmProfile -Profile 'Profile1' -Module 'Module1', 'Module2' -Force) 
                 $Result.length | Should Be 2
                 $Result[0] | Should Be "Module1 1.0 Imported"
-                Assert-MockCalled Install-ModuleHelper -Exactly 0
+                Assert-MockCalled Install-Module -Exactly 0
                 Assert-VerifiableMocks
                 
             }
@@ -978,7 +944,7 @@ Describe "Use-AzureRmProfile" {
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
-            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
+            Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
             It "Should invoke Install-ModuleHelper with scope currentuser" {
                 (Use-AzureRmProfile -Profile 'Profile1' -Force -scope CurrentUser)
                 Assert-VerifiableMocks
@@ -987,7 +953,7 @@ Describe "Use-AzureRmProfile" {
         
         Context "Invoke with Scope as AllUsers" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
-            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
+            Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
             It "Should invoke Install-ModuleHelper with scope AllUsers" {
                 (Use-AzureRmProfile -Profile 'Profile1' -Force -scope AllUsers)
                 Assert-VerifiableMocks
@@ -1008,7 +974,7 @@ Describe "Install-AzureRmProfile" {
         Mock Get-AzureRmModule -Verifiable {} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module1'}
         Mock Get-AzureRmModule -Verifiable { "1.0"} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module2'}
         Context "Invoke with valid profile name" {
-            Mock Install-ModuleHelper -Verifiable { "Installing module Module1... Version 1.0"} 
+            Mock Install-Module -Verifiable { "Installing module Module1... Version 1.0"} 
             It "Should install Module1" {
                 (Install-AzureRmProfile -Profile 'Profile1') | Should be "Installing module Module1... Version 1.0"
                 Assert-VerifiableMocks
@@ -1029,7 +995,7 @@ Describe "Install-AzureRmProfile" {
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
-            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
+            Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
             It "Should invoke Install-ModuleHelper with scope currentuser" {
                 (Install-AzureRmProfile -Profile 'Profile1' -scope CurrentUser)
                 Assert-VerifiableMocks
@@ -1038,7 +1004,7 @@ Describe "Install-AzureRmProfile" {
         
         Context "Invoke with Scope as AllUsers" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
-            Mock Install-ModuleHelper -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
+            Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
             It "Should invoke Install-ModuleHelper with scope AllUsers" {
                 (Install-AzureRmProfile -Profile 'Profile1' -scope AllUsers)
                 Assert-VerifiableMocks
@@ -1135,4 +1101,4 @@ Describe "Update-AzureRmProfile" {
             Remove-Item -Path '.\MockPath' -Force -Recurse
         }
     }
-}#>
+}

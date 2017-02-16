@@ -256,24 +256,6 @@ function Get-ProfilesInstalled
   return $result
 }
 
-# Install module from the gallery
-function Install-ModuleHelper
-{
-  param([string] $Module, [string] $Profile, [PSCustomObject] $ProfileMap, [String]$Scope)
-  $versions = $ProfileMap.$Profile.$Module
-  $versionEnum = $versions.GetEnumerator()
-  $toss = $versionEnum.MoveNext()
-  $version = $versionEnum.Current
-  if (-not $Scope)
-  {
-    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo -AllowClobber
-  }
-  else
-  {
-    Install-Module $Module -RequiredVersion $version -Repository $BootStrapRepo -scope $Scope -AllowClobber
-  }
-}
-
 # Function to remove Previous profile map
 function Remove-ProfileMapFile
 {
@@ -439,9 +421,9 @@ function Invoke-UninstallModule
     $profilesAssociated = Test-ProfilesInstalled -Module $Module -Profile $Profile -PMap $PMap -AllProfilesInstalled $AllProfilesInstalled
       
     # If more than one profile is installed for the same version of the module, do not uninstall
-    if (($profilesAssociated.Count -gt 1) -and ($profilesAssociated -ne $Profile))
+    if ($profilesAssociated.Count -gt 1) 
     {
-      continue
+      return
     }
 
     # Uninstall module
@@ -513,6 +495,13 @@ function Remove-PreviousVersions
           Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled         
         }
       }
+      
+      # Uninstall removes module from session; import latest version again
+      $versions = $LatestMap.$Profile.$module
+      $versionEnum = $versions.GetEnumerator()
+      $toss = $versionEnum.MoveNext()
+      $version = $versionEnum.Current
+      Import-Module $Module -RequiredVersion $version -Global
     }
   }
 }
@@ -861,7 +850,18 @@ function Use-AzureRmProfile
         {
           # Flag to track if the prompt for install module was previously accepted.
           $IsConfirmed = $true
-          Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap -Scope $Scope
+          $versions = $ProfileMap.$Profile.$Module
+          $versionEnum = $versions.GetEnumerator()
+          $toss = $versionEnum.MoveNext()
+          $version = $versionEnum.Current
+          if (-not $Scope)
+          {
+            Install-Module $Module -RequiredVersion $version -AllowClobber
+          }
+          else
+          {
+            Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
+          }
         }
         
         Import-Module -Name $Module -RequiredVersion $version -Global
@@ -895,7 +895,18 @@ function Install-AzureRmProfile
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
       if ($version -eq $null) 
       {
-        Install-ModuleHelper -Module $Module -Profile $Profile -ProfileMap $ProfileMap -Scope $Scope
+        $versions = $ProfileMap.$Profile.$Module
+        $versionEnum = $versions.GetEnumerator()
+        $toss = $versionEnum.MoveNext()
+        $version = $versionEnum.Current
+        if (-not $Scope)
+        {
+          Install-Module $Module -RequiredVersion $version -AllowClobber
+        }
+        else
+        {
+          Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
+        }
       }
     }
   }
