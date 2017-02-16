@@ -165,3 +165,76 @@ function Test-SetAzureVMChefExtensionAdvancedOptions
         Cleanup-CloudService $svcName
     }
 }
+
+<#
+.SYNOPSIS
+Test the usage of the passing Daemon as task
+#>
+
+function Test-SetAzureVMChefExtensionDaemonTask
+{
+    # Setup
+    $vmName = "vmseven"
+    $svcName = "svcseven"
+    $storageName = "storageseven"
+    $location = "West US"
+    $TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+	$daemon = "task";
+
+    try
+    {
+        New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+        Set-CurrentStorageAccountName $storageName
+
+        New-AzureService -ServiceName $svcName -Location $location
+        New-AzureQuickVM -Windows -ImageName "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-20161214-en.us-127GB.vhd" -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password $PLACEHOLDER
+        $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+
+        Set-AzureVMChefExtension -VM $vm -ValidationPem "$TestOutputRoot\Resources\ChefExtension\tstorgnztn-validator.pem" -ClientRb "$TestOutputRoot\Resources\ChefExtension\client.rb" -JsonAttribute '{"container_service": {"chef-init-test": {"command": "C:\\opscode\\chef\\bin"}}}' -Daemon $daemon -Windows
+
+        Update-AzureVM -VM $vm.VM -ServiceName $svcName -Name $vmName
+
+        # Call Get-AzureVMDscExtensionStatus to check the status of the installation
+        [TimeSpan] $timeout = [TimeSpan]::FromMinutes(60)
+        $maxTime = [datetime]::Now + $timeout
+        $status = Get-AzureVMChefExtension -VM $vm.VM
+
+        while($true)
+        {
+            if($status -ne $null -and $status.State -ne $null)
+            {
+                if(($status.State -eq "Enable") -or ($status.State -eq "Error"))
+                {
+                    break;
+                }
+            }
+
+            if([datetime]::Now -gt $maxTime)
+            {
+                Throw "The Chef Extension did not report any status within the given timeout from VM [$vmName]"
+            }
+
+            if ($env:AZURE_TEST_MODE -eq "Record"){
+                sleep -Seconds 15
+            }
+            $status = Get-AzureVMChefExtension -VM $vm.VM
+        }
+
+        # Call Get-AzureVMChefExtension to ensure extension was installed on the VM
+        $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+        $extension = Get-AzureVMChefExtension -VM $vm.VM -Verbose
+        Assert-NotNull $extension
+        Assert-NotNull $extension.ExtensionName
+        Assert-NotNull $extension.Publisher
+        Assert-NotNull $extension.Version
+
+        # Remove Extension
+        Remove-AzureVMChefExtension -VM $vm.VM -Verbose
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzureStorageAccount -StorageAccountName $storageName -ErrorAction SilentlyContinue
+        Cleanup-CloudService $svcName
+    }
+}
