@@ -88,24 +88,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The AuditActionGroup parameter is only supported for AuditType &apos;Blob&apos;. Use the AuditEvent parameter instead..
-        /// </summary>
-        internal static string AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy {
-            get {
-                return ResourceManager.GetString("AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The AuditAction parameter is only supported for AuditType &apos;Blob&apos;. Use the AuditEvent parameter instead..
-        /// </summary>
-        internal static string AuditActionsConfiguringIrrelevantForTableAuditingPolicy {
-            get {
-                return ResourceManager.GetString("AuditActionsConfiguringIrrelevantForTableAuditingPolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing..
         /// </summary>
         internal static string AuditingIsTurnedOff {
@@ -201,15 +183,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string EnterUserId {
             get {
                 return ResourceManager.GetString("EnterUserId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The AuditEvent parameter is only supported for AuditType &apos;Table&apos;. Use the AuditActionGroup or AuditAction parameter instead..
-        /// </summary>
-        internal static string EventTypeConfiguringIrrelevantForBlobAuditingPolicy {
-            get {
-                return ResourceManager.GetString("EventTypeConfiguringIrrelevantForBlobAuditingPolicy", resourceCulture);
             }
         }
         

@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             EventType = Util.ProcessAuditEvents(EventType);
 
-            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.EventType)) // the user provided event types to audit
+            if (EventType != null) // the user provided event types to audit
             {
                 model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }
@@ -153,11 +153,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.TableIdentifier = TableIdentifier;
             }
-
-            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditActionGroup)) //AuditActionGroup is relevant only for blob auditing
-            {
-                throw new Exception(string.Format(Properties.Resources.AuditActionGroupsConfiguringIrrelevantForTableAuditingPolicy));
-            }
         }
 
         private void ApplyUserInputToBlobAuditingModel(ServerBlobAuditingPolicyModel model)
@@ -178,14 +173,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
-            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.AuditActionGroup))
+            if (AuditActionGroup != null && AuditActionGroup.Length != 0)
             {
                 model.AuditActionGroup = AuditActionGroup;
-            }
-
-            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.EventType)) // EventType is relevant only for table auditing
-            {
-                throw new Exception(string.Format(Properties.Resources.EventTypeConfiguringIrrelevantForBlobAuditingPolicy));
             }
         }
 

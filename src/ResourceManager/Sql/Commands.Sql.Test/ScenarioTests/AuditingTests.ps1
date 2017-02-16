@@ -1061,9 +1061,6 @@ function Test-DatatabaseAuditingTypeMigration
 		Assert-AreEqual $policy.AuditAction.Length 2
 		Assert-AreEqual $policy.RetentionInDays 4
 
-		# Test - When trying to update the current blob auditing policy with eventType parameter it fails, because EventType parameter is only supported for table auditing.
-		Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType ParameterizedSQL_Failure}
-
 		# Test
 		Set-AzureRmSqlDatabaseAuditingPolicy -AuditType Table -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType ParameterizedSQL_Failure
 		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
@@ -1150,9 +1147,6 @@ function Test-ServerAuditingTypeMigration
 		Assert-AreEqual $policy.AuditActionGroup.Length 1
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::DATABASE_OPERATION_GROUP)}
 		Assert-AreEqual $policy.RetentionInDays 4
-
-		# Test - When trying to update the current blob auditing policy with eventType parameter it fails, because EventType parameter is only supported for table auditing.
-		Assert-Throws {Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType ParameterizedSQL_Failure}
 
 		# Test
 		Set-AzureRmSqlServerAuditingPolicy -AuditType Table -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType ParameterizedSQL_Failure
