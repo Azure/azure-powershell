@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         // Currently the test runs too long to be marked as a check-in test.
-        [Fact]
+        [Fact(Skip = "Hydra TestFramework Issue, cannot login to authenticate in order to record the tests")]
         public void TestFailoverGroup()
         {
             RunPowerShellTest(" Test-FailoverGroup");

@@ -17,7 +17,6 @@
 	Tests create and update a failover group
 function Test-FailoverGroup($serverVersion = "12.0", $location = "North Europe")
 {
-	$env = Add-AzureRmEnvironment -Name Dogfood -PublishSettingsFileUrl  'https://windows.azure-test.net/publishsettings/index' -ServiceEndpoint  'https://management-preview.core.windows-int.net/' -ManagementPortalUrl  'https://windows.azure-test.net/' -ActiveDirectoryEndpoint  'https://login.windows-ppe.net/' -ActiveDirectoryServiceEndpointResourceId 'https://management.core.windows.net/' -ResourceManagerEndpoint  'https://api-dogfood.resources.windows-int.net/modules/AzureResourceManager/' -GalleryEndpoint  'https://df.gallery.azure-test.net/' -GraphEndpoint  'https://graph.ppe.windows.net/'
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $serverVersion $location
