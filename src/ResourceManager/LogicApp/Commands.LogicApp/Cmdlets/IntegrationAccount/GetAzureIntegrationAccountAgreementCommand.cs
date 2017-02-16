@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Name")]
         public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account agreement name.")]

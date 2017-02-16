@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(ParameterSetName = "PublicKey", Mandatory = true)]
         [Parameter(ParameterSetName = "Both", Mandatory = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("Name")]
         public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account certificate name.",

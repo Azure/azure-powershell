@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the integration account.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Name")]
         public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]

@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("Name")]
         public string IntegrationAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account certificate name.",
