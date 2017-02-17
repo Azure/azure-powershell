@@ -71,6 +71,16 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSResourceId, MNM.SubResource>();
             Mapper.CreateMap<MNM.SubResource, CNM.PSResourceId>();
 
+            // Route Filter 
+            Mapper.CreateMap<CNM.PSRouteFilter, MNM.RouteFilter>();
+            Mapper.CreateMap<MNM.RouteFilter, CNM.PSRouteFilter>();
+            Mapper.CreateMap<CNM.PSRouteFilterRule, MNM.RouteFilterRule>();
+            Mapper.CreateMap<MNM.RouteFilterRule, CNM.PSRouteFilterRule>();
+
+            // Bgp Service Community
+            Mapper.CreateMap<CNM.PSBgpServiceCommunity, MNM.BgpServiceCommunity>();
+            Mapper.CreateMap<MNM.BgpServiceCommunity, CNM.PSBgpServiceCommunity>();
+
             // Subnet
             // CNM to MNM
             Mapper.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
