@@ -15,6 +15,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Microsoft.Azure.Management.Network.Models;
+
     using Newtonsoft.Json;
 
     public class PSPeering : PSChildResource
@@ -59,12 +61,27 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string GatewayManagerEtag { get; set; }  
  
         [JsonProperty(Order = 1)]  
-        public string LastModifiedBy { get; set; }  
+        public string LastModifiedBy { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSRouteFilter RouteFilter { get; set; }
 
         [JsonIgnore]
         public string MicrosoftPeeringConfigText
         {
             get { return JsonConvert.SerializeObject(MicrosoftPeeringConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+        [JsonIgnore]
+        public string PeerASNText
+        {
+            get { return JsonConvert.SerializeObject(PeerASN, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+        
+
+        [JsonIgnore]
+        public string RouteFilterText
+        {
+            get { return JsonConvert.SerializeObject(RouteFilter, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
