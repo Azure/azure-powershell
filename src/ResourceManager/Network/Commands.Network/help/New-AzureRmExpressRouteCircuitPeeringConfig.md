@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 5E9C02BE-9DCC-4865-95D2-6B69D373BE77
 online version: 
 schema: 2.0.0
 ---
@@ -11,26 +10,45 @@ schema: 2.0.0
 
 ## SYNTAX
 
+### SetByResource (Default)
+```
+New-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -PeeringType <String> -PeerASN <Int32>
+ -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
+ [-RouteFilter <PSRouteFilter>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+```
+
+### MicrosoftPeeringConfig
 ```
 New-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -PeeringType <String> -PeerASN <Int32>
  -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+```
+
+### SetByResourceId
+```
+New-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -PeeringType <String> -PeerASN <Int32>
+ -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
+ [-RouteFilterId <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
 ```
 
 ## DESCRIPTION
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
-PS C:\>
+PS C:\> {{ Add example code here }}
 ```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Name
+@{Text=}
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -44,6 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -PeeringType
+@{Text=}
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -57,6 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -PeerASN
+@{Text=}
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -70,6 +92,8 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryPeerAddressPrefix
+@{Text=}
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -83,6 +107,8 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryPeerAddressPrefix
+@{Text=}
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -96,6 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -VlanId
+@{Text=}
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -109,6 +137,8 @@ Accept wildcard characters: False
 ```
 
 ### -SharedKey
+@{Text=}
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -122,9 +152,11 @@ Accept wildcard characters: False
 ```
 
 ### -MicrosoftConfigAdvertisedPublicPrefixes
+@{Text=}
+
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: MicrosoftPeeringConfig
 Aliases: 
 
 Required: False
@@ -135,9 +167,11 @@ Accept wildcard characters: False
 ```
 
 ### -MicrosoftConfigCustomerAsn
+@{Text=}
+
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: MicrosoftPeeringConfig
 Aliases: 
 
 Required: False
@@ -148,9 +182,11 @@ Accept wildcard characters: False
 ```
 
 ### -MicrosoftConfigRoutingRegistryName
+@{Text=}
+
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: MicrosoftPeeringConfig
 Aliases: 
 
 Required: False
@@ -161,16 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+@{Text=}
 
 ```yaml
 Type: ActionPreference
@@ -185,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
-Specifies an information variable.
+@{Text=}
 
 ```yaml
 Type: String
@@ -199,8 +226,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -RouteFilter
+RouteFilter
+
+```yaml
+Type: PSRouteFilter
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RouteFilterId
+RouteFilterId
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ## INPUTS
 
