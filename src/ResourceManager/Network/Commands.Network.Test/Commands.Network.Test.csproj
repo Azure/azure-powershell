@@ -114,7 +114,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.5.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.5.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">

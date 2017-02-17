@@ -4,15 +4,14 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmExpressRouteCircuitPeeringConfig
+# Get-AzureRmBgpServiceCommunity
 
 ## SYNOPSIS
 
 ## SYNTAX
 
 ```
-Remove-AzureRmExpressRouteCircuitPeeringConfig [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+Get-AzureRmBgpServiceCommunity [-InformationAction <ActionPreference>] [-InformationVariable <String>]
 ```
 
 ## DESCRIPTION
@@ -27,36 +26,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -Name
-@{Text=}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpressRouteCircuit
-@{Text=}
-
-```yaml
-Type: PSExpressRouteCircuit
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -InformationAction
 @{Text=}
