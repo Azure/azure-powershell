@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The Azure SQL Databases to be added to the secondary server.")]
         [ValidateNotNullOrEmpty]
-        public List<AzureSqlDatabaseModel> Databases { get; set; }
+        public List<AzureSqlDatabaseModel> Database { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Failover Group
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Elastic Pool")]
         [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
 
-           if (MyInvocation.BoundParameters.ContainsKey("Databases") || Databases != null)
+           if (MyInvocation.BoundParameters.ContainsKey("Databases") || Database != null)
             {
-                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Databases));
+                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
             }
             else
             {
