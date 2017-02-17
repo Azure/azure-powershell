@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The grace period for failover with data loss of the failover group.")]
         [ValidateNotNullOrEmpty]
-        public int GracePeriodWithDataLossHours { get; set; }
+        public int GracePeriodWithDataLossHour { get; set; }
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of theSql Azure Failover Group.
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
                 PartnerServerName = PartnerServerName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
-                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHours,
+                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHour,
                 ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary.ToString()
             });
             return newEntity;
