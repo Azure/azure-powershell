@@ -2017,9 +2017,6 @@
                         <Component Id="cmp4665FDA09AEBB2263079C77AD5FAE614" Guid="*">
                             <File Id="fil67E80D69FD7CFFD1BDC41F143BB1B9E4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
-                        <Component Id="cmpD9E00CF36A1BF106BD49E9368F96A1EE" Guid="*">
-                            <File Id="fil20EB538DE607DDE13AB3D2D42016F54D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Microsoft.WindowsAzure.Storage.dll" />
-                        </Component>
                         <Component Id="cmpA96B1B72C5D8449B6A78CEE7B3D8003A" Guid="*">
                             <File Id="filEF8564B0A72776B7B7DF45B770E1BA9B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Newtonsoft.Json.dll" />
                         </Component>
@@ -6373,7 +6370,6 @@
             <ComponentRef Id="cmpB1CC3831A4FB6A26C143DA8B6606425B" />
             <ComponentRef Id="cmp915E6351383D1760B6CB025667A99E49" />
             <ComponentRef Id="cmp4665FDA09AEBB2263079C77AD5FAE614" />
-            <ComponentRef Id="cmpD9E00CF36A1BF106BD49E9368F96A1EE" />
             <ComponentRef Id="cmpA96B1B72C5D8449B6A78CEE7B3D8003A" />
             <ComponentRef Id="cmp1DE03E3ABD3F489833110639A13322DB" />
             <ComponentRef Id="cmp22A4A30D24CDED6264D46F12597014F5" />
