@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tag to associate with the Azure Sql Failover Group")]
         [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Location = location,
                 FailoverGroupName = FailoverGroupName,
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
