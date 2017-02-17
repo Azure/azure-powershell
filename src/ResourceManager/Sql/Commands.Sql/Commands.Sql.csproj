@@ -62,6 +62,8 @@
     <Compile Include="Failover Group\Cmdlet\SetAzureSqlFailoverGroup.cs" />
     <Compile Include="Failover Group\Cmdlet\Switch-AzureSqlDatabaseFailoverGroup.cs" />
     <Compile Include="Failover Group\Model\AzureSqlFailoverGroupModel.cs" />
+	<Compile Include="Failover Group\Model\FailoverPolicy.cs" />
+    <Compile Include="Failover Group\Model\AllowReadOnlyFailoverToPrimary.cs" />
     <Compile Include="Failover Group\Services\AzureSqlFailoverGroupAdapter.cs" />
     <Compile Include="Failover Group\Services\AzureSqlFailoverGroupCommunicator.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
