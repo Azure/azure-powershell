@@ -282,6 +282,8 @@
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
+    <Compile Include="Models\PSBgpCommunity.cs" />
+    <Compile Include="Models\PSBgpServiceCommunity.cs" />
     <Compile Include="Models\PSFlowLog.cs" />
     <Compile Include="Models\PSFlowLogProperties.cs" />
     <Compile Include="Models\PSGetPacketCaptureResult.cs" />
@@ -327,6 +329,8 @@
     <Compile Include="Models\PSNetworkLongRunningOperation.cs" />
     <Compile Include="Models\PSEffectiveNetworkSecurityGroup.cs" />
     <Compile Include="Models\PSEffectiveRoute.cs" />
+    <Compile Include="Models\PSRouteFilter.cs" />
+    <Compile Include="Models\PSRouteFilterRule.cs" />
     <Compile Include="Models\PSSecurityGroupView.cs" />
     <Compile Include="Models\PSSecurityGroupViewResult.cs" />
     <Compile Include="Models\PSSecurityRuleAssociations.cs" />
@@ -360,6 +364,7 @@
     <Compile Include="NetworkInterface\IpConfiguration\NewAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
+    <Compile Include="ProviderWideCmdlets\GetAzureBgpServiceCommunityCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherFlowLogStatusCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherTroubleshootingResult.cs" />
@@ -379,6 +384,17 @@
     <Compile Include="NetworkWatcher\PacketCapture\StopAzureNetworkWatcherPacketCaptureCommand.cs" />
     <Compile Include="NetworkWatcher\RemoveAzureNetworkWatcherCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="RouteFilter\GetAzureRouteFilterCommand.cs" />
+    <Compile Include="RouteFilter\NewAzureRouteFilterCommand.cs" />
+    <Compile Include="RouteFilter\RemoveAzureRouteFilterCommand.cs" />
+    <Compile Include="RouteFilter\RouteFilterBaseCmdlet.cs" />
+    <Compile Include="RouteFilter\RouteFilterRule\AddAzureRouteFilterRuleConfigCommand.cs" />
+    <Compile Include="RouteFilter\RouteFilterRule\AzureRouteFilterRuleConfigBase.cs" />
+    <Compile Include="RouteFilter\RouteFilterRule\GetRouteFilterRuleConfigCommand.cs" />
+    <Compile Include="RouteFilter\RouteFilterRule\NewAzureRouteFilterRuleConfigCommand.cs" />
+    <Compile Include="RouteFilter\RouteFilterRule\RemoveAzureRouteFilterRuleConfigCommand.cs" />
+    <Compile Include="RouteFilter\RouteFilterRule\SetAzureRouteFilterRuleConfigCommand.cs" />
+    <Compile Include="RouteFilter\SetAzureRouteFilterCommand.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
