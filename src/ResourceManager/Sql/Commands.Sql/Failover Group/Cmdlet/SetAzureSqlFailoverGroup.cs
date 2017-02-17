@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The grace period for failover with data loss of the failover group.")]
         [ValidateNotNullOrEmpty]
-        public int GracePeriodWithDataLossHours { get; set; }
+        public int GracePeriodWithDataLossHour { get; set; }
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of theSql Azure Failover Group.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             AzureSqlFailoverGroupModel newModel = model.First();
 
             newModel.ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy.ToString() : newModel.ReadWriteFailoverPolicy;
-            newModel.FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHours") ? GracePeriodWithDataLossHours : newModel.FailoverWithDataLossGracePeriodHours;
+            newModel.FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHour") ? GracePeriodWithDataLossHour : newModel.FailoverWithDataLossGracePeriodHours;
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
             newEntity.Add(newModel);
 
