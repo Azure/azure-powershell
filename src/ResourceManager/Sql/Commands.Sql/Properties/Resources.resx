@@ -318,6 +318,12 @@
   <data name="RemoveAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
   </data>
+    <data name="RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
+    <value>Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove this Azure Sql Database from Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
+  </data>
   <data name="FailoverGroupAddDatabaseAlreadyExists" xml:space="preserve">
     <value>Database to be added with id '{0}' already exists in Failover Group with name: '{1}'  in server '{2}'.</value>
   </data>
