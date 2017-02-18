@@ -349,6 +349,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove this Azure Sql Database from Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlDatabaseElasticPoolDescription {
@@ -381,6 +390,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlDatabaseFailoverGroupWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseFailoverGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription", resourceCulture);
             }
         }
         
