@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseFailoverGroup", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseFailoverGroup",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Failover Group.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The grace period for failover with data loss of the failover group.")]
+            HelpMessage = "The grace period for failover with data loss of the failover group. This property defines how big of the window we tolerate for data loss during failover operation")]
         [ValidateNotNullOrEmpty]
         public int GracePeriodWithDataLossHour { get; set; }
 
         /// <summary>
-        /// Gets or sets the failover policy for read only endpoint of theSql Azure Failover Group.
+        /// Gets or sets the failover policy for read only endpoint of the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy for read only endpoint of the failover group.")]
@@ -64,15 +64,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the Azure Sql Failover Group
+        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure Sql Failover Group")]
-        [Alias("Tag")]
+            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        /// Overriding to add warning message
+        /// Executiong the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {

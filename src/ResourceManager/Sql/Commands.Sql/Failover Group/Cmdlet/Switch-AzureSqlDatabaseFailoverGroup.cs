@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Failover Group to retrieve.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// Switch parameter indicating whether to make this failover will allow data loss.
+        /// Switch parameter indicating whether this failover operation will allow data loss or not.
         /// </summary>
-        /// <returns></returns>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "Whether this failover operation will allow data loss.")]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> GetEntity()
         {
-
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName)
             };

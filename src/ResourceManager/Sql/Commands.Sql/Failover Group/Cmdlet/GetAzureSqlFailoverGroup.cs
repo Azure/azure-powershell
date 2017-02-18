@@ -18,8 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseFailoverGroup",
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseFailoverGroup")]
     public class GetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Failover Group to retrieve.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             ICollection<AzureSqlFailoverGroupModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("FailoverGroupName"))
+            if (!string.IsNullOrEmpty(FailoverGroupName))
             {
                 results = new List<AzureSqlFailoverGroupModel>();
                 results.Add(ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName));

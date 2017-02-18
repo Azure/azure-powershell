@@ -18,17 +18,24 @@ Remove-AzureRmSqlDatabaseFromFailoverGroup -FailoverGroupName <String>
 ```
 
 ## DESCRIPTION
-This command must be executed on the primary server. The command drops the corresponding secondary databases on all secondary servers and unregisters the read-write databases from the FG.  
+This command must be executed on the primary server. The command drops the corresponding secondary databases on all secondary servers and unregisters the read-write databases from the FG.  The database input parameter is a Azure Sql Database Model and it should be either piped in or passed in as a environmental variable.
 
 
 ## EXAMPLES
 
 ### Example 1
 ```
+Remove one database from the Failover Group
+
 PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName myrg2 -DatabaseName testdb | Remove-AzureRmSqlDatabaseFromFailoverGroup -FailoverGroupName testfg -ResourceGroupName rg2 -ServerName testsvr
 ```
 
-{{ Add example description here }}
+### Example 2
+```
+Remove all databases in a server from the Failover Group
+
+PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName myrg2 | Remove-AzureRmSqlDatabaseFromFailoverGroup -FailoverGroupName testfg -ResourceGroupName rg2 -ServerName testsvr
+
 
 ## PARAMETERS
 
@@ -142,4 +149,5 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.A
 ## NOTES
 
 ## RELATED LINKS
+
 

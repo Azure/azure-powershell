@@ -24,10 +24,17 @@ This command must be executed on a secondary server of a specific FG. The FG is 
 
 ### Example 1
 ```
+Issue failover operation with data loss
 PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup -AllowDataLoss 
 
 ```
 
+### Example 1
+```
+Issue failover operation without data loss
+PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup 
+
+```
 
 
 ## PARAMETERS

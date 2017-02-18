@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmSqlDatabaseToFailoverGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Cmdlet that adds databases into the Azure SQL Failover Group
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Add-AzureRmSqlDatabaseToFailoverGroup -FailoverGroupName <String>
 ```
 
 ## DESCRIPTION
-Cmdlet to add Azure Sql Databases into a Failover Group
+Cmdlet to add Azure Sql Databases into a Failover Group. Database input parameters should be a Azure Sql Database Model object, which could be obtained either through pipelining or storing in Powershell environment variables with the Get_AzureRmSqlDatabase Cmdelet. 
 
 ## EXAMPLES
 
@@ -26,6 +26,12 @@ Cmdlet to add Azure Sql Databases into a Failover Group
 ```
 PS C:\> Add-AzureRmSqlDatabaseToFailoverGroup -FailoverGroupName myFg-ResourceGroupName myRg -ServerName mysvr
 ```
+
+### Example 2
+```
+Using Pipe Line to pipe in the database objects 
+
+PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName rg2 | Add-AzureRmSqlDatabaseToFailoverGroup -FailoverGroupName myFg-ResourceGroupName myRg -ServerName mysvr
 
 
 

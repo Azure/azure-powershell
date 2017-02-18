@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Fact(Skip = "Hydra TestFramework Issue, cannot login to authenticate in order to record the tests")]
         public void TestFailoverGroup()
         {
-            RunPowerShellTest(" Test-FailoverGroup");
+            RunPowerShellTest("Test-FailoverGroup");
         }
 
     }

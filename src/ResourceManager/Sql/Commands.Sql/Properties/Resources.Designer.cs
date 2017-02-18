@@ -196,15 +196,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Database to be removed with id &apos;{0}&apos; does not exist in Failover Group with name: &apos;{1}&apos;  in server &apos;{2}&apos;..
-        /// </summary>
-        internal static string FailoverGroupAddDatabaseNoArguments {
-            get {
-                return ResourceManager.GetString("FailoverGroupAddDatabaseNoArguments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Failover Group with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string FailoverGroupNameExists {
@@ -223,7 +214,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No arguments are provided to remove databases to Failover Group with name: &apos;{0}&apos;  in server &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Database to be removed with id {0} in Failover Group with name: &apos;{1}&apos;  in server &apos;{2} does not exist&apos;..
         /// </summary>
         internal static string FailoverGroupRemoveDatabaseNotExists {
             get {

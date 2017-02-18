@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         public AzureContext Context { get; set; }
 
         /// <summary>
-        /// Creates a communicator for Azure Sql Failover Group
+        /// Creates a communicator for Azure SQL Database Failover Group
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
@@ -117,13 +117,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             return resp.FailoverGroup;
         }
 
-        /// <summary>
-        /// Lists the Azure Sql Database in the Elastic Pool
-        /// </summary>
-        public IList<Management.Sql.Models.Database> ListDatabasesOnElasticPool(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabases(resourceGroupName, serverName, elasticPoolName).Databases;
-        }
 
         /// <summary>
         /// Lists Azure Sql Databases on the Server

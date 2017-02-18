@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseFailoverGroup", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseFailoverGroup")]
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner resource group name for Azure SQL Failover Group
+        /// Gets or sets the partner resource group name for Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner server name for Azure SQL Failover Group
+        /// Gets or sets the partner server name for Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The grace period for failover with data loss of the failover group.")]
+            HelpMessage = "The window of grace period that we tolerate with data loss during a failover operation for the failover group.")]
         [ValidateNotNullOrEmpty]
         public int GracePeriodWithDataLossHour { get; set; }
 
@@ -78,15 +77,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
-        /// Gets or sets the tag associated with the Azure Sql Failover Group
+        /// Gets or sets the tag associated with the Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure Sql Failover Group")]
-        [Alias("Tag")]
+            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        /// Overriding to add warning message
+        /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
@@ -148,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
 
         /// <summary>
-        /// Create the new database
+        /// Create the new Failover Group
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>

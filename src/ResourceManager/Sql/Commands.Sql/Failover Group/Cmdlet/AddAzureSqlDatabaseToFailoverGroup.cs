@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to add Azure Sql Databases into a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmSqlDatabaseToFailoverGroup", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Add, "AzureRmSqlDatabaseToFailoverGroup",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class AddAzureSqlDatabaseToFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -33,26 +33,26 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// The name of the Azure SQL Database FailoverGroup
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Failover Group.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// The Azure SQL Databases to be added to the secondary server
+        /// The Azure SQL Database to be added to the secondary server
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure SQL Databases to be added to the secondary server.")]
+            HelpMessage = "The Azure SQL Database to be added to the secondary server.")]
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> Database { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the Azure Sql Failover Group
+        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Elastic Pool")]
+            HelpMessage = "The tags to associate with the Azure SQL Database Failover Group")]
         [Alias("Tag")]
         public Hashtable Tag { get; set; }
 
@@ -85,17 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
-
-           if (MyInvocation.BoundParameters.ContainsKey("Databases") || Database != null)
-            {
-                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
-            }
-            else
-            {
-                throw new PSArgumentException(
-                    string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupAddDatabaseNoArguments, this.FailoverGroupName, this.ServerName),
-                    "FailoverGroupName");
-            }
+            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
 
             newEntity.Add(new AzureSqlFailoverGroupModel()
             {
@@ -118,18 +108,19 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
 
         /// <summary>
-        /// Helper to Convert DatabaseModels to a list of database ids the Failover Group
+        /// Helper method which converts a list of Azure Database Model to a list of Database IDs
         /// </summary>
-        /// <param name="models">The input as a list of database modelsl</param>
+        /// <param name="models">The input as a list of database models</param>
         /// <returns>The list of database ids</returns>
         public List<string> ConvertDatabaseModelToDatabaseHelper(ICollection<AzureSqlDatabaseModel> models)
         {
             List<string> result = new List<string>();
 
-            foreach (var model in models.ToList()) {
+            foreach (var model in models.ToList())
+            {
                 if (String.Compare(model.DatabaseName, "master", StringComparison.Ordinal) == 0)
                 {
-                    WriteWarning("Can not add master database into the failover group. This operation request will be ignored");
+                    WriteWarning("Can not add master database into the failover group. The operation request to add master database will be ignored");
                 }
                 else
                 {
@@ -143,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Helper method to get the updated database list to be passed into API call for adding dbs to failover group.
         /// </summary>
-        /// <param name="addedDbs">dbs to be removed from Failover Group</param>
+        /// <param name="addedDbs">dbs to be added into Failover Group</param>
         /// <returns>The new list of databases after removing the user inputed dbs</returns>
         protected List<string> GetUpdatedDatabaseList(ICollection<string> addedDbs)
         {

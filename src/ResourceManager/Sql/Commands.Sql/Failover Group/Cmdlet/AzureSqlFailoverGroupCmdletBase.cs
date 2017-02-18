@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Initializes the adapter
+        /// Initializes the Azure Sql Failover Group Adapter
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>

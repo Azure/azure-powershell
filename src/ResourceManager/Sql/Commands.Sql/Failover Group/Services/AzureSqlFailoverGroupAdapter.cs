@@ -177,27 +177,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
-        /// <param name="failvoerGroupName">The name of the Azure Sql Failover group to delete</param>
+        /// <param name="failvoerGroupName">The name of the Azure SQL Database Failover Group to delete</param>
         public void RemoveFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName)
         {
             Communicator.Remove(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
-        }
-
-        /// <summary>
-        /// Gets a list of Azure Sql Databases in an ElasticPool.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
-        /// <param name="failoverGroupName">The name of the elastic pool the database are in</param>
-        /// <returns>A list of database objects</returns>
-        internal ICollection<AzureSqlDatabaseModel> ListDatabasesOnElasticPool(string resourceGroupName, string serverName, string failoverGroupName)
-        {
-            var resp = Communicator.ListDatabasesOnElasticPool(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
-
-            return resp.Select((db) =>
-            {
-                return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
-            }).ToList();
         }
 
         /// <summary>
