@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             if (!Force.IsPresent && !ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseFailoverGroupDescription, this.FailoverGroupName, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupNameExists, this.FailoverGroupName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseFailoverGroupWarning, this.FailoverGroupName, this.ServerName),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
