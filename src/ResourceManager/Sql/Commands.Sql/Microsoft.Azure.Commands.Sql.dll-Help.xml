@@ -23,7 +23,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -86,7 +86,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2560,7 +2560,7 @@ NumberTo          :</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group to retrieve.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group to retrieve.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2571,7 +2571,7 @@ NumberTo          :</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group to retrieve.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group to retrieve.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11507,7 +11507,7 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
@@ -11553,7 +11553,7 @@ ErrorMessage               :</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Tag"><maml:name>Tags</maml:name>
-<maml:Description><maml:para>The tag to associate with the Azure Sql Failover Group
+<maml:Description><maml:para>The tag to associate with the Azure SQL Database Failover Group
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -11606,7 +11606,7 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
@@ -11652,7 +11652,7 @@ ErrorMessage               :</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Tag"><maml:name>Tags</maml:name>
-<maml:Description><maml:para>The tag to associate with the Azure Sql Failover Group
+<maml:Description><maml:para>The tag to associate with the Azure SQL Database Failover Group
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -14664,7 +14664,7 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group to remove.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group to remove.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -14717,7 +14717,7 @@ FirewallRuleName  : Rule01</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group to remove.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group to remove.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -14840,7 +14840,7 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -14903,7 +14903,7 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -20254,7 +20254,7 @@ RecommendedActions             : {}</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -20271,7 +20271,7 @@ RecommendedActions             : {}</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
@@ -20299,7 +20299,7 @@ RecommendedActions             : {}</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Tag"><maml:name>Tags</maml:name>
-<maml:Description><maml:para>The tag to associate with the Azure Sql Failover Group
+<maml:Description><maml:para>The tag to associate with the Azure SQL Database Failover Group
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -20335,7 +20335,7 @@ RecommendedActions             : {}</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -20352,7 +20352,7 @@ RecommendedActions             : {}</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
@@ -20380,7 +20380,7 @@ RecommendedActions             : {}</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Tag"><maml:name>Tags</maml:name>
-<maml:Description><maml:para>The tag to associate with the Azure Sql Failover Group
+<maml:Description><maml:para>The tag to associate with the Azure SQL Database Failover Group
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -26041,7 +26041,7 @@ PS C:\&gt; Start-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -S
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group to retrieve.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group to retrieve.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -26085,7 +26085,7 @@ PS C:\&gt; Start-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -S
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Failover Group to retrieve.
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group to retrieve.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>

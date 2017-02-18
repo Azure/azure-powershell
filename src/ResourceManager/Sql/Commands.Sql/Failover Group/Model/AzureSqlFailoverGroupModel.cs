@@ -56,19 +56,20 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         public IList<FailoverGroupPartnerServer> PartnerServers { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the partner resource group
+        /// Gets or sets the name of the partner resource group name
         /// </summary>
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the partner server group
+        /// Gets or sets the name of the partner server name
         /// </summary>
         public string PartnerServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner servers
+        /// Gets or sets the database IDs
         /// </summary>
         public IList<string> Databases { get; internal set; }
+
         /// <summary>
         /// Gets or sets the read-write endpoint
         /// </summary>

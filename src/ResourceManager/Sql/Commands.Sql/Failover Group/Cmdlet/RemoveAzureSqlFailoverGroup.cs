@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Failover Group to remove.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group to remove.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner resource group name for Azure SQL Failover Group
+        /// Gets or sets the partner resource group name for Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner server name for Azure SQL Failover Group
+        /// Gets or sets the partner server name for Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
 
         /// <summary>
-        /// No changes to persist to server
+        /// Persist deletion
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>

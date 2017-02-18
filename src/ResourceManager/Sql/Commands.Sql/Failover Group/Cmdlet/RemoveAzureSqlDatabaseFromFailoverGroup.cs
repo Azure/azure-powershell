@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using System;
@@ -24,9 +23,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to add Azure Sql Databases into a Failover Group
+    /// Cmdlet to remove Azure Sql Databases from a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFromFailoverGroup", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFromFailoverGroup",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -34,31 +33,30 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// The name of the Azure SQL Database FailoverGroup
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Failover Group.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// The Azure SQL Databases to be added to the secondary server
+        /// The Azure SQL Database to be removed to the secondary server
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure SQL Databases to be added to the secondary server.")]
+            HelpMessage = "The Azure SQL Database to be removed from the secondary server.")]
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> Database { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the Azure Sql Failover Group
+        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure Sql Elastic Pool")]
-        [Alias("Tag")]
+            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        /// Overriding to add warning message
+        /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
@@ -86,16 +84,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
-            if (MyInvocation.BoundParameters.ContainsKey("Databases") || Database != null)
-            {
-                dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
-            }
-            else
-            {
-                throw new PSArgumentException(
-                    string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupRemoveDatabaseNoArguments, this.FailoverGroupName, this.ServerName),
-                    "FailoverGroupName");
-            }
+
+            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
 
             newEntity.Add(new AzureSqlFailoverGroupModel()
             {
@@ -134,14 +124,20 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 }
                 else
                 {
-                    throw new PSArgumentException(
-                        string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupRemoveDatabaseNotExists, db, this.FailoverGroupName, this.ServerName),
-                        "FailoverGroupName");
+                    WriteWarning(
+                        string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupRemoveDatabaseNotExists, db, this.FailoverGroupName, this.ServerName)
+                    );
                 }
             }
 
             return result.ToList();
         }
+
+        /// <summary>
+        /// Helper method to get the updated database list to be passed into API call for removing dbs from failover group.
+        /// </summary>
+        /// <param name="models">dbs to be removed from Failover Group</param>
+        /// <returns>The new list of databases after adding the user inputed dbs</returns>
         public List<string> ConvertDatabaseModelToDatabaseHelper(ICollection<AzureSqlDatabaseModel> models)
         {
             List<string> result = new List<string>();
@@ -150,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 if (String.Compare(model.DatabaseName, "master", StringComparison.Ordinal) == 0)
                 {
-                    WriteWarning("Can not add master database into the failover group. This operation request will be ignored");
+                    WriteWarning("Can not remove master database into the failover group. This operation request for removing master database will be ignored");
                 }
                 else
                 {
