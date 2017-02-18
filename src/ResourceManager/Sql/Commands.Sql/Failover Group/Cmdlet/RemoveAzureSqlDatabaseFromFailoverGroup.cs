@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -26,7 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// Cmdlet to remove Azure Sql Databases from a Failover Group
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFromFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Medium,
+        SupportsShouldProcess = true)]
     public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -56,10 +58,24 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public Hashtable Tag { get; set; }
 
         /// <summary>
+        /// Defines whether it is ok to skip the requesting of rule removal confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (!Force.IsPresent && !ShouldProcess(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription, this.FailoverGroupName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning, this.FailoverGroupName, this.ServerName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
             base.ExecuteCmdlet();
         }
 
