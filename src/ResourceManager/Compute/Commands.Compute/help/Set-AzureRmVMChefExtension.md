@@ -15,9 +15,9 @@ Adds a Chef extension to a virtual machine.
 ### Linux
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
- -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-RunList <String>]
- [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
- [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
+ -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
+ [-ChefServiceInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
+ [-OrganizationName <String>] [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
  [-Secret <String>]
 ```
@@ -25,9 +25,9 @@ Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-T
 ### Windows
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
- -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-RunList <String>]
- [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
- [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
+ -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
+ [-ChefServiceInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
+ [-OrganizationName <String>] [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
  [-Daemon <String>] [-SecretFile <String>]
 ```
@@ -122,10 +122,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ChefServiceInterval
+Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ClientRb
 Specifies the full path of the Chef client.rb.
 
 ```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -JsonAttribute
+A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{"foo" : "bar"}'```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

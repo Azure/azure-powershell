@@ -37,7 +37,14 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 ```
 
 This command creates a Blob Storage account that uses the hot access type.
-The account has enabled Storage Service encryption.
+The account has enabled Storage Service encryption on Blob Service.
+
+### Example 3: Create a Storage account that Enable Storage Service encryption on Blob and File Services
+```
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService "Blob,File"
+```
+
+This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.
 
 ## PARAMETERS
 
@@ -191,7 +198,7 @@ Accept wildcard characters: False
 
 ### -EnableEncryptionService
 Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
-Currently, only the Blob Service is supported.
+Azure Blob and Azure File Services are supported.
 
 ```yaml
 Type: EncryptionSupportServiceEnum

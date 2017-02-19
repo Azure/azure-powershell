@@ -27,7 +27,7 @@ The **New-AzureRmServiceBusQueueAuthorizationRule** cmdlet creates a new authori
 PS C:\> New-AzureRmServiceBusQueueAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -AuthorizationRuleName SBAuthoRule1 -Rights @("Listen","Send")
 ```
 
-Creates `SBAuthoRule1` with **Listen and Send** rights for the queue `SB-Queue_exampl1`.
+Creates authorization rule `SBAuthoRule1` with **Listen and Send** rights for the queue `SB-Queue_exampl1`.
 
 ## PARAMETERS
 
@@ -143,22 +143,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
  
-###-NamespaceName
+
+### -NamespaceName
  System.String
  
-###-QueueName
+
+### -QueueName
  System.String
  
-###-AuthorizationRuleName
+
+### -AuthorizationRuleName
  System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
-
 Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/SB-Queue_exampl1/authorizati
            onRules/SBAuthoRule1
 Type     : Microsoft.ServiceBus/AuthorizationRules

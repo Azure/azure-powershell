@@ -1,10 +1,9 @@
 ---
 Module Name: AzureRM.Compute
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: 
+Help Version: 3.5.0.0
 Locale: en-US
-ms.assetid: 4ECC3EA7-2B58-4E1B-A035-5D62F46ADD37
 ---
 
 # AzureRM.Compute Module
@@ -15,7 +14,10 @@ This topic displays the help topics for the Azure Compute Cmdlets.
 ### [Add-AzureRmContainerServiceAgentPoolProfile](Add-AzureRmContainerServiceAgentPoolProfile.md)
 Adds a container service agent pool profile.
 
-### [Add-AzureRMVhd](Add-AzureRMVhd.md)
+### [Add-AzureRmImageDataDisk](Add-AzureRmImageDataDisk.md)
+Adds a data disk to an image obejct.
+
+### [Add-AzureRmVhd](Add-AzureRmVhd.md)
 Uploads a virtual hard disk from an on-premises virtual machine to a blob in a cloud storage account in Azure.
 
 ### [Add-AzureRmVMAdditionalUnattendContent](Add-AzureRmVMAdditionalUnattendContent.md)
@@ -32,6 +34,9 @@ Adds a secret to a virtual machine.
 
 ### [Add-AzureRmVmssAdditionalUnattendContent](Add-AzureRmVmssAdditionalUnattendContent.md)
 Adds information to the unattended Windows Setup answer file.
+
+### [Add-AzureRmVmssDataDisk](Add-AzureRmVmssDataDisk.md)
+Adds a data disk to the VMSS.
 
 ### [Add-AzureRmVmssDiagnosticsExtension](Add-AzureRmVmssDiagnosticsExtension.md)
 Adds a diagnostics extension to the VMSS.
@@ -54,6 +59,9 @@ Adds SSH public keys to the VMSS.
 ### [Add-AzureRmVmssWinRMListener](Add-AzureRmVmssWinRMListener.md)
 Adds a WinRM listener to the VMSS.
 
+### [ConvertTo-AzureRmVMManagedDisk](ConvertTo-AzureRmVMManagedDisk.md)
+Converts a virtual machine with blob-based disks to a virtual machine with managed disks.
+
 ### [Disable-AzureRmVMDiskEncryption](Disable-AzureRmVMDiskEncryption.md)
 Disables encryption on an IaaS virtual machine.
 
@@ -63,8 +71,17 @@ Gets Azure availability sets in a resource group.
 ### [Get-AzureRmContainerService](Get-AzureRmContainerService.md)
 Gets a container service.
 
+### [Get-AzureRmDisk](Get-AzureRmDisk.md)
+Gets the properties of a disk.
+
+### [Get-AzureRmImage](Get-AzureRmImage.md)
+Gets the properties of an image.
+
 ### [Get-AzureRmRemoteDesktopFile](Get-AzureRmRemoteDesktopFile.md)
 Gets an .rdp file.
+
+### [Get-AzureRmSnapshot](Get-AzureRmSnapshot.md)
+Gets the properties of a snapshot
 
 ### [Get-AzureRmVM](Get-AzureRmVM.md)
 Gets the properties of a virtual machine.
@@ -87,7 +104,7 @@ Gets information about a Chef extension.
 ### [Get-AzureRmVMCustomScriptExtension](Get-AzureRmVMCustomScriptExtension.md)
 Gets information about a custom script extension.
 
-### [Get-AzureRMVMDiagnosticsExtension](Get-AzureRMVMDiagnosticsExtension.md)
+### [Get-AzureRmVMDiagnosticsExtension](Get-AzureRmVMDiagnosticsExtension.md)
 Gets the settings of the Diagnostics extension on a virtual machine.
 
 ### [Get-AzureRmVMDiskEncryptionStatus](Get-AzureRmVMDiskEncryptionStatus.md)
@@ -123,7 +140,7 @@ Gets VMImage SKUs.
 ### [Get-AzureRmVMSize](Get-AzureRmVMSize.md)
 Gets available virtual machine sizes.
 
-### [Get-AzureRMVMSqlServerExtension](Get-AzureRMVMSqlServerExtension.md)
+### [Get-AzureRmVMSqlServerExtension](Get-AzureRmVMSqlServerExtension.md)
 Gets the settings for a SQL Server extension on a virtual machine.
 
 ### [Get-AzureRmVmss](Get-AzureRmVmss.md)
@@ -138,6 +155,12 @@ Gets the properties of a VMSS virtual machine.
 ### [Get-AzureRmVMUsage](Get-AzureRmVMUsage.md)
 Gets the virtual machine core count usage for a location.
 
+### [Grant-AzureRmDiskAccess](Grant-AzureRmDiskAccess.md)
+Grants an access to a disk.
+
+### [Grant-AzureRmSnapshotAccess](Grant-AzureRmSnapshotAccess.md)
+Grants an access to a snapshot.
+
 ### [New-AzureRmAvailabilitySet](New-AzureRmAvailabilitySet.md)
 Creates an Azure availability set.
 
@@ -146,6 +169,30 @@ Creates a container service.
 
 ### [New-AzureRmContainerServiceConfig](New-AzureRmContainerServiceConfig.md)
 Creates a local configuration object for a container service.
+
+### [New-AzureRmDisk](New-AzureRmDisk.md)
+Creates a managed disk.
+
+### [New-AzureRmDiskConfig](New-AzureRmDiskConfig.md)
+Creates a configurable disk object.
+
+### [New-AzureRmDiskUpdateConfig](New-AzureRmDiskUpdateConfig.md)
+Creates a configurable disk update object.
+
+### [New-AzureRmImage](New-AzureRmImage.md)
+Creats an image.
+
+### [New-AzureRmImageConfig](New-AzureRmImageConfig.md)
+Creates a configurable image object.
+
+### [New-AzureRmSnapshot](New-AzureRmSnapshot.md)
+Creates a snapshot.
+
+### [New-AzureRmSnapshotConfig](New-AzureRmSnapshotConfig.md)
+Creates a configurable snapshot object.
+
+### [New-AzureRmSnapshotUpdateConfig](New-AzureRmSnapshotUpdateConfig.md)
+Creates a configurable snapshot update object.
 
 ### [New-AzureRmVM](New-AzureRmVM.md)
 Creates a virtual machine.
@@ -172,7 +219,7 @@ Creates a configuration object for SQL Server automatic backup.
 Creates a configuration object for automatic patching on a virtual machine.
 
 ### [New-AzureVMSqlServerKeyVaultCredentialConfig](New-AzureVMSqlServerKeyVaultCredentialConfig.md)
-
+Creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ### [Publish-AzureRmVMDscConfiguration](Publish-AzureRmVMDscConfiguration.md)
 Uploads a DSC script to Azure blob storage.
@@ -186,6 +233,18 @@ Removes a container service.
 ### [Remove-AzureRmContainerServiceAgentPoolProfile](Remove-AzureRmContainerServiceAgentPoolProfile.md)
 Removes an agent pool profile from a container service.
 
+### [Remove-AzureRmDisk](Remove-AzureRmDisk.md)
+Removes a disk.
+
+### [Remove-AzureRmImage](Remove-AzureRmImage.md)
+Removes an image.
+
+### [Remove-AzureRmImageDataDisk](Remove-AzureRmImageDataDisk.md)
+Removes a data disk from an image object.
+
+### [Remove-AzureRmSnapshot](Remove-AzureRmSnapshot.md)
+Removes a snapshot.
+
 ### [Remove-AzureRmVM](Remove-AzureRmVM.md)
 Removes a virtual machine from Azure.
 
@@ -196,7 +255,7 @@ Removes the VMAccess extension from a virtual machine.
 Removes the AEM extension from a virtual machine.
 
 ### [Remove-AzureRmVMBackup](Remove-AzureRmVMBackup.md)
-
+Removes the backup from a virtual machine.
 
 ### [Remove-AzureRmVMChefExtension](Remove-AzureRmVMChefExtension.md)
 Removes the Chef extension from a virtual machine.
@@ -222,11 +281,17 @@ Removes an extension from a virtual machine.
 ### [Remove-AzureRmVMNetworkInterface](Remove-AzureRmVMNetworkInterface.md)
 Removes a network interface from a virtual machine.
 
-### [Remove-AzureRMVMSqlServerExtension](Remove-AzureRMVMSqlServerExtension.md)
+### [Remove-AzureRmVMSecret](Remove-AzureRmVMSecret.md)
+Removes (a) secret(s) from a virtual machine object
+
+### [Remove-AzureRmVMSqlServerExtension](Remove-AzureRmVMSqlServerExtension.md)
 Removes a SQL Server extension from a virtual machine.
 
 ### [Remove-AzureRmVmss](Remove-AzureRmVmss.md)
 Removes the VMSS or a virtual machine that is within the VMSS.
+
+### [Remove-AzureRmVmssDataDisk](Remove-AzureRmVmssDataDisk.md)
+Removes a data disk from the VMSS.
 
 ### [Remove-AzureRmVmssDiagnosticsExtension](Remove-AzureRmVmssDiagnosticsExtension.md)
 Removes a diagnostics extension from the VMSS.
@@ -243,11 +308,56 @@ Restarts an Azure virtual machine.
 ### [Restart-AzureRmVmss](Restart-AzureRmVmss.md)
 Restarts the VMSS or a virtual machine within the VMSS.
 
+### [Revoke-AzureRmDiskAccess](Revoke-AzureRmDiskAccess.md)
+Revokes an access to a disk.
+
+### [Revoke-AzureRmSnapshotAccess](Revoke-AzureRmSnapshotAccess.md)
+Revokes an access to a snapshot.
+
 ### [Save-AzureRmVhd](Save-AzureRmVhd.md)
 Saves downloaded .vhd images locally.
 
 ### [Save-AzureRmVMImage](Save-AzureRmVMImage.md)
 Saves a virtual machine as a VMImage.
+
+### [Set-AzureRmDiskDiskEncryptionKey](Set-AzureRmDiskDiskEncryptionKey.md)
+Sets the disk encryption key properties on a disk object.
+
+### [Set-AzureRmDiskImageReference](Set-AzureRmDiskImageReference.md)
+Sets the image reference properties on a disk object.
+
+### [Set-AzureRmDiskKeyEncryptionKey](Set-AzureRmDiskKeyEncryptionKey.md)
+Sets the key encryption key properties on a disk object.
+
+### [Set-AzureRmDiskUpdateDiskEncryptionKey](Set-AzureRmDiskUpdateDiskEncryptionKey.md)
+Sets the disk encryption key properties on on a disk update object.
+
+### [Set-AzureRmDiskUpdateImageReference](Set-AzureRmDiskUpdateImageReference.md)
+Sets the image reference properties on a disk update object.
+
+### [Set-AzureRmDiskUpdateKeyEncryptionKey](Set-AzureRmDiskUpdateKeyEncryptionKey.md)
+Sets the key encryption key properties on a disk update object.
+
+### [Set-AzureRmImageOsDisk](Set-AzureRmImageOsDisk.md)
+Sets the operating system disk properties on an image object.
+
+### [Set-AzureRmSnapshotDiskEncryptionKey](Set-AzureRmSnapshotDiskEncryptionKey.md)
+Sets the disk encryption key properties on a snapshot object.
+
+### [Set-AzureRmSnapshotImageReference](Set-AzureRmSnapshotImageReference.md)
+Sets the image reference properties on a snapshot object.
+
+### [Set-AzureRmSnapshotKeyEncryptionKey](Set-AzureRmSnapshotKeyEncryptionKey.md)
+Sets the key encryption key properties on a snapshot object.
+
+### [Set-AzureRmSnapshotUpdateDiskEncryptionKey](Set-AzureRmSnapshotUpdateDiskEncryptionKey.md)
+Sets the disk encryption key properties on a snapshot update object.
+
+### [Set-AzureRmSnapshotUpdateImageReference](Set-AzureRmSnapshotUpdateImageReference.md)
+Sets the image reference properties on a snapshot update object.
+
+### [Set-AzureRmSnapshotUpdateKeyEncryptionKey](Set-AzureRmSnapshotUpdateKeyEncryptionKey.md)
+Sets the key encryption key properties on a snapshot update object.
 
 ### [Set-AzureRmVM](Set-AzureRmVM.md)
 Marks a virtual machine as generalized.
@@ -262,7 +372,7 @@ Adds an AD domain extension to a virtual machine.
 Enables support for monitoring for SAP systems.
 
 ### [Set-AzureRmVMBackupExtension](Set-AzureRmVMBackupExtension.md)
-
+Sets the backup extension properties on a virtual machine.
 
 ### [Set-AzureRmVMBginfoExtension](Set-AzureRmVMBginfoExtension.md)
 Adds the BGInfo extension to a virtual machine.
@@ -276,10 +386,10 @@ Adds a Chef extension to a virtual machine.
 ### [Set-AzureRmVMCustomScriptExtension](Set-AzureRmVMCustomScriptExtension.md)
 Adds a custom script extension to a virtual machine.
 
-### [Set-AzureRMVMDataDisk](Set-AzureRMVMDataDisk.md)
+### [Set-AzureRmVMDataDisk](Set-AzureRmVMDataDisk.md)
 Modifies properties of a virtual machine data disk.
 
-### [Set-AzureRMVMDiagnosticsExtension](Set-AzureRMVMDiagnosticsExtension.md)
+### [Set-AzureRmVMDiagnosticsExtension](Set-AzureRmVMDiagnosticsExtension.md)
 Configures the Azure diagnostics extension on a virtual machine.
 
 ### [Set-AzureRmVMDiskEncryptionExtension](Set-AzureRmVMDiskEncryptionExtension.md)
@@ -303,7 +413,7 @@ Sets the Marketplace plan information on a virtual machine.
 ### [Set-AzureRmVMSourceImage](Set-AzureRmVMSourceImage.md)
 Specifies the platform image for a virtual machine.
 
-### [Set-AzureRMVMSqlServerExtension](Set-AzureRMVMSqlServerExtension.md)
+### [Set-AzureRmVMSqlServerExtension](Set-AzureRmVMSqlServerExtension.md)
 Sets the Azure SQL Server extension on a virtual machine.
 
 ### [Set-AzureRmVmss](Set-AzureRmVmss.md)
@@ -333,8 +443,20 @@ Stops the VMSS or a set of virtual machines within the VMSS.
 ### [Test-AzureRmVMAEMExtension](Test-AzureRmVMAEMExtension.md)
 Checks the configuration of the AEM extension.
 
+### [Update-AzureRmAvailabilitySet](Update-AzureRmAvailabilitySet.md)
+Updates an availability set.
+
 ### [Update-AzureRmContainerService](Update-AzureRmContainerService.md)
 Updates the state of a container service.
+
+### [Update-AzureRmDisk](Update-AzureRmDisk.md)
+Updates a disk.
+
+### [Update-AzureRmImage](Update-AzureRmImage.md)
+Updates an image.
+
+### [Update-AzureRmSnapshot](Update-AzureRmSnapshot.md)
+Updates a snapshot.
 
 ### [Update-AzureRmVM](Update-AzureRmVM.md)
 Updates the state of an Azure virtual machine.

@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssWinRMListener")]
+    [Cmdlet("Add", "AzureRmVmssWinRMListener", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssWinRMListenerCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CertificateUrl { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)

@@ -30,7 +30,7 @@ PS C:\> $topicObj.EnableExpress = $True
 PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj
 ```
 
-Updates the specified topic with a new description in the specified namespace, and updates the **EnableExpress**  property to **true**. 
+Updates the specified topic with a new description in the specified namespace. This example updates the **EnableExpress** property to **true**. 
 
 ## PARAMETERS
 
@@ -130,22 +130,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###-ResourceGroup
+### -ResourceGroup
  System.String
 
-###-NamespaceName
+### -NamespaceName
  System.String
 
-###-TopicName
+### -TopicName
  System.String
 
-###-TopicObj
+### -TopicObj
  Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
-
 Name                                : SB-Topic_exampl1
 Location                            : West US
 Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-
@@ -172,7 +171,6 @@ Status                              : Active
 SubscriptionCount                   : 1
 SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 7:12:16 PM
-
 
 ## NOTES
 

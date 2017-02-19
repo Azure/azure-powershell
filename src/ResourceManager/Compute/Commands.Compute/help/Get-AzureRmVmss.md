@@ -23,11 +23,6 @@ Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-I
  [<CommonParameters>]
 ```
 
-### InvokeByStaticParametersForFriendMethod
-```
-Get-AzureRmVmss [-InstanceView] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzureRmVmss** cmdlet gets the model and instance view of a Virtual Machine Scale Set (VMSS).
 The model view is the user specified properties of the virtual machine.
@@ -51,7 +46,7 @@ Indicates that this cmdlet gets only the instance view of the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod, InvokeByStaticParametersForFriendMethod
+Parameter Sets: InvokeByDynamicParametersForFriendMethod
 Aliases: 
 
 Required: True
@@ -66,7 +61,7 @@ Specifies the name of the Resource Group of the VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -81,7 +76,7 @@ Species the name of the VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: Name
 
 Required: False
