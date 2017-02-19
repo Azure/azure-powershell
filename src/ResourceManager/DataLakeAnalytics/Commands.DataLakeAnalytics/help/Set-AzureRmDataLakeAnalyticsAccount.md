@@ -15,7 +15,7 @@ Modifies a Data Lake Analytics account.
 ```
 Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-Tags] <Hashtable>] [[-ResourceGroupName] <String>]
  [-MaxDegreeOfParallelism <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
- [<CommonParameters>]
+ [-FirewallState <FirewallState>] [-AllowAzureIpState <FirewallAllowAzureIpsState>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,32 @@ PS C:\>Set-AzureRmDataLakeAnalyticsAccount -Name "ContosoAdlAcct" -DefaultDataLa
 This command changes the default data source and the Tags property of the account.
 
 ## PARAMETERS
+
+### -AllowAzureIpState
+Optionally allow/block Azure originating IPs through the firewall.```yaml
+Type: FirewallAllowAzureIpsState
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FirewallState
+Optionally enable/disable existing firewall rules.```yaml
+Type: FirewallState
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -MaxDegreeOfParallelism
 The optional maximum supported degree of parallelism to update the account with.```yaml

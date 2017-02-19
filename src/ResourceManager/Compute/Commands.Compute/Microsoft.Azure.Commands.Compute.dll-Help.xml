@@ -21262,6 +21262,14 @@ PS C:\&gt; Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite |
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="16" aliases="none"><maml:name>SkipVmBackup</maml:name>
+<maml:Description><maml:para>Skip backup creation for Linux VMs
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="ResourceName"><maml:name>VMName</maml:name>
 <maml:Description><maml:para>Specifies the name of the virtual machine.
 </maml:para>
