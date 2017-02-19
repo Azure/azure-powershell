@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The firewall is currently disabled for account: {0}. Updates to firewall rules will not take affect until the firewall is enabled..
+        /// </summary>
+        internal static string FirewallDisabledWarning {
+            get {
+                return ResourceManager.GetString("FirewallDisabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string FirewallRuleNotFound {
@@ -561,6 +570,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string TraceStreamFailure {
             get {
                 return ResourceManager.GetString("TraceStreamFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The trusted identity provider is currently disabled for account: {0}. Updates to trusted identity providers will not take affect until the trusted identity provider is enabled..
+        /// </summary>
+        internal static string TrustedIdProviderDisabledWarning {
+            get {
+                return ResourceManager.GetString("TrustedIdProviderDisabledWarning", resourceCulture);
             }
         }
         
