@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
     /// <summary>
     /// Updates the label and/or the description for a storage account in Microsoft Azure.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureStorageAccount", DefaultParameterSetName = GeoReplicationEnabledParamSet), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.Set, "AzureStorageAccount", DefaultParameterSetName = AccountTypeParamSet), OutputType(typeof(ManagementOperationContext))]
     public class SetAzureStorageAccountCommand : ServiceManagementBaseCmdlet
     {
         protected const string AccountTypeParamSet = "AccountType";

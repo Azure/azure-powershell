@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string containerServiceName = (string)ParseParameter(invokeMethodInputParameters[1]);
             ContainerService parameters = (ContainerService)ParseParameter(invokeMethodInputParameters[2]);
 
-            var result = ContainerServiceClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
+            var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
             WriteObject(result);
         }
     }

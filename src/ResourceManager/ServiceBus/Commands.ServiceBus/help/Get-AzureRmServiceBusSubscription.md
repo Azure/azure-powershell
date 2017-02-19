@@ -26,7 +26,7 @@ The **Get-AzureRmServiceBusSubscription** cmdlet returns a subscription descript
 PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
-Returns a subscription description for the specified Service Bus Topic.
+Returns a subscription description for the specified Service Bus topic.
 
 ## PARAMETERS
 
@@ -94,24 +94,26 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-###-ResourceGroup
- System.String
- 
-###-NamespaceName
- System.String
- 
-###-TopicName
- System.String
- 
-###-SubscriptionName
+
+### -ResourceGroup
  System.String
  
 
+### -NamespaceName
+ System.String
+ 
+
+### -TopicName
+ System.String
+ 
+
+### -SubscriptionName
+ System.String
+ 
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
-
 Name                                      : SB-TopicSubscription-Example1
 Location                                  : West US
 AccessedAt                                : 1/20/2017 3:18:54 AM
