@@ -22,11 +22,10 @@
 	3. Get-Help <CommandName> to get help on individual commands.
 
 ## 2. Accquring TestFramework
-Current Version: [1.4.0-preview](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/1.4.0-preview)
 
-Nuget command to install current version
+TestFramework is available on NuGet at https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/ .
 
-    Install-Package Microsoft.Rest.ClientRuntime.Azure.TestFramework -v 1.4.0-preview -Pre
+Instructions to manually download it are available on NuGet. However TestFramework will be downloaded automatically as part of the build process, so manually downloading it should generally be unnecessary.
 
 ## 3. Setup prior to Record/Playback of tests
 In order to Record/Playback a test, you need to setup a connection string that consists various key/value pairs that provides information to the test environment.
