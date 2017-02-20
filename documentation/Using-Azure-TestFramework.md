@@ -148,11 +148,16 @@ After the service principal is created, you will need to give it access to Azure
 	New-AzureRmRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
 
 To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below connection string:
- - `clientId`: The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
- - `clientSecret`: A [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
- - `tenantId`: The [AAD Tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+
+`clientId`: The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+
+`clientSecret`: A [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+
+`tenantId`: The [AAD Tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+
 
 	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+
 
 2. Run the test and make sure that you got a generated .json file that matches the test name in the bin folder under *SessionRecords folder
 3. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
