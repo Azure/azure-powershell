@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
         /// <summary>
         /// Put a single resource.
         /// </summary>
-        /// <param name="resourceId">The resource Id.</param>
+        /// <param name="resourceId">The subscription Id.</param>
         /// <param name="apiVersion">The API version to use.</param>
         /// <param name="resource">The resource to put.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> used to cancel the request.</param>

@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Runtime.Serialization.Formatters;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -314,9 +313,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
-            HttpResponseMessage response;
 
-            // Poll deployment state and deployment operations after RetryAfter, or if no RetryAfter provided, with two phases: In phase one, poll every 5 seconds. Phase one 
+            // Poll deployment state and deployment operations with two phases. In phase one, poll every 5 seconds. Phase one 
             // takes 400 seconds. In phase two, poll every 60 seconds. 
             const int counterUnit = 1000;
             int step = 5;
@@ -337,17 +335,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     job(resourceGroup, deploymentName, basicDeployment);
                 }
 
-                var tuple = ResourceManagementClient.Deployments.GetDeploymentWithResponseMessage(resourceGroup, deploymentName);
-                deployment = tuple.Item1;
-                response = tuple.Item2;
-                if (response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
-                {
-                    step = response.Headers.RetryAfter.Delta.Value.Seconds;
-                }
-                else
-                {
-                    step = phaseOne > 0 ? 5 : 60;
-                }
+                deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName);
+
+                step = phaseOne > 0 ? 5 : 60;
 
             } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
