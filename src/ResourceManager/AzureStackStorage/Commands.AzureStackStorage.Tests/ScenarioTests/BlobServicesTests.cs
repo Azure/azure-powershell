@@ -26,12 +26,5 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
         {
             TestsController.NewInstance.RunPsTest("Test-GetBlobService");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetBlobService()
-        {
-            TestsController.NewInstance.RunPsTest("Test-SetBlobService");
-        }
     }
 }

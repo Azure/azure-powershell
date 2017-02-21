@@ -26,14 +26,11 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetricDefinition)]
-    public sealed class GetQueueServiceMetricDefinitions : AdminCmdlet
+    public sealed class GetQueueServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
 
         /// <summary>
         ///     Farm Identifier
@@ -45,20 +42,12 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Array of metric names
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        public string[] MetricNames
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        protected override MetricDefinitionsResult GetMetricDefinitionsResult(string filter)
         {
-            get;
-            set;
-        }
 
-        protected override void Execute()
-        {
-            string filter = Tools.GenerateFilter(MetricNames);
-            WriteVerbose("filter: " + filter);
-
-            MetricDefinitionsResult node = Client.QueueService.GetMetricDefinitions(ResourceGroupName, FarmName, filter);
-            WriteObject(node);
+            return Client.QueueService.GetMetricDefinitions(ResourceGroupName, FarmName, filter);
         }
     }
 }

@@ -220,5 +220,18 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
             return AzureSession.ClientFactory.CreateCustomClient<StorageAdminManagementClient>(credentials, armUri);
         }
+		
+        protected string ParseNameForQuota(string name)
+        {
+            // the quota is a nested resource with its resourceName being location/name as presented to ARM
+            // extract only the actual quota name from the ARM resource name.
+            if (!string.IsNullOrEmpty(name) && name.IndexOf(@"/") != -1)
+            {
+                name = name.Substring(name.IndexOf(@"/") + 1);
+            }
+
+            return name;
+        }
+
     }
 }

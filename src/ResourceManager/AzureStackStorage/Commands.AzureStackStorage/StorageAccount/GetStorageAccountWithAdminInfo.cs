@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,36 +13,37 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.AzureStack.AzureConsistentStorage;
-using Microsoft.AzureStack.AzureConsistentStorage.Models;
+using Microsoft.AzureStack.Management.StorageAdmin;
 
-namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
+namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
     /// <summary>
     ///     SYNTAX
-    ///          Get-ManagementServiceMetric [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string}
-    ///             [[-StartTime] {DateTime}] [[-EndTime] {DateTime}] [[-TimeGrain] {TimeGrain}] [[-MetricNames] {string[]}] [ {CommonParameters}]
+    ///          Get-StorageAccountWithAdminInfo [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
+    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-VersionedAccountName] {string}] 
     /// 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.AdminManagementServiceMetric)]
-    public sealed class GetManagementServiceMetrics : AdminMetricCmdlet
+    [Cmdlet(VerbsCommon.Get, Nouns.AdminStorageAccount)]
+    public sealed class GetStorageAccountWithAdminInfo : AdminCmdlet
     {
         /// <summary>
-        ///     Farm Identifier
+        /// Farm Identifier
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
         public string FarmName { get; set; }
 
         /// <summary>
-        /// 
+        /// Storage Account Name
         /// </summary>
-        /// <param name="filter"></param>
-        /// <returns></returns>
-        protected override MetricsResult GetMetricsResult(string filter)
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 5)]
+        public string VersionedAccountName { get; set; }
+
+        protected override void Execute()
         {
-            return Client.ManagementService.GetMetrics(ResourceGroupName, FarmName, filter);
+            var response = Client.StorageAccounts.Get(ResourceGroupName, FarmName, VersionedAccountName);
+
+            WriteObject(response, true);
         }
     }
 }
