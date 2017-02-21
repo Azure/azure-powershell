@@ -29,7 +29,7 @@
   <!-- Define build properties -->
   <PropertyGroup>
     <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
-    <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
+    <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>	
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
     <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
@@ -37,6 +37,7 @@
     <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
+	<SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
     <BuildOutputDirectory>$(PublishDirectory)\Build</BuildOutputDirectory>
     <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
@@ -183,8 +184,9 @@
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
 	
-    <CallTarget Targets="BuildSetup"/>
+    <CallTarget Targets="BuildSetupTest"/>
 	<CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
+	<CallTarget Targets="BuildSetup"/>
 	<CallTarget Targets="CodeSignInstaller"
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
 	
@@ -197,6 +199,18 @@
     Name="Full"
     DependsOnTargets="Clean;Build;Test" />
 
+	<Target Name="BuildSetupTest" Condition=" '$(Scope)' == 'all' ">
+		<MSBuild
+		  Projects=".\setup\PowerShellSetup.Test\PowerShellSetup.Test.csproj"
+		  Targets="Build"
+		  Properties="Configuration=$(Configuration);Platform=AnyCPU"
+		  ContinueOnError="false"
+		  Condition=" '$(Scope)' == 'all' "/>
+		
+		<Copy SourceFiles="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)\PowerShellSetup.Test.dll"
+			DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition="Exists('$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)\PowerShellSetup.Test.dll')" />	  
+	</Target>
+	
 	<Target Name="BuildSetup" Condition=" '$(Scope)' == 'all' ">
 		<!-- Copying shortcut to be signed -->
 		<Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\RemoveGalleryModules.ps1;$(LibrarySourceFolder)\Package\$(Configuration)\SetExecutionPolicy.ps1"
@@ -234,7 +248,7 @@
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
-	  <DelaySignedAssembliesToSign Include="$(LibraryRoot)\setup\PowerShellSetup.Test\**\PowerShellSetup.Test.dll" />
+	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\PowerShellSetup.Test.dll" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
@@ -285,7 +299,7 @@
 
 	<!-- We cannot verify .js files using Get-AuthenticodeSignature -->
     <VerifyAuthenticodeSignatureTask ProbingDirectory="$(PackageDirectory)\$(Configuration)"
-                    FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml">
+                    FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml;PowerShellSetup.Test.dll">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
 
@@ -318,7 +332,7 @@
       Description="Microsoft Azure PowerShell"
       Keywords="Microsoft Azure PowerShell"
       UnsignedFiles="@(InstallersToSign)"
-      DestinationPath="$(LibraryRoot)\signed"
+      DestinationPath="$(SignedOutputRootDir)"
       SigningLogPath="$(LibraryRoot)\msi-signing.log"
       Certificates="402"
       ToolsPath="$(CIToolsPath)"
@@ -326,7 +340,7 @@
 	  
 	<!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
-	<SetEnvVar EnvName="SignedMsiDir" EnvValue="$(LibraryRoot)signed" />
+	<SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
   </Target>
 
   <!-- Run Dependecy Analyzer -->
