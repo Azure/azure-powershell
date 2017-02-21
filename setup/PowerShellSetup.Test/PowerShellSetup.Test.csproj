@@ -105,14 +105,9 @@
     <ItemGroup>
       <MsiOutputDir Include="$(ProjectDir)..\..\signed\AzurePowerShell.msi" Condition="Exists('$(ProjectDir)..\..\signed\AzurePowerShell.msi')" />
       <MsiOutputDir Include="$(ProjectDir)..\build\$(Configuration)\AzurePowerShell.msi" Condition="Exists('$(ProjectDir)..\build\$(Configuration)\AzurePowerShell.msi')" />
-    </ItemGroup>
-    <ItemGroup>
-      <SignedTestBinary Include="$(ProjectDir)..\..\signed\$(TargetFileName)" Condition="Exists('$(ProjectDir)..\..\signed\$(TargetFileName)')" />
-    </ItemGroup>
-    <Message Text="Copying Post Build @(MsiOutputDir)" Condition=" '@(MsiOutputDir)' != '' " />
-    <Message Text="Copying Post Build @(SignedTestBinary)" Condition=" '@(SignedTestBinary)' != '' " />
-    <Copy SourceFiles="@(MsiOutputDir)" DestinationFolder="$(OutputPath)" Condition="'@(MsiOutputDir)' != ''" SkipUnchangedFiles="false" />
-    <Copy SourceFiles="@(SignedTestBinary)" DestinationFolder="$(OutputPath)" Condition="'@(SignedTestBinary)' != ''" SkipUnchangedFiles="false" />
+    </ItemGroup>    
+    <Message Text="Copying Post Build @(MsiOutputDir)" Condition=" '@(MsiOutputDir)' != '' " />    
+    <Copy SourceFiles="@(MsiOutputDir)" DestinationFolder="$(OutputPath)" Condition="'@(MsiOutputDir)' != ''" SkipUnchangedFiles="false" />    
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

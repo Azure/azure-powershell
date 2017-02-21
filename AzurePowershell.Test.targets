@@ -103,7 +103,6 @@
         Command="$(LibrarySourceFolder)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -parallel none -maxthreads 0 -trait &quot;AcceptanceType=CheckIn&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
         Timeout="$(TestTimeout)" ContinueOnError="false" Condition=" @(XUnitTests) != '' "/>
 	-->
-	
 	<xunit 
 			Assemblies="@(XUnitTests)" 
 			AppDomains="true"
@@ -147,9 +146,17 @@
   </Target>
   
   <Target Name="TestSetup" DependsOnTargets="DeclareXunitTests">
-		<Message Importance="high" Text="Setup XUnit tests" />
-		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-		
+	<Message Importance="high" Text="Setup XUnit tests" />
+	<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+	
+	<Message Text="Copying test assets" />
+	<!-- We copy this file right after we build setup test for signing, so now copying the signed copy back where it is needed for the test -->
+	<Copy SourceFiles="$(PackageDirectory)\$(Configuration)\PowerShellSetup.Test.dll"
+      DestinationFolder="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)" Condition="Exists('$(PackageDirectory)\$(Configuration)\PowerShellSetup.Test.dll')" />
+	
+	<Copy SourceFiles="$(SignedOutputRootDir)\AzurePowerShell.msi"
+      DestinationFolder="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)" Condition="Exists('$(SignedOutputRootDir)\AzurePowerShell.msi')" />
+	  
 		<ItemGroup Condition=" '$(scope)' == 'all' AND '$(CodeSign)' != 'true' ">
 			<SetupDebugTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll" />
 		</ItemGroup>
