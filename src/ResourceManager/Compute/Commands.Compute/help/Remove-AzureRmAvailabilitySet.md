@@ -13,7 +13,7 @@ Removes an availability set from Azure.
 ## SYNTAX
 
 ```
-Remove-AzureRmAvailabilitySet [-ResourceGroupName] <String> [[-Name] <String>] [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmAvailabilitySet [-ResourceGroupName] <String> [-Name <String>] [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -47,15 +47,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the availability set to remove.
-
-```yaml
+The availability set name.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, AvailabilitySetName
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

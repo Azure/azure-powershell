@@ -25,15 +25,29 @@
   - Secret: The encryption key used to encrypt and decrypt the data bag item values.
   - SecretFile: The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 
+## Version 2.6.0
+* New cmdlets for Managed disk
+    - Disk cmdlets: New-AzureRmDisk, Update-AzureRmDisk, Get-AzureRmDisk, Remove-AzureRmDisk,
+                    Grant-AzureRmDiskAccess, Revoke-AzureRmDiskAccess,
+                    New-AzureRmDiskConfig, Set-AzureRmDiskDiskEncryptionKey, Set-AzureRmDiskImageReference, Set-AzureRmDiskKeyEncryptionKey,
+                    New-AzureRmDiskUpdateConfig, Set-AzureRmDiskUpdateDiskEncryptionKey, Set-AzureRmDiskUpdateImageReference, Set-AzureRmDiskUpdateKeyEncryptionKey
+    - Snapshot cmdlets: New-AzureRmSnapshot, Update-AzureRmSnapshot, Get-AzureRmSnapshot, Remove-AzureRmSnapshot,
+                        Grant-AzureRmSnapshotAccess, Revoke-AzureRmSnapshotAccess,
+                        New-AzureRmSnapshotConfig, Set-AzureRmSnapshotDiskEncryptionKey, Set-AzureRmSnapshotImageReference, Set-AzureRmSnapshotKeyEncryptionKey,
+                        New-AzureRmSnapshotUpdateConfig, Set-AzureRmSnapshotUpdateDiskEncryptionKey, Set-AzureRmSnapshotUpdateImageReference, Set-AzureRmSnapshotUpdateKeyEncryptionKey
+    - Image cmdlets: New-AzureRmImage, Get-AzureRmImage, Remove-AzureRmImage,
+                     New-AzureRmImageConfig, Set-AzureRmImageOsDisk, Add-AzureRmImageDataDisk, Remove-AzureRmImageDataDisk
+    - VM cmdlet: ConvertTo-AzureRmVMManagedDisk
+
 ## Version 2.5.0
 * Fix Get-AzureRmVM with -Status issue: Get-AzureRmVM throws an exception when Get-AzureRmVM lists multiple VMs and some of the VMs are deleted during Get-AzureRmVM is performed.
 * New parameters in New-AzureRmVMSqlServerAutoBackupConfig cmdlet to support Auto Backup for SQL Server 2016 VMs.
-	- BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
-	- BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it's manual, schedule settings need to be specified.
-	- FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
-	- FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
-	- FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
-	- LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
+    - BackupSystemDbs : Specifies if system databases should be added to Sql Server Managed Backup.
+    - BackupScheduleType : Specifies the type of managed backup schedule, manual or automated. If it's manual, schedule settings need to be specified.
+    - FullBackupFrequency : Specifies the frequency of Full Backup, daily or weekly.
+    - FullBackupStartHour : Specifies the hour of the day when the Sql Server Full Backup should start.
+    - FullBackupWindowInHours : Specifies the window (in hours) when Sql Server Full Backup should occur.
+    - LogBackupFrequencyInMinutes : Specifies the frequency of Sql Server Log Backup.
 * New-AzureVMSqlServer* cmdlets are renamed to New-AzureRmVMSqlServer* now. Old ones will continue to work however.
 
 ## Version 2.4.0
