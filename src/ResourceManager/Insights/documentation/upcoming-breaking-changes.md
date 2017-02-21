@@ -142,3 +142,14 @@
     write-host "Data: $s21.Data"
     
     ```
+
+  **Set-AzureRmDiagnosticSettings**
+    - The command is going to be renamed to Update-AzureRmDiagnsoticSettings
+
+    ```powershell
+    # Old
+    # Set-AzureRmDiagnosticSettings
+
+    # New
+    # Update-AzureRmDiagnosticSettings
+    ```
