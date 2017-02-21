@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Name,
                 () =>
                 {
-                    DataLakeStoreClient.DeleteFirewallRule(ResourceGroupName, Account, Name);
+                    DataLakeStoreClient.DeleteFirewallRule(ResourceGroupName, Account, Name, this);
                     if (PassThru)
                     {
                         WriteObject(true);

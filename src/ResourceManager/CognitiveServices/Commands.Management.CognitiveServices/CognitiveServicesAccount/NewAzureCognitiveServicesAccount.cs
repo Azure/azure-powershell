@@ -53,16 +53,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Type.")]
         [Alias(CognitiveServicesAccountTypeAlias, AccountTypeAlias, KindAlias)]
-        [ValidateSet(
-            AccountType.ComputerVision,
-            AccountType.Emotion,
-            AccountType.Face,
-            AccountType.LUIS,
-            AccountType.Recommendations,
-            AccountType.Speech,
-            AccountType.TextAnalytics,
-            AccountType.WebLM,
-            IgnoreCase = true)]
         public string Type { get; set; }
 
         [Parameter(
@@ -70,14 +60,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Sku Name.")]
-        [ValidateSet(
-            AccountSkuString.F0, 
-            AccountSkuString.S0, 
-            AccountSkuString.S1, 
-            AccountSkuString.S2, 
-            AccountSkuString.S3, 
-            AccountSkuString.S4, 
-            IgnoreCase = true)]
         public string SkuName { get; set; }
 
         [Parameter(
@@ -108,8 +90,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 CognitiveServicesAccountCreateParameters createParameters = new CognitiveServicesAccountCreateParameters()
                 {
                     Location = this.Location,
-                    Kind = ParseAccountKind(this.Type).Value, // must have value, mandatory parameter
-                    Sku = new Sku(ParseSkuName(this.SkuName)),
+                    Kind = this.Type, // must have value, mandatory parameter
+                    Sku = new Sku(this.SkuName),
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
                     Properties = new object(), // Must not be null according to Azure RM spec. Also there is no actual properties to pass, so not exposing it through cmdlet
                 };

@@ -26,6 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     using Routes.Model;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Management.Automation;
     using System.Security.Cryptography.X509Certificates;
@@ -188,12 +189,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 
         public ApplicationGatewayOperationResponse AddApplicationGatewayCertificate(string gatewayName, string certificateName, string password, string certificateFile)
         {
-            X509Certificate2 cert = new X509Certificate2(certificateFile, password, X509KeyStorageFlags.Exportable);
-
             ApplicationGatewayCertificate appGwCert = new ApplicationGatewayCertificate()
             {
-                Data = Convert.ToBase64String(cert.Export(X509ContentType.Pfx, password)),
-                //CertificateFormat = "pfx",
+                Data = Convert.ToBase64String(File.ReadAllBytes(certificateFile)),
                 Password = password
             };
 
@@ -203,15 +201,50 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public PowerShellAppGwModel.ApplicationGatewayCertificate GetApplicationGatewayCertificate(string gatewayName, string certificateName)
         {
             ApplicationGatewayGetCertificate certificate = client.ApplicationGateways.GetCertificate(gatewayName, certificateName);
-            X509Certificate2 certObject = new X509Certificate2(Convert.FromBase64String(certificate.Data));
+            X509Certificate2Collection certCollection = new X509Certificate2Collection();
+            certCollection.Import(Convert.FromBase64String(certificate.Data));
+
+            X509Certificate2 certToReturn = null;
+            // We need to return the first non-CA cert.
+            // If there is no non-CA cert, return the first cert in the collection.
+            foreach (var certObject in certCollection)
+            {
+                // Remember first cert in collection
+                if (certToReturn == null)
+                {
+                    certToReturn = certObject;
+                }
+                // Non-CA cert, so this is the one we want
+                if (!IsCACert(certObject))
+                {
+                    certToReturn = certObject;
+                    break;
+                }
+            }
+
             return (new PowerShellAppGwModel.ApplicationGatewayCertificate
             {
                 Name = certificate.Name,
-                SubjectName = certObject.SubjectName.Name,
-                Thumbprint = certObject.Thumbprint,
-                ThumbprintAlgo = certObject.SignatureAlgorithm.FriendlyName,
+                SubjectName = certToReturn.SubjectName.Name,
+                Thumbprint = certToReturn.Thumbprint,
+                ThumbprintAlgo = certToReturn.SignatureAlgorithm.FriendlyName,
                 State = certificate.State
             });
+        }
+
+        private static bool IsCACert(X509Certificate2 cert)
+        {
+            const string BasicConstraintsOid = "2.5.29.19";
+            foreach (var extension in cert.Extensions)
+            {
+                if (extension.Oid.Value == BasicConstraintsOid)
+                {
+                    X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)extension;
+                    return ext.CertificateAuthority;
+                }
+            }
+
+            return false;
         }
 
         public List<PowerShellAppGwModel.ApplicationGatewayCertificate> ListApplicationGatewayCertificate(string gatewayName)

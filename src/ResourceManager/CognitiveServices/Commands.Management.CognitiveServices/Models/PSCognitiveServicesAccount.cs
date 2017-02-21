@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.Endpoint = cognitiveServicesAccount.Endpoint;
             this.Location = cognitiveServicesAccount.Location;
             this.Sku = cognitiveServicesAccount.Sku;
-            this.AccountType = (CognitiveServicesModels.Kind)Enum.Parse(typeof(CognitiveServicesModels.Kind), cognitiveServicesAccount.Kind);
+            this.AccountType = cognitiveServicesAccount.Kind;
             this.Etag = cognitiveServicesAccount.Etag;
             this.ResourceType = cognitiveServicesAccount.Type;
             this.ProvisioningState = cognitiveServicesAccount.ProvisioningState;
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
         public string Location { get; private set; }
 
         public Sku Sku { get; private set; }
-        
-        public Kind? AccountType { get; private set; }
+
+        public string AccountType { get; private set; }
 
         public string ResourceType { get; private set; }
 

@@ -84,33 +84,46 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                 foreach (var directory in probingDirectories)
                 {
-                    var index = Path.GetFileName(directory).IndexOf(".");
-                    var service = Path.GetFileName(directory).Substring(index + 1);
+                    var service = Path.GetFileName(directory);
 
-                    var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
-                        .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f),
-                            StringComparer.OrdinalIgnoreCase)).ToList();
+                    var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
 
-                    if (helpFiles.Count > 1)
+                    if (manifestFiles.Count > 1)
                     {
-                        helpFiles = helpFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
+                        manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
                     }
 
-                    if (helpFiles.Any())
+                    if (manifestFiles.Count == 0)
                     {
-                        Directory.SetCurrentDirectory(directory);
-                        foreach (var helpFile in helpFiles)
+                        continue;
+                    }
+
+                    var psd1 = manifestFiles.FirstOrDefault();
+
+                    var parentDirectory = Directory.GetParent(psd1);
+                    var psd1FileName = Path.GetFileName(psd1);
+
+                    PowerShell powershell = PowerShell.Create();
+                    powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory + 
+                                        " -FileName " + psd1FileName + 
+                                        " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
+
+                    var cmdletResult = powershell.Invoke();
+                    var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
+
+                    if (cmdletFiles.Any())
+                    {
+                        foreach (var cmdletFileName in cmdletFiles)
                         {
-                            var cmdletFile = helpFile.Substring(0, helpFile.Length - "-Help.xml".Length);
-                            var helpFileName = Path.GetFileName(helpFile);
-                            var cmdletFileName = Path.GetFileName(cmdletFile);
-                            if (File.Exists(cmdletFile))
+                            var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
+                            
+                            if (File.Exists(cmdletFileFullPath))
                             {
-                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileName, "AssemblyFileName");
-                                processedHelpFiles.Add(helpFileName);
+                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileFullPath, "AssemblyFileName");
+                                processedHelpFiles.Add(cmdletFileName);
                                 var proxy = 
                                     EnvironmentHelpers.CreateProxy<CmdletBreakingChangeLoader>(directory, out _appDomain);
-                                var newModuleMetadata = proxy.GetModuleMetadata(cmdletFile);
+                                var newModuleMetadata = proxy.GetModuleMetadata(cmdletFileFullPath);
 
                                 string fileName = cmdletFileName + ".json";
                                 string executingPath = 
@@ -125,12 +138,37 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                 }
                                 else
                                 {
+                                    if (!File.Exists(filePath))
+                                    {
+                                        continue;
+                                    }
+
                                     var oldModuleMetadata = DeserializeCmdlets(filePath);
 
                                     if (cmdletFilter != null)
                                     {
+                                        string output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
+
+                                        output += string.Format("\nCmdlet file: {0}", cmdletFileFullPath);
+
                                         oldModuleMetadata.FilterCmdlets(cmdletFilter);
                                         newModuleMetadata.FilterCmdlets(cmdletFilter);
+
+                                        output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
+
+                                        foreach (var cmdlet in oldModuleMetadata.Cmdlets)
+                                        {
+                                            output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
+                                        }
+
+                                        foreach (var cmdlet in newModuleMetadata.Cmdlets)
+                                        {
+                                            output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
+                                        }
+
+                                        issueLogger.WriteMessage(output + Environment.NewLine);
                                     }
 
                                     RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);

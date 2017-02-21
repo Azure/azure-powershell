@@ -1086,6 +1086,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will stop the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceStoppingConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceStoppingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different subscription..
         /// </summary>
         public static string StorageAccountNotFoundForBootDiagnostics {

@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmContainerServiceAgentPoolProfile")]
+    [Cmdlet("Remove", "AzureRmContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(ContainerService))]
     public class RemoveAzureRmContainerServiceAgentPoolProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

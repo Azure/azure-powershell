@@ -8,6 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVMBackup
 
 ## SYNOPSIS
+Removes the backup from a virtual machine.
 
 ## SYNTAX
 

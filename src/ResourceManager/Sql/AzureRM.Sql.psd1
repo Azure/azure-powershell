@@ -154,8 +154,13 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus', 
                'Set-AzureRmSqlServerAdvisorAutoExecuteStatus', 
                'Get-AzureRmSqlDatabaseAdvisor', 
-               'Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus'
-
+               'Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus',
+               'Get-AzureRmSqlServerTransparentDataEncryptionProtector',
+               'Set-AzureRmSqlServerTransparentDataEncryptionProtector',
+               'Add-AzureRmSqlServerKeyVaultKey',
+               'Get-AzureRmSqlServerKeyVaultKey',
+               'Remove-AzureRmSqlServerKeyVaultKey'
+               
 # Variables to export from this module
 # VariablesToExport = @()
 

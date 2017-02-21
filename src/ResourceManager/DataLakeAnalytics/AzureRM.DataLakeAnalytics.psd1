@@ -92,7 +92,11 @@ CmdletsToExport = 'Get-AzureRmDataLakeAnalyticsDataSource',
                'Submit-AzureRmDataLakeAnalyticsJob', 
                'New-AzureRmDataLakeAnalyticsAccount', 
                'Remove-AzureRmDataLakeAnalyticsAccount', 
-               'Set-AzureRmDataLakeAnalyticsAccount'
+               'Set-AzureRmDataLakeAnalyticsAccount',
+			   'Add-AzureRmDataLakeAnalyticsFirewallRule',
+			   'Get-AzureRmDataLakeAnalyticsFirewallRule',
+			   'Set-AzureRmDataLakeAnalyticsFirewallRule',
+			   'Remove-AzureRmDataLakeAnalyticsFirewallRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -106,7 +110,9 @@ AliasesToExport = 'Get-AdlAnalyticsDataSource', 'New-AdlCatalogCredential',
                'Test-AdlAnalyticsAccount', 'Remove-AdlAnalyticsDataSource', 
                'Add-AdlAnalyticsDataSource', 'Stop-AdlJob', 'Get-AdlJob', 
                'Get-AdlAnalyticsAccount', 'Submit-AdlJob', 'New-AdlAnalyticsAccount', 
-               'Remove-AdlAnalyticsAccount', 'Set-AdlAnalyticsAccount'
+               'Remove-AdlAnalyticsAccount', 'Set-AdlAnalyticsAccount',
+			   'Add-AdlAnalyticsFirewallRule', 'Get-AdlAnalyticsFirewallRule',
+			   'Set-AdlAnalyticsFirewallRule', 'Remove-AdlAnalyticsFirewallRule'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
