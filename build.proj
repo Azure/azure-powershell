@@ -37,6 +37,7 @@
     <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
+	<SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
     <BuildOutputDirectory>$(PublishDirectory)\Build</BuildOutputDirectory>
     <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
@@ -64,14 +65,30 @@
     <OnPremiseBuild Condition=" Exists($(OnPremiseBuildTasks)) ">true</OnPremiseBuild>
     <OnPremiseBuild Condition=" ! Exists($(OnPremiseBuildTasks)) ">false</OnPremiseBuild>
   </PropertyGroup>
+	
+	<UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<UsingTask TaskName="DebugTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+	<!-- <UsingTask TaskName="Xunit.Runner.MSBuild.xunit" AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll" /> -->
+	<UsingTask TaskName="Xunit.Runner.MSBuild.xunit" AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.runner.msbuild.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.runner.msbuild.dll" />
+	<UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >  
+		<ParameterGroup>
+			<EnvName ParameterType="System.String" Required="true" />
+			<EnvValue ParameterType="System.String" Required="true" />
+		</ParameterGroup>
+		<Task>
+			<Using Namespace="System"/>
+			<Code Type="Fragment" Language="cs">  
+				<![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
+			</Code>  
+		</Task>  
+	</UsingTask> 
+
+  <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CodeSigningTask" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
-  <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
-
-  <UsingTask 
-    AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
-    TaskName="Xunit.Runner.MSBuild.xunit" />
-  
+	
   <!-- Clean the build in all configurations -->
   <Target Name="Clean">
     <Message Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
@@ -108,8 +125,10 @@
   
   <PropertyGroup>
     <NuGetCommand>$(MSBuildProjectDirectory)\tools\NuGet.exe</NuGetCommand>
+	<LibraryNugetPackageFolder>$(LibrarySourceFolder)\packages</LibraryNugetPackageFolder>
     <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+	<NuGetRestorePackageSetting>-PackagesDirectory $(LibraryNugetPackageFolder)</NuGetRestorePackageSetting>
     <PowerShellCommand>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
   </PropertyGroup>
   
@@ -135,11 +154,14 @@
 	<Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>  
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) -PackagesDirectory $(LibrarySourceFolder)\packages" 
+    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" 
           ContinueOnError="false" />
 
     <!--Restore the xunit runner needed to run unit tests-->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory -PackagesDirectory $(LibrarySourceFolder)\packages" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config $(NuGetRestorePackageSetting)" />
+	
+	<Exec Command="$(NuGetCommand) restore %(SetupSln.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
+          ContinueOnError="false" />
     
     <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
@@ -153,16 +175,10 @@
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)" 
       ContinueOnError="false" />
-      
-    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
-    
-    <MSBuild
-      Projects="@(SetupSln)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" 
-      Condition=" '$(Scope)' == 'all' "/>
-    
+
+	<CallTarget Targets="BuildSetupTest"/>
+    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
+	<CallTarget Targets="BuildSetup"/>
     <CallTarget Targets="CodeSignInstaller" 
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    
   </Target>
@@ -171,14 +187,37 @@
   <Target
     Name="Full"
     DependsOnTargets="Clean;Build;Test" />
-    
+
+	<Target Name="BuildSetupTest" Condition=" '$(Scope)' == 'all' ">
+		<MSBuild
+		  Projects=".\setup\PowerShellSetup.Test\PowerShellSetup.Test.csproj"
+		  Targets="Build"
+		  Properties="Configuration=$(Configuration);Platform=AnyCPU"
+		  ContinueOnError="false"
+		  Condition=" '$(Scope)' == 'all' "/>
+		  
+		<Copy SourceFiles="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)\PowerShellSetup.Test.dll"
+			DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition="Exists('$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)\PowerShellSetup.Test.dll')" />	  
+	</Target>
+	
+	<Target Name="BuildSetup" Condition=" '$(Scope)' == 'all' ">
+		<!-- Copying shortcut to be signed -->
+		<Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\RemoveGalleryModules.ps1;$(LibrarySourceFolder)\Package\$(Configuration)\SetExecutionPolicy.ps1"
+		  DestinationFolder="$(LibraryRoot)setup\Setup\"
+		  Condition=" '$(CodeSign)' == 'true' "/>
+
+		<MSBuild
+		  Projects="@(SetupSln)"
+		  Targets="ReBuild"
+		  Properties="Configuration=$(Configuration);Platform=Any CPU"
+		  ContinueOnError="false"
+		  Condition=" '$(Scope)' == 'all' "/>
+	</Target>
+	
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
     <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"
              Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
   </Target>
-  
-  <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />  
   
   <Target Name="CodeSignBinaries">
     <PropertyGroup>
@@ -195,17 +234,20 @@
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psd1" 
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psm1" 
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psm1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')"/>
-   
+	
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
+	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\PowerShellSetup.Test.dll" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
-      <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
+      <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />	  
+	  <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.js" />
+	  <ScriptsToSign Include="$(LibraryRoot)setup\Setup\*.ps1" />
     </ItemGroup>
     
     <Message Importance="high" Text="$(LibrarySourceFolder)\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
@@ -236,7 +278,7 @@
       UnsignedFiles="@(ScriptsToSign)"
       DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
       BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      Certificates="402"
+      Certificates="400"
       SigningLogPath="$(LibraryRoot)\signing-scripts.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/> 
@@ -248,6 +290,11 @@
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
+		
+	<VerifyAuthenticodeSignatureTask ProbingDirectory="$(PackageDirectory)\$(Configuration)"
+                    FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml;PowerShellSetup.Test.dll">
+      <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
+    </VerifyAuthenticodeSignatureTask>
         
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
@@ -257,7 +304,8 @@
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psd1" 
       DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psm1" 
-      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />  </Target>
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />
+  </Target>
   
   <Target Name="CodeSignInstaller">
     <PropertyGroup>
@@ -279,7 +327,7 @@
       Description="Microsoft Azure PowerShell"
       Keywords="Microsoft Azure PowerShell"
       UnsignedFiles="@(InstallersToSign)"
-      DestinationPath="$(LibraryRoot)\signed"
+      DestinationPath="$(SignedOutputRootDir)"
       SigningLogPath="$(LibraryRoot)\msi-signing.log"
       Certificates="402"
       ToolsPath="$(CIToolsPath)"
@@ -287,6 +335,7 @@
          
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
+	<SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
   </Target>
   
   <!-- Publish all packages -->
