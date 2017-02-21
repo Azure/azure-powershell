@@ -84,14 +84,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        /// Execute the cmdlet
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-        }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
