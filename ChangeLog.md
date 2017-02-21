@@ -517,7 +517,6 @@
 * DataFactory
   * Added new cmdlet for listing activity windows
     - Get-AzureRmDataFactoryActivityWindow
-  * Fixed Get-AzureRmDataFactoryActivityWindow so it works for named pipeline and activity
 * DataLake
   * Changed parameter `Host` to `DatabaseHost` and added alias to `Host`
     - New-AzureRmDataLakeAnalyticsCatalogSecret

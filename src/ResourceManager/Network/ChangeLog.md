@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Current Release 
+* Added support for network Watcher APIs
+    - New-AzureRmNetworkWatcher
+    - Get-AzureRmNetworkWatcher
+    - Remove-AzureRmNetworkWatcher
+    - New-AzureRmPacketCaptureFilterConfig
+    - New-AzureRmNetworkWatcherPacketCapture
+    - Get-AzureRmNetworkWatcherPacketCapture
+    - Stop-AzureRmNetworkWatcherPacketCapture
+    - Remove-AzureRmNetworkWatcherPacketCapture
+    - Get-AzureRmNetworkWatcherFlowLogSatus
+    - Get-AzureRmNetworkWatcherNextHop
+    - Get-AzureRmNetworkWatcherSecurityGroupView
+    - Get-AzureRmNetworkWatcherTopology
+    - Get-AzureRmNetworkWatcherTroubleshootingResult
+    - Set-AzureRmNetworkWatcherConfigFlowLog
+    - Start-AzureRmNetworkWatcherResourceTroubleshooting
+    - Test-AzureRmNetworkWatcherIPFlow
 
 ## Version 3.4.0
 

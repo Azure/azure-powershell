@@ -19,11 +19,15 @@
 -->
 ## Current Release
 * Updated Set-AzureRmVMDscExtension cmdlet WmfVersion parameter to support "5.1"
-
 * Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
   - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'none' or e.g. -Daemon 'service'."
   - Secret: The encryption key used to encrypt and decrypt the data bag item values.
   - SecretFile: The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+* Fix for Get-AzureRmVM: Get-AzureRmVM did not display anything when the output includes availability set property.
+* New cmdlets:
+    - Update-AzureRmAvailabilitySet: can update an unmanaged availability set to a managed availability set.
+    - Add-AzureRmVmssDataDisk, Remove-AzureRmVmssDataDisk
+* New parameter, SkipVmBackup, for cmdlet Set-AzureRmVMDiskEncryptionExtension to allow user to skip backup creation for Linux VMs
 
 ## Version 2.6.0
 * New cmdlets for Managed disk
