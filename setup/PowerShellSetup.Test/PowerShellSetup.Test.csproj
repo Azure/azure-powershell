@@ -99,14 +99,19 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\src\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\src\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props'))" />
   </Target>
-  <Target Name="BeforeBuild" DependsOnTargets="BuildWixProject" />
-  <Target Name="BuildWixProject">
+
+  <Target Name="AfterBuild" DependsOnTargets="CopyMsi" />
+  <Target Name="CopyMsi">
+    <!--
+		We do this because the test can then extract msi contents during running tests
+		Also the output for the msi is dictated by the wix project, hence hard coding here
+	-->
     <ItemGroup>
       <MsiOutputDir Include="$(ProjectDir)..\..\signed\AzurePowerShell.msi" Condition="Exists('$(ProjectDir)..\..\signed\AzurePowerShell.msi')" />
-      <MsiOutputDir Include="$(ProjectDir)..\build\$(Configuration)\AzurePowerShell.msi" Condition=" '@(MsiOutputDir)' == '' " />
-    </ItemGroup>
-    <Message Text="Copying @(MsiOutputDir)" />
-    <Copy SourceFiles="@(MsiOutputDir)" DestinationFolder="$(OutputPath)" ContinueOnError="false" SkipUnchangedFiles="false" />
+      <MsiOutputDir Include="$(ProjectDir)..\build\$(Configuration)\AzurePowerShell.msi" Condition="Exists('$(ProjectDir)..\build\$(Configuration)\AzurePowerShell.msi')" />
+    </ItemGroup>    
+    <Message Text="Copying Post Build @(MsiOutputDir)" Condition=" '@(MsiOutputDir)' != '' " />    
+    <Copy SourceFiles="@(MsiOutputDir)" DestinationFolder="$(OutputPath)" Condition="'@(MsiOutputDir)' != ''" SkipUnchangedFiles="false" />    
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
