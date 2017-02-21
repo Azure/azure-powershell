@@ -25,12 +25,5 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
         {
             TestsController.NewInstance.RunPsTest("Test-GetTableService");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetTableService()
-        {
-            TestsController.NewInstance.RunPsTest("Test-SetTableService");
-        }
     }
 }

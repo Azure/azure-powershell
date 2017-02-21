@@ -57,29 +57,3 @@ function Test-GetTableService
         # No cleanup needed for now
     }
 }
-
-<#
-.SYNOPSIS
-Tests listing farms in a resource group with admin subscription id.
-#>
-function Test-SetTableService
-{
-    # Setup
-    $rgname = 'Default-Web-EastUS'
-	$subscriptionId = 'a93fb07c-6c93-40be-bf3b-4f0deba10f4b'	
-	$farmName = '03768357-B4F2-4C3C-AA75-574209B03D49'
-
-    try 
-    {
-	    $actual = Set-ACSTableService -FarmName $farmName `
-		-SubscriptionId $subscriptionId -ResourceGroupName $rgname -SkipCertificateValidation `
-		-FrontEndCpuBasedKeepAliveThrottlingEnabled $true `
-		-FrontEndMemoryThrottlingEnabled $true
-    }
-    finally
-    {
-        # Cleanup
-        # No cleanup needed for now
-    }
-}
-
