@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzureVMSqlServerKeyVaultCredentialConfig
 
 ## SYNOPSIS
+Creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ## SYNTAX
 

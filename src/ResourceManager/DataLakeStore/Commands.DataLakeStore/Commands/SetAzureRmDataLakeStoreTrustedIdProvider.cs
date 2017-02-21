@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Name,
                 () =>
                     WriteObject(new DataLakeStoreTrustedIdProvider(DataLakeStoreClient.AddOrUpdateTrustedProvider(
-                        ResourceGroupName, Account, Name, ProviderEndpoint)))
+                        ResourceGroupName, Account, Name, ProviderEndpoint, this)))
             );
         }
     }

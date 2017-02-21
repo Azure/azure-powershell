@@ -22,14 +22,14 @@ Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized] [<Co
 Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
 ```
 
-### RedeployIdParameterSetName
-```
-Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
-```
-
 ### GeneralizeIdParameterSetName
 ```
 Set-AzureRmVM [-Id] <String> [-Name] <String> [-Generalized] [<CommonParameters>]
+```
+
+### RedeployIdParameterSetName
+```
+Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ Specifies the Resource ID of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: RedeployIdParameterSetName, GeneralizeIdParameterSetName
+Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
 Aliases: 
 
 Required: True

@@ -58,6 +58,7 @@ function Test-CreateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
+        # Create a new http job with client certificate authentication
         $jobName = "HttpJobWithHttpClientCertificateAuthentication"
         $method = "get"
         $body = $null
@@ -69,6 +70,7 @@ function Test-CreateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
+        # Create a new http job with start time.
         $jobName = "HttpJobWithStartTime"
         $startTime = Get-Date
         $startTime = $startTime.AddDays(1)
@@ -79,7 +81,7 @@ function Test-CreateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
-        $jobName = "HttpJobWith"
+        # Create a new http job with recurrence.
         $jobName = "HttpJobWithRecurrence"
         $interval = 1
         $frequency = "Minute"
@@ -94,6 +96,7 @@ function Test-CreateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
+        # Create a new job with error http action.
         $jobName = "HttpJobWithErrorHttpAction"
         $status = "Enabled"
         $startTime = $null
@@ -113,6 +116,16 @@ function Test-CreateHttpJob
         $errorActionAuthenticationType = "Basic"
         $errorActionUserName = "HttpErrorAction"
         $errorActionPassword = "p@ssword!"
+        $jobDefinition = New-AzureRmSchedulerHttpJob -ResourceGroupName $resourceGroupName -JobCollectionName $jobCollectionName -JobName $jobName -Method $method -Uri $uri -ErrorActionType $errorActionType -ErrorActionMethod $errorActionMethod -ErrorActionUri $errorActionUri -ErrorActionRequestBody $errorActionBody -ErrorActionHeaders $errorActionHeaders -ErrorActionHttpAuthenticationType $errorActionAuthenticationType -ErrorActionUsername $errorActionUsername -ErrorActionPassword $errorActionPassword
+        Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
+        Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
+        Validate-HttpJob $errorActionMethod $errorActionUri $errorActionBody $errorActionHeaders $errorActionAuthenticationType $jobDefinition.JobErrorAction
+
+        # Create a new job with encodable uri characters.
+        $jobName = "HttpJobWithEncodableUriCharacters"
+        $uri = "http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d"
+        $errorActionUri = "http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d"
+
         $jobDefinition = New-AzureRmSchedulerHttpJob -ResourceGroupName $resourceGroupName -JobCollectionName $jobCollectionName -JobName $jobName -Method $method -Uri $uri -ErrorActionType $errorActionType -ErrorActionMethod $errorActionMethod -ErrorActionUri $errorActionUri -ErrorActionRequestBody $errorActionBody -ErrorActionHeaders $errorActionHeaders -ErrorActionHttpAuthenticationType $errorActionAuthenticationType -ErrorActionUsername $errorActionUsername -ErrorActionPassword $errorActionPassword
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
@@ -157,15 +170,16 @@ function Test-UpdateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
+        # Update a job with start time.
         $startTime = Get-Date
         $startTime = $startTime.AddDays(1)
         $startTime = $startTime.ToUniversalTime()
 
-        $jobDefinition =  Set-AzureRmSchedulerHttpJob -ResourceGroupName $resourceGroupName -JobCollectionName $jobCollectionName -JobName $jobName -StartTime $startTime
+        $jobDefinition =  Set-AzureRmSchedulerHttpJob -ResourceGroupName $resourceGroupName -JobCollectionName $jobCollectionName -JobName $jobName -StartTime $startTime -Uri $uri
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
-        # Create a new http job with headers and body
+        # Update a job with headers and body.
         $method = "post"
         $body = "Hello"
         $headers = @{"Content-Type" = "application/json"}
@@ -174,6 +188,7 @@ function Test-UpdateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
+        # Update a job with authentication.
         $httpAuthenticationType = "Basic"
         $userName = "httpJob"
         $password = "p@ssword!"
@@ -181,6 +196,7 @@ function Test-UpdateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
+        # Update a job with interval / frequency.
         $interval = 1
         $frequency = "Minute"
         $endTime = Get-Date
@@ -194,6 +210,13 @@ function Test-UpdateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
 
+        # Update a job with encodable characters URI.
+        $uri = "http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d"
+        $jobDefinition =  Set-AzureRmSchedulerHttpJob -ResourceGroupName $resourceGroupName -JobCollectionName $jobCollectionName -JobName $jobName -Uri $uri
+        Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
+        Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
+
+        # Update a job with error action.
         $status = "Enabled"
         $jobActionType = "Http"
         $errorActionType = "Http"
@@ -208,7 +231,15 @@ function Test-UpdateHttpJob
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
         Validate-HttpJob $errorActionMethod $errorActionUri $errorActionBody $errorActionHeaders $errorActionAuthenticationType $jobDefinition.JobErrorAction
+        
+        # Update a job with encodable characters error action URI.
+        $errorActionUri = "http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d"
+        $jobDefinition = Set-AzureRmSchedulerHttpJob -ResourceGroupName $resourceGroupName -JobCollectionName $jobCollectionName -JobName $jobName -ErrorActionType $errorActionType -ErrorActionUri $errorActionUri
+        Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition
+        Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition.JobAction
+        Validate-HttpJob $errorActionMethod $errorActionUri $errorActionBody $errorActionHeaders $errorActionAuthenticationType $jobDefinition.JobErrorAction
 
+        # Get scheduler job.
         $jobDefinition = Get-AzureRmSchedulerJob -ResourceGroupName $resourceGroupName -JobCollectionName $jobCollectionName
         Validate-DefaultJob $resourceGroupName $jobCollectionName $jobName $status $startTime $recurrence $endSchedule $jobDefinition[0]
         Validate-HttpJob $method $uri $body $headers $httpAuthenticationType $jobDefinition[0].JobAction
