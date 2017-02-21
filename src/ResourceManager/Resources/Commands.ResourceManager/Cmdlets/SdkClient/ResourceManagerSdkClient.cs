@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             DeploymentExtended deployment;
 
-            // Poll deployment state and deployment operations with two phases. In phase one, poll every 5 seconds. Phase one 
+            // Poll deployment state and deployment operations after RetryAfter, or if no RetryAfter provided, with two phases: In phase one, poll every 5 seconds. Phase one 
             // takes 400 seconds. In phase two, poll every 60 seconds. 
             const int counterUnit = 1000;
             int step = 5;
@@ -335,10 +335,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     job(resourceGroup, deploymentName, basicDeployment);
                 }
 
-                deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName);
-
-                step = phaseOne > 0 ? 5 : 60;
-
+                using (var getResult = ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName).ConfigureAwait(false).GetAwaiter().GetResult())
+                {
+                    deployment = getResult.Body;
+                    if (getResult.Response.Headers.RetryAfter != null && getResult.Response.Headers.RetryAfter.Delta.HasValue)
+                    {
+                        step = getResult.Response.Headers.RetryAfter.Delta.Value.Seconds;
+                    }
+                    else
+                    {
+                        step = phaseOne > 0 ? 5 : 60;
+                    }
+                }
             } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
             return deployment;
@@ -549,7 +557,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 },
                 () => resourceExists);
 
-            return  resourceGroup !=  null? resourceGroup.ToPSResourceGroup() : null;
+            return resourceGroup != null ? resourceGroup.ToPSResourceGroup() : null;
         }
 
         /// <summary>
