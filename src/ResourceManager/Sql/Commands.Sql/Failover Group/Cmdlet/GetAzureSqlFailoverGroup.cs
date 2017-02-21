@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             ICollection<AzureSqlFailoverGroupModel> results;
 
-            if (!string.IsNullOrEmpty(FailoverGroupName))
+            if (MyInvocation.BoundParameters.ContainsKey("FailoverGroupName")) 
             {
                 results = new List<AzureSqlFailoverGroupModel>();
                 results.Add(ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName));

@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 if (String.Compare(model.DatabaseName, "master", StringComparison.Ordinal) == 0)
                 {
-                    WriteWarning("Can not remove master database into the failover group. This operation request for removing master database will be ignored");
+                    WriteWarning("Can not remove master database from the failover group. This operation request for removing master database will be ignored");
                 }
                 else
                 {
