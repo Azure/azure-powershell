@@ -12,9 +12,16 @@ Removes a network interface configuration from a VMSS.
 
 ## SYNTAX
 
+### NameParameterSet
 ```
 Remove-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
- [-Name] <String> [<CommonParameters>]
+ [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdParameterSet
+```
+Remove-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <VirtualMachineScaleSet> -Id <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,12 +41,25 @@ The second command removes the network interface configuration named ContosoVmss
 
 ## PARAMETERS
 
+### -Id
+Specifies the ID of the network interface configuration that this cmdlet removes.```yaml
+Type: String
+Parameter Sets: IdParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the network interface configuration that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: NameParameterSet
 Aliases: 
 
 Required: True
@@ -61,6 +81,36 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

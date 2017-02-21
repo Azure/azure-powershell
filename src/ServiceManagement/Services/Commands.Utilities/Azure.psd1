@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.4.0'
+ModuleVersion = '3.5.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '2.5.0'; })
+RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '2.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

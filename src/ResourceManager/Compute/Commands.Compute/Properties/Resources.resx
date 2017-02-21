@@ -156,6 +156,12 @@
   <data name="VirtualMachineStoppingConfirmation" xml:space="preserve">
     <value>This cmdlet will stop the specified virtual machine. Do you want to continue?</value>
   </data>
+  <data name="ResourceRemovalConfirmation" xml:space="preserve">
+    <value>This cmdlet will remove the specified resource.  Do you want to continue?</value>
+  </data>
+  <data name="ResourceStoppingConfirmation" xml:space="preserve">
+    <value>This cmdlet will stop the specified resource.  Do you want to continue?</value>
+  </data>
   <data name="AzureVMDscCannotFindConfigurationDataFile" xml:space="preserve">
     <value>Cannot find configuration data file: {0}</value>
   </data>
