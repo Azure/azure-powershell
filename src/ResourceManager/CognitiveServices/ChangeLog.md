@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Integrate with Cognitive Services Management SDK 0.2.1 to support more Cognitive Services API Types and SKUs.
+* Remove the validation against “Type” and “SkuName” of Cognitive Services Account, this will allow the script to support new APIs/SKUs without changes.
 
 ## Version 0.4.3
 
