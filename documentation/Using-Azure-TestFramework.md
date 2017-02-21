@@ -127,10 +127,10 @@ In order to Record/Playback a test, you need to setup a connection string that c
 1. The default mode is Playback mode, so no setting up of connection string is required.
 
 #### Record Test with Interactive login using OrgId
-	TEST_CSM_ORGID_AUTHENTICATION=SubsctiptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
 
 #### Record Test with ServicePrincipal
-	TEST_CSM_ORGID_AUTHENTICATION=SubsctiptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
 
 2. Run the test and make sure that you got a generated .json file that matches the test name in 	the bin folder under *SessionRecords folder
 3. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio 	setting "Copy to Output Directory" property to "Copy if newer"

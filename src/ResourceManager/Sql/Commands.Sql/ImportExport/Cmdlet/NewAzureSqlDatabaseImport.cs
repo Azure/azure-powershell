@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// Gets or sets the maximum size for the newly imported database
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The maximum size in bytes for the newly imported database")]
-        public int DatabaseMaxSizeBytes
+        public long DatabaseMaxSizeBytes
         {
             get; set;
         }

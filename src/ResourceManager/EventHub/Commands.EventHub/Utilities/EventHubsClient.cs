@@ -98,22 +98,26 @@ namespace Microsoft.Azure.Commands.Eventhub
             {
                 Location = location
             };
-
+            
             if(state.HasValue)
             {
                 parameter.Status = state;
             }
 
+            Sku tempSku = new Sku();
+
             if (skuName != null)
             {
-                parameter.Sku.Name = skuName;
-                parameter.Sku.Tier = skuName;
+                tempSku.Name = skuName;
+                tempSku.Tier = skuName;
             }
 
             if (skuCapacity.HasValue)
             {
-                parameter.Sku.Capacity = skuCapacity;
+                tempSku.Capacity = skuCapacity;
             }
+
+            parameter.Sku = tempSku;
 
             if (tags != null && tags.Count() > 0)
             {

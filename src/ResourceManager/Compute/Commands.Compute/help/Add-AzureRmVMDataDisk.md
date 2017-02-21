@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 169E6694-82CD-4FCB-AB3D-E8A74001B8DB
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -13,8 +13,9 @@ Adds a data disk to a virtual machine.
 ## SYNTAX
 
 ```
-Add-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [-DiskSizeInGB] <Int32> [[-Lun] <Int32>] [-CreateOption] <DiskCreateOptionTypes> [[-SourceImageUri] <String>]
+Add-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <DiskCreateOptionTypes>
+ [[-SourceImageUri] <String>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
  [<CommonParameters>]
 ```
 
@@ -49,7 +50,7 @@ The URI of each disk is stored in $DataDiskVhdUri01, $DataDiskVhdUri02, and $Dat
 ```
 PS C:\>$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 PS C:\> Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty
-PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine
+PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
@@ -110,7 +111,7 @@ This setting affects the consistency and performance of the disk.
 ```yaml
 Type: CachingTypes
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: ReadOnly, ReadWrite, None
 
 Required: False
@@ -138,7 +139,7 @@ The *VhdUri* parameter is used as the location identifying where the data disk V
 ```yaml
 Type: DiskCreateOptionTypes
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: FromImage, Empty, Attach
 
 Required: True
@@ -154,9 +155,9 @@ Specifies the size, in gigabytes, of an empty disk to attach to a virtual machin
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
-Required: True
+Required: False
 Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -169,10 +170,25 @@ Specifies the logical unit number (LUN) for a data disk.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+
+Required: True
+Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagedDiskId
+Specifies the ID of a managed disk.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -184,9 +200,9 @@ Specifies the name of the data disk to add.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -208,6 +224,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -StorageAccountType
+Specifies the storage account type of managed disk.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VhdUri
 Specifies the Uniform Resource Identifier (URI) for the virtual hard disk (VHD) file to create when a platform image or user image is used.
 This cmdlet copies the image binary large object (blob) to this location.
@@ -216,9 +247,9 @@ This is the location from which to start the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)

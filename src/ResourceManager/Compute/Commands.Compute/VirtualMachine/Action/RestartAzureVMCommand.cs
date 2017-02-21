@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RestartAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
@@ -33,16 +33,19 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            ExecuteClientAction(() =>
+            if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
-                var op = this.VirtualMachineClient.RestartWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.Name).GetAwaiter().GetResult();
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                WriteObject(result);
-            });
+                base.ExecuteCmdlet();
+
+                ExecuteClientAction(() =>
+                {
+                    var op = this.VirtualMachineClient.RestartWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }

@@ -29,27 +29,49 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         {
             if (evResource != null)
             {
-                Sku = evResource.Sku;
-                ProvisioningState = evResource.ProvisioningState;
-                Status = (Microsoft.Azure.Commands.EventHub.Models.NamespaceState)evResource.Status;
-                CreatedAt = evResource.CreatedAt;
-                UpdatedAt = evResource.UpdatedAt;
-                ServiceBusEndpoint = evResource.ServiceBusEndpoint;               
-                Enabled = evResource.Enabled;
-                Location = evResource.Location;
+                Sku = new Sku
+                {
+                    Capacity = evResource.Sku.Capacity,
+                    Name = evResource.Sku.Name,
+                    Tier = evResource.Sku.Tier
+                };
+                if (evResource.ProvisioningState != null)
+                    ProvisioningState = evResource.ProvisioningState;
+                if(evResource.Status.HasValue)
+                    Status = (Microsoft.Azure.Commands.EventHub.Models.NamespaceState)evResource.Status;
+                if(evResource.CreatedAt.HasValue)
+                    CreatedAt = evResource.CreatedAt;
+                if(evResource.UpdatedAt.HasValue)
+                    UpdatedAt = evResource.UpdatedAt;
+                if(evResource.ServiceBusEndpoint != null)
+                    ServiceBusEndpoint = evResource.ServiceBusEndpoint;               
+                if(evResource.Enabled.HasValue)
+                    Enabled = evResource.Enabled;
+                if(evResource.Location != null)
+                    Location = evResource.Location;
+                if(evResource.Id != null)
+                    Id = evResource.Id;
+                if (evResource.Name != null)
+                    Name = evResource.Name;
                 
             }
         }
-        
+
         /// <summary>
         /// Gets or sets the name of the resource group the Namespace is in
         /// </summary>
+        [ObsoleteAttribute("ResourceGroupName property is obsolete.", false)]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the Id of the Namespace
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Name of the Namespace
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the Id of the Namespace

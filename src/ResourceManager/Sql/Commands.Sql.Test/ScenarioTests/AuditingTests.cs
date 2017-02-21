@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -37,6 +36,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public AuditingTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+     
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAuditingUpdatePolicyWithClassicStorage()
+        {
+            RunPowerShellTest("Test-AuditingUpdatePolicyWithClassicStorage");
         }
 
         [Fact]
@@ -247,6 +253,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestGetServerAndDatabaseAuditingInUkRegion()
         {
             RunPowerShellTest("Test-GetServerAndDatabaseAuditingInUkRegion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobAuditingWithAuditActionGroups()
+        {
+            RunPowerShellTest("Test-BlobAuditingWithAuditActionGroups");
         }
     }
 }
