@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.7.0
 * Updated Set-AzureRmVMDscExtension cmdlet WmfVersion parameter to support "5.1"
 * Updated Set-AzureRmVMChefExtension cmdlet to add following new options :
   - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'none' or e.g. -Daemon 'service'."

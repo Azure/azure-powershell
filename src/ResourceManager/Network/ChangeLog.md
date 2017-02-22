@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release 
+
+## Version 3.5.0
 * Added support for network Watcher APIs
     - New-AzureRmNetworkWatcher
     - Get-AzureRmNetworkWatcher
@@ -35,6 +37,25 @@
     - Set-AzureRmNetworkWatcherConfigFlowLog
     - Start-AzureRmNetworkWatcherResourceTroubleshooting
     - Test-AzureRmNetworkWatcherIPFlow
+* Add-AzureRmExpressRouteCircuitPeeringConfig
+    - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
+    - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+* New-AzureRmExpressRouteCircuitPeeringConfig
+    - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
+    - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+* Set-AzureRmExpressRouteCircuitPeeringConfig
+    - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
+    - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+* New cmdlets for selective service feature 
+    - Get-AzureRmRouteFilter
+    - New-AzureRmRouteFilter
+    - Set-AzureRmRouteFilter
+    - Remove-AzureRmRouteFilter
+    - Add-AzureRmRouteFilterRuleConfig
+    - Get-AzureRmRouteFilterRuleConfigobject
+    - New-AzureRmRouteFilterRuleConfig
+    - Set-AzureRmRouteFilterRuleConfig
+    - Remove-AzureRmRouteFilterRuleConfig
 
 ## Version 3.4.0
 
@@ -54,3 +75,4 @@
 * Get-AzureRmEffectiveNetworkSecurityGroup
     - Add warning if there is no response from GetEffectiveNSG
 * Add Source property to EffectiveRoute 
+
