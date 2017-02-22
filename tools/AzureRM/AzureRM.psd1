@@ -248,6 +248,15 @@ PrivateData = @{
     * Bug fix: Fixing an issue of selecting classic storage account when creating / updating Auditing or Threat Detection policies
     * Bug fix: Set-AzureRmSqlDatabaseAuditing and Set-AzureRmSqlDatabaseServerAuditingPolicy commands use the AuditType value that was previously defined in case it has not been configured by the user.
     * Bug fix: In case Blob Auditing is defined, Remove-AzureRmSqlDatabaseAuditing and Remove-AzureRmSqlDatabaseServerAuditingPolicy commands disable the Auditing settings.
+    * Adding new cmdlets for support for Azure SQL feature AutoDR:
+      -This is a new feature in Azure SQL that supports failover of multiple Azure Sql Databases to the partner server at the same time during disaster and allows automatic failover
+      - Add-AzureRmSqlDatabaseToFailoverGroup add Azure Sql Databases into a Failover Group
+      - Get-AzureRmSqlDatabaseFailoverGroup get the Failover Group entity
+      - New-AzureRmSqlDatabaseFailoverGroup creates a new Failover Group
+      - Remove-AzureRmSqlDatabaseFromFailoverGroup removes Azure Sql Databases from a Failover Group
+      - Remove-AzureRmSqlDatabaseFailoverGroup Failover Group deletes the Failover Group
+      - Set-AzureRmSqlDatabaseFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Failover Group
+      - Switch-AzureRmSqlDatabaseFailoverGroup issues the failover operation with data loss or without data loss  
 * Storage
     * Upgrade Microsoft.Azure.Management.Storage to version 6.1.0-preview
     * Add File Encryption features support to resource mode storage account cmdlets
