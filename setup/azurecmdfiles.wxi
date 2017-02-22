@@ -1732,9 +1732,6 @@
                         <Component Id="cmpA48C2D939611A68B1B056FD9CE8AE13B" Guid="*">
                             <File Id="fil7921DCB19139118F00621016950CED74" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
-                        <Component Id="cmp9BB6734EAAF7AC385CE1602C42BE9789" Guid="*">
-                            <File Id="filC1C214D8C3BD8AFBD43CE381B20DB74D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-                        </Component>
                         <Component Id="cmp265A5D27A6C00CAB0D3ED3C043884CC6" Guid="*">
                             <File Id="fil21B6F4733134F0F8738E928BEF0E1951" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
@@ -1746,12 +1743,6 @@
                         </Component>
                         <Component Id="cmpAEA672A0C6084146D2159C4DC0563C78" Guid="*">
                             <File Id="fil8C9C63D066A5301C0B3A5D91B3420890" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Threading.Tasks.dll" />
-                        </Component>
-                        <Component Id="cmpD1932A62F6E6845EBF6194476038A8F9" Guid="*">
-                            <File Id="filBFDC98BD76C19B8B8A3754B0612C1D88" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
-                        </Component>
-                        <Component Id="cmp4E06F164DA5D92E379D6C97E0BF59AFC" Guid="*">
-                            <File Id="fil397FF1DCD5986A490239F7D36D5AA427" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmp1C5F3EB3B89301FD0329A1E35E270D3B" Guid="*">
                             <File Id="fil094499B5B0AEBAACD20E3C8942C4A9F7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.WindowsAzure.Commands.Common.dll" />
@@ -6277,13 +6268,10 @@
             <ComponentRef Id="cmp3D4EF87A374116FBEA13275677843F70" />
             <ComponentRef Id="cmp290D4DB7236478F6F41602129C2BDF33" />
             <ComponentRef Id="cmpA48C2D939611A68B1B056FD9CE8AE13B" />
-            <ComponentRef Id="cmp9BB6734EAAF7AC385CE1602C42BE9789" />
             <ComponentRef Id="cmp265A5D27A6C00CAB0D3ED3C043884CC6" />
             <ComponentRef Id="cmpBE6C41ECDF692B237424276D754AD15C" />
             <ComponentRef Id="cmp540FC36F3C0973AFEED08E4E6CF18E21" />
             <ComponentRef Id="cmpAEA672A0C6084146D2159C4DC0563C78" />
-            <ComponentRef Id="cmpD1932A62F6E6845EBF6194476038A8F9" />
-            <ComponentRef Id="cmp4E06F164DA5D92E379D6C97E0BF59AFC" />
             <ComponentRef Id="cmp1C5F3EB3B89301FD0329A1E35E270D3B" />
             <ComponentRef Id="cmp1282ECE600F3F0A8EFD9B13D7D3EAF3C" />
             <ComponentRef Id="cmpFB9B262BA2C2691DA3864C0932598F71" />
