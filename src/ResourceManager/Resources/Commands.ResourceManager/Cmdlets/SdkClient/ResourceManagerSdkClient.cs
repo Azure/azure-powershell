@@ -314,7 +314,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             DeploymentExtended deployment;
 
-            // Poll deployment state and deployment operations after RetryAfter, or if no RetryAfter provided, with two phases: In phase one, poll every 5 seconds. Phase one 
+            // Poll deployment state and deployment operations after RetryAfter.
+            // If no RetryAfter provided: In phase one, poll every 5 seconds. Phase one 
             // takes 400 seconds. In phase two, poll every 60 seconds. 
             const int counterUnit = 1000;
             int step = 5;
