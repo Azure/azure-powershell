@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.0.4
 * Added State property in additional to ProvisioningState
     - All the cmdlet returning AnalysisService would have a new property 'State' used outside of provisioing.
     - The 'State' is intended to check status outside of provisioning, while 'ProvisioningState' is intended to check status related to Provisioning.
