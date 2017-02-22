@@ -339,9 +339,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 using (var getResult = ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName).ConfigureAwait(false).GetAwaiter().GetResult())
                 {
                     deployment = getResult.Body;
-                    if (getResult.Response.Headers.RetryAfter != null && getResult.Response.Headers.RetryAfter.Delta.HasValue)
+                    var response = getResult.Response;
+                    if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
                     {
-                        step = getResult.Response.Headers.RetryAfter.Delta.Value.Seconds;
+                        step = response.Headers.RetryAfter.Delta.Value.Seconds;
                     }
                     else
                     {
