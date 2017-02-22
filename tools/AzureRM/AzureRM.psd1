@@ -211,14 +211,14 @@ PrivateData = @{
         - Start-AzureRmNetworkWatcherResourceTroubleshooting
         - Test-AzureRmNetworkWatcherIPFlow
     * Add-AzureRmExpressRouteCircuitPeeringConfig
-        - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
-        - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+        - Added new param :-RouteFilter
+        - Added new param :-RouteFilterId
     * New-AzureRmExpressRouteCircuitPeeringConfig
-        - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
-        - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+        - Added new param :-RouteFilter
+        - Added new param :-RouteFilterId
     * Set-AzureRmExpressRouteCircuitPeeringConfig
-        - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
-        - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+        - Added new param :-RouteFilter
+        - Added new param :-RouteFilterId
     * New cmdlets for selective service feature 
         - Get-AzureRmRouteFilter
         - New-AzureRmRouteFilter
@@ -262,7 +262,7 @@ PrivateData = @{
     * Add File Encryption features support to resource mode storage account cmdlets
         - New-AzureRmStorageAccount
         - Set-AzureRmStorageAccount
-    '
+'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
