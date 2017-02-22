@@ -15,7 +15,8 @@ Modifies a Data Lake Store account.
 ```
 Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tags] <Hashtable>]
  [[-TrustedIdProviderState] <TrustedIdProviderState>] [[-FirewallState] <FirewallState>]
- [[-ResourceGroupName] <String>] [-Tier <TierType>] [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [-Tier <TierType>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,19 @@ PS C:\>Set-AzureRmDataLakeStoreAccount -Name "ContosoADL" -Tags @{"stage"="produ
 This command adds the specified tag to the Data Lake Store account named ContosoADL.
 
 ## PARAMETERS
+
+### -AllowAzureIpState
+Optionally allow/block Azure originating IPs through the firewall.```yaml
+Type: FirewallAllowAzureIpsState
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultGroup
 Specifies the ID of an AzureActive Directory group.
