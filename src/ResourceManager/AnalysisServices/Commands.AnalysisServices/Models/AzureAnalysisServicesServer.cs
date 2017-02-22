@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
     {
         public List<string> AsAdministrators { get; set; }
 
+        public string State { get; private set; }
+
         public string ProvisioningState { get; private set; }
 
         public string Id { get; private set; }
@@ -60,6 +62,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 Location = server.Location,
                 Name = server.Name,
                 Type = server.Type,
+                State = server.State,
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
                 ServerFullName = server.ServerFullName,

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusSubscription
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a subscription description for a Service Bus topic in the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,21 @@ Set-AzureRmServiceBusSubscription [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmServiceBusSubscription** cmdlet updates the description of the subscription for the Service Bus topic in the specified Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $subscriptionObj = Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
+
+PS C:\> $subscriptionObj.DeadLetteringOnMessageExpiration = $True
+PS C:\> $subscriptionObj.MaxDeliveryCount = 9
+
+PS C:\> Set-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
 ```
 
-{{ Add example description here }}
+Updates the description for the specified subscription to the given topic. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **MaxDeliveryCount** to 9.
 
 ## PARAMETERS
 
@@ -46,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -76,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionObj
-ServiceBus Subscription definition.
+The Service Bus subscription definition.
 
 ```yaml
 Type: SubscriptionAttributes
@@ -91,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String
@@ -126,12 +131,39 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -TopicName
+ System.String
+
+### -SubscriptionObj
+ Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
+Name                                      : SB-TopicSubscription-Example1
+Location                                  : West US
+AccessedAt                                : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
+CountDetails                              : 
+CreatedAt                                 : 1/20/2017 9:59:15 PM
+DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
+DeadLetteringOnFilterEvaluationExceptions : True
+DeadLetteringOnMessageExpiration          : True
+EnableBatchedOperations                   : True
+EntityAvailabilityStatus                  : Available
+IsReadOnly                                : 
+LockDuration                              : 00:01:00
+MaxDeliveryCount                          : 9
+MessageCount                              : 0
+RequiresSession                           : False
+Status                                    : Active
+UpdatedAt                                 : 1/20/2017 9:59:15 PM
 
 ## NOTES
 

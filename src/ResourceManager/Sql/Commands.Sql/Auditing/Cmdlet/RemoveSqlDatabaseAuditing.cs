@@ -41,8 +41,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="model">A model object</param>
         protected override AuditingPolicyModel ApplyUserInputToModel(AuditingPolicyModel model)
         {
-            base.ApplyUserInputToModel(model);   
+            base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Disabled;
+
+            DatabaseAuditingPolicyModel tableAuditingPolicyModel = (model as DatabaseAuditingPolicyModel);
+            if (tableAuditingPolicyModel != null)
+            {
+                tableAuditingPolicyModel.UseServerDefault = UseServerDefaultOptions.Disabled;
+            }
+
             return model;
         }
 
@@ -55,10 +62,21 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             ModelAdapter.IgnoreStorage = true;
             base.PersistChanges(model);
-            AuditType = AuditType.Blob;
-            var blobModel = GetEntity();
-            blobModel.AuditState = AuditStateType.Disabled;
-            base.PersistChanges(blobModel);
+            //if another server auditing policy exists, remove it
+            if (AuditType == AuditType.Blob)
+            {
+                AuditType = AuditType.Table;
+            }
+            else
+            {
+                AuditType = AuditType.Blob;
+            }
+            var otherAuditingTypePolicyModel = GetEntity();
+            if (otherAuditingTypePolicyModel != null)
+            {
+                otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
+                base.PersistChanges(otherAuditingTypePolicyModel);
+            }
             return null;
         }
     }

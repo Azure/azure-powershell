@@ -26,11 +26,16 @@ function Test-StorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = 'eastasia';
+		$encryptionServiceBF = "Blob,File"
+		$encryptionServiceB = "Blob"
+		$encryptionServiceF = "File"
+		$kind = 'BlobStorage'
+		$accessTier = 'Cool'
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -AccessTier $accessTier -EnableEncryptionService $encryptionServiceBF;
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
         $stotype = 'StandardGRS';
@@ -38,33 +43,50 @@ function Test-StorageAccount
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.AccessTier $accessTier;
+		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
+		Assert-AreEqual $sto.Encryption.Services.File.Enabled $true
 
         $stotype = 'Standard_LRS';
+		$accessTier = 'Hot'
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { $global:sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype; }
+        Retry-IfException { $global:sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -DisableEncryptionService $encryptionServiceB -AccessTier $accessTier -Force; }
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardLRS';
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.AccessTier $accessTier;
+		Assert-AreEqual $sto.Encryption.Services.Blob $null
+		Assert-AreEqual $sto.Encryption.Services.File.Enabled $true
     
         $stotype = 'Standard_RAGRS';
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
+		$accessTier = 'Cool'
+        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -AccessTier $accessTier -DisableEncryptionService $encryptionServiceF -EnableEncryptionService $encryptionServiceB -Force ;
         
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardRAGRS';
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.AccessTier $accessTier;
+		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
+		Assert-AreEqual $sto.Encryption.Services.File $null
 
         $stotype = 'Standard_GRS';
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
+        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -DisableEncryptionService $encryptionServiceBF;
         
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardGRS';
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.AccessTier $accessTier;
+		Assert-AreEqual $sto.Encryption $null
 
         $stokey1 = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
 
@@ -134,6 +156,7 @@ function Test-GetAzureStorageAccount
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         $loc = 'westus';
+		$kind = 'Storage'
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -144,11 +167,13 @@ function Test-GetAzureStorageAccount
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stos[0].StorageAccountName $stoname;
         Assert-AreEqual $stos[0].Sku.Name $stotype;
         Assert-AreEqual $stos[0].Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
 
         Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -173,25 +198,33 @@ function Test-SetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = 'eastasia';
+		$kind = 'Storage'
+		$encryptionServiceBF = "File,Blob"
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableEncryptionService $encryptionServiceBF;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stotype = 'StandardGRS';
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
+		Assert-AreEqual $sto.Encryption.Services.File.Enabled $true
         
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stos[0].StorageAccountName $stoname;
         Assert-AreEqual $stos[0].Sku.Name $stotype;
         Assert-AreEqual $stos[0].Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
+		Assert-AreEqual $sto.Encryption.Services.File.Enabled $true
 
         $stotype = 'Standard_LRS';
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype; }
+        Retry-IfException { Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -DisableEncryptionService $encryptionServiceBF; }
         $stotype = 'Standard_RAGRS';
         Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
 
@@ -200,6 +233,8 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+		Assert-AreEqual $sto.Encryption $null
 
         Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

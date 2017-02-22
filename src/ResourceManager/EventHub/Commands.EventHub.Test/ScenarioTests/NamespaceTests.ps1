@@ -76,16 +76,13 @@ function NamespaceAuthTests
     Assert-True {$createdNamespace.Count -eq 1}
 
     $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
+    
+        if ($createdNamespace.Name -eq $namespaceName)
         {
             $found = 1
-            Assert-AreEqual $location $createdNamespace[$i].Location
-            Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName           
+            Assert-AreEqual $location $createdNamespace.Location    
             break
         }
-    }
 
     Assert-True {$found -eq 0} "Namespace created earlier is not found."
 
@@ -231,17 +228,13 @@ function NamespaceTests
     Assert-True {$createdNamespace.Count -eq 1}
 
     $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
+    
+        if ($createdNamespace.Name -eq $namespaceName)
         {
             $found = 1
-            Assert-AreEqual $location $createdNamespace[$i].Location
-            Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-            Assert-AreEqual "EventHub" $createdNamespace[$i].NamespaceType
+            Assert-AreEqual $location $createdNamespace.Location
             break
         }
-    }
 
     Assert-True {$found -eq 0} "Namespace created earlier is not found."    
 	  
@@ -260,8 +253,6 @@ function NamespaceTests
         {
             $found = 1
             Assert-AreEqual $location $allCreatedNamespace[$i].Location
-            Assert-AreEqual $secondResourceGroup $allCreatedNamespace[$i].ResourceGroupName
-            Assert-AreEqual "EventHub" $allCreatedNamespace[$i].NamespaceType
             break
         }
     }
@@ -278,16 +269,12 @@ function NamespaceTests
         {
             $found = $found + 1
             Assert-AreEqual $location $allCreatedNamespace[$i].Location
-            Assert-AreEqual $resourceGroupName $allCreatedNamespace[$i].ResourceGroupName
-            Assert-AreEqual "EventHub" $allCreatedNamespace[$i].NamespaceType
         }
 
        if ($allCreatedNamespace[$i].Name -eq $namespaceName2)
         {
             $found = $found + 1
             Assert-AreEqual $location $allCreatedNamespace[$i].Location
-            Assert-AreEqual $secondResourceGroup $allCreatedNamespace[$i].ResourceGroupName
-            Assert-AreEqual "EventHub" $allCreatedNamespace[$i].NamespaceType
         }
     }
 
