@@ -93,7 +93,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestUpdateIntegrationAccountAgreement()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountAgreement");
-        }               
+        }
+
+        /// <summary>
+        /// Test Get-AzureRmIntegrationAccountAgreement command to get all the integration account agreement.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListIntegrationAccountAgreement()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-ListIntegrationAccountAgreement");
+        }
     }
 }
 

@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account map name.",
@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 new IntegrationAccountMap
                 {
                     ContentType = this.ContentType,
-                    Name = this.MapName,
                     Content = this.MapDefinition,
                     MapType = (MapType) Enum.Parse(typeof (MapType), this.MapType),
                     Metadata = this.Metadata
