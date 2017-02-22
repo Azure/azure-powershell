@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public Hashtable Tag { get; set; }
 
+        public string Type { get; set; }
+
         public string TagsTable
         {
             get { return ResourcesExtensions.ConstructTagsTable(Tag); }
