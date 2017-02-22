@@ -126,6 +126,11 @@
     <Compile Include="Models\PSIotHubJobStatus.cs" />
     <Compile Include="Models\PSMessagingEndpointProperties.cs" />
     <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
+    <Compile Include="Models\PSRoutingProperties.cs" />
+    <Compile Include="Models\PSRoutingMessagingEndpointProperties.cs" />
+    <Compile Include="Models\PSRoutingEventHubProperties.cs" />
+    <Compile Include="Models\PSRoutingEndpoints.cs" />
+    <Compile Include="Models\PSRouteProperties.cs" />
     <Compile Include="Models\PSSBAccessRights.cs" />
     <Compile Include="Models\PSSharedAccessAuthorizationRule.cs" />
     <Compile Include="Models\PSSharedAccessSignatureAuthorizationRule.cs" />
