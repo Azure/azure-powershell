@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
+    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
     public class NewAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
@@ -31,6 +31,15 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (this.RouteFilter != null)
+                {
+                    this.RouteFilterId = this.RouteFilter.Id;
+                }
+            }
+
            var peering = new PSPeering();
 
             peering.Name = this.Name;
@@ -52,6 +61,12 @@ namespace Microsoft.Azure.Commands.Network
                 peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
                 peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                 peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+            }
+
+            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            {
+                peering.RouteFilter = new PSRouteFilter();
+                peering.RouteFilter.Id = this.RouteFilterId;
             }
 
             WriteObject(peering);

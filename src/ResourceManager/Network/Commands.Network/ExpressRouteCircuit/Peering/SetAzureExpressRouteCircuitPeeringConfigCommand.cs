@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
     public class SetAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Peering with the specified name does not exist");
             }
 
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (this.RouteFilter != null)
+                {
+                    this.RouteFilterId = this.RouteFilter.Id;
+                }
+            }
+
             peering.Name = this.Name;
             peering.PeeringType = this.PeeringType;
             peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
@@ -64,6 +72,12 @@ namespace Microsoft.Azure.Commands.Network
                 peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
                 peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                 peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+            }
+
+            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            {
+                peering.RouteFilter = new PSRouteFilter();
+                peering.RouteFilter.Id = this.RouteFilterId;
             }
 
             WriteObject(this.ExpressRouteCircuit);
