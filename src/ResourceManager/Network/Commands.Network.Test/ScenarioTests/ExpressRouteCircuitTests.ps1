@@ -21,16 +21,16 @@ function Test-ExpressRouteCircuitStageCRUD
     # Setup
     $rgname = 'movecircuit'
     $circuitName = Get-ResourceName
-    $rglocation = "westus"
+    $rglocation = "brazilSouth"
     $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = "westus"
+    $location = "brazilSouth"
     try 
     {
       # Create the resource group
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
       
       # Create the ExpressRouteCircuit
-	  $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix test" -PeeringLocation "Silicon Valley Test" -BandwidthInMbps 50 -AllowClassicOperations $true;
+	  $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 -AllowClassicOperations $true;
       
       $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
       # set
