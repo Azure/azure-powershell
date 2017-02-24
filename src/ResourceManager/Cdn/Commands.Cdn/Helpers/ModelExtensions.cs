@@ -216,7 +216,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 ProvisioningState = (PSProvisioningState) Enum.Parse(typeof(PSProvisioningState), customDomain.ProvisioningState),
                 ResourceState = (PSCustomDomainResourceState) Enum.Parse(typeof(PSCustomDomainResourceState), customDomain.ResourceState),
                 HostName = customDomain.HostName,
-                ValidationData = customDomain.ValidationData
+                ValidationData = customDomain.ValidationData,
+                CustomHttpsProvisioningState = (PSCustomHttpsProvisioningState) Enum.Parse(typeof(PSCustomHttpsProvisioningState), customDomain.CustomHttpsProvisioningState)
             };
         }
 

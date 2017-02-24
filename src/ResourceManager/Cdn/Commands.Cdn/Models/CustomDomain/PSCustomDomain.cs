@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Cdn.Models.CustomDomain
 
         public PSCustomDomainResourceState ResourceState { get; set; }
 
+        public PSCustomHttpsProvisioningState CustomHttpsProvisioningState { get; set; }
+
         public string ResourceGroupName
         {
             get
