@@ -77,7 +77,7 @@ function Get-LatestProfileMapPath
   return $LatestMapPath
 }
 
-#Function to get the largest number in profile cache profile map names: This helps to find the latest map
+# Function to get the largest number in profile cache profile map names: This helps to find the latest map
 function Get-LargestNumber
 {
   param($ProfileCache)
@@ -100,6 +100,26 @@ function Get-AzureStorageBlob
   return $WebResponse
 }
 
+# Get-Content with retry logic; to handle parallel requests
+function RetryGetContent
+{
+  param([string]$FilePath)
+  $retryCount = 0
+  Do
+  {
+    $retryCount = $retryCount + 1
+    try {
+      $ProfileMap = Get-Content -Raw -Path $FilePath -ErrorAction stop | ConvertFrom-Json 
+      $Status = "success"
+    }
+    catch {
+      Start-Sleep -Seconds 3
+    }
+  } 
+  while (($Status -ne "success") -and ($retryCount -lt 3))
+  return $ProfileMap
+}
+
 # Get-ProfileMap from Azure Endpoint
 function Get-AzureProfileMap
 {
@@ -117,8 +137,11 @@ function Get-AzureProfileMap
     [string]$ProfileMapETag = [System.IO.Path]::GetFileNameWithoutExtension($Matches[2])
     if (($ProfileMapETag -eq $OnlineProfileMapETag) -and (Test-Path $script:LatestProfileMapPath.FullName))
     {
-      $ProfileMap = Get-Content -Raw -Path $script:LatestProfileMapPath.FullName -ErrorAction SilentlyContinue | ConvertFrom-Json 
-      return $ProfileMap
+      $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName
+      if ($ProfileMap -ne $null)
+      {
+        return $ProfileMap
+      }
     }
   }
 
@@ -163,7 +186,7 @@ function Get-AzProfile
   # Check the cache
   if(($script:LatestProfileMapPath -ne $null) -and (Test-Path $script:LatestProfileMapPath.FullName))
   {
-    $ProfileMap = Get-Content -Raw -Path $script:LatestProfileMapPath.FullName -ErrorAction SilentlyContinue | ConvertFrom-Json 
+    $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName
     if ($ProfileMap -ne $null)
     {
       return $ProfileMap
@@ -172,7 +195,7 @@ function Get-AzProfile
      
   # If cache doesn't exist, Check embedded source
   $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
-  $ProfileMap = Get-Content -Raw -Path "$defaults\ProfileMap.json" -ErrorAction SilentlyContinue | ConvertFrom-Json
+  $ProfileMap = RetryGetContent -FilePath "$defaults\ProfileMap.json" 
   if($ProfileMap -eq $null)
   {
     # Cache & Embedded source empty; Return error and stop
@@ -324,7 +347,7 @@ function Uninstall-ModuleHelper
         }
         catch
         {
-          Write-Warning $_.Exception.Message
+          Write-Error $_.Exception.Message
           break
         }
       }
@@ -454,7 +477,7 @@ function Get-AllProfilesInstalled
   $ProfileMapHashes = Get-ChildItem $ProfileCache 
   foreach ($ProfileMapHash in $ProfileMapHashes)
   {
-    $ProfileMap = Get-Content -Raw -Path (Join-Path $ProfileCache $ProfileMapHash.Name) |  ConvertFrom-json
+    $ProfileMap = RetryGetContent -FilePath (Join-Path $ProfileCache $ProfileMapHash.Name) 
     $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $ProfileMap)
     foreach ($Profile in $profilesInstalled.Keys)
     {
@@ -490,7 +513,7 @@ function Update-ProfileHelper
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapHashes = Get-ChildItem $ProfileCache
 
-  $LatestProfileMap = Get-Content -Raw -Path $script:LatestProfileMapPath.FullName |  ConvertFrom-json
+  $LatestProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName 
 
   # Get-Profiles installed across all hashes. 
   $AllProfilesInstalled = Get-AllProfilesInstalled
@@ -507,7 +530,7 @@ function Update-ProfileHelper
     }
 
     # Compare previous & latest map for the update profile. Uninstall previous if they are different
-    $previousProfileMap = Get-Content -Raw -Path (Join-Path $profilecache $ProfileMapHash) |  ConvertFrom-json
+    $previousProfileMap = RetryGetContent -FilePath (Join-Path $profilecache $ProfileMapHash) 
     Remove-PreviousVersions -PreviousMap $previousProfileMap -LatestMap $LatestProfileMap -AllProfilesInstalled $AllProfilesInstalled @PSBoundParameters
 
     # If the previous map has profiles installed, do not delete it.
@@ -530,6 +553,39 @@ function Update-ProfileHelper
       Remove-ProfileMapFile -ProfileMapPath (Join-Path $profilecache $ProfileMapHash)
     }
   }
+}
+
+# If cmdlets were installed at a different scope, warn users of the potential conflict
+function Find-PotentialConflict
+{
+  [CmdletBinding(SupportsShouldProcess = $true)] 
+  param([string]$Module, [switch]$Force)
+  
+  $availableModules = Get-Module $Module -ListAvailable
+  $IsPotentialConflict = $false
+
+  # If Admin, check CurrentUser Module folder path and vice versa
+  if ($script:IsAdmin)
+  {
+    $availableModules | ForEach-Object { if ($_.Path.Contains($env:HOMEPATH)) { $IsPotentialConflict = $true } }
+  }
+  else {
+    $availableModules | ForEach-Object { if ($_.Path.Contains($env:ProgramFiles)) { $IsPotentialConflict = $true } }
+  }
+
+  if ($IsPotentialConflict)
+  {
+    if (($Force.IsPresent) -or ($PSCmdlet.ShouldContinue(`
+      "The Cmdlets from module $Module are already present on this device. Proceeding with the installation might cause conflicts. Would you like to continue?", "Detected $Module cmdlets")))
+    {
+      return $false
+    }
+    else 
+    {
+      return $true
+    }
+  }
+  return $false
 }
 
 # Add Scope parameter to the cmdlet
@@ -672,7 +728,7 @@ function Get-AzureRmModule
     $Profile = $PSBoundParameters.Profile
     $Module = $PSBoundParameters.Module
     $versionList = $ProfileMap.$Profile.$Module
-    $moduleList = Get-Module -Name $Module -ListAvailable | where {$_.RepositorySourceLocation -ne $null}
+    $moduleList = Get-Module -Name $Module -ListAvailable | Where-Object {$_.RepositorySourceLocation -ne $null}
     foreach ($version in $versionList)
     {
       foreach ($module in $moduleList)
@@ -757,11 +813,23 @@ function Use-AzureRmProfile
     $Scope = $PSBoundParameters.Scope
     $Modules = $PSBoundParameters.Module
 
+    # If user hasn't provided modules, use the module names from profile
     if ($Modules -eq $null)
     {
       $Modules = ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name
     }
 
+    # If AzureRM $RollUpModule is present in that profile, it will install all the dependent modules; no need to specify other modules
+    if ($Modules.Contains($RollUpModule))
+    {
+      $Modules = @($RollUpModule)
+    }
+    
+    $PSBoundParameters.Remove('Profile') | Out-Null
+    $PSBoundParameters.Remove('Scope') | Out-Null
+    $PSBoundParameters.Remove('Module') | Out-Null
+
+    # Variable to track progress
     $ModuleCount = 0
     if ($PSCmdlet.ShouldProcess($Profile, "Loading modules for profile in the current scope"))
     {
@@ -769,6 +837,12 @@ function Use-AzureRmProfile
       foreach ($Module in $Modules)
       {
         $ModuleCount = $ModuleCount + 1
+
+        if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
+        {
+          continue
+        }
+
         $version = Get-AzureRmModule -Profile $Profile -Module $Module
         if (($version -eq $null) -and ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
         {
@@ -805,6 +879,7 @@ function Install-AzureRmProfile
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
     Add-ProfileParam $params
     Add-ScopeParam $params
+    Add-ForceParam $params
     return $params
   }
 
@@ -814,10 +889,25 @@ function Install-AzureRmProfile
     $Profile = $PSBoundParameters.Profile
     $Scope = $PSBoundParameters.Scope
     $Modules = ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name
+
+    # If AzureRM $RollUpModule is present in $profile, it will install all the dependent modules; no need to specify other modules
+    if ($Modules.Contains($RollUpModule))
+    {
+      $Modules = @($RollUpModule)
+    }
+      
+    $PSBoundParameters.Remove('Profile') | Out-Null
+    $PSBoundParameters.Remove('Scope') | Out-Null
+
     $ModuleCount = 0
     foreach ($Module in $Modules)
     {
       $ModuleCount = $ModuleCount + 1
+      if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
+      {
+        continue
+      }
+
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
       if ($version -eq $null) 
       {
