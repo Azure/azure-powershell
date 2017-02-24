@@ -12,7 +12,7 @@ InModuleScope AzureRM.Bootstrapper {
             foreach ($profile in $installedProfiles.Keys)
             {
                 Write-Host "Removing profile $profile"
-                Uninstall-AzureRmProfile -Profile $profile -Force -ErrorAction Stop
+                Uninstall-AzureRmProfile -Profile $profile -Force -ErrorAction SilentlyContinue
             }
             
             $profiles = (Get-ProfilesInstalled -ProfileMap $ProfileMap)

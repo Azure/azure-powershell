@@ -158,7 +158,7 @@ function Get-AzureProfileMap
   $OnlineProfileMap | ConvertTo-Json -Compress | Out-File -FilePath $CacheFilePath
    
   # Update $script:LatestProfileMapPath
-  $script:LatestProfileMapPath = $CacheFilePath
+  $script:LatestProfileMapPath = Get-ChildItem $ProfileCache | Where-Object { $_.FullName.equals($CacheFilePath)}
   return $OnlineProfileMap
 }
 
@@ -254,6 +254,11 @@ function Get-ProfilesInstalled
     # If not all the modules from a profile are installed, add it to $IncompleteProfiles
     if(($result.$key.Count -gt 0) -and ($result.$key.Count -ne ($ProfileMap.$key | Get-Member -MemberType NoteProperty).Count))
     {
+      if ($result.$key.Contains($RollUpModule))
+      {
+        continue
+      }
+      
       $result.Remove($key)
       if ($IncompleteProfiles -ne $null) 
       {
@@ -330,7 +335,7 @@ function Test-ProfilesInstalled
 function Uninstall-ModuleHelper
 {
   [CmdletBinding(SupportsShouldProcess = $true)] 
-  param([String]$Profile,[String]$Module, [System.Version]$version, [Switch]$RemovePreviousVersions)
+  param([String]$Profile, $Module, [System.Version]$version, [Switch]$RemovePreviousVersions)
 
   $Remove = $PSBoundParameters.RemovePreviousVersions
   Do
