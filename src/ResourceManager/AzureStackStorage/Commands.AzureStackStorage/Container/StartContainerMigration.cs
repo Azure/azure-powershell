@@ -66,7 +66,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                                                           StorageAccountName = this.ContainerToMigrate.StorageAccountName
                                                       };
             this.WriteVerbose(String.Format(
-                                            "Input Parameters = ContainerName = {0}, DestinationShareUncPath = {1}, StorageAccountName = {2}",
+                                            "Input Parameters : ContainerName = {0}, DestinationShareUncPath = {1}, StorageAccountName = {2}",
                                             this.ContainerToMigrate.ContainerName,
                                             this.DestinationShareUncPath,
                                             this.ContainerToMigrate.StorageAccountName));
@@ -91,16 +91,12 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         private void ExtractShareAndOperationFromLocation(string operationUri, out string operationId)
         {
-            // Un Escaping %7C to |
-            operationUri = Uri.UnescapeDataString(operationUri);
-
-            int indexOfShareNameStart = operationUri.IndexOf('|');
-            int indexOfShareNameEnd = operationUri.IndexOf('/', indexOfShareNameStart);
-            int indexOfOperationResultStart = operationUri.IndexOf('/', indexOfShareNameEnd + 1);
-            int indexOfParameterStart = operationUri.IndexOf('?');
-
-            // shareName = operationUri.Substring(indexOfShareNameStart, indexOfShareNameEnd - indexOfShareNameStart);
-            operationId = operationUri.Substring(indexOfOperationResultStart + 1, indexOfParameterStart - indexOfOperationResultStart - 1);
+            const string operationresults = "operationresults/";
+            const int operationResultLength = 36; // Guid lenght
+            int indexOfOperationResultStart = operationUri.IndexOf(operationresults, StringComparison.InvariantCultureIgnoreCase);
+            
+            operationId = operationUri.Substring(indexOfOperationResultStart + operationresults.Length, operationResultLength);
+            this.WriteVerbose(String.Format("Operation Result Id = {0}", operationId));
         }
 
     }
