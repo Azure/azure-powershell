@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.6.0
 * Add Firewall Rule support to Data Lake Analytics:
     - Add-AzureRMDataLakeAnalyticsFirewallRule
     - Get-AzureRMDataLakeAnalyticsFirewallRule

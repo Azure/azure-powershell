@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 3.6.0
+* Support policy parameters for New-AzureRmPolicyDefinition and New-AzureRmPolicyAssignment
+    - Users can now use Parameter parameter with New-AzureRmPolicyDefinition. This accepts both JSON string and file path.
+    - Users can now provide policy parameter values in New-AzureRmPolicyAssignment in a couple of ways, including JSON string, file path, PS object, and through PowerShell parameters. 
+
 ## Version 3.5.0
 * Support Tag as parameters for Find-AzureRmResource
     - Users can now use Tag parameter with Find-AzureRmResource
