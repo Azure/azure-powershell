@@ -195,7 +195,7 @@ function Get-AzProfile
      
   # If cache doesn't exist, Check embedded source
   $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
-  $ProfileMap = RetryGetContent -FilePath "$defaults\ProfileMap.json" 
+  $ProfileMap = RetryGetContent -FilePath (Join-Path -Path $defaults -ChildPath "ProfileMap.json")
   if($ProfileMap -eq $null)
   {
     # Cache & Embedded source empty; Return error and stop
@@ -836,13 +836,12 @@ function Use-AzureRmProfile
 
     # Variable to track progress
     $ModuleCount = 0
-    if ($PSCmdlet.ShouldProcess($Profile, "Loading modules for profile in the current scope"))
+    Write-Host "Loading Profile $Profile"
+    foreach ($Module in $Modules)
     {
-      Write-Host "Loading Profile $Profile"
-      foreach ($Module in $Modules)
+      $ModuleCount = $ModuleCount + 1
+      if ($PSCmdlet.ShouldProcess($Profile, "Loading module $module for profile in the current scope"))
       {
-        $ModuleCount = $ModuleCount + 1
-
         if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
         {
           continue
@@ -851,18 +850,21 @@ function Use-AzureRmProfile
         $version = Get-AzureRmModule -Profile $Profile -Module $Module
         if (($version -eq $null) -and ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
         {
-          $versions = $ProfileMap.$Profile.$Module
-          $versionEnum = $versions.GetEnumerator()
-          $toss = $versionEnum.MoveNext()
-          $version = $versionEnum.Current
-          Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
-          if (-not $Scope)
+          if ($PSCmdlet.ShouldProcess($module, "Installing module for profile in the current scope"))
           {
-            Install-Module $Module -RequiredVersion $version -AllowClobber
-          }
-          else
-          {
-            Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
+            $versions = $ProfileMap.$Profile.$Module
+            $versionEnum = $versions.GetEnumerator()
+            $toss = $versionEnum.MoveNext()
+            $version = $versionEnum.Current
+            Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
+            if (-not $Scope)
+            {
+              Install-Module $Module -RequiredVersion $version -AllowClobber
+            }
+            else
+            {
+              Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
+            }
           }
         }
         

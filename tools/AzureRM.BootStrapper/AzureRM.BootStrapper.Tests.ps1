@@ -32,6 +32,24 @@ Describe "Get-ProfileCachePath" {
                 $result.Contains(".config") | Should Be $true
             }
         }
+
+        # Cleanup
+        $Script:IsCoreEdition = ($PSVersionTable.PSEdition -eq 'Core')
+        $script:IsAdmin = $false
+        if ((-not $Script:IsCoreEdition) -or ($IsWindows))
+        {
+            If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+            {
+                $script:IsAdmin = $true
+            }
+        }
+        else {
+            # on Linux, tests run via sudo will generally report "root" for whoami
+            if ( (whoami) -match "root" ) 
+            {
+                $script:IsAdmin = $true
+            }
+        }
     }
 }
 
@@ -183,6 +201,9 @@ Describe "Get-AzureProfileMap" {
             $script:LatestProfileMapPath.FullName =  "123-MockedDifferentETag.json" 
             Mock RetrieveProfileMap -Verifiable {$global:testProfileMap | ConvertFrom-Json}
             Mock Get-LargestNumber -Verifiable {}
+            $ProfileMapPath = New-Object -TypeName  PSObject
+            $ProfileMapPath | Add-Member NoteProperty 'FullName' -Value '124-MockedDifferentETag.json'
+            Mock Get-ChildItem -Verifiable { @($ProfileMapPath)}
             It "Returns Correct ProfileMap" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks

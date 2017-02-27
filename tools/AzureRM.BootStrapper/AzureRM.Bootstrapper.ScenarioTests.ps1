@@ -508,7 +508,7 @@ InModuleScope AzureRM.Bootstrapper {
             
             # Act
             # Install profile '2016-04-consistent'
-            $result = Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-04-consistent' } 
+            $result = Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-04-consistent' -Force } 
 
             # Get modules imported into the session
             $getModuleList = {
@@ -569,7 +569,7 @@ InModuleScope AzureRM.Bootstrapper {
                 # Act & Assert
                 It "Should not download/install the latest profile" {
                     { Get-AzureRmProfile -Update } | Should Throw
-                    { Install-AzureRmProfile -Profile 'Latest' } | Should Throw
+                    { Install-AzureRmProfile -Profile 'Latest' -Force } | Should Throw
                 }
 
                 It "Last Write time should not be less than 3 mins" {
