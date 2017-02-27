@@ -43,10 +43,10 @@ function Get-ProfileCachePath
     {
       $ProfileCache = Join-Path -path $env:ProgramData -ChildPath "Microsoft\AzurePowerShell\ProfileCache"
     }
-    return $ProfileCache
   }
-
-  $ProfileCache = "$HOME/.config/Microsoft/AzurePowerShell/ProfileCache" 
+  else {
+    $ProfileCache = "$HOME/.config/Microsoft/AzurePowerShell/ProfileCache" 
+  }
 
   # If profile cache directory does not exist, create one.
   if(-Not (Test-Path $ProfileCache))
