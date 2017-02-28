@@ -304,7 +304,6 @@ function Get-ServiceManagementDll
                 "Automation"       = "Automation\Microsoft.Azure.Commands.Automation.dll";
                 "Compute"          = "Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.dll";
                 "HDInsights"       = "HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll";
-                "ManagedCache"     = "ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll";
                 "Networking"       = "Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll";
                 "Profile"          = "Services\Microsoft.WindowsAzure.Commands.Profile.dll";
                 "RecoveryServices" = "RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll";
