@@ -90,7 +90,7 @@ function Test-ApplicationGatewayCRUD
 		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
 		$probeHttps = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpsName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
-		$connectionDraining01 = New-AzureRmApplicationGatewayConnectionDraining -Enabled True -DrainTimeoutInSec 42
+		$connectionDraining01 = New-AzureRmApplicationGatewayConnectionDraining -Enabled $True -DrainTimeoutInSec 42
 		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -ConnectionDraining $connectionDraining01
 		$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Port 443 -Protocol Https -Probe $probeHttps -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01
 
@@ -111,6 +111,10 @@ function Test-ApplicationGatewayCRUD
 
 		# Get Application Gateway
 		$getgw =  Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		Compare-AzureRmApplicationGateway $actual $expected
+		
+		Assert-True { $appgw.OperationalState -eq "Running" }
 
 		# Get Application Gateway backend health with expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
@@ -233,16 +237,19 @@ function Compare-AzureRmApplicationGateway($actual, $expected)
 
 	for($i = 0; $i -lt $actual.BackendHttpSettingsCollection.Count; $i++) 
 	{
-		if(!$actual.BackendHttpSettingsCollection[$i].ConnectionDraining) 
+		$actualConnectionDraining = Get-AzureApplicationGatewayConnectionDraining $actual.BackendHttpSettingsCollection[$i]
+		$expectedConnectionDraining = Get-AzureApplicationGatewayConnectionDraining $expected.BackendHttpSettingsCollection[$i]
+
+		if($actualConnectionDraining) 
 		{
-			Assert-NotNull $expected.BackendHttpSettingsCollection[$i].ConnectionDraining
-			Assert-AreEqual $expected.BackendHttpSettingsCollection[$i].ConnectionDraining.Enabled $actual.BackendHttpSettingsCollection[$i].ConnectionDraining.Enabled
-			Assert-AreEqual $expected.BackendHttpSettingsCollection[$i].ConnectionDraining.DrainTimeoutInSec $actual.BackendHttpSettingsCollection[$i].ConnectionDraining.DrainTimeoutInSec
+			Assert-NotNull $expectedConnectionDraining
+			Assert-AreEqual $expectedConnectionDraining.Enabled $actualConnectionDraining.Enabled
+			Assert-AreEqual $expectedConnectionDraining.DrainTimeoutInSec $actualConnectionDraining.DrainTimeoutInSec
 
 		}
 		else 
 		{
-			Assert-Null $expected.BackendHttpSettingsCollection[$i].ConnectionDraining
+			Assert-Null $expectedConnectionDraining
 		}
 	}
 
