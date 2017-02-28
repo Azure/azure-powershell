@@ -164,10 +164,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 workflow.Sku = new Sku
                 {
                     Name = (SkuName) Enum.Parse(typeof (SkuName), servicePlan.Sku.Tier),
-                    Plan = new ResourceReference
-                    {
-                        Id = servicePlan.Id
-                    }
+                    Plan = new ResourceReference(id: servicePlan.Id)
                 };
             }
 

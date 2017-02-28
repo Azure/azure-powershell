@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 2.6.0
+
 ## Version 2.5.0
 * Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
     - Start-AzureStorageBlobCopy
