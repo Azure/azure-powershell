@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourcegroups/IntegrationAccountPsCmdletTest?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlZ3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlZ3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"brazilsouth\"\r\n}",
       "RequestHeaders": {
@@ -16,7 +16,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest\",\r\n  \"name\": \"IntegrationAccountPsCmdletTest\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest\",\r\n  \"name\": \"IntegrationAccountPsCmdletTest\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "218"
@@ -31,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1198"
         ],
         "x-ms-request-id": [
-          "881cac04-6f87-44b3-a5ea-dfbc4cfa16a9"
+          "083574d1-29b5-4df6-a0dd-6db7df842f28"
         ],
         "x-ms-correlation-request-id": [
-          "881cac04-6f87-44b3-a5ea-dfbc4cfa16a9"
+          "083574d1-29b5-4df6-a0dd-6db7df842f28"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172546Z:881cac04-6f87-44b3-a5ea-dfbc4cfa16a9"
+          "WESTUS2:20170215T223313Z:083574d1-29b5-4df6-a0dd-6db7df842f28"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,31 +49,34 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Jul 2016 17:25:46 GMT"
+          "Wed, 15 Feb 2017 22:33:12 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9ce3c589-1048-4c30-a44d-4b7709959aed"
+          "0f31f90b-6892-4240-957c-dc16c9b95828"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/onesdk770' under resource group 'IntegrationAccountPsCmdletTest' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/onesdk3606' under resource group 'IntegrationAccountPsCmdletTest' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "179"
+          "180"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -88,13 +91,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "16db6f1b-7bfa-49aa-a274-40c49bbc8e87"
+          "6b453916-1120-43af-9f32-596c9c7bdbbd"
         ],
         "x-ms-correlation-request-id": [
-          "16db6f1b-7bfa-49aa-a274-40c49bbc8e87"
+          "6b453916-1120-43af-9f32-596c9c7bdbbd"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172547Z:16db6f1b-7bfa-49aa-a274-40c49bbc8e87"
+          "WESTUS2:20170215T223314Z:6b453916-1120-43af-9f32-596c9c7bdbbd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -103,31 +106,34 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Jul 2016 17:25:46 GMT"
+          "Wed, 15 Feb 2017 22:33:14 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "960dcf66-eb9b-49d0-969c-d3b65cbc6216"
+          "2d541ef1-5a07-445e-b771-5dceedce7dd8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770\",\r\n  \"name\": \"onesdk770\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606\",\r\n  \"name\": \"onesdk3606\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "293"
+          "295"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -142,49 +148,52 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:8883d662-f831-415a-b350-77a8ea7eb975"
+          "brazilsouth:8ba34924-ccdc-4629-8aeb-54a9e205d78b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
+          "14711"
         ],
         "x-ms-correlation-request-id": [
-          "90d32116-36d5-413c-b4e4-c3cc8fc85d91"
+          "90d2014c-7698-49a2-9c41-16912b0514ce"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172551Z:90d32116-36d5-413c-b4e4-c3cc8fc85d91"
+          "WESTUS2:20170215T223320Z:90d2014c-7698-49a2-9c41-16912b0514ce"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Jul 2016 17:25:50 GMT"
+          "Wed, 15 Feb 2017 22:33:19 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0d0e79e8-baea-4cd2-8818-ac0d8e0b040d"
+          "f9d32876-a43a-4c8d-b48d-0671570ba79e"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770\",\r\n  \"name\": \"onesdk770\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606\",\r\n  \"name\": \"onesdk3606\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "293"
+          "295"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -199,49 +208,52 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:9d99b958-2e8e-4ecf-b88a-ff3df0026540"
+          "brazilsouth:f3509357-8b05-4985-983e-ea58ad750463"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14971"
+          "14709"
         ],
         "x-ms-correlation-request-id": [
-          "b976e71d-ebf7-4f9a-afb8-2753ccbe030e"
+          "3bab7a95-d7ed-4d3c-b712-0c508329beec"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172552Z:b976e71d-ebf7-4f9a-afb8-2753ccbe030e"
+          "WESTUS2:20170215T223321Z:3bab7a95-d7ed-4d3c-b712-0c508329beec"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Jul 2016 17:25:51 GMT"
+          "Wed, 15 Feb 2017 22:33:21 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "86273106-a3b3-4f0e-83c4-fa4d7a1d9fd2"
+          "9871b3dd-1a83-4f7b-a7e5-1c1e98b0346a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770\",\r\n  \"name\": \"onesdk770\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606\",\r\n  \"name\": \"onesdk3606\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "293"
+          "295"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -256,32 +268,32 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "brazilsouth:ac77b7a2-1894-4510-b08d-d847fa9d047c"
+          "brazilsouth:a4ff8e34-25fc-4240-9770-980ad300e04f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14969"
+          "14707"
         ],
         "x-ms-correlation-request-id": [
-          "972a5ab8-a154-49cb-a96c-0548b9537ea6"
+          "bbbfc7a2-1723-4411-9994-29064849c959"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172552Z:972a5ab8-a154-49cb-a96c-0548b9537ea6"
+          "WESTUS2:20170215T223322Z:bbbfc7a2-1723-4411-9994-29064849c959"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Jul 2016 17:25:52 GMT"
+          "Wed, 15 Feb 2017 22:33:22 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"brazilsouth\"\r\n}",
       "RequestHeaders": {
@@ -292,19 +304,22 @@
           "96"
         ],
         "x-ms-client-request-id": [
-          "a6dd4655-4e18-45b7-aa54-a4e7eab212c8"
+          "0642495b-2875-4307-81aa-aba2356f9b2d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770\",\r\n  \"name\": \"onesdk770\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606\",\r\n  \"name\": \"onesdk3606\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "293"
+          "295"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -316,7 +331,367 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:8ba504a9-eb94-4cdf-a391-ce0eaa49ee72"
+          "brazilsouth:836f2728-6772-4b1b-8348-942549c500be"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4b974f5-dc46-4ff6-9c10-7eb3b16d6bab"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170215T223320Z:d4b974f5-dc46-4ff6-9c10-7eb3b16d6bab"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 15 Feb 2017 22:33:19 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk3035?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNi9zY2hlbWFzL29uZXNkazMwMzU/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a3d2e1a0-699a-49be-9865-1b02579296a8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SchemaNotFound\",\r\n    \"message\": \"The schema 'onesdk3035' could not be found in integration account 'onesdk3606'.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "127"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:a7f9ecd9-584e-4b63-aa52-63ea1e182818"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14710"
+        ],
+        "x-ms-correlation-request-id": [
+          "48e6b80c-5c88-4ad9-8ef6-0813aba5d591"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170215T223320Z:48e6b80c-5c88-4ad9-8ef6-0813aba5d591"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 15 Feb 2017 22:33:19 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk3035?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNi9zY2hlbWFzL29uZXNkazMwMzU/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "8539"
+        ],
+        "x-ms-client-request-id": [
+          "9056db24-c151-407e-979c-1f0a0e5ca89c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://flowprodcu17cqsn01.blob.core.windows.net/integrationaccounts422f52c35caf4d9d8167fa7a37b89c69/3839E_XML_ONESDK3035-C056D7110AAF4E46B51635EDF9BFCF6F?sv=2016-05-31&sr=b&sig=4g%2F4H7EGEqtWhO1NQmiff%2FS5Gb2kaVNmrd%2FcqGQJwuY%3D&se=2017-02-16T02%3A33%3A21Z&sp=r\",\r\n      \"contentVersion\": \"\\\"0x8D455F2A5C99FC4\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-02-15T22:33:21.6568051Z\",\r\n    \"changedTime\": \"2017-02-15T22:33:21.6577558Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk3035\",\r\n  \"name\": \"onesdk3035\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "872"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:45054dd3-1921-4d11-a647-c96da531d6ae"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "00af6fa2-a5b6-4bde-a090-5a3fb66fab86"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170215T223321Z:00af6fa2-a5b6-4bde-a090-5a3fb66fab86"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 15 Feb 2017 22:33:21 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk4038?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNi9zY2hlbWFzL29uZXNkazQwMzg/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6f852e26-e5d9-4188-8d84-f0c81d6816a5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SchemaNotFound\",\r\n    \"message\": \"The schema 'onesdk4038' could not be found in integration account 'onesdk3606'.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "127"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:18848bff-0072-403b-9008-d17d80ad0ede"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14708"
+        ],
+        "x-ms-correlation-request-id": [
+          "e123bb19-8fb6-4f71-b9f8-3480c357420c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170215T223321Z:e123bb19-8fb6-4f71-b9f8-3480c357420c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 15 Feb 2017 22:33:21 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk4038?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNi9zY2hlbWFzL29uZXNkazQwMzg/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "8539"
+        ],
+        "x-ms-client-request-id": [
+          "38010e0b-b450-4ca6-9a7a-060f1b5458c0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://flowprodcu17cqsn01.blob.core.windows.net/integrationaccounts422f52c35caf4d9d8167fa7a37b89c69/3839E_XML_ONESDK4038-0C4CFBB59C5E47E4A678CD513BD40DE4?sv=2016-05-31&sr=b&sig=ujMvmGRnwXOUVQGI7TYipnGsUqKo9eM1geNr%2Bv1OXHc%3D&se=2017-02-16T02%3A33%3A22Z&sp=r\",\r\n      \"contentVersion\": \"\\\"0x8D455F2A611419B\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-02-15T22:33:22.1250913Z\",\r\n    \"changedTime\": \"2017-02-15T22:33:22.1253207Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk4038\",\r\n  \"name\": \"onesdk4038\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "868"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:06b81f80-4873-4d96-b100-56f78b252574"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "29556896-5cb1-432f-8bf8-d176811c3df2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170215T223322Z:29556896-5cb1-432f-8bf8-d176811c3df2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 15 Feb 2017 22:33:21 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk1192?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNi9zY2hlbWFzL29uZXNkazExOTI/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b326c159-f129-439b-8a09-cce9087372d4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SchemaNotFound\",\r\n    \"message\": \"The schema 'onesdk1192' could not be found in integration account 'onesdk3606'.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "127"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:14e30f4b-ab7e-4724-b54f-7d118d1e4b73"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14706"
+        ],
+        "x-ms-correlation-request-id": [
+          "ab385b4b-9201-463f-8ae2-904455f1c3dc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170215T223322Z:ab385b4b-9201-463f-8ae2-904455f1c3dc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 15 Feb 2017 22:33:22 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk1192?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNi9zY2hlbWFzL29uZXNkazExOTI/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "8539"
+        ],
+        "x-ms-client-request-id": [
+          "c5910bfd-7079-4f75-b167-6489edbf2151"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://flowprodcu17cqsn01.blob.core.windows.net/integrationaccounts422f52c35caf4d9d8167fa7a37b89c69/3839E_XML_ONESDK1192-D9131D895B4C42E5AD8F39F1914CE575?sv=2016-05-31&sr=b&sig=1c2ZJuYGDSI4bCWANvc9b91MPW5vmnRnVYrPdg445%2Fk%3D&se=2017-02-16T02%3A33%3A22Z&sp=r\",\r\n      \"contentVersion\": \"\\\"0x8D455F2A64C5CF0\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-02-15T22:33:22.5533192Z\",\r\n    \"changedTime\": \"2017-02-15T22:33:22.5541267Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606/schemas/onesdk1192\",\r\n  \"name\": \"onesdk1192\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "868"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:427b8d35-cb22-42eb-b76d-4bf6cdc62574"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -325,376 +700,37 @@
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "812b0a5f-4281-408b-b048-e9e1f09a74ac"
+          "b90052c8-11a0-4435-b3cc-357b646072ad"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172550Z:812b0a5f-4281-408b-b048-e9e1f09a74ac"
+          "WESTUS2:20170215T223323Z:b90052c8-11a0-4435-b3cc-357b646072ad"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Jul 2016 17:25:50 GMT"
+          "Wed, 15 Feb 2017 22:33:22 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk6679?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwL3NjaGVtYXMvb25lc2RrNjY3OT9hcGktdmVyc2lvbj0yMDE1LTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "9cd766b0-7867-4a39-b8bb-54b5be19e569"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SchemaNotFound\",\r\n    \"message\": \"The schema 'onesdk6679' could not be found in integration account 'onesdk770'.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "126"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "brazilsouth:c6b108d0-c537-4d9e-9f2a-b71f32ec154b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14972"
-        ],
-        "x-ms-correlation-request-id": [
-          "b9d247d5-8f35-4c7d-a14f-525b753dfb2b"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172551Z:b9d247d5-8f35-4c7d-a14f-525b753dfb2b"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 22 Jul 2016 17:25:50 GMT"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk6679?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwL3NjaGVtYXMvb25lc2RrNjY3OT9hcGktdmVyc2lvbj0yMDE1LTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  },\r\n  \"name\": \"onesdk6679\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "8564"
-        ],
-        "x-ms-client-request-id": [
-          "e5d56cb4-89ff-4b20-8afd-43647fd16ce2"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://flowprodcu06cqsn01.blob.core.windows.net/integrationaccounts7298d8b5009a4f678c6f55301bb5e813/3839E_XML_ONESDK6679-C641120DD67F4C57B57F2E578220576E?sv=2014-02-14&sr=b&sig=WFZLoE6OLTyDTNNBIyf7r91aRWW1bZQS0tIzH1LR44Q%3D&se=2016-07-22T21%3A25%3A52Z&sp=r\",\r\n      \"contentVersion\": \"\\\"0x8D3B2553A4995ED\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2016-07-22T17:25:52.2986017Z\",\r\n    \"changedTime\": \"2016-07-22T17:25:52.3061554Z\"\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk6679\",\r\n  \"name\": \"onesdk6679\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "865"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "brazilsouth:cf555c74-a92c-4bb7-9fa4-4dff86d22335"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
-        ],
-        "x-ms-correlation-request-id": [
-          "033ef888-f620-41cc-a5c5-63fe5f932dc9"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172552Z:033ef888-f620-41cc-a5c5-63fe5f932dc9"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 22 Jul 2016 17:25:51 GMT"
-        ]
-      },
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk6780?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwL3NjaGVtYXMvb25lc2RrNjc4MD9hcGktdmVyc2lvbj0yMDE1LTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f7869880-3ff2-4610-bd65-a7cab65201aa"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SchemaNotFound\",\r\n    \"message\": \"The schema 'onesdk6780' could not be found in integration account 'onesdk770'.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "126"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "brazilsouth:50a2489e-a586-4380-a7dd-6720c2c35105"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14970"
-        ],
-        "x-ms-correlation-request-id": [
-          "65985c38-55f0-4d37-a7de-7bfc99205c39"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172552Z:65985c38-55f0-4d37-a7de-7bfc99205c39"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 22 Jul 2016 17:25:51 GMT"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk6780?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwL3NjaGVtYXMvb25lc2RrNjc4MD9hcGktdmVyc2lvbj0yMDE1LTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  },\r\n  \"name\": \"onesdk6780\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "8564"
-        ],
-        "x-ms-client-request-id": [
-          "7e628c50-a9c9-46fb-94aa-4cc9c88d1ac8"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://flowprodcu06cqsn01.blob.core.windows.net/integrationaccounts7298d8b5009a4f678c6f55301bb5e813/3839E_XML_ONESDK6780-6F73679F19B840F8B6B478218D8E73E6?sv=2014-02-14&sr=b&sig=2sEZjcUMMGqKJ8Bq6smWRAHb8htD8qi0NVDW64P2QFQ%3D&se=2016-07-22T21%3A25%3A52Z&sp=r\",\r\n      \"contentVersion\": \"\\\"0x8D3B2553AAAE04B\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2016-07-22T17:25:52.9331136Z\",\r\n    \"changedTime\": \"2016-07-22T17:25:52.9333573Z\"\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk6780\",\r\n  \"name\": \"onesdk6780\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "865"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "brazilsouth:0f39059b-b4cf-4c0a-806f-ed83b665ac45"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
-        ],
-        "x-ms-correlation-request-id": [
-          "ff27692b-df08-4bb1-9bce-6c3d55b9c75f"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172552Z:ff27692b-df08-4bb1-9bce-6c3d55b9c75f"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 22 Jul 2016 17:25:51 GMT"
-        ]
-      },
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk1436?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwL3NjaGVtYXMvb25lc2RrMTQzNj9hcGktdmVyc2lvbj0yMDE1LTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "9796b551-b5c6-4295-b255-d2268092ea28"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SchemaNotFound\",\r\n    \"message\": \"The schema 'onesdk1436' could not be found in integration account 'onesdk770'.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "126"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "brazilsouth:9e15b083-af53-4718-a187-6a4573500ca0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14968"
-        ],
-        "x-ms-correlation-request-id": [
-          "aad363a2-5f00-408f-bbef-ae08dc102d3c"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172553Z:aad363a2-5f00-408f-bbef-ae08dc102d3c"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 22 Jul 2016 17:25:52 GMT"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk1436?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwL3NjaGVtYXMvb25lc2RrMTQzNj9hcGktdmVyc2lvbj0yMDE1LTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-16\\\"?>\\r\\n<xs:schema xmlns:b=\\\"http://schemas.microsoft.com/BizTalk/2003\\\" xmlns=\\\"http://Inbound_EDI.OrderFile\\\" targetNamespace=\\\"http://Inbound_EDI.OrderFile\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\">\\r\\n  <xs:annotation>\\r\\n    <xs:appinfo>\\r\\n      <b:schemaInfo default_pad_char=\\\" \\\" count_positions_by_byte=\\\"false\\\" parser_optimization=\\\"speed\\\" lookahead_depth=\\\"3\\\" suppress_empty_nodes=\\\"false\\\" generate_empty_nodes=\\\"true\\\" allow_early_termination=\\\"false\\\" early_terminate_optional_fields=\\\"false\\\" allow_message_breakup_of_infix_root=\\\"false\\\" compile_parse_tables=\\\"false\\\" standard=\\\"Flat File\\\" root_reference=\\\"OrderFile\\\" />\\r\\n      <schemaEditorExtension:schemaInfo namespaceAlias=\\\"b\\\" extensionClass=\\\"Microsoft.BizTalk.FlatFileExtension.FlatFileExtension\\\" standardName=\\\"Flat File\\\" xmlns:schemaEditorExtension=\\\"http://schemas.microsoft.com/BizTalk/2003/SchemaEditorExtensions\\\" />\\r\\n    </xs:appinfo>\\r\\n  </xs:annotation>\\r\\n  <xs:element name=\\\"OrderFile\\\">\\r\\n    <xs:annotation>\\r\\n      <xs:appinfo>\\r\\n        <b:recordInfo structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" sequence_number=\\\"1\\\" />\\r\\n      </xs:appinfo>\\r\\n    </xs:annotation>\\r\\n    <xs:complexType>\\r\\n      <xs:sequence>\\r\\n        <xs:annotation>\\r\\n          <xs:appinfo>\\r\\n            <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n          </xs:appinfo>\\r\\n        </xs:annotation>\\r\\n        <xs:element name=\\\"Order\\\">\\r\\n          <xs:annotation>\\r\\n            <xs:appinfo>\\r\\n              <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"hex\\\" child_delimiter=\\\"0x0D 0x0A\\\" child_order=\\\"infix\\\" />\\r\\n            </xs:appinfo>\\r\\n          </xs:annotation>\\r\\n          <xs:complexType>\\r\\n            <xs:sequence>\\r\\n              <xs:annotation>\\r\\n                <xs:appinfo>\\r\\n                  <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                </xs:appinfo>\\r\\n              </xs:annotation>\\r\\n              <xs:element name=\\\"Header\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"1\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"HDR|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PODate\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo justification=\\\"left\\\" sequence_number=\\\"2\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerID\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactName\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"CustomerContactPhone\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n              <xs:element minOccurs=\\\"1\\\" maxOccurs=\\\"unbounded\\\" name=\\\"LineItems\\\">\\r\\n                <xs:annotation>\\r\\n                  <xs:appinfo>\\r\\n                    <b:recordInfo sequence_number=\\\"2\\\" structure=\\\"delimited\\\" preserve_delimiter_for_empty_data=\\\"true\\\" suppress_trailing_delimiters=\\\"false\\\" child_delimiter_type=\\\"char\\\" child_delimiter=\\\"|\\\" child_order=\\\"infix\\\" tag_name=\\\"DTL|\\\" />\\r\\n                  </xs:appinfo>\\r\\n                </xs:annotation>\\r\\n                <xs:complexType>\\r\\n                  <xs:sequence>\\r\\n                    <xs:annotation>\\r\\n                      <xs:appinfo>\\r\\n                        <b:groupInfo sequence_number=\\\"0\\\" />\\r\\n                      </xs:appinfo>\\r\\n                    </xs:annotation>\\r\\n                    <xs:element name=\\\"PONumber\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"1\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ItemOrdered\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"2\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Quantity\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"3\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"UOM\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"4\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Price\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"5\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"ExtendedPrice\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"6\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                    <xs:element name=\\\"Description\\\" type=\\\"xs:string\\\">\\r\\n                      <xs:annotation>\\r\\n                        <xs:appinfo>\\r\\n                          <b:fieldInfo sequence_number=\\\"7\\\" justification=\\\"left\\\" />\\r\\n                        </xs:appinfo>\\r\\n                      </xs:annotation>\\r\\n                    </xs:element>\\r\\n                  </xs:sequence>\\r\\n                </xs:complexType>\\r\\n              </xs:element>\\r\\n            </xs:sequence>\\r\\n          </xs:complexType>\\r\\n        </xs:element>\\r\\n      </xs:sequence>\\r\\n    </xs:complexType>\\r\\n  </xs:element>\\r\\n</xs:schema>\",\r\n    \"contentType\": \"application/xml\"\r\n  },\r\n  \"name\": \"onesdk1436\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "8564"
-        ],
-        "x-ms-client-request-id": [
-          "d3b50ed9-6d78-4962-8cf7-357681fc01f2"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"schemaType\": \"Xml\",\r\n    \"targetNamespace\": \"http://Inbound_EDI.OrderFile\",\r\n    \"documentName\": \"OrderFile\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://flowprodcu06cqsn01.blob.core.windows.net/integrationaccounts7298d8b5009a4f678c6f55301bb5e813/3839E_XML_ONESDK1436-DB7D8D28AE2F4D2E8789485DF0C07C9C?sv=2014-02-14&sr=b&sig=h87fx24O%2FTXLTJWE6BmVQR7KZWvYC9tuvKhhcHd5NIc%3D&se=2016-07-22T21%3A25%3A53Z&sp=r\",\r\n      \"contentVersion\": \"\\\"0x8D3B2553AF89DED\\\"\",\r\n      \"contentSize\": 7901,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"a+4ZnOsIm8I/Mr0aKJIK6w==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2016-07-22T17:25:53.4345483Z\",\r\n    \"changedTime\": \"2016-07-22T17:25:53.4351768Z\"\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770/schemas/onesdk1436\",\r\n  \"name\": \"onesdk1436\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/schemas\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "867"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "brazilsouth:1c652a55-689a-4b52-aba3-6f7388aa265d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
-        ],
-        "x-ms-correlation-request-id": [
-          "50b56fb6-656f-4bae-b092-32dca73805e4"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172553Z:50b56fb6-656f-4bae-b092-32dca73805e4"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 22 Jul 2016 17:25:52 GMT"
-        ]
-      },
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk770?api-version=2015-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrNzcwP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk3606?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMzYwNj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ea13966-fc40-4030-a48c-e6435dc3c6e2"
+          "7596f12c-1e1a-4935-94bf-ecb053369e4a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.1.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/2.0.0"
         ]
       },
       "ResponseBody": "",
@@ -709,25 +745,25 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "brazilsouth:5e082e6e-1ec9-49be-9d8e-0f442eed2189"
+          "brazilsouth:055689f7-10e7-44a6-ab7c-a0065703af1c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "722b88a2-b4b4-4dad-b306-b5712d96b7ff"
+          "b67a2201-882d-40e6-a04f-2772aae02837"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160722T172554Z:722b88a2-b4b4-4dad-b306-b5712d96b7ff"
+          "WESTUS2:20170215T223324Z:b67a2201-882d-40e6-a04f-2772aae02837"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Jul 2016 17:25:54 GMT"
+          "Wed, 15 Feb 2017 22:33:24 GMT"
         ]
       },
       "StatusCode": 200
@@ -735,13 +771,13 @@
   ],
   "Names": {
     "Test-CreateIntegrationAccountSchema": [
-      "onesdk770",
-      "onesdk6679",
-      "onesdk6780",
-      "onesdk1436"
+      "onesdk3606",
+      "onesdk3035",
+      "onesdk4038",
+      "onesdk1192"
     ]
   },
   "Variables": {
-    "SubscriptionId": "5250dd92-b580-46be-b327-e6596c8de196"
+    "SubscriptionId": "f34b22a3-2202-4fb1-b040-1332bd928c84"
   }
 }
