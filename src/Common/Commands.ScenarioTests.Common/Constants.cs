@@ -50,8 +50,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string TrafficManager = "TrafficManager";
 
-        public const string ManagedCache = "ManagedCache";
-
         public const string Scheduler = "Scheduler";
 
         public const string KeyVault = "KeyVault";
