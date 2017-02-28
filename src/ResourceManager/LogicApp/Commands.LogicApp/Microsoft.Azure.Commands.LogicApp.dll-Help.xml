@@ -24,7 +24,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -76,7 +76,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -207,7 +207,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -268,7 +268,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -408,7 +408,7 @@ Content                : {"AS2":{"ReceiveAgreement":{"SenderBusinessIdentity":{"
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -469,7 +469,7 @@ Content                : {"AS2":{"ReceiveAgreement":{"SenderBusinessIdentity":{"
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -569,7 +569,7 @@ CallBackUrl : https://&lt;baseurl&gt;/integrationAccounts/8811f0155a364b5e9618ba
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -630,7 +630,7 @@ CallBackUrl : https://&lt;baseurl&gt;/integrationAccounts/8811f0155a364b5e9618ba
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -742,6 +742,124 @@ MetaData          :</dev:code>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Get-AzureRmIntegrationAccountGeneratedIcn</command:name>
+<command:verb>Get</command:verb>
+<command:noun>AzureRmIntegrationAccountGeneratedIcn</command:noun>
+<maml:description><maml:para>This cmdlet retrieves the current value of the generated interchange control number per agreement.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>This cmdlet is meant to be used in disaster recovery scenarios to retrieve the current value of the generated interchange control number so to write back an increased value with Set-AzureRmIntegrationAccountGeneratedIcn. The interchange control number should be increased to avoid duplicate interchange control numbers for the numbers that could not yet be replicated to the passive region when the disaster happened in the active region.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Get-AzureRmIntegrationAccountGeneratedIcn</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "IntegrationAccountAgreement1"
+ControlNumber            : 1000
+ControlNumberChangedTime : 2/15/2017 12:36:00 AM</dev:code>
+<dev:remarks><maml:para>This command gets the integration account generated interchange control number by agreement name.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1"
+ControlNumber            : 1000
+ControlNumberChangedTime : 2/22/2017 8:05:41 PM
+AgreementName            : onesdk4351
+
+ControlNumber            : 1000
+ControlNumberChangedTime : 2/22/2017 8:05:41 PM
+AgreementName            : onesdk4619
+
+ControlNumber            : No generated control number was found for this agreement.
+ControlNumberChangedTime : 1/1/0001 12:00:00 AM
+AgreementName            : onesdk6720</dev:code>
+<dev:remarks><maml:para>This command gets all the generated interchange control numbers by integration account name.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Set-AzureRmIntegrationAccountGeneratedIcn</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmIntegrationAccountMap</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmIntegrationAccountMap</command:noun>
@@ -764,7 +882,7 @@ MetaData          :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name for the integration account.
 </maml:para>
 </maml:Description>
@@ -825,7 +943,7 @@ MetaData          :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name for the integration account.
 </maml:para>
 </maml:Description>
@@ -957,7 +1075,7 @@ Metadata             :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -1018,7 +1136,7 @@ Metadata             :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -1122,6 +1240,125 @@ Metadata           :</dev:code>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Get-AzureRmIntegrationAccountReceivedIcn</command:name>
+<command:verb>Get</command:verb>
+<command:noun>AzureRmIntegrationAccountReceivedIcn</command:noun>
+<maml:description><maml:para>This cmdlet retrieves a specific received interchange control number per agreement and control number value.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>This cmdlet is meant to be used in disaster recovery scenarios to validate the presence of a received interchange control number and optionally to remove that entity with Remove-AzureRmIntegrationAccountReceivedIcn.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Get-AzureRmIntegrationAccountReceivedIcn</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumberValue</maml:name>
+<maml:Description><maml:para>The integration account control number value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumberValue</maml:name>
+<maml:Description><maml:para>The integration account control number value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
+ControlNumber            : 000000641
+ControlNumberChangedTime : 2/15/2017 12:36:00 AM</dev:code>
+<dev:remarks><maml:para>This command gets the integration account received interchange control number by agreement name and control number value.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Remove-AzureRmIntegrationAccountReceivedIcn</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmIntegrationAccountSchema</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmIntegrationAccountSchema</command:noun>
@@ -1144,7 +1381,7 @@ Metadata           :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -1205,7 +1442,7 @@ Metadata           :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -2433,7 +2670,7 @@ EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&amp;se=2016-01-14T16%3A15%3A16Z&amp;sp=r
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=rASa1yg14P71ioIStAji5HJfTFCbSjD3LNt2Ypn%2Byg4%3D&amp;se=2016-01-14T16%3A15%3A16Z&amp;sp=r
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -2452,7 +2689,7 @@ EndTime     : 1/13/2016 2:43:33 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/CAB46_60e2ad0f0e1947e8b5798716914c5d
-              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
+              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=aoyjajRfk5tQucYE%2BW6h9Is%2BAHSE7AcojY%2FOag6DWRA%3D&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
 Name        : 08587489106716457817
 OutputsLink : 
 Run         : 
@@ -2466,7 +2703,7 @@ EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=XNBbA0FkBQmGPDd%2Be03J0Vsdj4aFRG9YK5YBJwzBbO0%3D&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -2818,7 +3055,7 @@ $UpgradedDefinition.ToString()
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies a name for the integration account.
 </maml:para>
 </maml:Description>
@@ -2904,7 +3141,7 @@ $UpgradedDefinition.ToString()
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies a name for the integration account.
 </maml:para>
 </maml:Description>
@@ -3044,7 +3281,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -3187,6 +3424,24 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GuestIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement guest identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement host identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -3199,7 +3454,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -3344,6 +3599,24 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GuestIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement guest identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement host identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
@@ -3406,7 +3679,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureRmIntegrationAccountCertificate</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Specifies the name of a resource group.
 </maml:para>
 </maml:Description>
@@ -3415,7 +3688,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -3424,7 +3697,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CertificateName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateName</maml:name>
 <maml:Description><maml:para>Specifies a name for the integration account certificate.
 </maml:para>
 </maml:Description>
@@ -3433,7 +3706,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>Specifies the name of the certificate key in the key vault.
 </maml:para>
 </maml:Description>
@@ -3442,7 +3715,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVersion</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVersion</maml:name>
 <maml:Description><maml:para>Specifies the version of the certificate key in the key vault.
 </maml:para>
 </maml:Description>
@@ -3451,7 +3724,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultId</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVaultId</maml:name>
 <maml:Description><maml:para>Specifies a key vault ID.
 </maml:para>
 </maml:Description>
@@ -3527,8 +3800,8 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<command:syntaxItem><maml:name>New-AzureRmIntegrationAccountCertificate</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Specifies the name of a resource group.
 </maml:para>
 </maml:Description>
@@ -3537,7 +3810,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -3546,7 +3819,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CertificateName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateName</maml:name>
 <maml:Description><maml:para>Specifies a name for the integration account certificate.
 </maml:para>
 </maml:Description>
@@ -3555,7 +3828,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyName</maml:name>
 <maml:Description><maml:para>Specifies the name of the certificate key in the key vault.
 </maml:para>
 </maml:Description>
@@ -3564,7 +3837,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVersion</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVersion</maml:name>
 <maml:Description><maml:para>Specifies the version of the certificate key in the key vault.
 </maml:para>
 </maml:Description>
@@ -3573,7 +3846,251 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultId</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVaultId</maml:name>
+<maml:Description><maml:para>Specifies a key vault ID.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PublicCertificateFilePath</maml:name>
+<maml:Description><maml:para>Specifies the path of a public certificate (.cer) file.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Metadata</maml:name>
+<maml:Description><maml:para>Specifies a metadata object for the certificate.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+<dev:type><maml:name>Object</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
+<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Continue
+</maml:para>
+<maml:para>- Ignore
+</maml:para>
+<maml:para>- Inquire
+</maml:para>
+<maml:para>- SilentlyContinue
+</maml:para>
+<maml:para>- Stop
+</maml:para>
+<maml:para>- Suspend
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+<dev:type><maml:name>ActionPreference</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
+<maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>New-AzureRmIntegrationAccountCertificate</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of a resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of an integration account.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateName</maml:name>
+<maml:Description><maml:para>Specifies a name for the integration account certificate.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyName</maml:name>
+<maml:Description><maml:para>Specifies the name of the certificate key in the key vault.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVersion</maml:name>
+<maml:Description><maml:para>Specifies the version of the certificate key in the key vault.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVaultId</maml:name>
+<maml:Description><maml:para>Specifies a key vault ID.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PublicCertificateFilePath</maml:name>
+<maml:Description><maml:para>Specifies the path of a public certificate (.cer) file.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Metadata</maml:name>
+<maml:Description><maml:para>Specifies a metadata object for the certificate.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+<dev:type><maml:name>Object</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
+<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Continue
+</maml:para>
+<maml:para>- Ignore
+</maml:para>
+<maml:para>- Inquire
+</maml:para>
+<maml:para>- SilentlyContinue
+</maml:para>
+<maml:para>- Stop
+</maml:para>
+<maml:para>- Suspend
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+<dev:type><maml:name>ActionPreference</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
+<maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of a resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of an integration account.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateName</maml:name>
+<maml:Description><maml:para>Specifies a name for the integration account certificate.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyName</maml:name>
+<maml:Description><maml:para>Specifies the name of the certificate key in the key vault.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVersion</maml:name>
+<maml:Description><maml:para>Specifies the version of the certificate key in the key vault.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyVaultId</maml:name>
 <maml:Description><maml:para>Specifies a key vault ID.
 </maml:para>
 </maml:Description>
@@ -3718,7 +4235,7 @@ MetaData          :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies a name for the integration account.
 </maml:para>
 </maml:Description>
@@ -3840,7 +4357,7 @@ MetaData          :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies a name for the integration account.
 </maml:para>
 </maml:Description>
@@ -4019,7 +4536,7 @@ Metadata    :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -4123,7 +4640,7 @@ Metadata    :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -4282,7 +4799,7 @@ Metadata           :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -4404,7 +4921,7 @@ Metadata           :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -5108,7 +5625,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -5184,7 +5701,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -5300,7 +5817,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -5385,7 +5902,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -5510,7 +6027,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -5595,7 +6112,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -5720,7 +6237,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -5805,7 +6322,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -5930,7 +6447,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -6015,7 +6532,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -6118,6 +6635,173 @@ Version                      : 08587489107859952120</dev:code>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Remove-AzureRmIntegrationAccountReceivedIcn</command:name>
+<command:verb>Remove</command:verb>
+<command:noun>AzureRmIntegrationAccountReceivedIcn</command:noun>
+<maml:description><maml:para>This cmdlet removes a specific received interchange control number per agreement and control number value.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>This cmdlet is meant to be used in disaster recovery scenarios to remove a received interchange control number from the integration account so that the B2B connector may process again the message when duplicate number detection is enabled. In rare occasions the received interchange control number may be reserved shortly before a disaster and before the B2B connector rejects the interchange as erroneous. In such occasions the operation may want to enable the recovery site to process again the same interchange after its payload is corrected.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Remove-AzureRmIntegrationAccountReceivedIcn</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumberValue</maml:name>
+<maml:Description><maml:para>The integration account control number value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumberValue</maml:name>
+<maml:Description><maml:para>The integration account control number value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>System.Object</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
+Get-AzureRmIntegrationAccountReceivedIcn : The existing recevied control number '000000641' for agreement 'X12AgreementName' is not in a valid format.
+At line:1 char:1
++ Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-AzureRmIntegrationAccountReceivedIcn], PSInvalidOperationException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountReceivedIcnCommand
+
+PS C:\&gt; Remove-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
+PS C:\&gt; Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
+Get-AzureRmIntegrationAccountReceivedIcn : The session 'X12-ICN-X12Agreement_Microsoft_Dell-000000641' could not be
+found in integration account 'yisha-guest'.
+At line:1 char:1
++ Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-AzureRmIntegrationAccountReceivedIcn], CloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountReceivedIcnCommand</dev:code>
+<dev:remarks><maml:para>Attempts to get a received interchange control number which content is not in a valid format. Removes the received interchange control number. Confirms the received interchange control number was removed by attempting to get it again.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmIntegrationAccountReceivedIcn</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Remove-AzureRmIntegrationAccountSchema</command:name>
 <command:verb>Remove</command:verb>
 <command:noun>AzureRmIntegrationAccountSchema</command:noun>
@@ -6140,7 +6824,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -6225,7 +6909,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -6545,7 +7229,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -6639,7 +7323,7 @@ Version                      : 08587489107859952120</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -6788,7 +7472,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -6939,6 +7623,24 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GuestIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement guest identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement host identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -6951,7 +7653,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -7105,6 +7807,24 @@ ChangedTime : 3/26/2016 4:26:07 PM</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GuestIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement guest identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>HostIdentityQualifierValue</maml:name>
+<maml:Description><maml:para>The integration account agreement host identity qualifier value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
@@ -7175,7 +7895,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -7305,7 +8025,7 @@ Content                : {"AS2":null,"X12":{"ReceiveAgreement":{"SenderBusinessI
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -7471,6 +8191,164 @@ MetaData          :</dev:code>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Set-AzureRmIntegrationAccountGeneratedIcn</command:name>
+<command:verb>Set</command:verb>
+<command:noun>AzureRmIntegrationAccountGeneratedIcn</command:noun>
+<maml:description><maml:para>Updates the integration account generated interchange control number (ICN) in the Azure resource group.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Set-AzureRmIntegrationAccountGeneratedIcn cmdlet updates an existing integration account generated interchange control number (ICN) and returns an object that represents the integration account generated interchange control number. Use this cmdlet to update an integration account generated interchange control number. You can update an integration account generated interchange control number by specifying the integration account name, resource group name and agreement name. You cannot create a new integration account generated interchange control number with this command. To use the dynamic parameters, just type them in the command, or type a hyphen sign(-) to indicate a parameter name and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required template parameter, the cmdlet prompts you for the value. Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Set-AzureRmIntegrationAccountGeneratedIcn</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumber</maml:name>
+<maml:Description><maml:para>The generated control number new value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AgreementName</maml:name>
+<maml:Description><maml:para>The integration account agreement name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumber</maml:name>
+<maml:Description><maml:para>The generated control number new value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The integration account name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The integration account resource group name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; $resourceGroup.ResourceGroupName = "ResourceGroup1"
+PS C:\&gt; $integrationAccountName = "IntegrationAccount1"
+PS C:\&gt; $integrationAccountAgreementName = "IntegrationAccountAgreement1"
+PS C:\&gt; $initialControlNumber = Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+PS C:\&gt; $incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
+PS C:\&gt; Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
+ControlNumber            : 1100
+ControlNumberChangedTime : 2/15/2017 12:36:00 AM</dev:code>
+<dev:remarks><maml:para>This command gets the integration account  generated interchange control number for a specific integration account agreement, increase its value by 100 then writes back the updated value.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmIntegrationAccountGeneratedIcn</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Set-AzureRmIntegrationAccountMap</command:name>
 <command:verb>Set</command:verb>
 <command:noun>AzureRmIntegrationAccountMap</command:noun>
@@ -7493,7 +8371,7 @@ MetaData          :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -7623,7 +8501,7 @@ MetaData          :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -7809,7 +8687,7 @@ Metadata    :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -7921,7 +8799,7 @@ Metadata    :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of an integration account.
 </maml:para>
 </maml:Description>
@@ -8089,7 +8967,7 @@ Metadata</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
@@ -8219,7 +9097,7 @@ Metadata</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="IntegrationAccountName, ResourceName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the integration account.
 </maml:para>
 </maml:Description>
