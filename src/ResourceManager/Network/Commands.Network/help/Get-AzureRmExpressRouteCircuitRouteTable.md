@@ -1,13 +1,15 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: BA7F6BAC-6047-42B0-B8CA-0B36302951B0
-online version: 
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzureRmExpressRouteCircuitRouteTable
 
 ## SYNOPSIS
+
+Gets a route table from an ExpressRoute circuit.
 
 ## SYNTAX
 
@@ -19,16 +21,26 @@ Get-AzureRmExpressRouteCircuitRouteTable [-Name <String>] -ResourceGroupName <St
 
 ## DESCRIPTION
 
+The **Get-AzureRmExpressRouteCircuitRouteTable** cmdlet retrieves a detailed route table of an
+ExpressRoute circuit. The route table will show all routes or can be filtered to show routes for a
+specific peering type. You can use the route table to validate your peering configuration and
+connectivity.
+
+
 ## EXAMPLES
 
-### 1:
-```
-PS C:\>
+### Example 1: Display the route table for the primary path
+
+```powershell
+Get-AzureRmExpressRouteCircuitRouteTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -DevicePath 'Primary'
 ```
 
 ## PARAMETERS
 
 ### -Name
+
+The name of the resource.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -42,10 +54,13 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
+The name of the resource group containing the ExpressRoute circuit.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -55,10 +70,13 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteCircuitName
+
+The name of the ExpressRoute circuit being examined.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -68,10 +86,14 @@ Accept wildcard characters: False
 ```
 
 ### -PeeringType
+
+The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePublicPeering`, and
+`MicrosoftPeering`
+
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,10 +103,13 @@ Accept wildcard characters: False
 ```
 
 ### -DevicePath
+
+The acceptable values for this parameter are: `Primary` or `Secondary`
+
 ```yaml
 Type: DevicePathEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -94,6 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationAction
+
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -118,6 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
+
 Specifies an information variable.
 
 ```yaml
@@ -133,7 +160,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see about_CommonParameters
+(http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -143,3 +174,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzureRmExpressRouteCircuitARPTable](Get-AzureRmExpressRouteCircuitARPTable.md)
+
+[Get-AzureRmExpressRouteCircuitRouteTableSummary](Get-AzureRmExpressRouteCircuitRouteTableSummary.md)
+
+[Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)
