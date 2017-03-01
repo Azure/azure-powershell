@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 2.6.0
+* Fixed Get-AzureRmDataFactoryActivityWindow so it works for named pipeline and activity
+
 ## Version 2.5.0
 
 ## Version 2.4.0

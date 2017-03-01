@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // 1. Send Async request to generate vpn client package          
             string baseUrl = NetworkManagementClient.BaseUri.ToString();
-            string apiVersion = NetworkManagementClient.ApiVersion;
+            string apiVersion = "2016-09-01";
 
             if (resourceGroupName == null)
             {

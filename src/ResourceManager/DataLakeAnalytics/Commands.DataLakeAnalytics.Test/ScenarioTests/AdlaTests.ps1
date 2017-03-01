@@ -1,5 +1,95 @@
 ﻿<#
 .SYNOPSIS
+Tests DataLakeAnalytics Account firewall rule lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-DataLakeAnalyticsFirewall
+{
+    param
+	(
+		$resourceGroupName = (Get-ResourceGroupName),
+		$accountName = (Get-DataLakeAnalyticsAccountName),
+		$dataLakeAccountName = (Get-DataLakeStoreAccountName),
+		$location = "West US"
+	)
+	
+	try
+	{
+		# Creating Account
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+
+		New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+
+		$accountCreated = New-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Analytics account is not in succeeded state even after 30 min."
+		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		# Test to enable the firewall as well as allowing azure IPs
+		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
+		Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
+
+		$accountSet = Set-AzureRMDataLakeAnalyticsAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
+
+		Assert-AreEqual "Enabled" $accountSet.FirewallState 
+		Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
+
+		$firewallRuleName = getAssetName
+		$startIp = "127.0.0.1"
+		$endIp = "127.0.0.2"
+		# Add a firewall rule
+		Add-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp
+
+		# Get the firewall rule
+		$result = Get-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
+		Assert-AreEqual $firewallRuleName $result.Name
+		Assert-AreEqual $startIp $result.StartIpAddress
+		Assert-AreEqual $endIp $result.EndIpAddress
+
+		# remove the firewall rule
+		Remove-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
+
+		# Make sure get throws.
+		Assert-Throws {Get-AzureRMDataLakeAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeAnalytics Account Lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-DataLakeAnalyticsAccount

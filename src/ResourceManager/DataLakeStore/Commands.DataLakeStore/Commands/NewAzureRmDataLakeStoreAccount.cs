@@ -53,10 +53,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Azure region where the account should be created.",
             ParameterSetName = EncryptionDisabledParameterSetName)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US",
-            "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = true)]
         public string Location { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Logic.Models;
     using Newtonsoft.Json.Linq;
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         internal static string BuildAppServicePlanId(string planName, string resourceGroupName, string subscriptionId)
         {
             return string.Format(CultureInfo.InvariantCulture,
-                Properties.Resource.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
+                Constants.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
         }
 
         /// <summary>
@@ -148,23 +149,48 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>List of business identity.</returns>
         internal static IList<BusinessIdentity> ConvertToBusinessIdentityList(object businessIdentityObject)
         {
-            IList<BusinessIdentity> identities = null;
-            if (businessIdentityObject is Hashtable)
+            if (!(businessIdentityObject is Array))
             {
-                var collection = businessIdentityObject as Hashtable;
-                identities = new List<BusinessIdentity>();
-
-                foreach (var key in collection.Keys)
-                {
-                    identities.Add(new BusinessIdentity()
-                    {
-                        Qualifier = key.ToString(),
-                        Value = collection[key].ToString()
-                    });
-                }
+                throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
             }
 
-            return identities;
+            var arr = businessIdentityObject as object[];
+
+            if (arr != null && arr[0] is Array)
+            {
+                var validateresult = arr.Where(item => (((object[])item).Length != 2));
+
+                if (validateresult != null && validateresult.Count() > 0)
+                {
+                    throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
+                }
+
+                return arr.Select(item => new BusinessIdentity()
+                {
+                    Qualifier = ((object[])item)[0].ToString(),
+                    Value = ((object[])item)[1].ToString()
+                }).ToList();
+            }
+            else if (arr != null && arr is Array)
+            {
+                if (arr.Count() != 2)
+                {
+                    throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
+                }
+
+                var identities = new List<BusinessIdentity>();
+                identities.Add(new BusinessIdentity()
+                {
+                    Qualifier = arr[0].ToString(),
+                    Value = arr[1].ToString(),
+                });
+
+                return identities;
+            }
+            else
+            {
+                throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
+            }
         }
 
         /// <summary>
@@ -176,7 +202,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             try
             {
-                return JObject.Parse(metadata.ToString());                
+                return JObject.Parse(metadata.ToString());
             }
             catch 
             {
