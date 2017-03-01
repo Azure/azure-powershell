@@ -110,11 +110,10 @@ function Test-ApplicationGatewayCRUD
 		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttps -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig
 
 		# Get Application Gateway
-		$getgw =  Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
-		Compare-AzureRmApplicationGateway $actual $expected
-		
-		Assert-True { $appgw.OperationalState -eq "Running" }
+		Compare-AzureRmApplicationGateway $appgw $getgw
+		Assert-True { $getgw.OperationalState -eq "Running" }
 
 		# Get Application Gateway backend health with expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
@@ -237,8 +236,8 @@ function Compare-AzureRmApplicationGateway($actual, $expected)
 
 	for($i = 0; $i -lt $actual.BackendHttpSettingsCollection.Count; $i++) 
 	{
-		$actualConnectionDraining = Get-AzureApplicationGatewayConnectionDraining $actual.BackendHttpSettingsCollection[$i]
-		$expectedConnectionDraining = Get-AzureApplicationGatewayConnectionDraining $expected.BackendHttpSettingsCollection[$i]
+		$actualConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $actual.BackendHttpSettingsCollection[$i]
+		$expectedConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $expected.BackendHttpSettingsCollection[$i]
 
 		if($actualConnectionDraining) 
 		{
