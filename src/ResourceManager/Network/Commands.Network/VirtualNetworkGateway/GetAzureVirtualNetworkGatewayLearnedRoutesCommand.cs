@@ -20,8 +20,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayAdvertisedRoutes"), OutputType(typeof(PSGatewayRoute))]
-    public class GetVirtualNetworkGatewayAdvertisedRoutesCommand : VirtualNetworkGatewayBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayLearnedRoutes"), OutputType(typeof(PSGatewayRoute))]
+    public class GetVirtualNetworkGatewayLearnedRoutesCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual network gateway name")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public virtual string VirtualNetworkGatewayName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -38,19 +38,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "BGP peer's IP address")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Peer { get; set; }
-
         public override void Execute()
         {
             base.Execute();
 
             List<PSGatewayRoute> advertisedRoutes = new List<PSGatewayRoute>();
-            foreach (var route in this.VirtualNetworkGatewayClient.GetAdvertisedRoutes(this.ResourceGroupName, this.Name, this.Peer).Value)
+            foreach (var route in this.VirtualNetworkGatewayClient.GetLearnedRoutes(this.ResourceGroupName, this.VirtualNetworkGatewayName).Value)
             {
                 advertisedRoutes.Add(Mapper.Map<PSGatewayRoute>(route));
             }

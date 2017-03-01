@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual network gateway name")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public virtual string VirtualNetworkGatewayName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             List<PSBgpPeerStatus> peerStatuses = new List<PSBgpPeerStatus>();
-            foreach (var peerStatus in this.VirtualNetworkGatewayClient.GetBgpPeerStatus(this.ResourceGroupName, this.Name, this.Peer).Value)
+            foreach (var peerStatus in this.VirtualNetworkGatewayClient.GetBgpPeerStatus(this.ResourceGroupName, this.VirtualNetworkGatewayName, this.Peer).Value)
             {
                 peerStatuses.Add(Mapper.Map<PSBgpPeerStatus>(peerStatus));
             }
