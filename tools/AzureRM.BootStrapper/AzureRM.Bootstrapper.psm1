@@ -141,6 +141,7 @@ function RetryGetContent
 # Get-ProfileMap from Azure Endpoint
 function Get-AzureProfileMap
 {
+  Write-Verbose "Updating profiles"
   $ProfileCache = Get-ProfileCachePath
 
   # Get online profile data using Web request
@@ -249,6 +250,7 @@ function Get-ProfilesInstalled
   $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
   foreach ($key in $AllProfiles)
   {
+    Write-Verbose "Checking if profile $key is installed"
     foreach ($module in ($ProfileMap.$key | Get-Member -MemberType NoteProperty).Name)
     {
       $ModulesList = (Get-Module -Name $Module -ListAvailable)
@@ -363,9 +365,11 @@ function Uninstall-ModuleHelper
     {
       if (($moduleInstalled -ne $null) -and ($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Remove module $Module version $version", "Removing Modules for profile $Profile"))) 
       {
+        Write-Verbose "Removing module from session"
         Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
         try 
         {
+          Write-Verbose "Uninstalling module $module version $version"
           Uninstall-Module -Name $module -RequiredVersion $version -Force -ErrorAction Stop
         }
         catch
@@ -414,6 +418,7 @@ function Invoke-UninstallModule
   param([PSObject]$PMap, [String]$Profile, $Module, [hashtable]$AllProfilesInstalled, [Switch]$RemovePreviousVersions)
 
   # Check if the profiles associated with the module version are installed.
+  Write-Verbose "Checking module dependency to any other profile installed"
   $profilesAssociated = Test-ProfilesInstalled -Module $Module -Profile $Profile -PMap $PMap -AllProfilesInstalled $AllProfilesInstalled
       
   # If more than one profile is installed for the same version of the module, do not uninstall
@@ -445,6 +450,7 @@ function Remove-PreviousVersions
   $PreviousProfiles = ($PreviousMap | Get-Member -MemberType NoteProperty).Name
   $LatestProfiles = ($LatestMap | Get-Member -MemberType NoteProperty).Name
   
+  Write-Verbose "Checking if previous versions of modules are installed"
   # If the profile was not in $PreviousProfiles, return
   if($Profile -notin $PreviousProfiles)
   {
@@ -473,6 +479,7 @@ function Remove-PreviousVersions
         continue
       }
 
+      Write-Verbose "Previous versions of modules were found. Trying to uninstall..."
       # Modules are different. Uninstall previous version.
       if ($Remove.IsPresent)
       {
@@ -532,6 +539,7 @@ function Update-ProfileHelper
   [CmdletBinding()]
   param([String]$Profile, [Array]$Module, [Switch]$RemovePreviousVersions)
 
+  Write-Verbose "Attempting to clean up previous versions"
   # Get all the hash files (ProfileMaps) from cache
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapHashes = Get-ChildItem $ProfileCache
@@ -573,6 +581,7 @@ function Update-ProfileHelper
     # If none were installed, remove the hash
     if ($deleteHash -ne $false)
     {
+      Write-Verbose "Cleaning up cache"
       Remove-ProfileMapFile -ProfileMapPath (Join-Path $profilecache $ProfileMapHash)
     }
   }
@@ -584,6 +593,7 @@ function Find-PotentialConflict
   [CmdletBinding(SupportsShouldProcess = $true)] 
   param([string]$Module, [switch]$Force)
   
+  Write-Verbose "Checking if there is a potential conflict for module installation"
   $availableModules = Get-Module $Module -ListAvailable
   $IsPotentialConflict = $false
 
@@ -751,6 +761,7 @@ function Get-AzureRmModule
     $Profile = $PSBoundParameters.Profile
     $Module = $PSBoundParameters.Module
     $versionList = $ProfileMap.$Profile.$Module
+    Write-Verbose "Getting the version of $module from $profile"
     $moduleList = Get-Module -Name $Module -ListAvailable | Where-Object {$_.RepositorySourceLocation -ne $null}
     foreach ($version in $versionList)
     {
@@ -788,11 +799,13 @@ function Get-AzureRmProfile
     $ProfileMap = (Get-AzProfile @PSBoundParameters)
     if ($ListAvailable.IsPresent)
     {
+      Write-Verbose "Getting all the profiles available for install"
       Get-ProfilesAvailable $ProfileMap
     }
     else
     {
       # Just display profiles installed on the machine
+      Write-Verbose "Getting profiles installed on the machine and available for import"
       $IncompleteProfiles = @()
       $profilesInstalled = Get-ProfilesInstalled -ProfileMap $ProfileMap ([REF]$IncompleteProfiles)
       $Output = @()
@@ -866,6 +879,7 @@ function Use-AzureRmProfile
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
       if (($version -eq $null) -and $PSCmdlet.ShouldProcess($module, "Installing module for profile $profile in the current scope"))
       {
+        Write-Verbose "$module was not found on the machine. Trying to install..."
         if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
         {
           $versions = $ProfileMap.$Profile.$Module
@@ -873,6 +887,7 @@ function Use-AzureRmProfile
           $toss = $versionEnum.MoveNext()
           $version = $versionEnum.Current
           Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
+          Write-Verbose "Installing module $module"
           if (-not $Scope)
           {
             Install-Module $Module -RequiredVersion $version -AllowClobber
@@ -893,6 +908,7 @@ function Use-AzureRmProfile
 
       if ($PSCmdlet.ShouldProcess($module, "Importing module for profile $profile in the current scope"))
       {
+        Write-Verbose "Importing module $module"
         Import-Module -Name $Module -RequiredVersion $version -Global
       }
     }
@@ -948,6 +964,7 @@ function Install-AzureRmProfile
         $toss = $versionEnum.MoveNext()
         $version = $versionEnum.Current
         Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
+        Write-Verbose "Installing module $module"
         if (-not $Scope)
         {
           Install-Module $Module -RequiredVersion $version -AllowClobber
@@ -985,6 +1002,7 @@ function Uninstall-AzureRmProfile
     {
       if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Uninstall Profile $Profile", "Removing Modules for profile $Profile")))
       {
+        Write-Verbose "Trying to uninstall module $module"
         Uninstall-ProfileHelper -PMap $ProfileMap @PSBoundParameters
       }
     }

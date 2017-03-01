@@ -12,7 +12,7 @@
 RootModule = 'AzureRM.Bootstrapper.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.9'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '(c) 2016 Microsoft Corporation. All rights reserved.'
+Copyright = '(c) 2017 Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Install and Load Modules for an Azure Profile'
