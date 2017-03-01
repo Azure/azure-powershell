@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using System;
 
     /// <summary>
     /// Gets the integration account agreement by name 
@@ -32,8 +33,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account name.")]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account agreement name.")]
