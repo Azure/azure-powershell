@@ -96,7 +96,25 @@ $script:LatestProfileMapPath = Get-LatestProfileMapPath
 # Make Web-Call
 function Get-AzureStorageBlob
 {
-  $WebResponse =  Invoke-WebRequest -uri $PSProfileMapEndpoint 
+  $retryCount = 0
+  Do
+  {
+    $retryCount = $retryCount + 1
+    try {
+      $WebResponse =  Invoke-WebRequest -uri $PSProfileMapEndpoint -ErrorVariable RestError
+      $Status = "success"
+    }
+    catch {    
+      if ($retryCount -le 3)
+      {
+        Start-Sleep -Seconds 3
+      }
+      else {
+        throw $_
+      }
+    }
+  } 
+  while ($Status -ne "success")
   return $WebResponse
 }
 
@@ -840,34 +858,41 @@ function Use-AzureRmProfile
     foreach ($Module in $Modules)
     {
       $ModuleCount = $ModuleCount + 1
-      if ($PSCmdlet.ShouldProcess($Profile, "Loading module $module for profile in the current scope"))
+      if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
       {
-        if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
-        {
-          continue
-        }
+        continue
+      }
 
-        $version = Get-AzureRmModule -Profile $Profile -Module $Module
-        if (($version -eq $null) -and ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
+      $version = Get-AzureRmModule -Profile $Profile -Module $Module
+      if (($version -eq $null) -and $PSCmdlet.ShouldProcess($module, "Installing module for profile $profile in the current scope"))
+      {
+        if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
         {
-          if ($PSCmdlet.ShouldProcess($module, "Installing module for profile in the current scope"))
+          $versions = $ProfileMap.$Profile.$Module
+          $versionEnum = $versions.GetEnumerator()
+          $toss = $versionEnum.MoveNext()
+          $version = $versionEnum.Current
+          Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
+          if (-not $Scope)
           {
-            $versions = $ProfileMap.$Profile.$Module
-            $versionEnum = $versions.GetEnumerator()
-            $toss = $versionEnum.MoveNext()
-            $version = $versionEnum.Current
-            Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
-            if (-not $Scope)
-            {
-              Install-Module $Module -RequiredVersion $version -AllowClobber
-            }
-            else
-            {
-              Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
-            }
+            Install-Module $Module -RequiredVersion $version -AllowClobber
+          }
+          else
+          {
+            Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
           }
         }
-        
+      }
+
+      # Block user if they try to import a module to the session where a different version of the same module is already imported
+      if ((Get-Module -Name $Module | Where-Object { $_.Version -ne $version} ) -ne $null)
+      {
+        Write-Error "A different version of module $module is already imported in this session. Start a new PowerShell session and retry the operation."
+        return
+      }
+
+      if ($PSCmdlet.ShouldProcess($module, "Importing module for profile $profile in the current scope"))
+      {
         Import-Module -Name $Module -RequiredVersion $version -Global
       }
     }
@@ -1002,13 +1027,10 @@ function Update-AzureRmProfile
     $PSBoundParameters.Remove('Scope') | Out-Null
 
     # Remove previous versions of the profile?
-    if ($PSCmdlet.ShouldProcess("Remove previous versions")) 
+    if ($Remove.IsPresent -and $PSCmdlet.ShouldProcess($profile, "Remove previous versions of profile")) 
     {
-      if (($Remove -or $PSCmdlet.ShouldContinue("Uninstall Previous Module Versions of the profile", "Removing previous versions of the profile")))
-      {
-        # Remove-PreviousVersions and clean up cache
-        Update-ProfileHelper @PSBoundParameters -RemovePreviousVersions
-      }
+      # Remove-PreviousVersions and clean up cache
+      Update-ProfileHelper @PSBoundParameters -RemovePreviousVersions
     }
   }
 }

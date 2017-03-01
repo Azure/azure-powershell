@@ -37,7 +37,7 @@ InModuleScope AzureRM.Bootstrapper {
 
             # Act
             # Install latest version
-            Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile 'Latest' } 
+            Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile 'Latest' -Force } 
 
             # Assert 
             It "Should return Latest Profile" {
@@ -115,7 +115,7 @@ InModuleScope AzureRM.Bootstrapper {
                 ($profilesInstalled -like "*latest*") -ne $null | Should Be $true
 
                 # Act
-                Invoke-Command -Session $session -ScriptBlock { Use-AzureRmProfile -Profile 'Latest' }
+                Invoke-Command -Session $session -ScriptBlock { Use-AzureRmProfile -Profile 'Latest' -Force }
 
                 # Get the version of the Latest profile
                 $ProfileMap = Get-AzProfile
@@ -211,7 +211,7 @@ InModuleScope AzureRM.Bootstrapper {
                 $session = New-PSSession
 
                 # Install profile 2016-04-consistent
-                Install-AzureRmProfile -Profile '2016-04-consistent'
+                Install-AzureRmProfile -Profile '2016-04-consistent' -Force
 
                 # Ensure profile 2016-04-consistent is installed
                 $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
@@ -260,7 +260,7 @@ InModuleScope AzureRM.Bootstrapper {
                 $session = New-PSSession
 
                 # Install profile 2016-04-consistent
-                Install-AzureRmProfile -Profile '2016-04-consistent'
+                Install-AzureRmProfile -Profile '2016-04-consistent' -Force
 
                 # Ensure profile 2016-04-consistent is installed
                 $profilesInstalled = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile } 
@@ -398,10 +398,10 @@ InModuleScope AzureRM.Bootstrapper {
 
                 # Act
                 # Install Profile: 2016-08 
-                Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile 'Latest' } 
+                Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile 'Latest' -Force } 
 
                 # Install Profile: 2016-04
-                Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-04-consistent' } 
+                Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile '2016-04-consistent' -Force } 
 
                 # Assert 
                 It "Should return Profiles Latest & 2016-04-consistent" {
@@ -422,8 +422,8 @@ InModuleScope AzureRM.Bootstrapper {
 
                 # Act
                 # Use-AzureRmProfile will import the respective versions of modules in the session
-                Invoke-Command -Session $session1 -ScriptBlock { Use-AzureRmProfile -Profile 'Latest' }
-                Invoke-Command -Session $session2 -ScriptBlock { Use-AzureRmProfile -Profile '2016-04-consistent' } 
+                Invoke-Command -Session $session1 -ScriptBlock { Use-AzureRmProfile -Profile 'Latest' -Force }
+                Invoke-Command -Session $session2 -ScriptBlock { Use-AzureRmProfile -Profile '2016-04-consistent' -Force } 
     
                 $getModule = {
                     Param($RollupModule)
@@ -502,7 +502,7 @@ InModuleScope AzureRM.Bootstrapper {
             $session = New-PSSession
 
             # Ensure profile 2016-09 is installed
-            Install-AzureRmProfile -Profile '2016-04-consistent'
+            Install-AzureRmProfile -Profile '2016-04-consistent' -Force
             $installedProfile = Invoke-Command -Session $session -ScriptBlock { Get-AzureRmProfile }
             ($installedProfile -like "*2016-04-consistent*") -ne $null | Should Be $true
             
@@ -637,7 +637,7 @@ InModuleScope AzureRM.Bootstrapper {
 
                 # Act
                 # Install profile Latest scope as current user
-                Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile 'Latest' -scope 'CurrentUser' }
+                Invoke-Command -Session $session -ScriptBlock { Install-AzureRmProfile -Profile 'Latest' -scope 'CurrentUser' -Force }
 
                 # Assert
                 It "Installs & Imports Latest profile to the session" {
