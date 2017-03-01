@@ -31,12 +31,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// The identifier of the endpoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
         /// The subscription identifier of the event hub endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "subscriptionId")]

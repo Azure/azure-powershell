@@ -14,7 +14,6 @@ Deletes an eventhub consumergroup.
 ```
 Remove-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
  [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +31,7 @@ Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -EventHubConsumerGroupName
-Name of the Event hub consumer group.
+EventHubConsumerGroupName.
 
 ```yaml
 Type: String
@@ -47,7 +46,8 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-Name of the event hub endpoint. The possible values are events, operationsMonitoringEvents.
+EventHubEndpointName.
+Possible values events, operationsMonitoringEvents
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -101,13 +101,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -116,13 +117,10 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

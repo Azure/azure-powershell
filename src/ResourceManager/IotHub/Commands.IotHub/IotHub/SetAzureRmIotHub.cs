@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = false,
             HelpMessage = "Fallback Routes")]
         [ValidateNotNullOrEmpty]
-        public PSRouteProperties FallbackRoute { get; set; }
+        public PSFallbackRouteProperties FallbackRoute { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
                         if (this.FallbackRoute != null)
                         {
-                            iotHubDescription.Properties.Routing.FallbackRoute = IotHubUtils.ToRouteProperty(this.FallbackRoute);
+                            iotHubDescription.Properties.Routing.FallbackRoute = IotHubUtils.ToFallbackRouteProperty(this.FallbackRoute);
                         }
 
                         break;

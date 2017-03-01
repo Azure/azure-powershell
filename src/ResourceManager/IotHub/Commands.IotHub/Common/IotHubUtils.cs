@@ -143,6 +143,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<PSRouteProperties, RouteProperties>(psRouteProperty);
         }
 
+        public static FallbackRouteProperties ToFallbackRouteProperty(PSFallbackRouteProperties psRouteProperty)
+        {
+            return ConvertObject<PSFallbackRouteProperties, FallbackRouteProperties>(psRouteProperty);
+        }
+
         public static IList<PSIotHubConnectionString> ToPSIotHubConnectionStrings(IEnumerable<SharedAccessSignatureAuthorizationRule> authorizationPolicies, string hostName)
         {
             var psConnectionStrings = new List<PSIotHubConnectionString>();

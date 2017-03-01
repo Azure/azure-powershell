@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.IotHub.Models;
+
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {    
     using Newtonsoft.Json;
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// The properties of the route that will be used as a fallback route        
         /// </summary>
         [JsonProperty(PropertyName = "fallbackRoute")]
-        public PSRouteProperties FallbackRoute { get; set; }
+        public PSFallbackRouteProperties FallbackRoute { get; set; }
 
 
     }

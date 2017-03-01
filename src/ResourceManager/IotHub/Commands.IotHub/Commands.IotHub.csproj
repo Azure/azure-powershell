@@ -126,8 +126,10 @@
     <Compile Include="Models\PSIotHubJobStatus.cs" />
     <Compile Include="Models\PSMessagingEndpointProperties.cs" />
     <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
+    <Compile Include="Models\PSFallbackRouteProperties.cs" />
+    <Compile Include="Models\PSRoutingServiceBusQueueEndpointProperties.cs" />
     <Compile Include="Models\PSRoutingProperties.cs" />
-    <Compile Include="Models\PSRoutingMessagingEndpointProperties.cs" />
+    <Compile Include="Models\PSRoutingServiceBusTopicEndpointProperties.cs" />
     <Compile Include="Models\PSRoutingEventHubProperties.cs" />
     <Compile Include="Models\PSRoutingEndpoints.cs" />
     <Compile Include="Models\PSRouteProperties.cs" />

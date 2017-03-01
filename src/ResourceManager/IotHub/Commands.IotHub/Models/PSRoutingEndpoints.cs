@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// the messages to, based on the routing rules.
         /// </summary>
         [JsonProperty(PropertyName = "serviceBusQueues")]
-        public IList<PSRoutingMessagingEndpointProperties> ServiceBusQueues { get; set; }
+        public IList<PSRoutingServiceBusQueueEndpointProperties> ServiceBusQueues { get; set; }
 
         /// <summary>
         /// The list of service bus topic endpoints to which IoT hub routes
         /// the messages to, based on the routing rules.
         /// </summary>
         [JsonProperty(PropertyName = "serviceBusTopics")]
-        public IList<PSRoutingMessagingEndpointProperties> ServiceBusTopics { get; set; }
+        public IList<PSRoutingServiceBusTopicEndpointProperties> ServiceBusTopics { get; set; }
 
         /// <summary>
         /// The list of eventhub endpoints to which IoT hub routes the
