@@ -54,13 +54,20 @@ namespace Microsoft.AzureStack.Commands
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
-        // TODO - use API to get CSM location?
+        // TODO - use API to get ARM location. BUG 8349643
         /// <summary>
         /// Gets or sets the resource manager location.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string ArmLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the routing resource manager type.
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ResourceManagerType ResourceManagerType { get; set; }
 
         /// <summary>
         /// Gets or sets the resource provider registration display name.
@@ -133,10 +140,11 @@ namespace Microsoft.AzureStack.Commands
                             {
                                 DisplayName = this.DisplayName,
                                 Namespace = this.Namespace,
+                                RoutingResourceManagerType = this.ResourceManagerType,
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
                                 ExtensionName = this.ExtensionName,
-                                ExtensionUri = (this.ExtensionUri == null) ? null : this.ExtensionUri.AbsoluteUri,
+                                ExtensionUri = this.ExtensionUri.AbsoluteUri,
                                 ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
                             }
                         }
@@ -154,6 +162,9 @@ namespace Microsoft.AzureStack.Commands
                             {
                                 DisplayName = this.DisplayName,
                                 Namespace = this.Namespace,
+                                // Note: The default value is set to Admin ARM to have backward compatibility with existing deployment scripts
+                                // The default value will get changed to User ARM in future.
+                                RoutingResourceManagerType = this.ResourceManagerType,
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
                                 Extensions = (this.Extensions == null) ? null : this.Extensions.FromJson<List<Extension>>(),
