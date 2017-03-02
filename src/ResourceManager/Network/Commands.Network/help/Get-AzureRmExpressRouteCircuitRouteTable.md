@@ -14,9 +14,9 @@ Gets a route table from an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitRouteTable [-Name <String>] -ResourceGroupName <String>
- -ExpressRouteCircuitName <String> [-PeeringType <String>] -DevicePath <DevicePathEnum>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmExpressRouteCircuitRouteTable -ResourceGroupName <String> -ExpressRouteCircuitName
+ <String> [-PeeringType <String>] -DevicePath <DevicePathEnum> [-InformationAction
+ <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,22 +36,6 @@ Get-AzureRmExpressRouteCircuitRouteTable -ResourceGroupName $RG -ExpressRouteCir
 ```
 
 ## PARAMETERS
-
-### -Name
-
-The name of the resource.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 

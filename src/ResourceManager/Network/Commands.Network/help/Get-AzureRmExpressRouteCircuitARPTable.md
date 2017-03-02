@@ -14,9 +14,9 @@ Gets the ARP table from an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitARPTable [-Name <String>] -ResourceGroupName <String>
- -ExpressRouteCircuitName <String> [-PeeringType <String>] -DevicePath <DevicePathEnum>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName <String> -ExpressRouteCircuitName
+ <String> [-PeeringType <String>] -DevicePath <DevicePathEnum> [-InformationAction
+ <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,22 +34,6 @@ Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircu
 ```
 
 ## PARAMETERS
-
-### -Name
-
-The name of the resource.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 

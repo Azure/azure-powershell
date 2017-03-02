@@ -14,7 +14,7 @@ Gets a route table summary of an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitRouteTableSummary [-Name <String>] -ResourceGroupName <String>
+Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName <String>
  -ExpressRouteCircuitName <String> [-PeeringType <String>] -DevicePath <DevicePathEnum>
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -35,22 +35,6 @@ Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName $RG -ExpressR
 ```
 
 ## PARAMETERS
-
-### -Name
-
-The name of the resource.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 
@@ -158,7 +142,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters 
+### CommonParameters
 
 This cmdlet supports the common parameters:
 -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable,
