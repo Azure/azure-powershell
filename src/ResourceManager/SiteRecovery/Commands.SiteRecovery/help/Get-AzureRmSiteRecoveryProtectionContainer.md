@@ -52,7 +52,7 @@ Protection policies define replication settings for protected items and can be a
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the protection container.
+A string specifying the name of the protection container.
 
 ```yaml
 Type: String
@@ -67,6 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -Fabric
+An instance of an ASRFabric object.
+
 ```yaml
 Type: ASRFabric
 Parameter Sets: ByObjectWithName, ByObjectWithFriendlyName, ByFabricObject
@@ -80,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-Specifies the friendly name of the protection container.
+A string specifying the friendly name of the protection container.
 
 ```yaml
 Type: String

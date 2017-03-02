@@ -36,6 +36,8 @@ The **Start-AzureRmSiteRecoveryCommitFailoverJob** cmdlet starts the commit fail
 ## PARAMETERS
 
 ### -ReplicationProtectedItem
+An instance of an ASRReplicationProtectedItem object.
+
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject
@@ -49,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPlan
-Specifies a recovery plan object.
+An instance of an ASRRecoveryPlan object.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionEntity
-Specifies the Site Recovery protection entity object.
+An instance of an ASRProtectionEntity object.
 
 ```yaml
 Type: ASRProtectionEntity

@@ -37,7 +37,7 @@ The replication policy is used to specify replication settings such as the repli
 ## PARAMETERS
 
 ### -Name
-Specifies a friendly name which identifies the Site Recovery replication policy.
+A string specifying a friendly name which identifies the Site Recovery replication policy.
 
 ```yaml
 Type: String
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProvider
-Specifies the replication provider.
+A string specifying the replication provider.
 Valid values are:
 
 - HyperVReplica2012R2
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationFrequencyInSeconds
-Specifies the replication frequency interval in seconds.
+A string specifying the replication frequency interval in seconds.
 Valid values are:
 
 - 30
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPoints
-Specifies the number of hours to retain recovery points.
+An integer specifying the number of hours to retain recovery points.
 
 ```yaml
 Type: Int32
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationConsistentSnapshotFrequencyInHours
-Specifies the frequency of the application consistent snapshot in hours.
+An integer specifying the frequency of the application consistent snapshot in hours.
 
 ```yaml
 Type: Int32
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationStartTime
-Specifies the replication start time.
+An instance of a TimeeSpan object specifying the replication start time.
 It must be no later than 24-hours from the start of the job.
 
 ```yaml
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAzureStorageAccountId
-Specifies the Azure storage account ID of the replication target.
+A string specifying the Azure storage account ID of the replication target.
 
 ```yaml
 Type: String
@@ -153,6 +153,8 @@ Accept wildcard characters: False
 ```
 
 ### -Encryption
+A string specifying the EnterpriseToAzure parameter set.
+
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToAzure
@@ -166,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationMethod
-Specifies the replication method.
+A string specifying the replication method.
 Valid values are:
 
 - Online
@@ -185,6 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -Compression
+A string indicating whether compression should be enabled on the policy.
+
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToEnterprise
@@ -198,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationPort
-Specifies the port used for replication.
+An integer specifying the port used for replication.
 
 ```yaml
 Type: UInt16
@@ -213,7 +217,7 @@ Accept wildcard characters: False
 ```
 
 ### -Authentication
-Specifies the type of authentication used.
+A string specifying the type of authentication used.
 Valid values are:
 
 - Certificate
@@ -232,6 +236,9 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicaDeletion
+A string indicating whether Replica should be Deleted on 
+disabling protection of a protection entity protected by the Policy.
+
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToEnterprise

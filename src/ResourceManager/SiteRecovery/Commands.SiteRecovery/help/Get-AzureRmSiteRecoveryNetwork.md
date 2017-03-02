@@ -52,9 +52,17 @@ The **Get-AzureRmSiteRecoveryNetwork** cmdlet gets information about Azure Site 
 
 ## EXAMPLES
 
+### Example 1: Get an instance of an AzureRMSiteRecoveryNetwork
+```
+Get-AzureRMSiteRecoveryNetwork -Name "ASRServer1" -Fabric "ASRFabric1"
+```  
+
+
 ## PARAMETERS
 
 ### -Server
+An instance of an ASRServer object.
+
 ```yaml
 Type: ASRServer
 Parameter Sets: ByFriendlyNameLegacy, ByNameLegacy, ByServerObject
@@ -68,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the virtual machine network.
+A string specifying the name of the virtual machine network.
 
 ```yaml
 Type: String
@@ -95,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-Specifies the friendly name of the virtual machine network.
+A string specifying the friendly name of the virtual machine network.
 
 ```yaml
 Type: String
@@ -122,6 +130,8 @@ Accept wildcard characters: False
 ```
 
 ### -Fabric
+An instance of an ASRFabric object.
+
 ```yaml
 Type: ASRFabric
 Parameter Sets: ByFriendlyName, ByName, ByFabricObject

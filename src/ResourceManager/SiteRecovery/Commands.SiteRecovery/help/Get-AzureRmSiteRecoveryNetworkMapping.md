@@ -47,6 +47,8 @@ The **Get-AzureRmSiteRecoveryNetworkMapping** cmdlet gets information about Azur
 ## PARAMETERS
 
 ### -PrimaryFabric
+An instance of an ASRFabric object.
+
 ```yaml
 Type: ASRFabric
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
@@ -75,6 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryFabric
+An instance of an ASRFabric object.
+
 ```yaml
 Type: ASRFabric
 Parameter Sets: EnterpriseToEnterprise
@@ -88,6 +92,8 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryServer
+An instance of an ASRServer object.
+
 ```yaml
 Type: ASRServer
 Parameter Sets: EnterpriseToAzureLegacy, EnterpriseToEnterpriseLegacy
@@ -101,6 +107,8 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryServer
+An instance of an ASRServer object. 
+
 ```yaml
 Type: ASRServer
 Parameter Sets: EnterpriseToEnterpriseLegacy

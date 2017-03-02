@@ -32,6 +32,11 @@ The **Get-AzureRmSiteRecoveryServer** cmdlet gets information about Azure Site R
 
 ## EXAMPLES
 
+### Example 1 Get a Site Recovery Server by name
+```
+PS C:\> $ASRServer = Get-AzureRmSiteRecoveryServer -ByName "ASRServer1"
+```
+
 ## PARAMETERS
 
 ### -Name

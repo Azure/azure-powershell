@@ -65,6 +65,8 @@ This command adds the recovery plan named RecoveryPlan.xml to the Azure Site Rec
 ## PARAMETERS
 
 ### -Name
+A string specifying the name of the recovery plan.
+
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, HyperVSiteToAzureLegacy, EnterpriseToEnterpriseLegacy, EnterpriseToAzureLegacy
@@ -78,6 +80,8 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryFabric
+A instance of an ASRFabric object.
+
 ```yaml
 Type: ASRFabric
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
@@ -91,6 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryFabric
+An instance of an ASRFabric object.
+
 ```yaml
 Type: ASRFabric
 Parameter Sets: EnterpriseToEnterprise
@@ -104,6 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
+An instance of an ASRReplicationProtectedItem.
+
 ```yaml
 Type: ASRReplicationProtectedItem[]
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
@@ -117,6 +125,8 @@ Accept wildcard characters: False
 ```
 
 ### -FailoverDeploymentModel
+A string specifying the failover deployment model.
+
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToAzure, HyperVSiteToAzureLegacy, EnterpriseToAzureLegacy
@@ -130,6 +140,8 @@ Accept wildcard characters: False
 ```
 
 ### -PrimarySite
+An instance of an ASRSite object.
+
 ```yaml
 Type: ASRSite
 Parameter Sets: HyperVSiteToAzureLegacy
@@ -143,6 +155,8 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionEntityList
+An instance of an ASRProtectionEntity
+
 ```yaml
 Type: ASRProtectionEntity[]
 Parameter Sets: HyperVSiteToAzureLegacy, EnterpriseToEnterpriseLegacy, EnterpriseToAzureLegacy
@@ -156,6 +170,8 @@ Accept wildcard characters: False
 ```
 
 ### -Azure
+An instance of a SwitchParameter.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EnterpriseToAzure, EnterpriseToAzureLegacy
@@ -169,6 +185,8 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryServer
+An instance of a PrimaryServer object.
+
 ```yaml
 Type: ASRServer
 Parameter Sets: EnterpriseToEnterpriseLegacy, EnterpriseToAzureLegacy
@@ -182,6 +200,8 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryServer
+An instance of an ASRServer object.
+
 ```yaml
 Type: ASRServer
 Parameter Sets: EnterpriseToEnterpriseLegacy

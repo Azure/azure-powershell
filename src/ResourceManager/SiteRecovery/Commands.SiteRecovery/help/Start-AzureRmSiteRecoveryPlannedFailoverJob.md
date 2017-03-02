@@ -124,6 +124,8 @@ Accept wildcard characters: False
 ```
 
 ### -Server
+An instance of an ASRServer object.
+
 ```yaml
 Type: ASRServer
 Parameter Sets: ByPEObject
@@ -137,6 +139,8 @@ Accept wildcard characters: False
 ```
 
 ### -ServicesProvider
+An instance of an ASRRecoveryServicesProvider
+
 ```yaml
 Type: ASRRecoveryServicesProvider
 Parameter Sets: ByRPIObject
@@ -195,6 +199,8 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
+An instance of an ASRReplicaitonProtectedItem object.
+
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject
