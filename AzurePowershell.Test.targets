@@ -1,522 +1,569 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
-  ToolsVersion="4.0">
-  <PropertyGroup>
-    <TestSettings>.\src\Local.testsettings</TestSettings>
-    <TestSettings_x64>.\src\Local.x64.testsettings</TestSettings_x64>
-    <ScenarioTestDebug>.\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll</ScenarioTestDebug>
-    <CommonTestDebug>.\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
-    <BackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll</BackupTestDebug>
-	<RecoveryServicesBackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll</RecoveryServicesBackupTestDebug>
-    <SiteRecoveryTestDebug>.\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll</SiteRecoveryTestDebug>
-    <SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
-    <ComputeDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.dll</ComputeDebug>
-    <ComputeTestDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll</ComputeTestDebug>
-    <NetworkTestDebug>.\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll</NetworkTestDebug>
-    <AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
-    <AzureRTSeqTestSettings>.\src\AzureRTSeq.testsettings</AzureRTSeqTestSettings>
-    <AzureRTTestContainer>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</AzureRTTestContainer>
-    <StorageScenarioTestDebug>src\Common\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
-    <ManagementTestDebug>.\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll</ManagementTestDebug>
-    <ResourceManagerTestDebug>.\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll</ResourceManagerTestDebug>
-    <DataFactoryManagerTestDebug>.\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll</DataFactoryManagerTestDebug>
-    <StreamAnalyticsManagerTestDebug>.\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll</StreamAnalyticsManagerTestDebug>
-    <OperationalInsightsTestDebug>.\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll</OperationalInsightsTestDebug>
-    <BatchTestDebug>.\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll</BatchTestDebug>
-    <WebsitesTestDebug>.\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll</WebsitesTestDebug>
-    <LogicAppTestDebug>.\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll</LogicAppTestDebug>
-    <SchedulerTestDebug>.\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll</SchedulerTestDebug>
-    <RemoteAppTestDebug>.\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll</RemoteAppTestDebug>
-    <ServiceManagementTestDebug>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</ServiceManagementTestDebug>
-    <SqlDatabaseTestDebug>.\src\ServiceManagement\Sql\Commands.SqlDatabase.Test\bin\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.Test.dll</SqlDatabaseTestDebug>
-    <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
-    <InsightsTestDebug>.\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll</InsightsTestDebug>
-    <StorageTestDebug>.\src\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
-    <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
-    <DataLakeAnalyticsTestDebug>.\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll</DataLakeAnalyticsTestDebug>
-    <DataLakeStoreTestDebug>.\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeStore.Test.dll</DataLakeStoreTestDebug>
-    <UsageAggregationTestDebug>.\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
-    <PowerBIEmbeddedTestDebug>.\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll</PowerBIEmbeddedTestDebug>
-    <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload&#x26;!AzureRTCleanUp"</TestFilter>
-    <ScenarioTestFilter>All</ScenarioTestFilter>
-    <OneSDKCITFilter>"OneSDK&#x26;CIT"</OneSDKCITFilter>
-    <AzureRTAllTestFilter>"Functional|AzureRTScenario|Sequential|AzureRTUpload|Network"</AzureRTAllTestFilter>
-    <AzureRTParAllFilter>"Functional|AzureRTScenario"</AzureRTParAllFilter>
-    <AzureRTAllPreviewFilter>"Functional|AzureRTScenario|Preview"</AzureRTAllPreviewFilter>
-    <AzureRTUploadSeqFilter>"AzureRTUpload|Sequential"</AzureRTUploadSeqFilter>
-    <AzureRTSeqAllFilter>"AzureRTUpload|Sequential|Network"</AzureRTSeqAllFilter>
-    <TestTimeout Condition=" '$(TestTimeout)' == '' ">100000000</TestTimeout>
-  </PropertyGroup>
-  
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<PropertyGroup>
+		<TestSettings>.\src\Local.testsettings</TestSettings>
+		<TestSettings_x64>.\src\Local.x64.testsettings</TestSettings_x64>
+		<ScenarioTestDebug>.\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll</ScenarioTestDebug>
+		<CommonTestDebug>.\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
+		<BackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll</BackupTestDebug>
+		<RecoveryServicesBackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll</RecoveryServicesBackupTestDebug>
+		<SiteRecoveryTestDebug>.\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll</SiteRecoveryTestDebug>
+		<SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
+		<ComputeDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.dll</ComputeDebug>
+		<ComputeTestDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll</ComputeTestDebug>
+		<NetworkTestDebug>.\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll</NetworkTestDebug>
+		<AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
+		<AzureRTSeqTestSettings>.\src\AzureRTSeq.testsettings</AzureRTSeqTestSettings>
+		<AzureRTTestContainer>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</AzureRTTestContainer>
+		<StorageScenarioTestDebug>src\Common\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
+		<ManagementTestDebug>.\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll</ManagementTestDebug>
+		<ResourceManagerTestDebug>.\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll</ResourceManagerTestDebug>
+		<DataFactoryManagerTestDebug>.\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll</DataFactoryManagerTestDebug>
+		<StreamAnalyticsManagerTestDebug>.\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll</StreamAnalyticsManagerTestDebug>
+		<OperationalInsightsTestDebug>.\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll</OperationalInsightsTestDebug>
+		<BatchTestDebug>.\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll</BatchTestDebug>
+		<WebsitesTestDebug>.\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll</WebsitesTestDebug>
+		<LogicAppTestDebug>.\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll</LogicAppTestDebug>
+		<SchedulerTestDebug>.\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll</SchedulerTestDebug>
+		<RemoteAppTestDebug>.\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll</RemoteAppTestDebug>
+		<ServiceManagementTestDebug>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</ServiceManagementTestDebug>
+		<SqlDatabaseTestDebug>.\src\ServiceManagement\Sql\Commands.SqlDatabase.Test\bin\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.Test.dll</SqlDatabaseTestDebug>
+		<HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
+		<InsightsTestDebug>.\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll</InsightsTestDebug>
+		<StorageTestDebug>.\src\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
+		<KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
+		<DataLakeAnalyticsTestDebug>.\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll</DataLakeAnalyticsTestDebug>
+		<DataLakeStoreTestDebug>.\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeStore.Test.dll</DataLakeStoreTestDebug>
+		<UsageAggregationTestDebug>.\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
+		<PowerBIEmbeddedTestDebug>.\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll</PowerBIEmbeddedTestDebug>
+		<TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload&#x26;!AzureRTCleanUp</TestFilter>
+		<ScenarioTestFilter>All</ScenarioTestFilter>
+		<OneSDKCITFilter>"OneSDK&#x26;CIT"</OneSDKCITFilter>
+		<AzureRTAllTestFilter>"Functional|AzureRTScenario|Sequential|AzureRTUpload|Network"</AzureRTAllTestFilter>
+		<AzureRTParAllFilter>"Functional|AzureRTScenario"</AzureRTParAllFilter>
+		<AzureRTAllPreviewFilter>"Functional|AzureRTScenario|Preview"</AzureRTAllPreviewFilter>
+		<AzureRTUploadSeqFilter>"AzureRTUpload|Sequential"</AzureRTUploadSeqFilter>
+		<AzureRTSeqAllFilter>"AzureRTUpload|Sequential|Network"</AzureRTSeqAllFilter>
+		<TestTimeout Condition=" '$(TestTimeout)' == '' ">100000000</TestTimeout>
+	</PropertyGroup>
 
-  <Target Name="InvokeMSTest">
-    <!--Remove existing test result; otherwise mstest will error-->
-    <Delete Files="$(_testResult)"/>
-    <Exec
-      Command="MSTest.exe /testcontainer:$(_testAssembly) /testsettings:$(_testSettings) /category:$(_testFilter) /resultsfile:$(_testResult)"
-      ContinueOnError="false" />
-  </Target>
+	<Target Name="InvokeMSTest">
+		<!--Remove existing test result; otherwise mstest will error-->
+		<Delete Files="$(_testResult)"/>
+		<Exec
+		Command="MSTest.exe /testcontainer:$(_testAssembly) /testsettings:$(_testSettings) /category:$(_testFilter) /resultsfile:$(_testResult)"
+		ContinueOnError="false" />
+	</Target>
 
-  <Target Name="DeclareXunitTests">
-    <ItemGroup>
-      <AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll"/>
-      <AsmXUnitTests Include=".\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll"/>
-      <AsmXUnitTests Include=".\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll"/>
-      <AsmXUnitTests Include=".\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll"/>
-      <AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
-      <AsmXUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
-      <AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
-    </ItemGroup>
-    <ItemGroup Condition=" '$(scope)' == 'all' ">
-      <XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>
-      <!-- <XUnitTests Include=".\src\ResourceManager\DevTestLabs\Commands.DevTestLabs.Test\bin\Debug\Microsoft.Azure.Commands.DevTestLabs.Test.dll"/> -->
-      <XUnitTests Include=".\src\ResourceManager\Dns\Commands.Dns.Test\bin\Debug\Microsoft.Azure.Commands.Dns.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\HDInsight\Commands.HDInsight.Test\bin\Debug\Commands.HDInsight.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\IotHub\Commands.IotHub.Test\bin\Debug\Microsoft.Azure.Commands.IotHub.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Profile\Commands.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\RecoveryServices.Backup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\RedisCache\Commands.RedisCache.Test\bin\Debug\Microsoft.Azure.Commands.RedisCache.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll"/>
-      <!-- <XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/> -->
-      <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
-      <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\TrafficManager\Commands.TrafficManager2.Test\bin\Debug\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll"/>
-      <XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
-	  <XUnitTests Include=".\src\ResourceManager\ServiceBus\Commands.ServiceBus.Test\bin\Debug\Microsoft.Azure.Commands.ServiceBus.Test.dll"/>
-	  <XUnitTests Include=".\src\ResourceManager\EventHub\Commands.EventHub.Test\bin\Debug\Microsoft.Azure.Commands.EventHubs.Test.dll"/>
-      <XUnitTests Include="@(AsmXUnitTests)"/>
-    </ItemGroup>
-    <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
-      <XUnitTests Include="@(AsmXUnitTests)"/>
-    </ItemGroup>
-    <ItemGroup Condition=" '$(scope)' != 'all' and '$(scope)' != 'ServiceManagement' and '$(scope)' != 'AzureStorage' ">
-      <XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
-    </ItemGroup>
-  </Target>
-  
-  <Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
-    <Message Importance="high" Text="Running XUnit tests" />
-    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+	<Target Name="DeclareXunitTests">
+		<ItemGroup>
+			<AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll"/>
+			<AsmXUnitTests Include=".\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll"/>
+			<AsmXUnitTests Include=".\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll"/>
+			<AsmXUnitTests Include=".\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll"/>
+			<AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
+			<AsmXUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
+			<AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
+		</ItemGroup>	
+		<ItemGroup Condition=" '$(scope)' == 'all' ">
+			<XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>
+			<!-- <XUnitTests Include=".\src\ResourceManager\DevTestLabs\Commands.DevTestLabs.Test\bin\Debug\Microsoft.Azure.Commands.DevTestLabs.Test.dll"/> -->
+			<XUnitTests Include=".\src\ResourceManager\Dns\Commands.Dns.Test\bin\Debug\Microsoft.Azure.Commands.Dns.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\HDInsight\Commands.HDInsight.Test\bin\Debug\Commands.HDInsight.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\IotHub\Commands.IotHub.Test\bin\Debug\Microsoft.Azure.Commands.IotHub.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Profile\Commands.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\RecoveryServices.Backup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\RedisCache\Commands.RedisCache.Test\bin\Debug\Microsoft.Azure.Commands.RedisCache.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll"/>
+			<!-- <XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/> -->
+			<XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
+			<XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\TrafficManager\Commands.TrafficManager2.Test\bin\Debug\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll"/>
+			<XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\ServiceBus\Commands.ServiceBus.Test\bin\Debug\Microsoft.Azure.Commands.ServiceBus.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\EventHub\Commands.EventHub.Test\bin\Debug\Microsoft.Azure.Commands.EventHubs.Test.dll"/>
+			<XUnitTests Include="@(AsmXUnitTests)"/>
+		</ItemGroup>
+		<ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
+			<XUnitTests Include="@(AsmXUnitTests)"/>
+		</ItemGroup>
+		<ItemGroup Condition=" '$(scope)' != 'all' and '$(scope)' != 'ServiceManagement' and '$(scope)' != 'AzureStorage' ">
+			<XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
+		</ItemGroup>
+	</Target>
 
-    <xunit 
-        Assemblies="@(XUnitTests)" 
-        AppDomains="true"
-        ShadowCopy="false"
-        ParallelizeTestCollections="false"
-        ParallelizeAssemblies="true"
-        IncludeTraits="AcceptanceType=CheckIn"
-        Html="$(TestOutputDirectory)\AzurePowershellTestResults.html"
-        MaxParallelThreads="10"
-        DiagnosticMessages="false"
-        ContinueOnError="false" 
-        Condition=" @(XUnitTests) != '' "/>
-  </Target>
-  
-  <Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
-    <Message Importance="high" Text="Running XUnit tests" />
-    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-    
-    <xunit 
-        Assemblies="@(XUnitTests)" 
-        AppDomains="true"
-        ShadowCopy="false"
-        ParallelizeTestCollections="false"
-        ParallelizeAssemblies="true"
-        ExcludeTraits="RunType=LiveOnly"
-        Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
-        MaxParallelThreads="10"
-        DiagnosticMessages="false"
-        ContinueOnError="false" 
-        Condition=" @(XUnitTests) != '' "/>
-  </Target>
-  
-  <Target Name="TimeoutErrorHandler">
-    <Error Text="XUnit tests in assembly &quot;%(XUnitTests.Filename).dll&quot; failed or timed out. Ensure that all tests in a project pass and collectively take less than 1 minute to run."/>
-  </Target>
+	<Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
+		<Message Importance="high" Text="Running XUnit tests" />
+		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
-  <Target Name="BeforeRunTests">
-    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-  </Target>
-  
-  <Target Name="TestManagement">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(ManagementTestDebug)" Html="$(TestOutputDirectory)\ManagementDebug.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+		<xunit 
+			Assemblies="@(XUnitTests)" 
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			IncludeTraits="AcceptanceType=CheckIn"
+			Html="$(TestOutputDirectory)\AzurePowershellTestResults.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false" 
+			Condition=" @(XUnitTests) != '' "/>
+		
+		<CallTarget Targets="TestSetup" />
+	</Target>
 
-  <Target Name="TestResourceManager">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(ResourceManagerTestDebug)" Html="$(TestOutputDirectory)\ResourceManagerTestDebug.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
+		<Message Importance="high" Text="Running XUnit tests" />
+		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
-  <Target Name="TestCompute">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(ComputeTestDebug)" Html="$(TestOutputDirectory)\ComputeTestDebug.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+		<xunit 
+			Assemblies="@(XUnitTests)" 
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			ExcludeTraits="RunType=LiveOnly"
+			Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false" 
+			Condition=" @(XUnitTests) != '' "/>
+		
+		<CallTarget Targets="TestSetup" />
+	</Target>
 
-  <Target Name="NetworkTestDebug">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(NetworkTestDebug)" Html="$(TestOutputDirectory)\NetworkTestDebug.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TimeoutErrorHandler">
+		<Error Text="XUnit tests in assembly &quot;%(XUnitTests.Filename).dll&quot; failed or timed out. Ensure that all tests in a project pass and collectively take less than 1 minute to run."/>
+	</Target>
 
-  <Target Name="TestBatch">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(BatchTestDebug)" Html="$(TestOutputDirectory)\BatchTestDebug.xunit.dll.html" Verbose="false"
-       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="BeforeRunTests">
+		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+	</Target>
 
+	<Target Name="TestSetup">
+		<Message Importance="high" Text="Setup XUnit tests" />
+		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+		
+		<Message Text="Copying test assets" />
+		<!-- We copy this file right after we build setup test for signing, so now copying the signed copy back where it is needed for the test -->
+		<Copy SourceFiles="$(PackageDirectory)\$(Configuration)\PowerShellSetup.Test.dll"
+			DestinationFolder="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)" Condition="Exists('$(PackageDirectory)\$(Configuration)\PowerShellSetup.Test.dll')" />
+	
+		<Copy SourceFiles="$(SignedOutputRootDir)\AzurePowerShell.msi"
+			DestinationFolder="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)" Condition="Exists('$(SignedOutputRootDir)\AzurePowerShell.msi')" />
+	
+		<ItemGroup Condition=" '$(scope)' == 'all' AND '$(CodeSign)' != 'true' ">
+			<SetupDebugTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll" />
+		</ItemGroup>
+		
+		<ItemGroup Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' ">
+			<!-- We want to run setup tests related to signing that can only be run on signed bits -->
+			<SetupReleaseTests Include=".\setup\PowerShellSetup.Test\bin\Release\PowerShellSetup.Test.dll" />
+		</ItemGroup>
+		
+		<xunit 
+			Assemblies="@(SetupDebugTests)"
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			IncludeTraits="AcceptanceType=CheckIn"
+			ExcludeTraits="SignedBuild=BVT"
+			Html="$(TestOutputDirectory)\AzPsSetupTest.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false"
+			Condition=" '$(scope)' == 'all' "/>
+			
+		<xunit 
+			Assemblies="@(SetupReleaseTests)"
+			AppDomains="true"
+			ShadowCopy="false"
+			ParallelizeTestCollections="false"
+			ParallelizeAssemblies="true"
+			IncludeTraits="SignedBuild=BVT"
+			Html="$(TestOutputDirectory)\AzPsSetupTestSigned.html"
+			MaxParallelThreads="10"
+			DiagnosticMessages="false"
+			ContinueOnError="false"
+			Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' "/>
+	</Target>
+	
+	<Target Name="TestManagement">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(ManagementTestDebug)" Html="$(TestOutputDirectory)\ManagementDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-   <Target Name="TestRemoteApp">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(RemoteAppTestDebug)" Html="$(TestOutputDirectory)\RemoteAppTestDebug.xunit.dll.html" Verbose="false"
-       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestResourceManager">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(ResourceManagerTestDebug)" Html="$(TestOutputDirectory)\ResourceManagerTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-   <Target Name="TestWebsites">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(WebsitesTestDebug)" Html="$(TestOutputDirectory)\WebsitesTestDebug.xunit.dll.html" Verbose="false"
-       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestCompute">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(ComputeTestDebug)" Html="$(TestOutputDirectory)\ComputeTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestLogicApp">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(LogicAppTestDebug)" Html="$(TestOutputDirectory)\LogicAppTestDebug.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="NetworkTestDebug">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(NetworkTestDebug)" Html="$(TestOutputDirectory)\NetworkTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-   <Target Name="TestScheduler">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(SchedulerTestDebug)" Html="$(TestOutputDirectory)\SchedulerTestDebug.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestBatch">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(BatchTestDebug)" Html="$(TestOutputDirectory)\BatchTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestDataFactoryManager">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(DataFactoryManagerTestDebug)" Html="$(TestOutputDirectory)\DataFactoryManagerTestDebug.xunit.dll.html" Verbose="false"
-       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestRemoteApp">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(RemoteAppTestDebug)" Html="$(TestOutputDirectory)\RemoteAppTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestStreamAnalyticsManager">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(StreamAnalyticsManagerTestDebug)" Html="$(TestOutputDirectory)\StreamAnalyticsManagerTestDebug.xunit.dll.html" Verbose="false"
-       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
-  
-  <Target Name="TestOperationalInsights">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(OperationalInsightsTestDebug)" Html="$(TestOutputDirectory)\OperationalInsightsTestDebug.xunit.dll.html" Verbose="false"
-       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestWebsites">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(WebsitesTestDebug)" Html="$(TestOutputDirectory)\WebsitesTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestServiceManagement">
-    <MSBuild Targets="InvokeMSTest"
-             Properties="_testAssembly=$(ServiceManagementTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\ServiceManagementDebug.trx"
-             Projects="build.proj"/>
-  </Target>
+	<Target Name="TestLogicApp">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(LogicAppTestDebug)" Html="$(TestOutputDirectory)\LogicAppTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestSqlDatabase">
-    <MSBuild Targets="InvokeMSTest"
-        Properties="_testAssembly=$(SqlDatabaseTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\SqlDatabaseDebug.trx"
-        Projects="build.proj"/>
-  </Target>
+	<Target Name="TestScheduler">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(SchedulerTestDebug)" Html="$(TestOutputDirectory)\SchedulerTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestHDInsight">
-    <MSBuild Targets="InvokeMSTest"
-        Properties="_testAssembly=$(HDInsightTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\HDInsightDebug.trx"
-        Projects="build.proj"/>
-  </Target>
+	<Target Name="TestDataFactoryManager">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(DataFactoryManagerTestDebug)" Html="$(TestOutputDirectory)\DataFactoryManagerTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestInsights">
-    <MSBuild Targets="InvokeMSTest"
-        Properties="_testAssembly=$(InsightsTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\InsightsDebug.trx"
-        Projects="build.proj"/>
-  </Target>
-  
-  <Target Name="TestStorage">
-    <MSBuild Targets="InvokeMSTest"
-        Properties="_testAssembly=$(StorageTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\StorageDebug.trx"
-        Projects="build.proj"/>
-  </Target>
+	<Target Name="TestStreamAnalyticsManager">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(StreamAnalyticsManagerTestDebug)" Html="$(TestOutputDirectory)\StreamAnalyticsManagerTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="TestRecoveryServices">
-    <PropertyGroup>
-      <_RecoveryServicesTestAssembly>.\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll</_RecoveryServicesTestAssembly>
-    </PropertyGroup>
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(_RecoveryServicesTestAssembly)" Html="$(TestOutputDirectory)\RecoveryServices.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
-  
-  <Target Name="TestStorSimple">
-    <PropertyGroup>
-      <_StorSimpleTestAssembly>.\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll</_StorSimpleTestAssembly>
-    </PropertyGroup>
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(_StorSimpleTestAssembly)" Html="$(TestOutputDirectory)\StorSimple.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestOperationalInsights">
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(OperationalInsightsTestDebug)" Html="$(TestOutputDirectory)\OperationalInsightsTestDebug.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <!-- Run the scenario tests -->
-  <Target Name="ScenarioTest" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running scenario tests..." />
-    <MSBuild Targets="InvokeMSTest"
-      Properties="_testAssembly=$(ScenarioTestDebug);_testSettings=$(TestSettings);_testFilter=$(ScenarioTestFilter);_testResult=$(TestOutputDirectory)\ScenarioTestDebug.trx"
-      Projects="build.proj"/>
-    <MSBuild Targets="InvokeMSTest"
-      Properties="_testAssembly=$(StorageScenarioTestDebug);_testSettings=$(TestSettings);_testFilter=$(ScenarioTestFilter);_testResult=$(TestOutputDirectory)\StorageScenarioTestDebug.trx"
-      Projects="build.proj"/>
-  </Target>
-  
-   <!-- Run the backup tests -->
-  <Target Name="BackupTests">
-    <Message Importance="high" Text="Running Backup tests" />
-	  <Xunit.Runner.MSBuild.xunit Assemblies="$(BackupTestDebug)" Html="$(TestOutputDirectory)\BackupTests.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-  </Target>
-  
-   <!-- Run the Recovery Services backup tests -->
-   <Target Name="RecoveryServicesBackupTests">
-    <Message Importance="high" Text="Running Recovery Services Backup tests" />
-	  <Xunit.Runner.MSBuild.xunit Assemblies="$(RecoveryServicesBackupTestDebug)" Html="$(TestOutputDirectory)\RecoveryServicesBackupTests.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-  </Target>
-  
-  <!-- Run the common tests -->
-  <Target Name="CommonTests">
-    <Message Importance="high" Text="Running Common tests" />
-	  <Xunit.Runner.MSBuild.xunit Assemblies="$(CommonTestDebug)" Html="$(TestOutputDirectory)\CommonTests.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-  </Target>
+	<Target Name="TestServiceManagement">
+		<MSBuild Targets="InvokeMSTest"
+			 Properties="_testAssembly=$(ServiceManagementTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\ServiceManagementDebug.trx"
+			 Projects="build.proj"/>
+	</Target>
 
-  <!-- Run the Compute tests -->
-  <Target Name="ComputeTests">
-    <Message Importance="high" Text="Running Compute tests" />
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(ComputeTestDebug)" Html="$(TestOutputDirectory)\ComputeTests.xunit.dll.html" Verbose="false"
-      ExcludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestSqlDatabase">
+		<MSBuild Targets="InvokeMSTest"
+		Properties="_testAssembly=$(SqlDatabaseTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\SqlDatabaseDebug.trx"
+		Projects="build.proj"/>
+	</Target>
 
-  <!-- Run the sql tests -->
-  <Target Name="SqlTests">
-    <Message Importance="high" Text="Running Sql tests" />
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(SqlTestDebug)" Html="$(TestOutputDirectory)\SqlTests.xunit.dll.html" Verbose="false"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>  
+	<Target Name="TestHDInsight">
+		<MSBuild Targets="InvokeMSTest"
+		Properties="_testAssembly=$(HDInsightTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\HDInsightDebug.trx"
+		Projects="build.proj"/>
+	</Target>
 
-  <!-- Run the KeyVault tests -->
-  <Target Name="KeyVaultTests">
-    <Message Importance="high" Text="Running KeyVault tests" />
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(KeyVaultTestDebug)" Html="$(TestOutputDirectory)\KeyVaultTests.xunit.dll.html" Verbose="true"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-  </Target>
+	<Target Name="TestInsights">
+		<MSBuild Targets="InvokeMSTest"
+		Properties="_testAssembly=$(InsightsTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\InsightsDebug.trx"
+		Projects="build.proj"/>
+	</Target>
 
-  <!-- Run the DataLakeAnalytics tests -->
-  <Target Name="DataLakeAnalyticsTests">
-    <Message Importance="high" Text="Running DataLakeAnalytics tests" />
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeAnalyticsTestDebug)" Html="$(TestOutputDirectory)\DataLakeAnalyticsTests.xunit.dll.html" Verbose="true"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-  </Target>
-  
-  <!-- Run the DataLakeStore tests -->
-  <Target Name="DataLakeStoreTests">
-    <Message Importance="high" Text="Running DataLakeStore tests" />
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeStoreTestDebug)" Html="$(TestOutputDirectory)\DataLakeStoreTests.xunit.dll.html" Verbose="true"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-  </Target>
+	<Target Name="TestStorage">
+		<MSBuild Targets="InvokeMSTest"
+		Properties="_testAssembly=$(StorageTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\StorageDebug.trx"
+		Projects="build.proj"/>
+	</Target>
 
-  <!-- Run the Power BI Embedded tests -->
-  <Target Name="PowerBIEmbeddedTests">
-    <Message Importance="high" Text="Running Power BI Embedded tests" />
- 	<Xunit.Runner.MSBuild.xunit Assemblies="$(PowerBIEmbeddedTestDebug)" Html="$(TestOutputDirectory)\PowerBIEmbeddedTestDebug.xunit.dll.html" Verbose="true"
-	  IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
-  
-  <!-- run the UsageAggregationTests -->
-  <Target Name="UsageAggregationTests">
-    <Message Importance="high" Text="Running UsageAggregates tests" />
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(UsageAggregationTestDebug)" Html="$(TestOutputDirectory)\UsageAggregationTests.xunit.dll.html" Verbose="true"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-  </Target>  
-  
-  <!-- Run the scenario tests with Mocks -->
-  <Target Name="MockedScenarioTests">
-    <Message Importance="high" Text="Running scenario tests with Mocks" />
-	  <Xunit.Runner.MSBuild.xunit Assemblies="$(ScenarioTestDebug)" Html="$(TestOutputDirectory)\MockedScenarioTests.xunit.dll.html" Verbose="true"
-      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-  </Target>
+	<Target Name="TestRecoveryServices">
+		<PropertyGroup>
+			<_RecoveryServicesTestAssembly>.\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll</_RecoveryServicesTestAssembly>
+		</PropertyGroup>
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(_RecoveryServicesTestAssembly)" Html="$(TestOutputDirectory)\RecoveryServices.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="RunOneSDKCIT" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running CIT Scenario tests..." />
-    <Delete Files="$(TestOutputDirectory)\RunOneSDKCITDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(ScenarioTestDebug) /testsettings:$(TestSettings) /category:$(OneSDKCITFilter) /resultsfile:$(TestOutputDirectory)\RunOneSDKCITDebug.trx"
-      ContinueOnError="false" />
-  </Target>
-  
-  <!-- Run the AzureRT tests -->
-  <Target Name="AzureRTBVTs" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT BVT tests..." />
-    <Delete Files="$(TestOutputDirectory)\RTBVTDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:BVT /resultsfile:$(TestOutputDirectory)\RTBVTDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<Target Name="TestStorSimple">
+		<PropertyGroup>
+			<_StorSimpleTestAssembly>.\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll</_StorSimpleTestAssembly>
+		</PropertyGroup>
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(_StorSimpleTestAssembly)" Html="$(TestOutputDirectory)\StorSimple.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="AzureRTOne" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running a specific tests..." />
-    <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the scenario tests -->
+	<Target Name="ScenarioTest" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running scenario tests..." />
+		<MSBuild Targets="InvokeMSTest"
+		Properties="_testAssembly=$(ScenarioTestDebug);_testSettings=$(TestSettings);_testFilter=$(ScenarioTestFilter);_testResult=$(TestOutputDirectory)\ScenarioTestDebug.trx"
+		Projects="build.proj"/>
+		<MSBuild Targets="InvokeMSTest"
+		Properties="_testAssembly=$(StorageScenarioTestDebug);_testSettings=$(TestSettings);_testFilter=$(ScenarioTestFilter);_testResult=$(TestOutputDirectory)\StorageScenarioTestDebug.trx"
+		Projects="build.proj"/>
+	</Target>
 
-  <Target Name="AzureRTRepeat" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running a specific tests..." />
-    <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
-    <Exec
-      Command="for /l %%x in (1, 1, $(RepeatTimes)) do MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug%%x.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the backup tests -->
+	<Target Name="BackupTests">
+		<Message Importance="high" Text="Running Backup tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(BackupTestDebug)" Html="$(TestOutputDirectory)\BackupTests.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>
 
-  <Target Name="AzureRTMulti" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running tests:" />
-    <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) $(TestParams) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the Recovery Services backup tests -->
+	<Target Name="RecoveryServicesBackupTests">
+		<Message Importance="high" Text="Running Recovery Services Backup tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(RecoveryServicesBackupTestDebug)" Html="$(TestOutputDirectory)\RecoveryServicesBackupTests.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>
 
-  <Target Name="AzureRTAll" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
-    <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the common tests -->
+	<Target Name="CommonTests">
+		<Message Importance="high" Text="Running Common tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(CommonTestDebug)" Html="$(TestOutputDirectory)\CommonTests.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>
 
-  <Target Name="AzureRTAllFast" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
+	<!-- Run the Compute tests -->
+	<Target Name="ComputeTests">
+		<Message Importance="high" Text="Running Compute tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(ComputeTestDebug)" Html="$(TestOutputDirectory)\ComputeTests.xunit.dll.html" Verbose="false"
+		ExcludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-    <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
-    <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTSeqAllFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
-      ContinueOnError="true" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTParAllFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the sql tests -->
+	<Target Name="SqlTests">
+		<Message Importance="high" Text="Running Sql tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(SqlTestDebug)" Html="$(TestOutputDirectory)\SqlTests.xunit.dll.html" Verbose="false"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>  
 
-  <Target Name="AzureRTSeq" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
+	<!-- Run the KeyVault tests -->
+	<Target Name="KeyVaultTests">
+		<Message Importance="high" Text="Running KeyVault tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(KeyVaultTestDebug)" Html="$(TestOutputDirectory)\KeyVaultTests.xunit.dll.html" Verbose="true"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>
 
-    <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTSeqAllFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
-      ContinueOnError="true" />
-  </Target>
+	<!-- Run the DataLakeAnalytics tests -->
+	<Target Name="DataLakeAnalyticsTests">
+		<Message Importance="high" Text="Running DataLakeAnalytics tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeAnalyticsTestDebug)" Html="$(TestOutputDirectory)\DataLakeAnalyticsTests.xunit.dll.html" Verbose="true"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>
 
-  <Target Name="AzureRTNetwork" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
+	<!-- Run the DataLakeStore tests -->
+	<Target Name="DataLakeStoreTests">
+		<Message Importance="high" Text="Running DataLakeStore tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeStoreTestDebug)" Html="$(TestOutputDirectory)\DataLakeStoreTests.xunit.dll.html" Verbose="true"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>
 
-    <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:Network /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the Power BI Embedded tests -->
+	<Target Name="PowerBIEmbeddedTests">
+		<Message Importance="high" Text="Running Power BI Embedded tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(PowerBIEmbeddedTestDebug)" Html="$(TestOutputDirectory)\PowerBIEmbeddedTestDebug.xunit.dll.html" Verbose="true"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="AzureRTUploadSeq" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
+	<!-- run the UsageAggregationTests -->
+	<Target Name="UsageAggregationTests">
+		<Message Importance="high" Text="Running UsageAggregates tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(UsageAggregationTestDebug)" Html="$(TestOutputDirectory)\UsageAggregationTests.xunit.dll.html" Verbose="true"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>  
 
-    <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTUploadSeqFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the scenario tests with Mocks -->
+	<Target Name="MockedScenarioTests">
+		<Message Importance="high" Text="Running scenario tests with Mocks" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(ScenarioTestDebug)" Html="$(TestOutputDirectory)\MockedScenarioTests.xunit.dll.html" Verbose="true"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+	</Target>
 
-  <Target Name="AzureRTPar" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
+	<Target Name="RunOneSDKCIT" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running CIT Scenario tests..." />
+		<Delete Files="$(TestOutputDirectory)\RunOneSDKCITDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(ScenarioTestDebug) /testsettings:$(TestSettings) /category:$(OneSDKCITFilter) /resultsfile:$(TestOutputDirectory)\RunOneSDKCITDebug.trx"
+			ContinueOnError="false" />
+	</Target>
 
-    <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<!-- Run the AzureRT tests -->
+	<Target Name="AzureRTBVTs" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT BVT tests..." />
+		<Delete Files="$(TestOutputDirectory)\RTBVTDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:BVT /resultsfile:$(TestOutputDirectory)\RTBVTDebug.trx"
+			ContinueOnError="false" />
+	</Target>
 
-  <Target Name="AzureRTFunctional" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT Functional tests..." />
+	<Target Name="AzureRTOne" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running a specific tests..." />
+		<Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
+			ContinueOnError="false" />
+	</Target>
 
-    <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Functional /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<Target Name="AzureRTRepeat" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running a specific tests..." />
+		<Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
+		<Exec
+			Command="for /l %%x in (1, 1, $(RepeatTimes)) do MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug%%x.trx"
+			ContinueOnError="false" />
+	</Target>
 
-  <Target Name="AzureRTScenario" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT Scenario tests..." />
+	<Target Name="AzureRTMulti" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running tests:" />
+		<Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) $(TestParams) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
+			ContinueOnError="false" />
+	</Target>
 
-    <Delete Files="$(TestOutputDirectory)\RTScenarioDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:AzureRTScenario /resultsfile:$(TestOutputDirectory)\RTScenarioDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<Target Name="AzureRTAll" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
+		<Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
+			ContinueOnError="false" />
+	</Target>
 
-  <Target Name="AzureRTAllPreview" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
-    <Delete Files="$(TestOutputDirectory)\RTAddVhdDebug.trx" />
-    <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:Sequential /resultsfile:$(TestOutputDirectory)\RTAddVhdDebug.trx"
-      ContinueOnError="true" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllPreviewFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<Target Name="AzureRTAllFast" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
 
-  <Target Name="AzureRTPreview" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT all tests..." />
-    <Delete Files="$(TestOutputDirectory)\RTPreviewDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Preview /resultsfile:$(TestOutputDirectory)\RTPreviewDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+		<Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
+		<Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTSeqAllFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+			ContinueOnError="true" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTParAllFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
+			ContinueOnError="false" />
+	</Target>
 
-  <Target Name="AzureRTCleanUp" DependsOnTargets="Clean;Build;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT clean up tests..." />
-    <Delete Files="$(TestOutputDirectory)\RTCleanUpDebug.trx" />
-    <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:AzureRTCleanUp /resultsfile:$(TestOutputDirectory)\RTCleanUpDebug.trx"
-      ContinueOnError="false" />
-  </Target>
+	<Target Name="AzureRTSeq" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
 
-  <Target Name="ComputeCodeCoverage" DependsOnTargets="RestoreNugetPackages;Clean;Build">
-    <Message Importance="high" Text="Gathering Code Coverage data from Compute tests..." />
-    <Delete Files="Project.covarage" />
-    <Exec
-      Command="C:\cc\ComputeCodeCoverage.cmd $(ComputeDebug) $(ComputeTestDebug)"
-      ContinueOnError="false" />
-  </Target>
+		<Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTSeqAllFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+			ContinueOnError="true" />
+	</Target>
 
-  <ItemGroup>
-    <LiveTestDlls Include="$(ResourceManagerTestDebug)" />    
-  </ItemGroup>
+	<Target Name="AzureRTNetwork" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
 
-  <Target Name="LiveTests"> 
-    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-    <Exec Command="packages\xunit.runner.console.2.1.0\tools\xunit.console.x86.exe  @(LiveTestDlls) /trait &quot;AcceptanceType=LiveBVT&quot; /html &quot;$(TestOutputDirectory)\Live.%(Filename).html&quot;" />
-  </Target> 
+		<Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:Network /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+			ContinueOnError="false" />
+	</Target>
 
+	<Target Name="AzureRTUploadSeq" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
 
+		<Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTSeqTestSettings) /category:$(AzureRTUploadSeqFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+			ContinueOnError="false" />
+	</Target>
+
+	<Target Name="AzureRTPar" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
+
+		<Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
+			ContinueOnError="false" />
+	</Target>
+
+	<Target Name="AzureRTFunctional" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT Functional tests..." />
+
+		<Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Functional /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
+			ContinueOnError="false" />
+	</Target>
+
+	<Target Name="AzureRTScenario" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT Scenario tests..." />
+
+		<Delete Files="$(TestOutputDirectory)\RTScenarioDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:AzureRTScenario /resultsfile:$(TestOutputDirectory)\RTScenarioDebug.trx"
+			ContinueOnError="false" />
+	</Target>
+
+	<Target Name="AzureRTAllPreview" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
+		<Delete Files="$(TestOutputDirectory)\RTAddVhdDebug.trx" />
+		<Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:Sequential /resultsfile:$(TestOutputDirectory)\RTAddVhdDebug.trx"
+			ContinueOnError="true" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllPreviewFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
+			ContinueOnError="false" />
+	</Target>
+
+	<Target Name="AzureRTPreview" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT all tests..." />
+		<Delete Files="$(TestOutputDirectory)\RTPreviewDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Preview /resultsfile:$(TestOutputDirectory)\RTPreviewDebug.trx"
+			ContinueOnError="false" />
+	</Target>
+
+	<Target Name="AzureRTCleanUp" DependsOnTargets="Clean;Build;BeforeRunTests">
+		<Message Importance="high" Text="Running AzureRT clean up tests..." />
+		<Delete Files="$(TestOutputDirectory)\RTCleanUpDebug.trx" />
+		<Exec
+			Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:AzureRTCleanUp /resultsfile:$(TestOutputDirectory)\RTCleanUpDebug.trx"
+			ContinueOnError="false" />
+	</Target>
+
+	<Target Name="ComputeCodeCoverage" DependsOnTargets="RestoreNugetPackages;Clean;Build">
+		<Message Importance="high" Text="Gathering Code Coverage data from Compute tests..." />
+		<Delete Files="Project.covarage" />
+		<Exec
+			Command="C:\cc\ComputeCodeCoverage.cmd $(ComputeDebug) $(ComputeTestDebug)"
+			ContinueOnError="false" />
+	</Target>
+
+	<ItemGroup>
+		<LiveTestDlls Include="$(ResourceManagerTestDebug)" />    
+	</ItemGroup>
+
+	<Target Name="LiveTests"> 
+		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+		<Exec Command="packages\xunit.runner.console.2.1.0\tools\xunit.console.x86.exe  @(LiveTestDlls) /trait &quot;AcceptanceType=LiveBVT&quot; /html &quot;$(TestOutputDirectory)\Live.%(Filename).html&quot;" />
+	</Target>
 </Project>
