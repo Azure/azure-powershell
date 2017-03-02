@@ -48,6 +48,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         {
             if (!string.IsNullOrEmpty(Name))
             {
+                Name = base.ParseNameForQuota(Name);
                 QuotaGetResponse response = Client.Quotas.Get(Location, Name);
                 WriteObject(new QuotaResponse(response.Quota));
             }

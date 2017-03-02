@@ -12,34 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.AzureStack.AzureConsistentStorage.Commands;
-using Microsoft.AzureStack.AzureConsistentStorage;
-using Microsoft.AzureStack.AzureConsistentStorage.Models;
-using System;
 using System.Management.Automation;
+using Microsoft.Azure.Management.StorageAdmin;
 
-namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
+namespace Microsoft.Azure.Commands.AzureStack.Storage
 {
     /// <summary>
     ///     SYNTAX
-    ///          Get-QueueServiceMetric [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string}
-    ///             [[-StartTime] {DateTime}] [[-EndTime] {DateTime}] [[-TimeGrain] {TimeGrain}] [[-MetricNames] {string[]}] [ {CommonParameters}]
+    ///          Sync-StorageAccounts [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
+    ///             [-SkipCertificateValidation] [-TenantSubscriptionId] {string} 
     /// 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetric)]
-    public sealed class GetQueueServiceMetrics : AdminMetricCmdlet
+    [Cmdlet("Sync", Nouns.AdminStorageAccounts)]
+    public sealed class SyncStorageAccounts : AdminCmdlet
     {
         /// <summary>
-        ///     Farm Identifier
+        /// Tenant Subscription Id
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
-        public string FarmName { get; set; }
-             
-        protected override MetricsResult GetMetricsResult(string filter)
+        public string TenantSubscriptionId { get; set; }
+
+        protected override void Execute()
         {
-            return Client.QueueService.GetMetrics(ResourceGroupName, FarmName, filter);
+            var response = Client.StorageAccounts.SyncAll(TenantSubscriptionId);
+            WriteObject(response, true);
+            WriteWarning(Resources.WaitAfterArmSync);
         }
     }
 }

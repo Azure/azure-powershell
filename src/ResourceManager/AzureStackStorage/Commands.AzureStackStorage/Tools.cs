@@ -120,6 +120,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                     filters.Add(conditions[0]);
                 }
             }
+
+            // All Metric cmdlets will assume User will provider UTC time
             string startTimeFilter = string.Format(CultureInfo.InvariantCulture, "startTime eq '{0:O}'", startTime.ToUniversalTime());
 
             filters.Add(startTimeFilter);

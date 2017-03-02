@@ -47,19 +47,27 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Number of Storage Accounts for this quota    
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
         [ValidateNotNull]
         public int NumberOfStorageAccounts { get; set; }
 
         /// <summary>
         ///  Capacity for this quota   
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6)]
         [ValidateNotNull]
         public int CapacityInGB { get; set; }
 
         protected override void Execute()
         {
+            if (!string.IsNullOrEmpty(Name))
+            {
+                QuotaGetResponse response = Client.Quotas.Get(Location, Name);
+                if (response != null && response.Quota != null)
+                {
+                    throw new AdminException(string.Format(CultureInfo.InvariantCulture, Resources.QuotaAlreadyExistsErrorMessage));
+                }
+            }
             if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, ShouldProcessTargetFormat, Name)))
             {
                 QuotaCreateOrUpdateParameters request = new QuotaCreateOrUpdateParameters

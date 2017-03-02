@@ -257,6 +257,11 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands {
                 return ResourceManager.GetString("QueueService", resourceCulture);
             }
         }
+        internal static string QuotaAlreadyExistsErrorMessage {
+            get {
+                return ResourceManager.GetString("QuotaAlreadyExistsErrorMessage", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Restarting role instance &apos;{0}&apos; with type &apos;{1}&apos;..

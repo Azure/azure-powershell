@@ -12,42 +12,54 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.AzureStack.AzureConsistentStorage.Commands;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Management.Automation;
 using Microsoft.AzureStack.AzureConsistentStorage;
 using Microsoft.AzureStack.AzureConsistentStorage.Models;
-using System.Management.Automation;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-QueueServiceMetricDefinition [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-MetricNames] {string[]}] [ {CommonParameters}] 
-    /// 
+    /// SYNTAX
+    /// Stop-ACSContainerMigration  [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
+    ///                  [-FarmName] {string} [-ShareName] {string} -Jobid {string} [{CommonParameters}] 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetricDefinition)]
-    public sealed class GetQueueServiceMetricDefinitions : AdminMetricDefinitionCmdlet
+    [Cmdlet(VerbsLifecycle.Stop, Nouns.AdminContainerMigration)]
+    public sealed class StopContainerMigration: AdminCmdlet
     {
         /// <summary>
         /// Resource group name
         /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
-        ///     Farm Identifier
+        /// Farm Identifier
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
         public string FarmName { get; set; }
 
         /// <summary>
-        /// Array of metric names
         /// </summary>
-        /// <param name="filter"></param>
-        /// <returns></returns>
-        protected override MetricDefinitionsResult GetMetricDefinitionsResult(string filter)
-        {
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [ValidateNotNullOrEmpty]
+        public string ShareName { get; set;}
 
-            return Client.QueueService.GetMetricDefinitions(ResourceGroupName, FarmName, filter);
+        /// <summary>
+        /// Storage Account Name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6 )]
+        public string JobId { get; set; }
+
+
+        protected override void Execute()
+        {
+            var response = this.Client.Shares.SetMigrateContainerOperationStatus(this.ResourceGroupName, this.FarmName, this.ShareName, this.JobId);
+            this.WriteObject(response, true);
         }
     }
 }
