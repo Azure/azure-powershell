@@ -51,23 +51,6 @@ To list only those authorizations that are not available, use this syntax for th
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
-
--Name "ContosoCircuitAuthorization"
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExpressRouteCircuit
 Specifies the ExpressRoute circuit authorization.
 
@@ -114,6 +97,23 @@ Specifies an information variable.
 Type: String
 Parameter Sets: (All)
 Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
+
+-Name "ContosoCircuitAuthorization"
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

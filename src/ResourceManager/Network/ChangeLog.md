@@ -56,6 +56,10 @@
     - New-AzureRmRouteFilterRuleConfig
     - Set-AzureRmRouteFilterRuleConfig
     - Remove-AzureRmRouteFilterRuleConfig
+* New cmdlets for virtual network gateway BGP route APIs
+    - Get-AzureRmVirtualNetworkGatewayBgpPeerStatus
+    - Get-AzureRmVirtualNetworkGatewayAdvertisedRoutes
+    - Get-AzureRmVirtualNetworkGatewayLearnedRoutes
 
 ## Version 3.4.0
 

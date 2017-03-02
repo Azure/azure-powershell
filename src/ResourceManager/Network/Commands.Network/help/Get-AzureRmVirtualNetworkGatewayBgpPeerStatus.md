@@ -1,76 +1,42 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 9CBF592E-734B-4A0C-A45D-358C226D08C7
 online version: 
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualNetworkGateway
+# Get-AzureRmVirtualNetworkGatewayBgpPeerStatus
 
 ## SYNOPSIS
+Retrieves status information for a virtual network gateway's BGP peers
 
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkGateway [-Name <String>] -ResourceGroupName <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmVirtualNetworkGatewayBgpPeerStatus -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
+ [-Peer <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+Enumerates BGP peers for a virtual network gateway, and gives information on each peer's status. 
 
 ## EXAMPLES
 
-### 1:
+### Example 1
+```
+PS C:\> Get-AzureRmVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName "resourceGroup" -VirtualNetworkGatewayName "gatewayName"
 ```
 
-```
+Displays a list of BGP peers configured for the gateway named "gatewayName" in resource group "resourceGroup"
 
 ## PARAMETERS
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Peer
+IP of the peer to retrieve status for
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
+Aliases: 
 
 Required: False
 Position: Named
@@ -80,10 +46,27 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+Virtual network gateway resource group's name
+
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkGatewayName
+Virtual network gateway name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -97,7 +80,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSBgpPeerStatus
 
 ## NOTES
 

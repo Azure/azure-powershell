@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: B1AB0844-0326-448F-8AEF-160D586EEDCD
 ---
 
 # AzureRM.Network Module
@@ -49,7 +48,7 @@ Adds an array of URL path mappings to a backend server pool.
 Adds an ExpressRoute circuit authorization.
 
 ### [Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
-
+{{Manually Enter Add-AzureRmExpressRouteCircuitPeeringConfig Description Here}}
 
 ### [Add-AzureRmLoadBalancerBackendAddressPoolConfig](Add-AzureRmLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
@@ -58,7 +57,7 @@ Adds a backend address pool configuration to a load balancer.
 Adds a front-end IP configuration to a load balancer.
 
 ### [Add-AzureRmLoadBalancerInboundNatPoolConfig](Add-AzureRmLoadBalancerInboundNatPoolConfig.md)
-
+{{Manually Enter Add-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
 
 ### [Add-AzureRmLoadBalancerInboundNatRuleConfig](Add-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Adds an inbound NAT rule configuration to a load balancer.
@@ -77,6 +76,9 @@ Adds a network security rule configuration to a network security group.
 
 ### [Add-AzureRmRouteConfig](Add-AzureRmRouteConfig.md)
 Adds a route to a route table.
+
+### [Add-AzureRmRouteFilterRuleConfig](Add-AzureRmRouteFilterRuleConfig.md)
+Adds a route filter rule to a route filter.
 
 ### [Add-AzureRmVirtualNetworkGatewayIpConfig](Add-AzureRmVirtualNetworkGatewayIpConfig.md)
 Adds an IP configuration to a virtual network gateway.
@@ -141,6 +143,9 @@ Gets an array of URL path mappings to a backend server pool.
 ### [Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Gets the WAF configuration of an application gateway.
 
+### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
+{{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
+
 ### [Get-AzureRmEffectiveNetworkSecurityGroup](Get-AzureRmEffectiveNetworkSecurityGroup.md)
 Gets the effective network security group of a network interface.
 
@@ -148,28 +153,28 @@ Gets the effective network security group of a network interface.
 Gets the effective route table of a network interface.
 
 ### [Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
-
+{{Manually Enter Get-AzureRmExpressRouteCircuit Description Here}}
 
 ### [Get-AzureRmExpressRouteCircuitARPTable](Get-AzureRmExpressRouteCircuitARPTable.md)
-
+{{Manually Enter Get-AzureRmExpressRouteCircuitARPTable Description Here}}
 
 ### [Get-AzureRmExpressRouteCircuitAuthorization](Get-AzureRmExpressRouteCircuitAuthorization.md)
 Gets information about ExpressRoute circuit authorizations.
 
 ### [Get-AzureRmExpressRouteCircuitPeeringConfig](Get-AzureRmExpressRouteCircuitPeeringConfig.md)
-
+{{Manually Enter Get-AzureRmExpressRouteCircuitPeeringConfig Description Here}}
 
 ### [Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
-
+{{Manually Enter Get-AzureRmExpressRouteCircuitRouteTable Description Here}}
 
 ### [Get-AzureRmExpressRouteCircuitRouteTableSummary](Get-AzureRmExpressRouteCircuitRouteTableSummary.md)
-
+{{Manually Enter Get-AzureRmExpressRouteCircuitRouteTableSummary Description Here}}
 
 ### [Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)
-
+{{Manually Enter Get-AzureRmExpressRouteCircuitStats Description Here}}
 
 ### [Get-AzureRmExpressRouteServiceProvider](Get-AzureRmExpressRouteServiceProvider.md)
-
+{{Manually Enter Get-AzureRmExpressRouteServiceProvider Description Here}}
 
 ### [Get-AzureRmLoadBalancer](Get-AzureRmLoadBalancer.md)
 Gets a load balancer.
@@ -181,7 +186,7 @@ Gets a backend address pool configuration for a load balancer.
 Gets a front-end IP configuration in a load balancer.
 
 ### [Get-AzureRmLoadBalancerInboundNatPoolConfig](Get-AzureRmLoadBalancerInboundNatPoolConfig.md)
-
+{{Manually Enter Get-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
 
 ### [Get-AzureRmLoadBalancerInboundNatRuleConfig](Get-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Gets an inbound NAT rule configuration for a load balancer.
@@ -193,7 +198,7 @@ Gets a probe configuration for a load balancer.
 Gets the rule configuration for a load balancer.
 
 ### [Get-AzureRmLocalNetworkGateway](Get-AzureRmLocalNetworkGateway.md)
-
+{{Manually Enter Get-AzureRmLocalNetworkGateway Description Here}}
 
 ### [Get-AzureRmNetworkInterface](Get-AzureRmNetworkInterface.md)
 Gets a network interface.
@@ -207,11 +212,38 @@ Gets a network security group.
 ### [Get-AzureRmNetworkSecurityRuleConfig](Get-AzureRmNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
+### [Get-AzureRmNetworkWatcher](Get-AzureRmNetworkWatcher.md)
+Gets the properties of a Network Watcher
+
+### [Get-AzureRmNetworkWatcherFlowLogStatus](Get-AzureRmNetworkWatcherFlowLogStatus.md)
+Gets the status of flow logging on a resource.
+
+### [Get-AzureRmNetworkWatcherNextHop](Get-AzureRmNetworkWatcherNextHop.md)
+Gets the next hop from a VM.
+
+### [Get-AzureRmNetworkWatcherPacketCapture](Get-AzureRmNetworkWatcherPacketCapture.md)
+Gets information and properties and status of a packet capture resource.
+
+### [Get-AzureRmNetworkWatcherSecurityGroupView](Get-AzureRmNetworkWatcherSecurityGroupView.md)
+View the configured and effective network security group rules applied on a VM.
+
+### [Get-AzureRmNetworkWatcherTopology](Get-AzureRmNetworkWatcherTopology.md)
+Gets a network level view of resources and their relationships in a resource group.
+
+### [Get-AzureRmNetworkWatcherTroubleshootingResult](Get-AzureRmNetworkWatcherTroubleshootingResult.md)
+Gets the troubleshooting result from the previously run or currently running troubleshooting operation.
+
 ### [Get-AzureRmPublicIpAddress](Get-AzureRmPublicIpAddress.md)
 Gets a public IP address.
 
 ### [Get-AzureRmRouteConfig](Get-AzureRmRouteConfig.md)
 Gets routes from a route table.
+
+### [Get-AzureRmRouteFilter](Get-AzureRmRouteFilter.md)
+{{Fill in the Synopsis}}
+
+### [Get-AzureRmRouteFilterRuleConfig](Get-AzureRmRouteFilterRuleConfig.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmRouteTable](Get-AzureRmRouteTable.md)
 Gets route tables.
@@ -220,13 +252,22 @@ Gets route tables.
 Gets a virtual network in a resource group.
 
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
+{{Manually Enter Get-AzureRmVirtualNetworkGateway Description Here}}
 
+### [Get-AzureRmVirtualNetworkGatewayAdvertisedRoutes](Get-AzureRmVirtualNetworkGatewayAdvertisedRoutes.md)
+{{Fill in the Synopsis}}
+
+### [Get-AzureRmVirtualNetworkGatewayBgpPeerStatus](Get-AzureRmVirtualNetworkGatewayBgpPeerStatus.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmVirtualNetworkGatewayConnection](Get-AzureRmVirtualNetworkGatewayConnection.md)
-
+{{Manually Enter Get-AzureRmVirtualNetworkGatewayConnection Description Here}}
 
 ### [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](Get-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
+{{Manually Enter Get-AzureRmVirtualNetworkGatewayConnectionSharedKey Description Here}}
 
+### [Get-AzureRmVirtualNetworkGatewayLearnedRoutes](Get-AzureRmVirtualNetworkGatewayLearnedRoutes.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmVirtualNetworkPeering](Get-AzureRmVirtualNetworkPeering.md)
 Gets the virtual network peering.
@@ -244,7 +285,7 @@ Gets information about VPN client-revocation certificates.
 Gets information about VPN root certificates.
 
 ### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
-
+{{Manually Enter Move-AzureRmExpressRouteCircuit Description Here}}
 
 ### [New-AzureRmApplicationGateway](New-AzureRmApplicationGateway.md)
 Creates an application gateway.
@@ -301,7 +342,7 @@ Creates an Azure express route circuit.
 Creates an ExpressRoute circuit authorization.
 
 ### [New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
-
+{{Manually Enter New-AzureRmExpressRouteCircuitPeeringConfig Description Here}}
 
 ### [New-AzureRmLoadBalancer](New-AzureRmLoadBalancer.md)
 Creates a load balancer.
@@ -313,7 +354,7 @@ Creates a backend address pool configuration for a load balancer.
 Creates a front-end IP configuration for a load balancer.
 
 ### [New-AzureRmLoadBalancerInboundNatPoolConfig](New-AzureRmLoadBalancerInboundNatPoolConfig.md)
-
+{{Manually Enter New-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
 
 ### [New-AzureRmLoadBalancerInboundNatRuleConfig](New-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Creates an inbound NAT rule configuration for a load balancer.
@@ -325,7 +366,7 @@ Creates a probe configuration for a load balancer.
 Creates a rule configuration for a load balancer.
 
 ### [New-AzureRmLocalNetworkGateway](New-AzureRmLocalNetworkGateway.md)
-
+{{Manually Enter New-AzureRmLocalNetworkGateway Description Here}}
 
 ### [New-AzureRmNetworkInterface](New-AzureRmNetworkInterface.md)
 Creates a network interface.
@@ -339,11 +380,26 @@ Creates a network security group.
 ### [New-AzureRmNetworkSecurityRuleConfig](New-AzureRmNetworkSecurityRuleConfig.md)
 Creates a network security rule configuration.
 
+### [New-AzureRmNetworkWatcher](New-AzureRmNetworkWatcher.md)
+Creates a new Network Watcher resource.
+
+### [New-AzureRmNetworkWatcherPacketCapture](New-AzureRmNetworkWatcherPacketCapture.md)
+Creates a new packet capture resource and starts a packet capture session on a VM.
+
+### [New-AzureRmPacketCaptureFilterConfig](New-AzureRmPacketCaptureFilterConfig.md)
+Creates a new packet capture filter object.
+
 ### [New-AzureRmPublicIpAddress](New-AzureRmPublicIpAddress.md)
 Creates a public IP address.
 
 ### [New-AzureRmRouteConfig](New-AzureRmRouteConfig.md)
 Creates a route for a route table.
+
+### [New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
+Creates a route filter.
+
+### [New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
+Creates a route filter rule for a route filter.
 
 ### [New-AzureRmRouteTable](New-AzureRmRouteTable.md)
 Creates a route table.
@@ -352,13 +408,13 @@ Creates a route table.
 Creates a virtual network.
 
 ### [New-AzureRmVirtualNetworkGateway](New-AzureRmVirtualNetworkGateway.md)
-
+{{Manually Enter New-AzureRmVirtualNetworkGateway Description Here}}
 
 ### [New-AzureRmVirtualNetworkGatewayConnection](New-AzureRmVirtualNetworkGatewayConnection.md)
-
+{{Manually Enter New-AzureRmVirtualNetworkGatewayConnection Description Here}}
 
 ### [New-AzureRmVirtualNetworkGatewayIpConfig](New-AzureRmVirtualNetworkGatewayIpConfig.md)
-
+{{Manually Enter New-AzureRmVirtualNetworkGatewayIpConfig Description Here}}
 
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
@@ -415,7 +471,7 @@ Removes an ExpressRoute circuit.
 Removes an existing ExpressRoute configuration authorization.
 
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
-Removes an ExpressRoute circuit peering configuration.
+{{Manually Enter Remove-AzureRmExpressRouteCircuitPeeringConfig Description Here}}
 
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
@@ -427,7 +483,7 @@ Removes a backend address pool configuration from a load balancer.
 Removes a front-end IP configuration from a load balancer.
 
 ### [Remove-AzureRmLoadBalancerInboundNatPoolConfig](Remove-AzureRmLoadBalancerInboundNatPoolConfig.md)
-
+{{Manually Enter Remove-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
 
 ### [Remove-AzureRmLoadBalancerInboundNatRuleConfig](Remove-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Removes an inbound NAT rule configuration from a load balancer.
@@ -453,11 +509,23 @@ Removes a network security group.
 ### [Remove-AzureRmNetworkSecurityRuleConfig](Remove-AzureRmNetworkSecurityRuleConfig.md)
 Removes a network security rule from a network security group.
 
+### [Remove-AzureRmNetworkWatcher](Remove-AzureRmNetworkWatcher.md)
+Removes a Network Watcher.
+
+### [Remove-AzureRmNetworkWatcherPacketCapture](Remove-AzureRmNetworkWatcherPacketCapture.md)
+Removes a packet capture resource.
+
 ### [Remove-AzureRmPublicIpAddress](Remove-AzureRmPublicIpAddress.md)
 Removes a public IP address.
 
 ### [Remove-AzureRmRouteConfig](Remove-AzureRmRouteConfig.md)
 Removes a route from a route table.
+
+### [Remove-AzureRmRouteFilter](Remove-AzureRmRouteFilter.md)
+{{Fill in the Synopsis}}
+
+### [Remove-AzureRmRouteFilterRuleConfig](Remove-AzureRmRouteFilterRuleConfig.md)
+{{Fill in the Synopsis}}
 
 ### [Remove-AzureRmRouteTable](Remove-AzureRmRouteTable.md)
 Removes a route table.
@@ -475,10 +543,10 @@ Removes a virtual network gateway connection.
 Removes the default site from a virtual network gateway.
 
 ### [Remove-AzureRmVirtualNetworkGatewayIpConfig](Remove-AzureRmVirtualNetworkGatewayIpConfig.md)
-
+{{Manually Enter Remove-AzureRmVirtualNetworkGatewayIpConfig Description Here}}
 
 ### [Remove-AzureRmVirtualNetworkPeering](Remove-AzureRmVirtualNetworkPeering.md)
-
+{{Manually Enter Remove-AzureRmVirtualNetworkPeering Description Here}}
 
 ### [Remove-AzureRmVirtualNetworkSubnetConfig](Remove-AzureRmVirtualNetworkSubnetConfig.md)
 Removes a subnet configuration from a virtual network.
@@ -490,10 +558,10 @@ Removes a VPN client-revocation certificate.
 Removes an existing VPN client root certificate.
 
 ### [Reset-AzureRmVirtualNetworkGateway](Reset-AzureRmVirtualNetworkGateway.md)
-
+{{Manually Enter Reset-AzureRmVirtualNetworkGateway Description Here}}
 
 ### [Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey](Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
-
+{{Manually Enter Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey Description Here}}
 
 ### [Resize-AzureRmVirtualNetworkGateway](Resize-AzureRmVirtualNetworkGateway.md)
 Resizes an existing virtual network gateway.
@@ -547,7 +615,7 @@ Modifies the WAF configuration of an application gateway.
 Modifies an ExpressRoute circuit.
 
 ### [Set-AzureRmExpressRouteCircuitPeeringConfig](Set-AzureRmExpressRouteCircuitPeeringConfig.md)
-
+{{Manually Enter Set-AzureRmExpressRouteCircuitPeeringConfig Description Here}}
 
 ### [Set-AzureRmLoadBalancer](Set-AzureRmLoadBalancer.md)
 Sets the goal state for a load balancer.
@@ -556,7 +624,7 @@ Sets the goal state for a load balancer.
 Sets the goal state for a front-end IP configuration in a load balancer.
 
 ### [Set-AzureRmLoadBalancerInboundNatPoolConfig](Set-AzureRmLoadBalancerInboundNatPoolConfig.md)
-
+{{Manually Enter Set-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
 
 ### [Set-AzureRmLoadBalancerInboundNatRuleConfig](Set-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Sets an inbound NAT rule configuration for a load balancer.
@@ -582,11 +650,20 @@ Sets the goal state for a network security group.
 ### [Set-AzureRmNetworkSecurityRuleConfig](Set-AzureRmNetworkSecurityRuleConfig.md)
 Sets the goal state for a network security rule configuration.
 
+### [Set-AzureRmNetworkWatcherConfigFlowLog](Set-AzureRmNetworkWatcherConfigFlowLog.md)
+Configures flow logging for a target resource.
+
 ### [Set-AzureRmPublicIpAddress](Set-AzureRmPublicIpAddress.md)
 Sets the goal state for a public IP address.
 
 ### [Set-AzureRmRouteConfig](Set-AzureRmRouteConfig.md)
 Sets the goal state for a route.
+
+### [Set-AzureRmRouteFilter](Set-AzureRmRouteFilter.md)
+{{Fill in the Synopsis}}
+
+### [Set-AzureRmRouteFilterRuleConfig](Set-AzureRmRouteFilterRuleConfig.md)
+{{Fill in the Synopsis}}
 
 ### [Set-AzureRmRouteTable](Set-AzureRmRouteTable.md)
 Sets the goal state for a route table.
@@ -618,11 +695,20 @@ Configures the goal state for a subnet configuration in a virtual network.
 ### [Start-AzureRmApplicationGateway](Start-AzureRmApplicationGateway.md)
 Starts an application gateway.
 
+### [Start-AzureRmNetworkWatcherResourceTroubleshooting](Start-AzureRmNetworkWatcherResourceTroubleshooting.md)
+Starts troubleshooting on a Networking resource in Azure.
+
 ### [Stop-AzureRmApplicationGateway](Stop-AzureRmApplicationGateway.md)
 Stops an application gateway
 
-### [Test-AzureRmDnsAvailability](Test-AzureRmDnsAvailability.md)
+### [Stop-AzureRmNetworkWatcherPacketCapture](Stop-AzureRmNetworkWatcherPacketCapture.md)
+Stops a running packet capture session
 
+### [Test-AzureRmDnsAvailability](Test-AzureRmDnsAvailability.md)
+{{Manually Enter Test-AzureRmDnsAvailability Description Here}}
+
+### [Test-AzureRmNetworkWatcherIPFlow](Test-AzureRmNetworkWatcherIPFlow.md)
+Returns whether the packet is allowed or denied to or from a particular destination.
 
 ### [Test-AzureRmPrivateIPAddressAvailability](Test-AzureRmPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
