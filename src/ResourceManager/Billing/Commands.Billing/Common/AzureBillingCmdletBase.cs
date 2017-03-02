@@ -44,27 +44,5 @@ namespace Microsoft.Azure.Commands.Billing.Common
             }
             set { _billingManagementClient = value; }
         }
-
-        /// <summary>
-        /// Gets or sets the default headers send with rest requests.
-        /// </summary>
-        public Dictionary<string, List<string>> DefaultRequestHeaders
-        {
-            get
-            {
-                return _defaultRequestHeaders ??
-                       (_defaultRequestHeaders =
-                           new Dictionary<string, List<string>> { { "UserAgent", new List<string> { "PowerShell" } } });
-            }
-            set { _defaultRequestHeaders = value; }
-        }
-
-        public void ConfirmAction(bool force, string actionMessage, Action action)
-        {
-            if (force || ShouldContinue(actionMessage, ""))
-            {
-                action();
-            }
-        }
     }
 }
