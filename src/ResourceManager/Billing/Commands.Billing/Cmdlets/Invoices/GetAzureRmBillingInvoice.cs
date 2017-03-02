@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Common;
+using Microsoft.Azure.Commands.Billing.Models;
 using Microsoft.Azure.Commands.Billing.Properties;
 using Microsoft.Azure.Management.Billing;
 using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using PsInvoice = Microsoft.Azure.Commands.Billing.Models.Invoice;
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmBillingInvoice", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(List<PsInvoice>), typeof(PsInvoice))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBillingInvoice", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(List<PSInvoice>), typeof(PSInvoice))]
     public class GetAzureRmBillingInvoice : AzureBillingCmdletBase
     {
         const string DownloadUrlExpand = "downloadUrl";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
                     throw new PSArgumentException(Resources.MaxCountExceedRangeError);
                 }
 
-                WriteObject(BillingManagementClient.Invoices.List(expand, null, null, MaxCount).Select(x => new PsInvoice(x)));
+                WriteObject(BillingManagementClient.Invoices.List(expand, null, null, MaxCount).Select(x => new PSInvoice(x)));
                 return;
             }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
             }
             if (invoice != null)
             {
-                WriteObject(new PsInvoice(invoice));
+                WriteObject(new PSInvoice(invoice));
             }
         }
     }

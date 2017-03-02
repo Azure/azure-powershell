@@ -17,7 +17,7 @@ using ApiInvoice = Microsoft.Azure.Management.Billing.Models.Invoice;
 
 namespace Microsoft.Azure.Commands.Billing.Models
 {
-    public class Invoice
+    public class PSInvoice
     {
         public string Id { get; private set; }
 
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.Billing.Models
 
         public DateTime? DownloadUrlExpiry { get; set; }
 
-        public Invoice()
+        public PSInvoice()
         {
         }
 
-        public Invoice(ApiInvoice invoice)
+        public PSInvoice(ApiInvoice invoice)
         {
             if (invoice != null)
             {

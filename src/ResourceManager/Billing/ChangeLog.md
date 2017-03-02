@@ -18,3 +18,5 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New Cmdlet Get-AzureRmBillingInvoice
+    - cmdlet to retrieve azure billing invoices of the subscription.
