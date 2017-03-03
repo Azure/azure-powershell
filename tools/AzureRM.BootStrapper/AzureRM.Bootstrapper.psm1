@@ -1,10 +1,9 @@
 $RollUpModule = "AzureRM"
 $PSProfileMapEndpoint = "https://azureprofile.azureedge.net/powershell/profilemap.json"
-$PSModule = $ExecutionContext.SessionState.Module
 $script:BootStrapRepo = "BootStrap"
 $RepoLocation = "https://www.powershellgallery.com/api/v2/"
 $existingRepos = Get-PSRepository | Where-Object {$_.SourceLocation -eq $RepoLocation}
-if ($existingRepos -eq $null)
+if ($null -eq $existingRepos)
 {
   Register-PSRepository -Name $BootStrapRepo -SourceLocation $RepoLocation -PublishLocation $RepoLocation -ScriptSourceLocation $RepoLocation -ScriptPublishLocation $RepoLocation -InstallationPolicy Trusted -PackageManagementProvider NuGet
 }
@@ -62,13 +61,13 @@ function Get-LatestProfileMapPath
 {
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapPaths = Get-ChildItem $ProfileCache
-  if ($ProfileMapPaths -eq $null)
+  if ($null -eq $ProfileMapPaths)
   {
     return
   }
 
   $LargestNumber = Get-LargestNumber -ProfileCache $ProfileCache
-  if ($LargestNumber -eq $null)
+  if ($null -eq $LargestNumber)
   {
     return
   }
@@ -84,7 +83,7 @@ function Get-LargestNumber
   
   $ProfileMapPaths = Get-ChildItem $ProfileCache
   $LargestNumber = $ProfileMapPaths | ForEach-Object { if($_.Name -match "\d+-") { $matches[0] -replace '-' } } | Measure-Object -Maximum 
-  if ($LargestNumber -ne $null)
+  if ($null -ne $LargestNumber)
   {
     return $LargestNumber.Maximum
   }
@@ -151,13 +150,13 @@ function Get-AzureProfileMap
   $OnlineProfileMapETag = $WebResponse.Headers["ETag"]
 
   # If profilemap json exists, compare online Etag and cached Etag; if not different, don't replace cache.
-  if (($script:LatestProfileMapPath -ne $null) -and ($script:LatestProfileMapPath -match "(\d+)-(.*.json)"))
+  if (($null -ne $script:LatestProfileMapPath) -and ($script:LatestProfileMapPath -match "(\d+)-(.*.json)"))
   {
     [string]$ProfileMapETag = [System.IO.Path]::GetFileNameWithoutExtension($Matches[2])
     if (($ProfileMapETag -eq $OnlineProfileMapETag) -and (Test-Path $script:LatestProfileMapPath.FullName))
     {
       $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName
-      if ($ProfileMap -ne $null)
+      if ($null -ne $ProfileMap)
       {
         return $ProfileMap
       }
@@ -166,7 +165,7 @@ function Get-AzureProfileMap
 
   # If profilemap json doesn't exist, or if online ETag and cached ETag are different, cache online profile map
   $LargestNoFromCache = Get-LargestNumber -ProfileCache $ProfileCache 
-  if ($LargestNoFromCache -eq $null)
+  if ($null -eq $LargestNoFromCache)
   {
     $LargestNoFromCache = 0
   }
@@ -203,10 +202,10 @@ function Get-AzProfile
   }
 
   # Check the cache
-  if(($script:LatestProfileMapPath -ne $null) -and (Test-Path $script:LatestProfileMapPath.FullName))
+  if(($null -ne $script:LatestProfileMapPath) -and (Test-Path $script:LatestProfileMapPath.FullName))
   {
     $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName
-    if ($ProfileMap -ne $null)
+    if ($null -ne $ProfileMap)
     {
       return $ProfileMap
     }
@@ -215,7 +214,7 @@ function Get-AzProfile
   # If cache doesn't exist, Check embedded source
   $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
   $ProfileMap = RetryGetContent -FilePath (Join-Path -Path $defaults -ChildPath "ProfileMap.json")
-  if($ProfileMap -eq $null)
+  if($null -eq $ProfileMap)
   {
     # Cache & Embedded source empty; Return error and stop
     throw [System.IO.FileNotFoundException] "Profile meta data does not exist. Use 'Get-AzureRmProfile -Update' to download from online source."
@@ -257,7 +256,7 @@ function Get-ProfilesInstalled
       $versionList = $ProfileMap.$key.$module
       foreach ($version in $versionList)
       {
-        if (($ModulesList | Where-Object { $_.Version -eq $version}) -ne $null)
+        if ($null -ne ($ModulesList | Where-Object { $_.Version -eq $version}))
         {
           if ($result.ContainsKey($key))
           {
@@ -280,7 +279,7 @@ function Get-ProfilesInstalled
       }
       
       $result.Remove($key)
-      if ($IncompleteProfiles -ne $null) 
+      if ($null -ne $IncompleteProfiles) 
       {
         $IncompleteProfiles.Value += $key
       }
@@ -293,6 +292,7 @@ function Get-ProfilesInstalled
 function Remove-ProfileMapFile
 {
   [CmdletBinding()]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	param([string]$ProfileMapPath)
 
   if (Test-Path -Path $ProfileMapPath)
@@ -355,6 +355,7 @@ function Test-ProfilesInstalled
 function Uninstall-ModuleHelper
 {
   [CmdletBinding(SupportsShouldProcess = $true)] 
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
   param([String]$Profile, $Module, [System.Version]$version, [Switch]$RemovePreviousVersions)
 
   $Remove = $PSBoundParameters.RemovePreviousVersions
@@ -363,7 +364,7 @@ function Uninstall-ModuleHelper
     $moduleInstalled = Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} 
     if ($PSCmdlet.ShouldProcess("$module version $version", "Remove module")) 
     {
-      if (($moduleInstalled -ne $null) -and ($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Remove module $Module version $version", "Removing Modules for profile $Profile"))) 
+      if (($null -ne $moduleInstalled) -and ($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Remove module $Module version $version", "Removing Modules for profile $Profile"))) 
       {
         Write-Verbose "Removing module from session"
         Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
@@ -386,7 +387,7 @@ function Uninstall-ModuleHelper
       break
     }
   }
-  While($moduleInstalled -ne $null);
+  While($null -ne $moduleInstalled);
 }
 
 # Help function to uninstall a profile
@@ -439,16 +440,17 @@ function Invoke-UninstallModule
 }
 
 # Helps to uninstall previous versions of modules in the profile
-function Remove-PreviousVersions
+function Remove-PreviousVersion
 {
   [CmdletBinding()]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
   param([PSObject]$PreviousMap, [PSObject]$LatestMap, [hashtable]$AllProfilesInstalled, [String]$Profile, [Array]$Module, [Switch]$RemovePreviousVersions)
 
   $Remove = $PSBoundParameters.RemovePreviousVersions
   $Modules = $PSBoundParameters.Module
 
   $PreviousProfiles = ($PreviousMap | Get-Member -MemberType NoteProperty).Name
-  $LatestProfiles = ($LatestMap | Get-Member -MemberType NoteProperty).Name
   
   Write-Verbose "Checking if previous versions of modules are installed"
   # If the profile was not in $PreviousProfiles, return
@@ -457,7 +459,7 @@ function Remove-PreviousVersions
     return
   }
 
-  if ($Modules -eq $null)
+  if ($null -eq $Modules)
   {
     $Modules = ($PreviousMap.$Profile | Get-Member -MemberType NoteProperty).Name
   }
@@ -474,7 +476,7 @@ function Remove-PreviousVersions
     $versionList = $PreviousMap.$Profile.$module
     foreach ($version in $versionList)
     {
-      if ((Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} ) -eq $null)
+      if ($null -eq (Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} ))
       {
         continue
       }
@@ -537,6 +539,7 @@ function Get-AllProfilesInstalled
 function Update-ProfileHelper
 {
   [CmdletBinding()]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
   param([String]$Profile, [Array]$Module, [Switch]$RemovePreviousVersions)
 
   Write-Verbose "Attempting to clean up previous versions"
@@ -562,7 +565,7 @@ function Update-ProfileHelper
 
     # Compare previous & latest map for the update profile. Uninstall previous if they are different
     $previousProfileMap = RetryGetContent -FilePath (Join-Path $profilecache $ProfileMapHash) 
-    Remove-PreviousVersions -PreviousMap $previousProfileMap -LatestMap $LatestProfileMap -AllProfilesInstalled $AllProfilesInstalled @PSBoundParameters
+    Remove-PreviousVersion -PreviousMap $previousProfileMap -LatestMap $LatestProfileMap -AllProfilesInstalled $AllProfilesInstalled @PSBoundParameters
 
     # If the previous map has profiles installed, do not delete it.
     $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $previousProfileMap)
@@ -591,6 +594,7 @@ function Update-ProfileHelper
 function Find-PotentialConflict
 {
   [CmdletBinding(SupportsShouldProcess = $true)] 
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   param([string]$Module, [switch]$Force)
   
   Write-Verbose "Checking if there is a potential conflict for module installation"
@@ -689,6 +693,7 @@ function Add-SwitchParam
 
 function Add-ModuleParam
 {
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   param([System.Management.Automation.RuntimeDefinedParameterDictionary]$params, [string]$name, [string] $set = "__AllParameterSets")
   $ProfileMap = (Get-AzProfile)
   $Profiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
@@ -724,6 +729,7 @@ function Add-ModuleParam
 function Get-AzureRmModule 
 {
   [CmdletBinding()]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   param()
   DynamicParam
   {
@@ -757,12 +763,11 @@ function Get-AzureRmModule
   PROCESS
   {
     $ProfileMap = (Get-AzProfile)
-    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
     $Module = $PSBoundParameters.Module
     $versionList = $ProfileMap.$Profile.$Module
     Write-Verbose "Getting the version of $module from $profile"
-    $moduleList = Get-Module -Name $Module -ListAvailable | Where-Object {$_.RepositorySourceLocation -ne $null}
+    $moduleList = Get-Module -Name $Module -ListAvailable | Where-Object {$null -ne $_.RepositorySourceLocation}
     foreach ($version in $versionList)
     {
       foreach ($module in $moduleList)
@@ -830,6 +835,8 @@ function Get-AzureRmProfile
 function Use-AzureRmProfile
 {
   [CmdletBinding(SupportsShouldProcess=$true)] 
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
   param()
   DynamicParam
   {
@@ -844,13 +851,12 @@ function Use-AzureRmProfile
   {
     $Force = $PSBoundParameters.Force
     $ProfileMap = (Get-AzProfile)
-    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
     $Scope = $PSBoundParameters.Scope
     $Modules = $PSBoundParameters.Module
 
     # If user hasn't provided modules, use the module names from profile
-    if ($Modules -eq $null)
+    if ($null -eq $Modules)
     {
       $Modules = ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name
     }
@@ -867,7 +873,7 @@ function Use-AzureRmProfile
 
     # Variable to track progress
     $ModuleCount = 0
-    Write-Host "Loading Profile $Profile"
+    Write-Output "Loading Profile $Profile"
     foreach ($Module in $Modules)
     {
       $ModuleCount = $ModuleCount + 1
@@ -877,7 +883,7 @@ function Use-AzureRmProfile
       }
 
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
-      if (($version -eq $null) -and $PSCmdlet.ShouldProcess($module, "Installing module for profile $profile in the current scope"))
+      if (($null -eq $version) -and $PSCmdlet.ShouldProcess($module, "Installing module for profile $profile in the current scope"))
       {
         Write-Verbose "$module was not found on the machine. Trying to install..."
         if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
@@ -900,7 +906,7 @@ function Use-AzureRmProfile
       }
 
       # Block user if they try to import a module to the session where a different version of the same module is already imported
-      if ((Get-Module -Name $Module | Where-Object { $_.Version -ne $version} ) -ne $null)
+      if ($null -ne (Get-Module -Name $Module | Where-Object { $_.Version -ne $version} ))
       {
         Write-Error "A different version of module $module is already imported in this session. Start a new PowerShell session and retry the operation."
         return
@@ -921,6 +927,7 @@ function Use-AzureRmProfile
 function Install-AzureRmProfile
 {
   [CmdletBinding()]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   param()
   DynamicParam
   {
@@ -933,7 +940,6 @@ function Install-AzureRmProfile
 
   PROCESS {
     $ProfileMap = (Get-AzProfile)
-    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $Profile = $PSBoundParameters.Profile
     $Scope = $PSBoundParameters.Scope
     $Modules = ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name
@@ -957,7 +963,7 @@ function Install-AzureRmProfile
       }
 
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
-      if ($version -eq $null) 
+      if ($null -eq $version) 
       {
         $versions = $ProfileMap.$Profile.$Module
         $versionEnum = $versions.GetEnumerator()
@@ -984,6 +990,7 @@ function Install-AzureRmProfile
 function Uninstall-AzureRmProfile
 {
   [CmdletBinding(SupportsShouldProcess = $true)]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
   param()
   DynamicParam
   {
@@ -1014,6 +1021,7 @@ function Uninstall-AzureRmProfile
 #>
 function Update-AzureRmProfile
 {
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   [CmdletBinding(SupportsShouldProcess = $true)]
   param()
   DynamicParam
@@ -1031,11 +1039,8 @@ function Update-AzureRmProfile
     # Update Profile cache, if not up-to-date
     $ProfileMap = (Get-AzProfile -Update)
     $profile = $PSBoundParameters.Profile
-    $Force = $PSBoundParameters.Force
     $Remove = $PSBoundParameters.RemovePreviousVersions
-    $Modules = $PSBoundParameters.Module
 
-    $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
     $PSBoundParameters.Remove('RemovePreviousVersions') | Out-Null
 
     # Install & import the required version
@@ -1056,6 +1061,7 @@ function Update-AzureRmProfile
 function Set-BootstrapRepo
 {
 	[CmdletBinding()]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	param([string]$Repo)
 	$script:BootStrapRepo = $Repo
 }
