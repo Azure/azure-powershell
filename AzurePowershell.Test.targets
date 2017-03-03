@@ -72,6 +72,7 @@
 			<XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Billing\Commands.Billing.Test\bin\Debug\Microsoft.Azure.Commands.Billing.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
