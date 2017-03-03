@@ -23,6 +23,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
@@ -85,7 +86,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             int? maxDegreeOfParallelism = 0,
             int? maxJobCount = 0,
             int? queryStoreRetention = 0,
-            TierType? tier = null)
+            TierType? tier = null,
+            FirewallState? firewallState = null,
+            FirewallAllowAzureIpsState? allowAzureIps = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -148,6 +151,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 parameters.NewTier = tier;
             }
 
+            if (firewallState.HasValue)
+            {
+                parameters.FirewallState = firewallState;
+            }
+
+            if (allowAzureIps.HasValue)
+            {
+                parameters.FirewallAllowAzureIps = allowAzureIps;
+            }
+
             var accountExists = false;
             try
             {
@@ -169,7 +182,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     MaxJobCount = parameters.MaxJobCount,
                     QueryStoreRetention = parameters.QueryStoreRetention,
                     Tags = parameters.Tags,
-                    NewTier = parameters.NewTier
+                    NewTier = parameters.NewTier,
+                    FirewallState = parameters.FirewallState,
+                    FirewallAllowAzureIps = parameters.FirewallAllowAzureIps
                 })
                 : _accountClient.Account.Create(resourceGroupName, accountName, parameters);
         }
@@ -394,6 +409,79 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IPage<DataLakeAnalyticsAccount> ListAccountsWithNextLink(string nextLink)
         {
             return _accountClient.Account.ListNext(nextLink);
+        }
+
+        #endregion
+        #region Firewall Management
+
+        public FirewallRule AddOrUpdateFirewallRule(string resourceGroupName, string accountName, string ruleName, string startIp, string endIp, Cmdlet runningCommand)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            if (_accountClient.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
+            }
+
+            return _accountClient.FirewallRules.CreateOrUpdate(
+                resourceGroupName,
+                accountName,
+                ruleName,
+                new FirewallRule
+                {
+                    StartIpAddress = startIp,
+                    EndIpAddress = endIp
+
+                });
+        }
+
+        public void DeleteFirewallRule(string resourceGroupName, string accountName, string ruleName, Cmdlet runningCommand)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            if (_accountClient.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
+            }
+
+            _accountClient.FirewallRules.Delete(resourceGroupName, accountName, ruleName);
+        }
+
+        public FirewallRule GetFirewallRule(string resourceGroupName, string accountName, string ruleName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            return _accountClient.FirewallRules.Get(resourceGroupName, accountName, ruleName);
+        }
+
+        public List<FirewallRule> ListFirewallRules(string resourceGroupName, string accountName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            var toReturn = new List<FirewallRule>();
+            var response = _accountClient.FirewallRules.ListByAccount(resourceGroupName, accountName);
+
+            toReturn.AddRange(response);
+
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = ListFirewallRulesWithNextLink(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
         }
 
         #endregion
@@ -971,32 +1059,68 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         }
 
         public List<JobInformation> ListJobs(string accountName, string filter, int? top,
-            int? skip, string orderBy)
+            int? skip, string orderBy, out bool moreJobs)
         {
+            moreJobs = false;
+            // top is used to return a total number, not top per page.
+            if (!top.HasValue)
+            {
+                top = 500;
+            }
+
             var parameters = new ODataQuery<JobInformation>
             {
                 Filter = filter,
-                Top = top,
                 Skip = skip,
                 OrderBy = orderBy
             };
 
             var jobList = new List<JobInformation>();
             var response = _jobClient.Job.List(accountName, parameters);
-
+            var curCount = 0;
             jobList.AddRange(response);
-            while (!string.IsNullOrEmpty(response.NextPageLink))
+            curCount = jobList.Count();
+            while (!string.IsNullOrEmpty(response.NextPageLink) && curCount <= top.Value)
             {
                 response = ListJobsWithNextLink(response.NextPageLink);
                 jobList.AddRange(response);
+                curCount = jobList.Count();
             }
 
-            return jobList;
+            
+            if (curCount > top.Value || !string.IsNullOrEmpty(response.NextPageLink))
+            {
+                moreJobs = true;
+                
+            }
+
+            // return only the jobs requested if there are fewer than top.
+            return jobList.GetRange(0, Math.Min(curCount, top.Value));
         }
 
         #endregion
 
         #region internal helpers
+        internal string GetResourceGroupByAccountName(string accountName)
+        {
+            try
+            {
+                var acctId =
+                    ListAccounts(null, null, null, null)
+                        .Find(x => x.Name.Equals(accountName, StringComparison.InvariantCultureIgnoreCase))
+                        .Id;
+                var rgStart = acctId.IndexOf("resourceGroups/", StringComparison.InvariantCultureIgnoreCase) +
+                              ("resourceGroups/".Length);
+                var rgLength = (acctId.IndexOf("/providers/", StringComparison.InvariantCultureIgnoreCase)) - rgStart;
+                return acctId.Substring(rgStart, rgLength);
+            }
+            catch
+            {
+                throw new CloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, accountName,
+                    _subscriptionId));
+            }
+        }
+
         internal string GetWildcardFilterString(string propertyName, string value)
         {
             if (!value.Contains("*"))
@@ -1036,24 +1160,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return _jobClient.Job.ListNext(nextLink);
         }
 
-        private string GetResourceGroupByAccountName(string accountName)
+        private IPage<FirewallRule> ListFirewallRulesWithNextLink(string nextLink)
         {
-            try
-            {
-                var acctId =
-                    ListAccounts(null, null, null, null)
-                        .Find(x => x.Name.Equals(accountName, StringComparison.InvariantCultureIgnoreCase))
-                        .Id;
-                var rgStart = acctId.IndexOf("resourceGroups/", StringComparison.InvariantCultureIgnoreCase) +
-                              ("resourceGroups/".Length);
-                var rgLength = (acctId.IndexOf("/providers/", StringComparison.InvariantCultureIgnoreCase)) - rgStart;
-                return acctId.Substring(rgStart, rgLength);
-            }
-            catch
-            {
-                throw new CloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, accountName,
-                    _subscriptionId));
-            }
+            return _accountClient.FirewallRules.ListByAccountNext(nextLink);
         }
 
         private bool IsCatalogItemOrList(CatalogPathInstance path, DataLakeAnalyticsEnums.CatalogItemType type)

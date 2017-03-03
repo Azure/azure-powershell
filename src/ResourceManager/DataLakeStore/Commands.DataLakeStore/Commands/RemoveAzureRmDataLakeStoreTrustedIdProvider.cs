@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Name,
                 () =>
                 {
-                    DataLakeStoreClient.DeleteTrustedProvider(ResourceGroupName, Account, Name);
+                    DataLakeStoreClient.DeleteTrustedProvider(ResourceGroupName, Account, Name, this);
                     if (PassThru)
                     {
                         WriteObject(true);

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Name,
                 () => 
                     WriteObject(new DataLakeStoreFirewallRule(DataLakeStoreClient.AddOrUpdateFirewallRule(
-                        ResourceGroupName, Account, Name, startIp, endIp)))
+                        ResourceGroupName, Account, Name, startIp, endIp, this)))
             );
         }
     }

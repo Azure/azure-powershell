@@ -170,6 +170,34 @@ namespace StaticAnalysis.SignatureVerifier
                                                 cmdlet.Name, cmdlet.VerbName),
                                         remediation: "Consider renaming the cmdlet to use an approved verb for PowerShell.");
                                     }
+
+                                    if (!cmdlet.HasSingularNoun)
+                                    {
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                        problemId: SignatureProblemId.CmdletWithPluralNoun,
+                                        description:
+                                            string.Format(
+                                                "{0} uses the noun '{1}', which does not follow the enforced " +
+                                                "naming convention of using a singular noun for a cmdlet name.",
+                                                cmdlet.Name, cmdlet.NounName),
+                                        remediation: "Consider using a singular noun for the cmdlet name.");
+                                    }
+
+                                    foreach (var parameter in cmdlet.GetParametersWithPluralNoun())
+                                    {
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                        problemId: SignatureProblemId.ParameterWithPluralNoun,
+                                        description:
+                                            string.Format(
+                                                "Parameter {0} of cmdlet {1} does not follow the enforced " +
+                                                "naming convention of using a singular noun for a parameter name.",
+                                                parameter.Name, cmdlet.Name),
+                                        remediation: "Consider using a singular noun for the parameter name.");
+                                    }
                                 }
 
                                 AppDomain.Unload(_appDomain);

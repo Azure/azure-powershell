@@ -63,8 +63,34 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         public TierType? Tier { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally enable/disable existing firewall rules.")]
+        [ValidateNotNull]
+        public FirewallState? FirewallState { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally allow/block Azure originating IPs through the firewall.")]
+        [ValidateNotNull]
+        public FirewallAllowAzureIpsState? AllowAzureIpState { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (string.IsNullOrEmpty(ResourceGroupName))
+            {
+                ResourceGroupName = DataLakeAnalyticsClient.GetResourceGroupByAccountName(Name);
+            }
+
+            var account = DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name);
+            if (!FirewallState.HasValue)
+            {
+                FirewallState = account.FirewallState;
+            }
+
+            if (AllowAzureIpState.HasValue && FirewallState.Value == Management.DataLake.Analytics.Models.FirewallState.Disabled)
+            {
+                WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, Name));
+            }
+
             WriteObject(
                 new PSDataLakeAnalyticsAccount(
                     DataLakeAnalyticsClient.CreateOrUpdateAccount(
@@ -78,7 +104,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         MaxDegreeOfParallelism,
                         MaxJobCount,
                         QueryStoreRetention,
-                        Tier)));
+                        Tier,
+                        FirewallState,
+                        AllowAzureIpState)));
         }
     }
 }
