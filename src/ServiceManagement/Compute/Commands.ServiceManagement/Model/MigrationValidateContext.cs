@@ -146,7 +146,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             bool errorOccurred = false, bool warningOccurred = false, bool noMessage = false)
         {
             result.OperationId = operationResponse.Id;
-            result.Result = operationResponse.Status.ToString();
 
             if (noMessage)
             {
