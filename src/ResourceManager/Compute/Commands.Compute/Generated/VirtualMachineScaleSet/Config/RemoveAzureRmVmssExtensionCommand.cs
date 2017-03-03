@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmVmssExtension")]
+    [Cmdlet("Remove", "AzureRmVmssExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class RemoveAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

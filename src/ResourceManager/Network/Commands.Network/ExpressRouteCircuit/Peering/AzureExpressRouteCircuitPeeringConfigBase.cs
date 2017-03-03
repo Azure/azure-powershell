@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
-
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.Network.Models;
+    using System.Management.Automation;
+    using MNM = Microsoft.Azure.Management.Network.Models;
 
     public class AzureExpressRouteCircuitPeeringConfigBase : NetworkBaseCmdlet
     {
@@ -89,5 +89,20 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string MicrosoftConfigRoutingRegistryName { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "RouteFilterId")]
+        [ValidateNotNullOrEmpty]
+        public string RouteFilterId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "RouteFilter")]
+        [ValidateNotNullOrEmpty]
+        public PSRouteFilter RouteFilter { get; set; }
     }
 }

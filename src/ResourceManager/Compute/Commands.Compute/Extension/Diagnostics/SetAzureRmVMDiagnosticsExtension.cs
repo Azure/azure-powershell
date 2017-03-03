@@ -246,8 +246,13 @@ namespace Microsoft.Azure.Commands.Compute
         private void InitializeStorageParameters()
         {
             InitializeStorageAccountName();
-            InitializeStorageAccountKey();
-            InitializeStorageAccountEndpoint();
+
+            // If sas token is provided in private config, skip retrieving storage account key and endpoint.
+            if (!IsSasTokenProvided())
+            {
+                InitializeStorageAccountKey();
+                InitializeStorageAccountEndpoint();
+            }
         }
 
         private void InitializeStorageAccountName()
@@ -282,6 +287,12 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
             }
+        }
+
+        private bool IsSasTokenProvided()
+        {
+            return !string.IsNullOrEmpty(DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, 
+                DiagnosticsHelper.PrivateConfigElemStr, DiagnosticsHelper.PrivConfSasKeyAttr));
         }
 
         public override void ExecuteCmdlet()

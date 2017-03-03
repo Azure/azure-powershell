@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
@@ -47,6 +47,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -61,6 +63,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -75,6 +79,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -95,6 +101,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -115,6 +123,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -135,6 +145,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -163,7 +175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
@@ -196,6 +208,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -210,6 +224,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -224,6 +240,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -244,6 +262,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -264,6 +284,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -284,6 +306,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -312,7 +336,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -337,6 +361,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -351,6 +377,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -371,6 +399,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -391,6 +421,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -419,7 +451,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
@@ -452,6 +484,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -466,6 +500,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -480,6 +516,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -500,6 +538,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -520,6 +560,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -540,6 +582,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -568,7 +612,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
@@ -601,6 +645,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -615,6 +661,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -633,6 +681,8 @@
             "S2",
             "S4"
           ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -647,6 +697,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -661,6 +713,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -675,6 +729,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -695,6 +751,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -715,6 +773,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -739,6 +799,8 @@
                   "S2",
                   "S4"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -759,6 +821,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -779,6 +843,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -799,6 +865,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -850,6 +918,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -864,6 +934,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -884,6 +956,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -904,6 +978,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -932,7 +1008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
@@ -965,6 +1041,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -979,6 +1057,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -1009,6 +1089,8 @@
             "Australia East",
             "Australia Southeast"
           ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -1028,6 +1110,8 @@
             "S4",
             "D1"
           ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -1042,6 +1126,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1056,6 +1142,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -1076,6 +1164,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -1096,6 +1186,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -1132,6 +1224,8 @@
                   "Australia East",
                   "Australia Southeast"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -1157,6 +1251,8 @@
                   "S4",
                   "D1"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -1177,6 +1273,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1197,6 +1295,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1338,7 +1438,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "ServerSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -1360,7 +1460,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "AzureAnalysisServicesServer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.0.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
         "Id": "System.String",

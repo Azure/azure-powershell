@@ -14,39 +14,44 @@ Sets the operating system disk properties on a virtual machine.
 
 ### DefaultParamSet (Default)
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-DiskSizeInGB <Int32>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes>
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
  [<CommonParameters>]
 ```
 
 ### WindowsParamSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows] [-DiskSizeInGB <Int32>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
  [<CommonParameters>]
 ```
 
 ### WindowsDiskEncryptionParameterSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
  [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
- [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [<CommonParameters>]
+ [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
+ [-StorageAccountType <StorageAccountTypes>] [<CommonParameters>]
 ```
 
 ### LinuxParamSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux] [-DiskSizeInGB <Int32>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
  [<CommonParameters>]
 ```
 
 ### LinuxDiskEncryptionParameterSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux] [-DiskEncryptionKeyUrl] <String>
- [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>]
- [-DiskSizeInGB <Int32>] [<CommonParameters>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux]
+ [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
+ [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
+ [-StorageAccountType <StorageAccountTypes>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -255,6 +260,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ManagedDiskId
+Specifies the ID of a managed disk.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the operating system disk.
 
@@ -263,7 +283,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: OSDiskName, DiskName
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -285,6 +305,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -StorageAccountType
+Specifies the storage account type of managed disk.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VhdUri
 Specifies the Uniform Resource Identifier (URI) of a virtual hard disk (VHD).
 
@@ -298,7 +333,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: OSDiskVhdUri, DiskVhdUri
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)

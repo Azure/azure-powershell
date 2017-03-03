@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssVaultCertificateConfig")]
+    [Cmdlet("New", "AzureRmVmssVaultCertificateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CertificateStore { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             var vVaultCertificates = new Microsoft.Azure.Management.Compute.Models.VaultCertificate();
 
