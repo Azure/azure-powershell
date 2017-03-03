@@ -315,6 +315,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountPartnerTests\TestUpdateIntegrationAccountPartner.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountReceivedIcnTests\TestGetIntegrationAccountReceivedIcn.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountReceivedIcnTests\TestRemoveIntegrationAccountReceivedIcn.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.IntegrationAccountSchemaTests\TestCreateIntegrationAccountSchema.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
