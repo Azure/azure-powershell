@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases TransparentDataEncryption
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">Azure context</param>
         public AzureSqlDatabaseTransparentDataEncryptionCommunicator(AzureContext context)
         {
             Context = context;
@@ -81,6 +80,22 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         public IList<Management.Sql.Models.TransparentDataEncryptionActivity> ListActivity(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.ListActivity(resourceGroupName, serverName, databaseName).TransparentDataEncryptionActivities;
+        }
+
+        /// <summary>
+        /// Gets Azure Sql Database Transparent Data Encryption Protector
+        /// </summary>
+        public Management.Sql.Models.EncryptionProtector GetEncryptionProtector(string resourceGroupName, string serverName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.GetEncryptionProtector(resourceGroupName, serverName).EncryptionProtector;
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Sql Database Transparent Data Encryption Protector
+        /// </summary>
+        public Management.Sql.Models.EncryptionProtector CreateOrUpdateEncryptionProtector(string resourceGroupName, string serverName, string clientRequestId, EncryptionProtectorCreateOrUpdateParameters parameters)
+        {
+            return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.CreateOrUpdateEncryptionProtector(resourceGroupName, serverName, parameters).EncryptionProtector;
         }
 
         /// <summary>

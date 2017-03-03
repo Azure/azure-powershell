@@ -19,7 +19,7 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class VirtualNetworkGatewayTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkExpressRouteGatewayCRUD()
         {

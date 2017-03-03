@@ -87,20 +87,16 @@ function EventHubsTests
 	Assert-True {$createdNamespace.Count -eq 1}
 
     $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
+    
+        if ($createdNamespace.Name -eq $namespaceName)
         {
             $found = 1
-            Assert-AreEqual $location $createdNamespace[$i].Location
-            Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-            Assert-AreEqual "EventHub" $createdNamespace[$i].NamespaceType
+            Assert-AreEqual $location $createdNamespace.Location
             break
         }
-    }
+
     Assert-True {$found -eq 0} "Namespace created earlier is not found."
 	
-
 	# Create a EventHub
     Write-Debug " Create new eventHub "    
 	$msgRetentionInDays = 3
@@ -123,7 +119,7 @@ function EventHubsTests
     $found = 0
     for ($i = 0; $i -lt $createdEventHubList.Count; $i++)
     {
-        if ($createdEventHubList[$i].Name -eq $createdEventHub)
+        if ($createdEventHubList[$i].Name -eq $createdEventHub.Name)
         {
             $found = $found + 1
         }
@@ -190,17 +186,13 @@ function EventHubsAuthTests
 	# Assert
 	Assert-True {$createdNamespace.Count -eq 1}
     $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
+    
+        if ($createdNamespace.Name -eq $namespaceName)
         {
             $found = 1
-            Assert-AreEqual $location $createdNamespace[$i].Location
-            Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-            Assert-AreEqual "EventHub" $createdNamespace[$i].NamespaceType
+            Assert-AreEqual $location $createdNamespace.Location
             break
         }
-    }
 
 	# Assert
     Assert-True {$found -eq 0} "Namespace created earlier is not found."
