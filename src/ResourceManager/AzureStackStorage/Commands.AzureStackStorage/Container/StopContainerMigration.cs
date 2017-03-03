@@ -44,21 +44,15 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public string FarmName { get; set; }
 
         /// <summary>
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
-        [ValidateNotNullOrEmpty]
-        public string ShareName { get; set;}
-
-        /// <summary>
         /// Storage Account Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6 )]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5 )]
         public string JobId { get; set; }
 
 
         protected override void Execute()
         {
-            var response = this.Client.Shares.SetMigrateContainerOperationStatus(this.ResourceGroupName, this.FarmName, this.ShareName, this.JobId);
+            var response = this.Client.Shares.SetMigrateContainerOperationStatus(this.ResourceGroupName, this.FarmName, this.JobId);
             this.WriteObject(response, true);
         }
     }
