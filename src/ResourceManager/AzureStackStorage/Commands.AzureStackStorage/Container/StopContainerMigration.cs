@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,59 +13,53 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Management.Automation;
+using Microsoft.AzureStack.AzureConsistentStorage;
 using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
-{    
+{
     /// <summary>
-    ///     list current faults
-    ///    
-    ///     SYNTAX
-    /// 
-    ///         Get-Fault [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [-ResourceUri {string}] [ {CommonParameters}] 
-    ///   
+    /// SYNTAX
+    /// Stop-ACSContainerMigration  [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
+    ///                  [-FarmName] {string} [-ShareName] {string} -Jobid {string} [{CommonParameters}] 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.AdminFault)]
-    public sealed class GetFault : AdminCmdlet
+    [Cmdlet(VerbsLifecycle.Stop, Nouns.AdminContainerMigration)]
+    public sealed class StopContainerMigration: AdminCmdlet
     {
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3)]
         [ValidateNotNull]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        ///     Farm Identifier
+        /// Farm Identifier
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
-        public string FarmName
-        {
-            get;
-            set;
-        }
+        public string FarmName { get; set; }
 
         /// <summary>
-        ///     Resource Uri
         /// </summary>
-        [Alias("Id")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceUri
-        {
-            get;
-            set;
-        }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [ValidateNotNullOrEmpty]
+        public string ShareName { get; set;}
+
+        /// <summary>
+        /// Storage Account Name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6 )]
+        public string JobId { get; set; }
+
 
         protected override void Execute()
         {
-            FaultListResponse faults = Client.Faults.ListCurrentFaults(ResourceGroupName, FarmName, ResourceUri);
-            WriteObject(faults.Faults.Select(_ => new FaultResponse(_)), true);
+            var response = this.Client.Shares.SetMigrateContainerOperationStatus(this.ResourceGroupName, this.FarmName, this.ShareName, this.JobId);
+            this.WriteObject(response, true);
         }
     }
 }

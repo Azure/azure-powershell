@@ -28,7 +28,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             : base(model)
         {
             // Manually set those with different names or in root
-            this.AccountId = long.Parse(model.Name, CultureInfo.InvariantCulture);
+            this.AccountId = model.Name;
             this.AdminViewId = model.Id;
             this.Location = model.Location;
             this.WacAccountId = model.Properties.AccountId;
@@ -37,7 +37,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             this.FarmName = farmName;
         }
 
-        public long AccountId { get; set; }
+        public string AccountId { get; set; }
         public string AdminViewId { get; set; }
         public string TenantViewId { get; set; }
         public StorageAccountType AccountType { get; set; }
@@ -72,7 +72,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         public WacAccountPermissions? Permissions { get; set; }
 
-        public ulong? WacAccountId { get; set; }
+        public string WacAccountId { get; set; }
         public WacAccountStates? WacInternalState { get; set; }
     }
 }

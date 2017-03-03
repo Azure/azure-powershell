@@ -28,57 +28,18 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetric)]
-    public sealed class GetQueueServiceMetrics : AdminCmdlet
+    public sealed class GetQueueServiceMetrics : AdminMetricCmdlet
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
         /// <summary>
         ///     Farm Identifier
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
         [ValidateNotNull]
         public string FarmName { get; set; }
-
-        /// <summary>
-        ///     start time
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        public DateTime StartTime { get; set; }
-
-        /// <summary>
-        ///     end time
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        public DateTime EndTime { get; set; }
-
-        /// <summary>
-        ///     time grain
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        public TimeGrain TimeGrain { get; set; }
-
-        /// <summary>
-        /// Array of metric names
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        public string[] MetricNames
+             
+        protected override MetricsResult GetMetricsResult(string filter)
         {
-            get;
-            set;
-        }
-
-        protected override void Execute()
-        {
-            string filter = Tools.GenerateFilter(MetricNames, StartTime, EndTime, TimeGrain);
-            WriteVerbose("filter: " + filter);
-
-            MetricsResult node = Client.QueueService.GetMetrics(ResourceGroupName, FarmName, filter);
-            WriteObject(node);
+            return Client.QueueService.GetMetrics(ResourceGroupName, FarmName, filter);
         }
     }
 }

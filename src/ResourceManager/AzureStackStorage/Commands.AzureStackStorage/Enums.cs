@@ -79,4 +79,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         StorageAccountStatus,
         VersionedAccountName
     }
+    public enum ContainerGetIntent
+    {
+        Migration
+    }
 }
