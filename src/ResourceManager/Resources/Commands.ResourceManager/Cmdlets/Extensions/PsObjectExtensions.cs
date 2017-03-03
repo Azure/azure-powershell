@@ -133,5 +133,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             return new JValue(value.ToString());
         }
+
+        /// <summary>
+        /// Gets nested property values from a <see cref="PSObject"/> easily using property path.
+        /// </summary>
+        /// <param name="propertyObject">The <see cref="PSObject"/> to get property value from.</param>
+        /// <param name="propertyPath">The nested property path, e.g. "metadata.description".</param>
+        /// <returns>The value of the specified property.</returns>
+        internal static object GetPSObjectProperty(this PSObject propertyObject, string propertyPath)
+        {
+            var propertyNames = propertyPath.Split('.');
+            var tmpObject = propertyObject;
+            foreach (var propertyName in propertyNames)
+            {
+                var propertyInfo = tmpObject.Properties[propertyName];
+                if (propertyInfo != null)
+                {
+                    if (propertyInfo.Value is PSObject)
+                    {
+                        tmpObject = propertyInfo.Value as PSObject;
+                        continue;
+                    }
+                    return propertyInfo.Value;
+                }
+                return null;
+            }
+            return tmpObject;
+        }
     }
 }
