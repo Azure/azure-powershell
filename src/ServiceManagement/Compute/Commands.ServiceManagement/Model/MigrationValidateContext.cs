@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             };
 
             int messageCount = validationResponse.ValidateDeploymentMessages.Count;
-
+            result.ValidationMessages = new ValidationMessage[messageCount];
             for (int i = 0; i < messageCount; i++)
             {
                 var validateMessage = validationResponse.ValidateDeploymentMessages[i];
@@ -87,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             };
 
             int messageCount = validationResponse.ValidationMessages.Count;
-
+            result.ValidationMessages = new ValidationMessage[messageCount];
             for (int i = 0; i < messageCount; i++)
             {
                 var validateMessage = validationResponse.ValidationMessages[i];
@@ -122,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             };
 
             int messageCount = validationResponse.ValidateStorageMessages.Count;
-
+            result.ValidationMessages = new ValidationMessage[messageCount];
             for (int i = 0; i < messageCount; i++)
             {
                 var validateMessage = validationResponse.ValidateStorageMessages[i];
