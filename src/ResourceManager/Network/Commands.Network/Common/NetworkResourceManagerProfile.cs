@@ -71,6 +71,16 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSResourceId, MNM.SubResource>();
             Mapper.CreateMap<MNM.SubResource, CNM.PSResourceId>();
 
+            // Route Filter 
+            Mapper.CreateMap<CNM.PSRouteFilter, MNM.RouteFilter>();
+            Mapper.CreateMap<MNM.RouteFilter, CNM.PSRouteFilter>();
+            Mapper.CreateMap<CNM.PSRouteFilterRule, MNM.RouteFilterRule>();
+            Mapper.CreateMap<MNM.RouteFilterRule, CNM.PSRouteFilterRule>();
+
+            // Bgp Service Community
+            Mapper.CreateMap<CNM.PSBgpServiceCommunity, MNM.BgpServiceCommunity>();
+            Mapper.CreateMap<MNM.BgpServiceCommunity, CNM.PSBgpServiceCommunity>();
+
             // Subnet
             // CNM to MNM
             Mapper.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
@@ -124,6 +134,86 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
             Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
             Mapper.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
+
+            // NetworkWatcher
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSNetworkWatcher, MNM.NetworkWatcher>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.NetworkWatcher, CNM.PSNetworkWatcher>();
+
+            // PacketCapture
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSPacketCapture, MNM.PacketCaptureParameters>();
+            Mapper.CreateMap<CNM.PSPacketCaptureResult, MNM.PacketCaptureResult>();
+            Mapper.CreateMap<CNM.PSStorageLocation, MNM.PacketCaptureStorageLocation>();
+            Mapper.CreateMap<CNM.PSPacketCaptureFilter, MNM.PacketCaptureFilter>();
+            Mapper.CreateMap<CNM.PSPacketCaptureStatus, MNM.PacketCaptureQueryStatusResult>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.PacketCaptureParameters, CNM.PSPacketCapture>();
+            Mapper.CreateMap<MNM.PacketCaptureResult, CNM.PSPacketCaptureResult>();
+            Mapper.CreateMap<MNM.PacketCaptureStorageLocation, CNM.PSStorageLocation>();
+            Mapper.CreateMap<MNM.PacketCaptureFilter, CNM.PSPacketCaptureFilter>();
+            Mapper.CreateMap<MNM.PacketCaptureQueryStatusResult, CNM.PSPacketCaptureStatus>();
+
+            // Topology
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSTopology, MNM.Topology>();
+            Mapper.CreateMap<CNM.PSTopologyResource, MNM.TopologyResource>();
+            Mapper.CreateMap<CNM.PSTopologyAssociation, MNM.TopologyAssociation>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.Topology, CNM.PSTopology>();
+            Mapper.CreateMap<MNM.TopologyResource, CNM.PSTopologyResource>();
+            Mapper.CreateMap<MNM.TopologyAssociation, CNM.PSTopologyAssociation>();
+
+            // ViewNsgRules
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSSecurityGroupNetworkInterface, MNM.SecurityGroupNetworkInterface>();
+            Mapper.CreateMap<CNM.PSSecurityRuleAssociations, MNM.SecurityRuleAssociations>();
+            Mapper.CreateMap<CNM.PSNetworkInterfaceAssociation, MNM.NetworkInterfaceAssociation>();
+            Mapper.CreateMap<CNM.PSSubnetAssociation, MNM.SubnetAssociation>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.SecurityGroupNetworkInterface, CNM.PSSecurityGroupNetworkInterface>();
+            Mapper.CreateMap<MNM.SecurityRuleAssociations, CNM.PSSecurityRuleAssociations>();
+            Mapper.CreateMap<MNM.NetworkInterfaceAssociation, CNM.PSNetworkInterfaceAssociation>();
+            Mapper.CreateMap<MNM.SubnetAssociation, CNM.PSSubnetAssociation>();
+
+            // IpFlowVerify
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSIPFlowVerifyResult, MNM.VerificationIPFlowResult>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.VerificationIPFlowResult, CNM.PSIPFlowVerifyResult>();
+
+            // NextHop
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSNextHopResult, MNM.NextHopResult>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.NextHopResult, CNM.PSNextHopResult>();
+
+            // Troubleshoot
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSTroubleshootResult, MNM.TroubleshootingResult>();
+            Mapper.CreateMap<CNM.PSTroubleshootDetails, MNM.TroubleshootingDetails>();
+            Mapper.CreateMap<CNM.PSTroubleshootRecommendedActions, MNM.TroubleshootingRecommendedActions>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.TroubleshootingResult, CNM.PSTroubleshootResult>();
+            Mapper.CreateMap<MNM.TroubleshootingDetails, CNM.PSTroubleshootDetails>();
+            Mapper.CreateMap<MNM.TroubleshootingRecommendedActions, CNM.PSTroubleshootRecommendedActions>();
+
+            // FlowLog
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSFlowLog, MNM.FlowLogInformation>();
+            Mapper.CreateMap<CNM.PSRetentionPolicyParameters, MNM.RetentionPolicyParameters>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.FlowLogInformation, CNM.PSFlowLog>();
+            Mapper.CreateMap<MNM.RetentionPolicyParameters, CNM.PSRetentionPolicyParameters>();
 
             // LoadBalancer
             // CNM to MNM

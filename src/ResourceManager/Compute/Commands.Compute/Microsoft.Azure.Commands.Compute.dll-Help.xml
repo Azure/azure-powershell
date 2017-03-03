@@ -19900,10 +19900,12 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Daemon</maml:name>
-<maml:Description><maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
-  Options: 'none' or 'service'
+<maml:Description><maml:para>
+  Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Allowed options: 'none','service' and 'task'.
   none - Currently prevents the chef-client service from being configured as a service.
   service - Configures the chef-client to run automatically in the background as a service.
+  task - Configures the chef-client to run automatically in the background as a secheduled task.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -20057,10 +20059,12 @@ PS C:\&gt; Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Reso
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Daemon</maml:name>
-<maml:Description><maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
-  Options: 'none' or 'service'
+<maml:Description><maml:para>
+  Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Allowed options: 'none','service' and 'task'.
   none - Currently prevents the chef-client service from being configured as a service.
   service - Configures the chef-client to run automatically in the background as a service.
+  task - Configures the chef-client to run automatically in the background as a secheduled task.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -21256,6 +21260,14 @@ PS C:\&gt; Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite |
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="15" aliases="none"><maml:name>DisableAutoUpgradeMinorVersion</maml:name>
 <maml:Description><maml:para>Indicates that this cmdlet disables auto-upgrade of the minor version of the extension.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="16" aliases="none"><maml:name>SkipVmBackup</maml:name>
+<maml:Description><maml:para>Skip backup creation for Linux VMs
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>

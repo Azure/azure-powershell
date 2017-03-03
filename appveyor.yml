@@ -8,7 +8,7 @@ environment:
 build_script:
   - ps: |
       $ErrorActionPreference = "Stop"
-      $response = Invoke-WebRequest ("https://api.github.com/repos/" + $env:APPVEYOR_REPO_NAME + "/releases/tags/" + $env:APPVEYOR_REPO_TAG_NAME) -Timeout 10
+      $response = Invoke-WebRequest ("https://api.github.com/repos/" + $env:APPVEYOR_REPO_NAME + "/releases/latest") -Timeout 10
       if($response -ne $null -and $response.StatusCode -ne 200)
       {
         $host.SetShouldExit(1)
