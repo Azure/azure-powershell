@@ -46,21 +46,6 @@ Activating an authorization requires the **Set-AzureRmExpressRouteCircuit** show
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the circuit authorization to be added.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExpressRouteCircuit
 Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
 
@@ -109,6 +94,21 @@ Parameter Sets: (All)
 Aliases: iv
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the circuit authorization to be added.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

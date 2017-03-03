@@ -14,13 +14,13 @@ Starts troubleshooting on a Networking resource in Azure.
 ### SetByResource (Default)
 ```
 Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher <PSNetworkWatcher>
- -TargetResourceId <String> -StorageId <String> -StoragePath <String>
+ -TargetResourceId <String> -StorageId <String> -StoragePath <String> [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetResourceId <String> -StorageId <String> -StoragePath <String>
+ -TargetResourceId <String> -StorageId <String> -StoragePath <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,6 @@ The Start-AzureRmNetworkWatcherResourceTroubleshooting cmdlet starts troubleshoo
 ## EXAMPLES
 
 ### --- Example 1: Start Troubleshooting on a Virtual Network Gateway ---
-
 ```
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
@@ -86,7 +85,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -135,6 +134,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
@@ -148,6 +150,7 @@ System.String
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, troubleshoot, VPN, connection
 
 ## RELATED LINKS
+
 [Get-AzureRmNetworkWatcherTroubleshootingResult]()
 
 [New-AzureRmNetworkWatcher]()

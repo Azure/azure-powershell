@@ -61,15 +61,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the HTTP listener.
+### -FrontendIPConfiguration
+Specifies the front-end IP address of the application gateway.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSApplicationGatewayFrontendIPConfiguration
+Parameter Sets: SetByResource
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -82,6 +82,21 @@ Specifies the ID of the front-end IP address of the application gateway.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendPort
+Specifies the application gateway front-end port.
+
+```yaml
+Type: PSApplicationGatewayFrontendPort
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -106,21 +121,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SslCertificateId
-Specifies the Secure Socket Layer (SSL) certificate ID of the HTTP listener.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HostName
 Specifies the host name that this cmdlet sends the HTTP listener to.
 
@@ -130,41 +130,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequireServerNameIndication
-Specifies whether the cmdlet requires a server name indication.
-The acceptable values for this parameter are: true or false.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the protocol that the HTTP listener uses.
-The acceptable values for this parameter are:
-
-- Http
-- Https
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,27 +175,47 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendIPConfiguration
-Specifies the front-end IP address of the application gateway.
+### -Name
+Specifies the name of the HTTP listener.
 
 ```yaml
-Type: PSApplicationGatewayFrontendIPConfiguration
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendPort
-Specifies the application gateway front-end port.
+### -Protocol
+Specifies the protocol that the HTTP listener uses.
+The acceptable values for this parameter are:
+
+- Http
+- Https
 
 ```yaml
-Type: PSApplicationGatewayFrontendPort
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequireServerNameIndication
+Specifies whether the cmdlet requires a server name indication.
+The acceptable values for this parameter are: true or false.
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -246,6 +231,21 @@ Specifies the SSL certificate of the HTTP listener.
 ```yaml
 Type: PSApplicationGatewaySslCertificate
 Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SslCertificateId
+Specifies the Secure Socket Layer (SSL) certificate ID of the HTTP listener.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

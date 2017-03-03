@@ -278,6 +278,7 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayAdvertisedRoutesCommand.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
@@ -287,6 +288,8 @@
     <Compile Include="Models\PSFlowLog.cs" />
     <Compile Include="Models\PSFlowLogProperties.cs" />
     <Compile Include="Models\PSGetPacketCaptureResult.cs" />
+    <Compile Include="Models\PSBgpPeerStatus.cs" />
+    <Compile Include="Models\PSGatewayRoute.cs" />
     <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayWebApplicationFirewallConfiguration.cs" />
@@ -395,6 +398,8 @@
     <Compile Include="RouteFilter\RouteFilterRule\RemoveAzureRouteFilterRuleConfigCommand.cs" />
     <Compile Include="RouteFilter\RouteFilterRule\SetAzureRouteFilterRuleConfigCommand.cs" />
     <Compile Include="RouteFilter\SetAzureRouteFilterCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayBgpPeerStatus.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayLearnedRoutesCommand.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
