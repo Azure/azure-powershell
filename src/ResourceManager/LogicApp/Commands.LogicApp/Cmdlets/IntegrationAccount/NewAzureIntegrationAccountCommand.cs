@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account location.",
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     Location = this.Location,
                     Sku = new IntegrationAccountSku
                     {
-                        Name = (SkuName) Enum.Parse(typeof (SkuName), this.Sku)
+                        Name = (IntegrationAccountSkuName) Enum.Parse(typeof (IntegrationAccountSkuName), this.Sku)
                     },
                     Properties = new JObject()
 

@@ -52,11 +52,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy parameter
+        /// Gets or sets the policy definition policy rule parameter
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.")]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition parameters parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.")]
+        [ValidateNotNullOrEmpty]
+        public string Parameter { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -113,7 +120,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString())
+                    PolicyRule = JObject.Parse(this.GetPolicyRuleObject().ToString()),
+                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetParametersObject().ToString())
                 }
             };
 
@@ -130,6 +138,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return File.Exists(policyFilePath)
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
                 : JToken.FromObject(this.Policy);
+        }
+
+        /// <summary>
+        /// Gets the parameters object
+        /// </summary>
+        private JToken GetParametersObject()
+        {
+            string parametersFilePath = this.TryResolvePath(this.Parameter);
+
+            return File.Exists(parametersFilePath)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(parametersFilePath))
+                : JToken.FromObject(this.Parameter);
         }
     }
 }
