@@ -3,4 +3,4 @@
 $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
 Set-Location $defaults 
 
-Invoke-Pester
+Invoke-Pester -EnableExit

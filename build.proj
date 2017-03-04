@@ -365,6 +365,9 @@
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <CallTarget Targets="InvokeXUnit"/>
+    <!-- Run unite tests for BootStrapper -->
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;Import-Module $(LibraryToolsFolder)\AzureRM.BootStrapper; $(LibraryToolsFolder)\AzureRM.BootStrapper\Run-UnitTests.ps1 &quot;" ContinueOnError="false"/>
+
   </Target>
   
   <!-- Run Full switch with scenario tests -->
