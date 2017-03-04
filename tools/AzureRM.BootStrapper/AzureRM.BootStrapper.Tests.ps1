@@ -1,4 +1,4 @@
-Import-Module AzureRM.Bootstrapper
+#Requires -Modules AzureRM.BootStrapper
 $global:testProfileMap = "{`"Profile1`": { `"Module1`": [`"1.0`"], `"Module2`": [`"1.0`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
 
 Describe "Get-ProfileCachePath" {
@@ -1161,4 +1161,4 @@ Describe "Update-AzureRmProfile" {
 }
 
 # Cleanup: Reset $script:LatestProfileMapPath
-$script:LatestProfileMapPath = Get-LatestProfileMapPath
+#$script:LatestProfileMapPath = Get-LatestProfileMapPath
