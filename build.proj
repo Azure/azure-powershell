@@ -238,6 +238,12 @@
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psm1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')"/>
+      <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\AzureRM.BootStrapper.psd1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\AzureRM.BootStrapper.psm1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\help\AzureRM.Bootstrapper-help.xml" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
 	
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
