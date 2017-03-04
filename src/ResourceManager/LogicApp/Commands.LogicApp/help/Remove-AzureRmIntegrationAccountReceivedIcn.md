@@ -33,8 +33,7 @@ At line:1 char:1
 
 PS C:\> Remove-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
 PS C:\> Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
-Get-AzureRmIntegrationAccountReceivedIcn : The session 'X12-ICN-X12Agreement_Microsoft_Dell-000000641' could not be
-found in integration account 'yisha-guest'.
+Get-AzureRmIntegrationAccountReceivedIcn : The session 'X12-ICN-X12AgreementName-000000641' could not be found in integration account 'accountName'.
 At line:1 char:1
 + Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

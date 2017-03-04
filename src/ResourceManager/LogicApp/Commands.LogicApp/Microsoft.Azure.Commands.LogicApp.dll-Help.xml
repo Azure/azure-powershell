@@ -2670,7 +2670,7 @@ EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=rASa1yg14P71ioIStAji5HJfTFCbSjD3LNt2Ypn%2Byg4%3D&amp;se=2016-01-14T16%3A15%3A16Z&amp;sp=r
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&amp;se=2016-01-14T16%3A15%3A16Z&amp;sp=r
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -2689,7 +2689,7 @@ EndTime     : 1/13/2016 2:43:33 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/CAB46_60e2ad0f0e1947e8b5798716914c5d
-              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=aoyjajRfk5tQucYE%2BW6h9Is%2BAHSE7AcojY%2FOag6DWRA%3D&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
+              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
 Name        : 08587489106716457817
 OutputsLink : 
 Run         : 
@@ -2703,7 +2703,7 @@ EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=XNBbA0FkBQmGPDd%2Be03J0Vsdj4aFRG9YK5YBJwzBbO0%3D&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -6784,8 +6784,7 @@ At line:1 char:1
 
 PS C:\&gt; Remove-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
 PS C:\&gt; Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
-Get-AzureRmIntegrationAccountReceivedIcn : The session 'X12-ICN-X12Agreement_Microsoft_Dell-000000641' could not be
-found in integration account 'yisha-guest'.
+Get-AzureRmIntegrationAccountReceivedIcn : The session 'X12-ICN-X12AgreementName-000000641' could not be found in integration account 'accountName'.
 At line:1 char:1
 + Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
