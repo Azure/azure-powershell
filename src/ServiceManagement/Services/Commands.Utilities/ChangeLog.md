@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Update the output object of migration cmdlets (Move-Azure*: e.g. Move-AzureService, Move-AzureStorageAccount, etc.):
+    - ValidationMessages contain "Information" and "Warning" messages besides "Error" messages.
+    - Result output is changed according to ValidationMessages.
 ## Version 3.5.0
 * Updated Set-AzureVMDscExtension cmdlet WmfVersion parameter to support "5.1"
 
