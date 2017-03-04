@@ -237,12 +237,10 @@
     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureStack\AzureStack.psm1" 
-      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')"/>
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
       <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\AzureRM.BootStrapper.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\AzureRM.BootStrapper.psm1" 
-      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\help\AzureRM.Bootstrapper-help.xml" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
 	
     <ItemGroup>
@@ -308,11 +306,15 @@
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psd1" 
-      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureStack.psm1" 
-      DestinationFolder="$(LibraryRoot)tools\AzureStack" Condition="Exists('$(LibraryRoot)tools\AzureStack\AzureStack.psm1')" />
+      DestinationFolder="$(LibraryRoot)tools\AzureStack" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.BootStrapper.psd1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureRM.BootStrapper" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.BootStrapper.psm1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureRM.BootStrapper"  />
   </Target>
-  
+ 
   <Target Name="CodeSignInstaller">
     <PropertyGroup>
       <!--public token associated with MSSharedLibKey.snk-->

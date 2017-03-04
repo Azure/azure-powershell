@@ -57,11 +57,11 @@ function Get-TargetModules
           foreach ($module in $resourceManagerModules) {
             # filter out AzureRM.Profile which always gets published first 
             # And "Azure.Storage" which is built out as test dependencies  
-            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.BootStrapper")) {
+            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
               $targets += $module.FullName
             }
           }
-        } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage") -and ($Scope -ne "AzureStack")) {
+        } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage") -and ($Scope -ne "AzureStack") -and ($Scope -ne "AzureRM.BootStrapper")) {
           $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
           if (Test-Path $modulePath) {
             $targets += $modulePath      
@@ -78,9 +78,10 @@ function Get-TargetModules
         if (($Scope -eq 'All') -or ($Scope -eq 'AzureStack')) {
             # Publish AzureStack module    
             $targets += "$PSScriptRoot\AzureStack"
+			$targets += "$PSScriptRoot\AzureRM.BootStrapper"
         } 
 
-		if (($Scope -eq 'All') -or ($Scope -eq 'AzureRM.BootStrapper')) {
+		if ($Scope -eq 'AzureRM.BootStrapper') {
             # Publish AzureStack module    
             $targets += "$PSScriptRoot\AzureRM.BootStrapper"
         } 
