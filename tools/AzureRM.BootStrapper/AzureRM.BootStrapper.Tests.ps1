@@ -134,6 +134,7 @@ Describe "Get-AzureStorageBlob" {
 
 Describe "RetryGetContent" {
     InModuleScope AzureRM.Bootstrapper {
+        if ($PSVersionTable.PSVersion.Major -gt 4) {
         Context "Gets content at first attempt" {
             Mock Get-Content -Verifiable { $global:testProfileMap }
             It "Should return successfully" {
@@ -141,6 +142,7 @@ Describe "RetryGetContent" {
                 $result | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks
             }
+        }
         }
 
         Context "Gets content at one of the retries" {
@@ -189,11 +191,13 @@ Describe "Get-AzureProfileMap" {
 
         Context "ProfileCachePath Exists and Etags are equal" {
             Mock Test-Path -Verifiable { $true }
+        if ($PSVersionTable.PSVersion.Major -gt 4) {
 
             It "Returns Correct ProfileMap" {
                 Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
                 Assert-VerifiableMocks
             }
+        }
         }
 
         Context "ProfileCachePath Exists and ETags are different" {
@@ -204,9 +208,12 @@ Describe "Get-AzureProfileMap" {
             $ProfileMapPath = New-Object -TypeName  PSObject
             $ProfileMapPath | Add-Member NoteProperty 'FullName' -Value '124-MockedDifferentETag.json'
             Mock Get-ChildItem -Verifiable { @($ProfileMapPath)}
-            It "Returns Correct ProfileMap" {
-                Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
-                Assert-VerifiableMocks
+            if ($PSVersionTable.PSVersion.Major -gt 4) {
+
+                It "Returns Correct ProfileMap" {
+                     Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
+                    Assert-VerifiableMocks
+                }
             }
         }
 
@@ -246,9 +253,11 @@ Describe Get-AzProfile {
         
         Context "Forces update from Azure Endpoint" {
             Mock Get-AzureProfileMap { ($testProfileMap | ConvertFrom-Json) }
-            
-            It "Should get ProfileMap from Azure Endpoint" {
-                 Get-AzProfile -Update  | Should Be "@{profile1=; profile2=}"
+            if ($PSVersionTable.PSVersion.Major -gt 4) {
+
+                It "Should get ProfileMap from Azure Endpoint" {
+                      Get-AzProfile -Update  | Should Be "@{profile1=; profile2=}"
+                }
             }
             It "Checks Mock calls to Get-AzureProfileMap" {
                 Assert-MockCalled Get-AzureProfileMap -Exactly 1
@@ -260,20 +269,24 @@ Describe Get-AzProfile {
             $script:LatestProfileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
             Mock RetryGetContent -Verifiable { $global:testProfileMap | ConvertFrom-Json }
             Mock Test-Path -Verifiable { $true }
-            
-            It "Should get ProfileMap from Cache" {
-                Get-AzProfile | Should Be "@{profile1=; profile2=}"
-                Assert-VerifiableMocks
+            if ($PSVersionTable.PSVersion.Major -gt 4) {
+
+                It "Should get ProfileMap from Cache" {
+                    Get-AzProfile | Should Be "@{profile1=; profile2=}"
+                    Assert-VerifiableMocks
+                }
             }
         }
 
         Context "ProfileMap is not available from cache" {
             Mock Test-Path -Verifiable { $false }
             Mock RetryGetContent -Verifiable { return $global:testProfileMap  | ConvertFrom-Json}
+            if ($PSVersionTable.PSVersion.Major -gt 4) {
 
-            It "Should get ProfileMap from Embedded source" {
-                Get-AzProfile | Should Be "@{profile1=; profile2=}"
-                Assert-VerifiableMocks
+                It "Should get ProfileMap from Embedded source" {
+                    Get-AzProfile | Should Be "@{profile1=; profile2=}"
+                    Assert-VerifiableMocks
+                }
             }
         }
 
@@ -920,7 +933,7 @@ Describe "Use-AzureRmProfile" {
         Mock Install-Module { "Installing module..."}
         Mock Import-Module -Verifiable { "Importing Module..."}
         Mock Find-PotentialConflict {}
-
+        if ($PSVersionTable.PSVersion.Major -gt 4) {
         Context "Modules not installed" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
             It "Should install modules" {
@@ -964,7 +977,7 @@ Describe "Use-AzureRmProfile" {
                 
             }
         }
-
+        }
         Context "Invoke with invalid profile" {
             It "Should throw" {
                 { Use-AzureRmProfile -Profile 'WrongProfileName'} | Should Throw
@@ -976,6 +989,7 @@ Describe "Use-AzureRmProfile" {
                 { Use-AzureRmProfile -Profile $null} | Should Throw
             }
         }
+        if ($PSVersionTable.PSVersion.Major -gt 4) {
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
@@ -994,12 +1008,14 @@ Describe "Use-AzureRmProfile" {
                 Assert-VerifiableMocks
             }
         }
+        }
 
         Context "Invoke with invalide module name" {
             It "Should throw" {
                 { Use-AzureRmProfile -Profile 'Profile1' -Module 'MockModule'} | Should Throw
             }            
         }
+        if ($PSVersionTable.PSVersion.Major -gt 4) {
 
         Context "Potential Conflict found" {
             Mock Find-PotentialConflict -Verifiable { $true }
@@ -1022,6 +1038,7 @@ Describe "Use-AzureRmProfile" {
                 $useError -like "A different version of module Module1 is already imported in this session. Start a new PowerShell session and retry the operation." | Should Be $true
             }
         }
+        }
     }
 }
 
@@ -1030,12 +1047,15 @@ Describe "Install-AzureRmProfile" {
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Get-AzureRmModule -Verifiable {} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module1'}
         Mock Get-AzureRmModule -Verifiable { "1.0"} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module2'}
+        if ($PSVersionTable.PSVersion.Major -gt 4) {
+
         Context "Invoke with valid profile name" {
             Mock Install-Module -Verifiable { "Installing module Module1... Version 1.0"} 
             It "Should install Module1" {
                 (Install-AzureRmProfile -Profile 'Profile1') | Should be "Installing module Module1... Version 1.0"
                 Assert-VerifiableMocks
           }
+        }
         }
 
         Context "Invoke with invalid profile name" {
@@ -1049,6 +1069,7 @@ Describe "Install-AzureRmProfile" {
                 { Install-AzureRmProfile -Profile $null } | Should Throw
             }
         }
+        if ($PSVersionTable.PSVersion.Major -gt 4) {
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
@@ -1066,6 +1087,7 @@ Describe "Install-AzureRmProfile" {
                 (Install-AzureRmProfile -Profile 'Profile1' -scope AllUsers)
                 Assert-VerifiableMocks
             }
+        }
         }
     }
 }
