@@ -48,6 +48,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrudGeo()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudGeo");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudPiping()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudPiping");

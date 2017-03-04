@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudWithEndpointGeo()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CrudWithEndpointGeo");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListProfilesInResourceGroup()
         {
             TestController.NewInstance.RunPowerShellTest("Test-ListProfilesInResourceGroup");
