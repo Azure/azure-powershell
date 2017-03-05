@@ -203,10 +203,14 @@ function Test-ApplicationGatewayCRUD
 		$getgw = Set-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType basic -HttpListener $listener -BackendHttpSettings $poolSetting -BackendAddressPool $pool
 
 		# Modify existing application gateway with new configuration
-		Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		Assert-True { $getgw.OperationalState -eq "Running" }
 
 		# Stop Application Gateway
-		Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		Assert-True { $getgw.OperationalState -eq "Stopped" }
  
 		# Delete Application Gateway
 		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
@@ -239,16 +243,16 @@ function Compare-AzureRmApplicationGateway($actual, $expected)
 		$actualConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $actual.BackendHttpSettingsCollection[$i]
 		$expectedConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $expected.BackendHttpSettingsCollection[$i]
 
-		if($actualConnectionDraining) 
+		if($expectedConnectionDraining) 
 		{
-			Assert-NotNull $expectedConnectionDraining
+			Assert-NotNull $actualConnectionDraining
 			Assert-AreEqual $expectedConnectionDraining.Enabled $actualConnectionDraining.Enabled
 			Assert-AreEqual $expectedConnectionDraining.DrainTimeoutInSec $actualConnectionDraining.DrainTimeoutInSec
 
 		}
 		else 
 		{
-			Assert-Null $expectedConnectionDraining
+			Assert-Null $actualConnectionDraining
 		}
 	}
 
