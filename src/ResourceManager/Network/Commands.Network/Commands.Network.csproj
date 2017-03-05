@@ -180,6 +180,7 @@
     <Compile Include="ApplicationGateway\ConnectionDraining\AzureApplicationGatewayConnectionDrainingBase.cs" />
     <Compile Include="ApplicationGateway\ConnectionDraining\GetAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\ConnectionDraining\NewAzureApplicationGatewayConnectionDrainingCommand.cs" />
+    <Compile Include="ApplicationGateway\ConnectionDraining\RemoveAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\ConnectionDraining\SetAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\AzureApplicationGatewayWebApplicationFirewallConfigurationBase.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
