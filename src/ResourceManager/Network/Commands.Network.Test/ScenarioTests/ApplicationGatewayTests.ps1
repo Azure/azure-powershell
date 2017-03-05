@@ -90,9 +90,24 @@ function Test-ApplicationGatewayCRUD
 		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
 		$probeHttps = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpsName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		
 		$connectionDraining01 = New-AzureRmApplicationGatewayConnectionDraining -Enabled $True -DrainTimeoutInSec 42
 		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -ConnectionDraining $connectionDraining01
+		Assert-NotNull $poolSetting01.connectionDraining
+		Assert-AreEqual $True $poolSetting01.connectionDraining.Enabled
+		Assert-AreEqual 42 $poolSetting01.connectionDraining.DrainTimeoutInSec
+		
 		$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Port 443 -Protocol Https -Probe $probeHttps -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01
+		Assert-Null $poolSetting02.connectionDraining
+		
+		#Test setting and removing connectiondraining
+		Set-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $False -DrainTimeoutInSec 3600
+		$connectionDraining02 = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
+		Assert-NotNull $connectionDraining02
+		Assert-AreEqual $False $connectionDraining02.Enabled
+		Assert-AreEqual 3600 $connectionDraining02.DrainTimeoutInSec
+		Remove-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
+		Assert-Null $poolSetting02.connectionDraining
 
 		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
 		$listener02 = New-AzureRmApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02
@@ -112,8 +127,9 @@ function Test-ApplicationGatewayCRUD
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
-		Compare-AzureRmApplicationGateway $appgw $getgw
-		Assert-True { $getgw.OperationalState -eq "Running" }
+		Assert-AreEqual "Running" $getgw.OperationalState
+		Compare-ConnectionDraining $poolSetting01 $getgw.BackendHttpSettingsCollection[0]
+		Compare-ConnectionDraining $poolSetting02 $getgw.BackendHttpSettingsCollection[1]
 
 		# Get Application Gateway backend health with expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
@@ -205,12 +221,12 @@ function Test-ApplicationGatewayCRUD
 		# Modify existing application gateway with new configuration
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
-		Assert-True { $getgw.OperationalState -eq "Running" }
+		Assert-AreEqual "Running" $getgw.OperationalState
 
 		# Stop Application Gateway
 		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
 
-		Assert-True { $getgw.OperationalState -eq "Stopped" }
+		Assert-AreEqual "Stopped" $getgw.OperationalState
  
 		# Delete Application Gateway
 		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
@@ -222,11 +238,34 @@ function Test-ApplicationGatewayCRUD
 	}
 }
 
+
+<#
+.SYNOPSIS
+Compare connectionDraining of backendhttpsettings
+#>
+function Compare-ConnectionDraining($expected, $actual)
+{
+	$expectedConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $expected
+	$actualConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $actual
+
+	if($expectedConnectionDraining) 
+	{
+		Assert-NotNull $actualConnectionDraining
+		Assert-AreEqual $expectedConnectionDraining.Enabled $actualConnectionDraining.Enabled
+		Assert-AreEqual $expectedConnectionDraining.DrainTimeoutInSec $actualConnectionDraining.DrainTimeoutInSec
+
+	}
+	else 
+	{
+		Assert-Null $actualConnectionDraining
+	}
+}
+
 <#
 .SYNOPSIS
 Compare application gateways
 #>
-function Compare-AzureRmApplicationGateway($actual, $expected)
+function Compare-AzureRmApplicationGateway($expected, $actual)
 {
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.Name $actual.Name
@@ -240,20 +279,7 @@ function Compare-AzureRmApplicationGateway($actual, $expected)
 
 	for($i = 0; $i -lt $actual.BackendHttpSettingsCollection.Count; $i++) 
 	{
-		$actualConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $actual.BackendHttpSettingsCollection[$i]
-		$expectedConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $expected.BackendHttpSettingsCollection[$i]
-
-		if($expectedConnectionDraining) 
-		{
-			Assert-NotNull $actualConnectionDraining
-			Assert-AreEqual $expectedConnectionDraining.Enabled $actualConnectionDraining.Enabled
-			Assert-AreEqual $expectedConnectionDraining.DrainTimeoutInSec $actualConnectionDraining.DrainTimeoutInSec
-
-		}
-		else 
-		{
-			Assert-Null $actualConnectionDraining
-		}
+		Compare-ConnectionDraining $actual.BackendHttpSettingsCollection[$i] $expected.BackendHttpSettingsCollection[$i] 
 	}
 
 	Assert-AreEqual $expected.HttpListeners.Count $actual.HttpListeners.Count
