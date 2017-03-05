@@ -231,6 +231,15 @@
       <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithWrongName.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithSasToken.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithStorageType.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ConfigFiles\DiagnosticsExtensionConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -243,6 +252,24 @@
     <None Include="ScenarioTests\DiskRPTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="ConfigFiles\DiagnosticsExtensionPrivateConfigWithSasToken.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigFiles\DiagnosticsExtensionPublicConfigWithStorageType.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigFiles\DiagnosticsExtensionPrivateConfigWithWrongName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithWrongName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithStorageType.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithSasToken.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="ScenarioTests\AddVhdTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
