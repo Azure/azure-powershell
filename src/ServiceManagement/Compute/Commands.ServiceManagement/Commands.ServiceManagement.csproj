@@ -286,7 +286,6 @@
     <Compile Include="Migration\MoveAzureNetworkResourceBase.cs" />
     <Compile Include="Migration\MoveAzureNetworkSecurityGroup.cs" />
     <Compile Include="Migration\MoveAzureStorageAccount.cs" />
-    <Compile Include="Migration\MigrationValidateContext.cs" />
     <Compile Include="Migration\MoveAzureReservedIP.cs" />
     <Compile Include="Migration\MoveAzureRouteTable.cs" />
     <Compile Include="Migration\MoveAzureVirtualNetwork.cs" />

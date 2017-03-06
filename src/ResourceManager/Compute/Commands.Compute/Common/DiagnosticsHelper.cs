@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string EncodedXmlCfg = "xmlCfg";
         private static string WadCfg = "WadCfg";
         private static string WadCfgBlob = "WadCfgBlob";
+        private static string StorageType = "StorageType";
         private static string StorageAccount = "storageAccount";
         private static string Path = "path";
         private static string ExpandResourceDirectory = "expandResourceDirectory";
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string StorageAccountNameTag = "storageAccountName";
         private static string StorageAccountKeyTag = "storageAccountKey";
         private static string StorageAccountEndPointTag = "storageAccountEndPoint";
+        private static string StorageAccountSASTokenTag = "storageAccountSasToken";
 
         public static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         public static string DiagnosticsConfigurationElemStr = "DiagnosticsConfiguration";
@@ -57,12 +59,20 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static string PrivConfNameAttr = "name";
         public static string PrivConfKeyAttr = "key";
         public static string PrivConfEndpointAttr = "endpoint";
+        public static string PrivConfSasKeyAttr = "sasToken";
         public static string MetricsElemStr = "Metrics";
         public static string MetricsResourceIdAttr = "resourceId";
         public static string EventHubElemStr = "EventHub";
         public static string EventHubUrlAttr = "Url";
         public static string EventHubSharedAccessKeyNameAttr = "SharedAccessKeyName";
         public static string EventHubSharedAccessKeyAttr = "SharedAccessKey";
+
+        private enum WadStorageType
+        {
+            Table,
+            Blob,
+            TableAndBlob
+        }
 
         public enum ConfigFileType
         {
@@ -154,6 +164,19 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 hashTable.Add(LocalResourceDirectory, localDirectoryHashTable);
             }
 
+            var storageTypeElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == StorageType);
+            if (storageTypeElement != null)
+            {
+                string storageType = storageTypeElement.Value;
+                WadStorageType wadStorageType;
+                if (!Enum.TryParse<WadStorageType>(storageType, out wadStorageType))
+                {
+                    throw new ArgumentException(StorageType);
+                }
+
+                hashTable.Add(StorageType, storageTypeElement.Value);
+            }
+
             return hashTable;
         }
 
@@ -197,6 +220,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             var wadCfgBlobProperty = properties.FirstOrDefault(p => p.Equals(WadCfgBlob, StringComparison.OrdinalIgnoreCase));
             var xmlCfgProperty = properties.FirstOrDefault(p => p.Equals(EncodedXmlCfg, StringComparison.OrdinalIgnoreCase));
             var storageAccountProperty = properties.FirstOrDefault(p => p.Equals(StorageAccount, StringComparison.OrdinalIgnoreCase));
+            var storageTypeProperty = properties.FirstOrDefault(p => p.Equals(StorageType, StringComparison.OrdinalIgnoreCase));
 
             var hashTable = new Hashtable();
 
@@ -224,6 +248,18 @@ namespace Microsoft.Azure.Commands.Compute.Common
             else
             {
                 throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInJson);
+            }
+
+            if (storageTypeProperty != null)
+            {
+                string storageType = (string)publicConfig[storageTypeProperty];
+                WadStorageType wadStorageType;
+                if (!Enum.TryParse<WadStorageType>(storageType, out wadStorageType))
+                {
+                    throw new ArgumentException(StorageType);
+                }
+
+                hashTable.Add(StorageType, storageType);
             }
 
             return hashTable;
@@ -261,7 +297,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         }
 
         public static Hashtable GetPrivateDiagnosticsConfiguration(string configurationPath,
-            string storageAccountName, string storageKey, string endpoint)
+            string overrideStorageAccountName, string overrideStorageKey, string overrideEndpoint)
         {
             var privateConfig = new Hashtable();
             var configFileType = GetConfigFileType(configurationPath);
@@ -281,6 +317,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                     {
                         var config = (Cis.Monitoring.Wad.PrivateConfigConverter.PrivateConfig)serializer.Deserialize(sr);
 
+                        var storageAccount = config.StorageAccount;
                         // Set the StorageAccount element as null, so it won't appear after serialize to json
                         config.StorageAccount = null;
 
@@ -290,6 +327,26 @@ namespace Microsoft.Azure.Commands.Compute.Common
                                                 NullValueHandling = NullValueHandling.Ignore
                                             });
                         privateConfig = JsonConvert.DeserializeObject<Hashtable>(privateConfigInJson);
+
+                        if (!string.IsNullOrEmpty(storageAccount.name))
+                        {
+                            privateConfig[StorageAccountNameTag] = storageAccount.name;
+                        }
+
+                        if (!string.IsNullOrEmpty(storageAccount.key))
+                        {
+                            privateConfig[StorageAccountKeyTag] = storageAccount.key;
+                        }
+
+                        if (!string.IsNullOrEmpty(storageAccount.endpoint))
+                        {
+                            privateConfig[StorageAccountEndPointTag] = storageAccount.endpoint;
+                        }
+
+                        if (!string.IsNullOrEmpty(storageAccount.sasToken))
+                        {
+                            privateConfig[StorageAccountSASTokenTag] = storageAccount.sasToken;
+                        }
                     }
                 }
             }
@@ -305,9 +362,21 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             }
 
-            privateConfig[StorageAccountNameTag] = storageAccountName;
-            privateConfig[StorageAccountKeyTag] = storageKey;
-            privateConfig[StorageAccountEndPointTag] = endpoint;
+            string storageAccountNameInPrivateConfig = privateConfig[StorageAccountNameTag] as string;
+            if (!string.IsNullOrEmpty(storageAccountNameInPrivateConfig) && 
+                !string.Equals(storageAccountNameInPrivateConfig, overrideStorageAccountName, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionMismatchStorageAccountName, StorageAccountNameTag);
+            }
+
+            privateConfig[StorageAccountNameTag] = overrideStorageAccountName;
+
+            // Only overwrite storage key if no sas token is provided.
+            if (string.IsNullOrEmpty(privateConfig[StorageAccountSASTokenTag] as string))
+            {
+                privateConfig[StorageAccountKeyTag] = overrideStorageKey;
+                privateConfig[StorageAccountEndPointTag] = overrideEndpoint;
+            }
 
             return privateConfig;
         }
@@ -602,35 +671,48 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
             // Resolve storage account name
             // Storage account name must be provided in public config
-            var storageAccountName = publicConfig[StorageAccount] as string;
-            if (string.IsNullOrEmpty(storageAccountName))
+            var storageAccountNameInPublicConfig = publicConfig[StorageAccount] as string;
+            if (string.IsNullOrEmpty(storageAccountNameInPublicConfig))
             {
                 throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountName);
             }
 
-            privateConfig[StorageAccountNameTag] = storageAccountName;
-
-            // Resolve storage account key
-            var storageAccountKey = InitializeStorageAccountKey(storageClient, storageAccountName, privateConfigPath);
-            if (string.IsNullOrEmpty(storageAccountKey))
+            string storageAccountNameInPrivateConfig = privateConfig[StorageAccountNameTag] as string;
+            if (!string.IsNullOrEmpty(storageAccountNameInPrivateConfig) &&
+                !string.Equals(storageAccountNameInPrivateConfig, storageAccountNameInPublicConfig, StringComparison.OrdinalIgnoreCase))
             {
-                storageAccountKey = privateConfig[StorageAccountKeyTag] as string;
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionMismatchStorageAccountName, StorageAccountNameTag);
+            }
 
+            privateConfig[StorageAccountNameTag] = storageAccountNameInPublicConfig;
+
+            string storageAccountKey = null;
+            // If sas token is provided, just use it.
+            // Otherwise, try to resolve storage key.
+            if (string.IsNullOrEmpty(privateConfig[StorageAccountSASTokenTag] as string))
+            {
+                // Resolve storage account key
+                storageAccountKey = InitializeStorageAccountKey(storageClient, storageAccountNameInPublicConfig, privateConfigPath);
                 if (string.IsNullOrEmpty(storageAccountKey))
                 {
-                    // Throw exception if no storage key provided in private config and cannot retrieve it from server
-                    throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountKey);
+                    storageAccountKey = privateConfig[StorageAccountKeyTag] as string;
+
+                    if (string.IsNullOrEmpty(storageAccountKey))
+                    {
+                        // Throw exception if no storage key provided in private config and cannot retrieve it from server
+                        throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountKey);
+                    }
                 }
-            }
-            else
-            {
-                // If storage key can be retrieved, use that one.
-                privateConfig[StorageAccountKeyTag] = storageAccountKey;
+                else
+                {
+                    // If storage key can be retrieved, use that one.
+                    privateConfig[StorageAccountKeyTag] = storageAccountKey;
+                }
             }
 
 
             // Resolve storage account endpoint
-            var storageAccountEndpoint = InitializeStorageAccountEndpoint(storageAccountName, storageAccountKey, storageClient);
+            var storageAccountEndpoint = storageAccountKey == null? null: InitializeStorageAccountEndpoint(storageAccountNameInPublicConfig, storageAccountKey, storageClient);
             if (string.IsNullOrEmpty(storageAccountEndpoint))
             {
                 storageAccountEndpoint = privateConfig[StorageAccountEndPointTag] as string;
