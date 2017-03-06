@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmCdnCustomDomainHttps", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmCdnCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class EnableAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN custom domain name.", ParameterSetName = FieldsParameterSet)]

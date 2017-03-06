@@ -17,7 +17,7 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+## Current Release (Add disable and enable CDN Custom domain Https)
 
 ## Version 2.6.0
 
