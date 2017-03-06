@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ResourceGuid { get; set; }
 
-        public Hashtable Tag { get; set; }
-
         public string Type { get; set; }
+
+        public Hashtable Tag { get; set; }
 
         public string TagsTable
         {
