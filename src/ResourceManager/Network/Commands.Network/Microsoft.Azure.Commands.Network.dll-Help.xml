@@ -578,6 +578,15 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendAddressPool -Application
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ConnectionDraining</maml:name>
+<maml:Description><maml:para>Connection draining of the backend http settings resource.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayConnectionDraining</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayConnectionDraining</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ApplicationGateway</maml:name>
@@ -690,6 +699,15 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendAddressPool -Application
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ConnectionDraining</maml:name>
+<maml:Description><maml:para>Connection draining of the backend http settings resource.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayConnectionDraining</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayConnectionDraining</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -9096,6 +9114,83 @@ PS C:\&gt; $SettingsList  = Get-AzureRmApplicationGatewayBackendHttpSettings -Ap
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Set-AzureRmApplicationGatewayBackendHttpSettings</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Get-AzureRmApplicationGatewayConnectionDraining</command:name>
+<command:verb>Get</command:verb>
+<command:noun>AzureRmApplicationGatewayConnectionDraining</command:noun>
+<maml:description><maml:para>Gets the connection draining configuration of a back-end HTTP settings object.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Get-AzureRmApplicationGatewayConnectionDraining cmdlet gets the connection draining configuration of a back-end HTTP settings object.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Get-AzureRmApplicationGatewayConnectionDraining</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>BackendHttpSettings</maml:name>
+<maml:Description><maml:para>The backend http settings
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>BackendHttpSettings</maml:name>
+<maml:Description><maml:para>The backend http settings
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayConnectionDraining</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw
+PS C:\&gt; $ConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $Settings</dev:code>
+<dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable. The last command gets the connection draining configuration from the back-end HTTP settings $Settings and stores it in the $ConnectionDraining variable.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmApplicationGateway</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-AzureRmApplicationGatewayBackendHttpSettings</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>New-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -19214,6 +19309,15 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ConnectionDraining</maml:name>
+<maml:Description><maml:para>Connection draining of the backend http settings resource.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayConnectionDraining</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayConnectionDraining</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
@@ -19320,6 +19424,15 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ConnectionDraining</maml:name>
+<maml:Description><maml:para>Connection draining of the backend http settings resource.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayConnectionDraining</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayConnectionDraining</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
 </dev:type>
@@ -19356,6 +19469,93 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Set-AzureRmApplicationGatewayBackendHttpSettings</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>New-AzureRmApplicationGatewayConnectionDraining</command:name>
+<command:verb>New</command:verb>
+<command:noun>AzureRmApplicationGatewayConnectionDraining</command:noun>
+<maml:description><maml:para>Creates a new connection draining configuration for back-end HTTP settings.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The New-AzureRmApplicationGatewayConnectionDraining cmdlet creates a new connection draining configuration for back-end HTTP settings.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>New-AzureRmApplicationGatewayConnectionDraining</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DrainTimeoutInSec</maml:name>
+<maml:Description><maml:para>The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+<dev:type><maml:name>UInt32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Enabled</maml:name>
+<maml:Description><maml:para>Whether connection draining is enabled or not.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+<dev:type><maml:name>Boolean</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DrainTimeoutInSec</maml:name>
+<maml:Description><maml:para>The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+<dev:type><maml:name>UInt32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Enabled</maml:name>
+<maml:Description><maml:para>Whether connection draining is enabled or not.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+<dev:type><maml:name>Boolean</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayConnectionDraining</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; $connectionDraining = New-AzureRmApplicationGatewayConnectionDraining -Enabled $True -DrainTimeoutInSec 42</dev:code>
+<dev:remarks><maml:para>The command creates a new connection draining configuration with Enabled set to True and DrainTimeoutInSec set to 42 seconds and stores it in $connectionDraining.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -33035,6 +33235,83 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGatew
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Remove-AzureRmApplicationGatewayConnectionDraining</command:name>
+<command:verb>Remove</command:verb>
+<command:noun>AzureRmApplicationGatewayConnectionDraining</command:noun>
+<maml:description><maml:para>Removes the connection draining configuration of a back-end HTTP settings object.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Remove-AzureRmApplicationGatewayConnectionDraining cmdlet removes the connection draining configuration of a back-end HTTP settings object.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Remove-AzureRmApplicationGatewayConnectionDraining</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>BackendHttpSettings</maml:name>
+<maml:Description><maml:para>The backend http settings
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>BackendHttpSettings</maml:name>
+<maml:Description><maml:para>The backend http settings
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw
+PS C:\&gt; Remove-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $Settings</dev:code>
+<dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable. The last command removes the connection draining configuration of the back-end HTTP settings stored in $Settings.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmApplicationGateway</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-AzureRmApplicationGatewayBackendHttpSettings</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>New-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Remove-AzureRmApplicationGatewayFrontendIPConfig</command:name>
 <command:verb>Remove</command:verb>
 <command:noun>AzureRmApplicationGatewayFrontendIPConfig</command:noun>
@@ -41002,6 +41279,15 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -Application
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ConnectionDraining</maml:name>
+<maml:Description><maml:para>Connection draining of the backend http settings resource.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayConnectionDraining</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayConnectionDraining</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ApplicationGateway</maml:name>
@@ -41117,6 +41403,15 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -Application
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ConnectionDraining</maml:name>
+<maml:Description><maml:para>Connection draining of the backend http settings resource.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayConnectionDraining</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayConnectionDraining</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
 </dev:type>
@@ -41156,6 +41451,119 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendHttpSettings -Applicatio
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Remove-AzureRmApplicationGatewayBackendHttpSettings</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Set-AzureRmApplicationGatewayConnectionDraining</command:name>
+<command:verb>Set</command:verb>
+<command:noun>AzureRmApplicationGatewayConnectionDraining</command:noun>
+<maml:description><maml:para>Modifies the connection draining configuration of a back-end HTTP settings object.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration cmdlet modifies the connection draining configuration of a back-end HTTP settings object.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Set-AzureRmApplicationGatewayConnectionDraining</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>BackendHttpSettings</maml:name>
+<maml:Description><maml:para>The backend http settings
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DrainTimeoutInSec</maml:name>
+<maml:Description><maml:para>The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+<dev:type><maml:name>UInt32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Enabled</maml:name>
+<maml:Description><maml:para>Whether connection draining is enabled or not.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+<dev:type><maml:name>Boolean</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>BackendHttpSettings</maml:name>
+<maml:Description><maml:para>The backend http settings
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
+<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DrainTimeoutInSec</maml:name>
+<maml:Description><maml:para>The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+<dev:type><maml:name>UInt32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Enabled</maml:name>
+<maml:Description><maml:para>Whether connection draining is enabled or not.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+<dev:type><maml:name>Boolean</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw
+PS C:\&gt; Set-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $False -DrainTimeoutInSec 3600</dev:code>
+<dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable. The last command modifies the connection draining configuration of the back-end HTTP settings object stored in $Settings by setting Enabled to False and DrainTimeoutInSec to 3600.
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmApplicationGateway</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-AzureRmApplicationGatewayBackendHttpSettings</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>New-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-AzureRmApplicationGatewayConnectionDraining</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
