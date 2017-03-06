@@ -138,7 +138,7 @@ Describe "RetryGetContent" {
             Mock Get-Content -Verifiable { $global:testProfileMap }
             It "Should return successfully" {
                 $result = RetryGetContent -FilePath ".\MockPath"
-                $result | Should Be "@{Profile1=; Profile2=}"
+                $result | Should Be $global:testProfileMap
                 Assert-VerifiableMocks
             }
         }
@@ -190,7 +190,7 @@ Describe "Get-AzureProfileMap" {
         Context "ProfileCachePath Exists and Etags are equal" {
             Mock Test-Path -Verifiable { $true }
             It "Returns Correct ProfileMap" {
-                Get-AzureProfileMap | Should Be "@{Profile1=; Profile2=}"
+                Get-AzureProfileMap | Should Be $global:testProfileMap
                 Assert-VerifiableMocks
             }
         }
@@ -204,7 +204,7 @@ Describe "Get-AzureProfileMap" {
             $ProfileMapPath | Add-Member NoteProperty 'FullName' -Value '124-MockedDifferentETag.json'
             Mock Get-ChildItem -Verifiable { @($ProfileMapPath)}
             It "Returns Correct ProfileMap" {
-                Get-AzureProfileMap | Should Be "@{Profile1=; Profile2=}"
+                Get-AzureProfileMap | Should Be $global:testProfileMap
                 Assert-VerifiableMocks
             }
         }
@@ -246,7 +246,7 @@ Describe Get-AzProfile {
         Context "Forces update from Azure Endpoint" {
             Mock Get-AzureProfileMap { ($testProfileMap | ConvertFrom-Json) }
             It "Should get ProfileMap from Azure Endpoint" {
-                Get-AzProfile -Update  | Should Be "@{Profile1=; Profile2=}"
+                Get-AzProfile -Update  | Should Be $global:testProfileMap
             }
             It "Checks Mock calls to Get-AzureProfileMap" {
                 Assert-MockCalled Get-AzureProfileMap -Exactly 1
@@ -259,7 +259,7 @@ Describe Get-AzProfile {
             Mock RetryGetContent -Verifiable { $global:testProfileMap | ConvertFrom-Json }
             Mock Test-Path -Verifiable { $true }
             It "Should get ProfileMap from Cache" {
-                Get-AzProfile | Should Be "@{Profile1=; Profile2=}"
+                Get-AzProfile | Should Be $global:testProfileMap
                 Assert-VerifiableMocks
             }
         }
@@ -268,7 +268,7 @@ Describe Get-AzProfile {
             Mock Test-Path -Verifiable { $false }
             Mock RetryGetContent -Verifiable { return $global:testProfileMap  | ConvertFrom-Json}
             It "Should get ProfileMap from Embedded source" {
-                Get-AzProfile | Should Be "@{Profile1=; Profile2=}"
+                Get-AzProfile | Should Be $global:testProfileMap
                 Assert-VerifiableMocks
             }
         }
