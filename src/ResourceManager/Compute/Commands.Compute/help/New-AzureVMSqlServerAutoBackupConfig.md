@@ -16,14 +16,18 @@ Creates a configuration object for SQL Server automatic backup.
 ```
 New-AzureVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
  [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageUri] <Uri>]
- [[-StorageKey] <SecureString>] [<CommonParameters>]
+ [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
+ [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
+ [-LogBackupFrequencyInMinutes <Int32>] [<CommonParameters>]
 ```
 
 ### StorageContextSqlServerAutoBackup
 ```
 New-AzureVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
  [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageContext] <AzureStorageContext>]
- [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [<CommonParameters>]
+ [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
+ [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
+ [-LogBackupFrequencyInMinutes <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +79,32 @@ To create a secure string, use the ConvertTo-SecureString cmdlet.
 
 ## PARAMETERS
 
+### -BackupScheduleType
+Backup schedule type, manual or automated```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackupSystemDbs
+Backup system databases```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -CertificatePassword
 Specifies a password to encrypt the certificate that is used to perform SQL Server encrypted backups.
 
@@ -117,6 +147,58 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FullBackupFrequency
+Sql Server Full Backup frequency, daily or weekly```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FullBackupStartHour
+Hour of the day (0-23) when the Sql Server Full Backup should start```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FullBackupWindowInHours
+Sql Server Full Backup window in hours```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LogBackupFrequencyInMinutes
+Sql Server Log Backup frequency, once every 1-60 minutes```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

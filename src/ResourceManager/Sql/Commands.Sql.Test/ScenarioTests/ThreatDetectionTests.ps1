@@ -21,7 +21,7 @@ function Test-ThreatDetectionUpdatePolicyWithClassicStorage
 	# Setup
 	$testSuffix = 4996
 	Create-ThreatDetectionClassicTestEnvironment $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -265,7 +265,7 @@ function Test-DisablingThreatDetection
 		# 3. Test - that no exception is thrown
 		Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
 		Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EmailAdmins $true
 		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	}
 	finally

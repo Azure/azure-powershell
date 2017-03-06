@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssAdditionalUnattendContent")]
+    [Cmdlet("Add", "AzureRmVmssAdditionalUnattendContent", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -64,6 +64,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Content { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)

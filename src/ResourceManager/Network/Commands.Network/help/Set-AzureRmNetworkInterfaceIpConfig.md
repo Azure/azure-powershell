@@ -39,11 +39,25 @@ The **Set-AzureRmNetworkInterfaceIpConfig** cmdlet sets the goal state for an Az
 
 ## EXAMPLES
 
-### 1:
+### 1: Changing the IP address of an IP configuration
 ```
+$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+
+$nic = Get-AzureRmNetworkInterface -Name nic1 -ResourceGroupName myrg
+
+$nic | Set-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet
+    -Primary
+
+$nic | Set-AzureRmNetworkInterface
 
 ```
-
+The first two commands get a virtual network called myvnet and a subnet called mysubnet and store it in the
+    variables $vnet and $subnet respectively. The third command gets the network interface nic1 associated with the IP
+    configuration that needs to be updated. The third command sets the private IP address of the primary IP
+    configuration ipconfig1 to 10.0.0.11. Finally, the last command updates the network interface ensuring the changes
+    have been made successfully.
+    
 ## PARAMETERS
 
 ### -Name
