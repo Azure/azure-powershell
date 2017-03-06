@@ -1,13 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: 462F3EF7-4C15-41F8-853D-CDCC8E67673D
-online version: 
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzureRmExpressRouteCircuitPeeringConfig
 
 ## SYNOPSIS
+
 Removes an ExpressRoute circuit peering configuration.
 
 ## SYNTAX
@@ -18,22 +19,30 @@ Remove-AzureRmExpressRouteCircuitPeeringConfig [-Name <String>] -ExpressRouteCir
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmExpressRouteCircuitPeeringConfig** cmdlet removes an ExpressRoute circuit peering configuration.
+
+The **Remove-AzureRmExpressRouteCircuitPeeringConfig** cmdlet removes an ExpressRoute circuit
+peering configuration.
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1: Remove a peering configuration from an ExpressRoute circuit
 
+```powershell
+$circuit = Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
+Remove-AzureRmExpressRouteCircuitPeeringConfig -Name 'AzurePrivatePeering' -ExpressRouteCircuit $circuit
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```
 
 ## PARAMETERS
 
 ### -Name
+
+The name of the peering configuration to be removed.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -43,10 +52,13 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteCircuit
+
+The ExpressRoute circuit containing the peering configuration to be removed.
+
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -56,6 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationAction
+
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -80,6 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
+
 Specifies an information variable.
 
 ```yaml
@@ -95,7 +109,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see about_CommonParameters
+(http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -105,3 +123,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
+
+[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+
+[New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
+
+[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
