@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release 
+* Added support for connection draining to Application Gateways
+    - Added Get-AzureRmApplicationGatewayConnectionDraining 
+    - Added New-AzureRmApplicationGatewayConnectionDraining
+    - Added Remove-AzureRmApplicationGatewayConnectionDraining 
+    - Added Set-AzureRmApplicationGatewayConnectionDraining
+    - Updated Add-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
+    - Updated New-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
+    - Updated Set-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
 
 ## Version 3.5.0
 * Added support for network Watcher APIs
