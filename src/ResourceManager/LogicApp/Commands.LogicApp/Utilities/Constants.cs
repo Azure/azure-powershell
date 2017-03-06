@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public const string KeyTypeNotSpecified = "NotSpecified";
         public const string KeyTypePrimary = "Primary";
         public const string KeyTypeSecondary = "Secondary";
+
+        public const string ApplicationServicePlanIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/serverfarms/{2}";
     }
 }
