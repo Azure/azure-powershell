@@ -279,7 +279,7 @@ function Compare-AzureRmApplicationGateway($expected, $actual)
 
 	for($i = 0; $i -lt $actual.BackendHttpSettingsCollection.Count; $i++) 
 	{
-		Compare-ConnectionDraining $actual.BackendHttpSettingsCollection[$i] $expected.BackendHttpSettingsCollection[$i] 
+		Compare-ConnectionDraining $expected.BackendHttpSettingsCollection[$i] $actual.BackendHttpSettingsCollection[$i] 
 	}
 
 	Assert-AreEqual $expected.HttpListeners.Count $actual.HttpListeners.Count
