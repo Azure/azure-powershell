@@ -529,7 +529,7 @@
       "RequestUri": "/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk5188/providers/Microsoft.Sql/servers/onesdk516/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGFhYzFjOTAtMmIyMi00MWFhLWE5ODMtNWI5M2MyYWZhMTcxL3Jlc291cmNlR3JvdXBzL29uZXNkazUxODgvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9vbmVzZGs1MTYva2V5cy9ha3Z0ZGVrZXl2YXVsdF9rZXkxXzUxYzJmYWI5ZmYzYzRhMTdhYWI0Y2Q1MWI5MzJiMTA2P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"type\": \"AzureKeyVault\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"serverKeyType\": \"AzureKeyVault\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -670,7 +670,7 @@
           "adf9e986-b6c3-46e4-b0af-52454268d7ba"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk5188/providers/Microsoft.Sql/servers/onesdk516/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"type\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:57:09.7Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk5188/providers/Microsoft.Sql/servers/onesdk516/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:57:09.7Z\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "559"
@@ -724,7 +724,7 @@
           "a9ec9d09-606c-4af8-9375-651abbce886f"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk5188/providers/Microsoft.Sql/servers/onesdk516/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"type\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:57:09.7Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk5188/providers/Microsoft.Sql/servers/onesdk516/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:57:09.7Z\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "559"
@@ -778,7 +778,7 @@
           "c1ae0720-552d-43d4-ba6a-703332c47ccb"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk5188/providers/Microsoft.Sql/servers/onesdk516/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"type\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:57:09.7Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk5188/providers/Microsoft.Sql/servers/onesdk516/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:57:09.7Z\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "559"
