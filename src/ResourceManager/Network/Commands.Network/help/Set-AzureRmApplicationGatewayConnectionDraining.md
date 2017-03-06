@@ -13,7 +13,7 @@ Modifies the connection draining configuration of a back-end HTTP settings objec
 
 ```
 Set-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
- -Enabled <Boolean> -DrainTimeoutInSec <UInt32>
+ -Enabled <Boolean> -DrainTimeoutInSec <UInt32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,15 +80,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
-
 
 ## NOTES
 
