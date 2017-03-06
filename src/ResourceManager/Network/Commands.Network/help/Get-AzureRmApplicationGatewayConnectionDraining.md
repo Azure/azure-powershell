@@ -29,7 +29,7 @@ PS C:\> $ConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -B
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable.
-The second command gets the HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable.
+The second command gets the back-end HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable.
 The last command gets the connection draining configuration from the back-end HTTP settings $Settings and stores it in the $ConnectionDraining variable.
 
 ## PARAMETERS

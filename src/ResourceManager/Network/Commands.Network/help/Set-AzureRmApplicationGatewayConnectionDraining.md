@@ -29,7 +29,7 @@ PS C:\> Set-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $po
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable.
-The second command gets the HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable.
+The second command gets the back-end HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable.
 The last command modifies the connection draining configuration of the back-end HTTP settings object stored in $Settings by setting Enabled to False and DrainTimeoutInSec to 3600.
 
 ## PARAMETERS
