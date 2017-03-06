@@ -916,7 +916,7 @@ Describe "Use-AzureRmProfile" {
         Mock Install-Module { "Installing module..."}
         Mock Import-Module -Verifiable { "Importing Module..."}
         Mock Find-PotentialConflict {}
-        if ($PSVersionTable.PSVersion.Major -gt 4) {
+        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
         Context "Modules not installed" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
             It "Should install modules" {
@@ -972,7 +972,7 @@ Describe "Use-AzureRmProfile" {
                 { Use-AzureRmProfile -Profile $null} | Should Throw
             }
         }
-        if ($PSVersionTable.PSVersion.Major -gt 4) {
+        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
@@ -998,7 +998,7 @@ Describe "Use-AzureRmProfile" {
                 { Use-AzureRmProfile -Profile 'Profile1' -Module 'MockModule'} | Should Throw
             }            
         }
-        if ($PSVersionTable.PSVersion.Major -gt 4) {
+        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
 
         Context "Potential Conflict found" {
             Mock Find-PotentialConflict -Verifiable { $true }
@@ -1030,7 +1030,7 @@ Describe "Install-AzureRmProfile" {
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Get-AzureRmModule -Verifiable {} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module1'}
         Mock Get-AzureRmModule -Verifiable { "1.0"} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module2'}
-        if ($PSVersionTable.PSVersion.Major -gt 4) {
+        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
 
         Context "Invoke with valid profile name" {
             Mock Install-Module -Verifiable { "Installing module Module1... Version 1.0"} 
@@ -1052,7 +1052,7 @@ Describe "Install-AzureRmProfile" {
                 { Install-AzureRmProfile -Profile $null } | Should Throw
             }
         }
-        if ($PSVersionTable.PSVersion.Major -gt 4) {
+        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
