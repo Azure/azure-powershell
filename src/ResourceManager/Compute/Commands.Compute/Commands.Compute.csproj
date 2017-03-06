@@ -411,7 +411,6 @@
       <Link>AzureRM.Compute.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

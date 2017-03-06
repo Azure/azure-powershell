@@ -598,7 +598,6 @@
       <Link>AzureRM.Network.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
