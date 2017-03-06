@@ -97,7 +97,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 instanceIds = inputArray2.ToList();
             }
 
-            VirtualMachineScaleSetsClient.Deallocate(resourceGroupName, vmScaleSetName, instanceIds);
+            var result = VirtualMachineScaleSetsClient.Deallocate(resourceGroupName, vmScaleSetName, instanceIds);
+            WriteObject(result);
         }
     }
 
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class StopAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -130,7 +131,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.MethodName = "VirtualMachineScaleSetPowerOff";
             }
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsLifecycle.Stop)
+                && (this.dynamicParameters["Force"].IsSet ||
+                    this.ShouldContinue(Properties.Resources.ResourceStoppingConfirmation,
+                                        "Stop-AzureRmVmss operation")))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()
@@ -203,18 +210,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pInstanceIds.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("InstanceId", pInstanceIds);
 
+            var pForce = new RuntimeDefinedParameter();
+            pForce.Name = "Force";
+            pForce.ParameterType = typeof(SwitchParameter);
+            pForce.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 4,
+                Mandatory = false
+            });
+            pForce.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
+                Position = 4,
+                Mandatory = false
+            });
+            pForce.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("Force", pForce);
+
             var pStayProvisioned = new RuntimeDefinedParameter();
             pStayProvisioned.Name = "StayProvisioned";
             pStayProvisioned.ParameterType = typeof(SwitchParameter);
             pStayProvisioned.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 4,
-                Mandatory = true
-            });
-            pStayProvisioned.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParametersForFriendMethod",
                 Position = 5,
                 Mandatory = true
             });
