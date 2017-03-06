@@ -134,15 +134,13 @@ Describe "Get-AzureStorageBlob" {
 
 Describe "RetryGetContent" {
     InModuleScope AzureRM.Bootstrapper {
-        if ($PSVersionTable.PSVersion.Major -gt 4) {
         Context "Gets content at first attempt" {
             Mock Get-Content -Verifiable { $global:testProfileMap }
             It "Should return successfully" {
                 $result = RetryGetContent -FilePath ".\MockPath"
-                $result | Should Be "@{profile1=; profile2=}"
+                $result | Should Be "@{Profile1=; Profile2=}"
                 Assert-VerifiableMocks
             }
-        }
         }
 
         Context "Gets content at one of the retries" {
@@ -191,13 +189,10 @@ Describe "Get-AzureProfileMap" {
 
         Context "ProfileCachePath Exists and Etags are equal" {
             Mock Test-Path -Verifiable { $true }
-        if ($PSVersionTable.PSVersion.Major -gt 4) {
-
             It "Returns Correct ProfileMap" {
-                Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
+                Get-AzureProfileMap | Should Be "@{Profile1=; Profile2=}"
                 Assert-VerifiableMocks
             }
-        }
         }
 
         Context "ProfileCachePath Exists and ETags are different" {
@@ -208,12 +203,9 @@ Describe "Get-AzureProfileMap" {
             $ProfileMapPath = New-Object -TypeName  PSObject
             $ProfileMapPath | Add-Member NoteProperty 'FullName' -Value '124-MockedDifferentETag.json'
             Mock Get-ChildItem -Verifiable { @($ProfileMapPath)}
-            if ($PSVersionTable.PSVersion.Major -gt 4) {
-
-                It "Returns Correct ProfileMap" {
-                     Get-AzureProfileMap | Should Be "@{profile1=; profile2=}"
-                    Assert-VerifiableMocks
-                }
+            It "Returns Correct ProfileMap" {
+                Get-AzureProfileMap | Should Be "@{Profile1=; Profile2=}"
+                Assert-VerifiableMocks
             }
         }
 
@@ -253,11 +245,8 @@ Describe Get-AzProfile {
         
         Context "Forces update from Azure Endpoint" {
             Mock Get-AzureProfileMap { ($testProfileMap | ConvertFrom-Json) }
-            if ($PSVersionTable.PSVersion.Major -gt 4) {
-
-                It "Should get ProfileMap from Azure Endpoint" {
-                      Get-AzProfile -Update  | Should Be "@{profile1=; profile2=}"
-                }
+            It "Should get ProfileMap from Azure Endpoint" {
+                Get-AzProfile -Update  | Should Be "@{Profile1=; Profile2=}"
             }
             It "Checks Mock calls to Get-AzureProfileMap" {
                 Assert-MockCalled Get-AzureProfileMap -Exactly 1
@@ -269,24 +258,18 @@ Describe Get-AzProfile {
             $script:LatestProfileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
             Mock RetryGetContent -Verifiable { $global:testProfileMap | ConvertFrom-Json }
             Mock Test-Path -Verifiable { $true }
-            if ($PSVersionTable.PSVersion.Major -gt 4) {
-
-                It "Should get ProfileMap from Cache" {
-                    Get-AzProfile | Should Be "@{profile1=; profile2=}"
-                    Assert-VerifiableMocks
-                }
+            It "Should get ProfileMap from Cache" {
+                Get-AzProfile | Should Be "@{Profile1=; Profile2=}"
+                Assert-VerifiableMocks
             }
         }
 
         Context "ProfileMap is not available from cache" {
             Mock Test-Path -Verifiable { $false }
             Mock RetryGetContent -Verifiable { return $global:testProfileMap  | ConvertFrom-Json}
-            if ($PSVersionTable.PSVersion.Major -gt 4) {
-
-                It "Should get ProfileMap from Embedded source" {
-                    Get-AzProfile | Should Be "@{profile1=; profile2=}"
-                    Assert-VerifiableMocks
-                }
+            It "Should get ProfileMap from Embedded source" {
+                Get-AzProfile | Should Be "@{Profile1=; Profile2=}"
+                Assert-VerifiableMocks
             }
         }
 
