@@ -502,7 +502,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating managed subscription with id &quot;{0}&quot; under provider subscription &quot;{1}&quot;..
+        ///   Looks up a localized string similar to Updating managed subscription with id &quot;{0}&quot;.
         /// </summary>
         public static string UpdatingManagedSubscription {
             get {

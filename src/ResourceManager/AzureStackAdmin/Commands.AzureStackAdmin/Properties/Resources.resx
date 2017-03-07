@@ -226,7 +226,7 @@
     <value>Updating plan with name "{0}" in resource group "{1}".</value>
   </data>
   <data name="UpdatingManagedSubscription" xml:space="preserve">
-    <value>Updating managed subscription with id "{0}" under provider subscription "{1}".</value>
+    <value>Updating managed subscription with id "{0}"</value>
   </data>
   <data name="UpdatingSubscription" xml:space="preserve">
     <value>Updating subscription id "{0}".</value>

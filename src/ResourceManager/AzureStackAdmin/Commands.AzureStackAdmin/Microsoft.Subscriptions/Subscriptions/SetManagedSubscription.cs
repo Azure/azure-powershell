@@ -28,13 +28,6 @@ namespace Microsoft.AzureStack.Commands
     public class SetManagedSubscription : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription to be updated.
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -46,12 +39,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(
                     Resources.UpdatingManagedSubscription.FormatArgs(
-                        this.Subscription.SubscriptionId,
-                        this.SubscriptionId));
+                        this.Subscription.SubscriptionId));
 
                 var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.Subscription);
                 return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;

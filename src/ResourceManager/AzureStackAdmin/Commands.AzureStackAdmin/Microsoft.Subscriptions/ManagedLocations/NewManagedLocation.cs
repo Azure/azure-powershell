@@ -63,18 +63,11 @@ namespace Microsoft.AzureStack.Commands
         public double Longitude { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Creates a new location
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.CreatingNewManagedLocation.FormatArgs(this.Name));
                 var parameters = new ManagedLocationCreateOrUpdateParameters()

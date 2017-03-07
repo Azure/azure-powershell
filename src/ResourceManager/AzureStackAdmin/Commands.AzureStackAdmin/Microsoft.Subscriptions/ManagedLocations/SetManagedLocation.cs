@@ -35,18 +35,11 @@ namespace Microsoft.AzureStack.Commands
         public Location Location { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Updates the managed location with new values
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.UpdatingManagedLocation.FormatArgs(this.Location.Name));
                 var parameters = new ManagedLocationCreateOrUpdateParameters(this.Location);
