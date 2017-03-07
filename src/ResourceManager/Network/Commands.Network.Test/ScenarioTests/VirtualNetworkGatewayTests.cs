@@ -51,5 +51,11 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayActiveActiveFeatureOperations");
         }
+
+        [Fact(Skip = "Will record later")]
+        public void VirtualNetworkGatewayRouteApiTest()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayBgpRouteApi");
+        }
     }
 }

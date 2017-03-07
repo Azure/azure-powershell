@@ -44,21 +44,6 @@ The fifth command uses the information stored in the $Nic variable to set the ne
 
 ## PARAMETERS
 
-### -NetworkInterface
-Specifies a **NetworkInterface** object that represents the goal state for a network interface.
-
-```yaml
-Type: PSNetworkInterface
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -95,6 +80,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkInterface
+Specifies a **NetworkInterface** object that represents the goal state for a network interface.
+
+```yaml
+Type: PSNetworkInterface
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

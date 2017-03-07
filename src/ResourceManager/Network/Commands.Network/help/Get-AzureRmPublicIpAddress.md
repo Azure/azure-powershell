@@ -33,52 +33,12 @@ The **Get-AzureRmPublicIPAddress** cmdlet gets one or more public IP addresses i
 ```
 $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName $publicIp
 ```
+
 This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the public IP address that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that contains the public IP address that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
+### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: Expand
@@ -130,7 +90,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
+### -Name
+Specifies the name of the public IP address that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: NoExpand
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Expand
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group that contains the public IP address that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: NoExpand
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ```yaml
 Type: String
 Parameter Sets: Expand

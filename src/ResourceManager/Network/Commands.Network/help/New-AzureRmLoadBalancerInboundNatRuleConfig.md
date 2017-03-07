@@ -50,15 +50,45 @@ The *FrontendIpConfiguration*, *Procotol*, *FrontendPort*, and *BackendPort* par
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the rule configuration that this cmdlet creates.
+### -BackendPort
+Specifies the backend port for traffic that is matched by this rule configuration.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFloatingIP
+Indicates that this cmdlet enables a floating IP address for a rule configuration.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendIpConfiguration
+Specifies a list of front-end IP addresses to associate with a load balancer rule configuration.
+
+```yaml
+Type: PSFrontendIPConfiguration
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,25 +101,6 @@ Specifies the ID for a front-end IP address configuration.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies a protocol.
-The acceptable values for this parameter are:
-
-- Tcp
-- Udp
-
-```yaml
-Type: String
-Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -114,41 +125,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendPort
-Specifies the backend port for traffic that is matched by this rule configuration.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IdleTimeoutInMinutes
 Specifies the length of time, in minutes, for which the state of conversations is maintained in a load balancer.
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableFloatingIP
-Indicates that this cmdlet enables a floating IP address for a rule configuration.
-
-```yaml
-Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -198,12 +179,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendIpConfiguration
-Specifies a list of front-end IP addresses to associate with a load balancer rule configuration.
+### -Name
+Specifies the name of the rule configuration that this cmdlet creates.
 
 ```yaml
-Type: PSFrontendIPConfiguration
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies a protocol.
+The acceptable values for this parameter are:
+
+- Tcp
+- Udp
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
 Required: False

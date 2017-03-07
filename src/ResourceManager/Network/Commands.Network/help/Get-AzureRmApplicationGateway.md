@@ -45,36 +45,6 @@ This command gets a list of all the application gateways in the subscription and
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the application gateway that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that contains the application gateway.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -111,6 +81,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the application gateway that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group that contains the application gateway.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

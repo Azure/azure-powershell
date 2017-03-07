@@ -42,21 +42,6 @@ The second command gets a list of request routing rules from the Application Gat
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the request routing rule which this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ApplicationGateway
 Specifies the application gateway object that contains request routing rule.
 
@@ -103,6 +88,21 @@ Specifies an information variable.
 Type: String
 Parameter Sets: (All)
 Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the request routing rule which this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
