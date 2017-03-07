@@ -1024,7 +1024,7 @@ Describe "Use-AzureRmProfile" {
             Mock Get-Module -Verifiable { $moduleObj }
             It "Should skip importing module" {
                 $result = Use-AzureRmProfile -Profile 'Profile1' -ErrorVariable useError -ErrorAction SilentlyContinue
-                $useError -like "A different version of module Module1 is already imported in this session. Start a new PowerShell session and retry the operation." | Should Be $true
+                $useError.exception.message.contains("A different version of module") | Should Be $true
             }
         }
     }
