@@ -52,6 +52,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public uint RequestTimeout { get; set; }
 
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Connection draining of the backend http settings resource.")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayConnectionDraining ConnectionDraining { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "ID of the application gateway Probe")]
@@ -94,6 +101,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 backendHttpSettings.RequestTimeout = this.RequestTimeout;
             }
+            if(this.ConnectionDraining != null)
+            {
+                backendHttpSettings.ConnectionDraining = this.ConnectionDraining;
+            }
             if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 backendHttpSettings.Probe = new PSResourceId();
@@ -111,6 +122,7 @@ namespace Microsoft.Azure.Commands.Network
                         });
                 }
             }
+
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
