@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(this.BackendHttpSettings.ConnectionDraining, true);
+            WriteObject(this.BackendHttpSettings.ConnectionDraining);
         }
     }
 }
