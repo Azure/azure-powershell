@@ -60,13 +60,6 @@ namespace Microsoft.AzureStack.Commands
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the quota ids.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
@@ -86,7 +79,7 @@ namespace Microsoft.AzureStack.Commands
         protected override object ExecuteCore()
         {
             this.WriteVerbose(Resources.CreatingNewPlan.FormatArgs(this.Name, this.ResourceGroup));
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 // Ensure the resource group is created
                 client.ResourceGroups.CreateOrUpdate(new ResourceGroupCreateOrUpdateParameters()

@@ -43,14 +43,6 @@ namespace Microsoft.AzureStack.Commands
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription identifier.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        [ValidateNotNull]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource manager location.
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -111,8 +103,9 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            this.ApiVersion = UsageApiVersion;
             this.WriteVerbose(Resources.AddingUsageConnection.FormatArgs(this.Name));
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 var usageConnectionModel = new UsageConnectionModel()
                 {

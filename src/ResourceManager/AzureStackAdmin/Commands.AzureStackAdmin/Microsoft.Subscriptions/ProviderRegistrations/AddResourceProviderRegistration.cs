@@ -78,13 +78,6 @@ namespace Microsoft.AzureStack.Commands
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource provider registration location (region).
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -125,7 +118,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 ProviderRegistrationCreateOrUpdateParameters registrationParams = null;
                 if( this.ParameterSetName.Equals("SingleExtension", StringComparison.OrdinalIgnoreCase) )
