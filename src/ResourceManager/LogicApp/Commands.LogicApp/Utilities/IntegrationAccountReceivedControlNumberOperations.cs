@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// LogicApp client partial class for integration account control number operations.
@@ -23,7 +25,42 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     public partial class IntegrationAccountClient
     {
         /// <summary>
-        /// Gets the integration account generated interchange control number by agreement name.
+        /// Updates an integration account received interchange control number for a given agreement.
+        /// </summary>
+        /// <param name="resourceGroupName">The integration account agreement resource group.</param>
+        /// <param name="integrationAccountName">The integration account name.</param>
+        /// <param name="integrationAccountAgreementName">The integration account agreement name.</param>
+        /// <param name="integrationAccountControlNumber">The integration account control number object.</param>
+        /// <returns>Updated integration account control number</returns>
+        public IntegrationAccountControlNumber UpdateIntegrationAccountReceivedIcn(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName, IntegrationAccountControlNumber integrationAccountControlNumber)
+        {
+            if (!this.DoesIntegrationAccountAgreementExist(resourceGroupName, integrationAccountName, integrationAccountAgreementName))
+            {
+                throw new PSArgumentException(message: string.Format(
+                    CultureInfo.InvariantCulture,
+                    Properties.Resource.ResourceNotFound,
+                    integrationAccountAgreementName,
+                    resourceGroupName));
+            }
+
+            return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
+                sessionContent: this.LogicManagementClient.Sessions
+                    .CreateOrUpdate(
+                        resourceGroupName: resourceGroupName,
+                        integrationAccountName: integrationAccountName,
+                        sessionName: IntegrationAccountClient.SessionNameForReceivedControlNumber(
+                            integrationAccountAgreementName: integrationAccountAgreementName,
+                            controlNumberValue: integrationAccountControlNumber.ControlNumber),
+                        session: new IntegrationAccountSession
+                        {
+                            Content = integrationAccountControlNumber
+                        })
+                    .Content,
+                integrationAccountAgreementName: integrationAccountAgreementName);
+        }
+
+        /// <summary>
+        /// Gets the integration account received interchange control number by agreement name and control number value.
         /// </summary>
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
@@ -46,7 +83,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         }
 
         /// <summary>
-        /// Removes the specified integration account recevied control number.
+        /// Removes the specified integration account received control number.
         /// </summary>
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>

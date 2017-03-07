@@ -14,35 +14,24 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using System;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
     /// <summary>
-    /// The Replicable control number content.
+    /// Enumeration to specify the control number types
     /// </summary>
-    /// <remarks>This type is to be kept identical to the B2B Connector type ReplicableControlNumberContent.</remarks>
-    public class IntegrationAccountControlNumber
+    public enum ControlNumberType
     {
         /// <summary>
-        /// Gets or sets the control number
+        /// Interchange control number
         /// </summary>
-        [JsonProperty]
-        public string ControlNumber { get; set; }
+        Icn,
 
         /// <summary>
-        /// Gets or sets the message received time
+        /// Group control number
         /// </summary>
-        /// <remarks>
-        /// Will be null for generated ICN's
-        /// </remarks>
-        [JsonProperty(ItemConverterType = typeof(IsoDateTimeConverter))]
-        public DateTime ControlNumberChangedTime { get; set; }
+        Gcn,
 
         /// <summary>
-        /// Gets or sets whether the message processing failed.
+        /// Transaction set control number
         /// </summary>
-        [JsonProperty]
-        public bool? IsMessageProcessingFailed { get; set; }
+        Tscn,
     }
 }

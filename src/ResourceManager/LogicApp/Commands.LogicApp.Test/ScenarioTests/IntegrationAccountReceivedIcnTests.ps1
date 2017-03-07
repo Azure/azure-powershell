@@ -150,3 +150,55 @@ function Test-RemoveIntegrationAccountReceivedIcn
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
 }
+
+<#
+.SYNOPSIS
+Test Set-AzureRmIntegrationAccountReceivedIcn command
+#>
+function Test-UpdateIntegrationAccountReceivedIcn
+{
+	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
+
+	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$integrationAccountName = getAssetname
+	
+	$integrationAccountAgreementName = getAssetname
+
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
+
+	$hostPartnerName = getAssetname
+	$guestPartnerName = getAssetname
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner = New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner = New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+
+	$integrationAccountAgreement = New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
+	Assert-AreEqual $integrationAccountAgreementName $integrationAccountAgreement.Name
+	Assert-AreEqual "X12" $integrationAccountAgreement.AgreementType
+
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumberValue "1000" } "could not be found in integration account"
+
+	InitializeReceivedControlNumberSession -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountX12AgreementName $integrationAccountAgreementName -controlNumberValue "1000" -oldformat $false
+	$initialControlNumber = Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumberValue "1000"
+	Assert-AreEqual "1000" $initialControlNumber.ControlNumber
+
+	Set-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumberValue "1000" -IsMessageProcessingFailed $true
+
+	$updatedControlNumber = Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumberValue "1000"
+	Assert-AreNotEqual $initialControlNumber.ControlNumberChangedTime $updatedControlNumber.ControlNumberChangedTime
+	Assert-AreEqual "1000" $updatedControlNumber.ControlNumber
+	Assert-AreEqual $true $updatedControlNumber.IsMessageProcessingFailed
+
+	Set-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumberValue "1000" -IsMessageProcessingFailed $false
+
+	$updatedControlNumber = Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumberValue "1000"
+	Assert-AreNotEqual $initialControlNumber.ControlNumberChangedTime $updatedControlNumber.ControlNumberChangedTime
+	Assert-AreEqual "1000" $updatedControlNumber.ControlNumber
+	Assert-AreEqual $false $updatedControlNumber.IsMessageProcessingFailed
+
+	Remove-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumberValue "1000"
+
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+}

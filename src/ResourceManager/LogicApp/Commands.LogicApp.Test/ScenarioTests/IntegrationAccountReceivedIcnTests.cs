@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Set-AzureRmIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
+        /// Test Remove-AzureRmIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
         /// </summary>
         /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
         [Fact]
@@ -42,6 +42,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestRemoveIntegrationAccountReceivedIcn()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveIntegrationAccountReceivedIcn");
+        }
+
+        /// <summary>
+        /// Test Set-AzureRmIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
+        /// </summary>
+        /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateIntegrationAccountReceivedIcn()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountReceivedIcn");
         }
     }
 }

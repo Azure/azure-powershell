@@ -214,6 +214,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating the recevied control number &apos;{0}&apos; for &apos;{1}&apos; &apos;{2}&apos;..
+        /// </summary>
+        internal static string UpdateReceivedControlNumberMessage {
+            get {
+                return ResourceManager.GetString("UpdateReceivedControlNumberMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
         internal static string UpdateResourceMessage {

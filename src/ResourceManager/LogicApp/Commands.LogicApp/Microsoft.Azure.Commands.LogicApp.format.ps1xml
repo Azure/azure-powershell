@@ -704,9 +704,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber</Name>
+      <Name>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber</TypeName>
+        <TypeName>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -719,6 +719,10 @@
               <ListItem>
                 <Label>ControlNumberChangedTime</Label>
                 <PropertyName>ControlNumberChangedTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IsMessageProcessingFailed</Label>
+                <PropertyName>IsMessageProcessingFailed</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -726,9 +730,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber</Name>
+      <Name>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+QualifiedIntegrationAccountControlNumber</TypeName>
+        <TypeName>Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -741,6 +745,10 @@
               <ListItem>
                 <Label>ControlNumberChangedTime</Label>
                 <PropertyName>ControlNumberChangedTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IsMessageProcessingFailed</Label>
+                <PropertyName>IsMessageProcessingFailed</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>AgreementName</Label>

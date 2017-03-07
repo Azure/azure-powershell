@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Gets the integration account received interchange control number by agreement name and control number value.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountReceivedIcn")]
-    [OutputType(typeof(IntegrationAccountClient.IntegrationAccountControlNumber))]
+    [OutputType(typeof(IntegrationAccountControlNumber))]
     public class GetAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters
