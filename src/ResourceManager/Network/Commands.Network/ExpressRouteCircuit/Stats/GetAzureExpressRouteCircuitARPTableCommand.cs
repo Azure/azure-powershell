@@ -33,25 +33,18 @@
  		
      [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]
      public class GetAzureExpressRouteCircuitARPTableCommand : NetworkBaseCmdlet		
-     {		
-         [Alias("ResourceName")]		
-         [Parameter(		
-             Mandatory = false,		
-             ValueFromPipelineByPropertyName = true,		
-             HelpMessage = "The resource name.")]		
-         [ValidateNotNullOrEmpty]		
-         public virtual string Name { get; set; }		
- 		
-         [Parameter(		
+     {
+        [Parameter(		
              Mandatory = true,		
              ValueFromPipelineByPropertyName = true,		
              HelpMessage = "The resource group name.")]		
          [ValidateNotNullOrEmpty]		
-         public virtual string ResourceGroupName { get; set; }		
- 		
-         [Parameter(		
-             Mandatory = true,		
-             ValueFromPipeline = true,		
+         public virtual string ResourceGroupName { get; set; }
+
+        [Alias("Name", "ResourceName")]
+        [Parameter(		
+             Mandatory = true,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The Name of ExpressRoute Circuit")]		
          [ValidateNotNullOrEmpty]		
          public string ExpressRouteCircuitName { get; set; }		
