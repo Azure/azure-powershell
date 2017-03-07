@@ -643,10 +643,10 @@ function Invoke-InstallModule
   else {
      if (-not $scope)
     {
-      Install-Module $Module -RequiredVersion $version 
+      Install-Module $Module -RequiredVersion $version -Force
     }
     else {
-      Install-Module $Module -RequiredVersion $version -Scope $scope 
+      Install-Module $Module -RequiredVersion $version -Scope $scope -Force
     }
   }
 }
