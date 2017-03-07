@@ -17,9 +17,13 @@ Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName <String> -Name <Str
 ```
 
 ## DESCRIPTION
-The Set-AzureRmIntegrationAccountGeneratedIcn cmdlet updates an existing integration account generated interchange control number (ICN) and returns an object that represents the integration account generated interchange control number. Use this cmdlet to update an integration account generated interchange control number. You can update an integration account generated interchange control number by specifying the integration account name, resource group name and agreement name.
+The Set-AzureRmIntegrationAccountGeneratedIcn cmdlet updates an existing integration account generated interchange control number (ICN) and returns an object that represents the integration account generated interchange control number.
+Use this cmdlet to update an integration account generated interchange control number.
+You can update an integration account generated interchange control number by specifying the integration account name, resource group name and agreement name.
 You cannot create a new integration account generated interchange control number with this command.
-To use the dynamic parameters, just type them in the command, or type a hyphen sign(-) to indicate a parameter name and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required template parameter, the cmdlet prompts you for the value. Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
+To use the dynamic parameters, just type them in the command, or type a hyphen sign(-) to indicate a parameter name and then press the TAB key repeatedly to cycle through the available parameters.
+If you miss a required template parameter, the cmdlet prompts you for the value.
+Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
 
 ## EXAMPLES
 
@@ -64,7 +68,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -125,7 +129,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -146,3 +150,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzureRmIntegrationAccountGeneratedIcn](./Get-AzureRmIntegrationAccountGeneratedIcn.md)
+
