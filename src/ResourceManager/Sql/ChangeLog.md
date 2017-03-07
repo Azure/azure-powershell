@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Bug fix - Auditing and Threat Detection cmdlets now return a meangfull error instead of null refernce error. 
+* Updating Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) support cmdlets for updated API.
 
 ## Version 2.6.0
 * Adding new cmdlets for support for Azure SQL feature Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) Support
