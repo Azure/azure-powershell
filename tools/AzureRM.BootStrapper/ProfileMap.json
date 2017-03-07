@@ -45,7 +45,7 @@
 		"AzureRM.UsageAggregates": ["2.6.0"], 
 		"AzureRM.Websites": ["2.6.0"] 
 	},
-	"2017-01-consistent": {
+	"2017-03-09-profile": {
 		"AzureRM": ["1.2.8"],
 		"AzureRM.Profile": ["1.0.4.2"], 
 		"Azure.Storage": ["1.0.4.2"], 

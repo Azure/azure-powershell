@@ -625,6 +625,32 @@ function Find-PotentialConflict
   return $false
 }
 
+# Helper function to invoke install-module
+function Invoke-InstallModule
+{
+  param($module, $version, $scope)
+  $installCmd = Get-Command Install-Module
+  if($installCmd.Parameters.ContainsKey('AllowClobber'))
+  {
+    if (-not $scope)
+    {
+      Install-Module $Module -RequiredVersion $version -AllowClobber
+    }
+    else {
+      Install-Module $Module -RequiredVersion $version -Scope $scope -AllowClobber
+    }
+  }
+  else {
+     if (-not $scope)
+    {
+      Install-Module $Module -RequiredVersion $version 
+    }
+    else {
+      Install-Module $Module -RequiredVersion $version -Scope $scope 
+    }
+  }
+}
+
 # Add Scope parameter to the cmdlet
 function Add-ScopeParam
 {
@@ -894,14 +920,7 @@ function Use-AzureRmProfile
           $version = $versionEnum.Current
           Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
           Write-Verbose "Installing module $module"
-          if (-not $Scope)
-          {
-            Install-Module $Module -RequiredVersion $version -AllowClobber
-          }
-          else
-          {
-            Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
-          }
+          Invoke-InstallModule -module $Module -version $version -scope $scope
         }
       }
 
@@ -970,15 +989,8 @@ function Install-AzureRmProfile
         $toss = $versionEnum.MoveNext()
         $version = $versionEnum.Current
         Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
-        Write-Verbose "Installing module $module"
-        if (-not $Scope)
-        {
-          Install-Module $Module -RequiredVersion $version -AllowClobber
-        }
-        else
-        {
-          Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
-        }
+        Write-Verbose "Installing module $module" 
+        Invoke-InstallModule -module $Module -version $version -scope $scope
       }
     }
   }
@@ -1009,7 +1021,7 @@ function Uninstall-AzureRmProfile
     {
       if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Uninstall Profile $Profile", "Removing Modules for profile $Profile")))
       {
-        Write-Verbose "Trying to uninstall module $module"
+        Write-Verbose "Trying to uninstall profile $profile"
         Uninstall-ProfileHelper -PMap $ProfileMap @PSBoundParameters
       }
     }
