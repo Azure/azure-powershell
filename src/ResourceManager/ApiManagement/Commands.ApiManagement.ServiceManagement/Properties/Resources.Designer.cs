@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a Backend Entity.
+        /// </summary>
+        internal static string CreateBackend {
+            get {
+                return ResourceManager.GetString("CreateBackend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Group &quot;{0}&quot;..
         /// </summary>
         internal static string GroupRemoveDescription {
@@ -345,6 +354,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string SaveTenantConfigurationWarning {
             get {
                 return ResourceManager.GetString("SaveTenantConfigurationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Backend.
+        /// </summary>
+        internal static string SetBackend {
+            get {
+                return ResourceManager.GetString("SetBackend", resourceCulture);
             }
         }
         

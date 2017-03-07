@@ -12,13 +12,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementBackend)]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementBackend, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementBackend))]
     public class SetAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementBackendProxy Proxy { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "If specified then instance of " +
                           "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend type " +
@@ -105,23 +107,26 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.BackendSet(
-                Context,
-                BackendId,
-                Url,
-                Protocol,
-                Title,
-                Description,
-                ResourceId,
-                SkipCertificateChainValidation,
-                SkipCertificateNameValidation,
-                Credential,
-                Proxy);
-
-            if (PassThru)
+            if (ShouldProcess(BackendId, Resources.SetBackend))
             {
-                var @backend = Client.BackendById(Context, BackendId);
-                WriteObject(@backend);
+                Client.BackendSet(
+                    Context,
+                    BackendId,
+                    Url,
+                    Protocol,
+                    Title,
+                    Description,
+                    ResourceId,
+                    SkipCertificateChainValidation,
+                    SkipCertificateNameValidation,
+                    Credential,
+                    Proxy);
+
+                if (PassThru)
+                {
+                    var @backend = Client.BackendById(Context, BackendId);
+                    WriteObject(@backend);
+                }
             }
         }
     }

@@ -12,13 +12,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, Constants.ApiManagementBackend)]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementBackend, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementBackend))]
     public class NewAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
@@ -101,20 +103,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             string backendId = BackendId ?? Guid.NewGuid().ToString("N");
 
-            var backend = Client.BackendCreate(
-                Context,
-                backendId,
-                Url,
-                Protocol,
-                Title,
-                Description,
-                ResourceId,
-                SkipCertificateChainValidation,
-                SkipCertificateNameValidation,
-                Credential,
-                Proxy);
+            if (ShouldProcess(BackendId, Resources.CreateBackend))
+            {
+                var backend = Client.BackendCreate(
+                    Context,
+                    backendId,
+                    Url,
+                    Protocol,
+                    Title,
+                    Description,
+                    ResourceId,
+                    SkipCertificateChainValidation,
+                    SkipCertificateNameValidation,
+                    Credential,
+                    Proxy);
 
-            WriteObject(backend);
+                WriteObject(backend);
+            }
         }
     }
 }
