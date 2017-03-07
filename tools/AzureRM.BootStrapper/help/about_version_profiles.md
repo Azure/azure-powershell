@@ -14,41 +14,21 @@ You can also use Tags in the AzureRM modules to discover profile information for
 
 # Finding appropriate version profiles
 
-Use the ```Get-AzureRMVersionProfile``` cmdlet to discover available profile versions, and profile versions supported by an Azure instance.
+Use the ```Get-AzureRmProfile``` cmdlet to discover available profile versions, and profile versions supported by an Azure instance.
 
 ```Get-AzureRmProfile -ListAvailable``` lists all available version profiles.
 
-```Get-AzureRMProfile -Environment AzureChinaCloud``` lists the profiles supported by the Azure China cloud.
-
-```Get-AzureRMProfile -Endpoint https://manage.myazurestackinstance.com``` lists the profiles supported by the azure instance at the given endpoint.
-
-## Targeting a concrete Azure instance
-
-```Get-AzureRMProfile -Environment AzureChinaCloud``` lists the profiles supported by the Azure China cloud.
-
 Use ```Use-AzureRmProfile -Profile 2015-05``` to install and load cmdlets for one of the listed profiles.
-
-```Get-AzureRMProfile -Endpoint https://manage.myazurestackinstance.com``` lists the profiles supported by the azure instance at the given endpoint. 
 
 ## Targeting all Azure Instances
 
-```Get-AzureRMProfile -Common``` lists the profiles that are supported by all Azure endpoints.
+```Get-AzureRmProfile``` lists the profiles that are currently installed on the machine.
 
 Use ```Use-AzureRmProfile -Profile 2015-05``` to install and load cmdlets for one of the listed profiles.
 
 ## Targeting the Latest Stable Features
 
-```Get-AzureRMProfile -Latest``` lists the latest profile supported by any Azure instance.
-
 Use ```Use-AzureRmProfile -Profile Latest``` to install and load cmdlets for one of the listed profiles.
-
-## Targeting the latest preview features
-
-Some very new Azure features may not be included in any Azure Profile.  To access these features, Install and Load the latest version of the associated Azure module.
-
-To load the latest version of Compute cmdlets, use:
-```Install-Module AzureRM.Compute```
-```Import-Module AzureRM.Compute```
 
 # Using a Version Profile in a PowerShell Session
 
@@ -65,18 +45,10 @@ Checks if the modules associated with the ```2015-05``` profile are installed in
 ## Acquire and Load Selected Azure modules using the Bootstrapper
 
 ```
-Use-AzureRmProfile -Profile 2015-05 -Module Compute, Storage, Network
+Use-AzureRmProfile -Profile 2015-05 -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
 
 Checks if the AzureRM.Compute, AzureRM.Storage, and AzureRM.Network modules associated with the ```2015-05``` profile are installed in the current scope, downloads and installs the modules if necessary, and then loads the modules in the current session.  You must open a new PowerShell session to target a different module.
-
-## Acquire and Load Modules using PowerShellGet
-
-```
-Find-Module -Name AzureRM -Tags "Profile:2015-05" | Install-Module
-```
-
-Downloads the AzureRM modules associated with version Profile ```2015-05```
 
 # Switching Between Version Profiles
 
@@ -88,8 +60,6 @@ Use-AzureRmProfile -Profile 2015-05
 
 This loads the modules associated with the ```2015-05``` profile in the current session.  You must open a new PowerShell session to target a different version profile.  
 
-# Setting the Default Version Profile for all PowerShell sessions
-
 # Updating and Removing Profiles
 
 To update a profile to the latest versions in that profile and import updated modules to the current session, execute the following cmdlet:
@@ -98,4 +68,11 @@ To update a profile to the latest versions in that profile and import updated mo
 Update-AzureRmProfile -Profile '2016-09'
 ```
 
-This checks if the latest versions of the module in profile ```2016-09``` are installed, if not prompts the user if it should be installed and imports them into the current session. It also prompts the user if the old versions of the module should be removed. This should always be executed in a new PowerShell session.
+This checks if the latest versions of the module in profile ```2016-09``` are installed, if not prompts the user if it should be installed and imports them into the current session. This should always be executed in a new PowerShell session.
+
+If you would like to update to the latest modules in a Profile and remove previously installed versions of the modules, use:
+
+```
+Update-AzureRmProfile -Profile '2016-09' -RemovePreviousVersions
+```
+
