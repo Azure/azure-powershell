@@ -13,13 +13,17 @@ Updates the integration account received interchange control number (ICN) in the
 
 ```
 Set-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName <String> -Name <String> -AgreementName <String>
- -ControlNumber <String> -IsMessageProcessingFailed <Boolean> [-WhatIf] [-Confirm]
+ -ControlNumberValue <String> -IsMessageProcessingFailed <Boolean> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmIntegrationAccountGeneratedIcn cmdlet updates an existing integration account received interchange control number (ICN) and returns an object that represents the integration account received interchange control number. Use this cmdlet to update an integration account received interchange control number's message processing status. You can update an integration account received interchange control number by specifying the integration account name, resource group name, agreement name, control number value and message processing status.
+The Set-AzureRmIntegrationAccountGeneratedIcn cmdlet updates an existing integration account received interchange control number (ICN) and returns an object that represents the integration account received interchange control number.
+Use this cmdlet to update an integration account received interchange control number's message processing status.
+You can update an integration account received interchange control number by specifying the integration account name, resource group name, agreement name, control number value and message processing status.
 You cannot create a new integration account received interchange control number with this command.
-To use the dynamic parameters, just type them in the command, or type a hyphen sign(-) to indicate a parameter name and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required template parameter, the cmdlet prompts you for the value. Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
+To use the dynamic parameters, just type them in the command, or type a hyphen sign(-) to indicate a parameter name and then press the TAB key repeatedly to cycle through the available parameters.
+If you miss a required template parameter, the cmdlet prompts you for the value.
+Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
 
 ## EXAMPLES
 
@@ -37,21 +41,6 @@ This command updates the integration account received interchange control number
 
 ### -AgreementName
 The integration account agreement name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ControlNumber
-The received control number value.
 
 ```yaml
 Type: String
@@ -120,7 +109,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -136,20 +125,36 @@ Aliases: wi
 
 Required: False
 Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ControlNumberValue
+The integration account control number value.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber
-
 
 ## NOTES
 

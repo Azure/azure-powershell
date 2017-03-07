@@ -8968,15 +8968,6 @@ Metadata</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumber</maml:name>
-<maml:Description><maml:para>The received control number value.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IsMessageProcessingFailed</maml:name>
 <maml:Description><maml:para>The received message processing status.
 </maml:para>
@@ -9019,6 +9010,15 @@ Metadata</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumberValue</maml:name>
+<maml:Description><maml:para>The integration account control number value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -9031,15 +9031,6 @@ Metadata</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumber</maml:name>
-<maml:Description><maml:para>The received control number value.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IsMessageProcessingFailed</maml:name>
 <maml:Description><maml:para>The received message processing status.
 </maml:para>
@@ -9084,6 +9075,15 @@ Metadata</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ControlNumberValue</maml:name>
+<maml:Description><maml:para>The integration account control number value.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>System.String</maml:name>
