@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayLearnedRoute"), OutputType(typeof(PSGatewayRoute))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayLearnedRoute"), OutputType(typeof(PSGatewayRoute[]))]
     public class GetVirtualNetworkGatewayLearnedRouteCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

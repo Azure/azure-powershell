@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSBgpPeerStatus
+    public class PSBGPPeerStatus
     {
         public int? Asn { get; set; }
         public string ConnectedDuration { get; set; }

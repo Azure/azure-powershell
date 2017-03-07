@@ -17172,11 +17172,11 @@ Subnets           : []</dev:code>
 <command:details><command:name>Get-AzureRmVirtualNetworkGatewayAdvertisedRoute</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmVirtualNetworkGatewayAdvertisedRoute</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Retrieves a list of routes a virtual network gateway is advertising to the specified peer
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Enumerates routes being advertised to the peer with the specified IP. This command is only valid for virtual network gateways with BGP connections configured.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmVirtualNetworkGatewayAdvertisedRoute</maml:name>
@@ -17251,13 +17251,22 @@ Subnets           : []</dev:code>
 </maml:description>
 </command:returnValue>
 </command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
+<maml:alertSet><maml:alert><maml:para>The specified peer IP should be the IP the Azure gateway is configured to establish a BGP session with. Because Azure gateways establish BGP sessions using their private IP in the virtual network, the peer IP should be a private IP reachable from the gateway's Azure virtual network. It should not be a VPN device's public IP.
 </maml:para>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkGatewayAdvertisedRoutes -ResourceGroupName "resourceGroup" -VirtualNetworkGatewayName "gatewayName" -Peer 10.1.0.254</dev:code>
+<dev:remarks><maml:para>Gets a list of routes being advertised to the peer with IP 10.1.0.254 by the Azure virtual network gateway named "gatewayName" in resource group "resourceGroup"
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; $bgpPeerStatus = Get-AzureRmVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName "resourceGroup" -VirtualNetworkGatewayName "gatewayName"
+PS C:\&gt; Get-AzureRmVirtualNetworkGatewayAdvertisedRoutes -ResourceGroupName "resourceGroup" -VirtualNetworkGatewayName "gatewayName" -Peer $bgpPeerStatus[0].Neighbor</dev:code>
+<dev:remarks><maml:para>Gets a list of routes being advertised to the first peer returned for the Azure virtual network gateway named "gatewayName" in resource group "resourceGroup"
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -17267,17 +17276,17 @@ Subnets           : []</dev:code>
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Get-AzureRmVirtualNetworkGatewayBgpPeerStatus</command:name>
+<command:details><command:name>Get-AzureRmVirtualNetworkGatewayBGPPeerStatus</command:name>
 <command:verb>Get</command:verb>
-<command:noun>AzureRmVirtualNetworkGatewayBgpPeerStatus</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<command:noun>AzureRmVirtualNetworkGatewayBGPPeerStatus</command:noun>
+<maml:description><maml:para>Retrieves status information for a virtual network gateway's BGP peers
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Enumerates BGP peers for a virtual network gateway, and gives information on each peer's status.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Get-AzureRmVirtualNetworkGatewayBgpPeerStatus</maml:name>
+<command:syntax><command:syntaxItem><maml:name>Get-AzureRmVirtualNetworkGatewayBGPPeerStatus</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Peer</maml:name>
 <maml:Description><maml:para>IP of the peer to retrieve status for
 </maml:para>
@@ -17354,8 +17363,8 @@ Subnets           : []</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName "resourceGroup" -VirtualNetworkGatewayName "gatewayName"</dev:code>
+<dev:remarks><maml:para>Displays a list of BGP peers configured for the gateway named "gatewayName" in resource group "resourceGroup"
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -17632,11 +17641,11 @@ Subnets           : []</dev:code>
 <command:details><command:name>Get-AzureRmVirtualNetworkGatewayLearnedRoute</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmVirtualNetworkGatewayLearnedRoute</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Retrieves a list of routes an Azure virtual network gateway has learned
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Enumerates learned routes for an Azure virtual network gateway. The output will include routes not learned over BGP. The origin for a route indicates how the Azure gateway learned that route.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmVirtualNetworkGatewayLearnedRoute</maml:name>
@@ -17698,8 +17707,8 @@ Subnets           : []</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkGatewayLearnedRoute -ResourceGroupName "resourceGroup" -VirtualNetworkGatewayName "gatewayName"</dev:code>
+<dev:remarks><maml:para>Retrieves learned routes for the gateway "gatewayName" in resource group "resourceGroup"
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>

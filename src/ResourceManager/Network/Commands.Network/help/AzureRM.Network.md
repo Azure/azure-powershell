@@ -254,11 +254,20 @@ Gets a virtual network in a resource group.
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
 {{Manually Enter Get-AzureRmVirtualNetworkGateway Description Here}}
 
+### [Get-AzureRmVirtualNetworkGatewayAdvertisedRoute](Get-AzureRmVirtualNetworkGatewayAdvertisedRoute.md)
+Retrieves a list of routes a virtual network gateway is advertising to the specified peer
+
+### [Get-AzureRmVirtualNetworkGatewayBGPPeerStatus](Get-AzureRmVirtualNetworkGatewayBGPPeerStatus.md)
+Retrieves status information for a virtual network gateway's BGP peers
+
 ### [Get-AzureRmVirtualNetworkGatewayConnection](Get-AzureRmVirtualNetworkGatewayConnection.md)
 {{Manually Enter Get-AzureRmVirtualNetworkGatewayConnection Description Here}}
 
 ### [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](Get-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
 {{Manually Enter Get-AzureRmVirtualNetworkGatewayConnectionSharedKey Description Here}}
+
+### [Get-AzureRmVirtualNetworkGatewayLearnedRoute](Get-AzureRmVirtualNetworkGatewayLearnedRoute.md)
+Retrieves a list of routes an Azure virtual network gateway has learned
 
 ### [Get-AzureRmVirtualNetworkPeering](Get-AzureRmVirtualNetworkPeering.md)
 Gets the virtual network peering.

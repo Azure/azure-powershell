@@ -20,8 +20,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayBgpPeerStatus"), OutputType(typeof(PSBgpPeerStatus))]
-    public class GetAzureVirtualNetworkGatewayBgpPeerStatus : VirtualNetworkGatewayBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayBGPPeerStatus"), OutputType(typeof(PSBGPPeerStatus[]))]
+    public class GetAzureVirtualNetworkGatewayBGPPeerStatus : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            List<PSBgpPeerStatus> peerStatuses = new List<PSBgpPeerStatus>();
+            List<PSBGPPeerStatus> peerStatuses = new List<PSBGPPeerStatus>();
             foreach (var peerStatus in this.VirtualNetworkGatewayClient.GetBgpPeerStatus(this.ResourceGroupName, this.VirtualNetworkGatewayName, this.Peer).Value)
             {
-                peerStatuses.Add(Mapper.Map<PSBgpPeerStatus>(peerStatus));
+                peerStatuses.Add(Mapper.Map<PSBGPPeerStatus>(peerStatus));
             }
 
             WriteObject(peerStatuses, true);

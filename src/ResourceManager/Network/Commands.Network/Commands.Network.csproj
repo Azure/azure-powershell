@@ -283,7 +283,7 @@
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
     <Compile Include="Models\PSBgpCommunity.cs" />
-    <Compile Include="Models\PSBgpPeerStatus.cs" />
+    <Compile Include="Models\PSBGPPeerStatus.cs" />
     <Compile Include="Models\PSBgpServiceCommunity.cs" />
     <Compile Include="Models\PSFlowLog.cs" />
     <Compile Include="Models\PSFlowLogProperties.cs" />
