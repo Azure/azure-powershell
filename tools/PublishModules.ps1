@@ -61,7 +61,7 @@ function Get-TargetModules
               $targets += $module.FullName
             }
           }
-        } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage") -and ($Scope -ne "AzureStack")) {
+        } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage") -and ($Scope -ne "AzureStack") -and ($Scope -ne "AzureRM.BootStrapper")) {
           $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
           if (Test-Path $modulePath) {
             $targets += $modulePath      
@@ -78,6 +78,12 @@ function Get-TargetModules
         if (($Scope -eq 'All') -or ($Scope -eq 'AzureStack')) {
             # Publish AzureStack module    
             $targets += "$PSScriptRoot\AzureStack"
+			$targets += "$PSScriptRoot\AzureRM.BootStrapper"
+        } 
+
+		if ($Scope -eq 'AzureRM.BootStrapper') {
+            # Publish AzureStack module    
+            $targets += "$PSScriptRoot\AzureRM.BootStrapper"
         } 
 
 		Write-Output -InputObject $targets
