@@ -115,6 +115,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Backend &apos;{0}&apos;.
+        /// </summary>
+        internal static string BackendRemoveDescription {
+            get {
+                return ResourceManager.GetString("BackendRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Backend &quot;{0}&quot; ?.
+        /// </summary>
+        internal static string BackendRemoveWarning {
+            get {
+                return ResourceManager.GetString("BackendRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Certificate &quot;{0}&quot;..
         /// </summary>
         internal static string CertificateRemoveDescription {

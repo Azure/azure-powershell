@@ -141,6 +141,14 @@
     <value>Are you sure you want to remove Authorization Server "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="BackendRemoveDescription" xml:space="preserve">
+    <value>Removing Backend '{0}'</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="BackendRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Backend "{0}" ?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="CertificateRemoveDescription" xml:space="preserve">
     <value>Removing Certificate "{0}".</value>
     <comment>Process workflow</comment>
