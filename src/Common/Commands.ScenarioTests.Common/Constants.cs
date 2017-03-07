@@ -22,6 +22,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string All = "All";
 
+        public const string SignedBuild = "SignedBuild";
+
         public const string Automation = "Automation";
 
         public const string ServiceBus = "ServiceBus";
@@ -49,8 +51,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string Tags = "Tags";
 
         public const string TrafficManager = "TrafficManager";
-
-        public const string ManagedCache = "ManagedCache";
 
         public const string Scheduler = "Scheduler";
 
