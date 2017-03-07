@@ -18,17 +18,17 @@ Get-AzureRmNetworkInterface [-Name <String>] [-ResourceGroupName <String>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
+### ExpandStandAloneNic
+```
+Get-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+```
+
 ### NoExpandScaleSetNic
 ```
 Get-AzureRmNetworkInterface [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
  [-VirtualMachineIndex <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
  [<CommonParameters>]
-```
-
-### ExpandStandAloneNic
-```
-Get-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### ExpandScaleSetNic
@@ -59,51 +59,10 @@ This command gets all network interfaces in the resource group named ResourceGro
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the network interface that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: NoExpandStandAloneNic, NoExpandScaleSetNic
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
+### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group from which this cmdlet gets network interfaces.
-
-```yaml
-Type: String
-Parameter Sets: NoExpandStandAloneNic
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: NoExpandScaleSetNic, ExpandStandAloneNic, ExpandScaleSetNic
 Aliases: 
 
 Required: True
@@ -152,7 +111,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
+### -Name
+Specifies the name of the network interface that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: NoExpandStandAloneNic, NoExpandScaleSetNic
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ```yaml
 Type: String
 Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
@@ -165,8 +138,35 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineScaleSetName
-Specifies the name of the virtual machine scale set from which this cmdlet gets network interfaces.
+### -ResourceGroupName
+Specifies the name of the resource group from which this cmdlet gets network interfaces.
+
+```yaml
+Type: String
+Parameter Sets: NoExpandStandAloneNic
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ExpandStandAloneNic, NoExpandScaleSetNic, ExpandScaleSetNic
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualMachineIndex
+Specifies the virtual machine index of the virtual machine scale set from which this cmdlet gets network interfaces.
 
 ```yaml
 Type: String
@@ -192,8 +192,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineIndex
-Specifies the virtual machine index of the virtual machine scale set from which this cmdlet gets network interfaces.
+### -VirtualMachineScaleSetName
+Specifies the name of the virtual machine scale set from which this cmdlet gets network interfaces.
 
 ```yaml
 Type: String
