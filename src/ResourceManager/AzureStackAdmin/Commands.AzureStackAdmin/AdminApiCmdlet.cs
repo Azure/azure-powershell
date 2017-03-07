@@ -36,7 +36,16 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets or sets the API version. Not a parameter that is to bes passed from outside
         /// </summary>
-        protected string ApiVersion { get; set; } = SubscriptionApiVersion;
+        protected string ApiVersion { get; set; }
+
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        protected AdminApiCmdlet()
+        {
+            this.ApiVersion = SubscriptionApiVersion;
+        }
 
         /// <summary>
         /// Gets the current default context. overriding it here since DefaultContext could be null for Windows Auth/ADFS environments
