@@ -25,10 +25,10 @@ Updates the Configuration of an existing Identity Provider.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmApiManagementIdentityProvider -Context $apimcontext -Type Facebook -ClientSecret "updatedSecret" -PassThru
 ```
 
-{{ Add example description here }}
+The cmdlet updates the Client Secret of the Facebook Identity Provider;
 
 ## PARAMETERS
 
@@ -95,8 +95,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+
 ### -InformationAction
-@{Text=}
+Specifies how this cmdlet responds to an information event.
+
+The acceptable values for this parameter are:
+
+- Continue
+- Ignore
+- Inquire
+- SilentlyContinue
+- Stop
+- Suspend
 
 ```yaml
 Type: ActionPreference
@@ -111,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
-@{Text=}
+Specifies an information variable.
 
 ```yaml
 Type: String
@@ -126,7 +136,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-@{Text=}
+Indicates that this cmdlet returns the  **PsApiManagementIdentityProvider** that this cmdlet modifies.
+
 
 ```yaml
 Type: SwitchParameter
