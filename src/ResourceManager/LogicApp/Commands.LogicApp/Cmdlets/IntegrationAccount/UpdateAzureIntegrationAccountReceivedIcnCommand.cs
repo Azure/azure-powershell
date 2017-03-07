@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Commands.LogicApp.Utilities;
 
     /// <summary>
-    /// Updates the integration account generated interchange control number.
+    /// Updates the integration account received interchange control number.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountGeneratedIcn", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountReceivedIcn", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountControlNumber))]
-    public class UpdateAzureIntegrationAccountGeneratedIcnCommand : LogicAppBaseCmdlet
+    public class UpdateAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
     {
         #region Input Paramters
 
@@ -52,11 +52,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string AgreementName { get; set; }
 
         /// <summary>
-        /// Gets or sets the control number.
+        /// Gets or sets the control number value.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The generated control number new value.")]
+        [Parameter(Mandatory = true, HelpMessage = "The integration account control number value.")]
         [ValidateNotNullOrEmpty]
-        public string ControlNumber { get; set; }
+        public string ControlNumberValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the received message processing status.
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "The received message processing status.")]
+        [ValidateNotNullOrEmpty]
+        public bool IsMessageProcessingFailed { get; set; }
 
         #endregion Input Parameters
 
@@ -67,23 +74,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
+            var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
-                integrationAccountAgreementName: this.AgreementName);
+                integrationAccountAgreementName: this.AgreementName,
+                controlNumber: this.ControlNumberValue);
 
-            integrationAccountGeneratedIcn.ControlNumber = this.ControlNumber;
+            integrationAccountGeneratedIcn.ControlNumber = this.ControlNumberValue;
+            integrationAccountGeneratedIcn.IsMessageProcessingFailed = this.IsMessageProcessingFailed;
             integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
                 integrationAccountGeneratedIcn.ControlNumberChangedTime.AddTicks(1);
 
             this.ConfirmAction(
-                processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateGeneratedControlNumberMessage, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
+                processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateReceivedControlNumberMessage, this.ControlNumberValue, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
                 target: this.Name,
                 action: () =>
                 {
                     this.WriteObject(
-                        sendToPipeline: this.IntegrationAccountClient.UpdateIntegrationAccountGeneratedIcn(
+                        sendToPipeline: this.IntegrationAccountClient.UpdateIntegrationAccountReceivedIcn(
                             resourceGroupName: this.ResourceGroupName,
                             integrationAccountName: this.Name,
                             integrationAccountAgreementName: this.AgreementName,

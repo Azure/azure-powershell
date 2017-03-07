@@ -134,6 +134,7 @@
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountGeneratedIcnCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountMapCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountPartnerCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountReceivedIcnCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountSchemaCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\CancelAzureLogicAppRunCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppCommand.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Utilities\Constants.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utilities\ControlNumberType.cs" />
     <Compile Include="Utilities\IntegrationAccountAgreementOperations.cs" />
     <Compile Include="Utilities\IntegrationAccountCertificateOperations.cs" />
     <Compile Include="Utilities\IntegrationAccountClient.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="Utilities\LogicAppClientRunOperations.cs" />
     <Compile Include="Utilities\LogicAppClientTriggerOperations.cs" />
     <Compile Include="Utilities\ParameterSet.cs" />
+    <Compile Include="Utilities\QualifiedIntegrationAccountControlNumber.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,10 +202,6 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
-      <Project>{8058D403-06E3-4BED-8924-D166CE303961}</Project>
-      <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>

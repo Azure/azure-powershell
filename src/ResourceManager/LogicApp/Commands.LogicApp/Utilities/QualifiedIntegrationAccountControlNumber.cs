@@ -14,35 +14,24 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using System;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
     /// <summary>
-    /// The Replicable control number content.
+    /// The control number qualified with agreement name.
     /// </summary>
-    /// <remarks>This type is to be kept identical to the B2B Connector type ReplicableControlNumberContent.</remarks>
-    public class IntegrationAccountControlNumber
+    public class QualifiedIntegrationAccountControlNumber : IntegrationAccountControlNumber
     {
         /// <summary>
-        /// Gets or sets the control number
+        /// Creates a new instance for the base class and an agreement name.
         /// </summary>
-        [JsonProperty]
-        public string ControlNumber { get; set; }
+        public QualifiedIntegrationAccountControlNumber(IntegrationAccountControlNumber icn, string agreementName)
+        {
+            this.ControlNumber = icn.ControlNumber;
+            this.ControlNumberChangedTime = icn.ControlNumberChangedTime;
+            this.AgreementName = agreementName;
+        }
 
         /// <summary>
-        /// Gets or sets the message received time
+        /// Gets or sets the agreement name
         /// </summary>
-        /// <remarks>
-        /// Will be null for generated ICN's
-        /// </remarks>
-        [JsonProperty(ItemConverterType = typeof(IsoDateTimeConverter))]
-        public DateTime ControlNumberChangedTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether the message processing failed.
-        /// </summary>
-        [JsonProperty]
-        public bool? IsMessageProcessingFailed { get; set; }
+        public string AgreementName { get; set; }
     }
 }

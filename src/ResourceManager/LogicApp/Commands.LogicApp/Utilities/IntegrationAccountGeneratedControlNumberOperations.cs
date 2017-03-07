@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Rest.Azure;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// LogicApp client partial class for integration account control number operations.
@@ -132,6 +134,45 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                         integrationAccountAgreementName: agreement.Name),
                     agreementName: agreement.Name))
                 .ToList();
+        }
+
+        /// <summary>
+        /// Converts session content to integration account control number.
+        /// </summary>
+        /// <param name="sessionContent">The session content.</param>
+        /// <param name="integrationAccountAgreementName">The integration account agreement name.</param>
+        /// <returns>The <see cref="IntegrationAccountControlNumber"/>.</returns>
+        /// <exception cref="PSInvalidOperationException">If the session content is not in the expected format.</exception>
+        private static IntegrationAccountControlNumber SessionContentToIntegrationAccountControlNumber(object sessionContent, string integrationAccountAgreementName, string controlNumber = null)
+        {
+            var content = sessionContent as JObject;
+            if (content != null)
+            {
+                try
+                {
+                    return content.ToObject<IntegrationAccountControlNumber>();
+                }
+                catch (FormatException)
+                {
+                }
+                catch (JsonException)
+                {
+                }
+            }
+
+            if (string.IsNullOrEmpty(controlNumber))
+            {
+                throw new PSInvalidOperationException(message: string.Format(
+                    Properties.Resource.GeneratedControlNumberInvalidFormat,
+                    integrationAccountAgreementName));
+            }
+            else
+            {
+                throw new PSInvalidOperationException(message: string.Format(
+                    Properties.Resource.ReceivedControlNumberInvalidFormat,
+                    controlNumber,
+                    integrationAccountAgreementName));
+            }
         }
 
         /// <summary>

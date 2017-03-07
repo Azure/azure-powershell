@@ -14,15 +14,16 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
-    using System;
 
     /// <summary>
     /// Gets the integration account agreement by name 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountAgreement")]
-    [OutputType(typeof(object))]
+    [OutputType(typeof(IntegrationAccountAgreement), typeof(IList<IntegrationAccountAgreement>))]
     public class GetAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 

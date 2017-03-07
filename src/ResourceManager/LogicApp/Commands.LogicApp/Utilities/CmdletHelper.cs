@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Management.Logic;
-
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json;
-    using Rest.Azure;
 
     /// <summary>
     /// Helper class for the logic app commands 

@@ -12,8 +12,8 @@ Updates the integration account generated interchange control number (ICN) in th
 ## SYNTAX
 
 ```
-Set-AzureRmIntegrationAccountGeneratedIcn [-ResourceGroupName <String>] [-Name <String>]
- [-AgreementName <String>] -ControlNumber <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName <String> -Name <String> -AgreementName <String>
+ -ControlNumber <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,7 +92,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,7 +107,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
