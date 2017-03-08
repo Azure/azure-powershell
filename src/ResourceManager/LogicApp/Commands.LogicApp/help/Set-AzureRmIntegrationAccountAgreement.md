@@ -15,7 +15,8 @@ Modifies an integration account agreement.
 ```
 Set-AzureRmIntegrationAccountAgreement -ResourceGroupName <String> -Name <String> -AgreementName <String>
  [-AgreementType <String>] [-GuestPartner <String>] [-HostPartner <String>] [-GuestIdentityQualifier <String>]
- [-HostIdentityQualifier <String>] [-AgreementContent <String>] [-AgreementContentFilePath <String>]
+ [-GuestIdentityQualifierValue <String>] [-HostIdentityQualifier <String>]
+ [-HostIdentityQualifierValue <String>] [-AgreementContent <String>] [-AgreementContentFilePath <String>]
  [-Metadata <Object>] [-Force] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -79,7 +80,7 @@ Specifies the name of an integration account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases: IntegrationAccountName, ResourceName
 
 Required: True
 Position: Named
@@ -309,6 +310,32 @@ Aliases: cf
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GuestIdentityQualifierValue
+The integration account agreement guest identity qualifier value.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostIdentityQualifierValue
+The integration account agreement host identity qualifier value.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
