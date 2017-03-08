@@ -24,11 +24,17 @@ Gets an integration account callback URL.
 ### [Get-AzureRmIntegrationAccountCertificate](Get-AzureRmIntegrationAccountCertificate.md)
 Gets integration account certificates from a resource group.
 
+### [Get-AzureRmIntegrationAccountGeneratedIcn](Get-AzureRmIntegrationAccountGeneratedIcn.md)
+Gets integration account generated interchange control number per agreement.
+
 ### [Get-AzureRmIntegrationAccountMap](Get-AzureRmIntegrationAccountMap.md)
 Gets an integration account map.
 
 ### [Get-AzureRmIntegrationAccountPartner](Get-AzureRmIntegrationAccountPartner.md)
 Gets integration account partners.
+
+### [Get-AzureRmIntegrationAccountReceivedIcn](Get-AzureRmIntegrationAccountReceivedIcn.md)
+Gets integration account received interchange control number per agreement.
 
 ### [Get-AzureRmIntegrationAccountSchema](Get-AzureRmIntegrationAccountSchema.md)
 Gets integration account schemas.
@@ -90,6 +96,9 @@ Removes an integration account map.
 ### [Remove-AzureRmIntegrationAccountPartner](Remove-AzureRmIntegrationAccountPartner.md)
 Removes an integration account partner.
 
+### [Remove-AzureRmIntegrationAccountReceivedIcn](Remove-AzureRmIntegrationAccountReceivedIcn.md)
+Removes an integration account received interchange control number.
+
 ### [Remove-AzureRmIntegrationAccountSchema](Remove-AzureRmIntegrationAccountSchema.md)
 Removes an integration account schema.
 
@@ -105,11 +114,17 @@ Modifies an integration account agreement.
 ### [Set-AzureRmIntegrationAccountCertificate](Set-AzureRmIntegrationAccountCertificate.md)
 Modifies an integration account certificate.
 
+### [Set-AzureRmIntegrationAccountGeneratedIcn](Set-AzureRmIntegrationAccountGeneratedIcn.md)
+Modifies an integration account generated interchange control number.
+
 ### [Set-AzureRmIntegrationAccountMap](Set-AzureRmIntegrationAccountMap.md)
 Modifies an integration account map.
 
 ### [Set-AzureRmIntegrationAccountPartner](Set-AzureRmIntegrationAccountPartner.md)
 Modifies an integration account partner.
+
+### [Set-AzureRmIntegrationAccountReceivedIcn](Set-AzureRmIntegrationAccountReceivedIcn.md)
+Modifies an integration account received interchange control number.
 
 ### [Set-AzureRmIntegrationAccountSchema](Set-AzureRmIntegrationAccountSchema.md)
 Modifies an integration account schema.
