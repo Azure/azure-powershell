@@ -16,11 +16,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Gets the integration account partner by name 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountPartner"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountPartner")]
+    [OutputType(typeof(IntegrationAccountPartner), typeof(IPage<IntegrationAccountPartner>))]
     public class GetAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
