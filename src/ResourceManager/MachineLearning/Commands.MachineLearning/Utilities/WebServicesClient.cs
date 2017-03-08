@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                         string region
                         )
         {
-            this.apiClient.WebServices.CreateRegionalWebServiceProperties(resourceGroupName, webServiceName, region);
+            this.apiClient.WebServices.CreateRegionalPropertiesWithRequestId(resourceGroupName, webServiceName, region);
         }
     }
 }
