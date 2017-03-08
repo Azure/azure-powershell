@@ -569,11 +569,11 @@
 <command:details><command:name>Use-AzureRmProfile</command:name>
 <command:verb>Use</command:verb>
 <command:noun>AzureRmProfile</command:noun>
-<maml:description><maml:para>Load the modules associates with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
+<maml:description><maml:para>Load the modules associated with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>Load the modules associates with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
+<maml:description><maml:para>Load the modules associated with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Use-AzureRmProfile</maml:name>

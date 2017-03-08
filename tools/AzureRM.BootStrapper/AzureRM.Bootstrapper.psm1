@@ -601,9 +601,6 @@ function Find-PotentialConflict
   $availableModules = Get-Module $Module -ListAvailable
   $IsPotentialConflict = $false
 
-  Write-Verbose $availableModules -Verbose 
-  Write-Host $availableModules 
-
   # If Admin, check CurrentUser Module folder path and vice versa
   if ($script:IsAdmin)
   {
