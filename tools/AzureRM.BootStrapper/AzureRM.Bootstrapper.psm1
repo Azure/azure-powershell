@@ -602,6 +602,12 @@ function Find-PotentialConflict
   $IsPotentialConflict = $false
 
   Write-Information "Modules installed: $availableModules"
+
+  if ($null -ne $availableModules)
+  {
+    return $false
+  }
+  
   # If Admin, check CurrentUser Module folder path and vice versa
   if ($script:IsAdmin)
   {
