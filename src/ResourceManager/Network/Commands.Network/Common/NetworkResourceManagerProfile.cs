@@ -79,7 +79,9 @@ namespace Microsoft.Azure.Commands.Network
 
             // Bgp Service Community
             Mapper.CreateMap<CNM.PSBgpServiceCommunity, MNM.BgpServiceCommunity>();
+            Mapper.CreateMap<CNM.PSBgpCommunity, MNM.BGPCommunity>();
             Mapper.CreateMap<MNM.BgpServiceCommunity, CNM.PSBgpServiceCommunity>();
+            Mapper.CreateMap<MNM.BGPCommunity, CNM.PSBgpCommunity>();
 
             // Subnet
             // CNM to MNM
