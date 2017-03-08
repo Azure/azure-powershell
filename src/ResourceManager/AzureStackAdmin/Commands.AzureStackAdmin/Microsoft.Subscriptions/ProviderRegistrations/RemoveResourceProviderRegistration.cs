@@ -44,19 +44,11 @@ namespace Microsoft.AzureStack.Commands
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        [ValidateNotNull]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.RemovingResourceProviderRegistration.FormatArgs(this.Name));
                 return client.ProviderRegistrations.Delete(this.ResourceGroup, this.Name);

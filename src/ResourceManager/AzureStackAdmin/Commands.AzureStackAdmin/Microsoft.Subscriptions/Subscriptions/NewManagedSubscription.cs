@@ -29,13 +29,6 @@ namespace Microsoft.AzureStack.Commands
     public class NewManagedSubscription : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription owner.
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -93,7 +86,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
                 var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());

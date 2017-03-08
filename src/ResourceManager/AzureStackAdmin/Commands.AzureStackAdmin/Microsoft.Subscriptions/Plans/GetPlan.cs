@@ -45,13 +45,6 @@ namespace Microsoft.AzureStack.Commands
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = "Admin", Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets a switch indicating whether to return managed plans.
         /// </summary>
         [Parameter(ParameterSetName = "Admin", Mandatory = true)]
@@ -64,7 +57,7 @@ namespace Microsoft.AzureStack.Commands
         {
             if (this.Managed.IsPresent)
             {
-                using (var client = this.GetAzureStackClient(this.SubscriptionId))
+                using (var client = this.GetAzureStackClient())
                 {
                     if (string.IsNullOrEmpty(this.Name))
                     {
