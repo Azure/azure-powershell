@@ -611,10 +611,10 @@ function Find-PotentialConflict
   # If Admin, check CurrentUser Module folder path and vice versa
   if ($script:IsAdmin)
   {
-    $availableModules | ForEach-Object { if ($_.Path.Contains($env:HOMEPATH)) { $IsPotentialConflict = $true } }
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:HOMEPATH)) { $IsPotentialConflict = $true } }
   }
   else {
-    $availableModules | ForEach-Object { if ($_.Path.Contains($env:ProgramFiles)) { $IsPotentialConflict = $true } }
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:ProgramFiles)) { $IsPotentialConflict = $true } }
   }
 
   if ($IsPotentialConflict)
