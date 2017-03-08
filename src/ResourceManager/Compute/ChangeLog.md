@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support managed disks
 
 ## Version 2.7.0
 * Updated Set-AzureRmVMDscExtension cmdlet WmfVersion parameter to support "5.1"
