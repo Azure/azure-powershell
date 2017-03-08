@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.5.0'
+ModuleVersion = '3.7.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '2.6.0'; })
+RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '2.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -81,7 +81,6 @@ FormatsToProcess =
 NestedModules = @('.\Automation\Microsoft.Azure.Commands.Automation.dll', 
                '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.dll', 
                '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll', 
-               '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll', 
                '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll', 
                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll', 
                '.\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll', 
@@ -230,13 +229,7 @@ CmdletsToExport = 'Get-AzureAutomationCertificate', 'Get-AzureAutomationConnecti
                'Revoke-AzureHDInsightHttpServicesAccess', 
                'Set-AzureHDInsightDefaultStorage', 'Start-AzureHDInsightJob', 
                'Stop-AzureHDInsightJob', 'Use-AzureHDInsightCluster', 
-               'Wait-AzureHDInsightJob', 'Get-AzureManagedCacheLocation', 
-               'Get-AzureManagedCache', 'Get-AzureManagedCacheAccessKey', 
-               'New-AzureManagedCache', 'New-AzureManagedCacheAccessKey', 
-               'Get-AzureManagedCacheNamedCache', 
-               'New-AzureManagedCacheNamedCache', 'Remove-AzureManagedCache', 
-               'Remove-AzureManagedCacheNamedCache', 'Set-AzureManagedCache', 
-               'Set-AzureManagedCacheNamedCache', 
+               'Wait-AzureHDInsightJob', 
                'Get-AzureNetworkSecurityGroupConfig', 
                'Get-AzureNetworkSecurityGroup', 'New-AzureNetworkSecurityGroup', 
                'Remove-AzureNetworkSecurityGroup', 
