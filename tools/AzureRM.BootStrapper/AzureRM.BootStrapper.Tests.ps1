@@ -1035,7 +1035,8 @@ Describe "Install-AzureRmProfile" {
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Get-AzureRmModule -Verifiable {} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module1'}
         Mock Get-AzureRmModule -Verifiable { "1.0"} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module2'}
-
+        Mock Find-PotentialConflict -Verifiable { $false }
+        
         Context "Invoke with valid profile name" {
             Mock Install-Module -Verifiable { "Installing module Module1... Version 1.0"} 
             It "Should install Module1" {
