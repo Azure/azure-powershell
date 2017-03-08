@@ -19,6 +19,40 @@
 -->
 ## Current Release
 
+## Version 2.6.0
+
+## Version 2.5.0
+* Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
+    - Start-AzureStorageBlobCopy
+* Fix hang issue when running cmdlets from WPF/Winform context  
+    - Get-AzureStorageBlob
+    - Get-AzureStorageBlobContent
+    - Get-AzureStorageBlobCopyState
+    - Get-AzureStorageContainer
+    - Get-AzureStorageContainerStoredAccessPolicy
+    - New-AzureStorageContainer
+    - Remove-AzureStorageBlob
+    - Remove-AzureStorageContainer
+    - Set-AzureStorageBlobContent
+    - Set-AzureStorageContainerAcl
+    - Start-AzureStorageBlobCopy
+    - Stop-AzureStorageBlobCopy
+    - Get-AzureStorageFile
+    - Get-AzureStorageFileContent
+    - Get-AzureStorageFileCopyState
+    - Get-AzureStorageShare
+    - Get-AzureStorageShareStoredAccessPolicy
+    - New-AzureStorageDirectory
+    - New-AzureStorageShare
+    - Remove-AzureStorageDirectory
+    - Remove-AzureStorageFile
+    - Remove-AzureStorageShare
+    - Set-AzureStorageFileContent
+    - Start-AzureStorageFileCopy
+    - Stop-AzureStorageFileCopy
+    - Get-AzureStorageQueueStoredAccessPolicy
+    - Get-AzureStorageTableStoredAccessPolicy
+
 ## Version 2.3.0
 
 ## Version 2.2.0

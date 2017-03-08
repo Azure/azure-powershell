@@ -43,10 +43,22 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 baseAccount.TrustedIdProviders,
                 baseAccount.LastModifiedTime,
                 baseAccount.Endpoint,
-                baseAccount.DefaultGroup
-                )
+                baseAccount.DefaultGroup,
+                baseAccount.NewTier,
+                baseAccount.CurrentTier,
+                baseAccount.FirewallAllowAzureIps)
         {
             Properties = new PSDataLakeStoreAccountProperties(baseAccount);
+
+            // TODO: Work around to null out properties that are returned empty.
+            // Swagger deserialization will put a default value of an enum in an empty object.
+            // Once the server correctly returns nothing (instead of empty objects), this can
+            // be removed.
+            if (EncryptionState == Management.DataLake.Store.Models.EncryptionState.Disabled)
+            {
+                this.EncryptionConfig = null;
+                this.Properties.EncryptionConfig = null;
+            }
         }
     }
 }

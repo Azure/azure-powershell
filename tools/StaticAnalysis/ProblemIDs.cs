@@ -8,6 +8,8 @@
         public const int ConfirmLevelChange = 8200;
         public const int CmdletWithDestructiveVerbNoForce = 8210;
         public const int CmdletWithUnapprovedVerb = 8300;
+        public const int CmdletWithPluralNoun = 8400;
+        public const int ParameterWithPluralNoun = 8410;
         public const int CmdletWithDestructiveVerb = 98300;
         public const int CmdletWithForceParameter = 98310;
     }
@@ -56,6 +58,9 @@
         public const int ChangedParameterGenericType = 2120;
         public const int ChangedParameterGenericTypeArgument = 2130;
         public const int DifferentParameterGenericTypeArgumentSize = 2140;
+        public const int AddedValidateRange = 2150;
+        public const int ChangedValidateRangeMinimum = 2160;
+        public const int ChangedValidateRangeMaximum = 2170;
         public const int ChangedPropertyType = 3000;
         public const int RemovedProperty = 3010;
         public const int ChangedElementType = 3020;

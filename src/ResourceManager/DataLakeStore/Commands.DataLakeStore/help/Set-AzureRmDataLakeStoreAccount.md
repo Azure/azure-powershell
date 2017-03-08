@@ -14,8 +14,8 @@ Modifies a Data Lake Store account.
 
 ```
 Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tags] <Hashtable>]
- [[-Encryption] <EncryptionConfigType>] [[-KeyVaultId] <String>] [[-KeyName] <String>] [[-KeyVersion] <String>]
- [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [[-TrustedIdProviderState] <TrustedIdProviderState>] [[-FirewallState] <FirewallState>]
+ [[-ResourceGroupName] <String>] [-Tier <TierType>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
  [<CommonParameters>]
 ```
 
@@ -33,16 +33,14 @@ This command adds the specified tag to the Data Lake Store account named Contoso
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of a Data Lake Store account.
-
-```yaml
-Type: String
+### -AllowAzureIpState
+Optionally allow/block Azure originating IPs through the firewall.```yaml
+Type: FirewallAllowAzureIpsState
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -64,42 +62,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies tags as key-value pairs.
-You can use tags to identify a Data Lake Store account from other Azure resources.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Encryption
-
-
-```yaml
-Type: EncryptionConfigType
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -KeyVaultId
-
-
-```yaml
-Type: String
+### -FirewallState
+Optionally enable or disable existing firewall rules.```yaml
+Type: FirewallState
 Parameter Sets: (All)
 Aliases: 
 
@@ -110,31 +75,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -KeyName
-
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -KeyVersion
-
+### -Name
+Specifies the name of a Data Lake Store account.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: 6
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -155,42 +105,45 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Tags
+Specifies tags as key-value pairs.
+You can use tags to identify a Data Lake Store account from other Azure resources.
 
 ```yaml
-Type: ActionPreference
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
+### -Tier
+The desired commitment tier for this account to use.```yaml
+Type: TierType
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TrustedIdProviderState
+Optionally enable or disable the existing trusted ID providers.```yaml
+Type: TrustedIdProviderState
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -200,6 +153,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSDataLakeStoreAccount
+The updated account details.
 
 ## NOTES
 

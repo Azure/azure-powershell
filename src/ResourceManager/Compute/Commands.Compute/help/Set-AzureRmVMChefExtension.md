@@ -15,19 +15,21 @@ Adds a Chef extension to a virtual machine.
 ### Linux
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
- -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-RunList <String>]
- [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
- [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
+ -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
+ [-ChefServiceInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
+ [-OrganizationName <String>] [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Secret <String>]
 ```
 
 ### Windows
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
- -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-RunList <String>]
- [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
- [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
+ -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
+ [-ChefServiceInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
+ [-OrganizationName <String>] [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Daemon <String>] [-SecretFile <String>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +39,7 @@ The **Set-AzureVMChefExtension** cmdlet adds the Chef extension to the virtual m
 
 ### Example 1: Add a Chef extension to a Windows virtual machine
 ```
-PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Windows
+PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Daemon "service" -SecretFile "C:\my_encrypted_data_bag_secret" -Windows
 ```
 
 This command adds a Chef extension to a Windows virtual machine named WindowsVM001.
@@ -45,7 +47,7 @@ When the virtual machine starts, Chef bootstraps the virtual machine to run Apac
 
 ### Example 2: Add a Chef extension to a Linux virtual machine
 ```
-PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Linux
+PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Secret "my_secret" -Linux
 ```
 
 This command adds a Chef extension to a Linux virtual machine named LinuxVM001.
@@ -120,10 +122,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ChefServiceInterval
+Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ClientRb
 Specifies the full path of the Chef client.rb.
 
 ```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -JsonAttribute
+A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{"foo" : "bar"}'```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -279,6 +307,55 @@ Aliases: ResourceName
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Daemon
+Configures the chef-client service for unattended execution. The node platform should be Windows.
+Allowed options: 'none','service' and 'task'.
+none - Currently prevents the chef-client service from being configured as a service.
+service - Configures the chef-client to run automatically in the background as a service.
+task - Configures the chef-client to run automatically in the background as a secheduled task.
+
+```yaml
+Type: String
+Parameter Sets: Windows
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Secret
+The encryption key used to encrypt and decrypt the data bag item values.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecretFile
+The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

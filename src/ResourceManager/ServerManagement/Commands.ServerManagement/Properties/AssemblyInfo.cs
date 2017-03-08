@@ -26,5 +26,5 @@ using Microsoft.WindowsAzure.Commands.Common;
 [assembly: AssemblyCopyright(AzurePowerShell.AssemblyCopyright)]
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: AssemblyVersion("2.4.0")]
-[assembly: AssemblyFileVersion("2.4.0")]
+[assembly: AssemblyVersion("2.6.0")]
+[assembly: AssemblyFileVersion("2.6.0")]

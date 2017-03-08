@@ -8,6 +8,7 @@ schema: 2.0.0
 # Set-AzureRmVMBackupExtension
 
 ## SYNOPSIS
+Sets the backup extension properties on a virtual machine.
 
 ## SYNTAX
 

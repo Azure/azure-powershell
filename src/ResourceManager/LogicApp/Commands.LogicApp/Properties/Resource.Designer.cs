@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/serverfarms/{2}.
-        /// </summary>
-        internal static string ApplicationServicePlanIdFormat {
-            get {
-                return ResourceManager.GetString("ApplicationServicePlanIdFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cancelling the LogicApp run..
         /// </summary>
         internal static string CancelLogicAppRunMessage {
@@ -106,6 +97,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid business identity..
+        /// </summary>
+        internal static string InvalidBusinessIdentity {
+            get {
+                return ResourceManager.GetString("InvalidBusinessIdentity", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Invalid metadata..
         /// </summary>
         internal static string InvalidMetadata {
@@ -129,6 +129,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         internal static string ParameterNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("ParameterNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either {0} business Identity qualifier or qualifier value is not specified..
+        /// </summary>
+        internal static string QualifierWithValueNotSpecified {
+            get {
+                return ResourceManager.GetString("QualifierWithValueNotSpecified", resourceCulture);
             }
         }
         

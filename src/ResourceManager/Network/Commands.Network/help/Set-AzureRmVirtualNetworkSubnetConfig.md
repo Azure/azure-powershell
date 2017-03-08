@@ -31,10 +31,55 @@ The **Set-AzureRmVirtualNetworkSubnetConfig** cmdlet configures the goal state f
 
 ## EXAMPLES
 
-### 1:
+## EXAMPLES
+
+### 1: Modify the address prefix of a subnet
+```
+New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+
+$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+
+$virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup    
+    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+
+Set-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.3.0/23"
+
+$virtualNetwork | Set-AzureRmVirtualNetwork
+    
+```
+This example creates a virtual network with one subnet. Then is calls 
+    Set-AzureRmVirtualNetworkSubnetConfig to modify the AddressPrefix of the subnet. This 
+    only impacts the in-memory representation of the virtual network. 
+    Set-AzureRmVirtualNetwork is then called to modify the virtual network in Azure.
+
+### 2: Add a network security group to a subnet
+```
+New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+
+$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+
+$virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
+    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+
+$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow 
+    -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+
+$networkSecurityGroup = New-AzureRmNetworkSecurityGroup -ResourceGroupName 
+    TestResourceGroup -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule
+
+Set-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix 
+    "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup
+
+$virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-```
+This example creates a resource group with one virtual network containing just one 
+    subnet. It then creates a network security group with an allow rule for RDP traffic. The 
+    Set-AzureRmVirtualNetworkSubnetConfig cmdlet is used to modify the in-memory 
+    representation of the frontend subnet so that it points to the newly created network 
+    security group. The Set-AzureRmVirtualNetwork cmdlet is then called to write the modified 
+    state back to the service.
+
 
 ## PARAMETERS
 

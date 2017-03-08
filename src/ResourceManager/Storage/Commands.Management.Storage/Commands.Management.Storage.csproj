@@ -60,8 +60,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.5.0.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.1.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
@@ -136,10 +136,10 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.5\ARMStorageProvider.cs">
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.6\ARMStorageProvider.cs">
       <Link>Common\ARMStorageProvider.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.5\ARMStorageService.cs">
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.6\ARMStorageService.cs">
       <Link>Common\ARMStorageService.cs</Link>
     </Compile>
     <Compile Include="Models\PSStorageAccount.cs" />

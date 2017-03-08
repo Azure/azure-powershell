@@ -46,7 +46,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 baseAccount.StorageAccounts,
                 baseAccount.CreationTime,
                 baseAccount.LastModifiedTime,
-                baseAccount.Endpoint)
+                baseAccount.Endpoint,
+                baseAccount.NewTier,
+                baseAccount.CurrentTier,
+                baseAccount.FirewallState,
+                baseAccount.FirewallAllowAzureIps,
+                baseAccount.FirewallRules)
         {
             Properties = new PSDataLakeAnalyticsAccountProperties(baseAccount);
         }

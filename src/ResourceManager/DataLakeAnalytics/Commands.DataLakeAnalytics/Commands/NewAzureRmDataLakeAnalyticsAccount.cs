@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the account should be created.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US",
-            "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = true)]
         public string Location { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
@@ -71,6 +67,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNull]
         [ValidateRange(1, 180)]
         public int? QueryStoreRetention { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.")]
+        [ValidateNotNull]
+        public TierType? Tier { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -105,8 +106,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Name = DefaultDataLakeStore
             };
 
-            WriteObject(new PSDataLakeAnalyticsAccount(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, Location, defaultStorage,
-                customTags: Tags, maxDegreeOfParallelism: MaxDegreeOfParallelism, maxJobCount: MaxJobCount, queryStoreRetention: QueryStoreRetention)));
+            WriteObject(
+                new PSDataLakeAnalyticsAccount(
+                    DataLakeAnalyticsClient.CreateOrUpdateAccount(
+                        ResourceGroupName,
+                        Name,
+                        Location,
+                        defaultStorage,
+                        customTags: Tags,
+                        maxDegreeOfParallelism: MaxDegreeOfParallelism,
+                        maxJobCount: MaxJobCount,
+                        queryStoreRetention: QueryStoreRetention,
+                        tier: Tier)));
         }
     }
 }

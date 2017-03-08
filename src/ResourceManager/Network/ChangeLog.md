@@ -18,6 +18,56 @@
         - Additional information about change #1
 -->
 ## Current Release 
+* Added support for connection draining to Application Gateways
+    - Added Get-AzureRmApplicationGatewayConnectionDraining 
+    - Added New-AzureRmApplicationGatewayConnectionDraining
+    - Added Remove-AzureRmApplicationGatewayConnectionDraining 
+    - Added Set-AzureRmApplicationGatewayConnectionDraining
+    - Updated Add-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
+    - Updated New-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
+    - Updated Set-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
+
+## Version 3.5.0
+* Added support for network Watcher APIs
+    - New-AzureRmNetworkWatcher
+    - Get-AzureRmNetworkWatcher
+    - Remove-AzureRmNetworkWatcher
+    - New-AzureRmPacketCaptureFilterConfig
+    - New-AzureRmNetworkWatcherPacketCapture
+    - Get-AzureRmNetworkWatcherPacketCapture
+    - Stop-AzureRmNetworkWatcherPacketCapture
+    - Remove-AzureRmNetworkWatcherPacketCapture
+    - Get-AzureRmNetworkWatcherFlowLogSatus
+    - Get-AzureRmNetworkWatcherNextHop
+    - Get-AzureRmNetworkWatcherSecurityGroupView
+    - Get-AzureRmNetworkWatcherTopology
+    - Get-AzureRmNetworkWatcherTroubleshootingResult
+    - Set-AzureRmNetworkWatcherConfigFlowLog
+    - Start-AzureRmNetworkWatcherResourceTroubleshooting
+    - Test-AzureRmNetworkWatcherIPFlow
+* Add-AzureRmExpressRouteCircuitPeeringConfig
+    - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
+    - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+* New-AzureRmExpressRouteCircuitPeeringConfig
+    - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
+    - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+* Set-AzureRmExpressRouteCircuitPeeringConfig
+    - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
+    - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
+* New cmdlets for selective service feature 
+    - Get-AzureRmRouteFilter
+    - New-AzureRmRouteFilter
+    - Set-AzureRmRouteFilter
+    - Remove-AzureRmRouteFilter
+    - Add-AzureRmRouteFilterRuleConfig
+    - Get-AzureRmRouteFilterRuleConfigobject
+    - New-AzureRmRouteFilterRuleConfig
+    - Set-AzureRmRouteFilterRuleConfig
+    - Remove-AzureRmRouteFilterRuleConfig
+
+## Version 3.4.0
+
+## Version 3.3.0
 
 ## Version 3.2.0
 * Get-AzureRmVirtualNetworkGatewayConnection
@@ -33,3 +83,4 @@
 * Get-AzureRmEffectiveNetworkSecurityGroup
     - Add warning if there is no response from GetEffectiveNSG
 * Add Source property to EffectiveRoute 
+

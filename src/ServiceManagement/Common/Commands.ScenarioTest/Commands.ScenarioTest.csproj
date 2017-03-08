@@ -220,6 +220,9 @@
     <None Include="Resources\ChefExtension\tstorgnztn-validator.pem">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\ChefExtension\encrypted_data_bag_secret">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\DiagnosticsExtension\DiagnosticsExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -271,6 +274,9 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationSuspendAndResumeJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtensionDaemonTask.json">
+	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionBasic.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -281,6 +287,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtensionAdvancedOptions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DscExtensionTests\TestGetAzureVMDscExtension.json">

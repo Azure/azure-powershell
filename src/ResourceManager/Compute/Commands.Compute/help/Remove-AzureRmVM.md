@@ -14,13 +14,13 @@ Removes a virtual machine from Azure.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Remove-AzureRmVM [-Name] <String> [-Force] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmVM -Name <String> [-Force] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Remove-AzureRmVM [-Name] <String> [-Force] [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmVM -Name <String> [-Force] -Id <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,30 +53,26 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Specifies the Resource ID of the virtual machine.
-
-```yaml
+The resource group name.```yaml
 Type: String
 Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the virtual machine to remove.
-
-```yaml
+The resource name.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VMName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

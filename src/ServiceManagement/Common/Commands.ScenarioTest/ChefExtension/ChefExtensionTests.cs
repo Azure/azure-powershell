@@ -15,7 +15,7 @@ using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
-{    
+{
     public class ChefExtensionTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
@@ -31,6 +31,20 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void TestSetAzureVMChefExtension()
         {
             this.RunPowerShellTest("Test-SetAzureVMChefExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureVMChefExtensionAdvancedOptions()
+        {
+            this.RunPowerShellTest("Test-SetAzureVMChefExtensionAdvancedOptions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureVMChefExtensionDaemonTask()
+        {
+            this.RunPowerShellTest("Test-SetAzureVMChefExtensionDaemonTask");
         }
 
         protected void SetupManagementClients()
@@ -53,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(1), TestUtilities.GetCurrentMethodName(2));
-                
+
                 SetupManagementClients();
 
                 var modules = new List<string>
@@ -76,6 +90,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 helper.RunPowerShellTest(scriptEnvPath, scripts);
             }
-        }                
+        }
     }
 }

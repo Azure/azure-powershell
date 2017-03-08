@@ -34,7 +34,7 @@ function Test-ContainerService
         $vmSize = 'Standard_A1';
 
         $orchestratorType = 'DCOS';
-        $adminUserName = 'acsLinuxAdmin';
+        $adminUserName = 'acslinuxadmin';
         $sshPublicKey =
             "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV" +
             "BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX" +
@@ -59,7 +59,7 @@ function Test-ContainerService
 
         $container = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
             -MasterDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -SshPublicKey $sshPublicKey `
-        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName `
+        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName -Count 1 `
         | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
         $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
@@ -70,8 +70,7 @@ function Test-ContainerService
         $output = $cslist | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
 
-        #$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force;
-		$st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force;
     }
     finally
     {
@@ -102,7 +101,7 @@ function Test-ContainerServiceUpdate
         $vmSize = 'Standard_A1';
 
         $orchestratorType = 'DCOS';
-        $adminUserName = 'acsLinuxAdmin';
+        $adminUserName = 'acslinuxadmin';
         $sshPublicKey =
             "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV" +
             "BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX" +
@@ -145,8 +144,7 @@ function Test-ContainerServiceUpdate
             -Count 2 `
         | Update-AzureRmContainerService;
 
-        #$st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService -Force;
-		$st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService;
+        $st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService -Force;
     }
     finally
     {

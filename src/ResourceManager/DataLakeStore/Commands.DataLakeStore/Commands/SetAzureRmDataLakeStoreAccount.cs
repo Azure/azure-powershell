@@ -58,6 +58,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The desired commitment tier for this account to use.")]
+        [ValidateNotNull]
+        public TierType? Tier { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Optionally allow/block Azure originating IPs through the firewall.")]
+        [ValidateNotNull]
+        public FirewallAllowAzureIpsState? AllowAzureIpState { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
@@ -83,7 +93,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 FirewallState = currentAccount.FirewallState;
             }
 
-            WriteObject(new PSDataLakeStoreAccount(DataLakeStoreClient.UpdateAccount(ResourceGroupName, Name, DefaultGroup, TrustedIdProviderState.GetValueOrDefault(), FirewallState.GetValueOrDefault(), Tags)));
+            if (AllowAzureIpState.HasValue && FirewallState.Value == Management.DataLake.Store.Models.FirewallState.Disabled)
+            {
+                WriteWarning(string.Format(Resources.FirewallDisabledWarning, Name));
+            }
+
+            if (!AllowAzureIpState.HasValue)
+            {
+                AllowAzureIpState = currentAccount.FirewallAllowAzureIps;
+            }
+
+            WriteObject(
+                new PSDataLakeStoreAccount(
+                    DataLakeStoreClient.UpdateAccount(
+                        ResourceGroupName,
+                        Name,
+                        DefaultGroup,
+                        TrustedIdProviderState.GetValueOrDefault(),
+                        FirewallState.GetValueOrDefault(),
+                        AllowAzureIpState.GetValueOrDefault(),
+                        Tags,
+                        tier: Tier)));
         }
     }
 }

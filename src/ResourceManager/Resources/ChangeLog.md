@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 3.6.0
+* Support policy parameters for New-AzureRmPolicyDefinition and New-AzureRmPolicyAssignment
+    - Users can now use Parameter parameter with New-AzureRmPolicyDefinition. This accepts both JSON string and file path.
+    - Users can now provide policy parameter values in New-AzureRmPolicyAssignment in a couple of ways, including JSON string, file path, PS object, and through PowerShell parameters. 
+
+## Version 3.5.0
+* Support Tag as parameters for Find-AzureRmResource
+    - Users can now use Tag parameter with Find-AzureRmResource
+    - Fixed the issue where illegal combinations of TagName, TagValue with other search parameters was allowed in Find-AzureRmResource and would result in users getting exception from the service by disallowing such combinations. 
+
 ## Version 3.4.0
 * Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
     - Users can now use ResourceNameEquals and ResourceGroupNameEquals with Find-AzureRmResource

@@ -29,6 +29,8 @@ x64/
 build/
 bld/
 src/*/[Bb]in/
+setup/**/*/[Bb]in/
+setup/[Bb]in/
 [Oo]bj/
 
 # Roslyn cache directories

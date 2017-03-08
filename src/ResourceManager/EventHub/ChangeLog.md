@@ -19,8 +19,14 @@
 -->
 ## Current Release
 
+## Version 0.0.3
+* Future Breaking Change Notification: We've added a warning about removing property 'ResourceGroupName' from the returned NamespceAttributes from cmdlets New-AzureRmEventHubNamespace, Get-AzureRmEvnetHubNamespace and Set-AzureRmEvnetHubNamespace
+
+## Version 0.0.2
+
 ## Version 0.0.1
 * Adds commandlets for the Azure EventHub
+
     - New-AzureRmEventHubNamespace
         - Adds a New EventHub NameSpace in the existing Resource Group.
     - Get-AzureRmEventHubNamespace

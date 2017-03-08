@@ -1,10 +1,9 @@
 ---
 Module Name: AzureRM.DataLakeStore
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
+Download Help Link: None
+Help Version: 1.0.0.0
 Locale: en-US
-ms.assetid: B83F6C70-0C07-4BC3-ABBA-CE92BCAE8FFD
 ---
 
 # AzureRM.DataLakeStore Module
@@ -31,7 +30,8 @@ Gets details of a Data Lake Store account.
 Gets the list of items in a folder in Data Lake Store.
 
 ### [Get-AzureRmDataLakeStoreFirewallRule](Get-AzureRmDataLakeStoreFirewallRule.md)
-Gets the specified firewall rules in the specified Data Lake Store. If no firewall rule is specified, then lists all firewall rules for the account.
+Gets the specified firewall rules in the specified Data Lake Store.
+If no firewall rule is specified, then lists all firewall rules for the account.
 
 ### [Get-AzureRmDataLakeStoreItem](Get-AzureRmDataLakeStoreItem.md)
 Gets the details of a file or folder in Data Lake Store.
@@ -49,7 +49,8 @@ Gets the owner of a file or folder in Data Lake Store.
 Gets the permission octal of a file or folder in Data Lake Store.
 
 ### [Get-AzureRmDataLakeStoreTrustedIdProvider](Get-AzureRmDataLakeStoreTrustedIdProvider.md)
-Gets the specified trusted identity provider in the specified Data Lake Store. If no provider is specified, then lists all providers for the account.
+Gets the specified trusted identity provider in the specified Data Lake Store.
+If no provider is specified, then lists all providers for the account.
 
 ### [Import-AzureRmDataLakeStoreItem](Import-AzureRmDataLakeStoreItem.md)
 Uploads a local file or directory to a Data Lake Store.
@@ -95,6 +96,9 @@ Modifies the ACL of a file or folder in Data Lake Store.
 
 ### [Set-AzureRmDataLakeStoreItemAclEntry](Set-AzureRmDataLakeStoreItemAclEntry.md)
 Modifies an entry in the ACL of a file or folder in Data Lake Store.
+
+### [Set-AzureRmDataLakeStoreItemExpiry](Set-AzureRmDataLakeStoreItemExpiry.md)
+Sets or removes the expire time for a file in an Azure Data Lake Store account.
 
 ### [Set-AzureRmDataLakeStoreItemOwner](Set-AzureRmDataLakeStoreItemOwner.md)
 Modifies the owner of a file or folder in Data Lake Store.
