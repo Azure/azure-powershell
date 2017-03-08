@@ -538,7 +538,7 @@
           "db1ead1e-0706-4e7e-8d49-82842d281e74"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk8964/providers/Microsoft.Sql/servers/onesdk458/encryptionProtector/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/servers/encryptionProtector\",\r\n  \"kind\": \"servicemanaged\",\r\n  \"properties\": {\r\n    \"serverKeyName\": \"ServiceManaged\",\r\n    \"type\": \"ServiceManaged\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk8964/providers/Microsoft.Sql/servers/onesdk458/encryptionProtector/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/servers/encryptionProtector\",\r\n  \"kind\": \"servicemanaged\",\r\n  \"properties\": {\r\n    \"serverKeyName\": \"ServiceManaged\",\r\n    \"serverKeyType\": \"ServiceManaged\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "320"
