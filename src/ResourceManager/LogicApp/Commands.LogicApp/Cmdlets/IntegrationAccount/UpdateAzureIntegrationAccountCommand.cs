@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -24,7 +23,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccount", SupportsShouldProcess = true), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccount", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccount))]
     public class UpdateAzureIntegrationAccountCommand : LogicAppBaseCmdlet
     {
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             {
                 integrationAccount.Sku = new IntegrationAccountSku
                 {
-                    Name = (IntegrationAccountSkuName) Enum.Parse(typeof (IntegrationAccountSkuName), this.Sku),
+                    Name = (IntegrationAccountSkuName) Enum.Parse(typeof(IntegrationAccountSkuName), this.Sku),
 
                 };
             }
