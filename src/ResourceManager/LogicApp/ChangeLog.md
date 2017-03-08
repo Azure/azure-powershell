@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New cmdlets for X12 Interchange Control Number disaster recovery:
+    - Get-AzureRmIntegrationAccountGeneratedIcn
+    - Get-AzureRmIntegrationAccountReceivedIcn
+    - Remove-AzureRmIntegrationAccountReceivedIcn
+    - Set-AzureRmIntegrationAccountGeneratedIcn
+    - Set-AzureRmIntegrationAccountReceivedIcn
 
 ## Version 2.6.0
 
