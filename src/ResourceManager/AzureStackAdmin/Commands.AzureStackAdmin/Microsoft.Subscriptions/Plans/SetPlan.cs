@@ -44,18 +44,11 @@ namespace Microsoft.AzureStack.Commands
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.UpdatingPlan.FormatArgs(this.Plan.Name, this.ResourceGroup));
                 var parameters = new ManagedPlanCreateOrUpdateParameters(this.Plan);

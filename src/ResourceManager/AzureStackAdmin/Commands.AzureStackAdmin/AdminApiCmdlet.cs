@@ -28,32 +28,24 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     public abstract class AdminApiCmdlet : AzureRMCmdlet
     {
-        /// <summary>
-        /// The default API version.
-        /// </summary>
-        private const string DefaultApiVersion = "2015-11-01";
+
+        protected const string SubscriptionApiVersion = "2015-11-01";
+        protected const string GalleryAdminApiVersion = "2015-04-01";
+        protected const string UsageApiVersion = "2015-06-01-preview";
 
         /// <summary>
-        /// Gets or sets the admin base URI
+        /// Gets or sets the API version. Not a parameter that is to bes passed from outside
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        [ValidateAbsoluteUri]
-        public Uri AdminUri { get; set; }
+        protected string ApiVersion { get; set; }
+
 
         /// <summary>
-        /// Gets or sets the authentication token
+        /// Default constructor
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string Token { get; set; }
-
-        /// <summary>
-        /// Gets or sets the API version.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ApiVersion { get; set; }
+        protected AdminApiCmdlet()
+        {
+            this.ApiVersion = SubscriptionApiVersion;
+        }
 
         /// <summary>
         /// Gets the current default context. overriding it here since DefaultContext could be null for Windows Auth/ADFS environments
@@ -83,11 +75,6 @@ namespace Microsoft.AzureStack.Commands
             var originalValidateCallback = ServicePointManager.ServerCertificateValidationCallback;
             object result;
 
-            this.ValidateParameters();
-
-            // Initialize parameters bound from the pipeline
-            this.ApiVersion = this.ApiVersion ?? DefaultApiVersion;
-
             // Execute the API call(s) for the current cmdlet
             result = this.ExecuteCore();
 
@@ -99,29 +86,6 @@ namespace Microsoft.AzureStack.Commands
             }
         }
 
-        private void ValidateParameters()
-        {
-            // if Token is empty, make sure that we have a valid azure profile
-            if (string.IsNullOrEmpty(this.Token))
-            {
-                if (this.DefaultContext == null)
-                {
-                    throw new ApplicationException(Resources.InvalidProfile);
-                }
-            }
-            else
-            {
-                // note: this code path should be deprecated
-                WriteWarning("Token and AdminUri parameters will be removed in a future release of AzureStackAdmin module.");
-
-                // if token is specified, AdminUri is required as well
-                if (this.AdminUri == null)
-                {
-                    throw new ApplicationException(Resources.TokenAndAdminUriRequired);
-                }
-            }
-        }
-
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
@@ -130,37 +94,9 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets the Azure Stack management client.
         /// </summary>
-        /// <param name="subscriptionId">The subscription identifier.</param>
-        protected AzureStackClient GetAzureStackClient(string subscriptionId = null)
+        protected AzureStackClient GetAzureStackClient()
         {
-            if (string.IsNullOrEmpty(this.Token))
-            {
-                return GetAzureStackClientThruAzureSession();
-            }
-
-            if (string.IsNullOrEmpty(subscriptionId))
-            {
-                return new AzureStackClient(
-                    baseUri: this.AdminUri,
-                    credentials: new TokenCloudCredentials(token: this.Token), 
-                    apiVersion: this.ApiVersion);
-            }
-            else
-            {
-                return new AzureStackClient(
-                    baseUri: this.AdminUri,
-                    credentials: new TokenCloudCredentials(subscriptionId: subscriptionId, token: this.Token),
-                    apiVersion: this.ApiVersion);
-            }
-        }
-
-        /// <summary>
-        /// Gets the Azures Stack management client.
-        /// </summary>
-        /// <param name="subscriptionId">The subscription identifier.</param>
-        protected AzureStackClient GetAzureStackClient(Guid subscriptionId)
-        {
-            return this.GetAzureStackClient(subscriptionId.ToString());
+           return GetAzureStackClientThruAzureSession();
         }
 
         private AzureStackClient GetAzureStackClientThruAzureSession()

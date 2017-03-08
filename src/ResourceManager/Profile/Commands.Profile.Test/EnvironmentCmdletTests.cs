@@ -75,6 +75,67 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AddsEnvironmentMultipleTimes()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            var cmdlet = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                PublishSettingsFileUrl = "http://microsoft.com",
+                EnableAdfsAuthentication = true,
+            };
+
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env.Name, cmdlet.Name);
+            Assert.True(env.OnPremise);
+            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
+
+            // Execute the same without PublishSettingsFileUrl and make sure the first value is preserved
+            var cmdlet2 = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                EnableAdfsAuthentication = true,
+            };
+
+            cmdlet2.InvokeBeginProcessing();
+            cmdlet2.ExecuteCmdlet();
+            cmdlet2.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Exactly(2));
+            AzureEnvironment env2 = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env2.Name, cmdlet2.Name);
+            Assert.True(env2.OnPremise);
+            Assert.Equal(env2.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
+
+            // Execute by toggling EnableAdfsAuthentication
+            var cmdlet3 = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                EnableAdfsAuthentication = false,
+            };
+
+            cmdlet3.InvokeBeginProcessing();
+            cmdlet3.ExecuteCmdlet();
+            cmdlet3.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Exactly(3));
+            AzureEnvironment env3 = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env3.Name, cmdlet3.Name);
+            // Make sure OnPremise is false
+            Assert.False(env3.OnPremise);
+            Assert.Equal(env3.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithMinimumInformation()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();

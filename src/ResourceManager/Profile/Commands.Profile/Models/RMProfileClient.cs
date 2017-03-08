@@ -452,6 +452,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             };
 
             // Merge all properties
+            // Take the value from environment1, if environment1 has null value then take it from environment2
             foreach (AzureEnvironment.Endpoint property in Enum.GetValues(typeof(AzureEnvironment.Endpoint)))
             {
                 string propertyValue = environment1.GetEndpoint(property) ?? environment2.GetEndpoint(property);
@@ -460,6 +461,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     mergedEnvironment.Endpoints[property] = propertyValue;
                 }
             }
+
+            // Take the value from the environment1(newly assigned) always, since this is a bool
+            mergedEnvironment.OnPremise = environment1.OnPremise;
 
             return mergedEnvironment;
         }

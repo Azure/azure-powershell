@@ -31,20 +31,6 @@ namespace Microsoft.AzureStack.Commands
     public class AddGalleryItem : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the subscription identifier.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        [ValidateNotNull]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource manager location.
-        /// </summary>
-        [ValidateNotNull]
-        public string ArmLocation { get; set; } // TODO - use API to get CSM location?
-
-        /// <summary>
         /// Gets or sets the gallery item uri.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
@@ -60,12 +46,8 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            if (!string.IsNullOrEmpty(this.ArmLocation))
-            {
-                WriteWarning("ArmLocation parameter will be removed in a future release of AzureStackAdmin module.");
-            }
-
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            this.ApiVersion = GalleryAdminApiVersion;
+            using (var client = this.GetAzureStackClient())
             {
                 var galleryItemUriPayload = new GalleryItemUriPayload()
                 {

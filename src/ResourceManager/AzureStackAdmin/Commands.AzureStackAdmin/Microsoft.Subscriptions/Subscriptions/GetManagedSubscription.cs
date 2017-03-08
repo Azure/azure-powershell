@@ -34,18 +34,11 @@ namespace Microsoft.AzureStack.Commands
         public Guid TargetSubscriptionId { get; set; } // Allow for empty GUID for list scenario
 
         /// <summary>
-        /// Gets or sets the admin subscription id.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Performs the API operation(s) against managed subscriptions.
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 if (this.TargetSubscriptionId == Guid.Empty)
                 {

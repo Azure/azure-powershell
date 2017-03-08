@@ -29,13 +29,6 @@ namespace Microsoft.AzureStack.Commands
     public class RemoveManagedSubscription : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription ID to be deleted.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
@@ -47,7 +40,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient(this.SubscriptionId))
+            using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.TargetSubscriptionId));
                 return client.ManagedSubscriptions.Delete(this.TargetSubscriptionId.ToString());
