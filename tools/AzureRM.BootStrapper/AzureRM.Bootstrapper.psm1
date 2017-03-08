@@ -601,6 +601,7 @@ function Find-PotentialConflict
   $availableModules = Get-Module $Module -ListAvailable
   $IsPotentialConflict = $false
 
+  Write-Information "Modules installed: $availableModules"
   # If Admin, check CurrentUser Module folder path and vice versa
   if ($script:IsAdmin)
   {
@@ -634,19 +635,19 @@ function Invoke-InstallModule
   {
     if (-not $scope)
     {
-      Install-Module $Module -RequiredVersion $version -AllowClobber
+      Install-Module $Module -RequiredVersion $version -AllowClobber -Repository $script:BootStrapRepo
     }
     else {
-      Install-Module $Module -RequiredVersion $version -Scope $scope -AllowClobber
+      Install-Module $Module -RequiredVersion $version -Scope $scope -AllowClobber -Repository $script:BootStrapRepo
     }
   }
   else {
      if (-not $scope)
     {
-      Install-Module $Module -RequiredVersion $version -Force
+      Install-Module $Module -RequiredVersion $version -Force -Repository $script:BootStrapRepo
     }
     else {
-      Install-Module $Module -RequiredVersion $version -Scope $scope -Force
+      Install-Module $Module -RequiredVersion $version -Scope $scope -Force -Repository $script:BootStrapRepo
     }
   }
 }
