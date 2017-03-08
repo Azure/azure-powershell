@@ -21,12 +21,12 @@ Returns the versions of an AzureRM module that support a given profile.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmModule -Profile 2016-05 -Module AzureRM.Storage
+PS C:\> Get-AzureRmModule -Profile 2017-03-09-profile -Module AzureRM.Storage
 
 1.2.4
 ```
 
-The version of the AzureRM.Storage module that supports profile 2016-05 is version 1.2.4.
+The version of the AzureRM.Storage module that supports profile 2017-03-09-profile is version 1.2.4.
 
 ## PARAMETERS
 
@@ -52,7 +52,7 @@ The profile version to check for the given module.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: 2016-09, 2016-05, <others>
+Accepted values: 2017-03-09-profile, <others>
 
 Required: True
 Position: 0

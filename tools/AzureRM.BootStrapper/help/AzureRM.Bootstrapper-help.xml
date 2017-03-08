@@ -17,8 +17,7 @@
 <maml:Description><maml:para>The profile version to check for the given module.
 </maml:para>
 </maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2016-09</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">2016-05</command:parameterValue>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -75,10 +74,10 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Get-AzureRmModule -Profile 2016-05 -Module AzureRM.Storage
+<dev:code>PS C:\&gt; Get-AzureRmModule -Profile 2017-03-09-profile -Module AzureRM.Storage
 
-1.2.4</dev:code>
-<dev:remarks><maml:para>The version of the AzureRM.Storage module that supports profile 2016-05 is version 1.2.4.
+1.2.8</dev:code>
+<dev:remarks><maml:para>The version of the AzureRM.Storage module that supports profile 2017-03-09 is version 1.2.8.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -203,8 +202,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Install-AzureRmProfile -Profile '2016-05'</dev:code>
-<dev:remarks><maml:para>Install all the modules associated with profile '2016-05'
+<dev:code>PS C:\&gt; Install-AzureRmProfile -Profile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Install all the modules associated with profile '2017-03-09'
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -318,8 +317,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Uninstall-AzureRmProfile '2016-09'</dev:code>
-<dev:remarks><maml:para>Uninstall all modules associated with the '2016-09' profile on the machine
+<dev:code>PS C:\&gt; Uninstall-AzureRmProfile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Uninstall all modules associated with the '2017-03-09' profile on the machine
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -433,7 +432,7 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Use-AzureRmProfile '2016-09'</dev:code>
+<dev:code>PS C:\&gt; Use-AzureRmProfile '2017-03-09-profile'</dev:code>
 <dev:remarks><maml:para>Load the modules associated with profile version '2016-09' int he current session.  This should be executed after opening a new PowerShell session.
 </maml:para>
 </dev:remarks>
@@ -565,15 +564,15 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2016-09'</dev:code>
-<dev:remarks><maml:para>Update the modules associated with profile version '2016-09' and load the modules in the current session.  This should be executed after opening a new PowerShell session.
+<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Update the modules associated with profile version '2017-03-09' and load the modules in the current session.  This should be executed after opening a new PowerShell session.
 </maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
 <command:examples><command:example><maml:title>Example 2</maml:title>
-<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2016-09' -RemovePreviousVersions -Force</dev:code>
-<dev:remarks><maml:para>Update the modules associated with profile version '2016-09' and load the modules in the current session. It downloads and installs the required modules and removes old versions of the modules without prompting the user. This should be executed after opening a new PowerShell session.
+<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2017-03-09-profile' -RemovePreviousVersions -Force</dev:code>
+<dev:remarks><maml:para>Update the modules associated with profile version '2017-03-09' and load the modules in the current session. It downloads and installs the required modules and removes old versions of the modules without prompting the user. This should be executed after opening a new PowerShell session.
 </maml:para>
 </dev:remarks>
 </command:example>

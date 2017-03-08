@@ -10,7 +10,7 @@ Different concrete instances of Azure (AzureCloud, AzureChinaCloud, AzureGermanC
 
 The AzureRM.Bootstrapper module provides cmdlets to discover, acquire, and use modules that are appropriate for the azure version profile you are targeting.
 
-You can also use Tags in the AzureRM modules to discover profile information for each module version.  Tags for a Profile use the form ```VersionProfile:2015-05```
+You can also use Tags in the AzureRM modules to discover profile information for each module version.  Tags for a Profile use the form ```VersionProfile:2017-03-09-profile```
 
 # Finding appropriate version profiles
 
@@ -18,13 +18,13 @@ Use the ```Get-AzureRmProfile``` cmdlet to discover available profile versions, 
 
 ```Get-AzureRmProfile -ListAvailable``` lists all available version profiles.
 
-Use ```Use-AzureRmProfile -Profile 2015-05``` to install and load cmdlets for one of the listed profiles.
+Use ```Use-AzureRmProfile -Profile 2017-03-09-profile``` to install and load cmdlets for one of the listed profiles.
 
 ## Targeting all Azure Instances
 
 ```Get-AzureRmProfile``` lists the profiles that are currently installed on the machine.
 
-Use ```Use-AzureRmProfile -Profile 2015-05``` to install and load cmdlets for one of the listed profiles.
+Use ```Use-AzureRmProfile -Profile 2017-03-09-profile``` to install and load cmdlets for one of the listed profiles.
 
 ## Targeting the Latest Stable Features
 
@@ -37,28 +37,28 @@ The AzureRM bootstrapper uses the PowerShell Gallery to install and load needed 
 ## Acquire and Load All Azure modules using the BootStrapper
 
 ```
-Use-AzureRmProfile -Profile 2015-05 -Force
+Use-AzureRmProfile -Profile 2017-03-09-profile -Force
 ```
 
-Checks if the modules associated with the ```2015-05``` profile are installed in the current scope, downloads and installs the modules if necessary, and then loads the modules in the current session.  You must open a new PowerShell session to target a different version profile.  Using the ```Force``` parameter installs the necessary modules without prompting.
+Checks if the modules associated with the ```2017-03-09-profile``` profile are installed in the current scope, downloads and installs the modules if necessary, and then loads the modules in the current session.  You must open a new PowerShell session to target a different version profile.  Using the ```Force``` parameter installs the necessary modules without prompting.
 
 ## Acquire and Load Selected Azure modules using the Bootstrapper
 
 ```
-Use-AzureRmProfile -Profile 2015-05 -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
+Use-AzureRmProfile -Profile 2017-03-09-profile -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
 
-Checks if the AzureRM.Compute, AzureRM.Storage, and AzureRM.Network modules associated with the ```2015-05``` profile are installed in the current scope, downloads and installs the modules if necessary, and then loads the modules in the current session.  You must open a new PowerShell session to target a different module.
+Checks if the AzureRM.Compute, AzureRM.Storage, and AzureRM.Network modules associated with the ```2017-03-09-profile``` profile are installed in the current scope, downloads and installs the modules if necessary, and then loads the modules in the current session.  You must open a new PowerShell session to target a different module.
 
 # Switching Between Version Profiles
 
 To switch between version profiles on a machine, in a new PowerShell window, execute the following cmdlet:
 
 ```
-Use-AzureRmProfile -Profile 2015-05
+Use-AzureRmProfile -Profile 2017-03-09-profile
 ```
 
-This loads the modules associated with the ```2015-05``` profile in the current session.  You must open a new PowerShell session to target a different version profile.  
+This loads the modules associated with the ```2017-03-09-profile``` profile in the current session.  You must open a new PowerShell session to target a different version profile.  
 
 # Updating and Removing Profiles
 
