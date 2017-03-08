@@ -340,7 +340,6 @@
     <None Include="SessionRecords\**\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\TestAEMExtensionAdvancedWindowsMD.json" />
     <None Include="Templates\azuredeploy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
