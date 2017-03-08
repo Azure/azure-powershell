@@ -2513,8 +2513,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Create an App Service plan  --------------------------</maml:title>
-<dev:code>PS C:\&gt;New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "MyServicePlan" -Location "West US" -Sku "Basic" -NumberofWorkers 2 -WorkerSize "Small"</dev:code>
-<dev:remarks><maml:para>This command creates an App Service plan named MyServicePlan in the geo location West US. The command specifies a Basic SKU and allocates two workers.
+<dev:code>PS C:\&gt;New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -Location "West US" -Tier "Basic" -NumberofWorkers 2 -WorkerSize "Small"</dev:code>
+<dev:remarks><maml:para>This command creates an App Service plan named ContosoASP in the resource group named Default-Web-WestUS in Geo location West US. The command specifies a Basic Tier and allocates two small workers.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
