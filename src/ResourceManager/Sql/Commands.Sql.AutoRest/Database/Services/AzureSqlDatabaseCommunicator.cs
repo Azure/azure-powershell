@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName).Database;
+            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public Management.Sql.Models.Database GetExpanded(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, ExpandDatabase).Database;
+            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName, expand: ExpandDatabase);
         }
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
+            return GetCurrentSqlClient(clientRequestId).Databases.ListByServer(resourceGroupName, serverName).ToList();
         }
 
         /// <summary>
@@ -93,15 +94,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public IList<Management.Sql.Models.Database> ListExpanded(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, ExpandDatabase).Databases;
+            // TODO: missing from swagger
+            return GetCurrentSqlClient(clientRequestId).Databases.ListByServer(resourceGroupName, serverName/*, expand: ExpandDatabase*/).ToList();
         }
 
         /// <summary>
         /// Creates or updates a database
         /// </summary>
-        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, Management.Sql.Models.Database parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
+            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
@@ -119,10 +121,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
-            // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

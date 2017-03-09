@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)")]
         [ValidateNotNullOrEmpty]
-        public DatabaseReadScale ReadScale { get; set; }
+        public Management.Sql.Models.ReadScale ReadScale { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database

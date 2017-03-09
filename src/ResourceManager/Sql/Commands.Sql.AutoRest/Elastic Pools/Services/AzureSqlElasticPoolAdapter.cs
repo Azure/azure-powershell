@@ -96,18 +96,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlElasticPoolModel UpsertElasticPool(AzureSqlElasticPoolModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, Util.GenerateTracingId(), new ElasticPoolCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, Util.GenerateTracingId(), new Management.Sql.Models.ElasticPool()
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Properties = new ElasticPoolCreateOrUpdateProperties()
-                {
-                    DatabaseDtuMax = model.DatabaseDtuMax,
-                    DatabaseDtuMin = model.DatabaseDtuMin,
-                    Edition = model.Edition.ToString(),
-                    Dtu = model.Dtu,
-                    StorageMB = model.StorageMB
-                }
+                DatabaseDtuMax = model.DatabaseDtuMax,
+                DatabaseDtuMin = model.DatabaseDtuMin,
+                Edition = model.Edition.ToString(),
+                Dtu = model.Dtu,
+                StorageMB = model.StorageMB
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -198,21 +195,21 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         {
             AzureSqlDatabaseActivityModel activity = new AzureSqlDatabaseActivityModel();
 
-            //activity.CurrentElasticPoolName = model.Properties.CurrentElasticPoolName;
-            //activity.CurrentServiceObjectiveName = model.Properties.CurrentServiceObjectiveName;
-            //activity.DatabaseName = model.Properties.DatabaseName;
-            //activity.EndTime = model.Properties.EndTime;
-            //activity.ErrorCode = model.Properties.ErrorCode;
-            //activity.ErrorMessage = model.Properties.ErrorMessage;
-            //activity.ErrorSeverity = model.Properties.ErrorSeverity;
-            //activity.Operation = model.Properties.Operation;
-            //activity.OperationId = model.Properties.OperationId;
-            //activity.PercentComplete = model.Properties.PercentComplete;
-            //activity.RequestedElasticPoolName = model.Properties.RequestedElasticPoolName;
-            //activity.RequestedServiceObjectiveName = model.Properties.RequestedServiceObjectiveName;
-            //activity.ServerName = model.Properties.ServerName;
-            //activity.StartTime = model.Properties.StartTime;
-            //activity.State = model.Properties.State;
+            //activity.CurrentElasticPoolName = model.CurrentElasticPoolName;
+            //activity.CurrentServiceObjectiveName = model.CurrentServiceObjectiveName;
+            //activity.DatabaseName = model.DatabaseName;
+            //activity.EndTime = model.EndTime;
+            //activity.ErrorCode = model.ErrorCode;
+            //activity.ErrorMessage = model.ErrorMessage;
+            //activity.ErrorSeverity = model.ErrorSeverity;
+            //activity.Operation = model.Operation;
+            //activity.OperationId = model.OperationId;
+            //activity.PercentComplete = model.PercentComplete;
+            //activity.RequestedElasticPoolName = model.RequestedElasticPoolName;
+            //activity.RequestedServiceObjectiveName = model.RequestedServiceObjectiveName;
+            //activity.ServerName = model.ServerName;
+            //activity.StartTime = model.StartTime;
+            //activity.State = model.State;
 
             return activity;
         }
@@ -226,22 +223,22 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         {
             AzureSqlElasticPoolActivityModel activity = new AzureSqlElasticPoolActivityModel();
 
-            activity.ElasticPoolName = model.Properties.ElasticPoolName;
-            activity.EndTime = model.Properties.EndTime;
-            activity.ErrorCode = model.Properties.ErrorCode;
-            activity.ErrorMessage = model.Properties.ErrorMessage;
-            activity.ErrorSeverity = model.Properties.ErrorSeverity;
-            activity.Operation = model.Properties.Operation;
-            activity.OperationId = model.Properties.OperationId;
-            activity.PercentComplete = model.Properties.PercentComplete;
-            activity.RequestedDatabaseDtuMax = model.Properties.RequestedDatabaseDtuMax;
-            activity.RequestedDatabaseDtuMin = model.Properties.RequestedDatabaseDtuMin;
-            activity.RequestedDtu = model.Properties.RequestedDtu;
-            activity.RequestedElasticPoolName = model.Properties.RequestedElasticPoolName;
-            activity.RequestedStorageLimitInGB = model.Properties.RequestedStorageLimitInGB;
-            activity.ServerName = model.Properties.ServerName;
-            activity.StartTime = model.Properties.StartTime;
-            activity.State = model.Properties.State;
+            activity.ElasticPoolName = model.ElasticPoolName;
+            activity.EndTime = model.EndTime;
+            activity.ErrorCode = model.ErrorCode;
+            activity.ErrorMessage = model.ErrorMessage;
+            activity.ErrorSeverity = model.ErrorSeverity;
+            activity.Operation = model.Operation;
+            activity.OperationId = Guid.Parse(model.OperationId);
+            activity.PercentComplete = model.PercentComplete;
+            activity.RequestedDatabaseDtuMax = model.RequestedDatabaseDtuMax;
+            activity.RequestedDatabaseDtuMin = model.RequestedDatabaseDtuMin;
+            activity.RequestedDtu = model.RequestedDtu;
+            activity.RequestedElasticPoolName = model.RequestedElasticPoolName;
+            activity.RequestedStorageLimitInGB = model.RequestedStorageLimitInGB;
+            activity.ServerName = model.ServerName;
+            activity.StartTime = model.StartTime;
+            activity.State = model.State;
 
             return activity;
         }
@@ -274,17 +271,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             model.ResourceGroupName = resourceGroup;
             model.ServerName = serverName;
             model.ElasticPoolName = pool.Name;
-            model.CreationDate = pool.Properties.CreationDate ?? DateTime.MinValue;
-            model.DatabaseDtuMax = (int)pool.Properties.DatabaseDtuMax;
-            model.DatabaseDtuMin = (int)pool.Properties.DatabaseDtuMin;
-            model.Dtu = (int)pool.Properties.Dtu;
-            model.State = pool.Properties.State;
-            model.StorageMB = pool.Properties.StorageMB;
+            model.CreationDate = pool.CreationDate ?? DateTime.MinValue;
+            model.DatabaseDtuMax = (int)pool.DatabaseDtuMax;
+            model.DatabaseDtuMin = (int)pool.DatabaseDtuMin;
+            model.Dtu = (int)pool.Dtu;
+            model.State = pool.State;
+            model.StorageMB = pool.StorageMB;
             model.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(pool.Tags), false);
             model.Location = pool.Location;
 
             DatabaseEdition edition = DatabaseEdition.None;
-            Enum.TryParse<DatabaseEdition>(pool.Properties.Edition, out edition);
+            Enum.TryParse<DatabaseEdition>(pool.Edition, out edition);
             model.Edition = edition;
 
             return model;

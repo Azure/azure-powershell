@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 {
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         public Management.Sql.Models.ElasticPool Get(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPools.Get(resourceGroupName, serverName, elasticPoolName).ElasticPool;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.Get(resourceGroupName, serverName, elasticPoolName);
         }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         public Management.Sql.Models.Database GetDatabase(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPools.GetDatabases(resourceGroupName, serverName, elasticPoolName, databaseName).Database;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.GetDatabase(resourceGroupName, serverName, elasticPoolName, databaseName);
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         public IList<Management.Sql.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabases(resourceGroupName, serverName, elasticPoolName).Databases;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabases(resourceGroupName, serverName, elasticPoolName).ToList();
         }
 
         /// <summary>
@@ -88,16 +89,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         public IList<Management.Sql.Models.ElasticPool> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPools.List(resourceGroupName, serverName).ElasticPools;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListByServer(resourceGroupName, serverName).ToList();
         }
 
         /// <summary>
         /// Creates or updates an Elastic Pool
         /// </summary>
-        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId, ElasticPoolCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId, Management.Sql.Models.ElasticPool parameters)
         {
-            var resp = GetCurrentSqlClient(clientRequestId).ElasticPools.CreateOrUpdate(resourceGroupName, serverName, elasticPoolName, parameters);
-            return resp.ElasticPool;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.CreateOrUpdate(resourceGroupName, serverName, elasticPoolName, parameters);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         public IList<Management.Sql.Models.ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListActivity(resourceGroupName, serverName, elasticPoolName).ElasticPoolActivities;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListActivity(resourceGroupName, serverName, elasticPoolName).ToList();
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         internal IList<Management.Sql.Models.ElasticPoolDatabaseActivity> ListDatabaseActivity(string resourceGroupName, string serverName, string poolName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabaseActivity(resourceGroupName, serverName, poolName).ElasticPoolDatabaseActivities;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabaseActivity(resourceGroupName, serverName, poolName).ToList();
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
