@@ -27,6 +27,12 @@
     - Updated New-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
     - Updated Set-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
 
+* Remapped unused 'Name' parameter in ExpressRoute cmdlets to 'ExpressRouteCircuitName'
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRmExpressRouteCircuitStats
+
 ## Version 3.5.0
 * Added support for network Watcher APIs
     - New-AzureRmNetworkWatcher
