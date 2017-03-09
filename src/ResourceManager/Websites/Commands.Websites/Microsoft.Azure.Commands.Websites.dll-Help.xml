@@ -5446,9 +5446,9 @@
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>--------------------------  1:  --------------------------</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>--------------------------  1: Modify an App Service plan  -------------------------</maml:title>
+<dev:code>PS C:\&gt;Set-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -PerSiteScaling $true</dev:code>
+<dev:remarks><maml:para>This command sets the PerSiteScaling option to true on the App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
