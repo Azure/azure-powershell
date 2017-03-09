@@ -17,7 +17,9 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release 
+## Current Release
+
+## Version 3.6.0
 * Added support for connection draining to Application Gateways
     - Added Get-AzureRmApplicationGatewayConnectionDraining 
     - Added New-AzureRmApplicationGatewayConnectionDraining
@@ -89,4 +91,3 @@
 * Get-AzureRmEffectiveNetworkSecurityGroup
     - Add warning if there is no response from GetEffectiveNSG
 * Add Source property to EffectiveRoute 
-
