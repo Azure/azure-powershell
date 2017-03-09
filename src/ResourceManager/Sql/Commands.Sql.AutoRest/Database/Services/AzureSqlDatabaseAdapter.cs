@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }
             else
             {
-                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Resources.StandaloneDatabaseActivityNotSupported));
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.StandaloneDatabaseActivityNotSupported));
             }
         }
     }
