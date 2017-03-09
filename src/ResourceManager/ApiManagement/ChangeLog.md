@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Added new cmdlets to manage Backend entity
+    - New-AzureRmApiManagementBackend
+    - Get-AzureRmApiManagementBackend
+    - Set-AzureRmApiManagementBackend
+    - Remove-AzureRmApiManagementBackend
+* Created supporting cmdlets to create in-memory objects required while Creating or Updating Backend entity
+    - New-AzureRmApiManagementBackendCredential
+    - New-AzureRmApiManagementBackendProxy
+	
 ## Version 3.4.0
 
 ## Version 3.3.0

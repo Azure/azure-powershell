@@ -22,24 +22,23 @@
 	3. Get-Help <CommandName> to get help on individual commands.
 
 ## 2. Accquring TestFramework
-Current Version: [1.4.0-preview](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/1.4.0-preview)
 
-Nuget command to install current version
+TestFramework is available on NuGet at https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/ .
 
-    Install-Package Microsoft.Rest.ClientRuntime.Azure.TestFramework -v 1.4.0-preview -Pre
+Instructions to manually download it are available on NuGet. However TestFramework will be downloaded automatically as part of the build process, so manually downloading it should generally be unnecessary.
 
 ## 3. Setup prior to Record/Playback of tests
 In order to Record/Playback a test, you need to setup a connection string that consists various key/value pairs that provides information to the test environment.
 
 #### 3.1 Environment Variables
+
 > TEST_CSM_ORGID_AUTHENTICATION
+
+This is the connection string that determined how to connect to Azure. This includes both your authentiation and the Azure environment to connect to.
 
 > AZURE_TEST_MODE
 
-    e.g.	
-    TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId=<valid SubscriptionId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<Client Secret>;AADTenant=<tenantId>;Environment=Prod;BaseUri=https://management.azure.com/;AADAuthEndpoint=https://login.windows.net/;GraphUri=https://graph.windows.net/
-
-	AZURE_TEST_MODE=Record
+This specifies whether test framework will `Record` test sessions or `Playback` previously recorded test sessions.
 
 #### 3.2.  Supported Keys in connection string
 	* ManagementCertificate
@@ -63,24 +62,27 @@ In order to Record/Playback a test, you need to setup a connection string that c
 	* AADAuthEndpoint
 	* GraphTokenAudienceUri
 
-#### 3.3. Existing Defaults
-	 Environment.Prod
-		AADAuthUri = "https://login.microsoftonline.com"
-	    GalleryUri = "https://gallery.azure.com/"
-	    GraphUri = "https://graph.windows.net/"
-	    IbizaPortalUri = "https://portal.azure.com/"
-	    RdfePortalUri = "http://go.microsoft.com/fwlink/?LinkId=254433"
-	    ResourceManagementUri = "https://management.azure.com/"
-	    ServiceManagementUri = "https://management.core.windows.net"
-	    AADTokenAudienceUri = "https://management.core.windows.net"
-	    GraphTokenAudienceUri = "https://graph.windows.net/"
-	    DataLakeStoreServiceUri = "https://azuredatalakestore.net"
-	    DataLakeAnalyticsJobAndCatalogServiceUri = "https://azuredatalakeanalytics.net"
+#### 3.3. Environment Defaults
 
-----------
+Setting `Environment` in the connection string will result in the following default values:
 
-	Environment.Dogfood
-		AADAuthUri = "https://login.windows-ppe.net";
+##### Environment = Prod
+
+	AADAuthUri = "https://login.microsoftonline.com"
+	GalleryUri = "https://gallery.azure.com/"
+	GraphUri = "https://graph.windows.net/"
+	IbizaPortalUri = "https://portal.azure.com/"
+	RdfePortalUri = "http://go.microsoft.com/fwlink/?LinkId=254433"
+	ResourceManagementUri = "https://management.azure.com/"
+	ServiceManagementUri = "https://management.core.windows.net"
+	AADTokenAudienceUri = "https://management.core.windows.net"
+	GraphTokenAudienceUri = "https://graph.windows.net/"
+	DataLakeStoreServiceUri = "https://azuredatalakestore.net"
+	DataLakeAnalyticsJobAndCatalogServiceUri = "https://azuredatalakeanalytics.net"
+
+##### Environment = Dogfood
+
+	AADAuthUri = "https://login.windows-ppe.net";
         GalleryUri = "https://df.gallery.azure-test.net/";
         GraphUri = "https://graph.ppe.windows.net/";
         IbizaPortalUri = "http://df.onecloud.azure-test.net";
@@ -92,10 +94,9 @@ In order to Record/Playback a test, you need to setup a connection string that c
         DataLakeStoreServiceUri = "https://caboaccountdogfood.net";
         DataLakeAnalyticsJobAndCatalogServiceUri = "https://konaaccountdogfood.net";
 
-----------
+##### Environment = Next
 
-	Environment.Next
-		AADAuthUri = "https://login.windows-ppe.net"
+	AADAuthUri = "https://login.windows-ppe.net"
         GalleryUri = "https://next.gallery.azure-test.net/"
         GraphUri = "https://graph.ppe.windows.net/"
         IbizaPortalUri = "http://next.onecloud.azure-test.net"
@@ -107,10 +108,9 @@ In order to Record/Playback a test, you need to setup a connection string that c
         DataLakeStoreServiceUri = "https://caboaccountdogfood.net"
         DataLakeAnalyticsJobAndCatalogServiceUri = "https://konaaccountdogfood.net"
 
-----------
+##### Environment = Current
 
-	Environment.Current
-		AADAuthUri = "https://login.windows-ppe.net"
+	AADAuthUri = "https://login.windows-ppe.net"
         GalleryUri = "https://df.gallery.azure-test.net/"
         GraphUri = "https://graph.ppe.windows.net/"
         IbizaPortalUri = "http://df.onecloud.azure-test.net"
@@ -123,17 +123,43 @@ In order to Record/Playback a test, you need to setup a connection string that c
         DataLakeAnalyticsJoAbndCatalogServiceUri = "https://konaaccountdogfood.net"
 
 ## 4. Record/Playback Test
+
 #### Playback Test
-1. The default mode is Playback mode, so no setting up of connection string is required.
+
+The default mode is Playback mode, so no setting up of connection string is required.
 
 #### Record Test with Interactive login using OrgId
+
+This is no longer the preferred option because it only works when running on .NET Framework. When running on .NET Core you may get an error like `Interactive Login is supported only in NET45 projects`.
+
+To use this option, set the following environment variable before starting Visual Studio:
+
 	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
 
 #### Record Test with ServicePrincipal
+
+This is the preferred option because it works with both .NET Framework and .NET Core.
+
+To create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
+
+After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
+
+	New-AzureRmRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
+
+To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below connection string:
+
+`clientId`: The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+
+`clientSecret`: A [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+
+`tenantId`: The [AAD Tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+
+
 	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
 
-2. Run the test and make sure that you got a generated .json file that matches the test name in 	the bin folder under *SessionRecords folder
-3. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio 	setting "Copy to Output Directory" property to "Copy if newer"
+
+2. Run the test and make sure that you got a generated .json file that matches the test name in the bin folder under *SessionRecords folder
+3. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
 4. To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback"
 
 ## 5. Change Test Environment settings at run-time

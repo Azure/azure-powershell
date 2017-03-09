@@ -14,7 +14,7 @@ Gets application gateway backend health.
 
 ```
 Get-AzureRmApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String>
- [-ExpandResource <String>]
+ [-ExpandResource <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,6 +25,8 @@ The Get-AzureRmApplicationGatewayBackendHealth cmdlet gets application gateway b
 ### --------------------------  Example 1: Gets backend health without expanded resources.  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01
 ```
@@ -33,6 +35,8 @@ This command gets the backend health of application gateway named ApplicationGat
 
 ### --------------------------  Example 1: Gets backend health with expanded resources.  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 ```
 PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01 -ExpandResource "backendhealth/applicationgatewayresource"
@@ -73,8 +77,6 @@ Accept wildcard characters: False
 ```
 
 ### -ExpandResource
-
-
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -86,6 +88,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
