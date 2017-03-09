@@ -6,7 +6,7 @@ schema: 2.0.0
 
 # Use-AzureRmProfile
 ## SYNOPSIS
-Load the modules associates with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
+Load the modules associated with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
 
 ## SYNTAX
 
@@ -15,7 +15,7 @@ Use-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Module] <String[]>
 ```
 
 ## DESCRIPTION
-Load the modules associates with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
+Load the modules associated with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
 
 ## EXAMPLES
 

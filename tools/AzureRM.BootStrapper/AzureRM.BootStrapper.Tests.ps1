@@ -927,7 +927,6 @@ Describe "Use-AzureRmProfile" {
         Mock Install-Module { "Installing module..."}
         Mock Import-Module -Verifiable { "Importing Module..."}
         Mock Find-PotentialConflict {}
-        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
         Context "Modules not installed" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
             It "Should install modules" {
@@ -971,7 +970,6 @@ Describe "Use-AzureRmProfile" {
                 
             }
         }
-        }
         Context "Invoke with invalid profile" {
             It "Should throw" {
                 { Use-AzureRmProfile -Profile 'WrongProfileName'} | Should Throw
@@ -983,7 +981,6 @@ Describe "Use-AzureRmProfile" {
                 { Use-AzureRmProfile -Profile $null} | Should Throw
             }
         }
-        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
@@ -1002,14 +999,12 @@ Describe "Use-AzureRmProfile" {
                 Assert-VerifiableMocks
             }
         }
-        }
 
         Context "Invoke with invalide module name" {
             It "Should throw" {
                 { Use-AzureRmProfile -Profile 'Profile1' -Module 'MockModule'} | Should Throw
             }            
         }
-        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
 
         Context "Potential Conflict found" {
             Mock Find-PotentialConflict -Verifiable { $true }
@@ -1029,9 +1024,8 @@ Describe "Use-AzureRmProfile" {
             Mock Get-Module -Verifiable { $moduleObj }
             It "Should skip importing module" {
                 $result = Use-AzureRmProfile -Profile 'Profile1' -ErrorVariable useError -ErrorAction SilentlyContinue
-                $useError -like "A different version of module Module1 is already imported in this session. Start a new PowerShell session and retry the operation." | Should Be $true
+                $useError.exception.message.contains("A different version of module") | Should Be $true
             }
-        }
         }
     }
 }
@@ -1041,15 +1035,14 @@ Describe "Install-AzureRmProfile" {
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
         Mock Get-AzureRmModule -Verifiable {} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module1'}
         Mock Get-AzureRmModule -Verifiable { "1.0"} -ParameterFilter { $Profile -eq 'Profile1' -and $Module -eq 'Module2'}
-        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
-
+        Mock Find-PotentialConflict -Verifiable { $false }
+        
         Context "Invoke with valid profile name" {
             Mock Install-Module -Verifiable { "Installing module Module1... Version 1.0"} 
             It "Should install Module1" {
                 (Install-AzureRmProfile -Profile 'Profile1') | Should be "Installing module Module1... Version 1.0"
                 Assert-VerifiableMocks
           }
-        }
         }
 
         Context "Invoke with invalid profile name" {
@@ -1063,7 +1056,6 @@ Describe "Install-AzureRmProfile" {
                 { Install-AzureRmProfile -Profile $null } | Should Throw
             }
         }
-        if (($PSVersionTable.PSVersion.Major -ge 5) -and ($PSVersionTable.PSVersion.Minor -ge 1)){
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Get-AzureRmModule -Verifiable {} -ParameterFilter {$Profile -eq "Profile1" -and $Module -eq "Module1"}
@@ -1081,7 +1073,6 @@ Describe "Install-AzureRmProfile" {
                 (Install-AzureRmProfile -Profile 'Profile1' -scope AllUsers)
                 Assert-VerifiableMocks
             }
-        }
         }
     }
 }

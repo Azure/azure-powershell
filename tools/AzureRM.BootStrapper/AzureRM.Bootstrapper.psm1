@@ -601,13 +601,20 @@ function Find-PotentialConflict
   $availableModules = Get-Module $Module -ListAvailable
   $IsPotentialConflict = $false
 
+  Write-Information "Modules installed: $availableModules"
+
+  if ($null -eq $availableModules)
+  {
+    return $false
+  }
+
   # If Admin, check CurrentUser Module folder path and vice versa
   if ($script:IsAdmin)
   {
-    $availableModules | ForEach-Object { if ($_.Path.Contains($env:HOMEPATH)) { $IsPotentialConflict = $true } }
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:HOMEPATH)) { $IsPotentialConflict = $true } }
   }
   else {
-    $availableModules | ForEach-Object { if ($_.Path.Contains($env:ProgramFiles)) { $IsPotentialConflict = $true } }
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:ProgramFiles)) { $IsPotentialConflict = $true } }
   }
 
   if ($IsPotentialConflict)
@@ -623,6 +630,32 @@ function Find-PotentialConflict
     }
   }
   return $false
+}
+
+# Helper function to invoke install-module
+function Invoke-InstallModule
+{
+  param($module, $version, $scope)
+  $installCmd = Get-Command Install-Module
+  if($installCmd.Parameters.ContainsKey('AllowClobber'))
+  {
+    if (-not $scope)
+    {
+      Install-Module $Module -RequiredVersion $version -AllowClobber -Repository $script:BootStrapRepo
+    }
+    else {
+      Install-Module $Module -RequiredVersion $version -Scope $scope -AllowClobber -Repository $script:BootStrapRepo
+    }
+  }
+  else {
+     if (-not $scope)
+    {
+      Install-Module $Module -RequiredVersion $version -Force -Repository $script:BootStrapRepo
+    }
+    else {
+      Install-Module $Module -RequiredVersion $version -Scope $scope -Force -Repository $script:BootStrapRepo
+    }
+  }
 }
 
 # Add Scope parameter to the cmdlet
@@ -894,14 +927,7 @@ function Use-AzureRmProfile
           $version = $versionEnum.Current
           Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
           Write-Verbose "Installing module $module"
-          if (-not $Scope)
-          {
-            Install-Module $Module -RequiredVersion $version -AllowClobber
-          }
-          else
-          {
-            Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
-          }
+          Invoke-InstallModule -module $Module -version $version -scope $scope
         }
       }
 
@@ -970,15 +996,8 @@ function Install-AzureRmProfile
         $toss = $versionEnum.MoveNext()
         $version = $versionEnum.Current
         Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
-        Write-Verbose "Installing module $module"
-        if (-not $Scope)
-        {
-          Install-Module $Module -RequiredVersion $version -AllowClobber
-        }
-        else
-        {
-          Install-Module $Module -RequiredVersion $version -scope $Scope -AllowClobber
-        }
+        Write-Verbose "Installing module $module" 
+        Invoke-InstallModule -module $Module -version $version -scope $scope
       }
     }
   }
@@ -1009,7 +1028,7 @@ function Uninstall-AzureRmProfile
     {
       if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Uninstall Profile $Profile", "Removing Modules for profile $Profile")))
       {
-        Write-Verbose "Trying to uninstall module $module"
+        Write-Verbose "Trying to uninstall profile $profile"
         Uninstall-ProfileHelper -PMap $ProfileMap @PSBoundParameters
       }
     }
