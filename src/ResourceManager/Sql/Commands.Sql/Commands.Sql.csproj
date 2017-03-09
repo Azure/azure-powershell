@@ -35,7 +35,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Sql\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Sql</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -223,14 +223,6 @@
     <Compile Include="Database Backup\Model\AzureSqlDatabaseRestorePointModel.cs" />
     <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupAdapter.cs" />
     <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupCommunicator.cs" />
-    <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
-    <Compile Include="Database\Cmdlet\AzureSqlDatabaseCmdletBase.cs" />
-    <Compile Include="Database\Cmdlet\GetAzureSqlDatabase.cs" />
-    <Compile Include="Database\Cmdlet\GetAzureSqlDatabaseActivity.cs" />
-    <Compile Include="Database\Cmdlet\GetAzureSqlDatabaseExpanded.cs" />
-    <Compile Include="Database\Cmdlet\NewAzureSqlDatabase.cs" />
-    <Compile Include="Database\Cmdlet\RemoveAzureSqlDatabase.cs" />
-    <Compile Include="Database\Cmdlet\SetAzureSqlDatabase.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseActivityModel.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseModel.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseModelExpanded.cs" />
@@ -248,14 +240,6 @@
     <Compile Include="ServerDisasterRecoveryConfiguration\Model\AzureSqlServerDisasterRecoveryConfigurationModel.cs" />
     <Compile Include="ServerDisasterRecoveryConfiguration\Services\AzureSqlServerDisasterRecoveryConfigurationAdapter.cs" />
     <Compile Include="ServerDisasterRecoveryConfiguration\Services\AzureSqlServerDisasterRecoveryConfigurationCommunicator.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPool.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPoolActivity.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPoolDatabase.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\NewAzureSqlElasticPool.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\RemoveAzureSqlElasticPool.cs" />
-    <Compile Include="Elastic Pools\Cmdlet\SetAzureSqlElasticPool.cs" />
     <Compile Include="Elastic Pools\Model\AzureSqlElasticPoolActivityModel.cs" />
     <Compile Include="Elastic Pools\Model\AzureSqlElasticPoolModel.cs" />
     <Compile Include="Elastic Pools\Services\AzureSqlElasticPoolAdapter.cs" />
@@ -307,11 +291,6 @@
     <Compile Include="ServerCommunicationLink\Model\AzureSqlServerCommunicationLinkModel.cs" />
     <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkAdapter.cs" />
     <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkCommunicator.cs" />
-    <Compile Include="Server\Cmdlet\AzureSqlServerCmdletBase.cs" />
-    <Compile Include="Server\Cmdlet\GetAzureSqlServer.cs" />
-    <Compile Include="Server\Cmdlet\NewAzureSqlServer.cs" />
-    <Compile Include="Server\Cmdlet\RemoveAzureSqlServer.cs" />
-    <Compile Include="Server\Cmdlet\SetAzureSqlServer.cs" />
     <Compile Include="Server\Model\AzureSqlServerModel.cs" />
     <Compile Include="Server\Services\AzureSqlServerAdapter.cs" />
     <Compile Include="Server\Services\AzureSqlServerCommunicator.cs" />
